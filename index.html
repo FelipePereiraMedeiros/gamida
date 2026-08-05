@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gamida - Treinador de Hebraico Bíblico & Moderno</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Noto Sans Hebrew & Rubik -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Rubik', 'sans-serif'],
+            hebrew: ['"Noto Sans Hebrew"', 'serif']
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    
+    .hebrew-text {
+      direction: rtl;
+      unicode-bidi: isolate;
+      font-family: 'Noto Sans Hebrew', serif;
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col font-sans antialiased bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white">
+
+  <!-- Top Navigation Header -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-30 px-4 py-3">
+    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 font-hebrew text-2xl font-bold text-white">
+          א
+        </div>
+        <div>
+          <h1 class="font-bold text-lg leading-tight tracking-wide text-white">Gamida <span class="text-xs px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono">v1.1</span></h1>
+          <p class="text-xs text-slate-400">Treinador de Hebraico Autônomo</p>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="flex items-center gap-4 bg-slate-950/60 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-medium">
+        <div class="flex items-center gap-1.5" title="Sequência de Acertos">
+          <span class="text-amber-400 text-sm">🔥</span>
+          <span id="stat-streak" class="text-slate-200 font-bold">0</span>
+        </div>
+        <div class="h-3 w-px bg-slate-800"></div>
+        <div class="flex items-center gap-1.5" title="Pontuação">
+          <span class="text-emerald-400 text-sm">⭐</span>
+          <span id="stat-score" class="text-slate-200 font-bold">0</span>
+        </div>
+        <div class="h-3 w-px bg-slate-800"></div>
+        <div class="flex items-center gap-1.5" title="Precisão">
+          <span class="text-blue-400 text-sm">🎯</span>
+          <span id="stat-accuracy" class="text-slate-200 font-bold">100%</span>
+        </div>
+      </div>
+
+      <!-- Action Nav -->
+      <div class="flex items-center space-x-2">
+        <button id="nav-btn-practice" onclick="switchTab('practice')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white shadow-md shadow-brand-600/30 transition hover:bg-brand-500">
+          🎮 Praticar
+        </button>
+        <button id="nav-btn-vocab" onclick="switchTab('vocab')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
+          📖 Dicionário
+        </button>
+        <button id="nav-btn-manage" onclick="switchTab('manage')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
+          ⚙️ Capítulos
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-5xl w-full mx-auto p-4 md:p-6 flex flex-col">
+
+    <!-- ================= TAB 1: PRACTICE MODE ================= -->
+    <section id="tab-practice" class="flex-1 flex flex-col space-y-6">
+      
+      <!-- Chapter Selector & Controls Bar -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex-1 min-w-[240px]">
+          <label for="chapter-select" class="block text-xs font-medium text-slate-400 mb-1">Selecione o Capítulo para Estudar:</label>
+          <select id="chapter-select" onchange="onChapterChange()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500">
+            <!-- Dynamic Options -->
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-400 mb-1">Modo de Exercício:</label>
+          <div class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs">
+            <button id="mode-typing" onclick="setExerciseMode('typing')" class="px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white">⌨️ Digitação (Palavras)</button>
+            <button id="mode-choice" onclick="setExerciseMode('choice')" class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200">✅ Múltipla Escolha</button>
+            <button id="mode-sentences" onclick="setExerciseMode('sentences')" class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200">📜 Tradução de Frases</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Exercise Card -->
+      <div class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden min-h-[360px]">
+        
+        <!-- Question Header Info -->
+        <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
+          <span id="question-category" class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 font-medium">Vocabulário</span>
+          <span id="question-progress" class="font-mono">Item 1 de 10</span>
+        </div>
+
+        <!-- Hebrew Prompt Box -->
+        <div class="my-auto py-6 text-center space-y-4">
+          <div id="hebrew-prompt" class="hebrew-text text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-wide leading-relaxed drop-shadow-md">
+            שָׁלוֹם
+          </div>
+          
+          <!-- Transliteration / Hint Toggle -->
+          <div id="hint-container" class="min-h-[24px]">
+            <button id="btn-show-hint" onclick="toggleHint()" class="text-xs text-slate-500 hover:text-brand-400 underline transition">
+              💡 Mostrar Transliteração / Dica
+            </button>
+            <p id="hint-text" class="text-sm font-mono text-amber-400/90 hidden"></p>
+          </div>
+        </div>
+
+        <!-- Dynamic Answer Interface -->
+        <div class="space-y-4">
+          
+          <!-- Interface 1: Free Typing Input (Words) -->
+          <form id="interface-typing" onsubmit="submitAnswer(event)" class="space-y-3">
+            <div class="relative">
+              <input type="text" id="input-answer" placeholder="Digite a tradução em português..." autocomplete="off" class="w-full bg-slate-950 border-2 border-slate-800 focus:border-brand-500 rounded-2xl px-5 py-4 text-base md:text-lg text-slate-100 placeholder-slate-600 focus:outline-none transition shadow-inner">
+              <button type="submit" id="btn-submit" class="absolute right-2 top-2 bottom-2 px-6 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg shadow-brand-600/30 flex items-center justify-center">
+                Verificar ➔
+              </button>
+            </div>
+          </form>
+
+          <!-- Interface 2: Multiple Choice Options -->
+          <div id="interface-choice" class="grid grid-cols-1 md:grid-cols-2 gap-3 hidden">
+            <!-- Dynamic Choice Buttons -->
+          </div>
+
+          <!-- Interface 3: Sentence Translation -->
+          <form id="interface-sentences" onsubmit="submitSentenceAnswer(event)" class="space-y-3 hidden">
+            <div class="flex flex-col space-y-2">
+              <label for="input-sentence" class="text-xs text-slate-400 font-medium">Traduzia a frase hebraica acima para o português:</label>
+              <textarea id="input-sentence" rows="2" placeholder="Digite a tradução completa em português..." class="w-full bg-slate-950 border-2 border-slate-800 focus:border-brand-500 rounded-2xl p-4 text-base text-slate-100 placeholder-slate-600 focus:outline-none transition resize-none"></textarea>
+              <div class="flex justify-end">
+                <button type="submit" class="px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg shadow-brand-600/30 flex items-center justify-center">
+                  Verificar Tradução ➔
+                </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <!-- Feedback Banner Modal/Bar -->
+        <div id="feedback-banner" class="hidden mt-6 p-4 rounded-2xl border flex flex-col md:flex-row items-center justify-between gap-4 transition-all">
+          <div class="flex items-start gap-3">
+            <div id="feedback-icon" class="text-2xl mt-0.5">✅</div>
+            <div>
+              <h4 id="feedback-title" class="font-bold text-sm">Resposta Correta!</h4>
+              <p id="feedback-detail" class="text-xs text-slate-300 mt-0.5"></p>
+            </div>
+          </div>
+          <button id="btn-next" onclick="nextQuestion()" class="w-full md:w-auto px-6 py-2.5 bg-slate-100 text-slate-900 font-bold text-xs rounded-xl hover:bg-white transition shadow-md">
+            Próxima Questão ➔
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= TAB 2: VOCABULARY DICTIONARY ================= -->
+    <section id="tab-vocab" class="hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-white">Dicionário & Banco de Frases do Capítulo</h2>
+          <p class="text-xs text-slate-400 mt-1">Consulte o vocabulário e as frases extraídas das lições do livro Page H. Kelley.</p>
+        </div>
+        <input type="text" id="vocab-search" oninput="filterVocabTable()" placeholder="🔍 Buscar palavra, frase ou tradução..." class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500 w-full md:w-72">
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-slate-950 border-b border-slate-800 text-slate-400 text-xs uppercase font-medium">
+              <tr>
+                <th class="px-6 py-3.5">Hebraico</th>
+                <th class="px-6 py-3.5">Transliteração</th>
+                <th class="px-6 py-3.5">Tradução (PT-BR)</th>
+                <th class="px-6 py-3.5">Tipo</th>
+              </tr>
+            </thead>
+            <tbody id="vocab-table-body" class="divide-y divide-slate-800/60 text-slate-200">
+              <!-- Dynamic Rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 3: CHAPTER MANAGER ================= -->
+    <section id="tab-manage" class="hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h2 class="text-xl font-bold text-white">Gerenciador de Capítulos & Conteúdo</h2>
+        <p class="text-xs text-slate-400 mt-1">Adicione ou edite os capítulos do seu livro em formato JSON para gerar novas questões de forma autônoma.</p>
+      </div>
+
+      <!-- JSON Import/Export Editor -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Instructions Panel -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <h3 class="font-bold text-sm text-brand-400 flex items-center gap-2">
+            <span>💡</span> Como importar do livro?
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Você pode colar novos vocabulários no formato JSON estruturado. Cada item deve ter a palavra em hebraico, transliteração opcional, e a lista de traduções válidas em português.
+          </p>
+
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 font-mono text-[11px] text-slate-400 space-y-1 overflow-x-auto">
+            <div class="text-emerald-400">// Exemplo de Estrutura JSON:</div>
+            <pre>{
+  "id": "cap_05",
+  "title": "Capítulo 5 - Verbos no Perfeito",
+  "items": [
+    {
+      "hebrew": "כָּתַב",
+      "transliteration": "katav",
+      "translations": ["ele escreveu", "escreveu"],
+      "type": "Verbo"
+    }
+  ],
+  "sentences": [
+    {
+      "hebrew": "כָּתַב אֶת־הַדָּבָר",
+      "transliteration": "katav et-hadavar",
+      "translations": ["ele escreveu a palavra"],
+      "type": "Frase"
+    }
+  ]
+}</pre>
+          </div>
+
+          <div class="pt-2 flex flex-col gap-2">
+            <button onclick="resetDefaultChapters()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700">
+              🔄 Restaurar Capítulos Padrão
+            </button>
+            <button onclick="exportChaptersJSON()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700">
+              📥 Exportar Dados (Backup JSON)
+            </button>
+          </div>
+        </div>
+
+        <!-- Editor Area -->
+        <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-sm text-white">Editor JSON de Capítulo</h3>
+            <span id="json-status" class="text-xs font-mono text-slate-500">Pronto</span>
+          </div>
+
+          <textarea id="json-input" rows="14" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 resize-y" placeholder="Cole o JSON do novo capítulo aqui..."></textarea>
+
+          <div class="flex justify-end gap-3">
+            <button onclick="saveChapterFromJSON()" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition shadow-lg shadow-emerald-600/20">
+              💾 Salvar / Adicionar Capítulo
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Application Logic JavaScript -->
+  <script>
+    /* ================= DEFAULT DATASETS (Built-in Chapters & Extracted Sentences) ================= */
+    const DEFAULT_CHAPTERS = [
+      {
+        id: "kelley_03",
+        title: "Lição III - Substantivos Básicos (Page H. Kelley)",
+        items: [
+          { hebrew: "אָב", transliteration: "av", translations: ["pai", "ancestral"], type: "Substantivo" },
+          { hebrew: "אָח", transliteration: "ach", translations: ["irmao", "irmão"], type: "Substantivo" },
+          { hebrew: "אָחוֹת", transliteration: "achot", translations: ["irma", "irmã"], type: "Substantivo (f)" },
+          { hebrew: "אִישׁ", transliteration: "ish", translations: ["homem"], type: "Substantivo" },
+          { hebrew: "אִשָּׁה", transliteration: "isha", translations: ["mulher"], type: "Substantivo (f)" },
+          { hebrew: "אֵם", transliteration: "em", translations: ["mae", "mãe"], type: "Substantivo (f)" },
+          { hebrew: "אָדָם", transliteration: "adam", translations: ["ser humano", "humanidade", "homem"], type: "Substantivo" },
+          { hebrew: "אֱלֹהִים", transliteration: "elohim", translations: ["deus"], type: "Substantivo" },
+          { hebrew: "בֵּן", transliteration: "ben", translations: ["filho"], type: "Substantivo" },
+          { hebrew: "בַּת", transliteration: "bat", translations: ["filha"], type: "Substantivo (f)" },
+          { hebrew: "יִשְׂרָאֵל", transliteration: "yisrael", translations: ["israel"], type: "Nome Próprio" },
+          { hebrew: "לֵב", transliteration: "lev", translations: ["coracao", "coração"], type: "Substantivo" },
+          { hebrew: "עִיר", transliteration: "ir", translations: ["cidade"], type: "Substantivo (f)" },
+          { hebrew: "עוֹף", transliteration: "of", translations: ["passaro", "pássaro", "passaros", "pássaros", "ave"], type: "Substantivo" },
+          { hebrew: "עַם", transliteration: "am", translations: ["povo"], type: "Substantivo" },
+          { hebrew: "קוֹל", transliteration: "kol", translations: ["voz"], type: "Substantivo" },
+          { hebrew: "רֹאשׁ", transliteration: "rosh", translations: ["cabeca", "cabeça"], type: "Substantivo" },
+          { hebrew: "שֵׁם", transliteration: "shem", translations: ["nome"], type: "Substantivo" }
+        ],
+        sentences: [
+          { hebrew: "אָב וּבֵן", transliteration: "av u'ven", translations: ["pai e filho"], type: "Frase" },
+          { hebrew: "אִישׁ וְאִשָּׁה", transliteration: "ish v'isha", translations: ["homem e mulher", "um homem e uma mulher"], type: "Frase" },
+          { hebrew: "אֵם וּבַת", transliteration: "em u'vat", translations: ["mãe e filha", "mae e filha"], type: "Frase" },
+          { hebrew: "קול עַם", transliteration: "kol am", translations: ["voz de um povo", "voz do povo"], type: "Frase" },
+          { hebrew: "שֵׁם אֱלֹהִים", transliteration: "shem elohim", translations: ["nome de deus"], type: "Frase" }
+        ]
+      },
+      {
+        id: "kelley_05",
+        title: "Lição V - O Artigo Definido e Natureza (Page H. Kelley)",
+        items: [
+          { hebrew: "אוֹר", transliteration: "or", translations: ["luz"], type: "Substantivo" },
+          { hebrew: "אֶרֶץ", transliteration: "eretz", translations: ["terra", "pais", "país"], type: "Substantivo (f)" },
+          { hebrew: "אֲשֶׁר", transliteration: "asher", translations: ["quem", "qual", "que"], type: "Partícula / Relativo" },
+          { hebrew: "בַּיִת", transliteration: "bayit", translations: ["casa"], type: "Substantivo" },
+          { hebrew: "בְּרִית", transliteration: "brit", translations: ["alianca", "aliança"], type: "Substantivo (f)" },
+          { hebrew: "גַּן", transliteration: "gan", translations: ["jardim"], type: "Substantivo" },
+          { hebrew: "דָּבָר", transliteration: "davar", translations: ["palavra", "coisa", "assunto"], type: "Substantivo" },
+          { hebrew: "הַר", transliteration: "har", translations: ["montanha", "monte"], type: "Substantivo" },
+          { hebrew: "חַג", transliteration: "chag", translations: ["festa", "festival"], type: "Substantivo" },
+          { hebrew: "חֶרֶב", transliteration: "cherev", translations: ["espada"], type: "Substantivo (f)" },
+          { hebrew: "חֹשֶׁךְ", transliteration: "choshech", translations: ["escuridao", "escuridão", "trevas"], type: "Substantivo" },
+          { hebrew: "טוֹב", transliteration: "tov", translations: ["bom", "agradavel"], type: "Adjetivo" },
+          { hebrew: "יָם", transliteration: "yam", translations: ["mar"], type: "Substantivo" },
+          { hebrew: "מַיִם", transliteration: "mayim", translations: ["agua", "água", "aguas", "águas"], type: "Substantivo" },
+          { hebrew: "מֶלֶךְ", transliteration: "melech", translations: ["rei"], type: "Substantivo" },
+          { hebrew: "רוּחַ", transliteration: "ruach", translations: ["espirito", "espírito", "vento"], type: "Substantivo (f)" },
+          { hebrew: "שָׁלוֹם", transliteration: "shalom", translations: ["paz", "bem-estar"], type: "Substantivo" },
+          { hebrew: "שָׁנָה", transliteration: "shana", translations: ["ano"], type: "Substantivo (f)" }
+        ],
+        sentences: [
+          { hebrew: "הָאָב וְהָאֵם", transliteration: "ha'av v'ha'em", translations: ["o pai e a mãe", "o pai e a mae"], type: "Frase" },
+          { hebrew: "הָאִישׁ וְהָאִשָּׁה", transliteration: "ha'ish v'ha'isha", translations: ["o homem e a mulher"], type: "Frase" },
+          { hebrew: "הַבֵּן וְהַבַּת", transliteration: "haben v'habat", translations: ["o filho e a filha"], type: "Frase" },
+          { hebrew: "הָעִיר וְהַהָר", transliteration: "ha'ir v'hahar", translations: ["a cidade e a montanha", "a cidade e o monte"], type: "Frase" },
+          { hebrew: "הָאוֹר וְהַחֹשֶׁךְ", transliteration: "ha'or v'hachoshech", translations: ["a luz e a escuridão", "a luz e a escuridao", "a luz e as trevas"], type: "Frase" },
+          { hebrew: "הַמַּיִם וְהַיָּם", transliteration: "hamayim v'hayam", translations: ["a água e o mar", "a agua e o mar"], type: "Frase" }
+        ]
+      },
+      {
+        id: "kelley_06",
+        title: "Lição VI - Preposições e Conjunções (Page H. Kelley)",
+        items: [
+          { hebrew: "אַחֲרֵי", transliteration: "acharei", translations: ["atras", "atrás", "depois"], type: "Preposição" },
+          { hebrew: "אֶל", transliteration: "el", translations: ["para", "em direcao a", "em direção a"], type: "Preposição" },
+          { hebrew: "בֵּין", transliteration: "bein", translations: ["entre"], type: "Preposição" },
+          { hebrew: "לִפְנֵי", transliteration: "lifnei", translations: ["diante de", "na presenca de", "na presença de"], type: "Preposição" },
+          { hebrew: "מִן", transliteration: "min", translations: ["de", "a partir de"], type: "Preposição" },
+          { hebrew: "עַד", transliteration: "ad", translations: ["ate", "até"], type: "Preposição" },
+          { hebrew: "עִם", transliteration: "im", translations: ["com"], type: "Preposição" },
+          { hebrew: "עַל", transliteration: "al", translations: ["sobre", "contra"], type: "Preposição" },
+          { hebrew: "תַּחַת", transliteration: "tachat", translations: ["sob", "embaixo de", "em baixo de", "em vez de"], type: "Preposição" },
+          { hebrew: "אֵין", transliteration: "ein", translations: ["nao ha", "não há", "nao existe", "não existe"], type: "Partícula" },
+          { hebrew: "בֹּקֶר", transliteration: "boker", translations: ["manha", "manhã"], type: "Substantivo" },
+          { hebrew: "יָד", transliteration: "yad", translations: ["mao", "mão"], type: "Substantivo (f)" },
+          { hebrew: "יוֹם", transliteration: "yom", translations: ["dia"], type: "Substantivo" },
+          { hebrew: "יֵשׁ", transliteration: "yesh", translations: ["ha", "há", "existe"], type: "Partícula" },
+          { hebrew: "לַיְלָה", transliteration: "laila", translations: ["noite"], type: "Substantivo" },
+          { hebrew: "מָקוֹם", transliteration: "makom", translations: ["lugar"], type: "Substantivo" },
+          { hebrew: "עֵץ", transliteration: "etz", translations: ["arvore", "árvore"], type: "Substantivo" },
+          { hebrew: "עֶרֶב", transliteration: "erev", translations: ["entardecer", "tarde"], type: "Substantivo" },
+          { hebrew: "פְּרִי", transliteration: "pri", translations: ["fruta", "fruto"], type: "Substantivo" }
+        ],
+        sentences: [
+          { hebrew: "אֵין אִישׁ בָּעִיר", transliteration: "ein ish ba'ir", translations: ["não há homem na cidade", "nao ha homem na cidade"], type: "Frase" },
+          { hebrew: "אֵין אוֹר לָעָם", transliteration: "ein or la'am", translations: ["não há luz para o povo", "o povo não tem luz"], type: "Frase" },
+          { hebrew: "הַגַּן אֵצֶל הַבַּיִת", transliteration: "hagan etzel habayit", translations: ["o jardim está ao lado da casa", "o jardim ao lado da casa"], type: "Frase" },
+          { hebrew: "אֵין אִשָּׁה בַּבַּיִת", transliteration: "ein isha babayit", translations: ["não há mulher na casa", "nao ha mulher na casa"], type: "Frase" },
+          { hebrew: "אֵין שָׁלוֹם בָּאָרֶץ", transliteration: "ein shalom ba'aretz", translations: ["não há paz na terra", "nao ha paz na terra"], type: "Frase" },
+          { hebrew: "הָעִיר עַל־הָהָר", transliteration: "ha'ir al-hahar", translations: ["a cidade está sobre a montanha", "a cidade na montanha", "a cidade esta no monte"], type: "Frase" },
+          { hebrew: "טוֹב הָאוֹר מִן־הַחֹשֶׁךְ", transliteration: "tov ha'or min-hachoshech", translations: ["a luz é melhor do que a escuridão", "a luz e melhor que a escuridao"], type: "Frase" },
+          { hebrew: "טוֹב הַיּוֹם מִן־הַלַּיְלָה", transliteration: "tov hayom min-halaila", translations: ["o dia é melhor do que a noite", "o dia e melhor que a noite"], type: "Frase" },
+          { hebrew: "בֵּין הָאוֹר וּבֵין הַחֹשֶׁךְ", transliteration: "bein ha'or u'vein hachoshech", translations: ["entre a luz e a escuridão", "entre a luz e a escuridao"], type: "Frase" },
+          { hebrew: "פְּרִי מִן־הָעֵץ", transliteration: "pri min-ha'etz", translations: ["fruto da árvore", "fruta da arvore"], type: "Frase" }
+        ]
+      },
+      {
+        id: "kelley_07",
+        title: "Lição VII - Gênero, Número e Termos do Cotidiano (Page H. Kelley)",
+        items: [
+          { hebrew: "אֲדָמָה", transliteration: "adama", translations: ["terra", "solo"], type: "Substantivo (f)" },
+          { hebrew: "אֲדֹנָי", transliteration: "adonai", translations: ["senhor"], type: "Nome Divino" },
+          { hebrew: "יְהוָה", transliteration: "yahweh / adonai", translations: ["senhor", "deus"], type: "Nome Divino" },
+          { hebrew: "בְּהֵמָה", transliteration: "behema", translations: ["gado", "animal"], type: "Substantivo (f)" },
+          { hebrew: "בָּשָׂר", transliteration: "basar", translations: ["carne"], type: "Substantivo" },
+          { hebrew: "בְּתוֹךְ", transliteration: "betoch", translations: ["no meio de"], type: "Preposição" },
+          { hebrew: "גַּם", transliteration: "gam", translations: ["tambem", "também"], type: "Advérbio" },
+          { hebrew: "דֶּרֶךְ", transliteration: "derech", translations: ["caminho"], type: "Substantivo" },
+          { hebrew: "יַבָּשָׁה", transliteration: "yabasha", translations: ["terra seca"], type: "Substantivo (f)" },
+          { hebrew: "כִּי", transliteration: "ki", translations: ["pois", "porque", "que"], type: "Conjunção" },
+          { hebrew: "כֹּל", transliteration: "kol", translations: ["todo", "cada"], type: "Substantivo / Pronome" },
+          { hebrew: "כֵּן", transliteration: "ken", translations: ["assim", "da mesma forma"], type: "Advérbio" },
+          { hebrew: "מְאֹד", transliteration: "meod", translations: ["muito", "extremamente"], type: "Advérbio" },
+          { hebrew: "מִצְוָה", transliteration: "mitsva", translations: ["mandamento", "ordem"], type: "Substantivo (f)" },
+          { hebrew: "נֶפֶשׁ", transliteration: "nefesh", translations: ["ser vivo", "alma", "vida"], type: "Substantivo (f)" },
+          { hebrew: "עָפָר", transliteration: "afar", translations: ["po", "pó", "poeira"], type: "Substantivo" },
+          { hebrew: "שָׂדֶה", transliteration: "sade", translations: ["campo"], type: "Substantivo" },
+          { hebrew: "שָׁמַיִם", transliteration: "shamayim", translations: ["ceu", "céu", "ceus", "céus"], type: "Substantivo (pl)" }
+        ],
+        sentences: [
+          { hebrew: "הָאֲנָשִׁים וְהַסּוּסִים", transliteration: "ha'anashim v'hasusim", translations: ["os homens e os cavalos"], type: "Frase" },
+          { hebrew: "הַמִּצְוֹת אֲשֶׁר בַּסֵּפֶר", transliteration: "hamitsvot asher basefer", translations: ["os mandamentos que estão no livro", "os mandamentos que estao no livro"], type: "Frase" },
+          { hebrew: "הַנָּשִׁים אֲשֶׁר בַּבַּיִת", transliteration: "hanashim asher babayit", translations: ["as mulheres que estão na casa", "as mulheres na casa"], type: "Frase" },
+          { hebrew: "הַמְּלָכִים וְהַנְּבִיאִים", transliteration: "hamelechim v'hanevi'im", translations: ["os reis e os profetas"], type: "Frase" },
+          { hebrew: "הַמַּיִם בְּתוֹךְ הַיָּם", transliteration: "hamayim betoch hayam", translations: ["a água no meio do mar", "a agua no meio do mar"], type: "Frase" },
+          { hebrew: "הָעוֹף בַּשָּׁמַיִם", transliteration: "ha'of bashamayim", translations: ["as aves no céu", "os pássaros no céu", "as aves nos ceus"], type: "Frase" },
+          { hebrew: "הַבְּרִית עִם־הַמֶּלֶךְ", transliteration: "habrit im-hamelech", translations: ["a aliança com o rei", "a alianca com o rei"], type: "Frase" },
+          { hebrew: "הַמִּצְוֹת בַּתּוֹרָה", transliteration: "hamitsvot batora", translations: ["os mandamentos na lei"], type: "Frase" },
+          { hebrew: "עָפָר מִן־הָאֲדָמָה", transliteration: "afar min-ha'adama", translations: ["pó da terra", "pó do solo", "po da terra"], type: "Frase" },
+          { hebrew: "הַשָּׁמַיִם וְהָאָרֶץ", transliteration: "hashamayim v'ha'aretz", translations: ["os céus e a terra", "os ceus e a terra"], type: "Frase" }
+        ]
+      },
+      {
+        id: "kelley_08",
+        title: "Lição VIII - Adjetivos Essenciais (Page H. Kelley)",
+        items: [
+          { hebrew: "גָּדוֹל", transliteration: "gadol", translations: ["grande"], type: "Adjetivo" },
+          { hebrew: "זָקֵן", transliteration: "zaken", translations: ["velho"], type: "Adjetivo" },
+          { hebrew: "חָדָשׁ", transliteration: "chadash", translations: ["novo"], type: "Adjetivo" },
+          { hebrew: "חָזָק", transliteration: "chazak", translations: ["forte"], type: "Adjetivo" },
+          { hebrew: "חַי", transliteration: "chai", translations: ["vivo"], type: "Adjetivo" },
+          { hebrew: "חָכָם", transliteration: "chacham", translations: ["sabio", "sábio"], type: "Adjetivo" },
+          { hebrew: "יָפֶה", transliteration: "yafe", translations: ["bonito", "lindo", "belo"], type: "Adjetivo" },
+          { hebrew: "יָשָׁר", transliteration: "yashar", translations: ["reto", "correto"], type: "Adjetivo" },
+          { hebrew: "מַר", transliteration: "mar", translations: ["amargo"], type: "Adjetivo" },
+          { hebrew: "קָדוֹשׁ", transliteration: "kadosh", translations: ["sagrado", "santo"], type: "Adjetivo" },
+          { hebrew: "קָטָן", transliteration: "katan", translations: ["pequeno"], type: "Adjetivo" },
+          { hebrew: "קָרוֹב", transliteration: "karov", translations: ["perto", "proximo", "próximo"], type: "Adjetivo" },
+          { hebrew: "קָשֶׁה", transliteration: "kashe", translations: ["dificil", "difícil", "duro"], type: "Adjetivo" },
+          { hebrew: "רַב", transliteration: "rav", translations: ["muito", "grande", "numeroso"], type: "Adjetivo" },
+          { hebrew: "רָחוֹק", transliteration: "rachok", translations: ["distante", "longe"], type: "Adjetivo" },
+          { hebrew: "רַע", transliteration: "ra", translations: ["mau", "ruim", "feio"], type: "Adjetivo" },
+          { hebrew: "רָעָה", transliteration: "raa", translations: ["mal", "maldade"], type: "Substantivo (f)" },
+          { hebrew: "תָּמִים", transliteration: "tamim", translations: ["perfeito", "completo", "inteiro"], type: "Adjetivo" }
+        ],
+        sentences: [
+          { hebrew: "מֵאָדָם רָע", transliteration: "me'adam ra", translations: ["de um homem mau", "de homem mau"], type: "Frase" },
+          { hebrew: "הָאִישׁ מֹשֶׁה גָּדוֹל מְאֹד", transliteration: "ha'ish moshe gadol meod", translations: ["o homem moisés era muito grande", "o homem moises era muito grande"], type: "Frase" },
+          { hebrew: "מִי־אֵל גָּדוֹל בֵּאלֹהִים", transliteration: "mi-el gadol belohim", translations: ["quem é grande deus entre os deuses?", "quem e grande deus entre os deuses?"], type: "Frase" },
+          { hebrew: "כִּי אֵל גָּדוֹל יְהוָה וּמֶלֶךְ גָּדוֹל", transliteration: "ki el gadol adonai u'melech gadol", translations: ["pois o senhor é um grande deus e um grande rei", "porque o senhor e um grande deus e grande rei"], type: "Frase" },
+          { hebrew: "הַשָּׁמַיִם הַחֲדָשִׁים וְהָאָרֶץ הַחֲדָשָׁה", transliteration: "hashamayim hachadashim v'ha'aretz hachadasha", translations: ["os novos céus e a nova terra", "os novos ceus e a nova terra"], type: "Frase" },
+          { hebrew: "לֵב חָדָשׁ וְרוּחַ חֲדָשָׁה", transliteration: "lev chadash v'ruach chadasha", translations: ["um coração novo e um espírito novo", "um coracao novo e um espirito novo"], type: "Frase" },
+          { hebrew: "טוֹב וְיָשָׁר יְהוָה", transliteration: "tov v'yashar adonai", translations: ["bom e reto é o senhor", "bom e reto e o senhor"], type: "Frase" },
+          { hebrew: "וְדָוִיד זָקֵן", transliteration: "v'david zaken", translations: ["e davi era velho", "e davi estava velho"], type: "Frase" },
+          { hebrew: "רוּחַ־רָעָה מֵאֵת יְהוָה", transliteration: "ruach-raa me'et adonai", translations: ["um espírito mau da parte do senhor", "um espirito mau do senhor"], type: "Frase" }
+        ]
+      },
+      {
+        id: "kelley_09",
+        title: "Lição IX - Pronomes e Lugares (Page H. Kelley)",
+        items: [
+          { hebrew: "אֶבֶן", transliteration: "even", translations: ["pedra"], type: "Substantivo (f)" },
+          { hebrew: "דּוֹר", transliteration: "dor", translations: ["geracao", "geração"], type: "Substantivo" },
+          { hebrew: "יְרוּשָׁלַיִם", transliteration: "yerushalayim", translations: ["jerusalem", "jerusalém"], type: "Nome Próprio" },
+          { hebrew: "כֹּה", transliteration: "koh", translations: ["assim"], type: "Advérbio" },
+          { hebrew: "לֶחֶם", transliteration: "lechem", translations: ["pao", "pão"], type: "Substantivo" },
+          { hebrew: "מִדְבָּר", transliteration: "midbar", translations: ["deserto"], type: "Substantivo" },
+          { hebrew: "מָה", transliteration: "mah", translations: ["que", "o que"], type: "Pronome Interrogativo" },
+          { hebrew: "מִי", transliteration: "mi", translations: ["quem"], type: "Pronome Interrogativo" },
+          { hebrew: "מִשְׁפָּט", transliteration: "mishpat", translations: ["julgamento", "juizo", "juízo"], type: "Substantivo" },
+          { hebrew: "מֹשֶׁה", transliteration: "moshe", translations: ["moises", "moisés"], type: "Nome Próprio" },
+          { hebrew: "נָבִיא", transliteration: "navi", translations: ["profeta"], type: "Substantivo" },
+          { hebrew: "נַעַר", transliteration: "naar", translations: ["rapaz", "jovem"], type: "Substantivo" },
+          { hebrew: "נַעֲרָה", transliteration: "naara", translations: ["moca", "moça", "jovem mulher"], type: "Substantivo (f)" },
+          { hebrew: "סֵפֶר", transliteration: "sefer", translations: ["livro"], type: "Substantivo" },
+          { hebrew: "פֶּן", transliteration: "pen", translations: ["para que nao", "para que não"], type: "Conjunção" },
+          { hebrew: "רֶגֶל", transliteration: "regel", translations: ["pe", "pé"], type: "Substantivo (f)" },
+          { hebrew: "שֶׁמֶן", transliteration: "shemen", translations: ["oleo", "óleo", "gordura"], type: "Substantivo" },
+          { hebrew: "תּוֹרָה", transliteration: "tora", translations: ["lei", "instrucao", "instrução"], type: "Substantivo (f)" }
+        ],
+        sentences: [
+          { hebrew: "הַדָּבָר הַגָּדוֹל הַזֶּה", transliteration: "hadavar hagadol hazeh", translations: ["esta grande coisa", "esta coisa grande"], type: "Frase" },
+          { hebrew: "כִּי קָרוֹב הוּא", transliteration: "ki karov hu", translations: ["pois ele está perto", "porque ele esta perto", "pois esta perto"], type: "Frase" },
+          { hebrew: "וְאָנֹכִי נַעַר קָטֹן", transliteration: "v'anochi naar katan", translations: ["e eu sou um rapaz pequeno", "e eu sou um jovem pequeno"], type: "Frase" },
+          { hebrew: "נֹחַ אִישׁ צַדִּיק", transliteration: "noach ish tzadik", translations: ["noé era um homem justo", "noe era um homem justo"], type: "Frase" },
+          { hebrew: "צַדִּיק וְיָשָׁר הוּא", transliteration: "tzadik v'yashar hu", translations: ["ele é justo e reto", "ele e justo e reto"], type: "Frase" },
+          { hebrew: "לֹא אִישׁ אֵל", transliteration: "lo ish el", translations: ["deus não é homem", "deus nao e homem"], type: "Frase" },
+          { hebrew: "עַם־חָכָם הַגּוֹי הַגָּדוֹל הַזֶּה", transliteration: "am-chacham hagoy hagadol hazeh", translations: ["esta grande nação é um povo sábio", "esta grande nacao e um povo sabio"], type: "Frase" },
+          { hebrew: "זֶה הַיּוֹם", transliteration: "zeh hayom", translations: ["este é o dia", "este e o dia"], type: "Frase" },
+          { hebrew: "אֵלֶּה הַדְּבָרִים", transliteration: "eleh hadevarim", translations: ["estas são as palavras", "estas sao as palavras"], type: "Frase" }
+        ]
+      },
+      {
+        id: "kelley_10",
+        title: "Lição X - Segolados e Relação de Construto (Page H. Kelley)",
+        items: [
+          { hebrew: "אֹהֶל", transliteration: "ohel", translations: ["tenda"], type: "Substantivo" },
+          { hebrew: "אֱמֶת", transliteration: "emet", translations: ["verdade"], type: "Substantivo (f)" },
+          { hebrew: "אֵשׁ", transliteration: "esh", translations: ["fogo"], type: "Substantivo (f)" },
+          { hebrew: "דָּם", transliteration: "dam", translations: ["sangue"], type: "Substantivo" },
+          { hebrew: "זָהָב", transliteration: "zahav", translations: ["ouro"], type: "Substantivo" },
+          { hebrew: "חַיָּה", transliteration: "chaya", translations: ["ser vivo", "animal"], type: "Substantivo (f)" },
+          { hebrew: "חָכְמָה", transliteration: "chochma", translations: ["sabedoria"], type: "Substantivo (f)" },
+          { hebrew: "חֶסֶד", transliteration: "chesed", translations: ["bondade", "misericordia", "misericórdia"], type: "Substantivo" },
+          { hebrew: "יַיִן", transliteration: "yayin", translations: ["vinho"], type: "Substantivo" },
+          { hebrew: "כּוֹכָב", transliteration: "kochav", translations: ["estrela"], type: "Substantivo" },
+          { hebrew: "כֶּסֶף", transliteration: "kesef", translations: ["prata"], type: "Substantivo" },
+          { hebrew: "מַלְכָּה", transliteration: "malka", translations: ["rainha"], type: "Substantivo (f)" },
+          { hebrew: "מִצְרַיִם", transliteration: "mitsrayim", translations: ["egito"], type: "Nome Próprio" },
+          { hebrew: "סוּס", transliteration: "sus", translations: ["cavalo"], type: "Substantivo" },
+          { hebrew: "עֵת", transliteration: "et", translations: ["tempo"], type: "Substantivo (f)" },
+          { hebrew: "רֵעַ", transliteration: "rea", translations: ["amigo"], type: "Substantivo" },
+          { hebrew: "פֶּה", transliteration: "peh", translations: ["boca"], type: "Substantivo" },
+          { hebrew: "תְּהוֹם", transliteration: "tehom", translations: ["abismo", "profundidade"], type: "Substantivo (f)" }
+        ],
+        sentences: [
+          { hebrew: "מִיַּד הָאִשָּׁה", transliteration: "miyad ha'isha", translations: ["da mão da mulher", "da mao da mulher"], type: "Frase" },
+          { hebrew: "יוֹם הַשַּׁבָּת", transliteration: "yom hashabat", translations: ["o dia de sábado", "o dia do sábado", "o dia do sabado"], type: "Frase" },
+          { hebrew: "מִבְּנֵי הַנְּבִיאִים", transliteration: "mibnei hanevi'im", translations: ["dos filhos dos profetas"], type: "Frase" },
+          { hebrew: "בֶּן־אָדָם", transliteration: "ben-adam", translations: ["filho do homem", "ser humano"], type: "Frase" },
+          { hebrew: "בְּנוֹת אַנְשֵׁי הָעִיר", transliteration: "bnot anashei ha'ir", translations: ["as filhas dos homens da cidade"], type: "Frase" },
+          { hebrew: "בְּשֵׁם הַמֶּלֶךְ", transliteration: "beshem hamelech", translations: ["em nome do rei"], type: "Frase" },
+          { hebrew: "רָאשֵׁי הֶהָרִים", transliteration: "rashei heharim", translations: ["os cumes das montanhas", "as cabeças dos montes"], type: "Frase" },
+          { hebrew: "מֹשֶׁה עֶבֶד יְהוָה", transliteration: "moshe eved adonai", translations: ["moisés, servo do senhor", "moises servo do senhor"], type: "Frase" },
+          { hebrew: "עַבְדֵי הַמֶּלֶךְ", transliteration: "avdei hamelech", translations: ["os servos do rei"], type: "Frase" },
+          { hebrew: "דַּם־כָּל־בָּשָׂר", transliteration: "dam-kol-basar", translations: ["o sangue de toda carne", "o sangue de toda a carne"], type: "Frase" },
+          { hebrew: "אֶת־דֶּרֶךְ עֵץ הַחַיִּים", transliteration: "et-derech etz hachayim", translations: ["o caminho da árvore da vida", "o caminho da arvore da vida"], type: "Frase" },
+          { hebrew: "בְּתוֹרַת מֹשֶׁה עֶבֶד־הָאֱלֹהִים", transliteration: "betorat moshe eved-haelohim", translations: ["na lei de moisés, servo de deus", "na lei de moises servo de deus"], type: "Frase" }
+        ]
+      },
+      {
+        id: "kelley_11",
+        title: "Lição XI - Sufixos Pronominais e Termos Religiosos (Page H. Kelley)",
+        items: [
+          { hebrew: "אָהַב", transliteration: "ahav", translations: ["ele amou", "amar"], type: "Verbo" },
+          { hebrew: "אָמַר", transliteration: "amar", translations: ["ele disse", "dizer"], type: "Verbo" },
+          { hebrew: "בָּרָא", transliteration: "bara", translations: ["ele criou", "criar"], type: "Verbo" },
+          { hebrew: "הָיָה", transliteration: "haya", translations: ["ele foi", "tornou-se", "ser"], type: "Verbo" },
+          { hebrew: "הָלַךְ", transliteration: "halach", translations: ["ele caminhou", "foi", "andar"], type: "Verbo" },
+          { hebrew: "יָדַע", transliteration: "yada", translations: ["ele soube", "conheceu", "saber"], type: "Verbo" },
+          { hebrew: "יַחְדָּו", transliteration: "yachdav", translations: ["juntos"], type: "Advérbio" },
+          { hebrew: "יֶלֶד", transliteration: "yeled", translations: ["crianca", "criança"], type: "Substantivo" },
+          { hebrew: "כָּבוֹד", transliteration: "kavod", translations: ["gloria", "glória", "honra"], type: "Substantivo" },
+          { hebrew: "תֵּבָה", transliteration: "teva", translations: ["arca"], type: "Substantivo (f)" },
+          { hebrew: "עוֹד", transliteration: "od", translations: ["de novo", "ainda"], type: "Advérbio" },
+          { hebrew: "עַל-פְּנֵי", transliteration: "al-pnei", translations: ["sobre", "em cima de"], type: "Preposição" },
+          { hebrew: "עַתָּה", transliteration: "ata", translations: ["agora"], type: "Advérbio" },
+          { hebrew: "פֹּה", transliteration: "poh", translations: ["aqui"], type: "Advérbio" },
+          { hebrew: "צְבָאוֹת", transliteration: "tsevaot", translations: ["exercitos", "exércitos"], type: "Substantivo (pl)" },
+          { hebrew: "שַׁבָּת", transliteration: "shabat", translations: ["sabado", "sábado"], type: "Substantivo" },
+          { hebrew: "שָׁם", transliteration: "sham", translations: ["ali", "la", "lá"], type: "Advérbio" },
+          { hebrew: "שְׁנֵיהֶם", transliteration: "sheneihem", translations: ["os dois", "ambos"], type: "Pronome" }
+        ],
+        sentences: [
+          { hebrew: "אַתָּה אָבִינוּ", transliteration: "ata avinu", translations: ["tu és o nosso pai", "tu es o nosso pai"], type: "Frase" },
+          { hebrew: "כִּי לִי כָּל־הָאָרֶץ", transliteration: "ki li kol-ha'aretz", translations: ["pois toda a terra é minha", "porque minha e toda a terra"], type: "Frase" },
+          { hebrew: "וְכָל־אַנְשֵׁי בֵיתוֹ", transliteration: "v'chol-anashei veito", translations: ["e todos os homens da sua casa"], type: "Frase" },
+          { hebrew: "אֱלֹהֵי אָבִי אַבְרָהָם", transliteration: "elohei avi avraham", translations: ["o deus do meu pai abraão", "o deus do meu pai abraao"], type: "Frase" },
+          { hebrew: "כִּי אֲנִי יְהוָה אֱלֹהֵיכֶם", transliteration: "ki ani adonai eloheichem", translations: ["pois eu sou o senhor vosso deus", "porque eu sou o senhor vosso deus"], type: "Frase" },
+          { hebrew: "כִּי אֵין לָהּ אָב וָאֵם", transliteration: "ki ein lah av va'em", translations: ["pois ela não tem pai nem mãe", "porque ela nao tem pai nem mae"], type: "Frase" },
+          { hebrew: "וְעַתָּה יְהוָה אָבִינוּ אָתָּה", transliteration: "v'ata adonai avinu ata", translations: ["e agora, senhor, tu és o nosso pai", "e agora senhor tu es o nosso pai"], type: "Frase" },
+          { hebrew: "עַמֵּךְ עַמִּי וֵאלֹהַיִךְ אֱלֹהָי", transliteration: "amech ami v'elohayich elohai", translations: ["o teu povo é o meu povo e o teu deus é o meu deus"], type: "Frase" },
+          { hebrew: "בֵּן אֵין־לָהּ וְאִישָׁהּ זָקֵן", transliteration: "ben ein-lah v'isha zaken", translations: ["ela não tem filho e o seu marido é velho", "ela nao tem filho e seu marido e velho"], type: "Frase" },
+          { hebrew: "לִי הַכֶּסֶף וְלִי הַזָּהָב", transliteration: "li hakesef v'li hazahav", translations: ["minha é a prata e meu é o ouro", "minha e a prata e meu e o ouro"], type: "Frase" }
+        ]
+      },
+      {
+        id: "kelley_12",
+        title: "Lição XII - Verbos no Perfeito (Qal) (Page H. Kelley)",
+        items: [
+          { hebrew: "אוֹ", transliteration: "o", translations: ["ou"], type: "Conjunção" },
+          { hebrew: "אוֹת", transliteration: "ot", translations: ["sinal"], type: "Substantivo" },
+          { hebrew: "אֵל", transliteration: "el", translations: ["deus"], type: "Substantivo" },
+          { hebrew: "הִנֵּה", transliteration: "hineh", translations: ["eis", "vede"], type: "Partícula" },
+          { hebrew: "זֶרַע", transliteration: "zera", translations: ["semente"], type: "Substantivo" },
+          { hebrew: "חֲצִי", transliteration: "chetsi", translations: ["metade"], type: "Substantivo" },
+          { hebrew: "לָקַח", transliteration: "lakach", translations: ["ele tomou", "tomar", "pegou"], type: "Verbo" },
+          { hebrew: "מָלַךְ", transliteration: "malach", translations: ["ele reinou", "reinar"], type: "Verbo" },
+          { hebrew: "מָצָא", transliteration: "matsa", translations: ["ele achou", "encontrar"], type: "Verbo" },
+          { hebrew: "נָפַל", transliteration: "nafal", translations: ["ele caiu", "cair"], type: "Verbo" },
+          { hebrew: "עָבַד", transliteration: "avad", translations: ["ele serviu", "trabalhar"], type: "Verbo" },
+          { hebrew: "עָלָה", transliteration: "ala", translations: ["ele subiu", "subir"], type: "Verbo" },
+          { hebrew: "פָּקַד", transliteration: "pakad", translations: ["ele visitou", "inspecionou"], type: "Verbo" },
+          { hebrew: "קָרָא", transliteration: "kara", translations: ["ele chamou", "chamar"], type: "Verbo" },
+          { hebrew: "שָׁכַב", transliteration: "shachav", translations: ["ele se deitou", "deitar"], type: "Verbo" },
+          { hebrew: "שָׁלַח", transliteration: "shalach", translations: ["ele enviou", "enviar"], type: "Verbo" },
+          { hebrew: "שָׁמַע", transliteration: "shama", translations: ["ele ouviu", "escutar"], type: "Verbo" },
+          { hebrew: "שָׁמַר", transliteration: "shamar", translations: ["ele guardou", "guardar"], type: "Verbo" }
+        ],
+        sentences: [
+          { hebrew: "כִּי־שָׁמַע אֱלֹהִים אֶל־קוֹל הַנַּעַר", transliteration: "ki-shama elohim el-kol hana'ar", translations: ["pois deus ouviu a voz do rapaz", "porque deus ouviu a voz do jovem"], type: "Frase" },
+          { hebrew: "כֹּה־אָמַר יְהוָה אֱלֹהֵי יִשְׂרָאֵל", transliteration: "koh-amar adonai elohei yisrael", translations: ["assim disse o senhor deus de israel"], type: "Frase" },
+          { hebrew: "וּבִירוּשָׁלַם מָלַךְ עַל כָּל־יִשְׂרָאֵל", transliteration: "u'virushalayim malach al kol-yisrael", translations: ["e em jerusalém reinou sobre todo o israel", "e em jerusalem reinou sobre todo o israel"], type: "Frase" },
+          { hebrew: "וּלְכָל־בְּנֵי יִשְׂרָאֵל הָיָה אוֹר", transliteration: "u'lechol-bnei yisrael haya or", translations: ["e para todos os filhos de israel havia luz"], type: "Frase" },
+          { hebrew: "וּמֹשֶׁה עָלָה אֶל־הָאֱלֹהִים", transliteration: "u'moshe ala el-haelohim", translations: ["e moisés subiu a deus", "e moises subiu a deus"], type: "Frase" },
+          { hebrew: "כִּי־שָׁכַב דָּוִד עִם־אֲבֹתָיו", transliteration: "ki-shachav david im-avotav", translations: ["pois davi descansou com seus pais", "pois davi deitou-se com seus pais"], type: "Frase" },
+          { hebrew: "וּדְבָרָיו שָׁמַעְתָּ מִתּוֹךְ הָאֵשׁ", transliteration: "u'devarav shamat mitoch ha'esh", translations: ["e as suas palavras ouviste do meio do fogo"], type: "Frase" },
+          { hebrew: "לֹא שָׁמְרוּ בְּרִית אֱלֹהִים", transliteration: "lo shamru brit elohim", translations: ["não guardaram a aliança de deus", "nao guardaram a alianca de deus"], type: "Frase" },
+          { hebrew: "בְּצֶלֶם אֱלֹהִים בָּרָא אֹתוֹ", transliteration: "betzelem elohim bara oto", translations: ["à imagem de deus o criou", "a imagem de deus o criou"], type: "Frase" },
+          { hebrew: "וּבְנֵי יִשְׂרָאֵל הָלְכוּ בַיַּבָּשָׁה", transliteration: "u'vnei yisrael halchu vayabasha", translations: ["e os filhos de israel caminharam em terra seca"], type: "Frase" },
+          { hebrew: "סֵפֶר נָתַן לִי חִלְקִיָּה הַכֹּהֵן", transliteration: "sefer natan li chilkiya hacohen", translations: ["o sacerdote hilquias me deu um livro"], type: "Frase" },
+          { hebrew: "בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ", transliteration: "b'reshit bara elohim et hashamayim v'et ha'aretz", translations: ["no princípio criou deus os céus e a terra", "no principio criou deus os ceus e a terra"], type: "Frase" },
+          { hebrew: "וְהָאָדָם יָדַע אֶת־חַוָּה אִשְׁתּוֹ", transliteration: "v'ha'adam yada et-chava ishto", translations: ["e o homem conheceu a eva, sua mulher", "e o homem conheceu eva sua mulher"], type: "Frase" },
+          { hebrew: "אֶת־קוֹלְךָ שָׁמַעְתִּי בַּגָּן", transliteration: "et-kolcha shamati bagan", translations: ["ouvi a tua voz no jardim"], type: "Frase" }
+        ]
+      }
+    ];
+
+    /* ================= APP STATE ================= */
+    let chapters = [];
+    let currentChapter = null;
+    let currentQuestionIndex = 0;
+    let currentQuestion = null;
+    let exerciseMode = 'typing'; // 'typing' | 'choice' | 'sentences'
+    
+    // Stats
+    let score = 0;
+    let streak = 0;
+    let totalAnswered = 0;
+    let correctCount = 0;
+
+    /* ================= STRING NORMALIZATION & MATCHING ENGINE ================= */
+    /**
+     * Normalizes Portuguese text for flexible comparison:
+     * Removes diacritics (accents), lowers case, trims extra spaces and punctuation.
+     */
+    function normalizeText(str) {
+      if (!str) return "";
+      return str
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") // Remove accents
+        .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "") // Remove punctuation
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    /**
+     * Checks if user answer matches any accepted translation.
+     */
+    function evaluateAnswer(userAnswer, acceptedList) {
+      const normUser = normalizeText(userAnswer);
+      if (!normUser) return false;
+
+      return acceptedList.some(accepted => {
+        const normAccepted = normalizeText(accepted);
+        if (normUser === normAccepted) return true;
+
+        // Levenshtein / Edit distance for minor typos (1 char difference for length > 4)
+        if (normAccepted.length > 4 && getEditDistance(normUser, normAccepted) <= 1) {
+          return true;
+        }
+        return false;
+      });
+    }
+
+    // Levenshtein Distance Helper
+    function getEditDistance(a, b) {
+      if (a.length === 0) return b.length;
+      if (b.length === 0) return a.length;
+      const matrix = [];
+      for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+      for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+          if (b.charAt(i - 1) === a.charAt(j - 1)) {
+            matrix[i][j] = matrix[i - 1][j - 1];
+          } else {
+            matrix[i][j] = Math.min(
+              matrix[i - 1][j - 1] + 1,
+              matrix[i][j - 1] + 1,
+              matrix[i - 1][j] + 1
+            );
+          }
+        }
+      }
+      return matrix[b.length][a.length];
+    }
+
+    /* ================= INITIALIZATION & STORAGE ================= */
+    window.addEventListener('DOMContentLoaded', () => {
+      loadChapters();
+      setupChapterDropdown();
+      renderCurrentQuestion();
+      updateStatsUI();
+    });
+
+    function loadChapters() {
+      const stored = localStorage.getItem('gamida_hebrew_chapters');
+      if (stored) {
+        try {
+          chapters = JSON.parse(stored);
+        } catch (e) {
+          chapters = [...DEFAULT_CHAPTERS];
+        }
+      } else {
+        chapters = [...DEFAULT_CHAPTERS];
+      }
+      currentChapter = chapters[0] || null;
+    }
+
+    function saveChaptersToStorage() {
+      localStorage.setItem('gamida_hebrew_chapters', JSON.stringify(chapters));
+    }
+
+    function resetDefaultChapters() {
+      chapters = [...DEFAULT_CHAPTERS];
+      saveChaptersToStorage();
+      setupChapterDropdown();
+      onChapterChange();
+      switchTab('practice');
+      alert("Capítulos padrão restaurados com sucesso!");
+    }
+
+    function exportChaptersJSON() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(chapters, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "gamida_hebraico_capitulos.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function saveChapterFromJSON() {
+      const jsonText = document.getElementById('json-input').value.trim();
+      const statusEl = document.getElementById('json-status');
+      if (!jsonText) {
+        statusEl.textContent = "⚠️ O campo JSON está vazio.";
+        statusEl.className = "text-xs font-mono text-amber-400";
+        return;
+      }
+      try {
+        const parsed = JSON.parse(jsonText);
+        const newChap = Array.isArray(parsed) ? parsed[0] : parsed;
+        if (!newChap.id || !newChap.title || (!newChap.items && !newChap.sentences)) {
+          throw new Error("Formato inválido. O JSON precisa ter 'id', 'title' e lista de 'items' ou 'sentences'.");
+        }
+        const existingIdx = chapters.findIndex(c => c.id === newChap.id);
+        if (existingIdx >= 0) {
+          chapters[existingIdx] = newChap;
+        } else {
+          chapters.push(newChap);
+        }
+        saveChaptersToStorage();
+        setupChapterDropdown();
+        document.getElementById('chapter-select').value = newChap.id;
+        onChapterChange();
+        statusEl.textContent = "✅ Salvo com sucesso!";
+        statusEl.className = "text-xs font-mono text-emerald-400";
+      } catch (err) {
+        statusEl.textContent = `❌ Erro: ${err.message}`;
+        statusEl.className = "text-xs font-mono text-rose-400";
+      }
+    }
+
+    /* ================= UI TABS & NAVIGATION ================= */
+    function switchTab(tabName) {
+      document.getElementById('tab-practice').classList.toggle('hidden', tabName !== 'practice');
+      document.getElementById('tab-vocab').classList.toggle('hidden', tabName !== 'vocab');
+      document.getElementById('tab-manage').classList.toggle('hidden', tabName !== 'manage');
+
+      // Update button styles
+      ['practice', 'vocab', 'manage'].forEach(t => {
+        const btn = document.getElementById(`nav-btn-${t}`);
+        if (t === tabName) {
+          btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white shadow-md shadow-brand-600/30 transition hover:bg-brand-500";
+        } else {
+          btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition";
+        }
+      });
+
+      if (tabName === 'vocab') renderVocabTable();
+    }
+
+    function setupChapterDropdown() {
+      const select = document.getElementById('chapter-select');
+      select.innerHTML = '';
+      chapters.forEach((chap) => {
+        const opt = document.createElement('option');
+        opt.value = chap.id;
+        opt.textContent = chap.title;
+        select.appendChild(opt);
+      });
+    }
+
+    function resetStats() {
+      score = 0;
+      streak = 0;
+      totalAnswered = 0;
+      correctCount = 0;
+      updateStatsUI();
+    }
+
+    function onChapterChange() {
+      const select = document.getElementById('chapter-select');
+      const found = chapters.find(c => c.id === select.value);
+      if (found) {
+        currentChapter = found;
+        currentQuestionIndex = 0;
+        resetStats();
+        renderCurrentQuestion();
+      }
+    }
+
+    function setExerciseMode(mode) {
+      exerciseMode = mode;
+      ['typing', 'choice', 'sentences'].forEach(m => {
+        const btn = document.getElementById(`mode-${m}`);
+        if (m === mode) {
+          btn.className = "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white";
+        } else {
+          btn.className = "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200";
+        }
+      });
+      currentQuestionIndex = 0;
+      renderCurrentQuestion();
+    }
+
+    /* ================= EXERCISE ENGINE ================= */
+    function getActiveDataset() {
+      if (!currentChapter) return [];
+      if (exerciseMode === 'sentences') {
+        return (currentChapter.sentences && currentChapter.sentences.length > 0) 
+          ? currentChapter.sentences 
+          : currentChapter.items;
+      }
+      return currentChapter.items || [];
+    }
+
+    function renderCurrentQuestion() {
+      const dataset = getActiveDataset();
+      if (!currentChapter || dataset.length === 0) {
+        document.getElementById('hebrew-prompt').textContent = "Sem itens disponíveis neste capítulo.";
+        return;
+      }
+
+      if (currentQuestionIndex >= dataset.length) {
+        currentQuestionIndex = 0;
+      }
+
+      currentQuestion = dataset[currentQuestionIndex];
+
+      // Update Question Header & Hebrew Prompt
+      document.getElementById('question-category').textContent = currentQuestion.type || "Geral";
+      document.getElementById('question-progress').textContent = `Item ${currentQuestionIndex + 1} de ${dataset.length}`;
+      document.getElementById('hebrew-prompt').textContent = currentQuestion.hebrew;
+
+      // Reset Hint
+      document.getElementById('hint-text').textContent = `Transliteração: [ ${currentQuestion.transliteration || 'N/A'} ]`;
+      document.getElementById('hint-text').classList.add('hidden');
+      document.getElementById('btn-show-hint').classList.remove('hidden');
+
+      // Reset Feedback Banner
+      document.getElementById('feedback-banner').classList.add('hidden');
+
+      // Hide all interfaces first
+      document.getElementById('interface-typing').classList.add('hidden');
+      document.getElementById('interface-choice').classList.add('hidden');
+      document.getElementById('interface-sentences').classList.add('hidden');
+
+      // Render Selected Interface Mode
+      if (exerciseMode === 'typing') {
+        const input = document.getElementById('input-answer');
+        input.value = '';
+        input.disabled = false;
+        document.getElementById('interface-typing').classList.remove('hidden');
+        setTimeout(() => input.focus(), 100);
+      } 
+      else if (exerciseMode === 'choice') {
+        renderChoiceInterface();
+        document.getElementById('interface-choice').classList.remove('hidden');
+      } 
+      else if (exerciseMode === 'sentences') {
+        const input = document.getElementById('input-sentence');
+        input.value = '';
+        input.disabled = false;
+        document.getElementById('interface-sentences').classList.remove('hidden');
+        setTimeout(() => input.focus(), 100);
+      }
+    }
+
+    function toggleHint() {
+      const hintText = document.getElementById('hint-text');
+      const btn = document.getElementById('btn-show-hint');
+      hintText.classList.toggle('hidden');
+      btn.classList.toggle('hidden');
+    }
+
+    function shuffleArray(arr) {
+      const newArr = [...arr];
+      for (let i = newArr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+      }
+      return newArr;
+    }
+
+    /* Multiple Choice Generator */
+    function renderChoiceInterface() {
+      const container = document.getElementById('interface-choice');
+      container.innerHTML = '';
+
+      const correctAnswer = currentQuestion.translations[0];
+      
+      // Collect wrong options from current chapter or other chapters
+      let distractorPool = [];
+      chapters.forEach(c => {
+        const sourceList = (exerciseMode === 'sentences' && c.sentences && c.sentences.length > 0) ? c.sentences : c.items;
+        sourceList.forEach(it => {
+          if (it.hebrew !== currentQuestion.hebrew) {
+            distractorPool.push(it.translations[0]);
+          }
+        });
+      });
+
+      // Shuffle and pick 3 distractors
+      distractorPool = shuffleArray(distractorPool).slice(0, 3);
+      const options = shuffleArray([correctAnswer, ...distractorPool]);
+
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-brand-500 font-medium text-sm text-slate-200 transition active:scale-[0.99]";
+        btn.textContent = opt;
+        btn.onclick = () => checkAnswer(opt);
+        container.appendChild(btn);
+      });
+    }
+
+    function submitSentenceAnswer(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('input-sentence');
+      checkAnswer(input.value);
+    }
+
+    function submitAnswer(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('input-answer');
+      checkAnswer(input.value);
+    }
+
+    /* ================= ANSWER VERIFICATION ================= */
+    function checkAnswer(userAnswer) {
+      const isCorrect = evaluateAnswer(userAnswer, currentQuestion.translations);
+
+      totalAnswered++;
+      
+      const banner = document.getElementById('feedback-banner');
+      const icon = document.getElementById('feedback-icon');
+      const title = document.getElementById('feedback-title');
+      const detail = document.getElementById('feedback-detail');
+
+      banner.classList.remove('hidden', 'bg-emerald-950/80', 'border-emerald-500/50', 'bg-rose-950/80', 'border-rose-500/50');
+
+      if (isCorrect) {
+        correctCount++;
+        score += (exerciseMode === 'sentences') ? 20 : 10;
+        streak++;
+
+        banner.classList.add('bg-emerald-950/80', 'border-emerald-500/50');
+        icon.textContent = "✅";
+        title.textContent = "Excelente! Tradução Correta!";
+        title.className = "font-bold text-sm text-emerald-400";
+        detail.textContent = `Tradução esperada: "${currentQuestion.translations.join('" / "')}"`;
+      } else {
+        streak = 0;
+
+        banner.classList.add('bg-rose-950/80', 'border-rose-500/50');
+        icon.textContent = "❌";
+        title.textContent = "Incorreto";
+        title.className = "font-bold text-sm text-rose-400";
+        detail.textContent = `Tradução aceita: "${currentQuestion.translations[0]}" (Você respondeu: "${userAnswer || 'em branco'}")`;
+      }
+
+      // Disable inputs during feedback
+      document.getElementById('input-answer').disabled = true;
+      document.getElementById('input-sentence').disabled = true;
+
+      updateStatsUI();
+    }
+
+    function nextQuestion() {
+      currentQuestionIndex++;
+      renderCurrentQuestion();
+    }
+
+    function updateStatsUI() {
+      document.getElementById('stat-streak').textContent = streak;
+      document.getElementById('stat-score').textContent = score;
+
+      const accuracy = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 100;
+      document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
+    }
+
+    /* ================= VOCABULARY DICTIONARY TABLE ================= */
+    function renderVocabTable() {
+      const tbody = document.getElementById('vocab-table-body');
+      tbody.innerHTML = '';
+
+      if (!currentChapter) return;
+
+      const allItems = [
+        ...(currentChapter.items || []),
+        ...(currentChapter.sentences || [])
+      ];
+
+      allItems.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-800/40 transition";
+        const isSentence = item.type === 'Frase' || item.type === 'Expressão';
+        tr.innerHTML = `
+          <td class="px-6 py-4 hebrew-text text-lg md:text-xl font-bold text-white">${item.hebrew}</td>
+          <td class="px-6 py-4 font-mono text-xs text-amber-400">${item.transliteration || '-'}</td>
+          <td class="px-6 py-4 font-medium text-slate-200">${item.translations.join(" / ")}</td>
+          <td class="px-6 py-4"><span class="px-2.5 py-1 rounded-full ${isSentence ? 'bg-indigo-900/60 border-indigo-700 text-indigo-300' : 'bg-slate-800 border-slate-700 text-slate-400'} border text-[10px] font-mono">${item.type || 'Geral'}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterVocabTable() {
+      const query = normalizeText(document.getElementById('vocab-search').value);
+      const rows = document.querySelectorAll('#vocab-table-body tr');
+      rows.forEach(tr => {
+        const text = normalizeText(tr.textContent);
+        tr.style.display = text.includes(query) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
