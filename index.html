@@ -13,13 +13,18 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=SBL+Hebrew&display=swap"
+      rel="stylesheet"
+    />
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
               sans: ["Rubik", "sans-serif"],
-              hebrew: ['"Noto Sans Hebrew"', "serif"],
+              /*hebrew: ['"Noto Sans Hebrew"', "serif"],*/
+              hebrew: ['"SBL Hebrew"', '"Ezra SIL"', '"David"', "serif"],
             },
             colors: {
               brand: {
@@ -52,10 +57,17 @@
         background: #475569;
       }
 
-      .hebrew-text {
+      /* .hebrew-text {
         direction: rtl;
         unicode-bidi: isolate;
         font-family: "Noto Sans Hebrew", serif;
+      } */
+
+      .hebrew-text,
+      [dir="rtl"] {
+        font-family: "SBL Hebrew", "Ezra SIL", "David", serif;
+        font-size: 1.25rem; /* Ajuste o tamanho conforme preferir */
+        direction: rtl;
       }
     </style>
   </head>
