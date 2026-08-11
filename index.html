@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gamida - Treinador de Hebraico Bíblico & Moderno</title>
+    <title>Gamida - Treinador de Hebraico Bíblico</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -32,7 +32,6 @@
     </script>
     
     <style>
-      /* Custom Scrollbar */
       ::-webkit-scrollbar { width: 8px; height: 8px; }
       ::-webkit-scrollbar-track { background: #0f172a; }
       ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
@@ -51,7 +50,6 @@
     <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-30 px-4 py-3">
       <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4">
         
-        <!-- Logo & Title -->
         <div class="flex items-center space-x-3">
           <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 font-hebrew text-2xl font-bold text-white">א</div>
           <div>
@@ -62,7 +60,6 @@
           </div>
         </div>
 
-        <!-- Stats Bar -->
         <div class="flex items-center gap-4 bg-slate-950/60 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-medium">
           <div class="flex items-center gap-1.5" title="Sequência de Acertos">
             <span class="text-amber-400 text-sm">🔥</span>
@@ -80,9 +77,8 @@
           </div>
         </div>
 
-        <!-- Action Nav -->
         <div class="flex items-center space-x-2">
-          <button type="button" id="nav-btn-practice" onclick="switchTab('practice')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white shadow-md shadow-brand-600/30 transition hover:bg-brand-500">🎮 Praticar</button>
+          <button type="button" id="nav-btn-practice" onclick="switchTab('practice')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white shadow-md transition hover:bg-brand-500">🎮 Praticar</button>
           <button type="button" id="nav-btn-assessment" onclick="switchTab('assessment')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">📝 Avaliação</button>
           <button type="button" id="nav-btn-vocab" onclick="switchTab('vocab')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">📖 Dicionário</button>
           <button type="button" id="nav-btn-manage" onclick="switchTab('manage')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">⚙️ Capítulos</button>
@@ -90,69 +86,60 @@
       </div>
     </header>
 
-    <!-- Main Content Container -->
     <main class="flex-1 max-w-5xl w-full mx-auto p-4 md:p-6 flex flex-col">
       
-      <!-- ================= TAB 1: PRACTICE MODE ================= -->
+      <!-- ================= TAB 1: PRACTICE ================= -->
       <section id="tab-practice" class="flex-1 flex flex-col space-y-6">
-        <!-- Chapter Selector & Controls Bar -->
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
           <div class="flex-1 min-w-[240px]">
-            <label for="chapter-select" class="block text-xs font-medium text-slate-400 mb-1">Selecione o Capítulo para Estudar:</label>
+            <label class="block text-xs font-medium text-slate-400 mb-1">Selecione o Capítulo para Estudar:</label>
             <select id="chapter-select" onchange="onChapterChange()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"></select>
           </div>
           <div>
             <label class="block text-xs font-medium text-slate-400 mb-1">Modo de Exercício:</label>
             <div class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs">
-              <button id="mode-typing" onclick="setExerciseMode('typing')" class="px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white">⌨️ Digitação</button>
-              <button id="mode-choice" onclick="setExerciseMode('choice')" class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200">✅ Múltipla Escolha</button>
-              <button id="mode-sentences" onclick="setExerciseMode('sentences')" class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200">📜 Frases</button>
+              <button type="button" id="mode-typing" onclick="setExerciseMode('typing')" class="px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white">⌨️ Digitação</button>
+              <button type="button" id="mode-choice" onclick="setExerciseMode('choice')" class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200">✅ Múltipla Escolha</button>
+              <button type="button" id="mode-sentences" onclick="setExerciseMode('sentences')" class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200">📜 Frases</button>
             </div>
           </div>
         </div>
 
-        <!-- Main Exercise Card -->
         <div class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden min-h-[360px]">
           <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
             <span id="question-category" class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 font-medium">Vocabulário</span>
             <span id="question-progress" class="font-mono">Item 1 de 10</span>
           </div>
 
-          <!-- Hebrew Prompt Box -->
           <div class="my-auto py-6 text-center space-y-4">
             <div id="hebrew-prompt" class="hebrew-text text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-wide leading-relaxed drop-shadow-md">שָׁלוֹם</div>
             <div id="hint-container" class="min-h-[24px]">
-              <button id="btn-show-hint" onclick="toggleHint()" class="text-xs text-slate-500 hover:text-brand-400 underline transition">💡 Mostrar Transliteração / Dica</button>
+              <button type="button" id="btn-show-hint" onclick="toggleHint()" class="text-xs text-slate-500 hover:text-brand-400 underline transition">💡 Mostrar Transliteração / Dica</button>
               <p id="hint-text" class="text-sm font-mono text-amber-400/90 hidden"></p>
             </div>
           </div>
 
-          <!-- Dynamic Answer Interface -->
           <div class="space-y-4">
-            <!-- Interface 1: Free Typing Input -->
-            <form id="interface-typing" onsubmit="submitAnswer(event)" class="space-y-3">
+            <form id="interface-typing" onsubmit="submitAnswer(event)" class="space-y-3 hidden">
               <div class="relative">
                 <input type="text" id="input-answer" placeholder="Digite a tradução em português..." autocomplete="off" class="w-full bg-slate-950 border-2 border-slate-800 focus:border-brand-500 rounded-2xl px-5 py-4 text-base md:text-lg text-slate-100 placeholder-slate-600 focus:outline-none transition shadow-inner" />
-                <button type="submit" class="absolute right-2 top-2 bottom-2 px-6 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg shadow-brand-600/30 flex items-center justify-center">Verificar ➔</button>
+                <button type="submit" class="absolute right-2 top-2 bottom-2 px-6 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg">Verificar ➔</button>
               </div>
             </form>
 
-            <!-- Interface 2: Multiple Choice Options -->
             <div id="interface-choice" class="grid grid-cols-1 md:grid-cols-2 gap-3 hidden"></div>
 
-            <!-- Interface 3: Sentence Translation -->
             <form id="interface-sentences" onsubmit="submitSentenceAnswer(event)" class="space-y-3 hidden">
               <div class="flex flex-col space-y-2">
-                <label for="input-sentence" class="text-xs text-slate-400 font-medium">Traduzia a frase hebraica acima para o português:</label>
+                <label class="text-xs text-slate-400 font-medium">Traduza a frase hebraica acima para o português:</label>
                 <textarea id="input-sentence" rows="2" placeholder="Digite a tradução completa em português..." class="w-full bg-slate-950 border-2 border-slate-800 focus:border-brand-500 rounded-2xl p-4 text-base text-slate-100 placeholder-slate-600 focus:outline-none transition resize-none"></textarea>
                 <div class="flex justify-end">
-                  <button type="submit" class="px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg shadow-brand-600/30 flex items-center justify-center">Verificar Tradução ➔</button>
+                  <button type="submit" class="px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg">Verificar Tradução ➔</button>
                 </div>
               </div>
             </form>
           </div>
 
-          <!-- Feedback Banner -->
           <div id="feedback-banner" class="hidden mt-6 p-4 rounded-2xl border flex flex-col md:flex-row items-center justify-between gap-4 transition-all">
             <div class="flex items-start gap-3">
               <div id="feedback-icon" class="text-2xl mt-0.5">✅</div>
@@ -161,12 +148,12 @@
                 <p id="feedback-detail" class="text-xs text-slate-300 mt-0.5"></p>
               </div>
             </div>
-            <button id="btn-next" onclick="nextQuestion()" class="w-full md:w-auto px-6 py-2.5 bg-slate-100 text-slate-900 font-bold text-xs rounded-xl hover:bg-white transition shadow-md">Próxima Questão ➔</button>
+            <button type="button" id="btn-next" onclick="nextQuestion()" class="w-full md:w-auto px-6 py-2.5 bg-slate-100 text-slate-900 font-bold text-xs rounded-xl hover:bg-white transition shadow-md">Próxima Questão ➔</button>
           </div>
         </div>
       </section>
 
-      <!-- ================= TAB 2: AVALIAÇÃO (DASHBOARD) ================= -->
+      <!-- ================= TAB 2: AVALIAÇÃO (DASHBOARD E MODOS) ================= -->
       <section id="tab-assessment" class="hidden space-y-6 flex-1 flex-col">
         
         <!-- Dashboard Inicial -->
@@ -181,78 +168,68 @@
             <div onclick="openSimuladoConfig()" class="bg-slate-900 border border-slate-700 hover:border-brand-500 rounded-3xl p-6 flex flex-col text-center transition cursor-pointer shadow-xl group">
               <div class="w-16 h-16 bg-brand-500/10 text-brand-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform">📝</div>
               <h3 class="text-lg font-bold text-white mb-2">Simulado Personalizado</h3>
-              <p class="text-xs text-slate-400 flex-1 mb-6">Configure o tamanho da prova, limite de tempo e foco. Teste escrito padrão (digitação).</p>
-              <button class="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs rounded-xl transition">Configurar e Iniciar</button>
+              <p class="text-xs text-slate-400 flex-1 mb-6">Configure o tamanho da prova, limite de tempo e foco. Teste escrito padrão.</p>
+              <button type="button" class="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs rounded-xl transition">Configurar e Iniciar</button>
             </div>
 
-            <!-- Card: Anki (Fase 2 DESBLOQUEADA) -->
+            <!-- Card: Anki -->
             <div onclick="startAnki()" class="bg-slate-900 border border-slate-700 hover:border-emerald-500 rounded-3xl p-6 flex flex-col text-center transition cursor-pointer shadow-xl group">
               <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform">🧠</div>
               <h3 class="text-lg font-bold text-white mb-2">Revisão Inteligente</h3>
               <p class="text-xs text-slate-400 flex-1 mb-6">Flashcards baseados nos seus maiores erros. Método de repetição espaçada sem digitação.</p>
-              <button class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs rounded-xl transition">Iniciar Sessão de Revisão</button>
+              <button type="button" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs rounded-xl transition">Iniciar Revisão</button>
             </div>
 
-            <!-- Card: Survival -->
-            <div class="bg-slate-900/50 border border-slate-800 rounded-3xl p-6 flex flex-col text-center opacity-60 relative">
-              <div class="absolute top-4 right-4 bg-slate-800 text-[10px] text-slate-400 px-2 py-0.5 rounded font-mono">Fase 3</div>
-              <div class="w-16 h-16 bg-rose-500/10 text-rose-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">❤️</div>
-              <h3 class="text-lg font-bold text-slate-300 mb-2">Morte Súbita</h3>
-              <p class="text-xs text-slate-500 flex-1 mb-6">Teste sua agilidade mental. 3 corações de vida. Quantas você acerta em sequência?</p>
-              <button class="w-full py-2.5 bg-slate-800 text-slate-500 font-semibold text-xs rounded-xl cursor-not-allowed">Em desenvolvimento</button>
+            <!-- Card: Survival (FASE 3 DESBLOQUEADA) -->
+            <div onclick="startSurvival()" class="bg-slate-900 border border-slate-700 hover:border-rose-500 rounded-3xl p-6 flex flex-col text-center transition cursor-pointer shadow-xl group">
+              <div class="w-16 h-16 bg-rose-500/10 text-rose-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform">❤️</div>
+              <h3 class="text-lg font-bold text-white mb-2">Morte Súbita</h3>
+              <p class="text-xs text-slate-400 flex-1 mb-6">Teste sua agilidade de digitação. 3 corações de vida. Quantas palavras você traduz em sequência?</p>
+              <button type="button" class="w-full py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs rounded-xl transition">Jogar Agora</button>
             </div>
           </div>
         </div>
 
-        <!-- Tela de Configuração do Simulado -->
+        <!-- Tela Config Simulado -->
         <div id="assess-config" class="hidden bg-slate-900 border border-slate-800 rounded-3xl p-8 max-w-xl mx-auto w-full shadow-2xl mt-4">
           <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
             <h3 class="text-xl font-bold text-white">Configurar Simulado</h3>
-            <button onclick="closeSimuladoConfig()" class="text-slate-400 hover:text-white text-2xl font-light">&times;</button>
+            <button type="button" onclick="closeSimuladoConfig()" class="text-slate-400 hover:text-white text-2xl font-light">&times;</button>
           </div>
-          
           <div class="space-y-6">
-            <!-- Amount -->
             <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Quantidade de Questões</label>
+              <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase">Quantidade de Questões</label>
               <div class="grid grid-cols-4 gap-2 text-sm">
-                <button onclick="setSimConfig('amount', 10)" id="cfg-amt-10" class="cfg-btn cfg-amt bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">10</button>
-                <button onclick="setSimConfig('amount', 25)" id="cfg-amt-25" class="cfg-btn cfg-amt bg-brand-600 text-white font-bold py-2 rounded-xl">25</button>
-                <button onclick="setSimConfig('amount', 50)" id="cfg-amt-50" class="cfg-btn cfg-amt bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">50</button>
-                <button onclick="setSimConfig('amount', 'max')" id="cfg-amt-max" class="cfg-btn cfg-amt bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">Máx</button>
+                <button type="button" onclick="setSimConfig('amount', 10)" id="cfg-amount-10" class="cfg-btn cfg-amount bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">10</button>
+                <button type="button" onclick="setSimConfig('amount', 25)" id="cfg-amount-25" class="cfg-btn cfg-amount bg-brand-600 text-white font-bold py-2 rounded-xl">25</button>
+                <button type="button" onclick="setSimConfig('amount', 50)" id="cfg-amount-50" class="cfg-btn cfg-amount bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">50</button>
+                <button type="button" onclick="setSimConfig('amount', 'max')" id="cfg-amount-max" class="cfg-btn cfg-amount bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">Máx</button>
               </div>
             </div>
-
-            <!-- Time -->
             <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Limite de Tempo</label>
+              <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase">Limite de Tempo</label>
               <div class="grid grid-cols-4 gap-2 text-sm">
-                <button onclick="setSimConfig('time', 0)" id="cfg-time-0" class="cfg-btn cfg-time bg-brand-600 text-white font-bold py-2 rounded-xl">Livre</button>
-                <button onclick="setSimConfig('time', 15)" id="cfg-time-15" class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">15m</button>
-                <button onclick="setSimConfig('time', 30)" id="cfg-time-30" class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">30m</button>
-                <button onclick="setSimConfig('time', 60)" id="cfg-time-60" class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">60m</button>
+                <button type="button" onclick="setSimConfig('time', 0)" id="cfg-time-0" class="cfg-btn cfg-time bg-brand-600 text-white font-bold py-2 rounded-xl">Livre</button>
+                <button type="button" onclick="setSimConfig('time', 15)" id="cfg-time-15" class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">15m</button>
+                <button type="button" onclick="setSimConfig('time', 30)" id="cfg-time-30" class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">30m</button>
+                <button type="button" onclick="setSimConfig('time', 60)" id="cfg-time-60" class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">60m</button>
               </div>
             </div>
-
-            <!-- Focus -->
             <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Foco do Simulado</label>
+              <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase">Foco do Simulado</label>
               <div class="grid grid-cols-3 gap-2 text-sm">
-                <button onclick="setSimConfig('focus', 'mixed')" id="cfg-foc-mixed" class="cfg-btn cfg-foc bg-brand-600 text-white font-bold py-2 rounded-xl">Misto</button>
-                <button onclick="setSimConfig('focus', 'words')" id="cfg-foc-words" class="cfg-btn cfg-foc bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">Só Palavras</button>
-                <button onclick="setSimConfig('focus', 'sentences')" id="cfg-foc-sentences" class="cfg-btn cfg-foc bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">Só Frases</button>
+                <button type="button" onclick="setSimConfig('focus', 'mixed')" id="cfg-focus-mixed" class="cfg-btn cfg-focus bg-brand-600 text-white font-bold py-2 rounded-xl">Misto</button>
+                <button type="button" onclick="setSimConfig('focus', 'words')" id="cfg-focus-words" class="cfg-btn cfg-focus bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">Palavras</button>
+                <button type="button" onclick="setSimConfig('focus', 'sentences')" id="cfg-focus-sentences" class="cfg-btn cfg-focus bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">Frases</button>
               </div>
             </div>
           </div>
-
           <div class="pt-8">
-            <button onclick="startSimulado()" class="w-full py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
-              Gerar Prova e Iniciar ➔
-            </button>
+            <button type="button" onclick="startSimulado()" class="w-full py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg">Gerar Prova e Iniciar ➔</button>
           </div>
         </div>
 
-        <!-- Tela Ativa da Prova (Simulado) -->
+        <!-- Tela Ativa Simulado -->
         <div id="assessment-active" class="hidden space-y-4 flex-1 flex flex-col">
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
             <div class="flex items-center space-x-3">
@@ -264,29 +241,26 @@
               <span id="assessment-timer">00:00</span>
             </div>
           </div>
-
           <div class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-2xl relative space-y-6">
             <div class="my-auto py-4 text-center space-y-4">
               <div id="assess-hebrew" class="hebrew-text text-4xl md:text-6xl font-bold text-white tracking-wide"></div>
               <div class="max-w-md mx-auto space-y-3 pt-2">
-                <label class="block text-xs font-semibold text-slate-400 text-left">Digite sua tradução em português:</label>
+                <label class="block text-xs font-semibold text-slate-400 text-left">Tradução em português:</label>
                 <input type="text" id="assess-user-input" oninput="saveCurrentInputDraft()" autocomplete="off" class="w-full bg-slate-950 border-2 border-slate-800 focus:border-brand-500 rounded-2xl px-5 py-3.5 text-base text-slate-100 placeholder-slate-600 focus:outline-none transition text-center shadow-inner">
               </div>
             </div>
-
             <div class="pt-4 border-t border-slate-800/80">
               <div class="text-[11px] text-slate-500 font-medium mb-2 text-center">Navegação Rápida:</div>
               <div id="assessment-tracker" class="flex flex-wrap justify-center gap-1.5 max-h-24 overflow-y-auto p-1"></div>
             </div>
-
             <div class="flex justify-between items-center pt-4 border-t border-slate-800">
-              <button onclick="navigateAssessment(-1)" id="assess-btn-prev" class="text-xs font-medium text-slate-400 hover:text-slate-100 px-4 py-2 transition">← Anterior</button>
+              <button type="button" onclick="navigateAssessment(-1)" id="assess-btn-prev" class="text-xs font-medium text-slate-400 hover:text-slate-100 px-4 py-2 transition">← Anterior</button>
               <div id="assess-action-container"></div>
             </div>
           </div>
         </div>
 
-        <!-- Tela de Resultados do Simulado -->
+        <!-- Tela Resultados Simulado -->
         <div id="assessment-results" class="hidden space-y-6 pb-12">
           <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-4 shadow-2xl">
             <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold shadow-inner">🏆</div>
@@ -294,80 +268,56 @@
             <div class="flex justify-center gap-8 py-2">
               <div><div class="text-xs text-slate-500 uppercase font-semibold">Nota Final</div><div id="res-grade" class="text-3xl font-bold text-brand-400">0%</div></div>
               <div><div class="text-xs text-slate-500 uppercase font-semibold">Acertos</div><div id="res-correct" class="text-3xl font-bold text-slate-200">0 / 0</div></div>
-              <div><div class="text-xs text-slate-500 uppercase font-semibold">Tempo Gasto</div><div id="res-time" class="text-3xl font-bold text-slate-200">00:00</div></div>
+              <div><div class="text-xs text-slate-500 uppercase font-semibold">Tempo</div><div id="res-time" class="text-3xl font-bold text-slate-200">00:00</div></div>
             </div>
           </div>
-          
           <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-4 shadow-xl">
             <h3 class="font-bold text-white text-base flex items-center gap-2"><span>📊</span> Foco de Revisão (Por Capítulo)</h3>
             <div id="diagnostic-list" class="space-y-3 pt-2"></div>
           </div>
-
           <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-4 shadow-xl">
             <h3 class="font-bold text-white text-base flex items-center gap-2"><span>🔍</span> Correção Detalhada</h3>
             <div id="correction-list" class="space-y-3 pt-2"></div>
           </div>
-
           <div class="text-center pt-4">
-            <button onclick="resetToDashboard()" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md">Voltar à Central de Avaliações</button>
+            <button type="button" onclick="resetToDashboard()" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md">Voltar à Central</button>
           </div>
         </div>
 
-        <!-- ================= FASE 2: TELAS DO ANKI ================= -->
+        <!-- Tela Ativa do Anki -->
         <div id="anki-active" class="hidden space-y-4 flex-1 flex flex-col">
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
             <div class="flex items-center space-x-3">
               <span id="anki-counter" class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-300">Cartão 1</span>
               <span id="anki-type-tag" class="text-xs font-medium text-emerald-400">Revisão</span>
             </div>
-            <button onclick="resetToDashboard()" class="text-xs text-slate-500 hover:text-rose-400 font-medium transition">✖ Encerrar Sessão</button>
+            <button type="button" onclick="resetToDashboard()" class="text-xs text-slate-500 hover:text-rose-400 font-medium transition">✖ Encerrar Sessão</button>
           </div>
-
           <div class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col shadow-2xl relative">
-            
             <div class="my-auto py-8 text-center flex-1 flex flex-col justify-center">
               <div id="anki-hebrew" class="hebrew-text text-5xl md:text-7xl font-bold text-white tracking-wide drop-shadow-md pb-6"></div>
-              
-              <!-- Verso oculto (Tradução e Botões de Avaliação) -->
               <div id="anki-back" class="hidden space-y-6 pt-6 border-t border-slate-800 transition-opacity">
                 <div>
                   <div id="anki-translit" class="text-sm font-mono text-amber-400 mb-2"></div>
                   <div id="anki-translation" class="text-xl md:text-2xl font-bold text-emerald-400"></div>
                 </div>
-                
                 <div class="pt-6 space-y-3">
                   <p class="text-[11px] text-slate-500 uppercase font-semibold tracking-wider">Como foi sua lembrança?</p>
                   <div class="grid grid-cols-3 gap-3 max-w-lg mx-auto">
-                    <button onclick="answerAnki('hard')" class="py-3 md:py-4 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/50 text-rose-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner">
-                      <span class="text-xl">🔴</span>
-                      <span class="text-xs">Errei</span>
-                      <span id="anki-next-hard" class="text-[10px] text-rose-500/70 font-mono mt-1">&lt; 1 min</span>
-                    </button>
-                    <button onclick="answerAnki('good')" class="py-3 md:py-4 bg-amber-950/40 hover:bg-amber-900/60 border border-amber-800/50 text-amber-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner">
-                      <span class="text-xl">🟡</span>
-                      <span class="text-xs">Lembrei</span>
-                      <span id="anki-next-good" class="text-[10px] text-amber-500/70 font-mono mt-1">1 dia</span>
-                    </button>
-                    <button onclick="answerAnki('easy')" class="py-3 md:py-4 bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-800/50 text-emerald-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner">
-                      <span class="text-xl">🟢</span>
-                      <span class="text-xs">Fácil</span>
-                      <span id="anki-next-easy" class="text-[10px] text-emerald-500/70 font-mono mt-1">4 dias</span>
-                    </button>
+                    <button type="button" onclick="answerAnki('hard')" class="py-3 md:py-4 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/50 text-rose-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"><span class="text-xl">🔴</span><span class="text-xs">Errei</span><span id="anki-next-hard" class="text-[10px] text-rose-500/70 font-mono mt-1">&lt; 1 min</span></button>
+                    <button type="button" onclick="answerAnki('good')" class="py-3 md:py-4 bg-amber-950/40 hover:bg-amber-900/60 border border-amber-800/50 text-amber-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"><span class="text-xl">🟡</span><span class="text-xs">Lembrei</span><span id="anki-next-good" class="text-[10px] text-amber-500/70 font-mono mt-1">1 dia</span></button>
+                    <button type="button" onclick="answerAnki('easy')" class="py-3 md:py-4 bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-800/50 text-emerald-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"><span class="text-xl">🟢</span><span class="text-xs">Fácil</span><span id="anki-next-easy" class="text-[10px] text-emerald-500/70 font-mono mt-1">4 dias</span></button>
                   </div>
                 </div>
               </div>
             </div>
-
-            <!-- Botão Mostrar Resposta -->
             <div id="anki-reveal-container" class="pt-6 border-t border-slate-800">
-              <button onclick="revealAnki()" class="w-full py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm rounded-xl transition shadow-md flex items-center justify-center gap-2">
-                Mostrar Tradução 👁️
-              </button>
+              <button type="button" onclick="revealAnki()" class="w-full py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm rounded-xl transition shadow-md flex items-center justify-center gap-2">Mostrar Tradução 👁️</button>
             </div>
           </div>
         </div>
 
-        <!-- Tela de Resultados do Anki -->
+        <!-- Tela Resultados Anki -->
         <div id="anki-results" class="hidden space-y-6 pb-12">
           <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-6 shadow-2xl">
             <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold shadow-inner">🎉</div>
@@ -375,52 +325,128 @@
               <h2 class="text-2xl font-bold text-white">Revisão Concluída!</h2>
               <p class="text-slate-400 text-sm mt-2">Você revisou seus flashcards e fortaleceu sua memória de longo prazo.</p>
             </div>
-            
             <div class="flex justify-center gap-6 py-4 max-w-md mx-auto">
-              <div class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4">
-                <div class="text-rose-400 text-2xl font-bold mb-1" id="anki-res-hard">0</div>
-                <div class="text-[10px] text-slate-500 uppercase font-semibold">Erros</div>
-              </div>
-              <div class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4">
-                <div class="text-amber-400 text-2xl font-bold mb-1" id="anki-res-good">0</div>
-                <div class="text-[10px] text-slate-500 uppercase font-semibold">Lembrados</div>
-              </div>
-              <div class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4">
-                <div class="text-emerald-400 text-2xl font-bold mb-1" id="anki-res-easy">0</div>
-                <div class="text-[10px] text-slate-500 uppercase font-semibold">Fáceis</div>
+              <div class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4"><div class="text-rose-400 text-2xl font-bold mb-1" id="anki-res-hard">0</div><div class="text-[10px] text-slate-500 uppercase font-semibold">Erros</div></div>
+              <div class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4"><div class="text-amber-400 text-2xl font-bold mb-1" id="anki-res-good">0</div><div class="text-[10px] text-slate-500 uppercase font-semibold">Lembrados</div></div>
+              <div class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4"><div class="text-emerald-400 text-2xl font-bold mb-1" id="anki-res-easy">0</div><div class="text-[10px] text-slate-500 uppercase font-semibold">Fáceis</div></div>
+            </div>
+            <button type="button" onclick="resetToDashboard()" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md">Voltar à Central</button>
+          </div>
+        </div>
+
+        <!-- ================= FASE 3: SOBREVIVÊNCIA (MORTE SÚBITA) ================= -->
+        <div id="survival-active" class="hidden space-y-4 flex-1 flex flex-col">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-300">Sequência: <span id="survival-streak" class="text-white font-bold">0</span></span>
+            </div>
+            <div id="survival-hearts" class="flex items-center space-x-1 text-xl">
+              ❤️ ❤️ ❤️
+            </div>
+            <button type="button" onclick="finishSurvival(true)" class="text-xs text-slate-500 hover:text-rose-400 font-medium transition">✖ Desistir</button>
+          </div>
+
+          <div class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-2xl relative space-y-6 overflow-hidden">
+            <div id="survival-flash" class="absolute inset-0 z-0 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+            
+            <div class="my-auto py-4 text-center space-y-4 relative z-10">
+              <div id="survival-hebrew" class="hebrew-text text-5xl md:text-7xl font-bold text-white tracking-wide"></div>
+              <div class="max-w-md mx-auto space-y-3 pt-6">
+                <input type="text" id="survival-input" autocomplete="off" placeholder="Digite rápido a tradução..." class="w-full bg-slate-950 border-2 border-slate-800 focus:border-rose-500 rounded-2xl px-5 py-4 text-lg text-slate-100 placeholder-slate-600 focus:outline-none transition text-center shadow-inner">
               </div>
             </div>
 
-            <button onclick="resetToDashboard()" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md">Voltar à Central de Avaliações</button>
+            <div class="pt-4 border-t border-slate-800/80 relative z-10 flex justify-center">
+              <button type="button" onclick="submitSurvivalAnswer()" class="px-10 py-4 bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-rose-600/30">
+                Responder ➔
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="survival-results" class="hidden space-y-6 pb-12">
+          <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-6 shadow-2xl">
+            <div class="w-16 h-16 bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold shadow-inner">💀</div>
+            <div>
+              <h2 class="text-3xl font-bold text-white">Fim de Jogo!</h2>
+              <p class="text-slate-400 text-sm mt-2">Suas vidas acabaram. Vamos ver como você se saiu.</p>
+            </div>
+            
+            <div class="flex justify-center gap-6 py-4 max-w-md mx-auto">
+              <div class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-6">
+                <div class="text-[10px] text-slate-500 uppercase font-semibold mb-1">Sequência Atual</div>
+                <div class="text-white text-4xl font-bold" id="surv-res-streak">0</div>
+              </div>
+              <div class="flex-1 bg-slate-950 border border-brand-800 rounded-2xl p-6 relative overflow-hidden">
+                <div class="absolute -right-2 -top-2 text-4xl opacity-10">👑</div>
+                <div class="text-[10px] text-brand-400 uppercase font-semibold mb-1">Recorde Máximo</div>
+                <div class="text-brand-400 text-4xl font-bold" id="surv-res-high">0</div>
+              </div>
+            </div>
+
+            <div id="surv-correction-box" class="bg-slate-950 border border-slate-800 rounded-2xl p-4 text-left max-w-md mx-auto hidden">
+                <p class="text-xs text-rose-400 font-bold mb-2">Você errou por último nesta palavra:</p>
+                <div class="hebrew-text text-2xl text-white font-bold mb-1" id="surv-last-heb"></div>
+                <div class="text-xs text-slate-400">Resposta correta: <span class="text-emerald-400 font-bold" id="surv-last-cor"></span></div>
+            </div>
+
+            <button type="button" onclick="resetToDashboard()" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md">Voltar à Central</button>
           </div>
         </div>
 
       </section>
 
+      <!-- ================= TAB 3: VOCABULARY DICTIONARY ================= -->
+      <section id="tab-vocab" class="hidden space-y-6">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-bold text-white">Dicionário & Banco de Frases</h2>
+            <p class="text-xs text-slate-400 mt-1">Consulte o vocabulário das lições.</p>
+          </div>
+          <input type="text" id="vocab-search" oninput="filterVocabTable()" placeholder="🔍 Buscar palavra ou frase..." class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500 w-full md:w-72" />
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-slate-950 border-b border-slate-800 text-slate-400 text-xs uppercase font-medium">
+                <tr>
+                  <th class="px-6 py-3.5">Hebraico</th>
+                  <th class="px-6 py-3.5">Transliteração</th>
+                  <th class="px-6 py-3.5">Tradução (PT-BR)</th>
+                  <th class="px-6 py-3.5">Tipo</th>
+                </tr>
+              </thead>
+              <tbody id="vocab-table-body" class="divide-y divide-slate-800/60 text-slate-200">
+                <!-- Tabela Injetada via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <!-- ================= TAB 4: CHAPTER MANAGER ================= -->
       <section id="tab-manage" class="hidden space-y-6">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-          <h2 class="text-xl font-bold text-white">Gerenciador de Capítulos & Conteúdo</h2>
+          <h2 class="text-xl font-bold text-white">Gerenciador de Capítulos</h2>
           <p class="text-xs text-slate-400 mt-1">Adicione ou edite os capítulos do seu livro em formato JSON.</p>
         </div>
-
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
             <h3 class="font-bold text-sm text-brand-400 flex items-center gap-2"><span>💡</span> Como importar?</h3>
             <p class="text-xs text-slate-300 leading-relaxed">Você pode colar novos vocabulários no formato JSON estruturado.</p>
             <div class="pt-2 flex flex-col gap-2">
-              <button onclick="resetDefaultChapters()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700">🔄 Restaurar Capítulos Padrão</button>
-              <button onclick="exportChaptersJSON()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700">📥 Exportar Dados (Backup)</button>
+              <button type="button" onclick="resetDefaultChapters()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700">🔄 Restaurar Padrões</button>
+              <button type="button" onclick="exportChaptersJSON()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700">📥 Exportar Backup</button>
             </div>
           </div>
           <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col space-y-4">
             <div class="flex items-center justify-between">
-              <h3 class="font-bold text-sm text-white">Editor JSON de Capítulo</h3>
+              <h3 class="font-bold text-sm text-white">Editor JSON</h3>
               <span id="json-status" class="text-xs font-mono text-slate-500">Pronto</span>
             </div>
             <textarea id="json-input" rows="14" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 resize-y" placeholder="Cole o JSON do novo capítulo aqui..."></textarea>
             <div class="flex justify-end gap-3">
-              <button onclick="saveChapterFromJSON()" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition shadow-lg shadow-emerald-600/20">💾 Salvar / Adicionar Capítulo</button>
+              <button type="button" onclick="saveChapterFromJSON()" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition shadow-lg">💾 Salvar Capítulo</button>
             </div>
           </div>
         </div>
@@ -430,23 +456,24 @@
     <!-- Application Logic JavaScript -->
     <script>
       /* ================= APP STATE & CONFIG ================= */
-      const APP_VERSION = "1.5"; // Usado para forçar renovação do cache local
+      const APP_VERSION = "1.6";
       
       const AppState = {
         chapters: [],
         currentChapter: null,
         currentQuestionIndex: 0,
         currentQuestion: null,
-        exerciseMode: "typing", // 'typing' | 'choice' | 'sentences'
+        exerciseMode: "typing",
         score: 0,
         streak: 0,
         totalAnswered: 0,
         correctCount: 0,
         distractorCache: { words: [], sentences: [] },
-	srs: {}
+        srs: {},
+        survivalHighScore: localStorage.getItem("gamida_survival_high") ? parseInt(localStorage.getItem("gamida_survival_high")) : 0
       };
 
-      const DOM = {}; // Inicializado no DOMContentLoaded
+      const DOM = {};
 
       /* ================= DEFAULT DATASETS ================= */
       const DEFAULT_CHAPTERS = [
@@ -1395,10 +1422,8 @@
 
       /* ================= CORE LOGIC & INITIALIZATION ================= */
       window.addEventListener("DOMContentLoaded", () => {
-	// Atualiza a versão na interface automaticamente
-	document.getElementById("app-version-display").textContent = "v" + APP_VERSION;
-	
-	// Cache DOM Elements
+        document.getElementById("app-version-display").textContent = "v" + APP_VERSION;
+        
         DOM.chapSelect = document.getElementById("chapter-select");
         DOM.qCategory = document.getElementById("question-category");
         DOM.qProgress = document.getElementById("question-progress");
@@ -1417,7 +1442,7 @@
         };
 
         loadChapters();
-	loadSRS();
+        loadSRS();
         buildDistractorCache();
         setupChapterDropdown();
         onChapterChange();
@@ -1458,13 +1483,12 @@
 
       /* ================= UI NAVIGATION ================= */
       function switchTab(tabName) {
-        // SEGURANÇA: Se sair da aba de avaliação, mata o timer e reseta o dashboard
         if (tabName !== "assessment") {
           if (assessTimerInterval) clearInterval(assessTimerInterval);
           resetToDashboard(); 
         }
 
-        const tabs = ["practice", "vocab", "manage", "assessment"];
+        const tabs = ["practice", "assessment", "vocab", "manage"];
         tabs.forEach(t => {
           const section = document.getElementById(`tab-${t}`);
           const btn = document.getElementById(`nav-btn-${t}`);
@@ -1472,7 +1496,7 @@
           if (section) section.classList.toggle("hidden", t !== tabName);
           if (btn) {
             if (t === tabName) {
-              btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white shadow-md shadow-brand-600/30 transition hover:bg-brand-500";
+              btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white shadow-md transition hover:bg-brand-500";
             } else {
               btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition";
             }
@@ -1496,7 +1520,7 @@
         if (found) {
           AppState.currentChapter = found;
           AppState.currentQuestionIndex = 0;
-          lastRenderedVocabChapter = null; // Força a recriação do dicionário na próxima vez
+          lastRenderedVocabChapter = null; // Reseta cache do dicionario
           resetStats();
           renderCurrentQuestion();
         }
@@ -1537,13 +1561,39 @@
 
       function evaluateAnswer(userAnswer, acceptedList) {
         const normUser = normalizeText(userAnswer);
-        if (!normUser) return false;
-        return acceptedList.some((accepted) => {
-          const normAccepted = normalizeText(accepted);
-          if (normUser === normAccepted) return true;
-          if (normAccepted.length > 4 && getEditDistance(normUser, normAccepted) <= 1) return true;
-          return false;
-        });
+        
+        // Pega a versão mais correta (com acento) da primeira opção como fallback para quando o usuário errar
+        const defaultNorm = normalizeText(acceptedList[0]);
+        const defaultAccented = acceptedList.find(acc => normalizeText(acc) === defaultNorm && acc !== defaultNorm) || acceptedList[0];
+        
+        if (!normUser) return { status: 'incorrect', expected: defaultAccented };
+        
+        let bestMatch = { status: 'incorrect', expected: defaultAccented };
+
+        for (let i = 0; i < acceptedList.length; i++) {
+          const normAccepted = normalizeText(acceptedList[i]);
+          
+          // Busca se há uma versão com acento dessa mesma palavra cadastrada no array
+          const accentedVersion = acceptedList.find(acc => normalizeText(acc) === normAccepted && acc !== normAccepted) || acceptedList[i];
+          
+          // 1. Acerto Exato
+          if (normUser === normAccepted) {
+            return { status: 'correct', expected: accentedVersion };
+          }
+          
+          // 2. Erro de Digitação (Typo)
+          if (normAccepted.length > 4 && getEditDistance(normUser, normAccepted) <= 1) {
+            const lastCharUser = normUser.slice(-1);
+            const lastCharAcc = normAccepted.slice(-1);
+            const isGenderSwap = (lastCharAcc === 'o' && lastCharUser === 'a') || (lastCharAcc === 'a' && lastCharUser === 'o');
+            
+            if (!isGenderSwap) {
+              bestMatch = { status: 'typo', expected: accentedVersion };
+            }
+          }
+        }
+        
+        return bestMatch;
       }
 
       function shuffleArray(arr) {
@@ -1635,16 +1685,16 @@
       }
 
       function checkPracticeAnswer(userAnswer) {
-        const isCorrect = evaluateAnswer(userAnswer, AppState.currentQuestion.translations);
+        const evalResult = evaluateAnswer(userAnswer, AppState.currentQuestion.translations);
         AppState.totalAnswered++;
 
         const icon = document.getElementById("feedback-icon");
         const title = document.getElementById("feedback-title");
         const detail = document.getElementById("feedback-detail");
 
-        DOM.banner.classList.remove("hidden", "bg-emerald-950/80", "border-emerald-500/50", "bg-rose-950/80", "border-rose-500/50");
+        DOM.banner.classList.remove("hidden", "bg-emerald-950/80", "border-emerald-500/50", "bg-rose-950/80", "border-rose-500/50", "bg-amber-950/80", "border-amber-500/50");
 
-        if (isCorrect) {
+        if (evalResult.status === 'correct') {
           AppState.correctCount++;
           AppState.score += AppState.exerciseMode === "sentences" ? 20 : 10;
           AppState.streak++;
@@ -1653,9 +1703,20 @@
           title.textContent = "Excelente! Tradução Correta!";
           title.className = "font-bold text-sm text-emerald-400";
           detail.textContent = `Tradução esperada: "${AppState.currentQuestion.translations.join('" / "')}"`;
+          
+        } else if (evalResult.status === 'typo') {
+          AppState.correctCount++; // Pontua como acerto
+          AppState.score += AppState.exerciseMode === "sentences" ? 20 : 10;
+          AppState.streak++;
+          DOM.banner.classList.add("bg-amber-950/80", "border-amber-500/50");
+          icon.textContent = "⚠️";
+          title.textContent = "Atenção: Erro de Digitação?";
+          title.className = "font-bold text-sm text-amber-400";
+          detail.textContent = `Sua resposta foi aceita, mas a grafia ideal é: "${evalResult.expected}". (Você digitou: "${userAnswer}")`;
+          
         } else {
           AppState.streak = 0;
-	        recordSRSError(AppState.currentQuestion.hebrew);
+          recordSRSError(AppState.currentQuestion.hebrew); // Manda pro Anki
           DOM.banner.classList.add("bg-rose-950/80", "border-rose-500/50");
           icon.textContent = "❌";
           title.textContent = "Incorreto";
@@ -1702,7 +1763,7 @@
            AppState.srs[hebrewString] = { interval: 0, ef: 2.5, nextReview: 0, fails: 0 };
         }
         AppState.srs[hebrewString].fails = (AppState.srs[hebrewString].fails || 0) + 1;
-        AppState.srs[hebrewString].nextReview = Date.now(); // Joga para ser revisado AGORA
+        AppState.srs[hebrewString].nextReview = Date.now(); 
         saveSRS();
       }
 
@@ -1757,13 +1818,13 @@
         }
       }
 
-      let lastRenderedVocabChapter = null; // Memória de otimização
+      /* ================= VOCABULARY DICTIONARY TABLE ================= */
+      let lastRenderedVocabChapter = null;
 
       function renderVocabTable() {
         const tbody = document.getElementById("vocab-table-body");
         if (!tbody || !AppState.currentChapter) return;
         
-        // Evita destruir e recriar o DOM se for o mesmo capítulo!
         if (lastRenderedVocabChapter === AppState.currentChapter.id) return;
         
         tbody.innerHTML = "";
@@ -1781,7 +1842,6 @@
           const hebrewText = item.hebrew || "";
           const translitText = item.transliteration || "-";
           const typeText = item.type || "Geral";
-          
           let translationsText = Array.isArray(item.translations) ? item.translations.join(" / ") : (item.translations || "Tradução ausente");
 
           tr.innerHTML = `
@@ -1797,41 +1857,35 @@
           tbody.appendChild(tr);
         });
 
-        // Salva o ID do capítulo atual para não renderizar de novo à toa
         lastRenderedVocabChapter = AppState.currentChapter.id;
       }
 
       function filterVocabTable() {
         const searchInput = document.getElementById("vocab-search");
         if (!searchInput) return;
-        
         const query = normalizeText(searchInput.value);
         document.querySelectorAll("#vocab-table-body tr").forEach(tr => {
-          const text = normalizeText(tr.textContent);
-          tr.style.display = text.includes(query) ? "" : "none";
+          tr.style.display = normalizeText(tr.textContent).includes(query) ? "" : "none";
         });
       }
 
-      /* ================= CUMULATIVE ASSESSMENT LOGIC (Fase 1 - Dashboard & Config) ================= */
-      
-      const SimConfig = { amount: 25, time: 0, focus: 'mixed' }; // Configuração padrão
+      /* ================= CUMULATIVE ASSESSMENT LOGIC ================= */
+      const SimConfig = { amount: 25, time: 0, focus: 'mixed' };
       let assessQuestions = [];
       let assessIndex = 0;
       let assessAnswersMap = {};
       let assessTimerInterval = null;
-      let assessTimeCount = 0; // Se config.time for 0 (livre), conta pra cima. Se for >0, conta pra baixo.
+      let assessTimeCount = 0;
 
       function resetToDashboard() {
         if (assessTimerInterval) clearInterval(assessTimerInterval);
-        
-        // Garante que todas as sub-telas de teste fiquem ocultas
         document.getElementById("assess-config").classList.add("hidden");
         document.getElementById("assessment-active").classList.add("hidden");
         document.getElementById("assessment-results").classList.add("hidden");
         document.getElementById("anki-active").classList.add("hidden");
         document.getElementById("anki-results").classList.add("hidden");
-        
-        // Mostra apenas o menu principal da avaliação
+        document.getElementById("survival-active").classList.add("hidden");
+        document.getElementById("survival-results").classList.add("hidden");
         document.getElementById("assess-dashboard").classList.remove("hidden");
       }
 
@@ -1846,7 +1900,6 @@
 
       function setSimConfig(type, value) {
         SimConfig[type] = value;
-        // Atualiza a UI dos botões de config
         document.querySelectorAll(`.cfg-${type}`).forEach(btn => {
           if (btn.id === `cfg-${type}-${value}`) {
             btn.classList.replace('bg-slate-800', 'bg-brand-600');
@@ -1880,7 +1933,6 @@
           });
         });
 
-        // Dedup
         currentChapWords = Array.from(new Map(currentChapWords.map(w => [w.hebrew, w])).values());
         otherChapWords = Array.from(new Map(otherChapWords.map(w => [w.hebrew, w])).values());
         currentChapSentences = Array.from(new Map(currentChapSentences.map(s => [s.hebrew, s])).values());
@@ -1889,7 +1941,6 @@
         const allWords = [...currentChapWords, ...otherChapWords];
         const allSentences = [...currentChapSentences, ...otherChapSentences];
 
-        // Lógica de Foco
         let targetWords = 0;
         let targetSentences = 0;
         let totalAmount = SimConfig.amount === 'max' ? (allWords.length + allSentences.length) : SimConfig.amount;
@@ -1899,39 +1950,27 @@
         } else if (SimConfig.focus === 'sentences') {
           targetSentences = Math.min(totalAmount, allSentences.length);
         } else {
-          // Misto: Tenta 80% palavras, 20% frases
           targetSentences = Math.min(Math.max(1, Math.round(totalAmount * 0.2)), allSentences.length);
           targetWords = Math.min(totalAmount - targetSentences, allWords.length);
-          // Se faltar palavra, compensa com frase se possível
           if (targetWords + targetSentences < totalAmount && allSentences.length > targetSentences) {
             targetSentences = Math.min(totalAmount - targetWords, allSentences.length);
           }
         }
 
-        // Função auxiliar para pegar itens (priorizando 50% do cap atual)
         function pickItems(targetCount, currentPool, otherPool) {
           let selected = [];
           let targetCurrent = Math.min(Math.round(targetCount * 0.5), currentPool.length);
-          let shuffledCurrent = [...currentPool].sort(() => 0.5 - Math.random());
-          selected.push(...shuffledCurrent.slice(0, targetCurrent));
-
+          selected.push(...[...currentPool].sort(() => 0.5 - Math.random()).slice(0, targetCurrent));
           let remaining = targetCount - selected.length;
-          let shuffledOther = [...otherPool].sort(() => 0.5 - Math.random());
-          selected.push(...shuffledOther.slice(0, remaining));
-
+          selected.push(...[...otherPool].sort(() => 0.5 - Math.random()).slice(0, remaining));
           if (selected.length < targetCount) {
-             let combined = [...currentPool, ...otherPool].filter(i => !selected.some(s => s.hebrew === i.hebrew));
-             combined = combined.sort(() => 0.5 - Math.random());
+             let combined = [...currentPool, ...otherPool].filter(i => !selected.some(s => s.hebrew === i.hebrew)).sort(() => 0.5 - Math.random());
              selected.push(...combined.slice(0, targetCount - selected.length));
           }
           return selected;
         }
 
-        let finalPool = [
-          ...pickItems(targetWords, currentChapWords, otherChapWords),
-          ...pickItems(targetSentences, currentChapSentences, otherChapSentences)
-        ];
-
+        let finalPool = [...pickItems(targetWords, currentChapWords, otherChapWords), ...pickItems(targetSentences, currentChapSentences, otherChapSentences)];
         assessQuestions = finalPool.sort(() => 0.5 - Math.random());
         assessIndex = 0;
         assessAnswersMap = {};
@@ -1944,18 +1983,16 @@
         document.getElementById("assess-config").classList.add("hidden");
         document.getElementById("assessment-active").classList.remove("hidden");
 
-        // Timer Logic
         assessTimeCount = SimConfig.time > 0 ? (SimConfig.time * 60) : 0; 
         document.getElementById("assessment-timer-icon").textContent = SimConfig.time > 0 ? "⏳" : "⏱️";
         
         startAssessmentTimer();
-        renderAssessmentQuestion();
         initAssessmentTracker();
+        renderAssessmentQuestion();
       }
 
       function startAssessmentTimer() {
         if (assessTimerInterval) clearInterval(assessTimerInterval);
-        
         const isCountdown = SimConfig.time > 0;
 
         assessTimerInterval = setInterval(() => {
@@ -1968,9 +2005,8 @@
               return;
             }
           } else {
-            assessTimeCount++; // Cronômetro progressivo se tempo livre
+            assessTimeCount++; 
           }
-
           const mins = Math.floor(assessTimeCount / 60);
           const secs = assessTimeCount % 60;
           document.getElementById("assessment-timer").textContent = `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
@@ -1997,9 +2033,9 @@
 
         const actionContainer = document.getElementById("assess-action-container");
         if (assessIndex === assessQuestions.length - 1) {
-          actionContainer.innerHTML = `<button onclick="confirmFinishAssessmentPrompt()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl transition shadow-lg shadow-emerald-600/30">🏁 Submeter Prova</button>`;
+          actionContainer.innerHTML = `<button type="button" onclick="confirmFinishAssessmentPrompt()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl transition shadow-lg shadow-emerald-600/30">🏁 Submeter Prova</button>`;
         } else {
-          actionContainer.innerHTML = `<button onclick="navigateAssessment(1)" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm rounded-xl transition shadow-lg shadow-brand-600/30">Próxima ➔</button>`;
+          actionContainer.innerHTML = `<button type="button" onclick="navigateAssessment(1)" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm rounded-xl transition shadow-lg shadow-brand-600/30">Próxima ➔</button>`;
         }
 
         updateAllTrackerPills();
@@ -2018,6 +2054,19 @@
         saveCurrentInputDraft();
         assessIndex = idx;
         renderAssessmentQuestion();
+      }
+
+      function initAssessmentTracker() {
+        const trackerEl = document.getElementById("assessment-tracker");
+        trackerEl.innerHTML = "";
+        assessQuestions.forEach((_, idx) => {
+          const pill = document.createElement("button");
+          pill.type = "button";
+          pill.textContent = idx + 1;
+          pill.onclick = () => jumpToAssessmentQuestion(idx);
+          trackerEl.appendChild(pill);
+        });
+        updateAllTrackerPills();
       }
 
       function updateAllTrackerPills() {
@@ -2049,7 +2098,7 @@
         if (assessActive && !assessActive.classList.contains("hidden") && e.key === "Enter") {
           const input = document.getElementById("assess-user-input");
           if (document.activeElement === input) {
-            e.preventDefault(); // Impede que o Enter tente submeter a página ou pular linha indevidamente
+            e.preventDefault();
             if (assessIndex === assessQuestions.length - 1) confirmFinishAssessmentPrompt();
             else navigateAssessment(1);
           }
@@ -2061,34 +2110,35 @@
         document.getElementById("assessment-active").classList.add("hidden");
         document.getElementById("assessment-results").classList.remove("hidden");
 
-        const evaluated = assessQuestions.map((q, idx) => ({
-          question: q, userAnswer: (assessAnswersMap[idx] || "").trim() || "(Em branco)",
-          isCorrect: evaluateAnswer(assessAnswersMap[idx], q.translations)
-        }));
+        const evaluated = assessQuestions.map((q, idx) => {
+           const userVal = (assessAnswersMap[idx] || "").trim() || "(Em branco)";
+           return {
+              question: q, 
+              userAnswer: userVal,
+              evalResult: evaluateAnswer(userVal, q.translations)
+           };
+        });
 
         const totalQ = assessQuestions.length;
-        const correctQ = evaluated.filter(a => a.isCorrect).length;
+        const correctQ = evaluated.filter(a => a.evalResult.status !== 'incorrect').length;
         
         let timeSecs = 0;
-        if (SimConfig.time > 0) {
-           timeSecs = (SimConfig.time * 60) - assessTimeCount;
-        } else {
-           timeSecs = assessTimeCount; // Tempo livre conta progressivo
-        }
+        if (SimConfig.time > 0) timeSecs = (SimConfig.time * 60) - assessTimeCount;
+        else timeSecs = assessTimeCount; 
 
         document.getElementById("res-grade").textContent = `${totalQ > 0 ? Math.round((correctQ / totalQ) * 100) : 0}%`;
         document.getElementById("res-correct").textContent = `${correctQ} / ${totalQ}`;
         document.getElementById("res-time").textContent = `${Math.floor(timeSecs / 60).toString().padStart(2, "0")}:${(timeSecs % 60).toString().padStart(2, "0")}`;
 
-        // Diagnóstico por Capítulo
         const chapterErrors = {};
         evaluated.forEach(ans => {
           const cid = ans.question.chapterId;
           if (!chapterErrors[cid]) chapterErrors[cid] = { title: ans.question.chapterTitle, total: 0, errors: 0 };
           chapterErrors[cid].total++;
-          if (!ans.isCorrect){
+          
+          if (ans.evalResult.status === 'incorrect'){
             chapterErrors[cid].errors++;
-            recordSRSError(ans.question.hebrew);
+            recordSRSError(ans.question.hebrew); // Anki
           }
         });
 
@@ -2105,35 +2155,48 @@
           diagList.appendChild(div);
         });
 
-        // Correção Detalhada
         const correctionList = document.getElementById("correction-list");
         correctionList.innerHTML = "";
         evaluated.forEach((ans, idx) => {
-          const isOk = ans.isCorrect;
+          const st = ans.evalResult.status;
+          
+          let boxColors = "bg-emerald-950/20 border-emerald-800/40";
+          let badgeTag = `<span class="px-2.5 py-0.5 rounded-full font-bold bg-emerald-900/60 text-emerald-300">Correto ✓</span>`;
+          let userTextCol = "text-emerald-400";
+          
+          if (st === 'incorrect') {
+             boxColors = "bg-rose-950/20 border-rose-800/40";
+             badgeTag = `<span class="px-2.5 py-0.5 rounded-full font-bold bg-rose-900/60 text-rose-300">Incorreto ✗</span>`;
+             userTextCol = "text-rose-400";
+          } else if (st === 'typo') {
+             boxColors = "bg-amber-950/20 border-amber-800/40";
+             badgeTag = `<span class="px-2.5 py-0.5 rounded-full font-bold bg-amber-900/60 text-amber-300">Atenção ⚠️</span>`;
+             userTextCol = "text-amber-400";
+          }
+
           const box = document.createElement("div");
-          box.className = `p-4 rounded-2xl border ${isOk ? "bg-emerald-950/20 border-emerald-800/40" : "bg-rose-950/20 border-rose-800/40"} space-y-2 text-xs`;
+          box.className = `p-4 rounded-2xl border ${boxColors} space-y-2 text-xs`;
           box.innerHTML = `
             <div class="flex items-center justify-between">
               <span class="font-mono text-slate-400 font-semibold">Questão ${idx + 1} (${ans.question.kind === "word" ? "Palavra" : "Frase"})</span>
-              <span class="px-2.5 py-0.5 rounded-full font-bold ${isOk ? "bg-emerald-900/60 text-emerald-300" : "bg-rose-900/60 text-rose-300"}">${isOk ? "Correto ✓" : "Incorreto ✗"}</span>
+              ${badgeTag}
             </div>
             <div class="hebrew-text text-2xl text-white font-bold py-1">${ans.question.hebrew}</div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1 border-t border-slate-800/60">
               <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
                 <span class="text-slate-500 block text-[10px] uppercase font-semibold">Sua Resposta:</span>
-                <span class="${isOk ? "text-emerald-400" : "text-rose-400"} font-medium">${ans.userAnswer}</span>
+                <span class="${userTextCol} font-medium">${ans.userAnswer}</span>
               </div>
               <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
                 <span class="text-slate-500 block text-[10px] uppercase font-semibold">Tradução Esperada:</span>
-                <span class="text-emerald-400 font-medium">${ans.question.translations.join(" / ")}</span>
+                <span class="text-emerald-400 font-medium">${ans.evalResult.expected || ans.question.translations.join(" / ")}</span>
               </div>
             </div>`;
           correctionList.appendChild(box);
         });
       }
 
-      /* ================= FASE 2: LÓGICA DO ANKI (FLASHCARDS SRS) ================= */
-      
+      /* ================= LÓGICA DO ANKI (FLASHCARDS) ================= */
       let ankiQueue = [];
       let ankiCurrentCard = null;
       let ankiStats = { hard: 0, good: 0, easy: 0 };
@@ -2151,27 +2214,19 @@
            const processItem = (it, kind) => {
               const entry = { ...it, chapterId: chap.id, chapterTitle: chap.title, kind };
               const record = AppState.srs[it.hebrew];
-              
-              if (record && record.nextReview <= now) {
-                 dueCards.push(entry); // Pendências baseadas em erros passados
-              } else if (!record && isCurrent) {
-                 newCards.push(entry); // Apresentar conteúdo virgem do capítulo atual
-              }
+              if (record && record.nextReview <= now) dueCards.push(entry);
+              else if (!record && isCurrent) newCards.push(entry);
            };
-           
            (chap.items || []).forEach(i => processItem(i, "word"));
            (chap.sentences || []).forEach(s => processItem(s, "sentence"));
         });
         
-        // Remove duplicatas
         dueCards = Array.from(new Map(dueCards.map(w => [w.hebrew, w])).values());
         newCards = Array.from(new Map(newCards.map(w => [w.hebrew, w])).values());
 
-        // Embaralha
         dueCards.sort(() => 0.5 - Math.random());
         newCards.sort(() => 0.5 - Math.random());
         
-        // Forma o baralho (ex: 20 antigas pendentes + 10 novas do cap atual)
         ankiQueue = [...dueCards.slice(0, 20), ...newCards.slice(0, 10)];
         
         if (ankiQueue.length === 0) {
@@ -2203,7 +2258,6 @@
         document.getElementById("anki-translit").textContent = ankiCurrentCard.transliteration ? `(${ankiCurrentCard.transliteration})` : "";
         document.getElementById("anki-translation").textContent = ankiCurrentCard.translations.join(" / ");
         
-        // Calcula visualmente os próximos intervalos
         let record = AppState.srs[ankiCurrentCard.hebrew] || { interval: 0, ef: 2.5, nextReview: 0 };
         const goodInt = record.interval === 0 ? 1 : Math.round(record.interval * record.ef);
         const easyInt = record.interval === 0 ? 4 : Math.round(record.interval * (record.ef + 0.15) * 1.3);
@@ -2211,7 +2265,6 @@
         document.getElementById("anki-next-good").textContent = goodInt + (goodInt === 1 ? " dia" : " dias");
         document.getElementById("anki-next-easy").textContent = easyInt + (easyInt === 1 ? " dia" : " dias");
 
-        // Oculta a resposta inicialmente
         document.getElementById("anki-back").classList.add("hidden");
         document.getElementById("anki-reveal-container").classList.remove("hidden");
       }
@@ -2223,15 +2276,13 @@
 
       function answerAnki(grade) {
         ankiStats[grade]++;
-        
         let record = AppState.srs[ankiCurrentCard.hebrew] || { interval: 0, ef: 2.5, nextReview: 0, fails: 0 };
         
         if (grade === 'hard') {
             record.interval = 0;
             record.ef = Math.max(1.3, record.ef - 0.2);
             record.nextReview = Date.now() + (60 * 1000); 
-            // Penalidade do Erro: A carta volta pro fim da fila para ser revisada nesta mesma sessão!
-            ankiQueue.push(ankiCurrentCard);
+            ankiQueue.push(ankiCurrentCard); // Volta pro fim da fila
             ankiTotalCards++;
         } else if (grade === 'good') {
             record.interval = record.interval === 0 ? 1 : Math.round(record.interval * record.ef);
@@ -2245,7 +2296,6 @@
         AppState.srs[ankiCurrentCard.hebrew] = record;
         saveSRS();
         
-        // Remove a carta da frente e passa pra próxima
         ankiQueue.shift();
         renderAnkiCard();
       }
@@ -2253,24 +2303,143 @@
       function finishAnki() {
         document.getElementById("anki-active").classList.add("hidden");
         document.getElementById("anki-results").classList.remove("hidden");
-        
         document.getElementById("anki-res-hard").textContent = ankiStats.hard;
         document.getElementById("anki-res-good").textContent = ankiStats.good;
         document.getElementById("anki-res-easy").textContent = ankiStats.easy;
       }
 
-      function initAssessmentTracker() {
-        const trackerEl = document.getElementById("assessment-tracker");
-        trackerEl.innerHTML = ""; // Limpa só no começo da prova
-        
-        assessQuestions.forEach((_, idx) => {
-          const pill = document.createElement("button");
-          pill.textContent = idx + 1;
-          pill.onclick = () => jumpToAssessmentQuestion(idx);
-          trackerEl.appendChild(pill);
+      /* ================= FASE 3: LÓGICA DE SOBREVIVÊNCIA (MORTE SÚBITA) ================= */
+      let survLives = 3;
+      let survStreak = 0;
+      let survQueue = [];
+      let survCurrent = null;
+
+      function startSurvival() {
+        // Coleta apenas palavras (não frases) de todos os capítulos até o atual
+        const activeChapterId = DOM.chapSelect ? DOM.chapSelect.value : AppState.chapters[0].id;
+        const activeIdx = AppState.chapters.findIndex(c => c.id === activeChapterId);
+        const cumulativeChapters = AppState.chapters.slice(0, activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length);
+
+        let allWords = [];
+        cumulativeChapters.forEach(chap => {
+          (chap.items || []).forEach(i => allWords.push(i));
         });
-        updateAllTrackerPills();
+        
+        // Remove duplicatas exatas
+        allWords = Array.from(new Map(allWords.map(w => [w.hebrew, w])).values());
+        
+        if (allWords.length === 0) {
+            alert("Não há palavras suficientes acumuladas para iniciar o Morte Súbita.");
+            return;
+        }
+
+        // Preenche a fila e embaralha
+        survQueue = [...allWords].sort(() => 0.5 - Math.random());
+        survLives = 3;
+        survStreak = 0;
+
+        document.getElementById("assess-dashboard").classList.add("hidden");
+        document.getElementById("survival-active").classList.remove("hidden");
+        document.getElementById("surv-correction-box").classList.add("hidden"); // Reseta o card de erro
+        
+        updateSurvivalUI();
+        nextSurvivalQuestion();
       }
+
+      function updateSurvivalUI() {
+        document.getElementById("survival-streak").textContent = survStreak;
+        document.getElementById("survival-hearts").textContent = "❤️".repeat(survLives) + "🖤".repeat(3 - survLives);
+      }
+
+      function nextSurvivalQuestion() {
+        // Se esvaziar a fila, a gente recarrega com o mesmo vocabulário e embaralha (jogo infinito)
+        if (survQueue.length === 0) {
+            let activeIdx = AppState.chapters.findIndex(c => c.id === (DOM.chapSelect ? DOM.chapSelect.value : AppState.chapters[0].id));
+            let cumulativeChapters = AppState.chapters.slice(0, activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length);
+            let refill = [];
+            cumulativeChapters.forEach(chap => (chap.items || []).forEach(i => refill.push(i)));
+            survQueue = Array.from(new Map(refill.map(w => [w.hebrew, w])).values()).sort(() => 0.5 - Math.random());
+        }
+        
+        survCurrent = survQueue.pop();
+        document.getElementById("survival-hebrew").textContent = survCurrent.hebrew;
+        
+        const input = document.getElementById("survival-input");
+        input.value = "";
+        input.disabled = false;
+        setTimeout(() => input.focus(), 50);
+      }
+
+      function submitSurvivalAnswer() {
+        const input = document.getElementById("survival-input");
+        if(input.disabled) return;
+        
+        const evalResult = evaluateAnswer(input.value, survCurrent.translations);
+        const flash = document.getElementById("survival-flash");
+        
+        if (evalResult.status === 'correct' || evalResult.status === 'typo') {
+            survStreak++;
+            updateSurvivalUI();
+            
+            // Pisca verde se foi exato, amarelo se foi erro de digitação
+            if (evalResult.status === 'typo') {
+                flash.className = "absolute inset-0 z-0 transition-opacity duration-300 pointer-events-none bg-amber-500/20 opacity-100";
+            } else {
+                flash.className = "absolute inset-0 z-0 transition-opacity duration-300 pointer-events-none bg-emerald-500/20 opacity-100";
+            }
+            setTimeout(() => flash.classList.replace("opacity-100", "opacity-0"), 300);
+            
+            nextSurvivalQuestion();
+        } else {
+            survLives--;
+            updateSurvivalUI();
+            recordSRSError(survCurrent.hebrew);
+            
+            document.getElementById("surv-last-heb").textContent = survCurrent.hebrew;
+            document.getElementById("surv-last-cor").textContent = survCurrent.translations.join(" / ");
+            document.getElementById("surv-correction-box").classList.remove("hidden");
+
+            flash.className = "absolute inset-0 z-0 transition-opacity duration-300 pointer-events-none bg-rose-500/30 opacity-100";
+            setTimeout(() => flash.classList.replace("opacity-100", "opacity-0"), 300);
+
+            if (survLives <= 0) {
+                input.disabled = true;
+                setTimeout(() => finishSurvival(false), 600);
+            } else {
+                nextSurvivalQuestion();
+            }
+        }
+      }
+
+      function finishSurvival(surrendered = false) {
+        document.getElementById("survival-active").classList.add("hidden");
+        document.getElementById("survival-results").classList.remove("hidden");
+        
+        // Trata o Recorde Máximo
+        if (survStreak > AppState.survivalHighScore) {
+            AppState.survivalHighScore = survStreak;
+            localStorage.setItem("gamida_survival_high", AppState.survivalHighScore);
+        }
+
+        document.getElementById("surv-res-streak").textContent = survStreak;
+        document.getElementById("surv-res-high").textContent = AppState.survivalHighScore;
+        
+        if (surrendered) {
+            document.getElementById("surv-correction-box").classList.add("hidden");
+        }
+      }
+
+      // Adiciona interceptador do ENTER também pro survival
+      document.addEventListener("keydown", (e) => {
+        const survActive = document.getElementById("survival-active");
+        if (survActive && !survActive.classList.contains("hidden") && e.key === "Enter") {
+          const input = document.getElementById("survival-input");
+          if (document.activeElement === input) {
+            e.preventDefault();
+            submitSurvivalAnswer();
+          }
+        }
+      });
     </script>
   </body>
 </html>
