@@ -82,10 +82,10 @@
 
         <!-- Action Nav -->
         <div class="flex items-center space-x-2">
-          <button id="nav-btn-practice" onclick="switchTab('practice')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white shadow-md shadow-brand-600/30 transition hover:bg-brand-500">🎮 Praticar</button>
-          <button id="nav-btn-assessment" onclick="switchTab('assessment')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">📝 Avaliação</button>
-          <button id="nav-btn-vocab" onclick="switchTab('vocab')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">📖 Dicionário</button>
-          <button id="nav-btn-manage" onclick="switchTab('manage')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">⚙️ Capítulos</button>
+          <button type="button" id="nav-btn-practice" onclick="switchTab('practice')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white shadow-md shadow-brand-600/30 transition hover:bg-brand-500">🎮 Praticar</button>
+          <button type="button" id="nav-btn-assessment" onclick="switchTab('assessment')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">📝 Avaliação</button>
+          <button type="button" id="nav-btn-vocab" onclick="switchTab('vocab')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">📖 Dicionário</button>
+          <button type="button" id="nav-btn-manage" onclick="switchTab('manage')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">⚙️ Capítulos</button>
         </div>
       </div>
     </header>
@@ -166,132 +166,235 @@
         </div>
       </section>
 
-      <!-- ================= TAB 2: AVALIAÇÃO CUMULATIVA ================= -->
+      <!-- ================= TAB 2: AVALIAÇÃO (DASHBOARD) ================= -->
       <section id="tab-assessment" class="hidden space-y-6 flex-1 flex-col">
-        <!-- Tela Inicial da Avaliação -->
-        <div id="assessment-intro" class="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-6 shadow-2xl">
-          <div class="w-16 h-16 bg-brand-500/10 text-brand-400 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold border border-brand-500/20 shadow-inner">📝</div>
-          <div class="space-y-2">
-            <h2 class="text-2xl font-bold text-white">Avaliação Cumulativa</h2>
-            <p class="text-sm text-slate-400 max-w-lg mx-auto">
-              Teste seus conhecimentos acumulados até o capítulo selecionado. A prova é composta por até <strong>20 palavras</strong> (mínimo de 18) e <strong>5 frases</strong> abertas, com foco no capítulo atual e suporte dos anteriores. Navegue livremente, gerencie seu tempo e submeta ao concluir.
-            </p>
+        
+        <!-- Dashboard Inicial -->
+        <div id="assess-dashboard" class="space-y-6 flex-1 flex flex-col justify-center py-8">
+          <div class="text-center space-y-2 mb-4">
+            <h2 class="text-3xl font-bold text-white">Central de Avaliações</h2>
+            <p class="text-sm text-slate-400">Escolha o formato de teste ideal para o seu momento de estudo.</p>
           </div>
-          <div class="bg-amber-950/40 border border-amber-800/60 text-amber-300 p-4 rounded-2xl text-xs flex items-center justify-center gap-2 max-w-md mx-auto shadow-inner">
-            <span>⏱️</span> Tempo limite: <strong>60 minutos</strong> (máximo 25 questões).
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card: Simulado -->
+            <div onclick="openSimuladoConfig()" class="bg-slate-900 border border-slate-700 hover:border-brand-500 rounded-3xl p-6 flex flex-col text-center transition cursor-pointer shadow-xl group">
+              <div class="w-16 h-16 bg-brand-500/10 text-brand-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform">📝</div>
+              <h3 class="text-lg font-bold text-white mb-2">Simulado Personalizado</h3>
+              <p class="text-xs text-slate-400 flex-1 mb-6">Configure o tamanho da prova, limite de tempo e foco. Teste escrito padrão (digitação).</p>
+              <button class="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs rounded-xl transition">Configurar e Iniciar</button>
+            </div>
+
+            <!-- Card: Anki (Fase 2 DESBLOQUEADA) -->
+            <div onclick="startAnki()" class="bg-slate-900 border border-slate-700 hover:border-emerald-500 rounded-3xl p-6 flex flex-col text-center transition cursor-pointer shadow-xl group">
+              <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform">🧠</div>
+              <h3 class="text-lg font-bold text-white mb-2">Revisão Inteligente</h3>
+              <p class="text-xs text-slate-400 flex-1 mb-6">Flashcards baseados nos seus maiores erros. Método de repetição espaçada sem digitação.</p>
+              <button class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs rounded-xl transition">Iniciar Sessão de Revisão</button>
+            </div>
+
+            <!-- Card: Survival -->
+            <div class="bg-slate-900/50 border border-slate-800 rounded-3xl p-6 flex flex-col text-center opacity-60 relative">
+              <div class="absolute top-4 right-4 bg-slate-800 text-[10px] text-slate-400 px-2 py-0.5 rounded font-mono">Fase 3</div>
+              <div class="w-16 h-16 bg-rose-500/10 text-rose-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">❤️</div>
+              <h3 class="text-lg font-bold text-slate-300 mb-2">Morte Súbita</h3>
+              <p class="text-xs text-slate-500 flex-1 mb-6">Teste sua agilidade mental. 3 corações de vida. Quantas você acerta em sequência?</p>
+              <button class="w-full py-2.5 bg-slate-800 text-slate-500 font-semibold text-xs rounded-xl cursor-not-allowed">Em desenvolvimento</button>
+            </div>
           </div>
-          <button onclick="startAssessment()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
-            Iniciar Avaliação Agora ➔
-          </button>
         </div>
 
-        <!-- Tela Ativa da Prova -->
+        <!-- Tela de Configuração do Simulado -->
+        <div id="assess-config" class="hidden bg-slate-900 border border-slate-800 rounded-3xl p-8 max-w-xl mx-auto w-full shadow-2xl mt-4">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+            <h3 class="text-xl font-bold text-white">Configurar Simulado</h3>
+            <button onclick="closeSimuladoConfig()" class="text-slate-400 hover:text-white text-2xl font-light">&times;</button>
+          </div>
+          
+          <div class="space-y-6">
+            <!-- Amount -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Quantidade de Questões</label>
+              <div class="grid grid-cols-4 gap-2 text-sm">
+                <button onclick="setSimConfig('amount', 10)" id="cfg-amt-10" class="cfg-btn cfg-amt bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">10</button>
+                <button onclick="setSimConfig('amount', 25)" id="cfg-amt-25" class="cfg-btn cfg-amt bg-brand-600 text-white font-bold py-2 rounded-xl">25</button>
+                <button onclick="setSimConfig('amount', 50)" id="cfg-amt-50" class="cfg-btn cfg-amt bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">50</button>
+                <button onclick="setSimConfig('amount', 'max')" id="cfg-amt-max" class="cfg-btn cfg-amt bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">Máx</button>
+              </div>
+            </div>
+
+            <!-- Time -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Limite de Tempo</label>
+              <div class="grid grid-cols-4 gap-2 text-sm">
+                <button onclick="setSimConfig('time', 0)" id="cfg-time-0" class="cfg-btn cfg-time bg-brand-600 text-white font-bold py-2 rounded-xl">Livre</button>
+                <button onclick="setSimConfig('time', 15)" id="cfg-time-15" class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">15m</button>
+                <button onclick="setSimConfig('time', 30)" id="cfg-time-30" class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">30m</button>
+                <button onclick="setSimConfig('time', 60)" id="cfg-time-60" class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">60m</button>
+              </div>
+            </div>
+
+            <!-- Focus -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Foco do Simulado</label>
+              <div class="grid grid-cols-3 gap-2 text-sm">
+                <button onclick="setSimConfig('focus', 'mixed')" id="cfg-foc-mixed" class="cfg-btn cfg-foc bg-brand-600 text-white font-bold py-2 rounded-xl">Misto</button>
+                <button onclick="setSimConfig('focus', 'words')" id="cfg-foc-words" class="cfg-btn cfg-foc bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">Só Palavras</button>
+                <button onclick="setSimConfig('focus', 'sentences')" id="cfg-foc-sentences" class="cfg-btn cfg-foc bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700">Só Frases</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-8">
+            <button onclick="startSimulado()" class="w-full py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
+              Gerar Prova e Iniciar ➔
+            </button>
+          </div>
+        </div>
+
+        <!-- Tela Ativa da Prova (Simulado) -->
         <div id="assessment-active" class="hidden space-y-4 flex-1 flex flex-col">
-          <!-- Barra de Progresso e Timer -->
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-              <span id="assessment-counter" class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-300">Questão 1 de 25</span>
+              <span id="assessment-counter" class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-300">Questão 1</span>
               <span id="assessment-type-tag" class="text-xs font-medium text-brand-400">Palavra</span>
             </div>
             <div class="flex items-center space-x-2 text-slate-200 font-mono font-semibold text-sm bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800">
-              <span>⏳</span>
-              <span id="assessment-timer">60:00</span>
+              <span id="assessment-timer-icon">⏳</span>
+              <span id="assessment-timer">00:00</span>
             </div>
           </div>
 
-          <!-- Cartão da Questão Aberta -->
           <div class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-2xl relative space-y-6">
             <div class="my-auto py-4 text-center space-y-4">
               <div id="assess-hebrew" class="hebrew-text text-4xl md:text-6xl font-bold text-white tracking-wide"></div>
               <div class="max-w-md mx-auto space-y-3 pt-2">
                 <label class="block text-xs font-semibold text-slate-400 text-left">Digite sua tradução em português:</label>
-                <input type="text" id="assess-user-input" oninput="saveCurrentInputDraft()" autocomplete="off" placeholder="Ex: pai, confiar, no princípio..." class="w-full bg-slate-950 border-2 border-slate-800 focus:border-brand-500 rounded-2xl px-5 py-3.5 text-base text-slate-100 placeholder-slate-600 focus:outline-none transition text-center shadow-inner">
+                <input type="text" id="assess-user-input" oninput="saveCurrentInputDraft()" autocomplete="off" class="w-full bg-slate-950 border-2 border-slate-800 focus:border-brand-500 rounded-2xl px-5 py-3.5 text-base text-slate-100 placeholder-slate-600 focus:outline-none transition text-center shadow-inner">
               </div>
             </div>
 
-            <!-- Tracker de Navegação por Círculos/Pílulas -->
             <div class="pt-4 border-t border-slate-800/80">
-              <div class="text-[11px] text-slate-500 font-medium mb-2 text-center">Navegação Rápida (Clique para ir à questão):</div>
+              <div class="text-[11px] text-slate-500 font-medium mb-2 text-center">Navegação Rápida:</div>
               <div id="assessment-tracker" class="flex flex-wrap justify-center gap-1.5 max-h-24 overflow-y-auto p-1"></div>
             </div>
 
             <div class="flex justify-between items-center pt-4 border-t border-slate-800">
               <button onclick="navigateAssessment(-1)" id="assess-btn-prev" class="text-xs font-medium text-slate-400 hover:text-slate-100 px-4 py-2 transition">← Anterior</button>
-              <div id="assess-action-container">
-                <button onclick="navigateAssessment(1)" id="assess-btn-next" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm rounded-xl transition shadow-lg shadow-brand-600/30">Próxima ➔</button>
-              </div>
+              <div id="assess-action-container"></div>
             </div>
           </div>
         </div>
 
-        <!-- Tela de Resultados, Diagnóstico e Correção -->
+        <!-- Tela de Resultados do Simulado -->
         <div id="assessment-results" class="hidden space-y-6 pb-12">
           <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-4 shadow-2xl">
             <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold shadow-inner">🏆</div>
             <h2 class="text-2xl font-bold text-white">Avaliação Concluída!</h2>
             <div class="flex justify-center gap-8 py-2">
-              <div>
-                <div class="text-xs text-slate-500 uppercase font-semibold">Nota Final</div>
-                <div id="res-grade" class="text-3xl font-bold text-brand-400">0%</div>
-              </div>
-              <div>
-                <div class="text-xs text-slate-500 uppercase font-semibold">Acertos</div>
-                <div id="res-correct" class="text-3xl font-bold text-slate-200">0 / 0</div>
-              </div>
-              <div>
-                <div class="text-xs text-slate-500 uppercase font-semibold">Tempo Gasto</div>
-                <div id="res-time" class="text-3xl font-bold text-slate-200">00:00</div>
-              </div>
+              <div><div class="text-xs text-slate-500 uppercase font-semibold">Nota Final</div><div id="res-grade" class="text-3xl font-bold text-brand-400">0%</div></div>
+              <div><div class="text-xs text-slate-500 uppercase font-semibold">Acertos</div><div id="res-correct" class="text-3xl font-bold text-slate-200">0 / 0</div></div>
+              <div><div class="text-xs text-slate-500 uppercase font-semibold">Tempo Gasto</div><div id="res-time" class="text-3xl font-bold text-slate-200">00:00</div></div>
             </div>
           </div>
-
-          <!-- Diagnóstico por Capítulo -->
+          
           <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-4 shadow-xl">
-            <h3 class="font-bold text-white text-base flex items-center gap-2"><span>📊</span> Diagnóstico e Foco de Revisão por Capítulo</h3>
-            <p class="text-xs text-slate-400">Identificamos quais lições exigem maior atenção com base nos erros cometidos:</p>
+            <h3 class="font-bold text-white text-base flex items-center gap-2"><span>📊</span> Foco de Revisão (Por Capítulo)</h3>
             <div id="diagnostic-list" class="space-y-3 pt-2"></div>
           </div>
 
-          <!-- Gabarito e Correção Detalhada -->
           <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-4 shadow-xl">
-            <h3 class="font-bold text-white text-base flex items-center gap-2"><span>🔍</span> Correção Detalhada da Prova</h3>
-            <p class="text-xs text-slate-400">Compare abaixo a sua resposta com a correção oficial de cada questão:</p>
+            <h3 class="font-bold text-white text-base flex items-center gap-2"><span>🔍</span> Correção Detalhada</h3>
             <div id="correction-list" class="space-y-3 pt-2"></div>
           </div>
 
           <div class="text-center pt-4">
-            <button onclick="resetAssessment()" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md">Realizar Nova Avaliação</button>
+            <button onclick="resetToDashboard()" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md">Voltar à Central de Avaliações</button>
           </div>
-        </div>
-      </section>
-
-      <!-- ================= TAB 3: VOCABULARY DICTIONARY ================= -->
-      <section id="tab-vocab" class="hidden space-y-6">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h2 class="text-xl font-bold text-white">Dicionário & Banco de Frases do Capítulo</h2>
-            <p class="text-xs text-slate-400 mt-1">Consulte o vocabulário e as frases extraídas das lições.</p>
-          </div>
-          <input type="text" id="vocab-search" oninput="filterVocabTable()" placeholder="🔍 Buscar palavra ou frase..." class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500 w-full md:w-72" />
         </div>
 
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm">
-              <thead class="bg-slate-950 border-b border-slate-800 text-slate-400 text-xs uppercase font-medium">
-                <tr>
-                  <th class="px-6 py-3.5">Hebraico</th>
-                  <th class="px-6 py-3.5">Transliteração</th>
-                  <th class="px-6 py-3.5">Tradução (PT-BR)</th>
-                  <th class="px-6 py-3.5">Tipo</th>
-                </tr>
-              </thead>
-              <tbody id="vocab-table-body" class="divide-y divide-slate-800/60 text-slate-200">
-                <!-- Dynamic Rows -->
-              </tbody>
-            </table>
+        <!-- ================= FASE 2: TELAS DO ANKI ================= -->
+        <div id="anki-active" class="hidden space-y-4 flex-1 flex flex-col">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span id="anki-counter" class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-300">Cartão 1</span>
+              <span id="anki-type-tag" class="text-xs font-medium text-emerald-400">Revisão</span>
+            </div>
+            <button onclick="resetToDashboard()" class="text-xs text-slate-500 hover:text-rose-400 font-medium transition">✖ Encerrar Sessão</button>
+          </div>
+
+          <div class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col shadow-2xl relative">
+            
+            <div class="my-auto py-8 text-center flex-1 flex flex-col justify-center">
+              <div id="anki-hebrew" class="hebrew-text text-5xl md:text-7xl font-bold text-white tracking-wide drop-shadow-md pb-6"></div>
+              
+              <!-- Verso oculto (Tradução e Botões de Avaliação) -->
+              <div id="anki-back" class="hidden space-y-6 pt-6 border-t border-slate-800 transition-opacity">
+                <div>
+                  <div id="anki-translit" class="text-sm font-mono text-amber-400 mb-2"></div>
+                  <div id="anki-translation" class="text-xl md:text-2xl font-bold text-emerald-400"></div>
+                </div>
+                
+                <div class="pt-6 space-y-3">
+                  <p class="text-[11px] text-slate-500 uppercase font-semibold tracking-wider">Como foi sua lembrança?</p>
+                  <div class="grid grid-cols-3 gap-3 max-w-lg mx-auto">
+                    <button onclick="answerAnki('hard')" class="py-3 md:py-4 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/50 text-rose-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner">
+                      <span class="text-xl">🔴</span>
+                      <span class="text-xs">Errei</span>
+                      <span id="anki-next-hard" class="text-[10px] text-rose-500/70 font-mono mt-1">&lt; 1 min</span>
+                    </button>
+                    <button onclick="answerAnki('good')" class="py-3 md:py-4 bg-amber-950/40 hover:bg-amber-900/60 border border-amber-800/50 text-amber-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner">
+                      <span class="text-xl">🟡</span>
+                      <span class="text-xs">Lembrei</span>
+                      <span id="anki-next-good" class="text-[10px] text-amber-500/70 font-mono mt-1">1 dia</span>
+                    </button>
+                    <button onclick="answerAnki('easy')" class="py-3 md:py-4 bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-800/50 text-emerald-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner">
+                      <span class="text-xl">🟢</span>
+                      <span class="text-xs">Fácil</span>
+                      <span id="anki-next-easy" class="text-[10px] text-emerald-500/70 font-mono mt-1">4 dias</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botão Mostrar Resposta -->
+            <div id="anki-reveal-container" class="pt-6 border-t border-slate-800">
+              <button onclick="revealAnki()" class="w-full py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm rounded-xl transition shadow-md flex items-center justify-center gap-2">
+                Mostrar Tradução 👁️
+              </button>
+            </div>
           </div>
         </div>
+
+        <!-- Tela de Resultados do Anki -->
+        <div id="anki-results" class="hidden space-y-6 pb-12">
+          <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-6 shadow-2xl">
+            <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold shadow-inner">🎉</div>
+            <div>
+              <h2 class="text-2xl font-bold text-white">Revisão Concluída!</h2>
+              <p class="text-slate-400 text-sm mt-2">Você revisou seus flashcards e fortaleceu sua memória de longo prazo.</p>
+            </div>
+            
+            <div class="flex justify-center gap-6 py-4 max-w-md mx-auto">
+              <div class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4">
+                <div class="text-rose-400 text-2xl font-bold mb-1" id="anki-res-hard">0</div>
+                <div class="text-[10px] text-slate-500 uppercase font-semibold">Erros</div>
+              </div>
+              <div class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4">
+                <div class="text-amber-400 text-2xl font-bold mb-1" id="anki-res-good">0</div>
+                <div class="text-[10px] text-slate-500 uppercase font-semibold">Lembrados</div>
+              </div>
+              <div class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4">
+                <div class="text-emerald-400 text-2xl font-bold mb-1" id="anki-res-easy">0</div>
+                <div class="text-[10px] text-slate-500 uppercase font-semibold">Fáceis</div>
+              </div>
+            </div>
+
+            <button onclick="resetToDashboard()" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md">Voltar à Central de Avaliações</button>
+          </div>
+        </div>
+
       </section>
 
       <!-- ================= TAB 4: CHAPTER MANAGER ================= -->
@@ -339,7 +442,8 @@
         streak: 0,
         totalAnswered: 0,
         correctCount: 0,
-        distractorCache: { words: [], sentences: [] }
+        distractorCache: { words: [], sentences: [] },
+	srs: {}
       };
 
       const DOM = {}; // Inicializado no DOMContentLoaded
@@ -1313,6 +1417,7 @@
         };
 
         loadChapters();
+	loadSRS();
         buildDistractorCache();
         setupChapterDropdown();
         onChapterChange();
@@ -1353,6 +1458,12 @@
 
       /* ================= UI NAVIGATION ================= */
       function switchTab(tabName) {
+        // SEGURANÇA: Se sair da aba de avaliação, mata o timer e reseta o dashboard
+        if (tabName !== "assessment") {
+          if (assessTimerInterval) clearInterval(assessTimerInterval);
+          resetToDashboard(); 
+        }
+
         const tabs = ["practice", "vocab", "manage", "assessment"];
         tabs.forEach(t => {
           const section = document.getElementById(`tab-${t}`);
@@ -1385,6 +1496,7 @@
         if (found) {
           AppState.currentChapter = found;
           AppState.currentQuestionIndex = 0;
+          lastRenderedVocabChapter = null; // Força a recriação do dicionário na próxima vez
           resetStats();
           renderCurrentQuestion();
         }
@@ -1543,6 +1655,7 @@
           detail.textContent = `Tradução esperada: "${AppState.currentQuestion.translations.join('" / "')}"`;
         } else {
           AppState.streak = 0;
+	        recordSRSError(AppState.currentQuestion.hebrew);
           DOM.banner.classList.add("bg-rose-950/80", "border-rose-500/50");
           icon.textContent = "❌";
           title.textContent = "Incorreto";
@@ -1570,6 +1683,27 @@
         document.getElementById("stat-score").textContent = AppState.score;
         const accuracy = AppState.totalAnswered > 0 ? Math.round((AppState.correctCount / AppState.totalAnswered) * 100) : 100;
         document.getElementById("stat-accuracy").textContent = `${accuracy}%`;
+      }
+
+      /* ================= SISTEMA DE MEMORIZAÇÃO (SRS) ================= */
+      function loadSRS() {
+        const stored = localStorage.getItem("gamida_srs_history");
+        if (stored) {
+          try { AppState.srs = JSON.parse(stored); } catch(e) { AppState.srs = {}; }
+        }
+      }
+
+      function saveSRS() {
+        localStorage.setItem("gamida_srs_history", JSON.stringify(AppState.srs));
+      }
+
+      function recordSRSError(hebrewString) {
+        if (!AppState.srs[hebrewString]) {
+           AppState.srs[hebrewString] = { interval: 0, ef: 2.5, nextReview: 0, fails: 0 };
+        }
+        AppState.srs[hebrewString].fails = (AppState.srs[hebrewString].fails || 0) + 1;
+        AppState.srs[hebrewString].nextReview = Date.now(); // Joga para ser revisado AGORA
+        saveSRS();
       }
 
       /* ================= DATA MANAGEMENT ================= */
@@ -1623,110 +1757,223 @@
         }
       }
 
+      let lastRenderedVocabChapter = null; // Memória de otimização
+
       function renderVocabTable() {
         const tbody = document.getElementById("vocab-table-body");
+        if (!tbody || !AppState.currentChapter) return;
+        
+        // Evita destruir e recriar o DOM se for o mesmo capítulo!
+        if (lastRenderedVocabChapter === AppState.currentChapter.id) return;
+        
         tbody.innerHTML = "";
-        if (!AppState.currentChapter) return;
-        const allItems = [...(AppState.currentChapter.items || []), ...(AppState.currentChapter.sentences || [])];
+
+        const allItems = [
+          ...(AppState.currentChapter.items || []),
+          ...(AppState.currentChapter.sentences || [])
+        ];
 
         allItems.forEach(item => {
           const tr = document.createElement("tr");
           tr.className = "hover:bg-slate-800/40 transition";
+          
           const isSentence = item.type === "Frase" || item.type === "Expressão";
+          const hebrewText = item.hebrew || "";
+          const translitText = item.transliteration || "-";
+          const typeText = item.type || "Geral";
+          
+          let translationsText = Array.isArray(item.translations) ? item.translations.join(" / ") : (item.translations || "Tradução ausente");
+
           tr.innerHTML = `
-            <td class="px-6 py-4 hebrew-text text-lg md:text-xl font-bold text-white">${item.hebrew}</td>
-            <td class="px-6 py-4 font-mono text-xs text-amber-400">${item.transliteration || "-"}</td>
-            <td class="px-6 py-4 font-medium text-slate-200">${item.translations.join(" / ")}</td>
-            <td class="px-6 py-4"><span class="px-2.5 py-1 rounded-full ${isSentence ? "bg-indigo-900/60 border-indigo-700 text-indigo-300" : "bg-slate-800 border-slate-700 text-slate-400"} border text-[10px] font-mono">${item.type || "Geral"}</span></td>
+            <td class="px-6 py-4 hebrew-text text-lg md:text-xl font-bold text-white">${hebrewText}</td>
+            <td class="px-6 py-4 font-mono text-xs text-amber-400">${translitText}</td>
+            <td class="px-6 py-4 font-medium text-slate-200">${translationsText}</td>
+            <td class="px-6 py-4">
+              <span class="px-2.5 py-1 rounded-full ${isSentence ? "bg-indigo-900/60 border-indigo-700 text-indigo-300" : "bg-slate-800 border-slate-700 text-slate-400"} border text-[10px] font-mono">
+                ${typeText}
+              </span>
+            </td>
           `;
           tbody.appendChild(tr);
         });
+
+        // Salva o ID do capítulo atual para não renderizar de novo à toa
+        lastRenderedVocabChapter = AppState.currentChapter.id;
       }
 
       function filterVocabTable() {
-        const query = normalizeText(document.getElementById("vocab-search").value);
+        const searchInput = document.getElementById("vocab-search");
+        if (!searchInput) return;
+        
+        const query = normalizeText(searchInput.value);
         document.querySelectorAll("#vocab-table-body tr").forEach(tr => {
-          tr.style.display = normalizeText(tr.textContent).includes(query) ? "" : "none";
+          const text = normalizeText(tr.textContent);
+          tr.style.display = text.includes(query) ? "" : "none";
         });
       }
 
-      /* ================= CUMULATIVE ASSESSMENT LOGIC ================= */
+      /* ================= CUMULATIVE ASSESSMENT LOGIC (Fase 1 - Dashboard & Config) ================= */
+      
+      const SimConfig = { amount: 25, time: 0, focus: 'mixed' }; // Configuração padrão
       let assessQuestions = [];
       let assessIndex = 0;
       let assessAnswersMap = {};
       let assessTimerInterval = null;
-      let assessSecondsLeft = 3600;
+      let assessTimeCount = 0; // Se config.time for 0 (livre), conta pra cima. Se for >0, conta pra baixo.
 
-      function startAssessment() {
+      function resetToDashboard() {
+        if (assessTimerInterval) clearInterval(assessTimerInterval);
+        
+        // Garante que todas as sub-telas de teste fiquem ocultas
+        document.getElementById("assess-config").classList.add("hidden");
+        document.getElementById("assessment-active").classList.add("hidden");
+        document.getElementById("assessment-results").classList.add("hidden");
+        document.getElementById("anki-active").classList.add("hidden");
+        document.getElementById("anki-results").classList.add("hidden");
+        
+        // Mostra apenas o menu principal da avaliação
+        document.getElementById("assess-dashboard").classList.remove("hidden");
+      }
+
+      function openSimuladoConfig() {
+        document.getElementById("assess-dashboard").classList.add("hidden");
+        document.getElementById("assess-config").classList.remove("hidden");
+      }
+
+      function closeSimuladoConfig() {
+        resetToDashboard();
+      }
+
+      function setSimConfig(type, value) {
+        SimConfig[type] = value;
+        // Atualiza a UI dos botões de config
+        document.querySelectorAll(`.cfg-${type}`).forEach(btn => {
+          if (btn.id === `cfg-${type}-${value}`) {
+            btn.classList.replace('bg-slate-800', 'bg-brand-600');
+            btn.classList.replace('text-slate-300', 'text-white');
+            btn.classList.remove('hover:bg-slate-700');
+          } else {
+            btn.classList.replace('bg-brand-600', 'bg-slate-800');
+            btn.classList.replace('text-white', 'text-slate-300');
+            btn.classList.add('hover:bg-slate-700');
+          }
+        });
+      }
+
+      function startSimulado() {
         const activeChapterId = DOM.chapSelect ? DOM.chapSelect.value : AppState.chapters[0].id;
         const activeIdx = AppState.chapters.findIndex(c => c.id === activeChapterId);
         const cumulativeChapters = AppState.chapters.slice(0, activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length);
 
-        let currentChapterWords = [], otherChaptersWords = [];
-        let currentChapterSentences = [], otherChaptersSentences = [];
+        let currentChapWords = [], otherChapWords = [];
+        let currentChapSentences = [], otherChapSentences = [];
 
         cumulativeChapters.forEach(chap => {
           const isCurrent = chap.id === activeChapterId;
           (chap.items || []).forEach(item => {
             const entry = { ...item, chapterId: chap.id, chapterTitle: chap.title, kind: "word" };
-            if (isCurrent) currentChapterWords.push(entry); else otherChaptersWords.push(entry);
+            if (isCurrent) currentChapWords.push(entry); else otherChapWords.push(entry);
           });
           (chap.sentences || []).forEach(sent => {
             const entry = { ...sent, chapterId: chap.id, chapterTitle: chap.title, kind: "sentence" };
-            if (isCurrent) currentChapterSentences.push(entry); else otherChaptersSentences.push(entry);
+            if (isCurrent) currentChapSentences.push(entry); else otherChapSentences.push(entry);
           });
         });
 
-        currentChapterWords = Array.from(new Map(currentChapterWords.map(w => [w.hebrew, w])).values());
-        otherChaptersWords = Array.from(new Map(otherChaptersWords.map(w => [w.hebrew, w])).values());
-        currentChapterSentences = Array.from(new Map(currentChapterSentences.map(s => [s.hebrew, s])).values());
-        otherChaptersSentences = Array.from(new Map(otherChaptersSentences.map(s => [s.hebrew, s])).values());
+        // Dedup
+        currentChapWords = Array.from(new Map(currentChapWords.map(w => [w.hebrew, w])).values());
+        otherChapWords = Array.from(new Map(otherChapWords.map(w => [w.hebrew, w])).values());
+        currentChapSentences = Array.from(new Map(currentChapSentences.map(s => [s.hebrew, s])).values());
+        otherChapSentences = Array.from(new Map(otherChapSentences.map(s => [s.hebrew, s])).values());
 
-        // 1. SELEÇÃO DE PALAVRAS (Meta: 20, mínimo: 18)
-        const totalWords = currentChapterWords.length + otherChaptersWords.length;
-        const targetWordCount = Math.min(20, Math.max(18, totalWords));
-        
-        let selectedWords = [];
-        let targetCurrentWords = Math.min(Math.round(targetWordCount * 0.65), currentChapterWords.length);
-        selectedWords.push(...[...currentChapterWords].sort(() => 0.5 - Math.random()).slice(0, targetCurrentWords));
-        selectedWords.push(...[...otherChaptersWords].sort(() => 0.5 - Math.random()).slice(0, targetWordCount - selectedWords.length));
-        
-        if (selectedWords.length < targetWordCount) {
-          let extraPool = [...currentChapterWords, ...otherChaptersWords].filter(w => !selectedWords.some(s => s.hebrew === w.hebrew)).sort(() => 0.5 - Math.random());
-          selectedWords.push(...extraPool.slice(0, targetWordCount - selectedWords.length));
+        const allWords = [...currentChapWords, ...otherChapWords];
+        const allSentences = [...currentChapSentences, ...otherChapSentences];
+
+        // Lógica de Foco
+        let targetWords = 0;
+        let targetSentences = 0;
+        let totalAmount = SimConfig.amount === 'max' ? (allWords.length + allSentences.length) : SimConfig.amount;
+
+        if (SimConfig.focus === 'words') {
+          targetWords = Math.min(totalAmount, allWords.length);
+        } else if (SimConfig.focus === 'sentences') {
+          targetSentences = Math.min(totalAmount, allSentences.length);
+        } else {
+          // Misto: Tenta 80% palavras, 20% frases
+          targetSentences = Math.min(Math.max(1, Math.round(totalAmount * 0.2)), allSentences.length);
+          targetWords = Math.min(totalAmount - targetSentences, allWords.length);
+          // Se faltar palavra, compensa com frase se possível
+          if (targetWords + targetSentences < totalAmount && allSentences.length > targetSentences) {
+            targetSentences = Math.min(totalAmount - targetWords, allSentences.length);
+          }
         }
 
-        // 2. SELEÇÃO DE FRASES (Meta: 5)
-        const targetSentenceCount = Math.min(5, currentChapterSentences.length + otherChaptersSentences.length);
-        let selectedSentences = [];
-        let targetCurrentSentences = Math.min(Math.round(targetSentenceCount * 0.6), currentChapterSentences.length);
-        selectedSentences.push(...[...currentChapterSentences].sort(() => 0.5 - Math.random()).slice(0, targetCurrentSentences));
-        selectedSentences.push(...[...otherChaptersSentences].sort(() => 0.5 - Math.random()).slice(0, targetSentenceCount - selectedSentences.length));
+        // Função auxiliar para pegar itens (priorizando 50% do cap atual)
+        function pickItems(targetCount, currentPool, otherPool) {
+          let selected = [];
+          let targetCurrent = Math.min(Math.round(targetCount * 0.5), currentPool.length);
+          let shuffledCurrent = [...currentPool].sort(() => 0.5 - Math.random());
+          selected.push(...shuffledCurrent.slice(0, targetCurrent));
 
-        assessQuestions = [...selectedWords, ...selectedSentences].sort(() => 0.5 - Math.random());
+          let remaining = targetCount - selected.length;
+          let shuffledOther = [...otherPool].sort(() => 0.5 - Math.random());
+          selected.push(...shuffledOther.slice(0, remaining));
+
+          if (selected.length < targetCount) {
+             let combined = [...currentPool, ...otherPool].filter(i => !selected.some(s => s.hebrew === i.hebrew));
+             combined = combined.sort(() => 0.5 - Math.random());
+             selected.push(...combined.slice(0, targetCount - selected.length));
+          }
+          return selected;
+        }
+
+        let finalPool = [
+          ...pickItems(targetWords, currentChapWords, otherChapWords),
+          ...pickItems(targetSentences, currentChapSentences, otherChapSentences)
+        ];
+
+        assessQuestions = finalPool.sort(() => 0.5 - Math.random());
         assessIndex = 0;
         assessAnswersMap = {};
 
-        document.getElementById("assessment-intro").classList.add("hidden");
+        if (assessQuestions.length === 0) {
+          alert("Não há conteúdo suficiente neste capítulo para gerar o simulado.");
+          return;
+        }
+
+        document.getElementById("assess-config").classList.add("hidden");
         document.getElementById("assessment-active").classList.remove("hidden");
 
-        assessSecondsLeft = 3600;
+        // Timer Logic
+        assessTimeCount = SimConfig.time > 0 ? (SimConfig.time * 60) : 0; 
+        document.getElementById("assessment-timer-icon").textContent = SimConfig.time > 0 ? "⏳" : "⏱️";
+        
         startAssessmentTimer();
         renderAssessmentQuestion();
-        renderAssessmentTracker();
+        initAssessmentTracker();
       }
 
       function startAssessmentTimer() {
         if (assessTimerInterval) clearInterval(assessTimerInterval);
+        
+        const isCountdown = SimConfig.time > 0;
+
         assessTimerInterval = setInterval(() => {
-          assessSecondsLeft--;
-          const mins = Math.floor(assessSecondsLeft / 60);
-          const secs = assessSecondsLeft % 60;
-          document.getElementById("assessment-timer").textContent = `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
-          if (assessSecondsLeft <= 0) {
-            clearInterval(assessTimerInterval);
-            finishAssessment();
+          if (isCountdown) {
+            assessTimeCount--;
+            if (assessTimeCount <= 0) {
+              clearInterval(assessTimerInterval);
+              alert("O tempo limite do simulado acabou!");
+              finishAssessment();
+              return;
+            }
+          } else {
+            assessTimeCount++; // Cronômetro progressivo se tempo livre
           }
+
+          const mins = Math.floor(assessTimeCount / 60);
+          const secs = assessTimeCount % 60;
+          document.getElementById("assessment-timer").textContent = `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
         }, 1000);
       }
 
@@ -1741,7 +1988,7 @@
       function renderAssessmentQuestion() {
         const q = assessQuestions[assessIndex];
         document.getElementById("assessment-counter").textContent = `Questão ${assessIndex + 1} de ${assessQuestions.length}`;
-        document.getElementById("assessment-type-tag").textContent = q.kind === "word" ? "Palavra de Vocabulário" : "Tradução de Frase";
+        document.getElementById("assessment-type-tag").textContent = q.kind === "word" ? "Palavra" : "Frase";
         document.getElementById("assess-hebrew").textContent = q.hebrew;
 
         const input = document.getElementById("assess-user-input");
@@ -1755,7 +2002,7 @@
           actionContainer.innerHTML = `<button onclick="navigateAssessment(1)" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm rounded-xl transition shadow-lg shadow-brand-600/30">Próxima ➔</button>`;
         }
 
-        renderAssessmentTracker();
+        updateAllTrackerPills();
         setTimeout(() => input.focus(), 50);
       }
 
@@ -1771,18 +2018,6 @@
         saveCurrentInputDraft();
         assessIndex = idx;
         renderAssessmentQuestion();
-      }
-
-      function renderAssessmentTracker() {
-        const trackerEl = document.getElementById("assessment-tracker");
-        trackerEl.innerHTML = "";
-        assessQuestions.forEach((_, idx) => {
-          const pill = document.createElement("button");
-          pill.textContent = idx + 1;
-          pill.onclick = () => jumpToAssessmentQuestion(idx);
-          trackerEl.appendChild(pill);
-        });
-        updateAllTrackerPills();
       }
 
       function updateAllTrackerPills() {
@@ -1814,6 +2049,7 @@
         if (assessActive && !assessActive.classList.contains("hidden") && e.key === "Enter") {
           const input = document.getElementById("assess-user-input");
           if (document.activeElement === input) {
+            e.preventDefault(); // Impede que o Enter tente submeter a página ou pular linha indevidamente
             if (assessIndex === assessQuestions.length - 1) confirmFinishAssessmentPrompt();
             else navigateAssessment(1);
           }
@@ -1832,7 +2068,13 @@
 
         const totalQ = assessQuestions.length;
         const correctQ = evaluated.filter(a => a.isCorrect).length;
-        const timeSecs = 3600 - assessSecondsLeft;
+        
+        let timeSecs = 0;
+        if (SimConfig.time > 0) {
+           timeSecs = (SimConfig.time * 60) - assessTimeCount;
+        } else {
+           timeSecs = assessTimeCount; // Tempo livre conta progressivo
+        }
 
         document.getElementById("res-grade").textContent = `${totalQ > 0 ? Math.round((correctQ / totalQ) * 100) : 0}%`;
         document.getElementById("res-correct").textContent = `${correctQ} / ${totalQ}`;
@@ -1844,7 +2086,10 @@
           const cid = ans.question.chapterId;
           if (!chapterErrors[cid]) chapterErrors[cid] = { title: ans.question.chapterTitle, total: 0, errors: 0 };
           chapterErrors[cid].total++;
-          if (!ans.isCorrect) chapterErrors[cid].errors++;
+          if (!ans.isCorrect){
+            chapterErrors[cid].errors++;
+            recordSRSError(ans.question.hebrew);
+          }
         });
 
         const diagList = document.getElementById("diagnostic-list");
@@ -1887,10 +2132,144 @@
         });
       }
 
-      function resetAssessment() {
-        document.getElementById("assessment-intro").classList.remove("hidden");
-        document.getElementById("assessment-active").classList.add("hidden");
-        document.getElementById("assessment-results").classList.add("hidden");
+      /* ================= FASE 2: LÓGICA DO ANKI (FLASHCARDS SRS) ================= */
+      
+      let ankiQueue = [];
+      let ankiCurrentCard = null;
+      let ankiStats = { hard: 0, good: 0, easy: 0 };
+      let ankiTotalCards = 0;
+
+      function startAnki() {
+        const now = Date.now();
+        let dueCards = [];
+        let newCards = [];
+        
+        const activeChapterId = DOM.chapSelect ? DOM.chapSelect.value : AppState.chapters[0].id;
+
+        AppState.chapters.forEach(chap => {
+           const isCurrent = (chap.id === activeChapterId);
+           const processItem = (it, kind) => {
+              const entry = { ...it, chapterId: chap.id, chapterTitle: chap.title, kind };
+              const record = AppState.srs[it.hebrew];
+              
+              if (record && record.nextReview <= now) {
+                 dueCards.push(entry); // Pendências baseadas em erros passados
+              } else if (!record && isCurrent) {
+                 newCards.push(entry); // Apresentar conteúdo virgem do capítulo atual
+              }
+           };
+           
+           (chap.items || []).forEach(i => processItem(i, "word"));
+           (chap.sentences || []).forEach(s => processItem(s, "sentence"));
+        });
+        
+        // Remove duplicatas
+        dueCards = Array.from(new Map(dueCards.map(w => [w.hebrew, w])).values());
+        newCards = Array.from(new Map(newCards.map(w => [w.hebrew, w])).values());
+
+        // Embaralha
+        dueCards.sort(() => 0.5 - Math.random());
+        newCards.sort(() => 0.5 - Math.random());
+        
+        // Forma o baralho (ex: 20 antigas pendentes + 10 novas do cap atual)
+        ankiQueue = [...dueCards.slice(0, 20), ...newCards.slice(0, 10)];
+        
+        if (ankiQueue.length === 0) {
+           alert("🎉 Você não tem revisões pendentes nem palavras novas neste capítulo no momento. Excelente trabalho!");
+           return;
+        }
+        
+        ankiTotalCards = ankiQueue.length;
+        ankiStats = { hard: 0, good: 0, easy: 0 };
+        
+        document.getElementById("assess-dashboard").classList.add("hidden");
+        document.getElementById("anki-active").classList.remove("hidden");
+        
+        renderAnkiCard();
+      }
+
+      function renderAnkiCard() {
+        if (ankiQueue.length === 0) {
+          finishAnki();
+          return;
+        }
+        
+        ankiCurrentCard = ankiQueue[0];
+        
+        document.getElementById("anki-counter").textContent = `Cartão ${ankiTotalCards - ankiQueue.length + 1} de ${ankiTotalCards}`;
+        document.getElementById("anki-type-tag").textContent = ankiCurrentCard.kind === 'word' ? 'Palavra' : 'Frase';
+        
+        document.getElementById("anki-hebrew").textContent = ankiCurrentCard.hebrew;
+        document.getElementById("anki-translit").textContent = ankiCurrentCard.transliteration ? `(${ankiCurrentCard.transliteration})` : "";
+        document.getElementById("anki-translation").textContent = ankiCurrentCard.translations.join(" / ");
+        
+        // Calcula visualmente os próximos intervalos
+        let record = AppState.srs[ankiCurrentCard.hebrew] || { interval: 0, ef: 2.5, nextReview: 0 };
+        const goodInt = record.interval === 0 ? 1 : Math.round(record.interval * record.ef);
+        const easyInt = record.interval === 0 ? 4 : Math.round(record.interval * (record.ef + 0.15) * 1.3);
+        
+        document.getElementById("anki-next-good").textContent = goodInt + (goodInt === 1 ? " dia" : " dias");
+        document.getElementById("anki-next-easy").textContent = easyInt + (easyInt === 1 ? " dia" : " dias");
+
+        // Oculta a resposta inicialmente
+        document.getElementById("anki-back").classList.add("hidden");
+        document.getElementById("anki-reveal-container").classList.remove("hidden");
+      }
+
+      function revealAnki() {
+        document.getElementById("anki-reveal-container").classList.add("hidden");
+        document.getElementById("anki-back").classList.remove("hidden");
+      }
+
+      function answerAnki(grade) {
+        ankiStats[grade]++;
+        
+        let record = AppState.srs[ankiCurrentCard.hebrew] || { interval: 0, ef: 2.5, nextReview: 0, fails: 0 };
+        
+        if (grade === 'hard') {
+            record.interval = 0;
+            record.ef = Math.max(1.3, record.ef - 0.2);
+            record.nextReview = Date.now() + (60 * 1000); 
+            // Penalidade do Erro: A carta volta pro fim da fila para ser revisada nesta mesma sessão!
+            ankiQueue.push(ankiCurrentCard);
+            ankiTotalCards++;
+        } else if (grade === 'good') {
+            record.interval = record.interval === 0 ? 1 : Math.round(record.interval * record.ef);
+            record.nextReview = Date.now() + (record.interval * 24 * 60 * 60 * 1000);
+        } else if (grade === 'easy') {
+            record.ef += 0.15;
+            record.interval = record.interval === 0 ? 4 : Math.round(record.interval * record.ef * 1.3);
+            record.nextReview = Date.now() + (record.interval * 24 * 60 * 60 * 1000);
+        }
+        
+        AppState.srs[ankiCurrentCard.hebrew] = record;
+        saveSRS();
+        
+        // Remove a carta da frente e passa pra próxima
+        ankiQueue.shift();
+        renderAnkiCard();
+      }
+
+      function finishAnki() {
+        document.getElementById("anki-active").classList.add("hidden");
+        document.getElementById("anki-results").classList.remove("hidden");
+        
+        document.getElementById("anki-res-hard").textContent = ankiStats.hard;
+        document.getElementById("anki-res-good").textContent = ankiStats.good;
+        document.getElementById("anki-res-easy").textContent = ankiStats.easy;
+      }
+
+      function initAssessmentTracker() {
+        const trackerEl = document.getElementById("assessment-tracker");
+        trackerEl.innerHTML = ""; // Limpa só no começo da prova
+        
+        assessQuestions.forEach((_, idx) => {
+          const pill = document.createElement("button");
+          pill.textContent = idx + 1;
+          pill.onclick = () => jumpToAssessmentQuestion(idx);
+          trackerEl.appendChild(pill);
+        });
+        updateAllTrackerPills();
       }
     </script>
   </body>
