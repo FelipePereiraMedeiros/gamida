@@ -1192,7 +1192,7 @@
     <!-- Application Logic JavaScript -->
     <script>
       /* ================= APP STATE & CONFIG ================= */
-      const APP_VERSION = "1.9";
+      const APP_VERSION = "2.0";
       const AppState = {
         language: localStorage.getItem("gamida_language") || "hebrew", // 'hebrew' ou 'greek'
         chapters: [],
@@ -8136,11 +8136,12 @@
                  allAnswers.push(cellText);
                  // Altura mínima reduzida para 40px e texto levemente menor
                  td.innerHTML = `
-                  <div class="drop-zone w-full min-h-[40px] rounded-lg bg-slate-900/30 border-2 border-dashed border-slate-700 flex items-center justify-center transition-all"
+                  <div class="drop-zone w-full min-h-[40px] rounded-lg bg-slate-900/30 border-2 border-dashed border-slate-700 flex items-center justify-center transition-all cursor-pointer"
                        data-answer="${cellText}"
                        ondragover="onDragOver(event)"
                        ondragleave="onDragLeave(event)"
-                       ondrop="onDropToZone(event)">
+                       ondrop="onDropToZone(event)"
+                       onclick="onZoneClick(event)">
                   </div>`;
               }
               tr.appendChild(td);
@@ -8181,6 +8182,7 @@
            chip.textContent = ans;
            chip.ondragstart = onDragStart;
            chip.ondragend = onDragEnd;
+           chip.onclick = onChipClick;
            deck.appendChild(chip);
         });
       }
@@ -8302,11 +8304,12 @@
                 <!-- O Rótulo agora é um tooltip oculto (opacity-0) que aparece no hover (group-hover:opacity-100) -->
                 <span class="absolute bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 text-[11px] text-slate-200 font-bold bg-slate-800/95 px-2.5 py-1 rounded-md shadow-lg whitespace-nowrap pointer-events-none border border-slate-600">${el.spatial_relation}</span>
                 
-                <div class="drop-zone w-[72px] h-[38px] rounded-lg bg-slate-950/80 border-2 border-dashed border-slate-600 flex items-center justify-center transition-all hover:border-brand-500/50"
+                <div class="drop-zone w-[72px] h-[38px] rounded-lg bg-slate-950/80 border-2 border-dashed border-slate-600 flex items-center justify-center transition-all hover:border-brand-500/50 cursor-pointer"
                      data-answer="${el.term}"
                      ondragover="onDragOver(event)"
                      ondragleave="onDragLeave(event)"
-                     ondrop="onDropToZone(event)">
+                     ondrop="onDropToZone(event)"
+                     onclick="onZoneClick(event)">
                 </div>
              </div>
            `;
@@ -8345,6 +8348,7 @@
            chip.textContent = ans;
            chip.ondragstart = onDragStart;
            chip.ondragend = onDragEnd;
+           chip.onclick = onChipClick;
            deck.appendChild(chip);
         });
       }
@@ -8400,6 +8404,60 @@
         
         if (draggedElement) {
           deck.appendChild(draggedElement);
+        }
+      }
+
+      /* --- EVENTOS DE CLIQUE / TOQUE (SUPORTE MOBILE) --- */
+      let selectedChip = null;
+
+      function onChipClick(e) {
+        e.stopPropagation(); // Evita que o clique vaze para a zona de fundo
+        const chip = e.currentTarget;
+        
+        // Se a ficha já está encaixada na tabela/mapa, um toque a devolve pro deck
+        if (chip.parentElement.classList.contains('drop-zone')) {
+          const zone = chip.parentElement;
+          document.getElementById("paradigm-deck").appendChild(chip);
+          
+          // Restaura o visual de espaço vazio da zona
+          zone.classList.remove("border-solid", "border-emerald-500", "bg-emerald-900/20", "border-rose-500", "bg-rose-900/20", "border-slate-600");
+          zone.classList.add("border-dashed", "border-slate-700");
+          
+          if (selectedChip === chip) clearChipSelection();
+          return;
+        }
+
+        // Se a ficha está no deck: seleciona ou desmarca
+        if (selectedChip === chip) {
+          clearChipSelection();
+        } else {
+          clearChipSelection();
+          selectedChip = chip;
+          chip.classList.add("ring-4", "ring-brand-500", "scale-110", "z-50");
+        }
+      }
+
+      function clearChipSelection() {
+        if (selectedChip) {
+          selectedChip.classList.remove("ring-4", "ring-brand-500", "scale-110", "z-50");
+          selectedChip = null;
+        }
+      }
+
+      function onZoneClick(e) {
+        e.preventDefault();
+        const zone = e.currentTarget;
+        
+        // Se o usuário tocou na zona e tem uma ficha selecionada aguardando
+        if (selectedChip) {
+          // Se a zona já estiver ocupada, devolve a ficha antiga pro deck
+          if (zone.children.length > 0) {
+            document.getElementById("paradigm-deck").appendChild(zone.children[0]);
+          }
+          zone.appendChild(selectedChip);
+          zone.classList.remove("border-dashed", "border-rose-500", "bg-rose-900/20", "border-emerald-500", "bg-emerald-900/20");
+          zone.classList.add("border-solid", "border-slate-600");
+          clearChipSelection();
         }
       }
 
