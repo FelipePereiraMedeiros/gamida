@@ -145,6 +145,7 @@
           >
             📝 Avaliação
           </button>
+          <button type="button" id="nav-btn-paradigms" onclick="switchTab('paradigms')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">📊 Paradigmas</button>
           <button
             type="button"
             id="nav-btn-vocab"
@@ -1038,6 +1039,43 @@
         </div>
       </section>
 
+      <!-- ================= TAB 5: PARADIGMAS & ESTRUTURAS ================= -->
+      <section id="tab-paradigms" class="hidden space-y-6 flex-1 flex-col">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
+          <div class="flex-1 min-w-[240px]">
+            <label class="block text-xs font-medium text-slate-400 mb-1">Selecione a Lição:</label>
+            <select id="paradigm-chapter-select" onchange="onParadigmChapterChange()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"></select>
+          </div>
+          <div class="flex-1 min-w-[240px]">
+            <label class="block text-xs font-medium text-slate-400 mb-1">Escolha o Esquema / Tabela:</label>
+            <select id="paradigm-select" onchange="renderParadigmSkeleton()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500">
+              <option value="">Selecione uma lição com paradigmas...</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col shadow-2xl relative min-h-[450px]">
+          
+          <!-- Área Superior: Cabeçalho do Paradigma Ativo -->
+          <div id="paradigm-header" class="hidden mb-6 pb-4 border-b border-slate-800 text-center">
+             <h3 id="paradigm-title" class="text-xl font-bold text-white"></h3>
+             <p class="text-xs text-slate-400 mt-1">Arraste as fichas e solte nos espaços vazios para completar a estrutura.</p>
+          </div>
+
+          <!-- Área Central: A Mesa (Onde a Tabela ou Diagrama será desenhado) -->
+          <div id="paradigm-board" class="flex-1 flex flex-col items-center justify-center text-center space-y-6 overflow-x-auto">
+             <div class="w-16 h-16 bg-brand-500/10 text-brand-400 rounded-2xl flex items-center justify-center text-3xl mb-2">🧩</div>
+             <h3 class="text-xl font-bold text-white">Laboratório Estrutural</h3>
+             <p class="text-sm text-slate-400 max-w-md mx-auto">Neste modo você treina o reconhecimento visual das terminações e regras. Selecione um paradigma acima para iniciar.</p>
+          </div>
+          
+          <!-- Área Inferior: O Deck de Cartas (Fichas para Drag and Drop) -->
+          <div id="paradigm-deck" class="hidden sticky bottom-4 z-20 mt-8 p-4 bg-slate-900/95 backdrop-blur-md border border-slate-700 shadow-[0_-15px_30px_-5px_rgba(0,0,0,0.5)] rounded-2xl flex flex-wrap items-center justify-center gap-2.5 max-h-48 overflow-y-auto">
+             <!-- As fichas dinâmicas entrarão aqui na Fase 4 -->
+          </div>
+          
+        </div>
+      </section>
       <!-- ================= TAB 3: VOCABULARY DICTIONARY ================= -->
       <section id="tab-vocab" class="hidden space-y-6">
         <div
@@ -1218,6 +1256,48 @@
             { "term": "κἀγὼ δίδωμι αὐτοῖς ζωὴν αἰώνιον,", "transliteration": "kagō didōmi autois zōēn aiōnion,", "translations": ["e eu lhes dou vida eterna"], "type": "Frase" },
             { "term": "καὶ οὐ μὴ ἀπόλωνται εἰς τὸν αἰῶνα", "transliteration": "kai ou mē apolōntai eis ton aiōna", "translations": ["e elas jamais perecerão"], "type": "Frase" },
             { "term": "καὶ οὐχ ἁρπάσει τις αὐτὰ ἐκ τῆς χειρός μου.", "transliteration": "kai ouch harpasei tis auta ek tēs cheiros mou.", "translations": ["e ninguém as arrancará da minha mão"], "type": "Frase" }
+          ],
+          "paradigms": [
+            {
+              "type": "table",
+              "title": "Presente do Indicativo de εἰμί",
+              "headers": ["Pessoa", "Singular", "Plural"],
+              "rows": [
+                ["1ª", "εἰμί", "ἐσμέν"],
+                ["2ª", "εἶ", "ἐστέ"],
+                ["3ª", "ἐστί(ν)", "εἰσί(ν)"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Presente do Indicativo Ativo (λέγω)",
+              "headers": ["Pessoa", "Singular", "Plural"],
+              "rows": [
+                ["1ª", "λέγω", "λέγομεν"],
+                ["2ª", "λέγεις", "λέγετε"],
+                ["3ª", "λέγει", "λέγουσι(ν)"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Presente do Indicativo Médio (λύω)",
+              "headers": ["Pessoa", "Singular", "Plural"],
+              "rows": [
+                ["1ª", "λύομαι", "λυόμεθα"],
+                ["2ª", "λύῃ", "λύεσθε"],
+                ["3ª", "λύεται", "λύονται"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Presente do Indicativo Passivo (λύω)",
+              "headers": ["Pessoa", "Singular", "Plural"],
+              "rows": [
+                ["1ª", "λύομαι", "λυόμεθα"],
+                ["2ª", "λύῃ", "λύεσθε"],
+                ["3ª", "λύεται", "λύονται"]
+              ]
+            }
           ]
         },
         {
@@ -1254,6 +1334,38 @@
             { "term": "Ἐγὼ οὐ κρίνω αὐτόν, οὐ γὰρ ἦλθον ἵνα κρίνω", "transliteration": "Egō ou krinō auton, ou gar ēlthon hina krinō", "translations": ["Eu não o julgo, pois não vim para que eu julgue"], "type": "Frase" },
             { "term": "Μὴ κρίνωμεν ἀλλήλους, ἵνα μὴ κρινώμεθα.", "transliteration": "Mē krinōmen allēlous, hina mē krinōmetha.", "translations": ["Não julguemos uns aos outros, para que não sejamos julgados."], "type": "Frase" },
             { "term": "Πνεύματι περιπατεῖτε, καὶ ἐπιθυμίαν σαρκὸς οὐ μὴ τελέσητε.", "transliteration": "Pneumati peripateite, kai epithymian sarkos ou mē telesēte.", "translations": ["Vivam pelo Espírito, e com certeza vocês não satisfarão os desejos da carne!"], "type": "Frase" }
+          ],
+          "paradigms": [
+            {
+              "type": "table",
+              "title": "Presente do Subjuntivo de εἰμί",
+              "headers": ["Pessoa", "Singular", "Plural"],
+              "rows": [
+                ["1ª", "ὦ", "ὦμεν"],
+                ["2ª", "ᾖς", "ἦτε"],
+                ["3ª", "ᾖ", "ὦσι(ν)"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Presente do Subjuntivo Ativo (λέγω)",
+              "headers": ["Pessoa", "Singular", "Plural"],
+              "rows": [
+                ["1ª", "λέγω", "λέγωμεν"],
+                ["2ª", "λέγῃς", "λέγητε"],
+                ["3ª", "λέγῃ", "λέγωσι(ν)"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Presente do Subjuntivo Médio e Passivo (λύω)",
+              "headers": ["Pessoa", "Singular", "Plural"],
+              "rows": [
+                ["1ª", "λύωμαι", "λυώμεθα"],
+                ["2ª", "λύῃ", "λύησθε"],
+                ["3ª", "λύηται", "λύωνται"]
+              ]
+            }
           ]
         },
         {
@@ -1298,6 +1410,48 @@
             { "term": "Ἐὰν ὁ Κύριος θελήσῃ καὶ ζήσωμεν καὶ ποιήσομεν τοῦτο ἢ ἐκεῖνο.", "transliteration": "Ean ho Kyrios thelēsē kai zēsōmen kai poiēsomen touto ē ekeino.", "translations": ["Se o Senhor quiser e vivermos e faremos isto ou aquilo.", "Se o Senhor quiser viveremos e faremos isto ou aquilo."], "type": "Frase" },
             { "term": "ψυγήσεται ἡ ἀγάπη τῶν πολλῶν", "transliteration": "psygēsetai hē agapē tōn pollōn", "translations": ["esfriará o amor de muitos."], "type": "Frase" },
             { "term": "ὁ δὲ ὑπομείνας εἰς τέλος, οὗτος σωθήσεται", "transliteration": "ho de hypomeinas eis telos, houtos sōthēsetai", "translations": ["no entanto, quem perseverar até o fim, este será salvo."], "type": "Frase" }
+          ],
+          "paradigms": [
+            {
+              "type": "table",
+              "title": "Futuro do Indicativo de εἰμί",
+              "headers": ["Pessoa", "Singular", "Plural"],
+              "rows": [
+                ["1ª", "ἔσομαι", "ἐσόμεθα"],
+                ["2ª", "ἔσῃ", "ἔσεσθε"],
+                ["3ª", "ἔσται", "ἔσονται"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Futuro do Indicativo Ativo",
+              "headers": ["Pessoa", "Singular", "Plural"],
+              "rows": [
+                ["1ª", "λύσω", "λύσομεν"],
+                ["2ª", "λύσεις", "λύσετε"],
+                ["3ª", "λύσει", "λύσουσι(ν)"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Futuro do Indicativo Médio",
+              "headers": ["Pessoa", "Singular", "Plural"],
+              "rows": [
+                ["1ª", "λύσομαι", "λυσόμεθα"],
+                ["2ª", "λύσῃ", "λύσεσθε"],
+                ["3ª", "λύσεται", "λύσονται"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Futuro do Indicativo Passivo",
+              "headers": ["Pessoa", "Singular", "Plural"],
+              "rows": [
+                ["1ª", "λυθήσομαι", "λυθησόμεθα"],
+                ["2ª", "λυθήσῃ", "λυθήσεσθε"],
+                ["3ª", "λυθήσεται", "λυθήσονται"]
+              ]
+            }
           ]
         },
         {
@@ -1334,6 +1488,66 @@
             { "term": "Καὶ λέγει αὐτῷ, Ἀμὴν ἀμὴν λέγω ὑμῖν, ἀπ᾿ ἄρτι ὄψεσθε τὸν οὐρανὸν ἀνεῳγότα, καὶ τοὺς ἀγγέλους τοῦ Θεοῦ ἀναβαίνοντας καὶ καταβαίνοντας ἐπὶ τὸν υἱὸν τοῦ ἀνθρώπου.", "transliteration": "Kai legei autō, Amēn amēn legō hymin, ap’ arti opsesthe ton ouranon aneōgota, kai tous angelous tou Theou anabainontas kai katabainontas epi ton huion tou anthrōpou.", "translations": ["E lhe diz: Em verdade, em verdade digo a vocês: de agora em diante verão o céu aberto, e os anjos de Deus subindo e descendo sobre o Filho do Homem.", "E diz a ele, Em verdade em verdade digo a vocês, agora verão o céu aberto, e os anjos de Deus subindo e descendo sobre o filho do homem."], "type": "Frase" },
             { "term": "Ἐλέησόν με, Κύριε, υἱὲ Δαυίδ·", "transliteration": "Eleēson me, Kyrie, huie Dauid;", "translations": ["Tem misericórdia de mim, Senhor, filho de Davi!"], "type": "Frase" },
             { "term": "Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή.", "transliteration": "Egō eimi hē hodos kai hē alētheia kai hē zōē.", "translations": ["Eu sou o caminho e a verdade e a vida."], "type": "Frase" }
+          ],
+          "paradigms": [
+            {
+              "type": "table",
+              "title": "Artigo Definido (Singular)",
+              "headers": ["Caso", "Masculino", "Feminino", "Neutro"],
+              "rows": [
+                ["Nom.", "ὁ", "ἡ", "τό"],
+                ["Gen.", "τοῦ", "τῆς", "τοῦ"],
+                ["Dat.", "τῷ", "τῇ", "τῷ"],
+                ["Acus.", "τόν", "τήν", "τό"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Artigo Definido (Plural)",
+              "headers": ["Caso", "Masculino", "Feminino", "Neutro"],
+              "rows": [
+                ["Nom.", "οἱ", "αἱ", "τά"],
+                ["Gen.", "τῶν", "τῶν", "τῶν"],
+                ["Dat.", "τοῖς", "ταῖς", "τοῖς"],
+                ["Acus.", "τούς", "τάς", "τά"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "2ª Declinação: Masculino (λόγος)",
+              "headers": ["Caso", "Singular", "Plural"],
+              "rows": [
+                ["Nom.", "λόγος", "λόγοι"],
+                ["Gen.", "λόγου", "λόγων"],
+                ["Dat.", "λόγῳ", "λόγοις"],
+                ["Acus.", "λόγον", "λόγους"],
+                ["Voc.", "λόγε", "λόγοι"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "2ª Declinação: Feminino (ὁδός)",
+              "headers": ["Caso", "Singular", "Plural"],
+              "rows": [
+                ["Nom.", "ὁδός", "ὁδοί"],
+                ["Gen.", "ὁδοῦ", "ὁδῶν"],
+                ["Dat.", "ὁδῷ", "ὁδοῖς"],
+                ["Acus.", "ὁδόν", "ὁδούς"],
+                ["Voc.", "ὁδέ", "ὁδοί"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "2ª Declinação: Neutro (ἔργον)",
+              "headers": ["Caso", "Singular", "Plural"],
+              "rows": [
+                ["Nom.", "ἔργον", "ἔργα"],
+                ["Gen.", "ἔργου", "ἔργων"],
+                ["Dat.", "ἔργῳ", "ἔργοις"],
+                ["Acus.", "ἔργον", "ἔργα"],
+                ["Voc.", "ἔργον", "ἔργα"]
+              ]
+            }
           ]
         },
         {
@@ -1381,6 +1595,68 @@
             { "term": "τὴν ἀγάπην τοῦ Θεοῦ οὐκ ἔχετε.", "transliteration": "tēn agapēn tou Theou ouk echete.", "translations": ["não tendes o amor de Deus.", "vocês não têm o amor de Deus.", "o amor de Deus não tendes."], "type": "Frase" },
             { "term": "Κύριός ἐστιν ὁ υἱὸς τοῦ ἀνθρώπου καὶ τοῦ σαββάτου.", "transliteration": "Kyrios estin ho huios tou anthrōpou kai tou sabbatou.", "translations": ["O Filho do Homem é Senhor até do sábado.", "Senhor é o filho do homem e do sábado."], "type": "Frase" },
             { "term": "...ἡ ἀγάπη τοῦ Θεοῦ ἐκκέχυται ἐν ταῖς καρδίαις ἡμῶν διὰ Πνεύματος Ἁγίου τοῦ δοθέντος ἡμῖν.", "transliteration": "...hē agapē tou Theou ekkechytai en tais kardiais hēmōn dia Pneumatos Hagiou tou dothentos hēmin.", "translations": ["...o amor de Deus foi derramado em nossos corações pelo Espírito Santo que nos foi dado.", "...o amor a Deus foi derramado em nossos corações pelo Espírito Santo que nos foi dado."], "type": "Frase" }
+          ],
+          "paradigms": [
+            {
+              "type": "table",
+              "title": "1ª Declinação: Fem. -α após ε, ι, ρ (σοφία)",
+              "headers": ["Caso", "Singular", "Plural"],
+              "rows": [
+                ["Nom.", "σοφία", "σοφίαι"],
+                ["Gen.", "σοφίας", "σοφιῶν"],
+                ["Dat.", "σοφίᾳ", "σοφίαις"],
+                ["Acus.", "σοφίαν", "σοφίας"],
+                ["Voc.", "σοφία", "σοφίαι"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "1ª Declinação: Fem. -α puro (γλῶσσα)",
+              "headers": ["Caso", "Singular", "Plural"],
+              "rows": [
+                ["Nom.", "γλῶσσα", "γλῶσσαι"],
+                ["Gen.", "γλώσσης", "γλωσσῶν"],
+                ["Dat.", "γλώσσῃ", "γλώσσαις"],
+                ["Acus.", "γλῶσσαν", "γλώσσας"],
+                ["Voc.", "γλῶσσα", "γλῶσσαι"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "1ª Declinação: Fem. -η (ἀγάπη)",
+              "headers": ["Caso", "Singular", "Plural"],
+              "rows": [
+                ["Nom.", "ἀγάπη", "ἀγάπαι"],
+                ["Gen.", "ἀγάπης", "ἀγαπῶν"],
+                ["Dat.", "ἀγάπῃ", "ἀγάπαις"],
+                ["Acus.", "ἀγάπην", "ἀγάπας"],
+                ["Voc.", "ἀγάπη", "ἀγάπαι"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "1ª Declinação: Masc. -ας (νεανίας)",
+              "headers": ["Caso", "Singular", "Plural"],
+              "rows": [
+                ["Nom.", "νεανίας", "νεανίαι"],
+                ["Gen.", "νεανίου", "νεανιῶν"],
+                ["Dat.", "νεανίᾳ", "νεανίαις"],
+                ["Acus.", "νεανίαν", "νεανίας"],
+                ["Voc.", "νεανία", "νεανίαι"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "1ª Declinação: Masc. -ης (προφήτης)",
+              "headers": ["Caso", "Singular", "Plural"],
+              "rows": [
+                ["Nom.", "προφήτης", "προφῆται"],
+                ["Gen.", "προφήτου", "προφητῶν"],
+                ["Dat.", "προφήτῃ", "προφήταις"],
+                ["Acus.", "προφήτην", "προφήτας"],
+                ["Voc.", "προφῆτα", "προφῆται"]
+              ]
+            }
           ]
         },
         {
@@ -1424,6 +1700,32 @@
             { "term": "... μείζων δὲ τούτων ἡ ἀγάπη.", "transliteration": "... meizōn de toutōn hē agapē.", "translations": ["mas o maior destes é o amor."], "type": "Frase" },
             { "term": "σπουδαιότερος ὑπάρχων, ἐξῆλθεν πρὸς ὑμᾶς.", "transliteration": "spoudaioteros hyparchōn, exēlthen pros hymas.", "translations": ["Sendo muito diligente, partiu para vocês."], "type": "Frase" },
             { "term": "...ἵνα πᾶς ὁ πιστεύων εἰς αὐτὸν μὴ ἀπόληται, ἀλλ᾽ ἔχῃ ζωὴν αἰώνιον.", "transliteration": "...hina pas ho pisteuōn eis auton mē apolētai, all’ echē zōēn aiōnion.", "translations": ["...para que todo o que crê nele não pereça, mas tenha vida eterna."], "type": "Frase" }
+          ],
+          "paradigms": [
+            {
+              "type": "table",
+              "title": "Terminações: Adjetivos da 1ª e 2ª Declinação (Singular)",
+              "headers": ["Caso", "Masculino", "Feminino", "Neutro"],
+              "rows": [
+                ["Nom.", "-ος", "-α / -η", "-ον"],
+                ["Gen.", "-ου", "-ας / -ης", "-ου"],
+                ["Dat.", "-ῳ", "-ᾳ / -ῃ", "-ῳ"],
+                ["Acus.", "-ον", "-αν / -ην", "-ον"],
+                ["Voc.", "-ε", "-α / -η", "-ον"]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Terminações: Adjetivos da 1ª e 2ª Declinação (Plural)",
+              "headers": ["Caso", "Masculino", "Feminino", "Neutro"],
+              "rows": [
+                ["Nom.", "-οι", "-αι", "-α"],
+                ["Gen.", "-ων", "-ων", "-ων"],
+                ["Dat.", "-οις", "-αις", "-οις"],
+                ["Acus.", "-ους", "-ας", "-α"],
+                ["Voc.", "-οι", "-αι", "-α"]
+              ]
+            }
           ]
         },
         {
@@ -1461,6 +1763,31 @@
             { "term": "Εγώ εἰμι ἡ ἄμπελος, ὑμεῖς τὰ κλήματα.", "transliteration": "Egō eimi hē ampelos, hymeis ta klēmata.", "translations": ["Eu sou a videira, vocês são os ramos."], "type": "Frase" },
             { "term": "Ὁ μένων ἐν ἐμοί, κἀγὼ ἐν αὐτῷ, οὗτος φέρει καρπὸν πολύν·", "transliteration": "Ho menōn en emoi, kagō en autō, houtos pherei karpon polyn;", "translations": ["Quem permanece em mim, e eu nele, este dá muito fruto;"], "type": "Frase" },
             { "term": "ὅτι χωρὶς ἐμοῦ οὐ δύνασθε ποιεῖν οὐδέν.", "transliteration": "hoti chōris emou ou dynasthe poiein ouden.", "translations": ["porque sem mim vocês não podem fazer nada."], "type": "Frase" }
+          ],
+          "paradigms": [
+            {
+              "type": "diagram",
+              "title": "Diagrama Espacial de Preposições",
+              "concept": "Relações Locais e de Movimento",
+              "elements": [
+                { "term": "ἐν", "spatial_relation": "Dentro / Posição no interior" },
+                { "term": "εἰς", "spatial_relation": "Movimento para dentro" },
+                { "term": "ἐκ", "spatial_relation": "Movimento para fora" },
+                { "term": "διά", "spatial_relation": "Movimento através / Atravessando" },
+                { "term": "περί", "spatial_relation": "Ao redor / Em volta" },
+                { "term": "ἐπί", "spatial_relation": "Sobre / Em cima de" },
+                { "term": "ὑπέρ", "spatial_relation": "Acima / Sobre (sem contato direto)" },
+                { "term": "ὑπό", "spatial_relation": "Debaixo / Sob" },
+                { "term": "ἀνά", "spatial_relation": "Para cima / Movimento ascendente" },
+                { "term": "κατά", "spatial_relation": "Para baixo / Movimento descendente" },
+                { "term": "πρός", "spatial_relation": "Em direção a / Aproximação" },
+                { "term": "ἀπό", "spatial_relation": "Afastando-se / Afastamento" },
+                { "term": "πρό", "spatial_relation": "Na frente / Diante" },
+                { "term": "ἀντί", "spatial_relation": "Em oposição / Na direção contrária" },
+                { "term": "σύν", "spatial_relation": "Junto de / Companhia" },
+                { "term": "μετά", "spatial_relation": "Com / Associação" }
+              ]
+            }
           ]
         }
       ];
@@ -6307,6 +6634,7 @@
         loadSRS();
         buildDistractorCache();
         setupChapterDropdown();
+        setupParadigmDropdowns();
         onChapterChange();
         updateStatsUI();
       });
@@ -6365,7 +6693,7 @@
           resetToDashboard();
         }
 
-        const tabs = ["practice", "assessment", "vocab", "manage"];
+        const tabs = ["practice", "assessment", "vocab", "manage","paradigms"];
         tabs.forEach((t) => {
           const section = document.getElementById(`tab-${t}`);
           const btn = document.getElementById(`nav-btn-${t}`);
@@ -6734,6 +7062,7 @@
         loadSRS();
         buildDistractorCache();
         setupChapterDropdown();
+        setupParadigmDropdowns();
         onChapterChange();
         switchTab("practice");
       }
@@ -7699,6 +8028,434 @@
           }
         }
       });
+      
+      /* ================= TAB 5: MOTOR DE PARADIGMAS & ARRASTAR ================= */
+      let activeParadigm = null;
+      let draggedElement = null;
+
+      // 1. Preenche o primeiro Dropdown
+      function setupParadigmDropdowns() {
+        const chapSelect = document.getElementById("paradigm-chapter-select");
+        if (!chapSelect) return;
+        
+        chapSelect.innerHTML = '<option value="">Selecione uma lição...</option>';
+        
+        AppState.chapters.forEach(chap => {
+          if (chap.paradigms && chap.paradigms.length > 0) {
+            const opt = document.createElement("option");
+            opt.value = chap.id;
+            opt.textContent = chap.title;
+            chapSelect.appendChild(opt);
+          }
+        });
+      }
+
+      // 2. Preenche o segundo Dropdown
+      function onParadigmChapterChange() {
+        const chapId = document.getElementById("paradigm-chapter-select").value;
+        const parSelect = document.getElementById("paradigm-select");
+        parSelect.innerHTML = '<option value="">Selecione o Esquema / Tabela...</option>';
+        
+        if (!chapId) {
+           resetParadigmBoard();
+           return;
+        }
+        
+        const chap = AppState.chapters.find(c => c.id === chapId);
+        if (chap && chap.paradigms) {
+          chap.paradigms.forEach((par, idx) => {
+            const opt = document.createElement("option");
+            opt.value = idx;
+            opt.textContent = par.title;
+            parSelect.appendChild(opt);
+          });
+        }
+        resetParadigmBoard();
+      }
+
+      // 3. Renderiza o esqueleto principal
+      function renderParadigmSkeleton() {
+        const chapId = document.getElementById("paradigm-chapter-select").value;
+        const parIdx = document.getElementById("paradigm-select").value;
+        
+        if (!chapId || parIdx === "") {
+          resetParadigmBoard();
+          return;
+        }
+        
+        const chap = AppState.chapters.find(c => c.id === chapId);
+        activeParadigm = chap.paradigms[parIdx];
+        
+        document.getElementById("paradigm-header").classList.remove("hidden");
+        document.getElementById("paradigm-title").textContent = activeParadigm.title;
+        
+        const board = document.getElementById("paradigm-board");
+        board.innerHTML = ""; 
+        
+        if (activeParadigm.type === "table") {
+          renderTableView(activeParadigm, board);
+        } else if (activeParadigm.type === "diagram") {
+          renderDiagramView(activeParadigm, board); // Chamada para a nova função
+        }
+      }
+
+      // 4. Constrói a tabela, as zonas de soltar e o deck de fichas
+      function renderTableView(paradigm, container) {
+        const textClass = AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
+        const table = document.createElement("table");
+        table.className = "w-full max-w-3xl text-left border-collapse mx-auto shadow-lg bg-slate-950/40 rounded-xl overflow-hidden";
+        
+        // Cabeçalho
+        const thead = document.createElement("thead");
+        const trHead = document.createElement("tr");
+        paradigm.headers.forEach(h => {
+           const th = document.createElement("th");
+           th.className = "px-4 py-4 bg-slate-900 border-b border-slate-700 text-brand-400 text-xs font-bold uppercase tracking-wider text-center";
+           th.textContent = h;
+           trHead.appendChild(th);
+        });
+        thead.appendChild(trHead);
+        table.appendChild(thead);
+        
+        // Corpo e coleta de fichas
+        const tbody = document.createElement("tbody");
+        let allAnswers = [];
+
+        paradigm.rows.forEach(row => {
+           const tr = document.createElement("tr");
+           tr.className = "divide-x divide-slate-800 border-b border-slate-800/60";
+           
+           row.forEach((cellText, cellIdx) => {
+              const td = document.createElement("td");
+              td.className = "p-1.5 text-center align-middle"; // Padding reduzido
+              
+              if (cellIdx === 0) {
+                 td.innerHTML = `<span class="font-bold text-slate-300 text-[11px] uppercase tracking-wider">${cellText}</span>`;
+                 td.className += " bg-slate-900/50 w-20";
+              } else {
+                 allAnswers.push(cellText);
+                 // Altura mínima reduzida para 40px e texto levemente menor
+                 td.innerHTML = `
+                  <div class="drop-zone w-full min-h-[40px] rounded-lg bg-slate-900/30 border-2 border-dashed border-slate-700 flex items-center justify-center transition-all"
+                       data-answer="${cellText}"
+                       ondragover="onDragOver(event)"
+                       ondragleave="onDragLeave(event)"
+                       ondrop="onDropToZone(event)">
+                  </div>`;
+              }
+              tr.appendChild(td);
+           });
+           tbody.appendChild(tr);
+        });
+        
+        table.appendChild(tbody);
+        container.appendChild(table);
+
+        // Renderiza o botão de verificação
+        const btnContainer = document.createElement("div");
+        btnContainer.className = "mt-6 text-center w-full";
+        btnContainer.innerHTML = `
+          <button type="button" onclick="checkParadigmAnswers()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg">Verificar Respostas ✓</button>
+          <p id="paradigm-feedback" class="mt-4 text-sm font-bold hidden"></p>
+        `;
+        container.appendChild(btnContainer);
+        
+        // Renderiza o deck de fichas
+        const deck = document.getElementById("paradigm-deck");
+        deck.classList.remove("hidden");
+        deck.innerHTML = "";
+        
+        // Permite soltar fichas de volta no deck
+        deck.ondragover = onDragOver;
+        deck.ondragleave = onDragLeave;
+        deck.ondrop = onDropToDeck;
+
+        // Embaralha e cria as fichas
+        allAnswers = shuffleArray(allAnswers);
+        allAnswers.forEach((ans, i) => {
+           const chip = document.createElement("div");
+           // As classes inline-flex e w-fit criam o comportamento de cartas lado a lado
+           chip.className = `drag-chip ${textClass} inline-flex items-center justify-center w-fit cursor-grab bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold py-1.5 px-4 text-sm rounded-lg shadow-sm transition-transform active:scale-95 select-none`;
+           chip.draggable = true;
+           chip.id = `chip-${i}`;
+           chip.textContent = ans;
+           chip.ondragstart = onDragStart;
+           chip.ondragend = onDragEnd;
+           deck.appendChild(chip);
+        });
+      }
+
+      // 6. Desenha o mapa de preposições (Diagrama)
+      function renderDiagramView(paradigm, container) {
+        const textClass = AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
+        
+        const wrapper = document.createElement("div");
+        wrapper.className = "w-full max-w-4xl mx-auto flex flex-col items-center";
+
+        // Título estilizado interno
+        const conceptTitle = document.createElement("h4");
+        conceptTitle.className = "text-brand-400 font-bold text-sm uppercase tracking-widest mb-6";
+        conceptTitle.textContent = paradigm.concept;
+        wrapper.appendChild(conceptTitle);
+
+        // O Palco SVG e as Zonas de Soltar
+        const stage = document.createElement("div");
+        stage.className = "relative w-full pb-[75%] md:pb-[60%] bg-slate-950 rounded-2xl shadow-inner border border-slate-800/80 overflow-hidden mb-8";
+        
+        // Coordenadas absolutas X e Y para cada preposição flutuar em cima das setas
+        const layoutMap = {
+          "ἐν": { x: 50, y: 50 },
+          "εἰς": { x: 28, y: 50 },
+          "ἐκ": { x: 72, y: 50 },
+          "διά": { x: 50, y: 66 },
+          "ὑπέρ": { x: 50, y: 14 },
+          "ὑπό": { x: 50, y: 86 },
+          "ἐπί": { x: 50, y: 31 },
+          "ἀνά": { x: 14, y: 35 },
+          "κατά": { x: 86, y: 75 },
+          "πρός": { x: 38, y: 32 },
+          "ἀπό": { x: 62, y: 68 },
+          "πρό": { x: 8, y: 50 },
+          "ἀντί": { x: 14, y: 66 },
+          "σύν": { x: 86, y: 15 },
+          "μετά": { x: 88, y: 44 },
+          "περί": { x: 66, y: 28 }
+        };
+
+        // Desenho Vetorial (SVG)
+        let innerStage = `
+          <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+              </marker>
+              <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
+              </marker>
+            </defs>
+            
+            <!-- Objeto Central -->
+            <circle cx="400" cy="300" r="90" fill="#1e293b" stroke="#334155" stroke-width="4" stroke-dasharray="10 5"/>
+            
+            <!-- εἰς (Para dentro) -->
+            <path d="M 150 300 L 350 300" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#arrow-blue)" />
+            
+            <!-- ἐκ (Para fora) -->
+            <path d="M 450 300 L 650 300" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#arrow-blue)" />
+            
+            <!-- διά (Através) -->
+            <path d="M 250 400 L 550 400" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrow)" stroke-dasharray="4 4" />
+            
+            <!-- ὑπέρ (Acima) -->
+            <path d="M 250 80 L 550 80" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+            
+            <!-- ὑπό (Debaixo) -->
+            <path d="M 250 520 L 550 520" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+            
+            <!-- ἐπί (Sobre) -->
+            <circle cx="400" cy="210" r="8" fill="#3b82f6" />
+            <path d="M 400 130 L 400 200" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#arrow-blue)" />
+            
+            <!-- ἀνά (Para cima) -->
+            <path d="M 110 450 L 110 150" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+            
+            <!-- κατά (Para baixo) -->
+            <path d="M 690 150 L 690 450" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+            
+            <!-- πρός (Em direção a) -->
+            <path d="M 260 160 L 330 230" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#arrow-blue)" />
+            
+            <!-- ἀπό (Afastando-se) -->
+            <path d="M 470 370 L 540 440" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#arrow-blue)" />
+            
+            <!-- πρό (Diante) -->
+            <rect x="70" y="285" width="10" height="30" fill="#64748b" />
+            <circle cx="50" cy="300" r="8" fill="#3b82f6" />
+            
+            <!-- ἀντί (Oposição) -->
+            <path d="M 50 400 L 100 400" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+            <path d="M 170 400 L 120 400" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+            
+            <!-- σύν (Junto de) -->
+            <circle cx="680" cy="90" r="8" fill="#3b82f6" />
+            <circle cx="705" cy="90" r="8" fill="#3b82f6" />
+            
+            <!-- μετά (Com) -->
+            <path d="M 680 260 L 740 260" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+            <circle cx="660" cy="260" r="8" fill="#3b82f6" />
+            
+            <!-- περί (Ao redor) -->
+            <path d="M 320 210 A 130 130 0 1 1 270 370" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+          </svg>
+        `;
+
+        let allAnswers = [];
+
+        // Geração dinâmica das Zonas de Soltar baseadas nas coordenadas
+        paradigm.elements.forEach((el, i) => {
+           allAnswers.push(el.term);
+           const pos = layoutMap[el.term] || { x: 10, y: 10 };
+           
+           // NOVA VERSÃO COM TOOLTIP (HOVER)
+           innerStage += `
+             <div class="group absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2" style="left: ${pos.x}%; top: ${pos.y}%;">
+                <!-- O Rótulo agora é um tooltip oculto (opacity-0) que aparece no hover (group-hover:opacity-100) -->
+                <span class="absolute bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 text-[11px] text-slate-200 font-bold bg-slate-800/95 px-2.5 py-1 rounded-md shadow-lg whitespace-nowrap pointer-events-none border border-slate-600">${el.spatial_relation}</span>
+                
+                <div class="drop-zone w-[72px] h-[38px] rounded-lg bg-slate-950/80 border-2 border-dashed border-slate-600 flex items-center justify-center transition-all hover:border-brand-500/50"
+                     data-answer="${el.term}"
+                     ondragover="onDragOver(event)"
+                     ondragleave="onDragLeave(event)"
+                     ondrop="onDropToZone(event)">
+                </div>
+             </div>
+           `;
+        });
+
+        stage.innerHTML = innerStage;
+        wrapper.appendChild(stage);
+
+        // Botão de verificação
+        const btnContainer = document.createElement("div");
+        btnContainer.className = "text-center w-full";
+        btnContainer.innerHTML = `
+          <button type="button" onclick="checkParadigmAnswers()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg">Verificar Mapa ✓</button>
+          <p id="paradigm-feedback" class="mt-4 text-sm font-bold hidden"></p>
+        `;
+        wrapper.appendChild(btnContainer);
+
+        container.appendChild(wrapper);
+
+        // Renderiza o deck de fichas
+        const deck = document.getElementById("paradigm-deck");
+        deck.classList.remove("hidden");
+        deck.innerHTML = "";
+        
+        deck.ondragover = onDragOver;
+        deck.ondragleave = onDragLeave;
+        deck.ondrop = onDropToDeck;
+
+        // Embaralha e cria as fichas na parte inferior
+        allAnswers = shuffleArray(allAnswers);
+        allAnswers.forEach((ans, i) => {
+           const chip = document.createElement("div");
+           chip.className = `drag-chip ${textClass} inline-flex items-center justify-center w-fit cursor-grab bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold py-1.5 px-4 text-sm rounded-lg shadow-sm transition-transform active:scale-95 select-none`;
+           chip.draggable = true;
+           chip.id = `chip-diag-${i}`;
+           chip.textContent = ans;
+           chip.ondragstart = onDragStart;
+           chip.ondragend = onDragEnd;
+           deck.appendChild(chip);
+        });
+      }
+
+      /* --- EVENTOS DE DRAG AND DROP --- */
+      function onDragStart(e) {
+        draggedElement = e.target;
+        e.dataTransfer.effectAllowed = "move";
+        setTimeout(() => e.target.classList.add("opacity-30"), 0);
+      }
+
+      function onDragEnd(e) {
+        e.target.classList.remove("opacity-30");
+        draggedElement = null;
+      }
+
+      function onDragOver(e) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+        const zone = e.currentTarget;
+        if (zone.id === "paradigm-deck") {
+           zone.classList.add("bg-slate-800/30");
+        } else {
+           zone.classList.add("border-brand-500", "bg-brand-900/20");
+        }
+      }
+
+      function onDragLeave(e) {
+        const zone = e.currentTarget;
+        zone.classList.remove("border-brand-500", "bg-brand-900/20", "bg-slate-800/30");
+      }
+
+      function onDropToZone(e) {
+        e.preventDefault();
+        const zone = e.currentTarget;
+        zone.classList.remove("border-brand-500", "bg-brand-900/20");
+
+        if (draggedElement) {
+          // Se a zona já tiver uma ficha, devolve a ficha antiga para o deck
+          if (zone.children.length > 0) {
+            document.getElementById("paradigm-deck").appendChild(zone.children[0]);
+          }
+          zone.appendChild(draggedElement);
+          zone.classList.remove("border-dashed", "border-rose-500", "bg-rose-900/20", "border-emerald-500", "bg-emerald-900/20");
+          zone.classList.add("border-solid", "border-slate-600");
+        }
+      }
+
+      function onDropToDeck(e) {
+        e.preventDefault();
+        const deck = e.currentTarget;
+        deck.classList.remove("bg-slate-800/30");
+        
+        if (draggedElement) {
+          deck.appendChild(draggedElement);
+        }
+      }
+
+      /* --- VERIFICAÇÃO DO EXERCÍCIO --- */
+      function checkParadigmAnswers() {
+         const zones = document.querySelectorAll(".drop-zone");
+         let allCorrect = true;
+         let filledCount = 0;
+
+         zones.forEach(zone => {
+            const expected = zone.getAttribute("data-answer");
+            const chip = zone.children[0];
+
+            // Reseta estilos visuais da zona
+            zone.classList.remove("border-emerald-500", "bg-emerald-900/20", "border-rose-500", "bg-rose-900/20", "border-slate-600");
+
+            if (chip) {
+               filledCount++;
+               if (chip.textContent === expected) {
+                  zone.classList.add("border-emerald-500", "bg-emerald-900/20", "border-solid");
+               } else {
+                  zone.classList.add("border-rose-500", "bg-rose-900/20", "border-solid");
+                  allCorrect = false;
+               }
+            } else {
+               zone.classList.add("border-dashed", "border-slate-700");
+               allCorrect = false;
+            }
+         });
+
+         const feedback = document.getElementById("paradigm-feedback");
+         feedback.classList.remove("hidden");
+
+         if (filledCount < zones.length) {
+            feedback.textContent = "⚠️ Preencha todos os espaços antes de verificar!";
+            feedback.className = "mt-4 text-sm font-bold text-amber-400";
+         } else if (allCorrect) {
+            feedback.textContent = "🎉 Perfeito! Você completou a tabela corretamente.";
+            feedback.className = "mt-4 text-sm font-bold text-emerald-400";
+         } else {
+            feedback.textContent = "❌ Ainda há erros. Tente reposicionar as fichas destacadas em vermelho!";
+            feedback.className = "mt-4 text-sm font-bold text-rose-400";
+         }
+      }
+
+      // 5. Restaura a tela inicial do modo
+      function resetParadigmBoard() {
+        document.getElementById("paradigm-header").classList.add("hidden");
+        document.getElementById("paradigm-deck").classList.add("hidden");
+        const board = document.getElementById("paradigm-board");
+        board.innerHTML = `
+           <div class="w-16 h-16 bg-brand-500/10 text-brand-400 rounded-2xl flex items-center justify-center text-3xl mb-2">🧩</div>
+           <h3 class="text-xl font-bold text-white">Laboratório Estrutural</h3>
+           <p class="text-sm text-slate-400 max-w-md mx-auto">Neste modo você treina o reconhecimento visual das terminações e regras. Selecione um paradigma acima para iniciar.</p>
+        `;
+      }
     </script>
   </body>
 </html>
