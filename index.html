@@ -1192,7 +1192,7 @@
     <!-- Application Logic JavaScript -->
     <script>
       /* ================= APP STATE & CONFIG ================= */
-      const APP_VERSION = "2.0";
+      const APP_VERSION = "2.1";
       const AppState = {
         language: localStorage.getItem("gamida_language") || "hebrew", // 'hebrew' ou 'greek'
         chapters: [],
@@ -6637,6 +6637,7 @@
         setupParadigmDropdowns();
         onChapterChange();
         updateStatsUI();
+        updateParadigmsVisibility();
       });
 
       function loadChapters() {
@@ -7053,6 +7054,9 @@
       /* ================= LANGUAGE SWITCH ENGINE ================= */
       function toggleLanguage() {
         AppState.language = AppState.language === "hebrew" ? "greek" : "hebrew";
+        
+        updateParadigmsVisibility();
+        
         localStorage.setItem("gamida_language", AppState.language);
 
         resetStats();
@@ -7065,6 +7069,21 @@
         setupParadigmDropdowns();
         onChapterChange();
         switchTab("practice");
+      }
+
+      function updateParadigmsVisibility() {
+        const btnParadigms = document.getElementById("nav-btn-paradigms");
+        if (!btnParadigms) return;
+
+        if (AppState.language === "hebrew") {
+          btnParadigms.style.display = "none"; // Força o bloqueio visual
+          
+          if (AppState.currentTab === "paradigms") {
+            switchTab("practice");
+          }
+        } else {
+          btnParadigms.style.display = ""; // Devolve ao controle do CSS (Tailwind)
+        }
       }
 
       function applyLanguageUI() {
@@ -7190,6 +7209,7 @@
           ...(AppState.currentChapter.sentences || []),
         ];
 
+        // 1. Primeiro desenhamos todas as palavras da lista
         allItems.forEach((item) => {
           const tr = document.createElement("tr");
           tr.className = "hover:bg-slate-800/40 transition";
@@ -7216,6 +7236,21 @@
           `;
           tbody.appendChild(tr);
         });
+
+        // === 2. INJEÇÃO DO DIAGRAMA NO FINAL (LIÇÃO 8) ===
+        if (AppState.currentChapter.id === "bergmann_08") {
+          const trDiagram = document.createElement("tr");
+          trDiagram.className = "bg-slate-900/20"; 
+          
+          const tdDiagram = document.createElement("td");
+          tdDiagram.colSpan = 4; // Faz a célula ocupar a largura de todas as colunas
+          tdDiagram.className = "p-4 border-t border-slate-800"; // Borda no topo para separar da última palavra
+          tdDiagram.innerHTML = getStaticDiagramHTML(); 
+          
+          trDiagram.appendChild(tdDiagram);
+          tbody.appendChild(trDiagram);
+        }
+        // === FIM DA INJEÇÃO DO DIAGRAMA ===
 
         lastRenderedVocabChapter = AppState.currentChapter.id;
       }
@@ -8513,6 +8548,85 @@
            <h3 class="text-xl font-bold text-white">Laboratório Estrutural</h3>
            <p class="text-sm text-slate-400 max-w-md mx-auto">Neste modo você treina o reconhecimento visual das terminações e regras. Selecione um paradigma acima para iniciar.</p>
         `;
+      }
+
+      // Retorna o HTML do diagrama espacial preenchido para uso no Dicionário
+      function getStaticDiagramHTML() {
+        const layoutMap = {
+          "ἐν": { x: 50, y: 50, desc: "Dentro" },
+          "εἰς": { x: 28, y: 50, desc: "Para dentro" },
+          "ἐκ": { x: 72, y: 50, desc: "Para fora" },
+          "διά": { x: 50, y: 66, desc: "Através" },
+          "ὑπέρ": { x: 50, y: 14, desc: "Acima / Sobre (sem contato)" },
+          "ὑπό": { x: 50, y: 86, desc: "Debaixo / Sob" },
+          "ἐπί": { x: 50, y: 31, desc: "Sobre (com contato)" },
+          "ἀνά": { x: 14, y: 35, desc: "Para cima" },
+          "κατά": { x: 86, y: 75, desc: "Para baixo" },
+          "πρός": { x: 38, y: 32, desc: "Em direção a" },
+          "ἀπό": { x: 62, y: 68, desc: "Afastando-se" },
+          "πρό": { x: 8, y: 50, desc: "Na frente" },
+          "ἀντί": { x: 14, y: 66, desc: "Em oposição" },
+          "σύν": { x: 86, y: 15, desc: "Junto de / Companhia" },
+          "μετά": { x: 88, y: 44, desc: "Com / Associação" },
+          "περί": { x: 66, y: 28, desc: "Ao redor" }
+        };
+
+        let html = `
+          <div class="w-full max-w-4xl mx-auto flex flex-col items-center my-6 p-6 bg-slate-900 border border-slate-800 rounded-3xl">
+            <h4 class="text-slate-300 font-bold text-sm uppercase tracking-widest mb-6">Mapa Espacial de Preposições</h4>
+            <div class="relative w-full pb-[75%] md:pb-[60%] bg-slate-950 rounded-2xl shadow-inner border border-slate-800/80 overflow-hidden">
+              <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="static-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+                  </marker>
+                  <marker id="static-arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
+                  </marker>
+                </defs>
+                
+                <!-- Objeto Central -->
+                <circle cx="400" cy="300" r="90" fill="#1e293b" stroke="#334155" stroke-width="4" stroke-dasharray="10 5"/>
+                
+                <!-- Setas Vetoriais -->
+                <path d="M 150 300 L 350 300" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#static-arrow-blue)" />
+                <path d="M 450 300 L 650 300" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#static-arrow-blue)" />
+                <path d="M 250 400 L 550 400" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#static-arrow)" stroke-dasharray="4 4" />
+                <path d="M 250 80 L 550 80" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#static-arrow)" />
+                <path d="M 250 520 L 550 520" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#static-arrow)" />
+                <circle cx="400" cy="210" r="8" fill="#3b82f6" />
+                <path d="M 400 130 L 400 200" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#static-arrow-blue)" />
+                <path d="M 110 450 L 110 150" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#static-arrow)" />
+                <path d="M 690 150 L 690 450" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#static-arrow)" />
+                <path d="M 260 160 L 330 230" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#static-arrow-blue)" />
+                <path d="M 470 370 L 540 440" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#static-arrow-blue)" />
+                <rect x="70" y="285" width="10" height="30" fill="#64748b" />
+                <circle cx="50" cy="300" r="8" fill="#3b82f6" />
+                <path d="M 50 400 L 100 400" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#static-arrow)" />
+                <path d="M 170 400 L 120 400" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#static-arrow)" />
+                <circle cx="680" cy="90" r="8" fill="#3b82f6" />
+                <circle cx="705" cy="90" r="8" fill="#3b82f6" />
+                <path d="M 680 260 L 740 260" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#static-arrow)" />
+                <circle cx="660" cy="260" r="8" fill="#3b82f6" />
+                <path d="M 320 210 A 130 130 0 1 1 270 370" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#static-arrow)" />
+              </svg>
+        `;
+
+        const textClass = AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
+
+        for (const [term, data] of Object.entries(layoutMap)) {
+           html += `
+             <div class="absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2" style="left: ${data.x}%; top: ${data.y}%;">
+                <span class="text-[10px] text-slate-400 font-bold mb-1 bg-slate-900/90 px-1.5 py-0.5 rounded shadow-sm whitespace-nowrap border border-slate-700/50">${data.desc}</span>
+                <div class="${textClass} flex items-center justify-center min-w-[50px] px-3 h-[32px] rounded-lg bg-slate-800 border border-slate-600 text-slate-100 font-bold text-sm shadow-md">
+                     ${term}
+                </div>
+             </div>
+           `;
+        }
+
+        html += `</div></div>`;
+        return html;
       }
     </script>
   </body>
