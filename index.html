@@ -4,11 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gamida - Treinador de Idiomas Bíblicos</title>
-    <!-- Ícone da Aba do Navegador (Bíblia) -->
+    <!-- Identidade visual e bibliotecas externas -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -77,14 +75,14 @@
   <body
     class="h-full flex flex-col font-sans antialiased bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white"
   >
-    <!-- Top Navigation Header -->
+    <!-- Cabeçalho fixo: identidade, seleção de capítulo e navegação -->
     <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-30 px-4 py-3">
       <div class="max-w-5xl mx-auto flex flex-col space-y-4">
         
-        <!-- === LINHA SUPERIOR (Logo, Dropdown Premium, Stats) === -->
+        <!-- Linha superior: logo, seletor de capítulo e estatísticas -->
         <div class="flex flex-wrap items-center justify-between gap-4 relative">
           
-          <!-- Logo e Título -->
+          <!-- Identidade da aplicação -->
           <div class="flex items-center space-x-3">
             <div id="app-logo-btn" onclick="toggleLanguage()" title="Clique para trocar o idioma" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300">א</div>
             <div>
@@ -95,7 +93,7 @@
             </div>
           </div>
 
-          <!-- NOVO SELETOR GLOBAL DE CAPÍTULOS (Dropdown Premium) -->
+          <!-- Seletor global de capítulos -->
           <div class="relative w-full md:w-80 order-last md:order-none z-50" id="custom-chapter-selector">
              <button type="button" onclick="toggleDropdown()" class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-4 py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group">
                  <div class="flex items-center gap-2 overflow-hidden">
@@ -105,13 +103,12 @@
                  <span class="text-slate-500 text-xs ml-2">▼</span>
              </button>
              
-             <!-- Lista Oculta do Dropdown -->
+             <!-- Opções inseridas dinamicamente pelo JavaScript -->
              <ul id="chapter-dropdown-list" class="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden hidden max-h-[60vh] overflow-y-auto divide-y divide-slate-800/60 z-50">
-                 <!-- As opções serão injetadas via JS -->
              </ul>
           </div>
 
-          <!-- Estatísticas -->
+          <!-- Indicadores de desempenho da sessão -->
           <div class="flex items-center gap-4 bg-slate-950/60 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-medium">
             <div class="flex items-center gap-1.5" title="Sequência de Acertos"><span class="text-amber-400 text-sm">🔥</span><span id="stat-streak" class="text-slate-200 font-bold">0</span></div>
             <div class="h-3 w-px bg-slate-800"></div>
@@ -121,7 +118,7 @@
           </div>
         </div>
 
-        <!-- === LINHA INFERIOR (Abas de Navegação ocupando 100%) === -->
+        <!-- Navegação principal por abas -->
         <div class="flex items-center justify-center md:justify-start space-x-2 pt-3 border-t border-slate-800/80 overflow-x-auto pb-1">
           <button type="button" id="nav-btn-practice" onclick="switchTab('practice')" class="px-4 py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-md transition hover:bg-brand-500 whitespace-nowrap">🎮 Praticar</button>
           <button type="button" id="nav-btn-assessment" onclick="switchTab('assessment')" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap">📝 Avaliação</button>
@@ -134,7 +131,7 @@
     </header>
 
     <main class="flex-1 max-w-5xl w-full mx-auto p-4 md:p-6 flex flex-col">
-      <!-- ================= TAB 1: PRACTICE ================= -->
+      <!-- Aba 1: prática -->
       <section id="tab-practice" class="flex-1 flex flex-col space-y-6">
         <div
           class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4"
@@ -294,9 +291,9 @@
         </div>
       </section>
 
-      <!-- ================= TAB 2: AVALIAÇÃO (DASHBOARD E MODOS) ================= -->
+      <!-- Aba 2: avaliação e modos de estudo -->
       <section id="tab-assessment" class="hidden space-y-6 flex-1 flex-col">
-        <!-- Dashboard Inicial -->
+        <!-- Painel inicial de avaliação -->
         <div
           id="assess-dashboard"
           class="space-y-6 flex-1 flex flex-col justify-center py-8"
@@ -309,7 +306,7 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Card: Simulado -->
+            <!-- Modo: simulado personalizado -->
             <div
               onclick="openSimuladoConfig()"
               class="bg-slate-900 border border-slate-700 hover:border-brand-500 rounded-3xl p-6 flex flex-col text-center transition cursor-pointer shadow-xl group"
@@ -334,7 +331,7 @@
               </button>
             </div>
 
-            <!-- Card: Anki -->
+            <!-- Modo: revisão espaçada -->
             <div
               onclick="startAnki()"
               class="bg-slate-900 border border-slate-700 hover:border-emerald-500 rounded-3xl p-6 flex flex-col text-center transition cursor-pointer shadow-xl group"
@@ -359,7 +356,7 @@
               </button>
             </div>
 
-            <!-- Card: Survival (FASE 3 DESBLOQUEADA) -->
+            <!-- Modo: morte súbita -->
             <div
               onclick="startSurvival()"
               class="bg-slate-900 border border-slate-700 hover:border-rose-500 rounded-3xl p-6 flex flex-col text-center transition cursor-pointer shadow-xl group"
@@ -384,7 +381,7 @@
           </div>
         </div>
 
-        <!-- Tela Config Simulado -->
+        <!-- Configuração do simulado -->
         <div
           id="assess-config"
           class="hidden bg-slate-900 border border-slate-800 rounded-3xl p-8 max-w-xl mx-auto w-full shadow-2xl mt-4"
@@ -526,7 +523,7 @@
           </div>
         </div>
 
-        <!-- Tela Ativa Simulado -->
+        <!-- Execução do simulado -->
         <div
           id="assessment-active"
           class="hidden space-y-4 flex-1 flex flex-col"
@@ -602,7 +599,7 @@
           </div>
         </div>
 
-        <!-- Tela Resultados Simulado -->
+        <!-- Resultado do simulado -->
         <div id="assessment-results" class="hidden space-y-6 pb-12">
           <div
             class="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-4 shadow-2xl"
@@ -667,7 +664,7 @@
           </div>
         </div>
 
-        <!-- Tela Ativa do Anki -->
+        <!-- Execução da revisão espaçada -->
         <div id="anki-active" class="hidden space-y-4 flex-1 flex flex-col">
           <div
             class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-between"
@@ -781,7 +778,7 @@
           </div>
         </div>
 
-        <!-- Tela Resultados Anki -->
+        <!-- Resultado da revisão espaçada -->
         <div id="anki-results" class="hidden space-y-6 pb-12">
           <div
             class="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-6 shadow-2xl"
@@ -849,7 +846,7 @@
           </div>
         </div>
 
-        <!-- ================= FASE 3: SOBREVIVÊNCIA (MORTE SÚBITA) ================= -->
+        <!-- Modo de sobrevivência: morte súbita -->
         <div id="survival-active" class="hidden space-y-4 flex-1 flex flex-col">
           <div
             class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-between"
@@ -996,7 +993,7 @@
         </div>
       </section>
 
-      <!-- ================= TAB 5: PARADIGMAS & ESTRUTURAS ================= -->
+      <!-- Aba 3: paradigmas e estruturas -->
       <section id="tab-paradigms" class="hidden space-y-6 flex-1 flex-col">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
           <div class="flex-1 min-w-[240px]">
@@ -1009,27 +1006,26 @@
 
         <div class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col shadow-2xl relative min-h-[450px]">
           
-          <!-- Área Superior: Cabeçalho do Paradigma Ativo -->
+          <!-- Cabeçalho do paradigma selecionado -->
           <div id="paradigm-header" class="hidden mb-6 pb-4 border-b border-slate-800 text-center">
              <h3 id="paradigm-title" class="text-xl font-bold text-white"></h3>
              <p class="text-xs text-slate-400 mt-1">Arraste as fichas e solte nos espaços vazios para completar a estrutura.</p>
           </div>
 
-          <!-- Área Central: A Mesa (Onde a Tabela ou Diagrama será desenhado) -->
+          <!-- Área central: tabela ou diagrama do paradigma -->
           <div id="paradigm-board" class="flex-1 flex flex-col items-center justify-center text-center space-y-6 overflow-x-auto">
              <div class="w-16 h-16 bg-brand-500/10 text-brand-400 rounded-2xl flex items-center justify-center text-3xl mb-2">🧩</div>
              <h3 class="text-xl font-bold text-white">Laboratório Estrutural</h3>
              <p class="text-sm text-slate-400 max-w-md mx-auto">Neste modo você treina o reconhecimento visual das terminações e regras. Selecione um paradigma acima para iniciar.</p>
           </div>
           
-          <!-- Área Inferior: O Deck de Cartas (Fichas para Drag and Drop) -->
+          <!-- Área inferior: fichas para arrastar e soltar -->
           <div id="paradigm-deck" class="hidden sticky bottom-4 z-20 mt-8 p-4 bg-slate-900/95 backdrop-blur-md border border-slate-700 shadow-[0_-15px_30px_-5px_rgba(0,0,0,0.5)] rounded-2xl flex flex-wrap items-center justify-center gap-2.5 max-h-48 overflow-y-auto">
-             <!-- As fichas dinâmicas entrarão aqui na Fase 4 -->
           </div>
           
         </div>
       </section>
-      <!-- ================= TAB 3: VOCABULARY DICTIONARY ================= -->
+      <!-- Aba 4: dicionário de vocabulário e frases -->
       <section id="tab-vocab" class="hidden space-y-6">
         <div
           class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4"
@@ -1069,14 +1065,14 @@
                 id="vocab-table-body"
                 class="divide-y divide-slate-800/60 text-slate-200"
               >
-                <!-- Tabela Injetada via JS -->
+                <!-- Linhas inseridas dinamicamente pelo JavaScript -->
               </tbody>
             </table>
           </div>
         </div>
       </section>
 
-      <!-- ================= TAB 4: CHAPTER MANAGER ================= -->
+      <!-- Aba 5: gerenciamento de capítulos -->
       <section id="tab-manage" class="hidden space-y-6">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
           <h2 class="text-xl font-bold text-white">Gerenciador de Capítulos</h2>
@@ -1142,7 +1138,7 @@
       </section>
     </main>
 
-    <!-- Application Logic JavaScript -->
+    <!-- Lógica da aplicação -->
     <script>
       /* ================= APP STATE & CONFIG ================= */
       const APP_VERSION = "2.3";
@@ -8533,7 +8529,7 @@
               </marker>
             </defs>
             
-            <!-- Objeto Central -->
+            <!-- Referência central do diagrama -->
             <circle cx="400" cy="300" r="90" fill="#1e293b" stroke="#334155" stroke-width="4" stroke-dasharray="10 5"/>
             
             <!-- εἰς (Para dentro) -->
@@ -8598,7 +8594,7 @@
            // NOVA VERSÃO COM TOOLTIP (HOVER)
            innerStage += `
              <div class="group absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2" style="left: ${pos.x}%; top: ${pos.y}%;">
-                <!-- O Rótulo agora é um tooltip oculto (opacity-0) que aparece no hover (group-hover:opacity-100) -->
+                <!-- Relação espacial exibida como tooltip ao passar o mouse -->
                 <span class="absolute bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 text-[11px] text-slate-200 font-bold bg-slate-800/95 px-2.5 py-1 rounded-md shadow-lg whitespace-nowrap pointer-events-none border border-slate-600">${el.spatial_relation}</span>
                 
                 <div class="drop-zone w-[72px] h-[38px] rounded-lg bg-slate-950/80 border-2 border-dashed border-slate-600 flex items-center justify-center transition-all hover:border-brand-500/50 cursor-pointer"
@@ -8855,10 +8851,9 @@
                   </marker>
                 </defs>
                 
-                <!-- Objeto Central -->
+                <!-- Referência central do diagrama -->
                 <circle cx="400" cy="300" r="90" fill="#1e293b" stroke="#334155" stroke-width="4" stroke-dasharray="10 5"/>
                 
-                <!-- Setas Vetoriais -->
                 <path d="M 150 300 L 350 300" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#static-arrow-blue)" />
                 <path d="M 450 300 L 650 300" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#static-arrow-blue)" />
                 <path d="M 250 400 L 550 400" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#static-arrow)" stroke-dasharray="4 4" />
