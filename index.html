@@ -6732,6 +6732,7 @@
           AppState.currentQuestionIndex = 0;
           lastRenderedVocabChapter = null; // Reseta cache do dicionario
           resetStats();
+          buildPracticeQueue(); 
           renderCurrentQuestion();
         }
       }
@@ -6746,6 +6747,7 @@
               : "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200";
         });
         AppState.currentQuestionIndex = 0;
+        buildPracticeQueue();
         renderCurrentQuestion();
       }
 
@@ -6783,56 +6785,56 @@
       }
 
       function evaluateAnswer(userAnswer, acceptedList) {
-        const normUser = normalizeText(userAnswer);
+        // 1. Limpa qualquer parênteses da resposta do usuário também (por segurança)
+        const cleanUser = userAnswer.replace(/\(.*?\)/g, "");
+        const normUser = normalizeText(cleanUser);
         
-        // Se o usuário errar feio, o fallback agora mostra TODAS as traduções possíveis!
         const allAccepted = acceptedList.join(" / ");
-        
         if (!normUser) return { status: 'incorrect', expected: allAccepted };
         
         let bestMatch = { status: 'incorrect', expected: allAccepted };
 
-        // Ferramenta para ordenar as palavras alfabeticamente (ignora a ordem original da frase)
         const sortWords = (str) => str.split(' ').filter(w => w.length > 0).sort().join(' ');
         const userSortedWords = sortWords(normUser);
 
-        // Rastreadores de Pontuação Semântica (crucial para o Grego)
         const hasQuestionMark = (str) => str.includes('?');
         const hasExclamation = (str) => str.includes('!');
 
         for (let i = 0; i < acceptedList.length; i++) {
           const rawAccepted = acceptedList[i];
-          const normAccepted = normalizeText(rawAccepted);
           
-          const accentedVersion = acceptedList.find(acc => normalizeText(acc) === normAccepted && acc !== normAccepted) || rawAccepted;
+          // Versão A: Normalização Completa (considera o texto dentro do parênteses)
+          const normAcceptedFull = normalizeText(rawAccepted);
           
-          const isExactMatch = normUser === normAccepted;
-          const isInvertedMatch = userSortedWords === sortWords(normAccepted);
+          // Versão B: Normalização Limpa (arranca fora tudo que está entre parênteses)
+          const cleanAccepted = rawAccepted.replace(/\(.*?\)/g, "");
+          const normAcceptedStripped = normalizeText(cleanAccepted);
           
-          // Se as palavras baterem (exatamente ou invertidas)
+          const accentedVersion = acceptedList.find(acc => normalizeText(acc) === normAcceptedFull && acc !== normAcceptedFull) || rawAccepted;
+          
+          // Verifica se o aluno bate com a versão completa OU com a versão sem parênteses
+          const isExactMatch = (normUser === normAcceptedFull) || (normUser === normAcceptedStripped);
+          const isInvertedMatch = (userSortedWords === sortWords(normAcceptedFull)) || (userSortedWords === sortWords(normAcceptedStripped));
+          
           if (isExactMatch || isInvertedMatch) {
-            
-            // Verifica se a pontuação vital coincide entre a sua resposta e o gabarito
             const isPunctuationCorrect = 
               (hasQuestionMark(userAnswer) === hasQuestionMark(rawAccepted)) && 
               (hasExclamation(userAnswer) === hasExclamation(rawAccepted));
             
-            // Só ganha VERDE se acertou a ordem exata E a pontuação vital
             if (isExactMatch && isPunctuationCorrect) {
               return { status: 'correct', expected: accentedVersion };
             } else {
-              // Se inverteu palavras OU errou a pontuação (esqueceu o '?'), ganha AMARELO
               if (bestMatch.status === 'incorrect') {
                 bestMatch = { status: 'typo', expected: accentedVersion };
               }
-              continue; // Continua rodando caso exista uma tradução 100% exata na lista
+              continue; 
             }
           }
           
-          // Erro de Digitação de Letras (Typo tradicional)
-          if (normAccepted.length > 4 && getEditDistance(normUser, normAccepted) <= 1) {
+          // Avaliação de erro de digitação (Typo) usando a versão flexível (sem parênteses)
+          if (normAcceptedStripped.length > 4 && getEditDistance(normUser, normAcceptedStripped) <= 1) {
             const lastCharUser = normUser.slice(-1);
-            const lastCharAcc = normAccepted.slice(-1);
+            const lastCharAcc = normAcceptedStripped.slice(-1);
             const isGenderSwap = (lastCharAcc === 'o' && lastCharUser === 'a') || (lastCharAcc === 'a' && lastCharUser === 'o');
             
             if (!isGenderSwap && bestMatch.status === 'incorrect') {
@@ -6853,30 +6855,40 @@
         return newArr;
       }
 
-      /* ================= PRACTICE ENGINE ================= */
-      function getActiveDataset() {
-        if (!AppState.currentChapter) return [];
+     /* ================= PRACTICE ENGINE ================= */
+      let practiceQueue = [];
+
+      function buildPracticeQueue() {
+        if (!AppState.currentChapter) {
+          practiceQueue = [];
+          return;
+        }
+        let baseList = [];
         if (AppState.exerciseMode === "sentences") {
-          return AppState.currentChapter.sentences?.length
+          baseList = AppState.currentChapter.sentences?.length
             ? AppState.currentChapter.sentences
             : AppState.currentChapter.items;
+        } else {
+          baseList = AppState.currentChapter.items || [];
         }
-        return AppState.currentChapter.items || [];
+        // Embaralha a lista e salva na fila de prática
+        practiceQueue = shuffleArray(baseList); 
       }
 
       function renderCurrentQuestion() {
-        const dataset = getActiveDataset();
-        if (dataset.length === 0) {
+        // Agora usamos o practiceQueue em vez de getActiveDataset()
+        if (practiceQueue.length === 0) {
           DOM.hebPrompt.textContent = "Sem itens disponíveis.";
           return;
         }
 
-        if (AppState.currentQuestionIndex >= dataset.length)
+        if (AppState.currentQuestionIndex >= practiceQueue.length)
           AppState.currentQuestionIndex = 0;
-        AppState.currentQuestion = dataset[AppState.currentQuestionIndex];
+          
+        AppState.currentQuestion = practiceQueue[AppState.currentQuestionIndex];
 
         DOM.qCategory.textContent = AppState.currentQuestion.type || "Geral";
-        DOM.qProgress.textContent = `Item ${AppState.currentQuestionIndex + 1} de ${dataset.length}`;
+        DOM.qProgress.textContent = `Item ${AppState.currentQuestionIndex + 1} de ${practiceQueue.length}`;
         DOM.hebPrompt.textContent = getTerm(AppState.currentQuestion);
 
         DOM.hintText.textContent = `Transliteração: [ ${AppState.currentQuestion.transliteration || "N/A"} ]`;
