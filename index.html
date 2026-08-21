@@ -78,105 +78,58 @@
     class="h-full flex flex-col font-sans antialiased bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white"
   >
     <!-- Top Navigation Header -->
-    <header
-      class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-30 px-4 py-3"
-    >
-      <div
-        class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4"
-      >
-        <div class="flex items-center space-x-3">
-          <div
-            id="app-logo-btn"
-            onclick="toggleLanguage()"
-            title="Clique para trocar o idioma"
-            class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300"
-          >
-            א
+    <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-30 px-4 py-3">
+      <div class="max-w-5xl mx-auto flex flex-col space-y-4">
+        
+        <!-- === LINHA SUPERIOR (Logo, Dropdown Premium, Stats) === -->
+        <div class="flex flex-wrap items-center justify-between gap-4 relative">
+          
+          <!-- Logo e Título -->
+          <div class="flex items-center space-x-3">
+            <div id="app-logo-btn" onclick="toggleLanguage()" title="Clique para trocar o idioma" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300">א</div>
+            <div>
+              <h1 class="font-bold text-lg leading-tight tracking-wide text-white">
+                Gamida <span id="app-version-display" class="text-xs px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono"></span>
+              </h1>
+              <p id="app-subtitle" class="text-xs text-slate-400">Treinador de Hebraico Autônomo</p>
+            </div>
           </div>
-          <div>
-            <h1
-              class="font-bold text-lg leading-tight tracking-wide text-white"
-            >
-              Gamida
-              <span
-                id="app-version-display"
-                class="text-xs px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono"
-              ></span>
-            </h1>
-            <p id="app-subtitle" class="text-xs text-slate-400">
-              Treinador de Hebraico Autônomo
-            </p>
+
+          <!-- NOVO SELETOR GLOBAL DE CAPÍTULOS (Dropdown Premium) -->
+          <div class="relative w-full md:w-80 order-last md:order-none z-50" id="custom-chapter-selector">
+             <button type="button" onclick="toggleDropdown()" class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-4 py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group">
+                 <div class="flex items-center gap-2 overflow-hidden">
+                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Módulo</span>
+                    <span id="chapter-dropdown-text" class="text-brand-400 font-bold text-sm truncate group-hover:text-brand-300">Carregando...</span>
+                 </div>
+                 <span class="text-slate-500 text-xs ml-2">▼</span>
+             </button>
+             
+             <!-- Lista Oculta do Dropdown -->
+             <ul id="chapter-dropdown-list" class="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden hidden max-h-[60vh] overflow-y-auto divide-y divide-slate-800/60 z-50">
+                 <!-- As opções serão injetadas via JS -->
+             </ul>
+          </div>
+
+          <!-- Estatísticas -->
+          <div class="flex items-center gap-4 bg-slate-950/60 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-medium">
+            <div class="flex items-center gap-1.5" title="Sequência de Acertos"><span class="text-amber-400 text-sm">🔥</span><span id="stat-streak" class="text-slate-200 font-bold">0</span></div>
+            <div class="h-3 w-px bg-slate-800"></div>
+            <div class="flex items-center gap-1.5" title="Pontuação"><span class="text-emerald-400 text-sm">⭐</span><span id="stat-score" class="text-slate-200 font-bold">0</span></div>
+            <div class="h-3 w-px bg-slate-800"></div>
+            <div class="flex items-center gap-1.5" title="Precisão"><span class="text-blue-400 text-sm">🎯</span><span id="stat-accuracy" class="text-slate-200 font-bold">100%</span></div>
           </div>
         </div>
 
-        <!-- === SELETOR GLOBAL DE CAPÍTULO === -->
-        <div class="flex items-center gap-2 bg-slate-900 border border-slate-700/80 px-3 py-1 rounded-xl shadow-inner">
-           <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Módulo:</span>
-           <select 
-              id="global-chapter-select" 
-              onchange="changeGlobalChapter()"
-              class="bg-transparent text-brand-400 font-bold text-sm focus:outline-none cursor-pointer appearance-none outline-none">
-           </select>
+        <!-- === LINHA INFERIOR (Abas de Navegação ocupando 100%) === -->
+        <div class="flex items-center justify-center md:justify-start space-x-2 pt-3 border-t border-slate-800/80 overflow-x-auto pb-1">
+          <button type="button" id="nav-btn-practice" onclick="switchTab('practice')" class="px-4 py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-md transition hover:bg-brand-500 whitespace-nowrap">🎮 Praticar</button>
+          <button type="button" id="nav-btn-assessment" onclick="switchTab('assessment')" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap">📝 Avaliação</button>
+          <button type="button" id="nav-btn-paradigms" onclick="switchTab('paradigms')" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap">📊 Paradigmas</button>
+          <button type="button" id="nav-btn-vocab" onclick="switchTab('vocab')" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap">📖 Dicionário</button>
+          <button type="button" id="nav-btn-manage" onclick="switchTab('manage')" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap">⚙️ Capítulos</button>
         </div>
 
-        <!-- Estatísticas -->
-        <div
-          class="flex items-center gap-4 bg-slate-950/60 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-medium"
-        >
-          <div class="flex items-center gap-1.5" title="Sequência de Acertos">
-            <span class="text-amber-400 text-sm">🔥</span>
-            <span id="stat-streak" class="text-slate-200 font-bold">0</span>
-          </div>
-          <div class="h-3 w-px bg-slate-800"></div>
-          <div class="flex items-center gap-1.5" title="Pontuação">
-            <span class="text-emerald-400 text-sm">⭐</span>
-            <span id="stat-score" class="text-slate-200 font-bold">0</span>
-          </div>
-          <div class="h-3 w-px bg-slate-800"></div>
-          <div class="flex items-center gap-1.5" title="Precisão">
-            <span class="text-blue-400 text-sm">🎯</span>
-            <span id="stat-accuracy" class="text-slate-200 font-bold"
-              >100%</span
-            >
-          </div>
-        </div>
-
-        <!-- Botões de Navegação (Praticar, Avaliação, etc) -->
-        <div class="flex items-center space-x-2">
-          <button
-            type="button"
-            id="nav-btn-practice"
-            onclick="switchTab('practice')"
-            class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white shadow-md transition hover:bg-brand-500"
-          >
-            🎮 Praticar
-          </button>
-          <button
-            type="button"
-            id="nav-btn-assessment"
-            onclick="switchTab('assessment')"
-            class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition"
-          >
-            📝 Avaliação
-          </button>
-          <button type="button" id="nav-btn-paradigms" onclick="switchTab('paradigms')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">📊 Paradigmas</button>
-          <button
-            type="button"
-            id="nav-btn-vocab"
-            onclick="switchTab('vocab')"
-            class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition"
-          >
-            📖 Dicionário
-          </button>
-          <button
-            type="button"
-            id="nav-btn-manage"
-            onclick="switchTab('manage')"
-            class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition"
-          >
-            ⚙️ Capítulos
-          </button>
-        </div>
       </div>
     </header>
 
@@ -6946,7 +6899,6 @@
 
       /* ================= UI NAVIGATION ================= */
       function switchTab(tabName) {
-        
         AppState.currentTab = tabName;
         
         if (tabName !== "assessment") {
@@ -6962,53 +6914,81 @@
           if (section) section.classList.toggle("hidden", t !== tabName);
           if (btn) {
             if (t === tabName) {
-              btn.className =
-                "px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white shadow-md transition hover:bg-brand-500";
+              btn.className = "px-4 py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-md transition hover:bg-brand-500 whitespace-nowrap";
             } else {
-              btn.className =
-                "px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition";
+              btn.className = "px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap";
             }
           }
         });
         if (tabName === "vocab") renderVocabTable();
       }
 
-     function setupGlobalChapterDropdown() {
-        const globalSelect = document.getElementById("global-chapter-select");
-        if (!globalSelect) return;
+     // === FASE 3: SETUP DO SELETOR GLOBAL (DROPDOWN PREMIUM) ===
+      function setupGlobalChapterDropdown() {
+        const list = document.getElementById("chapter-dropdown-list");
+        const btnText = document.getElementById("chapter-dropdown-text");
+        if (!list || !btnText) return;
         
-        globalSelect.innerHTML = "";
+        list.innerHTML = "";
         
-        // Preenche as opções
+        // Constrói a lista bonita (ul/li)
         AppState.chapters.forEach((chap) => {
-          const opt = document.createElement("option");
-          opt.value = chap.id;
-          opt.textContent = chap.title;
-          globalSelect.appendChild(opt);
+          const li = document.createElement("li");
+          li.className = "px-4 py-3.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white hover:font-bold cursor-pointer transition border-l-4 border-transparent hover:border-brand-500";
+          li.textContent = chap.title;
+          
+          // O que acontece quando clica numa opção
+          li.onclick = () => {
+             toggleDropdown(true); // Força fechar
+             changeGlobalChapter(chap.id);
+          };
+          list.appendChild(li);
         });
 
-        // FASE 4: Memória de Idioma (Recupera a última lição estudada nesta língua)
+        // Recupera a memória de idioma
         const savedChap = localStorage.getItem(`gamida_lastChap_${AppState.language}`);
-        if (savedChap && AppState.chapters.find(c => c.id === savedChap)) {
-          globalSelect.value = savedChap;
+        const activeChap = AppState.chapters.find(c => c.id === savedChap) || AppState.chapters[0];
+        
+        if (activeChap) {
+          changeGlobalChapter(activeChap.id);
         }
-
-        // Aciona a mudança de estado inicial
-        changeGlobalChapter();
       }
 
-      function changeGlobalChapter() {
-        const globalSelect = document.getElementById("global-chapter-select");
-        if (!globalSelect) return;
+      // Função auxiliar para abrir/fechar a lista
+      function toggleDropdown(forceClose = false) {
+        const list = document.getElementById("chapter-dropdown-list");
+        if (!list) return;
+        if (forceClose) {
+           list.classList.add("hidden");
+        } else {
+           list.classList.toggle("hidden");
+        }
+      }
 
-        const found = AppState.chapters.find((c) => c.id === globalSelect.value);
+      // Evento para fechar o dropdown se o usuário clicar fora dele
+      document.addEventListener("click", (e) => {
+         const dropdown = document.getElementById("custom-chapter-selector");
+         if (dropdown && !dropdown.contains(e.target)) {
+            toggleDropdown(true);
+         }
+      });
+
+      // === FASE 3: O COMANDO CENTRAL ===
+      function changeGlobalChapter(chapterId) {
+        if (!chapterId) return;
+
+        const found = AppState.chapters.find((c) => c.id === chapterId);
         if (found) {
           AppState.currentChapter = found;
           
-          // FASE 4: Salva a preferência
+          // Atualiza o texto do botão
+          const btnText = document.getElementById("chapter-dropdown-text");
+          if (btnText) btnText.textContent = found.title;
+
+          // Salva a preferência
           localStorage.setItem(`gamida_lastChap_${AppState.language}`, found.id);
           
-          // 1. Atualiza a Aba Praticar
+          // 1. Atualiza Praticar
           AppState.currentQuestionIndex = 0;
           resetStats();
           buildPracticeQueue();
@@ -7016,13 +6996,13 @@
             renderCurrentQuestion();
           }
 
-          // 2. Atualiza a Aba Dicionário (Invalida o cache)
+          // 2. Atualiza Dicionário
           lastRenderedVocabChapter = null;
           if (AppState.currentTab === 'vocab') {
              renderVocabTable();
           }
 
-          // 3. Atualiza a Aba Paradigmas (Preenche o segundo select)
+          // 3. Atualiza Paradigmas
           const parSelect = document.getElementById("paradigm-select");
           if (parSelect) {
             parSelect.innerHTML = '<option value="">Selecione o Esquema / Tabela...</option>';
