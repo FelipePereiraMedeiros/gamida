@@ -115,34 +115,18 @@
           </div>
 
           <!-- Seletor global de capítulos -->
-          <div
-            class="relative w-full md:w-80 order-last md:order-none z-50"
-            id="custom-chapter-selector"
-          >
-            <button
-              type="button"
-              onclick="toggleDropdown()"
-              class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-4 py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group"
-            >
-              <div class="flex items-center gap-2 overflow-hidden">
-                <span
-                  class="text-[10px] font-bold text-slate-500 uppercase tracking-wider"
-                  >Módulo</span
-                >
-                <span
-                  id="chapter-dropdown-text"
-                  class="text-brand-400 font-bold text-sm truncate group-hover:text-brand-300"
-                  >Carregando...</span
-                >
-              </div>
-              <span class="text-slate-500 text-xs ml-2">▼</span>
-            </button>
-
-            <!-- Opções inseridas dinamicamente pelo JavaScript -->
-            <ul
-              id="chapter-dropdown-list"
-              class="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden hidden max-h-[60vh] overflow-y-auto divide-y divide-slate-800/60 z-50"
-            ></ul>
+          <div class="relative w-full md:flex-1 md:max-w-lg md:mx-6 order-last md:order-none z-50" id="custom-chapter-selector">
+             <button type="button" onclick="toggleDropdown()" class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-4 py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group">
+                 <div class="flex items-center gap-3 overflow-hidden">
+                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider shrink-0">Módulo:</span>
+                    <span id="chapter-dropdown-text" class="text-brand-400 font-bold text-sm truncate text-left group-hover:text-brand-300">Carregando...</span>
+                 </div>
+                 <span class="text-slate-500 text-xs ml-3 shrink-0">▼</span>
+             </button>
+             
+             <!-- Opções inseridas dinamicamente pelo JavaScript -->
+             <ul id="chapter-dropdown-list" class="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden hidden max-h-[60vh] overflow-y-auto divide-y divide-slate-800/60 z-50">
+             </ul>
           </div>
 
           <!-- Indicadores de desempenho da sessão -->
@@ -1253,7 +1237,7 @@
     <!-- Lógica da aplicação -->
     <script>
       /* ================= APP STATE & CONFIG ================= */
-      const APP_VERSION = "2.4.1";
+      const APP_VERSION = "2.4.2";
       const AppState = {
         language: localStorage.getItem("gamida_language") || "hebrew", // 'hebrew' ou 'greek'
         chapters: [],
@@ -9885,7 +9869,7 @@
           let translationsText = Array.isArray(item.translations)
             ? item.translations.join(" / ")
             : item.translations || "Tradução ausente";
-            
+
           const textClass = AppState.language === "hebrew" 
             ? "hebrew-text text-2xl md:text-3xl" 
             : "greek-text text-lg md:text-xl";
@@ -10753,28 +10737,27 @@
 
       // 3. Renderiza o esqueleto principal
       function renderParadigmSkeleton() {
-        const chapId = document.getElementById("paradigm-chapter-select").value;
+        const chap = AppState.currentChapter;
         const parIdx = document.getElementById("paradigm-select").value;
-
-        if (!chapId || parIdx === "") {
+        
+        // Se não tiver capítulo ativo ou não selecionou um paradigma, limpa a mesa
+        if (!chap || parIdx === "") {
           resetParadigmBoard();
           return;
         }
-
-        const chap = AppState.chapters.find((c) => c.id === chapId);
+        
         activeParadigm = chap.paradigms[parIdx];
-
+        
         document.getElementById("paradigm-header").classList.remove("hidden");
-        document.getElementById("paradigm-title").textContent =
-          activeParadigm.title;
-
+        document.getElementById("paradigm-title").textContent = activeParadigm.title;
+        
         const board = document.getElementById("paradigm-board");
-        board.innerHTML = "";
-
+        board.innerHTML = ""; 
+        
         if (activeParadigm.type === "table") {
           renderTableView(activeParadigm, board);
         } else if (activeParadigm.type === "diagram") {
-          renderDiagramView(activeParadigm, board); // Chamada para a nova função
+          renderDiagramView(activeParadigm, board);
         }
       }
 
