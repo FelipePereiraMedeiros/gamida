@@ -109,6 +109,17 @@
           </div>
         </div>
 
+        <!-- === SELETOR GLOBAL DE CAPÍTULO === -->
+        <div class="flex items-center gap-2 bg-slate-900 border border-slate-700/80 px-3 py-1 rounded-xl shadow-inner">
+           <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Módulo:</span>
+           <select 
+              id="global-chapter-select" 
+              onchange="changeGlobalChapter()"
+              class="bg-transparent text-brand-400 font-bold text-sm focus:outline-none cursor-pointer appearance-none outline-none">
+           </select>
+        </div>
+
+        <!-- Estatísticas -->
         <div
           class="flex items-center gap-4 bg-slate-950/60 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-medium"
         >
@@ -130,6 +141,7 @@
           </div>
         </div>
 
+        <!-- Botões de Navegação (Praticar, Avaliação, etc) -->
         <div class="flex items-center space-x-2">
           <button
             type="button"
@@ -174,16 +186,6 @@
         <div
           class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4"
         >
-          <div class="flex-1 min-w-[240px]">
-            <label class="block text-xs font-medium text-slate-400 mb-1"
-              >Selecione o Capítulo para Estudar:</label
-            >
-            <select
-              id="chapter-select"
-              onchange="onChapterChange()"
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
-            ></select>
-          </div>
           <div>
             <label class="block text-xs font-medium text-slate-400 mb-1"
               >Modo de Exercício:</label
@@ -1044,10 +1046,6 @@
       <!-- ================= TAB 5: PARADIGMAS & ESTRUTURAS ================= -->
       <section id="tab-paradigms" class="hidden space-y-6 flex-1 flex-col">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
-          <div class="flex-1 min-w-[240px]">
-            <label class="block text-xs font-medium text-slate-400 mb-1">Selecione a Lição:</label>
-            <select id="paradigm-chapter-select" onchange="onParadigmChapterChange()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"></select>
-          </div>
           <div class="flex-1 min-w-[240px]">
             <label class="block text-xs font-medium text-slate-400 mb-1">Escolha o Esquema / Tabela:</label>
             <select id="paradigm-select" onchange="renderParadigmSkeleton()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500">
@@ -6894,9 +6892,7 @@
         loadChapters();
         loadSRS();
         buildDistractorCache();
-        setupChapterDropdown();
-        setupParadigmDropdowns();
-        onChapterChange();
+        setupGlobalChapterDropdown();
         updateStatsUI();
         updateParadigmsVisibility();
       });
@@ -6950,6 +6946,9 @@
 
       /* ================= UI NAVIGATION ================= */
       function switchTab(tabName) {
+        
+        AppState.currentTab = tabName;
+        
         if (tabName !== "assessment") {
           if (assessTimerInterval) clearInterval(assessTimerInterval);
           resetToDashboard();
@@ -6974,27 +6973,69 @@
         if (tabName === "vocab") renderVocabTable();
       }
 
-      function setupChapterDropdown() {
-        DOM.chapSelect.innerHTML = "";
+     function setupGlobalChapterDropdown() {
+        const globalSelect = document.getElementById("global-chapter-select");
+        if (!globalSelect) return;
+        
+        globalSelect.innerHTML = "";
+        
+        // Preenche as opções
         AppState.chapters.forEach((chap) => {
           const opt = document.createElement("option");
           opt.value = chap.id;
           opt.textContent = chap.title;
-          DOM.chapSelect.appendChild(opt);
+          globalSelect.appendChild(opt);
         });
+
+        // FASE 4: Memória de Idioma (Recupera a última lição estudada nesta língua)
+        const savedChap = localStorage.getItem(`gamida_lastChap_${AppState.language}`);
+        if (savedChap && AppState.chapters.find(c => c.id === savedChap)) {
+          globalSelect.value = savedChap;
+        }
+
+        // Aciona a mudança de estado inicial
+        changeGlobalChapter();
       }
 
-      function onChapterChange() {
-        const found = AppState.chapters.find(
-          (c) => c.id === DOM.chapSelect.value,
-        );
+      function changeGlobalChapter() {
+        const globalSelect = document.getElementById("global-chapter-select");
+        if (!globalSelect) return;
+
+        const found = AppState.chapters.find((c) => c.id === globalSelect.value);
         if (found) {
           AppState.currentChapter = found;
+          
+          // FASE 4: Salva a preferência
+          localStorage.setItem(`gamida_lastChap_${AppState.language}`, found.id);
+          
+          // 1. Atualiza a Aba Praticar
           AppState.currentQuestionIndex = 0;
-          lastRenderedVocabChapter = null; // Reseta cache do dicionario
           resetStats();
-          buildPracticeQueue(); 
-          renderCurrentQuestion();
+          buildPracticeQueue();
+          if (AppState.currentTab === 'practice' || !AppState.currentTab) {
+            renderCurrentQuestion();
+          }
+
+          // 2. Atualiza a Aba Dicionário (Invalida o cache)
+          lastRenderedVocabChapter = null;
+          if (AppState.currentTab === 'vocab') {
+             renderVocabTable();
+          }
+
+          // 3. Atualiza a Aba Paradigmas (Preenche o segundo select)
+          const parSelect = document.getElementById("paradigm-select");
+          if (parSelect) {
+            parSelect.innerHTML = '<option value="">Selecione o Esquema / Tabela...</option>';
+            if (found.paradigms && found.paradigms.length > 0) {
+              found.paradigms.forEach((par, idx) => {
+                const opt = document.createElement("option");
+                opt.value = idx;
+                opt.textContent = par.title;
+                parSelect.appendChild(opt);
+              });
+            }
+          }
+          resetParadigmBoard();
         }
       }
 
@@ -7338,9 +7379,7 @@
         loadChapters();
         loadSRS();
         buildDistractorCache();
-        setupChapterDropdown();
-        setupParadigmDropdowns();
-        onChapterChange();
+        setupGlobalChapterDropdown();
         switchTab("practice");
       }
 
@@ -8349,45 +8388,7 @@
       let activeParadigm = null;
       let draggedElement = null;
 
-      // 1. Preenche o primeiro Dropdown
-      function setupParadigmDropdowns() {
-        const chapSelect = document.getElementById("paradigm-chapter-select");
-        if (!chapSelect) return;
-        
-        chapSelect.innerHTML = '<option value="">Selecione uma lição...</option>';
-        
-        AppState.chapters.forEach(chap => {
-          if (chap.paradigms && chap.paradigms.length > 0) {
-            const opt = document.createElement("option");
-            opt.value = chap.id;
-            opt.textContent = chap.title;
-            chapSelect.appendChild(opt);
-          }
-        });
-      }
-
-      // 2. Preenche o segundo Dropdown
-      function onParadigmChapterChange() {
-        const chapId = document.getElementById("paradigm-chapter-select").value;
-        const parSelect = document.getElementById("paradigm-select");
-        parSelect.innerHTML = '<option value="">Selecione o Esquema / Tabela...</option>';
-        
-        if (!chapId) {
-           resetParadigmBoard();
-           return;
-        }
-        
-        const chap = AppState.chapters.find(c => c.id === chapId);
-        if (chap && chap.paradigms) {
-          chap.paradigms.forEach((par, idx) => {
-            const opt = document.createElement("option");
-            opt.value = idx;
-            opt.textContent = par.title;
-            parSelect.appendChild(opt);
-          });
-        }
-        resetParadigmBoard();
-      }
+      
 
       // 3. Renderiza o esqueleto principal
       function renderParadigmSkeleton() {
@@ -8824,10 +8825,18 @@
         document.getElementById("paradigm-header").classList.add("hidden");
         document.getElementById("paradigm-deck").classList.add("hidden");
         const board = document.getElementById("paradigm-board");
+        
+        // Verifica se o capítulo atual possui paradigmas
+        const hasParadigms = AppState.currentChapter && AppState.currentChapter.paradigms && AppState.currentChapter.paradigms.length > 0;
+        
         board.innerHTML = `
            <div class="w-16 h-16 bg-brand-500/10 text-brand-400 rounded-2xl flex items-center justify-center text-3xl mb-2">🧩</div>
            <h3 class="text-xl font-bold text-white">Laboratório Estrutural</h3>
-           <p class="text-sm text-slate-400 max-w-md mx-auto">Neste modo você treina o reconhecimento visual das terminações e regras. Selecione um paradigma acima para iniciar.</p>
+           <p class="text-sm text-slate-400 max-w-md mx-auto">
+             ${hasParadigms 
+               ? "Neste modo você treina o reconhecimento visual das terminações e regras. Selecione um paradigma acima para iniciar."
+               : "Nenhuma estrutura ou paradigma disponível para este módulo ainda."}
+           </p>
         `;
       }
 
