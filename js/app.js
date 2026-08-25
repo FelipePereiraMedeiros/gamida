@@ -216,7 +216,10 @@
 
           // Atualiza o texto do botão
           const btnText = document.getElementById("chapter-dropdown-text");
-          if (btnText) btnText.textContent = found.title;
+          if (btnText) {
+            btnText.textContent = found.title;
+            btnText.title = found.title;
+          }
 
           // Salva a preferência
           localStorage.setItem(
