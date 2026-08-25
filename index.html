@@ -53,118 +53,208 @@
   >
     <!-- Cabeçalho fixo: identidade, seleção de capítulo e navegação -->
     <header
-      class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-30 px-4 py-3"
+      id="main-app-header"
+      class="border-b border-slate-800 bg-slate-900/95 backdrop-blur sticky top-0 z-30 px-4 pt-2.5 pb-2 transition-all duration-300 shadow-lg"
     >
-      <div class="max-w-5xl mx-auto flex flex-col space-y-4">
-        <!-- Linha superior: logo, seletor de capítulo e estatísticas -->
-        <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4 relative">
+      <div class="max-w-5xl mx-auto flex flex-col space-y-3">
+        <!-- Linha superior: logo, seletor de capítulo (desktop) e estatísticas -->
+        <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-3 relative">
           <!-- Identidade da aplicação -->
-          <div class="flex items-center space-x-3 shrink-0">
+          <div class="flex items-center space-x-2.5 shrink-0">
             <div
               id="app-logo-btn"
               onclick="toggleLanguage()"
               title="Clique para trocar o idioma"
-              class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300"
+              class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-xl sm:text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300"
             >
               א
             </div>
             <div>
               <h1
-                class="font-bold text-lg leading-tight tracking-wide text-white"
+                class="font-bold text-base sm:text-lg leading-tight tracking-wide text-white flex items-center gap-1.5"
               >
                 Gamida
                 <span
                   id="app-version-display"
-                  class="text-xs px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono"
+                  class="text-[10px] sm:text-xs px-1.5 py-0.5 rounded bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono"
                 ></span>
               </h1>
-              <p id="app-subtitle" class="text-xs text-slate-400">
+              <p id="app-subtitle" class="text-[10px] sm:text-xs text-slate-400">
                 Treinador de Hebraico Autônomo
               </p>
             </div>
           </div>
 
-          <!-- Seletor global de capítulos -->
-          <div class="relative w-full md:flex-1 md:min-w-0 md:max-w-lg md:mx-4 lg:mx-6 order-last md:order-none z-50" id="custom-chapter-selector">
-             <button type="button" onclick="toggleDropdown()" class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-4 py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group min-w-0">
-                 <div class="flex items-center gap-3 overflow-hidden min-w-0 flex-1">
+          <!-- Indicadores de desempenho da sessão (no mobile fica na linha superior à direita; no desktop na ponta direita) -->
+          <div
+            class="flex items-center gap-2.5 sm:gap-4 bg-slate-950/60 border border-slate-800 px-3 py-1.5 rounded-full text-xs font-medium shrink-0 order-2 md:order-3"
+          >
+            <div class="flex items-center gap-1" title="Sequência de Acertos">
+              <span class="text-amber-400 text-xs sm:text-sm">🔥</span
+              ><span id="stat-streak" class="text-slate-200 font-bold">0</span>
+            </div>
+            <div class="h-3 w-px bg-slate-800"></div>
+            <div class="flex items-center gap-1" title="Pontuação">
+              <span class="text-emerald-400 text-xs sm:text-sm">⭐</span
+              ><span id="stat-score" class="text-slate-200 font-bold">0</span>
+            </div>
+            <div class="h-3 w-px bg-slate-800"></div>
+            <div class="flex items-center gap-1" title="Precisão">
+              <span class="text-blue-400 text-xs sm:text-sm">🎯</span
+              ><span id="stat-accuracy" class="text-slate-200 font-bold"
+                >100%</span
+              >
+            </div>
+          </div>
+
+          <!-- Seletor global de capítulos (no mobile retrai; no desktop fica no centro da linha superior) -->
+          <div class="hidden md:block relative w-full md:flex-1 md:min-w-0 md:max-w-lg md:mx-4 lg:mx-6 order-3 md:order-2 z-50 mobile-collapsible-target" id="custom-chapter-selector">
+             <button type="button" onclick="toggleDropdown()" class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group min-w-0">
+                 <div class="flex items-center gap-2 sm:gap-3 overflow-hidden min-w-0 flex-1">
                     <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider shrink-0">Módulo:</span>
-                    <span id="chapter-dropdown-text" class="text-brand-400 font-bold text-sm truncate text-left group-hover:text-brand-300 min-w-0 block">Carregando...</span>
+                    <span id="chapter-dropdown-text" class="text-brand-400 font-bold text-xs sm:text-sm truncate text-left group-hover:text-brand-300 min-w-0 block">Carregando...</span>
                  </div>
-                 <span class="text-slate-500 text-xs ml-3 shrink-0">▼</span>
+                 <span class="text-slate-500 text-xs ml-2 sm:ml-3 shrink-0">▼</span>
              </button>
              
              <!-- Opções inseridas dinamicamente pelo JavaScript -->
              <ul id="chapter-dropdown-list" class="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden hidden max-h-[60vh] overflow-y-auto divide-y divide-slate-800/60 z-50">
              </ul>
           </div>
-
-          <!-- Indicadores de desempenho da sessão -->
-          <div
-            class="flex items-center gap-4 bg-slate-950/60 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-medium shrink-0"
-          >
-            <div class="flex items-center gap-1.5" title="Sequência de Acertos">
-              <span class="text-amber-400 text-sm">🔥</span
-              ><span id="stat-streak" class="text-slate-200 font-bold">0</span>
-            </div>
-            <div class="h-3 w-px bg-slate-800"></div>
-            <div class="flex items-center gap-1.5" title="Pontuação">
-              <span class="text-emerald-400 text-sm">⭐</span
-              ><span id="stat-score" class="text-slate-200 font-bold">0</span>
-            </div>
-            <div class="h-3 w-px bg-slate-800"></div>
-            <div class="flex items-center gap-1.5" title="Precisão">
-              <span class="text-blue-400 text-sm">🎯</span
-              ><span id="stat-accuracy" class="text-slate-200 font-bold"
-                >100%</span
-              >
-            </div>
-          </div>
         </div>
 
-        <!-- Navegação principal por abas -->
+        <!-- Navegação principal por abas e Botão Pague-me um café (no mobile retrai; no desktop sempre visível) -->
         <div
-          class="flex items-center justify-center md:justify-start space-x-2 pt-3 border-t border-slate-800/80 overflow-x-auto pb-1"
+          id="navbar-tabs-row"
+          class="hidden md:flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 pt-2.5 border-t border-slate-800/80 mobile-collapsible-target"
         >
+          <!-- Wrapper do Carrossel de Abas com Indicadores de Scroll -->
+          <div class="relative flex-1 min-w-0 max-w-full group/nav-scroll">
+            <!-- Botão e Sombra de Scroll para a Esquerda -->
+            <button
+              type="button"
+              id="tabs-scroll-left-btn"
+              onclick="scrollTabs('left')"
+              class="hidden absolute left-0 top-1/2 -translate-y-1/2 z-20 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-slate-800/95 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white shadow-md items-center justify-center transition-all duration-200 cursor-pointer active:scale-90"
+              aria-label="Rolar abas para a esquerda"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            <div
+              id="tabs-fade-left"
+              class="hidden absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent pointer-events-none z-10"
+            ></div>
+
+            <!-- Contêiner rolável das abas -->
+            <div
+              id="navbar-tabs-container"
+              onscroll="updateTabsScrollIndicators()"
+              class="flex items-center space-x-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none min-w-0 scroll-smooth px-0.5"
+            >
+              <button
+                type="button"
+                id="nav-btn-practice"
+                onclick="switchTab('practice')"
+                class="px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-md transition hover:bg-brand-500 whitespace-nowrap shrink-0"
+              >
+                🎮 Praticar
+              </button>
+              <button
+                type="button"
+                id="nav-btn-assessment"
+                onclick="switchTab('assessment')"
+                class="px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap shrink-0"
+              >
+                📝 Avaliação
+              </button>
+              <button
+                type="button"
+                id="nav-btn-paradigms"
+                onclick="switchTab('paradigms')"
+                class="px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap shrink-0"
+              >
+                📊 Paradigmas
+              </button>
+              <button
+                type="button"
+                id="nav-btn-vocab"
+                onclick="switchTab('vocab')"
+                class="px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap shrink-0"
+              >
+                📖 Dicionário
+              </button>
+              <button
+                type="button"
+                id="nav-btn-manage"
+                onclick="switchTab('manage')"
+                class="px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap shrink-0"
+              >
+                ⚙️ Capítulos
+              </button>
+            </div>
+
+            <!-- Botão e Sombra de Scroll para a Direita com Indicador Animado -->
+            <div
+              id="tabs-fade-right"
+              class="hidden absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-slate-900 via-slate-900/90 to-transparent pointer-events-none z-10"
+            ></div>
+            <button
+              type="button"
+              id="tabs-scroll-right-btn"
+              onclick="scrollTabs('right')"
+              class="hidden absolute right-0 top-1/2 -translate-y-1/2 z-20 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-slate-800/95 hover:bg-slate-700 border border-slate-700 text-brand-400 hover:text-brand-300 shadow-md items-center justify-center transition-all duration-200 cursor-pointer active:scale-90 animate-subtle-bounce-x"
+              aria-label="Rolar abas para a direita"
+              title="Mais opções à direita"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Botão de Ação: Pague-me um café! -->
           <button
             type="button"
-            id="nav-btn-practice"
-            onclick="switchTab('practice')"
-            class="px-4 py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-md transition hover:bg-brand-500 whitespace-nowrap"
+            id="btn-coffee"
+            onclick="copyPixCoffee(this)"
+            title="Apoie o desenvolvedor com um café via Pix! Clique para copiar a chave."
+            class="w-full sm:w-auto px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:via-orange-400 hover:to-amber-500 text-white shadow-md shadow-amber-500/20 hover:shadow-lg hover:shadow-amber-500/30 border border-amber-400/30 transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-center sm:justify-start gap-2.5 cursor-pointer coffee-btn-glow shrink-0"
           >
-            🎮 Praticar
+            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center shrink-0 text-amber-100 shadow-sm">
+              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+            </div>
+            <div class="flex flex-col text-left leading-tight min-w-0">
+              <div class="flex items-center gap-1.5">
+                <span class="font-bold text-xs text-white tracking-wide">Pague-me um café!</span>
+                <span class="text-[9px] bg-amber-400/25 text-amber-100 border border-amber-300/30 px-1.5 py-0.2 rounded font-semibold uppercase tracking-wider">Pix</span>
+              </div>
+              <span class="text-[10px] text-amber-100/80 font-normal">Apoie o desenvolvedor</span>
+            </div>
           </button>
+        </div>
+
+        <!-- Puxador/Indicador do Menu no Mobile -->
+        <div class="flex md:hidden justify-center pt-0.5 pb-0.5">
           <button
             type="button"
-            id="nav-btn-assessment"
-            onclick="switchTab('assessment')"
-            class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap"
+            id="mobile-menu-toggle-btn"
+            onclick="toggleMobileMenu()"
+            class="group inline-flex items-center justify-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-800/90 hover:bg-slate-800 border border-slate-700/80 text-[11px] font-medium text-slate-300 hover:text-white shadow-sm transition-all duration-200 active:scale-95 cursor-pointer animate-pull-indicator leading-none select-none"
+            aria-expanded="false"
+            title="Puxe para baixo para revelar o menu"
           >
-            📝 Avaliação
-          </button>
-          <button
-            type="button"
-            id="nav-btn-paradigms"
-            onclick="switchTab('paradigms')"
-            class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap"
-          >
-            📊 Paradigmas
-          </button>
-          <button
-            type="button"
-            id="nav-btn-vocab"
-            onclick="switchTab('vocab')"
-            class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap"
-          >
-            📖 Dicionário
-          </button>
-          <button
-            type="button"
-            id="nav-btn-manage"
-            onclick="switchTab('manage')"
-            class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap"
-          >
-            ⚙️ Capítulos
+            <span id="mobile-menu-toggle-label" class="text-[10px] font-bold text-slate-400 group-hover:text-slate-200 uppercase tracking-wider leading-none">Menu</span>
+            <svg id="mobile-menu-toggle-icon" class="w-3.5 h-3.5 text-brand-400 transition-transform duration-300 transform group-hover:translate-y-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+            </svg>
           </button>
         </div>
       </div>
