@@ -1,0 +1,6511 @@
+[
+  {
+    "id": "kelley_03",
+    "title": "Lição III - Substantivos Básicos 2026",
+    "items": [
+      {
+        "hebrew": "אָב",
+        "transliteration": "av",
+        "translations": [
+          "pai",
+          "ancestral"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "אָח",
+        "transliteration": "ach",
+        "translations": [
+          "irmao",
+          "irmão"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "אָחוֹת",
+        "transliteration": "achot",
+        "translations": [
+          "irma",
+          "irmã"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "אִישׁ",
+        "transliteration": "ish",
+        "translations": [
+          "homem"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "אִשָּׁה",
+        "transliteration": "isha",
+        "translations": [
+          "mulher"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "אֵם",
+        "transliteration": "em",
+        "translations": [
+          "mae",
+          "mãe"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "אָדָם",
+        "transliteration": "adam",
+        "translations": [
+          "ser humano",
+          "humanidade",
+          "homem"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "אֱלֹהִים",
+        "transliteration": "elohim",
+        "translations": [
+          "deus"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "בֵּן",
+        "transliteration": "ben",
+        "translations": [
+          "filho"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "בַּת",
+        "transliteration": "bat",
+        "translations": [
+          "filha"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "יִשְׂרָאֵל",
+        "transliteration": "yisrael",
+        "translations": [
+          "israel"
+        ],
+        "type": "Nome Próprio"
+      },
+      {
+        "hebrew": "לֵב",
+        "transliteration": "lev",
+        "translations": [
+          "coracao",
+          "coração"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "עִיר",
+        "transliteration": "ir",
+        "translations": [
+          "cidade"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "עוֹף",
+        "transliteration": "of",
+        "translations": [
+          "passaro",
+          "pássaro",
+          "passaros",
+          "pássaros",
+          "ave"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "עַם",
+        "transliteration": "am",
+        "translations": [
+          "povo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "קוֹל",
+        "transliteration": "kol",
+        "translations": [
+          "voz"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "רֹאשׁ",
+        "transliteration": "rosh",
+        "translations": [
+          "cabeca",
+          "cabeça"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שֵׁם",
+        "transliteration": "shem",
+        "translations": [
+          "nome"
+        ],
+        "type": "Substantivo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "אָב וּבֵן",
+        "transliteration": "av u'ven",
+        "translations": [
+          "pai e filho"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אִישׁ וְאִשָּׁה",
+        "transliteration": "ish v'isha",
+        "translations": [
+          "homem e mulher",
+          "um homem e uma mulher"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אֵם וּבַת",
+        "transliteration": "em u'vat",
+        "translations": [
+          "mãe e filha",
+          "mae e filha"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "קול עַם",
+        "transliteration": "kol am",
+        "translations": [
+          "voz de um povo",
+          "voz do povo"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "שֵׁם אֱלֹהִים",
+        "transliteration": "shem elohim",
+        "translations": [
+          "nome de deus"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_05",
+    "title": "Lição V - O Artigo Definido e Natureza 2026",
+    "items": [
+      {
+        "hebrew": "אוֹר",
+        "transliteration": "or",
+        "translations": [
+          "luz"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "אֶרֶץ",
+        "transliteration": "eretz",
+        "translations": [
+          "terra",
+          "pais",
+          "país"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "אֲשֶׁר",
+        "transliteration": "asher",
+        "translations": [
+          "quem",
+          "qual",
+          "que"
+        ],
+        "type": "Partícula / Relativo"
+      },
+      {
+        "hebrew": "בַּיִת",
+        "transliteration": "bayit",
+        "translations": [
+          "casa"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "בְּרִית",
+        "transliteration": "brit",
+        "translations": [
+          "alianca",
+          "aliança"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "גַּן",
+        "transliteration": "gan",
+        "translations": [
+          "jardim"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "דָּבָר",
+        "transliteration": "davar",
+        "translations": [
+          "palavra",
+          "coisa",
+          "assunto"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "הַר",
+        "transliteration": "har",
+        "translations": [
+          "montanha",
+          "monte"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "חַג",
+        "transliteration": "chag",
+        "translations": [
+          "festa",
+          "festival"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "חֶרֶב",
+        "transliteration": "cherev",
+        "translations": [
+          "espada"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "חֹשֶׁךְ",
+        "transliteration": "choshech",
+        "translations": [
+          "escuridao",
+          "escuridão",
+          "trevas"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "טוֹב",
+        "transliteration": "tov",
+        "translations": [
+          "bom",
+          "agradavel"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "יָם",
+        "transliteration": "yam",
+        "translations": [
+          "mar"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מַיִם",
+        "transliteration": "mayim",
+        "translations": [
+          "agua",
+          "água",
+          "aguas",
+          "águas"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מֶלֶךְ",
+        "transliteration": "melech",
+        "translations": [
+          "rei"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "רוּחַ",
+        "transliteration": "ruach",
+        "translations": [
+          "espirito",
+          "espírito",
+          "vento"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "שָׁלוֹם",
+        "transliteration": "shalom",
+        "translations": [
+          "paz",
+          "bem-estar"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שָׁנָה",
+        "transliteration": "shana",
+        "translations": [
+          "ano"
+        ],
+        "type": "Substantivo (f)"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "הָאָב וְהָאֵם",
+        "transliteration": "ha'av v'ha'em",
+        "translations": [
+          "o pai e a mãe",
+          "o pai e a mae"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הָאִישׁ וְהָאִשָּׁה",
+        "transliteration": "ha'ish v'ha'isha",
+        "translations": [
+          "o homem e a mulher"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַבֵּן וְהַבַּת",
+        "transliteration": "haben v'habat",
+        "translations": [
+          "o filho e a filha"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הָעִיר וְהַהָר",
+        "transliteration": "ha'ir v'hahar",
+        "translations": [
+          "a cidade e a montanha",
+          "a cidade e o monte"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הָאוֹר וְהַחֹשֶׁךְ",
+        "transliteration": "ha'or v'hachoshech",
+        "translations": [
+          "a luz e a escuridão",
+          "a luz e as trevas"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַמַּיִם וְהַיָּם",
+        "transliteration": "hamayim v'hayam",
+        "translations": [
+          "a água e o mar",
+          "a agua e o mar"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_06",
+    "title": "Lição VI - Preposições e Conjunções 2026",
+    "items": [
+      {
+        "hebrew": "אַחֲרֵי",
+        "transliteration": "acharei",
+        "translations": [
+          "atras",
+          "atrás",
+          "depois"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "אֶל",
+        "transliteration": "el",
+        "translations": [
+          "para",
+          "em direcao a",
+          "em direção a"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "בֵּין",
+        "transliteration": "bein",
+        "translations": [
+          "entre"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "לִפְנֵי",
+        "transliteration": "lifnei",
+        "translations": [
+          "diante de",
+          "na presenca de",
+          "na presença de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "מִן",
+        "transliteration": "min",
+        "translations": [
+          "de",
+          "a partir de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "עַד",
+        "transliteration": "ad",
+        "translations": [
+          "ate",
+          "até"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "עִם",
+        "transliteration": "im",
+        "translations": [
+          "com"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "עַל",
+        "transliteration": "al",
+        "translations": [
+          "sobre",
+          "contra"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "תַּחַת",
+        "transliteration": "tachat",
+        "translations": [
+          "sob",
+          "embaixo de",
+          "em vez de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "אֵין",
+        "transliteration": "ein",
+        "translations": [
+          "nao ha",
+          "não há",
+          "não existe"
+        ],
+        "type": "Partícula"
+      },
+      {
+        "hebrew": "בֹּקֶר",
+        "transliteration": "boker",
+        "translations": [
+          "manha",
+          "manhã"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "יָד",
+        "transliteration": "yad",
+        "translations": [
+          "mao",
+          "mão"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "יוֹם",
+        "transliteration": "yom",
+        "translations": [
+          "dia"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "יֵשׁ",
+        "transliteration": "yesh",
+        "translations": [
+          "ha",
+          "há",
+          "existe"
+        ],
+        "type": "Partícula"
+      },
+      {
+        "hebrew": "לַיְלָה",
+        "transliteration": "laila",
+        "translations": [
+          "noite"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מָקוֹם",
+        "transliteration": "makom",
+        "translations": [
+          "lugar"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "עֵץ",
+        "transliteration": "etz",
+        "translations": [
+          "arvore",
+          "árvore"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "עֶרֶב",
+        "transliteration": "erev",
+        "translations": [
+          "entardecer",
+          "tarde"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "פְּרִי",
+        "transliteration": "pri",
+        "translations": [
+          "fruta",
+          "fruto"
+        ],
+        "type": "Substantivo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "אֵין אִישׁ בָּעִיר",
+        "transliteration": "ein ish ba'ir",
+        "translations": [
+          "não há homem na cidade",
+          "nao ha homem na cidade"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אֵין אוֹר לָעָם",
+        "transliteration": "ein or la'am",
+        "translations": [
+          "não há luz para o povo",
+          "o povo não tem luz"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַגַּן אֵצֶל הַבַּיִת",
+        "transliteration": "hagan etzel habayit",
+        "translations": [
+          "o jardim está ao lado da casa",
+          "o jardim ao lado da casa"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אֵין אִשָּׁה בַּבַּיִת",
+        "transliteration": "ein isha babayit",
+        "translations": [
+          "não há mulher na casa",
+          "nao ha mulher na casa"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אֵין שָׁלוֹם בָּאָרֶץ",
+        "transliteration": "ein shalom ba'aretz",
+        "translations": [
+          "não há paz na terra",
+          "nao ha paz na terra"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הָעִיר עַל־הָהָר",
+        "transliteration": "ha'ir al-hahar",
+        "translations": [
+          "a cidade está sobre a montanha",
+          "a cidade na montanha"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "טוֹב הָאוֹר מִן־הַחֹשֶׁךְ",
+        "transliteration": "tov ha'or min-hachoshech",
+        "translations": [
+          "a luz é melhor do que a escuridão"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "טוֹב הַיּוֹם מִן־הַלַּיְלָה",
+        "transliteration": "tov hayom min-halaila",
+        "translations": [
+          "o dia é melhor do que a noite"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בֵּין הָאוֹר וּבֵין הַחֹשֶׁךְ",
+        "transliteration": "bein ha'or u'vein hachoshech",
+        "translations": [
+          "entre a luz e a escuridão"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "פְּרִי מִן־הָעֵץ",
+        "transliteration": "pri min-ha'etz",
+        "translations": [
+          "fruto da árvore",
+          "fruta da arvore"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_07",
+    "title": "Lição VII - Gênero, Número e Termos do Cotidiano 2026",
+    "items": [
+      {
+        "hebrew": "אֲדָמָה",
+        "transliteration": "adama",
+        "translations": [
+          "terra",
+          "solo"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "אֲדֹנָי",
+        "transliteration": "adonai",
+        "translations": [
+          "senhor"
+        ],
+        "type": "Nome Divino"
+      },
+      {
+        "hebrew": "יְהוָה",
+        "transliteration": "yahweh / adonai",
+        "translations": [
+          "senhor",
+          "deus"
+        ],
+        "type": "Nome Divino"
+      },
+      {
+        "hebrew": "בְּהֵמָה",
+        "transliteration": "behema",
+        "translations": [
+          "gado",
+          "animal"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "בָּשָׂר",
+        "transliteration": "basar",
+        "translations": [
+          "carne"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "בְּתוֹךְ",
+        "transliteration": "betoch",
+        "translations": [
+          "no meio de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "גַּם",
+        "transliteration": "gam",
+        "translations": [
+          "tambem",
+          "também"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "דֶּרֶךְ",
+        "transliteration": "derech",
+        "translations": [
+          "caminho"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "יַבָּשָׁה",
+        "transliteration": "yabasha",
+        "translations": [
+          "terra seca"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "כִּי",
+        "transliteration": "ki",
+        "translations": [
+          "pois",
+          "porque",
+          "que"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "hebrew": "כֹּל",
+        "transliteration": "kol",
+        "translations": [
+          "todo",
+          "cada"
+        ],
+        "type": "Substantivo / Pronome"
+      },
+      {
+        "hebrew": "כֵּן",
+        "transliteration": "ken",
+        "translations": [
+          "assim",
+          "da mesma forma"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "מְאֹד",
+        "transliteration": "meod",
+        "translations": [
+          "muito",
+          "extremamente"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "מִצְוָה",
+        "transliteration": "mitsva",
+        "translations": [
+          "mandamento",
+          "ordem"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "נֶפֶשׁ",
+        "transliteration": "nefesh",
+        "translations": [
+          "ser vivo",
+          "alma",
+          "vida"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "עָפָר",
+        "transliteration": "afar",
+        "translations": [
+          "po",
+          "pó",
+          "poeira"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שָׂדֶה",
+        "transliteration": "sade",
+        "translations": [
+          "campo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שָׁמַיִם",
+        "transliteration": "shamayim",
+        "translations": [
+          "ceu",
+          "céu",
+          "céus"
+        ],
+        "type": "Substantivo (pl)"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "הָאֲנָשִׁים וְהַסּוּסִים",
+        "transliteration": "ha'anashim v'hasusim",
+        "translations": [
+          "os homens e os cavalos"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַמִּצְוֹת אֲשֶׁר בַּסֵּפֶר",
+        "transliteration": "hamitsvot asher basefer",
+        "translations": [
+          "os mandamentos que estão no livro"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַנָּשִׁים אֲשֶׁר בַּבַּיִת",
+        "transliteration": "hanashim asher babayit",
+        "translations": [
+          "as mulheres que estão na casa",
+          "as mulheres na casa"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַמְּלָכִים וְהַנְּבִיאִים",
+        "transliteration": "hamelechim v'hanevi'im",
+        "translations": [
+          "os reis e os profetas"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַמַּיִם בְּתוֹךְ הַיָּם",
+        "transliteration": "hamayim betoch hayam",
+        "translations": [
+          "a água no meio do mar",
+          "a agua no meio do mar"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הָעוֹף בַּשָּׁמַיִם",
+        "transliteration": "ha'of bashamayim",
+        "translations": [
+          "as aves no céu",
+          "os pássaros no céu"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַבְּרִית עִם־הַמֶּלֶךְ",
+        "transliteration": "habrit im-hamelech",
+        "translations": [
+          "a aliança com o rei"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַמִּצְוֹת בַּתּוֹרָה",
+        "transliteration": "hamitsvot batora",
+        "translations": [
+          "os mandamentos na lei"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "עָפָר מִן־הָאֲדָמָה",
+        "transliteration": "afar min-ha'adama",
+        "translations": [
+          "pó da terra",
+          "pó do solo"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַשָּׁמַיִם וְהָאָרֶץ",
+        "transliteration": "hashamayim v'ha'aretz",
+        "translations": [
+          "os céus e a terra"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַיָּדַיִם וְהָרַגְלַיִם",
+        "transliteration": "ha-yadayim ve-ha-raglayim",
+        "translations": [
+          "as mãos e os pés"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_08",
+    "title": "Lição VIII - Adjetivos Essenciais 2026",
+    "items": [
+      {
+        "hebrew": "גָּדוֹל",
+        "transliteration": "gadol",
+        "translations": [
+          "grande"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "זָקֵן",
+        "transliteration": "zaken",
+        "translations": [
+          "velho"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "חָדָשׁ",
+        "transliteration": "chadash",
+        "translations": [
+          "novo"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "חָזָק",
+        "transliteration": "chazak",
+        "translations": [
+          "forte"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "חַי",
+        "transliteration": "chai",
+        "translations": [
+          "vivo"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "חָכָם",
+        "transliteration": "chacham",
+        "translations": [
+          "sabio",
+          "sábio"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "יָפֶה",
+        "transliteration": "yafe",
+        "translations": [
+          "bonito",
+          "lindo",
+          "belo"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "יָשָׁר",
+        "transliteration": "yashar",
+        "translations": [
+          "reto",
+          "correto"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "מַר",
+        "transliteration": "mar",
+        "translations": [
+          "amargo"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "קָדוֹשׁ",
+        "transliteration": "kadosh",
+        "translations": [
+          "sagrado",
+          "santo"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "קָטָן",
+        "transliteration": "katan",
+        "translations": [
+          "pequeno"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "קָרוֹב",
+        "transliteration": "karov",
+        "translations": [
+          "perto",
+          "proximo",
+          "próximo"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "קָשֶׁה",
+        "transliteration": "kashe",
+        "translations": [
+          "dificil",
+          "difícil",
+          "duro"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "רַב",
+        "transliteration": "rav",
+        "translations": [
+          "muito",
+          "grande",
+          "numeroso"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "רָחוֹק",
+        "transliteration": "rachok",
+        "translations": [
+          "distante",
+          "longe"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "רַע",
+        "transliteration": "ra",
+        "translations": [
+          "mau",
+          "ruim",
+          "feio"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "רָעָה",
+        "transliteration": "raa",
+        "translations": [
+          "mal",
+          "maldade"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "תָּמִים",
+        "transliteration": "tamim",
+        "translations": [
+          "perfeito",
+          "completo",
+          "inteiro"
+        ],
+        "type": "Adjetivo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "מֵאָדָם רָע",
+        "transliteration": "me'adam ra",
+        "translations": [
+          "de um homem mau"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הָאִישׁ מֹשֶׁה גָּדוֹל מְאֹד",
+        "transliteration": "ha'ish moshe gadol meod",
+        "translations": [
+          "o homem moisés era muito grande"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "מִי־אֵל גָּדוֹל בֵּאלֹהִים",
+        "transliteration": "mi-el gadol belohim",
+        "translations": [
+          "quem é grande deus entre os deuses?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כִּי אֵל גָּדוֹל יְהוָה וּמֶלֶךְ גָּדוֹל",
+        "transliteration": "ki el gadol adonai u'melech gadol",
+        "translations": [
+          "pois o senhor é um grande deus e um grande rei"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַשָּׁמַיִם הַחֲדָשִׁים וְהָאָרֶץ הַחֲדָשָׁה",
+        "transliteration": "hashamayim hachadashim v'ha'aretz hachadasha",
+        "translations": [
+          "os novos céus e a nova terra"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "לֵב חָדָשׁ וְרוּחַ חֲדָשָׁה",
+        "transliteration": "lev chadash v'ruach chadasha",
+        "translations": [
+          "um coração novo e um espírito novo"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "טוֹב וְיָשָׁר יְהוָה",
+        "transliteration": "tov v'yashar adonai",
+        "translations": [
+          "bom e reto é o senhor",
+          "bom e reto e o senhor"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וְדָוִיד זָקֵן",
+        "transliteration": "v'david zaken",
+        "translations": [
+          "e davi era velho"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "רוּחַ־רָעָה מֵאֵת יְהוָה",
+        "transliteration": "ruach-raa me'et adonai",
+        "translations": [
+          "um espírito mau da parte do senhor"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אֶבֶן גְדוֹלָה",
+        "transliteration": "even gedolah",
+        "translations": [
+          "uma grande pedra"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בְּדֶרֶךְ יְשָׁרָה",
+        "transliteration": "be-derech yesharah",
+        "translations": [
+          "por um caminho reto"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "קָרוֹב הַיּוֹם",
+        "transliteration": "karov ha-yom",
+        "translations": [
+          "o dia está próximo"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_09",
+    "title": "Lição IX - Pronomes e Lugares 2026",
+    "items": [
+      {
+        "hebrew": "אֶבֶן",
+        "transliteration": "even",
+        "translations": [
+          "pedra"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "דּוֹר",
+        "transliteration": "dor",
+        "translations": [
+          "geracao",
+          "geração"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "יְרוּשָׁלַיִם",
+        "transliteration": "yerushalayim",
+        "translations": [
+          "jerusalem",
+          "jerusalém"
+        ],
+        "type": "Nome Próprio"
+      },
+      {
+        "hebrew": "כֹּה",
+        "transliteration": "koh",
+        "translations": [
+          "assim"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "לֶחֶם",
+        "transliteration": "lechem",
+        "translations": [
+          "pao",
+          "pão"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מִדְבָּר",
+        "transliteration": "midbar",
+        "translations": [
+          "deserto"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מָה",
+        "transliteration": "mah",
+        "translations": [
+          "que",
+          "o que"
+        ],
+        "type": "Pronome Interrogativo"
+      },
+      {
+        "hebrew": "מִי",
+        "transliteration": "mi",
+        "translations": [
+          "quem"
+        ],
+        "type": "Pronome Interrogativo"
+      },
+      {
+        "hebrew": "מִשְׁפָּט",
+        "transliteration": "mishpat",
+        "translations": [
+          "julgamento",
+          "juizo",
+          "juízo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מֹשֶׁה",
+        "transliteration": "moshe",
+        "translations": [
+          "moises",
+          "moisés"
+        ],
+        "type": "Nome Próprio"
+      },
+      {
+        "hebrew": "נָבִיא",
+        "transliteration": "navi",
+        "translations": [
+          "profeta"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "נַעַר",
+        "transliteration": "naar",
+        "translations": [
+          "rapaz",
+          "jovem"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "נַעֲרָה",
+        "transliteration": "naara",
+        "translations": [
+          "moca",
+          "moça",
+          "jovem mulher"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "סֵפֶר",
+        "transliteration": "sefer",
+        "translations": [
+          "livro"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "פֶּן",
+        "transliteration": "pen",
+        "translations": [
+          "para que nao",
+          "para que não"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "hebrew": "רֶגֶל",
+        "transliteration": "regel",
+        "translations": [
+          "pe",
+          "pé"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "שֶׁמֶן",
+        "transliteration": "shemen",
+        "translations": [
+          "oleo",
+          "óleo",
+          "gordura"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "תּוֹרָה",
+        "transliteration": "tora",
+        "translations": [
+          "lei",
+          "instrucao",
+          "instrução"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "אָנֹכִי",
+        "transliteration": "anokhi",
+        "translations": [
+          "eu"
+        ],
+        "type": "Pronome Pessoal"
+      },
+      {
+        "hebrew": "אֲנִי",
+        "transliteration": "ani",
+        "translations": [
+          "eu"
+        ],
+        "type": "Pronome Pessoal"
+      },
+      {
+        "hebrew": "אַתָּה",
+        "transliteration": "attah",
+        "translations": [
+          "tu",
+          "você"
+        ],
+        "type": "Pronome Pessoal"
+      },
+      {
+        "hebrew": "אַתְּ",
+        "transliteration": "at",
+        "translations": [
+          "tu",
+          "você"
+        ],
+        "type": "Pronome Pessoal (f)"
+      },
+      {
+        "hebrew": "הוּא",
+        "transliteration": "hu",
+        "translations": [
+          "ele",
+          "aquele"
+        ],
+        "type": "Pronome Pessoal / Demonstrativo"
+      },
+      {
+        "hebrew": "הִוא",
+        "transliteration": "hi",
+        "translations": [
+          "ela",
+          "aquela"
+        ],
+        "type": "Pronome Pessoal / Demonstrativo"
+      },
+      {
+        "hebrew": "אֲנַחְנוּ",
+        "transliteration": "anachnu",
+        "translations": [
+          "nós"
+        ],
+        "type": "Pronome Pessoal"
+      },
+      {
+        "hebrew": "אַתֶּם",
+        "transliteration": "attem",
+        "translations": [
+          "vós",
+          "vocês"
+        ],
+        "type": "Pronome Pessoal"
+      },
+      {
+        "hebrew": "הֵם",
+        "transliteration": "hem",
+        "translations": [
+          "eles",
+          "aqueles"
+        ],
+        "type": "Pronome Pessoal / Demonstrativo"
+      },
+      {
+        "hebrew": "הֵן",
+        "transliteration": "hen",
+        "translations": [
+          "elas",
+          "aquelas"
+        ],
+        "type": "Pronome Pessoal / Demonstrativo"
+      },
+      {
+        "hebrew": "זֶה",
+        "transliteration": "zeh",
+        "translations": [
+          "este"
+        ],
+        "type": "Pronome Demonstrativo"
+      },
+      {
+        "hebrew": "זֹאת",
+        "transliteration": "zot",
+        "translations": [
+          "esta"
+        ],
+        "type": "Pronome Demonstrativo (f)"
+      },
+      {
+        "hebrew": "אֵלֶּה",
+        "transliteration": "elleh",
+        "translations": [
+          "estes",
+          "estas"
+        ],
+        "type": "Pronome Demonstrativo (pl)"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "הַדָּבָר הַגָּדוֹל הַזֶּה",
+        "transliteration": "hadavar hagadol hazeh",
+        "translations": [
+          "esta grande coisa",
+          "esta coisa grande"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כִּי קָרוֹב הוּא",
+        "transliteration": "ki karov hu",
+        "translations": [
+          "pois ele está perto",
+          "porque ele esta perto"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וְאָנֹכִי נַעַר קָטֹן",
+        "transliteration": "v'anochi naar katan",
+        "translations": [
+          "e eu sou um rapaz pequeno",
+          "e eu sou um jovem pequeno"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "נֹחַ אִישׁ צַדִּיק",
+        "transliteration": "noach ish tzadik",
+        "translations": [
+          "noé era um homem justo",
+          "noe era um homem justo"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "צַדִּיק וְיָשָׁר הוּא",
+        "transliteration": "tzadik v'yashar hu",
+        "translations": [
+          "ele é justo e reto"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "לֹא אִישׁ אֵל",
+        "transliteration": "lo ish el",
+        "translations": [
+          "deus não é homem"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "עַם־חָכָם הַגּוֹי הַגָּדוֹל הַזֶּה",
+        "transliteration": "am-chacham hagoy hagadol hazeh",
+        "translations": [
+          "esta grande nação é um povo sábio"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "זֶה הַיּוֹם",
+        "transliteration": "zeh hayom",
+        "translations": [
+          "este é o dia"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אֲנִי יְהוָה",
+        "transliteration": "ani adonai",
+        "translations": [
+          "eu sou o senhor"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אַתָּה הָאִישׁ",
+        "transliteration": "attah ha-ish",
+        "translations": [
+          "tu és o homem"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַמָּקוֹם הַזֶּה",
+        "transliteration": "ha-makom ha-zeh",
+        "translations": [
+          "este lugar"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הָאָרֶץ הַזֹּאת",
+        "transliteration": "ha-aretz ha-zot",
+        "translations": [
+          "esta terra"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אֶלֶה הַדְּבָרִים",
+        "transliteration": "elleh ha-devarim",
+        "translations": [
+          "estas são as palavras"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_10",
+    "title": "Lição X - Segolados e Relação de Construto 2026",
+    "items": [
+      {
+        "hebrew": "אֹהֶל",
+        "transliteration": "ohel",
+        "translations": [
+          "tenda"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "אֱמֶת",
+        "transliteration": "emet",
+        "translations": [
+          "verdade"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "אֵשׁ",
+        "transliteration": "esh",
+        "translations": [
+          "fogo"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "דָּם",
+        "transliteration": "dam",
+        "translations": [
+          "sangue"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "זָהָב",
+        "transliteration": "zahav",
+        "translations": [
+          "ouro"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "חַיָּה",
+        "transliteration": "chaya",
+        "translations": [
+          "ser vivo",
+          "animal"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "חָכְמָה",
+        "transliteration": "chochma",
+        "translations": [
+          "sabedoria"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "חֶסֶד",
+        "transliteration": "chesed",
+        "translations": [
+          "bondade",
+          "misericordia",
+          "misericórdia"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "יַיִן",
+        "transliteration": "yayin",
+        "translations": [
+          "vinho"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "כּוֹכָב",
+        "transliteration": "kochav",
+        "translations": [
+          "estrela"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "כֶּסֶף",
+        "transliteration": "kesef",
+        "translations": [
+          "prata"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מַלְכָּה",
+        "transliteration": "malka",
+        "translations": [
+          "rainha"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "מִצְרַיִם",
+        "transliteration": "mitsrayim",
+        "translations": [
+          "egito"
+        ],
+        "type": "Nome Próprio"
+      },
+      {
+        "hebrew": "סוּס",
+        "transliteration": "sus",
+        "translations": [
+          "cavalo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "עֵת",
+        "transliteration": "et",
+        "translations": [
+          "tempo"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "רֵעַ",
+        "transliteration": "rea",
+        "translations": [
+          "amigo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "פֶּה",
+        "transliteration": "peh",
+        "translations": [
+          "boca"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "תְּהוֹם",
+        "transliteration": "tehom",
+        "translations": [
+          "abismo",
+          "profundidade"
+        ],
+        "type": "Substantivo (f)"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "מִיַּד הָאִשָּׁה",
+        "transliteration": "miyad ha'isha",
+        "translations": [
+          "da mão da mulher"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "יוֹם הַשַּׁבָּת",
+        "transliteration": "yom hashabat",
+        "translations": [
+          "o dia de sábado",
+          "o dia do sábado"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "מִבְּנֵי הַנְּבִיאִים",
+        "transliteration": "mibnei hanevi'im",
+        "translations": [
+          "dos filhos dos profetas"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בֶּן־אָדָם",
+        "transliteration": "ben-adam",
+        "translations": [
+          "filho do homem",
+          "ser humano"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בְּנוֹת אַנְשֵׁי הָעִיר",
+        "transliteration": "bnot anashei ha'ir",
+        "translations": [
+          "as filhas dos homens da cidade"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בְּשֵׁם הַמֶּלֶךְ",
+        "transliteration": "beshem hamelech",
+        "translations": [
+          "em nome do rei"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "רָאשֵׁי הֶהָרִים",
+        "transliteration": "rashei heharim",
+        "translations": [
+          "os cumes das montanhas",
+          "as cabeças dos montes"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "מֹשֶׁה עֶבֶד יְהוָה",
+        "transliteration": "moshe eved adonai",
+        "translations": [
+          "moisés, servo do senhor"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "עַבְדֵי הַמֶּלֶךְ",
+        "transliteration": "avdei hamelech",
+        "translations": [
+          "os servos do rei"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "דַּם־כָּל־בָּשָׂר",
+        "transliteration": "dam-kol-basar",
+        "translations": [
+          "o sangue de toda carne",
+          "o sangue de toda a carne"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אֶת־דֶּרֶךְ עֵץ הַחַיִּים",
+        "transliteration": "et-derech etz hachayim",
+        "translations": [
+          "o caminho da árvore da vida"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בְּתוֹרַת מֹשֶׁה עֶבֶד־הָאֱלֹהִים",
+        "transliteration": "betorat moshe eved-haelohim",
+        "translations": [
+          "na lei de moisés, servo de deus"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_11",
+    "title": "Lição XI - Sufixos Pronominais e Termos Religiosos 2026",
+    "items": [
+      {
+        "hebrew": "אָהַב",
+        "transliteration": "ahav",
+        "translations": [
+          "ele amou",
+          "amar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אָמַר",
+        "transliteration": "amar",
+        "translations": [
+          "ele disse",
+          "dizer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "בָּרָא",
+        "transliteration": "bara",
+        "translations": [
+          "ele criou",
+          "criar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הָיָה",
+        "transliteration": "haya",
+        "translations": [
+          "ele foi",
+          "tornou-se",
+          "ser"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הָלַךְ",
+        "transliteration": "halach",
+        "translations": [
+          "ele caminhou",
+          "foi",
+          "andar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָדַע",
+        "transliteration": "yada",
+        "translations": [
+          "ele soube",
+          "conheceu",
+          "saber"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יַחְדָּו",
+        "transliteration": "yachdav",
+        "translations": [
+          "juntos"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "יֶלֶד",
+        "transliteration": "yeled",
+        "translations": [
+          "crianca",
+          "criança"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "כָּבוֹד",
+        "transliteration": "kavod",
+        "translations": [
+          "gloria",
+          "glória",
+          "honra"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "תֵּבָה",
+        "transliteration": "teva",
+        "translations": [
+          "arca"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "עוֹד",
+        "transliteration": "od",
+        "translations": [
+          "de novo",
+          "ainda"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "עַל-פְּנֵי",
+        "transliteration": "al-pnei",
+        "translations": [
+          "sobre",
+          "em cima de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "עַתָּה",
+        "transliteration": "ata",
+        "translations": [
+          "agora"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "פֹּה",
+        "transliteration": "poh",
+        "translations": [
+          "aqui"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "צְבָאוֹת",
+        "transliteration": "tsevaot",
+        "translations": [
+          "exercitos",
+          "exércitos"
+        ],
+        "type": "Substantivo (pl)"
+      },
+      {
+        "hebrew": "שַׁבָּת",
+        "transliteration": "shabat",
+        "translations": [
+          "sabado",
+          "sábado"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שָׁם",
+        "transliteration": "sham",
+        "translations": [
+          "ali",
+          "la",
+          "lá"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "שְׁנֵיהֶם",
+        "transliteration": "sheneihem",
+        "translations": [
+          "os dois",
+          "ambos"
+        ],
+        "type": "Pronome"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "אַתָּה אָבִינוּ",
+        "transliteration": "ata avinu",
+        "translations": [
+          "tu és o nosso pai",
+          "tu es o nosso pai"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כִּי לִי כָּל־הָאָרֶץ",
+        "transliteration": "ki li kol-ha'aretz",
+        "translations": [
+          "pois toda a terra é minha"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וְכָל־אַנְשֵׁי בֵיתוֹ",
+        "transliteration": "v'chol-anashei veito",
+        "translations": [
+          "e todos os homens da sua casa"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אֱלֹהֵי אָבִי אַבְרָהָם",
+        "transliteration": "elohei avi avraham",
+        "translations": [
+          "o deus do meu pai abraão",
+          "o deus do meu pai abraao"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כִּי אֲנִי יְהוָה אֱלֹהֵיכֶם",
+        "transliteration": "ki ani adonai eloheichem",
+        "translations": [
+          "pois eu sou o senhor vosso deus",
+          "porque eu sou o senhor vosso deus"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כִּי אֵין לָהּ אָב וָאֵם",
+        "transliteration": "ki ein lah av va'em",
+        "translations": [
+          "pois ela não tem pai nem mãe"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וְעַתָּה יְהוָה אָבִינוּ אָתָּה",
+        "transliteration": "v'ata adonai avinu ata",
+        "translations": [
+          "e agora, senhor, tu és o nosso pai"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "עַמֵּךְ עַמִּי וֵאלֹהַיִךְ אֱלֹהָי",
+        "transliteration": "amech ami v'elohayich elohai",
+        "translations": [
+          "o teu povo é o meu povo e o teu deus é o meu deus"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בֵּן אֵין־לָהּ וְאִישָׁהּ זָקֵן",
+        "transliteration": "ben ein-lah v'isha zaken",
+        "translations": [
+          "ela não tem filho e o seu marido é velho"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "לִי הַכֶּסֶף וְלִי הַזָּהָב",
+        "transliteration": "li hakesef v'li hazahav",
+        "translations": [
+          "minha é a prata e meu é o ouro"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_12",
+    "title": "Lição XII - Verbos no Perfeito (Qal) 2026",
+    "items": [
+      {
+        "hebrew": "אוֹ",
+        "transliteration": "o",
+        "translations": [
+          "ou"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "hebrew": "אוֹת",
+        "transliteration": "ot",
+        "translations": [
+          "sinal"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "אֵל",
+        "transliteration": "el",
+        "translations": [
+          "deus"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "הִנֵּה",
+        "transliteration": "hineh",
+        "translations": [
+          "eis",
+          "vede"
+        ],
+        "type": "Partícula"
+      },
+      {
+        "hebrew": "זֶרַע",
+        "transliteration": "zera",
+        "translations": [
+          "semente"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "חֲצִי",
+        "transliteration": "chetsi",
+        "translations": [
+          "metade"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "לָקַח",
+        "transliteration": "lakach",
+        "translations": [
+          "ele tomou",
+          "tomar",
+          "pegou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָלַךְ",
+        "transliteration": "malach",
+        "translations": [
+          "ele reinou",
+          "reinar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָצָא",
+        "transliteration": "matsa",
+        "translations": [
+          "ele achou",
+          "encontrar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָפַל",
+        "transliteration": "nafal",
+        "translations": [
+          "ele caiu",
+          "cair"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עָבַד",
+        "transliteration": "avad",
+        "translations": [
+          "ele serviu",
+          "trabalhar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עָלָה",
+        "transliteration": "ala",
+        "translations": [
+          "ele subiu",
+          "subir"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "פָּקַד",
+        "transliteration": "pakad",
+        "translations": [
+          "ele visitou",
+          "inspecionou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "קָרָא",
+        "transliteration": "kara",
+        "translations": [
+          "ele chamou",
+          "chamar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁכַב",
+        "transliteration": "shachav",
+        "translations": [
+          "ele se deitou",
+          "deitar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁלַח",
+        "transliteration": "shalach",
+        "translations": [
+          "ele enviou",
+          "enviar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁמַע",
+        "transliteration": "shama",
+        "translations": [
+          "ele ouviu",
+          "escutar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁמַר",
+        "transliteration": "shamar",
+        "translations": [
+          "ele guardou",
+          "guardar"
+        ],
+        "type": "Verbo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "כִּי־שָׁמַע אֱלֹהִים אֶל־קוֹל הַנַּעַר",
+        "transliteration": "ki-shama elohim el-kol hana'ar",
+        "translations": [
+          "pois deus ouviu a voz do rapaz",
+          "porque deus ouviu a voz do jovem"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כֹּה־אָמַר יְהוָה אֱלֹהֵי יִשְׂרָאֵל",
+        "transliteration": "koh-amar adonai elohei yisrael",
+        "translations": [
+          "assim disse o senhor deus de israel"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וּבִירוּשָׁלַם מָלַךְ עַל כָּל־יִשְׂרָאֵל",
+        "transliteration": "u'virushalayim malach al kol-yisrael",
+        "translations": [
+          "e em jerusalém reinou sobre todo o israel"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וּלְכָל־בְּנֵי יִשְׂרָאֵל הָיָה אוֹר",
+        "transliteration": "u'lechol-bnei yisrael haya or",
+        "translations": [
+          "e para todos os filhos de israel havia luz"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וּמֹשֶׁה עָלָה אֶל־הָאֱלֹהִים",
+        "transliteration": "u'moshe ala el-haelohim",
+        "translations": [
+          "e moisés subiu a deus",
+          "e moises subiu a deus"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כִּי־שָׁכַב דָּוִד עִם־אֲבֹתָיו",
+        "transliteration": "ki-shachav david im-avotav",
+        "translations": [
+          "pois davi descansou com seus pais",
+          "pois davi deitou-se com seus pais"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וּדְבָרָיו שָׁמַעְתָּ מִתּוֹךְ הָאֵשׁ",
+        "transliteration": "u'devarav shamat mitoch ha'esh",
+        "translations": [
+          "e as suas palavras ouviste do meio do fogo"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "לֹא שָׁמְרוּ בְּרִית אֱלֹהִים",
+        "transliteration": "lo shamru brit elohim",
+        "translations": [
+          "não guardaram a aliança de deus"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בְּצֶלֶם אֱלֹהִים בָּרָא אֹתוֹ",
+        "transliteration": "betzelem elohim bara oto",
+        "translations": [
+          "à imagem de deus o criou"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וּבְנֵי יִשְׂרָאֵל הָלְכוּ בַיַּבָּשָׁה",
+        "transliteration": "u'vnei yisrael halchu vayabasha",
+        "translations": [
+          "e os filhos de israel caminharam em terra seca"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "סֵפֶר נָתַן לִי חִלְקִיָּה הַכֹּהֵן",
+        "transliteration": "sefer natan li chilkiya hacohen",
+        "translations": [
+          "o sacerdote hilquias me deu um livro"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ",
+        "transliteration": "b'reshit bara elohim et hashamayim v'et ha'aretz",
+        "translations": [
+          "no princípio criou deus os céus e a terra"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וְהָאָדָם יָדַע אֶת־חַוָּה אִשְׁתּוֹ",
+        "transliteration": "v'ha'adam yada et-chava ishto",
+        "translations": [
+          "e o homem conheceu a eva, sua mulher"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אֶת־קוֹלְךָ שָׁמַעְתִּי בַּגָּן",
+        "transliteration": "et-kolcha shamati bagan",
+        "translations": [
+          "ouvi a tua voz no jardim"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_13",
+    "title": "Lição XIII - Orações Interrogativas e Numerais 2026",
+    "items": [
+      {
+        "hebrew": "אָכַל",
+        "transliteration": "akal",
+        "translations": [
+          "comer",
+          "ele comeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "גָּנַב",
+        "transliteration": "ganav",
+        "translations": [
+          "roubar",
+          "furtar",
+          "ele roubou",
+          "ele furtou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "דְּמוּת",
+        "transliteration": "demut",
+        "translations": [
+          "semelhança",
+          "imagem"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "דַּעַת",
+        "transliteration": "da'at",
+        "translations": [
+          "conhecimento"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "הַיּוֹם",
+        "transliteration": "hayom",
+        "translations": [
+          "hoje"
+        ],
+        "type": "Adverbio"
+      },
+      {
+        "hebrew": "הֵיכָל",
+        "transliteration": "heikal",
+        "translations": [
+          "templo",
+          "palácio"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "חֹדֶשׁ",
+        "transliteration": "chodesh",
+        "translations": [
+          "mês",
+          "lua nova"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "חוֹמָה",
+        "transliteration": "chomah",
+        "translations": [
+          "muro",
+          "muralha"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "כָּתַב",
+        "transliteration": "katav",
+        "translations": [
+          "escrever",
+          "ele escreveu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "לָכֵן",
+        "transliteration": "lachen",
+        "translations": [
+          "por isso",
+          "portanto"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "hebrew": "מַלְכוּת",
+        "transliteration": "malkhut",
+        "translations": [
+          "reino",
+          "realeza"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "נֶגֶב",
+        "transliteration": "negev",
+        "translations": [
+          "neguebe",
+          "sul",
+          "região seca"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "נָתַן",
+        "transliteration": "natan",
+        "translations": [
+          "dar",
+          "ele deu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עָמַד",
+        "transliteration": "amad",
+        "translations": [
+          "estar de pé",
+          "ficar de pé",
+          "ele ficou de pé"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עָשָׂה",
+        "transliteration": "asah",
+        "translations": [
+          "fazer",
+          "ele fez"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "צֹאן",
+        "transliteration": "tzon",
+        "translations": [
+          "ovelhas",
+          "cabras",
+          "gado pequeno",
+          "rebanho"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "צַדִּיק",
+        "transliteration": "tzaddik",
+        "translations": [
+          "justo"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "צֶלֶם",
+        "transliteration": "tzelem",
+        "translations": [
+          "imagem",
+          "figura"
+        ],
+        "type": "Substantivo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד",
+        "transliteration": "adonai eloheinu adonai echad",
+        "translations": [
+          "o SENHOR nosso Deus é o único SENHOR",
+          "o SENHOR nosso Deus o SENHOR é um",
+          "o SENHOR nosso Deus, o SENHOR é único"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הֲשָׁלוֹם לָךְ הֲשָׁלוֹם לְאִישֵׁךְ הֲשָׁלוֹם לַיָּלֶד",
+        "transliteration": "ha-shalom lach, ha-shalom le-ishech, ha-shalom la-yaled",
+        "translations": [
+          "vai tudo bem contigo? vai tudo bem com teu marido? vai tudo bem com o menino?",
+          "está tudo bem contigo? vai tudo bem com teu marido? vai tudo bem com a criança?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הֲלוֹא אָח עֵשָׂו לְיַעֲקֹב",
+        "transliteration": "ha-lo ach esav le-ya'akov",
+        "translations": [
+          "não era Esaú irmão de Jacó?",
+          "não é Esau irmão de Jacó?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "מַה־זֹאת עָשָׂה אֱלֹהִים לָנוּ",
+        "transliteration": "mah-zot asah elohim lanu",
+        "translations": [
+          "que é isto que Deus nos fez?",
+          "o que é isto que Deus nos fez?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "טוֹבִים הַשְּׁנַיִם מִן־הָאֶחָד",
+        "transliteration": "tovim ha-shenayim min-ha-echad",
+        "translations": [
+          "melhor é serem dois do que um",
+          "melhor são dois do que um"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וּמָלַךְ יְהוָה עֲלֵיהֶם בְּהַר צִיּוֹן",
+        "transliteration": "u-malach adonai aleihem be-har tzion",
+        "translations": [
+          "e o SENHOR reinará sobre eles no monte Sião"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_14",
+    "title": "Lição XIV - Verbos: Troncos e Perfeito 2026",
+    "items": [
+      {
+        "hebrew": "אוֹ",
+        "transliteration": "o",
+        "translations": [
+          "ou"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "hebrew": "אוֹת",
+        "transliteration": "ot",
+        "translations": [
+          "sinal"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "אֵל",
+        "transliteration": "el",
+        "translations": [
+          "deus",
+          "Deus"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "הִנֵּה",
+        "transliteration": "hinneh",
+        "translations": [
+          "eis",
+          "eis que",
+          "vede"
+        ],
+        "type": "Partícula"
+      },
+      {
+        "hebrew": "זֶרַע",
+        "transliteration": "zera",
+        "translations": [
+          "semente",
+          "descendência"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "חֲצִי",
+        "transliteration": "chetzi",
+        "translations": [
+          "metade"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "לָקַח",
+        "transliteration": "lakach",
+        "translations": [
+          "tomar",
+          "pegar",
+          "ele tomou",
+          "ele pegou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָלַךְ",
+        "transliteration": "malach",
+        "translations": [
+          "reinar",
+          "ele reinou",
+          "tornar-se rei"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָצָא",
+        "transliteration": "matza",
+        "translations": [
+          "achar",
+          "encontrar",
+          "ele achou",
+          "ele encontrou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָפַל",
+        "transliteration": "nafal",
+        "translations": [
+          "cair",
+          "ele caiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עָבַד",
+        "transliteration": "avad",
+        "translations": [
+          "servir",
+          "trabalhar",
+          "ele serviu",
+          "ele trabalhou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עָלָה",
+        "transliteration": "alah",
+        "translations": [
+          "subir",
+          "ele subiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "פָּקַד",
+        "transliteration": "pakad",
+        "translations": [
+          "visitar",
+          "inspecionar",
+          "ele visitou",
+          "ele inspecionou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "קָרָא",
+        "transliteration": "kara",
+        "translations": [
+          "chamar",
+          "ler",
+          "ele chamou",
+          "ele leu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁכַב",
+        "transliteration": "shachav",
+        "translations": [
+          "deitar",
+          "deitar-se",
+          "ele se deitou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁלַח",
+        "transliteration": "shalach",
+        "translations": [
+          "enviar",
+          "ele enviou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁמַע",
+        "transliteration": "shama",
+        "translations": [
+          "ouvir",
+          "obedecer",
+          "ele ouviu",
+          "ele obedeceu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁמַר",
+        "transliteration": "shamar",
+        "translations": [
+          "guardar",
+          "observar",
+          "ele guardou"
+        ],
+        "type": "Verbo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "בְּצֶלֶם אֱלֹהִים בָּרָא אֹתוֹ",
+        "transliteration": "be-tzelem elohim bara oto",
+        "translations": [
+          "à imagem de Deus o criou"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וּבְנֵי יִשְׂרָאֵל הָלְכוּ בַיַּבָּשָׁה",
+        "transliteration": "u-venei yisrael halchu va-yabbashah",
+        "translations": [
+          "e os filhos de Israel andaram em terra seca",
+          "e os filhos de israel andaram em terra seca"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "קָדוֹשׁ קָדוֹשׁ קָדוֹשׁ יְהוָה צְבָאוֹת",
+        "transliteration": "kadosh kadosh kadosh adonai tzva'ot",
+        "translations": [
+          "santo santo santo é o SENHOR dos exércitos",
+          "santo, santo, santo é o SENHOR dos exércitos"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "סֵפֶר נָתַן לִי חִלְקִיָּה הַכֹּהֵן",
+        "transliteration": "sefer natan li chilkiyah ha-kohen",
+        "translations": [
+          "o sacerdote Hilquias me deu um livro",
+          "um livro me deu Hilquias o sacerdote"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הֵן הָאָדָם הָיָה כְּאַחַד מִמֶּנּוּ",
+        "transliteration": "hen ha-adam hayah ke-achad mimmennu",
+        "translations": [
+          "eis que o homem se tornou como um de nós"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וְאֵין־דַּעַת אֱלֹהִים בָּאָרֶץ",
+        "transliteration": "ve-ein-da'at elohim ba-aretz",
+        "translations": [
+          "e não há conhecimento de Deus na terra"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אָכֵן יֵשׁ יְהוָה בַּמָּקוֹם הַזֶּה",
+        "transliteration": "achen yesh adonai ba-makom ha-zeh",
+        "translations": [
+          "certamente o SENHOR está neste lugar"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_15",
+    "title": "Lição XV - Verbos: Imperfeito Qal 2026",
+    "items": [
+      {
+        "hebrew": "אַיִל",
+        "transliteration": "ayil",
+        "translations": [
+          "carneiro"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "בּוֹא",
+        "transliteration": "bo",
+        "translations": [
+          "vir",
+          "entrar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "זָכַר",
+        "transliteration": "zachar",
+        "translations": [
+          "lembrar",
+          "lembrar-se",
+          "ele se lembrou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָיָה",
+        "transliteration": "chayah",
+        "translations": [
+          "viver",
+          "reviver",
+          "ele viveu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָשַׁל",
+        "transliteration": "mashal",
+        "translations": [
+          "governar",
+          "ele governou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עֶבֶד",
+        "transliteration": "eved",
+        "translations": [
+          "servo",
+          "escravo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "עָבַר",
+        "transliteration": "avar",
+        "translations": [
+          "atravessar",
+          "passar",
+          "ele atravessou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עוֹלָם",
+        "transliteration": "olam",
+        "translations": [
+          "eternidade",
+          "para sempre"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "קוּם",
+        "transliteration": "kum",
+        "translations": [
+          "levantar-se",
+          "erguer-se"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׂפָה",
+        "transliteration": "safah",
+        "translations": [
+          "lábio",
+          "idioma",
+          "beira"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "שָׁאַל",
+        "transliteration": "sha'al",
+        "translations": [
+          "perguntar",
+          "pedir",
+          "ele perguntou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁבַר",
+        "transliteration": "shavar",
+        "translations": [
+          "quebrar",
+          "ele quebrou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שׁוּב",
+        "transliteration": "shuv",
+        "translations": [
+          "voltar",
+          "retornar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שׁוֹפָר",
+        "transliteration": "shofar",
+        "translations": [
+          "trombeta",
+          "chifre de carneiro"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שָׁכַח",
+        "transliteration": "shachach",
+        "translations": [
+          "esquecer",
+          "ele esqueceu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁפַט",
+        "transliteration": "shafat",
+        "translations": [
+          "julgar",
+          "ele julgou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "תָּמִיד",
+        "transliteration": "tamid",
+        "translations": [
+          "continuamente",
+          "sempre"
+        ],
+        "type": "Adverbio"
+      },
+      {
+        "hebrew": "תְּפִלָּה",
+        "transliteration": "tefillah",
+        "translations": [
+          "oração"
+        ],
+        "type": "Substantivo (f)"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "פֶּן־נִשְׂרֹף אוֹתָךְ וְאֶת־בֵּית אָבִיךָ בָּאֵשׁ",
+        "transliteration": "pen-nisrof otach ve-et-beit avich ba-esh",
+        "translations": [
+          "para que não queimemos a ti e à casa de teu pai com fogo"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אַל־תִּשְׁלַח יָדְךָ אֶל־הַנַּעַר",
+        "transliteration": "al-tishlach yadcha el-ha-na'ar",
+        "translations": [
+          "não estendas a tua mão contra o rapaz",
+          "não estendas a tua mão sobre o jovem"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "יוֹמָם וָלַיְלָה תִּכְבַּד עָלַי יָדְךָ",
+        "transliteration": "yomam va-laylah tichbad alai yadcha",
+        "translations": [
+          "dia e noite a tua mão pesava sobre mim"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בְּיָד חֲזָקָה אֶמְלוֹךְ עֲלֵיכֶם",
+        "transliteration": "be-yad chazakah emloch aleihem",
+        "translations": [
+          "com mão forte reinarei sobre vós"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "יִזְכֹּר עֲוֹנָם וְיִפְקֹד חַטָּאתָם",
+        "transliteration": "yizcor avonam ve-yifkod chattatam",
+        "translations": [
+          "lembrará a sua iniquidade e punirá os seus pecados"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וְלֹא־יִלְמְדוּן עוֹד מִלְחָמָה",
+        "transliteration": "ve-lo-yilmedun od milchamah",
+        "translations": [
+          "e não aprenderão mais a guerra"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_16",
+    "title": "Lição XVI - Verbos: Imperfeitos dos Demais Troncos 2026",
+    "items": [
+      {
+        "hebrew": "בֶּטֶן",
+        "transliteration": "beten",
+        "translations": [
+          "barriga",
+          "ventre"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "בָּרַךְ",
+        "transliteration": "barach",
+        "translations": [
+          "abençoar",
+          "ele abençoou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "גָּאַל",
+        "transliteration": "ga'al",
+        "translations": [
+          "redimir",
+          "resgatar",
+          "ele redimiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הָלַל",
+        "transliteration": "halal",
+        "translations": [
+          "louvar",
+          "ele louvou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חַטָּאת",
+        "transliteration": "chattat",
+        "translations": [
+          "pecado"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "לָחַם",
+        "transliteration": "lacham",
+        "translations": [
+          "lutar",
+          "ele lutou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "לָמַד",
+        "transliteration": "lamad",
+        "translations": [
+          "aprender",
+          "ele aprendeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָלֵא",
+        "transliteration": "malei",
+        "translations": [
+          "estar cheio",
+          "ele estava cheio"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָלַט",
+        "transliteration": "malat",
+        "translations": [
+          "escapar",
+          "ele escapou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָשָׂא",
+        "transliteration": "nasa",
+        "translations": [
+          "levantar",
+          "erguer",
+          "ele levantou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "סָתַר",
+        "transliteration": "satar",
+        "translations": [
+          "esconder",
+          "ele escondeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עָוֹן",
+        "transliteration": "avon",
+        "translations": [
+          "culpa",
+          "iniquidade"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "פֶּשַׁע",
+        "transliteration": "pesha",
+        "translations": [
+          "rebelião",
+          "transgressão"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "קָבַר",
+        "transliteration": "kavar",
+        "translations": [
+          "enterrar",
+          "ele enterrou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רָאָה",
+        "transliteration": "ra'ah",
+        "translations": [
+          "ver",
+          "ele viu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רָקִיעַ",
+        "transliteration": "raki'a",
+        "translations": [
+          "firmamento"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שָׂרַף",
+        "transliteration": "saraf",
+        "translations": [
+          "queimar",
+          "ele queimou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁפַךְ",
+        "transliteration": "shafach",
+        "translations": [
+          "derramar",
+          "ele derramou"
+        ],
+        "type": "Verbo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "אַכְרִית אֶת־שְׁמוֹת הָעֲצַבִּים מִן־הָאָרֶץ",
+        "transliteration": "achrit et-shemot ha-atzabbim min-ha-aretz",
+        "translations": [
+          "eliminarei os nomes dos ídolos da terra"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כֹּל אֲשֶׁר־יִקְרָא בְּשֵׁם יְהוָה יִמָּלֵט",
+        "transliteration": "kol asher-yikra be-shem adonai yimmalet",
+        "translations": [
+          "todo aquele que invocar o nome do SENHOR escapará"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַיִּשְׁכֹּן כְּבוֹד־יְהוָה עַל־הַר סִינַי",
+        "transliteration": "va-yishkon kevod-adonai al-har sinai",
+        "translations": [
+          "e a glória do SENHOR habitou sobre o monte Sinai"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַיְלַמְדוּ סֵפֶר תּוֹרַת יְהוָה בְּכָל־עָרֵי יְהוּדָה",
+        "transliteration": "va-yelamdu sefer torat adonai be-chol-arei yehudah",
+        "translations": [
+          "e ensinaram o livro da lei do SENHOR em todas as cidades de Judá"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַיִּתְהַלֵּךְ חֲנוֹךְ אֶת־הָאֱלֹהִים",
+        "transliteration": "va-yithallech chanoch et-ha-elohim",
+        "translations": [
+          "e andou Enoque com Deus"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_17",
+    "title": "Lição XVII - Verbos: Sufixos Pronominais no Perfeito 2026",
+    "items": [
+      {
+        "hebrew": "בָּטַח",
+        "transliteration": "batach",
+        "translations": [
+          "confiar",
+          "ele confiou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "גָּדַל",
+        "transliteration": "gadal",
+        "translations": [
+          "ser grande",
+          "tornar-se grande",
+          "ele foi grande"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "דָּרַשׁ",
+        "transliteration": "darash",
+        "translations": [
+          "procurar",
+          "perguntar",
+          "buscar",
+          "ele procurou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "דֶּשֶׁא",
+        "transliteration": "deshe",
+        "translations": [
+          "relva",
+          "grama",
+          "erva"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "הָרַג",
+        "transliteration": "harag",
+        "translations": [
+          "matar",
+          "ele matou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "זָבַח",
+        "transliteration": "zavach",
+        "translations": [
+          "sacrificar",
+          "ele sacrificou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָזַק",
+        "transliteration": "chazaq",
+        "translations": [
+          "ser forte",
+          "tornar-se forte",
+          "ele foi forte"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָשַׁב",
+        "transliteration": "chashav",
+        "translations": [
+          "pensar",
+          "considerar",
+          "ele pensou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "כָּבֵד",
+        "transliteration": "kaved",
+        "translations": [
+          "ser pesado",
+          "ser honrado",
+          "ele foi pesado"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "כָּנָף",
+        "transliteration": "kenaf",
+        "translations": [
+          "asa",
+          "borda",
+          "extremidade"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "כָּפַר",
+        "transliteration": "kafar",
+        "translations": [
+          "expiar",
+          "encobrir",
+          "ele expiou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "לָבַשׁ",
+        "transliteration": "lavash",
+        "translations": [
+          "vestir",
+          "vestir-se",
+          "ele vestiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נַחַל",
+        "transliteration": "nachal",
+        "translations": [
+          "corrente",
+          "leito de rio",
+          "riacho"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "עָזַב",
+        "transliteration": "azav",
+        "translations": [
+          "abandonar",
+          "deixar",
+          "ele abandonou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "קָרַב",
+        "transliteration": "karav",
+        "translations": [
+          "aproximar-se",
+          "chegar perto",
+          "ele se aproximou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רָדַף",
+        "transliteration": "radaf",
+        "translations": [
+          "perseguir",
+          "ele perseguiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שֵׁבֶט",
+        "transliteration": "shevet",
+        "translations": [
+          "vara",
+          "cajado",
+          "tribo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שָׁכֵן",
+        "transliteration": "shachan",
+        "translations": [
+          "habitar",
+          "morar",
+          "ele habitou"
+        ],
+        "type": "Verbo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "יְהוָה יִשְׁמָרְךָ מִכָּל־רָע",
+        "transliteration": "adonai yishmorcha mikol-ra",
+        "translations": [
+          "o SENHOR te guardará de todo o mal",
+          "o SENHOR te guardara de todo o mal"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אֵלִי אֵלִי לָמָה עֲזַבְתָּנִי",
+        "transliteration": "eli eli lamah azavtani",
+        "translations": [
+          "meu Deus, meu Deus, por que me desamparaste?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אַךְ טוֹב וָחֶסֶד יִרְדְּפוּנִי כָּל־יְמֵי חַיָּי",
+        "transliteration": "ach tov va-chesed yirdefuni kol-yemei chayai",
+        "translations": [
+          "certamente que a bondade e a misericórdia me seguirão todos os dias da minha vida"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "יְהוָה אֱלֹהֵי הַשָּׁמַיִם אֲשֶׁר לְקָחַנִי מִבֵּית אָבִי",
+        "transliteration": "adonai elohei ha-shamayim asher lekachani mi-beit avi",
+        "translations": [
+          "o SENHOR Deus dos céus que me tirou da casa de meu pai"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כִּי־אָבִי וְאִמִּי עֲזָבוּנִי",
+        "transliteration": "ki-avi ve-immi azavuni",
+        "translations": [
+          "porque meu pai e minha mãe me abandonaram",
+          "pois meu pai e minha mãe me abandonaram"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_18",
+    "title": "Lição XVIII - Verbos: O Imperativo e Proibições 2026",
+    "items": [
+      {
+        "hebrew": "יוֹמָם",
+        "transliteration": "yomam",
+        "translations": [
+          "diariamente",
+          "durante o dia",
+          "de dia"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "יָצָא",
+        "transliteration": "yatza",
+        "translations": [
+          "sair",
+          "ele saiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָרֵא",
+        "transliteration": "yare",
+        "translations": [
+          "temer",
+          "ter medo",
+          "ele temeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָשַׁב",
+        "transliteration": "yashav",
+        "translations": [
+          "sentar",
+          "habitar",
+          "morar",
+          "ele sentou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָשַׁע",
+        "transliteration": "yasha",
+        "translations": [
+          "salvar",
+          "libertar",
+          "ele salvou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָוֶת",
+        "transliteration": "mavet",
+        "translations": [
+          "morte"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "נָצַל",
+        "transliteration": "natal",
+        "translations": [
+          "socorrer",
+          "salvar",
+          "ele socorreu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "סָפַר",
+        "transliteration": "safar",
+        "translations": [
+          "contar",
+          "relatar",
+          "ele contou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עָזַר",
+        "transliteration": "azar",
+        "translations": [
+          "ajudar",
+          "ele ajudou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עָנָה",
+        "transliteration": "anah",
+        "translations": [
+          "responder",
+          "ele respondeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "פָּלַל",
+        "transliteration": "palal",
+        "translations": [
+          "orar",
+          "interceder",
+          "ele orou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "פָּרָה",
+        "transliteration": "parah",
+        "translations": [
+          "ser frutífero",
+          "ele foi frutífero"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "צָוָה",
+        "transliteration": "tzavah",
+        "translations": [
+          "ordenar",
+          "mandar",
+          "ele ordenou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רָבָה",
+        "transliteration": "ravah",
+        "translations": [
+          "multiplicar",
+          "tornar-se numeroso",
+          "ele se multiplicou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שִׂים",
+        "transliteration": "sim",
+        "translations": [
+          "colocar",
+          "pôr"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׂמַח",
+        "transliteration": "samach",
+        "translations": [
+          "alegrar-se",
+          "ele se alegrou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁבַע",
+        "transliteration": "shava",
+        "translations": [
+          "jurar",
+          "ele jurou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁלַךְ",
+        "transliteration": "shalach",
+        "translations": [
+          "lançar",
+          "jogar",
+          "ele lançou"
+        ],
+        "type": "Verbo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "הַלְלוּ יָהּ הַלְלוּ־אֵל בְּקָדְשׁוֹ",
+        "transliteration": "hallelu yah, hallelu-el be-kodsho",
+        "translations": [
+          "louvai a Deus no seu santuário",
+          "louvai ao SENHOR, louvai a Deus no seu santuário"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בַּקֵּשׁ שָׁלוֹם וְרָדְפֵהוּ",
+        "transliteration": "bakkesh shalom ve-radfehu",
+        "translations": [
+          "procura a paz e segue-a",
+          "busca a paz e segue-a"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "שִׁמְרוּ כָּל־מִצְוֹת יְהוָה",
+        "transliteration": "shimru kol-mitzvot adonai",
+        "translations": [
+          "guardai todos os mandamentos do SENHOR"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "שְׁמַע יִשְׂרָאֵל יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד",
+        "transliteration": "shama yisrael adonai eloheinu adonai echad",
+        "translations": [
+          "ouve, Israel, o SENHOR nosso Deus é o único SENHOR"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כַּבֵּד אֶת־אָבִיךָ וְאֶת־אִמֶּךָ",
+        "transliteration": "kabbed et-avicha ve-et-immecha",
+        "translations": [
+          "honra a teu pai e a tua mãe",
+          "honra teu pai e tua mãe"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_19",
+    "title": "Lição XIX - Verbos: O Infinitivo Construto e Absoluto 2026",
+    "items": [
+      {
+        "hebrew": "אָבַד",
+        "transliteration": "avad",
+        "translations": [
+          "perecer",
+          "sucumbir",
+          "ele pereceu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אָסַף",
+        "transliteration": "asaf",
+        "translations": [
+          "juntar",
+          "reunir",
+          "ele juntou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "בִּין",
+        "transliteration": "bin",
+        "translations": [
+          "entender",
+          "discernir"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "בָּרַח",
+        "transliteration": "barach",
+        "translations": [
+          "fugir",
+          "ele fugiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָדַל",
+        "transliteration": "chadal",
+        "translations": [
+          "parar",
+          "cessar",
+          "ele parou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָטָא",
+        "transliteration": "chata",
+        "translations": [
+          "pecar",
+          "errar o alvo",
+          "ele pecou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָכֹל",
+        "transliteration": "yachol",
+        "translations": [
+          "poder",
+          "ser capaz",
+          "ele pôde"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָלַד",
+        "transliteration": "yalad",
+        "translations": [
+          "gerar",
+          "dar à luz",
+          "ele gerou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָסַף",
+        "transliteration": "yasaf",
+        "translations": [
+          "acrescentar",
+          "ele acrescentou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָרַד",
+        "transliteration": "yarad",
+        "translations": [
+          "descer",
+          "ele desceu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָרַשׁ",
+        "transliteration": "yarash",
+        "translations": [
+          "tomar posse",
+          "herdar",
+          "ele herdou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "כּוּן",
+        "transliteration": "kun",
+        "translations": [
+          "ficar firme",
+          "estabelecer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "כָּלָה",
+        "transliteration": "kalah",
+        "translations": [
+          "completar",
+          "concluir",
+          "ele completou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָאַן",
+        "transliteration": "ma'an",
+        "translations": [
+          "recusar",
+          "ele recusou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָאַס",
+        "transliteration": "ma'as",
+        "translations": [
+          "rejeitar",
+          "desprezar",
+          "ele rejeitou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָכַר",
+        "transliteration": "machar",
+        "translations": [
+          "vender",
+          "ele vendeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָגַד",
+        "transliteration": "nagad",
+        "translations": [
+          "declarar",
+          "contar",
+          "ele declarou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָטָה",
+        "transliteration": "natah",
+        "translations": [
+          "estender",
+          "esticar",
+          "ele estendeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָכָה",
+        "transliteration": "nachah",
+        "translations": [
+          "golpear",
+          "matar",
+          "ele golpeou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רוּם",
+        "transliteration": "rum",
+        "translations": [
+          "estar no alto",
+          "ser exaltado"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רָפָא",
+        "transliteration": "rafa",
+        "translations": [
+          "curar",
+          "ele curou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רָצָה",
+        "transliteration": "ratzah",
+        "translations": [
+          "ter prazer em",
+          "ser gracioso",
+          "ele teve prazer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׂנֵא",
+        "transliteration": "sane",
+        "translations": [
+          "odiar",
+          "ele odiou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁתָה",
+        "transliteration": "shatah",
+        "translations": [
+          "beber",
+          "ele bebeu"
+        ],
+        "type": "Verbo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "מִכֹּל עֵץ־הַגָּן אָכֹל תֹּאכֵל",
+        "transliteration": "mi-kol etz-ha-gan achol tochel",
+        "translations": [
+          "de toda árvore do jardim comerás livremente"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "לָחֶם לֶאֱכֹל וּבֶגֶד לִלְבֹּשׁ",
+        "transliteration": "lechem le-echol u-veged lilbosh",
+        "translations": [
+          "pão para comer e roupa para vestir"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "לִדְרֹשׁ אֶת־תּוֹרַת יְהוָה",
+        "transliteration": "lidrosh et-torat adonai",
+        "translations": [
+          "para buscar a lei do SENHOR"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "עַל נַהֲרוֹת בָּבֶל שָׁם יָשַׁבְנוּ גַּם־בָּכִינוּ בְּזָכְרֵנוּ אֶת־צִיּוֹן",
+        "transliteration": "al naharot bavel sham yashavnu gam-bachinu be-zochreinu et-tzion",
+        "translations": [
+          "junto aos rios da Babilônia nos assentamos e choramos ao nos lembrarmos de Sião"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כִּי בֵיתִי בֵּית־תְּפִלָּה יִקָּרֵא לְכָל־הָעַמִּים",
+        "transliteration": "ki veiti beit-tefillah yikkare le-chol-ha'ammim",
+        "translations": [
+          "porque a minha casa será chamada casa de oração para todos os povos"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_20",
+    "title": "Lição XX - Verbos: Introdução aos Particípios 2026",
+    "items": [
+      {
+        "hebrew": "אָמַן",
+        "transliteration": "aman",
+        "translations": [
+          "ser fiel",
+          "crer",
+          "ele creu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אָרַר",
+        "transliteration": "arar",
+        "translations": [
+          "amaldiçoar",
+          "ele amaldiçoou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "גֹּאֵל",
+        "transliteration": "go'el",
+        "translations": [
+          "redentor"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "גָּלָה",
+        "transliteration": "galah",
+        "translations": [
+          "revelar",
+          "descobrir",
+          "ele descobriu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "גָּמָל",
+        "transliteration": "gamal",
+        "translations": [
+          "camelo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "יוֹשֵׁב",
+        "transliteration": "yoshev",
+        "translations": [
+          "habitante",
+          "morador"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "יוֹצֵר",
+        "transliteration": "yotzer",
+        "translations": [
+          "oleiro"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "יָצַר",
+        "transliteration": "yatzar",
+        "translations": [
+          "formar",
+          "ele formou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מוֹשִׁיעַ",
+        "transliteration": "moshia",
+        "translations": [
+          "salvador",
+          "libertador"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מַלְאָךְ",
+        "transliteration": "mal'ach",
+        "translations": [
+          "anjo",
+          "mensageiro"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "נָגַע",
+        "transliteration": "naga",
+        "translations": [
+          "tocar",
+          "ferir",
+          "ele tocou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָגַשׁ",
+        "transliteration": "nagash",
+        "translations": [
+          "aproximar-se",
+          "ele se aproximou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָהָר",
+        "transliteration": "nahar",
+        "translations": [
+          "rio"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "סוֹפֵר",
+        "transliteration": "sofer",
+        "translations": [
+          "escriba"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "פָּדָה",
+        "transliteration": "padah",
+        "translations": [
+          "remiu",
+          "resgatar",
+          "ele remiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "פָּשַׁע",
+        "transliteration": "pasha",
+        "translations": [
+          "rebelar-se",
+          "transgredir",
+          "ele se rebelou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רוֹאֶה",
+        "transliteration": "ro'eh",
+        "translations": [
+          "vidente",
+          "profeta"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "רוֹעֶה",
+        "transliteration": "ro'eh",
+        "translations": [
+          "pastor"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "רָעָה",
+        "transliteration": "ra'ah",
+        "translations": [
+          "pastorear",
+          "ele pastoreou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שַׂר",
+        "transliteration": "sar",
+        "translations": [
+          "príncipe",
+          "oficial"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שָׁאַר",
+        "transliteration": "sha'ar",
+        "translations": [
+          "sobrar",
+          "restar",
+          "ele sobrou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שׁוֹפֵט",
+        "transliteration": "shofet",
+        "translations": [
+          "juiz"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שָׁקָה",
+        "transliteration": "shaqah",
+        "translations": [
+          "dar de beber",
+          "regar",
+          "ele deu de beber"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "תּוֹעֵבָה",
+        "transliteration": "to'evah",
+        "translations": [
+          "abominação"
+        ],
+        "type": "Substantivo (f)"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "שֹׁפֵךְ דַּם הָאָדָם בָּאָדָם דָּמוֹ יִשָּׁפֵךְ",
+        "transliteration": "shofech dam ha-adam ba-adam damo yishafech",
+        "translations": [
+          "quem derramar o sangue do homem, pelo homem o seu sangue será derramado"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הָרֹפֵא לִשְׁבוּרֵי לֵב",
+        "transliteration": "ha-rofe li-shvurei lev",
+        "translations": [
+          "ele sara os quebrantados de coração"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "יְהוָה יִשְׁמָר־צֵאתְךָ וּבוֹאֶךָ מֵעַתָּה וְעַד־עוֹלָם",
+        "transliteration": "adonai yishmor-tzetcha u-vo'echa me-attah ve-ad-olam",
+        "translations": [
+          "o SENHOR guardará a tua saída e a tua entrada, desde agora e para sempre"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "שִׁמְעוּ אֵלַי רֹדְפֵי צֶדֶק מְבַקְשֵׁי יְהוָה",
+        "transliteration": "shim'u elai rodfei tzedek mevakshei adonai",
+        "translations": [
+          "ouvi-me vós, os que seguis a justiça, os que buscais ao SENHOR"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_21",
+    "title": "Lição XXI - Verbos: Conjunção Vav e Relação de Coordenação 2026",
+    "items": [
+      {
+        "hebrew": "בּוֹשׁ",
+        "transliteration": "bosh",
+        "translations": [
+          "ele ficou envergonhado",
+          "envergonhar-se"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "דָּבַק",
+        "transliteration": "davak",
+        "translations": [
+          "ele se apegou",
+          "juntou-se"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הָרָה",
+        "transliteration": "harah",
+        "translations": [
+          "ela concebeu",
+          "engravidou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "סוּר",
+        "transliteration": "sur",
+        "translations": [
+          "desviar-se",
+          "retirar-se"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "פָּנָה",
+        "transliteration": "panah",
+        "translations": [
+          "ele se virou",
+          "voltou-se"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רָחַץ",
+        "transliteration": "rachatz",
+        "translations": [
+          "ele lavou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אֹזֶן",
+        "transliteration": "ozen",
+        "translations": [
+          "ouvido",
+          "orelha"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "אֱנוֹשׁ",
+        "transliteration": "enosh",
+        "translations": [
+          "homem",
+          "humanidade"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "בֶּגֶד",
+        "transliteration": "beged",
+        "translations": [
+          "veste",
+          "roupa"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "בְּרָכָה",
+        "transliteration": "berachah",
+        "translations": [
+          "bênção"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "גּוֹרָל",
+        "transliteration": "goral",
+        "translations": [
+          "sorte",
+          "quinhão"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "גֶּפֶן",
+        "transliteration": "gefen",
+        "translations": [
+          "videira",
+          "vinha"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "גֶּשֶׁם",
+        "transliteration": "geshem",
+        "translations": [
+          "chuva",
+          "aguaceiro"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "זְרוֹעַ",
+        "transliteration": "zeroa",
+        "translations": [
+          "braço",
+          "força"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "מוֹעֵד",
+        "transliteration": "mo'ed",
+        "translations": [
+          "tempo determinado",
+          "reunião"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "עֵד",
+        "transliteration": "ed",
+        "translations": [
+          "testemunha"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "עַיִן",
+        "transliteration": "ayin",
+        "translations": [
+          "olho",
+          "fonte"
+        ],
+        "type": "Substantivo (m/f)"
+      },
+      {
+        "hebrew": "שֶׁקֶר",
+        "transliteration": "sheker",
+        "translations": [
+          "mentira",
+          "falsidade"
+        ],
+        "type": "Substantivo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "שְׁמַע יִשְׂרָאֵל יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד",
+        "transliteration": "shama yisrael adonai eloheinu adonai echad",
+        "translations": [
+          "ouve, israel, o senhor nosso deus é o único senhor"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וְאָהַבְתָּ אֵת יְהוָה אֱלֹהֶיךָ בְּכָל־לְבָבְךָ וּבְכָל־נַפְשְׁךָ",
+        "transliteration": "ve-ahavta et adonai eloheicha be-chol-levavcha u-ve-chol-nafshecha",
+        "translations": [
+          "amarás, pois, o senhor teu deus de todo o teu coração e de toda a tua alma"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "טַעֲמוּ וּרְאוּ כִּי־טוֹב יְהוָה",
+        "transliteration": "ta'amu u-re'u ki-tov adonai",
+        "translations": [
+          "provai e vede que o senhor é bom"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "פְּרוּ וּרְבוּ וּמִלְאוּ אֶת־הָאָרֶץ",
+        "transliteration": "peru u-revu u-mil'u et-ha-aretz",
+        "translations": [
+          "sede frutíferos, multiplicai-vos e enchei a terra"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "יִשְׁלַח דְּבָרוֹ וְיִרְפָּאֵם",
+        "transliteration": "yishlach devaro ve-yirpa'em",
+        "translations": [
+          "enviou a sua palavra e os curou"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_22",
+    "title": "Lição XXII - Verbos Fracos: Pe Gutural 2026",
+    "items": [
+      {
+        "hebrew": "אָחַז",
+        "transliteration": "achaz",
+        "translations": [
+          "ele agarrou",
+          "pegou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "גָּנַב",
+        "transliteration": "ganav",
+        "translations": [
+          "ele rouou",
+          "furtou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הָפַךְ",
+        "transliteration": "hafach",
+        "translations": [
+          "ele virou",
+          "transformou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הָרַס",
+        "transliteration": "haras",
+        "translations": [
+          "ele demoliu",
+          "destruiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָגַר",
+        "transliteration": "chagar",
+        "translations": [
+          "ele se cingiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חִדֵּשׁ",
+        "transliteration": "chiddesh",
+        "translations": [
+          "ele renovou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָפֵץ",
+        "transliteration": "chafetz",
+        "translations": [
+          "ele desejou",
+          "agradou-se"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עָרַךְ",
+        "transliteration": "arach",
+        "translations": [
+          "ele pôs em ordem",
+          "preparou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אָז",
+        "transliteration": "az",
+        "translations": [
+          "então",
+          "naquela ocasião"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "אַךְ",
+        "transliteration": "ach",
+        "translations": [
+          "certamente",
+          "somente"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "hebrew": "בְּאֵר",
+        "transliteration": "be'er",
+        "translations": [
+          "poço"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "אֱמוּנָה",
+        "transliteration": "emunah",
+        "translations": [
+          "fidelidade",
+          "firmeza"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "בְּכוֹר",
+        "transliteration": "bechor",
+        "translations": [
+          "primogênito"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "דְּבַשׁ",
+        "transliteration": "devash",
+        "translations": [
+          "mel"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "חֹק",
+        "transliteration": "chok",
+        "translations": [
+          "estatuto",
+          "lei",
+          "decreto"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "לָשׁוֹן",
+        "transliteration": "lashon",
+        "translations": [
+          "língua",
+          "idioma"
+        ],
+        "type": "Substantivo (m/f)"
+      },
+      {
+        "hebrew": "מָוֶת",
+        "transliteration": "mavet",
+        "translations": [
+          "morte"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מִזְבֵּחַ",
+        "transliteration": "mizbeach",
+        "translations": [
+          "altar"
+        ],
+        "type": "Substantivo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "וַיִּהָפְכוּ כָּל־הַמַּיִם אֲשֶׁר בַּיְאֹר לְדָם",
+        "transliteration": "va-yihafechu kol-ha-mayim asher ba-ye'or le-dam",
+        "translations": [
+          "e todas as águas que estavam no rio se converteram em sangue"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וְאַתֶּם חֲשַׁבְתֶּם עָלַי רָעָה אֱלֹהִים חֲשָׁבָהּ לְטוֹבָה",
+        "transliteration": "ve-athem chashavtem alai ra'ah elohim chashavah le-tovah",
+        "translations": [
+          "vós intentastes o mal contra mim, mas deus o transformou em bem"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַיְחַזֵּק יְהוָה אֶת־לֵב פַּרְעֹה וְלֹא שָׁמַע אֲלֵיהֶם",
+        "transliteration": "va-yechazzek adonai et-lev par'oh ve-lo shama aleihem",
+        "translations": [
+          "e o senhor endureceu o coração do faraó, e ele não os ouviu"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בָּקַע יָם וַיַּעֲבִירֵם",
+        "transliteration": "baka yam va-ya'avirem",
+        "translations": [
+          "dividiu o mar e os fez passar"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַאֲמִינוּ בַּיהוָה אֱלֹהֵיכֶם וְתֵאָמֵנוּ",
+        "transliteration": "ha'aminu ba-adonai eloheichem ve-te'amenu",
+        "translations": [
+          "crede no senhor vosso deus e estareis seguros"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_23",
+    "title": "Lição XXIII - Verbos Fracos: Pe Alef 2026",
+    "items": [
+      {
+        "hebrew": "אָבָה",
+        "transliteration": "avah",
+        "translations": [
+          "ele quis",
+          "desejou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אָבַל",
+        "transliteration": "aval",
+        "translations": [
+          "ele lamentou",
+          "cobriu-se de luto"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הֶאֱזִין",
+        "transliteration": "he'ezin",
+        "translations": [
+          "ele escutou",
+          "deu ouvidos"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אָמֵץ",
+        "transliteration": "ametz",
+        "translations": [
+          "ele foi forte",
+          "corajoso"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אָסַר",
+        "transliteration": "asar",
+        "translations": [
+          "ele amarrou",
+          "prendeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אָפָה",
+        "transliteration": "afah",
+        "translations": [
+          "ele assou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אָרַךְ",
+        "transliteration": "arach",
+        "translations": [
+          "ele se prolongou",
+          "foi longo"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אֶלֶף",
+        "transliteration": "elef",
+        "translations": [
+          "boi",
+          "mil"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "אָשֵׁם",
+        "transliteration": "ashem",
+        "translations": [
+          "ele foi culpado",
+          "errou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חוּץ",
+        "transliteration": "chutz",
+        "translations": [
+          "lado de fora",
+          "rua"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מֵאָה",
+        "transliteration": "me'ah",
+        "translations": [
+          "cem"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "פָּנִים",
+        "transliteration": "panim",
+        "translations": [
+          "rosto",
+          "presença"
+        ],
+        "type": "Substantivo (pl)"
+      },
+      {
+        "hebrew": "קֹדֶשׁ",
+        "transliteration": "kodesh",
+        "translations": [
+          "santidade",
+          "santuário"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שְׁנַיִם / שְׁתַּיִם",
+        "transliteration": "shenayim / shtayim",
+        "translations": [
+          "dois",
+          "duas"
+        ],
+        "type": "Numeral"
+      },
+      {
+        "hebrew": "שָׁלֹשׁ / שְׁלֹשָׁה",
+        "transliteration": "shalosh / sheloshah",
+        "translations": [
+          "três"
+        ],
+        "type": "Numeral"
+      },
+      {
+        "hebrew": "אַרְבַּע / אַרְבָּעָה",
+        "transliteration": "arba / arba'ah",
+        "translations": [
+          "quatro"
+        ],
+        "type": "Numeral"
+      },
+      {
+        "hebrew": "חָמֵשׁ / חֲמִשָּׁה",
+        "transliteration": "chamesh / chamishah",
+        "translations": [
+          "cinco"
+        ],
+        "type": "Numeral"
+      },
+      {
+        "hebrew": "גּוֹי",
+        "transliteration": "goi",
+        "translations": [
+          "nação",
+          "povo"
+        ],
+        "type": "Substantivo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "מִכֹּל עֵץ־הַגָּן אָכֹל תֹּאכֵל",
+        "transliteration": "mi-kol etz-ha-gan achol tochel",
+        "translations": [
+          "de toda árvore do jardim comerás livremente"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַיֹּאמֶר אֶל־הָאִשָּׁה אַף כִּי־אָמַר אֱלֹהִים לֹא תֹאכְלוּ מִכֹּל עֵץ הַגָּן",
+        "transliteration": "va-yomer el-ha-ishah af ki-amar elohim lo tochlu mi-kol etz ha-gan",
+        "translations": [
+          "e disse à mulher: é assim que deus disse: não comereis de toda árvore do jardim?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כָּל־זָכָר בַּכֹּהֲנִים יֹאכְלֶנּוּ בְּמָקוֹם קָדוֹשׁ יֵאָכֵל",
+        "transliteration": "kol-zachar ba-kohanim yochlennu be-makom kadosh yieachel",
+        "translations": [
+          "todo macho entre os sacerdotes comerá dele; em lugar santo se comerá"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַיִּבְרָא אֱלֹהִים אֶת־הָאָדָם בְּצַלְמוֹ בְּצֶלֶם אֱלֹהִים בָּרָא אֹתוֹ זָכָר וּנְקֵבָה בָּרָא אֹתָם",
+        "transliteration": "va-yivra elohim et-ha-adam be-tzelmo be-tzelem elohim bara oto zachar u-nekevah bara otam",
+        "translations": [
+          "criou deus, pois, o homem à sua imagem, à imagem de deus o criou; homem e mulher os criou"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "לָמָּה יֹאמְרוּ הַגּוֹיִם אַיֵּה אֱלֹהֵיהֶם",
+        "transliteration": "lamah yomru ha-goyim ayei eloheihem",
+        "translations": [
+          "por que diriam as nações: onde está o seu deus?"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "kelley_24",
+    "title": "Lição XXIV - Verbos Fracos: Ayin Gutural 2026",
+    "items": [
+      {
+        "hebrew": "בָּחַן",
+        "transliteration": "bachan",
+        "translations": [
+          "ele provou",
+          "examinou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "בָּחַר",
+        "transliteration": "bachar",
+        "translations": [
+          "ele escolheu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "בָּעַר",
+        "transliteration": "ba'ar",
+        "translations": [
+          "ele queimou",
+          "ardeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "זָעַק",
+        "transliteration": "za'ak",
+        "translations": [
+          "ele clamou",
+          "gritou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מִהֵר",
+        "transliteration": "miher",
+        "translations": [
+          "ele se apressou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָחַל",
+        "transliteration": "nachal",
+        "translations": [
+          "ele herdou",
+          "tomou posse"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נִחַם",
+        "transliteration": "nicham",
+        "translations": [
+          "ele se arrependeu",
+          "consolou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "צָחַק",
+        "transliteration": "tzachak",
+        "translations": [
+          "ele riu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "צָעַק",
+        "transliteration": "tza'ak",
+        "translations": [
+          "ele clamou",
+          "gritou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׂחַק",
+        "transliteration": "sachak",
+        "translations": [
+          "ele riu",
+          "brincou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁחַט",
+        "transliteration": "shachat",
+        "translations": [
+          "ele abateu",
+          "sacrificou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אַחֵר",
+        "transliteration": "acher",
+        "translations": [
+          "outro"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "hebrew": "אַחַר",
+        "transliteration": "achar",
+        "translations": [
+          "atrás",
+          "depois de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "אוֹיֵב",
+        "transliteration": "oyev",
+        "translations": [
+          "inimigo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "בָּקָר",
+        "transliteration": "bakar",
+        "translations": [
+          "gado bovino"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מִגְדָּל",
+        "transliteration": "migdal",
+        "translations": [
+          "torre",
+          "fortaleza"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "זֶבַח",
+        "transliteration": "zevach",
+        "translations": [
+          "sacrifício"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מִנְחָה",
+        "transliteration": "minchah",
+        "translations": [
+          "oferta",
+          "presente",
+          "tributo"
+        ],
+        "type": "Substantivo (f)"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "עַתָּה הִנֵּה הַמֶּלֶךְ אֲשֶׁר בְּחַרְתֶּם",
+        "transliteration": "attah hinneh ha-melech asher bechartem",
+        "translations": [
+          "agora, pois, eis aqui o rei que escolhestes"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "יְבָרֶכְךָ יְהוָה וְיִשְׁמְרֶךָ",
+        "transliteration": "yevarechecha adonai ve-yishmerecha",
+        "translations": [
+          "o senhor te abençoe e te guarde"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "עַל־כֵּן בֵּרַךְ יְהוָה אֶת־יוֹם הַשַּׁבָּת וַיְקַדְּשֵׁהוּ",
+        "transliteration": "al-ken berach adonai et-yom ha-shabbat va-yekaddeshehu",
+        "translations": [
+          "por isso o senhor abençoou o dia do sábado e o santificou"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כְּאִישׁ אֲשֶׁר אִמּוֹ תְּנַחֲמֶנּוּ כֵּן אָנֹכִי אֲנַחֶמְכֶם",
+        "transliteration": "ke-ish asher immo tenachamennu ken anochi anachemchem",
+        "translations": [
+          "como alguém a quem sua mãe consola, assim eu vos consolarei"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "יְהִי שֵׁם יְהוָה מְבֹרָךְ מֵעַתָּה וְעַד עוֹלָם",
+        "transliteration": "yehi shem adonai mevorach me-attah ve-ad olam",
+        "translations": [
+          "seja bendito o nome do senhor, desde agora e para sempre"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "licao_25",
+    "title": "Lição XXV - Verbos Fracos: Lamed Gutural 2026",
+    "items": [
+      {
+        "hebrew": "בָּלַע",
+        "transliteration": "balah",
+        "translations": [
+          "ele engoliu",
+          "consumiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "בָּקַע",
+        "transliteration": "baka",
+        "translations": [
+          "ele partiu",
+          "fendeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "גָּבַהּ",
+        "transliteration": "gavah",
+        "translations": [
+          "ele foi alto",
+          "orgulhoso"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "זָרַע",
+        "transliteration": "zarah",
+        "translations": [
+          "ele semeou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "כָּרַע",
+        "transliteration": "karah",
+        "translations": [
+          "ele se ajoelhou",
+          "curvou-se"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָשַׁח",
+        "transliteration": "mashach",
+        "translations": [
+          "ele ungiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "סָלַח",
+        "transliteration": "salach",
+        "translations": [
+          "ele perdoou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "פָּגַע",
+        "transliteration": "paga",
+        "translations": [
+          "ele encontrou",
+          "intercedeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "פָּתַח",
+        "transliteration": "patach",
+        "translations": [
+          "ele abriu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רָצַח",
+        "transliteration": "ratzach",
+        "translations": [
+          "ele matou",
+          "assassinou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׂבַע",
+        "transliteration": "savah",
+        "translations": [
+          "ele estava satisfeito",
+          "saciado"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "בָּמָה",
+        "transliteration": "bamah",
+        "translations": [
+          "lugar alto"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "צוּר",
+        "transliteration": "tzur",
+        "translations": [
+          "rocha",
+          "pedra"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "קֵץ",
+        "transliteration": "ketz",
+        "translations": [
+          "fim"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שֻׁלְחָן",
+        "transliteration": "shulchan",
+        "translations": [
+          "mesa"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שֶׁמֶשׁ",
+        "transliteration": "shemesh",
+        "translations": [
+          "sol"
+        ],
+        "type": "Substantivo (m/f)"
+      },
+      {
+        "hebrew": "תּוֹלְדוֹת",
+        "transliteration": "toledot",
+        "translations": [
+          "gerações",
+          "história"
+        ],
+        "type": "Substantivo (f)"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "וָאֶשְׁמַע אֶת־קוֹל אֲדֹנָי אֹמֵר אֶת־מִי אֶשְׁלַח",
+        "transliteration": "Va-eshma et-kol Adonai omer et-mi eshlach",
+        "translations": [
+          "e ouvi a voz do senhor dizendo: a quem enviarei?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וּבְעֵת צָרָתָם יִצְעֲקוּ אֵלֶיךָ וְאַתָּה מִשָּׁמַיִם תִּשְׁמָע",
+        "transliteration": "U-ve-et tzaratam yitza'aku eleicha ve-attah mi-shamayim tishma",
+        "translations": [
+          "e no tempo da sua angústia clamarão a ti, e tu dos céus ouvirás"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַיִּמְשַׁח אֶת־שְׁלֹמֹה וַיִּתְקְעוּ בַּשּׁוֹפָר",
+        "transliteration": "Va-yimshach et-Shelomoh va-yitke'u ba-shofar",
+        "translations": [
+          "e ungiu a salomão e tocaram a trombeta"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הִנֵּה אָנֹכִי שֹׁלֵחַ מַלְאָךְ לְפָנֶיךָ לִשְׁמָרְךָ בַּדָּרֶךְ",
+        "transliteration": "Hinneh anochi sholeach mal'ach le-faneicha lishmorcha ba-darech",
+        "translations": [
+          "eis que eu envio um anjo diante de ti para te guardar no caminho"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "זֶה־הַיּוֹם עָשָׂה יְהוָה נָגִילָה וְנִשְׁמְחָה בוֹ",
+        "transliteration": "Zeh-ha-yom asah Adonai nagilah ve-nismachah vo",
+        "translations": [
+          "este é o dia que fez o senhor; regozijemo-nos e alegremo-nos nele"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "licao_26",
+    "title": "Lição XXVI - Verbos Fracos: Lamed Alef 2026",
+    "items": [
+      {
+        "hebrew": "חָבָא",
+        "transliteration": "chava",
+        "translations": [
+          "ele escondeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "טָמֵא",
+        "transliteration": "tame",
+        "translations": [
+          "ele foi",
+          "tornou-se impuro"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָבָא",
+        "transliteration": "nava",
+        "translations": [
+          "ele profetizou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "צָמֵא",
+        "transliteration": "tzame",
+        "translations": [
+          "ele teve sede"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "קָבַץ",
+        "transliteration": "kavatz",
+        "translations": [
+          "ele reuniu",
+          "ajuntou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "קָדַשׁ",
+        "transliteration": "kadash",
+        "translations": [
+          "ele foi",
+          "tornou-se santo"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁחַת",
+        "transliteration": "shachat",
+        "translations": [
+          "ele destruiu",
+          "corrompeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁלֵם",
+        "transliteration": "shalem",
+        "translations": [
+          "ele foi íntegro",
+          "completo"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "כְּלִי",
+        "transliteration": "keli",
+        "translations": [
+          "utensílio",
+          "instrumento",
+          "arma"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "נְאֻם",
+        "transliteration": "neum",
+        "translations": [
+          "dito",
+          "oráculo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "סָבִיב",
+        "transliteration": "saviv",
+        "translations": [
+          "ao redor de",
+          "em torno"
+        ],
+        "type": "Advérbio / Preposição"
+      },
+      {
+        "hebrew": "עֶשֶׂר / עֲשָׂרָה",
+        "transliteration": "eser / asarah",
+        "translations": [
+          "dez"
+        ],
+        "type": "Numeral"
+      },
+      {
+        "hebrew": "צֶדֶק / צְדָקָה",
+        "transliteration": "tzedek / tzedakah",
+        "translations": [
+          "justiça"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "שֶׁבַע / שִׁבְעָה",
+        "transliteration": "sheva / shivah",
+        "translations": [
+          "sete"
+        ],
+        "type": "Numeral"
+      },
+      {
+        "hebrew": "שַׁעַר",
+        "transliteration": "sha'ar",
+        "translations": [
+          "portão",
+          "porta"
+        ],
+        "type": "Substantivo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "כִּי אֵין אָדָם אֲשֶׁר לֹא־יֶחֱטָא",
+        "transliteration": "Ki ein adam asher lo-yecheta",
+        "translations": [
+          "pois não há homem que não peque"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כִּי בֵיתִי בֵּית־תְּפִלָּה יִקָּרֵא לְכָל־הָעַמִּים",
+        "transliteration": "Ki veiti beit-tefillah yikkare le-chol-ha'ammim",
+        "translations": [
+          "porque a minha casa será chamada casa de oração para todos os povos"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "דִּרְשׁוּ יְהוָה בְּהִמָּצְאוֹ קְרָאֻהוּ בִּהְיוֹתוֹ קָרוֹב",
+        "transliteration": "Dirshu Adonai be-himmatz'o kera'uhu bi-hyoto karov",
+        "translations": [
+          "buscai ao senhor enquanto se pode achar, invocai-o enquanto está perto"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הֲלוֹא אָב אֶחָד לְכֻלָּנוּ הֲלוֹא אֵל אֶחָד בְּרָאָנוּ",
+        "transliteration": "Halo av echad le-chullanu halo El echad bra'anu",
+        "translations": [
+          "não temos nós todos um mesmo pai? não nos criou um mesmo deus?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "רְפָאֵנִי יְהוָה וְאֵרָפֵא",
+        "transliteration": "Refa'eni Adonai ve-erafe",
+        "translations": [
+          "cura-me, senhor, e sararei"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "licao_27",
+    "title": "Lição XXVII - Verbos Fracos: Lamed He 2026",
+    "items": [
+      {
+        "hebrew": "בָּכָה",
+        "transliteration": "bachah",
+        "translations": [
+          "ele chorou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "זָנָה",
+        "transliteration": "zanah",
+        "translations": [
+          "ele se prostituiu",
+          "adulterou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָזָה",
+        "transliteration": "chazah",
+        "translations": [
+          "ele viu",
+          "contemplou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָלָה",
+        "transliteration": "chalah",
+        "translations": [
+          "ele esteve doente",
+          "fraco"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָנָה",
+        "transliteration": "chanah",
+        "translations": [
+          "ele acampou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָרָה",
+        "transliteration": "charah",
+        "translations": [
+          "ele se acendeu em ira",
+          "queimou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָרָה",
+        "transliteration": "yarah",
+        "translations": [
+          "ele ensinou",
+          "instruiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "כָּסָה",
+        "transliteration": "kissah",
+        "translations": [
+          "ele cobriu",
+          "escondeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עָנָה",
+        "transliteration": "anah",
+        "translations": [
+          "ele respondeu",
+          "esteve oprimido"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "צָפָה",
+        "transliteration": "tzafah",
+        "translations": [
+          "ele vigiou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "קָנָה",
+        "transliteration": "kanah",
+        "translations": [
+          "ele adquiriu",
+          "comprou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁחָה",
+        "transliteration": "shachah",
+        "translations": [
+          "ele se prostrou",
+          "adorou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "אַמָּה",
+        "transliteration": "ammah",
+        "translations": [
+          "côvado",
+          "antebraço"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "מַחֲנֶה",
+        "transliteration": "machaneh",
+        "translations": [
+          "acampamento"
+        ],
+        "type": "Substantivo (m/f)"
+      },
+      {
+        "hebrew": "מַטֶּה",
+        "transliteration": "matteh",
+        "translations": [
+          "vara",
+          "cajado",
+          "tribo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מַעֲשֶׂה",
+        "transliteration": "ma'aseh",
+        "translations": [
+          "obra",
+          "trabalho"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "מִשְׁפָּחָה",
+        "transliteration": "mishpachah",
+        "translations": [
+          "família",
+          "clã"
+        ],
+        "type": "Substantivo (f)"
+      },
+      {
+        "hebrew": "עֹלָה",
+        "transliteration": "olah",
+        "translations": [
+          "holocausto"
+        ],
+        "type": "Substantivo (f)"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "וַיֹּאמֶר יַעֲקֹב אֶל־יוֹסֵף אֵל שַׁדַּי נִרְאָה אֵלַי",
+        "transliteration": "Va-yomer Ya'akov el-Yosef El Shaddai nir'ah elai",
+        "translations": [
+          "e disse jacó a josé: o deus todo-poderoso me apareceu"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וְהַבַּיִת אֲשֶׁר־אֲנִי בוֹנֶה גָּדוֹל",
+        "transliteration": "Ve-ha-bayit asher-ani voneh gadol",
+        "translations": [
+          "e a casa que edifico é grande"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כֻּלָּנוּ כַּצֹּאן תָּעִינוּ אִישׁ לְדַרְכּוֹ פָּנִינוּ",
+        "transliteration": "Kullanu ka-tzon ta'inu ish le-darko paninu",
+        "translations": [
+          "todos nós andávamos desgarrados como ovelhas; cada um se desviava pelo seu caminho"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כִּי תִּמָּלֵא הָאָרֶץ לָדַעַת אֶת־כְּבוֹד יְהוָה",
+        "transliteration": "Ki timmale ha-aretz la-da'at et-kevod Adonai",
+        "translations": [
+          "porque a terra se encherá do conhecimento da glória do senhor"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַיַּרְא אֱלֹהִים אֶת־כָּל־אֲשֶׁר עָשָׂה וְהִנֵּה־טוֹב מְאֹד",
+        "transliteration": "Va-yar Elohim et-kol-asher asah ve-hinneh-tov me'od",
+        "translations": [
+          "e viu deus tudo quanto tinha feito, e eis que era muito bom"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "licao_28",
+    "title": "Lição XXVIII - Verbos Fracos: Pe Nun 2026",
+    "items": [
+      {
+        "hebrew": "נָבַט",
+        "transliteration": "navat",
+        "translations": [
+          "ele olhou",
+          "fitou os olhos"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָגַף",
+        "transliteration": "nagaf",
+        "translations": [
+          "ele golpeou",
+          "feriu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָדַח",
+        "transliteration": "nadach",
+        "translations": [
+          "ele expulsou",
+          "baniu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָדַר",
+        "transliteration": "nadar",
+        "translations": [
+          "ele fez um voto",
+          "prometeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָהַל",
+        "transliteration": "nahal",
+        "translations": [
+          "ele guiou",
+          "conduziu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָזָה",
+        "transliteration": "nazah",
+        "translations": [
+          "ele borrifou",
+          "salpicou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָטַע",
+        "transliteration": "nata",
+        "translations": [
+          "ele plantou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָטַשׁ",
+        "transliteration": "natash",
+        "translations": [
+          "ele abandonou",
+          "deixou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָסָה",
+        "transliteration": "nasah",
+        "translations": [
+          "ele provou",
+          "testou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָסַע",
+        "transliteration": "nasa",
+        "translations": [
+          "ele partiu",
+          "pôs-se a caminho"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָצַב",
+        "transliteration": "natzav",
+        "translations": [
+          "ele se colocou",
+          "posicionou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָצַר",
+        "transliteration": "natzar",
+        "translations": [
+          "ele guardou",
+          "vigilou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָקָה",
+        "transliteration": "nakah",
+        "translations": [
+          "ele foi",
+          "tornou-se limpo",
+          "inocente"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָקַם",
+        "transliteration": "nakam",
+        "translations": [
+          "ele vingou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָשַׂג",
+        "transliteration": "nasag",
+        "translations": [
+          "ele alcançou",
+          "atingiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָתַץ",
+        "transliteration": "natatz",
+        "translations": [
+          "ele derrubou",
+          "quebrou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חַיִל",
+        "transliteration": "chayil",
+        "translations": [
+          "força",
+          "poder",
+          "exército"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "נַחֲלָה",
+        "transliteration": "nachalah",
+        "translations": [
+          "herança",
+          "propriedade"
+        ],
+        "type": "Substantivo (f)"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "וַיִּקָּחֵנִי יְהוָה מֵאַחֲרֵי הַצֹּאן",
+        "transliteration": "Va-yikkacheni Adonai me-acharei ha-tzon",
+        "translations": [
+          "e o senhor me tirou de após o gado"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "לֹא תִשָּׂא אֶת־שֵׁם־יְהוָה אֱלֹהֶיךָ לַשָּׁוְא",
+        "transliteration": "Lo tissa et-shem-Adonai Eloheicha la-shav",
+        "translations": [
+          "não tomarás o nome do senhor teu deus em vão"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וָאֶרְאֶה אֶת־אֲדֹנָי יֹשֵׁב עַל־כִּסֵּא רָם וְנִשָּׂא",
+        "transliteration": "Va-er'eh et-Adonai yoshev al-kisse ram ve-nissa",
+        "translations": [
+          "eu vi o senhor assentado sobre um alto e sublime trono"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "הַבִּיטוּ אֶל־אַבְרָהָם אֲבִיכֶם",
+        "transliteration": "Habbitu el-Avraham avichem",
+        "translations": [
+          "olhai para abraão, vosso pai"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "יְהוָה נָתַן וַיהוָה לָקַח יְהִי שֵׁם יְהוָה מְבֹרָךְ",
+        "transliteration": "Adonai natan va-Adonai lakach yehi shem Adonai mevorach",
+        "translations": [
+          "o senhor o deu, e o senhor o tomou; bendito seja o nome do senhor"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "licao_29",
+    "title": "Lição XXIX - Verbos Fracos: Ayin Vav / Ayin Yod 2026",
+    "items": [
+      {
+        "hebrew": "גּוּר",
+        "transliteration": "gur",
+        "translations": [
+          "ele morou",
+          "viveu como forasteiro"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "גִּיל",
+        "transliteration": "gil",
+        "translations": [
+          "ele se regozijou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "דִּין",
+        "transliteration": "din",
+        "translations": [
+          "ele julgou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חוּל / חִיל",
+        "transliteration": "chul / chil",
+        "translations": [
+          "contorcer-se",
+          "dançar em roda"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "לוּן / לִין",
+        "transliteration": "lun / lin",
+        "translations": [
+          "pernoitar",
+          "habitar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מוּל",
+        "transliteration": "mul",
+        "translations": [
+          "ele circundou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נוּחַ",
+        "transliteration": "nuach",
+        "translations": [
+          "ele descansou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נוּס",
+        "transliteration": "nus",
+        "translations": [
+          "ele fugiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נוּעַ",
+        "transliteration": "nua",
+        "translations": [
+          "estremecer",
+          "tremer",
+          "cambalear"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "עוּר",
+        "transliteration": "ur",
+        "translations": [
+          "despertar",
+          "mover-se"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "פּוּץ",
+        "transliteration": "putz",
+        "translations": [
+          "espalhar-se",
+          "dispersar-se"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רוּץ",
+        "transliteration": "rutz",
+        "translations": [
+          "ele correu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רִיב",
+        "transliteration": "riv",
+        "translations": [
+          "contender",
+          "litigar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שִׁיר",
+        "transliteration": "shir",
+        "translations": [
+          "ele cantou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שִׁית",
+        "transliteration": "shit",
+        "translations": [
+          "colocar",
+          "estabelecer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "כָּשַׁל",
+        "transliteration": "kashal",
+        "translations": [
+          "ele tropeçou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "לָכַד",
+        "transliteration": "lakad",
+        "translations": [
+          "ele capturou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁבַת",
+        "transliteration": "shavat",
+        "translations": [
+          "ele cessou",
+          "descansou"
+        ],
+        "type": "Verbo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "אַחַת שָׁאַלְתִּי מֵאֵת־יְהוָה אוֹתָהּ אֲבַקֵּשׁ שִׁבְתִּי בְּבֵית־יְהוָה כָּל־יְמֵי חַיָּי",
+        "transliteration": "achat sha'alti me-et-adonai otah avakkesh shivti be-veit-adonai kol-yemei chayai",
+        "translations": [
+          "uma coisa pedi ao senhor, e a buscarei: que eu possa morar na casa do senhor todos os dias da minha vida"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַיִּרֶד יְהוָה לִרְאֹת אֶת־הָעִיר וְאֶת־הַמִּגְדָּל אֲשֶׁר בָּנוּ בְּנֵי הָאָדָם",
+        "transliteration": "va-yired adonai lir'ot et-ha-ir ve-et-ha-migdal asher banu benei ha-adam",
+        "translations": [
+          "e o senhor desceu para ver a cidade e a torre que os filhos dos homens edificavam"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "כִּי־יֶלֶד יֻלַּד־לָנוּ בֵּן נִתַּן־לָנוּ",
+        "transliteration": "ki-yeled yullad-lanu ben nittan-lanu",
+        "translations": [
+          "porque um menino nos nasceu, um filho se nos deu"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַיָּקָם מֶלֶךְ־חָדָשׁ עַל־מִצְרַיִם אֲשֶׁר לֹא־יָדַע אֶת־יוֹסֵף",
+        "transliteration": "va-yakam melech-chadash al-mitzvayim asher lo-yada et-yosef",
+        "translations": [
+          "e levantou-se um novo rei sobre o egito, que não conhecia a josé"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בָּרוּךְ הַבָּא בְּשֵׁם יְהוָה בֵּרַכְנוּכֶם מִבֵּית יְהוָה",
+        "transliteration": "baruch ha-ba be-shem adonai berachnuchem mi-beit adonai",
+        "translations": [
+          "bendito aquele que vem em nome do senhor; nós vos abençoamos desde a casa do senhor"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "licao_30",
+    "title": "Lição XXX - Verbos Fracos: Pe Vav / Pe Yod 2026",
+    "items": [
+      {
+        "hebrew": "יָבֵשׁ",
+        "transliteration": "yavesh",
+        "translations": [
+          "ele era seco",
+          "secou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָגַע",
+        "transliteration": "yaga",
+        "translations": [
+          "ele cansou",
+          "enfadou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הוֹדָה",
+        "transliteration": "hodah",
+        "translations": [
+          "ele louvou",
+          "confessou",
+          "agradeceu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָטַב",
+        "transliteration": "yatav",
+        "translations": [
+          "ele fez bem",
+          "foi bom"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הוֹכִיחַ",
+        "transliteration": "hochich",
+        "translations": [
+          "ele repreendeu",
+          "corrigiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָנַק",
+        "transliteration": "yanak",
+        "translations": [
+          "ele mamou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָסַד",
+        "transliteration": "yasad",
+        "translations": [
+          "ele fundou",
+          "estabeleceu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָסַר",
+        "transliteration": "yasar",
+        "translations": [
+          "ele admoestou",
+          "castigou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָעַץ",
+        "transliteration": "ya'atz",
+        "translations": [
+          "ele aconselhou",
+          "avisou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הִתְיַצֵּב",
+        "transliteration": "hityatzev",
+        "translations": [
+          "ele se posicionou",
+          "ficou firme"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָצַק",
+        "transliteration": "yatzak",
+        "translations": [
+          "ele derramou",
+          "serviu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָצַת",
+        "transliteration": "yatzat",
+        "translations": [
+          "ele pôs fogo",
+          "acendeu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "יָשַׁר",
+        "transliteration": "yashar",
+        "translations": [
+          "ele foi reto",
+          "correto",
+          "justo"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נוֹתַר",
+        "transliteration": "notar",
+        "translations": [
+          "ele sobrou",
+          "foi deixado como resto"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "קִטֵּר",
+        "transliteration": "kitter",
+        "translations": [
+          "ele queimou incenso"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שֵׁרֵת",
+        "transliteration": "sheret",
+        "translations": [
+          "ele ministrou",
+          "serviu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "סָגַר",
+        "transliteration": "sagar",
+        "translations": [
+          "ele fechou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הִשְׁכִּים",
+        "transliteration": "hishkim",
+        "translations": [
+          "ele madrugou",
+          "levantou cedo"
+        ],
+        "type": "Verbo"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "פְּנוּ־אֵלַי וְהִנָּשְׁעוּ כָּל־אַפְסֵי־אֶרֶץ כִּי אֲנִי־אֵל וְאֵין עוֹד",
+        "transliteration": "penu-elai ve-hinnasheu kol-afsei-aretz ki ani-el ve-ein od",
+        "translations": [
+          "olhai para mim e sereis salvos, vós, todos os limites da terra; porque eu sou deus, e não há outro"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "יָבֵשׁ חָצִיר נָבֵל צִיץ וּדְבַר־אֱלֹהֵינוּ יָקוּם לְעוֹלָם",
+        "transliteration": "yavesh chatzir navel tzitz u-devar-eloheinu yakum le-olam",
+        "translations": [
+          "seca-se a erva, e cai a flor, mas a palavra do nosso deus permanece para sempre"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בֹּאוּ שְׁעָרָיו בְּתוֹדָה חֲצֵרֹתָיו בִּתְהִלָּה הוֹדוּ־לוֹ בָּרֲכוּ שְׁמוֹ",
+        "transliteration": "bo'u she'arav be-todah chatzerotav bi-tehillah hodu-lo barachu shemo",
+        "translations": [
+          "entrai pelas suas portas com ação de graças e nos seus átrios com louvor; dai-lhe graças e bendizei o seu nome"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַיֵּדַע נֹחַ כִּי־קַלּוּ הַמַּיִם מֵעַל הָאָרֶץ",
+        "transliteration": "va-yeda noach ki-kallu ha-mayim me-al ha-aretz",
+        "translations": [
+          "e soube noé que as águas tinham diminuído de sobre a terra"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "יְהוָה יִשְׁמָר־צֵאתְךָ וּבוֹאֶךָ מֵעַתָּה וְעַד־עוֹלָם",
+        "transliteration": "adonai yishmor-tzetcha u-vo'echa me-attah ve-ad-olam",
+        "translations": [
+          "o senhor guardará a tua saída e a tua entrada, desde agora e para sempre"
+        ],
+        "type": "Frase"
+      }
+    ]
+  },
+  {
+    "id": "licao_31",
+    "title": "Lição XXXI - Verbos Fracos: Ayin Duplo 2026",
+    "items": [
+      {
+        "hebrew": "בָּזַז",
+        "transliteration": "bazaz",
+        "translations": [
+          "ele saqueou",
+          "roubou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "בָּלַל",
+        "transliteration": "balal",
+        "translations": [
+          "ele misturou",
+          "confundiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "דָּמַם",
+        "transliteration": "damam",
+        "translations": [
+          "ele ficou imóvel",
+          "calado"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "הִתְהַלֵּל",
+        "transliteration": "hithallel",
+        "translations": [
+          "ele se gloriou",
+          "louvou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נִחַל",
+        "transliteration": "nichal",
+        "translations": [
+          "ele foi profanado",
+          "profanou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָנַן",
+        "transliteration": "chanan",
+        "translations": [
+          "ele foi misericordioso",
+          "favoreceu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "חָתַת",
+        "transliteration": "chatat",
+        "translations": [
+          "ele estava apavorado",
+          "abalado"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "מָדַד",
+        "transliteration": "madad",
+        "translations": [
+          "ele mediu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "נָדַד",
+        "transliteration": "nadad",
+        "translations": [
+          "ele fugiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "סָבַב",
+        "transliteration": "savav",
+        "translations": [
+          "ele circundou",
+          "voltou-se",
+          "cercou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "צָרַר",
+        "transliteration": "tzarar",
+        "translations": [
+          "ele estava aflito"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "רָנַן",
+        "transliteration": "ranan",
+        "translations": [
+          "ele gritou de alegria",
+          "exultou"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁדַד",
+        "transliteration": "shadad",
+        "translations": [
+          "ele devastou",
+          "destruiu"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "שָׁמֵם",
+        "transliteration": "shamem",
+        "translations": [
+          "ele estava desolado",
+          "devastado"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "תָּמַם",
+        "transliteration": "tamam",
+        "translations": [
+          "ele estava completo",
+          "terminado"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "גְּבוּל",
+        "transliteration": "gevul",
+        "translations": [
+          "divisa",
+          "fronteira"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "גִּבּוֹר",
+        "transliteration": "gibbor",
+        "translations": [
+          "herói",
+          "valente"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "hebrew": "קֶשֶׁת",
+        "transliteration": "keshet",
+        "translations": [
+          "arco"
+        ],
+        "type": "Substantivo (f)"
+      }
+    ],
+    "sentences": [
+      {
+        "hebrew": "סֹבּוּ צִיּוֹן סִפְרוּ מִגְדָּלֶיהָ",
+        "transliteration": "sobbu tzion sifru migdaleha",
+        "translations": [
+          "rodeai sião, contai as suas torres"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וַתָּבֹא אֵלָיו הַיּוֹנָה לְעֵת עֶרֶב וְהִנֵּה עֲלֵה־זַיִת טָרָף בְּפִיהָ",
+        "transliteration": "va-tavo elav ha-yonah le-et erev ve-hinneh aleh-zayit taraf be-fiha",
+        "translations": [
+          "à tarde, a pomba voltou a ele, e eis que trazia no bico uma folha de oliveira arrancada"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "בָּרֲכִי נַפְשִׁי אֶת־יְהוָה הַלְלוּ־יָהּ",
+        "transliteration": "barachi nafshi et-adonai hallelu-yah",
+        "translations": [
+          "bendigam ao senhor, ó minha alma! louvai ao senhor"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "אַל־תִּתְהַלֵּל בְּיוֹם מָחָר כִּי לֹא־תֵדַע מַה־יֵּלֶד יוֹם",
+        "transliteration": "al-tithallel be-yom machar ki lo-teda mah-yeled yom",
+        "translations": [
+          "não te glories do dia de amanhã, porque não sabes o que o dia trará"
+        ],
+        "type": "Frase"
+      },
+      {
+        "hebrew": "וּכְכַלּוֹת שְׁלֹמֹה לְהִתְפַּלֵּל וְהָאֵשׁ יָרְדָה מֵהַשָּׁמַיִם וַתֹּאכַל הָעֹלָה",
+        "transliteration": "u-che-challot shelomoh le-hitpallel ve-ha-esh yardah me-ha-shamayim va-tochal ha-olah",
+        "translations": [
+          "e, acabando salomão de orar, desceu fogo do céu e consumiu o holocausto"
+        ],
+        "type": "Frase"
+      }
+    ]
+  }
+]
