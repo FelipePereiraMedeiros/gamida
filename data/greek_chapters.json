@@ -1,0 +1,4329 @@
+[
+  {
+    "id": "bergmann_02",
+    "title": "Lição 2 - Verbos (Presente) e Pronomes",
+    "items": [
+      {
+        "term": "ἐγώ",
+        "transliteration": "egō",
+        "translations": [
+          "eu"
+        ],
+        "type": "Pronome Pessoal"
+      },
+      {
+        "term": "σύ",
+        "transliteration": "sy",
+        "translations": [
+          "tu"
+        ],
+        "type": "Pronome Pessoal"
+      },
+      {
+        "term": "αὐτός, -ή, -ό",
+        "transliteration": "autos, autē, auto",
+        "translations": [
+          "ele",
+          "ela"
+        ],
+        "type": "Pronome Pessoal"
+      },
+      {
+        "term": "ἡμεῖς",
+        "transliteration": "hēmeis",
+        "translations": [
+          "nós"
+        ],
+        "type": "Pronome Pessoal"
+      },
+      {
+        "term": "ὑμεῖς",
+        "transliteration": "hymeis",
+        "translations": [
+          "vós"
+        ],
+        "type": "Pronome Pessoal"
+      },
+      {
+        "term": "αὐτοί, -αί, -ά",
+        "transliteration": "autoi, autai, auta",
+        "translations": [
+          "eles",
+          "elas"
+        ],
+        "type": "Pronome Pessoal"
+      },
+      {
+        "term": "ἀκολουθέω",
+        "transliteration": "akoloutheō",
+        "translations": [
+          "seguir",
+          "acompanhar",
+          "ir junto com"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἀκούω",
+        "transliteration": "akouō",
+        "translations": [
+          "ouvir",
+          "escutar",
+          "prestar atenção",
+          "entender",
+          "obedecer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "βαπτίζω",
+        "transliteration": "baptizō",
+        "translations": [
+          "batizar",
+          "imergir",
+          "mergulhar",
+          "lavar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "γινώσκω",
+        "transliteration": "ginōskō",
+        "translations": [
+          "vir a conhecer",
+          "conhecer",
+          "saber",
+          "compreender",
+          "reconhecer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "δίδωμι",
+        "transliteration": "didōmi",
+        "translations": [
+          "dar",
+          "outorgar",
+          "conceder",
+          "constituir",
+          "oferecer",
+          "causar",
+          "entregar",
+          "confiar",
+          "colocar",
+          "realizar",
+          "designar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "εἰμί",
+        "transliteration": "eimi",
+        "translations": [
+          "ser",
+          "estar",
+          "existir",
+          "acontecer",
+          "haver"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "λέγω",
+        "transliteration": "legō",
+        "translations": [
+          "dizer",
+          "falar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "λύω",
+        "transliteration": "lyō",
+        "translations": [
+          "desatar",
+          "soltar",
+          "libertar",
+          "destruir"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "εἰς",
+        "transliteration": "eis",
+        "translations": [
+          "para",
+          "a",
+          "para dentro",
+          "em",
+          "até"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ἐκ (ἐξ)",
+        "transliteration": "ek (ex)",
+        "translations": [
+          "de",
+          "fora de",
+          "a partir de",
+          "por"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ἐν",
+        "transliteration": "en",
+        "translations": [
+          "em",
+          "dentro de",
+          "no meio de",
+          "entre",
+          "com",
+          "por"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "καί",
+        "transliteration": "kai",
+        "translations": [
+          "e",
+          "mas",
+          "também"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "term": "οὐ (οὐκ, οὐχ, οὔ)",
+        "transliteration": "ou",
+        "translations": [
+          "não"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "term": "οὗτος, αὕτη, τοῦτο",
+        "transliteration": "houtos, hautē, touto",
+        "translations": [
+          "este",
+          "esta",
+          "isto",
+          "esse",
+          "essa"
+        ],
+        "type": "Pronome"
+      },
+      {
+        "term": "τις, τι",
+        "transliteration": "tis, ti",
+        "translations": [
+          "alguém",
+          "um",
+          "um certo",
+          "algum",
+          "alguma coisa",
+          "qualquer um",
+          "alguns"
+        ],
+        "type": "Pronome Indefinido"
+      },
+      {
+        "term": "τίς, τί",
+        "transliteration": "tis, ti",
+        "translations": [
+          "quem?",
+          "quê?",
+          "qual?",
+          "por quê?",
+          "que tipo de?"
+        ],
+        "type": "Pronome Interrogativo"
+      },
+      {
+        "term": "Ἰησοῦς",
+        "transliteration": "Iēsous",
+        "translations": [
+          "Jesus"
+        ],
+        "type": "Nome Próprio"
+      },
+      {
+        "term": "Χριστός",
+        "transliteration": "Christos",
+        "translations": [
+          "Cristo",
+          "Ungido",
+          "Messias"
+        ],
+        "type": "Nome Próprio"
+      }
+    ],
+    "sentences": [
+      {
+        "term": "Καὶ αὕτη ἐστὶν ἡ μαρτυρία τοῦ Ἰωάννου·",
+        "transliteration": "Kai hautē estin hē martyria tou Iōannou:",
+        "translations": [
+          "E este é o testemunho de João"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Οὐκ εἰμὶ ἐγὼ ὁ Χριστός.",
+        "transliteration": "Ouk eimi egō ho Christos.",
+        "translations": [
+          "Eu não sou o Cristo",
+          "Não sou eu o Cristo"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Καὶ ἠρώτησαν αὐτόν· Τί οὖν;",
+        "transliteration": "Kai ērōtēsan auton: Ti oun?",
+        "translations": [
+          "E perguntaram a ele: O que então?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἠλίας εἶ σύ; Καὶ λέγει· Οὐκ εἰμί.",
+        "transliteration": "Hēlias ei sy? Kai legei: Ouk eimi.",
+        "translations": [
+          "Elias és tu? E diz: Não sou",
+          "Tu és Elias? E diz: Não sou"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ὁ προφήτης εἶ σύ; Οὔ.",
+        "transliteration": "Ho prophētēs ei sy? Ou.",
+        "translations": [
+          "O profeta és tu? Não",
+          "Tu és o profeta? Não"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ὑμεῖς ἐκ τοῦ Θεοῦ ἐστέ, τεκνία",
+        "transliteration": "Hymeis ek tou Theou este, teknia",
+        "translations": [
+          "Vocês são de Deus, filhinhos"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Αὐτοὶ ἐκ τοῦ κόσμου εἰσίν",
+        "transliteration": "Autoi ek tou kosmou eisin",
+        "translations": [
+          "Eles são do mundo"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἡμεῖς ἐκ τοῦ Θεοῦ ἐσμεν.",
+        "transliteration": "Hēmeis ek tou Theou esmen.",
+        "translations": [
+          "Nós somos de Deus"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Τὰ πρόβατα τὰ ἐμὰ τῆς φωνῆς μου ἀκούουσιν,",
+        "transliteration": "Ta probata ta ema tēs phōnēs mou akouousin,",
+        "translations": [
+          "As minhas ovelhas ouvem a minha voz"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "κἀγὼ γινώσκω αὐτὰ καὶ ἀκολουθοῦσίν μοι·",
+        "transliteration": "kagō ginōskō auta kai akolouthousin moi:",
+        "translations": [
+          "e eu as conheço e elas me seguem"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "κἀγὼ δίδωμι αὐτοῖς ζωὴν αἰώνιον,",
+        "transliteration": "kagō didōmi autois zōēn aiōnion,",
+        "translations": [
+          "e eu lhes dou vida eterna"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "καὶ οὐ μὴ ἀπόλωνται εἰς τὸν αἰῶνα",
+        "transliteration": "kai ou mē apolōntai eis ton aiōna",
+        "translations": [
+          "e elas jamais perecerão"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "καὶ οὐχ ἁρπάσει τις αὐτὰ ἐκ τῆς χειρός μου.",
+        "transliteration": "kai ouch harpasei tis auta ek tēs cheiros mou.",
+        "translations": [
+          "e ninguém as arrancará da minha mão"
+        ],
+        "type": "Frase"
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Presente do Indicativo de εἰμί",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "εἰμί",
+            "ἐσμέν"
+          ],
+          [
+            "2ª",
+            "εἶ",
+            "ἐστέ"
+          ],
+          [
+            "3ª",
+            "ἐστί(ν)",
+            "εἰσί(ν)"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Presente do Indicativo Ativo (λέγω)",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "λέγω",
+            "λέγομεν"
+          ],
+          [
+            "2ª",
+            "λέγεις",
+            "λέγετε"
+          ],
+          [
+            "3ª",
+            "λέγει",
+            "λέγουσι(ν)"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Presente do Indicativo Médio (λύω)",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "λύομαι",
+            "λυόμεθα"
+          ],
+          [
+            "2ª",
+            "λύῃ",
+            "λύεσθε"
+          ],
+          [
+            "3ª",
+            "λύεται",
+            "λύονται"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Presente do Indicativo Passivo (λύω)",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "λύομαι",
+            "λυόμεθα"
+          ],
+          [
+            "2ª",
+            "λύῃ",
+            "λύεσθε"
+          ],
+          [
+            "3ª",
+            "λύεται",
+            "λύονται"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Infinitivos do Tempo Presente",
+        "headers": [
+          "Voz / Verbo",
+          "Forma do Infinitivo"
+        ],
+        "rows": [
+          [
+            "Ativa",
+            "λέγειν"
+          ],
+          [
+            "Média/Passiva",
+            "λύεσθαι"
+          ],
+          [
+            "εἰμί",
+            "εἶναι"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bergmann_03",
+    "title": "Lição 3 - Verbos (Presente Subjuntivo)",
+    "items": [
+      {
+        "term": "ἔχω",
+        "transliteration": "echō",
+        "translations": [
+          "ter",
+          "segurar",
+          "possuir",
+          "estar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "κρίνω",
+        "transliteration": "krinō",
+        "translations": [
+          "julgar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "πιστεύω",
+        "transliteration": "pisteuō",
+        "translations": [
+          "crer",
+          "acreditar",
+          "confiar (em)",
+          "confiar algo a alguém"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "σῴζω",
+        "transliteration": "sōzō",
+        "translations": [
+          "salvar",
+          "libertar",
+          "preservar",
+          "socorrer",
+          "livrar",
+          "curar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ὁ, ἡ, τό",
+        "transliteration": "ho, hē, to",
+        "translations": [
+          "o",
+          "a"
+        ],
+        "type": "Artigo"
+      },
+      {
+        "term": "ζωή",
+        "transliteration": "zōē",
+        "translations": [
+          "vida"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "θεός",
+        "transliteration": "theos",
+        "translations": [
+          "deus",
+          "Deus"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "κόσμος",
+        "transliteration": "kosmos",
+        "translations": [
+          "mundo",
+          "universo",
+          "humanidade"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "υἱός",
+        "transliteration": "huios",
+        "translations": [
+          "filho",
+          "descendente"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "αἰώνιος",
+        "transliteration": "aiōnios",
+        "translations": [
+          "eterno"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "πᾶς, πᾶσα, πᾶν",
+        "transliteration": "pas, pasa, pan",
+        "translations": [
+          "todo",
+          "cada",
+          "inteiro"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "ὅς, ἥ, ὅ",
+        "transliteration": "hos, hē, ho",
+        "translations": [
+          "que",
+          "o que",
+          "o qual",
+          "a qual",
+          "quem"
+        ],
+        "type": "Pronome Relativo"
+      },
+      {
+        "term": "γάρ",
+        "transliteration": "gar",
+        "translations": [
+          "pois",
+          "portanto",
+          "certamente"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "term": "ἐάν",
+        "transliteration": "ean",
+        "translations": [
+          "se",
+          "no caso de"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "term": "εἰ",
+        "transliteration": "ei",
+        "translations": [
+          "se"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "term": "ἀλλά (ἀλλ᾽)",
+        "transliteration": "alla",
+        "translations": [
+          "mas",
+          "todavia",
+          "porém",
+          "exceto"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "term": "ἵνα",
+        "transliteration": "hina",
+        "translations": [
+          "para que",
+          "a fim de que",
+          "que",
+          "de modo que"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "term": "ὅπως",
+        "transliteration": "hopōs",
+        "translations": [
+          "que",
+          "para que",
+          "a fim de que",
+          "como"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "term": "οὖν",
+        "transliteration": "oun",
+        "translations": [
+          "pois",
+          "portanto",
+          "então"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "term": "μή",
+        "transliteration": "mē",
+        "translations": [
+          "não",
+          "que não",
+          "para que não",
+          "a fim de que não"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "term": "οὔτε",
+        "transliteration": "oute",
+        "translations": [
+          "e não",
+          "nem"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "term": "οὕτω(ς)",
+        "transliteration": "houtō(s)",
+        "translations": [
+          "assim",
+          "deste modo",
+          "desta forma",
+          "desta maneira"
+        ],
+        "type": "Advérbio"
+      }
+    ],
+    "sentences": [
+      {
+        "term": "Οὕτως γὰρ ἠγάπησεν ὁ Θεὸς τὸν κόσμον, ὥστε τὸν υἱὸν αὐτοῦ τὸν μονογενῆ ἔδωκεν,",
+        "transliteration": "Houtōs gar ēgapēsen ho Theos ton kosmon, hōste ton huion autou ton monogenē edōken,",
+        "translations": [
+          "Assim pois amou Deus o mundo, de tal maneira que o seu filho unigênito deu,"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "ἵνα πᾶς ὁ πιστεύων εἰς αὐτὸν μὴ ἀπόληται, ἀλλ᾽ ἔχῃ ζωὴν αἰώνιον.",
+        "transliteration": "hina pas ho pisteuōn eis auton mē apolētai, all’ echē zōēn aiōnion.",
+        "translations": [
+          "para que todo o que crê nele não pereça, mas tenha vida eterna."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐγὼ ἦλθον ἵνα ζωὴν ἔχωσιν.",
+        "transliteration": "Egō ēlthon hina zōēn echōsin.",
+        "translations": [
+          "Eu vim para que tenham vida."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐγὼ οὐ κρίνω αὐτόν, οὐ γὰρ ἦλθον ἵνα κρίνω",
+        "transliteration": "Egō ou krinō auton, ou gar ēlthon hina krinō",
+        "translations": [
+          "Eu não o julgo, pois não vim para que eu julgue"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Μὴ κρίνωμεν ἀλλήλους, ἵνα μὴ κρινώμεθα.",
+        "transliteration": "Mē krinōmen allēlous, hina mē krinōmetha.",
+        "translations": [
+          "Não julguemos uns aos outros, para que não sejamos julgados."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Πνεύματι περιπατεῖτε, καὶ ἐπιθυμίαν σαρκὸς οὐ μὴ τελέσητε.",
+        "transliteration": "Pneumati peripateite, kai epithymian sarkos ou mē telesēte.",
+        "translations": [
+          "Vivam pelo Espírito, e com certeza vocês não satisfarão os desejos da carne!"
+        ],
+        "type": "Frase"
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Presente do Subjuntivo de εἰμί",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "ὦ",
+            "ὦμεν"
+          ],
+          [
+            "2ª",
+            "ᾖς",
+            "ἦτε"
+          ],
+          [
+            "3ª",
+            "ᾖ",
+            "ὦσι(ν)"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Presente do Subjuntivo Ativo (λέγω)",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "λέγω",
+            "λέγωμεν"
+          ],
+          [
+            "2ª",
+            "λέγῃς",
+            "λέγητε"
+          ],
+          [
+            "3ª",
+            "λέγῃ",
+            "λέγωσι(ν)"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Presente do Subjuntivo Médio e Passivo (λύω)",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "λύωμαι",
+            "λυώμεθα"
+          ],
+          [
+            "2ª",
+            "λύῃ",
+            "λύησθε"
+          ],
+          [
+            "3ª",
+            "λύηται",
+            "λύωνται"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Infinitivos do Subjuntivo",
+        "headers": [
+          "Voz",
+          "Forma do Infinitivo"
+        ],
+        "rows": [
+          [
+            "Ativa",
+            "λέγειν"
+          ],
+          [
+            "Média/Passiva",
+            "λύεσθαι"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bergmann_04",
+    "title": "Lição 4 - Verbos (Futuro do Indicativo)",
+    "items": [
+      {
+        "term": "ἀγαπάω",
+        "transliteration": "agapaō",
+        "translations": [
+          "amar",
+          "amar com consideração, afeição e benevolência"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "λαλέω",
+        "transliteration": "laleō",
+        "translations": [
+          "falar",
+          "dizer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "μέλλω",
+        "transliteration": "mellō",
+        "translations": [
+          "estar prestes a",
+          "estar a ponto de",
+          "dever"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "πληρόω",
+        "transliteration": "plēroō",
+        "translations": [
+          "completar",
+          "encher",
+          "cumprir"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ποιέω",
+        "transliteration": "poieō",
+        "translations": [
+          "fazer",
+          "executar",
+          "realizar",
+          "trabalhar",
+          "produzir"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "τηρέω",
+        "transliteration": "tēreō",
+        "translations": [
+          "guardar",
+          "vigiar",
+          "observar",
+          "obedecer",
+          "conservar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἀλήθεια",
+        "transliteration": "alētheia",
+        "translations": [
+          "verdade"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "κύριος",
+        "transliteration": "kyrios",
+        "translations": [
+          "amo",
+          "senhor",
+          "dono",
+          "patrão",
+          "Senhor"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "λόγος",
+        "transliteration": "logos",
+        "translations": [
+          "palavra",
+          "discurso",
+          "declaração",
+          "proclamação",
+          "ensino",
+          "instrução",
+          "mensagem",
+          "revelação",
+          "assunto",
+          "razão"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "οἶκος",
+        "transliteration": "oikos",
+        "translations": [
+          "casa",
+          "lar",
+          "família",
+          "moradia",
+          "comunidade",
+          "comunidade cristã"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "πατήρ",
+        "transliteration": "patēr",
+        "translations": [
+          "pai"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "πνεῦμα",
+        "transliteration": "pneuma",
+        "translations": [
+          "vento",
+          "sopro",
+          "espírito",
+          "Espírito"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "σωτήρ",
+        "transliteration": "sōtēr",
+        "translations": [
+          "salvador",
+          "libertador"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "δέ (δ')",
+        "transliteration": "de",
+        "translations": [
+          "mas",
+          "porém",
+          "no entanto",
+          "por outro lado",
+          "ora",
+          "então",
+          "e",
+          "também",
+          "além disso",
+          "ou seja",
+          "a saber"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "term": "ἐκεῖνος, -η, -ο",
+        "transliteration": "ekeinos, ekeinē, ekeino",
+        "translations": [
+          "aquele",
+          "aquela",
+          "aquilo"
+        ],
+        "type": "Pronome Demonstrativo"
+      },
+      {
+        "term": "ἀνά",
+        "transliteration": "ana",
+        "translations": [
+          "para cima",
+          "acima",
+          "sobre",
+          "cada",
+          "outra vez"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ἀπό (ἀπ᾽, ἀφ᾿)",
+        "transliteration": "apo",
+        "translations": [
+          "de",
+          "desde",
+          "embora",
+          "da parte de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "διά (δι')",
+        "transliteration": "dia",
+        "translations": [
+          "por",
+          "por meio de",
+          "através de",
+          "por causa de",
+          "porque"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ἐπί (ἐπ᾽, ἐφ᾿)",
+        "transliteration": "epi",
+        "translations": [
+          "sobre",
+          "em",
+          "em cima de",
+          "acima",
+          "no tempo de",
+          "durante",
+          "para"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "κατά (κατ', καθ')",
+        "transliteration": "kata",
+        "translations": [
+          "sobre",
+          "por",
+          "para baixo",
+          "contra",
+          "segundo",
+          "conforme"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "παρά (παρ')",
+        "transliteration": "para",
+        "translations": [
+          "da parte de",
+          "perto de",
+          "junto de",
+          "ao lado de",
+          "junto a",
+          "ao longo de",
+          "em comparação com"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "πρός",
+        "transliteration": "pros",
+        "translations": [
+          "para",
+          "perto de",
+          "junto a",
+          "em direção a",
+          "com",
+          "a fim de",
+          "assim que",
+          "de modo que"
+        ],
+        "type": "Preposição"
+      }
+    ],
+    "sentences": [
+      {
+        "term": "μέλλει πορεύεσθαι καὶ διδάσκειν τοὺς Ἕλληνας;",
+        "transliteration": "mellei poreuesthai kai didaskein tous Hellēnas?",
+        "translations": [
+          "vai ir e ensinar aos gregos?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "ὑμεῖς βαπτισθήσεσθε ἐν Πνεύματι Ἁγίῳ.",
+        "transliteration": "hymeis baptisthēsesthe en Pneumati Hagiō.",
+        "translations": [
+          "vocês serão batizados com o Espírito Santo."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἀγαπήσεις τὸν πλησίον σου",
+        "transliteration": "Agapēseis ton plēsion sou",
+        "translations": [
+          "Você amará o seu próximo",
+          "Ame o seu próximo"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Κύριε, πρὸς τίνα ἀπελευσόμεθα;",
+        "transliteration": "Kyrie, pros tina apeleusometha?",
+        "translations": [
+          "Senhor, a quem iremos?",
+          "Senhor, a quem iríamos?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Μόλις ὑπὲρ δικαίου τις ἀποθανεῖται.",
+        "transliteration": "Molis hyper dikaiou tis apothaneitai.",
+        "translations": [
+          "Dificilmente alguém morrerá por um justo."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐάν τις ἀγαπᾷ με τὸν λόγον μου τηρήσει,",
+        "transliteration": "Ean tis agapā me ton logon mou tērēsei,",
+        "translations": [
+          "Se alguém me ama guardará a minha palavra,",
+          "Se alguém ama a mim a minha palavra guardará,"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "καὶ ὁ πατήρ μου ἀγαπήσει αὐτὸν, καὶ πρὸς αὐτὸν ἐλευσόμεθα",
+        "transliteration": "kai ho patēr mou agapēsei auton, kai pros auton eleusometha",
+        "translations": [
+          "e o meu Pai o amará, e viremos a ele",
+          "e o Pai meu amará a ele, e para ele viremos"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "καὶ μονὴν παρ᾽ αὐτῷ ποιήσομεν.",
+        "transliteration": "kai monēn par’ autō poiēsomen.",
+        "translations": [
+          "e faremos morada com ele.",
+          "e morada junto a ele faremos."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Τὸ Πνεῦμα ὁδηγήσει ὑμᾶς εἰς πᾶσαν τὴν ἀλήθειαν·",
+        "transliteration": "To Pneuma hodēgēsei hymas eis pasan tēn alētheian:",
+        "translations": [
+          "O Espírito guiará vocês a toda a verdade;"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Πίστευσον ἐπὶ τὸν Κύριον Ἰησοῦν Χριστόν καὶ σωθήσῃ σὺ καὶ ὁ οἶκός σου.",
+        "transliteration": "Pisteuson epi ton Kyrion Iēsoun Christon kai sōthēsē sy kai ho oikos sou.",
+        "translations": [
+          "Creia no Senhor Jesus Cristo e será salvo, tu e a tua casa.",
+          "Creia no Senhor Jesus Cristo e será salvo você e a casa sua."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Τί μέλλεις ποιεῖν;",
+        "transliteration": "Ti melleis poiein?",
+        "translations": [
+          "O que vais fazer?",
+          "O que você vai fazer?",
+          "O que está a ponto de fazer?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐὰν ὁ Κύριος θελήσῃ καὶ ζήσωμεν καὶ ποιήσομεν τοῦτο ἢ ἐκεῖνο.",
+        "transliteration": "Ean ho Kyrios thelēsē kai zēsōmen kai poiēsomen touto ē ekeino.",
+        "translations": [
+          "Se o Senhor quiser e vivermos e faremos isto ou aquilo.",
+          "Se o Senhor quiser viveremos e faremos isto ou aquilo."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "ψυγήσεται ἡ ἀγάπη τῶν πολλῶν",
+        "transliteration": "psygēsetai hē agapē tōn pollōn",
+        "translations": [
+          "esfriará o amor de muitos."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "ὁ δὲ ὑπομείνας εἰς τέλος, οὗτος σωθήσεται",
+        "transliteration": "ho de hypomeinas eis telos, houtos sōthēsetai",
+        "translations": [
+          "no entanto, quem perseverar até o fim, este será salvo."
+        ],
+        "type": "Frase"
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Futuro do Indicativo de εἰμί",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "ἔσομαι",
+            "ἐσόμεθα"
+          ],
+          [
+            "2ª",
+            "ἔσῃ",
+            "ἔσεσθε"
+          ],
+          [
+            "3ª",
+            "ἔσται",
+            "ἔσονται"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Futuro do Indicativo Ativo",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "λύσω",
+            "λύσομεν"
+          ],
+          [
+            "2ª",
+            "λύσεις",
+            "λύσετε"
+          ],
+          [
+            "3ª",
+            "λύσει",
+            "λύσουσι(ν)"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Futuro do Indicativo Médio",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "λύσομαι",
+            "λυσόμεθα"
+          ],
+          [
+            "2ª",
+            "λύσῃ",
+            "λύσεσθε"
+          ],
+          [
+            "3ª",
+            "λύσεται",
+            "λύσονται"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Futuro do Indicativo Passivo",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "λυθήσομαι",
+            "λυθησόμεθα"
+          ],
+          [
+            "2ª",
+            "λυθήσῃ",
+            "λυθήσεσθε"
+          ],
+          [
+            "3ª",
+            "λυθήσεται",
+            "λυθήσονται"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Infinitivos do Tempo Futuro",
+        "headers": [
+          "Voz",
+          "Forma do Infinitivo"
+        ],
+        "rows": [
+          [
+            "Ativa / Média",
+            "λύσεσθαι"
+          ],
+          [
+            "Passiva",
+            "λυθήσεσθαι"
+          ],
+          [
+            "εἰμί",
+            "ἔσεσθαι"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bergmann_05",
+    "title": "Lição 5 - Artigos e Substantivos (2ª Declinação)",
+    "items": [
+      {
+        "term": "ἄγγελος, -ου, ὁ",
+        "transliteration": "angelos",
+        "translations": [
+          "anjo",
+          "mensageiro"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ἀδελφός, -οῦ, ὁ",
+        "transliteration": "adelphos",
+        "translations": [
+          "irmão",
+          "irmão na fé",
+          "compatriota",
+          "próximo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ἄνθρωπος, -ου, ὁ",
+        "transliteration": "anthrōpos",
+        "translations": [
+          "homem",
+          "ser humano",
+          "pessoa"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "δοῦλος, -ου, ὁ",
+        "transliteration": "doulos",
+        "translations": [
+          "escravo",
+          "servo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ἔργον, -ου, τό",
+        "transliteration": "ergon",
+        "translations": [
+          "trabalho",
+          "obra",
+          "ato",
+          "ação"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "θάνατος, -ου, ὁ",
+        "transliteration": "thanatos",
+        "translations": [
+          "morte"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "λαός, -οῦ, ὁ",
+        "transliteration": "laos",
+        "translations": [
+          "povo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "νόμος, -ου, ὁ",
+        "transliteration": "nomos",
+        "translations": [
+          "lei"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ὁδός, -οῦ, ἡ",
+        "transliteration": "hodos",
+        "translations": [
+          "caminho"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "οὐρανός, -οῦ, ὁ",
+        "transliteration": "ouranos",
+        "translations": [
+          "céu"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ὀφθαλμός, -οῦ, ὁ",
+        "transliteration": "ophthalmos",
+        "translations": [
+          "olho"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ὄχλος, -ου, ὁ",
+        "transliteration": "ochlos",
+        "translations": [
+          "multidão",
+          "povo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "γίνομαι",
+        "transliteration": "ginomai",
+        "translations": [
+          "ser",
+          "vir a ser",
+          "tornar-se",
+          "acontecer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "εἶδον / εἶδα",
+        "transliteration": "eidon / eida",
+        "translations": [
+          "ver",
+          "perceber"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "εἶπον / εἶπα",
+        "transliteration": "eipon / eipa",
+        "translations": [
+          "dizer",
+          "falar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἔρχομαι",
+        "transliteration": "erchomai",
+        "translations": [
+          "ir",
+          "vir"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ὁράω",
+        "transliteration": "horaō",
+        "translations": [
+          "ver",
+          "perceber",
+          "contemplar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἀμήν",
+        "transliteration": "amēn",
+        "translations": [
+          "verdadeiramente",
+          "certamente",
+          "amém",
+          "assim seja!"
+        ],
+        "type": "Partícula"
+      },
+      {
+        "term": "ὅτι",
+        "transliteration": "hoti",
+        "translations": [
+          "que",
+          "de modo que",
+          "pois",
+          "porque",
+          "visto que"
+        ],
+        "type": "Conjunção"
+      },
+      {
+        "term": "μετά (μετ΄, μεθ')",
+        "transliteration": "meta",
+        "translations": [
+          "com",
+          "junto a",
+          "entre",
+          "depois de",
+          "após"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "περί",
+        "transliteration": "peri",
+        "translations": [
+          "concernente a",
+          "acerca de",
+          "sobre",
+          "ao redor de",
+          "em volta de"
+        ],
+        "type": "Preposição"
+      }
+    ],
+    "sentences": [
+      {
+        "term": "Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν Θεόν, καὶ Θεὸς ἦν ὁ λόγος.",
+        "transliteration": "En archē ēn ho logos, kai ho logos ēn pros ton Theon, kai Theos ēn ho logos.",
+        "translations": [
+          "No princípio era a Palavra, e a Palavra estava com Deus, e Deus era a Palavra.",
+          "Em princípio era a Palavra, e a Palavra estava com Deus, e Deus era a Palavra."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Οὗτος ἦν ἐν ἀρχῇ πρὸς τὸν Θεόν.",
+        "transliteration": "Houtos ēn en archē pros ton Theon.",
+        "translations": [
+          "Este estava no princípio com Deus."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ναθαναήλ λέγει αὐτῷ, Ῥαββί, σὺ εἶ ὁ υἱὸς τοῦ Θεοῦ.",
+        "transliteration": "Nathanaēl legei autō, Rhabbi, sy ei ho huios tou Theou.",
+        "translations": [
+          "Natanael lhe diz: Rabi, tu és o Filho de Deus.",
+          "Natanael diz a ele: Rabi, tu és o Filho de Deus."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἀπεκρίθη Ἰησοῦς καὶ εἶπεν αὐτῷ, Ὅτι εἶπόν σοι, εἶδόν σε ὑποκάτω τῆς συκῆς, πιστεύεις;",
+        "transliteration": "Apekrithē Iēsous kai eipen autō, Hoti eipon soi, eidon se hypokatō tēs sykēs, pisteueis?",
+        "translations": [
+          "Respondeu Jesus e disse-lhe: Porque te disse, vi você debaixo da figueira, crês?",
+          "Respondeu Jesus e disse a ele: Porque disse a você, vi você debaixo de a figueira, você crê?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Καὶ λέγει αὐτῷ, Ἀμὴν ἀμὴν λέγω ὑμῖν, ἀπ᾿ ἄρτι ὄψεσθε τὸν οὐρανὸν ἀνεῳγότα, καὶ τοὺς ἀγγέλους τοῦ Θεοῦ ἀναβαίνοντας καὶ καταβαίνοντας ἐπὶ τὸν υἱὸν τοῦ ἀνθρώπου.",
+        "transliteration": "Kai legei autō, Amēn amēn legō hymin, ap’ arti opsesthe ton ouranon aneōgota, kai tous angelous tou Theou anabainontas kai katabainontas epi ton huion tou anthrōpou.",
+        "translations": [
+          "E lhe diz: Em verdade, em verdade digo a vocês: de agora em diante verão o céu aberto, e os anjos de Deus subindo e descendo sobre o Filho do Homem.",
+          "E diz a ele, Em verdade em verdade digo a vocês, agora verão o céu aberto, e os anjos de Deus subindo e descendo sobre o filho do homem."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐλέησόν με, Κύριε, υἱὲ Δαυίδ·",
+        "transliteration": "Eleēson me, Kyrie, huie Dauid;",
+        "translations": [
+          "Tem misericórdia de mim, Senhor, filho de Davi!"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή.",
+        "transliteration": "Egō eimi hē hodos kai hē alētheia kai hē zōē.",
+        "translations": [
+          "Eu sou o caminho e a verdade e a vida."
+        ],
+        "type": "Frase"
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Artigo Definido (Singular)",
+        "headers": [
+          "Caso",
+          "Masculino",
+          "Feminino",
+          "Neutro"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "ὁ",
+            "ἡ",
+            "τό"
+          ],
+          [
+            "Gen.",
+            "τοῦ",
+            "τῆς",
+            "τοῦ"
+          ],
+          [
+            "Dat.",
+            "τῷ",
+            "τῇ",
+            "τῷ"
+          ],
+          [
+            "Acus.",
+            "τόν",
+            "τήν",
+            "τό"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Artigo Definido (Plural)",
+        "headers": [
+          "Caso",
+          "Masculino",
+          "Feminino",
+          "Neutro"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "οἱ",
+            "αἱ",
+            "τά"
+          ],
+          [
+            "Gen.",
+            "τῶν",
+            "τῶν",
+            "τῶν"
+          ],
+          [
+            "Dat.",
+            "τοῖς",
+            "ταῖς",
+            "τοῖς"
+          ],
+          [
+            "Acus.",
+            "τούς",
+            "τάς",
+            "τά"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "2ª Declinação: Masculino (λόγος)",
+        "headers": [
+          "Caso",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "λόγος",
+            "λόγοι"
+          ],
+          [
+            "Gen.",
+            "λόγου",
+            "λόγων"
+          ],
+          [
+            "Dat.",
+            "λόγῳ",
+            "λόγοις"
+          ],
+          [
+            "Acus.",
+            "λόγον",
+            "λόγους"
+          ],
+          [
+            "Voc.",
+            "λόγε",
+            "λόγοι"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "2ª Declinação: Feminino (ὁδός)",
+        "headers": [
+          "Caso",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "ὁδός",
+            "ὁδοί"
+          ],
+          [
+            "Gen.",
+            "ὁδοῦ",
+            "ὁδῶν"
+          ],
+          [
+            "Dat.",
+            "ὁδῷ",
+            "ὁδοῖς"
+          ],
+          [
+            "Acus.",
+            "ὁδόν",
+            "ὁδούς"
+          ],
+          [
+            "Voc.",
+            "ὁδέ",
+            "ὁδοί"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "2ª Declinação: Neutro (ἔργον)",
+        "headers": [
+          "Caso",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "ἔργον",
+            "ἔργα"
+          ],
+          [
+            "Gen.",
+            "ἔργου",
+            "ἔργων"
+          ],
+          [
+            "Dat.",
+            "ἔργῳ",
+            "ἔργοις"
+          ],
+          [
+            "Acus.",
+            "ἔργον",
+            "ἔργα"
+          ],
+          [
+            "Voc.",
+            "ἔργον",
+            "ἔργα"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bergmann_06",
+    "title": "Lição 6 - Substantivos (1ª Declinação)",
+    "items": [
+      {
+        "term": "ἀγάπη, -ης, ἡ",
+        "transliteration": "agapē",
+        "translations": [
+          "amor"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ἁμαρτία, -ας, ἡ",
+        "transliteration": "hamartia",
+        "translations": [
+          "pecado",
+          "transgressão",
+          "também a culpa resultante"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "βασιλεία, -ας, ἡ",
+        "transliteration": "basileia",
+        "translations": [
+          "reino",
+          "reinado",
+          "governo",
+          "domínio real",
+          "o reinar"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "γῆ, -ῆς, ἡ",
+        "transliteration": "gē",
+        "translations": [
+          "terra"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "γλῶσσα, -ης, ἡ",
+        "transliteration": "glōssa",
+        "translations": [
+          "língua",
+          "linguagem",
+          "idioma"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "δόξα, -ης, ἡ",
+        "transliteration": "doxa",
+        "translations": [
+          "glória",
+          "honra",
+          "majestade",
+          "esplendor",
+          "grandeza"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ἐκκλησία, -ας, ἡ",
+        "transliteration": "ekklēsia",
+        "translations": [
+          "assembleia",
+          "reunião",
+          "congregação",
+          "igreja"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ἐξουσία, -ας, ἡ",
+        "transliteration": "exousia",
+        "translations": [
+          "autoridade",
+          "poder"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ἐπιθυμία, -ας, ἡ",
+        "transliteration": "epithymia",
+        "translations": [
+          "desejo",
+          "anseio",
+          "paixão (muitas vezes impura)"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ἡμέρα, -ας, ἡ",
+        "transliteration": "hēmera",
+        "translations": [
+          "dia"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "καρδία, -ας, ἡ",
+        "transliteration": "kardia",
+        "translations": [
+          "coração"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "μαθητής, -οῦ, ὁ",
+        "transliteration": "mathētēs",
+        "translations": [
+          "discípulo",
+          "aprendiz",
+          "seguidor de um mestre"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "μήτηρ, μητρός, ἡ",
+        "transliteration": "mētēr",
+        "translations": [
+          "mãe"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "οἰκία, -ας, ἡ",
+        "transliteration": "oikia",
+        "translations": [
+          "casa",
+          "família"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "προφήτης, -ου, ὁ",
+        "transliteration": "prophētēs",
+        "translations": [
+          "profeta"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "σοφία, -ας, ἡ",
+        "transliteration": "sophia",
+        "translations": [
+          "sabedoria"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "φωνή, -ῆς, ἡ",
+        "transliteration": "phōnē",
+        "translations": [
+          "voz",
+          "som"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "οἶδα",
+        "transliteration": "oida",
+        "translations": [
+          "saber",
+          "conhecer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "σύν",
+        "transliteration": "syn",
+        "translations": [
+          "com (expressa companhia, associação)"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ὑπέρ",
+        "transliteration": "hyper",
+        "translations": [
+          "por",
+          "em lugar de",
+          "em favor de",
+          "sobre",
+          "acima de",
+          "além de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ὑπό (ὑπ᾽, ὑφ᾽)",
+        "transliteration": "hypo",
+        "translations": [
+          "por",
+          "por meio de",
+          "sob",
+          "debaixo de",
+          "abaixo de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ἕως",
+        "transliteration": "heōs",
+        "translations": [
+          "até",
+          "até que",
+          "enquanto"
+        ],
+        "type": "Conjunção / Advérbio / Preposição"
+      }
+    ],
+    "sentences": [
+      {
+        "term": "Ὁ πατὴρ ἀγαπᾷ τὸν υἱόν.",
+        "transliteration": "Ho patēr agapā ton huion.",
+        "translations": [
+          "O Pai ama o filho."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Παῦλος, δοῦλος Ἰησοῦ Χριστοῦ...",
+        "transliteration": "Paulos, doulos Iēsou Christou...",
+        "translations": [
+          "Paulo, servo de Jesus Cristo..."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "μὴ ποιεῖτε τὸν οἶκον τοῦ πατρός μου οἶκον ἐμπορίου.",
+        "transliteration": "mē poieite ton oikon tou patros mou oikon emporiou.",
+        "translations": [
+          "Não façam da casa de meu Pai uma casa de negócio."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Τίς ἡμᾶς χωρίσει ἀπὸ τῆς ἀγάπης τοῦ Χριστοῦ;",
+        "transliteration": "Tis hēmas chōrisei apo tēs agapēs tou Christou?",
+        "translations": [
+          "Quem nos separará do amor de Cristo?",
+          "Quem nos separará do amor com que Cristo nos ama?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Αὕτη ἐστιν ἡ ἀγάπη τοῦ Θεοῦ, ἵνα τηρῶμεν...",
+        "transliteration": "Hautē estin hē agapē tou Theou, hina tērōmen...",
+        "translations": [
+          "Este é o amor a Deus, que guardemos..."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Καὶ καταβαινόντων αὐτῶν ἐκ τοῦ ὄρους...",
+        "transliteration": "Kai katabainontōn autōn ek tou orous...",
+        "translations": [
+          "E quando eles desceram do monte..."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐλέησον ἡμᾶς, Κύριε·",
+        "transliteration": "Eleēson hēmas, Kyrie;",
+        "translations": [
+          "Tem misericórdia de nós, Senhor!"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Σὺ δέ, ὦ ἄνθρωπε τοῦ Θεοῦ, ταῦτα φεῦγε·",
+        "transliteration": "Sy de, ō anthrōpe tou Theou, tauta pheuge;",
+        "translations": [
+          "Mas tu, ó homem de Deus, foge destas coisas!"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐν τούτῳ γνώσονται πάντες ὅτι ἐμοὶ μαθηταί ἐστε, ἐὰν ἀγάπην ἔχητε ἐν ἀλλήλοις.",
+        "transliteration": "En toutō gnōsontai pantes hoti emoi mathētai este, ean agapēn echēte en allēlois.",
+        "translations": [
+          "Nisto todos conhecerão que sois meus discípulos, se tiverdes amor uns pelos outros.",
+          "Nisto conhecerão todos que meus discípulos sois, se amor tiverdes uns aos outros."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐν τῇ οἰκίᾳ τοῦ πατρός μου μοναὶ πολλαί εἰσιν·",
+        "transliteration": "En tē oikia tou patros mou monai pollai eisin;",
+        "translations": [
+          "Na casa de meu Pai há muitas moradas.",
+          "Em a casa do meu pai moradas muitas há;"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Καὶ ὅπου ἐγὼ ὑπάγω οἴδατε, καὶ τὴν ὁδὸν οἴδατε.",
+        "transliteration": "Kai hopou egō hypagō oidate, kai tēn hodon oidate.",
+        "translations": [
+          "E aonde eu vou sabeis, e o caminho sabeis.",
+          "E aonde eu vou sabem, e o caminho conhecem."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Λέγει αὐτῷ Θωμᾶς, Κύριε, οὐκ οἴδαμεν ποῦ ὑπάγεις·",
+        "transliteration": "Legei autō Thōmas, Kyrie, ouk oidamen pou hypageis;",
+        "translations": [
+          "Diz a ele Tomé: Senhor, não sabemos aonde vais;"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Λέγει αὐτῷ ὁ Ἰησοῦς, Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή·",
+        "transliteration": "Legei autō ho Iēsous, Egō eimi hē hodos kai hē alētheia kai hē zōē;",
+        "translations": [
+          "Diz a ele Jesus: Eu sou o caminho e a verdade e a vida;"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "πῶς δυνάμεθα τὴν ὁδὸν εἰδέναι;",
+        "transliteration": "pōs dynametha tēn hodon eidenai?",
+        "translations": [
+          "como podemos saber o caminho?",
+          "como podemos o caminho conhecer?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Πιστεύεις, βασιλεῦ Ἀγρίππα, τοῖς προφήταις;",
+        "transliteration": "Pisteueis, basileu Agrippa, tois prophētais?",
+        "translations": [
+          "Crês, rei Agripa, nos profetas?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "ὁ Θεὸς ἀγάπη ἐστίν.",
+        "transliteration": "ho Theos agapē estin.",
+        "translations": [
+          "Deus é amor.",
+          "Deus amor é."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "τὴν ἀγάπην τοῦ Θεοῦ οὐκ ἔχετε.",
+        "transliteration": "tēn agapēn tou Theou ouk echete.",
+        "translations": [
+          "não tendes o amor de Deus.",
+          "vocês não têm o amor de Deus.",
+          "o amor de Deus não tendes."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Κύριός ἐστιν ὁ υἱὸς τοῦ ἀνθρώπου καὶ τοῦ σαββάτου.",
+        "transliteration": "Kyrios estin ho huios tou anthrōpou kai tou sabbatou.",
+        "translations": [
+          "O Filho do Homem é Senhor até do sábado.",
+          "Senhor é o filho do homem e do sábado."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "...ἡ ἀγάπη τοῦ Θεοῦ ἐκκέχυται ἐν ταῖς καρδίαις ἡμῶν διὰ Πνεύματος Ἁγίου τοῦ δοθέντος ἡμῖν.",
+        "transliteration": "...hē agapē tou Theou ekkechytai en tais kardiais hēmōn dia Pneumatos Hagiou tou dothentos hēmin.",
+        "translations": [
+          "...o amor de Deus foi derramado em nossos corações pelo Espírito Santo que nos foi dado.",
+          "...o amor a Deus foi derramado em nossos corações pelo Espírito Santo que nos foi dado."
+        ],
+        "type": "Frase"
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "1ª Declinação: Fem. -α após ε, ι, ρ (σοφία)",
+        "headers": [
+          "Caso",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "σοφία",
+            "σοφίαι"
+          ],
+          [
+            "Gen.",
+            "σοφίας",
+            "σοφιῶν"
+          ],
+          [
+            "Dat.",
+            "σοφίᾳ",
+            "σοφίαις"
+          ],
+          [
+            "Acus.",
+            "σοφίαν",
+            "σοφίας"
+          ],
+          [
+            "Voc.",
+            "σοφία",
+            "σοφίαι"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "1ª Declinação: Fem. -α puro (γλῶσσα)",
+        "headers": [
+          "Caso",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "γλῶσσα",
+            "γλῶσσαι"
+          ],
+          [
+            "Gen.",
+            "γλώσσης",
+            "γλωσσῶν"
+          ],
+          [
+            "Dat.",
+            "γλώσσῃ",
+            "γλώσσαις"
+          ],
+          [
+            "Acus.",
+            "γλῶσσαν",
+            "γλώσσας"
+          ],
+          [
+            "Voc.",
+            "γλῶσσα",
+            "γλῶσσαι"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "1ª Declinação: Fem. -η (ἀγάπη)",
+        "headers": [
+          "Caso",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "ἀγάπη",
+            "ἀγάπαι"
+          ],
+          [
+            "Gen.",
+            "ἀγάπης",
+            "ἀγαπῶν"
+          ],
+          [
+            "Dat.",
+            "ἀγάπῃ",
+            "ἀγάπαις"
+          ],
+          [
+            "Acus.",
+            "ἀγάπην",
+            "ἀγάπας"
+          ],
+          [
+            "Voc.",
+            "ἀγάπη",
+            "ἀγάπαι"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "1ª Declinação: Masc. -ας (νεανίας)",
+        "headers": [
+          "Caso",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "νεανίας",
+            "νεανίαι"
+          ],
+          [
+            "Gen.",
+            "νεανίου",
+            "νεανιῶν"
+          ],
+          [
+            "Dat.",
+            "νεανίᾳ",
+            "νεανίαις"
+          ],
+          [
+            "Acus.",
+            "νεανίαν",
+            "νεανίας"
+          ],
+          [
+            "Voc.",
+            "νεανία",
+            "νεανίαι"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "1ª Declinação: Masc. -ης (προφήτης)",
+        "headers": [
+          "Caso",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "προφήτης",
+            "προφῆται"
+          ],
+          [
+            "Gen.",
+            "προφήτου",
+            "προφητῶν"
+          ],
+          [
+            "Dat.",
+            "προφήτῃ",
+            "προφήταις"
+          ],
+          [
+            "Acus.",
+            "προφήτην",
+            "προφήτας"
+          ],
+          [
+            "Voc.",
+            "προφῆτα",
+            "προφῆται"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bergmann_07",
+    "title": "Lição 7 - Adjetivos",
+    "items": [
+      {
+        "term": "ἀγαθός, -ή, -όν",
+        "transliteration": "agathos",
+        "translations": [
+          "bom",
+          "reto"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "ἅγιος, -ία, -ον",
+        "transliteration": "hagios",
+        "translations": [
+          "santo",
+          "consagrado",
+          "separado por ou para Deus"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "ἀληθινός, -ή, -όν",
+        "transliteration": "alēthinos",
+        "translations": [
+          "verdadeiro",
+          "genuíno",
+          "real",
+          "confiável"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "ἄλλος, -η, -ο",
+        "transliteration": "allos",
+        "translations": [
+          "outro",
+          "outro da mesma espécie",
+          "o outro"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "δίκαιος, -α, -ον",
+        "transliteration": "dikaios",
+        "translations": [
+          "justo",
+          "reto",
+          "conforme ao padrão ou caráter de Deus"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "ἔσχατος, -η, -ον",
+        "transliteration": "eschatos",
+        "translations": [
+          "último"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "ἕτερος, -α, -ον",
+        "transliteration": "heteros",
+        "translations": [
+          "outro",
+          "diferente",
+          "o outro"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "καινός, -ή, -όν",
+        "transliteration": "kainos",
+        "translations": [
+          "novo",
+          "inédito",
+          "não conhecido antes",
+          "melhor",
+          "recente"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "κακός, -ή, -όν",
+        "transliteration": "kakos",
+        "translations": [
+          "mau",
+          "ruim"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "καλός, -ή, -όν",
+        "transliteration": "kalos",
+        "translations": [
+          "bom",
+          "lindo",
+          "belo"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "μέγας, μεγάλη, μέγα",
+        "transliteration": "megas, megalē, mega",
+        "translations": [
+          "grande"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "μείζων, -ον",
+        "transliteration": "meizōn",
+        "translations": [
+          "maior"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "μικρός, -ά, -όν",
+        "transliteration": "mikros",
+        "translations": [
+          "pequeno",
+          "insignificante",
+          "pouco"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "μόνος, -η, -ον",
+        "transliteration": "monos",
+        "translations": [
+          "único",
+          "só",
+          "somente"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "νεκρός, -ά, -όν",
+        "transliteration": "nekros",
+        "translations": [
+          "morto"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "ὀλίγος, -η, -ον",
+        "transliteration": "oligos",
+        "translations": [
+          "pequeno",
+          "pouco"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "ὅλος, -η, -ον",
+        "transliteration": "holos",
+        "translations": [
+          "todo",
+          "inteiro",
+          "completo"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "ὅσος, -η, -ον",
+        "transliteration": "hosos",
+        "translations": [
+          "quanto",
+          "o que",
+          "tão grande quanto",
+          "tanto quanto"
+        ],
+        "type": "Pronome Correlativo"
+      },
+      {
+        "term": "πιστός, -ή, -όν",
+        "transliteration": "pistos",
+        "translations": [
+          "fiel",
+          "confiável",
+          "fidedigno",
+          "crente",
+          "confiante"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "πονηρός, -ά, -όν",
+        "transliteration": "ponēros",
+        "translations": [
+          "mau",
+          "maligno"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "μᾶλλον",
+        "transliteration": "mallon",
+        "translations": [
+          "mais",
+          "muito mais"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "term": "ἤ",
+        "transliteration": "ē",
+        "translations": [
+          "ou",
+          "que",
+          "do que"
+        ],
+        "type": "Conjunção"
+      }
+    ],
+    "sentences": [
+      {
+        "term": "ἡ αἰώνιος ζωή",
+        "transliteration": "hē aiōnios zōē",
+        "translations": [
+          "a vida eterna"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "τὴν ζωὴν τὴν αἰώνιον",
+        "transliteration": "tēn zōēn tēn aiōnion",
+        "translations": [
+          "a vida eterna"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Οὗτοι οἱ λόγοι πιστοὶ καὶ ἀληθινοί",
+        "transliteration": "Houtoi hoi logoi pistoi kai alēthinoi",
+        "translations": [
+          "Estas palavras são confiáveis e verdadeiras"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "... ἵνα γινώσκωμεν τὸν ἀληθινόν.",
+        "transliteration": "... hina ginōskōmen ton alēthinon.",
+        "translations": [
+          "para que conheçamos o verdadeiro."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ζῶν γὰρ ὁ λόγος τοῦ Θεοῦ, καὶ ἐνεργής...",
+        "transliteration": "Zōn gar ho logos tou Theou, kai energēs...",
+        "translations": [
+          "Pois viva é a palavra de Deus, e eficaz..."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "μείζων ἐστὶν ὁ ἐν ὑμῖν ἢ ὁ ἐν τῷ κόσμῳ.",
+        "transliteration": "meizōn estin ho en hymin ē ho en tō kosmō.",
+        "translations": [
+          "Maior é o que está em vocês do que o que está no mundo."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "ὁ λόγος τοῦ Θεοῦ τομώτερος ὑπὲρ πᾶσαν μάχαιραν δίστομον.",
+        "transliteration": "ho logos tou Theou tomōteros hyper pasan machairan distomon.",
+        "translations": [
+          "A palavra de Deus é mais cortante que qualquer espada de dois gumes."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "καλόν ἐστίν σε εἰσελθεῖν εἰς τὴν ζωὴν χωλόν, ἢ τοὺς δύο πόδας ἔχοντα βληθῆναι εἰς τὴν γέενναν.",
+        "transliteration": "kalon estin se eiselthein eis tēn zōēn chōlon, ē tous dyo podas echonta blēthēnai eis tēn geennan.",
+        "translations": [
+          "Melhor é para você entrar na vida aleijado do que, tendo os dois pés, ser lançado no inferno."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Καλόν ἐστιν αὐτῷ μᾶλλον εἰ...",
+        "transliteration": "Kalon estin autō mallon ei...",
+        "translations": [
+          "Melhor seria para ele se..."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "ποία ἐντολὴ μεγάλη ἐν τῷ νόμῳ;",
+        "transliteration": "poia entolē megalē en tō nomō?",
+        "translations": [
+          "Qual mandamento é o maior na lei?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "... μείζων δὲ τούτων ἡ ἀγάπη.",
+        "transliteration": "... meizōn de toutōn hē agapē.",
+        "translations": [
+          "mas o maior destes é o amor."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "σπουδαιότερος ὑπάρχων, ἐξῆλθεν πρὸς ὑμᾶς.",
+        "transliteration": "spoudaioteros hyparchōn, exēlthen pros hymas.",
+        "translations": [
+          "Sendo muito diligente, partiu para vocês."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "...ἵνα πᾶς ὁ πιστεύων εἰς αὐτὸν μὴ ἀπόληται, ἀλλ᾽ ἔχῃ ζωὴν αἰώνιον.",
+        "transliteration": "...hina pas ho pisteuōn eis auton mē apolētai, all’ echē zōēn aiōnion.",
+        "translations": [
+          "...para que todo o que crê nele não pereça, mas tenha vida eterna."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Τίς ἐστὶν ὁ πιστὸς δοῦλος;",
+        "transliteration": "Tis estin ho pistos doulos?",
+        "translations": [
+          "Quem é o servo fiel?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Διδάσκαλε ἀγαθέ, τί ποιήσω ἵνα ἔχω ζωὴν αἰώνιον;",
+        "transliteration": "Didaskale agathe, ti poiēsō hina echō zōēn aiōnion?",
+        "translations": [
+          "Bom mestre, o que farei para ter a vida eterna?",
+          "Mestre bom, que farei para ter a vida eterna?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Αὕτη ἐστιν ἡ αἰώνιος ζωή, ἵνα γινώσκωσίν σε τὸν μόνον ἀληθινὸν Θεόν...",
+        "transliteration": "Hautē estin hē aiōnios zōē, hina ginōskōsin se ton monon alēthinon Theon...",
+        "translations": [
+          "Esta é a vida eterna, que conheçam a ti, o único Deus verdadeiro..."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "ἡ ζωὴ ἐφανερώθη, καὶ ἑωράκαμεν τὴν ζωὴν τὴν αἰώνιον...",
+        "transliteration": "hē zōē ephanerōthē, kai heōrakamen tēn zōēn tēn aiōnion...",
+        "translations": [
+          "a vida foi manifestada, e temos visto a vida eterna..."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "ὁ υἱὸς τοῦ Θεοῦ... δέδωκεν ἡμῖν διάνοιαν ἵνα γινώσκωμεν τὸν ἀληθινόν...",
+        "transliteration": "ho huios tou Theou... dedōken hēmin dianoian hina ginōskōmen ton alēthinon...",
+        "translations": [
+          "o filho de Deus... nos deu entendimento para que conheçamos o verdadeiro..."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Οὗτός ἐστιν ὁ ἀληθινὸς Θεός, καὶ ζωὴ αἰώνιος.",
+        "transliteration": "Houtos estin ho alēthinos Theos, kai zōē aiōnios.",
+        "translations": [
+          "Este é o verdadeiro Deus e a vida eterna."
+        ],
+        "type": "Frase"
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Terminações: Adjetivos da 1ª e 2ª Declinação (Singular)",
+        "headers": [
+          "Caso",
+          "Masculino",
+          "Feminino",
+          "Neutro"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "-ος",
+            "-α / -η",
+            "-ον"
+          ],
+          [
+            "Gen.",
+            "-ου",
+            "-ας / -ης",
+            "-ου"
+          ],
+          [
+            "Dat.",
+            "-ῳ",
+            "-ᾳ / -ῃ",
+            "-ῳ"
+          ],
+          [
+            "Acus.",
+            "-ον",
+            "-αν / -ην",
+            "-ον"
+          ],
+          [
+            "Voc.",
+            "-ε",
+            "-α / -η",
+            "-ον"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Terminações: Adjetivos da 1ª e 2ª Declinação (Plural)",
+        "headers": [
+          "Caso",
+          "Masculino",
+          "Feminino",
+          "Neutro"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "-οι",
+            "-αι",
+            "-α"
+          ],
+          [
+            "Gen.",
+            "-ων",
+            "-ων",
+            "-ων"
+          ],
+          [
+            "Dat.",
+            "-οις",
+            "-αις",
+            "-οις"
+          ],
+          [
+            "Acus.",
+            "-ους",
+            "-ας",
+            "-α"
+          ],
+          [
+            "Voc.",
+            "-οι",
+            "-αι",
+            "-α"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Graus de Comparação dos Adjetivos",
+        "headers": [
+          "Adjetivo (Positivo)",
+          "Comparativo",
+          "Superlativo"
+        ],
+        "rows": [
+          [
+            "δίκαιος (justo)",
+            "δικαιότερος",
+            "δικαιότατος"
+          ],
+          [
+            "σοφός (sábio)",
+            "σοφώτερος",
+            "σοφώτατος"
+          ],
+          [
+            "μέγας (grande)",
+            "μείζων",
+            "μέγιστος"
+          ],
+          [
+            "ὑψηλός (alto)",
+            "ὑψηλότερος",
+            "ὕψιστος"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bergmann_08",
+    "title": "Lição 8 - Preposições",
+    "items": [
+      {
+        "term": "ἀνά",
+        "transliteration": "ana",
+        "translations": [
+          "para cima",
+          "outra vez"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ἀντί (ἀνθ᾽)",
+        "transliteration": "anti",
+        "translations": [
+          "em lugar de",
+          "em vez de",
+          "em troca de",
+          "por",
+          "em oposição a",
+          "contra"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ἀπό (ἀπ᾽, ἀφ᾿)",
+        "transliteration": "apo",
+        "translations": [
+          "de",
+          "desde",
+          "da parte de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "διά (δι')",
+        "transliteration": "dia",
+        "translations": [
+          "por",
+          "por meio de",
+          "através de",
+          "por causa de",
+          "porque"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "εἰς",
+        "transliteration": "eis",
+        "translations": [
+          "para",
+          "a",
+          "para dentro",
+          "em",
+          "até",
+          "para que",
+          "de maneira que"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ἐκ (ἐξ)",
+        "transliteration": "ek",
+        "translations": [
+          "de",
+          "fora de",
+          "a partir de",
+          "por"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ἐν",
+        "transliteration": "en",
+        "translations": [
+          "em",
+          "dentro de",
+          "no meio de",
+          "entre",
+          "com",
+          "por",
+          "enquanto",
+          "quando",
+          "depois de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ἐπί (ἐπ᾽, ἐφ᾽)",
+        "transliteration": "epi",
+        "translations": [
+          "sobre",
+          "em",
+          "em cima de",
+          "acima",
+          "no tempo de",
+          "durante",
+          "para"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "κατά (κατ', καθ΄)",
+        "transliteration": "kata",
+        "translations": [
+          "sobre",
+          "por",
+          "para baixo",
+          "contra",
+          "segundo",
+          "conforme"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "μετά (μετ΄, μεθ')",
+        "transliteration": "meta",
+        "translations": [
+          "com",
+          "junto a",
+          "entre",
+          "depois de",
+          "após"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "παρά (παρ΄)",
+        "transliteration": "para",
+        "translations": [
+          "de",
+          "da parte de",
+          "perto de",
+          "junto de",
+          "ao lado de",
+          "junto a",
+          "ao longo de",
+          "em comparação com"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "περί",
+        "transliteration": "peri",
+        "translations": [
+          "concernente a",
+          "acerca de",
+          "sobre",
+          "ao redor de",
+          "em volta de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "πρό",
+        "transliteration": "pro",
+        "translations": [
+          "diante de",
+          "na frente de",
+          "antes de",
+          "antes"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "πρός",
+        "transliteration": "pros",
+        "translations": [
+          "para",
+          "perto de",
+          "junto a",
+          "em direção a",
+          "com",
+          "a fim de",
+          "assim que",
+          "de modo que"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "σύν",
+        "transliteration": "syn",
+        "translations": [
+          "com (expressa companhia, associação)"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ὑπέρ",
+        "transliteration": "hyper",
+        "translations": [
+          "por",
+          "em lugar de",
+          "em favor de",
+          "sobre",
+          "acima de",
+          "além de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "ὑπό (ὑπ᾽, ὑφ᾽)",
+        "transliteration": "hypo",
+        "translations": [
+          "por",
+          "por meio de",
+          "sob",
+          "debaixo de",
+          "abaixo de"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "term": "δύναμαι",
+        "transliteration": "dynamai",
+        "translations": [
+          "ser capaz (de)",
+          "estar em condições de",
+          "poder"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "εἰσέρχομαι",
+        "transliteration": "eiserchomai",
+        "translations": [
+          "entrar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἐξέρχομαι",
+        "transliteration": "exerchomai",
+        "translations": [
+          "sair"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "διέρχομαι",
+        "transliteration": "dierchomai",
+        "translations": [
+          "atravessar",
+          "passar (por)"
+        ],
+        "type": "Verbo"
+      }
+    ],
+    "sentences": [
+      {
+        "term": "εὑρήκαμεν Ἰησοῦν τὸν υἱὸν τοῦ Ἰωσὴφ τὸν ἀπὸ Ναζαρέτ.",
+        "transliteration": "heurēkamen Iēsoun ton huion tou Iōsēph ton apo Nazaret.",
+        "translations": [
+          "Achamos Jesus, o filho de José, o de Nazaré.",
+          "Achamos Jesus o filho de José o de Nazaré."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐκ Ναζαρέτ δύναταί τι ἀγαθὸν εἶναι;",
+        "transliteration": "Ek Nazaret dynatai ti agathon einai?",
+        "translations": [
+          "De Nazaré pode sair algo bom?",
+          "Pode vir alguma coisa boa de Nazaré?",
+          "De Nazaré pode bom vir?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Εἶδεν ὁ Ἰησοῦς τὸν Ναθαναὴλ ἐρχόμενον πρὸς αὐτόν καὶ λέγει περὶ αὐτοῦ, Ἴδε ἀληθῶς Ἰσραηλίτης, ἐν ᾧ δόλος οὐκ ἔστιν.",
+        "transliteration": "Eiden ho Iēsous ton Nathanaēl erchomenon pros auton kai legei peri autou, Ide alēthōs Israēlitēs, en hō dolos ouk estin.",
+        "translations": [
+          "Viu Jesus a Natanael vindo a ele e diz dele: Eis verdadeiramente um Israelita, em quem engano não há."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Λέγει αὐτῷ Ναθαναήλ, Πόθεν με γινώσκεις;",
+        "transliteration": "Legei autō Nathanaēl, Pothen me ginōskeis?",
+        "translations": [
+          "Diz a ele Natanael: De onde me conheces?"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἀπεκρίθη Ἰησοῦς καὶ εἶπεν αὐτῷ, Πρὸ τοῦ σε Φίλιππον φωνῆσαι, ὄντα ὑπὸ τὴν συκῆν, εἶδόν σε.",
+        "transliteration": "Apekrithē Iēsous kai eipen autō, Pro tou se Philippon phōnēsai, onta hypo tēn sykēn, eidon se.",
+        "translations": [
+          "Respondeu Jesus e disse a ele: Antes de a ti Filipe chamar, estando debaixo da figueira, vi a ti.",
+          "Antes de Filipe te chamar, estando tu debaixo da figueira, te vi."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Εγώ εἰμι ἡ ἄμπελος, ὑμεῖς τὰ κλήματα.",
+        "transliteration": "Egō eimi hē ampelos, hymeis ta klēmata.",
+        "translations": [
+          "Eu sou a videira, vocês são os ramos."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ὁ μένων ἐν ἐμοί, κἀγὼ ἐν αὐτῷ, οὗτος φέρει καρπὸν πολύν·",
+        "transliteration": "Ho menōn en emoi, kagō en autō, houtos pherei karpon polyn;",
+        "translations": [
+          "Quem permanece em mim, e eu nele, este dá muito fruto;"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "ὅτι χωρὶς ἐμοῦ οὐ δύνασθε ποιεῖν οὐδέν.",
+        "transliteration": "hoti chōris emou ou dynasthe poiein ouden.",
+        "translations": [
+          "porque sem mim vocês não podem fazer nada."
+        ],
+        "type": "Frase"
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "diagram",
+        "title": "Diagrama Espacial de Preposições",
+        "concept": "Relações Locais e de Movimento",
+        "elements": [
+          {
+            "term": "ἐν",
+            "spatial_relation": "Dentro / Posição no interior"
+          },
+          {
+            "term": "εἰς",
+            "spatial_relation": "Movimento para dentro"
+          },
+          {
+            "term": "ἐκ",
+            "spatial_relation": "Movimento para fora"
+          },
+          {
+            "term": "διά",
+            "spatial_relation": "Movimento através / Atravessando"
+          },
+          {
+            "term": "περί",
+            "spatial_relation": "Ao redor / Em volta"
+          },
+          {
+            "term": "ἐπί",
+            "spatial_relation": "Sobre / Em cima de"
+          },
+          {
+            "term": "ὑπέρ",
+            "spatial_relation": "Acima / Sobre (sem contato direto)"
+          },
+          {
+            "term": "ὑπό",
+            "spatial_relation": "Debaixo / Sob"
+          },
+          {
+            "term": "ἀνά",
+            "spatial_relation": "Para cima / Movimento ascendente"
+          },
+          {
+            "term": "κατά",
+            "spatial_relation": "Para baixo / Movimento descendente"
+          },
+          {
+            "term": "πρός",
+            "spatial_relation": "Em direção a / Aproximação"
+          },
+          {
+            "term": "ἀπό",
+            "spatial_relation": "Afastando-se / Afastamento"
+          },
+          {
+            "term": "πρό",
+            "spatial_relation": "Na frente / Diante"
+          },
+          {
+            "term": "ἀντί",
+            "spatial_relation": "Em oposição / Na direção contrária"
+          },
+          {
+            "term": "σύν",
+            "spatial_relation": "Junto de / Companhia"
+          },
+          {
+            "term": "μετά",
+            "spatial_relation": "Com / Associação"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bergmann_09",
+    "title": "Lição 9 - Pronomes: Pessoais, demonstrativos e relativos",
+    "items": [
+      {
+        "term": "ἐμός, ἐμή, ἐμόν",
+        "transliteration": "emos, emē, emon",
+        "translations": [
+          "meu",
+          "minha"
+        ],
+        "type": "Pronome / Adjetivo Possessivo"
+      },
+      {
+        "term": "σός, σή, σόν",
+        "transliteration": "sos, sē, son",
+        "translations": [
+          "teu",
+          "tua",
+          "seu",
+          "sua"
+        ],
+        "type": "Pronome / Adjetivo Possessivo"
+      },
+      {
+        "term": "ὅστις, ἥτις, ὅ τι",
+        "transliteration": "hostis, hētis, ho ti",
+        "translations": [
+          "quem quer que",
+          "qualquer que",
+          "que"
+        ],
+        "type": "Pronome Relativo Indefinido"
+      },
+      {
+        "term": "αἴρω",
+        "transliteration": "airō",
+        "translations": [
+          "levantar",
+          "carregar",
+          "levar",
+          "tirar",
+          "remover"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἀναβαίνω",
+        "transliteration": "anabainō",
+        "translations": [
+          "subir"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "καταβαίνω",
+        "transliteration": "katabainō",
+        "translations": [
+          "descer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "βλέπω",
+        "transliteration": "blepō",
+        "translations": [
+          "ver",
+          "olhar",
+          "contemplar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "μαρτυρέω",
+        "transliteration": "martyreō",
+        "translations": [
+          "testemunhar",
+          "testificar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "μένω",
+        "transliteration": "menō",
+        "translations": [
+          "permanecer",
+          "ficar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "πέμπω",
+        "transliteration": "pempō",
+        "translations": [
+          "enviar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "φανερόω",
+        "transliteration": "phaneroō",
+        "translations": [
+          "manifestar",
+          "revelar",
+          "mostrar",
+          "dar a conhecer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἀφίημι",
+        "transliteration": "aphiēmi",
+        "translations": [
+          "despedir",
+          "mandar embora",
+          "deixar",
+          "permitir",
+          "abandonar",
+          "perdoar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "αἰών, αἰῶνος, ὁ",
+        "transliteration": "aiōn",
+        "translations": [
+          "era",
+          "século",
+          "eternidade",
+          "mundo"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ἀνήρ, ἀνδρός, ὁ",
+        "transliteration": "anēr",
+        "translations": [
+          "homem",
+          "varão",
+          "marido",
+          "ser humano"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ἄρτος, -ου, ὁ",
+        "transliteration": "artos",
+        "translations": [
+          "pão"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "δύναμις, -εως, ἡ",
+        "transliteration": "dynamis",
+        "translations": [
+          "poder",
+          "força",
+          "vigor",
+          "capacidade",
+          "habilidade",
+          "ato de poder",
+          "milagre"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "θέλημα, -ατος, τό",
+        "transliteration": "thelēma",
+        "translations": [
+          "desejo",
+          "vontade",
+          "propósito",
+          "plano",
+          "intenção"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ὄνομα, -ατος, τό",
+        "transliteration": "onoma",
+        "translations": [
+          "nome",
+          "pessoa",
+          "reputação",
+          "fama"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "ὕδωρ, ὕδατος, τό",
+        "transliteration": "hydōr",
+        "translations": [
+          "água"
+        ],
+        "type": "Substantivo"
+      },
+      {
+        "term": "πρῶτος, -η, -ον",
+        "transliteration": "prōtos",
+        "translations": [
+          "primeiro"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "ἔμπροσθεν",
+        "transliteration": "emprosthen",
+        "translations": [
+          "adiante",
+          "em frente"
+        ],
+        "type": "Advérbio / Preposição"
+      },
+      {
+        "term": "ὀπίσω",
+        "transliteration": "opisō",
+        "translations": [
+          "atrás",
+          "detrás",
+          "para trás",
+          "após",
+          "depois de"
+        ],
+        "type": "Advérbio / Preposição"
+      }
+    ],
+    "sentences": [
+      {
+        "term": "[Ἰωάννης] βλέπει τὸν Ἰησοῦν ἐρχόμενον πρὸς αὐτὸν καὶ λέγει,",
+        "transliteration": "[Iōannēs] blepei ton Iēsoun erchomenon pros auton kai legei,",
+        "translations": [
+          "João vê a Jesus vindo para ele e diz:"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἴδε ὁ ἀμνὸς τοῦ Θεοῦ, ὁ αἴρων τὴν ἁμαρτίαν τοῦ κόσμου.",
+        "transliteration": "Ide ho amnos tou Theou, ho airōn tēn hamartian tou kosmou.",
+        "translations": [
+          "Eis o cordeiro de Deus, o que tira o pecado do mundo."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Οὗτός ἐστιν περὶ οὗ ἐγὼ εἶπον,",
+        "transliteration": "Houtos estin peri hou egō eipon,",
+        "translations": [
+          "Este é a respeito de quem eu disse:"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ὀπίσω μου ἔρχεται ἀνὴρ ὃς ἔμπροσθέν μου γέγονεν, ὅτι πρῶτός μου ἦν.",
+        "transliteration": "Opisō mou erchetai anēr hos emprosthen mou gegonen, hoti prōtos mou ēn.",
+        "translations": [
+          "Atrás de mim vem um homem que existia antes de mim, porque primeiro que eu era."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Κἀγὼ οὐκ ᾔδειν αὐτόν, ἀλλ᾽ ἵνα φανερωθῇ τῷ Ἰσραήλ, διὰ τοῦτο ἦλθον ἐγὼ ἐν ὕδατι βαπτίζων.",
+        "transliteration": "Kagō ouk ēdein auton, all’ hina phanerōthē tō Israēl, dia touto ēlthon egō en hydati baptizōn.",
+        "translations": [
+          "E eu não o conhecia, mas para que fosse manifesto a Israel, por causa disto vim eu batizando em água."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Καὶ ἐμαρτύρησεν Ἰωάννης λέγων ὅτι Τεθέαμαι τὸ Πνεῦμα καταβαῖνον ὡσεὶ περιστερὰν ἐξ οὐρανοῦ, καὶ ἔμεινεν ἐπ᾽ αὐτόν.",
+        "transliteration": "Kai emartyrēsen Iōannēs legōn hoti Tetheamai to Pneuma katabainon hōsei peristeran ex ouranou, kai emeinen ep’ auton.",
+        "translations": [
+          "E testemunhou João dizendo: Vi o Espírito descendo como pomba do céu, e permaneceu sobre ele."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Κἀγὼ οὐκ ᾔδειν αὐτόν, ἀλλ᾽ ὁ πέμψας με βαπτίζειν ἐν ὕδατι, ἐκεῖνός μοι εἶπεν,",
+        "transliteration": "Kagō ouk ēdein auton, all’ ho pempsas me baptizein en hydati, ekeinos moi eipen,",
+        "translations": [
+          "E eu não o conhecia, mas o que me enviou a batizar em água, aquele me disse:"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐφ᾽ ὃν ἂν ἴδῃς τὸ Πνεῦμα καταβαῖνον καὶ μένον ἐπ᾽ αὐτόν, οὗτός ἐστιν ὁ βαπτίζων ἐν Πνεύματι Ἁγίῳ.",
+        "transliteration": "Eph’ hon an idēs to Pneuma katabainon kai menon ep’ auton, houtos estin ho baptizōn en Pneumati Hagiō.",
+        "translations": [
+          "Sobre quem você vir o Espírito descendo e permanecendo sobre ele, este é o que batiza em Espírito Santo."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Κἀγὼ ἑώρακα ὅτι οὗτός ἐστιν ὁ υἱὸς τοῦ Θεοῦ.",
+        "transliteration": "Kagō heōraka hoti houtos estin ho huios tou Theou.",
+        "translations": [
+          "E eu tenho visto que este é o filho de Deus."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐὰν ἐμοὶ διακονῇ τις, ἐμοὶ ἀκολουθείτω·",
+        "transliteration": "Ean emoi diakonē tis, emoi akoloutheitō;",
+        "translations": [
+          "Se alguém me quiser servir, a mim me siga;"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "καὶ ὅπου εἰμὶ ἐγώ, ἐκεῖ καὶ ὁ διάκονος ὁ ἐμὸς ἔσται·",
+        "transliteration": "kai hopou eimi egō, ekei kai ho diakonos ho emos estai;",
+        "translations": [
+          "e onde eu estou, ali também estará o meu servo;"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "καὶ ἐάν τις ἐμοὶ διακονῇ, τιμήσει αὐτὸν ὁ πατήρ.",
+        "transliteration": "kai ean tis emoi diakonē, timēsei auton ho patēr.",
+        "translations": [
+          "e se alguém me servir a mim, o Pai o honrará."
+        ],
+        "type": "Frase"
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Pronome Pessoal: 1ª Pessoa (ἐγώ)",
+        "headers": [
+          "Caso",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "ἐγώ",
+            "ἡμεῖς"
+          ],
+          [
+            "Gen.",
+            "ἐμοῦ / μου",
+            "ἡμῶν"
+          ],
+          [
+            "Dat.",
+            "ἐμοί / μοι",
+            "ἡμῖν"
+          ],
+          [
+            "Acus.",
+            "ἐμέ / με",
+            "ἡμᾶς"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Pronome Pessoal: 2ª Pessoa (σύ)",
+        "headers": [
+          "Caso",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "σύ",
+            "ὑμεῖς"
+          ],
+          [
+            "Gen.",
+            "σοῦ / σου",
+            "ὑμῶν"
+          ],
+          [
+            "Dat.",
+            "σοί / σοι",
+            "ὑμῖν"
+          ],
+          [
+            "Acus.",
+            "σέ / σε",
+            "ὑμᾶς"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Pronome Pessoal: 3ª Pessoa Singular (αὐτός)",
+        "headers": [
+          "Caso",
+          "Masculino",
+          "Feminino",
+          "Neutro"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "αὐτός",
+            "αὐτή",
+            "αὐτό"
+          ],
+          [
+            "Gen.",
+            "αὐτοῦ",
+            "αὐτῆς",
+            "αὐτοῦ"
+          ],
+          [
+            "Dat.",
+            "αὐτῷ",
+            "αὐτῇ",
+            "αὐτῷ"
+          ],
+          [
+            "Acus.",
+            "αὐτόν",
+            "αὐτήν",
+            "αὐτό"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Pronome Pessoal: 3ª Pessoa Plural (αὐτοί)",
+        "headers": [
+          "Caso",
+          "Masculino",
+          "Feminino",
+          "Neutro"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "αὐτοί",
+            "αὐταί",
+            "αὐτά"
+          ],
+          [
+            "Gen.",
+            "αὐτῶν",
+            "αὐτῶν",
+            "αὐτῶν"
+          ],
+          [
+            "Dat.",
+            "αὐτοῖς",
+            "αὐταῖς",
+            "αὐτοῖς"
+          ],
+          [
+            "Acus.",
+            "αὐτούς",
+            "αὐτάς",
+            "αὐτά"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Pronome Demonstrativo: Singular (οὗτος)",
+        "headers": [
+          "Caso",
+          "Masculino",
+          "Feminino",
+          "Neutro"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "οὗτος",
+            "αὕτη",
+            "τοῦτο"
+          ],
+          [
+            "Gen.",
+            "τούτου",
+            "ταύτης",
+            "τούτου"
+          ],
+          [
+            "Dat.",
+            "τούτῳ",
+            "ταύτῃ",
+            "τούτῳ"
+          ],
+          [
+            "Acus.",
+            "τοῦτον",
+            "ταύτην",
+            "τοῦτο"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Pronome Demonstrativo: Plural (οὗτοι)",
+        "headers": [
+          "Caso",
+          "Masculino",
+          "Feminino",
+          "Neutro"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "οὗτοι",
+            "αὗται",
+            "ταῦτα"
+          ],
+          [
+            "Gen.",
+            "τούτων",
+            "τούτων",
+            "τούτων"
+          ],
+          [
+            "Dat.",
+            "τούτοις",
+            "ταύταις",
+            "τούτοις"
+          ],
+          [
+            "Acus.",
+            "τούτους",
+            "ταύτας",
+            "ταῦτα"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Pronome Relativo: Singular (ὅς)",
+        "headers": [
+          "Caso",
+          "Masculino",
+          "Feminino",
+          "Neutro"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "ὅς",
+            "ἥ",
+            "ὅ"
+          ],
+          [
+            "Gen.",
+            "οὗ",
+            "ἧς",
+            "οὗ"
+          ],
+          [
+            "Dat.",
+            "ᾧ",
+            "ᾗ",
+            "ᾧ"
+          ],
+          [
+            "Acus.",
+            "ὅν",
+            "ἥν",
+            "ὅ"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Pronome Relativo: Plural (οἵ)",
+        "headers": [
+          "Caso",
+          "Masculino",
+          "Feminino",
+          "Neutro"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "οἵ",
+            "αἵ",
+            "ἅ"
+          ],
+          [
+            "Gen.",
+            "ὧν",
+            "ὧν",
+            "ὧν"
+          ],
+          [
+            "Dat.",
+            "οἷς",
+            "αἷς",
+            "οἷς"
+          ],
+          [
+            "Acus.",
+            "οὕς",
+            "ἅς",
+            "ἅ"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bergmann_10",
+    "title": "Lição 10 - Verbos (Imperfeito do Indicativo e Defectivos)",
+    "items": [
+      {
+        "term": "ἀπέρχομαι",
+        "transliteration": "aperchomai",
+        "translations": [
+          "partir",
+          "sair",
+          "ir"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἀποκρίνομαι",
+        "transliteration": "apokrinomai",
+        "translations": [
+          "responder"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἀσπάζομαι",
+        "transliteration": "aspazomai",
+        "translations": [
+          "saudar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "δέχομαι",
+        "transliteration": "dechomai",
+        "translations": [
+          "pegar",
+          "receber",
+          "aceitar",
+          "acolher"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "πορεύομαι",
+        "transliteration": "poreuomai",
+        "translations": [
+          "ir",
+          "andar",
+          "caminhar",
+          "viver"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "προσέρχομαι",
+        "transliteration": "proserchomai",
+        "translations": [
+          "ir",
+          "ir para",
+          "aproximar-se"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "προσεύχομαι",
+        "transliteration": "proseuchomai",
+        "translations": [
+          "orar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "φοβέομαι",
+        "transliteration": "phobeomai",
+        "translations": [
+          "temer",
+          "estar com medo",
+          "reverenciar",
+          "respeitar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἀποθνῄσκω",
+        "transliteration": "apothnēskō",
+        "translations": [
+          "morrer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἀποστέλλω",
+        "transliteration": "apostellō",
+        "translations": [
+          "enviar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἐκβάλλω",
+        "transliteration": "ekballō",
+        "translations": [
+          "expulsar",
+          "lançar fora",
+          "enviar",
+          "tirar",
+          "remover"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "ἐσθίω",
+        "transliteration": "esthiō",
+        "translations": [
+          "comer"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "θεραπεύω",
+        "transliteration": "therapeuō",
+        "translations": [
+          "cuidar de",
+          "curar",
+          "sarar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "πιστεύω",
+        "transliteration": "pisteuō",
+        "translations": [
+          "crer",
+          "acreditar",
+          "confiar",
+          "confiar algo a alguém"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "term": "πολύς, πολλή, πολύ",
+        "transliteration": "polys, pollē, poly",
+        "translations": [
+          "muito",
+          "muitos",
+          "numeroso",
+          "grande"
+        ],
+        "type": "Adjetivo"
+      },
+      {
+        "term": "ἄν",
+        "transliteration": "an",
+        "translations": [
+          "partícula que denota condição ou eventualidade"
+        ],
+        "type": "Partícula"
+      },
+      {
+        "term": "ἑαυτοῦ, -ῆς",
+        "transliteration": "heautou, -ēs",
+        "translations": [
+          "de si mesmo"
+        ],
+        "type": "Pronome Reflexivo"
+      },
+      {
+        "term": "νῦν, νυνί",
+        "transliteration": "nyn, nyni",
+        "translations": [
+          "agora"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "term": "μέν",
+        "transliteration": "men",
+        "translations": [
+          "partícula usada correlativamente"
+        ],
+        "type": "Partícula"
+      },
+      {
+        "term": "τέ",
+        "transliteration": "te",
+        "translations": [
+          "e",
+          "tanto como",
+          "não somente mas também"
+        ],
+        "type": "Partícula"
+      },
+      {
+        "term": "τότε",
+        "transliteration": "tote",
+        "translations": [
+          "naquela época",
+          "então"
+        ],
+        "type": "Advérbio"
+      },
+      {
+        "term": "ὡς",
+        "transliteration": "hōs",
+        "translations": [
+          "como",
+          "assim como",
+          "quando",
+          "de modo que",
+          "para",
+          "a fim de que",
+          "cerca de",
+          "aproximadamente"
+        ],
+        "type": "Partícula / Conjunção / Advérbio"
+      }
+    ],
+    "sentences": [
+      {
+        "term": "Ἰωάννης μαρτυρεῖ περὶ αὐτοῦ λέγων,",
+        "transliteration": "Iōannēs martyrei peri autou legōn,",
+        "translations": [
+          "João testemunha a respeito dele dizendo,"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Οὗτος ἔμπροσθέν μου γέγονεν, ὅτι πρῶτός μου ἦν.",
+        "transliteration": "Houtos emprosthen mou gegonen, hoti prōtos mou ēn.",
+        "translations": [
+          "Este existia antes de mim, porque primeiro que eu era."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Αὐτὸς δὲ ὁ Ἰησοῦς οὐκ ἐπίστευεν ἑαυτὸν αὐτοῖς,",
+        "transliteration": "Autos de ho Iēsous ouk episteuen heauton autois,",
+        "translations": [
+          "Mas o próprio Jesus não confiava a si mesmo a eles,"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "διὰ τὸ αὐτὸν γινώσκειν πάντας, καὶ ὅτι οὐ χρείαν εἶχεν",
+        "transliteration": "dia to auton ginōskein pantas, kai hoti ou chreian eichen",
+        "translations": [
+          "por ele conhecer todos, e porque não tinha necessidade"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "ἵνα τις μαρτυρήσῃ περὶ τοῦ ἀνθρώπου·",
+        "transliteration": "hina tis martyrēsē peri tou anthrōpou;",
+        "translations": [
+          "que alguém testemunhasse a respeito do ser humano;"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "αὐτὸς γὰρ ἐγίνωσκεν τί ἦν ἐν τῷ ἀνθρώπῳ.",
+        "transliteration": "autos gar eginōsken ti ēn en tō anthrōpō.",
+        "translations": [
+          "pois ele mesmo conhecia o que havia no ser humano."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Καὶ ἐδίδασκεν αὐτοὺς ἐν παραβολαῖς πολλά,",
+        "transliteration": "Kai edidasken autous en parabolais polla,",
+        "translations": [
+          "E ensinava-lhes em parábolas muitas coisas,"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "καὶ ἔλεγεν αὐτοῖς ἐν τῇ διδαχῇ αὐτοῦ…",
+        "transliteration": "kai elegen autois en tē didachē autou…",
+        "translations": [
+          "e dizia a eles no seu ensino..."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "πολλοὶ τῶν Κορινθίων ἀκούοντες ἐπίστευον καὶ ἐβαπτίζοντο.",
+        "transliteration": "polloi tōn Korinthiōn akouontes episteuon kai ebaptizonto.",
+        "translations": [
+          "muitos dos coríntios ouvindo criam e eram batizados."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἦσαν προσκαρτεροῦντες τῇ διδαχῇ τῶν ἀποστόλων καὶ τῇ κοινωνίᾳ, καὶ τῇ κλάσει τοῦ ἄρτου καὶ ταῖς προσευχαῖς.",
+        "transliteration": "Ēsan proskarterountes tē didachē tōn apostolōn kai tē koinōnia, kai tē klasei tou artou kai tais proseuchais.",
+        "translations": [
+          "Eles continuavam firmes no ensino dos apóstolos e na comunhão, no partir do pão e nas orações."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ἐγένετο δὲ πάσῃ ψυχῇ φόβος, πολλά τε τέρατα καὶ σημεῖα διὰ τῶν ἀποστόλων ἐγίνετο.",
+        "transliteration": "Egeneto de pasē psychē phobos, polla te terata kai sēmeia dia tōn apostolōn egineto.",
+        "translations": [
+          "Em cada alma havia temor; e muitas maravilhas e sinais eram realizados por meio dos apóstolos."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Πάντες δὲ οἱ πιστεύοντες ἦσαν ἐπὶ τὸ αὐτό, καὶ εἶχον ἅπαντα κοινά,",
+        "transliteration": "Pantes de hoi pisteuontes ēsan epi to auto, kai eichon hapanta koina,",
+        "translations": [
+          "Todos os que criam estavam juntos e unidos e tinham tudo em comum,"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "καὶ τὰ κτήματα καὶ τὰς ὑπάρξεις ἐπίπρασκον, καὶ διεμέριζον αὐτὰ πᾶσιν, καθότι ἄν τις χρείαν εἶχεν.",
+        "transliteration": "kai ta ktēmata kai tas hyparxeis epipraskon, kai diemerizon auta pasin, kathoti an tis chreian eichen.",
+        "translations": [
+          "Vendiam suas propriedades e bens, e distribuíam o produto entre todos, à medida que alguém tinha necessidade."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Καθ᾽ ἡμέραν τε προσκαρτεροῦντες ὁμοθυμαδὸν ἐν τῷ ἱερῷ,",
+        "transliteration": "Kath’ hēmeran te proskarterountes homothymadon en tō hierō,",
+        "translations": [
+          "Diariamente perseveravam unânimes no templo,"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "κλῶντές τε κατ᾽ οἶκον ἄρτον, μετελάμβανον τροφῆς ἐν ἀγαλλιάσει καὶ ἀφελότητι καρδίας,",
+        "transliteration": "klōntes te kat’ oikon arton, metelambanon trophēs en agalliasei kai aphelotēti kardias,",
+        "translations": [
+          "partiam o pão em suas casas e participavam das refeições com alegria e singeleza de coração,"
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "αἰνοῦντες τὸν Θεόν, καὶ ἔχοντες χάριν πρὸς ὅλον τὸν λαόν.",
+        "transliteration": "ainountes ton Theon, kai echontes charin pros holon ton laon.",
+        "translations": [
+          "louvando a Deus e contando com a simpatia de todo o povo."
+        ],
+        "type": "Frase"
+      },
+      {
+        "term": "Ὁ δὲ Κύριος προσετίθει τοὺς σῳζομένους καθ᾽ ἡμέραν τῇ ἐκκλησίᾳ.",
+        "transliteration": "Ho de Kyrios prosetithei tous sōzomenous kath’ hēmeran tē ekklēsia.",
+        "translations": [
+          "E o Senhor acrescentava à igreja cada dia os que iam sendo salvos."
+        ],
+        "type": "Frase"
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Imperfeito do Indicativo Ativo (βλέπω)",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "ἔβλεπον",
+            "ἐβλέπομεν"
+          ],
+          [
+            "2ª",
+            "ἔβλεπες",
+            "ἐβλέπετε"
+          ],
+          [
+            "3ª",
+            "ἔβλεπε(ν)",
+            "ἔβλεπον"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Imperfeito do Indicativo Médio e Passivo (βλέπω)",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "ἐβλεπόμην",
+            "ἐβλεπόμεθα"
+          ],
+          [
+            "2ª",
+            "ἐβλέπου",
+            "ἐβλέπεσθε"
+          ],
+          [
+            "3ª",
+            "ἐβλέπετο",
+            "ἐβλέποντο"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Imperfeito do Indicativo de εἰμί",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "ἤμην",
+            "ἦμεν"
+          ],
+          [
+            "2ª",
+            "ἦς",
+            "ἦτε"
+          ],
+          [
+            "3ª",
+            "ἦν",
+            "ἦσαν"
+          ]
+        ]
+      }
+    ]
+  }
+]

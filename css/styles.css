@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Gamida - Custom Stylesheet
+   ========================================================================== */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Hebrew Typography & Direction */
+.hebrew-text,
+[dir="rtl"] {
+  font-family: "SBL Hebrew", "Ezra SIL", "David", serif;
+  font-size: 1.35rem;
+  line-height: 1.8; /* Dá espaço para os pontos vocálicos superiores e inferiores não cortarem */
+  letter-spacing: 0.02em; /* Separa levemente as consoantes */
+  direction: rtl;
+}
+
+/* Greek Typography & Direction */
+.greek-text {
+  font-family: "Gentium Plus", "SBL Greek", "Galatia SIL", "Palatino Linotype", serif;
+  font-size: 1.35rem; /* Leve aumento para melhorar a legibilidade dos espíritos e acentos */
+  direction: ltr;
+  line-height: 1.6;
+}
