@@ -57,9 +57,9 @@
     >
       <div class="max-w-5xl mx-auto flex flex-col space-y-4">
         <!-- Linha superior: logo, seletor de capítulo e estatísticas -->
-        <div class="flex flex-wrap items-center justify-between gap-4 relative">
+        <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4 relative">
           <!-- Identidade da aplicação -->
-          <div class="flex items-center space-x-3">
+          <div class="flex items-center space-x-3 shrink-0">
             <div
               id="app-logo-btn"
               onclick="toggleLanguage()"
@@ -85,11 +85,11 @@
           </div>
 
           <!-- Seletor global de capítulos -->
-          <div class="relative w-full md:flex-1 md:max-w-lg md:mx-6 order-last md:order-none z-50" id="custom-chapter-selector">
-             <button type="button" onclick="toggleDropdown()" class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-4 py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group">
-                 <div class="flex items-center gap-3 overflow-hidden">
+          <div class="relative w-full md:flex-1 md:min-w-0 md:max-w-lg md:mx-4 lg:mx-6 order-last md:order-none z-50" id="custom-chapter-selector">
+             <button type="button" onclick="toggleDropdown()" class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-4 py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group min-w-0">
+                 <div class="flex items-center gap-3 overflow-hidden min-w-0 flex-1">
                     <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider shrink-0">Módulo:</span>
-                    <span id="chapter-dropdown-text" class="text-brand-400 font-bold text-sm truncate text-left group-hover:text-brand-300">Carregando...</span>
+                    <span id="chapter-dropdown-text" class="text-brand-400 font-bold text-sm truncate text-left group-hover:text-brand-300 min-w-0 block">Carregando...</span>
                  </div>
                  <span class="text-slate-500 text-xs ml-3 shrink-0">▼</span>
              </button>
@@ -101,7 +101,7 @@
 
           <!-- Indicadores de desempenho da sessão -->
           <div
-            class="flex items-center gap-4 bg-slate-950/60 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-medium"
+            class="flex items-center gap-4 bg-slate-950/60 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-medium shrink-0"
           >
             <div class="flex items-center gap-1.5" title="Sequência de Acertos">
               <span class="text-amber-400 text-sm">🔥</span
