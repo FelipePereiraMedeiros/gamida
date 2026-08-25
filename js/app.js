@@ -6,7 +6,7 @@
  */
 
       /* ================= APP STATE & CONFIG ================= */
-      const APP_VERSION = "2.4.2";
+      const APP_VERSION = "2.5.0";
       const AppState = {
         language: localStorage.getItem("gamida_language") || "hebrew", // 'hebrew' ou 'greek'
         chapters: [],
