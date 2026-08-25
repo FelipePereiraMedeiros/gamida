@@ -38,3 +38,123 @@
   direction: ltr;
   line-height: 1.6;
 }
+
+/* ==========================================================================
+   Coffee Action Button & PIX Animations
+   ========================================================================== */
+@keyframes coffee-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.25);
+  }
+  50% {
+    box-shadow: 0 4px 22px 4px rgba(245, 158, 11, 0.45);
+  }
+}
+
+@keyframes copied-pop {
+  0% {
+    transform: scale(0.92);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.coffee-btn-glow {
+  animation: coffee-pulse 3s infinite ease-in-out;
+}
+
+.coffee-btn-glow:hover {
+  animation: none;
+}
+
+.animate-copied-pop {
+  animation: copied-pop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Utilitário para ocultar barra de rolagem mantendo funcionalidade */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==========================================================================
+   Mobile Header Retract / Reveal & Pull Indicator Animations
+   ========================================================================== */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeInSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pull-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+}
+
+.animate-pull-indicator {
+  animation: pull-subtle 2.5s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   Carousel Tabs Horizontal Scroll Cue Animations
+   ========================================================================== */
+@keyframes subtle-bounce-x {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  50% {
+    transform: translateY(-50%) translateX(3px);
+  }
+}
+
+.animate-subtle-bounce-x {
+  animation: subtle-bounce-x 1.6s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   Optical Alignment for Mobile Menu Pull Button
+   ========================================================================== */
+#mobile-menu-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+#mobile-menu-toggle-btn #mobile-menu-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  transform: translateY(0.75px); /* Alinhamento óptico perfeito com o centro do SVG */
+}
+
+#mobile-menu-toggle-btn #mobile-menu-toggle-icon {
+  display: inline-block;
+  vertical-align: middle;
+  transform-origin: center center;
+}
+
+
+
+
+
