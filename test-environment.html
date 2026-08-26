@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full bg-slate-950 text-slate-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamida - Painel Geral de Testes Automatizados (Módulo a Módulo)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Rubik", "sans-serif"],
+              mono: ['"JetBrains Mono"', "monospace"],
+            },
+            colors: {
+              brand: {
+                500: "#3b82f6",
+                600: "#2563eb",
+                700: "#1d4ed8",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="h-full flex flex-col font-sans bg-slate-950 text-slate-100 overflow-x-hidden">
+    <!-- Header do Painel de Testes -->
+    <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-40 px-6 py-4 shadow-xl">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-xl font-bold text-white">
+            🧪
+          </div>
+          <div>
+            <h1 class="font-bold text-lg text-white flex items-center gap-2">
+              Gamida <span class="text-xs px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono">Full Test Suite</span>
+            </h1>
+            <p class="text-xs text-slate-400">Validação Completa do Sistema (11 Módulos Funcionais)</p>
+          </div>
+        </div>
+
+        <!-- Controles Globais de Teste -->
+        <div class="flex items-center gap-3">
+          <button
+            type="button"
+            onclick="runAllBrowserTests()"
+            id="btn-run-all"
+            class="px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-600/20 transition active:scale-95 flex items-center gap-2 cursor-pointer"
+          >
+            <span>▶</span>
+            <span>Executar Todos os Módulos</span>
+          </button>
+          <a
+            href="index.html"
+            target="_blank"
+            class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-xs rounded-xl border border-slate-700 transition flex items-center gap-1.5"
+          >
+            <span>Abrir App ↗</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Coluna da Esquerda: Suíte de Testes e Relatório (6 Colunas) -->
+      <section class="lg:col-span-6 flex flex-col space-y-4">
+        <!-- Card de Resumo de Status -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="font-bold text-sm text-slate-200 uppercase tracking-wider">Status Geral das Suítes</h2>
+            <span id="badge-total-status" class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              Pronto para Executar
+            </span>
+          </div>
+
+          <div class="grid grid-cols-4 gap-2.5 text-center">
+            <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
+              <span class="block text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Módulos</span>
+              <span id="stat-modules" class="font-bold text-lg text-brand-400 font-mono">11</span>
+            </div>
+            <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
+              <span class="block text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Total</span>
+              <span id="stat-total" class="font-bold text-lg text-white font-mono">0</span>
+            </div>
+            <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
+              <span class="block text-[10px] text-emerald-400 uppercase tracking-wider font-semibold">Passaram</span>
+              <span id="stat-passed" class="font-bold text-lg text-emerald-400 font-mono">0</span>
+            </div>
+            <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
+              <span class="block text-[10px] text-rose-400 uppercase tracking-wider font-semibold">Falharam</span>
+              <span id="stat-failed" class="font-bold text-lg text-rose-400 font-mono">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtros por Módulo -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 shadow-xl">
+          <div class="flex items-center justify-between gap-2 overflow-x-auto pb-1 scrollbar-none text-xs">
+            <button
+              type="button"
+              id="filter-all"
+              onclick="filterModuleView('all')"
+              class="px-3 py-1.5 rounded-lg bg-brand-600 text-white font-bold whitespace-nowrap"
+            >
+              Todos os Módulos (11)
+            </button>
+            <select
+              id="select-module-filter"
+              onchange="filterModuleView(this.value)"
+              class="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-brand-500 font-medium"
+            >
+              <option value="all">Filtrar por Módulo...</option>
+              <option value="1">1. Camada de Dados & Capítulos</option>
+              <option value="2">2. Motor de Avaliação Linguística</option>
+              <option value="3">3. Motor de Prática & Modos</option>
+              <option value="4">4. Sistema SRS & Anki Flashcards</option>
+              <option value="5">5. Avaliação Cumulativa & Simulados</option>
+              <option value="6">6. Modo Sobrevivência (Morte Súbita)</option>
+              <option value="7">7. Paradigmas & Esquemas</option>
+              <option value="8">8. Dicionário & Busca em Tempo Real</option>
+              <option value="9">9. Troca de Idioma & UI</option>
+              <option value="10">10. Menu Mobile & Carrossel de Abas</option>
+              <option value="11">11. Apoio ("Pague-me um café!" & PIX)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Lista de Testes com Detalhes -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex-1 flex flex-col">
+          <h3 class="font-bold text-sm text-slate-200 mb-3 flex items-center justify-between">
+            <span>Resultados dos Casos de Teste</span>
+            <span class="text-xs text-slate-500 font-normal" id="execution-time"></span>
+          </h3>
+
+          <div id="test-results-list" class="space-y-3 overflow-y-auto max-h-[560px] pr-1">
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 text-center text-xs text-slate-400">
+              Clique em <strong class="text-white">"Executar Todos os Módulos"</strong> para rodar a suíte completa.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Coluna da Direita: Simulador de Viewport e Sandbox Interativo (6 Colunas) -->
+      <section class="lg:col-span-6 flex flex-col space-y-4">
+        <!-- Barra de Controle do Simulador de Dispositivos -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Simulador:</span>
+            <div class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs font-medium">
+              <button
+                type="button"
+                id="btn-view-mobile"
+                onclick="setSimulatorViewport('mobile')"
+                class="px-3 py-1.5 rounded-lg transition bg-brand-600 text-white font-bold flex items-center gap-1.5"
+              >
+                <span>📱</span> Mobile (375px)
+              </button>
+              <button
+                type="button"
+                id="btn-view-tablet"
+                onclick="setSimulatorViewport('tablet')"
+                class="px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5"
+              >
+                <span>📟</span> Tablet (768px)
+              </button>
+              <button
+                type="button"
+                id="btn-view-desktop"
+                onclick="setSimulatorViewport('desktop')"
+                class="px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5"
+              >
+                <span>💻</span> Desktop
+              </button>
+            </div>
+          </div>
+
+          <!-- Ações Rápidas no Simulador -->
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              onclick="reloadSimulator()"
+              class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg text-xs font-medium transition"
+              title="Recarregar Simulador"
+            >
+              🔄 Recarregar
+            </button>
+          </div>
+        </div>
+
+        <!-- Frame do Simulador de Viewport -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-4 shadow-2xl flex-1 flex flex-col items-center justify-center min-h-[580px] relative overflow-hidden">
+          <div
+            id="simulator-wrapper"
+            class="w-[375px] h-[640px] border-4 border-slate-700 rounded-2xl overflow-hidden shadow-2xl bg-slate-950 transition-all duration-300 relative flex flex-col"
+          >
+            <!-- Barra Superior Fictícia de Dispositivo Mobile -->
+            <div id="simulator-notch" class="bg-slate-900 border-b border-slate-800 px-3 py-1.5 flex items-center justify-between text-[10px] text-slate-400 font-mono select-none">
+              <span id="simulator-time">21:40</span>
+              <span class="w-16 h-3.5 bg-slate-800 rounded-full mx-auto"></span>
+              <span>100% 🔋</span>
+            </div>
+
+            <!-- Iframe Real da Aplicação Gamida -->
+            <iframe
+              id="app-iframe"
+              src="index.html"
+              class="flex-1 w-full border-0 bg-slate-950"
+              onload="onSimulatorLoaded()"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Script da Suite de Testes do Navegador -->
+    <script>
+      let testStats = { total: 0, passed: 0, failed: 0 };
+      let allRenderedSuites = [];
+
+      function setSimulatorViewport(mode) {
+        const wrapper = document.getElementById("simulator-wrapper");
+        const notch = document.getElementById("simulator-notch");
+        const btnMobile = document.getElementById("btn-view-mobile");
+        const btnTablet = document.getElementById("btn-view-tablet");
+        const btnDesktop = document.getElementById("btn-view-desktop");
+
+        [btnMobile, btnTablet, btnDesktop].forEach((b) => {
+          b.className = "px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5";
+        });
+
+        if (mode === "mobile") {
+          wrapper.style.width = "375px";
+          wrapper.style.height = "640px";
+          wrapper.className = "w-[375px] h-[640px] border-4 border-slate-700 rounded-2xl overflow-hidden shadow-2xl bg-slate-950 transition-all duration-300 relative flex flex-col";
+          notch.classList.remove("hidden");
+          btnMobile.className = "px-3 py-1.5 rounded-lg transition bg-brand-600 text-white font-bold flex items-center gap-1.5";
+        } else if (mode === "tablet") {
+          wrapper.style.width = "768px";
+          wrapper.style.height = "640px";
+          wrapper.className = "w-[768px] h-[640px] border-4 border-slate-700 rounded-2xl overflow-hidden shadow-2xl bg-slate-950 transition-all duration-300 relative flex flex-col";
+          notch.classList.remove("hidden");
+          btnTablet.className = "px-3 py-1.5 rounded-lg transition bg-brand-600 text-white font-bold flex items-center gap-1.5";
+        } else {
+          wrapper.style.width = "100%";
+          wrapper.style.height = "640px";
+          wrapper.className = "w-full h-[640px] border-2 border-slate-700 rounded-2xl overflow-hidden shadow-2xl bg-slate-950 transition-all duration-300 relative flex flex-col";
+          notch.classList.add("hidden");
+          btnDesktop.className = "px-3 py-1.5 rounded-lg transition bg-brand-600 text-white font-bold flex items-center gap-1.5";
+        }
+      }
+
+      function reloadSimulator() {
+        const iframe = document.getElementById("app-iframe");
+        if (iframe) iframe.src = "index.html?" + new Date().getTime();
+      }
+
+      function onSimulatorLoaded() {
+        const now = new Date();
+        const timeEl = document.getElementById("simulator-time");
+        if (timeEl) {
+          timeEl.textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+        }
+      }
+
+      function filterModuleView(moduleId) {
+        document.querySelectorAll(".test-module-card").forEach((card) => {
+          if (moduleId === "all" || card.getAttribute("data-module-id") === String(moduleId)) {
+            card.classList.remove("hidden");
+          } else {
+            card.classList.add("hidden");
+          }
+        });
+      }
+
+      async function runAllBrowserTests() {
+        const iframe = document.getElementById("app-iframe");
+        const list = document.getElementById("test-results-list");
+        const startTime = performance.now();
+
+        list.innerHTML = `<div class="p-4 text-center text-xs text-brand-400 animate-pulse font-bold">Executando todas as 11 suítes de testes...</div>`;
+        testStats = { total: 0, passed: 0, failed: 0 };
+
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        const iframeWin = iframe.contentWindow;
+
+        const testSuites = [
+          {
+            id: 1,
+            title: "Módulo 1: Camada de Dados & Capítulos",
+            tests: [
+              {
+                name: "DataLoader carregado e disponível globalmente",
+                fn: () => typeof iframeWin.DataLoader === "object" && typeof iframeWin.DataLoader.loadChapters === "function",
+              },
+              {
+                name: "Capítulos carregados no estado da aplicação (AppState.chapters)",
+                fn: () => Array.isArray(iframeWin.AppState.chapters) && iframeWin.AppState.chapters.length > 0,
+              },
+              {
+                name: "Capítulo ativo (AppState.currentChapter) inicializado",
+                fn: () => !!iframeWin.AppState.currentChapter && typeof iframeWin.AppState.currentChapter.id === "string",
+              },
+              {
+                name: "Funções de validação de integridade (isValidChapter, hasUniqueChapterIds)",
+                fn: () => typeof iframeWin.isValidChapter === "function" && typeof iframeWin.hasUniqueChapterIds === "function",
+              },
+            ],
+          },
+          {
+            id: 2,
+            title: "Módulo 2: Motor de Avaliação Linguística",
+            tests: [
+              {
+                name: "Função normalizeText limpa acentos e pontuação",
+                fn: () => iframeWin.normalizeText("Coração, Alma!") === "coracao alma",
+              },
+              {
+                name: "Função getEditDistance calcula distância de Levenshtein",
+                fn: () => iframeWin.getEditDistance("casa", "caza") === 1,
+              },
+              {
+                name: "evaluateAnswer reconhece tradução exata",
+                fn: () => iframeWin.evaluateAnswer("rei", ["rei"]).status === "correct",
+              },
+              {
+                name: "evaluateAnswer flexibiliza termos entre parênteses",
+                fn: () => iframeWin.evaluateAnswer("disse", ["(ele) disse"]).status === "correct",
+              },
+              {
+                name: "evaluateAnswer detecta erros leves de digitação (typo)",
+                fn: () => iframeWin.evaluateAnswer("palvra", ["palavra"]).status === "typo",
+              },
+            ],
+          },
+          {
+            id: 3,
+            title: "Módulo 3: Motor de Prática & Modos de Exercício",
+            tests: [
+              {
+                name: "Funções de prática (buildPracticeQueue, renderCurrentQuestion, checkPracticeAnswer)",
+                fn: () => typeof iframeWin.buildPracticeQueue === "function" && typeof iframeWin.renderCurrentQuestion === "function",
+              },
+              {
+                name: "Alternância entre modos (typing, choice, sentences)",
+                fn: () => {
+                  iframeWin.setExerciseMode("choice");
+                  const isChoice = iframeWin.AppState.exerciseMode === "choice";
+                  iframeWin.setExerciseMode("typing");
+                  return isChoice && iframeWin.AppState.exerciseMode === "typing";
+                },
+              },
+              {
+                name: "Geração de distratores para múltipla escolha",
+                fn: () => Array.isArray(iframeWin.AppState.distractorCache.words) && iframeWin.AppState.distractorCache.words.length > 0,
+              },
+            ],
+          },
+          {
+            id: 4,
+            title: "Módulo 4: Sistema SRS & Anki Flashcards",
+            tests: [
+              {
+                name: "Armazenamento do SRS carregado (AppState.srs)",
+                fn: () => typeof iframeWin.AppState.srs === "object",
+              },
+              {
+                name: "Função recordSRSError registra falhas e agenda revisão",
+                fn: () => {
+                  iframeWin.recordSRSError("teste_termo");
+                  return iframeWin.AppState.srs["teste_termo"] && iframeWin.AppState.srs["teste_termo"].fails >= 1;
+                },
+              },
+              {
+                name: "Funções de revisão Anki (startAnki, revealAnki, answerAnki)",
+                fn: () => typeof iframeWin.startAnki === "function" && typeof iframeWin.answerAnki === "function",
+              },
+            ],
+          },
+          {
+            id: 5,
+            title: "Módulo 5: Avaliação Cumulativa & Simulados",
+            tests: [
+              {
+                name: "Configuração do Simulado (SimConfig)",
+                fn: () => typeof iframeWin.SimConfig === "object" && typeof iframeWin.SimConfig.amount !== "undefined",
+              },
+              {
+                name: "Funções de abertura e início do Simulado (openSimuladoConfig, startSimulado)",
+                fn: () => typeof iframeWin.openSimuladoConfig === "function" && typeof iframeWin.startSimulado === "function",
+              },
+              {
+                name: "Função finishAssessment gera relatório diagnóstico por capítulo",
+                fn: () => typeof iframeWin.finishAssessment === "function",
+              },
+            ],
+          },
+          {
+            id: 6,
+            title: "Módulo 6: Modo Sobrevivência (Morte Súbita)",
+            tests: [
+              {
+                name: "Funções de sobrevivência (startSurvival, submitSurvivalAnswer, finishSurvival)",
+                fn: () => typeof iframeWin.startSurvival === "function" && typeof iframeWin.submitSurvivalAnswer === "function",
+              },
+              {
+                name: "Persistência do High Score (AppState.survivalHighScore)",
+                fn: () => typeof iframeWin.AppState.survivalHighScore === "number",
+              },
+            ],
+          },
+          {
+            id: 7,
+            title: "Módulo 7: Paradigmas Gramaticais & Esquemas",
+            tests: [
+              {
+                name: "Funções de paradigmas (renderTableView, renderParadigmSkeleton, checkParadigmAnswers)",
+                fn: () => typeof iframeWin.renderTableView === "function" && typeof iframeWin.checkParadigmAnswers === "function",
+              },
+              {
+                name: "Regra de exibição de paradigmas (oculto em hebraico, ativo em grego)",
+                fn: () => typeof iframeWin.updateParadigmsVisibility === "function",
+              },
+            ],
+          },
+          {
+            id: 8,
+            title: "Módulo 8: Dicionário & Busca em Tempo Real",
+            tests: [
+              {
+                name: "Renderização da tabela de dicionário (renderVocabTable)",
+                fn: () => typeof iframeWin.renderVocabTable === "function",
+              },
+              {
+                name: "Filtro em tempo real (filterVocabTable)",
+                fn: () => typeof iframeWin.filterVocabTable === "function",
+              },
+            ],
+          },
+          {
+            id: 9,
+            title: "Módulo 9: Troca de Idioma & UI",
+            tests: [
+              {
+                name: "Função toggleLanguage alterna idioma no estado",
+                fn: () => typeof iframeWin.toggleLanguage === "function",
+              },
+              {
+                name: "Função applyLanguageUI adapta tipografia e títulos",
+                fn: () => typeof iframeWin.applyLanguageUI === "function",
+              },
+            ],
+          },
+          {
+            id: 10,
+            title: "Módulo 10: Menu Mobile & Carrossel de Abas",
+            tests: [
+              {
+                name: "Alvos retráteis (.mobile-collapsible-target) no DOM",
+                fn: () => iframeDoc.querySelectorAll(".mobile-collapsible-target").length >= 2,
+              },
+              {
+                name: "Puxador de menu mobile com alinhamento óptico",
+                fn: () => {
+                  const btn = iframeDoc.getElementById("mobile-menu-toggle-btn");
+                  return btn && btn.className.includes("inline-flex") && btn.className.includes("leading-none");
+                },
+              },
+              {
+                name: "Função toggleMobileMenu alterna visibilidade do menu",
+                fn: () => typeof iframeWin.toggleMobileMenu === "function",
+              },
+              {
+                name: "Contêiner de abas (#navbar-tabs-container) e botões de scroll",
+                fn: () => !!iframeDoc.getElementById("navbar-tabs-container") && !!iframeDoc.getElementById("tabs-scroll-right-btn"),
+              },
+              {
+                name: "Funções de scroll e overflow (scrollTabs, updateTabsScrollIndicators)",
+                fn: () => typeof iframeWin.scrollTabs === "function" && typeof iframeWin.updateTabsScrollIndicators === "function",
+              },
+            ],
+          },
+          {
+            id: 11,
+            title: "Módulo 11: Apoio ('Pague-me um café!' & PIX)",
+            tests: [
+              {
+                name: "Presença do botão #btn-coffee no DOM",
+                fn: () => !!iframeDoc.getElementById("btn-coffee"),
+              },
+              {
+                name: "Execução de copyPixCoffee com chave 10971140669",
+                fn: async () => {
+                  const btn = iframeDoc.getElementById("btn-coffee");
+                  if (!btn) return false;
+                  iframeWin.copyPixCoffee(btn);
+                  await new Promise((r) => setTimeout(r, 60));
+                  return (
+                    btn.textContent.includes("10971140669") &&
+                    btn.textContent.includes("Felipe Pereira Medeiros") &&
+                    btn.textContent.includes("NuBank")
+                  );
+                },
+              },
+              {
+                name: "Restauração suave do botão (resetCoffeeButton)",
+                fn: () => {
+                  const btn = iframeDoc.getElementById("btn-coffee");
+                  iframeWin.resetCoffeeButton(btn);
+                  return btn.textContent.includes("Pague-me um café!");
+                },
+              },
+            ],
+          },
+        ];
+
+        let html = "";
+        for (const suite of testSuites) {
+          html += `
+            <div class="test-module-card mb-3.5 bg-slate-950/60 border border-slate-800/80 rounded-2xl p-3.5" data-module-id="${suite.id}">
+              <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 flex items-center justify-between">
+                <span class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-brand-500"></span>
+                  ${suite.title}
+                </span>
+                <span class="text-[10px] text-slate-500 font-mono">ID: ${suite.id}</span>
+              </h4>
+              <div class="space-y-1.5">
+          `;
+
+          for (const test of suite.tests) {
+            testStats.total++;
+            let pass = false;
+            try {
+              pass = await test.fn();
+            } catch (err) {
+              pass = false;
+            }
+
+            if (pass) {
+              testStats.passed++;
+              html += `
+                <div class="flex items-center justify-between px-3 py-1.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs">
+                  <span class="text-slate-200 font-medium">${test.name}</span>
+                  <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">✔ PASS</span>
+                </div>
+              `;
+            } else {
+              testStats.failed++;
+              html += `
+                <div class="flex items-center justify-between px-3 py-1.5 rounded-xl bg-rose-950/30 border border-rose-800/60 text-xs">
+                  <span class="text-rose-200 font-medium">${test.name}</span>
+                  <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/30">✖ FAIL</span>
+                </div>
+              `;
+            }
+          }
+
+          html += `</div></div>`;
+        }
+
+        const endTime = performance.now();
+        const duration = (endTime - startTime).toFixed(0);
+
+        list.innerHTML = html;
+        document.getElementById("stat-total").textContent = testStats.total;
+        document.getElementById("stat-passed").textContent = testStats.passed;
+        document.getElementById("stat-failed").textContent = testStats.failed;
+        document.getElementById("execution-time").textContent = `(${duration}ms)`;
+
+        const badge = document.getElementById("badge-total-status");
+        if (testStats.failed === 0) {
+          badge.className = "text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+          badge.textContent = "100% dos Testes Passaram ✔";
+        } else {
+          badge.className = "text-xs font-bold px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30";
+          badge.textContent = `${testStats.failed} Teste(s) Falharam ✖`;
+        }
+      }
+
+      window.addEventListener("load", () => {
+        setTimeout(runAllBrowserTests, 800);
+      });
+    </script>
+  </body>
+</html>
