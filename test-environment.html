@@ -83,7 +83,7 @@
           <div class="grid grid-cols-4 gap-2.5 text-center">
             <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
               <span class="block text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Módulos</span>
-              <span id="stat-modules" class="font-bold text-lg text-brand-400 font-mono">11</span>
+              <span id="stat-modules" class="font-bold text-lg text-brand-400 font-mono">12</span>
             </div>
             <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
               <span class="block text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Total</span>
@@ -109,7 +109,7 @@
               onclick="filterModuleView('all')"
               class="px-3 py-1.5 rounded-lg bg-brand-600 text-white font-bold whitespace-nowrap"
             >
-              Todos os Módulos (11)
+              Todos os Módulos (12)
             </button>
             <select
               id="select-module-filter"
@@ -128,6 +128,7 @@
               <option value="9">9. Troca de Idioma & UI</option>
               <option value="10">10. Menu Mobile & Carrossel de Abas</option>
               <option value="11">11. Apoio ("Pague-me um café!" & PIX)</option>
+              <option value="12">12. Motor Gamificado do Alfabeto</option>
             </select>
           </div>
         </div>
@@ -284,7 +285,7 @@
         const list = document.getElementById("test-results-list");
         const startTime = performance.now();
 
-        list.innerHTML = `<div class="p-4 text-center text-xs text-brand-400 animate-pulse font-bold">Executando todas as 11 suítes de testes...</div>`;
+        list.innerHTML = `<div class="p-4 text-center text-xs text-brand-400 animate-pulse font-bold">Executando todas as 12 suítes de testes...</div>`;
         testStats = { total: 0, passed: 0, failed: 0 };
 
         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
@@ -514,6 +515,132 @@
                   const btn = iframeDoc.getElementById("btn-coffee");
                   iframeWin.resetCoffeeButton(btn);
                   return btn.textContent.includes("Pague-me um café!");
+                },
+              },
+            ],
+          },
+          {
+            id: 12,
+            title: "Módulo 12: Motor Gamificado do Alfabeto",
+            tests: [
+              {
+                name: "Capítulo 1 do Alfabeto presente com 22 consoantes (Hebraico) e 24 letras (Grego)",
+                fn: async () => {
+                  const heb = await iframeWin.DataLoader.fetchDefaultChapters("hebrew");
+                  const grk = await iframeWin.DataLoader.fetchDefaultChapters("greek");
+                  const chap1Heb = heb.find((c) => c.id === "kelley_01");
+                  const chap1Grk = grk.find((c) => c.id === "bergmann_01");
+                  return (
+                    chap1Heb &&
+                    chap1Heb.items.length === 22 &&
+                    chap1Grk &&
+                    chap1Grk.items.length === 24
+                  );
+                },
+              },
+              {
+                name: "Detecção automática de capítulo do alfabeto (isAlphabetChapter)",
+                fn: () => {
+                  const hebChap = { id: "kelley_01", title: "Lição I - O Alfabeto (Alef-Bet)" };
+                  const otherChap = { id: "kelley_03", title: "Lição III - Substantivos" };
+                  return (
+                    typeof iframeWin.isAlphabetChapter === "function" &&
+                    iframeWin.isAlphabetChapter(hebChap) === true &&
+                    iframeWin.isAlphabetChapter(otherChap) === false
+                  );
+                },
+              },
+              {
+                name: "Submodos do alfabeto (order, impostors, shapes, classic) disponíveis",
+                fn: () => {
+                  return (
+                    typeof iframeWin.setAlphabetSubmode === "function" &&
+                    !!iframeDoc.getElementById("alphabet-mode-controls") &&
+                    !!iframeDoc.getElementById("alpha-mode-order") &&
+                    !!iframeDoc.getElementById("alpha-mode-impostors") &&
+                    !!iframeDoc.getElementById("alpha-mode-shapes") &&
+                    !!iframeDoc.getElementById("alpha-mode-classic")
+                  );
+                },
+              },
+              {
+                name: "AlphabetGameEngine gera desafios de ordem alfabética",
+                fn: () => {
+                  const engine = iframeWin.AlphabetGameEngine;
+                  if (!engine) return false;
+                  const challenge = engine.generateOrderChallenge();
+                  return (
+                    challenge &&
+                    challenge.options.length === 4 &&
+                    challenge.options.some((o) => o.isCorrect) &&
+                    !!challenge.targetGlyph
+                  );
+                },
+              },
+              {
+                name: "AlphabetGameEngine gera desafios de impostores com glifo neutro e opções únicas",
+                fn: () => {
+                  const engine = iframeWin.AlphabetGameEngine;
+                  if (!engine) return false;
+                  const challenge = engine.generateImpostorChallenge();
+                  const isUnique = new Set(challenge.options.map((o) => o.glyph)).size === challenge.options.length;
+                  return (
+                    challenge &&
+                    challenge.targetGlyph === "⚖️" &&
+                    challenge.options.length >= 3 &&
+                    isUnique &&
+                    challenge.options.some((o) => o.isCorrect) &&
+                    !!challenge.explanation
+                  );
+                },
+              },
+              {
+                name: "AlphabetGameEngine gera desafios de formas/sofit/dagesh/maiúsculas",
+                fn: () => {
+                  const engine = iframeWin.AlphabetGameEngine;
+                  if (!engine) return false;
+                  const challenge = engine.generateShapesChallenge();
+                  return (
+                    challenge &&
+                    challenge.options.length >= 2 &&
+                    challenge.options.some((o) => o.isCorrect)
+                  );
+                },
+              },
+              {
+                name: "Elementos visuais da Estação do Alfabeto estruturados no DOM",
+                fn: () => {
+                  return (
+                    !!iframeDoc.getElementById("alphabet-game-panel") &&
+                    !!iframeDoc.getElementById("alphabet-target-glyph") &&
+                    !!iframeDoc.getElementById("alphabet-options-grid") &&
+                    !!iframeDoc.getElementById("alphabet-feedback-banner")
+                  );
+                },
+              },
+              {
+                name: "Desafios do alfabeto não exibem nomes de letras ou números ordinais nas opções (anti-spoiler)",
+                fn: () => {
+                  const engine = iframeWin.AlphabetGameEngine;
+                  if (!engine) return false;
+                  const orderChal = engine.generateOrderChallenge();
+                  const impostorChal = engine.generateImpostorChallenge();
+                  const shapesChal = engine.generateShapesChallenge();
+                  
+                  const noOrderSpoilers = orderChal.options.every((o) => !o.subtext || (!o.subtext.includes("ª") && !o.subtext.includes("Minúscula")));
+                  const noImpostorSpoilers = impostorChal.options.every((o) => !o.subtext);
+                  return noOrderSpoilers && noImpostorSpoilers;
+                },
+              },
+              {
+                name: "Filtro de visibilidade oculta aba de paradigmas e modo frases quando vazios",
+                fn: () => {
+                  const btnParadigms = iframeDoc.getElementById("nav-btn-paradigms");
+                  const btnSentences = iframeDoc.getElementById("mode-sentences");
+                  // Na lição 1 (kelley_01 ou bergmann_01), paradigmas não existem
+                  iframeWin.updateParadigmsVisibility();
+                  const paradigmsHidden = !btnParadigms || btnParadigms.style.display === "none";
+                  return paradigmsHidden;
                 },
               },
             ],

@@ -1,5 +1,353 @@
 [
   {
+    "id": "kelley_01",
+    "title": "Lição I - O Alfabeto (Alef-Bet)",
+    "items": [
+      {
+        "hebrew": "א",
+        "transliteration": "alef",
+        "translations": [
+          "alef",
+          "alef (mudo)",
+          "álef",
+          "letra alef"
+        ],
+        "type": "Consoante (1)",
+        "order": 1,
+        "name": "Alef",
+        "sound": "Mudo / Oclusiva glotal",
+        "value": 1
+      },
+      {
+        "hebrew": "ב",
+        "transliteration": "bet",
+        "translations": [
+          "bet",
+          "bêt",
+          "vet",
+          "letra bet"
+        ],
+        "type": "Consoante (2 - Begadkefat)",
+        "order": 2,
+        "name": "Bet",
+        "sound": "B (com dagesh) / V (sem dagesh)",
+        "value": 2,
+        "begadkefat": true
+      },
+      {
+        "hebrew": "ג",
+        "transliteration": "gimel",
+        "translations": [
+          "gimel",
+          "guimel",
+          "gímel",
+          "letra gimel"
+        ],
+        "type": "Consoante (3 - Begadkefat)",
+        "order": 3,
+        "name": "Gimel",
+        "sound": "G (duro como em gato)",
+        "value": 3,
+        "begadkefat": true
+      },
+      {
+        "hebrew": "ד",
+        "transliteration": "dalet",
+        "translations": [
+          "dalet",
+          "dálet",
+          "daleth",
+          "letra dalet"
+        ],
+        "type": "Consoante (4 - Begadkefat)",
+        "order": 4,
+        "name": "Dalet",
+        "sound": "D (como em dado)",
+        "value": 4,
+        "begadkefat": true
+      },
+      {
+        "hebrew": "ה",
+        "transliteration": "he",
+        "translations": [
+          "he",
+          "hê",
+          "hey",
+          "letra he"
+        ],
+        "type": "Consoante (5 - Gutural)",
+        "order": 5,
+        "name": "He",
+        "sound": "H (aspirado como em house)",
+        "value": 5,
+        "guttural": true
+      },
+      {
+        "hebrew": "ו",
+        "transliteration": "vav",
+        "translations": [
+          "vav",
+          "waw",
+          "uau",
+          "letra vav"
+        ],
+        "type": "Consoante (6)",
+        "order": 6,
+        "name": "Vav",
+        "sound": "V (como em vida)",
+        "value": 6
+      },
+      {
+        "hebrew": "ז",
+        "transliteration": "zayin",
+        "translations": [
+          "zayin",
+          "záyin",
+          "zain",
+          "letra zayin"
+        ],
+        "type": "Consoante (7)",
+        "order": 7,
+        "name": "Zayin",
+        "sound": "Z (como em zebra)",
+        "value": 7
+      },
+      {
+        "hebrew": "ח",
+        "transliteration": "het",
+        "translations": [
+          "het",
+          "hêt",
+          "chet",
+          "letra het"
+        ],
+        "type": "Consoante (8 - Gutural)",
+        "order": 8,
+        "name": "Het",
+        "sound": "Kh (gutural áspero como ch em Bach)",
+        "value": 8,
+        "guttural": true
+      },
+      {
+        "hebrew": "ט",
+        "transliteration": "tet",
+        "translations": [
+          "tet",
+          "têt",
+          "teth",
+          "letra tet"
+        ],
+        "type": "Consoante (9)",
+        "order": 9,
+        "name": "Tet",
+        "sound": "T (enfático)",
+        "value": 9
+      },
+      {
+        "hebrew": "י",
+        "transliteration": "yod",
+        "translations": [
+          "yod",
+          "iode",
+          "yodh",
+          "letra yod"
+        ],
+        "type": "Consoante (10)",
+        "order": 10,
+        "name": "Yod",
+        "sound": "Y (semivogal como em iogurte)",
+        "value": 10
+      },
+      {
+        "hebrew": "כ",
+        "transliteration": "kaf",
+        "translations": [
+          "kaf",
+          "khaf",
+          "caf",
+          "letra kaf"
+        ],
+        "type": "Consoante (11 - Sofit: ך)",
+        "order": 11,
+        "name": "Kaf",
+        "sound": "K (com dagesh) / Kh (sem dagesh)",
+        "value": 20,
+        "begadkefat": true,
+        "sofit": "ך"
+      },
+      {
+        "hebrew": "ל",
+        "transliteration": "lamed",
+        "translations": [
+          "lamed",
+          "lámed",
+          "letra lamed"
+        ],
+        "type": "Consoante (12)",
+        "order": 12,
+        "name": "Lamed",
+        "sound": "L (como em luz)",
+        "value": 30
+      },
+      {
+        "hebrew": "מ",
+        "transliteration": "mem",
+        "translations": [
+          "mem",
+          "mêm",
+          "letra mem"
+        ],
+        "type": "Consoante (13 - Sofit: ם)",
+        "order": 13,
+        "name": "Mem",
+        "sound": "M (como em mar)",
+        "value": 40,
+        "sofit": "ם"
+      },
+      {
+        "hebrew": "נ",
+        "transliteration": "nun",
+        "translations": [
+          "nun",
+          "nûn",
+          "letra nun"
+        ],
+        "type": "Consoante (14 - Sofit: ן)",
+        "order": 14,
+        "name": "Nun",
+        "sound": "N (como em navio)",
+        "value": 50,
+        "sofit": "ן"
+      },
+      {
+        "hebrew": "ס",
+        "transliteration": "samekh",
+        "translations": [
+          "samekh",
+          "sâmekh",
+          "samec",
+          "letra samekh"
+        ],
+        "type": "Consoante (15)",
+        "order": 15,
+        "name": "Samekh",
+        "sound": "S (como em sol)",
+        "value": 60
+      },
+      {
+        "hebrew": "ע",
+        "transliteration": "ayin",
+        "translations": [
+          "ayin",
+          "áyin",
+          "ain",
+          "letra ayin"
+        ],
+        "type": "Consoante (16 - Gutural)",
+        "order": 16,
+        "name": "Ayin",
+        "sound": "Gutural profunda (muda em português)",
+        "value": 70,
+        "guttural": true
+      },
+      {
+        "hebrew": "פ",
+        "transliteration": "pe",
+        "translations": [
+          "pe",
+          "pê",
+          "fe",
+          "letra pe"
+        ],
+        "type": "Consoante (17 - Sofit: ף)",
+        "order": 17,
+        "name": "Pe",
+        "sound": "P (com dagesh) / F (sem dagesh)",
+        "value": 80,
+        "begadkefat": true,
+        "sofit": "ף"
+      },
+      {
+        "hebrew": "צ",
+        "transliteration": "tsade",
+        "translations": [
+          "tsade",
+          "tsadê",
+          "tsadi",
+          "letra tsade"
+        ],
+        "type": "Consoante (18 - Sofit: ץ)",
+        "order": 18,
+        "name": "Tsade",
+        "sound": "Ts (como em pizza ou tsunami)",
+        "value": 90,
+        "sofit": "ץ"
+      },
+      {
+        "hebrew": "ק",
+        "transliteration": "qof",
+        "translations": [
+          "qof",
+          "kof",
+          "qôf",
+          "letra qof"
+        ],
+        "type": "Consoante (19)",
+        "order": 19,
+        "name": "Qof",
+        "sound": "Q / K (como em quase)",
+        "value": 100
+      },
+      {
+        "hebrew": "ר",
+        "transliteration": "resh",
+        "translations": [
+          "resh",
+          "rêsh",
+          "reish",
+          "letra resh"
+        ],
+        "type": "Consoante (20)",
+        "order": 20,
+        "name": "Resh",
+        "sound": "R (suave como em caro)",
+        "value": 200
+      },
+      {
+        "hebrew": "ש",
+        "transliteration": "shin/sin",
+        "translations": [
+          "shin",
+          "sin",
+          "shin/sin",
+          "letra shin"
+        ],
+        "type": "Consoante (21)",
+        "order": 21,
+        "name": "Shin / Sin",
+        "sound": "Sh (ponto à direita: שׁ) / S (ponto à esquerda: שׂ)",
+        "value": 300
+      },
+      {
+        "hebrew": "ת",
+        "transliteration": "tav",
+        "translations": [
+          "tav",
+          "taw",
+          "táv",
+          "letra tav"
+        ],
+        "type": "Consoante (22 - Begadkefat)",
+        "order": 22,
+        "name": "Tav",
+        "sound": "T (como em terra)",
+        "value": 400,
+        "begadkefat": true
+      }
+    ],
+    "sentences": []
+  },
+  {
     "id": "kelley_03",
     "title": "Lição III - Substantivos Básicos 2026",
     "items": [
