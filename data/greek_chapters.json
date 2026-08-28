@@ -1,5 +1,365 @@
 [
   {
+    "id": "bergmann_01",
+    "title": "Lição 1 - O Alfabeto Grego",
+    "items": [
+      {
+        "term": "α",
+        "uppercase": "Α",
+        "transliteration": "a",
+        "translations": [
+          "alfa",
+          "alpha",
+          "letra alfa"
+        ],
+        "type": "Vogal (1)",
+        "order": 1,
+        "name": "Alpha",
+        "sound": "A (como em casa)"
+      },
+      {
+        "term": "β",
+        "uppercase": "Β",
+        "transliteration": "b",
+        "translations": [
+          "beta",
+          "bêta",
+          "letra beta"
+        ],
+        "type": "Consoante (2)",
+        "order": 2,
+        "name": "Beta",
+        "sound": "B (como em bola)"
+      },
+      {
+        "term": "γ",
+        "uppercase": "Γ",
+        "transliteration": "g",
+        "translations": [
+          "gama",
+          "gamma",
+          "letra gama"
+        ],
+        "type": "Consoante (3)",
+        "order": 3,
+        "name": "Gamma",
+        "sound": "G (como em gato; nasal diante de γ, κ, ξ, χ)"
+      },
+      {
+        "term": "δ",
+        "uppercase": "Δ",
+        "transliteration": "d",
+        "translations": [
+          "delta",
+          "délta",
+          "letra delta"
+        ],
+        "type": "Consoante (4)",
+        "order": 4,
+        "name": "Delta",
+        "sound": "D (como em dado)"
+      },
+      {
+        "term": "ε",
+        "uppercase": "Ε",
+        "transliteration": "e",
+        "translations": [
+          "epsilon",
+          "épsilon",
+          "épsilo",
+          "letra epsilon"
+        ],
+        "type": "Vogal Breve (5)",
+        "order": 5,
+        "name": "Epsilon",
+        "sound": "E (breve e fechado como em você)"
+      },
+      {
+        "term": "ζ",
+        "uppercase": "Ζ",
+        "transliteration": "z",
+        "translations": [
+          "zeta",
+          "dzeta",
+          "zêta",
+          "letra zeta"
+        ],
+        "type": "Consoante Dupla (6)",
+        "order": 6,
+        "name": "Zeta",
+        "sound": "Z / Dz (como em zebra ou pizza)"
+      },
+      {
+        "term": "η",
+        "uppercase": "Η",
+        "transliteration": "ē",
+        "translations": [
+          "eta",
+          "êta",
+          "letra eta"
+        ],
+        "type": "Vogal Longa (7)",
+        "order": 7,
+        "name": "Eta",
+        "sound": "Ê (longo e aberto como em festa)"
+      },
+      {
+        "term": "θ",
+        "uppercase": "Θ",
+        "transliteration": "th",
+        "translations": [
+          "teta",
+          "theta",
+          "thêta",
+          "letra teta"
+        ],
+        "type": "Consoante (8)",
+        "order": 8,
+        "name": "Theta",
+        "sound": "Th (aspirado ou interdental como em think)"
+      },
+      {
+        "term": "ι",
+        "uppercase": "Ι",
+        "transliteration": "i",
+        "translations": [
+          "iota",
+          "ióta",
+          "letra iota"
+        ],
+        "type": "Vogal (9)",
+        "order": 9,
+        "name": "Iota",
+        "sound": "I (como em ilha)"
+      },
+      {
+        "term": "κ",
+        "uppercase": "Κ",
+        "transliteration": "k",
+        "translations": [
+          "capa",
+          "kappa",
+          "kapa",
+          "letra capa"
+        ],
+        "type": "Consoante (10)",
+        "order": 10,
+        "name": "Kappa",
+        "sound": "K (como em casa)"
+      },
+      {
+        "term": "λ",
+        "uppercase": "Λ",
+        "transliteration": "l",
+        "translations": [
+          "lambda",
+          "lâmbda",
+          "lamda",
+          "letra lambda"
+        ],
+        "type": "Consoante (11)",
+        "order": 11,
+        "name": "Lambda",
+        "sound": "L (como em livro)"
+      },
+      {
+        "term": "μ",
+        "uppercase": "Μ",
+        "transliteration": "m",
+        "translations": [
+          "mi",
+          "mu",
+          "mü",
+          "letra mi"
+        ],
+        "type": "Consoante (12)",
+        "order": 12,
+        "name": "Mu",
+        "sound": "M (como em mãe)"
+      },
+      {
+        "term": "ν",
+        "uppercase": "Ν",
+        "transliteration": "n",
+        "translations": [
+          "ni",
+          "nu",
+          "nü",
+          "letra ni"
+        ],
+        "type": "Consoante (13)",
+        "order": 13,
+        "name": "Nu",
+        "sound": "N (como em navio)"
+      },
+      {
+        "term": "ξ",
+        "uppercase": "Ξ",
+        "transliteration": "x",
+        "translations": [
+          "csi",
+          "xi",
+          "ksi",
+          "letra csi"
+        ],
+        "type": "Consoante Dupla (14)",
+        "order": 14,
+        "name": "Xi",
+        "sound": "X / Ks (como em táxi)"
+      },
+      {
+        "term": "ο",
+        "uppercase": "Ο",
+        "transliteration": "o",
+        "translations": [
+          "omicron",
+          "ômicron",
+          "ómicron",
+          "letra omicron"
+        ],
+        "type": "Vogal Breve (15)",
+        "order": 15,
+        "name": "Omicron",
+        "sound": "O (breve e fechado como em avô)"
+      },
+      {
+        "term": "π",
+        "uppercase": "Π",
+        "transliteration": "p",
+        "translations": [
+          "pi",
+          "pî",
+          "letra pi"
+        ],
+        "type": "Consoante (16)",
+        "order": 16,
+        "name": "Pi",
+        "sound": "P (como em pão)"
+      },
+      {
+        "term": "ρ",
+        "uppercase": "Ρ",
+        "transliteration": "r",
+        "translations": [
+          "ro",
+          "rho",
+          "rô",
+          "letra ro"
+        ],
+        "type": "Consoante (17)",
+        "order": 17,
+        "name": "Rho",
+        "sound": "R (vibrante como em caro/rato)"
+      },
+      {
+        "term": "σ",
+        "uppercase": "Σ",
+        "transliteration": "s",
+        "translations": [
+          "sigma",
+          "sígma",
+          "letra sigma"
+        ],
+        "type": "Consoante (18 - Final: ς)",
+        "order": 18,
+        "name": "Sigma",
+        "sound": "S (como em sol; ς no fim de palavra)",
+        "final": "ς"
+      },
+      {
+        "term": "τ",
+        "uppercase": "Τ",
+        "transliteration": "t",
+        "translations": [
+          "tau",
+          "tau",
+          "taf",
+          "letra tau"
+        ],
+        "type": "Consoante (19)",
+        "order": 19,
+        "name": "Tau",
+        "sound": "T (como em tempo)"
+      },
+      {
+        "term": "υ",
+        "uppercase": "Υ",
+        "transliteration": "y",
+        "translations": [
+          "upsilon",
+          "ípsilon",
+          "úpsilon",
+          "ypsilon",
+          "letra upsilon"
+        ],
+        "type": "Vogal (20)",
+        "order": 20,
+        "name": "Upsilon",
+        "sound": "U / Y (francês 'u' ou alemão 'ü')"
+      },
+      {
+        "term": "φ",
+        "uppercase": "Φ",
+        "transliteration": "ph",
+        "translations": [
+          "fi",
+          "phi",
+          "fî",
+          "letra fi"
+        ],
+        "type": "Consoante (21)",
+        "order": 21,
+        "name": "Phi",
+        "sound": "F / Ph (como em foto)"
+      },
+      {
+        "term": "χ",
+        "uppercase": "Χ",
+        "transliteration": "ch",
+        "translations": [
+          "qui",
+          "chi",
+          "khi",
+          "letra qui"
+        ],
+        "type": "Consoante (22)",
+        "order": 22,
+        "name": "Chi",
+        "sound": "Kh / Ch (gutural áspero como ch em Bach)"
+      },
+      {
+        "term": "ψ",
+        "uppercase": "Ψ",
+        "transliteration": "ps",
+        "translations": [
+          "psi",
+          "psî",
+          "letra psi"
+        ],
+        "type": "Consoante Dupla (23)",
+        "order": 23,
+        "name": "Psi",
+        "sound": "Ps (como em psicologia)"
+      },
+      {
+        "term": "ω",
+        "uppercase": "Ω",
+        "transliteration": "ō",
+        "translations": [
+          "omega",
+          "ômega",
+          "ómega",
+          "letra omega"
+        ],
+        "type": "Vogal Longa (24)",
+        "order": 24,
+        "name": "Omega",
+        "sound": "Ô (longo e aberto como em avó)"
+      }
+    ],
+    "sentences": []
+  },
+  {
     "id": "bergmann_02",
     "title": "Lição 2 - Verbos (Presente) e Pronomes",
     "items": [

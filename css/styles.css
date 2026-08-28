@@ -154,6 +154,51 @@
   transform-origin: center center;
 }
 
+/* ==========================================================================
+   Alphabet Gamified Mode Animations & Effects
+   ========================================================================== */
+@keyframes combo-pop {
+  0% { transform: scale(0.85); opacity: 0; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-combo-pop {
+  animation: combo-pop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes shake-wrong {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.animate-shake-wrong {
+  animation: shake-wrong 0.4s ease-in-out;
+}
+
+@keyframes letter-glow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4)); }
+  50% { filter: drop-shadow(0 0 18px rgba(99, 102, 241, 0.8)); }
+}
+
+.animate-letter-glow {
+  animation: letter-glow 2s infinite ease-in-out;
+}
+
+.alphabet-card-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.alphabet-card-hover:hover {
+  transform: translateY(-2px);
+}
+
+.alphabet-card-hover:active {
+  transform: scale(0.97);
+}
+
+
 
 
 
