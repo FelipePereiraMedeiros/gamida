@@ -4,6 +4,7 @@
  * ==========================================================================
  */
 
+(function () {
 /**
  * Sanitiza strings para exibição segura em contextos HTML (prevenção de XSS)
  * @param {string} str
@@ -154,3 +155,4 @@ if (typeof window !== "undefined") {
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { escapeHTML, normalizeText, getEditDistance, evaluateAnswer };
 }
+})();

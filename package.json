@@ -4,8 +4,8 @@
   "description": "Treinador Autônomo de Idiomas Bíblicos (Hebraico & Grego Koiné)",
   "main": "js/app.js",
   "scripts": {
-    "dev": "npx serve -l 3000 .",
-    "start": "npx serve -l 3000 .",
+    "dev": "powershell -ExecutionPolicy Bypass -File .\\serve.ps1 -Port 8080",
+    "start": "powershell -ExecutionPolicy Bypass -File .\\serve.ps1 -Port 8080",
     "test": "node test-runner.js",
     "test:unit": "node test-runner.js all",
     "test:browser": "echo Abra test-environment.html em seu navegador"

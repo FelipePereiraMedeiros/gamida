@@ -6,15 +6,18 @@
  */
 
 /* ================= APP STATE & CONFIG ================= */
-const APP_VERSION = (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.6.0";
-const AppState = {
-  language: localStorage.getItem("gamida_language") || "hebrew", // 'hebrew' ou 'greek'
+var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
+  ? window.APP_VERSION
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.6.0";
+
+var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
+  language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
   chapters: [],
   currentChapter: null,
   currentQuestionIndex: 0,
   currentQuestion: null,
   exerciseMode: "typing",
-  alphabetSubmode: "order", // 'order', 'impostors', 'shapes', 'classic'
+  alphabetSubmode: "order",
   score: 0,
   streak: 0,
   totalAnswered: 0,
@@ -24,7 +27,7 @@ const AppState = {
   survivalHighScore: 0,
 };
 
-const DOM = {};
+var DOM = (typeof window !== "undefined" && window.DOM) ? window.DOM : {};
 
 
 /* ================= CORE LOGIC & INITIALIZATION ================= */
@@ -64,7 +67,7 @@ function ensureDOM() {
   }
 }
 
-window.addEventListener("DOMContentLoaded", async () => {
+async function initApp() {
   const versionDisplay = document.getElementById("app-version-display");
   if (versionDisplay) {
     versionDisplay.textContent = "v" + APP_VERSION;
@@ -80,7 +83,16 @@ window.addEventListener("DOMContentLoaded", async () => {
   updateStatsUI();
   updateParadigmsVisibility();
   updateTabsScrollIndicators();
-});
+}
+
+if (typeof window !== "undefined") {
+  window.initApp = initApp;
+  if (document.readyState === "loading") {
+    window.addEventListener("DOMContentLoaded", initApp);
+  } else {
+    initApp();
+  }
+}
 
 async function loadChapters() {
   try {
@@ -976,10 +988,12 @@ function filterVocabTable() {
 }
 
 /* ================= CUMULATIVE ASSESSMENT LOGIC ================= */
-const SimConfig = { amount: 25, time: 0, focus: "mixed" };
-let assessQuestions = [];
-let assessIndex = 0;
-let assessAnswersMap = {};
+var SimConfig = (typeof window !== "undefined" && window.SimConfig)
+  ? window.SimConfig
+  : { amount: 25, time: 0, focus: "mixed" };
+var assessQuestions = (typeof window !== "undefined" && window.assessQuestions) ? window.assessQuestions : [];
+var assessIndex = 0;
+var assessAnswersMap = {};
 let assessTimerInterval = null;
 let assessTimeCount = 0;
 
@@ -2638,7 +2652,9 @@ function nextAlphabetChallenge() {
   AlphabetGameEngine.nextChallenge();
 }
 
-const AlphabetGameEngine = {
+var AlphabetGameEngine = (typeof window !== "undefined" && window.AlphabetGameEngine)
+  ? window.AlphabetGameEngine
+  : {
   hebrewAlphabet: [
     { order: 1, glyph: "א", name: "Alef", sound: "Mudo / Oclusiva glotal", translit: "alef", value: 1 },
     { order: 2, glyph: "ב", name: "Bet", sound: "B (com dagesh) / V (sem)", translit: "bet", value: 2, begadkefat: true, dagesh: "בּ" },

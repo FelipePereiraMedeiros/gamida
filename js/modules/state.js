@@ -4,12 +4,13 @@
  * ==========================================================================
  */
 
+(function () {
 const APP_VERSION =
   typeof window !== "undefined" && window.DataLoader && window.DataLoader.VERSION
     ? window.DataLoader.VERSION
     : "2.6.0";
 
-const AppState = {
+const AppState = (typeof window !== "undefined" && window.AppState) || {
   language:
     typeof localStorage !== "undefined"
       ? localStorage.getItem("gamida_language") || "hebrew"
@@ -205,3 +206,4 @@ if (typeof module !== "undefined" && module.exports) {
     updateStatsUI,
   };
 }
+})();

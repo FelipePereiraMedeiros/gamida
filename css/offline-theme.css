@@ -64,7 +64,22 @@ body {
 
 /* Utilitários essenciais offline */
 .hidden {
-  display: none !important;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .md\:block {
+    display: block !important;
+  }
+  .md\:flex {
+    display: flex !important;
+  }
+  .md\:inline-block {
+    display: inline-block !important;
+  }
+  .md\:hidden {
+    display: none !important;
+  }
 }
 
 /* Transições suaves globais */

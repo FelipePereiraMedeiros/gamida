@@ -12,6 +12,7 @@
  * ==========================================================================
  */
 
+(function () {
 /* ================= MOBILE MENU RETRACT / REVEAL ================= */
 let isMobileMenuExpanded = false;
 
@@ -489,3 +490,4 @@ if (typeof module !== "undefined" && module.exports) {
     filterVocabTable,
   };
 }
+})();

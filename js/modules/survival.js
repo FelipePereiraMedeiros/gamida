@@ -4,9 +4,10 @@
  * ==========================================================================
  */
 
-const _stateModule = (typeof AppState !== "undefined") ? { AppState, getTerm, shuffleArray } : (typeof require !== "undefined" ? require("./state.js") : {});
-const _evalModule = (typeof evaluateAnswer !== "undefined") ? { evaluateAnswer } : (typeof require !== "undefined" ? require("./evaluation.js") : {});
-const _srsModule = (typeof recordSRSError !== "undefined") ? { recordSRSError } : (typeof require !== "undefined" ? require("./srs.js") : {});
+(function () {
+const _stateModule = (typeof window !== "undefined" && window.AppState) ? window : (typeof require !== "undefined" ? require("./state.js") : {});
+const _evalModule = (typeof window !== "undefined" && window.evaluateAnswer) ? window : (typeof require !== "undefined" ? require("./evaluation.js") : {});
+const _srsModule = (typeof window !== "undefined" && window.recordSRSError) ? window : (typeof require !== "undefined" ? require("./srs.js") : {});
 
 const AppState = (typeof window !== "undefined" && window.AppState) || _stateModule.AppState;
 const getTerm = (typeof window !== "undefined" && window.getTerm) || _stateModule.getTerm;
@@ -225,3 +226,4 @@ if (typeof module !== "undefined" && module.exports) {
     finishSurvival,
   };
 }
+})();
