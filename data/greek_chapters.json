@@ -87,7 +87,7 @@
         "type": "Consoante Dupla (6)",
         "order": 6,
         "name": "Zeta",
-        "sound": "Z / Dz (como em zebra ou pizza)"
+        "sound": "Z / Dz (como em Edson, não o 'z' português!)"
       },
       {
         "term": "η",
@@ -205,7 +205,7 @@
         "type": "Consoante Dupla (14)",
         "order": 14,
         "name": "Xi",
-        "sound": "X / Ks (como em táxi)"
+        "sound": "X / Ks (como em táxi, mas não em lixo)"
       },
       {
         "term": "ο",
@@ -325,7 +325,7 @@
         "type": "Consoante (22)",
         "order": 22,
         "name": "Chi",
-        "sound": "Kh / Ch (gutural áspero como ch em Bach)"
+        "sound": "Kh / Ch (ch alemão ou j espanhol)"
       },
       {
         "term": "ψ",

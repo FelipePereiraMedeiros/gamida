@@ -35,6 +35,14 @@ suite.test('Persistência da preferência de idioma no localStorage', () => {
   assert.includes(appJs, 'localStorage.setItem("gamida_language", AppState.language);', 'Persistência de gamida_language ausente');
 });
 
+suite.test('Rodapé pedagógico referencia a gramática de Johannes Bergmann (Thomas Nelson)', () => {
+  assert.includes(html, 'id="main-app-footer"', 'Rodapé #main-app-footer ausente no HTML');
+  assert.includes(html, 'id="app-grammar-footnote"', 'Nota #app-grammar-footnote ausente no HTML');
+  assert.includes(html, 'Johannes Bergmann', 'Autor Johannes Bergmann ausente no HTML');
+  assert.includes(html, 'Thomas Nelson', 'Editora Thomas Nelson ausente no HTML');
+  assert.includes(html, 'Introdução ao Grego Bíblico', 'Título da gramática ausente no HTML');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

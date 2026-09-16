@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.6.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.6.5";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -71,6 +71,10 @@ async function initApp() {
   const versionDisplay = document.getElementById("app-version-display");
   if (versionDisplay) {
     versionDisplay.textContent = "v" + APP_VERSION;
+  }
+  const footerVersion = document.getElementById("footer-version-tag");
+  if (footerVersion) {
+    footerVersion.textContent = "v" + APP_VERSION;
   }
 
   ensureDOM();
@@ -760,11 +764,18 @@ function applyLanguageUI() {
     document.getElementById("surv-last-heb"),
   ];
 
+  const footnoteEl = document.getElementById("app-grammar-footnote");
+
   if (AppState.language === "hebrew") {
     logo.textContent = "א";
     logo.className =
       "w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300";
     subtitle.textContent = "Treinador de Hebraico Autônomo";
+
+    if (footnoteEl) {
+      footnoteEl.innerHTML =
+        'Este sistema é uma ferramenta complementar de estudo que segue a <strong class="text-white font-semibold">"Gramática do Hebraico Bíblico"</strong> de <strong class="text-white font-semibold">Page H. Kelley</strong> (Editora Sinodal) e a gramática <strong class="text-white font-semibold">"Introdução ao Grego Bíblico"</strong> de <strong class="text-white font-semibold">Johannes Bergmann</strong> (Thomas Nelson).';
+    }
 
     textElements.forEach((el) => {
       if (el) {
@@ -777,6 +788,11 @@ function applyLanguageUI() {
     logo.className =
       "w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 to-amber-500 flex items-center justify-center shadow-lg shadow-rose-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300";
     subtitle.textContent = "Treinador de Grego Autônomo";
+
+    if (footnoteEl) {
+      footnoteEl.innerHTML =
+        'Este sistema é uma ferramenta complementar de estudo e prática que segue a gramática <strong class="text-white font-semibold">"Introdução ao Grego Bíblico"</strong> do autor <strong class="text-white font-semibold">Johannes Bergmann</strong> da editora <strong class="text-white font-semibold">Thomas Nelson</strong>.';
+    }
 
     textElements.forEach((el) => {
       if (el) {

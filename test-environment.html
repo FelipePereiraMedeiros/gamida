@@ -456,6 +456,19 @@
                 name: "Função applyLanguageUI adapta tipografia e títulos",
                 fn: () => typeof iframeWin.applyLanguageUI === "function",
               },
+              {
+                name: "Rodapé pedagógico com referência à gramática de Johannes Bergmann (Thomas Nelson)",
+                fn: () => {
+                  const footnote = iframeDoc.getElementById("app-grammar-footnote");
+                  return footnote && footnote.textContent.includes("Johannes Bergmann") && footnote.textContent.includes("Thomas Nelson");
+                },
+              },
+              {
+                name: "Versão do sistema incrementada para v2.6.5",
+                fn: () => {
+                  return iframeWin.APP_VERSION === "2.6.5" || (iframeWin.DataLoader && iframeWin.DataLoader.VERSION === "2.6.5");
+                },
+              },
             ],
           },
           {

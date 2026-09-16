@@ -7,7 +7,7 @@
  */
 
 const DataLoader = {
-  VERSION: "2.6.0",
+  VERSION: "2.6.5",
   cache: {},
 
   /**
