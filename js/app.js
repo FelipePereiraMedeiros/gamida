@@ -774,7 +774,7 @@ function applyLanguageUI() {
 
     if (footnoteEl) {
       footnoteEl.innerHTML =
-        'Este sistema é uma ferramenta complementar de estudo que segue a <strong class="text-white font-semibold">"Gramática do Hebraico Bíblico"</strong> de <strong class="text-white font-semibold">Page H. Kelley</strong> (Editora Sinodal)';
+        'Este sistema é uma ferramenta complementar de estudo e prática que segue a <strong class="text-white font-semibold">"Gramática do Hebraico Bíblico"</strong> de <strong class="text-white font-semibold">Page H. Kelley</strong> (Editora Sinodal)';
     }
 
     textElements.forEach((el) => {
