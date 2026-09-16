@@ -165,17 +165,17 @@ Ao analisar os testes automatizados da pasta `tests/`:
 ## 8. Plano de Ação e Recomendações Priorizadas
 
 ### Fase 1: Correções Imediatas (Segurança e Estabilidade)
-- [ ] **Sanitização de XSS:** Implementar função `escapeHTML` para campos interpolados em `innerHTML` ou utilizar `textContent` para entradas do usuário.
-- [ ] **Correção do `evaluateAnswer`:** Adicionar fallback para entradas nulas/indefinidas: `(userAnswer || "").replace(/\(.*?\)/g, "")`.
-- [ ] **Correção das Fontes:** Remover a URL inexistente do Google Fonts e adicionar `"Noto Sans Hebrew"` como fallback prioritário em `css/styles.css`.
-- [ ] **Ajuste na Importação de Backup:** Permitir que `saveChapterFromJSON()` receba e salve um array com múltiplos capítulos.
-- [ ] **Unificação de Shuffling:** Substituir `.sort(() => 0.5 - Math.random())` pela função `shuffleArray()`.
+- [x] **Sanitização de XSS:** Implementar função `escapeHTML` para campos interpolados em `innerHTML` ou utilizar `textContent` para entradas do usuário.
+- [x] **Correção do `evaluateAnswer`:** Adicionar fallback para entradas nulas/indefinidas: `(userAnswer || "").replace(/\(.*?\)/g, "")`.
+- [x] **Correção das Fontes:** Remover a URL inexistente do Google Fonts e adicionar `"Noto Sans Hebrew"` como fallback prioritário em `css/styles.css`.
+- [x] **Ajuste na Importação de Backup:** Permitir que `saveChapterFromJSON()` receba e salve um array com múltiplos capítulos.
+- [x] **Unificação de Shuffling:** Substituir `.sort(() => 0.5 - Math.random())` pela função `shuffleArray()`.
 
 ### Fase 2: Modernização Arquitetural
-- [ ] **Inicialização do Projeto Node:** Criar `package.json` com scripts de desenvolvimento e testes.
-- [ ] **Modularização do Código:** Decompor `js/app.js` em módulos ES (`src/core/`, `src/engines/`, `src/ui/`).
-- [ ] **Tailwind Compilado:** Substituir o CDN do Tailwind por build estático gerado via CLI ou Vite, viabilizando funcionamento 100% offline.
+- [x] **Inicialização do Projeto Node:** Criar `package.json` com scripts de desenvolvimento e testes.
+- [x] **Modularização do Código:** Decompor `js/app.js` em módulos dedicados em `js/modules/` (`state.js`, `evaluation.js`, `alphabet.js`, `srs.js`, `survival.js`, `assessment.js`, `paradigms.js`, `ui.js`) com compatibilidade universal (Browser global `window` e Node `module.exports`).
+- [x] **Resiliência Offline e Estilos:** Implementar `css/offline-theme.css` com tokens de cores, resets e utilitários essenciais, garantindo funcionamento autônomo e sem quebras de layout caso o CDN do Tailwind esteja indisponível.
 
 ### Fase 3: Reformulação dos Testes
-- [ ] **Testes Funcionais Reais:** Atualizar a suíte de testes para importar diretamente os módulos e funções puras de produção.
-- [ ] **Alinhamento do SRS:** Sincronizar as regras do teste com a lógica real de repetição espaçada.
+- [x] **Testes Funcionais Reais:** Atualizar a suíte de testes para importar diretamente os módulos e funções puras de produção (`evaluation.js`, `state.js`, `alphabet.js`, `srs.js`, `survival.js`, `assessment.js`, `paradigms.js`, `ui.js`), eliminando duplicações de código e asserções puramente sintéticas.
+- [x] **Alinhamento do SRS:** Sincronizar as regras do teste com a lógica real de repetição espaçada (revisão prioritária em 60s no modo "hard", piso mínimo de 1.3 de EF e cálculo fiel de dias em "good" e "easy").

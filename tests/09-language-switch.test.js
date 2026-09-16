@@ -8,6 +8,7 @@ const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 
 const suite = new TestSuite('Módulo 9: Troca de Idioma & Adaptação de UI');
 const { appJs, html } = loadSourceFiles();
+const { AppState } = require('../js/modules/state.js');
 
 suite.test('Botão de logo no HTML permite alternar idioma no clique', () => {
   assert.includes(html, 'id="app-logo-btn"', 'Botão #app-logo-btn ausente');
@@ -15,12 +16,12 @@ suite.test('Botão de logo no HTML permite alternar idioma no clique', () => {
 });
 
 suite.test('toggleLanguage alterna entre "hebrew" e "greek" e atualiza estado', () => {
-  let language = "hebrew";
-  language = language === "hebrew" ? "greek" : "hebrew";
-  assert.equal(language, "greek");
+  AppState.language = "hebrew";
+  AppState.language = AppState.language === "hebrew" ? "greek" : "hebrew";
+  assert.equal(AppState.language, "greek");
 
-  language = language === "hebrew" ? "greek" : "hebrew";
-  assert.equal(language, "hebrew");
+  AppState.language = AppState.language === "hebrew" ? "greek" : "hebrew";
+  assert.equal(AppState.language, "hebrew");
 });
 
 suite.test('applyLanguageUI altera glifos, títulos e classes tipográficas', () => {

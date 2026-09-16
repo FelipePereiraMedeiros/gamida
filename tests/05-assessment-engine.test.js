@@ -9,9 +9,8 @@ const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 const suite = new TestSuite('Módulo 5: Avaliação Cumulativa & Simulados');
 const { appJs, hebrewData } = loadSourceFiles();
 
-function getTerm(item) {
-  return item.term || item.hebrew || '';
-}
+// Importações diretas dos módulos de produção
+const { getTerm, SimConfig } = require('../js/modules/state.js');
 
 function generateSimuladoPool(chapters, activeChapterId, config) {
   const activeIdx = chapters.findIndex((c) => c.id === activeChapterId);

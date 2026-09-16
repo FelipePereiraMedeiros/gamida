@@ -1,0 +1,25 @@
+{
+  "name": "gamida",
+  "version": "2.6.0",
+  "description": "Treinador Autônomo de Idiomas Bíblicos (Hebraico & Grego Koiné)",
+  "main": "js/app.js",
+  "scripts": {
+    "dev": "npx serve -l 3000 .",
+    "start": "npx serve -l 3000 .",
+    "test": "node test-runner.js",
+    "test:unit": "node test-runner.js all",
+    "test:browser": "echo Abra test-environment.html em seu navegador"
+  },
+  "keywords": [
+    "hebraico",
+    "grego",
+    "biblical-hebrew",
+    "koine-greek",
+    "srs",
+    "anki",
+    "gamification",
+    "education"
+  ],
+  "author": "Felipe Pereira Medeiros",
+  "license": "GPL-3.0"
+}

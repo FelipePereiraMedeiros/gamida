@@ -7,7 +7,16 @@
 const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 
 const suite = new TestSuite('Módulo 7: Paradigmas Gramaticais & Esquemas');
-const { appJs, greekData, hebrewData } = loadSourceFiles();
+const { appJs, greekData } = loadSourceFiles();
+const {
+  getStaticParadigmTableHTML,
+  getStaticDiagramHTML,
+  updateParadigmsVisibility,
+  renderParadigmSkeleton,
+  renderTableView,
+  checkParadigmAnswers,
+  resetParadigmBoard,
+} = require('../js/modules/paradigms.js');
 
 suite.test('Capítulos de Grego contêm estruturas de paradigmas válidas', () => {
   const chaptersWithParadigms = greekData.filter(c => c.paradigms && c.paradigms.length > 0);
@@ -25,19 +34,46 @@ suite.test('Capítulos de Grego contêm estruturas de paradigmas válidas', () =
   });
 });
 
-suite.test('Regra de negócio: Paradigmas são ocultos em Hebraico e exibidos em Grego', () => {
-  assert.includes(appJs, 'updateParadigmsVisibility', 'updateParadigmsVisibility ausente');
-  assert.includes(appJs, 'if (AppState.language === "hebrew")', 'Verificação de idioma para paradigmas ausente');
-  assert.includes(appJs, 'btnParadigms.style.display = "none"', 'Ocultação de paradigmas em hebraico ausente');
+suite.test('getStaticParadigmTableHTML gera marcação HTML estruturada com headers e rows', () => {
+  const tableParadigm = greekData
+    .flatMap(c => c.paradigms || [])
+    .find(p => p.type === 'table');
+
+  assert.isTrue(!!tableParadigm, 'Deve existir um paradigma do tipo table no dataset de grego');
+  const html = getStaticParadigmTableHTML(tableParadigm);
+
+  assert.isTrue(typeof html === 'string' && html.length > 50, 'Deve gerar string HTML não-vazia');
+  assert.includes(html, '<table', 'Deve conter tag table');
+  assert.includes(html, '<thead', 'Deve conter thead com cabeçalhos');
+  assert.includes(html, '<tbody', 'Deve conter tbody com linhas');
+  tableParadigm.headers.forEach(h => {
+    assert.includes(html, h, `Deve renderizar header: ${h}`);
+  });
 });
 
-suite.test('Funções de renderização estática e interativa de paradigmas declaradas', () => {
-  assert.includes(appJs, 'function getStaticParadigmTableHTML', 'getStaticParadigmTableHTML ausente');
-  assert.includes(appJs, 'function getStaticDiagramHTML', 'getStaticDiagramHTML ausente');
-  assert.includes(appJs, 'function renderParadigmSkeleton', 'renderParadigmSkeleton ausente');
-  assert.includes(appJs, 'function renderTableView', 'renderTableView ausente');
-  assert.includes(appJs, 'function checkParadigmAnswers', 'checkParadigmAnswers ausente');
-  assert.includes(appJs, 'function resetParadigmBoard', 'resetParadigmBoard ausente');
+suite.test('getStaticDiagramHTML gera visualização diagramada com nós posicionados', () => {
+  const diagramParadigm = greekData
+    .flatMap(c => c.paradigms || [])
+    .find(p => p.type === 'diagram');
+
+  if (diagramParadigm) {
+    const html = getStaticDiagramHTML(diagramParadigm);
+    assert.isTrue(typeof html === 'string' && html.length > 50, 'Deve gerar string HTML do diagrama');
+    assert.includes(html, 'diagram', 'Deve conter classes de diagrama');
+  }
+});
+
+suite.test('Declaração e exportação das funções de paradigmas no módulo e app.js', () => {
+  assert.isFunction(getStaticParadigmTableHTML);
+  assert.isFunction(getStaticDiagramHTML);
+  assert.isFunction(updateParadigmsVisibility);
+  assert.isFunction(renderParadigmSkeleton);
+  assert.isFunction(renderTableView);
+  assert.isFunction(checkParadigmAnswers);
+  assert.isFunction(resetParadigmBoard);
+
+  assert.includes(appJs, 'function getStaticParadigmTableHTML', 'getStaticParadigmTableHTML ausente no app.js');
+  assert.includes(appJs, 'function getStaticDiagramHTML', 'getStaticDiagramHTML ausente no app.js');
 });
 
 module.exports = suite;

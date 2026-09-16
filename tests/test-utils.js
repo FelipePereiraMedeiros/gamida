@@ -128,10 +128,26 @@ function loadSourceFiles() {
   return { html, css, appJs, dataLoaderJs, hebrewData, greekData, rootDir };
 }
 
+// Carregador dos módulos de produção
+function loadModules() {
+  const rootDir = path.resolve(__dirname, '..');
+  const evaluation = require(path.join(rootDir, 'js', 'modules', 'evaluation.js'));
+  const state = require(path.join(rootDir, 'js', 'modules', 'state.js'));
+  const alphabet = require(path.join(rootDir, 'js', 'modules', 'alphabet.js'));
+  const srs = require(path.join(rootDir, 'js', 'modules', 'srs.js'));
+  const survival = require(path.join(rootDir, 'js', 'modules', 'survival.js'));
+  const assessment = require(path.join(rootDir, 'js', 'modules', 'assessment.js'));
+  const paradigms = require(path.join(rootDir, 'js', 'modules', 'paradigms.js'));
+  const ui = require(path.join(rootDir, 'js', 'modules', 'ui.js'));
+
+  return { evaluation, state, alphabet, srs, survival, assessment, paradigms, ui };
+}
+
 module.exports = {
   TestSuite,
   assert,
   colors,
   MockLocalStorage,
   loadSourceFiles,
+  loadModules,
 };

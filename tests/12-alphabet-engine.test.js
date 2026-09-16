@@ -62,13 +62,45 @@ suite.test('Submodos do jogo do alfabeto (order, impostors, shapes, classic) con
 });
 
 // 5. Motor do Jogo do Alfabeto (AlphabetGameEngine)
-suite.test('AlphabetGameEngine implementa geração de desafios de ordem, impostores e formas', () => {
-  assert.includes(appJs, 'const AlphabetGameEngine', 'AlphabetGameEngine ausente');
-  assert.includes(appJs, 'generateOrderChallenge', 'Método generateOrderChallenge ausente');
-  assert.includes(appJs, 'generateImpostorChallenge', 'Método generateImpostorChallenge ausente');
-  assert.includes(appJs, 'generateShapesChallenge', 'Método generateShapesChallenge ausente');
-  assert.includes(appJs, 'hebrewTwinGroups', 'Grupos de letras gêmeas hebraicas ausentes');
-  assert.includes(appJs, 'greekTwinGroups', 'Grupos de letras gêmeas gregas ausentes');
+const { AlphabetGameEngine } = require('../js/modules/alphabet.js');
+const { isAlphabetChapter } = require('../js/modules/state.js');
+
+suite.test('Função isAlphabetChapter valida capítulos do alfabeto funcionalmente', () => {
+  assert.isTrue(isAlphabetChapter({ id: 'kelley_01' }), 'kelley_01 deve ser reconhecido');
+  assert.isTrue(isAlphabetChapter({ id: 'bergmann_01' }), 'bergmann_01 deve ser reconhecido');
+  assert.isTrue(isAlphabetChapter({ id: 'outro', title: 'Alfabeto e Pronúncia' }), 'title com alfabeto deve ser reconhecido');
+  assert.isFalse(isAlphabetChapter({ id: 'kelley_02', title: 'Substantivos' }), 'kelley_02 não é alfabeto');
+});
+
+suite.test('AlphabetGameEngine implementa geração funcional de desafios de ordem, impostores e formas', () => {
+  assert.isTrue(typeof AlphabetGameEngine === 'object', 'AlphabetGameEngine deve ser um objeto');
+  assert.isFunction(AlphabetGameEngine.generateOrderChallenge, 'Método generateOrderChallenge ausente');
+  assert.isFunction(AlphabetGameEngine.generateImpostorChallenge, 'Método generateImpostorChallenge ausente');
+  assert.isFunction(AlphabetGameEngine.generateShapesChallenge, 'Método generateShapesChallenge ausente');
+
+  // 1. Desafio de ordem hebraica
+  const orderHeb = AlphabetGameEngine.generateOrderChallenge("hebrew");
+  assert.isTrue(!!orderHeb, 'Deve gerar desafio de ordem hebraica');
+  assert.equal(orderHeb.options.length, 4, 'Deve conter 4 alternativas');
+  assert.isTrue(orderHeb.options.some(opt => opt.isCorrect), 'Uma das alternativas deve ser correta');
+
+  // 2. Desafio de ordem grega
+  const orderGrk = AlphabetGameEngine.generateOrderChallenge("greek");
+  assert.isTrue(!!orderGrk, 'Deve gerar desafio de ordem grega');
+  assert.equal(orderGrk.options.length, 4, 'Deve conter 4 alternativas');
+  assert.isTrue(orderGrk.options.some(opt => opt.isCorrect), 'Uma das alternativas deve ser correta');
+
+  // 3. Desafio de impostores
+  const impostorHeb = AlphabetGameEngine.generateImpostorChallenge("hebrew");
+  assert.isTrue(!!impostorHeb, 'Deve gerar desafio de impostor');
+  assert.equal(impostorHeb.options.length, 4, 'Deve conter 4 alternativas');
+  assert.isTrue(impostorHeb.options.some(opt => opt.isCorrect), 'Deve conter alternativa correta');
+
+  // 4. Desafio de formas
+  const shapesHeb = AlphabetGameEngine.generateShapesChallenge("hebrew");
+  assert.isTrue(!!shapesHeb, 'Deve gerar desafio de formas');
+  assert.equal(shapesHeb.options.length, 2, 'Deve conter 2 alternativas (Regular vs Sofit)');
+  assert.isTrue(shapesHeb.options.some(opt => opt.isCorrect), 'Deve conter alternativa correta');
 });
 
 // 6. Sistema de Pontuação, Combos e Feedback do Alfabeto
