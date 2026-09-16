@@ -4,9 +4,10 @@
  * ==========================================================================
  */
 
-const _stateModule = (typeof AppState !== "undefined") ? { AppState, SimConfig, getTerm, shuffleArray } : (typeof require !== "undefined" ? require("./state.js") : {});
-const _evalModule = (typeof evaluateAnswer !== "undefined") ? { escapeHTML, evaluateAnswer } : (typeof require !== "undefined" ? require("./evaluation.js") : {});
-const _srsModule = (typeof recordSRSError !== "undefined") ? { recordSRSError } : (typeof require !== "undefined" ? require("./srs.js") : {});
+(function () {
+const _stateModule = (typeof window !== "undefined" && window.AppState) ? window : (typeof require !== "undefined" ? require("./state.js") : {});
+const _evalModule = (typeof window !== "undefined" && window.evaluateAnswer) ? window : (typeof require !== "undefined" ? require("./evaluation.js") : {});
+const _srsModule = (typeof window !== "undefined" && window.recordSRSError) ? window : (typeof require !== "undefined" ? require("./srs.js") : {});
 
 const AppState = (typeof window !== "undefined" && window.AppState) || _stateModule.AppState;
 const SimConfig = (typeof window !== "undefined" && window.SimConfig) || _stateModule.SimConfig;
@@ -588,3 +589,4 @@ if (typeof module !== "undefined" && module.exports) {
     finishAssessment,
   };
 }
+})();
