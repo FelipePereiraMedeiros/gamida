@@ -8,43 +8,59 @@ const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 
 const suite = new TestSuite('Módulo 6: Modo Sobrevivência (Morte Súbita)');
 const { appJs } = loadSourceFiles();
+const { AppState } = require('../js/modules/state.js');
+const {
+  startSurvival,
+  updateSurvivalUI,
+  nextSurvivalQuestion,
+  submitSurvivalAnswer,
+  finishSurvival,
+} = require('../js/modules/survival.js');
 
-suite.test('Regras de vidas e streak no modo Sobrevivência', () => {
-  let survLives = 3;
-  let survStreak = 0;
+suite.test('Regras de vidas, streak e registro de falhas no modo Sobrevivência', () => {
+  let lives = 3;
+  let streak = 0;
 
-  // Acerto
-  survStreak++;
-  assert.equal(survStreak, 1);
-  assert.equal(survLives, 3);
+  // 1. Acerto: incrementa sequência e mantém vidas
+  streak++;
+  assert.equal(streak, 1);
+  assert.equal(lives, 3);
 
-  // Erro 1
-  survLives--;
-  assert.equal(survLives, 2);
+  // 2. Erro: decrementa 1 vida e quebra streak
+  lives--;
+  streak = 0;
+  assert.equal(lives, 2);
+  assert.equal(streak, 0, 'Streak deve zerar ao errar');
 
-  // Erro 2 e 3
-  survLives -= 2;
-  assert.equal(survLives, 0, 'Vidas esgotadas');
-  assert.isTrue(survLives <= 0, 'Deve disparar Game Over quando vidas <= 0');
+  // 3. Esgotamento de vidas: Game Over
+  lives -= 2;
+  assert.equal(lives, 0, 'Vidas esgotadas');
+  assert.isTrue(lives <= 0, 'Deve disparar Game Over quando vidas <= 0');
 });
 
 suite.test('Atualização e persistência do High Score de sobrevivência', () => {
-  let currentHighScore = 15;
-  let newStreak = 18;
+  AppState.survivalHighScore = 15;
+  const newStreak = 18;
 
-  if (newStreak > currentHighScore) {
-    currentHighScore = newStreak;
+  if (newStreak > AppState.survivalHighScore) {
+    AppState.survivalHighScore = newStreak;
   }
 
-  assert.equal(currentHighScore, 18, 'Recorde deve ser atualizado quando superado');
+  assert.equal(AppState.survivalHighScore, 18, 'Recorde deve ser atualizado quando superado');
 });
 
-suite.test('Declaração das funções do Modo Sobrevivência no app.js', () => {
-  assert.includes(appJs, 'function startSurvival', 'startSurvival ausente');
-  assert.includes(appJs, 'function updateSurvivalUI', 'updateSurvivalUI ausente');
-  assert.includes(appJs, 'function nextSurvivalQuestion', 'nextSurvivalQuestion ausente');
-  assert.includes(appJs, 'function submitSurvivalAnswer', 'submitSurvivalAnswer ausente');
-  assert.includes(appJs, 'function finishSurvival', 'finishSurvival ausente');
+suite.test('Declaração e exportação de todas as funções do Modo Sobrevivência', () => {
+  assert.isFunction(startSurvival, 'startSurvival deve ser uma função');
+  assert.isFunction(updateSurvivalUI, 'updateSurvivalUI deve ser uma função');
+  assert.isFunction(nextSurvivalQuestion, 'nextSurvivalQuestion deve ser uma função');
+  assert.isFunction(submitSurvivalAnswer, 'submitSurvivalAnswer deve ser uma função');
+  assert.isFunction(finishSurvival, 'finishSurvival deve ser uma função');
+
+  assert.includes(appJs, 'function startSurvival', 'startSurvival ausente no app.js');
+  assert.includes(appJs, 'function updateSurvivalUI', 'updateSurvivalUI ausente no app.js');
+  assert.includes(appJs, 'function nextSurvivalQuestion', 'nextSurvivalQuestion ausente no app.js');
+  assert.includes(appJs, 'function submitSurvivalAnswer', 'submitSurvivalAnswer ausente no app.js');
+  assert.includes(appJs, 'function finishSurvival', 'finishSurvival ausente no app.js');
 });
 
 module.exports = suite;

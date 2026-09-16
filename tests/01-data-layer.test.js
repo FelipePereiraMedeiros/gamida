@@ -9,33 +9,8 @@ const { TestSuite, assert, loadSourceFiles, MockLocalStorage } = require('./test
 const suite = new TestSuite('Módulo 1: Camada de Dados & Validação de Capítulos');
 const { dataLoaderJs, hebrewData, greekData } = loadSourceFiles();
 
-function getTerm(item) {
-  return item.term || item.hebrew || '';
-}
-
-function isValidChapter(chapter) {
-  if (!chapter || typeof chapter !== 'object') return false;
-  if (typeof chapter.id !== 'string' || !chapter.id.trim()) return false;
-  if (typeof chapter.title !== 'string' || !chapter.title.trim()) return false;
-  const collections = [chapter.items, chapter.sentences].filter(Array.isArray);
-  if (collections.length === 0) return false;
-  return collections.flat().every((item) => {
-    const term = item && getTerm(item);
-    return (
-      item &&
-      typeof term === 'string' &&
-      term.trim() &&
-      Array.isArray(item.translations) &&
-      item.translations.length > 0 &&
-      item.translations.every((translation) => typeof translation === 'string')
-    );
-  });
-}
-
-function hasUniqueChapterIds(chapters) {
-  const ids = chapters.map((chapter) => chapter && chapter.id);
-  return ids.every((id, index) => id && ids.indexOf(id) === index);
-}
+// Funções puras importadas diretamente do módulo de produção
+const { getTerm, isValidChapter, hasUniqueChapterIds } = require('../js/modules/state.js');
 
 // 1. Integridade do Arquivo hebrew_chapters.json
 suite.test('Banco de dados de Hebraico (hebrew_chapters.json) possui formato válido', () => {

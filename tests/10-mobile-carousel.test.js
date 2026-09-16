@@ -8,6 +8,11 @@ const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 
 const suite = new TestSuite('Módulo 10: Menu Mobile & Carrossel de Abas');
 const { appJs, html, css } = loadSourceFiles();
+const {
+  toggleMobileMenu,
+  scrollTabs,
+  updateTabsScrollIndicators,
+} = require('../js/modules/ui.js');
 
 // 1. Menu Mobile Retrátil
 suite.test('Alvos retráteis identificados com .mobile-collapsible-target no HTML', () => {
@@ -24,8 +29,9 @@ suite.test('Puxador de menu mobile configurado com alinhamento óptico', () => {
   assert.includes(html, 'leading-none', 'Classe leading-none ausente no botão');
 });
 
-suite.test('Função toggleMobileMenu implementada com suporte a estado forçado', () => {
-  assert.includes(appJs, 'function toggleMobileMenu', 'toggleMobileMenu ausente');
+suite.test('Função toggleMobileMenu implementada com suporte a estado forçado no ui.js e app.js', () => {
+  assert.isFunction(toggleMobileMenu, 'toggleMobileMenu deve ser uma função');
+  assert.includes(appJs, 'function toggleMobileMenu', 'toggleMobileMenu ausente no app.js');
   assert.includes(appJs, 'isMobileMenuExpanded', 'Variável de controle de estado ausente');
 });
 
@@ -43,9 +49,11 @@ suite.test('Contêiner de abas possui wrapper com botões e sombras de fade', ()
   assert.includes(html, 'id="tabs-fade-left"', 'Sombra esquerda #tabs-fade-left ausente');
 });
 
-suite.test('Funções de rolagem e cálculo de overflow implementadas no JS', () => {
-  assert.includes(appJs, 'function scrollTabs', 'scrollTabs ausente');
-  assert.includes(appJs, 'function updateTabsScrollIndicators', 'updateTabsScrollIndicators ausente');
+suite.test('Funções de rolagem e cálculo de overflow implementadas no JS e ui.js', () => {
+  assert.isFunction(scrollTabs, 'scrollTabs deve ser uma função');
+  assert.isFunction(updateTabsScrollIndicators, 'updateTabsScrollIndicators deve ser uma função');
+  assert.includes(appJs, 'function scrollTabs', 'scrollTabs ausente no app.js');
+  assert.includes(appJs, 'function updateTabsScrollIndicators', 'updateTabsScrollIndicators ausente no app.js');
   assert.includes(appJs, 'container.scrollWidth > container.clientWidth', 'Cálculo de overflow ausente');
 });
 

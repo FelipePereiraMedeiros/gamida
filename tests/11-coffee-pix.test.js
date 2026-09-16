@@ -8,6 +8,7 @@ const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 
 const suite = new TestSuite('Módulo 11: Apoio ("Pague-me um café!" & PIX)');
 const { appJs, html, css } = loadSourceFiles();
+const { copyPixCoffee, resetCoffeeButton } = require('../js/modules/ui.js');
 
 suite.test('Botão #btn-coffee estruturado no index.html com ícone e estilo de destaque', () => {
   assert.includes(html, 'id="btn-coffee"', 'Botão #btn-coffee ausente');
@@ -16,8 +17,9 @@ suite.test('Botão #btn-coffee estruturado no index.html com ícone e estilo de 
   assert.includes(html, 'bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600', 'Gradiente de destaque ausente');
 });
 
-suite.test('Função copyPixCoffee copia a chave PIX correta (10971140669)', () => {
-  assert.includes(appJs, 'function copyPixCoffee', 'copyPixCoffee ausente');
+suite.test('Função copyPixCoffee exportada e copia a chave PIX correta (10971140669)', () => {
+  assert.isFunction(copyPixCoffee, 'copyPixCoffee deve ser uma função');
+  assert.includes(appJs, 'function copyPixCoffee', 'copyPixCoffee ausente no app.js');
   assert.includes(appJs, '10971140669', 'Chave PIX 10971140669 ausente');
 });
 
@@ -32,8 +34,9 @@ suite.test('Fallback para navegadores que bloqueiam navigator.clipboard em conte
   assert.includes(appJs, 'document.execCommand("copy")', 'execCommand de fallback ausente');
 });
 
-suite.test('Função resetCoffeeButton restaura estado original suavemente', () => {
-  assert.includes(appJs, 'function resetCoffeeButton', 'resetCoffeeButton ausente');
+suite.test('Função resetCoffeeButton exportada e restaura estado original suavemente', () => {
+  assert.isFunction(resetCoffeeButton, 'resetCoffeeButton deve ser uma função');
+  assert.includes(appJs, 'function resetCoffeeButton', 'resetCoffeeButton ausente no app.js');
   assert.includes(appJs, 'Pague-me um café!', 'Texto de restauração ausente');
 });
 

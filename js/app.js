@@ -28,6 +28,16 @@ const DOM = {};
 
 
 /* ================= CORE LOGIC & INITIALIZATION ================= */
+function escapeHTML(str) {
+  if (str === null || str === undefined) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 function getTerm(item) {
   return item.term || item.hebrew || "";
 }
@@ -345,7 +355,7 @@ function getEditDistance(a, b) {
 
 function evaluateAnswer(userAnswer, acceptedList) {
   // 1. Limpa qualquer parênteses da resposta do usuário também (por segurança)
-  const cleanUser = userAnswer.replace(/\(.*?\)/g, "");
+  const cleanUser = (userAnswer || "").replace(/\(.*?\)/g, "");
   const normUser = normalizeText(cleanUser);
 
   const allAccepted = acceptedList.join(" / ");
@@ -691,8 +701,6 @@ function recordSRSError(termStr) {
 async function toggleLanguage() {
   AppState.language = AppState.language === "hebrew" ? "greek" : "hebrew";
 
-  updateParadigmsVisibility();
-
   localStorage.setItem("gamida_language", AppState.language);
 
   resetStats();
@@ -702,6 +710,7 @@ async function toggleLanguage() {
   loadSRS();
   buildDistractorCache();
   setupGlobalChapterDropdown();
+  updateParadigmsVisibility();
   switchTab("practice");
 }
 
@@ -816,7 +825,43 @@ function saveChapterFromJSON() {
   }
   try {
     const parsed = JSON.parse(jsonText);
-    const newChap = Array.isArray(parsed) ? parsed[0] : parsed;
+
+    // Suporte para importação de backup completo com múltiplos capítulos
+    if (Array.isArray(parsed)) {
+      if (parsed.length === 0) throw new Error("O array JSON está vazio.");
+      if (!parsed.every(isValidChapter)) {
+        throw new Error("Um ou mais capítulos no array possuem formato inválido.");
+      }
+      if (!hasUniqueChapterIds(parsed)) {
+        throw new Error("Existem capítulos com IDs duplicados no arquivo informado.");
+      }
+
+      const updatedChapters = [...AppState.chapters];
+      parsed.forEach((incomingChap) => {
+        const existingIdx = updatedChapters.findIndex((c) => c.id === incomingChap.id);
+        if (existingIdx >= 0) {
+          updatedChapters[existingIdx] = incomingChap;
+        } else {
+          updatedChapters.push(incomingChap);
+        }
+      });
+
+      if (!hasUniqueChapterIds(updatedChapters)) {
+        throw new Error("Conflito de IDs únicos com capítulos já existentes.");
+      }
+
+      AppState.chapters = updatedChapters;
+      saveChaptersToStorage();
+      buildDistractorCache();
+      setupGlobalChapterDropdown();
+      changeGlobalChapter(parsed[0].id);
+
+      statusEl.textContent = `✅ ${parsed.length} capítulo(s) importado(s) com sucesso!`;
+      statusEl.className = "text-xs font-mono text-emerald-400";
+      return;
+    }
+
+    const newChap = parsed;
     if (!isValidChapter(newChap)) throw new Error("Formato inválido.");
     const existingIdx = AppState.chapters.findIndex(
       (c) => c.id === newChap.id,
@@ -878,12 +923,12 @@ function renderVocabTable() {
       : "greek-text text-lg md:text-xl";
 
     tr.innerHTML = `
-            <td class="px-6 py-4 ${textClass} font-bold text-white">${termText}</td>
-            <td class="px-6 py-4 font-mono text-xs text-amber-400">${translitText}</td>
-            <td class="px-6 py-4 font-medium text-slate-200">${translationsText}</td>
+            <td class="px-6 py-4 ${textClass} font-bold text-white">${escapeHTML(termText)}</td>
+            <td class="px-6 py-4 font-mono text-xs text-amber-400">${escapeHTML(translitText)}</td>
+            <td class="px-6 py-4 font-medium text-slate-200">${escapeHTML(translationsText)}</td>
             <td class="px-6 py-4">
               <span class="px-2.5 py-1 rounded-full ${isSentence ? "bg-indigo-900/60 border-indigo-700 text-indigo-300" : "bg-slate-800 border-slate-700 text-slate-400"} border text-[10px] font-mono">
-                ${typeText}
+                ${escapeHTML(typeText)}
               </span>
             </td>
           `;
@@ -1094,20 +1139,18 @@ function startSimulado() {
       currentPool.length,
     );
     selected.push(
-      ...[...currentPool]
-        .sort(() => 0.5 - Math.random())
-        .slice(0, targetCurrent),
+      ...shuffleArray([...currentPool]).slice(0, targetCurrent),
     );
     let remaining = targetCount - selected.length;
     selected.push(
-      ...[...otherPool]
-        .sort(() => 0.5 - Math.random())
-        .slice(0, remaining),
+      ...shuffleArray([...otherPool]).slice(0, remaining),
     );
     if (selected.length < targetCount) {
-      let combined = [...currentPool, ...otherPool]
-        .filter((i) => !selected.some((s) => getTerm(s) === getTerm(i)))
-        .sort(() => 0.5 - Math.random());
+      let combined = shuffleArray(
+        [...currentPool, ...otherPool].filter(
+          (i) => !selected.some((s) => getTerm(s) === getTerm(i)),
+        ),
+      );
       selected.push(...combined.slice(0, targetCount - selected.length));
     }
     return selected;
@@ -1121,7 +1164,7 @@ function startSimulado() {
       otherChapSentences,
     ),
   ];
-  assessQuestions = finalPool.sort(() => 0.5 - Math.random());
+  assessQuestions = shuffleArray(finalPool);
   assessIndex = 0;
   assessAnswersMap = {};
 
@@ -1398,15 +1441,15 @@ function finishAssessment() {
               <span class="font-mono text-slate-400 font-semibold">Questão ${idx + 1} (${ans.question.kind === "word" ? "Palavra" : "Frase"})</span>
               ${badgeTag}
             </div>
-            <div class="${textClass} text-2xl text-white font-bold py-1">${getTerm(ans.question)}</div>
+            <div class="${textClass} text-2xl text-white font-bold py-1">${escapeHTML(getTerm(ans.question))}</div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1 border-t border-slate-800/60">
               <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
                 <span class="text-slate-500 block text-[10px] uppercase font-semibold">Sua Resposta:</span>
-                <span class="${userTextCol} font-medium">${ans.userAnswer}</span>
+                <span class="${userTextCol} font-medium">${escapeHTML(ans.userAnswer)}</span>
               </div>
               <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
                 <span class="text-slate-500 block text-[10px] uppercase font-semibold">Tradução Esperada:</span>
-                <span class="text-emerald-400 font-medium">${ans.evalResult.expected || ans.question.translations.join(" / ")}</span>
+                <span class="text-emerald-400 font-medium">${escapeHTML(ans.evalResult.expected || ans.question.translations.join(" / "))}</span>
               </div>
             </div>`;
     correctionList.appendChild(box);
@@ -1454,8 +1497,8 @@ function startAnki() {
     new Map(newCards.map((w) => [getTerm(w), w])).values(),
   );
 
-  dueCards.sort(() => 0.5 - Math.random());
-  newCards.sort(() => 0.5 - Math.random());
+  dueCards = shuffleArray(dueCards);
+  newCards = shuffleArray(newCards);
 
   ankiQueue = [...dueCards.slice(0, 20), ...newCards.slice(0, 10)];
 
@@ -1613,7 +1656,7 @@ function startSurvival() {
   }
 
   // Preenche a fila e embaralha
-  survQueue = [...allWords].sort(() => 0.5 - Math.random());
+  survQueue = shuffleArray([...allWords]);
   survLives = 3;
   survStreak = 0;
 
@@ -1645,9 +1688,11 @@ function nextSurvivalQuestion() {
     cumulativeChapters.forEach((chap) =>
       (chap.items || []).forEach((i) => refill.push(i)),
     );
-    survQueue = Array.from(
-      new Map(refill.map((w) => [getTerm(w), w])).values(),
-    ).sort(() => 0.5 - Math.random());
+    survQueue = shuffleArray(
+      Array.from(
+        new Map(refill.map((w) => [getTerm(w), w])).values(),
+      ),
+    );
   }
 
   survCurrent = survQueue.pop();

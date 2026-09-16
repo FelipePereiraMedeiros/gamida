@@ -9,26 +9,8 @@ const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 const suite = new TestSuite('Módulo 3: Motor de Prática & Modos de Exercício');
 const { appJs, hebrewData } = loadSourceFiles();
 
-function shuffleArray(arr) {
-  const newArr = [...arr];
-  for (let i = newArr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-  }
-  return newArr;
-}
-
-function buildDistractorCache(chapters) {
-  let w = [], s = [];
-  chapters.forEach((c) => {
-    (c.items || []).forEach((i) => w.push(...(i.translations || [])));
-    (c.sentences || []).forEach((st) => s.push(...(st.translations || [])));
-  });
-  return {
-    words: [...new Set(w)],
-    sentences: [...new Set(s)],
-  };
-}
+// Funções puras e estado importados do módulo de produção
+const { shuffleArray, buildDistractorCache, AppState } = require('../js/modules/state.js');
 
 suite.test('shuffleArray embaralha mantendo todos os elementos', () => {
   const original = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -38,7 +20,9 @@ suite.test('shuffleArray embaralha mantendo todos os elementos', () => {
 });
 
 suite.test('buildDistractorCache extrai palavras e frases únicas para distratores', () => {
-  const cache = buildDistractorCache(hebrewData);
+  AppState.chapters = hebrewData;
+  buildDistractorCache();
+  const cache = AppState.distractorCache;
   assert.isArray(cache.words, 'Cache de palavras deve ser um Array');
   assert.isGreaterThan(cache.words.length, 10, 'Deve conter palavras no cache');
   assert.isArray(cache.sentences, 'Cache de frases deve ser um Array');

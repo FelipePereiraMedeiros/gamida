@@ -24,7 +24,7 @@
 /* Hebrew Typography & Direction */
 .hebrew-text,
 [dir="rtl"] {
-  font-family: "SBL Hebrew", "Ezra SIL", "David", serif;
+  font-family: "SBL Hebrew", "Noto Sans Hebrew", "Ezra SIL", "David", serif;
   font-size: 1.35rem;
   line-height: 1.8; /* Dá espaço para os pontos vocálicos superiores e inferiores não cortarem */
   letter-spacing: 0.02em; /* Separa levemente as consoantes */
