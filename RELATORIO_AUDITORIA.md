@@ -1,7 +1,7 @@
 # Relatório de Auditoria Técnica - Sistema Gamida
 **Data:** 16 de setembro de 2026  
 **Sistema:** Gamida - Treinador de Idiomas Bíblicos (Hebraico & Grego)  
-**Versão Avaliada:** v2.6.0  
+**Versão Avaliada:** v2.6.5  
 **Escopo:** Qualidade de Código, Arquitetura, Funcionalidades, Segurança, Performance e Testes
 
 ---
