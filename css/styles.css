@@ -2,6 +2,45 @@
    Gamida - Custom Stylesheet
    ========================================================================== */
 
+/* ==========================================================================
+   Font Faces (Tipografia Bíblica Local / Offline)
+   ========================================================================== */
+@font-face {
+  font-family: "SBL Hebrew";
+  src: local("SBL Hebrew"),
+       url("../fonts/SBL_Hbrw.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SBL Hebrew";
+  src: local("SBL Hebrew"),
+       url("../fonts/SBL_Hbrw.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ezra SIL";
+  src: local("Ezra SIL"),
+       url("../fonts/SILEOT.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ezra SIL";
+  src: local("Ezra SIL"),
+       url("../fonts/SILEOT.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -24,7 +63,7 @@
 /* Hebrew Typography & Direction */
 .hebrew-text,
 [dir="rtl"] {
-  font-family: "SBL Hebrew", "Noto Sans Hebrew", "Ezra SIL", "David", serif;
+  font-family: "SBL Hebrew", "Ezra SIL", "Noto Sans Hebrew", "David", serif;
   font-size: 1.35rem;
   line-height: 1.8; /* Dá espaço para os pontos vocálicos superiores e inferiores não cortarem */
   letter-spacing: 0.02em; /* Separa levemente as consoantes */

@@ -56,40 +56,45 @@ $mimeTypes = @{
 try {
     while ($listener.IsListening) {
         $context = $listener.GetContext()
-        $request = $context.Request
-        $response = $context.Response
+        try {
+            $request = $context.Request
+            $response = $context.Response
 
-        $urlPath = $request.Url.LocalPath
-        if ($urlPath -eq "/" -or $urlPath -eq "") {
-            $urlPath = "/index.html"
+            $urlPath = $request.Url.LocalPath
+            if ($urlPath -eq "/" -or $urlPath -eq "") {
+                $urlPath = "/index.html"
+            }
+
+            # Decodifica URL e normaliza caminho para Windows
+            $relPath = [System.Uri]::UnescapeDataString($urlPath.TrimStart('/'))
+            $relPath = $relPath -replace '/', '\'
+            $filePath = Join-Path $rootDir $relPath
+
+            if (Test-Path $filePath -PathType Leaf) {
+                $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
+                $contentType = $mimeTypes[$ext]
+                if (-not $contentType) { $contentType = "application/octet-stream" }
+                $response.ContentType = $contentType
+                $response.Headers.Add("Access-Control-Allow-Origin", "*")
+                $response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate")
+
+                $bytes = [System.IO.File]::ReadAllBytes($filePath)
+                $response.ContentLength64 = $bytes.Length
+                $response.OutputStream.Write($bytes, 0, $bytes.Length)
+            } else {
+                $response.StatusCode = 404
+                $notFoundHtml = "<html><body><h1>404 - Arquivo Não Encontrado</h1><p>$relPath</p></body></html>"
+                $buffer = [System.Text.Encoding]::UTF8.GetBytes($notFoundHtml)
+                $response.ContentType = "text/html; charset=utf-8"
+                $response.ContentLength64 = $buffer.Length
+                $response.OutputStream.Write($buffer, 0, $buffer.Length)
+            }
+
+            $response.OutputStream.Close()
+        } catch {
+            # Ignora erros de desconexão de cliente para manter o servidor ativo
+            try { $context.Response.OutputStream.Close() } catch {}
         }
-
-        # Decodifica URL e normaliza caminho para Windows
-        $relPath = [System.Uri]::UnescapeDataString($urlPath.TrimStart('/'))
-        $relPath = $relPath -replace '/', '\'
-        $filePath = Join-Path $rootDir $relPath
-
-        if (Test-Path $filePath -PathType Leaf) {
-            $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
-            $contentType = $mimeTypes[$ext]
-            if (-not $contentType) { $contentType = "application/octet-stream" }
-            $response.ContentType = $contentType
-            $response.Headers.Add("Access-Control-Allow-Origin", "*")
-            $response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate")
-
-            $bytes = [System.IO.File]::ReadAllBytes($filePath)
-            $response.ContentLength64 = $bytes.Length
-            $response.OutputStream.Write($bytes, 0, $bytes.Length)
-        } else {
-            $response.StatusCode = 404
-            $notFoundHtml = "<html><body><h1>404 - Arquivo Não Encontrado</h1><p>$relPath</p></body></html>"
-            $buffer = [System.Text.Encoding]::UTF8.GetBytes($notFoundHtml)
-            $response.ContentType = "text/html; charset=utf-8"
-            $response.ContentLength64 = $buffer.Length
-            $response.OutputStream.Write($buffer, 0, $buffer.Length)
-        }
-
-        $response.OutputStream.Close()
     }
 } finally {
     $listener.Stop()
