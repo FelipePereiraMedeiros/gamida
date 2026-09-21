@@ -17,6 +17,8 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
+    <!-- Pré-carregamento de fontes bíblicas locais -->
+    <link rel="preload" href="fonts/SBL_Hbrw.ttf" as="font" type="font/ttf" crossorigin />
 
     <script>
       tailwind.config = {
@@ -24,7 +26,7 @@
           extend: {
             fontFamily: {
               sans: ["Rubik", "sans-serif"],
-              hebrew: ['"SBL Hebrew"', '"Ezra SIL"', '"David"', "serif"],
+              hebrew: ['"SBL Hebrew"', '"Ezra SIL"', '"Noto Sans Hebrew"', '"David"', "serif"],
             },
             colors: {
               brand: {
