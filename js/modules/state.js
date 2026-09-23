@@ -8,7 +8,7 @@
 const APP_VERSION =
   typeof window !== "undefined" && window.DataLoader && window.DataLoader.VERSION
     ? window.DataLoader.VERSION
-    : "2.6.6";
+    : "2.6.7";
 
 const AppState = (typeof window !== "undefined" && window.AppState) || {
   language:
@@ -31,6 +31,8 @@ const AppState = (typeof window !== "undefined" && window.AppState) || {
   currentTab: "practice",
   isPracticeCumulative: false,
   practiceCategory: "all",
+  isVocabCumulative: false,
+  vocabCategory: "all",
 };
 
 const SimConfig = {
@@ -245,6 +247,57 @@ function getAvailablePracticeCategories(state = AppState) {
   return { total: pool.length, categories: available };
 }
 
+/**
+ * Extrai as categorias disponíveis para o dicionário com base no escopo (normal ou acumulativo)
+ * Retorna contagem de palavras, frases e categorias gramaticais de palavras
+ * @param {Object} [state]
+ * @returns {{ totalItems: number, totalWords: number, totalSentences: number, categories: Array<{ id: string, label: string, count: number }> }}
+ */
+function getAvailableVocabCategories(state = AppState) {
+  let wordsPool = [];
+  let sentencesPool = [];
+  const activeChapterId = state.currentChapter?.id;
+  const chapters = state.chapters || [];
+  const activeIdx = chapters.findIndex((c) => c.id === activeChapterId);
+
+  if (state.isVocabCumulative) {
+    let cumulativeChapters = chapters.slice(
+      0,
+      activeIdx >= 0 ? activeIdx + 1 : chapters.length,
+    );
+    if (activeIdx > 0) {
+      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+    }
+    cumulativeChapters.forEach((chap) => {
+      (chap.items || []).forEach((item) => wordsPool.push(item));
+      (chap.sentences || []).forEach((s) => sentencesPool.push(s));
+    });
+  } else {
+    wordsPool = [...(state.currentChapter?.items || [])];
+    sentencesPool = [...(state.currentChapter?.sentences || [])];
+  }
+
+  // Deduplica palavras por termo único
+  wordsPool = Array.from(new Map(wordsPool.map((item) => [getTerm(item), item])).values());
+  // Deduplica frases por termo único
+  sentencesPool = Array.from(new Map(sentencesPool.map((item) => [getTerm(item), item])).values());
+
+  const categories = [];
+  WORD_CATEGORIES.forEach((cat) => {
+    const count = wordsPool.filter((item) => cat.match.test(item?.type || "")).length;
+    if (count > 0) {
+      categories.push({ ...cat, count });
+    }
+  });
+
+  return {
+    totalItems: wordsPool.length + sentencesPool.length,
+    totalWords: wordsPool.length,
+    totalSentences: sentencesPool.length,
+    categories,
+  };
+}
+
 // Suporte universal (Browser Global / Node CommonJS)
 if (typeof window !== "undefined") {
   window.APP_VERSION = APP_VERSION;
@@ -253,6 +306,7 @@ if (typeof window !== "undefined") {
   window.WORD_CATEGORIES = WORD_CATEGORIES;
   window.matchItemCategory = matchItemCategory;
   window.getAvailablePracticeCategories = getAvailablePracticeCategories;
+  window.getAvailableVocabCategories = getAvailableVocabCategories;
   window.getTerm = getTerm;
   window.isValidChapter = isValidChapter;
   window.hasUniqueChapterIds = hasUniqueChapterIds;
@@ -271,6 +325,7 @@ if (typeof module !== "undefined" && module.exports) {
     WORD_CATEGORIES,
     matchItemCategory,
     getAvailablePracticeCategories,
+    getAvailableVocabCategories,
     getTerm,
     isValidChapter,
     hasUniqueChapterIds,

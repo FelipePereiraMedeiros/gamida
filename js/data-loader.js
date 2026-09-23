@@ -7,7 +7,7 @@
  */
 
 const DataLoader = {
-  VERSION: "2.6.6",
+  VERSION: "2.6.7",
   cache: {},
 
   /**
@@ -194,3 +194,7 @@ const DataLoader = {
     }
   }
 };
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = DataLoader;
+}

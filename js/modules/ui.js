@@ -366,81 +366,260 @@ function changeGlobalChapter(chapterId) {
 /* ================= VOCABULARY DICTIONARY TABLE ================= */
 let lastRenderedVocabChapter = null;
 
+function setVocabCumulative(isCumulative) {
+  if (typeof AppState !== "undefined") {
+    AppState.isVocabCumulative = !!isCumulative;
+  }
+  updateVocabScopeUI();
+  updateVocabCategoryFilterUI();
+  lastRenderedVocabChapter = null;
+  renderVocabTable();
+}
+
+function setVocabCategory(catId) {
+  if (typeof AppState !== "undefined") {
+    AppState.vocabCategory = catId || "all";
+  }
+  lastRenderedVocabChapter = null;
+  renderVocabTable();
+}
+
+function updateVocabScopeUI() {
+  if (typeof document === "undefined") return;
+  const btnSingle = document.getElementById("vocab-scope-single");
+  const btnCumulative = document.getElementById("vocab-scope-cumulative");
+  if (!btnSingle || !btnCumulative) return;
+
+  const isCumulative = typeof AppState !== "undefined" && AppState.isVocabCumulative;
+
+  if (isCumulative) {
+    btnCumulative.className =
+      "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1";
+    btnSingle.className =
+      "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200";
+  } else {
+    btnSingle.className =
+      "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white";
+    btnCumulative.className =
+      "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1";
+  }
+}
+
+function updateVocabCategoryFilterUI() {
+  if (typeof document === "undefined") return;
+  const select = document.getElementById("vocab-category-select");
+  if (!select) return;
+
+  const getCatsFn = typeof getAvailableVocabCategories === "function"
+    ? getAvailableVocabCategories
+    : (typeof window !== "undefined" && window.getAvailableVocabCategories
+      ? window.getAvailableVocabCategories
+      : () => ({ totalItems: 0, totalWords: 0, totalSentences: 0, categories: [] }));
+
+  const { totalItems, totalWords, totalSentences, categories } = getCatsFn();
+
+  const currentVal = (typeof AppState !== "undefined" && AppState.vocabCategory) || "all";
+  const isValidSelection =
+    currentVal === "all" ||
+    currentVal === "words" ||
+    currentVal === "sentences" ||
+    categories.some((c) => c.id === currentVal);
+
+  if (!isValidSelection && typeof AppState !== "undefined") {
+    AppState.vocabCategory = "all";
+  }
+
+  select.innerHTML = "";
+
+  const optAll = document.createElement("option");
+  optAll.value = "all";
+  optAll.textContent = `Todos os itens (${totalItems})`;
+  select.appendChild(optAll);
+
+  if (totalWords > 0) {
+    const optWords = document.createElement("option");
+    optWords.value = "words";
+    optWords.textContent = `Apenas Palavras (${totalWords})`;
+    select.appendChild(optWords);
+  }
+
+  if (totalSentences > 0) {
+    const optSentences = document.createElement("option");
+    optSentences.value = "sentences";
+    optSentences.textContent = `Apenas Frases / Expr. (${totalSentences})`;
+    select.appendChild(optSentences);
+  }
+
+  if (categories.length > 0) {
+    const optGroup = document.createElement("optgroup");
+    optGroup.label = "Classes Gramaticais";
+    categories.forEach((cat) => {
+      const opt = document.createElement("option");
+      opt.value = cat.id;
+      opt.textContent = `${cat.label} (${cat.count})`;
+      optGroup.appendChild(opt);
+    });
+    select.appendChild(optGroup);
+  }
+
+  select.value = (typeof AppState !== "undefined" && AppState.vocabCategory) || "all";
+}
+
 function renderVocabTable() {
   const tbody = document.getElementById("vocab-table-body");
   if (!tbody || typeof AppState === "undefined" || !AppState.currentChapter) return;
 
-  if (lastRenderedVocabChapter === AppState.currentChapter.id) return;
+  const cacheKey = `${AppState.currentChapter.id}_cumul_${!!AppState.isVocabCumulative}_cat_${AppState.vocabCategory || "all"}`;
+  if (lastRenderedVocabChapter === cacheKey) return;
+
+  // Atualiza controles de UI de filtro
+  updateVocabScopeUI();
+  updateVocabCategoryFilterUI();
 
   tbody.innerHTML = "";
 
-  const allItems = [
-    ...(AppState.currentChapter.items || []),
-    ...(AppState.currentChapter.sentences || []),
-  ];
+  let wordsPool = [];
+  let sentencesPool = [];
+  const activeChapterId = AppState.currentChapter.id;
+  const chapters = AppState.chapters || [];
+  const activeIdx = chapters.findIndex((c) => c.id === activeChapterId);
 
-  const escapeFn = typeof escapeHTML === "function"
-    ? escapeHTML
-    : (str) => String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  if (AppState.isVocabCumulative) {
+    let cumulativeChapters = chapters.slice(
+      0,
+      activeIdx >= 0 ? activeIdx + 1 : chapters.length,
+    );
+    if (activeIdx > 0) {
+      const isAlphaFn = typeof isAlphabetChapter === "function" ? isAlphabetChapter : () => false;
+      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphaFn(c));
+    }
+    cumulativeChapters.forEach((chap) => {
+      (chap.items || []).forEach((item) => wordsPool.push(item));
+      (chap.sentences || []).forEach((s) => sentencesPool.push(s));
+    });
+  } else {
+    wordsPool = [...(AppState.currentChapter.items || [])];
+    sentencesPool = [...(AppState.currentChapter.sentences || [])];
+  }
 
   const termFn = typeof getTerm === "function"
     ? getTerm
     : (item) => item.term || item.hebrew || "";
 
-  allItems.forEach((item) => {
-    const tr = document.createElement("tr");
-    tr.className = "hover:bg-slate-800/40 transition";
+  // Deduplica itens por termo único
+  wordsPool = Array.from(new Map(wordsPool.map((item) => [termFn(item), item])).values());
+  sentencesPool = Array.from(new Map(sentencesPool.map((item) => [termFn(item), item])).values());
 
-    const isSentence = item.type === "Frase" || item.type === "Expressão";
-    const termText = termFn(item);
-    const translitText = item.transliteration || "-";
-    const typeText = item.type || "Geral";
-    let translationsText = Array.isArray(item.translations)
-      ? item.translations.join(" / ")
-      : item.translations || "Tradução ausente";
+  const categoryFilter = AppState.vocabCategory || "all";
+  let displayList = [];
 
-    const textClass = AppState.language === "hebrew"
-      ? "hebrew-text text-2xl md:text-3xl"
-      : "greek-text text-lg md:text-xl";
+  const matchCatFn = typeof matchItemCategory === "function"
+    ? matchItemCategory
+    : (typeof window !== "undefined" && window.matchItemCategory ? window.matchItemCategory : () => true);
 
-    tr.innerHTML = `
-            <td class="px-6 py-4 ${textClass} font-bold text-white">${escapeFn(termText)}</td>
-            <td class="px-6 py-4 font-mono text-xs text-amber-400">${escapeFn(translitText)}</td>
-            <td class="px-6 py-4 font-medium text-slate-200">${escapeFn(translationsText)}</td>
-            <td class="px-6 py-4">
-              <span class="px-2.5 py-1 rounded-full ${isSentence ? "bg-indigo-900/60 border-indigo-700 text-indigo-300" : "bg-slate-800 border-slate-700 text-slate-400"} border text-[10px] font-mono">
-                ${escapeFn(typeText)}
-              </span>
-            </td>
-          `;
-    tbody.appendChild(tr);
-  });
+  if (categoryFilter === "all") {
+    displayList = [...wordsPool, ...sentencesPool];
+  } else if (categoryFilter === "words") {
+    displayList = [...wordsPool];
+  } else if (categoryFilter === "sentences") {
+    displayList = [...sentencesPool];
+  } else {
+    // Filtro por classe gramatical específica (substantivo, verbo, etc.)
+    displayList = wordsPool.filter((item) => matchCatFn(item, categoryFilter));
+  }
 
-  // Paradigmas no final da tabela
-  if (
-    AppState.currentChapter.paradigms &&
-    AppState.currentChapter.paradigms.length > 0
-  ) {
-    AppState.currentChapter.paradigms.forEach((paradigm) => {
-      const trParadigm = document.createElement("tr");
-      trParadigm.className = "bg-slate-900/10";
+  const escapeFn = typeof escapeHTML === "function"
+    ? escapeHTML
+    : (str) => String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-      const tdParadigm = document.createElement("td");
-      tdParadigm.colSpan = 4;
-      tdParadigm.className = "p-2 md:p-6 border-t border-slate-800/80";
+  if (displayList.length === 0) {
+    const trEmpty = document.createElement("tr");
+    trEmpty.innerHTML = `
+      <td colspan="4" class="px-6 py-8 text-center text-slate-500 text-xs italic">
+        Nenhum item encontrado para os filtros selecionados.
+      </td>
+    `;
+    tbody.appendChild(trEmpty);
+  } else {
+    displayList.forEach((item) => {
+      const tr = document.createElement("tr");
+      tr.className = "hover:bg-slate-800/40 transition";
 
-      if (paradigm.type === "table" && typeof getStaticParadigmTableHTML === "function") {
-        tdParadigm.innerHTML = getStaticParadigmTableHTML(paradigm);
-      } else if (paradigm.type === "diagram" && typeof getStaticDiagramHTML === "function") {
-        tdParadigm.innerHTML = getStaticDiagramHTML(paradigm);
-      }
+      const isSentence = item.type === "Frase" || item.type === "Expressão";
+      const termText = termFn(item);
+      const translitText = item.transliteration || "-";
+      const typeText = item.type || "Geral";
+      let translationsText = Array.isArray(item.translations)
+        ? item.translations.join(" / ")
+        : item.translations || "Tradução ausente";
 
-      trParadigm.appendChild(tdParadigm);
-      tbody.appendChild(trParadigm);
+      const textClass = AppState.language === "hebrew"
+        ? "hebrew-text text-2xl md:text-3xl"
+        : "greek-text text-lg md:text-xl";
+
+      tr.innerHTML = `
+        <td class="px-6 py-4 ${textClass} font-bold text-white">${escapeFn(termText)}</td>
+        <td class="px-6 py-4 font-mono text-xs text-amber-400">${escapeFn(translitText)}</td>
+        <td class="px-6 py-4 font-medium text-slate-200">${escapeFn(translationsText)}</td>
+        <td class="px-6 py-4">
+          <span class="px-2.5 py-1 rounded-full ${isSentence ? "bg-indigo-900/60 border-indigo-700 text-indigo-300" : "bg-slate-800 border-slate-700 text-slate-400"} border text-[10px] font-mono">
+            ${escapeFn(typeText)}
+          </span>
+        </td>
+      `;
+      tbody.appendChild(tr);
     });
   }
 
-  lastRenderedVocabChapter = AppState.currentChapter.id;
+  // Paradigmas no final da tabela (apenas se não estiver filtrando estritamente frases)
+  if (categoryFilter !== "sentences") {
+    let paradigmsToRender = [];
+    if (AppState.isVocabCumulative) {
+      let cumulativeChapters = chapters.slice(
+        0,
+        activeIdx >= 0 ? activeIdx + 1 : chapters.length,
+      );
+      if (activeIdx > 0) {
+        const isAlphaFn = typeof isAlphabetChapter === "function" ? isAlphabetChapter : () => false;
+        cumulativeChapters = cumulativeChapters.filter((c) => !isAlphaFn(c));
+      }
+      cumulativeChapters.forEach((chap) => {
+        if (chap.paradigms && chap.paradigms.length > 0) {
+          chap.paradigms.forEach((p) => paradigmsToRender.push(p));
+        }
+      });
+    } else if (
+      AppState.currentChapter.paradigms &&
+      AppState.currentChapter.paradigms.length > 0
+    ) {
+      paradigmsToRender = AppState.currentChapter.paradigms;
+    }
+
+    if (paradigmsToRender.length > 0) {
+      paradigmsToRender.forEach((paradigm) => {
+        const trParadigm = document.createElement("tr");
+        trParadigm.className = "bg-slate-900/10";
+
+        const tdParadigm = document.createElement("td");
+        tdParadigm.colSpan = 4;
+        tdParadigm.className = "p-2 md:p-6 border-t border-slate-800/80";
+
+        if (paradigm.type === "table" && typeof getStaticParadigmTableHTML === "function") {
+          tdParadigm.innerHTML = getStaticParadigmTableHTML(paradigm);
+        } else if (paradigm.type === "diagram" && typeof getStaticDiagramHTML === "function") {
+          tdParadigm.innerHTML = getStaticDiagramHTML(paradigm);
+        }
+
+        trParadigm.appendChild(tdParadigm);
+        tbody.appendChild(trParadigm);
+      });
+    }
+  }
+
+  lastRenderedVocabChapter = cacheKey;
+
+  // Aplica filtro textual existente após desenhar linhas
+  filterVocabTable();
 }
 
 function filterVocabTable() {
@@ -470,6 +649,10 @@ if (typeof window !== "undefined") {
   window.toggleDropdown = toggleDropdown;
   window.changeGlobalChapter = changeGlobalChapter;
   window.lastRenderedVocabChapter = lastRenderedVocabChapter;
+  window.setVocabCumulative = setVocabCumulative;
+  window.setVocabCategory = setVocabCategory;
+  window.updateVocabScopeUI = updateVocabScopeUI;
+  window.updateVocabCategoryFilterUI = updateVocabCategoryFilterUI;
   window.renderVocabTable = renderVocabTable;
   window.filterVocabTable = filterVocabTable;
 }
@@ -487,6 +670,10 @@ if (typeof module !== "undefined" && module.exports) {
     toggleDropdown,
     changeGlobalChapter,
     lastRenderedVocabChapter,
+    setVocabCumulative,
+    setVocabCategory,
+    updateVocabScopeUI,
+    updateVocabCategoryFilterUI,
     renderVocabTable,
     filterVocabTable,
   };
