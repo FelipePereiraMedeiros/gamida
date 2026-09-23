@@ -8,7 +8,7 @@
 const APP_VERSION =
   typeof window !== "undefined" && window.DataLoader && window.DataLoader.VERSION
     ? window.DataLoader.VERSION
-    : "2.6.7";
+    : "2.6.8";
 
 const AppState = (typeof window !== "undefined" && window.AppState) || {
   language:
@@ -25,6 +25,7 @@ const AppState = (typeof window !== "undefined" && window.AppState) || {
   streak: 0,
   totalAnswered: 0,
   correctCount: 0,
+  isNewRoundPending: false,
   distractorCache: { words: [], sentences: [] },
   srs: {},
   survivalHighScore: 0,
@@ -156,7 +157,17 @@ function resetStats() {
   AppState.streak = 0;
   AppState.totalAnswered = 0;
   AppState.correctCount = 0;
+  AppState.isNewRoundPending = false;
   updateStatsUI();
+
+  if (typeof document !== "undefined") {
+    const alphaScore = document.getElementById("alphabet-score-indicator");
+    const alphaProgress = document.getElementById("alphabet-progress-indicator");
+    const alphaCombo = document.getElementById("alphabet-combo-badge");
+    if (alphaScore) alphaScore.textContent = "⭐ Pontos: 0";
+    if (alphaProgress) alphaProgress.textContent = "Streak: 0";
+    if (alphaCombo) alphaCombo.classList.add("hidden");
+  }
 }
 
 /**

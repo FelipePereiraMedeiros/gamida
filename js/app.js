@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.6.7";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.6.8";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -22,6 +22,7 @@ var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppSt
   streak: 0,
   totalAnswered: 0,
   correctCount: 0,
+  isNewRoundPending: false,
   distractorCache: { words: [], sentences: [] },
   srs: {},
   survivalHighScore: 0,
@@ -363,6 +364,8 @@ function setExerciseMode(mode) {
     }
   });
   AppState.currentQuestionIndex = 0;
+  AppState.isNewRoundPending = false;
+  resetStats();
   updatePracticeCategoryFilterUI();
   buildPracticeQueue();
   renderCurrentQuestion();
@@ -613,6 +616,8 @@ function updatePracticeCategoryFilterUI() {
 function setPracticeCategory(catId) {
   AppState.practiceCategory = catId || "all";
   AppState.currentQuestionIndex = 0;
+  AppState.isNewRoundPending = false;
+  resetStats();
   buildPracticeQueue();
   renderCurrentQuestion();
 }
@@ -622,6 +627,8 @@ function setPracticeCumulative(isCumulative) {
   updatePracticeScopeUI();
   updatePracticeCategoryFilterUI();
   AppState.currentQuestionIndex = 0;
+  AppState.isNewRoundPending = false;
+  resetStats();
   buildPracticeQueue();
   renderCurrentQuestion();
 }
@@ -718,8 +725,12 @@ function renderCurrentQuestion() {
     return;
   }
 
-  if (AppState.currentQuestionIndex >= practiceQueue.length)
+  if (AppState.currentQuestionIndex >= practiceQueue.length) {
     AppState.currentQuestionIndex = 0;
+    // O ciclo completou uma rodada e voltou para a primeira palavra.
+    // Mantém os dados da rodada anterior até que o aluno responda novamente.
+    AppState.isNewRoundPending = true;
+  }
 
   AppState.currentQuestion = practiceQueue[AppState.currentQuestionIndex];
 
@@ -808,6 +819,12 @@ function submitSentenceAnswer(e) {
 }
 
 function checkPracticeAnswer(userAnswer) {
+  // Se o ciclo havia voltado para o início, reseta a análise no momento da primeira resposta da nova rodada
+  if (AppState.isNewRoundPending) {
+    resetStats();
+    AppState.isNewRoundPending = false;
+  }
+
   const evalResult = evaluateAnswer(
     userAnswer,
     AppState.currentQuestion.translations,
@@ -875,7 +892,17 @@ function resetStats() {
   AppState.streak = 0;
   AppState.totalAnswered = 0;
   AppState.correctCount = 0;
+  AppState.isNewRoundPending = false;
   updateStatsUI();
+
+  if (typeof document !== "undefined") {
+    const alphaScore = document.getElementById("alphabet-score-indicator");
+    const alphaProgress = document.getElementById("alphabet-progress-indicator");
+    const alphaCombo = document.getElementById("alphabet-combo-badge");
+    if (alphaScore) alphaScore.textContent = "⭐ Pontos: 0";
+    if (alphaProgress) alphaProgress.textContent = "Streak: 0";
+    if (alphaCombo) alphaCombo.classList.add("hidden");
+  }
 }
 
 function updateStatsUI() {
@@ -3062,6 +3089,8 @@ function setAlphabetSubmode(submode) {
     }
   });
 
+  AppState.isNewRoundPending = false;
+  resetStats();
   updatePracticeChapterView();
 }
 

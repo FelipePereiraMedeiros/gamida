@@ -59,7 +59,7 @@ suite.test('getStaticDiagramHTML gera visualização diagramada com nós posicio
   if (diagramParadigm) {
     const html = getStaticDiagramHTML(diagramParadigm);
     assert.isTrue(typeof html === 'string' && html.length > 50, 'Deve gerar string HTML do diagrama');
-    assert.includes(html, 'diagram', 'Deve conter classes de diagrama');
+    assert.includes(html, '<svg', 'Deve conter SVG de diagrama');
   }
 });
 

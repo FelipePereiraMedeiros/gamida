@@ -10,6 +10,7 @@ const AppState = (typeof window !== "undefined" && window.AppState) || _stateMod
 const isAlphabetChapter = (typeof window !== "undefined" && window.isAlphabetChapter) || _stateModule.isAlphabetChapter;
 const shuffleArray = (typeof window !== "undefined" && window.shuffleArray) || _stateModule.shuffleArray;
 const updateStatsUI = (typeof window !== "undefined" && window.updateStatsUI) || _stateModule.updateStatsUI;
+const resetStats = (typeof window !== "undefined" && window.resetStats) || _stateModule.resetStats;
 
 const AlphabetGameEngine = {
   hebrewAlphabet: [
@@ -480,6 +481,10 @@ function setAlphabetSubmode(submode) {
     }
   });
 
+  AppState.isNewRoundPending = false;
+  if (typeof resetStats === "function") {
+    resetStats();
+  }
   updatePracticeChapterView();
 }
 

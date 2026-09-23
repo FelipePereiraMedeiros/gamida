@@ -96,9 +96,9 @@ suite.test('Classificação "easy" aplica bônus de intervalo (4 dias inicial) e
   assert.equal(r1.interval, 4, 'Primeiro intervalo de fácil deve ser 4 dias');
   assert.equal(Math.round(r1.ef * 100) / 100, 2.65, 'EF deve ser elevado em 0.15');
 
-  // Próxima revisão: round(4 * 2.65 * 1.3) = round(13.78) = 14 dias
+  // Próxima revisão: round(4 * 2.80 * 1.3) = round(14.56) = 15 dias
   const r2 = calculateSRSNextReview(r1, "easy");
-  assert.equal(r2.interval, 14, 'Segundo intervalo deve aplicar multiplicador 1.3x');
+  assert.equal(r2.interval, 15, 'Segundo intervalo deve aplicar multiplicador 1.3x');
 });
 
 suite.test('Declaração das funções do Anki no app.js e módulos', () => {
