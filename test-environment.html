@@ -442,6 +442,14 @@
                 name: "Filtro em tempo real (filterVocabTable)",
                 fn: () => typeof iframeWin.filterVocabTable === "function",
               },
+              {
+                name: "Controle de escopo acumulativo (setVocabCumulative)",
+                fn: () => typeof iframeWin.setVocabCumulative === "function",
+              },
+              {
+                name: "Filtro dinâmico por categoria/tipo (setVocabCategory)",
+                fn: () => typeof iframeWin.setVocabCategory === "function" && typeof iframeWin.getAvailableVocabCategories === "function",
+              },
             ],
           },
           {
@@ -464,9 +472,9 @@
                 },
               },
               {
-                name: "Versão do sistema incrementada para v2.6.6",
+                name: "Versão do sistema incrementada para v2.6.7",
                 fn: () => {
-                  return iframeWin.APP_VERSION === "2.6.6" || (iframeWin.DataLoader && iframeWin.DataLoader.VERSION === "2.6.6");
+                  return iframeWin.APP_VERSION === "2.6.7" || (iframeWin.DataLoader && iframeWin.DataLoader.VERSION === "2.6.7");
                 },
               },
             ],
