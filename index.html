@@ -268,37 +268,87 @@
           class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4"
         >
           <!-- Controles Padrão (Capítulos 2+) -->
-          <div id="standard-mode-controls">
-            <label class="block text-xs font-medium text-slate-400 mb-1"
-              >Modo de Exercício:</label
-            >
-            <div
-              class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
-            >
-              <button
-                type="button"
-                id="mode-typing"
-                onclick="setExerciseMode('typing')"
-                class="px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white"
+          <div id="standard-mode-controls" class="w-full flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap items-center gap-4">
+              <!-- 1. Modo de Exercício -->
+              <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1"
+                  >Modo de Exercício:</label
+                >
+                <div
+                  class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
+                >
+                  <button
+                    type="button"
+                    id="mode-typing"
+                    onclick="setExerciseMode('typing')"
+                    class="px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white"
+                  >
+                    ⌨️ Digitação
+                  </button>
+                  <button
+                    type="button"
+                    id="mode-choice"
+                    onclick="setExerciseMode('choice')"
+                    class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200"
+                  >
+                    ✅ Múltipla Escolha
+                  </button>
+                  <button
+                    type="button"
+                    id="mode-sentences"
+                    onclick="setExerciseMode('sentences')"
+                    class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200"
+                  >
+                    📜 Frases
+                  </button>
+                </div>
+              </div>
+
+              <!-- 2. Abrangência (Normal vs Acumulativo) -->
+              <div id="practice-scope-container">
+                <label class="block text-xs font-medium text-slate-400 mb-1"
+                  >Abrangência:</label
+                >
+                <div
+                  class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
+                >
+                  <button
+                    type="button"
+                    id="scope-single"
+                    onclick="setPracticeCumulative(false)"
+                    class="px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white"
+                    title="Praticar apenas a lição atual"
+                  >
+                    Capítulo Atual
+                  </button>
+                  <button
+                    type="button"
+                    id="scope-cumulative"
+                    onclick="setPracticeCumulative(true)"
+                    class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1"
+                    title="Praticar esta lição e todas as anteriores acumuladas"
+                  >
+                    <span>📚</span> Acumulativo
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Filtro Dinâmico por Tipo de Palavra (Digitação) -->
+            <div id="practice-category-container" class="flex flex-col">
+              <label for="practice-category-select" class="block text-xs font-medium text-slate-400 mb-1"
+                >Tipo de Palavra:</label
               >
-                ⌨️ Digitação
-              </button>
-              <button
-                type="button"
-                id="mode-choice"
-                onclick="setExerciseMode('choice')"
-                class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200"
-              >
-                ✅ Múltipla Escolha
-              </button>
-              <button
-                type="button"
-                id="mode-sentences"
-                onclick="setExerciseMode('sentences')"
-                class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200"
-              >
-                📜 Frases
-              </button>
+              <div class="relative">
+                <select
+                  id="practice-category-select"
+                  onchange="setPracticeCategory(this.value)"
+                  class="bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl px-3 py-1.5 text-xs text-slate-200 font-medium focus:outline-none transition cursor-pointer"
+                >
+                  <option value="all">Todas as palavras</option>
+                </select>
+              </div>
             </div>
           </div>
 

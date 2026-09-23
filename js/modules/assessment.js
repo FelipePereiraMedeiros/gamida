@@ -16,6 +16,7 @@ const shuffleArray = (typeof window !== "undefined" && window.shuffleArray) || _
 const escapeHTML = (typeof window !== "undefined" && window.escapeHTML) || _evalModule.escapeHTML;
 const evaluateAnswer = (typeof window !== "undefined" && window.evaluateAnswer) || _evalModule.evaluateAnswer;
 const recordSRSError = (typeof window !== "undefined" && window.recordSRSError) || _srsModule.recordSRSError;
+const isAlphabetChapter = (typeof window !== "undefined" && window.isAlphabetChapter) || _stateModule.isAlphabetChapter;
 
 let assessQuestions = [];
 let assessIndex = 0;
@@ -52,15 +53,22 @@ function openSimuladoConfig() {
   const activeIdx = AppState.chapters.findIndex(
     (c) => c.id === activeChapterId,
   );
+  let cumulativeChapters = AppState.chapters.slice(
+    0,
+    activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
+  );
+  if (activeIdx > 0) {
+    cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+  }
   const cumulativeCount =
     activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length;
+  const isAlphaActive = activeIdx === 0 || isAlphabetChapter(AppState.currentChapter);
 
-  document.getElementById("sim-scope-info").textContent =
-    `Questões acumuladas das Lições 1 até a ${cumulativeCount} (${AppState.currentChapter.title}).`;
+  document.getElementById("sim-scope-info").textContent = isAlphaActive
+    ? `Questões da Lição 1 (${AppState.currentChapter.title}).`
+    : `Questões acumuladas (sem alfabeto) até a Lição ${cumulativeCount} (${AppState.currentChapter.title}).`;
 
-  const hasSentences = AppState.chapters
-    .slice(0, cumulativeCount)
-    .some((c) => (c.sentences || []).length > 0);
+  const hasSentences = cumulativeChapters.some((c) => (c.sentences || []).length > 0);
   const btnSentences = document.getElementById("cfg-focus-sentences");
   if (btnSentences) {
     if (!hasSentences) {
@@ -119,10 +127,13 @@ function startSimulado() {
   const activeIdx = AppState.chapters.findIndex(
     (c) => c.id === activeChapterId,
   );
-  const cumulativeChapters = AppState.chapters.slice(
+  let cumulativeChapters = AppState.chapters.slice(
     0,
     activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
   );
+  if (activeIdx > 0) {
+    cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+  }
 
   let currentChapWords = [], otherChapWords = [];
   let currentChapSentences = [], otherChapSentences = [];

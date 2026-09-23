@@ -14,6 +14,7 @@ const getTerm = (typeof window !== "undefined" && window.getTerm) || _stateModul
 const shuffleArray = (typeof window !== "undefined" && window.shuffleArray) || _stateModule.shuffleArray;
 const evaluateAnswer = (typeof window !== "undefined" && window.evaluateAnswer) || _evalModule.evaluateAnswer;
 const recordSRSError = (typeof window !== "undefined" && window.recordSRSError) || _srsModule.recordSRSError;
+const isAlphabetChapter = (typeof window !== "undefined" && window.isAlphabetChapter) || _stateModule.isAlphabetChapter;
 
 let survLives = 3;
 let survStreak = 0;
@@ -32,10 +33,13 @@ function startSurvival() {
   const activeIdx = AppState.chapters.findIndex(
     (c) => c.id === activeChapterId,
   );
-  const cumulativeChapters = AppState.chapters.slice(
+  let cumulativeChapters = AppState.chapters.slice(
     0,
     activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
   );
+  if (activeIdx > 0) {
+    cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+  }
 
   let allWords = [];
   cumulativeChapters.forEach((chap) => {
@@ -86,10 +90,13 @@ function nextSurvivalQuestion() {
     const activeIdx = AppState.chapters.findIndex(
       (c) => c.id === AppState.currentChapter?.id,
     );
-    const cumulativeChapters = AppState.chapters.slice(
+    let cumulativeChapters = AppState.chapters.slice(
       0,
       activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
     );
+    if (activeIdx > 0) {
+      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+    }
     let refill = [];
     cumulativeChapters.forEach((chap) =>
       (chap.items || []).forEach((i) => refill.push(i)),

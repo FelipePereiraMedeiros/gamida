@@ -29,6 +29,8 @@ const AppState = (typeof window !== "undefined" && window.AppState) || {
   srs: {},
   survivalHighScore: 0,
   currentTab: "practice",
+  isPracticeCumulative: false,
+  practiceCategory: "all",
 };
 
 const SimConfig = {
@@ -175,11 +177,82 @@ function updateStatsUI() {
   }
 }
 
+const WORD_CATEGORIES = [
+  { id: "substantivo", label: "Substantivos", match: /substantivo/i },
+  { id: "verbo", label: "Verbos", match: /verbo/i },
+  { id: "adjetivo", label: "Adjetivos", match: /adjetivo/i },
+  { id: "preposicao", label: "Preposições", match: /preposi[cç][aã]o/i },
+  { id: "pronome", label: "Pronomes", match: /pronome/i },
+  { id: "adverbio", label: "Advérbios", match: /adv[eé]rbio/i },
+  { id: "conjuncao", label: "Conjunções", match: /conjun[cç][aã]o/i },
+  { id: "artigo", label: "Artigos", match: /artigo/i },
+  { id: "particula", label: "Partículas", match: /part[ií]cula/i },
+  { id: "numeral", label: "Numerais", match: /numeral/i },
+  { id: "nome_proprio", label: "Nomes Próprios", match: /nome pr[oó]prio|nome divino/i },
+  { id: "interjeicao", label: "Interjeições", match: /interjei[cç][aã]o/i },
+];
+
+/**
+ * Verifica se um item de vocabulário pertence à categoria gramatical especificada
+ * @param {Object} item
+ * @param {string} categoryId
+ * @returns {boolean}
+ */
+function matchItemCategory(item, categoryId) {
+  if (!categoryId || categoryId === "all") return true;
+  const cat = WORD_CATEGORIES.find((c) => c.id === categoryId);
+  if (!cat) return true;
+  return cat.match.test(item?.type || "");
+}
+
+/**
+ * Extrai as categorias disponíveis para a prática com base no escopo (normal ou acumulativo)
+ * @param {Object} [state]
+ * @returns {{ total: number, categories: Array<{ id: string, label: string, count: number }> }}
+ */
+function getAvailablePracticeCategories(state = AppState) {
+  let pool = [];
+  const activeChapterId = state.currentChapter?.id;
+  const chapters = state.chapters || [];
+  const activeIdx = chapters.findIndex((c) => c.id === activeChapterId);
+
+  if (state.isPracticeCumulative) {
+    let cumulativeChapters = chapters.slice(
+      0,
+      activeIdx >= 0 ? activeIdx + 1 : chapters.length,
+    );
+    if (activeIdx > 0) {
+      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+    }
+    cumulativeChapters.forEach((chap) => {
+      (chap.items || []).forEach((item) => pool.push(item));
+    });
+  } else {
+    pool = [...(state.currentChapter?.items || [])];
+  }
+
+  // Deduplica itens por termo único
+  pool = Array.from(new Map(pool.map((item) => [getTerm(item), item])).values());
+
+  const available = [];
+  WORD_CATEGORIES.forEach((cat) => {
+    const count = pool.filter((item) => cat.match.test(item?.type || "")).length;
+    if (count > 0) {
+      available.push({ ...cat, count });
+    }
+  });
+
+  return { total: pool.length, categories: available };
+}
+
 // Suporte universal (Browser Global / Node CommonJS)
 if (typeof window !== "undefined") {
   window.APP_VERSION = APP_VERSION;
   window.AppState = AppState;
   window.SimConfig = SimConfig;
+  window.WORD_CATEGORIES = WORD_CATEGORIES;
+  window.matchItemCategory = matchItemCategory;
+  window.getAvailablePracticeCategories = getAvailablePracticeCategories;
   window.getTerm = getTerm;
   window.isValidChapter = isValidChapter;
   window.hasUniqueChapterIds = hasUniqueChapterIds;
@@ -195,6 +268,9 @@ if (typeof module !== "undefined" && module.exports) {
     APP_VERSION,
     AppState,
     SimConfig,
+    WORD_CATEGORIES,
+    matchItemCategory,
+    getAvailablePracticeCategories,
     getTerm,
     isValidChapter,
     hasUniqueChapterIds,
