@@ -10,14 +10,17 @@ const suite = new TestSuite('Módulo 5: Avaliação Cumulativa & Simulados');
 const { appJs, hebrewData } = loadSourceFiles();
 
 // Importações diretas dos módulos de produção
-const { getTerm, SimConfig } = require('../js/modules/state.js');
+const { getTerm, SimConfig, isAlphabetChapter } = require('../js/modules/state.js');
 
 function generateSimuladoPool(chapters, activeChapterId, config) {
   const activeIdx = chapters.findIndex((c) => c.id === activeChapterId);
-  const cumulativeChapters = chapters.slice(
+  let cumulativeChapters = chapters.slice(
     0,
     activeIdx >= 0 ? activeIdx + 1 : chapters.length,
   );
+  if (activeIdx > 0) {
+    cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+  }
 
   let currentChapWords = [], otherChapWords = [];
   let currentChapSentences = [], otherChapSentences = [];
@@ -55,13 +58,23 @@ function generateSimuladoPool(chapters, activeChapterId, config) {
     targetWords = Math.min(totalAmount - targetSentences, allWords.length);
   }
 
-  return { targetWords, targetSentences, cumulativeCount: cumulativeChapters.length };
+  return { targetWords, targetSentences, cumulativeCount: cumulativeChapters.length, cumulativeChapters, allWords };
 }
 
-suite.test('Simulado seleciona apenas capítulos até o capítulo ativo (cumulativo)', () => {
-  const activeId = hebrewData[1] ? hebrewData[1].id : hebrewData[0].id;
+suite.test('Simulado inclui o alfabeto quando o capítulo ativo é a Lição 1', () => {
+  const activeId = hebrewData[0].id;
   const result = generateSimuladoPool(hebrewData, activeId, { amount: 20, focus: "mixed" });
-  assert.equal(result.cumulativeCount, hebrewData[1] ? 2 : 1);
+  assert.equal(result.cumulativeCount, 1, 'Lição 1 deve ser o único capítulo incluído');
+  assert.isTrue(result.cumulativeChapters.some((c) => isAlphabetChapter(c)), 'Deve incluir lição de alfabeto');
+});
+
+suite.test('Simulado exclui a lição do alfabeto no Hebraico quando o capítulo ativo não for o primeiro', () => {
+  const activeId = hebrewData[1].id;
+  const result = generateSimuladoPool(hebrewData, activeId, { amount: 20, focus: "mixed" });
+  assert.equal(result.cumulativeCount, 1, 'Deve excluir a Lição 1 (alfabeto), mantendo apenas lições posteriores');
+  assert.isFalse(result.cumulativeChapters.some((c) => isAlphabetChapter(c)), 'Não deve conter capítulo de alfabeto');
+  // Garante que nenhuma consoante de letra isolada está presente no banco
+  assert.isFalse(result.allWords.some((w) => (w.type || '').includes('Begadkefat')), 'Não deve conter letras do alfabeto');
 });
 
 suite.test('Distribuição mista (mixed) inclui palavras e frases', () => {

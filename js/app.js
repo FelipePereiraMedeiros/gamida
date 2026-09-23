@@ -25,7 +25,33 @@ var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppSt
   distractorCache: { words: [], sentences: [] },
   srs: {},
   survivalHighScore: 0,
+  isPracticeCumulative: false,
+  practiceCategory: "all",
 };
+
+var WORD_CATEGORIES = (typeof window !== "undefined" && window.WORD_CATEGORIES)
+  ? window.WORD_CATEGORIES
+  : [
+      { id: "substantivo", label: "Substantivos", match: /substantivo/i },
+      { id: "verbo", label: "Verbos", match: /verbo/i },
+      { id: "adjetivo", label: "Adjetivos", match: /adjetivo/i },
+      { id: "preposicao", label: "Preposições", match: /preposi[cç][aã]o/i },
+      { id: "pronome", label: "Pronomes", match: /pronome/i },
+      { id: "adverbio", label: "Advérbios", match: /adv[eé]rbio/i },
+      { id: "conjuncao", label: "Conjunções", match: /conjun[cç][aã]o/i },
+      { id: "artigo", label: "Artigos", match: /artigo/i },
+      { id: "particula", label: "Partículas", match: /part[ií]cula/i },
+      { id: "numeral", label: "Numerais", match: /numeral/i },
+      { id: "nome_proprio", label: "Nomes Próprios", match: /nome pr[oó]prio|nome divino/i },
+      { id: "interjeicao", label: "Interjeições", match: /interjei[cç][aã]o/i },
+    ];
+
+function matchItemCategory(item, categoryId) {
+  if (!categoryId || categoryId === "all") return true;
+  const cat = WORD_CATEGORIES.find((c) => c.id === categoryId);
+  if (!cat) return true;
+  return cat.match.test(item?.type || "");
+}
 
 var DOM = (typeof window !== "undefined" && window.DOM) ? window.DOM : {};
 
@@ -296,6 +322,7 @@ function changeGlobalChapter(chapterId) {
     AppState.currentQuestionIndex = 0;
     AppState.currentQuestion = null;
     resetStats();
+    updatePracticeCategoryFilterUI();
     buildPracticeQueue();
     updatePracticeChapterView(); // <-- Atualização dinâmica de acordo com o capítulo
 
@@ -326,12 +353,15 @@ function setExerciseMode(mode) {
   AppState.exerciseMode = mode;
   ["typing", "choice", "sentences"].forEach((m) => {
     const btn = document.getElementById(`mode-${m}`);
-    btn.className =
-      m === mode
-        ? "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white"
-        : "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200";
+    if (btn) {
+      btn.className =
+        m === mode
+          ? "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white"
+          : "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200";
+    }
   });
   AppState.currentQuestionIndex = 0;
+  updatePracticeCategoryFilterUI();
   buildPracticeQueue();
   renderCurrentQuestion();
 }
@@ -461,19 +491,160 @@ function shuffleArray(arr) {
 /* ================= PRACTICE ENGINE ================= */
 let practiceQueue = [];
 
+function getAvailablePracticeCategories() {
+  let pool = [];
+  const activeChapterId = AppState.currentChapter?.id;
+  const activeIdx = AppState.chapters.findIndex((c) => c.id === activeChapterId);
+
+  if (AppState.isPracticeCumulative) {
+    let cumulativeChapters = AppState.chapters.slice(
+      0,
+      activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
+    );
+    if (activeIdx > 0) {
+      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+    }
+    cumulativeChapters.forEach((chap) => {
+      (chap.items || []).forEach((item) => pool.push(item));
+    });
+  } else {
+    pool = [...(AppState.currentChapter?.items || [])];
+  }
+
+  // Deduplica itens por termo único
+  pool = Array.from(new Map(pool.map((item) => [getTerm(item), item])).values());
+
+  const available = [];
+  WORD_CATEGORIES.forEach((cat) => {
+    const count = pool.filter((item) => cat.match.test(item.type || "")).length;
+    if (count > 0) {
+      available.push({ ...cat, count });
+    }
+  });
+
+  return { total: pool.length, categories: available };
+}
+
+function updatePracticeCategoryFilterUI() {
+  if (typeof document === "undefined") return;
+  const select = document.getElementById("practice-category-select");
+  const container = document.getElementById("practice-category-container");
+  if (!select) return;
+
+  // Oculta o seletor se o exercício não for Digitação
+  if (AppState.exerciseMode !== "typing") {
+    if (container) container.classList.add("hidden");
+    return;
+  }
+  if (container) container.classList.remove("hidden");
+
+  const { total, categories } = getAvailablePracticeCategories();
+
+  // Preserva a seleção se ainda estiver disponível, senão reseta para 'all'
+  const currentVal = AppState.practiceCategory || "all";
+  const isValidSelection = currentVal === "all" || categories.some((c) => c.id === currentVal);
+  if (!isValidSelection) {
+    AppState.practiceCategory = "all";
+  }
+
+  select.innerHTML = "";
+  const optAll = document.createElement("option");
+  optAll.value = "all";
+  optAll.textContent = `Todas as palavras (${total})`;
+  select.appendChild(optAll);
+
+  categories.forEach((cat) => {
+    const opt = document.createElement("option");
+    opt.value = cat.id;
+    opt.textContent = `${cat.label} (${cat.count})`;
+    select.appendChild(opt);
+  });
+
+  select.value = AppState.practiceCategory;
+}
+
+function setPracticeCategory(catId) {
+  AppState.practiceCategory = catId || "all";
+  AppState.currentQuestionIndex = 0;
+  buildPracticeQueue();
+  renderCurrentQuestion();
+}
+
+function setPracticeCumulative(isCumulative) {
+  AppState.isPracticeCumulative = !!isCumulative;
+  updatePracticeScopeUI();
+  updatePracticeCategoryFilterUI();
+  AppState.currentQuestionIndex = 0;
+  buildPracticeQueue();
+  renderCurrentQuestion();
+}
+
+function updatePracticeScopeUI() {
+  if (typeof document === "undefined") return;
+  const btnSingle = document.getElementById("scope-single");
+  const btnCumulative = document.getElementById("scope-cumulative");
+  if (!btnSingle || !btnCumulative) return;
+
+  if (AppState.isPracticeCumulative) {
+    btnCumulative.className = "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1";
+    btnSingle.className = "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200";
+  } else {
+    btnSingle.className = "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white";
+    btnCumulative.className = "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1";
+  }
+}
+
 function buildPracticeQueue() {
   if (!AppState.currentChapter) {
     practiceQueue = [];
     return;
   }
+
   let baseList = [];
-  if (AppState.exerciseMode === "sentences") {
-    baseList = AppState.currentChapter.sentences?.length
-      ? AppState.currentChapter.sentences
-      : AppState.currentChapter.items;
+  const activeChapterId = AppState.currentChapter.id;
+  const activeIdx = AppState.chapters.findIndex((c) => c.id === activeChapterId);
+
+  if (AppState.isPracticeCumulative) {
+    let cumulativeChapters = AppState.chapters.slice(
+      0,
+      activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
+    );
+    if (activeIdx > 0) {
+      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+    }
+
+    if (AppState.exerciseMode === "sentences") {
+      cumulativeChapters.forEach((chap) => {
+        (chap.sentences || []).forEach((s) => baseList.push(s));
+      });
+      if (baseList.length === 0) {
+        cumulativeChapters.forEach((chap) => {
+          (chap.items || []).forEach((i) => baseList.push(i));
+        });
+      }
+    } else {
+      cumulativeChapters.forEach((chap) => {
+        (chap.items || []).forEach((i) => baseList.push(i));
+      });
+    }
+
+    // Deduplica itens por termo
+    baseList = Array.from(new Map(baseList.map((item) => [getTerm(item), item])).values());
   } else {
-    baseList = AppState.currentChapter.items || [];
+    if (AppState.exerciseMode === "sentences") {
+      baseList = AppState.currentChapter.sentences?.length
+        ? AppState.currentChapter.sentences
+        : AppState.currentChapter.items || [];
+    } else {
+      baseList = AppState.currentChapter.items || [];
+    }
   }
+
+  // Filtro por tipo de palavra (quando em Digitação e categoria diferente de 'all')
+  if (AppState.exerciseMode === "typing" && AppState.practiceCategory && AppState.practiceCategory !== "all") {
+    baseList = baseList.filter((item) => matchItemCategory(item, AppState.practiceCategory));
+  }
+
   // Embaralha a lista e salva na fila de prática
   practiceQueue = shuffleArray(baseList);
 }
@@ -720,6 +891,8 @@ async function toggleLanguage() {
   localStorage.setItem("gamida_language", AppState.language);
 
   resetStats();
+  AppState.practiceCategory = "all";
+  AppState.isPracticeCumulative = false;
   lastRenderedVocabChapter = null;
   applyLanguageUI();
   await loadChapters();
@@ -1028,10 +1201,13 @@ function resetToDashboard() {
 function openSimuladoConfig() {
   const activeChapterId = AppState.currentChapter?.id;
   const activeIdx = AppState.chapters.findIndex((c) => c.id === activeChapterId);
-  const cumulativeChapters = AppState.chapters.slice(
+  let cumulativeChapters = AppState.chapters.slice(
     0,
     activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
   );
+  if (activeIdx > 0) {
+    cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+  }
   const totalSentences = cumulativeChapters.reduce(
     (acc, chap) => acc + (chap.sentences ? chap.sentences.length : 0),
     0,
@@ -1081,10 +1257,13 @@ function startSimulado() {
   const activeIdx = AppState.chapters.findIndex(
     (c) => c.id === activeChapterId,
   );
-  const cumulativeChapters = AppState.chapters.slice(
+  let cumulativeChapters = AppState.chapters.slice(
     0,
     activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
   );
+  if (activeIdx > 0) {
+    cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+  }
 
   let currentChapWords = [],
     otherChapWords = [];
@@ -1663,10 +1842,13 @@ function startSurvival() {
   const activeIdx = AppState.chapters.findIndex(
     (c) => c.id === activeChapterId,
   );
-  const cumulativeChapters = AppState.chapters.slice(
+  let cumulativeChapters = AppState.chapters.slice(
     0,
     activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
   );
+  if (activeIdx > 0) {
+    cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+  }
 
   let allWords = [];
   cumulativeChapters.forEach((chap) => {
@@ -1714,6 +1896,9 @@ function nextSurvivalQuestion() {
       0,
       activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
     );
+    if (activeIdx > 0) {
+      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+    }
     let refill = [];
     cumulativeChapters.forEach((chap) =>
       (chap.items || []).forEach((i) => refill.push(i)),
@@ -2597,11 +2782,19 @@ function updatePracticeChapterView() {
   const alphaPanel = document.getElementById("alphabet-game-panel");
   const btnSentences = document.getElementById("mode-sentences");
 
-  // Filtro de visibilidade do modo Frases (oculto quando o capítulo não tem frases)
-  const hasSentences =
-    AppState.currentChapter &&
-    Array.isArray(AppState.currentChapter.sentences) &&
-    AppState.currentChapter.sentences.length > 0;
+  // Filtro de visibilidade do modo Frases (oculto quando o escopo não tem frases)
+  let hasSentences = false;
+  if (AppState.isPracticeCumulative) {
+    const activeIdx = AppState.chapters.findIndex((c) => c.id === AppState.currentChapter?.id);
+    let cumulativeChapters = AppState.chapters.slice(0, activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length);
+    if (activeIdx > 0) cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+    hasSentences = cumulativeChapters.some((c) => (c.sentences || []).length > 0);
+  } else {
+    hasSentences =
+      AppState.currentChapter &&
+      Array.isArray(AppState.currentChapter.sentences) &&
+      AppState.currentChapter.sentences.length > 0;
+  }
 
   if (btnSentences) {
     if (!hasSentences) {
@@ -2641,6 +2834,8 @@ function updatePracticeChapterView() {
     if (alphaControls) alphaControls.classList.add("hidden");
     if (stdPanel) stdPanel.classList.remove("hidden");
     if (alphaPanel) alphaPanel.classList.add("hidden");
+    updatePracticeScopeUI();
+    updatePracticeCategoryFilterUI();
     renderCurrentQuestion();
   }
 }
@@ -3257,9 +3452,30 @@ function updateTabsScrollIndicators() {
   }
 }
 
-window.addEventListener("resize", () => {
-  updateTabsScrollIndicators();
-});
+if (typeof window !== "undefined") {
+  window.addEventListener("resize", () => {
+    updateTabsScrollIndicators();
+  });
+  window.setPracticeCumulative = setPracticeCumulative;
+  window.setPracticeCategory = setPracticeCategory;
+  window.getAvailablePracticeCategories = getAvailablePracticeCategories;
+  window.updatePracticeCategoryFilterUI = updatePracticeCategoryFilterUI;
+  window.updatePracticeScopeUI = updatePracticeScopeUI;
+  window.WORD_CATEGORIES = WORD_CATEGORIES;
+  window.matchItemCategory = matchItemCategory;
+}
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = {
+    setPracticeCumulative,
+    setPracticeCategory,
+    getAvailablePracticeCategories,
+    updatePracticeCategoryFilterUI,
+    updatePracticeScopeUI,
+    WORD_CATEGORIES,
+    matchItemCategory,
+  };
+}
 
 
 
