@@ -8,7 +8,7 @@
 const APP_VERSION =
   typeof window !== "undefined" && window.DataLoader && window.DataLoader.VERSION
     ? window.DataLoader.VERSION
-    : "2.6.5";
+    : "2.6.6";
 
 const AppState = (typeof window !== "undefined" && window.AppState) || {
   language:
