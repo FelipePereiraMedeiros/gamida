@@ -78,6 +78,15 @@ function renderParadigmSkeleton() {
  * @param {HTMLElement} container
  */
 function renderTableView(paradigm, container) {
+  if (!paradigm) return;
+  container =
+    container ||
+    (typeof document !== "undefined"
+      ? document.getElementById("paradigms-board") ||
+        document.getElementById("paradigm-board")
+      : null);
+  if (!container) return;
+
   const textClass =
     AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
   const table = document.createElement("table");
@@ -179,6 +188,15 @@ function renderTableView(paradigm, container) {
  * @param {HTMLElement} container
  */
 function renderDiagramView(paradigm, container) {
+  if (!paradigm) return;
+  container =
+    container ||
+    (typeof document !== "undefined"
+      ? document.getElementById("paradigms-board") ||
+        document.getElementById("paradigm-board")
+      : null);
+  if (!container) return;
+
   const textClass =
     AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
 

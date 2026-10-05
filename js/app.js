@@ -305,6 +305,7 @@ function changeGlobalChapter(chapterId) {
   const found = AppState.chapters.find((c) => c.id === chapterId);
   if (found) {
     AppState.currentChapter = found;
+    AppState.activeChapterId = found.id;
 
     // Atualiza o texto do botão
     const btnText = document.getElementById("chapter-dropdown-text");

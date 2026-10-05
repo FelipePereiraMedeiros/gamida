@@ -33,14 +33,27 @@ function safeToggle(id, isVisible) {
   return el;
 }
 
+function safeAlert(msg) {
+  if (typeof window !== "undefined" && typeof window.alert === "function") {
+    window.alert(msg);
+  } else if (typeof alert === "function") {
+    alert(msg);
+  } else {
+    console.warn("[Gamida Alert]:", msg);
+  }
+}
+
 /**
  * Inicia o desafio de sobrevivência com vocabulário cumulativo até o capítulo ativo
  */
 function startSurvival() {
-  const activeChapterId = AppState.currentChapter?.id;
+  const activeChapterId = AppState.currentChapter?.id || AppState.activeChapterId;
   if (!activeChapterId) {
-    alert("Não há capítulos disponíveis para iniciar o modo de sobrevivência.");
+    safeAlert("Não há capítulos disponíveis para iniciar o modo de sobrevivência.");
     return;
+  }
+  if (!AppState.currentChapter && activeChapterId && Array.isArray(AppState.chapters)) {
+    AppState.currentChapter = AppState.chapters.find((c) => c.id === activeChapterId) || null;
   }
   const activeIdx = AppState.chapters.findIndex(
     (c) => c.id === activeChapterId,
@@ -63,7 +76,7 @@ function startSurvival() {
   );
 
   if (allWords.length === 0) {
-    alert("Não há palavras suficientes acumuladas para iniciar o Morte Súbita.");
+    safeAlert("Não há palavras suficientes acumuladas para iniciar o Morte Súbita.");
     return;
   }
 
@@ -165,15 +178,18 @@ function submitSurvivalAnswer() {
         flash.className =
           "absolute inset-0 z-0 transition-opacity duration-300 pointer-events-none bg-emerald-500/20 opacity-100";
       }
-      setTimeout(
-        () => flash.classList.replace("opacity-100", "opacity-0"),
-        300,
-      );
+      setTimeout(() => {
+        if (flash && flash.classList) {
+          flash.classList.remove("opacity-100");
+          flash.classList.add("opacity-0");
+        }
+      }, 300);
     }
 
     nextSurvivalQuestion();
   } else {
     survLives--;
+    survStreak = 0;
     updateSurvivalUI();
     recordSRSError(getTerm(survCurrent));
 
@@ -186,10 +202,12 @@ function submitSurvivalAnswer() {
     if (flash) {
       flash.className =
         "absolute inset-0 z-0 transition-opacity duration-300 pointer-events-none bg-rose-500/30 opacity-100";
-      setTimeout(
-        () => flash.classList.replace("opacity-100", "opacity-0"),
-        300,
-      );
+      setTimeout(() => {
+        if (flash && flash.classList) {
+          flash.classList.remove("opacity-100");
+          flash.classList.add("opacity-0");
+        }
+      }, 300);
     }
 
     if (survLives <= 0) {
@@ -230,6 +248,18 @@ function finishSurvival(surrendered = false) {
   }
 }
 
+function resetSurvival() {
+  survLives = 3;
+  survStreak = 0;
+  survQueue = [];
+  survCurrentIndex = 0;
+  if (typeof document !== "undefined") {
+    safeToggle("survival-active", false);
+    safeToggle("survival-results", false);
+    safeToggle("surv-correction-box", false);
+  }
+}
+
 // Suporte universal (Browser Global / Node CommonJS)
 if (typeof window !== "undefined") {
   window.startSurvival = startSurvival;
@@ -237,12 +267,18 @@ if (typeof window !== "undefined") {
   window.nextSurvivalQuestion = nextSurvivalQuestion;
   window.submitSurvivalAnswer = submitSurvivalAnswer;
   window.finishSurvival = finishSurvival;
+  window.resetSurvival = resetSurvival;
   window.SurvivalModule = {
     startSurvival,
     updateSurvivalUI,
     nextSurvivalQuestion,
     submitSurvivalAnswer,
     finishSurvival,
+    resetSurvival,
+    getSurvLives: () => survLives,
+    getSurvStreak: () => survStreak,
+    getSurvQueue: () => survQueue,
+    getSurvCurrent: () => survCurrent,
   };
 }
 if (typeof module !== "undefined" && module.exports) {
@@ -252,6 +288,11 @@ if (typeof module !== "undefined" && module.exports) {
     nextSurvivalQuestion,
     submitSurvivalAnswer,
     finishSurvival,
+    resetSurvival,
+    getSurvLives: () => survLives,
+    getSurvStreak: () => survStreak,
+    getSurvQueue: () => survQueue,
+    getSurvCurrent: () => survCurrent,
   };
 }
 })();
