@@ -49,17 +49,20 @@ function renderParadigmSkeleton() {
   const parSelect = document.getElementById("paradigm-select");
   const parIdx = parSelect ? parSelect.value : "";
 
-  if (!chap || parIdx === "") {
+  if (!chap || !Array.isArray(chap.paradigms) || parIdx === "" || !chap.paradigms[parIdx]) {
     resetParadigmBoard();
     return;
   }
 
   activeParadigm = chap.paradigms[parIdx];
 
-  document.getElementById("paradigm-header").classList.remove("hidden");
-  document.getElementById("paradigm-title").textContent = activeParadigm.title;
+  const header = document.getElementById("paradigm-header");
+  if (header) header.classList.remove("hidden");
+  const title = document.getElementById("paradigm-title");
+  if (title) title.textContent = activeParadigm.title || "";
 
   const board = document.getElementById("paradigm-board");
+  if (!board) return;
   board.innerHTML = "";
 
   if (activeParadigm.type === "table") {
@@ -85,7 +88,7 @@ function renderTableView(paradigm, container) {
   const trHead = document.createElement("tr");
   trHead.className = "bg-slate-900 border-b border-slate-800";
 
-  paradigm.headers.forEach((h) => {
+  (paradigm.headers || []).forEach((h) => {
     const th = document.createElement("th");
     th.className =
       "px-4 py-3 text-brand-400 font-bold text-xs uppercase tracking-wider text-center";
@@ -100,7 +103,7 @@ function renderTableView(paradigm, container) {
 
   let allAnswers = [];
 
-  paradigm.rows.forEach((row) => {
+  (paradigm.rows || []).forEach((row) => {
     const tr = document.createElement("tr");
     tr.className = "hover:bg-slate-900/30 transition";
 
@@ -113,14 +116,16 @@ function renderTableView(paradigm, container) {
       } else {
         allAnswers.push(cellText);
         td.innerHTML = `
-                <div class="drop-zone border-2 border-dashed border-slate-700 hover:border-brand-500 rounded-lg h-11 flex items-center justify-center transition-colors bg-slate-900/40 cursor-pointer" data-expected="${cellText}">
-                </div>
-              `;
+          <div class="drop-zone border-2 border-dashed border-slate-700 hover:border-brand-500 rounded-lg min-w-[70px] h-11 flex items-center justify-center transition-colors bg-slate-900/40 cursor-pointer" data-expected="${cellText}" data-answer="${cellText}">
+          </div>
+        `;
         const dropZone = td.querySelector(".drop-zone");
-        dropZone.ondragover = onDragOver;
-        dropZone.ondragleave = onDragLeave;
-        dropZone.ondrop = onDropToZone;
-        dropZone.onclick = onZoneClick;
+        if (dropZone) {
+          dropZone.ondragover = onDragOver;
+          dropZone.ondragleave = onDragLeave;
+          dropZone.ondrop = onDropToZone;
+          dropZone.onclick = onZoneClick;
+        }
       }
       tr.appendChild(td);
     });
@@ -129,34 +134,43 @@ function renderTableView(paradigm, container) {
   table.appendChild(tbody);
   container.appendChild(table);
 
-  const btnContainer = document.getElementById("paradigm-action-container");
+  let btnContainer = document.getElementById("paradigm-action-container");
+  if (!btnContainer) {
+    btnContainer = document.createElement("div");
+    btnContainer.id = "paradigm-action-container";
+    btnContainer.className = "mt-6 text-center w-full flex flex-col items-center justify-center";
+    container.appendChild(btnContainer);
+  }
+  btnContainer.classList.remove("hidden");
   btnContainer.innerHTML = `
-          <button type="button" onclick="checkParadigmAnswers()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
-            Verificar Estrutura ➔
-          </button>
-          <div id="paradigm-feedback" class="hidden mt-4 text-sm font-bold"></div>
-        `;
+    <button type="button" onclick="checkParadigmAnswers()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
+      Verificar Estrutura ➔
+    </button>
+    <div id="paradigm-feedback" class="hidden mt-4 text-sm font-bold"></div>
+  `;
 
   const deck = document.getElementById("paradigm-deck");
-  deck.classList.remove("hidden");
-  deck.innerHTML = "";
+  if (deck) {
+    deck.classList.remove("hidden");
+    deck.innerHTML = "";
 
-  deck.ondragover = onDragOver;
-  deck.ondragleave = onDragLeave;
-  deck.ondrop = onDropToDeck;
+    deck.ondragover = onDragOver;
+    deck.ondragleave = onDragLeave;
+    deck.ondrop = onDropToDeck;
 
-  allAnswers = shuffleArray(allAnswers);
-  allAnswers.forEach((ans, i) => {
-    const chip = document.createElement("div");
-    chip.className = `drag-chip ${textClass} inline-flex items-center justify-center w-fit cursor-grab bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold py-1.5 px-4 text-sm rounded-lg shadow-sm transition-transform active:scale-95 select-none`;
-    chip.draggable = true;
-    chip.id = `chip-${i}`;
-    chip.textContent = ans;
-    chip.ondragstart = onDragStart;
-    chip.ondragend = onDragEnd;
-    chip.onclick = onChipClick;
-    deck.appendChild(chip);
-  });
+    allAnswers = shuffleArray(allAnswers);
+    allAnswers.forEach((ans, i) => {
+      const chip = document.createElement("div");
+      chip.className = `drag-chip ${textClass} inline-flex items-center justify-center w-fit cursor-grab bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold py-1.5 px-4 text-sm rounded-lg shadow-sm transition-transform active:scale-95 select-none`;
+      chip.draggable = true;
+      chip.id = `chip-${i}`;
+      chip.textContent = ans;
+      chip.ondragstart = onDragStart;
+      chip.ondragend = onDragEnd;
+      chip.onclick = onChipClick;
+      deck.appendChild(chip);
+    });
+  }
 }
 
 /**
@@ -172,33 +186,35 @@ function renderDiagramView(paradigm, container) {
   wrapper.className =
     "w-full max-w-4xl mx-auto flex flex-col items-center";
 
-  const conceptTitle = document.createElement("h4");
-  conceptTitle.className =
-    "text-brand-400 font-bold text-sm uppercase tracking-widest mb-6";
-  conceptTitle.textContent = paradigm.concept;
-  wrapper.appendChild(conceptTitle);
+  if (paradigm.concept) {
+    const conceptTitle = document.createElement("h4");
+    conceptTitle.className =
+      "text-brand-400 font-bold text-sm uppercase tracking-widest mb-6";
+    conceptTitle.textContent = paradigm.concept;
+    wrapper.appendChild(conceptTitle);
+  }
 
   const stage = document.createElement("div");
   stage.className =
     "relative w-full pb-[75%] md:pb-[60%] bg-slate-950 rounded-2xl shadow-inner border border-slate-800/80 overflow-hidden mb-8";
 
   const layoutMap = {
-    ἐν: { x: 50, y: 50 },
-    εἰς: { x: 28, y: 50 },
-    ἐκ: { x: 72, y: 50 },
-    διά: { x: 50, y: 66 },
-    ὑπέρ: { x: 50, y: 14 },
-    ὑπό: { x: 50, y: 86 },
-    ἐπί: { x: 50, y: 31 },
-    ἀνά: { x: 14, y: 35 },
-    κατά: { x: 86, y: 75 },
-    πρός: { x: 38, y: 32 },
-    ἀπό: { x: 62, y: 68 },
-    πρό: { x: 8, y: 50 },
-    ἀντί: { x: 14, y: 66 },
-    σύν: { x: 86, y: 15 },
-    μετά: { x: 88, y: 44 },
-    περί: { x: 66, y: 28 },
+    ἐν: { x: 50, y: 50, desc: "Dentro" },
+    εἰς: { x: 28, y: 50, desc: "Para dentro" },
+    ἐκ: { x: 72, y: 50, desc: "Para fora" },
+    διά: { x: 50, y: 66, desc: "Através" },
+    ὑπέρ: { x: 50, y: 14, desc: "Acima / Sobre (sem contato)" },
+    ὑπό: { x: 50, y: 86, desc: "Debaixo / Sob" },
+    ἐπί: { x: 50, y: 31, desc: "Sobre (com contato)" },
+    ἀνά: { x: 14, y: 35, desc: "Para cima" },
+    κατά: { x: 86, y: 75, desc: "Para baixo" },
+    πρός: { x: 38, y: 32, desc: "Em direção a" },
+    ἀπό: { x: 62, y: 68, desc: "Afastando-se" },
+    πρό: { x: 8, y: 50, desc: "Na frente" },
+    ἀντί: { x: 14, y: 66, desc: "Em oposição" },
+    σύν: { x: 86, y: 15, desc: "Junto de / Companhia" },
+    μετά: { x: 88, y: 44, desc: "Com / Associação" },
+    περί: { x: 66, y: 28, desc: "Ao redor" },
   };
 
   const svgVisuals = `
@@ -238,16 +254,29 @@ function renderDiagramView(paradigm, container) {
   let zonesHtml = "";
   let allAnswers = [];
 
-  paradigm.zones.forEach((zone) => {
-    allAnswers.push(zone.expected);
-    const coords = layoutMap[zone.expected] || { x: 50, y: 50 };
+  // Suporte resiliente a paradigm.elements (schema JSON) e paradigm.zones
+  const items = Array.isArray(paradigm.elements)
+    ? paradigm.elements.map((el) => ({
+        term: el.term,
+        desc: el.spatial_relation || (layoutMap[el.term] ? layoutMap[el.term].desc : el.term),
+      }))
+    : (Array.isArray(paradigm.zones)
+        ? paradigm.zones.map((z) => ({
+            term: z.expected,
+            desc: z.desc || (layoutMap[z.expected] ? layoutMap[z.expected].desc : z.expected),
+          }))
+        : Object.keys(layoutMap).map((k) => ({ term: k, desc: layoutMap[k].desc })));
+
+  items.forEach((item) => {
+    allAnswers.push(item.term);
+    const coords = layoutMap[item.term] || { x: 50, y: 50 };
     zonesHtml += `
-            <div class="absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2" style="left: ${coords.x}%; top: ${coords.y}%;">
-              <span class="text-[10px] text-slate-400 font-bold mb-1 bg-slate-900/90 px-1.5 py-0.5 rounded shadow-sm whitespace-nowrap border border-slate-700/50">${zone.desc}</span>
-              <div class="drop-zone border-2 border-dashed border-slate-700 hover:border-brand-500 rounded-lg min-w-[50px] px-2 h-[32px] flex items-center justify-center transition-colors bg-slate-900/60 shadow-sm cursor-pointer" data-expected="${zone.expected}">
-              </div>
-            </div>
-          `;
+      <div class="group absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 z-10" style="left: ${coords.x}%; top: ${coords.y}%;">
+        <span class="text-[10px] text-slate-300 font-bold mb-1 bg-slate-900/90 px-1.5 py-0.5 rounded shadow-sm whitespace-nowrap border border-slate-700/60 transition-transform group-hover:scale-105 pointer-events-none">${item.desc}</span>
+        <div class="drop-zone border-2 border-dashed border-slate-700 hover:border-brand-500 rounded-lg min-w-[56px] px-2 h-[34px] flex items-center justify-center transition-colors bg-slate-900/80 shadow-sm cursor-pointer" data-expected="${item.term}" data-answer="${item.term}">
+        </div>
+      </div>
+    `;
   });
 
   stage.innerHTML = svgVisuals + zonesHtml;
@@ -261,34 +290,43 @@ function renderDiagramView(paradigm, container) {
     dz.onclick = onZoneClick;
   });
 
-  const btnContainer = document.getElementById("paradigm-action-container");
+  let btnContainer = document.getElementById("paradigm-action-container");
+  if (!btnContainer) {
+    btnContainer = document.createElement("div");
+    btnContainer.id = "paradigm-action-container";
+    btnContainer.className = "mt-6 text-center w-full flex flex-col items-center justify-center";
+    wrapper.appendChild(btnContainer);
+  }
+  btnContainer.classList.remove("hidden");
   btnContainer.innerHTML = `
-          <button type="button" onclick="checkParadigmAnswers()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
-            Verificar Esquema ➔
-          </button>
-          <div id="paradigm-feedback" class="hidden mt-4 text-sm font-bold"></div>
-        `;
+    <button type="button" onclick="checkParadigmAnswers()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
+      Verificar Esquema ➔
+    </button>
+    <div id="paradigm-feedback" class="hidden mt-4 text-sm font-bold"></div>
+  `;
 
   const deck = document.getElementById("paradigm-deck");
-  deck.classList.remove("hidden");
-  deck.innerHTML = "";
+  if (deck) {
+    deck.classList.remove("hidden");
+    deck.innerHTML = "";
 
-  deck.ondragover = onDragOver;
-  deck.ondragleave = onDragLeave;
-  deck.ondrop = onDropToDeck;
+    deck.ondragover = onDragOver;
+    deck.ondragleave = onDragLeave;
+    deck.ondrop = onDropToDeck;
 
-  allAnswers = shuffleArray(allAnswers);
-  allAnswers.forEach((ans, i) => {
-    const chip = document.createElement("div");
-    chip.className = `drag-chip ${textClass} inline-flex items-center justify-center w-fit cursor-grab bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold py-1 px-3 text-sm rounded-lg shadow-sm transition-transform active:scale-95 select-none`;
-    chip.draggable = true;
-    chip.id = `chip-diag-${i}`;
-    chip.textContent = ans;
-    chip.ondragstart = onDragStart;
-    chip.ondragend = onDragEnd;
-    chip.onclick = onChipClick;
-    deck.appendChild(chip);
-  });
+    allAnswers = shuffleArray(allAnswers);
+    allAnswers.forEach((ans, i) => {
+      const chip = document.createElement("div");
+      chip.className = `drag-chip ${textClass} inline-flex items-center justify-center w-fit cursor-grab bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold py-1 px-3 text-sm rounded-lg shadow-sm transition-transform active:scale-95 select-none`;
+      chip.draggable = true;
+      chip.id = `chip-diag-${i}`;
+      chip.textContent = ans;
+      chip.ondragstart = onDragStart;
+      chip.ondragend = onDragEnd;
+      chip.onclick = onChipClick;
+      deck.appendChild(chip);
+    });
+  }
 }
 
 /**
@@ -301,8 +339,8 @@ function checkParadigmAnswers() {
   let filledCount = 0;
 
   zones.forEach((zone) => {
-    const expected = zone.getAttribute("data-expected");
-    const chip = zone.children[0];
+    const expected = (zone.getAttribute("data-expected") || zone.getAttribute("data-answer") || "").trim();
+    const chip = zone.querySelector(".drag-chip") || zone.children[0];
 
     zone.classList.remove(
       "border-emerald-500",
@@ -310,11 +348,15 @@ function checkParadigmAnswers() {
       "border-rose-500",
       "bg-rose-900/20",
       "border-slate-600",
+      "border-solid",
+      "border-dashed",
+      "border-slate-700",
     );
 
     if (chip) {
       filledCount++;
-      if (chip.textContent === expected) {
+      const chipText = (chip.textContent || "").trim();
+      if (chipText === expected) {
         zone.classList.add(
           "border-emerald-500",
           "bg-emerald-900/20",
@@ -342,7 +384,7 @@ function checkParadigmAnswers() {
     feedback.textContent = "⚠️ Preencha todos os espaços antes de verificar!";
     feedback.className = "mt-4 text-sm font-bold text-amber-400";
   } else if (allCorrect) {
-    feedback.textContent = "🎉 Perfeito! Você completou a tabela corretamente.";
+    feedback.textContent = "🎉 Perfeito! Você completou a estrutura corretamente.";
     feedback.className = "mt-4 text-sm font-bold text-emerald-400";
   } else {
     feedback.textContent =
@@ -359,14 +401,22 @@ function resetParadigmBoard() {
   const header = document.getElementById("paradigm-header");
   const deck = document.getElementById("paradigm-deck");
   const board = document.getElementById("paradigm-board");
+  const actionContainer = document.getElementById("paradigm-action-container");
 
   if (header) header.classList.add("hidden");
-  if (deck) deck.classList.add("hidden");
+  if (deck) {
+    deck.classList.add("hidden");
+    deck.innerHTML = "";
+  }
+  if (actionContainer) {
+    actionContainer.classList.add("hidden");
+    actionContainer.innerHTML = "";
+  }
   if (!board) return;
 
   const hasParadigms =
     AppState.currentChapter &&
-    AppState.currentChapter.paradigms &&
+    Array.isArray(AppState.currentChapter.paradigms) &&
     AppState.currentChapter.paradigms.length > 0;
 
   board.innerHTML = `
@@ -446,10 +496,18 @@ function getStaticDiagramHTML(paradigm) {
   const textClass =
     AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
 
+  const descMap = {};
+  if (Array.isArray(paradigm.elements)) {
+    paradigm.elements.forEach((el) => {
+      if (el && el.term) descMap[el.term] = el.spatial_relation;
+    });
+  }
+
   for (const [term, data] of Object.entries(layoutMap)) {
+    const desc = descMap[term] || data.desc;
     html += `
        <div class="absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2" style="left: ${data.x}%; top: ${data.y}%;">
-          <span class="text-[10px] text-slate-400 font-bold mb-1 bg-slate-900/90 px-1.5 py-0.5 rounded shadow-sm whitespace-nowrap border border-slate-700/50">${data.desc}</span>
+          <span class="text-[10px] text-slate-400 font-bold mb-1 bg-slate-900/90 px-1.5 py-0.5 rounded shadow-sm whitespace-nowrap border border-slate-700/50">${desc}</span>
           <div class="${textClass} flex items-center justify-center min-w-[50px] px-3 h-[32px] rounded-lg bg-slate-800 border border-slate-600 text-slate-100 font-bold text-sm shadow-md">
                ${term}
           </div>
@@ -538,15 +596,38 @@ function onDropToZone(e) {
   const zone = e.currentTarget;
   zone.classList.remove("border-brand-500", "bg-brand-500/10");
 
-  const chipId = e.dataTransfer.getData("text/plain");
-  const chip = document.getElementById(chipId);
+  const chipId = e.dataTransfer ? e.dataTransfer.getData("text/plain") : null;
+  const chip = chipId ? document.getElementById(chipId) : draggedElement;
 
   if (chip) {
-    if (zone.children.length > 0) {
-      document.getElementById("paradigm-deck").appendChild(zone.children[0]);
+    const deck = document.getElementById("paradigm-deck");
+    const existingChip = zone.querySelector(".drag-chip");
+    if (existingChip && existingChip !== chip && deck) {
+      deck.appendChild(existingChip);
     }
+
+    const prevZone = chip.parentElement;
+    if (prevZone && prevZone !== zone && prevZone.classList.contains("drop-zone")) {
+      prevZone.classList.remove(
+        "border-solid",
+        "border-slate-600",
+        "border-emerald-500",
+        "bg-emerald-900/20",
+        "border-rose-500",
+        "bg-rose-900/20",
+      );
+      prevZone.classList.add("border-dashed", "border-slate-700");
+    }
+
     zone.appendChild(chip);
-    zone.classList.remove("border-dashed", "border-slate-700");
+    zone.classList.remove(
+      "border-dashed",
+      "border-slate-700",
+      "border-emerald-500",
+      "bg-emerald-900/20",
+      "border-rose-500",
+      "bg-rose-900/20",
+    );
     zone.classList.add("border-solid", "border-slate-600");
   }
 }
@@ -556,13 +637,20 @@ function onDropToDeck(e) {
   const deck = e.currentTarget;
   deck.classList.remove("border-brand-500", "bg-brand-500/10");
 
-  const chipId = e.dataTransfer.getData("text/plain");
-  const chip = document.getElementById(chipId);
+  const chipId = e.dataTransfer ? e.dataTransfer.getData("text/plain") : null;
+  const chip = chipId ? document.getElementById(chipId) : draggedElement;
 
   if (chip) {
     const parentZone = chip.parentElement;
     if (parentZone && parentZone.classList.contains("drop-zone")) {
-      parentZone.classList.remove("border-solid", "border-slate-600");
+      parentZone.classList.remove(
+        "border-solid",
+        "border-slate-600",
+        "border-emerald-500",
+        "bg-emerald-900/20",
+        "border-rose-500",
+        "bg-rose-900/20",
+      );
       parentZone.classList.add("border-dashed", "border-slate-700");
     }
     deck.appendChild(chip);
@@ -575,9 +663,10 @@ function onChipClick(e) {
   e.stopPropagation();
   const chip = e.currentTarget;
 
-  if (chip.parentElement.classList.contains("drop-zone")) {
+  if (chip.parentElement && chip.parentElement.classList.contains("drop-zone")) {
     const zone = chip.parentElement;
-    document.getElementById("paradigm-deck").appendChild(chip);
+    const deck = document.getElementById("paradigm-deck");
+    if (deck) deck.appendChild(chip);
 
     zone.classList.remove(
       "border-solid",
@@ -618,11 +707,34 @@ function onZoneClick(e) {
   const zone = e.currentTarget;
 
   if (selectedChip) {
-    if (zone.children.length > 0) {
-      document.getElementById("paradigm-deck").appendChild(zone.children[0]);
+    const deck = document.getElementById("paradigm-deck");
+    const existingChip = zone.querySelector(".drag-chip");
+    if (existingChip && existingChip !== selectedChip && deck) {
+      deck.appendChild(existingChip);
     }
+
+    const prevZone = selectedChip.parentElement;
+    if (prevZone && prevZone !== zone && prevZone.classList.contains("drop-zone")) {
+      prevZone.classList.remove(
+        "border-solid",
+        "border-slate-600",
+        "border-emerald-500",
+        "bg-emerald-900/20",
+        "border-rose-500",
+        "bg-rose-900/20",
+      );
+      prevZone.classList.add("border-dashed", "border-slate-700");
+    }
+
     zone.appendChild(selectedChip);
-    zone.classList.remove("border-dashed", "border-slate-700");
+    zone.classList.remove(
+      "border-dashed",
+      "border-slate-700",
+      "border-emerald-500",
+      "bg-emerald-900/20",
+      "border-rose-500",
+      "bg-rose-900/20",
+    );
     zone.classList.add("border-solid", "border-slate-600");
     clearChipSelection();
   }
@@ -677,6 +789,15 @@ if (typeof module !== "undefined" && module.exports) {
     resetParadigmBoard,
     getStaticDiagramHTML,
     getStaticParadigmTableHTML,
+    onDragStart,
+    onDragEnd,
+    onDragOver,
+    onDragLeave,
+    onDropToZone,
+    onDropToDeck,
+    onChipClick,
+    clearChipSelection,
+    onZoneClick,
   };
 }
 })();

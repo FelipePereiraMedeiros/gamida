@@ -128,7 +128,7 @@ function updateTabsScrollIndicators() {
 }
 
 // Ouvinte de resize para recalcular indicadores de abas
-if (typeof window !== "undefined") {
+if (typeof window !== "undefined" && typeof window.addEventListener === "function") {
   window.addEventListener("resize", () => {
     updateTabsScrollIndicators();
   });
