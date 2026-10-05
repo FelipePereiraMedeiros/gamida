@@ -321,18 +321,13 @@ function changeGlobalChapter(chapterId) {
       localStorage.setItem(`gamida_lastChap_${AppState.language}`, found.id);
     }
 
-    if (typeof assessTimerInterval !== "undefined" && assessTimerInterval) {
-      clearInterval(assessTimerInterval);
+    if (typeof resetToDashboard === "function") {
+      try {
+        resetToDashboard();
+      } catch (e) {
+        console.warn("Aviso ao resetar sessões anteriores:", e);
+      }
     }
-    if (typeof assessQuestions !== "undefined") assessQuestions.length = 0;
-    if (typeof assessIndex !== "undefined") window.assessIndex = 0;
-    if (typeof assessAnswersMap !== "undefined") window.assessAnswersMap = {};
-    if (typeof ankiQueue !== "undefined") ankiQueue.length = 0;
-    if (typeof ankiCurrentCard !== "undefined") window.ankiCurrentCard = null;
-    if (typeof survQueue !== "undefined") survQueue.length = 0;
-    if (typeof survCurrent !== "undefined") window.survCurrent = null;
-
-    if (typeof resetToDashboard === "function") resetToDashboard();
 
     // 1. Atualiza Praticar
     AppState.currentQuestionIndex = 0;
@@ -345,7 +340,7 @@ function changeGlobalChapter(chapterId) {
 
     // 2. Atualiza Dicionário
     lastRenderedVocabChapter = null;
-    renderVocabTable();
+    if (typeof renderVocabTable === "function") renderVocabTable();
 
     // 3. Atualiza Paradigmas
     if (typeof updateParadigmsVisibility === "function") updateParadigmsVisibility();

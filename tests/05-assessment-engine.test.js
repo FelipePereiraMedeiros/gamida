@@ -97,7 +97,122 @@ suite.test('Geração do relatório de diagnóstico com agrupamento por capítul
   assert.includes(appJs, 'Revisão Recomendada', 'Classificação de diagnóstico ausente');
 });
 
+suite.test('openSimuladoConfig atualiza sim-scope-info e abre painel sem exceções', () => {
+  const elementsById = {};
+  const mockClassList = (el) => ({
+    classes: new Set(),
+    add(c) { this.classes.add(c); },
+    remove(c) { this.classes.delete(c); },
+    contains(c) { return this.classes.has(c); },
+  });
+
+  const createMockEl = (id) => {
+    const el = {
+      id,
+      textContent: '',
+      classList: null,
+      children: [],
+      appendChild(c) { this.children.push(c); },
+    };
+    el.classList = mockClassList(el);
+    elementsById[id] = el;
+    return el;
+  };
+
+  createMockEl('sim-scope-info');
+  createMockEl('cfg-focus-sentences');
+  createMockEl('assess-dashboard');
+  createMockEl('assess-config');
+
+  const oldDoc = global.document;
+  const oldWindow = global.window;
+  const oldAlert = global.alert;
+
+  global.document = {
+    getElementById: (id) => elementsById[id] || null,
+    querySelectorAll: () => [],
+    addEventListener: () => {},
+  };
+  global.window = {
+    AppState: {
+      chapters: hebrewData,
+      currentChapter: hebrewData[0],
+    },
+    SimConfig,
+    isAlphabetChapter,
+  };
+  global.alert = () => {};
+
+  const assessmentModule = require('../js/modules/assessment.js');
+
+  assessmentModule.openSimuladoConfig();
+
+  assert.isTrue(
+    elementsById['assess-dashboard'].classList.contains('hidden'),
+    'assess-dashboard deve ficar oculto',
+  );
+  assert.isFalse(
+    elementsById['assess-config'].classList.contains('hidden'),
+    'assess-config deve ficar visível',
+  );
+  assert.isTrue(
+    elementsById['sim-scope-info'].textContent.includes('Lição 1'),
+    'sim-scope-info deve conter informação do escopo da lição',
+  );
+
+  // Limpeza limpa
+  if (oldDoc === undefined) delete global.document; else global.document = oldDoc;
+  if (oldWindow === undefined) delete global.window; else global.window = oldWindow;
+  if (oldAlert === undefined) delete global.alert; else global.alert = oldAlert;
+});
+
+suite.test('openSimuladoConfig e resetToDashboard são resilientes a elementos nulos no DOM', () => {
+  const oldDoc = global.document;
+  const oldWindow = global.window;
+  const oldAlert = global.alert;
+
+  // DOM vazio retornando null para tudo
+  global.document = {
+    getElementById: () => null,
+    querySelectorAll: () => [],
+    addEventListener: () => {},
+  };
+  global.window = {
+    AppState: {
+      chapters: hebrewData,
+      currentChapter: hebrewData[1],
+    },
+    SimConfig,
+    isAlphabetChapter,
+  };
+  global.alert = () => {};
+
+  const assessmentModule = require('../js/modules/assessment.js');
+
+  let errOpen = null;
+  try {
+    assessmentModule.openSimuladoConfig();
+  } catch (e) {
+    errOpen = e;
+  }
+  assert.equal(errOpen, null, 'openSimuladoConfig não deve quebrar com elementos ausentes');
+
+  let errReset = null;
+  try {
+    assessmentModule.resetToDashboard();
+  } catch (e) {
+    errReset = e;
+  }
+  assert.equal(errReset, null, 'resetToDashboard não deve quebrar com elementos ausentes');
+
+  // Limpeza limpa
+  if (oldDoc === undefined) delete global.document; else global.document = oldDoc;
+  if (oldWindow === undefined) delete global.window; else global.window = oldWindow;
+  if (oldAlert === undefined) delete global.alert; else global.alert = oldAlert;
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();
 }
+

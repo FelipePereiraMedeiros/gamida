@@ -5,7 +5,7 @@
  */
 
 (function () {
-const _stateModule = (typeof window !== "undefined" && window.AppState) ? window : (typeof require !== "undefined" ? require("./state.js") : {});
+const _stateModule = (typeof require !== "undefined") ? require("./state.js") : (typeof window !== "undefined" ? window : {});
 const AppState = (typeof window !== "undefined" && window.AppState) || _stateModule.AppState;
 const shuffleArray = (typeof window !== "undefined" && window.shuffleArray) || _stateModule.shuffleArray;
 

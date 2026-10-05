@@ -63,6 +63,92 @@ suite.test('Declaração e exportação de todas as funções do Modo Sobrevivê
   assert.includes(appJs, 'function finishSurvival', 'finishSurvival ausente no app.js');
 });
 
+suite.test('startSurvival e finishSurvival operam no DOM de forma resiliente', () => {
+  const elementsById = {};
+  const mockClassList = () => ({
+    classes: new Set(),
+    add(c) { this.classes.add(c); },
+    remove(c) { this.classes.delete(c); },
+    contains(c) { return this.classes.has(c); },
+  });
+
+  const createMockEl = (id) => {
+    const el = {
+      id,
+      textContent: '',
+      classList: mockClassList(),
+      value: '',
+      disabled: false,
+      focus: () => {},
+    };
+    elementsById[id] = el;
+    return el;
+  };
+
+  createMockEl('assess-dashboard');
+  createMockEl('survival-active');
+  createMockEl('survival-results');
+  createMockEl('surv-correction-box');
+  createMockEl('survival-streak');
+  createMockEl('survival-hearts');
+  createMockEl('survival-hebrew');
+  createMockEl('survival-input');
+  createMockEl('surv-res-streak');
+  createMockEl('surv-res-high');
+
+  const oldDoc = global.document;
+  const oldWindow = global.window;
+  const oldAlert = global.alert;
+
+  global.document = {
+    getElementById: (id) => elementsById[id] || null,
+    querySelectorAll: () => [],
+    addEventListener: () => {},
+  };
+  global.alert = () => {};
+
+  AppState.currentChapter = {
+    id: "chap_test",
+    title: "Lição Teste",
+    items: [
+      { term: "דָּבָר", translations: ["palavra", "coisa"] },
+      { term: "מֶלֶךְ", translations: ["rei"] },
+    ],
+  };
+  AppState.chapters = [AppState.currentChapter];
+
+  startSurvival();
+
+  assert.isTrue(
+    elementsById['assess-dashboard'].classList.contains('hidden'),
+    'assess-dashboard deve ser ocultado',
+  );
+  assert.isFalse(
+    elementsById['survival-active'].classList.contains('hidden'),
+    'survival-active deve ser revelado',
+  );
+  assert.isTrue(
+    elementsById['survival-hebrew'].textContent.length > 0,
+    'survival-hebrew deve exibir o termo atual',
+  );
+
+  finishSurvival(false);
+
+  assert.isTrue(
+    elementsById['survival-active'].classList.contains('hidden'),
+    'survival-active deve ser ocultado após finalizar',
+  );
+  assert.isFalse(
+    elementsById['survival-results'].classList.contains('hidden'),
+    'survival-results deve ser exibido',
+  );
+
+  // Limpeza
+  if (oldDoc === undefined) delete global.document; else global.document = oldDoc;
+  if (oldWindow === undefined) delete global.window; else global.window = oldWindow;
+  if (oldAlert === undefined) delete global.alert; else global.alert = oldAlert;
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();
