@@ -553,8 +553,14 @@ function updatePracticeChapterView() {
 }
 
 // Suporte universal (Browser Global / Node CommonJS)
+AlphabetGameEngine.updatePracticeChapterView = updatePracticeChapterView;
+AlphabetGameEngine.setAlphabetSubmode = setAlphabetSubmode;
+AlphabetGameEngine.nextAlphabetChallenge = nextAlphabetChallenge;
+AlphabetGameEngine.isAlphabetChapter = isAlphabetChapter;
+
 if (typeof window !== "undefined") {
   window.AlphabetGameEngine = AlphabetGameEngine;
+  window.AlphabetModule = AlphabetGameEngine;
   window.setAlphabetSubmode = setAlphabetSubmode;
   window.nextAlphabetChallenge = nextAlphabetChallenge;
   window.updatePracticeChapterView = updatePracticeChapterView;
@@ -562,9 +568,11 @@ if (typeof window !== "undefined") {
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     AlphabetGameEngine,
+    AlphabetModule: AlphabetGameEngine,
     setAlphabetSubmode,
     nextAlphabetChallenge,
     updatePracticeChapterView,
+    isAlphabetChapter,
   };
 }
 })();

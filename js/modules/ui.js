@@ -338,9 +338,10 @@ function changeGlobalChapter(chapterId) {
     AppState.currentQuestionIndex = 0;
     AppState.currentQuestion = null;
     if (typeof resetStats === "function") resetStats();
+    if (typeof updatePracticeChapterView === "function") updatePracticeChapterView();
     if (typeof updatePracticeCategoryFilterUI === "function") updatePracticeCategoryFilterUI();
     if (typeof buildPracticeQueue === "function") buildPracticeQueue();
-    if (typeof updatePracticeChapterView === "function") updatePracticeChapterView();
+    if (typeof renderCurrentQuestion === "function") renderCurrentQuestion();
 
     // 2. Atualiza Dicionário
     lastRenderedVocabChapter = null;

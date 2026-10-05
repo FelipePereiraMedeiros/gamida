@@ -325,9 +325,10 @@ function changeGlobalChapter(chapterId) {
     AppState.currentQuestionIndex = 0;
     AppState.currentQuestion = null;
     resetStats();
+    updatePracticeChapterView();
     updatePracticeCategoryFilterUI();
     buildPracticeQueue();
-    updatePracticeChapterView(); // <-- Atualização dinâmica de acordo com o capítulo
+    renderCurrentQuestion();
 
     // 2. Atualiza Dicionário
     lastRenderedVocabChapter = null;
@@ -496,15 +497,19 @@ function shuffleArray(arr) {
 /* ================= PRACTICE ENGINE ================= */
 let practiceQueue = [];
 
-function getAvailablePracticeCategories() {
+function getAvailablePracticeCategories(state = AppState) {
+  if (typeof window !== "undefined" && window.StateModule && window.StateModule.getAvailablePracticeCategories) {
+    return window.StateModule.getAvailablePracticeCategories(state);
+  }
   let pool = [];
-  const activeChapterId = AppState.currentChapter?.id;
-  const activeIdx = AppState.chapters.findIndex((c) => c.id === activeChapterId);
+  const activeChapterId = state.currentChapter?.id;
+  const chapters = state.chapters || [];
+  const activeIdx = chapters.findIndex((c) => c.id === activeChapterId);
 
-  if (AppState.isPracticeCumulative) {
-    let cumulativeChapters = AppState.chapters.slice(
+  if (state.isPracticeCumulative) {
+    let cumulativeChapters = chapters.slice(
       0,
-      activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
+      activeIdx >= 0 ? activeIdx + 1 : chapters.length,
     );
     if (activeIdx > 0) {
       cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
@@ -513,15 +518,14 @@ function getAvailablePracticeCategories() {
       (chap.items || []).forEach((item) => pool.push(item));
     });
   } else {
-    pool = [...(AppState.currentChapter?.items || [])];
+    pool = [...(state.currentChapter?.items || [])];
   }
 
-  // Deduplica itens por termo único
   pool = Array.from(new Map(pool.map((item) => [getTerm(item), item])).values());
 
   const available = [];
   WORD_CATEGORIES.forEach((cat) => {
-    const count = pool.filter((item) => cat.match.test(item.type || "")).length;
+    const count = pool.filter((item) => cat.match.test(item?.type || "")).length;
     if (count > 0) {
       available.push({ ...cat, count });
     }
@@ -531,6 +535,9 @@ function getAvailablePracticeCategories() {
 }
 
 function getAvailableVocabCategories(state = AppState) {
+  if (typeof window !== "undefined" && window.StateModule && window.StateModule.getAvailableVocabCategories) {
+    return window.StateModule.getAvailableVocabCategories(state);
+  }
   let wordsPool = [];
   let sentencesPool = [];
   const activeChapterId = state.currentChapter?.id;
@@ -1444,24 +1451,27 @@ function updatePracticeChapterView() {
   // Filtro contextual de visibilidade do modo Frases e Paradigmas:
   // if (!hasSentences) btnSentences.classList.add("hidden");
   // if (!hasParadigms) btnParadigms.style.display = "none";
-  if (typeof window !== "undefined" && window.AlphabetGameEngine) {
-    return window.updatePracticeChapterView();
+  const engine = typeof window !== "undefined" && (window.AlphabetModule || window.AlphabetGameEngine);
+  if (engine && typeof engine.updatePracticeChapterView === "function") {
+    return engine.updatePracticeChapterView();
   }
 }
 
 function setAlphabetSubmode(submode) {
   resetStats();
   // Submodos suportados com botões alpha-mode-: "order", "impostors", "shapes", "classic"
-  if (typeof window !== "undefined" && window.setAlphabetSubmode) {
-    return window.setAlphabetSubmode(submode);
+  const engine = typeof window !== "undefined" && (window.AlphabetModule || window.AlphabetGameEngine);
+  if (engine && typeof engine.setAlphabetSubmode === "function") {
+    return engine.setAlphabetSubmode(submode);
   }
 }
 
 function nextAlphabetChallenge() {
   // Elementos do motor: alphabet-feedback-banner, alphabet-combo-badge, alphabet-score-indicator
   // Detector de impostores: targetGlyph: "⚖️", t !== group.target, alternativas únicas com new Set
-  if (typeof window !== "undefined" && window.nextAlphabetChallenge) {
-    return window.nextAlphabetChallenge();
+  const engine = typeof window !== "undefined" && (window.AlphabetModule || window.AlphabetGameEngine);
+  if (engine && typeof engine.nextAlphabetChallenge === "function") {
+    return engine.nextAlphabetChallenge();
   }
 }
 
@@ -1492,6 +1502,9 @@ if (typeof window !== "undefined") {
   window.addEventListener("resize", () => {
     updateTabsScrollIndicators();
   });
+  window.changeGlobalChapter = changeGlobalChapter;
+  window.buildPracticeQueue = buildPracticeQueue;
+  window.renderCurrentQuestion = renderCurrentQuestion;
   window.setPracticeCumulative = setPracticeCumulative;
   window.setPracticeCategory = setPracticeCategory;
   window.getAvailablePracticeCategories = getAvailablePracticeCategories;

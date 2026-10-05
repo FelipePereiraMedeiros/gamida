@@ -213,6 +213,9 @@ const DataLoader = {
   }
 };
 
+if (typeof window !== "undefined") {
+  window.DataLoader = DataLoader;
+}
 if (typeof module !== "undefined" && module.exports) {
   module.exports = DataLoader;
 }
