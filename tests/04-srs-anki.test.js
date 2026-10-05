@@ -109,6 +109,108 @@ suite.test('Declaração das funções do Anki no app.js e módulos', () => {
   assert.includes(appJs, 'function finishAnki', 'finishAnki ausente');
 });
 
+suite.test('startAnki, revealAnki e finishAnki operam no DOM com tolerância defensiva', () => {
+  const elementsById = {};
+  const mockClassList = () => ({
+    classes: new Set(),
+    add(c) { this.classes.add(c); },
+    remove(c) { this.classes.delete(c); },
+    contains(c) { return this.classes.has(c); },
+  });
+
+  const createMockEl = (id) => {
+    const el = {
+      id,
+      textContent: '',
+      classList: mockClassList(),
+    };
+    elementsById[id] = el;
+    return el;
+  };
+
+  createMockEl('assess-dashboard');
+  createMockEl('anki-active');
+  createMockEl('anki-results');
+  createMockEl('anki-counter');
+  createMockEl('anki-type-tag');
+  createMockEl('anki-hebrew');
+  createMockEl('anki-translit');
+  createMockEl('anki-translation');
+  createMockEl('anki-next-good');
+  createMockEl('anki-next-easy');
+  createMockEl('anki-back');
+  createMockEl('anki-reveal-container');
+  createMockEl('anki-res-hard');
+  createMockEl('anki-res-good');
+  createMockEl('anki-res-easy');
+
+  const oldDoc = global.document;
+  const oldWindow = global.window;
+  const oldAlert = global.alert;
+
+  global.document = {
+    getElementById: (id) => elementsById[id] || null,
+    querySelectorAll: () => [],
+    addEventListener: () => {},
+  };
+  global.alert = () => {};
+
+  const srsModule = require('../js/modules/srs.js');
+
+  AppState.currentChapter = {
+    id: "chap_srs_test",
+    title: "Lição SRS Teste",
+    items: [
+      { term: "אֱלֹהִים", translations: ["Deus", "deuses"] },
+    ],
+  };
+  AppState.chapters = [AppState.currentChapter];
+  AppState.srs = {};
+
+  srsModule.startAnki();
+
+  assert.isTrue(
+    elementsById['assess-dashboard'].classList.contains('hidden'),
+    'assess-dashboard deve ser ocultado',
+  );
+  assert.isFalse(
+    elementsById['anki-active'].classList.contains('hidden'),
+    'anki-active deve ser exibido',
+  );
+  assert.equal(
+    elementsById['anki-hebrew'].textContent,
+    'אֱלֹהִים',
+    'anki-hebrew deve exibir a palavra correta',
+  );
+
+  srsModule.revealAnki();
+
+  assert.isTrue(
+    elementsById['anki-reveal-container'].classList.contains('hidden'),
+    'anki-reveal-container deve sumir após revelar',
+  );
+  assert.isFalse(
+    elementsById['anki-back'].classList.contains('hidden'),
+    'anki-back deve aparecer ao revelar resposta',
+  );
+
+  srsModule.finishAnki();
+
+  assert.isTrue(
+    elementsById['anki-active'].classList.contains('hidden'),
+    'anki-active deve sumir após finalizar',
+  );
+  assert.isFalse(
+    elementsById['anki-results'].classList.contains('hidden'),
+    'anki-results deve aparecer',
+  );
+
+  // Limpeza
+  if (oldDoc === undefined) delete global.document; else global.document = oldDoc;
+  if (oldWindow === undefined) delete global.window; else global.window = oldWindow;
+  if (oldAlert === undefined) delete global.alert; else global.alert = oldAlert;
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

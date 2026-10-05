@@ -5,7 +5,7 @@
  */
 
 (function () {
-const _stateModule = (typeof window !== "undefined" && window.AppState) ? window : (typeof require !== "undefined" ? require("./state.js") : {});
+const _stateModule = (typeof require !== "undefined") ? require("./state.js") : (typeof window !== "undefined" ? window : {});
 const AppState = (typeof window !== "undefined" && window.AppState) || _stateModule.AppState;
 const getTerm = (typeof window !== "undefined" && window.getTerm) || _stateModule.getTerm;
 const shuffleArray = (typeof window !== "undefined" && window.shuffleArray) || _stateModule.shuffleArray;
@@ -65,6 +65,18 @@ function recordSRSError(termStr) {
   saveSRS();
 }
 
+function safeToggle(id, isVisible) {
+  if (typeof document === "undefined") return null;
+  const el = document.getElementById(id);
+  if (!el) return null;
+  if (isVisible) {
+    el.classList.remove("hidden");
+  } else {
+    el.classList.add("hidden");
+  }
+  return el;
+}
+
 /**
  * Inicia a sessão de revisão de Flashcards (Anki)
  */
@@ -119,8 +131,8 @@ function startAnki() {
   ankiStats = { hard: 0, good: 0, easy: 0 };
 
   if (typeof document !== "undefined") {
-    document.getElementById("assess-dashboard").classList.add("hidden");
-    document.getElementById("anki-active").classList.remove("hidden");
+    safeToggle("assess-dashboard", false);
+    safeToggle("anki-active", true);
   }
 
   renderAnkiCard();
@@ -138,19 +150,30 @@ function renderAnkiCard() {
   ankiCurrentCard = ankiQueue[0];
 
   if (typeof document === "undefined") return;
-  document.getElementById("anki-counter").textContent =
-    `Cartão ${ankiTotalCards - ankiQueue.length + 1} de ${ankiTotalCards}`;
-  document.getElementById("anki-type-tag").textContent =
-    ankiCurrentCard.kind === "word" ? "Palavra" : "Frase";
+  const counter = document.getElementById("anki-counter");
+  if (counter) {
+    counter.textContent = `Cartão ${ankiTotalCards - ankiQueue.length + 1} de ${ankiTotalCards}`;
+  }
+  const typeTag = document.getElementById("anki-type-tag");
+  if (typeTag) {
+    typeTag.textContent = ankiCurrentCard.kind === "word" ? "Palavra" : "Frase";
+  }
 
-  document.getElementById("anki-hebrew").textContent =
-    getTerm(ankiCurrentCard);
-  document.getElementById("anki-translit").textContent =
-    ankiCurrentCard.transliteration
+  const heb = document.getElementById("anki-hebrew");
+  if (heb) {
+    heb.textContent = getTerm(ankiCurrentCard);
+    heb.className = `${AppState.language === "hebrew" ? "hebrew-text" : "greek-text"} text-5xl md:text-7xl font-bold text-white tracking-wide drop-shadow-md pb-6`;
+  }
+  const translit = document.getElementById("anki-translit");
+  if (translit) {
+    translit.textContent = ankiCurrentCard.transliteration
       ? `(${ankiCurrentCard.transliteration})`
       : "";
-  document.getElementById("anki-translation").textContent =
-    ankiCurrentCard.translations.join(" / ");
+  }
+  const translation = document.getElementById("anki-translation");
+  if (translation) {
+    translation.textContent = ankiCurrentCard.translations.join(" / ");
+  }
 
   const record = AppState.srs[getTerm(ankiCurrentCard)] || {
     interval: 0,
@@ -164,15 +187,17 @@ function renderAnkiCard() {
       ? 4
       : Math.round(record.interval * (record.ef + 0.15) * 1.3);
 
-  document.getElementById("anki-next-good").textContent =
-    goodInt + (goodInt === 1 ? " dia" : " dias");
-  document.getElementById("anki-next-easy").textContent =
-    easyInt + (easyInt === 1 ? " dia" : " dias");
+  const goodEl = document.getElementById("anki-next-good");
+  if (goodEl) {
+    goodEl.textContent = goodInt + (goodInt === 1 ? " dia" : " dias");
+  }
+  const easyEl = document.getElementById("anki-next-easy");
+  if (easyEl) {
+    easyEl.textContent = easyInt + (easyInt === 1 ? " dia" : " dias");
+  }
 
-  document.getElementById("anki-back").classList.add("hidden");
-  document
-    .getElementById("anki-reveal-container")
-    .classList.remove("hidden");
+  safeToggle("anki-back", false);
+  safeToggle("anki-reveal-container", true);
 }
 
 /**
@@ -180,10 +205,8 @@ function renderAnkiCard() {
  */
 function revealAnki() {
   if (typeof document === "undefined") return;
-  document
-    .getElementById("anki-reveal-container")
-    .classList.add("hidden");
-  document.getElementById("anki-back").classList.remove("hidden");
+  safeToggle("anki-reveal-container", false);
+  safeToggle("anki-back", true);
 }
 
 /**
@@ -233,11 +256,14 @@ function answerAnki(grade) {
  */
 function finishAnki() {
   if (typeof document === "undefined") return;
-  document.getElementById("anki-active").classList.add("hidden");
-  document.getElementById("anki-results").classList.remove("hidden");
-  document.getElementById("anki-res-hard").textContent = ankiStats.hard;
-  document.getElementById("anki-res-good").textContent = ankiStats.good;
-  document.getElementById("anki-res-easy").textContent = ankiStats.easy;
+  safeToggle("anki-active", false);
+  safeToggle("anki-results", true);
+  const hard = document.getElementById("anki-res-hard");
+  if (hard) hard.textContent = ankiStats.hard;
+  const good = document.getElementById("anki-res-good");
+  if (good) good.textContent = ankiStats.good;
+  const easy = document.getElementById("anki-res-easy");
+  if (easy) easy.textContent = ankiStats.easy;
 }
 
 // Suporte universal (Browser Global / Node CommonJS)

@@ -5,9 +5,9 @@
  */
 
 (function () {
-const _stateModule = (typeof window !== "undefined" && window.AppState) ? window : (typeof require !== "undefined" ? require("./state.js") : {});
-const _evalModule = (typeof window !== "undefined" && window.evaluateAnswer) ? window : (typeof require !== "undefined" ? require("./evaluation.js") : {});
-const _srsModule = (typeof window !== "undefined" && window.recordSRSError) ? window : (typeof require !== "undefined" ? require("./srs.js") : {});
+const _stateModule = (typeof require !== "undefined") ? require("./state.js") : (typeof window !== "undefined" ? window : {});
+const _evalModule = (typeof require !== "undefined") ? require("./evaluation.js") : (typeof window !== "undefined" ? window : {});
+const _srsModule = (typeof require !== "undefined") ? require("./srs.js") : (typeof window !== "undefined" ? window : {});
 
 const AppState = (typeof window !== "undefined" && window.AppState) || _stateModule.AppState;
 const getTerm = (typeof window !== "undefined" && window.getTerm) || _stateModule.getTerm;
@@ -20,6 +20,18 @@ let survLives = 3;
 let survStreak = 0;
 let survQueue = [];
 let survCurrent = null;
+
+function safeToggle(id, isVisible) {
+  if (typeof document === "undefined") return null;
+  const el = document.getElementById(id);
+  if (!el) return null;
+  if (isVisible) {
+    el.classList.remove("hidden");
+  } else {
+    el.classList.add("hidden");
+  }
+  return el;
+}
 
 /**
  * Inicia o desafio de sobrevivência com vocabulário cumulativo até o capítulo ativo
@@ -60,9 +72,9 @@ function startSurvival() {
   survStreak = 0;
 
   if (typeof document !== "undefined") {
-    document.getElementById("assess-dashboard").classList.add("hidden");
-    document.getElementById("survival-active").classList.remove("hidden");
-    document.getElementById("surv-correction-box").classList.add("hidden");
+    safeToggle("assess-dashboard", false);
+    safeToggle("survival-active", true);
+    safeToggle("surv-correction-box", false);
   }
 
   updateSurvivalUI();
@@ -114,11 +126,16 @@ function nextSurvivalQuestion() {
   const hebPrompt = document.getElementById("survival-hebrew");
   const input = document.getElementById("survival-input");
 
-  if (hebPrompt) hebPrompt.textContent = getTerm(survCurrent);
+  if (hebPrompt) {
+    hebPrompt.textContent = getTerm(survCurrent);
+    hebPrompt.className = `${AppState.language === "hebrew" ? "hebrew-text" : "greek-text"} text-5xl md:text-7xl font-bold text-white tracking-wide`;
+  }
   if (input) {
     input.value = "";
     input.disabled = false;
-    setTimeout(() => input.focus(), 50);
+    setTimeout(() => {
+      if (input && typeof input.focus === "function") input.focus();
+    }, 50);
   }
 }
 
@@ -160,13 +177,11 @@ function submitSurvivalAnswer() {
     updateSurvivalUI();
     recordSRSError(getTerm(survCurrent));
 
-    document.getElementById("surv-last-heb").textContent =
-      getTerm(survCurrent);
-    document.getElementById("surv-last-cor").textContent =
-      survCurrent.translations.join(" / ");
-    document
-      .getElementById("surv-correction-box")
-      .classList.remove("hidden");
+    const lastHeb = document.getElementById("surv-last-heb");
+    if (lastHeb) lastHeb.textContent = getTerm(survCurrent);
+    const lastCor = document.getElementById("surv-last-cor");
+    if (lastCor) lastCor.textContent = survCurrent.translations.join(" / ");
+    safeToggle("surv-correction-box", true);
 
     if (flash) {
       flash.className =
@@ -192,10 +207,10 @@ function submitSurvivalAnswer() {
  */
 function finishSurvival(surrendered = false) {
   if (typeof document === "undefined") return;
-  document.getElementById("survival-active").classList.add("hidden");
-  document.getElementById("survival-results").classList.remove("hidden");
+  safeToggle("survival-active", false);
+  safeToggle("survival-results", true);
 
-  if (survStreak > AppState.survivalHighScore) {
+  if (survStreak > (AppState.survivalHighScore || 0)) {
     AppState.survivalHighScore = survStreak;
     if (typeof localStorage !== "undefined") {
       localStorage.setItem(
@@ -205,14 +220,13 @@ function finishSurvival(surrendered = false) {
     }
   }
 
-  document.getElementById("surv-res-streak").textContent = survStreak;
-  document.getElementById("surv-res-high").textContent =
-    AppState.survivalHighScore;
+  const resStreak = document.getElementById("surv-res-streak");
+  if (resStreak) resStreak.textContent = survStreak;
+  const resHigh = document.getElementById("surv-res-high");
+  if (resHigh) resHigh.textContent = AppState.survivalHighScore || 0;
 
   if (surrendered) {
-    document
-      .getElementById("surv-correction-box")
-      .classList.add("hidden");
+    safeToggle("surv-correction-box", false);
   }
 }
 

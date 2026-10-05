@@ -5,9 +5,9 @@
  */
 
 (function () {
-const _stateModule = (typeof window !== "undefined" && window.AppState) ? window : (typeof require !== "undefined" ? require("./state.js") : {});
-const _evalModule = (typeof window !== "undefined" && window.evaluateAnswer) ? window : (typeof require !== "undefined" ? require("./evaluation.js") : {});
-const _srsModule = (typeof window !== "undefined" && window.recordSRSError) ? window : (typeof require !== "undefined" ? require("./srs.js") : {});
+const _stateModule = (typeof require !== "undefined") ? require("./state.js") : (typeof window !== "undefined" ? window : {});
+const _evalModule = (typeof require !== "undefined") ? require("./evaluation.js") : (typeof window !== "undefined" ? window : {});
+const _srsModule = (typeof require !== "undefined") ? require("./srs.js") : (typeof window !== "undefined" ? window : {});
 
 const AppState = (typeof window !== "undefined" && window.AppState) || _stateModule.AppState;
 const SimConfig = (typeof window !== "undefined" && window.SimConfig) || _stateModule.SimConfig;
@@ -24,20 +24,35 @@ let assessAnswersMap = {};
 let assessTimerInterval = null;
 let assessTimeCount = 0;
 
+function safeToggle(id, isVisible) {
+  if (typeof document === "undefined") return null;
+  const el = document.getElementById(id);
+  if (!el) return null;
+  if (isVisible) {
+    el.classList.remove("hidden");
+  } else {
+    el.classList.add("hidden");
+  }
+  return el;
+}
+
 /**
  * Restaura o painel inicial do simulado
  */
 function resetToDashboard() {
   if (typeof document === "undefined") return;
-  if (assessTimerInterval) clearInterval(assessTimerInterval);
-  document.getElementById("assess-dashboard").classList.remove("hidden");
-  document.getElementById("assess-config").classList.add("hidden");
-  document.getElementById("assessment-active").classList.add("hidden");
-  document.getElementById("assessment-results").classList.add("hidden");
-  document.getElementById("anki-active").classList.add("hidden");
-  document.getElementById("anki-results").classList.add("hidden");
-  document.getElementById("survival-active").classList.add("hidden");
-  document.getElementById("survival-results").classList.add("hidden");
+  if (assessTimerInterval) {
+    clearInterval(assessTimerInterval);
+    assessTimerInterval = null;
+  }
+  safeToggle("assess-dashboard", true);
+  safeToggle("assess-config", false);
+  safeToggle("assessment-active", false);
+  safeToggle("assessment-results", false);
+  safeToggle("anki-active", false);
+  safeToggle("anki-results", false);
+  safeToggle("survival-active", false);
+  safeToggle("survival-results", false);
 }
 
 /**
@@ -64,9 +79,12 @@ function openSimuladoConfig() {
     activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length;
   const isAlphaActive = activeIdx === 0 || isAlphabetChapter(AppState.currentChapter);
 
-  document.getElementById("sim-scope-info").textContent = isAlphaActive
-    ? `Questões da Lição 1 (${AppState.currentChapter.title}).`
-    : `Questões acumuladas (sem alfabeto) até a Lição ${cumulativeCount} (${AppState.currentChapter.title}).`;
+  const scopeInfo = document.getElementById("sim-scope-info");
+  if (scopeInfo) {
+    scopeInfo.textContent = isAlphaActive
+      ? `Questões da Lição 1 (${AppState.currentChapter?.title || ""}).`
+      : `Questões acumuladas (sem alfabeto) até a Lição ${cumulativeCount} (${AppState.currentChapter?.title || ""}).`;
+  }
 
   const hasSentences = cumulativeChapters.some((c) => (c.sentences || []).length > 0);
   const btnSentences = document.getElementById("cfg-focus-sentences");
@@ -81,8 +99,8 @@ function openSimuladoConfig() {
     }
   }
 
-  document.getElementById("assess-dashboard").classList.add("hidden");
-  document.getElementById("assess-config").classList.remove("hidden");
+  safeToggle("assess-dashboard", false);
+  safeToggle("assess-config", true);
 }
 
 /**
@@ -251,10 +269,12 @@ function startSimulado() {
   }
 
   if (typeof document !== "undefined") {
-    document.getElementById("assess-config").classList.add("hidden");
-    document.getElementById("assessment-active").classList.remove("hidden");
-    document.getElementById("assessment-timer-icon").textContent =
-      SimConfig.time > 0 ? "⏳" : "⏱️";
+    safeToggle("assess-config", false);
+    safeToggle("assessment-active", true);
+    const timerIcon = document.getElementById("assessment-timer-icon");
+    if (timerIcon) {
+      timerIcon.textContent = SimConfig.time > 0 ? "⏳" : "⏱️";
+    }
   }
 
   assessTimeCount = SimConfig.time > 0 ? SimConfig.time * 60 : 0;
@@ -276,6 +296,7 @@ function startAssessmentTimer() {
       assessTimeCount--;
       if (assessTimeCount <= 0) {
         clearInterval(assessTimerInterval);
+        assessTimerInterval = null;
         alert("O tempo do simulado expirou!");
         finishAssessment();
         return;
@@ -287,10 +308,11 @@ function startAssessmentTimer() {
     if (typeof document !== "undefined") {
       const timerEl = document.getElementById("assessment-timer");
       if (timerEl) {
-        const mins = Math.floor(assessTimeCount / 60)
+        const safeCount = Math.max(0, assessTimeCount);
+        const mins = Math.floor(safeCount / 60)
           .toString()
           .padStart(2, "0");
-        const secs = (assessTimeCount % 60).toString().padStart(2, "0");
+        const secs = (safeCount % 60).toString().padStart(2, "0");
         timerEl.textContent = `${mins}:${secs}`;
       }
     }
@@ -315,32 +337,47 @@ function saveCurrentInputDraft() {
 function renderAssessmentQuestion() {
   if (assessQuestions.length === 0 || typeof document === "undefined") return;
   const q = assessQuestions[assessIndex];
+  if (!q) return;
 
-  document.getElementById("assessment-counter").textContent =
-    `Questão ${assessIndex + 1} de ${assessQuestions.length}`;
-  document.getElementById("assessment-type-tag").textContent =
-    q.kind === "word" ? "Palavra" : "Frase";
+  const counter = document.getElementById("assessment-counter");
+  if (counter) {
+    counter.textContent = `Questão ${assessIndex + 1} de ${assessQuestions.length}`;
+  }
+  const typeTag = document.getElementById("assessment-type-tag");
+  if (typeTag) {
+    typeTag.textContent = q.kind === "word" ? "Palavra" : "Frase";
+  }
 
   const promptEl = document.getElementById("assess-hebrew");
-  promptEl.textContent = getTerm(q);
-  promptEl.className = `${AppState.language === "hebrew" ? "hebrew-text" : "greek-text"} text-4xl md:text-6xl font-bold text-white tracking-wide`;
+  if (promptEl) {
+    promptEl.textContent = getTerm(q);
+    promptEl.className = `${AppState.language === "hebrew" ? "hebrew-text" : "greek-text"} text-4xl md:text-6xl font-bold text-white tracking-wide`;
+  }
 
   const input = document.getElementById("assess-user-input");
-  input.value = assessAnswersMap[assessIndex] || "";
-  setTimeout(() => input.focus(), 50);
+  if (input) {
+    input.value = assessAnswersMap[assessIndex] || "";
+    setTimeout(() => {
+      if (input && typeof input.focus === "function") input.focus();
+    }, 50);
+  }
 
   const prevBtn = document.getElementById("assess-btn-prev");
-  prevBtn.disabled = assessIndex === 0;
-  prevBtn.className =
-    assessIndex === 0
-      ? "text-xs font-medium text-slate-600 px-4 py-2 cursor-not-allowed"
-      : "text-xs font-medium text-slate-400 hover:text-slate-100 px-4 py-2 transition";
+  if (prevBtn) {
+    prevBtn.disabled = assessIndex === 0;
+    prevBtn.className =
+      assessIndex === 0
+        ? "text-xs font-medium text-slate-600 px-4 py-2 cursor-not-allowed"
+        : "text-xs font-medium text-slate-400 hover:text-slate-100 px-4 py-2 transition";
+  }
 
   const actionContainer = document.getElementById("assess-action-container");
-  if (assessIndex === assessQuestions.length - 1) {
-    actionContainer.innerHTML = `<button type="button" onclick="confirmFinishAssessmentPrompt()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl transition shadow-lg shadow-emerald-600/30">🏁 Submeter Prova</button>`;
-  } else {
-    actionContainer.innerHTML = `<button type="button" onclick="navigateAssessment(1)" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm rounded-xl transition shadow-lg shadow-brand-600/30">Próxima ➔</button>`;
+  if (actionContainer) {
+    if (assessIndex === assessQuestions.length - 1) {
+      actionContainer.innerHTML = `<button type="button" onclick="confirmFinishAssessmentPrompt()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl transition shadow-lg shadow-emerald-600/30">🏁 Submeter Prova</button>`;
+    } else {
+      actionContainer.innerHTML = `<button type="button" onclick="navigateAssessment(1)" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm rounded-xl transition shadow-lg shadow-brand-600/30">Próxima ➔</button>`;
+    }
   }
 
   updateAllTrackerPills();
@@ -439,9 +476,12 @@ function confirmFinishAssessmentPrompt() {
  */
 function finishAssessment() {
   if (typeof document === "undefined") return;
-  if (assessTimerInterval) clearInterval(assessTimerInterval);
-  document.getElementById("assessment-active").classList.add("hidden");
-  document.getElementById("assessment-results").classList.remove("hidden");
+  if (assessTimerInterval) {
+    clearInterval(assessTimerInterval);
+    assessTimerInterval = null;
+  }
+  safeToggle("assessment-active", false);
+  safeToggle("assessment-results", true);
 
   const evaluated = assessQuestions.map((q, idx) => {
     const rawVal = (assessAnswersMap[idx] || "").trim();
@@ -460,20 +500,25 @@ function finishAssessment() {
 
   let timeSecs = 0;
   if (SimConfig.time > 0) {
-    timeSecs = SimConfig.time * 60 - assessTimeCount;
+    timeSecs = Math.max(0, SimConfig.time * 60 - assessTimeCount);
   } else {
-    timeSecs = assessTimeCount;
+    timeSecs = Math.max(0, assessTimeCount);
   }
 
-  document.getElementById("res-grade").textContent =
-    `${totalQ > 0 ? Math.round((correctQ / totalQ) * 100) : 0}%`;
-  document.getElementById("res-correct").textContent =
-    `${correctQ} / ${totalQ}`;
-  document.getElementById("res-time").textContent = `${Math.floor(
-    timeSecs / 60,
-  )
-    .toString()
-    .padStart(2, "0")}:${(timeSecs % 60).toString().padStart(2, "0")}`;
+  const resGrade = document.getElementById("res-grade");
+  if (resGrade) {
+    resGrade.textContent = `${totalQ > 0 ? Math.round((correctQ / totalQ) * 100) : 0}%`;
+  }
+  const resCorrect = document.getElementById("res-correct");
+  if (resCorrect) {
+    resCorrect.textContent = `${correctQ} / ${totalQ}`;
+  }
+  const resTime = document.getElementById("res-time");
+  if (resTime) {
+    resTime.textContent = `${Math.floor(timeSecs / 60)
+      .toString()
+      .padStart(2, "0")}:${(timeSecs % 60).toString().padStart(2, "0")}`;
+  }
 
   const chapterErrors = {};
   evaluated.forEach((ans) => {
@@ -494,72 +539,94 @@ function finishAssessment() {
   });
 
   const diagList = document.getElementById("diagnostic-list");
-  diagList.innerHTML = "";
-  Object.values(chapterErrors)
-    .sort((a, b) => b.errors / b.total - a.errors / a.total)
-    .forEach((ch) => {
-      const rate = Math.round((ch.errors / ch.total) * 100);
-      const badge =
-        rate > 50
-          ? "bg-rose-950/60 text-rose-400 border-rose-800/60"
-          : rate > 20
-            ? "bg-amber-950/60 text-amber-400 border-amber-800/60"
-            : "bg-emerald-950/60 text-emerald-400 border-emerald-800/60";
-      const status =
-        rate > 50
-          ? "Revisão Urgente"
-          : rate > 20
-            ? "Revisão Recomendada"
-            : "Excelente";
+  if (diagList) {
+    diagList.innerHTML = "";
+    Object.values(chapterErrors)
+      .sort((a, b) => b.errors / b.total - a.errors / a.total)
+      .forEach((ch) => {
+        const rate = Math.round((ch.errors / ch.total) * 100);
+        const badge =
+          rate > 50
+            ? "bg-rose-950/60 text-rose-400 border-rose-800/60"
+            : rate > 20
+              ? "bg-amber-950/60 text-amber-400 border-amber-800/60"
+              : "bg-emerald-950/60 text-emerald-400 border-emerald-800/60";
+        const status =
+          rate > 50
+            ? "Revisão Urgente"
+            : rate > 20
+              ? "Revisão Recomendada"
+              : "Excelente";
 
-      const div = document.createElement("div");
-      div.className =
-        "flex items-center justify-between p-4 rounded-2xl border border-slate-800 bg-slate-950/50 text-xs";
-      div.innerHTML = `<div><div class="font-semibold text-white text-sm">${escapeHTML(ch.title)}</div><div class="text-slate-400 mt-0.5">${ch.errors} erro(s) em ${ch.total} questão(ões)</div></div><span class="px-3 py-1 rounded-full font-medium border ${badge}">${status} (${rate}%)</span>`;
-      diagList.appendChild(div);
-    });
+        const div = document.createElement("div");
+        div.className =
+          "flex items-center justify-between p-4 rounded-2xl border border-slate-800 bg-slate-950/50 text-xs";
+        div.innerHTML = `<div><div class="font-semibold text-white text-sm">${escapeHTML(ch.title)}</div><div class="text-slate-400 mt-0.5">${ch.errors} erro(s) em ${ch.total} questão(ões)</div></div><span class="px-3 py-1 rounded-full font-medium border ${badge}">${status} (${rate}%)</span>`;
+        diagList.appendChild(div);
+      });
+  }
 
   const correctionList = document.getElementById("correction-list");
-  correctionList.innerHTML = "";
-  const textClass =
-    AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
+  if (correctionList) {
+    correctionList.innerHTML = "";
+    const textClass =
+      AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
 
-  evaluated.forEach((ans, idx) => {
-    const st = ans.evalResult.status;
+    evaluated.forEach((ans, idx) => {
+      const st = ans.evalResult.status;
 
-    let boxColors = "bg-emerald-950/20 border-emerald-800/40";
-    let badgeTag = `<span class="px-2.5 py-0.5 rounded-full font-bold bg-emerald-900/60 text-emerald-300">Correto ✓</span>`;
-    let userTextCol = "text-emerald-400";
+      let boxColors = "bg-emerald-950/20 border-emerald-800/40";
+      let badgeTag = `<span class="px-2.5 py-0.5 rounded-full font-bold bg-emerald-900/60 text-emerald-300">Correto ✓</span>`;
+      let userTextCol = "text-emerald-400";
 
-    if (st === "incorrect") {
-      boxColors = "bg-rose-950/20 border-rose-800/40";
-      badgeTag = `<span class="px-2.5 py-0.5 rounded-full font-bold bg-rose-900/60 text-rose-300">Incorreto ✗</span>`;
-      userTextCol = "text-rose-400";
-    } else if (st === "typo") {
-      boxColors = "bg-amber-950/20 border-amber-800/40";
-      badgeTag = `<span class="px-2.5 py-0.5 rounded-full font-bold bg-amber-900/60 text-amber-300">Atenção ⚠️</span>`;
-      userTextCol = "text-amber-400";
+      if (st === "incorrect") {
+        boxColors = "bg-rose-950/20 border-rose-800/40";
+        badgeTag = `<span class="px-2.5 py-0.5 rounded-full font-bold bg-rose-900/60 text-rose-300">Incorreto ✗</span>`;
+        userTextCol = "text-rose-400";
+      } else if (st === "typo") {
+        boxColors = "bg-amber-950/20 border-amber-800/40";
+        badgeTag = `<span class="px-2.5 py-0.5 rounded-full font-bold bg-amber-900/60 text-amber-300">Atenção ⚠️</span>`;
+        userTextCol = "text-amber-400";
+      }
+
+      const box = document.createElement("div");
+      box.className = `p-4 rounded-2xl border ${boxColors} space-y-2 text-xs`;
+      box.innerHTML = `
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-slate-400 font-semibold">Questão ${idx + 1} (${ans.question.kind === "word" ? "Palavra" : "Frase"})</span>
+                ${badgeTag}
+              </div>
+              <div class="${textClass} text-2xl text-white font-bold py-1">${escapeHTML(getTerm(ans.question))}</div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1 border-t border-slate-800/60">
+                <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
+                  <span class="text-slate-500 block text-[10px] uppercase font-semibold">Sua Resposta:</span>
+                  <span class="${userTextCol} font-medium">${escapeHTML(ans.userAnswer)}</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
+                  <span class="text-slate-500 block text-[10px] uppercase font-semibold">Tradução Esperada:</span>
+                  <span class="text-emerald-400 font-medium">${escapeHTML(ans.evalResult.expected || ans.question.translations.join(" / "))}</span>
+                </div>
+              </div>`;
+      correctionList.appendChild(box);
+    });
+  }
+}
+
+// Interceptador da tecla ENTER no input de Simulado
+if (typeof document !== "undefined" && typeof document.addEventListener === "function") {
+  document.addEventListener("keydown", (e) => {
+    const act = document.getElementById("assessment-active");
+    if (act && !act.classList.contains("hidden") && e.key === "Enter") {
+      const input = document.getElementById("assess-user-input");
+      if (document.activeElement === input) {
+        e.preventDefault();
+        if (assessIndex === assessQuestions.length - 1) {
+          confirmFinishAssessmentPrompt();
+        } else {
+          navigateAssessment(1);
+        }
+      }
     }
-
-    const box = document.createElement("div");
-    box.className = `p-4 rounded-2xl border ${boxColors} space-y-2 text-xs`;
-    box.innerHTML = `
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-slate-400 font-semibold">Questão ${idx + 1} (${ans.question.kind === "word" ? "Palavra" : "Frase"})</span>
-              ${badgeTag}
-            </div>
-            <div class="${textClass} text-2xl text-white font-bold py-1">${escapeHTML(getTerm(ans.question))}</div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1 border-t border-slate-800/60">
-              <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
-                <span class="text-slate-500 block text-[10px] uppercase font-semibold">Sua Resposta:</span>
-                <span class="${userTextCol} font-medium">${escapeHTML(ans.userAnswer)}</span>
-              </div>
-              <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
-                <span class="text-slate-500 block text-[10px] uppercase font-semibold">Tradução Esperada:</span>
-                <span class="text-emerald-400 font-medium">${escapeHTML(ans.evalResult.expected || ans.question.translations.join(" / "))}</span>
-              </div>
-            </div>`;
-    correctionList.appendChild(box);
   });
 }
 

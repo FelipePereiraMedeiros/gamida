@@ -195,8 +195,13 @@ function switchTab(tabName) {
   AppState.currentTab = tabName;
 
   if (tabName !== "assessment") {
-    if (assessTimerInterval) clearInterval(assessTimerInterval);
-    resetToDashboard();
+    if (typeof resetToDashboard === "function") {
+      try {
+        resetToDashboard();
+      } catch (e) {
+        console.warn("Aviso ao resetar dashboard de avaliação:", e);
+      }
+    }
   }
 
   const tabs = ["practice", "assessment", "vocab", "manage", "paradigms"];
@@ -215,11 +220,15 @@ function switchTab(tabName) {
       }
     }
   });
-  if (tabName === "vocab") renderVocabTable();
-  if (tabName === "practice") updatePracticeChapterView();
+  if (tabName === "vocab" && typeof renderVocabTable === "function") renderVocabTable();
+  if (tabName === "practice" && typeof updatePracticeChapterView === "function") updatePracticeChapterView();
+  if (tabName === "paradigms") {
+    if (typeof updateParadigmsVisibility === "function") updateParadigmsVisibility();
+    if (typeof renderParadigmSkeleton === "function") renderParadigmSkeleton();
+  }
 
   // No mobile, retrai o menu para foco total na lição
-  if (window.innerWidth < 768 && typeof toggleMobileMenu === "function") {
+  if (typeof window !== "undefined" && window.innerWidth < 768 && typeof toggleMobileMenu === "function") {
     toggleMobileMenu(false);
   }
 }
@@ -310,32 +319,30 @@ function changeGlobalChapter(chapterId) {
       found.id,
     );
 
-    // Melhoria do Cursor: Interrompe sessões que pertencem ao capítulo anterior.
-    if (assessTimerInterval) clearInterval(assessTimerInterval);
-    assessQuestions = [];
-    assessIndex = 0;
-    assessAnswersMap = {};
-    ankiQueue = [];
-    ankiCurrentCard = null;
-    survQueue = [];
-    survCurrent = null;
-    resetToDashboard();
+    // Interrompe sessões que pertencem ao capítulo anterior.
+    if (typeof resetToDashboard === "function") {
+      try {
+        resetToDashboard();
+      } catch (e) {
+        console.warn("Aviso ao resetar sessões anteriores:", e);
+      }
+    }
 
     // 1. Atualiza Praticar
     AppState.currentQuestionIndex = 0;
     AppState.currentQuestion = null;
-    resetStats();
-    updatePracticeChapterView();
-    updatePracticeCategoryFilterUI();
-    buildPracticeQueue();
-    renderCurrentQuestion();
+    if (typeof resetStats === "function") resetStats();
+    if (typeof updatePracticeChapterView === "function") updatePracticeChapterView();
+    if (typeof updatePracticeCategoryFilterUI === "function") updatePracticeCategoryFilterUI();
+    if (typeof buildPracticeQueue === "function") buildPracticeQueue();
+    if (typeof renderCurrentQuestion === "function") renderCurrentQuestion();
 
     // 2. Atualiza Dicionário
     lastRenderedVocabChapter = null;
-    renderVocabTable();
+    if (typeof renderVocabTable === "function") renderVocabTable();
 
     // 3. Atualiza Paradigmas
-    updateParadigmsVisibility();
+    if (typeof updateParadigmsVisibility === "function") updateParadigmsVisibility();
     const parSelect = document.getElementById("paradigm-select");
     if (parSelect) {
       parSelect.innerHTML =
@@ -349,7 +356,7 @@ function changeGlobalChapter(chapterId) {
         });
       }
     }
-    resetParadigmBoard();
+    if (typeof resetParadigmBoard === "function") resetParadigmBoard();
   }
 }
 
