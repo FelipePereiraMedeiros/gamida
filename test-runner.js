@@ -23,6 +23,7 @@ const modules = [
   { id: 10, name: 'Menu Mobile & Carrossel de Abas', file: './tests/10-mobile-carousel.test.js' },
   { id: 11, name: 'Apoio ("Pague-me um café!" & PIX)', file: './tests/11-coffee-pix.test.js' },
   { id: 12, name: 'Motor Gamificado do Alfabeto', file: './tests/12-alphabet-engine.test.js' },
+  { id: 13, name: 'Integridade Geral do Sistema (E2E & Contrato DOM)', file: './tests/13-system-integrity.test.js' },
 ];
 
 async function run() {

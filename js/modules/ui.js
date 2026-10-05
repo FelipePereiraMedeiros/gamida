@@ -13,6 +13,21 @@
  */
 
 (function () {
+const _stateModule =
+  typeof require !== "undefined"
+    ? require("./state.js")
+    : typeof window !== "undefined"
+      ? window
+      : {};
+const AppState =
+  (typeof window !== "undefined" && window.AppState) || _stateModule.AppState;
+const getTerm =
+  (typeof window !== "undefined" && window.getTerm) || _stateModule.getTerm;
+const escapeHTML =
+  (typeof window !== "undefined" && window.escapeHTML) ||
+  _stateModule.escapeHTML ||
+  ((s) => String(s ?? ""));
+
 /* ================= MOBILE MENU RETRACT / REVEAL ================= */
 let isMobileMenuExpanded = false;
 
@@ -310,6 +325,7 @@ function changeGlobalChapter(chapterId) {
   const found = AppState.chapters.find((c) => c.id === chapterId);
   if (found) {
     AppState.currentChapter = found;
+    AppState.activeChapterId = found.id;
 
     const btnText = document.getElementById("chapter-dropdown-text");
     if (btnText) {
@@ -633,6 +649,78 @@ function filterVocabTable() {
   });
 }
 
+function applyLanguageUI() {
+  if (typeof document === "undefined") return;
+  const logo = document.getElementById("app-logo-btn");
+  const subtitle = document.getElementById("app-subtitle");
+  const footnoteEl = document.getElementById("app-grammar-footnote");
+
+  const textElements = [
+    document.getElementById("hebrew-prompt"),
+    document.getElementById("alphabet-target-glyph"),
+    document.getElementById("assess-hebrew"),
+    document.getElementById("anki-hebrew"),
+    document.getElementById("survival-hebrew"),
+    document.getElementById("surv-last-heb"),
+  ];
+
+  if (AppState.language === "hebrew") {
+    if (logo) {
+      logo.textContent = "א";
+      logo.className =
+        "w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300";
+    }
+    if (subtitle) subtitle.textContent = "Treinador de Hebraico Autônomo";
+
+    if (footnoteEl) {
+      footnoteEl.innerHTML =
+        'Este sistema é uma ferramenta complementar de estudo e prática que segue a <strong class="text-white font-semibold">"Gramática do Hebraico Bíblico"</strong> de <strong class="text-white font-semibold">Page H. Kelley</strong> (Editora Sinodal)';
+    }
+
+    textElements.forEach((el) => {
+      if (el) {
+        el.classList.remove("greek-text");
+        el.classList.add("hebrew-text");
+      }
+    });
+  } else {
+    if (logo) {
+      logo.textContent = "α";
+      logo.className =
+        "w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-rose-500 flex items-center justify-center shadow-lg shadow-amber-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300";
+    }
+    if (subtitle) subtitle.textContent = "Treinador de Grego Koiné Autônomo";
+
+    if (footnoteEl) {
+      footnoteEl.innerHTML =
+        'Este sistema é uma ferramenta complementar de estudo e prática que segue a <strong class="text-white font-semibold">"Gramática do Grego do Novo Testamento"</strong> de <strong class="text-white font-semibold">Johannes Bergmann</strong> (Editora Thomas Nelson Brasil)';
+    }
+
+    textElements.forEach((el) => {
+      if (el) {
+        el.classList.remove("hebrew-text");
+        el.classList.add("greek-text");
+      }
+    });
+  }
+}
+
+function toggleLanguage() {
+  AppState.language = AppState.language === "hebrew" ? "greek" : "hebrew";
+  if (typeof localStorage !== "undefined") {
+    localStorage.setItem("gamida_language", AppState.language);
+  }
+  if (typeof resetStats === "function") resetStats();
+  AppState.practiceCategory = "all";
+  AppState.isPracticeCumulative = false;
+  lastRenderedVocabChapter = null;
+  applyLanguageUI();
+  if (typeof setupGlobalChapterDropdown === "function") {
+    setupGlobalChapterDropdown();
+  }
+  return AppState.language;
+}
+
 /* ================= COMPATIBILIDADE GLOBAL ================= */
 if (typeof window !== "undefined") {
   window.isMobileMenuExpanded = isMobileMenuExpanded;
@@ -652,6 +740,8 @@ if (typeof window !== "undefined") {
   window.updateVocabCategoryFilterUI = updateVocabCategoryFilterUI;
   window.renderVocabTable = renderVocabTable;
   window.filterVocabTable = filterVocabTable;
+  window.applyLanguageUI = applyLanguageUI;
+  window.toggleLanguage = toggleLanguage;
   window.UIModule = {
     isMobileMenuExpanded,
     toggleMobileMenu,
@@ -670,6 +760,8 @@ if (typeof window !== "undefined") {
     updateVocabCategoryFilterUI,
     renderVocabTable,
     filterVocabTable,
+    applyLanguageUI,
+    toggleLanguage,
   };
 }
 
@@ -692,6 +784,8 @@ if (typeof module !== "undefined" && module.exports) {
     updateVocabCategoryFilterUI,
     renderVocabTable,
     filterVocabTable,
+    applyLanguageUI,
+    toggleLanguage,
   };
 }
 })();

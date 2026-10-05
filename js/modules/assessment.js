@@ -55,15 +55,28 @@ function resetToDashboard() {
   safeToggle("survival-results", false);
 }
 
+function safeAlert(msg) {
+  if (typeof window !== "undefined" && typeof window.alert === "function") {
+    window.alert(msg);
+  } else if (typeof alert === "function") {
+    alert(msg);
+  } else {
+    console.warn("[Gamida Alert]:", msg);
+  }
+}
+
 /**
  * Abre o modal de configuração de parâmetros do simulado
  */
 function openSimuladoConfig() {
   if (typeof document === "undefined") return;
-  const activeChapterId = AppState.currentChapter?.id;
+  const activeChapterId = AppState.currentChapter?.id || AppState.activeChapterId;
   if (!activeChapterId) {
-    alert("Nenhum capítulo ativo para gerar o simulado.");
+    safeAlert("Nenhum capítulo ativo para gerar o simulado.");
     return;
+  }
+  if (!AppState.currentChapter && activeChapterId && Array.isArray(AppState.chapters)) {
+    AppState.currentChapter = AppState.chapters.find((c) => c.id === activeChapterId) || null;
   }
   const activeIdx = AppState.chapters.findIndex(
     (c) => c.id === activeChapterId,
@@ -137,10 +150,13 @@ function setSimConfig(type, value) {
  * Inicia o simulado cumulativo selecionando e equilibrando o banco de questões
  */
 function startSimulado() {
-  const activeChapterId = AppState.currentChapter?.id;
+  const activeChapterId = AppState.currentChapter?.id || AppState.activeChapterId;
   if (!activeChapterId) {
-    alert("Não há capítulos disponíveis para gerar o simulado.");
+    safeAlert("Não há capítulos disponíveis para gerar o simulado.");
     return;
+  }
+  if (!AppState.currentChapter && activeChapterId && Array.isArray(AppState.chapters)) {
+    AppState.currentChapter = AppState.chapters.find((c) => c.id === activeChapterId) || null;
   }
   const activeIdx = AppState.chapters.findIndex(
     (c) => c.id === activeChapterId,
@@ -264,7 +280,7 @@ function startSimulado() {
   assessAnswersMap = {};
 
   if (assessQuestions.length === 0) {
-    alert("Não há conteúdo suficiente neste capítulo para gerar o simulado.");
+    safeAlert("Não há conteúdo suficiente neste capítulo para gerar o simulado.");
     return;
   }
 
@@ -297,7 +313,7 @@ function startAssessmentTimer() {
       if (assessTimeCount <= 0) {
         clearInterval(assessTimerInterval);
         assessTimerInterval = null;
-        alert("O tempo do simulado expirou!");
+        safeAlert("O tempo do simulado expirou!");
         finishAssessment();
         return;
       }
@@ -663,6 +679,9 @@ if (typeof window !== "undefined") {
     updateTrackerPillState,
     confirmFinishAssessmentPrompt,
     finishAssessment,
+    getAssessQuestions: () => assessQuestions,
+    getAssessIndex: () => assessIndex,
+    getAssessAnswersMap: () => assessAnswersMap,
   };
 }
 if (typeof module !== "undefined" && module.exports) {
@@ -682,6 +701,9 @@ if (typeof module !== "undefined" && module.exports) {
     updateTrackerPillState,
     confirmFinishAssessmentPrompt,
     finishAssessment,
+    getAssessQuestions: () => assessQuestions,
+    getAssessIndex: () => assessIndex,
+    getAssessAnswersMap: () => assessAnswersMap,
   };
 }
 })();

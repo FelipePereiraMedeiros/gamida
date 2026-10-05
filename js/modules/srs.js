@@ -77,6 +77,16 @@ function safeToggle(id, isVisible) {
   return el;
 }
 
+function safeAlert(msg) {
+  if (typeof window !== "undefined" && typeof window.alert === "function") {
+    window.alert(msg);
+  } else if (typeof alert === "function") {
+    alert(msg);
+  } else {
+    console.warn("[Gamida Alert]:", msg);
+  }
+}
+
 /**
  * Inicia a sessão de revisão de Flashcards (Anki)
  */
@@ -85,10 +95,13 @@ function startAnki() {
   let dueCards = [];
   let newCards = [];
 
-  const activeChapterId = AppState.currentChapter?.id;
+  const activeChapterId = AppState.currentChapter?.id || AppState.activeChapterId;
   if (!activeChapterId) {
-    alert("Não há capítulos disponíveis para iniciar a revisão.");
+    safeAlert("Não há capítulos disponíveis para iniciar a revisão.");
     return;
+  }
+  if (!AppState.currentChapter && activeChapterId && Array.isArray(AppState.chapters)) {
+    AppState.currentChapter = AppState.chapters.find((c) => c.id === activeChapterId) || null;
   }
 
   AppState.chapters.forEach((chap) => {
@@ -121,7 +134,7 @@ function startAnki() {
   ankiQueue = [...dueCards.slice(0, 20), ...newCards.slice(0, 10)];
 
   if (ankiQueue.length === 0) {
-    alert(
+    safeAlert(
       "🎉 Você não tem revisões pendentes nem palavras novas neste capítulo no momento. Excelente trabalho!",
     );
     return;
@@ -285,6 +298,9 @@ if (typeof window !== "undefined") {
     revealAnki,
     answerAnki,
     finishAnki,
+    getAnkiQueue: () => ankiQueue,
+    getAnkiCurrentCard: () => ankiCurrentCard,
+    getAnkiStats: () => ankiStats,
   };
 }
 if (typeof module !== "undefined" && module.exports) {
@@ -297,6 +313,9 @@ if (typeof module !== "undefined" && module.exports) {
     revealAnki,
     answerAnki,
     finishAnki,
+    getAnkiQueue: () => ankiQueue,
+    getAnkiCurrentCard: () => ankiCurrentCard,
+    getAnkiStats: () => ankiStats,
   };
 }
 })();
