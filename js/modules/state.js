@@ -126,14 +126,18 @@ function shuffleArray(arr) {
  */
 function saveChaptersToStorage() {
   if (typeof localStorage === "undefined") return;
-  localStorage.setItem(
-    `gamida_${AppState.language}_chapters`,
-    JSON.stringify(AppState.chapters),
-  );
-  localStorage.setItem(
-    `gamida_data_version_${AppState.language}`,
-    APP_VERSION,
-  );
+  try {
+    localStorage.setItem(
+      `gamida_${AppState.language}_chapters`,
+      JSON.stringify(AppState.chapters),
+    );
+    localStorage.setItem(
+      `gamida_data_version_${AppState.language}`,
+      APP_VERSION,
+    );
+  } catch (err) {
+    console.warn("Aviso ao salvar capítulos no localStorage (cota excedida ou storage inacessível):", err);
+  }
 }
 
 /**
@@ -327,6 +331,24 @@ if (typeof window !== "undefined") {
   window.buildDistractorCache = buildDistractorCache;
   window.resetStats = resetStats;
   window.updateStatsUI = updateStatsUI;
+  window.StateModule = {
+    APP_VERSION,
+    AppState,
+    SimConfig,
+    WORD_CATEGORIES,
+    matchItemCategory,
+    getAvailablePracticeCategories,
+    getAvailableVocabCategories,
+    getTerm,
+    isValidChapter,
+    hasUniqueChapterIds,
+    isAlphabetChapter,
+    shuffleArray,
+    saveChaptersToStorage,
+    buildDistractorCache,
+    resetStats,
+    updateStatsUI,
+  };
 }
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {

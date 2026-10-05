@@ -99,7 +99,7 @@ suite.test('AlphabetGameEngine implementa geração funcional de desafios de ord
   // 4. Desafio de formas
   const shapesHeb = AlphabetGameEngine.generateShapesChallenge("hebrew");
   assert.isTrue(!!shapesHeb, 'Deve gerar desafio de formas');
-  assert.equal(shapesHeb.options.length, 2, 'Deve conter 2 alternativas (Regular vs Sofit)');
+  assert.isTrue(shapesHeb.options.length === 2 || shapesHeb.options.length === 4, 'Deve conter 2 alternativas (Dagesh) ou 4 alternativas (Sofit)');
   assert.isTrue(shapesHeb.options.some(opt => opt.isCorrect), 'Deve conter alternativa correta');
 });
 

@@ -647,6 +647,25 @@ if (typeof window !== "undefined") {
   window.onChipClick = onChipClick;
   window.clearChipSelection = clearChipSelection;
   window.onZoneClick = onZoneClick;
+  window.ParadigmsModule = {
+    updateParadigmsVisibility,
+    renderParadigmSkeleton,
+    renderTableView,
+    renderDiagramView,
+    checkParadigmAnswers,
+    resetParadigmBoard,
+    getStaticDiagramHTML,
+    getStaticParadigmTableHTML,
+    onDragStart,
+    onDragEnd,
+    onDragOver,
+    onDragLeave,
+    onDropToZone,
+    onDropToDeck,
+    onChipClick,
+    clearChipSelection,
+    onZoneClick,
+  };
 }
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {

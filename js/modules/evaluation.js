@@ -151,6 +151,7 @@ if (typeof window !== "undefined") {
   window.normalizeText = normalizeText;
   window.getEditDistance = getEditDistance;
   window.evaluateAnswer = evaluateAnswer;
+  window.EvaluationModule = { escapeHTML, normalizeText, getEditDistance, evaluateAnswer };
 }
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { escapeHTML, normalizeText, getEditDistance, evaluateAnswer };

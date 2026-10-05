@@ -241,7 +241,7 @@ function setupGlobalChapterDropdown() {
       : "px-4 py-3.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white hover:font-bold cursor-pointer transition border-l-4 border-transparent hover:border-brand-500";
 
     if (isAlpha) {
-      li.innerHTML = `<span>${chap.title}</span><span class="text-[10px] bg-indigo-500/30 text-indigo-200 border border-indigo-400/40 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">🔤 Alfabeto</span>`;
+      li.innerHTML = `<span>${escapeHTML(chap.title)}</span><span class="text-[10px] bg-indigo-500/30 text-indigo-200 border border-indigo-400/40 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">🔤 Alfabeto</span>`;
     } else {
       li.textContent = chap.title;
     }
@@ -1075,19 +1075,30 @@ async function resetDefaultChapters() {
 }
 
 function exportChaptersJSON() {
-  const dataStr =
-    "data:text/json;charset=utf-8," +
-    encodeURIComponent(JSON.stringify(AppState.chapters, null, 2));
+  const backupData = {
+    version: APP_VERSION,
+    language: AppState.language,
+    exportedAt: new Date().toISOString(),
+    chapters: AppState.chapters,
+    srs: AppState.srs,
+    survivalHighScore: AppState.survivalHighScore,
+  };
+  const jsonStr = JSON.stringify(backupData, null, 2);
+  const blob = new Blob([jsonStr], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
   const fileName =
     AppState.language === "hebrew"
       ? "gamida_hebraico_capitulos.json"
       : "gamida_grego_capitulos.json";
   const downloadAnchor = document.createElement("a");
-  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("href", url);
   downloadAnchor.setAttribute("download", fileName);
   document.body.appendChild(downloadAnchor);
   downloadAnchor.click();
-  downloadAnchor.remove();
+  setTimeout(() => {
+    downloadAnchor.remove();
+    URL.revokeObjectURL(url);
+  }, 100);
 }
 
 function saveChapterFromJSON() {
@@ -1099,7 +1110,22 @@ function saveChapterFromJSON() {
     return;
   }
   try {
-    const parsed = JSON.parse(jsonText);
+    let parsed = JSON.parse(jsonText);
+
+    // Suporte para backup completo estruturado: { chapters: [...], srs: {...}, survivalHighScore: N }
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed) && Array.isArray(parsed.chapters)) {
+      if (parsed.srs && typeof parsed.srs === "object") {
+        AppState.srs = { ...AppState.srs, ...parsed.srs };
+        saveSRS();
+      }
+      if (typeof parsed.survivalHighScore === "number" && parsed.survivalHighScore > AppState.survivalHighScore) {
+        AppState.survivalHighScore = parsed.survivalHighScore;
+        if (typeof localStorage !== "undefined") {
+          localStorage.setItem(`gamida_${AppState.language}_survival_high`, AppState.survivalHighScore);
+        }
+      }
+      parsed = parsed.chapters;
+    }
 
     // Suporte para importação de backup completo com múltiplos capítulos
     if (Array.isArray(parsed)) {
@@ -1850,7 +1876,7 @@ function finishAssessment() {
       const div = document.createElement("div");
       div.className =
         "flex items-center justify-between p-4 rounded-2xl border border-slate-800 bg-slate-950/50 text-xs";
-      div.innerHTML = `<div><div class="font-semibold text-white text-sm">${ch.title}</div><div class="text-slate-400 mt-0.5">${ch.errors} erro(s) em ${ch.total} questão(ões)</div></div><span class="px-3 py-1 rounded-full font-medium border ${badge}">${status} (${rate}%)</span>`;
+      div.innerHTML = `<div><div class="font-semibold text-white text-sm">${escapeHTML(ch.title)}</div><div class="text-slate-400 mt-0.5">${ch.errors} erro(s) em ${ch.total} questão(ões)</div></div><span class="px-3 py-1 rounded-full font-medium border ${badge}">${status} (${rate}%)</span>`;
       diagList.appendChild(div);
     });
 

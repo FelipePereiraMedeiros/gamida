@@ -156,39 +156,57 @@ const DataLoader = {
     const version = (typeof APP_VERSION !== "undefined" && APP_VERSION) ? APP_VERSION : this.VERSION;
     const stored = localStorage.getItem(`gamida_${language}_chapters`);
     const storedVersion = localStorage.getItem(`gamida_data_version_${language}`);
+    const validatorFn = (typeof isValidChapter === "function") ? isValidChapter : this.isValidChapter;
+    const uniqueFn = (typeof hasUniqueChapterIds === "function") ? hasUniqueChapterIds : this.hasUniqueChapterIds;
 
-    if (stored && storedVersion === version) {
+    let parsedStored = null;
+    if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        const validatorFn = (typeof isValidChapter === "function") ? isValidChapter : this.isValidChapter;
-        const uniqueFn = (typeof hasUniqueChapterIds === "function") ? hasUniqueChapterIds : this.hasUniqueChapterIds;
         if (
           Array.isArray(parsed) &&
           uniqueFn(parsed) &&
           parsed.every(validatorFn) &&
           this.hasAlphabetChapter(parsed, language)
         ) {
-          return parsed;
+          parsedStored = parsed;
         }
       } catch (e) {
-        console.warn("Dados corrompidos ou desatualizados no localStorage. Recarregando padrão do arquivo JSON...", e);
+        console.warn("Dados corrompidos no localStorage. Recarregando padrão...", e);
       }
     }
 
-    // Carrega dados padrão atualizados
+    if (parsedStored && storedVersion === version) {
+      return parsedStored;
+    }
+
+    // Carrega dados padrão atualizados preservando capítulos do usuário
     try {
       const defaults = await this.fetchDefaultChapters(language);
-      const chapters = JSON.parse(JSON.stringify(defaults));
-      localStorage.setItem(`gamida_${language}_chapters`, JSON.stringify(chapters));
-      localStorage.setItem(`gamida_data_version_${language}`, version);
+      let chapters = JSON.parse(JSON.stringify(defaults));
+
+      if (parsedStored) {
+        const defaultIds = new Set(defaults.map((c) => c && c.id));
+        // Preserva capítulos customizados adicionados pelo usuário
+        const customChapters = parsedStored.filter((c) => c && !defaultIds.has(c.id));
+        if (customChapters.length > 0) {
+          chapters = [...chapters, ...customChapters];
+          console.info(`Migração de versão: ${customChapters.length} capítulo(s) customizado(s) preservado(s).`);
+        }
+      }
+
+      try {
+        localStorage.setItem(`gamida_${language}_chapters`, JSON.stringify(chapters));
+        localStorage.setItem(`gamida_data_version_${language}`, version);
+      } catch (storageErr) {
+        console.warn("Aviso ao salvar no localStorage (possível limite de cota atingido):", storageErr);
+      }
       return chapters;
     } catch (err) {
       console.error("Erro ao carregar capítulos:", err);
-      // Se já houver algo em cache ou localStorage antigo, tenta usar como fallback emergencial
-      if (stored) {
-        try {
-          return JSON.parse(stored);
-        } catch (ignored) {}
+      // Se houver dados válidos já em memória/storage, usa como fallback emergencial
+      if (parsedStored) {
+        return parsedStored;
       }
       throw err;
     }

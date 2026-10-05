@@ -223,6 +223,13 @@ if (typeof window !== "undefined") {
   window.nextSurvivalQuestion = nextSurvivalQuestion;
   window.submitSurvivalAnswer = submitSurvivalAnswer;
   window.finishSurvival = finishSurvival;
+  window.SurvivalModule = {
+    startSurvival,
+    updateSurvivalUI,
+    nextSurvivalQuestion,
+    submitSurvivalAnswer,
+    finishSurvival,
+  };
 }
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {

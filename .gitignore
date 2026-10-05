@@ -1,0 +1,19 @@
+# Dependências e compilações temporárias
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Logs e arquivos de diagnóstico
+*.log
+
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
