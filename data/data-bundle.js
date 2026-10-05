@@ -1,7 +1,7 @@
 /**
  * Gamida Data Bundle - Offline & Standalone Fallback
  * Gerado automaticamente via scripts/build-bundle.js
- * Data: 2026-10-05T17:46:26.198Z
+ * Data: 2026-10-05T18:18:05.305Z
  */
 window.GAMIDA_DEFAULT_DATA = {
   hebrew: [
