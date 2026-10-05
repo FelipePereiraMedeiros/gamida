@@ -580,6 +580,23 @@ if (typeof window !== "undefined") {
   window.updateTrackerPillState = updateTrackerPillState;
   window.confirmFinishAssessmentPrompt = confirmFinishAssessmentPrompt;
   window.finishAssessment = finishAssessment;
+  window.AssessmentModule = {
+    resetToDashboard,
+    openSimuladoConfig,
+    closeSimuladoConfig,
+    setSimConfig,
+    startSimulado,
+    startAssessmentTimer,
+    saveCurrentInputDraft,
+    renderAssessmentQuestion,
+    navigateAssessment,
+    jumpToAssessmentQuestion,
+    initAssessmentTracker,
+    updateAllTrackerPills,
+    updateTrackerPillState,
+    confirmFinishAssessmentPrompt,
+    finishAssessment,
+  };
 }
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {

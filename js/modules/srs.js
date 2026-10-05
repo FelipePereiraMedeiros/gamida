@@ -250,6 +250,16 @@ if (typeof window !== "undefined") {
   window.revealAnki = revealAnki;
   window.answerAnki = answerAnki;
   window.finishAnki = finishAnki;
+  window.SRSModule = {
+    loadSRS,
+    saveSRS,
+    recordSRSError,
+    startAnki,
+    renderAnkiCard,
+    revealAnki,
+    answerAnki,
+    finishAnki,
+  };
 }
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {

@@ -68,22 +68,24 @@ try {
             # Decodifica URL e normaliza caminho para Windows
             $relPath = [System.Uri]::UnescapeDataString($urlPath.TrimStart('/'))
             $relPath = $relPath -replace '/', '\'
-            $filePath = Join-Path $rootDir $relPath
+            
+            $normalizedRoot = [System.IO.Path]::GetFullPath($rootDir).TrimEnd('\', '/') + '\'
+            $fullPath = [System.IO.Path]::GetFullPath((Join-Path $rootDir $relPath))
 
-            if (Test-Path $filePath -PathType Leaf) {
-                $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
+            if ($fullPath.StartsWith($normalizedRoot, [System.StringComparison]::OrdinalIgnoreCase) -and (Test-Path $fullPath -PathType Leaf)) {
+                $ext = [System.IO.Path]::GetExtension($fullPath).ToLower()
                 $contentType = $mimeTypes[$ext]
                 if (-not $contentType) { $contentType = "application/octet-stream" }
                 $response.ContentType = $contentType
-                $response.Headers.Add("Access-Control-Allow-Origin", "*")
                 $response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate")
 
-                $bytes = [System.IO.File]::ReadAllBytes($filePath)
+                $bytes = [System.IO.File]::ReadAllBytes($fullPath)
                 $response.ContentLength64 = $bytes.Length
                 $response.OutputStream.Write($bytes, 0, $bytes.Length)
             } else {
                 $response.StatusCode = 404
-                $notFoundHtml = "<html><body><h1>404 - Arquivo Não Encontrado</h1><p>$relPath</p></body></html>"
+                $safeRelPath = [System.Security.SecurityElement]::Escape($relPath)
+                $notFoundHtml = "<!DOCTYPE html><html><head><meta charset='utf-8'><title>404</title></head><body><h1>404 - Arquivo Não Encontrado</h1><p>$safeRelPath</p></body></html>"
                 $buffer = [System.Text.Encoding]::UTF8.GetBytes($notFoundHtml)
                 $response.ContentType = "text/html; charset=utf-8"
                 $response.ContentLength64 = $buffer.Length

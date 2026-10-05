@@ -256,8 +256,9 @@ function setupGlobalChapterDropdown() {
       ? "px-4 py-3.5 text-sm text-brand-300 font-semibold bg-indigo-950/20 hover:bg-slate-800 hover:text-white cursor-pointer transition border-l-4 border-indigo-500 hover:border-brand-400 flex items-center justify-between"
       : "px-4 py-3.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white hover:font-bold cursor-pointer transition border-l-4 border-transparent hover:border-brand-500";
 
+    const escapeFn = typeof escapeHTML === "function" ? escapeHTML : (s) => String(s || "");
     if (isAlpha) {
-      li.innerHTML = `<span>${chap.title}</span><span class="text-[10px] bg-indigo-500/30 text-indigo-200 border border-indigo-400/40 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">🔤 Alfabeto</span>`;
+      li.innerHTML = `<span>${escapeFn(chap.title)}</span><span class="text-[10px] bg-indigo-500/30 text-indigo-200 border border-indigo-400/40 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">🔤 Alfabeto</span>`;
     } else {
       li.textContent = chap.title;
     }
@@ -655,6 +656,25 @@ if (typeof window !== "undefined") {
   window.updateVocabCategoryFilterUI = updateVocabCategoryFilterUI;
   window.renderVocabTable = renderVocabTable;
   window.filterVocabTable = filterVocabTable;
+  window.UIModule = {
+    isMobileMenuExpanded,
+    toggleMobileMenu,
+    scrollTabs,
+    updateTabsScrollIndicators,
+    coffeeButtonTimeout,
+    copyPixCoffee,
+    resetCoffeeButton,
+    setupGlobalChapterDropdown,
+    toggleDropdown,
+    changeGlobalChapter,
+    lastRenderedVocabChapter,
+    setVocabCumulative,
+    setVocabCategory,
+    updateVocabScopeUI,
+    updateVocabCategoryFilterUI,
+    renderVocabTable,
+    filterVocabTable,
+  };
 }
 
 if (typeof module !== "undefined" && module.exports) {

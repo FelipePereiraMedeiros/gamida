@@ -8,7 +8,8 @@
     "start": "powershell -ExecutionPolicy Bypass -File .\\serve.ps1 -Port 8080",
     "test": "node test-runner.js",
     "test:unit": "node test-runner.js all",
-    "test:browser": "echo Abra test-environment.html em seu navegador"
+    "test:browser": "echo Abra test-environment.html em seu navegador",
+    "build:bundle": "node scripts/build-bundle.js"
   },
   "keywords": [
     "hebraico",
