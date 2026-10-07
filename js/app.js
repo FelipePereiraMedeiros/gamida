@@ -1696,9 +1696,16 @@ function updateTabsScrollIndicators() {
 }
 
 if (typeof window !== "undefined") {
-  window.addEventListener("resize", () => {
-    updateTabsScrollIndicators();
-  });
+  if (!window._tabsResizeListenerBound) {
+    window._tabsResizeListenerBound = true;
+    window.addEventListener("resize", () => {
+      if (typeof window.UIModule !== "undefined" && typeof window.UIModule.scheduleUpdateTabsScrollIndicators === "function") {
+        window.UIModule.scheduleUpdateTabsScrollIndicators();
+      } else {
+        updateTabsScrollIndicators();
+      }
+    });
+  }
   window.changeGlobalChapter = changeGlobalChapter;
   window.buildPracticeQueue = buildPracticeQueue;
   window.renderCurrentQuestion = renderCurrentQuestion;
