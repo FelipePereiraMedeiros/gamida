@@ -41,6 +41,12 @@ function loadSRS() {
   const high = localStorage.getItem(`gamida_${AppState.language}_survival_high`);
   const parsedHigh = high ? parseInt(high, 10) : 0;
   AppState.survivalHighScore = Number.isFinite(parsedHigh) ? parsedHigh : 0;
+  if (typeof document !== "undefined") {
+    const cardHigh = document.getElementById("surv-card-high");
+    if (cardHigh) cardHigh.textContent = AppState.survivalHighScore || 0;
+    const topHigh = document.getElementById("survival-top-high");
+    if (topHigh) topHigh.textContent = AppState.survivalHighScore || 0;
+  }
 }
 
 /**

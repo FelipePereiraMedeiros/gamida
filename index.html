@@ -727,10 +727,14 @@
                 ❤️
               </div>
               <h3 class="text-lg font-bold text-white mb-2">Morte Súbita</h3>
-              <p class="text-xs text-slate-400 flex-1 mb-6">
+              <p class="text-xs text-slate-400 flex-1 mb-4">
                 Teste sua agilidade de digitação. 3 corações de vida. Quantas
                 palavras você traduz em sequência?
               </p>
+              <div class="mb-4 inline-flex items-center justify-center gap-1.5 text-xs text-rose-300 font-semibold bg-rose-950/40 border border-rose-800/40 py-1.5 px-3 rounded-xl mx-auto">
+                <span>👑 Recorde:</span>
+                <span id="surv-card-high" class="font-bold text-white">0</span>
+              </div>
               <button
                 type="button"
                 class="w-full py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs rounded-xl transition"
@@ -1222,6 +1226,13 @@
                   >0</span
                 ></span
               >
+              <span
+                class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800/80 text-amber-300/90 hidden sm:inline-flex items-center gap-1"
+                >👑 Recorde:
+                <span id="survival-top-high" class="font-bold text-amber-200"
+                  >0</span
+                ></span
+              >
             </div>
             <div
               id="survival-hearts"
@@ -1299,7 +1310,7 @@
                 <div
                   class="text-[10px] text-slate-500 uppercase font-semibold mb-1"
                 >
-                  Sequência Atual
+                  Sequência Alcançada
                 </div>
                 <div class="text-white text-4xl font-bold" id="surv-res-streak">
                   0

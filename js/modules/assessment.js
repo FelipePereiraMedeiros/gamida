@@ -55,6 +55,9 @@ function resetToDashboard() {
   safeToggle("anki-results", false);
   safeToggle("survival-active", false);
   safeToggle("survival-results", false);
+  if (typeof window !== "undefined" && window.SurvivalModule && typeof window.SurvivalModule.updateSurvivalDashboardRecord === "function") {
+    window.SurvivalModule.updateSurvivalDashboardRecord();
+  }
 }
 
 /**

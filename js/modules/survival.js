@@ -18,8 +18,57 @@ const isAlphabetChapter = (typeof window !== "undefined" && window.isAlphabetCha
 
 let survLives = 3;
 let survStreak = 0;
+let survMaxStreak = 0;
 let survQueue = [];
 let survCurrent = null;
+
+/**
+ * Lê o recorde de sobrevivência do localStorage para o idioma atual
+ * @returns {number}
+ */
+function loadSurvivalHighScore() {
+  if (typeof localStorage === "undefined") return AppState.survivalHighScore || 0;
+  try {
+    const high = localStorage.getItem(`gamida_${AppState.language}_survival_high`);
+    const parsedHigh = high ? parseInt(high, 10) : 0;
+    if (Number.isFinite(parsedHigh) && parsedHigh > (AppState.survivalHighScore || 0)) {
+      AppState.survivalHighScore = parsedHigh;
+    }
+  } catch (err) {
+    console.warn("Aviso ao ler recorde de sobrevivência do localStorage:", err);
+  }
+  return AppState.survivalHighScore || 0;
+}
+
+/**
+ * Persiste o recorde de sobrevivência no localStorage
+ */
+function saveSurvivalHighScore() {
+  if (typeof localStorage === "undefined") return;
+  try {
+    localStorage.setItem(
+      `gamida_${AppState.language}_survival_high`,
+      AppState.survivalHighScore || 0,
+    );
+  } catch (err) {
+    console.warn("Aviso ao salvar recorde de sobrevivência no localStorage:", err);
+  }
+}
+
+/**
+ * Atualiza indicadores de recorde na interface (dashboard e barra superior)
+ */
+function updateSurvivalDashboardRecord() {
+  if (typeof document === "undefined") return;
+  const cardHigh = document.getElementById("surv-card-high");
+  if (cardHigh) {
+    cardHigh.textContent = AppState.survivalHighScore || 0;
+  }
+  const topHigh = document.getElementById("survival-top-high");
+  if (topHigh) {
+    topHigh.textContent = AppState.survivalHighScore || 0;
+  }
+}
 
 const safeToggle = (typeof window !== "undefined" && window.safeToggle) || _stateModule.safeToggle || function safeToggle(id, isVisible) {
   if (typeof document === "undefined") return null;
@@ -39,6 +88,9 @@ const safeAlert = (typeof window !== "undefined" && window.safeAlert) || _stateM
  * Inicia o desafio de sobrevivência com vocabulário cumulativo até o capítulo ativo
  */
 function startSurvival() {
+  loadSurvivalHighScore();
+  updateSurvivalDashboardRecord();
+
   const activeChapterId = AppState.currentChapter?.id || AppState.activeChapterId;
   if (!activeChapterId) {
     safeAlert("Não há capítulos disponíveis para iniciar o modo de sobrevivência.");
@@ -75,10 +127,12 @@ function startSurvival() {
   survQueue = shuffleArray([...allWords]);
   survLives = 3;
   survStreak = 0;
+  survMaxStreak = 0;
 
   if (typeof document !== "undefined") {
     safeToggle("assess-dashboard", false);
     safeToggle("survival-active", true);
+    safeToggle("survival-results", false);
     safeToggle("surv-correction-box", false);
   }
 
@@ -93,9 +147,13 @@ function updateSurvivalUI() {
   if (typeof document === "undefined") return;
   const streakEl = document.getElementById("survival-streak");
   const heartsEl = document.getElementById("survival-hearts");
+  const topHighEl = document.getElementById("survival-top-high");
   if (streakEl) streakEl.textContent = survStreak;
   if (heartsEl) {
-    heartsEl.textContent = "❤️".repeat(survLives) + "🖤".repeat(3 - survLives);
+    heartsEl.textContent = "❤️".repeat(Math.max(0, survLives)) + "🖤".repeat(Math.max(0, 3 - survLives));
+  }
+  if (topHighEl) {
+    topHighEl.textContent = AppState.survivalHighScore || 0;
   }
 }
 
@@ -160,6 +218,14 @@ function submitSurvivalAnswer() {
 
   if (evalResult.status === "correct" || evalResult.status === "typo") {
     survStreak++;
+    if (survStreak > survMaxStreak) {
+      survMaxStreak = survStreak;
+    }
+    if (survStreak > (AppState.survivalHighScore || 0)) {
+      AppState.survivalHighScore = survStreak;
+      saveSurvivalHighScore();
+      updateSurvivalDashboardRecord();
+    }
     updateSurvivalUI();
 
     if (flash) {
@@ -180,6 +246,9 @@ function submitSurvivalAnswer() {
 
     nextSurvivalQuestion();
   } else {
+    if (survStreak > survMaxStreak) {
+      survMaxStreak = survStreak;
+    }
     survLives--;
     survStreak = 0;
     updateSurvivalUI();
@@ -220,24 +289,21 @@ function finishSurvival(surrendered = false) {
   safeToggle("survival-active", false);
   safeToggle("survival-results", true);
 
-  if (survStreak > (AppState.survivalHighScore || 0)) {
-    AppState.survivalHighScore = survStreak;
-    if (typeof localStorage !== "undefined") {
-      try {
-        localStorage.setItem(
-          `gamida_${AppState.language}_survival_high`,
-          AppState.survivalHighScore,
-        );
-      } catch (err) {
-        console.warn("Aviso ao salvar recorde de sobrevivência no localStorage:", err);
-      }
-    }
+  const sessionScore = Math.max(survMaxStreak, survStreak);
+
+  if (sessionScore > (AppState.survivalHighScore || 0)) {
+    AppState.survivalHighScore = sessionScore;
+    saveSurvivalHighScore();
+  } else if (!AppState.survivalHighScore) {
+    loadSurvivalHighScore();
   }
 
   const resStreak = document.getElementById("surv-res-streak");
-  if (resStreak) resStreak.textContent = survStreak;
+  if (resStreak) resStreak.textContent = sessionScore;
   const resHigh = document.getElementById("surv-res-high");
   if (resHigh) resHigh.textContent = AppState.survivalHighScore || 0;
+
+  updateSurvivalDashboardRecord();
 
   if (surrendered) {
     safeToggle("surv-correction-box", false);
@@ -247,8 +313,9 @@ function finishSurvival(surrendered = false) {
 function resetSurvival() {
   survLives = 3;
   survStreak = 0;
+  survMaxStreak = 0;
   survQueue = [];
-  survCurrentIndex = 0;
+  survCurrent = null;
   if (typeof document !== "undefined") {
     safeToggle("survival-active", false);
     safeToggle("survival-results", false);
@@ -264,6 +331,9 @@ if (typeof window !== "undefined") {
   window.submitSurvivalAnswer = submitSurvivalAnswer;
   window.finishSurvival = finishSurvival;
   window.resetSurvival = resetSurvival;
+  window.loadSurvivalHighScore = loadSurvivalHighScore;
+  window.saveSurvivalHighScore = saveSurvivalHighScore;
+  window.updateSurvivalDashboardRecord = updateSurvivalDashboardRecord;
   window.SurvivalModule = {
     startSurvival,
     updateSurvivalUI,
@@ -271,8 +341,12 @@ if (typeof window !== "undefined") {
     submitSurvivalAnswer,
     finishSurvival,
     resetSurvival,
+    loadSurvivalHighScore,
+    saveSurvivalHighScore,
+    updateSurvivalDashboardRecord,
     getSurvLives: () => survLives,
     getSurvStreak: () => survStreak,
+    getSurvMaxStreak: () => survMaxStreak,
     getSurvQueue: () => survQueue,
     getSurvCurrent: () => survCurrent,
   };
@@ -285,8 +359,12 @@ if (typeof module !== "undefined" && module.exports) {
     submitSurvivalAnswer,
     finishSurvival,
     resetSurvival,
+    loadSurvivalHighScore,
+    saveSurvivalHighScore,
+    updateSurvivalDashboardRecord,
     getSurvLives: () => survLives,
     getSurvStreak: () => survStreak,
+    getSurvMaxStreak: () => survMaxStreak,
     getSurvQueue: () => survQueue,
     getSurvCurrent: () => survCurrent,
   };
