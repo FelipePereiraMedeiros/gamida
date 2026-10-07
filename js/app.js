@@ -61,6 +61,12 @@ var DOM = (typeof window !== "undefined" && window.DOM) ? window.DOM : {};
 
 /* ================= CORE LOGIC & INITIALIZATION ================= */
 function escapeHTML(str) {
+  if (typeof window !== "undefined" && window.EvaluationModule && typeof window.EvaluationModule.escapeHTML === "function") {
+    return window.EvaluationModule.escapeHTML(str);
+  }
+  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.escapeHTML === "function") {
+    return window.StateModule.escapeHTML(str);
+  }
   if (str === null || str === undefined) return "";
   return String(str)
     .replace(/&/g, "&amp;")
@@ -71,7 +77,10 @@ function escapeHTML(str) {
 }
 
 function getTerm(item) {
-  return item.term || item.hebrew || "";
+  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.getTerm === "function") {
+    return window.StateModule.getTerm(item);
+  }
+  return item?.term || item?.hebrew || "";
 }
 
 function ensureDOM() {
@@ -140,43 +149,37 @@ async function loadChapters() {
 }
 
 function isValidChapter(chapter) {
-  if (!chapter || typeof chapter !== "object") return false;
-  if (typeof chapter.id !== "string" || !chapter.id.trim()) return false;
-  if (typeof chapter.title !== "string" || !chapter.title.trim())
-    return false;
-  const collections = [chapter.items, chapter.sentences].filter(
-    Array.isArray,
-  );
-  if (collections.length === 0) return false;
-  return collections.flat().every((item) => {
-    const term = item && getTerm(item);
-    return (
-      item &&
-      typeof term === "string" &&
-      term.trim() &&
-      Array.isArray(item.translations) &&
-      item.translations.length > 0 &&
-      item.translations.every(
-        (translation) => typeof translation === "string",
-      )
-    );
-  });
+  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.isValidChapter === "function") {
+    return window.StateModule.isValidChapter(chapter);
+  }
+  return false;
 }
 
 function hasUniqueChapterIds(chapters) {
-  const ids = chapters.map((chapter) => chapter && chapter.id);
-  return ids.every((id, index) => id && ids.indexOf(id) === index);
+  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.hasUniqueChapterIds === "function") {
+    return window.StateModule.hasUniqueChapterIds(chapters);
+  }
+  return false;
 }
 
 function saveChaptersToStorage() {
-  localStorage.setItem(
-    `gamida_${AppState.language}_chapters`,
-    JSON.stringify(AppState.chapters),
-  );
-  localStorage.setItem(
-    `gamida_data_version_${AppState.language}`,
-    APP_VERSION,
-  );
+  if (typeof localStorage === "undefined" && typeof DataLoader === "undefined") return;
+  try {
+    if (typeof DataLoader !== "undefined" && typeof DataLoader.saveChapters === "function") {
+      DataLoader.saveChapters(AppState.language, AppState.chapters);
+    } else if (typeof localStorage !== "undefined") {
+      localStorage.setItem(
+        `gamida_${AppState.language}_chapters`,
+        JSON.stringify(AppState.chapters),
+      );
+      localStorage.setItem(
+        `gamida_data_version_${AppState.language}`,
+        APP_VERSION,
+      );
+    }
+  } catch (err) {
+    console.warn("Aviso ao salvar capítulos no storage:", err);
+  }
 }
 
 function buildDistractorCache() {
@@ -317,10 +320,16 @@ function changeGlobalChapter(chapterId) {
     }
 
     // Salva a preferência
-    localStorage.setItem(
-      `gamida_lastChap_${AppState.language}`,
-      found.id,
-    );
+    if (typeof localStorage !== "undefined") {
+      try {
+        localStorage.setItem(
+          `gamida_lastChap_${AppState.language}`,
+          found.id,
+        );
+      } catch (err) {
+        console.warn("Aviso ao salvar último capítulo no localStorage:", err);
+      }
+    }
 
     // Interrompe sessões que pertencem ao capítulo anterior.
     if (typeof resetToDashboard === "function") {
@@ -384,6 +393,9 @@ function setExerciseMode(mode) {
 
 /* ================= UTILS & EVALUATION ================= */
 function normalizeText(str) {
+  if (typeof window !== "undefined" && window.EvaluationModule && typeof window.EvaluationModule.normalizeText === "function") {
+    return window.EvaluationModule.normalizeText(str);
+  }
   if (!str) return "";
   return str
     .toLowerCase()
@@ -395,6 +407,9 @@ function normalizeText(str) {
 }
 
 function getEditDistance(a, b) {
+  if (typeof window !== "undefined" && window.EvaluationModule && typeof window.EvaluationModule.getEditDistance === "function") {
+    return window.EvaluationModule.getEditDistance(a, b);
+  }
   if (a.length === 0) return b.length;
   if (b.length === 0) return a.length;
   const matrix = [];
@@ -416,87 +431,17 @@ function getEditDistance(a, b) {
 }
 
 function evaluateAnswer(userAnswer, acceptedList) {
-  // 1. Limpa qualquer parênteses da resposta do usuário também (por segurança)
-  const cleanUser = (userAnswer || "").replace(/\(.*?\)/g, "");
-  const normUser = normalizeText(cleanUser);
-
-  const allAccepted = acceptedList.join(" / ");
-  if (!normUser) return { status: "incorrect", expected: allAccepted };
-
-  let bestMatch = { status: "incorrect", expected: allAccepted };
-
-  const sortWords = (str) =>
-    str
-      .split(" ")
-      .filter((w) => w.length > 0)
-      .sort()
-      .join(" ");
-  const userSortedWords = sortWords(normUser);
-
-  const hasQuestionMark = (str) => str.includes("?");
-  const hasExclamation = (str) => str.includes("!");
-
-  for (let i = 0; i < acceptedList.length; i++) {
-    const rawAccepted = acceptedList[i];
-
-    // Versão A: Normalização Completa (considera o texto dentro do parênteses)
-    const normAcceptedFull = normalizeText(rawAccepted);
-
-    // Versão B: Normalização Limpa (arranca fora tudo que está entre parênteses)
-    const cleanAccepted = rawAccepted.replace(/\(.*?\)/g, "");
-    const normAcceptedStripped = normalizeText(cleanAccepted);
-
-    const accentedVersion =
-      acceptedList.find(
-        (acc) =>
-          normalizeText(acc) === normAcceptedFull &&
-          acc !== normAcceptedFull,
-      ) || rawAccepted;
-
-    // Verifica se o aluno bate com a versão completa OU com a versão sem parênteses
-    const isExactMatch =
-      normUser === normAcceptedFull || normUser === normAcceptedStripped;
-    const isInvertedMatch =
-      userSortedWords === sortWords(normAcceptedFull) ||
-      userSortedWords === sortWords(normAcceptedStripped);
-
-    if (isExactMatch || isInvertedMatch) {
-      const isPunctuationCorrect =
-        hasQuestionMark(userAnswer) === hasQuestionMark(rawAccepted) &&
-        hasExclamation(userAnswer) === hasExclamation(rawAccepted);
-
-      if (isExactMatch && isPunctuationCorrect) {
-        return { status: "correct", expected: accentedVersion };
-      } else {
-        if (bestMatch.status === "incorrect") {
-          bestMatch = { status: "typo", expected: accentedVersion };
-        }
-        continue;
-      }
-    }
-
-    // Avaliação de erro de digitação (Typo) usando a versão flexível (sem parênteses)
-    if (
-      normAcceptedStripped.length > 4 &&
-      getEditDistance(normUser, normAcceptedStripped) <= 1
-    ) {
-      const lastCharUser = normUser.slice(-1);
-      const lastCharAcc = normAcceptedStripped.slice(-1);
-      const isGenderSwap =
-        (lastCharAcc === "o" && lastCharUser === "a") ||
-        (lastCharAcc === "a" && lastCharUser === "o");
-
-      if (!isGenderSwap && bestMatch.status === "incorrect") {
-        bestMatch = { status: "typo", expected: accentedVersion };
-      }
-    }
+  if (typeof window !== "undefined" && window.EvaluationModule && typeof window.EvaluationModule.evaluateAnswer === "function") {
+    return window.EvaluationModule.evaluateAnswer(userAnswer, acceptedList);
   }
-
-  return bestMatch;
+  return { status: "incorrect", expected: Array.isArray(acceptedList) ? acceptedList.join(" / ") : "" };
 }
 
 function shuffleArray(arr) {
-  const newArr = [...arr];
+  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.shuffleArray === "function") {
+    return window.StateModule.shuffleArray(arr);
+  }
+  const newArr = [...(arr || [])];
   for (let i = newArr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
@@ -975,22 +920,37 @@ function updateStatsUI() {
 /* ================= SISTEMA DE MEMORIZAÇÃO (SRS) ================= */
 // Persistência e agendamento delegados para js/modules/srs.js (SRSModule)
 function loadSRS() {
-  return (window.SRSModule || window).loadSRS ? (window.SRSModule || window).loadSRS() : null;
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.loadSRS === "function") {
+    return window.SRSModule.loadSRS();
+  }
+  return null;
 }
 
 function saveSRS() {
-  return (window.SRSModule || window).saveSRS ? (window.SRSModule || window).saveSRS() : null;
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.saveSRS === "function") {
+    return window.SRSModule.saveSRS();
+  }
+  return null;
 }
 
 function recordSRSError(termStr) {
-  return (window.SRSModule || window).recordSRSError ? (window.SRSModule || window).recordSRSError(termStr) : null;
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.recordSRSError === "function") {
+    return window.SRSModule.recordSRSError(termStr);
+  }
+  return null;
 }
 
 /* ================= LANGUAGE SWITCH ENGINE ================= */
 async function toggleLanguage() {
   AppState.language = AppState.language === "hebrew" ? "greek" : "hebrew";
 
-  localStorage.setItem("gamida_language", AppState.language);
+  if (typeof localStorage !== "undefined") {
+    try {
+      localStorage.setItem("gamida_language", AppState.language);
+    } catch (err) {
+      console.warn("Aviso ao salvar idioma no localStorage:", err);
+    }
+  }
 
   resetStats();
   AppState.practiceCategory = "all";
@@ -1140,8 +1100,13 @@ function saveChapterFromJSON() {
   try {
     let parsed = JSON.parse(jsonText);
 
-    // Suporte para backup completo estruturado: { chapters: [...], srs: {...}, survivalHighScore: N }
+    // Suporte para backup completo estruturado: { chapters: [...], srs: {...}, survivalHighScore: N, language: "hebrew"|"greek" }
     if (parsed && typeof parsed === "object" && !Array.isArray(parsed) && Array.isArray(parsed.chapters)) {
+      if (parsed.language && parsed.language !== AppState.language) {
+        const langTarget = parsed.language === "greek" ? "Grego" : "Hebraico";
+        const langCurrent = AppState.language === "greek" ? "Grego" : "Hebraico";
+        throw new Error(`Este backup pertence ao idioma '${langTarget}', mas o sistema está atualmente em '${langCurrent}'. Alterne o idioma antes de importar.`);
+      }
       if (parsed.srs && typeof parsed.srs === "object") {
         AppState.srs = { ...AppState.srs, ...parsed.srs };
         saveSRS();
@@ -1149,7 +1114,11 @@ function saveChapterFromJSON() {
       if (typeof parsed.survivalHighScore === "number" && parsed.survivalHighScore > AppState.survivalHighScore) {
         AppState.survivalHighScore = parsed.survivalHighScore;
         if (typeof localStorage !== "undefined") {
-          localStorage.setItem(`gamida_${AppState.language}_survival_high`, AppState.survivalHighScore);
+          try {
+            localStorage.setItem(`gamida_${AppState.language}_survival_high`, AppState.survivalHighScore);
+          } catch (storageErr) {
+            console.warn("Aviso ao salvar recorde de sobrevivência no localStorage:", storageErr);
+          }
         }
       }
       parsed = parsed.chapters;
@@ -1158,6 +1127,12 @@ function saveChapterFromJSON() {
     // Suporte para importação de backup completo com múltiplos capítulos
     if (Array.isArray(parsed)) {
       if (parsed.length === 0) throw new Error("O array JSON está vazio.");
+      if (AppState.language === "hebrew" && parsed.every((c) => c && typeof c.id === "string" && c.id.startsWith("bergmann_"))) {
+        throw new Error("Estes capítulos pertencem ao curso de Grego (Bergmann). Alterne o idioma para Grego antes de importar.");
+      }
+      if (AppState.language === "greek" && parsed.every((c) => c && typeof c.id === "string" && c.id.startsWith("kelley_"))) {
+        throw new Error("Estes capítulos pertencem ao curso de Hebraico (Kelley). Alterne o idioma para Hebraico antes de importar.");
+      }
       if (!parsed.every(isValidChapter)) {
         throw new Error("Um ou mais capítulos no array possuem formato inválido.");
       }
@@ -1167,6 +1142,9 @@ function saveChapterFromJSON() {
 
       const updatedChapters = [...AppState.chapters];
       parsed.forEach((incomingChap) => {
+        if (incomingChap && typeof incomingChap === "object") {
+          incomingChap._userModified = true;
+        }
         const existingIdx = updatedChapters.findIndex((c) => c.id === incomingChap.id);
         if (existingIdx >= 0) {
           updatedChapters[existingIdx] = incomingChap;
@@ -1191,7 +1169,16 @@ function saveChapterFromJSON() {
     }
 
     const newChap = parsed;
+    if (AppState.language === "hebrew" && newChap && typeof newChap.id === "string" && newChap.id.startsWith("bergmann_")) {
+      throw new Error("Este capítulo pertence ao curso de Grego (Bergmann). Alterne o idioma para Grego antes de importar.");
+    }
+    if (AppState.language === "greek" && newChap && typeof newChap.id === "string" && newChap.id.startsWith("kelley_")) {
+      throw new Error("Este capítulo pertence ao curso de Hebraico (Kelley). Alterne o idioma para Hebraico antes de importar.");
+    }
     if (!isValidChapter(newChap)) throw new Error("Formato inválido.");
+    if (newChap && typeof newChap === "object") {
+      newChap._userModified = true;
+    }
     const existingIdx = AppState.chapters.findIndex(
       (c) => c.id === newChap.id,
     );
@@ -1222,29 +1209,47 @@ function saveChapterFromJSON() {
 let lastRenderedVocabChapter = null;
 
 function setVocabCumulative(isCumulative) {
-  return (window.UIModule || window).setVocabCumulative(isCumulative);
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.setVocabCumulative === "function") {
+    return window.UIModule.setVocabCumulative(isCumulative);
+  }
+  return null;
 }
 
 function setVocabCategory(catId) {
-  return (window.UIModule || window).setVocabCategory(catId);
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.setVocabCategory === "function") {
+    return window.UIModule.setVocabCategory(catId);
+  }
+  return null;
 }
 
 function updateVocabScopeUI() {
-  return (window.UIModule || window).updateVocabScopeUI();
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.updateVocabScopeUI === "function") {
+    return window.UIModule.updateVocabScopeUI();
+  }
+  return null;
 }
 
 function updateVocabCategoryFilterUI() {
-  return (window.UIModule || window).updateVocabCategoryFilterUI();
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.updateVocabCategoryFilterUI === "function") {
+    return window.UIModule.updateVocabCategoryFilterUI();
+  }
+  return null;
 }
 
 function renderVocabTable() {
   // === INJEÇÃO DOS PARADIGMAS NO FINAL DA LISTA ===
   // Delegado para o UIModule utilizando getStaticParadigmTableHTML
-  return (window.UIModule || window).renderVocabTable();
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.renderVocabTable === "function") {
+    return window.UIModule.renderVocabTable();
+  }
+  return null;
 }
 
 function filterVocabTable() {
-  return (window.UIModule || window).filterVocabTable();
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.filterVocabTable === "function") {
+    return window.UIModule.filterVocabTable();
+  }
+  return null;
 }
 
 /* ================= CUMULATIVE ASSESSMENT LOGIC ================= */
@@ -1260,66 +1265,111 @@ let assessTimerInterval = null;
 let assessTimeCount = 0;
 
 function resetToDashboard() {
-  return (window.AssessmentModule || window).resetToDashboard();
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.resetToDashboard === "function") {
+    return window.AssessmentModule.resetToDashboard();
+  }
+  return null;
 }
 
 function openSimuladoConfig() {
-  return (window.AssessmentModule || window).openSimuladoConfig();
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.openSimuladoConfig === "function") {
+    return window.AssessmentModule.openSimuladoConfig();
+  }
+  return null;
 }
 
 function closeSimuladoConfig() {
-  return (window.AssessmentModule || window).closeSimuladoConfig();
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.closeSimuladoConfig === "function") {
+    return window.AssessmentModule.closeSimuladoConfig();
+  }
+  return null;
 }
 
 function setSimConfig(type, value) {
-  return (window.AssessmentModule || window).setSimConfig(type, value);
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.setSimConfig === "function") {
+    return window.AssessmentModule.setSimConfig(type, value);
+  }
+  return null;
 }
 
 function startSimulado() {
-  return (window.AssessmentModule || window).startSimulado();
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.startSimulado === "function") {
+    return window.AssessmentModule.startSimulado();
+  }
+  return null;
 }
 
 function startAssessmentTimer() {
-  return (window.AssessmentModule || window).startAssessmentTimer();
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.startAssessmentTimer === "function") {
+    return window.AssessmentModule.startAssessmentTimer();
+  }
+  return null;
 }
 
 function saveCurrentInputDraft() {
-  return (window.AssessmentModule || window).saveCurrentInputDraft();
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.saveCurrentInputDraft === "function") {
+    return window.AssessmentModule.saveCurrentInputDraft();
+  }
+  return null;
 }
 
 function renderAssessmentQuestion() {
-  return (window.AssessmentModule || window).renderAssessmentQuestion();
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.renderAssessmentQuestion === "function") {
+    return window.AssessmentModule.renderAssessmentQuestion();
+  }
+  return null;
 }
 
 function navigateAssessment(direction) {
-  return (window.AssessmentModule || window).navigateAssessment(direction);
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.navigateAssessment === "function") {
+    return window.AssessmentModule.navigateAssessment(direction);
+  }
+  return null;
 }
 
 function jumpToAssessmentQuestion(index) {
-  return (window.AssessmentModule || window).jumpToAssessmentQuestion(index);
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.jumpToAssessmentQuestion === "function") {
+    return window.AssessmentModule.jumpToAssessmentQuestion(index);
+  }
+  return null;
 }
 
 function initAssessmentTracker() {
-  return (window.AssessmentModule || window).initAssessmentTracker();
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.initAssessmentTracker === "function") {
+    return window.AssessmentModule.initAssessmentTracker();
+  }
+  return null;
 }
 
 function updateAllTrackerPills() {
-  return (window.AssessmentModule || window).updateAllTrackerPills();
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.updateAllTrackerPills === "function") {
+    return window.AssessmentModule.updateAllTrackerPills();
+  }
+  return null;
 }
 
 function updateTrackerPillState(idx) {
-  return (window.AssessmentModule || window).updateTrackerPillState(idx);
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.updateTrackerPillState === "function") {
+    return window.AssessmentModule.updateTrackerPillState(idx);
+  }
+  return null;
 }
 
 function confirmFinishAssessmentPrompt() {
-  return (window.AssessmentModule || window).confirmFinishAssessmentPrompt();
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.confirmFinishAssessmentPrompt === "function") {
+    return window.AssessmentModule.confirmFinishAssessmentPrompt();
+  }
+  return null;
 }
 
 function finishAssessment() {
   // Diagnóstico implementado em js/modules/assessment.js:
   // const chapterErrors = {};
   // Classificação: 'Revisão Urgente', 'Revisão Recomendada', 'Excelente Domínio'
-  return (window.AssessmentModule || window).finishAssessment();
+  if (typeof window !== "undefined" && window.AssessmentModule && typeof window.AssessmentModule.finishAssessment === "function") {
+    return window.AssessmentModule.finishAssessment();
+  }
+  return null;
 }
 
 /* ================= LÓGICA DO ANKI (FLASHCARDS) ================= */
@@ -1330,23 +1380,38 @@ let ankiStats = { hard: 0, good: 0, easy: 0 };
 let ankiTotalCards = 0;
 
 function startAnki() {
-  return (window.SRSModule || window).startAnki();
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.startAnki === "function") {
+    return window.SRSModule.startAnki();
+  }
+  return null;
 }
 
 function renderAnkiCard() {
-  return (window.SRSModule || window).renderAnkiCard();
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.renderAnkiCard === "function") {
+    return window.SRSModule.renderAnkiCard();
+  }
+  return null;
 }
 
 function revealAnki() {
-  return (window.SRSModule || window).revealAnki();
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.revealAnki === "function") {
+    return window.SRSModule.revealAnki();
+  }
+  return null;
 }
 
 function answerAnki(grade) {
-  return (window.SRSModule || window).answerAnki(grade);
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.answerAnki === "function") {
+    return window.SRSModule.answerAnki(grade);
+  }
+  return null;
 }
 
 function finishAnki() {
-  return (window.SRSModule || window).finishAnki();
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.finishAnki === "function") {
+    return window.SRSModule.finishAnki();
+  }
+  return null;
 }
 
 /* ================= FASE 3: LÓGICA DE SOBREVIVÊNCIA (MORTE SÚBITA) ================= */
@@ -1357,28 +1422,46 @@ let survQueue = [];
 let survCurrent = null;
 
 function startSurvival() {
-  return (window.SurvivalModule || window).startSurvival();
+  if (typeof window !== "undefined" && window.SurvivalModule && typeof window.SurvivalModule.startSurvival === "function") {
+    return window.SurvivalModule.startSurvival();
+  }
+  return null;
 }
 
 function updateSurvivalUI() {
-  return (window.SurvivalModule || window).updateSurvivalUI();
+  if (typeof window !== "undefined" && window.SurvivalModule && typeof window.SurvivalModule.updateSurvivalUI === "function") {
+    return window.SurvivalModule.updateSurvivalUI();
+  }
+  return null;
 }
 
 function nextSurvivalQuestion() {
-  return (window.SurvivalModule || window).nextSurvivalQuestion();
+  if (typeof window !== "undefined" && window.SurvivalModule && typeof window.SurvivalModule.nextSurvivalQuestion === "function") {
+    return window.SurvivalModule.nextSurvivalQuestion();
+  }
+  return null;
 }
 
 function submitSurvivalAnswer() {
-  return (window.SurvivalModule || window).submitSurvivalAnswer();
+  if (typeof window !== "undefined" && window.SurvivalModule && typeof window.SurvivalModule.submitSurvivalAnswer === "function") {
+    return window.SurvivalModule.submitSurvivalAnswer();
+  }
+  return null;
 }
 
 function finishSurvival(surrendered = false) {
-  return (window.SurvivalModule || window).finishSurvival(surrendered);
+  if (typeof window !== "undefined" && window.SurvivalModule && typeof window.SurvivalModule.finishSurvival === "function") {
+    return window.SurvivalModule.finishSurvival(surrendered);
+  }
+  return null;
 }
 
 // Interceptador da tecla ENTER no input do Modo Sobrevivência
 if (typeof document !== "undefined") {
   document.addEventListener("keydown", (e) => {
+    if (e.defaultPrevented) return;
+    const modal = document.getElementById("sentence-analysis-modal");
+    if (modal && !modal.classList.contains("hidden")) return;
     const survActive = document.getElementById("survival-active");
     if (
       survActive &&
@@ -1401,86 +1484,141 @@ let draggedElement = null;
 let selectedChip = null;
 
 function renderParadigmSkeleton() {
-  return (window.ParadigmsModule || window).renderParadigmSkeleton();
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.renderParadigmSkeleton === "function") {
+    return window.ParadigmsModule.renderParadigmSkeleton();
+  }
+  return null;
 }
 
 function renderTableView(paradigm, container) {
-  return (window.ParadigmsModule || window).renderTableView(paradigm, container);
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.renderTableView === "function") {
+    return window.ParadigmsModule.renderTableView(paradigm, container);
+  }
+  return null;
 }
 
 function renderDiagramView(paradigm, container) {
-  return (window.ParadigmsModule || window).renderDiagramView(paradigm, container);
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.renderDiagramView === "function") {
+    return window.ParadigmsModule.renderDiagramView(paradigm, container);
+  }
+  return null;
 }
 
 function onDragStart(e) {
-  return (window.ParadigmsModule || window).onDragStart ? (window.ParadigmsModule || window).onDragStart(e) : null;
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.onDragStart === "function") {
+    return window.ParadigmsModule.onDragStart(e);
+  }
+  return null;
 }
 
 function onDragEnd(e) {
-  return (window.ParadigmsModule || window).onDragEnd ? (window.ParadigmsModule || window).onDragEnd(e) : null;
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.onDragEnd === "function") {
+    return window.ParadigmsModule.onDragEnd(e);
+  }
+  return null;
 }
 
 function onDragOver(e) {
-  return (window.ParadigmsModule || window).onDragOver ? (window.ParadigmsModule || window).onDragOver(e) : null;
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.onDragOver === "function") {
+    return window.ParadigmsModule.onDragOver(e);
+  }
+  return null;
 }
 
 function onDragLeave(e) {
-  return (window.ParadigmsModule || window).onDragLeave ? (window.ParadigmsModule || window).onDragLeave(e) : null;
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.onDragLeave === "function") {
+    return window.ParadigmsModule.onDragLeave(e);
+  }
+  return null;
 }
 
 function onDropToZone(e) {
-  return (window.ParadigmsModule || window).onDropToZone ? (window.ParadigmsModule || window).onDropToZone(e) : null;
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.onDropToZone === "function") {
+    return window.ParadigmsModule.onDropToZone(e);
+  }
+  return null;
 }
 
 function onDropToDeck(e) {
-  return (window.ParadigmsModule || window).onDropToDeck ? (window.ParadigmsModule || window).onDropToDeck(e) : null;
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.onDropToDeck === "function") {
+    return window.ParadigmsModule.onDropToDeck(e);
+  }
+  return null;
 }
 
 function onChipClick(e) {
-  return (window.ParadigmsModule || window).onChipClick ? (window.ParadigmsModule || window).onChipClick(e) : null;
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.onChipClick === "function") {
+    return window.ParadigmsModule.onChipClick(e);
+  }
+  return null;
 }
 
 function clearChipSelection() {
-  return (window.ParadigmsModule || window).clearChipSelection ? (window.ParadigmsModule || window).clearChipSelection() : null;
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.clearChipSelection === "function") {
+    return window.ParadigmsModule.clearChipSelection();
+  }
+  return null;
 }
 
 function onZoneClick(e) {
-  return (window.ParadigmsModule || window).onZoneClick ? (window.ParadigmsModule || window).onZoneClick(e) : null;
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.onZoneClick === "function") {
+    return window.ParadigmsModule.onZoneClick(e);
+  }
+  return null;
 }
 
 function checkParadigmAnswers() {
-  return (window.ParadigmsModule || window).checkParadigmAnswers();
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.checkParadigmAnswers === "function") {
+    return window.ParadigmsModule.checkParadigmAnswers();
+  }
+  return null;
 }
 
 function resetParadigmBoard() {
-  return (window.ParadigmsModule || window).resetParadigmBoard();
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.resetParadigmBoard === "function") {
+    return window.ParadigmsModule.resetParadigmBoard();
+  }
+  return null;
 }
 
 function getStaticDiagramHTML(paradigm) {
-  return (window.ParadigmsModule || window).getStaticDiagramHTML(paradigm);
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.getStaticDiagramHTML === "function") {
+    return window.ParadigmsModule.getStaticDiagramHTML(paradigm);
+  }
+  return "";
 }
 
 function getStaticParadigmTableHTML(paradigm) {
-  return (window.ParadigmsModule || window).getStaticParadigmTableHTML(paradigm);
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.getStaticParadigmTableHTML === "function") {
+    return window.ParadigmsModule.getStaticParadigmTableHTML(paradigm);
+  }
+  return "";
 }
 
 /* ================= COFFEE & PIX DONATION ================= */
 // Apoio ao desenvolvedor: chave PIX '10971140669' (Felipe Pereira Medeiros - NuBank)
 // Feedback estruturado com badge 'Copiado!' e fallback via document.execCommand("copy")
 function copyPixCoffee(btn) {
-  return (window.UIModule || window).copyPixCoffee ? (window.UIModule || window).copyPixCoffee(btn) : null;
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.copyPixCoffee === "function") {
+    return window.UIModule.copyPixCoffee(btn);
+  }
+  return null;
 }
 
 function fallbackCopyPix(text) {
-  if ((window.UIModule || window).fallbackCopyPix) {
-    return (window.UIModule || window).fallbackCopyPix(text);
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.fallbackCopyPix === "function") {
+    return window.UIModule.fallbackCopyPix(text);
   }
   // Fallback legível: document.execCommand("copy")
+  return null;
 }
 
 function resetCoffeeButton(button) {
   // Restaura o estado e o rótulo: 'Pague-me um café!'
-  return (window.UIModule || window).resetCoffeeButton ? (window.UIModule || window).resetCoffeeButton(button) : null;
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.resetCoffeeButton === "function") {
+    return window.UIModule.resetCoffeeButton(button);
+  }
+  return null;
 }
 
 /* ================= ALPHABET GAMIFIED ENGINE ================= */
@@ -1534,18 +1672,27 @@ var AlphabetGameEngine = (typeof window !== "undefined" && window.AlphabetGameEn
 let isMobileMenuExpanded = false;
 
 function toggleMobileMenu(forceState) {
-  return (window.UIModule || window).toggleMobileMenu ? (window.UIModule || window).toggleMobileMenu(forceState) : null;
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.toggleMobileMenu === "function") {
+    return window.UIModule.toggleMobileMenu(forceState);
+  }
+  return null;
 }
 
 /* ================= CAROUSEL TABS HORIZONTAL SCROLL INDICATORS ================= */
 // Navegação do carrossel de abas delegada para js/modules/ui.js (UIModule)
 function scrollTabs(direction) {
-  return (window.UIModule || window).scrollTabs ? (window.UIModule || window).scrollTabs(direction) : null;
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.scrollTabs === "function") {
+    return window.UIModule.scrollTabs(direction);
+  }
+  return null;
 }
 
 function updateTabsScrollIndicators() {
   // Verificação de transbordamento de abas: container.scrollWidth > container.clientWidth
-  return (window.UIModule || window).updateTabsScrollIndicators ? (window.UIModule || window).updateTabsScrollIndicators() : null;
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.updateTabsScrollIndicators === "function") {
+    return window.UIModule.updateTabsScrollIndicators();
+  }
+  return null;
 }
 
 if (typeof window !== "undefined") {

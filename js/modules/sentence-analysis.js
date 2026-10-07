@@ -143,6 +143,35 @@
     activeElement: null
   };
 
+  let _analysisRafId = null;
+  let _leaveTimeoutId = null;
+
+  /**
+   * Sincroniza a interface gráfica do modal de maneira otimizada (RAF)
+   * Evita layout thrashing e execuções repetidas durante eventos rápidos de ponteiro
+   * @param {boolean} immediate
+   */
+  function scheduleSyncUI(immediate = false) {
+    if (_analysisRafId) {
+      if (typeof cancelAnimationFrame === "function") {
+        cancelAnimationFrame(_analysisRafId);
+      }
+      _analysisRafId = null;
+    }
+
+    const runSync = () => {
+      _analysisRafId = null;
+      syncMorphemeDOMHighlights();
+      updateAnalysisPanel();
+    };
+
+    if (immediate || typeof requestAnimationFrame !== "function") {
+      runSync();
+    } else {
+      _analysisRafId = requestAnimationFrame(runSync);
+    }
+  }
+
   /**
    * Normalização e remoção de nikkud/maqqef/espaços para busca flexível
    * @param {string} str
@@ -193,7 +222,9 @@
         if (fs.existsSync(filePath)) {
           pools.push(JSON.parse(fs.readFileSync(filePath, "utf8")));
         }
-      } catch (e) {}
+      } catch (e) {
+        console.warn("Fallback Node.js não pôde ler hebrew_chapters.json para análise:", e.message);
+      }
     }
 
     for (const chapters of pools) {
@@ -740,11 +771,16 @@
   }
 
   /**
-   * Define o morfema ativo ou fixado e sincroniza a UI
+   * Define o morfema ativo ou fixado e sincroniza a UI com mitigação de layout thrashing
    * @param {number|null} idx
    * @param {boolean} pin
    */
   function setActiveMorphemeIndex(idx, pin = false) {
+    if (_leaveTimeoutId) {
+      clearTimeout(_leaveTimeoutId);
+      _leaveTimeoutId = null;
+    }
+
     if (pin) {
       if (idx === null) {
         ModalState.pinnedIndex = null;
@@ -757,12 +793,13 @@
         ModalState.pinnedIndex = idx;
         ModalState.activeIndex = idx;
       }
+      scheduleSyncUI(true);
     } else {
+      if (ModalState.pinnedIndex !== null) return;
+      if (ModalState.activeIndex === idx) return; // Índice inalterado: zero re-renderização
       ModalState.activeIndex = idx;
+      scheduleSyncUI(false);
     }
-
-    syncMorphemeDOMHighlights();
-    updateAnalysisPanel();
   }
 
   /**
@@ -796,14 +833,20 @@
 
     if (e.key === "Escape") {
       e.preventDefault();
+      if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
+      if (typeof e.stopPropagation === "function") e.stopPropagation();
       closeSentenceAnalysisModal();
     } else if (e.key === "ArrowLeft") {
       // Em RTL, a leitura avança para a ESQUERDA
       e.preventDefault();
+      if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
+      if (typeof e.stopPropagation === "function") e.stopPropagation();
       navigateMorphemes(+1);
     } else if (e.key === "ArrowRight") {
       // Em RTL, voltar significa ir para a DIREITA
       e.preventDefault();
+      if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
+      if (typeof e.stopPropagation === "function") e.stopPropagation();
       navigateMorphemes(-1);
     }
   }
@@ -853,6 +896,16 @@
    * Fecha o Modal de Análise Morfossintática
    */
   function closeSentenceAnalysisModal() {
+    if (_leaveTimeoutId) {
+      clearTimeout(_leaveTimeoutId);
+      _leaveTimeoutId = null;
+    }
+    if (_analysisRafId) {
+      if (typeof cancelAnimationFrame === "function") {
+        cancelAnimationFrame(_analysisRafId);
+      }
+      _analysisRafId = null;
+    }
     if (typeof document === "undefined") return;
     ModalState.isOpen = false;
     ModalState.currentSentence = null;
@@ -882,27 +935,46 @@
     container.addEventListener("mouseover", (e) => {
       const morphemeEl = e.target.closest(".morpheme");
       if (!morphemeEl) return;
+
+      if (_leaveTimeoutId) {
+        clearTimeout(_leaveTimeoutId);
+        _leaveTimeoutId = null;
+      }
+
+      if (ModalState.pinnedIndex !== null) return;
+
       const tIdx = parseInt(morphemeEl.getAttribute("data-token-idx"), 10);
       const pIdx = parseInt(morphemeEl.getAttribute("data-part-idx"), 10);
       const matchIdx = ModalState.flatMorphemes.findIndex(
         (m) => m.tokenIdx === tIdx && m.partIdx === pIdx
       );
-      if (matchIdx !== -1 && ModalState.pinnedIndex === null) {
+      if (matchIdx !== -1) {
         setActiveMorphemeIndex(matchIdx, false);
       }
     });
 
     container.addEventListener("mouseout", (e) => {
-      // Se o cursor estiver apenas navegando entre partes do mesmo morfema ou morfeams contíguos, não limpa
-      const related = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(".morpheme, .morpheme-chip") : null;
+      if (ModalState.pinnedIndex !== null) return;
+
+      // Se moveu para outro elemento dentro do container da frase ou ribbon, ignora
+      const related = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(".morpheme, .morpheme-chip, .token-wrapper") : null;
       if (related) return;
 
-      if (ModalState.pinnedIndex === null) {
-        setActiveMorphemeIndex(null, false);
-      }
+      if (_leaveTimeoutId) clearTimeout(_leaveTimeoutId);
+      _leaveTimeoutId = setTimeout(() => {
+        _leaveTimeoutId = null;
+        if (ModalState.pinnedIndex === null && ModalState.isOpen) {
+          setActiveMorphemeIndex(null, false);
+        }
+      }, 40);
     });
 
     container.addEventListener("click", (e) => {
+      if (_leaveTimeoutId) {
+        clearTimeout(_leaveTimeoutId);
+        _leaveTimeoutId = null;
+      }
+
       const morphemeEl = e.target.closest(".morpheme");
       if (morphemeEl) {
         e.stopPropagation();
@@ -935,29 +1007,46 @@
     ribbon.addEventListener("mouseover", (e) => {
       const chip = e.target.closest(".morpheme-chip");
       if (!chip) return;
+
+      if (_leaveTimeoutId) {
+        clearTimeout(_leaveTimeoutId);
+        _leaveTimeoutId = null;
+      }
+
+      if (ModalState.pinnedIndex !== null) return;
+
       const rawIdx = chip.getAttribute("data-morpheme-idx");
       if (rawIdx === "global") {
-        if (ModalState.pinnedIndex === null) {
-          setActiveMorphemeIndex(null, false);
-        }
+        setActiveMorphemeIndex(null, false);
         return;
       }
       const idx = parseInt(rawIdx, 10);
-      if (!isNaN(idx) && ModalState.pinnedIndex === null) {
+      if (!isNaN(idx)) {
         setActiveMorphemeIndex(idx, false);
       }
     });
 
     ribbon.addEventListener("mouseout", (e) => {
-      const related = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(".morpheme-chip, .morpheme") : null;
+      if (ModalState.pinnedIndex !== null) return;
+
+      const related = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(".morpheme-chip, .morpheme, .token-wrapper") : null;
       if (related) return;
 
-      if (ModalState.pinnedIndex === null) {
-        setActiveMorphemeIndex(null, false);
-      }
+      if (_leaveTimeoutId) clearTimeout(_leaveTimeoutId);
+      _leaveTimeoutId = setTimeout(() => {
+        _leaveTimeoutId = null;
+        if (ModalState.pinnedIndex === null && ModalState.isOpen) {
+          setActiveMorphemeIndex(null, false);
+        }
+      }, 40);
     });
 
     ribbon.addEventListener("click", (e) => {
+      if (_leaveTimeoutId) {
+        clearTimeout(_leaveTimeoutId);
+        _leaveTimeoutId = null;
+      }
+
       const chip = e.target.closest(".morpheme-chip");
       if (!chip) return;
       e.stopPropagation();
@@ -1000,7 +1089,7 @@
               <span>•</span>
               <span id="analysis-pinned-indicator" class="text-amber-400 hidden">📌 Morfema Fixado</span>
             </div>
-            <div id="sentence-morphemes-container" class="hebrew-sentence-container text-white py-2" dir="rtl"></div>
+            <div id="sentence-morphemes-container" class="hebrew-sentence-container hebrew-text text-white py-2" dir="rtl"></div>
             <div id="sentence-morphemes-ribbon" class="mt-4 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-center gap-1.5"></div>
           </div>
           <div id="sentence-analysis-panel" class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-5 md:p-6 min-h-[220px] flex flex-col justify-center transition-all"></div>

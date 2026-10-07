@@ -334,7 +334,11 @@ function changeGlobalChapter(chapterId) {
     }
 
     if (typeof localStorage !== "undefined") {
-      localStorage.setItem(`gamida_lastChap_${AppState.language}`, found.id);
+      try {
+        localStorage.setItem(`gamida_lastChap_${AppState.language}`, found.id);
+      } catch (err) {
+        console.warn("Aviso ao salvar último capítulo no localStorage:", err);
+      }
     }
 
     if (typeof resetToDashboard === "function") {
@@ -735,7 +739,11 @@ function applyLanguageUI() {
 function toggleLanguage() {
   AppState.language = AppState.language === "hebrew" ? "greek" : "hebrew";
   if (typeof localStorage !== "undefined") {
-    localStorage.setItem("gamida_language", AppState.language);
+    try {
+      localStorage.setItem("gamida_language", AppState.language);
+    } catch (err) {
+      console.warn("Aviso ao salvar idioma no localStorage:", err);
+    }
   }
   if (typeof resetStats === "function") resetStats();
   AppState.practiceCategory = "all";

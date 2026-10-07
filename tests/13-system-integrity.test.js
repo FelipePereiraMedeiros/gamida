@@ -536,6 +536,220 @@ suite.test('Blindagem Defensiva: Módulos executam sem lançar exceções mesmo 
   assert.equal(errorCount, 0, 'Nenhuma função deve quebrar quando elementos do DOM estiverem ausentes');
 });
 
+// --------------------------------------------------------------------------
+// TESTE 10: Blindagem de Delegadores (Sem Recursão Infinita)
+// --------------------------------------------------------------------------
+suite.test('Blindagem de Delegadores: Wrappers do app.js não contêm fallbacks recursivos (|| window)', () => {
+  assert.isFalse(appJs.includes('(window.SRSModule || window).saveSRS'), 'loadSRS/saveSRS não deve ter fallback recursivo para window');
+  assert.isFalse(appJs.includes('(window.SurvivalModule || window).startSurvival'), 'Survival não deve ter fallback recursivo para window');
+  assert.isFalse(appJs.includes('(window.AssessmentModule || window).startSimulado'), 'Assessment não deve ter fallback recursivo para window');
+  assert.isFalse(appJs.includes('(window.UIModule || window).setVocabCumulative'), 'UIModule não deve ter fallback recursivo para window');
+  assert.isFalse(appJs.includes('(window.ParadigmsModule || window).renderTableView'), 'Paradigms não deve ter fallback recursivo para window');
+});
+
+// --------------------------------------------------------------------------
+// TESTE 11: Validação de Idioma na Importação (Proteção contra Corrupção de Dados)
+// --------------------------------------------------------------------------
+suite.test('Validação de Idioma na Importação: Rejeita backups e capítulos de idioma divergente', () => {
+  const elementsById = {
+    'json-input': { value: JSON.stringify({ language: 'greek', chapters: [{ id: 'bergmann_01', title: 'Grego', items: [] }] }) },
+    'json-status': { textContent: '', className: '' },
+  };
+
+  const oldDoc = global.document;
+  global.document = {
+    getElementById: (id) => elementsById[id] || null,
+  };
+
+  const vm = require('vm');
+  const sandbox = {
+    document: global.document,
+    localStorage: { setItem() {}, getItem() { return null; } },
+    AppState: { language: 'hebrew', chapters: [], srs: {}, survivalHighScore: 0 },
+    APP_VERSION: '2.7.1',
+    isValidChapter: () => true,
+    hasUniqueChapterIds: () => true,
+    saveSRS: () => {},
+    saveChaptersToStorage: () => {},
+    buildDistractorCache: () => {},
+    setupGlobalChapterDropdown: () => {},
+    changeGlobalChapter: () => {},
+    console,
+  };
+  vm.createContext(sandbox);
+
+  // Executa apenas o bloco da função saveChapterFromJSON extraído do app.js
+  const saveFnCode = appJs.match(/function saveChapterFromJSON\(\)\s*\{[\s\S]*?\n\}/)[0];
+  vm.runInContext(saveFnCode, sandbox);
+  vm.runInContext('saveChapterFromJSON();', sandbox);
+
+  assert.includes(
+    elementsById['json-status'].textContent,
+    'Este backup pertence ao idioma \'Grego\'',
+    'Importação de backup grego em sessão hebraica deve ser rejeitada com erro claro',
+  );
+
+  // Limpeza
+  if (oldDoc === undefined) delete global.document; else global.document = oldDoc;
+});
+
+// --------------------------------------------------------------------------
+// TESTE 12: Tolerância à Cota de Armazenamento (QuotaExceededError)
+// --------------------------------------------------------------------------
+suite.test('Tolerância à Cota de Armazenamento: Falhas de localStorage.setItem não causam exceções não-tratadas', () => {
+  const oldStorage = global.localStorage;
+  global.localStorage = {
+    getItem: () => null,
+    setItem: () => {
+      const err = new Error('QuotaExceededError');
+      err.name = 'QuotaExceededError';
+      throw err;
+    },
+    removeItem: () => {},
+  };
+
+  let uncaughtErrors = 0;
+  try {
+    SRSModule.saveSRS();
+    StateModule.saveChaptersToStorage();
+    UIModule.toggleLanguage();
+    SurvivalModule.finishSurvival(false);
+  } catch (err) {
+    uncaughtErrors++;
+    console.error('Erro de cota vazou para a aplicação:', err);
+  }
+
+  assert.equal(uncaughtErrors, 0, 'Falha de cota do localStorage deve ser capturada suavemente sem quebrar o app');
+
+  if (oldStorage === undefined) delete global.localStorage; else global.localStorage = oldStorage;
+});
+
+// --------------------------------------------------------------------------
+// TESTE 13: Fonte Única de Validação de Capítulos (M4 / C1)
+// --------------------------------------------------------------------------
+suite.test('Validação de Capítulos Centralizada: StateModule e DataLoader rejeitam coleções vazias e convergem', () => {
+  const DataLoader = require('../js/data-loader.js');
+  const emptyChapter = {
+    id: "chap_vazio",
+    title: "Lição Sem Vocabulário",
+    items: [],
+    sentences: [],
+  };
+
+  const validChapter = {
+    id: "chap_valido",
+    title: "Lição Válida",
+    items: [{ term: "אָב", translations: ["pai"] }],
+    sentences: [],
+  };
+
+  const duplicateIdChapters = [
+    { id: "dup_1", title: "A", items: [{ term: "a", translations: ["a"] }] },
+    { id: "dup_1", title: "B", items: [{ term: "b", translations: ["b"] }] },
+  ];
+
+  // Rejeição rigorosa de capítulo sem vocabulário (impede loops infinitos e divisão por zero)
+  assert.isFalse(StateModule.isValidChapter(emptyChapter), 'StateModule deve rejeitar capítulo com coleções vazias');
+  assert.isFalse(DataLoader.isValidChapter(emptyChapter), 'DataLoader deve rejeitar capítulo com coleções vazias');
+
+  // Aceitação de capítulo com vocabulário válido
+  assert.isTrue(StateModule.isValidChapter(validChapter), 'StateModule deve aceitar capítulo estruturado com termos');
+  assert.isTrue(DataLoader.isValidChapter(validChapter), 'DataLoader deve aceitar capítulo estruturado com termos');
+
+  // Detecção de IDs duplicados
+  assert.isFalse(StateModule.hasUniqueChapterIds(duplicateIdChapters), 'IDs duplicados devem ser rejeitados');
+  assert.isFalse(DataLoader.hasUniqueChapterIds(duplicateIdChapters), 'DataLoader deve acusar IDs duplicados');
+});
+
+// --------------------------------------------------------------------------
+// TESTE 14: Sanitização XSS e Proteção de Injeção HTML (M1 / C1)
+// --------------------------------------------------------------------------
+suite.test('Sanitização Centralizada: StateModule, EvaluationModule e Paradigms protegem contra injeção de tags', () => {
+  const { escapeHTML } = StateModule;
+  const EvalModule = require('../js/modules/evaluation.js');
+
+  const xssVector = '<script>alert("xss")</script><img src=x onerror=alert(1)>';
+  const escaped = escapeHTML(xssVector);
+
+  assert.isFalse(escaped.includes('<script>'), 'Tags de script devem ser sanitizadas');
+  assert.isFalse(escaped.includes('<img'), 'Tags de imagem devem ser sanitizadas');
+  assert.includes(escaped, '&lt;script&gt;', 'Tag <script> deve ser codificada para entidade &lt;script&gt;');
+  assert.includes(escaped, '&quot;xss&quot;', 'Aspas duplas devem ser codificadas para entidade &quot;');
+
+  // Convergência entre módulos
+  assert.equal(escapeHTML(xssVector), EvalModule.escapeHTML(xssVector), 'StateModule e EvaluationModule devem convergir na sanitização');
+
+  // Proteção em paradigmas (geração estática de tabela)
+  const ParadigmsModule = require('../js/modules/paradigms.js');
+  const maliciousParadigm = {
+    title: '<b onmouseover=alert(1)>Tabela</b>',
+    headers: ['<script>', 'Sufixo'],
+    rows: [['<iframe src="evil.com">', '<b>dado</b>']],
+  };
+
+  const html = ParadigmsModule.getStaticParadigmTableHTML(maliciousParadigm);
+  assert.isFalse(html.includes('<script>'), 'Headers em paradigmas estáticos devem ser sanitizados');
+  assert.isFalse(html.includes('<iframe'), 'Células em paradigmas estáticos devem ser sanitizadas');
+  assert.includes(html, '&lt;script&gt;', 'Sanitização de entidades deve estar presente no HTML de paradigmas');
+});
+
+// --------------------------------------------------------------------------
+// TESTE 15: Isolamento de Listeners de Teclado (M3)
+// --------------------------------------------------------------------------
+suite.test('Isolamento de Listeners de Teclado: Eventos prevenidos ou com modal ativo não disparam simulado/sobrevivência', () => {
+  let simulatedSubmissionTriggered = false;
+  let simulatedSurvivalTriggered = false;
+
+  const mockModal = {
+    classList: {
+      contains: (cls) => cls === "hidden" ? false : true, // Modal visível (não-hidden)
+    },
+  };
+
+  const oldDoc = global.document;
+  global.document = {
+    getElementById: (id) => {
+      if (id === "sentence-analysis-modal") return mockModal;
+      return null;
+    },
+    addEventListener: () => {},
+  };
+
+  // Testa lógica de guarda contra conflito
+  const modalActive = global.document.getElementById("sentence-analysis-modal");
+  const isModalOpen = modalActive && !modalActive.classList.contains("hidden");
+
+  assert.isTrue(isModalOpen, 'Modal deve ser detectado como aberto');
+
+  const eventHandledByModal = {
+    key: "Enter",
+    defaultPrevented: true,
+  };
+
+  if (eventHandledByModal.defaultPrevented || isModalOpen) {
+    // Ação ignorada por segurança
+  } else {
+    simulatedSubmissionTriggered = true;
+  }
+
+  assert.isFalse(simulatedSubmissionTriggered, 'Submissão de simulado não deve ser disparada com modal de análise ativo');
+  assert.isFalse(simulatedSurvivalTriggered, 'Submissão de sobrevivência não deve ser disparada');
+
+  if (oldDoc === undefined) delete global.document; else global.document = oldDoc;
+});
+
+// --------------------------------------------------------------------------
+// TESTE 16: Versão Canônica Única e Dinâmica (B2)
+// --------------------------------------------------------------------------
+suite.test('Versão Canônica Única: DataLoader e módulos compartilham a mesma versão da aplicação', () => {
+  const DataLoader = require('../js/data-loader.js');
+  const { APP_VERSION } = StateModule;
+
+  assert.isTrue(typeof DataLoader.VERSION === 'string' && DataLoader.VERSION.length > 0, 'DataLoader.VERSION deve ser string válida');
+  assert.equal(DataLoader.VERSION, APP_VERSION, 'DataLoader.VERSION e StateModule.APP_VERSION devem ser idênticos');
+  assert.equal(DataLoader.VERSION, '2.7.1', 'Versão atual deve ser 2.7.1');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

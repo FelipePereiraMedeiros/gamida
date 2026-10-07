@@ -61,6 +61,67 @@ suite.test('DataLoader gerencia persistência e invalidação de versão no loca
   assert.includes(dataLoaderJs, 'gamida_data_version_', 'Chave de versão de dados ausente');
 });
 
+// 6. Camada de Armazenamento Unificada (GamidaStorage / DataLoader.storage)
+suite.test('DataLoader.storage fornece API assíncrona com fallback resiliente', async () => {
+  const DataLoader = require('../js/data-loader.js');
+  assert.isTrue(typeof DataLoader.storage.getItem === 'function', 'getItem deve ser função');
+  assert.isTrue(typeof DataLoader.storage.setItem === 'function', 'setItem deve ser função');
+  assert.isTrue(typeof DataLoader.storage.removeItem === 'function', 'removeItem deve ser função');
+
+  const testKey = 'gamida_test_sprint2_key';
+  const testVal = 'sprint2_value';
+  await DataLoader.storage.setItem(testKey, testVal);
+  const retrieved = await DataLoader.storage.getItem(testKey);
+  assert.equal(retrieved, testVal, 'Valor salvo via storage deve ser recuperado com exatidão');
+  await DataLoader.storage.removeItem(testKey);
+  const afterRemove = await DataLoader.storage.getItem(testKey);
+  assert.isTrue(afterRemove === null || afterRemove === undefined, 'Item removido deve retornar nulo');
+});
+
+// 7. Padrão Overlay na Migração de Capítulos (A1)
+suite.test('DataLoader.loadChapters preserva capítulos customizados e editados (_userModified) após upgrade de versão', async () => {
+  const DataLoader = require('../js/data-loader.js');
+  const oldStorage = global.localStorage;
+  const mockStorage = new MockLocalStorage();
+  global.localStorage = mockStorage;
+
+  try {
+    const oldVersion = "0.9.0-old";
+    const customChapter = {
+      id: "cap_meu_estudo_personalizado",
+      title: "Minha Lição Especial",
+      items: [{ term: "דָּבָר", translations: ["palavra"] }],
+      sentences: [],
+      _custom: true,
+    };
+
+    const defaults = await DataLoader.fetchDefaultChapters("hebrew");
+    const editedDefault = JSON.parse(JSON.stringify(defaults[0]));
+    editedDefault.title = "Lição 1 - Modificada pelo Usuário";
+    editedDefault._userModified = true;
+
+    const storedChapters = [editedDefault, customChapter];
+    mockStorage.setItem("gamida_hebrew_chapters", JSON.stringify(storedChapters));
+    mockStorage.setItem("gamida_data_version_hebrew", oldVersion);
+
+    DataLoader.clearCache("hebrew");
+    const loaded = await DataLoader.loadChapters("hebrew");
+
+    const loadedChap1 = loaded.find((c) => c.id === editedDefault.id);
+    assert.isTrue(!!loadedChap1, "Capítulo 1 padrão deve existir");
+    assert.equal(loadedChap1.title, "Lição 1 - Modificada pelo Usuário", "Título customizado pelo usuário deve ser preservado");
+    assert.isTrue(loadedChap1._userModified === true, "Flag _userModified deve persistir");
+
+    const loadedCustom = loaded.find((c) => c.id === "cap_meu_estudo_personalizado");
+    assert.isTrue(!!loadedCustom, "Capítulo customizado do usuário deve ser preservado na migração");
+    assert.equal(loadedCustom.title, "Minha Lição Especial", "Dados do capítulo customizado devem permanecer intactos");
+
+    assert.isGreaterThan(loaded.length, defaults.length, "Total de capítulos deve conter defaults + customizados");
+  } finally {
+    if (oldStorage === undefined) delete global.localStorage; else global.localStorage = oldStorage;
+  }
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

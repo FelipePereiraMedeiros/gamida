@@ -21,27 +21,19 @@ let survStreak = 0;
 let survQueue = [];
 let survCurrent = null;
 
-function safeToggle(id, isVisible) {
+const safeToggle = (typeof window !== "undefined" && window.safeToggle) || _stateModule.safeToggle || function safeToggle(id, isVisible) {
   if (typeof document === "undefined") return null;
   const el = document.getElementById(id);
   if (!el) return null;
-  if (isVisible) {
-    el.classList.remove("hidden");
-  } else {
-    el.classList.add("hidden");
-  }
+  if (isVisible) el.classList.remove("hidden"); else el.classList.add("hidden");
   return el;
-}
+};
 
-function safeAlert(msg) {
-  if (typeof window !== "undefined" && typeof window.alert === "function") {
-    window.alert(msg);
-  } else if (typeof alert === "function") {
-    alert(msg);
-  } else {
-    console.warn("[Gamida Alert]:", msg);
-  }
-}
+const safeAlert = (typeof window !== "undefined" && window.safeAlert) || _stateModule.safeAlert || function safeAlert(msg) {
+  if (typeof window !== "undefined" && typeof window.alert === "function") window.alert(msg);
+  else if (typeof alert === "function") alert(msg);
+  else console.warn("[Gamida Alert]:", msg);
+};
 
 /**
  * Inicia o desafio de sobrevivência com vocabulário cumulativo até o capítulo ativo
@@ -231,10 +223,14 @@ function finishSurvival(surrendered = false) {
   if (survStreak > (AppState.survivalHighScore || 0)) {
     AppState.survivalHighScore = survStreak;
     if (typeof localStorage !== "undefined") {
-      localStorage.setItem(
-        `gamida_${AppState.language}_survival_high`,
-        AppState.survivalHighScore,
-      );
+      try {
+        localStorage.setItem(
+          `gamida_${AppState.language}_survival_high`,
+          AppState.survivalHighScore,
+        );
+      } catch (err) {
+        console.warn("Aviso ao salvar recorde de sobrevivência no localStorage:", err);
+      }
     }
   }
 

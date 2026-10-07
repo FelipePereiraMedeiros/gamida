@@ -8,6 +8,10 @@
 const _stateModule = (typeof require !== "undefined") ? require("./state.js") : (typeof window !== "undefined" ? window : {});
 const AppState = (typeof window !== "undefined" && window.AppState) || _stateModule.AppState;
 const shuffleArray = (typeof window !== "undefined" && window.shuffleArray) || _stateModule.shuffleArray;
+const escapeHTML =
+  (typeof window !== "undefined" && window.escapeHTML) ||
+  _stateModule.escapeHTML ||
+  ((s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;"));
 
 let activeParadigm = null;
 let draggedElement = null;
@@ -121,11 +125,11 @@ function renderTableView(paradigm, container) {
       td.className = "p-2.5 text-center align-middle";
 
       if (cellIdx === 0) {
-        td.innerHTML = `<span class="font-bold text-slate-300 text-[11px] uppercase tracking-wider">${cellText}</span>`;
+        td.innerHTML = `<span class="font-bold text-slate-300 text-[11px] uppercase tracking-wider">${escapeHTML(cellText)}</span>`;
       } else {
         allAnswers.push(cellText);
         td.innerHTML = `
-          <div class="drop-zone border-2 border-dashed border-slate-700 hover:border-brand-500 rounded-lg min-w-[70px] h-11 flex items-center justify-center transition-colors bg-slate-900/40 cursor-pointer" data-expected="${cellText}" data-answer="${cellText}">
+          <div class="drop-zone border-2 border-dashed border-slate-700 hover:border-brand-500 rounded-lg min-w-[70px] h-11 flex items-center justify-center transition-colors bg-slate-900/40 cursor-pointer" data-expected="${escapeHTML(cellText)}" data-answer="${escapeHTML(cellText)}">
           </div>
         `;
         const dropZone = td.querySelector(".drop-zone");
@@ -547,15 +551,15 @@ function getStaticParadigmTableHTML(paradigm) {
     AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
   let html = `
     <div class="w-full max-w-4xl mx-auto flex flex-col items-center my-6 p-6 bg-slate-900 border border-slate-800 rounded-3xl shadow-lg">
-      <h4 class="text-slate-300 font-bold text-sm uppercase tracking-widest mb-6 text-center">${paradigm.title}</h4>
+      <h4 class="text-slate-300 font-bold text-sm uppercase tracking-widest mb-6 text-center">${escapeHTML(paradigm.title)}</h4>
       <div class="w-full overflow-x-auto rounded-xl border border-slate-700/50">
         <table class="w-full text-left border-collapse min-w-[400px]">
           <thead>
             <tr class="bg-slate-950">
   `;
 
-  paradigm.headers.forEach((h) => {
-    html += `<th class="px-4 py-4 border-b border-slate-700 text-brand-400 text-xs font-bold uppercase tracking-wider text-center">${h}</th>`;
+  (paradigm.headers || []).forEach((h) => {
+    html += `<th class="px-4 py-4 border-b border-slate-700 text-brand-400 text-xs font-bold uppercase tracking-wider text-center">${escapeHTML(h)}</th>`;
   });
 
   html += `
@@ -564,13 +568,13 @@ function getStaticParadigmTableHTML(paradigm) {
           <tbody class="divide-y divide-slate-800/60 bg-slate-900/50">
   `;
 
-  paradigm.rows.forEach((row) => {
+  (paradigm.rows || []).forEach((row) => {
     html += `<tr class="hover:bg-slate-800/40 transition">`;
     row.forEach((cellText, cellIdx) => {
       if (cellIdx === 0) {
-        html += `<td class="p-3 text-center align-middle bg-slate-950/40 w-24 border-r border-slate-800/60"><span class="font-bold text-slate-400 text-[11px] uppercase tracking-wider">${cellText}</span></td>`;
+        html += `<td class="p-3 text-center align-middle bg-slate-950/40 w-24 border-r border-slate-800/60"><span class="font-bold text-slate-400 text-[11px] uppercase tracking-wider">${escapeHTML(cellText)}</span></td>`;
       } else {
-        html += `<td class="p-3 text-center align-middle ${textClass} text-lg font-bold text-slate-100">${cellText}</td>`;
+        html += `<td class="p-3 text-center align-middle ${textClass} text-lg font-bold text-slate-100">${escapeHTML(cellText)}</td>`;
       }
     });
     html += `</tr>`;

@@ -23,7 +23,14 @@ function loadSRS() {
   const stored = localStorage.getItem(`gamida_${AppState.language}_srs`);
   if (stored) {
     try {
-      AppState.srs = JSON.parse(stored);
+      const parsed = JSON.parse(stored);
+      AppState.srs = {};
+      if (parsed && typeof parsed === "object") {
+        for (const [k, v] of Object.entries(parsed)) {
+          const normKey = (k || "").trim().normalize("NFC");
+          AppState.srs[normKey] = v;
+        }
+      }
     } catch (e) {
       AppState.srs = {};
     }
@@ -32,7 +39,8 @@ function loadSRS() {
   }
 
   const high = localStorage.getItem(`gamida_${AppState.language}_survival_high`);
-  AppState.survivalHighScore = high ? parseInt(high, 10) : 0;
+  const parsedHigh = high ? parseInt(high, 10) : 0;
+  AppState.survivalHighScore = Number.isFinite(parsedHigh) ? parsedHigh : 0;
 }
 
 /**
@@ -40,52 +48,61 @@ function loadSRS() {
  */
 function saveSRS() {
   if (typeof localStorage === "undefined") return;
-  localStorage.setItem(
-    `gamida_${AppState.language}_srs`,
-    JSON.stringify(AppState.srs),
-  );
+  try {
+    localStorage.setItem(
+      `gamida_${AppState.language}_srs`,
+      JSON.stringify(AppState.srs),
+    );
+  } catch (err) {
+    console.warn("Aviso ao salvar SRS no localStorage (cota excedida ou storage inacessível):", err);
+  }
+}
+
+/**
+ * Retorna a chave estável normalizada (Unicode NFC) para indexação no SRS
+ * @param {string|Object} termOrItem
+ * @returns {string}
+ */
+function getSRSKey(termOrItem) {
+  if (!termOrItem) return "";
+  const raw = typeof termOrItem === "string" ? termOrItem : getTerm(termOrItem);
+  return (raw || "").trim().normalize("NFC");
 }
 
 /**
  * Registra uma falha de retenção no termo e agenda revisão prioritária
- * @param {string} termStr
+ * @param {string|Object} termStr
  */
 function recordSRSError(termStr) {
   if (!termStr) return;
-  if (!AppState.srs[termStr]) {
-    AppState.srs[termStr] = {
+  const key = getSRSKey(termStr);
+  if (!key) return;
+  if (!AppState.srs[key]) {
+    AppState.srs[key] = {
       interval: 0,
       ef: 2.5,
       nextReview: 0,
       fails: 0,
     };
   }
-  AppState.srs[termStr].fails = (AppState.srs[termStr].fails || 0) + 1;
-  AppState.srs[termStr].nextReview = Date.now();
+  AppState.srs[key].fails = (AppState.srs[key].fails || 0) + 1;
+  AppState.srs[key].nextReview = Date.now();
   saveSRS();
 }
 
-function safeToggle(id, isVisible) {
+const safeToggle = (typeof window !== "undefined" && window.safeToggle) || _stateModule.safeToggle || function safeToggle(id, isVisible) {
   if (typeof document === "undefined") return null;
   const el = document.getElementById(id);
   if (!el) return null;
-  if (isVisible) {
-    el.classList.remove("hidden");
-  } else {
-    el.classList.add("hidden");
-  }
+  if (isVisible) el.classList.remove("hidden"); else el.classList.add("hidden");
   return el;
-}
+};
 
-function safeAlert(msg) {
-  if (typeof window !== "undefined" && typeof window.alert === "function") {
-    window.alert(msg);
-  } else if (typeof alert === "function") {
-    alert(msg);
-  } else {
-    console.warn("[Gamida Alert]:", msg);
-  }
-}
+const safeAlert = (typeof window !== "undefined" && window.safeAlert) || _stateModule.safeAlert || function safeAlert(msg) {
+  if (typeof window !== "undefined" && typeof window.alert === "function") window.alert(msg);
+  else if (typeof alert === "function") alert(msg);
+  else console.warn("[Gamida Alert]:", msg);
+};
 
 /**
  * Inicia a sessão de revisão de Flashcards (Anki)
@@ -113,7 +130,9 @@ function startAnki() {
         chapterTitle: chap.title,
         kind,
       };
-      const record = AppState.srs[getTerm(it)];
+      const key = getSRSKey(it);
+      const rawTerm = getTerm(it);
+      const record = AppState.srs[key] || AppState.srs[rawTerm];
       if (record && record.nextReview <= now) dueCards.push(entry);
       else if (!record && isCurrent) newCards.push(entry);
     };
@@ -122,10 +141,10 @@ function startAnki() {
   });
 
   dueCards = Array.from(
-    new Map(dueCards.map((w) => [getTerm(w), w])).values(),
+    new Map(dueCards.map((w) => [getSRSKey(w), w])).values(),
   );
   newCards = Array.from(
-    new Map(newCards.map((w) => [getTerm(w), w])).values(),
+    new Map(newCards.map((w) => [getSRSKey(w), w])).values(),
   );
 
   dueCards = shuffleArray(dueCards);
@@ -188,7 +207,9 @@ function renderAnkiCard() {
     translation.textContent = ankiCurrentCard.translations.join(" / ");
   }
 
-  const record = AppState.srs[getTerm(ankiCurrentCard)] || {
+  const cardKey = getSRSKey(ankiCurrentCard);
+  const rawTerm = getTerm(ankiCurrentCard);
+  const record = AppState.srs[cardKey] || AppState.srs[rawTerm] || {
     interval: 0,
     ef: 2.5,
     nextReview: 0,
@@ -229,7 +250,9 @@ function revealAnki() {
 function answerAnki(grade) {
   if (!ankiCurrentCard) return;
   ankiStats[grade]++;
-  const record = AppState.srs[getTerm(ankiCurrentCard)] || {
+  const cardKey = getSRSKey(ankiCurrentCard);
+  const rawTerm = getTerm(ankiCurrentCard);
+  const record = AppState.srs[cardKey] || AppState.srs[rawTerm] || {
     interval: 0,
     ef: 2.5,
     nextReview: 0,
@@ -257,7 +280,7 @@ function answerAnki(grade) {
       Date.now() + record.interval * 24 * 60 * 60 * 1000;
   }
 
-  AppState.srs[getTerm(ankiCurrentCard)] = record;
+  AppState.srs[cardKey] = record;
   saveSRS();
 
   ankiQueue.shift();
@@ -281,6 +304,7 @@ function finishAnki() {
 
 // Suporte universal (Browser Global / Node CommonJS)
 if (typeof window !== "undefined") {
+  window.getSRSKey = getSRSKey;
   window.loadSRS = loadSRS;
   window.saveSRS = saveSRS;
   window.recordSRSError = recordSRSError;
@@ -290,6 +314,7 @@ if (typeof window !== "undefined") {
   window.answerAnki = answerAnki;
   window.finishAnki = finishAnki;
   window.SRSModule = {
+    getSRSKey,
     loadSRS,
     saveSRS,
     recordSRSError,
@@ -305,6 +330,7 @@ if (typeof window !== "undefined") {
 }
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
+    getSRSKey,
     loadSRS,
     saveSRS,
     recordSRSError,
