@@ -6,9 +6,23 @@
 
 (function () {
 const APP_VERSION =
-  typeof window !== "undefined" && window.DataLoader && window.DataLoader.VERSION
-    ? window.DataLoader.VERSION
-    : "2.6.8";
+  (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
+  "2.7.1";
+
+/**
+ * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
+ * @param {string} str
+ * @returns {string}
+ */
+function escapeHTML(str) {
+  if (str === null || str === undefined) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
 const AppState = (typeof window !== "undefined" && window.AppState) || {
   language:
@@ -122,21 +136,57 @@ function shuffleArray(arr) {
 }
 
 /**
+ * Alterna a visibilidade de um elemento do DOM de forma defensiva
+ * @param {string} id
+ * @param {boolean} isVisible
+ * @returns {HTMLElement|null}
+ */
+function safeToggle(id, isVisible) {
+  if (typeof document === "undefined") return null;
+  const el = document.getElementById(id);
+  if (!el) return null;
+  if (isVisible) {
+    el.classList.remove("hidden");
+  } else {
+    el.classList.add("hidden");
+  }
+  return el;
+}
+
+/**
+ * Exibe alertas no navegador ou log de aviso defensivo
+ * @param {string} msg
+ */
+function safeAlert(msg) {
+  if (typeof window !== "undefined" && typeof window.alert === "function") {
+    window.alert(msg);
+  } else if (typeof alert === "function") {
+    alert(msg);
+  } else {
+    console.warn("[Gamida Alert]:", msg);
+  }
+}
+
+/**
  * Salva a coleção de capítulos do idioma atual no localStorage
  */
 function saveChaptersToStorage() {
-  if (typeof localStorage === "undefined") return;
+  if (typeof localStorage === "undefined" && typeof DataLoader === "undefined") return;
   try {
-    localStorage.setItem(
-      `gamida_${AppState.language}_chapters`,
-      JSON.stringify(AppState.chapters),
-    );
-    localStorage.setItem(
-      `gamida_data_version_${AppState.language}`,
-      APP_VERSION,
-    );
+    if (typeof DataLoader !== "undefined" && typeof DataLoader.saveChapters === "function") {
+      DataLoader.saveChapters(AppState.language, AppState.chapters);
+    } else if (typeof localStorage !== "undefined") {
+      localStorage.setItem(
+        `gamida_${AppState.language}_chapters`,
+        JSON.stringify(AppState.chapters),
+      );
+      localStorage.setItem(
+        `gamida_data_version_${AppState.language}`,
+        APP_VERSION,
+      );
+    }
   } catch (err) {
-    console.warn("Aviso ao salvar capítulos no localStorage (cota excedida ou storage inacessível):", err);
+    console.warn("Aviso ao salvar capítulos no storage:", err);
   }
 }
 
@@ -316,6 +366,7 @@ function getAvailableVocabCategories(state = AppState) {
 // Suporte universal (Browser Global / Node CommonJS)
 if (typeof window !== "undefined") {
   window.APP_VERSION = APP_VERSION;
+  window.escapeHTML = escapeHTML;
   window.AppState = AppState;
   window.SimConfig = SimConfig;
   window.WORD_CATEGORIES = WORD_CATEGORIES;
@@ -327,12 +378,15 @@ if (typeof window !== "undefined") {
   window.hasUniqueChapterIds = hasUniqueChapterIds;
   window.isAlphabetChapter = isAlphabetChapter;
   window.shuffleArray = shuffleArray;
+  window.safeToggle = safeToggle;
+  window.safeAlert = safeAlert;
   window.saveChaptersToStorage = saveChaptersToStorage;
   window.buildDistractorCache = buildDistractorCache;
   window.resetStats = resetStats;
   window.updateStatsUI = updateStatsUI;
   window.StateModule = {
     APP_VERSION,
+    escapeHTML,
     AppState,
     SimConfig,
     WORD_CATEGORIES,
@@ -344,6 +398,8 @@ if (typeof window !== "undefined") {
     hasUniqueChapterIds,
     isAlphabetChapter,
     shuffleArray,
+    safeToggle,
+    safeAlert,
     saveChaptersToStorage,
     buildDistractorCache,
     resetStats,
@@ -353,6 +409,7 @@ if (typeof window !== "undefined") {
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     APP_VERSION,
+    escapeHTML,
     AppState,
     SimConfig,
     WORD_CATEGORIES,
@@ -364,6 +421,8 @@ if (typeof module !== "undefined" && module.exports) {
     hasUniqueChapterIds,
     isAlphabetChapter,
     shuffleArray,
+    safeToggle,
+    safeAlert,
     saveChaptersToStorage,
     buildDistractorCache,
     resetStats,

@@ -24,17 +24,19 @@ let assessAnswersMap = {};
 let assessTimerInterval = null;
 let assessTimeCount = 0;
 
-function safeToggle(id, isVisible) {
+const safeToggle = (typeof window !== "undefined" && window.safeToggle) || _stateModule.safeToggle || function safeToggle(id, isVisible) {
   if (typeof document === "undefined") return null;
   const el = document.getElementById(id);
   if (!el) return null;
-  if (isVisible) {
-    el.classList.remove("hidden");
-  } else {
-    el.classList.add("hidden");
-  }
+  if (isVisible) el.classList.remove("hidden"); else el.classList.add("hidden");
   return el;
-}
+};
+
+const safeAlert = (typeof window !== "undefined" && window.safeAlert) || _stateModule.safeAlert || function safeAlert(msg) {
+  if (typeof window !== "undefined" && typeof window.alert === "function") window.alert(msg);
+  else if (typeof alert === "function") alert(msg);
+  else console.warn("[Gamida Alert]:", msg);
+};
 
 /**
  * Restaura o painel inicial do simulado
@@ -53,16 +55,6 @@ function resetToDashboard() {
   safeToggle("anki-results", false);
   safeToggle("survival-active", false);
   safeToggle("survival-results", false);
-}
-
-function safeAlert(msg) {
-  if (typeof window !== "undefined" && typeof window.alert === "function") {
-    window.alert(msg);
-  } else if (typeof alert === "function") {
-    alert(msg);
-  } else {
-    console.warn("[Gamida Alert]:", msg);
-  }
 }
 
 /**
@@ -631,6 +623,9 @@ function finishAssessment() {
 // Interceptador da tecla ENTER no input de Simulado
 if (typeof document !== "undefined" && typeof document.addEventListener === "function") {
   document.addEventListener("keydown", (e) => {
+    if (e.defaultPrevented) return;
+    const modal = document.getElementById("sentence-analysis-modal");
+    if (modal && !modal.classList.contains("hidden")) return;
     const act = document.getElementById("assessment-active");
     if (act && !act.classList.contains("hidden") && e.key === "Enter") {
       const input = document.getElementById("assess-user-input");

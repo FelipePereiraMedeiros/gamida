@@ -244,12 +244,14 @@
 /* Contêiner da Frase Hebraica em Evidência */
 .hebrew-sentence-container {
   direction: rtl;
-  font-family: "Noto Sans Hebrew", "SBL Hebrew", "Ezra SIL", serif;
-  font-size: clamp(2.4rem, 5vw, 3rem);
+  font-family: "SBL Hebrew", "Ezra SIL", "Noto Sans Hebrew", "David", serif;
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
   line-height: 2.2;
+  letter-spacing: 0.02em;
   text-align: center;
   user-select: none;
   -webkit-user-select: none;
+  font-feature-settings: "kern" 1, "mark" 1, "mkmk" 1;
 }
 
 /* Tokens e Morfemas RTL */
@@ -258,7 +260,6 @@
   white-space: nowrap;
   margin-inline-end: 0.65rem; /* Espaço entre palavras em RTL */
   vertical-align: baseline;
-  transition: transform 0.15s ease;
 }
 
 /* Regra de Maqqef: quando o token termina com maqqef (־ ou -), sem espaçamento após ele */
@@ -275,10 +276,13 @@
   border-radius: 0.45rem;
   padding: 0.12rem 0.32rem;
   margin: 0 0.05rem !important;
-  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  transition: background-color 0.1s ease, border-color 0.1s ease, box-shadow 0.1s ease, color 0.1s ease, transform 0.1s ease;
+  will-change: transform, box-shadow;
   border-bottom: 2px dashed rgba(255, 255, 255, 0.25);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+  touch-action: manipulation;
 }
 
 /* Destaque sutil ao passar o cursor / foco */

@@ -330,4 +330,49 @@ suite.test('renderMorphemesRibbonHTML gera chips para toda a oração e cada mor
   assert.includes(ribbonHTML, 'מֶלֶךְ', 'Deve exibir texto hebraico do segundo fragmento');
 });
 
+// --------------------------------------------------------------------------
+// TESTE 11: Tipografia Bíblica Padronizada na Frase em Evidência
+// --------------------------------------------------------------------------
+suite.test('Contêiner da frase hebraica no modal utiliza a tipografia bíblica padrão (SBL Hebrew)', () => {
+  const currentCss = require('fs').readFileSync(require('path').join(__dirname, '..', 'css', 'styles.css'), 'utf8');
+  const currentHtml = require('fs').readFileSync(require('path').join(__dirname, '..', 'index.html'), 'utf8');
+
+  // Validação no CSS: deve priorizar SBL Hebrew e Ezra SIL antes de fontes modernas
+  const containerRule = currentCss.match(/\.hebrew-sentence-container\s*\{[^}]+\}/);
+  assert.isTrue(!!containerRule, 'Regra .hebrew-sentence-container deve existir no styles.css');
+  assert.includes(containerRule[0], '"SBL Hebrew"', 'Deve incluir "SBL Hebrew" na pilha de fontes');
+  assert.includes(containerRule[0], '"Ezra SIL"', 'Deve incluir "Ezra SIL" na pilha de fontes');
+  assert.isTrue(
+    containerRule[0].indexOf('"SBL Hebrew"') < containerRule[0].indexOf('"Noto Sans Hebrew"'),
+    'Fonte bíblica tradicional SBL Hebrew deve ter precedência sobre Noto Sans Hebrew',
+  );
+
+  // Validação no HTML: contêiner deve conter hebrew-text
+  assert.includes(
+    currentHtml,
+    'class="hebrew-sentence-container hebrew-text text-white py-2"',
+    'Contêiner #sentence-morphemes-container no index.html deve conter a classe hebrew-text',
+  );
+});
+
+// --------------------------------------------------------------------------
+// TESTE 12: Otimização de Hover e Mitigação de Redundâncias de Renderização
+// --------------------------------------------------------------------------
+suite.test('setActiveMorphemeIndex otimiza hover ignorando chamadas redundantes sem alteração de estado', () => {
+  ModalState.isOpen = true;
+  ModalState.flatMorphemes = [{ index: 0, tokenIdx: 0, partIdx: 0 }];
+  ModalState.activeIndex = 0;
+  ModalState.pinnedIndex = null;
+
+  // Chamada idêntica no hover (pin = false) não deve gerar erro ou alterar estado
+  setActiveMorphemeIndex(0, false);
+  assert.equal(ModalState.activeIndex, 0, 'Estado deve permanecer consistente');
+  assert.equal(ModalState.pinnedIndex, null, 'Hover não deve fixar o morfema');
+
+  // Fechamento limpo
+  closeSentenceAnalysisModal();
+  assert.isFalse(ModalState.isOpen, 'Modal fechado com sucesso');
+});
+
 module.exports = suite;
+

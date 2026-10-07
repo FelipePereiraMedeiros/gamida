@@ -8,7 +8,7 @@ const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 
 const suite = new TestSuite('Módulo 4: Sistema SRS & Anki Flashcards');
 const { appJs } = loadSourceFiles();
-const { recordSRSError } = require('../js/modules/srs.js');
+const { recordSRSError, getSRSKey } = require('../js/modules/srs.js');
 const { AppState } = require('../js/modules/state.js');
 
 /**
@@ -45,6 +45,25 @@ function calculateSRSNextReview(record, grade) {
 
   return updated;
 }
+
+suite.test('getSRSKey normaliza chaves Unicode (NFC) eliminando duplicidades por marcas diacríticas/nikkud', () => {
+  // Forma composta (NFC) vs Decomposta (NFD)
+  const nfcWord = "שָׁלוֹם";
+  const nfdWord = nfcWord.normalize("NFD");
+
+  assert.equal(getSRSKey(nfcWord), getSRSKey(nfdWord), "getSRSKey deve unificar NFC e NFD");
+  assert.equal(getSRSKey("  " + nfcWord + "  "), getSRSKey(nfdWord), "getSRSKey deve fazer trim()");
+
+  AppState.srs = {};
+  recordSRSError(nfdWord);
+  assert.isTrue(!!AppState.srs[nfcWord], "recordSRSError com termo NFD deve salvar sob a chave NFC");
+  assert.equal(AppState.srs[nfcWord].fails, 1, "Falha registrada corretamente");
+
+  // Chamada subsequente com NFC deve acumular falhas na mesma entrada sem duplicar chave
+  recordSRSError(nfcWord);
+  assert.equal(AppState.srs[nfcWord].fails, 2, "Falhas devem acumular na chave NFC estável");
+  assert.equal(Object.keys(AppState.srs).length, 1, "Não deve criar chaves duplicadas no SRS");
+});
 
 suite.test('recordSRSError inicializa e contabiliza falhas com revisão imediata em AppState.srs', () => {
   AppState.srs = {};
