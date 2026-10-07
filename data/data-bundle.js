@@ -1,7 +1,7 @@
 /**
  * Gamida Data Bundle - Offline & Standalone Fallback
  * Gerado automaticamente via scripts/build-bundle.js
- * Data: 2026-10-06T23:10:16.487Z
+ * Data: 2026-10-07T02:36:16.004Z
  */
 window.GAMIDA_DEFAULT_DATA = {
   hebrew: [
@@ -2335,7 +2335,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Qamats compensatório diante da gutural alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante da gutural alef (א)."
               },
               {
                 "segment": "אֲנָשִׁים",
@@ -2359,14 +2359,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples diante de consoante com vogal cheia[cite: 54]."
+                "phonetics": "Vav com shva simples diante de consoante com vogal cheia."
               },
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah com dagesh forte regular na sibilante samekh (ס)[cite: 45]."
+                "phonetics": "Patah com dagesh forte regular na sibilante samekh (ס)."
               },
               {
                 "segment": "סּוּסִים",
@@ -2402,7 +2402,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah com dagesh forte no mem (מ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no mem (מ)."
               },
               {
                 "segment": "מִּצְוֹת",
@@ -2420,7 +2420,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração subordinada adjetiva ('que', 'os quais')[cite: 46]."
+            "syntax_role": "Introduz a oração subordinada adjetiva ('que', 'os quais')."
           },
           {
             "index": 3,
@@ -2435,7 +2435,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "no (em + o)",
-                "phonetics": "A preposição בְּ absorve o artigo הַ; o he cai e a preposição herda o patah e o dagesh forte no samekh[cite: 51]."
+                "phonetics": "A preposição בְּ absorve o artigo הַ; o he cai e a preposição herda o patah e o dagesh forte no samekh."
               },
               {
                 "segment": "סֵּפֶר",
@@ -2472,13 +2472,13 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "as",
-                "phonetics": "Patah com dagesh forte no nun (נ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no nun (נ)."
               },
               {
                 "segment": "נָּשִׁים",
                 "transliteration": "Nashim",
                 "type": "Substantivo",
-                "inflection": "feminino plural absoluto (irregular, com terminação -im)[cite: 64]",
+                "inflection": "feminino plural absoluto (irregular, com terminação -im)",
                 "meaning": "mulheres"
               }
             ]
@@ -2490,7 +2490,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração subordinada adjetiva ('que', 'as quais')[cite: 46]."
+            "syntax_role": "Introduz a oração subordinada adjetiva ('que', 'as quais')."
           },
           {
             "index": 3,
@@ -2505,7 +2505,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "na (em + a)",
-                "phonetics": "A preposição בְּ assimila o artigo הַ, retendo o patah e exigindo dagesh forte no bet seguinte[cite: 51]."
+                "phonetics": "A preposição בְּ assimila o artigo הַ, retendo o patah e exigindo dagesh forte no bet seguinte."
               },
               {
                 "segment": "בַּיִת",
@@ -2541,7 +2541,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Artigo regular com patah e dagesh forte no mem inicial com shva[cite: 45, 47]."
+                "phonetics": "Artigo regular com patah e dagesh forte no mem inicial com shva."
               },
               {
                 "segment": "מְּלָכִים",
@@ -2565,14 +2565,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah com dagesh forte no nun (נ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no nun (נ)."
               },
               {
                 "segment": "נְּבִיאִים",
@@ -2609,7 +2609,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a / as",
-                "phonetics": "Patah com dagesh forte no mem (מ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no mem (מ)."
               },
               {
                 "segment": "מַיִם",
@@ -2633,7 +2633,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "B'",
                 "type": "Preposição inseparável",
                 "meaning": "em",
-                "phonetics": "Bet com shva simples diante de consoante com vogal cheia[cite: 50]."
+                "phonetics": "Bet com shva simples diante de consoante com vogal cheia."
               },
               {
                 "segment": "תוֹךְ",
@@ -2657,7 +2657,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no yod (י)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no yod (י)."
               },
               {
                 "segment": "יָם",
@@ -2694,7 +2694,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "as / os",
-                "phonetics": "Qamats compensatório diante da gutural ayin (ע)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante da gutural ayin (ע)."
               },
               {
                 "segment": "עוֹף",
@@ -2718,7 +2718,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "no / nos",
-                "phonetics": "Preposição בְּ retém o patah do artigo e o dagesh forte no shin (ש)[cite: 51]."
+                "phonetics": "Preposição בְּ retém o patah do artigo e o dagesh forte no shin (ש)."
               },
               {
                 "segment": "שָּׁמַיִם",
@@ -2754,7 +2754,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Patah com dagesh forte na não-gutural bet (ב)[cite: 45]."
+                "phonetics": "Patah com dagesh forte na não-gutural bet (ב)."
               },
               {
                 "segment": "בְּרִית",
@@ -2772,8 +2772,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עִם",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Introduz relação de companhia ou aliança ('com'). Ligada por maqqef[cite: 31, 52].",
-            "notes": "Unida à palavra seguinte pelo traço maqqef, funcionando como unidade prosódica átona[cite: 31]."
+            "syntax_role": "Introduz relação de companhia ou aliança ('com'). Ligada por maqqef.",
+            "notes": "Unida à palavra seguinte pelo traço maqqef, funcionando como unidade prosódica átona."
           },
           {
             "index": 3,
@@ -2788,7 +2788,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no mem (מ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no mem (מ)."
               },
               {
                 "segment": "מֶּלֶךְ",
@@ -2824,7 +2824,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah com dagesh forte no mem (מ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no mem (מ)."
               },
               {
                 "segment": "מִּצְוֹת",
@@ -2848,7 +2848,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "na (em + a)",
-                "phonetics": "Preposição בְּ assimila o artigo, assumindo patah e dagesh forte no tav (ת)[cite: 51]."
+                "phonetics": "Preposição בְּ assimila o artigo, assumindo patah e dagesh forte no tav (ת)."
               },
               {
                 "segment": "תּוֹרָה",
@@ -2888,8 +2888,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מִן",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Indica matéria de origem ('de' / 'a partir de'). Unida por maqqef[cite: 31, 52].",
-            "notes": "Conserva a forma plena diante do artigo definido[cite: 52]."
+            "syntax_role": "Indica matéria de origem ('de' / 'a partir de'). Unida por maqqef.",
+            "notes": "Conserva a forma plena diante do artigo definido."
           },
           {
             "index": 3,
@@ -2904,7 +2904,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante da gutural alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante da gutural alef (א)."
               },
               {
                 "segment": "אֲדָמָה",
@@ -2940,7 +2940,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah com dagesh forte no shin (ש)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no shin (ש)."
               },
               {
                 "segment": "שָּׁמַיִם",
@@ -2964,14 +2964,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אָרֶץ",
@@ -2979,7 +2979,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
                 "meaning": "terra",
-                "phonetics": "Modificação interna da vogal com o artigo definido (segol vira qamats)[cite: 47]."
+                "phonetics": "Modificação interna da vogal com o artigo definido (segol vira qamats)."
               }
             ]
           }
@@ -3001,21 +3001,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hayadayim",
             "lemma": "יָד",
             "composite": true,
-            "syntax_role": "Primeiro núcleo nominal definido (forma dual para membros pares)[cite: 64].",
+            "syntax_role": "Primeiro núcleo nominal definido (forma dual para membros pares).",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "as",
-                "phonetics": "Patah com dagesh forte no yod (י)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no yod (י)."
               },
               {
                 "segment": "יָּדַיִם",
                 "transliteration": "Yadayim",
                 "type": "Substantivo",
                 "inflection": "feminino dual absoluto",
-                "meaning": "duas mãos / mãos[cite: 64]"
+                "meaning": "duas mãos / mãos"
               }
             ]
           },
@@ -3025,28 +3025,28 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Veharaglayim",
             "lemma": "רֶגֶל",
             "composite": true,
-            "syntax_role": "Segundo núcleo nominal coordenado definido (forma dual)[cite: 64].",
+            "syntax_role": "Segundo núcleo nominal coordenado definido (forma dual).",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Qamats compensatório diante da letra resh (ר)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante da letra resh (ר)."
               },
               {
                 "segment": "רַגְלַיִם",
                 "transliteration": "Raglayim",
                 "type": "Substantivo",
                 "inflection": "feminino dual absoluto",
-                "meaning": "dois pés / pés[cite: 65]"
+                "meaning": "dois pés / pés"
               }
             ]
           }
@@ -3244,14 +3244,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Me",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "de",
-                "phonetics": "A preposição מִן antes da gutural alef (א) sem artigo sofre compensação vocálica: hireq é alongado para șere[cite: 53]."
+                "phonetics": "A preposição מִן antes da gutural alef (א) sem artigo sofre compensação vocálica: hireq é alongado para șere."
               },
               {
                 "segment": "אָדָם",
                 "transliteration": "Adam",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "homem / ser humano[cite: 35]"
+                "meaning": "homem / ser humano"
               }
             ]
           },
@@ -3262,8 +3262,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "רַע",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo[cite: 71]. Concorda em gênero (masculino), número (singular) e determinação (indefinido) com אָדָם[cite: 71].",
-            "notes": "Modifica o substantivo diretamente e posiciona-se após ele[cite: 71]."
+            "syntax_role": "Adjetivo atributivo. Concorda em gênero (masculino), número (singular) e determinação (indefinido) com אָדָם.",
+            "notes": "Modifica o substantivo diretamente e posiciona-se após ele."
           }
         ]
       },
@@ -3276,7 +3276,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Nominal Qualitativa",
-        "notes": "Oração sem verbo onde o adjetivo גָּדוֹל funciona como predicativo do sujeito composto por substantivo e aposto[cite: 72].",
+        "notes": "Oração sem verbo onde o adjetivo גָּדוֹל funciona como predicativo do sujeito composto por substantivo e aposto.",
         "tokens": [
           {
             "index": 1,
@@ -3291,7 +3291,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אִישׁ",
@@ -3318,7 +3318,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "גָּדוֹל",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Predicado nominal (adjetivo predicativo: 'era grande')[cite: 72]. Concorda em gênero e número com o sujeito, mas não leva artigo[cite: 72]."
+            "syntax_role": "Predicado nominal (adjetivo predicativo: 'era grande'). Concorda em gênero e número com o sujeito, mas não leva artigo."
           },
           {
             "index": 4,
@@ -3348,7 +3348,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מִי",
             "composite": false,
             "word_class": "Pronome interrogativo",
-            "syntax_role": "Pronome interrogativo para pessoas ('quem?'). Unido por maqqef ao sujeito[cite: 31, 127]."
+            "syntax_role": "Pronome interrogativo para pessoas ('quem?'). Unido por maqqef ao sujeito."
           },
           {
             "index": 2,
@@ -3366,7 +3366,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "גָּדוֹל",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo modificando אֵל ('grande deus')[cite: 71]."
+            "syntax_role": "Adjetivo atributivo modificando אֵל ('grande deus')."
           },
           {
             "index": 4,
@@ -3381,7 +3381,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "entre / em",
-                "phonetics": "A preposição בְּ diante do alef gutural com hatef-segol recebe șere e o hatef-segol é suprimido[cite: 51]."
+                "phonetics": "A preposição בְּ diante do alef gutural com hatef-segol recebe șere e o hatef-segol é suprimido."
               },
               {
                 "segment": "אלֹהִים",
@@ -3429,7 +3429,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "גָּדוֹל",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo modificando אֵל ('grande deus')[cite: 71]."
+            "syntax_role": "Adjetivo atributivo modificando אֵל ('grande deus')."
           },
           {
             "index": 4,
@@ -3453,7 +3453,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante da consoante labial mem (מ)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante da consoante labial mem (מ)."
               },
               {
                 "segment": "מֶלֶךְ",
@@ -3471,7 +3471,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "גָּדוֹל",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo modificando מֶלֶךְ ('grande rei')[cite: 71]."
+            "syntax_role": "Adjetivo atributivo modificando מֶלֶךְ ('grande rei')."
           }
         ]
       },
@@ -3498,7 +3498,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah com dagesh forte no shin (ש)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no shin (ש)."
               },
               {
                 "segment": "שָּׁמַיִם",
@@ -3515,14 +3515,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hachadashim",
             "lemma": "חָדָשׁ",
             "composite": true,
-            "syntax_role": "Adjetivo atributivo concordando em gênero (masculino), número (plural) e determinação (com artigo)[cite: 71].",
+            "syntax_role": "Adjetivo atributivo concordando em gênero (masculino), número (plural) e determinação (com artigo).",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah com reduplicação virtual sob a gutural het (ח)[cite: 46, 47]."
+                "phonetics": "Patah com reduplicação virtual sob a gutural het (ח)."
               },
               {
                 "segment": "חֲדָשִׁים",
@@ -3530,7 +3530,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Adjetivo",
                 "inflection": "masculino plural",
                 "meaning": "novos",
-                "phonetics": "O qamats original volatiliza-se em hatef-patah sob a gutural het (ח) no plural[cite: 71]."
+                "phonetics": "O qamats original volatiliza-se em hatef-patah sob a gutural het (ח) no plural."
               }
             ]
           },
@@ -3547,14 +3547,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório antes de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório antes de alef (א)."
               },
               {
                 "segment": "אָרֶץ",
@@ -3571,14 +3571,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hachadasha",
             "lemma": "חָדָשׁ",
             "composite": true,
-            "syntax_role": "Adjetivo atributivo concordando com אֶרֶץ em gênero (feminino), número (singular) e determinação[cite: 71].",
+            "syntax_role": "Adjetivo atributivo concordando com אֶרֶץ em gênero (feminino), número (singular) e determinação.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Patah sem dagesh com reduplicação virtual do het (ח)[cite: 46, 47]."
+                "phonetics": "Patah sem dagesh com reduplicação virtual do het (ח)."
               },
               {
                 "segment": "חֲדָשָׁה",
@@ -3586,7 +3586,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Adjetivo",
                 "inflection": "feminino singular",
                 "meaning": "nova",
-                "phonetics": "Terminação característica do feminino singular (-ah) com volatilização em hatef-patah[cite: 69, 71]."
+                "phonetics": "Terminação característica do feminino singular (-ah) com volatilização em hatef-patah."
               }
             ]
           }
@@ -3618,7 +3618,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "חָדָשׁ",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo masculino singular ('novo'), concordando com לֵב[cite: 71]."
+            "syntax_role": "Adjetivo atributivo masculino singular ('novo'), concordando com לֵב."
           },
           {
             "index": 3,
@@ -3633,15 +3633,15 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "רוּחַ",
                 "transliteration": "Ruach",
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
-                "meaning": "espírito / vento[cite: 50]",
-                "phonetics": "Apresenta patah furtivo sob a gutural het (ח) final[cite: 44]."
+                "meaning": "espírito / vento",
+                "phonetics": "Apresenta patah furtivo sob a gutural het (ח) final."
               }
             ]
           },
@@ -3652,7 +3652,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "חָדָשׁ",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo feminino singular ('nova'), concordando com o gênero feminino de רוּחַ[cite: 71]."
+            "syntax_role": "Adjetivo atributivo feminino singular ('nova'), concordando com o gênero feminino de רוּחַ."
           }
         ]
       },
@@ -3666,7 +3666,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Nominal Qualitativa com Predicado Duplo",
-        "notes": "Dois adjetivos predicativos antepostos sem artigo qualificando o sujeito יְהוָה (Kelley VIII.22.4)[cite: 72].",
+        "notes": "Dois adjetivos predicativos antepostos sem artigo qualificando o sujeito יְהוָה (Kelley VIII.22.4).",
         "tokens": [
           {
             "index": 1,
@@ -3690,7 +3690,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "יָשָׁר",
@@ -3708,7 +3708,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração nominal ('o SENHOR'). Verbo 'ser' fica subentendido[cite: 72]."
+            "syntax_role": "Sujeito da oração nominal ('o SENHOR'). Verbo 'ser' fica subentendido."
           }
         ]
       },
@@ -3735,7 +3735,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "דָוִיד",
@@ -3752,7 +3752,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "זָקֵן",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Predicado nominal ('era velho')[cite: 72]. Adjetivo predicativo concordando em gênero e número com Davi[cite: 72]."
+            "syntax_role": "Predicado nominal ('era velho'). Adjetivo predicativo concordando em gênero e número com Davi."
           }
         ]
       },
@@ -3773,8 +3773,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "רוּחַ",
             "composite": false,
             "word_class": "Substantivo (feminino singular absoluto)",
-            "syntax_role": "Núcleo nominal. Unido ao adjetivo atributivo por maqqef[cite: 31, 71].",
-            "notes": "Patah furtivo sob o het final[cite: 44]."
+            "syntax_role": "Núcleo nominal. Unido ao adjetivo atributivo por maqqef.",
+            "notes": "Patah furtivo sob o het final."
           },
           {
             "index": 2,
@@ -3783,7 +3783,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "רַע",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo feminino singular ('má'), concordando com o substantivo feminino רוּחַ[cite: 71]."
+            "syntax_role": "Adjetivo atributivo feminino singular ('má'), concordando com o substantivo feminino רוּחַ."
           },
           {
             "index": 3,
@@ -3798,13 +3798,13 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Me",
                 "type": "Preposição (variante de מִן)",
                 "meaning": "de",
-                "phonetics": "Alongamento compensatório (șere) antes de alef (א)[cite: 53]."
+                "phonetics": "Alongamento compensatório (șere) antes de alef (א)."
               },
               {
                 "segment": "אֵת",
                 "transliteration": "Et",
                 "type": "Preposição",
-                "meaning": "com / junto a[cite: 97]"
+                "meaning": "com / junto a"
               }
             ]
           },
@@ -3836,8 +3836,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶבֶן",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Núcleo nominal (feminino singular absoluto: 'pedra')[cite: 83].",
-            "notes": "Substantivo segolado com gênero inerentemente feminino[cite: 83]."
+            "syntax_role": "Núcleo nominal (feminino singular absoluto: 'pedra').",
+            "notes": "Substantivo segolado com gênero inerentemente feminino."
           },
           {
             "index": 2,
@@ -3846,8 +3846,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "גָּדוֹל",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo feminino singular ('grande'), concordando com אֶבֶן[cite: 71].",
-            "notes": "O qamats inicial do adjetivo bissilábico volatiliza-se em shva simples ao afixar a terminação feminina -ah (Kelley VIII.20.3[2])[cite: 71]."
+            "syntax_role": "Adjetivo atributivo feminino singular ('grande'), concordando com אֶבֶן.",
+            "notes": "O qamats inicial do adjetivo bissilábico volatiliza-se em shva simples ao afixar a terminação feminina -ah (Kelley VIII.20.3[2])."
           }
         ]
       },
@@ -3874,7 +3874,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "por / em",
-                "phonetics": "Bet com shva simples[cite: 50]."
+                "phonetics": "Bet com shva simples."
               },
               {
                 "segment": "דֶרֶךְ",
@@ -3892,8 +3892,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָשָׁר",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo feminino singular ('reta'), concordando com דֶּרֶךְ[cite: 71].",
-            "notes": "O qamats inicial de יָשָׁר reduz-se a shva simples ao receber o sufixo de gênero (Kelley VIII.20.3[2])[cite: 71]."
+            "syntax_role": "Adjetivo atributivo feminino singular ('reta'), concordando com דֶּרֶךְ.",
+            "notes": "O qamats inicial de יָשָׁר reduz-se a shva simples ao receber o sufixo de gênero (Kelley VIII.20.3[2])."
           }
         ]
       },
@@ -3906,7 +3906,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Nominal Qualitativa",
-        "notes": "Adjetivo predicativo sem artigo anteposto ao sujeito determinado pelo artigo (Kelley VIII.22.2-3)[cite: 72].",
+        "notes": "Adjetivo predicativo sem artigo anteposto ao sujeito determinado pelo artigo (Kelley VIII.22.2-3).",
         "tokens": [
           {
             "index": 1,
@@ -3915,7 +3915,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָרוֹב",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Predicado nominal ('está próximo')[cite: 72]. Concorda em gênero (masculino) e número (singular) com הַיּוֹם[cite: 72]."
+            "syntax_role": "Predicado nominal ('está próximo'). Concorda em gênero (masculino) e número (singular) com הַיּוֹם."
           },
           {
             "index": 2,
@@ -3930,7 +3930,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no yod (י)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no yod (י)."
               },
               {
                 "segment": "יוֹם",
@@ -4233,7 +4233,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma Nominal com Adjetivo e Pronome Demonstrativo Atributivos",
-        "notes": "Quando um substantivo com adjetivo é determinado por pronome demonstrativo, este se posiciona por último e também leva o artigo (Kelley IX.24.3[1])[cite: 78].",
+        "notes": "Quando um substantivo com adjetivo é determinado por pronome demonstrativo, este se posiciona por último e também leva o artigo (Kelley IX.24.3[1]).",
         "tokens": [
           {
             "index": 1,
@@ -4248,7 +4248,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o / a",
-                "phonetics": "Patah com dagesh forte no dalet (ד)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no dalet (ד)."
               },
               {
                 "segment": "דָּבָר",
@@ -4265,14 +4265,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hagadol",
             "lemma": "גָּדוֹל",
             "composite": true,
-            "syntax_role": "Adjetivo atributivo determinado concordando em gênero, número e definição[cite: 71].",
+            "syntax_role": "Adjetivo atributivo determinado concordando em gênero, número e definição.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no guimel (ג)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no guimel (ג)."
               },
               {
                 "segment": "גָּדוֹל",
@@ -4289,21 +4289,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hazeh",
             "lemma": "זֶה",
             "composite": true,
-            "syntax_role": "Pronome demonstrativo atributivo concordando com o termo determinado ('este/esta')[cite: 78].",
+            "syntax_role": "Pronome demonstrativo atributivo concordando com o termo determinado ('este/esta').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "este",
-                "phonetics": "Patah com dagesh forte no zayin (ז)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no zayin (ז)."
               },
               {
                 "segment": "זֶּה",
                 "transliteration": "Zeh",
                 "type": "Pronome demonstrativo",
                 "inflection": "masculino singular",
-                "meaning": "este[cite: 78]"
+                "meaning": "este"
               }
             ]
           }
@@ -4336,7 +4336,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָרוֹב",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Predicado nominal ('está perto'). Adjetivo predicativo sem artigo anteposto ao sujeito[cite: 72]."
+            "syntax_role": "Predicado nominal ('está perto'). Adjetivo predicativo sem artigo anteposto ao sujeito."
           },
           {
             "index": 3,
@@ -4345,7 +4345,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הוּא",
             "composite": false,
             "word_class": "Pronome pessoal independente",
-            "syntax_role": "Sujeito da oração nominal (3ª pessoa masculino singular: 'ele')[cite: 77, 78]."
+            "syntax_role": "Sujeito da oração nominal (3ª pessoa masculino singular: 'ele')."
           }
         ]
       },
@@ -4373,14 +4373,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples diante de consoante com vogal cheia[cite: 54]."
+                "phonetics": "Vav com shva simples diante de consoante com vogal cheia."
               },
               {
                 "segment": "אָנֹכִי",
                 "transliteration": "Anochi",
                 "type": "Pronome pessoal independente",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "eu[cite: 77]"
+                "meaning": "eu"
               }
             ]
           },
@@ -4391,7 +4391,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "נַעַר",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Predicado nominal ('sou um rapaz'). Verbo 'ser' implícito[cite: 77]."
+            "syntax_role": "Predicado nominal ('sou um rapaz'). Verbo 'ser' implícito."
           },
           {
             "index": 3,
@@ -4400,7 +4400,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָטָן",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo masculino singular ('pequeno' / 'jovem') qualificando נַעַר[cite: 71]."
+            "syntax_role": "Adjetivo atributivo masculino singular ('pequeno' / 'jovem') qualificando נַעַר."
           }
         ]
       },
@@ -4440,7 +4440,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "צַדִּיק",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo qualificando אִישׁ ('homem justo')[cite: 71]."
+            "syntax_role": "Adjetivo atributivo qualificando אִישׁ ('homem justo')."
           }
         ]
       },
@@ -4476,7 +4476,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "יָשָׁר",
@@ -4494,7 +4494,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הוּא",
             "composite": false,
             "word_class": "Pronome pessoal independente",
-            "syntax_role": "Sujeito da oração nominal (3ª pessoa masculino singular: 'ele')[cite: 77, 78]."
+            "syntax_role": "Sujeito da oração nominal (3ª pessoa masculino singular: 'ele')."
           }
         ]
       },
@@ -4554,7 +4554,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עַם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Núcleo do predicado nominal anteposto ('é um povo'). Unido por maqqef[cite: 31]."
+            "syntax_role": "Núcleo do predicado nominal anteposto ('é um povo'). Unido por maqqef."
           },
           {
             "index": 2,
@@ -4563,7 +4563,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "חָכָם",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo modificando עַם ('povo sábio')[cite: 71]."
+            "syntax_role": "Adjetivo atributivo modificando עַם ('povo sábio')."
           },
           {
             "index": 3,
@@ -4578,7 +4578,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a / o",
-                "phonetics": "Patah com dagesh forte no guimel (ג)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no guimel (ג)."
               },
               {
                 "segment": "גּוֹי",
@@ -4595,14 +4595,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hagadol",
             "lemma": "גָּדוֹל",
             "composite": true,
-            "syntax_role": "Adjetivo atributivo determinado concordando com הַגּוֹי[cite: 71].",
+            "syntax_role": "Adjetivo atributivo determinado concordando com הַגּוֹי.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a / o",
-                "phonetics": "Patah com dagesh forte no guimel (ג)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no guimel (ג)."
               },
               {
                 "segment": "גָּדוֹל",
@@ -4619,21 +4619,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hazeh",
             "lemma": "זֶה",
             "composite": true,
-            "syntax_role": "Pronome demonstrativo atributivo determinado ('esta/este')[cite: 78].",
+            "syntax_role": "Pronome demonstrativo atributivo determinado ('esta/este').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "este / esta",
-                "phonetics": "Patah com dagesh forte no zayin (ז)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no zayin (ז)."
               },
               {
                 "segment": "זֶּה",
                 "transliteration": "Zeh",
                 "type": "Pronome demonstrativo",
                 "inflection": "masculino singular",
-                "meaning": "este[cite: 78]"
+                "meaning": "este"
               }
             ]
           }
@@ -4648,7 +4648,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Nominal com Demonstrativo Predicativo",
-        "notes": "O pronome demonstrativo sem artigo funciona como predicativo da oração nominal (Kelley IX.24.3[2])[cite: 79].",
+        "notes": "O pronome demonstrativo sem artigo funciona como predicativo da oração nominal (Kelley IX.24.3[2]).",
         "tokens": [
           {
             "index": 1,
@@ -4657,7 +4657,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "זֶה",
             "composite": false,
             "word_class": "Pronome demonstrativo",
-            "syntax_role": "Predicado nominal ('este é')[cite: 79]. Por vir sem artigo antes do substantivo definido, funciona predicativamente[cite: 79]."
+            "syntax_role": "Predicado nominal ('este é'). Por vir sem artigo antes do substantivo definido, funciona predicativamente."
           },
           {
             "index": 2,
@@ -4672,7 +4672,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no yod (י)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no yod (י)."
               },
               {
                 "segment": "יוֹם",
@@ -4702,7 +4702,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲנִי",
             "composite": false,
             "word_class": "Pronome pessoal independente",
-            "syntax_role": "Sujeito da oração nominal (1ª pessoa comum singular: 'Eu sou')[cite: 77]."
+            "syntax_role": "Sujeito da oração nominal (1ª pessoa comum singular: 'Eu sou')."
           },
           {
             "index": 2,
@@ -4711,7 +4711,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Predicado nominal ('o SENHOR'). Verbo 'ser' fica subentendido[cite: 77]."
+            "syntax_role": "Predicado nominal ('o SENHOR'). Verbo 'ser' fica subentendido."
           }
         ]
       },
@@ -4732,7 +4732,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אַתָּה",
             "composite": false,
             "word_class": "Pronome pessoal independente",
-            "syntax_role": "Sujeito da oração nominal (2ª pessoa masculino singular: 'Tu és')[cite: 77]."
+            "syntax_role": "Sujeito da oração nominal (2ª pessoa masculino singular: 'Tu és')."
           },
           {
             "index": 2,
@@ -4747,7 +4747,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אִישׁ",
@@ -4783,7 +4783,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no mem (מ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no mem (מ)."
               },
               {
                 "segment": "מָּקוֹם",
@@ -4800,21 +4800,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hazeh",
             "lemma": "זֶה",
             "composite": true,
-            "syntax_role": "Pronome demonstrativo atributivo determinado ('este')[cite: 78]. Concorda em gênero, número e definição[cite: 78].",
+            "syntax_role": "Pronome demonstrativo atributivo determinado ('este'). Concorda em gênero, número e definição.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "este",
-                "phonetics": "Patah com dagesh forte no zayin (ז)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no zayin (ז)."
               },
               {
                 "segment": "זֶּה",
                 "transliteration": "Zeh",
                 "type": "Pronome demonstrativo",
                 "inflection": "masculino singular",
-                "meaning": "este[cite: 78]"
+                "meaning": "este"
               }
             ]
           }
@@ -4843,7 +4843,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אָרֶץ",
@@ -4860,21 +4860,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hazot",
             "lemma": "זֹאת",
             "composite": true,
-            "syntax_role": "Pronome demonstrativo atributivo determinado feminino ('esta')[cite: 78].",
+            "syntax_role": "Pronome demonstrativo atributivo determinado feminino ('esta').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "esta",
-                "phonetics": "Patah com dagesh forte no zayin (ז)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no zayin (ז)."
               },
               {
                 "segment": "זֹּאת",
                 "transliteration": "Zot",
                 "type": "Pronome demonstrativo",
                 "inflection": "feminino singular",
-                "meaning": "esta[cite: 78]"
+                "meaning": "esta"
               }
             ]
           }
@@ -4889,7 +4889,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Nominal com Demonstrativo Predicativo",
-        "notes": "O demonstrativo plural sem artigo funciona predicativamente antes do substantivo definido (Kelley IX.24.3[2])[cite: 79].",
+        "notes": "O demonstrativo plural sem artigo funciona predicativamente antes do substantivo definido (Kelley IX.24.3[2]).",
         "tokens": [
           {
             "index": 1,
@@ -4898,7 +4898,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵלֶּה",
             "composite": false,
             "word_class": "Pronome demonstrativo",
-            "syntax_role": "Predicado nominal ('estas são')[cite: 79]. Forma comum de dois gêneros para o plural[cite: 78]."
+            "syntax_role": "Predicado nominal ('estas são'). Forma comum de dois gêneros para o plural."
           },
           {
             "index": 2,
@@ -4913,7 +4913,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "as",
-                "phonetics": "Patah com dagesh forte regular no dalet (ד)[cite: 45]."
+                "phonetics": "Patah com dagesh forte regular no dalet (ד)."
               },
               {
                 "segment": "דְּבָרִים",
@@ -5098,14 +5098,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Miyad",
             "lemma": "יָד",
             "composite": true,
-            "syntax_role": "Termo regente no estado construto com preposição prefixada[cite: 89].",
+            "syntax_role": "Termo regente no estado construto com preposição prefixada.",
             "parts": [
               {
                 "segment": "מִ",
                 "transliteration": "Mi",
                 "type": "Preposição inseparável (forma assimilada de מִן)",
                 "meaning": "de / a partir de",
-                "phonetics": "O nun final da preposição assimila-se na consoante seguinte não-gutural (yod), gerando dagesh forte[cite: 53]."
+                "phonetics": "O nun final da preposição assimila-se na consoante seguinte não-gutural (yod), gerando dagesh forte."
               },
               {
                 "segment": "יַּד",
@@ -5113,7 +5113,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
                 "meaning": "mão de",
-                "phonetics": "Vocalizado com patah em vez de qamats por estar no estado construto singular[cite: 89]."
+                "phonetics": "Vocalizado com patah em vez de qamats por estar no estado construto singular."
               }
             ]
           },
@@ -5123,14 +5123,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'isha",
             "lemma": "אִשָּׁה",
             "composite": true,
-            "syntax_role": "Termo regido no estado absoluto determinado (define toda a cadeia genitiva)[cite: 92].",
+            "syntax_role": "Termo regido no estado absoluto determinado (define toda a cadeia genitiva).",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante da gutural alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante da gutural alef (א)."
               },
               {
                 "segment": "אִשָּׁה",
@@ -5161,8 +5161,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יוֹם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no estado construto singular ('dia de')[cite: 89].",
-            "notes": "Conserva a forma plena do absoluto singular por conter vogal naturalmente longa (holem-vav)[cite: 88, 89]."
+            "syntax_role": "Termo regente no estado construto singular ('dia de').",
+            "notes": "Conserva a forma plena do absoluto singular por conter vogal naturalmente longa (holem-vav)."
           },
           {
             "index": 2,
@@ -5170,21 +5170,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hashabat",
             "lemma": "שַׁבָּת",
             "composite": true,
-            "syntax_role": "Termo regido no estado absoluto determinado[cite: 92].",
+            "syntax_role": "Termo regido no estado absoluto determinado.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no shin (ש)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no shin (ש)."
               },
               {
                 "segment": "שַּׁבָּת",
                 "transliteration": "Shabat",
                 "type": "Substantivo",
                 "inflection": "comum (m./f.) singular absoluto",
-                "meaning": "sábado / descanso[cite: 109]"
+                "meaning": "sábado / descanso"
               }
             ]
           }
@@ -5206,14 +5206,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Mibnei",
             "lemma": "בֵּן",
             "composite": true,
-            "syntax_role": "Termo regente no estado construto plural com preposição prefixada[cite: 87].",
+            "syntax_role": "Termo regente no estado construto plural com preposição prefixada.",
             "parts": [
               {
                 "segment": "מִ",
                 "transliteration": "Mi",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "de / dentre",
-                "phonetics": "Nun assimilado por dagesh forte no bet (ב)[cite: 53]."
+                "phonetics": "Nun assimilado por dagesh forte no bet (ב)."
               },
               {
                 "segment": "בְּנֵי",
@@ -5221,7 +5221,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
                 "meaning": "filhos de",
-                "phonetics": "A desinência de plural absoluto -im muda para sere-yod (-ei) no construto plural[cite: 86, 87]."
+                "phonetics": "A desinência de plural absoluto -im muda para sere-yod (-ei) no construto plural."
               }
             ]
           },
@@ -5231,14 +5231,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hanevi'im",
             "lemma": "נָבִיא",
             "composite": true,
-            "syntax_role": "Termo regido no estado absoluto determinado[cite: 92].",
+            "syntax_role": "Termo regido no estado absoluto determinado.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah com dagesh forte no nun (נ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no nun (נ)."
               },
               {
                 "segment": "נְּבִיאִים",
@@ -5269,8 +5269,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בֵּן",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no estado construto singular ('filho de')[cite: 89].",
-            "notes": "Unido à palavra seguinte por maqqef; o șere reduz-se a segol na forma construta ligada[cite: 31, 89]."
+            "syntax_role": "Termo regente no estado construto singular ('filho de').",
+            "notes": "Unido à palavra seguinte por maqqef; o șere reduz-se a segol na forma construta ligada."
           },
           {
             "index": 2,
@@ -5279,7 +5279,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָדָם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regido no estado absoluto indeterminado ('homem / humanidade')[cite: 35, 92]."
+            "syntax_role": "Termo regido no estado absoluto indeterminado ('homem / humanidade')."
           }
         ]
       },
@@ -5292,7 +5292,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Cadeia de Construto Tripla",
-        "notes": "Sequência de três substantivos: os dois primeiros estão no estado construto e o último no estado absoluto determinado[cite: 86, 92].",
+        "notes": "Sequência de três substantivos: os dois primeiros estão no estado construto e o último no estado absoluto determinado.",
         "tokens": [
           {
             "index": 1,
@@ -5301,8 +5301,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בַּת",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Primeiro termo regente no estado construto plural ('filhas de')[cite: 88].",
-            "notes": "Construto plural de בַּת retém a terminação -ot com redução vocálica da base[cite: 88]."
+            "syntax_role": "Primeiro termo regente no estado construto plural ('filhas de').",
+            "notes": "Construto plural de בַּת retém a terminação -ot com redução vocálica da base."
           },
           {
             "index": 2,
@@ -5311,8 +5311,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אִישׁ",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Segundo termo regente intermediário (construto plural: 'homens de')[cite: 87, 89].",
-            "notes": "Forma construta irregular do plural אֲנָשִׁים com terminação em sere-yod[cite: 87, 89]."
+            "syntax_role": "Segundo termo regente intermediário (construto plural: 'homens de').",
+            "notes": "Forma construta irregular do plural אֲנָשִׁים com terminação em sere-yod."
           },
           {
             "index": 3,
@@ -5320,14 +5320,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'ir",
             "lemma": "עִיר",
             "composite": true,
-            "syntax_role": "Termo final absoluto determinado (confere determinação a toda a cadeia)[cite: 92].",
+            "syntax_role": "Termo final absoluto determinado (confere determinação a toda a cadeia).",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante de ayin (ע)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de ayin (ע)."
               },
               {
                 "segment": "עִיר",
@@ -5356,14 +5356,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Beshem",
             "lemma": "שֵׁם",
             "composite": true,
-            "syntax_role": "Termo regente no estado construto com preposição prefixada[cite: 50, 89].",
+            "syntax_role": "Termo regente no estado construto com preposição prefixada.",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em",
-                "phonetics": "Bet com shva simples diante de consoante com vogal plena[cite: 50]."
+                "phonetics": "Bet com shva simples diante de consoante com vogal plena."
               },
               {
                 "segment": "שֵׁם",
@@ -5371,7 +5371,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "nome de",
-                "phonetics": "No construto singular, o substantivo שֵׁם retém o șere[cite: 89]."
+                "phonetics": "No construto singular, o substantivo שֵׁם retém o șere."
               }
             ]
           },
@@ -5381,14 +5381,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hamelech",
             "lemma": "מֶלֶךְ",
             "composite": true,
-            "syntax_role": "Termo regido no estado absoluto determinado[cite: 92].",
+            "syntax_role": "Termo regido no estado absoluto determinado.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no mem (מ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no mem (מ)."
               },
               {
                 "segment": "מֶּלֶךְ",
@@ -5419,8 +5419,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "רֹאשׁ",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no estado construto plural ('cabeças / cumes de')[cite: 89].",
-            "notes": "Plural construto de רֹאשׁ com desinência em sere-yod[cite: 89]."
+            "syntax_role": "Termo regente no estado construto plural ('cabeças / cumes de').",
+            "notes": "Plural construto de רֹאשׁ com desinência em sere-yod."
           },
           {
             "index": 2,
@@ -5428,21 +5428,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Heharim",
             "lemma": "הַר",
             "composite": true,
-            "syntax_role": "Termo regido no estado absoluto determinado[cite: 92].",
+            "syntax_role": "Termo regido no estado absoluto determinado.",
             "parts": [
               {
                 "segment": "הֶ",
                 "transliteration": "He",
                 "type": "Artigo definido",
                 "meaning": "as / os",
-                "phonetics": "Assume a forma com segol diante de he (ה) átono com qamats[cite: 46, 47]."
+                "phonetics": "Assume a forma com segol diante de he (ה) átono com qamats."
               },
               {
                 "segment": "הָרִים",
                 "transliteration": "Harim",
                 "type": "Substantivo",
                 "inflection": "masculino plural absoluto",
-                "meaning": "montanhas / montes[cite: 64]"
+                "meaning": "montanhas / montes"
               }
             ]
           }
@@ -5465,7 +5465,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מֹשֶׁה",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Núcleo nominal de referência ('Moisés')[cite: 83]."
+            "syntax_role": "Núcleo nominal de referência ('Moisés')."
           },
           {
             "index": 2,
@@ -5474,8 +5474,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עֶבֶד",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Termo regente no estado construto em função de aposto ('servo de')[cite: 90].",
-            "notes": "Os substantivos segolados preservam a grafia do absoluto no construto singular[cite: 90]."
+            "syntax_role": "Termo regente no estado construto em função de aposto ('servo de').",
+            "notes": "Os substantivos segolados preservam a grafia do absoluto no construto singular."
           },
           {
             "index": 3,
@@ -5484,7 +5484,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo ('do SENHOR'). Por ser nome próprio, é inerentemente definido[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo ('do SENHOR'). Por ser nome próprio, é inerentemente definido."
           }
         ]
       },
@@ -5505,8 +5505,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עֶבֶד",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Termo regente no estado construto plural ('servos de')[cite: 87, 90].",
-            "notes": "Plural construto derivado de עֲבָדִים com vocalização patah-shva sob a gutural[cite: 87, 90]."
+            "syntax_role": "Termo regente no estado construto plural ('servos de').",
+            "notes": "Plural construto derivado de עֲבָדִים com vocalização patah-shva sob a gutural."
           },
           {
             "index": 2,
@@ -5514,14 +5514,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hamelech",
             "lemma": "מֶלֶךְ",
             "composite": true,
-            "syntax_role": "Termo regido no estado absoluto determinado[cite: 92].",
+            "syntax_role": "Termo regido no estado absoluto determinado.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no mem (מ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no mem (מ)."
               },
               {
                 "segment": "מֶּלֶךְ",
@@ -5552,8 +5552,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "דָּם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Primeiro termo regente no estado construto singular ('sangue de')[cite: 89].",
-            "notes": "Abreviação vocálica do qamats para patah e ligação por maqqef[cite: 31, 89]."
+            "syntax_role": "Primeiro termo regente no estado construto singular ('sangue de').",
+            "notes": "Abreviação vocálica do qamats para patah e ligação por maqqef."
           },
           {
             "index": 2,
@@ -5562,8 +5562,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Segundo termo regente intermediário ('totalidade de' / 'todo')[cite: 31].",
-            "notes": "A vogal holem reduz-se a qamats-hatuf diante de maqqef[cite: 31]."
+            "syntax_role": "Segundo termo regente intermediário ('totalidade de' / 'todo').",
+            "notes": "A vogal holem reduz-se a qamats-hatuf diante de maqqef."
           },
           {
             "index": 3,
@@ -5572,7 +5572,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּשָׂר",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo final absoluto ('carne')[cite: 68]."
+            "syntax_role": "Termo final absoluto ('carne')."
           }
         ]
       },
@@ -5593,8 +5593,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto definido",
-            "syntax_role": "Assinala que o sintagma seguinte é o objeto direto determinado da oração[cite: 31].",
-            "notes": "Abrevia-se com segol ao ligar-se por maqqef[cite: 31]."
+            "syntax_role": "Assinala que o sintagma seguinte é o objeto direto determinado da oração.",
+            "notes": "Abrevia-se com segol ao ligar-se por maqqef."
           },
           {
             "index": 2,
@@ -5603,8 +5603,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "דֶּרֶךְ",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Primeiro termo regente no estado construto singular ('caminho de')[cite: 90].",
-            "notes": "Conserva a vocalização original do absoluto singular[cite: 90]."
+            "syntax_role": "Primeiro termo regente no estado construto singular ('caminho de').",
+            "notes": "Conserva a vocalização original do absoluto singular."
           },
           {
             "index": 3,
@@ -5613,7 +5613,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עֵץ",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Segundo termo regente intermediário no estado construto singular ('árvore de')[cite: 88]."
+            "syntax_role": "Segundo termo regente intermediário no estado construto singular ('árvore de')."
           },
           {
             "index": 4,
@@ -5621,14 +5621,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hachayim",
             "lemma": "חַי",
             "composite": true,
-            "syntax_role": "Termo final absoluto determinado[cite: 92].",
+            "syntax_role": "Termo final absoluto determinado.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Patah sem dagesh com reduplicação virtual sob o het (ח)[cite: 46, 47]."
+                "phonetics": "Patah sem dagesh com reduplicação virtual sob o het (ח)."
               },
               {
                 "segment": "חַיִּים",
@@ -5657,14 +5657,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Betorat",
             "lemma": "תּוֹרָה",
             "composite": true,
-            "syntax_role": "Termo regente no estado construto com preposição prefixada[cite: 50, 90].",
+            "syntax_role": "Termo regente no estado construto com preposição prefixada.",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em / na",
-                "phonetics": "Bet com shva simples[cite: 50]."
+                "phonetics": "Bet com shva simples."
               },
               {
                 "segment": "תוֹרַת",
@@ -5672,7 +5672,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
                 "meaning": "lei de",
-                "phonetics": "Substantivos femininos em -ah mudam a terminação para -at no estado construto singular[cite: 90]."
+                "phonetics": "Substantivos femininos em -ah mudam a terminação para -at no estado construto singular."
               }
             ]
           },
@@ -5683,7 +5683,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מֹשֶׁה",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido genitivo ('de Moisés')[cite: 83]."
+            "syntax_role": "Termo regido genitivo ('de Moisés')."
           },
           {
             "index": 3,
@@ -5692,7 +5692,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עֶבֶד",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Termo regente no construto singular funcionando como aposto ('servo de')[cite: 90]. Unido por maqqef[cite: 31]."
+            "syntax_role": "Termo regente no construto singular funcionando como aposto ('servo de'). Unido por maqqef."
           },
           {
             "index": 4,
@@ -5700,14 +5700,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Haelohim",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Termo regido final determinado[cite: 92].",
+            "syntax_role": "Termo regido final determinado.",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אֱלֹהִים",
@@ -5909,7 +5909,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אַתָּה",
             "composite": false,
             "word_class": "Pronome pessoal independente",
-            "syntax_role": "Sujeito da oração nominal (2ª pessoa masculino singular: 'Tu')[cite: 77]."
+            "syntax_role": "Sujeito da oração nominal (2ª pessoa masculino singular: 'Tu')."
           },
           {
             "index": 2,
@@ -5917,7 +5917,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Avinu",
             "lemma": "אָב",
             "composite": true,
-            "syntax_role": "Predicado nominal ('és o nosso pai')[cite: 77, 102].",
+            "syntax_role": "Predicado nominal ('és o nosso pai').",
             "parts": [
               {
                 "segment": "אָבִי",
@@ -5925,7 +5925,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "pai de",
-                "phonetics": "Forma construta irregular do substantivo אָב diante de sufixos pronominais[cite: 90, 104]."
+                "phonetics": "Forma construta irregular do substantivo אָב diante de sufixos pronominais."
               },
               {
                 "segment": "נוּ",
@@ -5933,7 +5933,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
                 "meaning": "nosso",
-                "phonetics": "Sufixo possessivo afixado a substantivo singular[cite: 102, 104]."
+                "phonetics": "Sufixo possessivo afixado a substantivo singular."
               }
             ]
           }
@@ -5964,14 +5964,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Li",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Predicado preposicional de posse ('pertence a mim' / 'é minha')[cite: 98].",
+            "syntax_role": "Predicado preposicional de posse ('pertence a mim' / 'é minha').",
             "parts": [
               {
                 "segment": "לִ",
                 "transliteration": "L'",
                 "type": "Preposição inseparável",
                 "meaning": "a / para",
-                "phonetics": "Preposição לְ vocalizada com hireq diante do sufixo pronominal[cite: 98]."
+                "phonetics": "Preposição לְ vocalizada com hireq diante do sufixo pronominal."
               },
               {
                 "segment": "י",
@@ -5989,8 +5989,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto ('toda a'). Unido por maqqef[cite: 31].",
-            "notes": "Reduz o holem para qamats-hatuf em razão do maqqef[cite: 31]."
+            "syntax_role": "Termo regente no construto ('toda a'). Unido por maqqef.",
+            "notes": "Reduz o holem para qamats-hatuf em razão do maqqef."
           },
           {
             "index": 4,
@@ -6005,7 +6005,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אָרֶץ",
@@ -6013,7 +6013,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
                 "meaning": "terra",
-                "phonetics": "Modificação vocálica no substantivo determinado com o artigo[cite: 47]."
+                "phonetics": "Modificação vocálica no substantivo determinado com o artigo."
               }
             ]
           }
@@ -6035,14 +6035,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "V'chol-",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Primeiro termo regente com conjunção coordenativa unida por maqqef[cite: 31, 54].",
+            "syntax_role": "Primeiro termo regente com conjunção coordenativa unida por maqqef.",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "כָל־",
@@ -6050,7 +6050,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "todos os / totalidade de",
-                "phonetics": "Kaf sem dagesh lene por suceder som vocálico e com qamats-hatuf pelo maqqef[cite: 31, 32]."
+                "phonetics": "Kaf sem dagesh lene por suceder som vocálico e com qamats-hatuf pelo maqqef."
               }
             ]
           },
@@ -6061,7 +6061,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אִישׁ",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Segundo termo regente intermediário (construto plural: 'homens de')[cite: 87, 89]."
+            "syntax_role": "Segundo termo regente intermediário (construto plural: 'homens de')."
           },
           {
             "index": 3,
@@ -6069,7 +6069,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Veito",
             "lemma": "בַּיִת",
             "composite": true,
-            "syntax_role": "Termo regido final com sufixo possessivo (inerentemente determinado)[cite: 102, 105].",
+            "syntax_role": "Termo regido final com sufixo possessivo (inerentemente determinado).",
             "parts": [
               {
                 "segment": "בֵית",
@@ -6077,7 +6077,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "casa de",
-                "phonetics": "Bet sem dagesh lene por suceder vogal; base construta de בַּיִת[cite: 91, 105]."
+                "phonetics": "Bet sem dagesh lene por suceder vogal; base construta de בַּיִת."
               },
               {
                 "segment": "וֹ",
@@ -6085,7 +6085,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
                 "meaning": "dele / sua",
-                "phonetics": "Holem com vav como sufixo pronominal singular de 3ª pessoa[cite: 102, 105]."
+                "phonetics": "Holem com vav como sufixo pronominal singular de 3ª pessoa."
               }
             ]
           }
@@ -6109,8 +6109,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto plural ('Deus de')[cite: 87, 103].",
-            "notes": "Desinência de construto plural em sere-yod[cite: 86, 87]."
+            "syntax_role": "Termo regente no construto plural ('Deus de').",
+            "notes": "Desinência de construto plural em sere-yod."
           },
           {
             "index": 2,
@@ -6118,7 +6118,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Avi",
             "lemma": "אָב",
             "composite": true,
-            "syntax_role": "Termo regido intermediário com sufixo possessivo ('meu pai')[cite: 104].",
+            "syntax_role": "Termo regido intermediário com sufixo possessivo ('meu pai').",
             "parts": [
               {
                 "segment": "אָב",
@@ -6133,7 +6133,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
                 "meaning": "meu",
-                "phonetics": "Hireq-yod como desinência possessiva singular[cite: 102, 104]."
+                "phonetics": "Hireq-yod como desinência possessiva singular."
               }
             ]
           },
@@ -6144,7 +6144,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אַבְרָהָם",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Aposto explicativo especificando o termo intermediário ('Abraão')[cite: 23]."
+            "syntax_role": "Aposto explicativo especificando o termo intermediário ('Abraão')."
           }
         ]
       },
@@ -6175,7 +6175,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲנִי",
             "composite": false,
             "word_class": "Pronome pessoal independente",
-            "syntax_role": "Sujeito da oração nominal (1ª pessoa comum singular: 'Eu sou')[cite: 77]."
+            "syntax_role": "Sujeito da oração nominal (1ª pessoa comum singular: 'Eu sou')."
           },
           {
             "index": 3,
@@ -6184,7 +6184,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Primeiro predicativo nominal ('o SENHOR')[cite: 56, 57, 77]."
+            "syntax_role": "Primeiro predicativo nominal ('o SENHOR')."
           },
           {
             "index": 4,
@@ -6192,7 +6192,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eloheichem",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Segundo predicativo nominal em aposição ('vosso Deus')[cite: 103].",
+            "syntax_role": "Segundo predicativo nominal em aposição ('vosso Deus').",
             "parts": [
               {
                 "segment": "אֱלֹהֵי",
@@ -6200,7 +6200,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
                 "meaning": "Deus de",
-                "phonetics": "Base plural construta de אֱלֹהִים[cite: 87, 103]."
+                "phonetics": "Base plural construta de אֱלֹהִים."
               },
               {
                 "segment": "כֶם",
@@ -6208,7 +6208,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino plural",
                 "meaning": "vosso / de vocês",
-                "phonetics": "Sufixo pronominal pesado de 2ª pessoa plural masculino[cite: 103]."
+                "phonetics": "Sufixo pronominal pesado de 2ª pessoa plural masculino."
               }
             ]
           }
@@ -6240,7 +6240,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵין",
             "composite": false,
             "word_class": "Partícula negativa de existência",
-            "syntax_role": "Núcleo existencial negativo ('não há'). Combinado com a preposição לְ expressa posse ('não ter')[cite: 60]."
+            "syntax_role": "Núcleo existencial negativo ('não há'). Combinado com a preposição לְ expressa posse ('não ter')."
           },
           {
             "index": 3,
@@ -6248,14 +6248,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lah",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Complemento preposicional atributivo de posse ('a ela' / 'ela tem')[cite: 98].",
+            "syntax_role": "Complemento preposicional atributivo de posse ('a ela' / 'ela tem').",
             "parts": [
               {
                 "segment": "לָ",
                 "transliteration": "La",
                 "type": "Preposição inseparável",
                 "meaning": "a / para",
-                "phonetics": "Vocalizada com qamats antes do sufixo pronominal de 3ª pessoa feminina singular[cite: 98]."
+                "phonetics": "Vocalizada com qamats antes do sufixo pronominal de 3ª pessoa feminina singular."
               },
               {
                 "segment": "הּ",
@@ -6263,7 +6263,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa feminino singular",
                 "meaning": "ela",
-                "phonetics": "He com mappiq indicando consoante audível no sufixo[cite: 40, 98]."
+                "phonetics": "He com mappiq indicando consoante audível no sufixo."
               }
             ]
           },
@@ -6289,7 +6289,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Va",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com qamats diante de monossílabo com acento tônico que denota conexão íntima (Kelley VI.16.5)[cite: 55]."
+                "phonetics": "Vav com qamats diante de monossílabo com acento tônico que denota conexão íntima (Kelley VI.16.5)."
               },
               {
                 "segment": "אֵם",
@@ -6318,20 +6318,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "V'ata",
             "lemma": "עַתָּה",
             "composite": true,
-            "syntax_role": "Adjunto adverbial temporal de transição discursiva ('e agora')[cite: 109].",
+            "syntax_role": "Adjunto adverbial temporal de transição discursiva ('e agora').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "עַתָּה",
                 "transliteration": "Ata",
                 "type": "Advérbio de tempo",
-                "meaning": "agora[cite: 109]"
+                "meaning": "agora"
               }
             ]
           },
@@ -6342,7 +6342,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Vocativo inserido no discurso ('ó SENHOR')[cite: 56, 57]."
+            "syntax_role": "Vocativo inserido no discurso ('ó SENHOR')."
           },
           {
             "index": 3,
@@ -6350,7 +6350,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Avinu",
             "lemma": "אָב",
             "composite": true,
-            "syntax_role": "Predicado nominal anteposto ('és o nosso pai')[cite: 77, 102].",
+            "syntax_role": "Predicado nominal anteposto ('és o nosso pai').",
             "parts": [
               {
                 "segment": "אָבִי",
@@ -6358,14 +6358,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "pai de",
-                "phonetics": "Forma construta irregular antes de sufixos[cite: 90, 104]."
+                "phonetics": "Forma construta irregular antes de sufixos."
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nosso[cite: 102, 104]"
+                "meaning": "nosso"
               }
             ]
           },
@@ -6376,7 +6376,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אַתָּה",
             "composite": false,
             "word_class": "Pronome pessoal independente",
-            "syntax_role": "Sujeito da oração nominal posposto enfático ('Tu')[cite: 77]."
+            "syntax_role": "Sujeito da oração nominal posposto enfático ('Tu')."
           }
         ]
       },
@@ -6404,14 +6404,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "povo de",
-                "phonetics": "Consoante duplicada (com dagesh forte implícito na flexão do segolado/geminado) e vogal segol antes do sufixo leve[cite: 31, 102]."
+                "phonetics": "Consoante duplicada (com dagesh forte implícito na flexão do segolado/geminado) e vogal segol antes do sufixo leve."
               },
               {
                 "segment": "ךְ",
                 "transliteration": "Ech",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa feminino singular",
-                "meaning": "teu[cite: 98, 102]"
+                "meaning": "teu"
               }
             ]
           },
@@ -6421,7 +6421,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ami",
             "lemma": "עַם",
             "composite": true,
-            "syntax_role": "Predicado nominal da primeira oração ('é o meu povo')[cite: 77, 102].",
+            "syntax_role": "Predicado nominal da primeira oração ('é o meu povo').",
             "parts": [
               {
                 "segment": "עַמִּ",
@@ -6435,7 +6435,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "meu[cite: 102]"
+                "meaning": "meu"
               }
             ]
           },
@@ -6452,14 +6452,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Alongamento vocálico para șere porque a gutural alef perde o hatef e fica muda (Kelley VI.16.6)[cite: 55]."
+                "phonetics": "Alongamento vocálico para șere porque a gutural alef perde o hatef e fica muda (Kelley VI.16.6)."
               },
               {
                 "segment": "אלֹהַי",
                 "transliteration": "Elohay",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "Deus de[cite: 87, 103]"
+                "meaning": "Deus de"
               },
               {
                 "segment": "יִךְ",
@@ -6467,7 +6467,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa feminino singular",
                 "meaning": "teu",
-                "phonetics": "Sufixo para substantivos plurais em 2ª pessoa feminina singular[cite: 103]."
+                "phonetics": "Sufixo para substantivos plurais em 2ª pessoa feminina singular."
               }
             ]
           },
@@ -6477,14 +6477,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Elohai",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Predicado nominal da segunda oração ('é o meu Deus')[cite: 77, 103].",
+            "syntax_role": "Predicado nominal da segunda oração ('é o meu Deus').",
             "parts": [
               {
                 "segment": "אֱלֹה",
                 "transliteration": "Eloh",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "Deus de[cite: 87, 103]"
+                "meaning": "Deus de"
               },
               {
                 "segment": "ָי",
@@ -6492,7 +6492,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
                 "meaning": "meu",
-                "phonetics": "Sufixo para substantivos no plural em 1ª pessoa comum do singular (-ai)[cite: 103]."
+                "phonetics": "Sufixo para substantivos no plural em 1ª pessoa comum do singular (-ai)."
               }
             ]
           }
@@ -6515,7 +6515,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בֵּן",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Sujeito existencial anteposto ('filho')[cite: 35]."
+            "syntax_role": "Sujeito existencial anteposto ('filho')."
           },
           {
             "index": 2,
@@ -6524,7 +6524,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵין",
             "composite": false,
             "word_class": "Partícula negativa de existência",
-            "syntax_role": "Predicado existencial de negação ligado por maqqef ('não há')[cite: 31, 60]."
+            "syntax_role": "Predicado existencial de negação ligado por maqqef ('não há')."
           },
           {
             "index": 3,
@@ -6532,14 +6532,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lah",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Complemento de posse indireta ('para ela' = 'ela não tem')[cite: 98].",
+            "syntax_role": "Complemento de posse indireta ('para ela' = 'ela não tem').",
             "parts": [
               {
                 "segment": "לָ",
                 "transliteration": "La",
                 "type": "Preposição inseparável",
                 "meaning": "a / para",
-                "phonetics": "Vocalizada com qamats diante do sufixo pronominal[cite: 98]."
+                "phonetics": "Vocalizada com qamats diante do sufixo pronominal."
               },
               {
                 "segment": "הּ",
@@ -6547,7 +6547,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa feminino singular",
                 "meaning": "ela",
-                "phonetics": "Mappiq no he final indicando consoante audível[cite: 40, 98]."
+                "phonetics": "Mappiq no he final indicando consoante audível."
               }
             ]
           },
@@ -6557,28 +6557,28 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "V'isha",
             "lemma": "אִישׁ",
             "composite": true,
-            "syntax_role": "Sujeito da segunda oração nominal ('e o seu marido / homem')[cite: 102].",
+            "syntax_role": "Sujeito da segunda oração nominal ('e o seu marido / homem').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "אִישׁ",
                 "transliteration": "Ish",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "marido / homem de[cite: 35, 89]"
+                "meaning": "marido / homem de"
               },
               {
                 "segment": "ָהּ",
                 "transliteration": "Ah",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa feminino singular",
-                "meaning": "dela / seu[cite: 102]"
+                "meaning": "dela / seu"
               }
             ]
           },
@@ -6589,7 +6589,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "זָקֵן",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Predicado nominal da segunda oração ('é velho')[cite: 72]."
+            "syntax_role": "Predicado nominal da segunda oração ('é velho')."
           }
         ]
       },
@@ -6609,21 +6609,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Li",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Predicado preposicional de posse anteposto enfático ('a mim pertence' / 'minha é')[cite: 98].",
+            "syntax_role": "Predicado preposicional de posse anteposto enfático ('a mim pertence' / 'minha é').",
             "parts": [
               {
                 "segment": "לִ",
                 "transliteration": "L'",
                 "type": "Preposição inseparável",
                 "meaning": "a / para",
-                "phonetics": "Preposição לְ com hireq diante do sufixo pronominal[cite: 98]."
+                "phonetics": "Preposição לְ com hireq diante do sufixo pronominal."
               },
               {
                 "segment": "י",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "mim[cite: 98]"
+                "meaning": "mim"
               }
             ]
           },
@@ -6640,14 +6640,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Patah com dagesh forte na consoante kaf (כ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte na consoante kaf (כ)."
               },
               {
                 "segment": "כֶּסֶף",
                 "transliteration": "Kesef",
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular absoluto",
-                "meaning": "prata[cite: 85, 96]"
+                "meaning": "prata"
               }
             ]
           },
@@ -6657,27 +6657,27 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "V'li",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Predicado preposicional coordenado da segunda oração ('e meu é')[cite: 98].",
+            "syntax_role": "Predicado preposicional coordenado da segunda oração ('e meu é').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "V'",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "לִ",
                 "transliteration": "L'",
                 "type": "Preposição inseparável",
-                "meaning": "a / para[cite: 98]"
+                "meaning": "a / para"
               },
               {
                 "segment": "י",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "mim[cite: 98]"
+                "meaning": "mim"
               }
             ]
           },
@@ -6694,14 +6694,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no zayin (ז)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no zayin (ז)."
               },
               {
                 "segment": "זָּהָב",
                 "transliteration": "Zahav",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "ouro[cite: 96]"
+                "meaning": "ouro"
               }
             ]
           }
@@ -6883,7 +6883,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal Causal",
-        "notes": "Ordem padrão da oração verbal hebraica: Conjunção + Verbo + Sujeito + Objeto Indireto (Kelley XII.32.1)[cite: 118].",
+        "notes": "Ordem padrão da oração verbal hebraica: Conjunção + Verbo + Sujeito + Objeto Indireto (Kelley XII.32.1).",
         "tokens": [
           {
             "index": 1,
@@ -6892,8 +6892,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa",
-            "syntax_role": "Introduz oração causal subordinada ('pois' / 'porque')[cite: 68]. Unida por maqqef[cite: 31].",
-            "notes": "Monossílabo que perde o acento tônico primário em razão do maqqef[cite: 31]."
+            "syntax_role": "Introduz oração causal subordinada ('pois' / 'porque'). Unida por maqqef.",
+            "notes": "Monossílabo que perde o acento tônico primário em razão do maqqef."
           },
           {
             "index": 2,
@@ -6902,8 +6902,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('ouviu')[cite: 110, 126].",
-            "notes": "Apresenta patah na segunda sílaba por ser verbo Lamed Gutural (Kelley XII.29.2 e XXV.70)[cite: 110]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('ouviu').",
+            "notes": "Apresenta patah na segunda sílaba por ser verbo Lamed Gutural (Kelley XII.29.2 e XXV.70)."
           },
           {
             "index": 3,
@@ -6912,8 +6912,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Sujeito da oração (concorda em pessoa e gênero com o verbo)[cite: 117].",
-            "notes": "Morfologicamente plural, mas semanticamente singular referente ao Deus de Israel (Kelley VI.16.6)[cite: 56]."
+            "syntax_role": "Sujeito da oração (concorda em pessoa e gênero com o verbo).",
+            "notes": "Morfologicamente plural, mas semanticamente singular referente ao Deus de Israel (Kelley VI.16.6)."
           },
           {
             "index": 4,
@@ -6922,7 +6922,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶל",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Rege o complemento indireto do verbo שָׁמַע ('a' / 'em direção a')[cite: 60]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Rege o complemento indireto do verbo שָׁמַע ('a' / 'em direção a'). Unida por maqqef."
           },
           {
             "index": 5,
@@ -6931,8 +6931,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קוֹל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no estado construto singular ('voz de')[cite: 89].",
-            "notes": "Retém a vogal invariável holem-vav no construto (Kelley X.26.4[2]a)[cite: 88, 89]."
+            "syntax_role": "Termo regente no estado construto singular ('voz de').",
+            "notes": "Retém a vogal invariável holem-vav no construto (Kelley X.26.4[2]a)."
           },
           {
             "index": 6,
@@ -6940,14 +6940,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hana'ar",
             "lemma": "נַעַר",
             "composite": true,
-            "syntax_role": "Termo regido absoluto determinado da relação de construto[cite: 92].",
+            "syntax_role": "Termo regido absoluto determinado da relação de construto.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no nun (נ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no nun (נ)."
               },
               {
                 "segment": "נַּעַר",
@@ -6955,7 +6955,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular absoluto",
                 "meaning": "rapaz / jovem",
-                "phonetics": "Apresenta patah sob a gutural ayin em vez de segol (Kelley X.25.2)[cite: 84]."
+                "phonetics": "Apresenta patah sob a gutural ayin em vez de segol (Kelley X.25.2)."
               }
             ]
           }
@@ -6978,7 +6978,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּה",
             "composite": false,
             "word_class": "Advérbio de modo",
-            "syntax_role": "Adjunto adverbial anteposto ('assim')[cite: 83]. Unido por maqqef[cite: 31]."
+            "syntax_role": "Adjunto adverbial anteposto ('assim'). Unido por maqqef."
           },
           {
             "index": 2,
@@ -6987,8 +6987,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָמַר",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('disse')[cite: 109, 110].",
-            "notes": "Verbo Pe Alef com estrutura padrão bissilábica (Kelley XII.29.2)[cite: 110]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('disse').",
+            "notes": "Verbo Pe Alef com estrutura padrão bissilábica (Kelley XII.29.2)."
           },
           {
             "index": 3,
@@ -6997,7 +6997,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração ('o SENHOR')."
           },
           {
             "index": 4,
@@ -7006,8 +7006,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto plural em função de aposto ('Deus de')[cite: 87].",
-            "notes": "Desinência de construto plural em sere-yod (Kelley X.26.4[1]a)[cite: 86, 87]."
+            "syntax_role": "Termo regente no construto plural em função de aposto ('Deus de').",
+            "notes": "Desinência de construto plural em sere-yod (Kelley X.26.4[1]a)."
           },
           {
             "index": 5,
@@ -7016,7 +7016,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יִשְׂרָאֵל",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido genitivo ('de Israel')[cite: 35]."
+            "syntax_role": "Termo regido genitivo ('de Israel')."
           }
         ]
       },
@@ -7029,7 +7029,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal com Adjunto Adverbial Anteposto Enfático",
-        "notes": "A colocação do adjunto de lugar antes do verbo confere ênfase ao local do reinado (Kelley XII.32.2)[cite: 118, 120].",
+        "notes": "A colocação do adjunto de lugar antes do verbo confere ênfase ao local do reinado (Kelley XII.32.2).",
         "tokens": [
           {
             "index": 1,
@@ -7044,21 +7044,21 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante de consoante labial bet (ב)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante de consoante labial bet (ב)."
               },
               {
                 "segment": "בִּי",
                 "transliteration": "Vi",
                 "type": "Preposição inseparável",
                 "meaning": "em",
-                "phonetics": "A preposição בְּ antes de yod com shva assume hireq e contrai com o yod em hireq-yod (Kelley VI.15.1[2])[cite: 52]."
+                "phonetics": "A preposição בְּ antes de yod com shva assume hireq e contrai com o yod em hireq-yod (Kelley VI.15.1[2])."
               },
               {
                 "segment": "רוּשָׁלַם",
                 "transliteration": "Rushalayim",
                 "type": "Nome Próprio",
                 "meaning": "Jerusalém",
-                "phonetics": "Grafia defectiva tradicional do texto bíblico vocalizada como dual (Kelley IV.12.2)[cite: 41]."
+                "phonetics": "Grafia defectiva tradicional do texto bíblico vocalizada como dual (Kelley IV.12.2)."
               }
             ]
           },
@@ -7069,8 +7069,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מָלַךְ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('reinou')[cite: 126].",
-            "notes": "Sujeito pronominal de 3ª pessoa singular implícito na desinência verbal (Kelley XII.31.3)[cite: 118]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('reinou').",
+            "notes": "Sujeito pronominal de 3ª pessoa singular implícito na desinência verbal (Kelley XII.31.3)."
           },
           {
             "index": 3,
@@ -7079,7 +7079,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עַל",
             "composite": false,
             "word_class": "Preposição independente",
-            "syntax_role": "Rege o complemento do verbo מָלַךְ ('sobre')[cite: 60]."
+            "syntax_role": "Rege o complemento do verbo מָלַךְ ('sobre')."
           },
           {
             "index": 4,
@@ -7088,8 +7088,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular ('todo o')[cite: 68]. Unido por maqqef[cite: 31].",
-            "notes": "Holem reduz-se a qamats-hatuf em razão da perda de tonicidade pelo maqqef[cite: 31]."
+            "syntax_role": "Termo regente no construto singular ('todo o'). Unido por maqqef.",
+            "notes": "Holem reduz-se a qamats-hatuf em razão da perda de tonicidade pelo maqqef."
           },
           {
             "index": 5,
@@ -7098,7 +7098,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יִשְׂרָאֵל",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido genitivo ('Israel')[cite: 35]."
+            "syntax_role": "Termo regido genitivo ('Israel')."
           }
         ]
       },
@@ -7118,21 +7118,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "U'lechol-",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Complemento indireto anteposto com conjunção coordenativa unida por maqqef[cite: 31, 54].",
+            "syntax_role": "Complemento indireto anteposto com conjunção coordenativa unida por maqqef.",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante de consoante com shva simples (לְ)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante de consoante com shva simples (לְ)."
               },
               {
                 "segment": "לְ",
                 "transliteration": "L'",
                 "type": "Preposição inseparável",
                 "meaning": "para",
-                "phonetics": "Lamed com shva simples[cite: 50]."
+                "phonetics": "Lamed com shva simples."
               },
               {
                 "segment": "כָל־",
@@ -7140,7 +7140,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "todos os / totalidade de",
-                "phonetics": "Kaf sem dagesh lene por vir após vogal; qamats-hatuf diante de maqqef[cite: 31, 32]."
+                "phonetics": "Kaf sem dagesh lene por vir após vogal; qamats-hatuf diante de maqqef."
               }
             ]
           },
@@ -7151,8 +7151,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בֵּן",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo intermediário no construto plural ('filhos de')[cite: 87].",
-            "notes": "Desinência de plural construto em sere-yod[cite: 86, 87]."
+            "syntax_role": "Termo intermediário no construto plural ('filhos de').",
+            "notes": "Desinência de plural construto em sere-yod."
           },
           {
             "index": 3,
@@ -7161,7 +7161,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יִשְׂרָאֵל",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido final determinado ('Israel')[cite: 35]."
+            "syntax_role": "Termo regido final determinado ('Israel')."
           },
           {
             "index": 4,
@@ -7170,8 +7170,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הָיָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal de הָיָה ('havia' / 'existia')[cite: 109, 110].",
-            "notes": "Verbo fraco duplamente caracterizado (Pe Gutural e Lamed He)[cite: 111, 112]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal de הָיָה ('havia' / 'existia').",
+            "notes": "Verbo fraco duplamente caracterizado (Pe Gutural e Lamed He)."
           },
           {
             "index": 5,
@@ -7180,7 +7180,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אוֹר",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Sujeito posposto da oração ('luz')[cite: 50]."
+            "syntax_role": "Sujeito posposto da oração ('luz')."
           }
         ]
       },
@@ -7208,13 +7208,13 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante da consoante labial mem (מ)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante da consoante labial mem (מ)."
               },
               {
                 "segment": "מֹשֶׁה",
                 "transliteration": "Moshe",
                 "type": "Nome Próprio",
-                "meaning": "Moisés[cite: 83]"
+                "meaning": "Moisés"
               }
             ]
           },
@@ -7225,8 +7225,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עָלָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('subiu')[cite: 110, 126].",
-            "notes": "Verbo fraco Pe Gutural e Lamed He (Kelley XII.29.2 e XXVII.72)[cite: 110, 112]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('subiu').",
+            "notes": "Verbo fraco Pe Gutural e Lamed He (Kelley XII.29.2 e XXVII.72)."
           },
           {
             "index": 3,
@@ -7235,7 +7235,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶל",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Rege o complemento de direção ('a' / 'para')[cite: 60]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Rege o complemento de direção ('a' / 'para'). Unida por maqqef."
           },
           {
             "index": 4,
@@ -7250,14 +7250,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אֱלֹהִים",
                 "transliteration": "Elohim",
                 "type": "Substantivo / Nome Divino",
                 "inflection": "masculino plural",
-                "meaning": "Deus[cite: 35]"
+                "meaning": "Deus"
               }
             ]
           }
@@ -7281,7 +7281,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa",
-            "syntax_role": "Conjunção causal ('pois')[cite: 68]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Conjunção causal ('pois'). Unida por maqqef."
           },
           {
             "index": 2,
@@ -7290,7 +7290,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁכַב",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('deitou-se' / 'descansou')[cite: 110, 126].",
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('deitou-se' / 'descansou').",
             "notes": "Eufemismo bíblico clássico para a morte física."
           },
           {
@@ -7300,7 +7300,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "דָּוִד",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Sujeito da oração ('Davi')[cite: 37]."
+            "syntax_role": "Sujeito da oração ('Davi')."
           },
           {
             "index": 4,
@@ -7309,7 +7309,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עִם",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Rege o complemento de companhia ('com')[cite: 60]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Rege o complemento de companhia ('com'). Unida por maqqef."
           },
           {
             "index": 5,
@@ -7317,7 +7317,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Avotav",
             "lemma": "אָב",
             "composite": true,
-            "syntax_role": "Termo regido pela preposição עִם com sufixo possessivo[cite: 104].",
+            "syntax_role": "Termo regido pela preposição עִם com sufixo possessivo.",
             "parts": [
               {
                 "segment": "אֲבֹת",
@@ -7325,7 +7325,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
                 "meaning": "pais / ancestrais de",
-                "phonetics": "Plural masculino irregular em -ot derivado de אָב (Kelley VII.19.1[b] e X.26.4[1]d)[cite: 64, 88]."
+                "phonetics": "Plural masculino irregular em -ot derivado de אָב (Kelley VII.19.1[b] e X.26.4[1]d)."
               },
               {
                 "segment": "ָיו",
@@ -7333,7 +7333,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
                 "meaning": "seus / dele",
-                "phonetics": "Desinência pronominal para substantivos no plural (Kelley II.2.9 e XI.28.2)[cite: 26, 103]."
+                "phonetics": "Desinência pronominal para substantivos no plural (Kelley II.2.9 e XI.28.2)."
               }
             ]
           }
@@ -7348,7 +7348,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal com Objeto Direto Anteposto Enfático",
-        "notes": "O objeto direto antecede o verbo para conferir destaque retórico ao conteúdo proclamado (Kelley XII.32.2)[cite: 118, 120].",
+        "notes": "O objeto direto antecede o verbo para conferir destaque retórico ao conteúdo proclamado (Kelley XII.32.2).",
         "tokens": [
           {
             "index": 1,
@@ -7356,28 +7356,28 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "U'devarav",
             "lemma": "דָּבָר",
             "composite": true,
-            "syntax_role": "Objeto direto anteposto com conjunção coordenativa e sufixo possessivo[cite: 106, 118].",
+            "syntax_role": "Objeto direto anteposto com conjunção coordenativa e sufixo possessivo.",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante de consoante apoiada por shva simples audível (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante de consoante apoiada por shva simples audível (Kelley VI.16.2)."
               },
               {
                 "segment": "דְבָר",
                 "transliteration": "Devar",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "palavras de[cite: 87, 106]"
+                "meaning": "palavras de"
               },
               {
                 "segment": "ָיו",
                 "transliteration": "Av",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "suas / dele[cite: 103, 106]"
+                "meaning": "suas / dele"
               }
             ]
           },
@@ -7388,8 +7388,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino singular do perfeito Qal ('ouviste')[cite: 114].",
-            "notes": "Desinência consonantal -ta antecedida de shva mudo sob a consoante final da raiz (Kelley XII.30.4[4])[cite: 115]."
+            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino singular do perfeito Qal ('ouviste').",
+            "notes": "Desinência consonantal -ta antecedida de shva mudo sob a consoante final da raiz (Kelley XII.30.4[4])."
           },
           {
             "index": 3,
@@ -7397,14 +7397,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Mitoch",
             "lemma": "בְּתוֹךְ",
             "composite": true,
-            "syntax_role": "Locução preposicional regente ('do meio de')[cite: 68].",
+            "syntax_role": "Locução preposicional regente ('do meio de').",
             "parts": [
               {
                 "segment": "מִ",
                 "transliteration": "Mi",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "de / a partir de",
-                "phonetics": "O nun assimila-se no tav seguinte por meio de dagesh forte (Kelley VI.15.3[2])[cite: 53]."
+                "phonetics": "O nun assimila-se no tav seguinte por meio de dagesh forte (Kelley VI.15.3[2])."
               },
               {
                 "segment": "תּוֹךְ",
@@ -7428,14 +7428,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אֵשׁ",
                 "transliteration": "Esh",
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
-                "meaning": "fogo[cite: 96]"
+                "meaning": "fogo"
               }
             ]
           }
@@ -7458,7 +7458,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לֹא",
             "composite": false,
             "word_class": "Partícula de negação",
-            "syntax_role": "Negação verbal anteposta ('não')[cite: 60, 118]."
+            "syntax_role": "Negação verbal anteposta ('não')."
           },
           {
             "index": 2,
@@ -7467,8 +7467,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַר",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa comum do plural do perfeito Qal ('guardaram')[cite: 114, 126].",
-            "notes": "O aformativo vocálico atraiu o acento, reduzindo a segunda vogal a shva audível (Kelley XII.30.4[3])[cite: 114, 115]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa comum do plural do perfeito Qal ('guardaram').",
+            "notes": "O aformativo vocálico atraiu o acento, reduzindo a segunda vogal a shva audível (Kelley XII.30.4[3])."
           },
           {
             "index": 3,
@@ -7477,8 +7477,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בְּרִית",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de objeto direto ('aliança de')[cite: 50, 96].",
-            "notes": "Substantivo com vogal invariável hireq-yod retém a forma do absoluto (Kelley X.26.4[2]a)[cite: 88]."
+            "syntax_role": "Termo regente no construto singular em função de objeto direto ('aliança de').",
+            "notes": "Substantivo com vogal invariável hireq-yod retém a forma do absoluto (Kelley X.26.4[2]a)."
           },
           {
             "index": 4,
@@ -7487,7 +7487,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Termo regido genitivo ('de Deus')[cite: 35, 92]."
+            "syntax_role": "Termo regido genitivo ('de Deus')."
           }
         ]
       },
@@ -7507,21 +7507,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Betzelem",
             "lemma": "צֶלֶם",
             "composite": true,
-            "syntax_role": "Termo regente no estado construto singular com preposição prefixada ('à imagem de')[cite: 85, 138].",
+            "syntax_role": "Termo regente no estado construto singular com preposição prefixada ('à imagem de').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em / à",
-                "phonetics": "Bet com shva simples[cite: 50]."
+                "phonetics": "Bet com shva simples."
               },
               {
                 "segment": "צֶלֶם",
                 "transliteration": "Tzelem",
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular construto",
-                "meaning": "imagem / semelhança de[cite: 85, 138]"
+                "meaning": "imagem / semelhança de"
               }
             ]
           },
@@ -7532,7 +7532,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Termo regido genitivo da relação de construto ('de Deus')[cite: 35, 92]."
+            "syntax_role": "Termo regido genitivo da relação de construto ('de Deus')."
           },
           {
             "index": 3,
@@ -7541,8 +7541,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּרָא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('criou')[cite: 109, 110].",
-            "notes": "Verbo fraco Lamed Alef com alongamento para qamats na última sílaba (Kelley XII.29.2 e XXVI.71)[cite: 10, 110]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('criou').",
+            "notes": "Verbo fraco Lamed Alef com alongamento para qamats na última sílaba (Kelley XII.29.2 e XXVI.71)."
           },
           {
             "index": 4,
@@ -7550,21 +7550,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Oto",
             "lemma": "אֵת",
             "composite": true,
-            "syntax_role": "Objeto direto pronominal ('o' / 'a ele')[cite: 101, 102].",
+            "syntax_role": "Objeto direto pronominal ('o' / 'a ele').",
             "parts": [
               {
                 "segment": "אֹת",
                 "transliteration": "Ot",
                 "type": "Partícula indicadora de objeto direto",
                 "meaning": "objeto direto",
-                "phonetics": "Vocalizada com holem antes de sufixos pronominais (Kelley XI.27.2[1])[cite: 101, 102]."
+                "phonetics": "Vocalizada com holem antes de sufixos pronominais (Kelley XI.27.2[1])."
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "ele / o[cite: 101, 102]"
+                "meaning": "ele / o"
               }
             ]
           }
@@ -7586,14 +7586,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "U'vnei",
             "lemma": "בֵּן",
             "composite": true,
-            "syntax_role": "Termo regente no construto plural com conjunção coordenativa ('e os filhos de')[cite: 54, 87].",
+            "syntax_role": "Termo regente no construto plural com conjunção coordenativa ('e os filhos de').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante de shva simples sob o bet (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante de shva simples sob o bet (Kelley VI.16.2)."
               },
               {
                 "segment": "בְנֵי",
@@ -7601,7 +7601,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
                 "meaning": "filhos de",
-                "phonetics": "Bet sem dagesh lene por suceder a vogal šureq; desinência -ei no construto plural[cite: 54, 86, 87]."
+                "phonetics": "Bet sem dagesh lene por suceder a vogal šureq; desinência -ei no construto plural."
               }
             ]
           },
@@ -7612,7 +7612,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יִשְׂרָאֵל",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido genitivo ('de Israel')[cite: 35]."
+            "syntax_role": "Termo regido genitivo ('de Israel')."
           },
           {
             "index": 3,
@@ -7621,8 +7621,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הָלַךְ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa comum do plural do perfeito Qal ('andaram' / 'caminharam')[cite: 109, 114].",
-            "notes": "Aformativo vocálico que atrai o acento e volatiliza a vogal precedente (Kelley XII.30.4[3])[cite: 114]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa comum do plural do perfeito Qal ('andaram' / 'caminharam').",
+            "notes": "Aformativo vocálico que atrai o acento e volatiliza a vogal precedente (Kelley XII.30.4[3])."
           },
           {
             "index": 4,
@@ -7630,14 +7630,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayabasha",
             "lemma": "יַבָּשָׁה",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo ('em terra seca')[cite: 68].",
+            "syntax_role": "Adjunto adverbial locativo ('em terra seca').",
             "parts": [
               {
                 "segment": "בַ",
                 "transliteration": "Va",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "na (em + a)",
-                "phonetics": "A preposição בְּ assimila o artigo הַ e perde o dagesh lene por vir após vogal plena[cite: 32, 51]."
+                "phonetics": "A preposição בְּ assimila o artigo הַ e perde o dagesh lene por vir após vogal plena."
               },
               {
                 "segment": "יַּבָּשָׁה",
@@ -7645,7 +7645,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
                 "meaning": "terra seca",
-                "phonetics": "Dagesh forte característico da determinação no yod e no bet[cite: 45, 68]."
+                "phonetics": "Dagesh forte característico da determinação no yod e no bet."
               }
             ]
           }
@@ -7660,7 +7660,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal com Objeto Direto Anteposto Enfático",
-        "notes": "O objeto direto indeterminado סֵפֶר encabeça a frase para realçar o elemento doado (Kelley XII.32.2)[cite: 118, 120].",
+        "notes": "O objeto direto indeterminado סֵפֶר encabeça a frase para realçar o elemento doado (Kelley XII.32.2).",
         "tokens": [
           {
             "index": 1,
@@ -7669,7 +7669,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "סֵפֶר",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Objeto direto anteposto ('um livro')[cite: 83, 84, 118]."
+            "syntax_role": "Objeto direto anteposto ('um livro')."
           },
           {
             "index": 2,
@@ -7678,8 +7678,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "נָתַן",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('deu')[cite: 138, 155].",
-            "notes": "Verbo fraco Pe Nun e Lamed Nun (Kelley XXVIII.73)[cite: 10, 155]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('deu').",
+            "notes": "Verbo fraco Pe Nun e Lamed Nun (Kelley XXVIII.73)."
           },
           {
             "index": 3,
@@ -7687,21 +7687,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Li",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Objeto indireto preposicionado ('a mim')[cite: 98].",
+            "syntax_role": "Objeto indireto preposicionado ('a mim').",
             "parts": [
               {
                 "segment": "לִ",
                 "transliteration": "L'",
                 "type": "Preposição inseparável",
                 "meaning": "a / para",
-                "phonetics": "Preposição לְ com hireq diante do sufixo pronominal[cite: 98]."
+                "phonetics": "Preposição לְ com hireq diante do sufixo pronominal."
               },
               {
                 "segment": "י",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "mim[cite: 98]"
+                "meaning": "mim"
               }
             ]
           },
@@ -7712,7 +7712,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "חִלְקִיָּה",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Sujeito da oração ('Hilquias')[cite: 187]."
+            "syntax_role": "Sujeito da oração ('Hilquias')."
           },
           {
             "index": 5,
@@ -7720,21 +7720,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hacohen",
             "lemma": "כֹּהֵן",
             "composite": true,
-            "syntax_role": "Aposto explicativo especificando o sujeito[cite: 160].",
+            "syntax_role": "Aposto explicativo especificando o sujeito.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte na consoante kaf (כ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte na consoante kaf (כ)."
               },
               {
                 "segment": "כֹּהֵן",
                 "transliteration": "Cohen",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "sacerdote[cite: 160]"
+                "meaning": "sacerdote"
               }
             ]
           }
@@ -7749,7 +7749,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal Narrativa Transitiva Direta",
-        "notes": "Ordem: Adjunto Temporal + Verbo + Sujeito + Objetos Diretos Coordenados com a partícula אֵת (Kelley III.5 e XII.32.1)[cite: 31, 118].",
+        "notes": "Ordem: Adjunto Temporal + Verbo + Sujeito + Objetos Diretos Coordenados com a partícula אֵת (Kelley III.5 e XII.32.1).",
         "tokens": [
           {
             "index": 1,
@@ -7757,14 +7757,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "B'reshit",
             "lemma": "רֵאשִׁית",
             "composite": true,
-            "syntax_role": "Adjunto adverbial temporal anteposto ('no princípio')[cite: 40, 61].",
+            "syntax_role": "Adjunto adverbial temporal anteposto ('no princípio').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em / no",
-                "phonetics": "Bet com shva simples audível inicial (Kelley II.3)[cite: 27, 50]."
+                "phonetics": "Bet com shva simples audível inicial (Kelley II.3)."
               },
               {
                 "segment": "רֵאשִׁית",
@@ -7772,7 +7772,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo derivado",
                 "inflection": "feminino singular construto",
                 "meaning": "começo / primícias de",
-                "phonetics": "Derivado de רֹאשׁ ('cabeça'); o alef é quiescente no fim da sílaba (Kelley IV.10 e VII.17.3)[cite: 39, 61]."
+                "phonetics": "Derivado de רֹאשׁ ('cabeça'); o alef é quiescente no fim da sílaba (Kelley IV.10 e VII.17.3)."
               }
             ]
           },
@@ -7783,8 +7783,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּרָא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('criou')[cite: 109, 110].",
-            "notes": "Ação concluída no passado referindo-se à criação primordial ex nihilo (Kelley XII.31.1[c])[cite: 117]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('criou').",
+            "notes": "Ação concluída no passado referindo-se à criação primordial ex nihilo (Kelley XII.31.1[c])."
           },
           {
             "index": 3,
@@ -7793,7 +7793,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Sujeito da oração (concordância singular com o verbo בָּרָא)[cite: 56, 117]."
+            "syntax_role": "Sujeito da oração (concordância singular com o verbo בָּרָא)."
           },
           {
             "index": 4,
@@ -7802,7 +7802,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o primeiro objeto direto determinado (não deve ser traduzida separadamente, Kelley III.5)[cite: 31]."
+            "syntax_role": "Assinala o primeiro objeto direto determinado (não deve ser traduzida separadamente, Kelley III.5)."
           },
           {
             "index": 5,
@@ -7817,14 +7817,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah com dagesh forte no shin (ש)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no shin (ש)."
               },
               {
                 "segment": "שָּׁמַיִם",
                 "transliteration": "Shamayim",
                 "type": "Substantivo",
                 "inflection": "masculino plural/dual absoluto",
-                "meaning": "céus[cite: 42, 68]"
+                "meaning": "céus"
               }
             ]
           },
@@ -7834,20 +7834,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "V'et",
             "lemma": "אֵת",
             "composite": true,
-            "syntax_role": "Conjunção coordenativa unida ao segundo sinal de acusativo definido[cite: 31, 54].",
+            "syntax_role": "Conjunção coordenativa unida ao segundo sinal de acusativo definido.",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples diante de vogal cheia[cite: 54]."
+                "phonetics": "Vav com shva simples diante de vogal cheia."
               },
               {
                 "segment": "אֵת",
                 "transliteration": "Et",
                 "type": "Partícula indicadora de objeto direto",
-                "meaning": "objeto direto[cite: 31]"
+                "meaning": "objeto direto"
               }
             ]
           },
@@ -7864,7 +7864,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אָרֶץ",
@@ -7872,7 +7872,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
                 "meaning": "terra",
-                "phonetics": "Modificação de segol para qamats com artigo (Kelley V.14.3[4])[cite: 47]."
+                "phonetics": "Modificação de segol para qamats com artigo (Kelley V.14.3[4])."
               }
             ]
           }
@@ -7901,21 +7901,21 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אָדָם",
                 "transliteration": "Adam",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "homem[cite: 35]"
+                "meaning": "homem"
               }
             ]
           },
@@ -7926,8 +7926,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָדַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('conheceu')[cite: 109, 110].",
-            "notes": "Verbo Pe Yod e Lamed Gutural com patah regular na segunda sílaba (Kelley XII.29.2)[cite: 110, 112]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('conheceu').",
+            "notes": "Verbo Pe Yod e Lamed Gutural com patah regular na segunda sílaba (Kelley XII.29.2)."
           },
           {
             "index": 3,
@@ -7936,7 +7936,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado (nome próprio)[cite: 31, 92]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado (nome próprio). Unida por maqqef."
           },
           {
             "index": 4,
@@ -7945,7 +7945,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "חַוָּה",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Objeto direto determinado ('Eva')[cite: 127]."
+            "syntax_role": "Objeto direto determinado ('Eva')."
           },
           {
             "index": 5,
@@ -7953,7 +7953,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ishto",
             "lemma": "אִשָּׁה",
             "composite": true,
-            "syntax_role": "Aposto explicativo com sufixo possessivo ('sua mulher')[cite: 102].",
+            "syntax_role": "Aposto explicativo com sufixo possessivo ('sua mulher').",
             "parts": [
               {
                 "segment": "אִשְׁת",
@@ -7961,14 +7961,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
                 "meaning": "mulher / esposa de",
-                "phonetics": "Base construta irregular do substantivo אִשָּׁה (Kelley X.26.4[2]h)[cite: 91]."
+                "phonetics": "Base construta irregular do substantivo אִשָּׁה (Kelley X.26.4[2]h)."
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "dele / sua[cite: 102]"
+                "meaning": "dele / sua"
               }
             ]
           }
@@ -7991,7 +7991,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado (termo com sufixo possessivo, Kelley XI.28)[cite: 31, 102]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado (termo com sufixo possessivo, Kelley XI.28). Unida por maqqef."
           },
           {
             "index": 2,
@@ -7999,21 +7999,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Kolcha",
             "lemma": "קוֹל",
             "composite": true,
-            "syntax_role": "Objeto direto determinado anteposto enfático ('a tua voz')[cite: 102, 118].",
+            "syntax_role": "Objeto direto determinado anteposto enfático ('a tua voz').",
             "parts": [
               {
                 "segment": "קוֹל",
                 "transliteration": "Kol",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "voz de[cite: 102]"
+                "meaning": "voz de"
               },
               {
                 "segment": "ְךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "tua[cite: 102]"
+                "meaning": "tua"
               }
             ]
           },
@@ -8024,8 +8024,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 1ª pessoa comum do singular do perfeito Qal ('ouvi')[cite: 114].",
-            "notes": "Desinência de 1ª pessoa singular (-ti) antecedida por shva mudo (Kelley XII.30.4[4])[cite: 114, 115]."
+            "syntax_role": "Núcleo do predicado verbal. 1ª pessoa comum do singular do perfeito Qal ('ouvi').",
+            "notes": "Desinência de 1ª pessoa singular (-ti) antecedida por shva mudo (Kelley XII.30.4[4])."
           },
           {
             "index": 4,
@@ -8033,14 +8033,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bagan",
             "lemma": "גַּן",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo ('no jardim')[cite: 52, 61].",
+            "syntax_role": "Adjunto adverbial locativo ('no jardim').",
             "parts": [
               {
                 "segment": "בַּ",
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "no (em + o)",
-                "phonetics": "A preposição בְּ assimila o artigo הַ e herda o patah e o dagesh forte no guimel (Kelley VI.15.1[4])[cite: 51]."
+                "phonetics": "A preposição בְּ assimila o artigo הַ e herda o patah e o dagesh forte no guimel (Kelley VI.15.1[4])."
               },
               {
                 "segment": "גָּן",
@@ -8048,7 +8048,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
                 "meaning": "jardim",
-                "phonetics": "Recebe qamats interno quando determinado pelo artigo (Kelley V.14.3[4])[cite: 47]."
+                "phonetics": "Recebe qamats interno quando determinado pelo artigo (Kelley V.14.3[4])."
               }
             ]
           }
@@ -8246,7 +8246,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Primeiro núcleo do sujeito da oração nominal ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Primeiro núcleo do sujeito da oração nominal ('o SENHOR')."
           },
           {
             "index": 2,
@@ -8254,21 +8254,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eloheinu",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Aposto explicativo com sufixo possessivo ('nosso Deus')[cite: 103].",
+            "syntax_role": "Aposto explicativo com sufixo possessivo ('nosso Deus').",
             "parts": [
               {
                 "segment": "אֱלֹהֵי",
                 "transliteration": "Elohei",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "Deus de[cite: 87, 103]"
+                "meaning": "Deus de"
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nosso[cite: 103]"
+                "meaning": "nosso"
               }
             ]
           },
@@ -8279,7 +8279,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Segundo núcleo sujeito ou predicado nominal ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Segundo núcleo sujeito ou predicado nominal ('o SENHOR')."
           },
           {
             "index": 4,
@@ -8288,8 +8288,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶחָד",
             "composite": false,
             "word_class": "Numeral cardinal / Adjetivo",
-            "syntax_role": "Predicado nominal quantitativo ou adjetivo atributivo ('é um' / 'é único')[cite: 130].",
-            "notes": "O numeral cardinal אֶחָד funciona como adjetivo e segue o substantivo concordando em gênero (Kelley XIII.35.1[1])[cite: 130]."
+            "syntax_role": "Predicado nominal quantitativo ou adjetivo atributivo ('é um' / 'é único').",
+            "notes": "O numeral cardinal אֶחָד funciona como adjetivo e segue o substantivo concordando em gênero (Kelley XIII.35.1[1])."
           }
         ]
       },
@@ -8303,7 +8303,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Série de Orações Interrogativas Nominais",
-        "notes": "Três orações interrogativas coordenadas iniciadas pelo he interrogativo com hatef-patah diante de não-gutural com vogal cheia (Kelley XIII.34.1[1])[cite: 127].",
+        "notes": "Três orações interrogativas coordenadas iniciadas pelo he interrogativo com hatef-patah diante de não-gutural com vogal cheia (Kelley XIII.34.1[1]).",
         "tokens": [
           {
             "index": 1,
@@ -8311,14 +8311,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hashalom",
             "lemma": "שָׁלוֹם",
             "composite": true,
-            "syntax_role": "Predicado nominal interrogativo da primeira oração ('vai tudo bem?')[cite: 127].",
+            "syntax_role": "Predicado nominal interrogativo da primeira oração ('vai tudo bem?').",
             "parts": [
               {
                 "segment": "הֲ",
                 "transliteration": "Ha",
                 "type": "Partícula interrogativa (he interrogativo)",
                 "meaning": "acaso? / porventura?",
-                "phonetics": "Pontuado com hatef-patah diante de consoante não-gutural com vogal plena (Kelley XIII.34.1[1])[cite: 127]."
+                "phonetics": "Pontuado com hatef-patah diante de consoante não-gutural com vogal plena (Kelley XIII.34.1[1])."
               },
               {
                 "segment": "שָׁלוֹם",
@@ -8335,21 +8335,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lach",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Complemento indireto com sufixo pronominal ('contigo')[cite: 98].",
+            "syntax_role": "Complemento indireto com sufixo pronominal ('contigo').",
             "parts": [
               {
                 "segment": "לָ",
                 "transliteration": "La",
                 "type": "Preposição inseparável",
                 "meaning": "para / a",
-                "phonetics": "Preposição לְ com qamats antes de sufixo de 2ª pessoa feminina singular[cite: 98]."
+                "phonetics": "Preposição לְ com qamats antes de sufixo de 2ª pessoa feminina singular."
               },
               {
                 "segment": "ךְ",
                 "transliteration": "Ch",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa feminino singular",
-                "meaning": "ti / você[cite: 98]"
+                "meaning": "ti / você"
               }
             ]
           },
@@ -8359,14 +8359,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hashalom",
             "lemma": "שָׁלוֹם",
             "composite": true,
-            "syntax_role": "Predicado nominal interrogativo da segunda oração[cite: 127].",
+            "syntax_role": "Predicado nominal interrogativo da segunda oração.",
             "parts": [
               {
                 "segment": "הֲ",
                 "transliteration": "Ha",
                 "type": "Partícula interrogativa (he interrogativo)",
                 "meaning": "acaso? / porventura?",
-                "phonetics": "Hatef-patah antes de não-gutural[cite: 127]."
+                "phonetics": "Hatef-patah antes de não-gutural."
               },
               {
                 "segment": "שָׁלוֹם",
@@ -8383,28 +8383,28 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Le-ishech",
             "lemma": "אִישׁ",
             "composite": true,
-            "syntax_role": "Complemento indireto com preposição e sufixo possessivo ('com teu marido')[cite: 50, 102].",
+            "syntax_role": "Complemento indireto com preposição e sufixo possessivo ('com teu marido').",
             "parts": [
               {
                 "segment": "לְ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
                 "meaning": "a / para",
-                "phonetics": "Preposição לְ com shva simples diante de consoante com vogal plena[cite: 50]."
+                "phonetics": "Preposição לְ com shva simples diante de consoante com vogal plena."
               },
               {
                 "segment": "אִישֵׁ",
                 "transliteration": "Ishe",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "marido / homem de[cite: 35, 89]"
+                "meaning": "marido / homem de"
               },
               {
                 "segment": "ךְ",
                 "transliteration": "Ech",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa feminino singular",
-                "meaning": "teu[cite: 102]"
+                "meaning": "teu"
               }
             ]
           },
@@ -8414,14 +8414,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hashalom",
             "lemma": "שָׁלוֹם",
             "composite": true,
-            "syntax_role": "Predicado nominal interrogativo da terceira oração[cite: 127].",
+            "syntax_role": "Predicado nominal interrogativo da terceira oração.",
             "parts": [
               {
                 "segment": "הֲ",
                 "transliteration": "Ha",
                 "type": "Partícula interrogativa (he interrogativo)",
                 "meaning": "acaso? / porventura?",
-                "phonetics": "Hatef-patah antes de não-gutural[cite: 127]."
+                "phonetics": "Hatef-patah antes de não-gutural."
               },
               {
                 "segment": "שָׁלוֹם",
@@ -8438,22 +8438,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Layaled",
             "lemma": "יֶלֶד",
             "composite": true,
-            "syntax_role": "Complemento indireto determinado ('com o menino / à criança')[cite: 51, 109].",
+            "syntax_role": "Complemento indireto determinado ('com o menino / à criança').",
             "parts": [
               {
                 "segment": "לַ",
                 "transliteration": "La",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "ao / com o",
-                "phonetics": "A preposição לְ assimila o artigo הַ e assume o patah com dagesh forte no yod (Kelley VI.15.1[4])[cite: 51]."
+                "phonetics": "A preposição לְ assimila o artigo הַ e assume o patah com dagesh forte no yod (Kelley VI.15.1[4])."
               },
               {
                 "segment": "יָּלֶד",
                 "transliteration": "Yaled",
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular absoluto",
-                "meaning": "criança / menino[cite: 109]",
-                "phonetics": "Qamats sob o yod condicionado pela determinação com o artigo[cite: 48, 84]."
+                "meaning": "criança / menino",
+                "phonetics": "Qamats sob o yod condicionado pela determinação com o artigo."
               }
             ]
           }
@@ -8476,14 +8476,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Halo",
             "lemma": "לוֹא",
             "composite": true,
-            "syntax_role": "Partícula interrogativa negativa retórica ('não é verdade que...?')[cite: 127].",
+            "syntax_role": "Partícula interrogativa negativa retórica ('não é verdade que...?').",
             "parts": [
               {
                 "segment": "הֲ",
                 "transliteration": "Ha",
                 "type": "Partícula interrogativa (he interrogativo)",
                 "meaning": "acaso? / porventura?",
-                "phonetics": "Pontuado com hatef-patah diante de consoante não-gutural com vogal plena[cite: 127]."
+                "phonetics": "Pontuado com hatef-patah diante de consoante não-gutural com vogal plena."
               },
               {
                 "segment": "לוֹא",
@@ -8500,7 +8500,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָח",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Predicado nominal ('é irmão')[cite: 35]."
+            "syntax_role": "Predicado nominal ('é irmão')."
           },
           {
             "index": 3,
@@ -8509,7 +8509,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עֵשָׂו",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Sujeito da oração nominal ('Esaú')[cite: 30]."
+            "syntax_role": "Sujeito da oração nominal ('Esaú')."
           },
           {
             "index": 4,
@@ -8517,14 +8517,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Leya'akov",
             "lemma": "יַעֲקֹב",
             "composite": true,
-            "syntax_role": "Complemento preposicional relacional ('de Jacó' / 'para Jacó')[cite: 50].",
+            "syntax_role": "Complemento preposicional relacional ('de Jacó' / 'para Jacó').",
             "parts": [
               {
                 "segment": "לְ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
                 "meaning": "a / de",
-                "phonetics": "Lamed com shva simples diante de consoante com vogal plena (patah)[cite: 50]."
+                "phonetics": "Lamed com shva simples diante de consoante com vogal plena (patah)."
               },
               {
                 "segment": "יַעֲקֹב",
@@ -8554,8 +8554,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מָה",
             "composite": false,
             "word_class": "Pronome interrogativo",
-            "syntax_role": "Pronome interrogativo neutro para coisas ('o que?' / 'que?')[cite: 127]. Unido por maqqef[cite: 31].",
-            "notes": "Reduz o qamats para patah quando ligado por maqqef a consoante com dagesh forte ou gutural (Kelley III.4 e XIII.34.2[2])[cite: 31, 127]."
+            "syntax_role": "Pronome interrogativo neutro para coisas ('o que?' / 'que?'). Unido por maqqef.",
+            "notes": "Reduz o qamats para patah quando ligado por maqqef a consoante com dagesh forte ou gutural (Kelley III.4 e XIII.34.2[2])."
           },
           {
             "index": 2,
@@ -8564,7 +8564,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "זֹאת",
             "composite": false,
             "word_class": "Pronome demonstrativo (feminino singular)",
-            "syntax_role": "Objeto direto demonstrativo topicalizado ('isto')[cite: 78]."
+            "syntax_role": "Objeto direto demonstrativo topicalizado ('isto')."
           },
           {
             "index": 3,
@@ -8573,8 +8573,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עָשָׂה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('fez')[cite: 110, 138].",
-            "notes": "Verbo fraco Pe Gutural e Lamed He (Kelley XII.29.2 e XXVII.72)[cite: 110, 112]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('fez').",
+            "notes": "Verbo fraco Pe Gutural e Lamed He (Kelley XII.29.2 e XXVII.72)."
           },
           {
             "index": 4,
@@ -8583,7 +8583,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Sujeito da oração ('Deus')[cite: 35]."
+            "syntax_role": "Sujeito da oração ('Deus')."
           },
           {
             "index": 5,
@@ -8591,21 +8591,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lanu",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Objeto indireto com sufixo pronominal ('a nós' / 'para nós')[cite: 98].",
+            "syntax_role": "Objeto indireto com sufixo pronominal ('a nós' / 'para nós').",
             "parts": [
               {
                 "segment": "לָ",
                 "transliteration": "La",
                 "type": "Preposição inseparável",
                 "meaning": "a / para",
-                "phonetics": "Vocalizada com qamats antes do sufixo pronominal de 1ª pessoa comum do plural[cite: 98]."
+                "phonetics": "Vocalizada com qamats antes do sufixo pronominal de 1ª pessoa comum do plural."
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nós[cite: 98]"
+                "meaning": "nós"
               }
             ]
           }
@@ -8621,7 +8621,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Nominal Comparativa com Numerais",
-        "notes": "Adjetivo predicativo plural טוֹבִים sem artigo anteposto ao numeral substantivado sujeito, regendo a preposição comparativa מִן־ (Kelley VI.15.3[4] e XIII.35.1[2])[cite: 54, 72, 130].",
+        "notes": "Adjetivo predicativo plural טוֹבִים sem artigo anteposto ao numeral substantivado sujeito, regendo a preposição comparativa מִן־ (Kelley VI.15.3[4] e XIII.35.1[2]).",
         "tokens": [
           {
             "index": 1,
@@ -8630,8 +8630,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "טוֹב",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Predicado nominal comparativo ('são melhores'). Concorda em gênero e número com הַשְּׁנַיִם[cite: 69, 72].",
-            "notes": "Por estar no uso predicativo, não recebe o artigo definido (Kelley VIII.22.3)[cite: 72]."
+            "syntax_role": "Predicado nominal comparativo ('são melhores'). Concorda em gênero e número com הַשְּׁנַיִם.",
+            "notes": "Por estar no uso predicativo, não recebe o artigo definido (Kelley VIII.22.3)."
           },
           {
             "index": 2,
@@ -8639,21 +8639,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hashenayim",
             "lemma": "שְׁנַיִם",
             "composite": true,
-            "syntax_role": "Sujeito da oração nominal (numeral substantivado determinado)[cite: 130].",
+            "syntax_role": "Sujeito da oração nominal (numeral substantivado determinado).",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah sem dagesh forte diante de shin com shva simples[cite: 45]."
+                "phonetics": "Patah sem dagesh forte diante de shin com shva simples."
               },
               {
                 "segment": "שְׁנַיִם",
                 "transliteration": "Shenayim",
                 "type": "Numeral cardinal",
                 "inflection": "masculino dual absoluto",
-                "meaning": "dois[cite: 130]"
+                "meaning": "dois"
               }
             ]
           },
@@ -8664,8 +8664,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מִן",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Introduz o termo comparado ('do que')[cite: 54]. Unida por maqqef[cite: 31].",
-            "notes": "Forma plena com maqqef diante do artigo definido (Kelley VI.15.3[1])[cite: 53]."
+            "syntax_role": "Introduz o termo comparado ('do que'). Unida por maqqef.",
+            "notes": "Forma plena com maqqef diante do artigo definido (Kelley VI.15.3[1])."
           },
           {
             "index": 4,
@@ -8673,21 +8673,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'echad",
             "lemma": "אֶחָד",
             "composite": true,
-            "syntax_role": "Objeto da preposição comparativa (termo comparado determinado)[cite: 54, 130].",
+            "syntax_role": "Objeto da preposição comparativa (termo comparado determinado).",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אֶחָד",
                 "transliteration": "Echad",
                 "type": "Numeral cardinal",
                 "inflection": "masculino singular absoluto",
-                "meaning": "um[cite: 130]"
+                "meaning": "um"
               }
             ]
           }
@@ -8702,7 +8702,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal com Perfeito Consecutivo / Futuro",
-        "notes": "Forma do perfeito Qal com vav que assume sentido futuro ou consecutivo profético no discurso (Kelley XII.31.1[4])[cite: 117].",
+        "notes": "Forma do perfeito Qal com vav que assume sentido futuro ou consecutivo profético no discurso (Kelley XII.31.1[4]).",
         "tokens": [
           {
             "index": 1,
@@ -8710,21 +8710,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Umalach",
             "lemma": "מָלַךְ",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal com conjunção ('e reinará')[cite: 117, 126].",
+            "syntax_role": "Núcleo do predicado verbal com conjunção ('e reinará').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa (vav consecutivo / conjuntivo)",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante da consoante labial mem (מ)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante da consoante labial mem (מ)."
               },
               {
                 "segment": "מָלַךְ",
                 "transliteration": "Malach",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do perfeito Qal",
-                "meaning": "ele reinou / reinará[cite: 117, 126]"
+                "meaning": "ele reinou / reinará"
               }
             ]
           },
@@ -8735,7 +8735,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração verbal ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração verbal ('o SENHOR')."
           },
           {
             "index": 3,
@@ -8743,21 +8743,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Aleihem",
             "lemma": "עַל",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido pelo verbo מָלַךְ ('sobre eles')[cite: 60, 100].",
+            "syntax_role": "Complemento preposicional regido pelo verbo מָלַךְ ('sobre eles').",
             "parts": [
               {
                 "segment": "עֲלֵי",
                 "transliteration": "Alei",
                 "type": "Preposição",
                 "meaning": "sobre",
-                "phonetics": "A preposição עַל recebe sufixos pronominais através da base construta plural em sere-yod (Kelley XI.27.1[5])[cite: 100]."
+                "phonetics": "A preposição עַל recebe sufixos pronominais através da base construta plural em sere-yod (Kelley XI.27.1[5])."
               },
               {
                 "segment": "הֶם",
                 "transliteration": "Hem",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino plural",
-                "meaning": "eles[cite: 98, 100]"
+                "meaning": "eles"
               }
             ]
           },
@@ -8767,21 +8767,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Behar",
             "lemma": "הַר",
             "composite": true,
-            "syntax_role": "Termo regente no estado construto singular com preposição prefixada ('no monte de')[cite: 50, 89].",
+            "syntax_role": "Termo regente no estado construto singular com preposição prefixada ('no monte de').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em / no",
-                "phonetics": "Bet com shva simples diante de consoante com vogal plena[cite: 50]."
+                "phonetics": "Bet com shva simples diante de consoante com vogal plena."
               },
               {
                 "segment": "הַר",
                 "transliteration": "Har",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "monte / montanha de[cite: 50, 89]"
+                "meaning": "monte / montanha de"
               }
             ]
           },
@@ -8995,21 +8995,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Betzelem",
             "lemma": "צֶלֶם",
             "composite": true,
-            "syntax_role": "Termo regente no estado construto com preposição prefixada ('à imagem de')[cite: 50, 85, 138].",
+            "syntax_role": "Termo regente no estado construto com preposição prefixada ('à imagem de').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em / à",
-                "phonetics": "Bet com shva simples diante de consoante com vogal plena[cite: 50]."
+                "phonetics": "Bet com shva simples diante de consoante com vogal plena."
               },
               {
                 "segment": "צֶלֶם",
                 "transliteration": "Tzelem",
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular construto",
-                "meaning": "imagem / semelhança de[cite: 85, 138]"
+                "meaning": "imagem / semelhança de"
               }
             ]
           },
@@ -9020,7 +9020,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Termo regido genitivo na relação de construto ('de Deus')[cite: 35, 92]."
+            "syntax_role": "Termo regido genitivo na relação de construto ('de Deus')."
           },
           {
             "index": 3,
@@ -9029,8 +9029,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּרָא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('criou')[cite: 109, 110].",
-            "notes": "Verbo da classe Lamed Alef com terminação qamats na 3ª pessoa do masculino singular (Kelley XII.29.2 e XXVI.71)[cite: 10, 110]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('criou').",
+            "notes": "Verbo da classe Lamed Alef com terminação qamats na 3ª pessoa do masculino singular (Kelley XII.29.2 e XXVI.71)."
           },
           {
             "index": 4,
@@ -9038,21 +9038,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Oto",
             "lemma": "אֵת",
             "composite": true,
-            "syntax_role": "Objeto direto pronominal ('o' / 'a ele')[cite: 101, 102].",
+            "syntax_role": "Objeto direto pronominal ('o' / 'a ele').",
             "parts": [
               {
                 "segment": "אֹת",
                 "transliteration": "Ot",
                 "type": "Partícula indicadora de objeto direto",
                 "meaning": "objeto direto",
-                "phonetics": "Forma com holem assumida pela partícula אֵת diante de sufixos pronominais (Kelley XI.27.2[1])[cite: 101, 102]."
+                "phonetics": "Forma com holem assumida pela partícula אֵת diante de sufixos pronominais (Kelley XI.27.2[1])."
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "ele / o[cite: 101, 102]"
+                "meaning": "ele / o"
               }
             ]
           }
@@ -9075,14 +9075,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "U'vnei",
             "lemma": "בֵּן",
             "composite": true,
-            "syntax_role": "Termo regente no construto plural com conjunção coordenativa ('e os filhos de')[cite: 54, 87].",
+            "syntax_role": "Termo regente no construto plural com conjunção coordenativa ('e os filhos de').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante de consoante com shva simples (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante de consoante com shva simples (Kelley VI.16.2)."
               },
               {
                 "segment": "בְנֵי",
@@ -9090,7 +9090,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
                 "meaning": "filhos de",
-                "phonetics": "Bet sem dagesh lene por vir após vogal; terminação em sere-yod no construto plural[cite: 54, 86, 87]."
+                "phonetics": "Bet sem dagesh lene por vir após vogal; terminação em sere-yod no construto plural."
               }
             ]
           },
@@ -9101,7 +9101,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יִשְׂרָאֵל",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido genitivo ('de Israel')[cite: 35]."
+            "syntax_role": "Termo regido genitivo ('de Israel')."
           },
           {
             "index": 3,
@@ -9110,8 +9110,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הָלַךְ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa comum do plural do perfeito Qal ('andaram')[cite: 109, 114].",
-            "notes": "O aformativo vocálico atrai o acento tónico, reduzindo a vogal precedente a shva audível (Kelley XII.30.4[3])[cite: 114, 115]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa comum do plural do perfeito Qal ('andaram').",
+            "notes": "O aformativo vocálico atrai o acento tónico, reduzindo a vogal precedente a shva audível (Kelley XII.30.4[3])."
           },
           {
             "index": 4,
@@ -9119,14 +9119,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayabashah",
             "lemma": "יַבָּשָׁה",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo ('em terra seca')[cite: 68].",
+            "syntax_role": "Adjunto adverbial locativo ('em terra seca').",
             "parts": [
               {
                 "segment": "בַ",
                 "transliteration": "Va",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "na (em + a)",
-                "phonetics": "A preposição בְּ assimila o artigo הַ e perde o dagesh lene por suceder som vocálico pleno[cite: 32, 51]."
+                "phonetics": "A preposição בְּ assimila o artigo הַ e perde o dagesh lene por suceder som vocálico pleno."
               },
               {
                 "segment": "יַּבָּשָׁה",
@@ -9134,7 +9134,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
                 "meaning": "terra seca",
-                "phonetics": "Dagesh forte característico da determinação no yod e reduplicação regular no bet[cite: 45, 68]."
+                "phonetics": "Dagesh forte característico da determinação no yod e reduplicação regular no bet."
               }
             ]
           }
@@ -9150,7 +9150,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Nominal com Triságio / Predicado Triplo Anteposto",
-        "notes": "Três adjetivos predicativos antepostos sem artigo qualificando o sujeito יְהוָה (Kelley VIII.22)[cite: 72].",
+        "notes": "Três adjetivos predicativos antepostos sem artigo qualificando o sujeito יְהוָה (Kelley VIII.22).",
         "tokens": [
           {
             "index": 1,
@@ -9159,7 +9159,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָדוֹשׁ",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Primeiro predicado nominal anteposto ('santo')[cite: 68, 72]."
+            "syntax_role": "Primeiro predicado nominal anteposto ('santo')."
           },
           {
             "index": 2,
@@ -9168,7 +9168,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָדוֹשׁ",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Segundo predicado nominal anteposto iterativo ('santo')[cite: 68, 72]."
+            "syntax_role": "Segundo predicado nominal anteposto iterativo ('santo')."
           },
           {
             "index": 3,
@@ -9177,7 +9177,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָדוֹשׁ",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Terceiro predicado nominal anteposto culminativo ('santo')[cite: 68, 72]."
+            "syntax_role": "Terceiro predicado nominal anteposto culminativo ('santo')."
           },
           {
             "index": 4,
@@ -9186,7 +9186,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração nominal ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração nominal ('o SENHOR')."
           },
           {
             "index": 5,
@@ -9195,8 +9195,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "צְבָאוֹת",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Aposto genitivo / epíteto divino ('dos exércitos')[cite: 109].",
-            "notes": "Plural absoluto de צָבָא figurando como título solene adjunto ao Tetragrama (Kelley XI)[cite: 109]."
+            "syntax_role": "Aposto genitivo / epíteto divino ('dos exércitos').",
+            "notes": "Plural absoluto de צָבָא figurando como título solene adjunto ao Tetragrama (Kelley XI)."
           }
         ]
       },
@@ -9210,7 +9210,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal com Objeto Direto Anteposto Enfático",
-        "notes": "Ordem enfática: Objeto Direto + Verbo + Objeto Indireto + Sujeito + Aposto (Kelley XII.32.2)[cite: 118, 120].",
+        "notes": "Ordem enfática: Objeto Direto + Verbo + Objeto Indireto + Sujeito + Aposto (Kelley XII.32.2).",
         "tokens": [
           {
             "index": 1,
@@ -9219,7 +9219,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "סֵפֶר",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Objeto direto indeterminado anteposto ('um livro')[cite: 83, 84, 118]."
+            "syntax_role": "Objeto direto indeterminado anteposto ('um livro')."
           },
           {
             "index": 2,
@@ -9228,8 +9228,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "נָתַן",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('deu')[cite: 138, 155].",
-            "notes": "Verbo da classe Pe Nun (Kelley XXVIII.73)[cite: 10, 155]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('deu').",
+            "notes": "Verbo da classe Pe Nun (Kelley XXVIII.73)."
           },
           {
             "index": 3,
@@ -9237,21 +9237,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Li",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Objeto indireto preposicionado ('a mim')[cite: 98].",
+            "syntax_role": "Objeto indireto preposicionado ('a mim').",
             "parts": [
               {
                 "segment": "לִ",
                 "transliteration": "L'",
                 "type": "Preposição inseparável",
                 "meaning": "a / para",
-                "phonetics": "Preposição לְ com hireq diante de sufixo pronominal de 1ª pessoa comum singular[cite: 98]."
+                "phonetics": "Preposição לְ com hireq diante de sufixo pronominal de 1ª pessoa comum singular."
               },
               {
                 "segment": "י",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "mim[cite: 98]"
+                "meaning": "mim"
               }
             ]
           },
@@ -9262,7 +9262,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "חִלְקִיָּה",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Sujeito da oração verbal ('Hilquias')[cite: 187]."
+            "syntax_role": "Sujeito da oração verbal ('Hilquias')."
           },
           {
             "index": 5,
@@ -9270,21 +9270,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hakohen",
             "lemma": "כֹּהֵן",
             "composite": true,
-            "syntax_role": "Aposto explicativo especificando o sujeito[cite: 160].",
+            "syntax_role": "Aposto explicativo especificando o sujeito.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte regular no kaf (כ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte regular no kaf (כ)."
               },
               {
                 "segment": "כֹּהֵן",
                 "transliteration": "Cohen",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "sacerdote[cite: 160]"
+                "meaning": "sacerdote"
               }
             ]
           }
@@ -9307,7 +9307,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הֵן",
             "composite": false,
             "word_class": "Partícula demonstrativa / interjeição",
-            "syntax_role": "Marcador de atenção e constatação ('eis')[cite: 101, 102, 126]."
+            "syntax_role": "Marcador de atenção e constatação ('eis')."
           },
           {
             "index": 2,
@@ -9322,14 +9322,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אָדָם",
                 "transliteration": "Adam",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "homem[cite: 35]"
+                "meaning": "homem"
               }
             ]
           },
@@ -9340,8 +9340,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הָיָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('foi' / 'tornou-se')[cite: 109, 110].",
-            "notes": "Verbo fraco duplamente irregular Pe Gutural e Lamed He (Kelley XII.29.7)[cite: 112]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('foi' / 'tornou-se').",
+            "notes": "Verbo fraco duplamente irregular Pe Gutural e Lamed He (Kelley XII.29.7)."
           },
           {
             "index": 4,
@@ -9349,14 +9349,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "K'achad",
             "lemma": "אֶחָד",
             "composite": true,
-            "syntax_role": "Predicado comparativo com preposição inseparável ('como um de')[cite: 50, 130].",
+            "syntax_role": "Predicado comparativo com preposição inseparável ('como um de').",
             "parts": [
               {
                 "segment": "כְּ",
                 "transliteration": "Ke",
                 "type": "Preposição inseparável",
                 "meaning": "como / conforme",
-                "phonetics": "Kaf com shva simples diante de consoante com vogal plena (Kelley VI.15.1[1])[cite: 50]."
+                "phonetics": "Kaf com shva simples diante de consoante com vogal plena (Kelley VI.15.1[1])."
               },
               {
                 "segment": "אַחַד",
@@ -9364,7 +9364,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Numeral cardinal",
                 "inflection": "masculino singular construto",
                 "meaning": "um de",
-                "phonetics": "Forma construta de אֶחָד com patah inicial em vez de segol (Kelley XIII.35.1)[cite: 130]."
+                "phonetics": "Forma construta de אֶחָד com patah inicial em vez de segol (Kelley XIII.35.1)."
               }
             ]
           },
@@ -9374,21 +9374,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Mimmennu",
             "lemma": "מִן",
             "composite": true,
-            "syntax_role": "Termo regido partitivo com sufixo pronominal ('de nós')[cite: 98, 99].",
+            "syntax_role": "Termo regido partitivo com sufixo pronominal ('de nós').",
             "parts": [
               {
                 "segment": "מִמֶּנ",
                 "transliteration": "Mimmen",
                 "type": "Preposição duplicada (forma de מִן)",
                 "meaning": "de",
-                "phonetics": "A preposição מִן duplica-se perante certos sufixos pronominais com assimilação do nun por dagesh forte (Kelley XI.27.1[4])[cite: 98, 99]."
+                "phonetics": "A preposição מִן duplica-se perante certos sufixos pronominais com assimilação do nun por dagesh forte (Kelley XI.27.1[4])."
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nós[cite: 98, 99]"
+                "meaning": "nós"
               }
             ]
           }
@@ -9410,21 +9410,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "V'ein-",
             "lemma": "אֵין",
             "composite": true,
-            "syntax_role": "Predicado existencial de negação com conjunção coordenativa ('e não há')[cite: 54, 60].",
+            "syntax_role": "Predicado existencial de negação com conjunção coordenativa ('e não há').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples diante de vogal plena[cite: 54]."
+                "phonetics": "Vav com shva simples diante de vogal plena."
               },
               {
                 "segment": "אֵין־",
                 "transliteration": "Ein-",
                 "type": "Partícula negativa de existência",
                 "meaning": "não há",
-                "phonetics": "Ligada por maqqef ao termo seguinte, atuando em unidade de fala (Kelley III.4)[cite: 31]."
+                "phonetics": "Ligada por maqqef ao termo seguinte, atuando em unidade de fala (Kelley III.4)."
               }
             ]
           },
@@ -9435,8 +9435,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "דַּעַת",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de sujeito existencial ('conhecimento de')[cite: 63, 85].",
-            "notes": "Substantivo feminino segolado terminado em tav (Kelley VII.18.2[4] e X.25.4)[cite: 63, 85]."
+            "syntax_role": "Termo regente no construto singular em função de sujeito existencial ('conhecimento de').",
+            "notes": "Substantivo feminino segolado terminado em tav (Kelley VII.18.2[4] e X.25.4)."
           },
           {
             "index": 3,
@@ -9445,7 +9445,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Termo regido genitivo da relação de construto ('de Deus')[cite: 35, 92]."
+            "syntax_role": "Termo regido genitivo da relação de construto ('de Deus')."
           },
           {
             "index": 4,
@@ -9453,14 +9453,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ba'aretz",
             "lemma": "אֶרֶץ",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo ('na terra')[cite: 51].",
+            "syntax_role": "Adjunto adverbial locativo ('na terra').",
             "parts": [
               {
                 "segment": "בָּ",
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "na (em + a)",
-                "phonetics": "A preposição בְּ assimila o artigo הָ e retém o qamats compensatório diante de alef (א)[cite: 46, 47, 51]."
+                "phonetics": "A preposição בְּ assimila o artigo הָ e retém o qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אָרֶץ",
@@ -9468,7 +9468,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
                 "meaning": "terra",
-                "phonetics": "Forma alterada de אֶרֶץ quando acompanhada do artigo definido (Kelley V.14.3[4])[cite: 47]."
+                "phonetics": "Forma alterada de אֶרֶץ quando acompanhada do artigo definido (Kelley V.14.3[4])."
               }
             ]
           }
@@ -9500,7 +9500,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יֵשׁ",
             "composite": false,
             "word_class": "Partícula de existência",
-            "syntax_role": "Núcleo existencial afirmativo ('há' / 'está presente')[cite: 60]."
+            "syntax_role": "Núcleo existencial afirmativo ('há' / 'está presente')."
           },
           {
             "index": 3,
@@ -9509,7 +9509,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração existencial ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração existencial ('o SENHOR')."
           },
           {
             "index": 4,
@@ -9517,21 +9517,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bamakom",
             "lemma": "מָקוֹם",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo ('no lugar')[cite: 51, 60].",
+            "syntax_role": "Adjunto adverbial locativo ('no lugar').",
             "parts": [
               {
                 "segment": "בַּ",
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "no (em + o)",
-                "phonetics": "A preposição בְּ assimila o artigo הַ e assume o patah com dagesh forte no mem (Kelley VI.15.1[4])[cite: 45, 51]."
+                "phonetics": "A preposição בְּ assimila o artigo הַ e assume o patah com dagesh forte no mem (Kelley VI.15.1[4])."
               },
               {
                 "segment": "מָּקוֹם",
                 "transliteration": "Makom",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "lugar[cite: 60]"
+                "meaning": "lugar"
               }
             ]
           },
@@ -9541,21 +9541,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hazeh",
             "lemma": "זֶה",
             "composite": true,
-            "syntax_role": "Pronome demonstrativo atributivo concordando com o termo locativo determinado ('este')[cite: 78].",
+            "syntax_role": "Pronome demonstrativo atributivo concordando com o termo locativo determinado ('este').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "este",
-                "phonetics": "Patah com dagesh forte no zayin (ז)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no zayin (ז)."
               },
               {
                 "segment": "זֶּה",
                 "transliteration": "Zeh",
                 "type": "Pronome demonstrativo",
                 "inflection": "masculino singular",
-                "meaning": "este[cite: 78]"
+                "meaning": "este"
               }
             ]
           }
@@ -9743,7 +9743,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Subordinada Final Negativa",
-        "notes": "A partícula פֶּן־ introduz o imperfeito com sentido de finalidade preventiva ou receio (Kelley XV.40.3)[cite: 164, 165].",
+        "notes": "A partícula פֶּן־ introduz o imperfeito com sentido de finalidade preventiva ou receio (Kelley XV.40.3).",
         "tokens": [
           {
             "index": 1,
@@ -9752,7 +9752,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "פֶּן",
             "composite": false,
             "word_class": "Conjunção preventiva",
-            "syntax_role": "Introduz oração com valor de fim negativo ('para que não')[cite: 83, 164]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Introduz oração com valor de fim negativo ('para que não'). Unida por maqqef."
           },
           {
             "index": 2,
@@ -9761,8 +9761,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׂרַף",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 1ª pessoa comum do plural do imperfeito Qal ('queimemos')[cite: 161, 184].",
-            "notes": "Preformativo nun com hireq fechando sílaba; holem sob o segundo radical (Kelley XV.39.2-3)[cite: 161]."
+            "syntax_role": "Núcleo do predicado verbal. 1ª pessoa comum do plural do imperfeito Qal ('queimemos').",
+            "notes": "Preformativo nun com hireq fechando sílaba; holem sob o segundo radical (Kelley XV.39.2-3)."
           },
           {
             "index": 3,
@@ -9770,20 +9770,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Otach",
             "lemma": "אֵת",
             "composite": true,
-            "syntax_role": "Primeiro objeto direto pronominal determinado ('a ti')[cite: 101, 102].",
+            "syntax_role": "Primeiro objeto direto pronominal determinado ('a ti').",
             "parts": [
               {
                 "segment": "אוֹת",
                 "transliteration": "Ot",
                 "type": "Partícula indicadora de objeto direto",
-                "meaning": "objeto direto[cite: 101, 102]"
+                "meaning": "objeto direto"
               },
               {
                 "segment": "ָךְ",
                 "transliteration": "Ach",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa feminino singular",
-                "meaning": "ti / você[cite: 101, 102]"
+                "meaning": "ti / você"
               }
             ]
           },
@@ -9793,21 +9793,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'et-",
             "lemma": "אֵת",
             "composite": true,
-            "syntax_role": "Conjunção coordenativa e sinal de objeto direto coordenado ('e a')[cite: 31, 54].",
+            "syntax_role": "Conjunção coordenativa e sinal de objeto direto coordenado ('e a').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "אֶת־",
                 "transliteration": "Et-",
                 "type": "Partícula indicadora de objeto direto",
                 "meaning": "objeto direto",
-                "phonetics": "Șere reduzido a segol por ligação com maqqef (Kelley III.5)[cite: 31]."
+                "phonetics": "Șere reduzido a segol por ligação com maqqef (Kelley III.5)."
               }
             ]
           },
@@ -9818,8 +9818,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בַּיִת",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Segundo objeto direto no estado construto singular ('casa de')[cite: 91].",
-            "notes": "Base construta característica com ditongo contraído em sere-yod (Kelley X.26.4[2]i)[cite: 91]."
+            "syntax_role": "Segundo objeto direto no estado construto singular ('casa de').",
+            "notes": "Base construta característica com ditongo contraído em sere-yod (Kelley X.26.4[2]i)."
           },
           {
             "index": 6,
@@ -9827,7 +9827,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Avicha",
             "lemma": "אָב",
             "composite": true,
-            "syntax_role": "Termo regido genitivo com sufixo possessivo ('teu pai')[cite: 104].",
+            "syntax_role": "Termo regido genitivo com sufixo possessivo ('teu pai').",
             "parts": [
               {
                 "segment": "אָבִי",
@@ -9835,14 +9835,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "pai de",
-                "phonetics": "Forma construta irregular diante de sufixos pronominais[cite: 90, 104]."
+                "phonetics": "Forma construta irregular diante de sufixos pronominais."
               },
               {
                 "segment": "ךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "teu[cite: 104]"
+                "meaning": "teu"
               }
             ]
           },
@@ -9852,21 +9852,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ba'esh",
             "lemma": "אֵשׁ",
             "composite": true,
-            "syntax_role": "Adjunto adverbial instrumental ('com o fogo')[cite: 51, 96].",
+            "syntax_role": "Adjunto adverbial instrumental ('com o fogo').",
             "parts": [
               {
                 "segment": "בָּ",
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "no / com o",
-                "phonetics": "A preposição בְּ assimila o artigo הָ e retém o qamats compensatório diante de alef (א)[cite: 46, 47, 51]."
+                "phonetics": "A preposição בְּ assimila o artigo הָ e retém o qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אֵשׁ",
                 "transliteration": "Esh",
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
-                "meaning": "fogo[cite: 96]"
+                "meaning": "fogo"
               }
             ]
           }
@@ -9882,7 +9882,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Volitiva / Proibição Imediata com Jussivo",
-        "notes": "A negação אַל־ associada ao imperfeito expressa proibição específica, pontual ou imediata (Kelley XVIII.55)[cite: 165].",
+        "notes": "A negação אַל־ associada ao imperfeito expressa proibição específica, pontual ou imediata (Kelley XVIII.55).",
         "tokens": [
           {
             "index": 1,
@@ -9891,7 +9891,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אַל",
             "composite": false,
             "word_class": "Partícula de negação subjetiva / proibitiva",
-            "syntax_role": "Rege a forma volitiva do verbo para exprimir proibição ('não'). Unida por maqqef[cite: 31]."
+            "syntax_role": "Rege a forma volitiva do verbo para exprimir proibição ('não'). Unida por maqqef."
           },
           {
             "index": 2,
@@ -9900,8 +9900,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁלַח",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino singular do jussivo/imperfeito Qal ('estendas')[cite: 161, 166].",
-            "notes": "Apresenta patah sob a gutural het final em vez de holem (Kelley XXV.70)[cite: 10]."
+            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino singular do jussivo/imperfeito Qal ('estendas').",
+            "notes": "Apresenta patah sob a gutural het final em vez de holem (Kelley XXV.70)."
           },
           {
             "index": 3,
@@ -9909,21 +9909,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Yadcha",
             "lemma": "יָד",
             "composite": true,
-            "syntax_role": "Objeto direto determinado pelo sufixo possessivo ('a tua mão')[cite: 102].",
+            "syntax_role": "Objeto direto determinado pelo sufixo possessivo ('a tua mão').",
             "parts": [
               {
                 "segment": "יָד",
                 "transliteration": "Yad",
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
-                "meaning": "mão de[cite: 89, 106]"
+                "meaning": "mão de"
               },
               {
                 "segment": "ְךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "tua[cite: 102, 106]"
+                "meaning": "tua"
               }
             ]
           },
@@ -9934,7 +9934,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶל",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Rege o complemento de direção ou hostilidade ('contra' / 'sobre')[cite: 60]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Rege o complemento de direção ou hostilidade ('contra' / 'sobre'). Unida por maqqef."
           },
           {
             "index": 5,
@@ -9949,14 +9949,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no nun (נ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no nun (נ)."
               },
               {
                 "segment": "נַּעַר",
                 "transliteration": "Na'ar",
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular absoluto",
-                "meaning": "jovem / rapaz[cite: 84]"
+                "meaning": "jovem / rapaz"
               }
             ]
           }
@@ -9971,7 +9971,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal com Adjunto Adverbial Temporal Anteposto",
-        "notes": "O verbo intransitivo כָּבֵד recebe patah no imperfeito Qal em conformidade com os verbos de qualidade ou estado (Kelley XV.39.6)[cite: 163].",
+        "notes": "O verbo intransitivo כָּבֵד recebe patah no imperfeito Qal em conformidade com os verbos de qualidade ou estado (Kelley XV.39.6).",
         "tokens": [
           {
             "index": 1,
@@ -9995,14 +9995,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Va",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com qamats diante de palavra com acento tónico que denota conexão semântica íntima (Kelley VI.16.5)[cite: 55]."
+                "phonetics": "Vav com qamats diante de palavra com acento tónico que denota conexão semântica íntima (Kelley VI.16.5)."
               },
               {
                 "segment": "לַיְלָה",
                 "transliteration": "Laylah",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "noite[cite: 60]"
+                "meaning": "noite"
               }
             ]
           },
@@ -10013,8 +10013,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כָּבֵד",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa feminino singular do imperfeito Qal ('pesava')[cite: 161, 163].",
-            "notes": "Concorda em gênero com o sujeito feminino יָד; tem patah temático característico de verbos estativos (Kelley XV.39.6)[cite: 64, 163]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa feminino singular do imperfeito Qal ('pesava').",
+            "notes": "Concorda em gênero com o sujeito feminino יָד; tem patah temático característico de verbos estativos (Kelley XV.39.6)."
           },
           {
             "index": 4,
@@ -10022,21 +10022,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Alai",
             "lemma": "עַל",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido ('sobre mim')[cite: 99, 100].",
+            "syntax_role": "Complemento preposicional regido ('sobre mim').",
             "parts": [
               {
                 "segment": "עָל",
                 "transliteration": "Al",
                 "type": "Preposição",
                 "meaning": "sobre",
-                "phonetics": "Preposição עַל na base construta com sufixo de 1ª pessoa singular (-ai, Kelley XI.27.1[5])[cite: 99, 100]."
+                "phonetics": "Preposição עַל na base construta com sufixo de 1ª pessoa singular (-ai, Kelley XI.27.1[5])."
               },
               {
                 "segment": "ַי",
                 "transliteration": "Ai",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "mim[cite: 99, 100]"
+                "meaning": "mim"
               }
             ]
           },
@@ -10046,21 +10046,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Yadcha",
             "lemma": "יָד",
             "composite": true,
-            "syntax_role": "Sujeito da oração verbal (substantivo inerentemente feminino)[cite: 64, 102].",
+            "syntax_role": "Sujeito da oração verbal (substantivo inerentemente feminino).",
             "parts": [
               {
                 "segment": "יָד",
                 "transliteration": "Yad",
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
-                "meaning": "mão de[cite: 64, 89, 106]"
+                "meaning": "mão de"
               },
               {
                 "segment": "ְךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "tua[cite: 102, 106]"
+                "meaning": "tua"
               }
             ]
           }
@@ -10082,21 +10082,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Beyad",
             "lemma": "יָד",
             "composite": true,
-            "syntax_role": "Núcleo substantivo modal com preposição inseparável ('com mão')[cite: 50, 64].",
+            "syntax_role": "Núcleo substantivo modal com preposição inseparável ('com mão').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "com / por",
-                "phonetics": "Bet com shva simples diante de consoante com vogal plena[cite: 50]."
+                "phonetics": "Bet com shva simples diante de consoante com vogal plena."
               },
               {
                 "segment": "יָד",
                 "transliteration": "Yad",
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
-                "meaning": "mão[cite: 64]"
+                "meaning": "mão"
               }
             ]
           },
@@ -10107,8 +10107,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "חָזָק",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo feminino singular ('forte'), concordando com o substantivo feminino יָד[cite: 64, 71].",
-            "notes": "Redução vocálica do qamats para hatef-patah sob a gutural het perante o sufixo de gênero (Kelley VIII.20.3[2]a)[cite: 71]."
+            "syntax_role": "Adjetivo atributivo feminino singular ('forte'), concordando com o substantivo feminino יָד.",
+            "notes": "Redução vocálica do qamats para hatef-patah sob a gutural het perante o sufixo de gênero (Kelley VIII.20.3[2]a)."
           },
           {
             "index": 3,
@@ -10117,8 +10117,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מָלַךְ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 1ª pessoa comum do singular do imperfeito Qal ('reinarei')[cite: 161, 164].",
-            "notes": "O preformativo alef leva segol em virtude da sua natureza gutural (Kelley XV.39.2[3])[cite: 161]."
+            "syntax_role": "Núcleo do predicado verbal. 1ª pessoa comum do singular do imperfeito Qal ('reinarei').",
+            "notes": "O preformativo alef leva segol em virtude da sua natureza gutural (Kelley XV.39.2[3])."
           },
           {
             "index": 4,
@@ -10126,21 +10126,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Aleihem",
             "lemma": "עַל",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido pelo verbo ('sobre vós')[cite: 60, 99, 100].",
+            "syntax_role": "Complemento preposicional regido pelo verbo ('sobre vós').",
             "parts": [
               {
                 "segment": "עֲלֵי",
                 "transliteration": "Alei",
                 "type": "Preposição",
                 "meaning": "sobre",
-                "phonetics": "Base construta plural de עַל para recepção de sufixos pronominais (Kelley XI.27.1[5])[cite: 99, 100]."
+                "phonetics": "Base construta plural de עַל para recepção de sufixos pronominais (Kelley XI.27.1[5])."
               },
               {
                 "segment": "כֶם",
                 "transliteration": "Chem",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino plural",
-                "meaning": "vós / vocês[cite: 98, 100]"
+                "meaning": "vós / vocês"
               }
             ]
           }
@@ -10163,8 +10163,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "זָכַר",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da primeira oração. 3ª pessoa masculino singular do imperfeito Qal ('lembrará')[cite: 161, 163].",
-            "notes": "Estrutura regular do verbo forte no imperfeito Qal (Kelley XV.39.3)[cite: 161]."
+            "syntax_role": "Núcleo verbal da primeira oração. 3ª pessoa masculino singular do imperfeito Qal ('lembrará').",
+            "notes": "Estrutura regular do verbo forte no imperfeito Qal (Kelley XV.39.3)."
           },
           {
             "index": 2,
@@ -10172,21 +10172,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Avonam",
             "lemma": "עָוֹן",
             "composite": true,
-            "syntax_role": "Objeto direto da primeira oração com sufixo possessivo ('a sua iniquidade')[cite: 102].",
+            "syntax_role": "Objeto direto da primeira oração com sufixo possessivo ('a sua iniquidade').",
             "parts": [
               {
                 "segment": "עֲוֹן",
                 "transliteration": "Avon",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "iniquidade / culpa de[cite: 185]"
+                "meaning": "iniquidade / culpa de"
               },
               {
                 "segment": "ָם",
                 "transliteration": "Am",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino plural",
-                "meaning": "deles / sua[cite: 102]"
+                "meaning": "deles / sua"
               }
             ]
           },
@@ -10196,21 +10196,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve-yifkod",
             "lemma": "פָּקַד",
             "composite": true,
-            "syntax_role": "Núcleo verbal coordenado da segunda oração ('e punirá / inspecionará')[cite: 54, 161].",
+            "syntax_role": "Núcleo verbal coordenado da segunda oração ('e punirá / inspecionará').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "יִפְקֹד",
                 "transliteration": "Yifkod",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
-                "meaning": "ele visitará / castigará[cite: 161, 163]"
+                "meaning": "ele visitará / castigará"
               }
             ]
           },
@@ -10220,21 +10220,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Chattatam",
             "lemma": "חַטָּאת",
             "composite": true,
-            "syntax_role": "Objeto direto da segunda oração com sufixo possessivo ('os seus pecados')[cite: 102].",
+            "syntax_role": "Objeto direto da segunda oração com sufixo possessivo ('os seus pecados').",
             "parts": [
               {
                 "segment": "חַטָּאת",
                 "transliteration": "Chattat",
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
-                "meaning": "pecado de[cite: 63, 185]"
+                "meaning": "pecado de"
               },
               {
                 "segment": "ָם",
                 "transliteration": "Am",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino plural",
-                "meaning": "deles / seus[cite: 102]"
+                "meaning": "deles / seus"
               }
             ]
           }
@@ -10256,20 +10256,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve-lo-",
             "lemma": "לֹא",
             "composite": true,
-            "syntax_role": "Partícula negativa com conjunção coordenativa ('e não')[cite: 54, 60]. Unida por maqqef[cite: 31].",
+            "syntax_role": "Partícula negativa com conjunção coordenativa ('e não'). Unida por maqqef.",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "לֹא־",
                 "transliteration": "Lo-",
                 "type": "Partícula de negação",
-                "meaning": "não[cite: 60]"
+                "meaning": "não"
               }
             ]
           },
@@ -10280,8 +10280,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לָמַד",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino plural do imperfeito Qal ('aprenderão')[cite: 161, 163, 185].",
-            "notes": "Apresenta nun paragógico ou enérgico final (-un) que enfatiza a forma verbal (Kelley XV.39.3[4])[cite: 162]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino plural do imperfeito Qal ('aprenderão').",
+            "notes": "Apresenta nun paragógico ou enérgico final (-un) que enfatiza a forma verbal (Kelley XV.39.3[4])."
           },
           {
             "index": 3,
@@ -10290,7 +10290,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עוֹד",
             "composite": false,
             "word_class": "Advérbio de continuidade",
-            "syntax_role": "Adjunto adverbial com sentido de repetição ('mais' / 'ainda')[cite: 109]."
+            "syntax_role": "Adjunto adverbial com sentido de repetição ('mais' / 'ainda')."
           },
           {
             "index": 4,
@@ -10299,7 +10299,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מִלְחָמָה",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Objeto direto indeterminado ('guerra')[cite: 160]."
+            "syntax_role": "Objeto direto indeterminado ('guerra')."
           }
         ]
       }
@@ -10482,7 +10482,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal Transitiva Direta no Hif'il",
-        "notes": "O tronco Hif'il é caracterizado pelo prefixo com patah e vogal temática hireq-yod (Kelley XVI.42.5)[cite: 177, 178].",
+        "notes": "O tronco Hif'il é caracterizado pelo prefixo com patah e vogal temática hireq-yod (Kelley XVI.42.5).",
         "tokens": [
           {
             "index": 1,
@@ -10491,8 +10491,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כָּרַת",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 1ª pessoa comum do singular do imperfeito Hif'il ('eliminarei' / 'farei cessar')[cite: 144, 177, 178].",
-            "notes": "Preformativo alef com patah e vogal hireq-yod característica do tronco causativo Hif'il (Kelley XVI.42.5)[cite: 177, 178]."
+            "syntax_role": "Núcleo do predicado verbal. 1ª pessoa comum do singular do imperfeito Hif'il ('eliminarei' / 'farei cessar').",
+            "notes": "Preformativo alef com patah e vogal hireq-yod característica do tronco causativo Hif'il (Kelley XVI.42.5)."
           },
           {
             "index": 2,
@@ -10501,7 +10501,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado seguinte[cite: 31]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado seguinte. Unida por maqqef."
           },
           {
             "index": 3,
@@ -10510,8 +10510,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שֵׁם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Primeiro termo regente no estado construto plural ('nomes de')[cite: 89, 178].",
-            "notes": "Plural construto irregular do substantivo שֵׁם terminado em -ot (Kelley X.26.4[1]d)[cite: 88, 89]."
+            "syntax_role": "Primeiro termo regente no estado construto plural ('nomes de').",
+            "notes": "Plural construto irregular do substantivo שֵׁם terminado em -ot (Kelley X.26.4[1]d)."
           },
           {
             "index": 4,
@@ -10519,21 +10519,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'atzabbim",
             "lemma": "עָצָב",
             "composite": true,
-            "syntax_role": "Segundo termo regido genitivo determinado[cite: 92, 178].",
+            "syntax_role": "Segundo termo regido genitivo determinado.",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Qamats compensatório diante da gutural ayin (ע)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante da gutural ayin (ע)."
               },
               {
                 "segment": "עֲצַבִּים",
                 "transliteration": "Atzabbim",
                 "type": "Substantivo",
                 "inflection": "masculino plural absoluto",
-                "meaning": "ídolos[cite: 178]"
+                "meaning": "ídolos"
               }
             ]
           },
@@ -10544,8 +10544,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מִן",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Introduz o complemento de separação ou afastamento ('de' / 'fora de')[cite: 53, 178]. Unida por maqqef[cite: 31].",
-            "notes": "Retém a forma plena com maqqef perante substantivo determinado pelo artigo (Kelley VI.15.3[1])[cite: 53]."
+            "syntax_role": "Introduz o complemento de separação ou afastamento ('de' / 'fora de'). Unida por maqqef.",
+            "notes": "Retém a forma plena com maqqef perante substantivo determinado pelo artigo (Kelley VI.15.3[1])."
           },
           {
             "index": 6,
@@ -10553,14 +10553,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'aretz",
             "lemma": "אֶרֶץ",
             "composite": true,
-            "syntax_role": "Termo regido pela preposição מִן־[cite: 53, 178].",
+            "syntax_role": "Termo regido pela preposição מִן־.",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório antes de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório antes de alef (א)."
               },
               {
                 "segment": "אָרֶץ",
@@ -10568,7 +10568,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
                 "meaning": "terra",
-                "phonetics": "Modificação vocálica no substantivo determinado com o artigo (Kelley V.14.3[4])[cite: 47]."
+                "phonetics": "Modificação vocálica no substantivo determinado com o artigo (Kelley V.14.3[4])."
               }
             ]
           }
@@ -10591,7 +10591,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo / Pronome quantificador",
-            "syntax_role": "Núcleo do sujeito complexo universal ('todo aquele')[cite: 68]."
+            "syntax_role": "Núcleo do sujeito complexo universal ('todo aquele')."
           },
           {
             "index": 2,
@@ -10600,7 +10600,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que')[cite: 46]. Unido por maqqef[cite: 31]."
+            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que'). Unido por maqqef."
           },
           {
             "index": 3,
@@ -10609,8 +10609,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָרָא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da oração relativa. 3ª pessoa masculino singular do imperfeito Qal ('invocar' / 'chamar')[cite: 126, 161].",
-            "notes": "Verbo da classe Lamed Alef conservando o qamats final no imperfeito (Kelley XXVI.71)[cite: 10]."
+            "syntax_role": "Núcleo verbal da oração relativa. 3ª pessoa masculino singular do imperfeito Qal ('invocar' / 'chamar').",
+            "notes": "Verbo da classe Lamed Alef conservando o qamats final no imperfeito (Kelley XXVI.71)."
           },
           {
             "index": 4,
@@ -10618,21 +10618,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Beshem",
             "lemma": "שֵׁם",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido pelo verbo קָרָא בְּ ('no nome de')[cite: 50, 89].",
+            "syntax_role": "Complemento preposicional regido pelo verbo קָרָא בְּ ('no nome de').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em / no",
-                "phonetics": "Bet com shva simples diante de consoante com vogal plena[cite: 50]."
+                "phonetics": "Bet com shva simples diante de consoante com vogal plena."
               },
               {
                 "segment": "שֵׁם",
                 "transliteration": "Shem",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "nome de[cite: 89]"
+                "meaning": "nome de"
               }
             ]
           },
@@ -10643,7 +10643,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo na relação de construto ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo na relação de construto ('do SENHOR')."
           },
           {
             "index": 6,
@@ -10652,8 +10652,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מָלַט",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal da oração principal. 3ª pessoa masculino singular do imperfeito Nif'al ('escapará')[cite: 172, 185].",
-            "notes": "O nun do preformativo Nif'al assimila-se na primeira consoante da raiz (mem), originando dagesh forte característico (Kelley XVI.42.1[2])[cite: 172]."
+            "syntax_role": "Núcleo do predicado verbal da oração principal. 3ª pessoa masculino singular do imperfeito Nif'al ('escapará').",
+            "notes": "O nun do preformativo Nif'al assimila-se na primeira consoante da raiz (mem), originando dagesh forte característico (Kelley XVI.42.1[2])."
           }
         ]
       },
@@ -10666,7 +10666,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa com Vav Consecutivo",
-        "notes": "O vav consecutivo prefixado ao imperfeito introduz o tempo narrativo no passado (Kelley XVI.43)[cite: 179].",
+        "notes": "O vav consecutivo prefixado ao imperfeito introduz o tempo narrativo no passado (Kelley XVI.43).",
         "tokens": [
           {
             "index": 1,
@@ -10674,21 +10674,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayishkon",
             "lemma": "שָׁכַן",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal com pretérito narrativo ('e habitou')[cite: 179, 185].",
+            "syntax_role": "Núcleo do predicado verbal com pretérito narrativo ('e habitou').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e (então)",
-                "phonetics": "Vav com patah e dagesh forte na consoante preformativa yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte na consoante preformativa yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יִּשְׁכֹּן",
                 "transliteration": "Yishkon",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
-                "meaning": "ele habitou / repousou[cite: 161, 185]"
+                "meaning": "ele habitou / repousou"
               }
             ]
           },
@@ -10699,8 +10699,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כָּבוֹד",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de sujeito ('glória de')[cite: 89, 109]. Unido por maqqef[cite: 31].",
-            "notes": "A vogal qamats inicial volatiliza-se em shva audível simples no estado construto (Kelley X.26.4[2]e)[cite: 90]."
+            "syntax_role": "Termo regente no construto singular em função de sujeito ('glória de'). Unido por maqqef.",
+            "notes": "A vogal qamats inicial volatiliza-se em shva audível simples no estado construto (Kelley X.26.4[2]e)."
           },
           {
             "index": 3,
@@ -10709,7 +10709,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo ('do SENHOR')."
           },
           {
             "index": 4,
@@ -10718,7 +10718,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עַל",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Rege o adjunto adverbial de lugar ('sobre')[cite: 60]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Rege o adjunto adverbial de lugar ('sobre'). Unida por maqqef."
           },
           {
             "index": 5,
@@ -10727,7 +10727,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הַר",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular da locução geográfica ('monte de')[cite: 89]."
+            "syntax_role": "Termo regente no construto singular da locução geográfica ('monte de')."
           },
           {
             "index": 6,
@@ -10736,7 +10736,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "סִינַי",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido geográfico ('Sinai')[cite: 185]."
+            "syntax_role": "Termo regido geográfico ('Sinai')."
           }
         ]
       },
@@ -10749,7 +10749,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa no Tronco Pi'el com Cadeias Genitivas",
-        "notes": "O verbo לָמַד no tronco intensivo/causativo Pi'el adquire o sentido ativo de 'ensinar' (Kelley XIV.36.2[2])[cite: 141].",
+        "notes": "O verbo לָמַד no tronco intensivo/causativo Pi'el adquire o sentido ativo de 'ensinar' (Kelley XIV.36.2[2]).",
         "tokens": [
           {
             "index": 1,
@@ -10757,22 +10757,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayelamdu",
             "lemma": "לָמַד",
             "composite": true,
-            "syntax_role": "Núcleo verbal no perfeito narrativo Pi'el ('e ensinaram')[cite: 141, 179, 185].",
+            "syntax_role": "Núcleo verbal no perfeito narrativo Pi'el ('e ensinaram').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah sem dagesh no yod seguinte por este carregar um shva simples (Kelley XVI.43.2)[cite: 180]."
+                "phonetics": "Vav com patah sem dagesh no yod seguinte por este carregar um shva simples (Kelley XVI.43.2)."
               },
               {
                 "segment": "יְלַמְדוּ",
                 "transliteration": "Yelamdu",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino plural do imperfeito Pi'el",
-                "meaning": "eles ensinaram[cite: 141, 185]",
-                "phonetics": "Dagesh forte característico do tronco Pi'el no segundo radical mem (מ) (Kelley XIV.36.2)[cite: 140, 141]."
+                "meaning": "eles ensinaram",
+                "phonetics": "Dagesh forte característico do tronco Pi'el no segundo radical mem (מ) (Kelley XIV.36.2)."
               }
             ]
           },
@@ -10783,7 +10783,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "סֵפֶר",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Primeiro termo regente no construto singular em função de objeto direto ('o livro de')[cite: 83, 90]."
+            "syntax_role": "Primeiro termo regente no construto singular em função de objeto direto ('o livro de')."
           },
           {
             "index": 3,
@@ -10792,8 +10792,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "תּוֹרָה",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Segundo termo regente intermediário no construto singular ('a lei de')[cite: 90].",
-            "notes": "Terminação em -at típica do estado construto de substantivos femininos terminados em he (Kelley X.26.4[2]h)[cite: 91]."
+            "syntax_role": "Segundo termo regente intermediário no construto singular ('a lei de').",
+            "notes": "Terminação em -at típica do estado construto de substantivos femininos terminados em he (Kelley X.26.4[2]h)."
           },
           {
             "index": 4,
@@ -10802,7 +10802,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo final determinado da cadeia do objeto direto ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo final determinado da cadeia do objeto direto ('do SENHOR')."
           },
           {
             "index": 5,
@@ -10810,14 +10810,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bechol-",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Termo regente no construto com preposição inseparável ('em todas as')[cite: 50]. Unido por maqqef[cite: 31].",
+            "syntax_role": "Termo regente no construto com preposição inseparável ('em todas as'). Unido por maqqef.",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em",
-                "phonetics": "Bet com shva simples diante de consoante com vogal plena[cite: 50]."
+                "phonetics": "Bet com shva simples diante de consoante com vogal plena."
               },
               {
                 "segment": "כָל־",
@@ -10825,7 +10825,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "todas as / totalidade de",
-                "phonetics": "Kaf aspirado sem dagesh lene por vir após vogal; qamats-hatuf em razão do maqqef (Kelley III.4)[cite: 31, 32]."
+                "phonetics": "Kaf aspirado sem dagesh lene por vir após vogal; qamats-hatuf em razão do maqqef (Kelley III.4)."
               }
             ]
           },
@@ -10836,8 +10836,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עִיר",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo intermediário no construto plural ('cidades de')[cite: 89].",
-            "notes": "Plural construto irregular com desinência em sere-yod (Kelley X.26.4[2]a)[cite: 87, 89]."
+            "syntax_role": "Termo intermediário no construto plural ('cidades de').",
+            "notes": "Plural construto irregular com desinência em sere-yod (Kelley X.26.4[2]a)."
           },
           {
             "index": 7,
@@ -10846,7 +10846,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוּדָה",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido geográfico genitivo ('de Judá')[cite: 52]."
+            "syntax_role": "Termo regido geográfico genitivo ('de Judá')."
           }
         ]
       },
@@ -10859,7 +10859,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa no Tronco Hitpa'el",
-        "notes": "O tronco Hitpa'el expressa ação habitual, durativa ou comunhão contínua ('perambulou' / 'andou em comunhão', Kelley XIV.36.4)[cite: 142, 154].",
+        "notes": "O tronco Hitpa'el expressa ação habitual, durativa ou comunhão contínua ('perambulou' / 'andou em comunhão', Kelley XIV.36.4).",
         "tokens": [
           {
             "index": 1,
@@ -10867,22 +10867,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayithallech",
             "lemma": "הָלַךְ",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal no imperfeito narrativo Hitpa'el ('e andou')[cite: 154, 176, 179].",
+            "syntax_role": "Núcleo do predicado verbal no imperfeito narrativo Hitpa'el ('e andou').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יִּתְהַלֵּךְ",
                 "transliteration": "Yithallech",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Hitpa'el",
-                "meaning": "ele andou / viveu em comunhão[cite: 142, 154]",
-                "phonetics": "Prefixo do Hitpa'el com dagesh forte característico no lamed mediano da raiz (Kelley XIV.36.4)[cite: 142, 176]."
+                "meaning": "ele andou / viveu em comunhão",
+                "phonetics": "Prefixo do Hitpa'el com dagesh forte característico no lamed mediano da raiz (Kelley XIV.36.4)."
               }
             ]
           },
@@ -10893,7 +10893,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "חֲנוֹךְ",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Sujeito da oração verbal ('Enoque')[cite: 185]."
+            "syntax_role": "Sujeito da oração verbal ('Enoque')."
           },
           {
             "index": 3,
@@ -10902,8 +10902,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Preposição independente",
-            "syntax_role": "Preposição de comunhão / companhia ('com')[cite: 98]. Unida por maqqef[cite: 31].",
-            "notes": "Não confundir com o sinal homógrafo de objeto direto (Kelley XI.27.1[3]a)[cite: 98]."
+            "syntax_role": "Preposição de comunhão / companhia ('com'). Unida por maqqef.",
+            "notes": "Não confundir com o sinal homógrafo de objeto direto (Kelley XI.27.1[3]a)."
           },
           {
             "index": 4,
@@ -10911,21 +10911,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'elohim",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Termo regido pela preposição אֶת־[cite: 98].",
+            "syntax_role": "Termo regido pela preposição אֶת־.",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אֱלֹהִים",
                 "transliteration": "Elohim",
                 "type": "Substantivo / Nome Divino",
                 "inflection": "masculino plural",
-                "meaning": "Deus[cite: 35]"
+                "meaning": "Deus"
               }
             ]
           }
@@ -11134,7 +11134,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração verbal ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração verbal ('o SENHOR')."
           },
           {
             "index": 2,
@@ -11142,21 +11142,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Yishmorcha",
             "lemma": "שָׁמַר",
             "composite": true,
-            "syntax_role": "Predicado verbal com sufixo pronominal acusativo ('ele te guardará')[cite: 102, 161].",
+            "syntax_role": "Predicado verbal com sufixo pronominal acusativo ('ele te guardará').",
             "parts": [
               {
                 "segment": "יִשְׁמָר",
                 "transliteration": "Yishmor",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
-                "meaning": "ele guardará[cite: 161]"
+                "meaning": "ele guardará"
               },
               {
                 "segment": "ְךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "te / a ti (objeto direto)[cite: 102]"
+                "meaning": "te / a ti (objeto direto)"
               }
             ]
           },
@@ -11166,14 +11166,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Mikol-",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Termo regente no construto com preposição inseparável ('de todo o')[cite: 31, 53]. Unido por maqqef[cite: 31].",
+            "syntax_role": "Termo regente no construto com preposição inseparável ('de todo o'). Unido por maqqef.",
             "parts": [
               {
                 "segment": "מִ",
                 "transliteration": "Mi",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "de",
-                "phonetics": "Nun assimilado por dagesh forte no kaf seguinte (Kelley VI.15.3[2])[cite: 53]."
+                "phonetics": "Nun assimilado por dagesh forte no kaf seguinte (Kelley VI.15.3[2])."
               },
               {
                 "segment": "כָּל־",
@@ -11181,7 +11181,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "todo o / totalidade de",
-                "phonetics": "Qamats-hatuf motivado pela perda de tonicidade perante maqqef[cite: 31]."
+                "phonetics": "Qamats-hatuf motivado pela perda de tonicidade perante maqqef."
               }
             ]
           },
@@ -11192,7 +11192,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "רַע",
             "composite": false,
             "word_class": "Substantivo / Adjetivo substantivado",
-            "syntax_role": "Termo regido genitivo ('mal')[cite: 71, 77]."
+            "syntax_role": "Termo regido genitivo ('mal')."
           }
         ]
       },
@@ -11212,21 +11212,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eli",
             "lemma": "אֵל",
             "composite": true,
-            "syntax_role": "Primeiro vocativo com sufixo possessivo ('meu Deus')[cite: 102].",
+            "syntax_role": "Primeiro vocativo com sufixo possessivo ('meu Deus').",
             "parts": [
               {
                 "segment": "אֵל",
                 "transliteration": "El",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "Deus[cite: 126]"
+                "meaning": "Deus"
               },
               {
                 "segment": "ִי",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "meu[cite: 102]"
+                "meaning": "meu"
               }
             ]
           },
@@ -11236,21 +11236,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eli",
             "lemma": "אֵל",
             "composite": true,
-            "syntax_role": "Segundo vocativo enfático reiterativo ('meu Deus')[cite: 102].",
+            "syntax_role": "Segundo vocativo enfático reiterativo ('meu Deus').",
             "parts": [
               {
                 "segment": "אֵל",
                 "transliteration": "El",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "Deus[cite: 126]"
+                "meaning": "Deus"
               },
               {
                 "segment": "ִי",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "meu[cite: 102]"
+                "meaning": "meu"
               }
             ]
           },
@@ -11261,7 +11261,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לָמָה",
             "composite": false,
             "word_class": "Advérbio interrogativo",
-            "syntax_role": "Introduz oração interrogativa de causa ou propósito ('por quê?')[cite: 129]."
+            "syntax_role": "Introduz oração interrogativa de causa ou propósito ('por quê?')."
           },
           {
             "index": 4,
@@ -11269,21 +11269,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Azavtani",
             "lemma": "עָזַב",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal com sufixo acusativo ('tu me abandonaste / desamparaste')[cite: 101, 102, 114].",
+            "syntax_role": "Núcleo do predicado verbal com sufixo acusativo ('tu me abandonaste / desamparaste').",
             "parts": [
               {
                 "segment": "עֲזַבְתָּ",
                 "transliteration": "Azavta",
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino singular do perfeito Qal",
-                "meaning": "tu abandonaste[cite: 114]"
+                "meaning": "tu abandonaste"
               },
               {
                 "segment": "נִי",
                 "transliteration": "Ni",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "me (objeto direto)[cite: 101, 102]"
+                "meaning": "me (objeto direto)"
               }
             ]
           }
@@ -11315,7 +11315,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "טוֹב",
             "composite": false,
             "word_class": "Substantivo / Adjetivo substantivado",
-            "syntax_role": "Primeiro núcleo do sujeito composto ('bondade' / 'o bem')[cite: 50, 70]."
+            "syntax_role": "Primeiro núcleo do sujeito composto ('bondade' / 'o bem')."
           },
           {
             "index": 3,
@@ -11323,21 +11323,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vachesed",
             "lemma": "חֶסֶד",
             "composite": true,
-            "syntax_role": "Segundo núcleo coordenado do sujeito ('e misericórdia')[cite: 55, 85].",
+            "syntax_role": "Segundo núcleo coordenado do sujeito ('e misericórdia').",
             "parts": [
               {
                 "segment": "וָ",
                 "transliteration": "Va",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com qamats perante sílaba tônica ou palavras ligadas por conexão íntima (Kelley VI.16.5)[cite: 55]."
+                "phonetics": "Vav com qamats perante sílaba tônica ou palavras ligadas por conexão íntima (Kelley VI.16.5)."
               },
               {
                 "segment": "חֶסֶד",
                 "transliteration": "Chesed",
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular absoluto",
-                "meaning": "misericórdia / bondade leal[cite: 85, 96]"
+                "meaning": "misericórdia / bondade leal"
               }
             ]
           },
@@ -11347,21 +11347,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Yirdefuni",
             "lemma": "רָדַף",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal com sufixo acusativo ('me seguirão')[cite: 101, 102, 161].",
+            "syntax_role": "Núcleo do predicado verbal com sufixo acusativo ('me seguirão').",
             "parts": [
               {
                 "segment": "יִרְדְּפוּ",
                 "transliteration": "Yirdefu",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino plural do imperfeito Qal",
-                "meaning": "eles perseguirão / seguirão[cite: 161]"
+                "meaning": "eles perseguirão / seguirão"
               },
               {
                 "segment": "נִי",
                 "transliteration": "Ni",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "me (objeto direto)[cite: 101, 102]"
+                "meaning": "me (objeto direto)"
               }
             ]
           },
@@ -11372,8 +11372,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular ('todos os')[cite: 31]. Unido por maqqef[cite: 31].",
-            "notes": "Holem reduzido para qamats-hatuf perante maqqef[cite: 31]."
+            "syntax_role": "Termo regente no construto singular ('todos os'). Unido por maqqef.",
+            "notes": "Holem reduzido para qamats-hatuf perante maqqef."
           },
           {
             "index": 6,
@@ -11382,8 +11382,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יוֹם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo intermediário no construto plural ('dias de')[cite: 87, 89].",
-            "notes": "Plural construto em sere-yod derivado de יָמִים (Kelley X.26.4[1]a)[cite: 87, 89]."
+            "syntax_role": "Termo intermediário no construto plural ('dias de').",
+            "notes": "Plural construto em sere-yod derivado de יָמִים (Kelley X.26.4[1]a)."
           },
           {
             "index": 7,
@@ -11391,7 +11391,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Chayai",
             "lemma": "חַיִּים",
             "composite": true,
-            "syntax_role": "Termo regido final com sufixo possessivo ('minha vida')[cite: 103].",
+            "syntax_role": "Termo regido final com sufixo possessivo ('minha vida').",
             "parts": [
               {
                 "segment": "חַיֵּ",
@@ -11405,7 +11405,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ai",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "minha[cite: 103]"
+                "meaning": "minha"
               }
             ]
           }
@@ -11428,7 +11428,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Núcleo nominal de referência ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Núcleo nominal de referência ('o SENHOR')."
           },
           {
             "index": 2,
@@ -11437,8 +11437,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto plural em função de aposto ('Deus de')[cite: 87].",
-            "notes": "Desinência de construto plural em sere-yod[cite: 86, 87]."
+            "syntax_role": "Termo regente no construto plural em função de aposto ('Deus de').",
+            "notes": "Desinência de construto plural em sere-yod."
           },
           {
             "index": 3,
@@ -11446,21 +11446,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hashamayim",
             "lemma": "שָׁמַיִם",
             "composite": true,
-            "syntax_role": "Termo regido genitivo determinado[cite: 92].",
+            "syntax_role": "Termo regido genitivo determinado.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah com dagesh forte no shin (ש)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no shin (ש)."
               },
               {
                 "segment": "שָּׁמַיִם",
                 "transliteration": "Shamayim",
                 "type": "Substantivo",
                 "inflection": "masculino plural/dual absoluto",
-                "meaning": "céus[cite: 68]"
+                "meaning": "céus"
               }
             ]
           },
@@ -11471,7 +11471,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração subordinada adjetiva ('que')[cite: 46]."
+            "syntax_role": "Introduz a oração subordinada adjetiva ('que')."
           },
           {
             "index": 5,
@@ -11479,22 +11479,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lekachani",
             "lemma": "לָקַח",
             "composite": true,
-            "syntax_role": "Núcleo verbal da oração relativa com sufixo acusativo ('me tomou' / 'me tirou')[cite: 101, 102, 126].",
+            "syntax_role": "Núcleo verbal da oração relativa com sufixo acusativo ('me tomou' / 'me tirou').",
             "parts": [
               {
                 "segment": "לְקָחַ",
                 "transliteration": "Lekach",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do perfeito Qal",
-                "meaning": "ele tomou / tirou[cite: 126]",
-                "phonetics": "A primeira vogal qamats volatiliza-se em shva audível com o recuo do acento tônico provocado pelo sufixo[cite: 114]."
+                "meaning": "ele tomou / tirou",
+                "phonetics": "A primeira vogal qamats volatiliza-se em shva audível com o recuo do acento tônico provocado pelo sufixo."
               },
               {
                 "segment": "נִי",
                 "transliteration": "Ni",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "me (objeto direto)[cite: 101, 102]"
+                "meaning": "me (objeto direto)"
               }
             ]
           },
@@ -11504,21 +11504,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Mibeit",
             "lemma": "בַּיִת",
             "composite": true,
-            "syntax_role": "Termo regente no construto singular com preposição prefixada ('da casa de')[cite: 53, 91].",
+            "syntax_role": "Termo regente no construto singular com preposição prefixada ('da casa de').",
             "parts": [
               {
                 "segment": "מִ",
                 "transliteration": "Mi",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "de",
-                "phonetics": "Nun assimilado por dagesh forte na oclusiva bet (ב) (Kelley VI.15.3[2])[cite: 53]."
+                "phonetics": "Nun assimilado por dagesh forte na oclusiva bet (ב) (Kelley VI.15.3[2])."
               },
               {
                 "segment": "בֵּית",
                 "transliteration": "Beit",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "casa de[cite: 91]"
+                "meaning": "casa de"
               }
             ]
           },
@@ -11528,21 +11528,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Avi",
             "lemma": "אָב",
             "composite": true,
-            "syntax_role": "Termo regido final com sufixo possessivo ('meu pai')[cite: 104].",
+            "syntax_role": "Termo regido final com sufixo possessivo ('meu pai').",
             "parts": [
               {
                 "segment": "אָב",
                 "transliteration": "Av",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "pai[cite: 35]"
+                "meaning": "pai"
               },
               {
                 "segment": "ִי",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "meu[cite: 102, 104]"
+                "meaning": "meu"
               }
             ]
           }
@@ -11566,7 +11566,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa",
-            "syntax_role": "Conjunção causal ('porque' / 'pois')[cite: 68]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Conjunção causal ('porque' / 'pois'). Unida por maqqef."
           },
           {
             "index": 2,
@@ -11574,21 +11574,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Avi",
             "lemma": "אָב",
             "composite": true,
-            "syntax_role": "Primeiro núcleo do sujeito composto ('meu pai')[cite: 104].",
+            "syntax_role": "Primeiro núcleo do sujeito composto ('meu pai').",
             "parts": [
               {
                 "segment": "אָב",
                 "transliteration": "Av",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "pai[cite: 35]"
+                "meaning": "pai"
               },
               {
                 "segment": "ִי",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "meu[cite: 102, 104]"
+                "meaning": "meu"
               }
             ]
           },
@@ -11598,14 +11598,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'immi",
             "lemma": "אֵם",
             "composite": true,
-            "syntax_role": "Segundo núcleo coordenado do sujeito ('e minha mãe')[cite: 54, 102].",
+            "syntax_role": "Segundo núcleo coordenado do sujeito ('e minha mãe').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "אִמִּ",
@@ -11613,14 +11613,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
                 "meaning": "mãe de",
-                "phonetics": "Dagesh forte característico na duplicação do mem ao receber o sufixo[cite: 102]."
+                "phonetics": "Dagesh forte característico na duplicação do mem ao receber o sufixo."
               },
               {
                 "segment": "י",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "minha[cite: 102]"
+                "meaning": "minha"
               }
             ]
           },
@@ -11630,21 +11630,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Azavuni",
             "lemma": "עָזַב",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal com sufixo acusativo ('me abandonaram')[cite: 101, 102, 114].",
+            "syntax_role": "Núcleo do predicado verbal com sufixo acusativo ('me abandonaram').",
             "parts": [
               {
                 "segment": "עֲזָבוּ",
                 "transliteration": "Azavu",
                 "type": "Verbo",
                 "inflection": "3ª pessoa comum do plural do perfeito Qal",
-                "meaning": "eles abandonaram[cite: 114]"
+                "meaning": "eles abandonaram"
               },
               {
                 "segment": "נִי",
                 "transliteration": "Ni",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "me (objeto direto)[cite: 101, 102]"
+                "meaning": "me (objeto direto)"
               }
             ]
           }
@@ -11848,8 +11848,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הָלַל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino plural do imperativo Pi'el ('louvai')[cite: 142].",
-            "notes": "Dagesh forte característico do tronco intensivo Pi'el no segundo lamed (Kelley XIV.36.2)[cite: 140, 142]."
+            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino plural do imperativo Pi'el ('louvai').",
+            "notes": "Dagesh forte característico do tronco intensivo Pi'el no segundo lamed (Kelley XIV.36.2)."
           },
           {
             "index": 2,
@@ -11858,8 +11858,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָהּ",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Objeto direto do primeiro imperativo (forma abreviada poética de YHWH)[cite: 40].",
-            "notes": "O he final contém mappiq, mantendo o seu valor consonantal aspirado audível (Kelley IV.11)[cite: 40]."
+            "syntax_role": "Objeto direto do primeiro imperativo (forma abreviada poética de YHWH).",
+            "notes": "O he final contém mappiq, mantendo o seu valor consonantal aspirado audível (Kelley IV.11)."
           },
           {
             "index": 3,
@@ -11868,7 +11868,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הָלַל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Segundo núcleo verbal imperativo iterativo ('louvai')[cite: 142]. Unido por maqqef[cite: 31]."
+            "syntax_role": "Segundo núcleo verbal imperativo iterativo ('louvai'). Unido por maqqef."
           },
           {
             "index": 4,
@@ -11877,7 +11877,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Objeto direto do segundo imperativo ('a Deus')[cite: 126]."
+            "syntax_role": "Objeto direto do segundo imperativo ('a Deus')."
           },
           {
             "index": 5,
@@ -11885,14 +11885,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bekodsho",
             "lemma": "קֹדֶשׁ",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo com sufixo possessivo ('no seu santuário / na sua santidade')[cite: 50, 102].",
+            "syntax_role": "Adjunto adverbial locativo com sufixo possessivo ('no seu santuário / na sua santidade').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em / no",
-                "phonetics": "Bet com shva simples diante de consoante com vogal[cite: 50]."
+                "phonetics": "Bet com shva simples diante de consoante com vogal."
               },
               {
                 "segment": "קָדְשׁ",
@@ -11900,14 +11900,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular construto",
                 "meaning": "santuário / santidade de",
-                "phonetics": "A vogal inicial holem passa a qamats-hatuf sob afixação pronominal em substantivos segolados da classe 'o' (Kelley X.25.1)[cite: 84]."
+                "phonetics": "A vogal inicial holem passa a qamats-hatuf sob afixação pronominal em substantivos segolados da classe 'o' (Kelley X.25.1)."
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "dele / seu[cite: 102]"
+                "meaning": "dele / seu"
               }
             ]
           }
@@ -11931,8 +11931,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּקַשׁ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino singular do imperativo Pi'el ('procura' / 'busca')[cite: 142].",
-            "notes": "Tronco Pi'el com patah sob o primeiro radical, dagesh forte no qof e sere final[cite: 141, 142]."
+            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino singular do imperativo Pi'el ('procura' / 'busca').",
+            "notes": "Tronco Pi'el com patah sob o primeiro radical, dagesh forte no qof e sere final."
           },
           {
             "index": 2,
@@ -11941,7 +11941,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁלוֹם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Objeto direto indeterminado ('paz')[cite: 50]."
+            "syntax_role": "Objeto direto indeterminado ('paz')."
           },
           {
             "index": 3,
@@ -11949,14 +11949,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Veradfehu",
             "lemma": "רָדַף",
             "composite": true,
-            "syntax_role": "Segundo núcleo imperativo coordenado com sufixo acusativo ('e segue-a / persegue-a')[cite: 54, 102].",
+            "syntax_role": "Segundo núcleo imperativo coordenado com sufixo acusativo ('e segue-a / persegue-a').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "רָדְפֵ",
@@ -11964,14 +11964,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino singular do imperativo Qal",
                 "meaning": "segue / persegue",
-                "phonetics": "Vogal temática adaptada em șere devido à ligação do sufixo pronominal pesado[cite: 102]."
+                "phonetics": "Vogal temática adaptada em șere devido à ligação do sufixo pronominal pesado."
               },
               {
                 "segment": "הוּ",
                 "transliteration": "Hu",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "a ela / a ele (objeto direto masculino referindo-se a שָׁלוֹם)[cite: 98, 102]"
+                "meaning": "a ela / a ele (objeto direto masculino referindo-se a שָׁלוֹם)"
               }
             ]
           }
@@ -11994,8 +11994,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַר",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino plural do imperativo Qal ('guardai')[cite: 115].",
-            "notes": "O aformativo vocálico plural atrai o acento, reduzindo a vogal temática a shva audível (Kelley XII.30.4[3])[cite: 114, 115]."
+            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino plural do imperativo Qal ('guardai').",
+            "notes": "O aformativo vocálico plural atrai o acento, reduzindo a vogal temática a shva audível (Kelley XII.30.4[3])."
           },
           {
             "index": 2,
@@ -12004,8 +12004,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular ('todos os')[cite: 31]. Unido por maqqef[cite: 31].",
-            "notes": "Vocalizado com qamats-hatuf perante maqqef (Kelley III.4)[cite: 31]."
+            "syntax_role": "Termo regente no construto singular ('todos os'). Unido por maqqef.",
+            "notes": "Vocalizado com qamats-hatuf perante maqqef (Kelley III.4)."
           },
           {
             "index": 3,
@@ -12014,8 +12014,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מִצְוָה",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo intermediário no construto plural ('mandamentos de')[cite: 65, 91].",
-            "notes": "Plural construto regular de substantivo feminino retendo a terminação -ot (Kelley X.26.4[1]d)[cite: 88]."
+            "syntax_role": "Termo intermediário no construto plural ('mandamentos de').",
+            "notes": "Plural construto regular de substantivo feminino retendo a terminação -ot (Kelley X.26.4[1]d)."
           },
           {
             "index": 4,
@@ -12024,7 +12024,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo determinado ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo determinado ('do SENHOR')."
           }
         ]
       },
@@ -12045,8 +12045,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo volitivo introdutório. 2ª pessoa masculino singular do imperativo Qal ('ouve')[cite: 110].",
-            "notes": "Apresenta patah temático no imperativo por ter a gutural ayin como consoante final (Kelley XXV.70)[cite: 10]."
+            "syntax_role": "Núcleo volitivo introdutório. 2ª pessoa masculino singular do imperativo Qal ('ouve').",
+            "notes": "Apresenta patah temático no imperativo por ter a gutural ayin como consoante final (Kelley XXV.70)."
           },
           {
             "index": 2,
@@ -12055,7 +12055,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יִשְׂרָאֵל",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Vocativo direto ('Israel')[cite: 35]."
+            "syntax_role": "Vocativo direto ('Israel')."
           },
           {
             "index": 3,
@@ -12064,7 +12064,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Primeiro sujeito da oração nominal subsequente ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Primeiro sujeito da oração nominal subsequente ('o SENHOR')."
           },
           {
             "index": 4,
@@ -12072,21 +12072,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eloheinu",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Aposto explicativo com sufixo possessivo ('nosso Deus')[cite: 103].",
+            "syntax_role": "Aposto explicativo com sufixo possessivo ('nosso Deus').",
             "parts": [
               {
                 "segment": "אֱלֹהֵי",
                 "transliteration": "Elohei",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "Deus de[cite: 87, 103]"
+                "meaning": "Deus de"
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nosso[cite: 103]"
+                "meaning": "nosso"
               }
             ]
           },
@@ -12097,7 +12097,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Segundo núcleo sujeito ou predicado nominal reiterativo[cite: 56, 57]."
+            "syntax_role": "Segundo núcleo sujeito ou predicado nominal reiterativo."
           },
           {
             "index": 6,
@@ -12106,7 +12106,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶחָד",
             "composite": false,
             "word_class": "Numeral cardinal / Adjetivo",
-            "syntax_role": "Predicado nominal quantitativo ou adjetivo atributivo ('é um' / 'é o único')[cite: 130]."
+            "syntax_role": "Predicado nominal quantitativo ou adjetivo atributivo ('é um' / 'é o único')."
           }
         ]
       },
@@ -12128,8 +12128,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כָּבֵד",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino singular do imperativo Pi'el ('honra')[cite: 142, 165].",
-            "notes": "No tronco Pi'el o verbo estativo כָּבֵד adquire o sentido causativo/ativo de 'tratar com honra' (Kelley XIV.36.2)[cite: 141]."
+            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino singular do imperativo Pi'el ('honra').",
+            "notes": "No tronco Pi'el o verbo estativo כָּבֵד adquire o sentido causativo/ativo de 'tratar com honra' (Kelley XIV.36.2)."
           },
           {
             "index": 2,
@@ -12138,7 +12138,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o primeiro objeto direto determinado[cite: 31]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o primeiro objeto direto determinado. Unida por maqqef."
           },
           {
             "index": 3,
@@ -12146,21 +12146,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Avicha",
             "lemma": "אָב",
             "composite": true,
-            "syntax_role": "Primeiro objeto direto com sufixo possessivo ('teu pai')[cite: 104].",
+            "syntax_role": "Primeiro objeto direto com sufixo possessivo ('teu pai').",
             "parts": [
               {
                 "segment": "אָבִי",
                 "transliteration": "Avi",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "pai de[cite: 90, 104]"
+                "meaning": "pai de"
               },
               {
                 "segment": "ךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "teu[cite: 104]"
+                "meaning": "teu"
               }
             ]
           },
@@ -12170,21 +12170,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'et-",
             "lemma": "אֵת",
             "composite": true,
-            "syntax_role": "Conjunção coordenativa com o sinal de objeto direto determinado ('e a')[cite: 31, 54].",
+            "syntax_role": "Conjunção coordenativa com o sinal de objeto direto determinado ('e a').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "אֶת־",
                 "transliteration": "Et-",
                 "type": "Partícula indicadora de objeto direto",
                 "meaning": "objeto direto",
-                "phonetics": "Șere reduzido a segol perante maqqef[cite: 31]."
+                "phonetics": "Șere reduzido a segol perante maqqef."
               }
             ]
           },
@@ -12194,7 +12194,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Immecha",
             "lemma": "אֵם",
             "composite": true,
-            "syntax_role": "Segundo objeto direto coordenado com sufixo possessivo ('tua mãe')[cite: 102].",
+            "syntax_role": "Segundo objeto direto coordenado com sufixo possessivo ('tua mãe').",
             "parts": [
               {
                 "segment": "אִמֶּ",
@@ -12202,14 +12202,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
                 "meaning": "mãe de",
-                "phonetics": "Dagesh forte característico na geminação do mem com a inserção do sufixo pronominal[cite: 102]."
+                "phonetics": "Dagesh forte característico na geminação do mem com a inserção do sufixo pronominal."
               },
               {
                 "segment": "ךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "tua[cite: 102]"
+                "meaning": "tua"
               }
             ]
           }
@@ -12461,7 +12461,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal com Infinitivo Absoluto Enfático",
-        "notes": "O infinitivo absoluto אָכֹל anteposto à forma finita תֹּאכֵל intensifica o verbo, conferindo certeza ou plena liberdade à ação (Kelley XIX.57)[cite: 8, 187].",
+        "notes": "O infinitivo absoluto אָכֹל anteposto à forma finita תֹּאכֵל intensifica o verbo, conferindo certeza ou plena liberdade à ação (Kelley XIX.57).",
         "tokens": [
           {
             "index": 1,
@@ -12469,21 +12469,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Mikol",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Termo regente no construto com preposição inseparável ('de toda a')[cite: 85, 187].",
+            "syntax_role": "Termo regente no construto com preposição inseparável ('de toda a').",
             "parts": [
               {
                 "segment": "מִ",
                 "transliteration": "Mi",
                 "type": "Preposição inseparável (variante assimilada de מִן)",
                 "meaning": "de / dentre",
-                "phonetics": "O nun assimila-se na consoante kaf seguinte através de dagesh forte (Kelley VI.15.3[2])[cite: 53]."
+                "phonetics": "O nun assimila-se na consoante kaf seguinte através de dagesh forte (Kelley VI.15.3[2])."
               },
               {
                 "segment": "כֹּל",
                 "transliteration": "Kol",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "totalidade / toda a[cite: 68]"
+                "meaning": "totalidade / toda a"
               }
             ]
           },
@@ -12494,8 +12494,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עֵץ",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo intermediário no construto singular ('árvore de')[cite: 88, 187]. Unido por maqqef[cite: 31, 187].",
-            "notes": "Preserva a vogal imutavelmente longa șere perante maqqef[cite: 31, 88]."
+            "syntax_role": "Termo intermediário no construto singular ('árvore de'). Unido por maqqef.",
+            "notes": "Preserva a vogal imutavelmente longa șere perante maqqef."
           },
           {
             "index": 3,
@@ -12503,14 +12503,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hagan",
             "lemma": "גַּן",
             "composite": true,
-            "syntax_role": "Termo regido final determinado da cadeia genitiva[cite: 92, 187].",
+            "syntax_role": "Termo regido final determinado da cadeia genitiva.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte na não-gutural guimel (ג)[cite: 45]."
+                "phonetics": "Patah com dagesh forte na não-gutural guimel (ג)."
               },
               {
                 "segment": "גָּן",
@@ -12518,7 +12518,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
                 "meaning": "jardim",
-                "phonetics": "Recebe qamats interno quando determinado pelo artigo (Kelley V.14.3[4])[cite: 47]."
+                "phonetics": "Recebe qamats interno quando determinado pelo artigo (Kelley V.14.3[4])."
               }
             ]
           },
@@ -12529,8 +12529,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָכַל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Infinitivo absoluto Qal com função enfática/adverbial ('certamente' / 'livremente')[cite: 8, 187].",
-            "notes": "Estrutura padrão do infinitivo absoluto do verbo Pe Alef com qamats e holem (Kelley XIX.57)[cite: 8]."
+            "syntax_role": "Infinitivo absoluto Qal com função enfática/adverbial ('certamente' / 'livremente').",
+            "notes": "Estrutura padrão do infinitivo absoluto do verbo Pe Alef com qamats e holem (Kelley XIX.57)."
           },
           {
             "index": 5,
@@ -12539,8 +12539,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָכַל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino singular do imperfeito Qal ('comerás')[cite: 161, 187].",
-            "notes": "No verbo Pe Alef, o alef torna-se quiescente e a vogal do preformativo transforma-se em holem pleno (Kelley XXIII.67)[cite: 9]."
+            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino singular do imperfeito Qal ('comerás').",
+            "notes": "No verbo Pe Alef, o alef torna-se quiescente e a vogal do preformativo transforma-se em holem pleno (Kelley XXIII.67)."
           }
         ]
       },
@@ -12553,7 +12553,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagmas Nominais Qualificados por Infinitivos Construtos Finais",
-        "notes": "A preposição לְ ligada ao infinitivo construto expressa finalidade ou propósito (Kelley XIX.56.3)[cite: 8].",
+        "notes": "A preposição לְ ligada ao infinitivo construto expressa finalidade ou propósito (Kelley XIX.56.3).",
         "tokens": [
           {
             "index": 1,
@@ -12562,8 +12562,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לֶחֶם",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Primeiro núcleo nominal indeterminado ('pão')[cite: 83, 85].",
-            "notes": "Apresenta qamats na primeira sílaba por estar em pausa menor (Kelley IV.8.3)[cite: 37]."
+            "syntax_role": "Primeiro núcleo nominal indeterminado ('pão').",
+            "notes": "Apresenta qamats na primeira sílaba por estar em pausa menor (Kelley IV.8.3)."
           },
           {
             "index": 2,
@@ -12571,14 +12571,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Le'echol",
             "lemma": "אָכַל",
             "composite": true,
-            "syntax_role": "Infinitivo construto de finalidade modificando o substantivo לָחֶם ('para comer')[cite: 8, 51].",
+            "syntax_role": "Infinitivo construto de finalidade modificando o substantivo לָחֶם ('para comer').",
             "parts": [
               {
                 "segment": "לֶ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
                 "meaning": "para",
-                "phonetics": "A preposição לְ assume segol diante do alef gutural com hatef-segol (Kelley VI.15.1[3])[cite: 51]."
+                "phonetics": "A preposição לְ assume segol diante do alef gutural com hatef-segol (Kelley VI.15.1[3])."
               },
               {
                 "segment": "אֱכֹל",
@@ -12586,7 +12586,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
                 "meaning": "comer",
-                "phonetics": "O primeiro radical alef recebe hatef-segol regular (Kelley XIX.56)[cite: 8, 46]."
+                "phonetics": "O primeiro radical alef recebe hatef-segol regular (Kelley XIX.56)."
               }
             ]
           },
@@ -12596,14 +12596,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Uveged",
             "lemma": "בֶּגֶד",
             "composite": true,
-            "syntax_role": "Segundo núcleo nominal coordenado ('e roupa')[cite: 54, 84].",
+            "syntax_role": "Segundo núcleo nominal coordenado ('e roupa').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vocalizada como šureq (וּ) diante da labial bet (ב) (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Vocalizada como šureq (וּ) diante da labial bet (ב) (Kelley VI.16.2)."
               },
               {
                 "segment": "בֶגֶד",
@@ -12611,7 +12611,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular absoluto",
                 "meaning": "roupa / vestimenta",
-                "phonetics": "Bet sem dagesh lene (som brando 'v') por suceder som vocálico (Kelley I.1.9)[cite: 20, 21]."
+                "phonetics": "Bet sem dagesh lene (som brando 'v') por suceder som vocálico (Kelley I.1.9)."
               }
             ]
           },
@@ -12621,14 +12621,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lilbosh",
             "lemma": "לָבַשׁ",
             "composite": true,
-            "syntax_role": "Infinitivo construto de finalidade modificando וּבֶגֶד ('para vestir')[cite: 8, 50].",
+            "syntax_role": "Infinitivo construto de finalidade modificando וּבֶגֶד ('para vestir').",
             "parts": [
               {
                 "segment": "לִ",
                 "transliteration": "Li",
                 "type": "Preposição inseparável",
                 "meaning": "para",
-                "phonetics": "A preposição לְ assume hireq antes de consoante com shva simples para evitar dois shvas audíveis adjacentes (Kelley VI.15.1[2])[cite: 50]."
+                "phonetics": "A preposição לְ assume hireq antes de consoante com shva simples para evitar dois shvas audíveis adjacentes (Kelley VI.15.1[2])."
               },
               {
                 "segment": "לְבֹּשׁ",
@@ -12636,7 +12636,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
                 "meaning": "vestir",
-                "phonetics": "Dagesh lene no bet da raiz que inicia sílaba após shva mudo divisor (Kelley III.7)[cite: 32]."
+                "phonetics": "Dagesh lene no bet da raiz que inicia sílaba após shva mudo divisor (Kelley III.7)."
               }
             ]
           }
@@ -12658,21 +12658,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lidrosh",
             "lemma": "דָּרַשׁ",
             "composite": true,
-            "syntax_role": "Núcleo verbal da oração infinitiva com valor de propósito ('para buscar / inquirir')[cite: 8, 50].",
+            "syntax_role": "Núcleo verbal da oração infinitiva com valor de propósito ('para buscar / inquirir').",
             "parts": [
               {
                 "segment": "לִ",
                 "transliteration": "Li",
                 "type": "Preposição inseparável",
                 "meaning": "para",
-                "phonetics": "Vocalizada com hireq perante o shva simples do primeiro radical (Kelley VI.15.1[2])[cite: 50]."
+                "phonetics": "Vocalizada com hireq perante o shva simples do primeiro radical (Kelley VI.15.1[2])."
               },
               {
                 "segment": "דְרֹשׁ",
                 "transliteration": "Drosh",
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
-                "meaning": "buscar / estudar[cite: 8, 187]"
+                "meaning": "buscar / estudar"
               }
             ]
           },
@@ -12683,8 +12683,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado seguinte[cite: 31]. Unida por maqqef[cite: 31, 187].",
-            "notes": "Reduz o șere a segol em razão da perda de tonicidade diante do maqqef (Kelley III.5)[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado seguinte. Unida por maqqef.",
+            "notes": "Reduz o șere a segol em razão da perda de tonicidade diante do maqqef (Kelley III.5)."
           },
           {
             "index": 3,
@@ -12693,8 +12693,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "תּוֹרָה",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular ('lei de')[cite: 90].",
-            "notes": "Terminação construta singular -at para substantivo feminino (Kelley X.26.4[2]h)[cite: 91]."
+            "syntax_role": "Termo regente no construto singular ('lei de').",
+            "notes": "Terminação construta singular -at para substantivo feminino (Kelley X.26.4[2]h)."
           },
           {
             "index": 4,
@@ -12703,7 +12703,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo determinado ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo determinado ('do SENHOR')."
           }
         ]
       },
@@ -12716,7 +12716,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal Narrativa Complexa com Infinitivo Temporal",
-        "notes": "O infinitivo construto com preposição בְּ e sufixo pronominal expressa oração temporal simultânea ('ao lembrarmos', Kelley XIX.56)[cite: 8].",
+        "notes": "O infinitivo construto com preposição בְּ e sufixo pronominal expressa oração temporal simultânea ('ao lembrarmos', Kelley XIX.56).",
         "tokens": [
           {
             "index": 1,
@@ -12725,7 +12725,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עַל",
             "composite": false,
             "word_class": "Preposição independente",
-            "syntax_role": "Rege o adjunto adverbial de lugar inicial ('junto a' / 'às margens de')[cite: 53]."
+            "syntax_role": "Rege o adjunto adverbial de lugar inicial ('junto a' / 'às margens de')."
           },
           {
             "index": 2,
@@ -12734,8 +12734,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "נָהָר",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto plural ('rios de')[cite: 88].",
-            "notes": "Plural construto retendo a terminação -ot com preservação de hatef-patah sob a gutural[cite: 44, 88]."
+            "syntax_role": "Termo regente no construto plural ('rios de').",
+            "notes": "Plural construto retendo a terminação -ot com preservação de hatef-patah sob a gutural."
           },
           {
             "index": 3,
@@ -12744,7 +12744,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּבֶל",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido genitivo geográfico ('Babilônia')[cite: 181]."
+            "syntax_role": "Termo regido genitivo geográfico ('Babilônia')."
           },
           {
             "index": 4,
@@ -12753,7 +12753,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁם",
             "composite": false,
             "word_class": "Advérbio de lugar",
-            "syntax_role": "Adjunto adverbial locativo anafórico ('ali' / 'lá')[cite: 109]."
+            "syntax_role": "Adjunto adverbial locativo anafórico ('ali' / 'lá')."
           },
           {
             "index": 5,
@@ -12762,8 +12762,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָשַׁב",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro predicado verbal finito. 1ª pessoa comum do plural do perfeito Qal ('nos assentamos')[cite: 114, 187].",
-            "notes": "Verbo da classe Pe Yod flexionando regularmente no perfeito (Kelley XII.30)[cite: 114]."
+            "syntax_role": "Primeiro predicado verbal finito. 1ª pessoa comum do plural do perfeito Qal ('nos assentamos').",
+            "notes": "Verbo da classe Pe Yod flexionando regularmente no perfeito (Kelley XII.30)."
           },
           {
             "index": 6,
@@ -12772,7 +12772,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "גַּם",
             "composite": false,
             "word_class": "Advérbio aditivo",
-            "syntax_role": "Conector aditivo enfático ('também' / 'e'). Unido por maqqef[cite: 31, 68, 187]."
+            "syntax_role": "Conector aditivo enfático ('também' / 'e'). Unido por maqqef."
           },
           {
             "index": 7,
@@ -12781,8 +12781,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּכָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Segundo predicado verbal coordenado. 1ª pessoa comum do plural do perfeito Qal ('choramos')[cite: 114, 187].",
-            "notes": "Verbo fraco da classe Lamed He com terminação consonantal -nu e mudança do he para yod (Kelley XXVII.72)[cite: 10]."
+            "syntax_role": "Segundo predicado verbal coordenado. 1ª pessoa comum do plural do perfeito Qal ('choramos').",
+            "notes": "Verbo fraco da classe Lamed He com terminação consonantal -nu e mudança do he para yod (Kelley XXVII.72)."
           },
           {
             "index": 8,
@@ -12790,14 +12790,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bezochreinu",
             "lemma": "זָכַר",
             "composite": true,
-            "syntax_role": "Oração temporal reduzida de infinitivo ('ao nos lembrarmos')[cite: 8].",
+            "syntax_role": "Oração temporal reduzida de infinitivo ('ao nos lembrarmos').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em / ao",
-                "phonetics": "Bet com shva simples diante de consoante com vogal cheia[cite: 50]."
+                "phonetics": "Bet com shva simples diante de consoante com vogal cheia."
               },
               {
                 "segment": "זָכְרֵ",
@@ -12805,7 +12805,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
                 "meaning": "lembrar",
-                "phonetics": "A vogal holem reduz-se para qamats-hatuf perante shva mudo ao receber sufixo pronominal (Kelley XIX.56)[cite: 8, 25]."
+                "phonetics": "A vogal holem reduz-se para qamats-hatuf perante shva mudo ao receber sufixo pronominal (Kelley XIX.56)."
               },
               {
                 "segment": "נוּ",
@@ -12813,7 +12813,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
                 "meaning": "nós (sujeito do infinitivo)",
-                "phonetics": "Sufixo indicando o sujeito agente da ação infinitiva (Kelley XIX.56)[cite: 8, 98]."
+                "phonetics": "Sufixo indicando o sujeito agente da ação infinitiva (Kelley XIX.56)."
               }
             ]
           },
@@ -12824,7 +12824,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto do infinitivo construto[cite: 8, 31]. Unida por maqqef[cite: 31, 187]."
+            "syntax_role": "Assinala o objeto direto do infinitivo construto. Unida por maqqef."
           },
           {
             "index": 10,
@@ -12854,7 +12854,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa",
-            "syntax_role": "Conjunção causal subordinativa ('porque' / 'pois')[cite: 68]."
+            "syntax_role": "Conjunção causal subordinativa ('porque' / 'pois')."
           },
           {
             "index": 2,
@@ -12862,7 +12862,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Veiti",
             "lemma": "בַּיִת",
             "composite": true,
-            "syntax_role": "Sujeito da oração passiva com sufixo possessivo ('a minha casa')[cite: 102, 105].",
+            "syntax_role": "Sujeito da oração passiva com sufixo possessivo ('a minha casa').",
             "parts": [
               {
                 "segment": "בֵית",
@@ -12870,14 +12870,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "casa de",
-                "phonetics": "Bet inicial sem dagesh lene por suceder som vocálico (Kelley I.1.9)[cite: 20, 21]."
+                "phonetics": "Bet inicial sem dagesh lene por suceder som vocálico (Kelley I.1.9)."
               },
               {
                 "segment": "ִי",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "minha[cite: 102, 105]"
+                "meaning": "minha"
               }
             ]
           },
@@ -12888,8 +12888,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בַּיִת",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de predicativo do sujeito ('casa de')[cite: 91]. Unido por maqqef[cite: 31, 187].",
-            "notes": "Dagesh lene no bet inicial após disjunção; ditongo contraído em sere-yod (Kelley X.26.4[2]i)[cite: 20, 91]."
+            "syntax_role": "Termo regente no construto singular em função de predicativo do sujeito ('casa de'). Unido por maqqef.",
+            "notes": "Dagesh lene no bet inicial após disjunção; ditongo contraído em sere-yod (Kelley X.26.4[2]i)."
           },
           {
             "index": 4,
@@ -12898,7 +12898,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "תְּפִלָּה",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regido genitivo da cadeia predicativa ('oração')[cite: 170]."
+            "syntax_role": "Termo regido genitivo da cadeia predicativa ('oração')."
           },
           {
             "index": 5,
@@ -12907,8 +12907,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָרָא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal passivo. 3ª pessoa masculino singular do imperfeito Nif'al ('será chamada')[cite: 172, 173].",
-            "notes": "O nun do preformativo Nif'al assimila-se no qof por meio de dagesh forte (Kelley XVI.42.1[2])[cite: 172]."
+            "syntax_role": "Núcleo do predicado verbal passivo. 3ª pessoa masculino singular do imperfeito Nif'al ('será chamada').",
+            "notes": "O nun do preformativo Nif'al assimila-se no qof por meio de dagesh forte (Kelley XVI.42.1[2])."
           },
           {
             "index": 6,
@@ -12916,14 +12916,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lechol-",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Complemento preposicional de extensão ('para todos os')[cite: 31, 50]. Unido por maqqef[cite: 31, 187].",
+            "syntax_role": "Complemento preposicional de extensão ('para todos os'). Unido por maqqef.",
             "parts": [
               {
                 "segment": "לְ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
                 "meaning": "a / para",
-                "phonetics": "Lamed com shva simples[cite: 50]."
+                "phonetics": "Lamed com shva simples."
               },
               {
                 "segment": "כָל־",
@@ -12931,7 +12931,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "todos os / totalidade de",
-                "phonetics": "Kaf aspirado sem dagesh lene; qamats-hatuf perante maqqef[cite: 20, 31]."
+                "phonetics": "Kaf aspirado sem dagesh lene; qamats-hatuf perante maqqef."
               }
             ]
           },
@@ -12941,14 +12941,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'ammim",
             "lemma": "עַם",
             "composite": true,
-            "syntax_role": "Termo regido genitivo plural determinado[cite: 92].",
+            "syntax_role": "Termo regido genitivo plural determinado.",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Qamats compensatório diante da gutural ayin (ע) (Kelley V.14.3[2]b)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante da gutural ayin (ע) (Kelley V.14.3[2]b)."
               },
               {
                 "segment": "עַמִּים",
@@ -12956,7 +12956,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino plural absoluto",
                 "meaning": "povos",
-                "phonetics": "Substantivo geminado com dagesh forte retido no mem no plural (Kelley X.26.4[2]b)[cite: 89]."
+                "phonetics": "Substantivo geminado com dagesh forte retido no mem no plural (Kelley X.26.4[2]b)."
               }
             ]
           }
@@ -13194,7 +13194,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Provérbio Jurídico em Quiasmo com Particípio Substantivado",
-        "notes": "O particípio ativo Qal שֹׁפֵךְ atua substantivadamente no estado construto regendo דַּם ('aquele que derrama o sangue', Kelley XX.60)[cite: 9, 187].",
+        "notes": "O particípio ativo Qal שֹׁפֵךְ atua substantivadamente no estado construto regendo דַּם ('aquele que derrama o sangue', Kelley XX.60).",
         "tokens": [
           {
             "index": 1,
@@ -13203,8 +13203,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁפַךְ",
             "composite": false,
             "word_class": "Verbo (particípio ativo)",
-            "syntax_role": "Particípio ativo Qal no estado construto singular atuando como sujeito substantivado ('derramador de' / 'quem derramar')[cite: 9, 187].",
-            "notes": "Padrão característico com holem no primeiro radical e segol/tsere no segundo (Kelley XX.59)[cite: 9]."
+            "syntax_role": "Particípio ativo Qal no estado construto singular atuando como sujeito substantivado ('derramador de' / 'quem derramar').",
+            "notes": "Padrão característico com holem no primeiro radical e segol/tsere no segundo (Kelley XX.59)."
           },
           {
             "index": 2,
@@ -13213,8 +13213,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "דָּם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regido intermediário no construto singular ('sangue de')[cite: 89].",
-            "notes": "Patah na base construta em vez de qamats (Kelley X.26.4[2]c)[cite: 89]."
+            "syntax_role": "Termo regido intermediário no construto singular ('sangue de').",
+            "notes": "Patah na base construta em vez de qamats (Kelley X.26.4[2]c)."
           },
           {
             "index": 3,
@@ -13222,21 +13222,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'adam",
             "lemma": "אָדָם",
             "composite": true,
-            "syntax_role": "Termo regido final determinado genitivo da oração subordinada inicial[cite: 92].",
+            "syntax_role": "Termo regido final determinado genitivo da oração subordinada inicial.",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אָדָם",
                 "transliteration": "Adam",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "homem / ser humano[cite: 35]"
+                "meaning": "homem / ser humano"
               }
             ]
           },
@@ -13246,21 +13246,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ba'adam",
             "lemma": "אָדָם",
             "composite": true,
-            "syntax_role": "Adjunto adverbial instrumental da oração principal ('pelo homem')[cite: 51].",
+            "syntax_role": "Adjunto adverbial instrumental da oração principal ('pelo homem').",
             "parts": [
               {
                 "segment": "בָּ",
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "pelo (em + o)",
-                "phonetics": "Preposição בְּ com qamats compensatório absorvendo o artigo perante alef (א)[cite: 46, 47, 51]."
+                "phonetics": "Preposição בְּ com qamats compensatório absorvendo o artigo perante alef (א)."
               },
               {
                 "segment": "אָדָם",
                 "transliteration": "Adam",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "homem[cite: 35]"
+                "meaning": "homem"
               }
             ]
           },
@@ -13270,21 +13270,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Damo",
             "lemma": "דָּם",
             "composite": true,
-            "syntax_role": "Sujeito da oração passiva principal com sufixo possessivo ('o seu sangue')[cite: 102].",
+            "syntax_role": "Sujeito da oração passiva principal com sufixo possessivo ('o seu sangue').",
             "parts": [
               {
                 "segment": "דָּמ",
                 "transliteration": "Dam",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "sangue de[cite: 89, 96]"
+                "meaning": "sangue de"
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "dele / seu[cite: 102]"
+                "meaning": "dele / seu"
               }
             ]
           },
@@ -13295,8 +13295,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁפַךְ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal passivo. 3ª pessoa masculino singular do imperfeito Nif'al ('será derramado')[cite: 172, 185].",
-            "notes": "Assimilação do nun do preformativo Nif'al no primeiro radical shin com dagesh forte (Kelley XVI.42.1[2])[cite: 172]."
+            "syntax_role": "Núcleo do predicado verbal passivo. 3ª pessoa masculino singular do imperfeito Nif'al ('será derramado').",
+            "notes": "Assimilação do nun do preformativo Nif'al no primeiro radical shin com dagesh forte (Kelley XVI.42.1[2])."
           }
         ]
       },
@@ -13316,21 +13316,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Harofe",
             "lemma": "רָפָא",
             "composite": true,
-            "syntax_role": "Núcleo nominal de referência. Particípio ativo Qal determinado ('aquele que cura' / 'o que sara')[cite: 9, 187].",
+            "syntax_role": "Núcleo nominal de referência. Particípio ativo Qal determinado ('aquele que cura' / 'o que sara').",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o / aquele que",
-                "phonetics": "Qamats compensatório diante da líquida resh (ר) tratada como gutural (Kelley V.14.3[2]b)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante da líquida resh (ר) tratada como gutural (Kelley V.14.3[2]b)."
               },
               {
                 "segment": "רֹפֵא",
                 "transliteration": "Rofe",
                 "type": "Verbo (particípio ativo)",
                 "inflection": "masculino singular absoluto do particípio ativo Qal",
-                "meaning": "curador / médico[cite: 9, 187]"
+                "meaning": "curador / médico"
               }
             ]
           },
@@ -13340,14 +13340,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lishvurei",
             "lemma": "שָׁבַר",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido. Particípio passivo Qal no estado construto plural ('aos quebrantados de')[cite: 9, 50].",
+            "syntax_role": "Complemento preposicional regido. Particípio passivo Qal no estado construto plural ('aos quebrantados de').",
             "parts": [
               {
                 "segment": "לִ",
                 "transliteration": "Li",
                 "type": "Preposição inseparável",
                 "meaning": "a / aos",
-                "phonetics": "Preposição לְ com hireq diante de consoante com shva simples (Kelley VI.15.1[2])[cite: 50]."
+                "phonetics": "Preposição לְ com hireq diante de consoante com shva simples (Kelley VI.15.1[2])."
               },
               {
                 "segment": "שְׁבוּרֵי",
@@ -13355,7 +13355,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo (particípio passivo)",
                 "inflection": "masculino plural construto do particípio passivo Qal",
                 "meaning": "quebrantados de",
-                "phonetics": "Padrão passivo Qal com šureq entre o 2º e 3º radicais e terminação construta -ei (Kelley XX.59)[cite: 9, 87]."
+                "phonetics": "Padrão passivo Qal com šureq entre o 2º e 3º radicais e terminação construta -ei (Kelley XX.59)."
               }
             ]
           },
@@ -13366,7 +13366,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לֵב",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regido genitivo da relação de construto participial ('coração')[cite: 35]."
+            "syntax_role": "Termo regido genitivo da relação de construto participial ('coração')."
           }
         ]
       },
@@ -13379,7 +13379,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal com Merismo e Infinitivos Construtos Nominais",
-        "notes": "Os termos צֵאת e בּוֹא são infinitivos construtos flexionados com sufixos pronominais atuando nominalmente como merismo (Kelley XIX.56 e XX.60)[cite: 8, 9].",
+        "notes": "Os termos צֵאת e בּוֹא são infinitivos construtos flexionados com sufixos pronominais atuando nominalmente como merismo (Kelley XIX.56 e XX.60).",
         "tokens": [
           {
             "index": 1,
@@ -13388,7 +13388,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração verbal ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração verbal ('o SENHOR')."
           },
           {
             "index": 2,
@@ -13397,8 +13397,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַר",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do imperfeito Qal ('guardará')[cite: 161]. Unido por maqqef[cite: 31, 187].",
-            "notes": "Redução acentual devida ao maqqef (Kelley III.4)[cite: 31]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do imperfeito Qal ('guardará'). Unido por maqqef.",
+            "notes": "Redução acentual devida ao maqqef (Kelley III.4)."
           },
           {
             "index": 3,
@@ -13406,7 +13406,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Tzetcha",
             "lemma": "יָצָא",
             "composite": true,
-            "syntax_role": "Primeiro objeto direto nominal com sufixo possessivo ('a tua saída')[cite: 8, 102].",
+            "syntax_role": "Primeiro objeto direto nominal com sufixo possessivo ('a tua saída').",
             "parts": [
               {
                 "segment": "צֵאת",
@@ -13414,14 +13414,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
                 "meaning": "saída / sair de",
-                "phonetics": "Infinitivo construto do verbo Pe Yod com queda do yod inicial e acréscimo da terminação feminina tav (Kelley XXX.75)[cite: 10]."
+                "phonetics": "Infinitivo construto do verbo Pe Yod com queda do yod inicial e acréscimo da terminação feminina tav (Kelley XXX.75)."
               },
               {
                 "segment": "ְךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "tua[cite: 102]"
+                "meaning": "tua"
               }
             ]
           },
@@ -13431,14 +13431,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Uvo'echa",
             "lemma": "בּוֹא",
             "composite": true,
-            "syntax_role": "Segundo objeto direto coordenado com sufixo possessivo ('e a tua entrada')[cite: 8, 54].",
+            "syntax_role": "Segundo objeto direto coordenado com sufixo possessivo ('e a tua entrada').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante da consoante labial bet (ב) (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante da consoante labial bet (ב) (Kelley VI.16.2)."
               },
               {
                 "segment": "בוֹא",
@@ -13446,14 +13446,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
                 "meaning": "entrada / vir de",
-                "phonetics": "Infinitivo construto de verbo oco/médio vav (Kelley XII.29.4 e XXIX.74)[cite: 10, 111]."
+                "phonetics": "Infinitivo construto de verbo oco/médio vav (Kelley XII.29.4 e XXIX.74)."
               },
               {
                 "segment": "ֶךָ",
                 "transliteration": "Echa",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "tua[cite: 102]"
+                "meaning": "tua"
               }
             ]
           },
@@ -13463,20 +13463,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Me'attah",
             "lemma": "עַתָּה",
             "composite": true,
-            "syntax_role": "Adjunto adverbial temporal de ponto de partida ('desde agora')[cite: 53, 109].",
+            "syntax_role": "Adjunto adverbial temporal de ponto de partida ('desde agora').",
             "parts": [
               {
                 "segment": "מֵ",
                 "transliteration": "Me",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "desde / a partir de",
-                "phonetics": "Alongamento compensatório para șere perante a gutural ayin (ע) (Kelley VI.15.3[3])[cite: 53]."
+                "phonetics": "Alongamento compensatório para șere perante a gutural ayin (ע) (Kelley VI.15.3[3])."
               },
               {
                 "segment": "עַתָּה",
                 "transliteration": "Attah",
                 "type": "Advérbio de tempo",
-                "meaning": "agora[cite: 109]"
+                "meaning": "agora"
               }
             ]
           },
@@ -13486,20 +13486,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'ad-",
             "lemma": "עַד",
             "composite": true,
-            "syntax_role": "Conjunção e preposição temporal de término ('e até')[cite: 53, 54]. Unida por maqqef[cite: 31, 187].",
+            "syntax_role": "Conjunção e preposição temporal de término ('e até'). Unida por maqqef.",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "עַד־",
                 "transliteration": "Ad-",
                 "type": "Preposição",
-                "meaning": "até[cite: 53]"
+                "meaning": "até"
               }
             ]
           },
@@ -13510,7 +13510,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עוֹלָם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regido pela preposição עַד ('eternidade / sempre')[cite: 170]."
+            "syntax_role": "Termo regido pela preposição עַד ('eternidade / sempre')."
           }
         ]
       },
@@ -13531,8 +13531,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('ouvi')[cite: 115].",
-            "notes": "Redução da vogal temática a shva audível sob a gutural ayin com a adição do aformativo vocálico -u[cite: 114]."
+            "syntax_role": "Núcleo do predicado verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('ouvi').",
+            "notes": "Redução da vogal temática a shva audível sob a gutural ayin com a adição do aformativo vocálico -u."
           },
           {
             "index": 2,
@@ -13540,21 +13540,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Elai",
             "lemma": "אֶל",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido pelo verbo ('a mim')[cite: 99, 100].",
+            "syntax_role": "Complemento preposicional regido pelo verbo ('a mim').",
             "parts": [
               {
                 "segment": "אֵל",
                 "transliteration": "El",
                 "type": "Preposição",
                 "meaning": "a / para",
-                "phonetics": "Preposição אֶל na base construta para sufixos pronominais (Kelley XI.27.1[5]b)[cite: 99, 100]."
+                "phonetics": "Preposição אֶל na base construta para sufixos pronominais (Kelley XI.27.1[5]b)."
               },
               {
                 "segment": "ַי",
                 "transliteration": "Ai",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "mim[cite: 99, 100]"
+                "meaning": "mim"
               }
             ]
           },
@@ -13565,8 +13565,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "רָדַף",
             "composite": false,
             "word_class": "Verbo (particípio ativo)",
-            "syntax_role": "Primeiro vocativo participial no construto plural ('perseguidores de' / 'os que seguis')[cite: 9, 87].",
-            "notes": "Particípio ativo Qal com desinência construta em sere-yod (Kelley XX.59)[cite: 9, 87]."
+            "syntax_role": "Primeiro vocativo participial no construto plural ('perseguidores de' / 'os que seguis').",
+            "notes": "Particípio ativo Qal com desinência construta em sere-yod (Kelley XX.59)."
           },
           {
             "index": 4,
@@ -13575,7 +13575,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "צֶדֶק",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Termo regido genitivo na relação de construto ('justiça')[cite: 85]."
+            "syntax_role": "Termo regido genitivo na relação de construto ('justiça')."
           },
           {
             "index": 5,
@@ -13584,8 +13584,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּקַשׁ",
             "composite": false,
             "word_class": "Verbo (particípio ativo)",
-            "syntax_role": "Segundo vocativo aposto em construto plural. Particípio ativo Pi'el ('os que buscais')[cite: 9, 87, 141].",
-            "notes": "Prefixo mem com shva simples e dagesh forte no segundo radical característicos dos particípios dos troncos derivados (Kelley XX.59)[cite: 9, 140]."
+            "syntax_role": "Segundo vocativo aposto em construto plural. Particípio ativo Pi'el ('os que buscais').",
+            "notes": "Prefixo mem com shva simples e dagesh forte no segundo radical característicos dos particípios dos troncos derivados (Kelley XX.59)."
           },
           {
             "index": 6,
@@ -13594,7 +13594,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo do segundo particípio ('o SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo do segundo particípio ('o SENHOR')."
           }
         ]
       }
@@ -13782,8 +13782,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal volitivo. 2ª pessoa masculino singular do imperativo Qal ('ouve')[cite: 110].",
-            "notes": "Patah temático no imperativo em verbos Lamed Gutural (Kelley XXV.70)[cite: 10]."
+            "syntax_role": "Núcleo verbal volitivo. 2ª pessoa masculino singular do imperativo Qal ('ouve').",
+            "notes": "Patah temático no imperativo em verbos Lamed Gutural (Kelley XXV.70)."
           },
           {
             "index": 2,
@@ -13792,7 +13792,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יִשְׂרָאֵל",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Vocativo direto ('Israel')[cite: 35]."
+            "syntax_role": "Vocativo direto ('Israel')."
           },
           {
             "index": 3,
@@ -13801,7 +13801,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Primeiro sujeito da proposição nominal ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Primeiro sujeito da proposição nominal ('o SENHOR')."
           },
           {
             "index": 4,
@@ -13809,21 +13809,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eloheinu",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Aposto com sufixo possessivo ('nosso Deus')[cite: 103].",
+            "syntax_role": "Aposto com sufixo possessivo ('nosso Deus').",
             "parts": [
               {
                 "segment": "אֱלֹהֵי",
                 "transliteration": "Elohei",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "Deus de[cite: 87, 103]"
+                "meaning": "Deus de"
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nosso[cite: 103]"
+                "meaning": "nosso"
               }
             ]
           },
@@ -13834,7 +13834,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Segundo núcleo sujeito ou predicado nominal[cite: 56, 57]."
+            "syntax_role": "Segundo núcleo sujeito ou predicado nominal."
           },
           {
             "index": 6,
@@ -13843,7 +13843,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶחָד",
             "composite": false,
             "word_class": "Numeral cardinal / Adjetivo",
-            "syntax_role": "Predicado nominal ('é um' / 'é único')[cite: 130]."
+            "syntax_role": "Predicado nominal ('é um' / 'é único')."
           }
         ]
       },
@@ -13856,7 +13856,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Prescritiva com Perfeito Consecutivo Mandatório",
-        "notes": "O perfeito com vav consecutivo וְאָהַבְתָּ expressa comando com valor de futuro obrigatório (Kelley XXI.63)[cite: 9, 117].",
+        "notes": "O perfeito com vav consecutivo וְאָהַבְתָּ expressa comando com valor de futuro obrigatório (Kelley XXI.63).",
         "tokens": [
           {
             "index": 1,
@@ -13864,21 +13864,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'ahavta",
             "lemma": "אָהַב",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal mandatório ('amarás')[cite: 9, 109, 117].",
+            "syntax_role": "Núcleo do predicado verbal mandatório ('amarás').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e (portanto)",
-                "phonetics": "Vav com shva simples diante de consoante com vogal cheia (Kelley VI.16.1)[cite: 54]."
+                "phonetics": "Vav com shva simples diante de consoante com vogal cheia (Kelley VI.16.1)."
               },
               {
                 "segment": "אָהַבְתָּ",
                 "transliteration": "Ahavta",
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino singular do perfeito Qal",
-                "meaning": "tu amarás / amaste[cite: 109, 114]"
+                "meaning": "tu amarás / amaste"
               }
             ]
           },
@@ -13889,7 +13889,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado."
           },
           {
             "index": 3,
@@ -13898,7 +13898,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Objeto direto do comando ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Objeto direto do comando ('o SENHOR')."
           },
           {
             "index": 4,
@@ -13906,21 +13906,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eloheicha",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Aposto explicativo com sufixo possessivo ('teu Deus')[cite: 103].",
+            "syntax_role": "Aposto explicativo com sufixo possessivo ('teu Deus').",
             "parts": [
               {
                 "segment": "אֱלֹהֵ",
                 "transliteration": "Elohe",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "Deus de[cite: 87, 103]"
+                "meaning": "Deus de"
               },
               {
                 "segment": "יךָ",
                 "transliteration": "Icha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "teu[cite: 103]"
+                "meaning": "teu"
               }
             ]
           },
@@ -13930,14 +13930,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bechol-",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Primeiro adjunto adverbial modal no construto ('de todo o')[cite: 31, 50]. Unido por maqqef[cite: 31, 187].",
+            "syntax_role": "Primeiro adjunto adverbial modal no construto ('de todo o'). Unido por maqqef.",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em / com / de",
-                "phonetics": "Bet com shva simples[cite: 50]."
+                "phonetics": "Bet com shva simples."
               },
               {
                 "segment": "כָל־",
@@ -13945,7 +13945,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "todo o / totalidade de",
-                "phonetics": "Kaf sem dagesh lene; qamats-hatuf perante maqqef[cite: 20, 31]."
+                "phonetics": "Kaf sem dagesh lene; qamats-hatuf perante maqqef."
               }
             ]
           },
@@ -13955,7 +13955,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Levavcha",
             "lemma": "לֵבָב",
             "composite": true,
-            "syntax_role": "Termo regido genitivo com sufixo possessivo ('teu coração')[cite: 102].",
+            "syntax_role": "Termo regido genitivo com sufixo possessivo ('teu coração').",
             "parts": [
               {
                 "segment": "לְבַב",
@@ -13969,7 +13969,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "teu[cite: 102]"
+                "meaning": "teu"
               }
             ]
           },
@@ -13979,21 +13979,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Uvechol-",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Segundo adjunto modal coordenado ('e de toda a')[cite: 31, 54]. Unido por maqqef[cite: 31, 187].",
+            "syntax_role": "Segundo adjunto modal coordenado ('e de toda a'). Unido por maqqef.",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante de consoante com shva simples (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante de consoante com shva simples (Kelley VI.16.2)."
               },
               {
                 "segment": "בְ",
                 "transliteration": "Ve",
                 "type": "Preposição inseparável",
                 "meaning": "com / de",
-                "phonetics": "Bet sem dagesh lene por vir após vogal plena (Kelley I.1.9)[cite: 20, 21]."
+                "phonetics": "Bet sem dagesh lene por vir após vogal plena (Kelley I.1.9)."
               },
               {
                 "segment": "כָל־",
@@ -14001,7 +14001,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "toda a",
-                "phonetics": "Qamats-hatuf perante maqqef[cite: 31]."
+                "phonetics": "Qamats-hatuf perante maqqef."
               }
             ]
           },
@@ -14011,21 +14011,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Nafshecha",
             "lemma": "נֶפֶשׁ",
             "composite": true,
-            "syntax_role": "Termo regido genitivo com sufixo possessivo ('tua alma')[cite: 102].",
+            "syntax_role": "Termo regido genitivo com sufixo possessivo ('tua alma').",
             "parts": [
               {
                 "segment": "נַפְש",
                 "transliteration": "Nafesh",
                 "type": "Substantivo segolado",
                 "inflection": "feminino singular construto",
-                "meaning": "alma / ser de[cite: 84, 91]"
+                "meaning": "alma / ser de"
               },
               {
                 "segment": "ְךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "tua[cite: 102]"
+                "meaning": "tua"
               }
             ]
           }
@@ -14048,8 +14048,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "טָעַם",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('provai')[cite: 115].",
-            "notes": "Hatef-patah sob a gutural mediana ayin (Kelley XXII.65)[cite: 9]."
+            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('provai').",
+            "notes": "Hatef-patah sob a gutural mediana ayin (Kelley XXII.65)."
           },
           {
             "index": 2,
@@ -14057,21 +14057,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ure'u",
             "lemma": "רָאָה",
             "composite": true,
-            "syntax_role": "Segundo núcleo verbal imperativo coordenado ('e vede')[cite: 54, 115].",
+            "syntax_role": "Segundo núcleo verbal imperativo coordenado ('e vede').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante de consoante com shva simples (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante de consoante com shva simples (Kelley VI.16.2)."
               },
               {
                 "segment": "רְאוּ",
                 "transliteration": "Re'u",
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino plural do imperativo Qal",
-                "meaning": "vede / contemplai[cite: 185]"
+                "meaning": "vede / contemplai"
               }
             ]
           },
@@ -14082,7 +14082,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa integrante",
-            "syntax_role": "Introduz oração substantiva objetiva direta ('que')[cite: 68]. Unida por maqqef[cite: 31, 187]."
+            "syntax_role": "Introduz oração substantiva objetiva direta ('que'). Unida por maqqef."
           },
           {
             "index": 4,
@@ -14091,7 +14091,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "טוֹב",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Predicado nominal anteposto ('é bom')[cite: 70, 72]. O verbo de ligação 'ser' fica implícito (Kelley VIII.22.1)[cite: 72]."
+            "syntax_role": "Predicado nominal anteposto ('é bom'). O verbo de ligação 'ser' fica implícito (Kelley VIII.22.1)."
           },
           {
             "index": 5,
@@ -14100,7 +14100,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração nominal integrante ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração nominal integrante ('o SENHOR')."
           }
         ]
       },
@@ -14121,8 +14121,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "פָּרָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('frutificai' / 'sede frutíferos')[cite: 115, 187].",
-            "notes": "Verbo da classe Lamed He com apócope do he perante o aformativo vocálico plural (Kelley XXVII.72)[cite: 10]."
+            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('frutificai' / 'sede frutíferos').",
+            "notes": "Verbo da classe Lamed He com apócope do he perante o aformativo vocálico plural (Kelley XXVII.72)."
           },
           {
             "index": 2,
@@ -14130,21 +14130,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Urevu",
             "lemma": "רָבָה",
             "composite": true,
-            "syntax_role": "Segundo núcleo verbal imperativo coordenado ('e multiplicai-vos')[cite: 54, 115].",
+            "syntax_role": "Segundo núcleo verbal imperativo coordenado ('e multiplicai-vos').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante de consoante com shva simples (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante de consoante com shva simples (Kelley VI.16.2)."
               },
               {
                 "segment": "רְבוּ",
                 "transliteration": "Revu",
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino plural do imperativo Qal",
-                "meaning": "multiplicai-vos[cite: 187]"
+                "meaning": "multiplicai-vos"
               }
             ]
           },
@@ -14154,21 +14154,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Umil'u",
             "lemma": "מָלֵא",
             "composite": true,
-            "syntax_role": "Terceiro núcleo verbal imperativo coordenado ('e enchei')[cite: 54, 115].",
+            "syntax_role": "Terceiro núcleo verbal imperativo coordenado ('e enchei').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante da labial mem (מ) (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante da labial mem (מ) (Kelley VI.16.2)."
               },
               {
                 "segment": "מִלְאוּ",
                 "transliteration": "Mil'u",
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino plural do imperativo Qal",
-                "meaning": "enchei[cite: 185]"
+                "meaning": "enchei"
               }
             ]
           },
@@ -14179,7 +14179,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado[cite: 31]. Unida por maqqef[cite: 31, 187]."
+            "syntax_role": "Assinala o objeto direto determinado. Unida por maqqef."
           },
           {
             "index": 5,
@@ -14194,14 +14194,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אָרֶץ",
                 "transliteration": "Aretz",
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
-                "meaning": "terra[cite: 47]"
+                "meaning": "terra"
               }
             ]
           }
@@ -14216,7 +14216,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Coordenado com Imperfeitos de Ação Passada/Habitual e Sufixo Verbal",
-        "notes": "Imperfeitos hebraicos no tempo frequentativo/poético descrevendo ação histórica de libertação e cura (Kelley XV.40.2 e XXI.63)[cite: 9, 163, 164].",
+        "notes": "Imperfeitos hebraicos no tempo frequentativo/poético descrevendo ação histórica de libertação e cura (Kelley XV.40.2 e XXI.63).",
         "tokens": [
           {
             "index": 1,
@@ -14225,8 +14225,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁלַח",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro predicado verbal. 3ª pessoa masculino singular do imperfeito Qal ('enviou' / 'envia')[cite: 161, 163].",
-            "notes": "Patah temático sob o het final gutural (Kelley XXV.70)[cite: 10]."
+            "syntax_role": "Primeiro predicado verbal. 3ª pessoa masculino singular do imperfeito Qal ('enviou' / 'envia').",
+            "notes": "Patah temático sob o het final gutural (Kelley XXV.70)."
           },
           {
             "index": 2,
@@ -14234,21 +14234,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Devaro",
             "lemma": "דָּבָר",
             "composite": true,
-            "syntax_role": "Objeto direto da primeira oração com sufixo possessivo ('a sua palavra')[cite: 102, 106].",
+            "syntax_role": "Objeto direto da primeira oração com sufixo possessivo ('a sua palavra').",
             "parts": [
               {
                 "segment": "דְּבָר",
                 "transliteration": "Devar",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "palavra de[cite: 87, 106]"
+                "meaning": "palavra de"
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "dele / sua[cite: 102, 106]"
+                "meaning": "dele / sua"
               }
             ]
           },
@@ -14258,14 +14258,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Veyirpa'em",
             "lemma": "רָפָא",
             "composite": true,
-            "syntax_role": "Segundo predicado verbal coordenado com sufixo acusativo ('e os curou')[cite: 54, 101, 102].",
+            "syntax_role": "Segundo predicado verbal coordenado com sufixo acusativo ('e os curou').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "יִרְפָּא",
@@ -14273,14 +14273,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
                 "meaning": "ele curou / cura",
-                "phonetics": "Verbo Lamed Alef flexionando regularmente (Kelley XXVI.71)[cite: 10]."
+                "phonetics": "Verbo Lamed Alef flexionando regularmente (Kelley XXVI.71)."
               },
               {
                 "segment": "ֵם",
                 "transliteration": "Em",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino plural",
-                "meaning": "os / a eles (objeto direto)[cite: 101, 102]"
+                "meaning": "os / a eles (objeto direto)"
               }
             ]
           }
@@ -14459,7 +14459,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa Passiva no Nif'al de Verbo Pe Gutural",
-        "notes": "No imperfeito Nif'al dos verbos Pe Gutural, a gutural inicial rejeita o dagesh forte, compensando com o alongamento vocálico do preformativo para hireq longo/șere (Kelley XXII.66.2)[cite: 9, 44].",
+        "notes": "No imperfeito Nif'al dos verbos Pe Gutural, a gutural inicial rejeita o dagesh forte, compensando com o alongamento vocálico do preformativo para hireq longo/șere (Kelley XXII.66.2).",
         "tokens": [
           {
             "index": 1,
@@ -14467,14 +14467,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayihafechu",
             "lemma": "הָפַךְ",
             "composite": true,
-            "syntax_role": "Núcleo verbal narrativo passivo. 3ª pessoa masculino plural do imperfeito Nif'al ('e se converteram' / 'e foram transformados')[cite: 9, 179].",
+            "syntax_role": "Núcleo verbal narrativo passivo. 3ª pessoa masculino plural do imperfeito Nif'al ('e se converteram' / 'e foram transformados').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יִּהָפְכוּ",
@@ -14482,7 +14482,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino plural do imperfeito Nif'al",
                 "meaning": "eles foram transformados",
-                "phonetics": "O primeiro radical he (ה) é gutural; com a recusa do dagesh forte, a vogal seguinte é qamats (Kelley XXII.66)[cite: 9, 44]."
+                "phonetics": "O primeiro radical he (ה) é gutural; com a recusa do dagesh forte, a vogal seguinte é qamats (Kelley XXII.66)."
               }
             ]
           },
@@ -14493,8 +14493,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular ('todas as')[cite: 31]. Unido por maqqef[cite: 31, 187].",
-            "notes": "Qamats-hatuf em virtude da perda de tonicidade perante maqqef[cite: 31]."
+            "syntax_role": "Termo regente no construto singular ('todas as'). Unido por maqqef.",
+            "notes": "Qamats-hatuf em virtude da perda de tonicidade perante maqqef."
           },
           {
             "index": 3,
@@ -14502,21 +14502,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hamayim",
             "lemma": "מַיִם",
             "composite": true,
-            "syntax_role": "Sujeito determinado da oração passiva ('as águas')[cite: 92].",
+            "syntax_role": "Sujeito determinado da oração passiva ('as águas').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "as",
-                "phonetics": "Patah com dagesh forte no mem (מ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no mem (מ)."
               },
               {
                 "segment": "מַּיִם",
                 "transliteration": "Mayim",
                 "type": "Substantivo",
                 "inflection": "masculino plural/dual absoluto",
-                "meaning": "águas[cite: 41, 50]"
+                "meaning": "águas"
               }
             ]
           },
@@ -14527,7 +14527,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que estavam')[cite: 46]."
+            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que estavam')."
           },
           {
             "index": 5,
@@ -14535,21 +14535,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Baye'or",
             "lemma": "יְאֹר",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo da oração relativa ('no rio / Nilo')[cite: 47, 51].",
+            "syntax_role": "Adjunto adverbial locativo da oração relativa ('no rio / Nilo').",
             "parts": [
               {
                 "segment": "בַּ",
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "no (em + o)",
-                "phonetics": "A preposição בְּ assimila o artigo הַ sem dagesh forte no yod com shva (Kelley V.14.3[3] e VI.15.1[4])[cite: 47, 51]."
+                "phonetics": "A preposição בְּ assimila o artigo הַ sem dagesh forte no yod com shva (Kelley V.14.3[3] e VI.15.1[4])."
               },
               {
                 "segment": "יְאֹר",
                 "transliteration": "Ye'or",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "rio / canal (Nilo)[cite: 47]"
+                "meaning": "rio / canal (Nilo)"
               }
             ]
           },
@@ -14559,21 +14559,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ledam",
             "lemma": "דָּם",
             "composite": true,
-            "syntax_role": "Predicativo resultante introduzido pela preposição לְ ('em sangue')[cite: 50, 96].",
+            "syntax_role": "Predicativo resultante introduzido pela preposição לְ ('em sangue').",
             "parts": [
               {
                 "segment": "לְ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
                 "meaning": "em / para",
-                "phonetics": "Lamed com shva simples diante de consoante com vogal plena[cite: 50]."
+                "phonetics": "Lamed com shva simples diante de consoante com vogal plena."
               },
               {
                 "segment": "דָם",
                 "transliteration": "Dam",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "sangue[cite: 96]"
+                "meaning": "sangue"
               }
             ]
           }
@@ -14595,21 +14595,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'attem",
             "lemma": "אַתֶּם",
             "composite": true,
-            "syntax_role": "Sujeito da primeira oração anteposto antitético ('vós')[cite: 77, 118].",
+            "syntax_role": "Sujeito da primeira oração anteposto antitético ('vós').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa (com valor adversativo)",
                 "meaning": "e / mas",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "אַתֶּם",
                 "transliteration": "Attem",
                 "type": "Pronome pessoal independente",
                 "inflection": "2ª pessoa masculino plural",
-                "meaning": "vós / vocês[cite: 77]"
+                "meaning": "vós / vocês"
               }
             ]
           },
@@ -14620,8 +14620,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "חָשַׁב",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino plural do perfeito Qal ('intentastes' / 'pensastes')[cite: 114, 187].",
-            "notes": "Verbo Pe Gutural: a primeira vogal reduz-se a hatef-patah sob a gutural het perante aformativo pesado -tem (Kelley XII.30.4[4] e XXII.66)[cite: 9, 115]."
+            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino plural do perfeito Qal ('intentastes' / 'pensastes').",
+            "notes": "Verbo Pe Gutural: a primeira vogal reduz-se a hatef-patah sob a gutural het perante aformativo pesado -tem (Kelley XII.30.4[4] e XXII.66)."
           },
           {
             "index": 3,
@@ -14629,20 +14629,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Alai",
             "lemma": "עַל",
             "composite": true,
-            "syntax_role": "Complemento preposicional adverso ('contra mim')[cite: 52, 99, 100].",
+            "syntax_role": "Complemento preposicional adverso ('contra mim').",
             "parts": [
               {
                 "segment": "עָל",
                 "transliteration": "Al",
                 "type": "Preposição",
-                "meaning": "contra / sobre[cite: 52, 99, 100]"
+                "meaning": "contra / sobre"
               },
               {
                 "segment": "ַי",
                 "transliteration": "Ai",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "mim[cite: 99, 100]"
+                "meaning": "mim"
               }
             ]
           },
@@ -14653,7 +14653,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "רָעָה",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Objeto direto da primeira proposição ('o mal')[cite: 77]."
+            "syntax_role": "Objeto direto da primeira proposição ('o mal')."
           },
           {
             "index": 5,
@@ -14662,7 +14662,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Sujeito da segunda oração anteposto em contraste enfático ('Deus')[cite: 35, 118]."
+            "syntax_role": "Sujeito da segunda oração anteposto em contraste enfático ('Deus')."
           },
           {
             "index": 6,
@@ -14670,23 +14670,23 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Chashavah",
             "lemma": "חָשַׁב",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal com sufixo acusativo ('o intentou / transformou')[cite: 101, 102, 114].",
+            "syntax_role": "Núcleo do predicado verbal com sufixo acusativo ('o intentou / transformou').",
             "parts": [
               {
                 "segment": "חֲשָׁב",
                 "transliteration": "Chashav",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do perfeito Qal",
-                "meaning": "ele intentou / planejou[cite: 114, 187]",
-                "phonetics": "Hatef-patah sob a gutural het (ח) inicial (Kelley XXII.65)[cite: 9, 44]."
+                "meaning": "ele intentou / planejou",
+                "phonetics": "Hatef-patah sob a gutural het (ח) inicial (Kelley XXII.65)."
               },
               {
                 "segment": "ָהּ",
                 "transliteration": "Ah",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa feminino singular",
-                "meaning": "a ela / o (referindo-se ao substantivo feminino רָעָה)[cite: 101, 102]",
-                "phonetics": "Mappiq no he final indicando consoante audível no sufixo pronominal (Kelley IV.11)[cite: 40]."
+                "meaning": "a ela / o (referindo-se ao substantivo feminino רָעָה)",
+                "phonetics": "Mappiq no he final indicando consoante audível no sufixo pronominal (Kelley IV.11)."
               }
             ]
           },
@@ -14696,21 +14696,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Letovah",
             "lemma": "טוֹבָה",
             "composite": true,
-            "syntax_role": "Predicativo resultante preposicionado ('em bem / para o bem')[cite: 50, 70].",
+            "syntax_role": "Predicativo resultante preposicionado ('em bem / para o bem').",
             "parts": [
               {
                 "segment": "לְ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
                 "meaning": "em / para",
-                "phonetics": "Lamed com shva simples[cite: 50]."
+                "phonetics": "Lamed com shva simples."
               },
               {
                 "segment": "טוֹבָה",
                 "transliteration": "Tovah",
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
-                "meaning": "bem / benefício[cite: 70]"
+                "meaning": "bem / benefício"
               }
             ]
           }
@@ -14725,7 +14725,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Composto Narrativo no Tronco Pi'el",
-        "notes": "O verbo חָזַק no tronco causativo Pi'el significa 'fortalecer' ou 'endurecer' (Kelley XIV.36.2[2])[cite: 141].",
+        "notes": "O verbo חָזַק no tronco causativo Pi'el significa 'fortalecer' ou 'endurecer' (Kelley XIV.36.2[2]).",
         "tokens": [
           {
             "index": 1,
@@ -14733,22 +14733,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayechazzek",
             "lemma": "חָזַק",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal causativo ('e endureceu / fortaleceu')[cite: 141, 179].",
+            "syntax_role": "Núcleo do predicado verbal causativo ('e endureceu / fortaleceu').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah sem dagesh forte no yod seguinte com shva simples (Kelley XVI.43.2)[cite: 180]."
+                "phonetics": "Vav com patah sem dagesh forte no yod seguinte com shva simples (Kelley XVI.43.2)."
               },
               {
                 "segment": "יְחַזֵּק",
                 "transliteration": "Yechazzek",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Pi'el",
-                "meaning": "ele endureceu / fortaleceu[cite: 141]",
-                "phonetics": "Dagesh forte característico do tronco Pi'el no segundo radical zayin (ז) (Kelley XIV.36.2)[cite: 140, 141]."
+                "meaning": "ele endureceu / fortaleceu",
+                "phonetics": "Dagesh forte característico do tronco Pi'el no segundo radical zayin (ז) (Kelley XIV.36.2)."
               }
             ]
           },
@@ -14759,7 +14759,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da primeira oração verbal ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da primeira oração verbal ('o SENHOR')."
           },
           {
             "index": 3,
@@ -14768,7 +14768,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado[cite: 31]. Unida por maqqef[cite: 31, 187]."
+            "syntax_role": "Assinala o objeto direto determinado. Unida por maqqef."
           },
           {
             "index": 4,
@@ -14777,7 +14777,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לֵב",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de objeto direto ('coração de')[cite: 89]."
+            "syntax_role": "Termo regente no construto singular em função de objeto direto ('coração de')."
           },
           {
             "index": 5,
@@ -14786,7 +14786,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "פַּרְעֹה",
             "composite": false,
             "word_class": "Nome Próprio / Título Real",
-            "syntax_role": "Termo regido genitivo da relação de construto ('do Faraó')[cite: 92]."
+            "syntax_role": "Termo regido genitivo da relação de construto ('do Faraó')."
           },
           {
             "index": 6,
@@ -14794,20 +14794,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve-lo",
             "lemma": "לֹא",
             "composite": true,
-            "syntax_role": "Conector coordenativo com partícula de negação ('e não')[cite: 54, 60].",
+            "syntax_role": "Conector coordenativo com partícula de negação ('e não').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "לֹא",
                 "transliteration": "Lo",
                 "type": "Partícula de negação",
-                "meaning": "não[cite: 60]"
+                "meaning": "não"
               }
             ]
           },
@@ -14818,8 +14818,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal da segunda oração. 3ª pessoa masculino singular do perfeito Qal ('ouviu' / 'obedeceu')[cite: 110, 126].",
-            "notes": "Sujeito pronominal elíptico referindo-se a Faraó (Kelley XII.31.3)[cite: 118]."
+            "syntax_role": "Núcleo do predicado verbal da segunda oração. 3ª pessoa masculino singular do perfeito Qal ('ouviu' / 'obedeceu').",
+            "notes": "Sujeito pronominal elíptico referindo-se a Faraó (Kelley XII.31.3)."
           },
           {
             "index": 8,
@@ -14827,21 +14827,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Aleihem",
             "lemma": "אֶל",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido pelo verbo ('a eles')[cite: 60, 99, 100].",
+            "syntax_role": "Complemento preposicional regido pelo verbo ('a eles').",
             "parts": [
               {
                 "segment": "אֲלֵי",
                 "transliteration": "Alei",
                 "type": "Preposição",
                 "meaning": "a / em direção a",
-                "phonetics": "Preposição אֶל com hatef-patah sob o alef na base para sufixos pronominais (Kelley XI.27.1[5]b)[cite: 99, 100]."
+                "phonetics": "Preposição אֶל com hatef-patah sob o alef na base para sufixos pronominais (Kelley XI.27.1[5]b)."
               },
               {
                 "segment": "הֶם",
                 "transliteration": "Hem",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino plural",
-                "meaning": "eles[cite: 99, 100]"
+                "meaning": "eles"
               }
             ]
           }
@@ -14856,7 +14856,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Coordenado Narrativo com Tronco Causativo Hif'il",
-        "notes": "O verbo עָבַר no tronco causativo Hif'il significa 'fazer atravessar' ou 'conduzir através' (Kelley XIV.36.5[1])[cite: 143].",
+        "notes": "O verbo עָבַר no tronco causativo Hif'il significa 'fazer atravessar' ou 'conduzir através' (Kelley XIV.36.5[1]).",
         "tokens": [
           {
             "index": 1,
@@ -14865,8 +14865,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּקַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do primeiro predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('partiu' / 'dividiu')[cite: 110, 187].",
-            "notes": "Verbo Lamed Gutural com patah regular sob o ayin (Kelley XXV.70)[cite: 10]."
+            "syntax_role": "Núcleo do primeiro predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('partiu' / 'dividiu').",
+            "notes": "Verbo Lamed Gutural com patah regular sob o ayin (Kelley XXV.70)."
           },
           {
             "index": 2,
@@ -14875,7 +14875,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Objeto direto indeterminado de estilo poético ('o mar')[cite: 50]."
+            "syntax_role": "Objeto direto indeterminado de estilo poético ('o mar')."
           },
           {
             "index": 3,
@@ -14883,14 +14883,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vaya'avirem",
             "lemma": "עָבַר",
             "composite": true,
-            "syntax_role": "Segundo núcleo verbal causativo narrativo com sufixo acusativo ('e os fez passar')[cite: 101, 102, 143, 179].",
+            "syntax_role": "Segundo núcleo verbal causativo narrativo com sufixo acusativo ('e os fez passar').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יַּעֲבִיר",
@@ -14898,14 +14898,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Hif'il",
                 "meaning": "ele fez passar",
-                "phonetics": "Tronco causativo Hif'il com patah no preformativo, hatef-patah na gutural ayin e hireq-yod temático (Kelley XVI.42.5 e XXII.66)[cite: 9, 177, 178]."
+                "phonetics": "Tronco causativo Hif'il com patah no preformativo, hatef-patah na gutural ayin e hireq-yod temático (Kelley XVI.42.5 e XXII.66)."
               },
               {
                 "segment": "ֵם",
                 "transliteration": "Em",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino plural",
-                "meaning": "os / a eles (objeto direto)[cite: 101, 102]"
+                "meaning": "os / a eles (objeto direto)"
               }
             ]
           }
@@ -14920,7 +14920,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Paratático Exortativo-Promissório com Paronomásia Verbal",
-        "notes": "Paronomásia entre o imperativo Hif'il הַאֲמִינוּ ('crede') e o imperfeito Nif'al passivo וְתֵאָמֵנוּ ('sereis estabelecidos / confirmados', Kelley XIV.36.1 e 36.5)[cite: 140, 143].",
+        "notes": "Paronomásia entre o imperativo Hif'il הַאֲמִינוּ ('crede') e o imperfeito Nif'al passivo וְתֵאָמֵנוּ ('sereis estabelecidos / confirmados', Kelley XIV.36.1 e 36.5).",
         "tokens": [
           {
             "index": 1,
@@ -14929,8 +14929,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָמַן",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino plural do imperativo Hif'il ('crede' / 'tende fé')[cite: 143, 187].",
-            "notes": "Verbo Pe Alef no tronco Hif'il com patah sob o he de prefixo, hatef-patah sob o alef e hireq-yod temático (Kelley XXII.66)[cite: 9, 143]."
+            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino plural do imperativo Hif'il ('crede' / 'tende fé').",
+            "notes": "Verbo Pe Alef no tronco Hif'il com patah sob o he de prefixo, hatef-patah sob o alef e hireq-yod temático (Kelley XXII.66)."
           },
           {
             "index": 2,
@@ -14938,20 +14938,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Badonai",
             "lemma": "יְהוָה",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido pelo verbo ('no SENHOR')[cite: 56, 57].",
+            "syntax_role": "Complemento preposicional regido pelo verbo ('no SENHOR').",
             "parts": [
               {
                 "segment": "בַּ",
                 "transliteration": "Ba",
                 "type": "Preposição inseparável",
                 "meaning": "em / no",
-                "phonetics": "A preposição בְּ perante o Tetragrama recebe patah porque o nome sagrado é lido Adonai (com alef gutural implícito, Kelley VI.16.6)[cite: 56, 57]."
+                "phonetics": "A preposição בְּ perante o Tetragrama recebe patah porque o nome sagrado é lido Adonai (com alef gutural implícito, Kelley VI.16.6)."
               },
               {
                 "segment": "יהוָה",
                 "transliteration": "Adonai",
                 "type": "Nome Divino",
-                "meaning": "o SENHOR[cite: 56, 57]"
+                "meaning": "o SENHOR"
               }
             ]
           },
@@ -14961,21 +14961,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eloheichem",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Aposto explicativo com sufixo possessivo ('vosso Deus')[cite: 103].",
+            "syntax_role": "Aposto explicativo com sufixo possessivo ('vosso Deus').",
             "parts": [
               {
                 "segment": "אֱלֹהֵי",
                 "transliteration": "Elohei",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "Deus de[cite: 87, 103]"
+                "meaning": "Deus de"
               },
               {
                 "segment": "כֶם",
                 "transliteration": "Chem",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino plural",
-                "meaning": "vosso[cite: 103]"
+                "meaning": "vosso"
               }
             ]
           },
@@ -14985,22 +14985,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve-te'amenu",
             "lemma": "אָמַן",
             "composite": true,
-            "syntax_role": "Predicado verbal promissório/resultante no passivo Nif'al ('e sereis confirmados / estareis seguros')[cite: 54, 140, 172].",
+            "syntax_role": "Predicado verbal promissório/resultante no passivo Nif'al ('e sereis confirmados / estareis seguros').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa (com sentido de consequência)",
                 "meaning": "e (assim)",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "תֵאָמֵנוּ",
                 "transliteration": "Te'amenu",
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino plural do imperfeito Nif'al",
-                "meaning": "vós sereis estabelecidos / firmados[cite: 140, 172]",
-                "phonetics": "Preformativo com șere resultante do alongamento compensatório perante a recusa do dagesh forte pela gutural alef (Kelley XXII.66.2)[cite: 9, 44]."
+                "meaning": "vós sereis estabelecidos / firmados",
+                "phonetics": "Preformativo com șere resultante do alongamento compensatório perante a recusa do dagesh forte pela gutural alef (Kelley XXII.66.2)."
               }
             ]
           }
@@ -15180,7 +15180,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal com Infinitivo Absoluto Enfático (Pe Alef)",
-        "notes": "Nos verbos Pe Alef como אָכַל, o alef quiescente no imperfeito Qal faz a vogal do preformativo tornar-se holem pleno (Kelley XXIII.67)[cite: 9, 39].",
+        "notes": "Nos verbos Pe Alef como אָכַל, o alef quiescente no imperfeito Qal faz a vogal do preformativo tornar-se holem pleno (Kelley XXIII.67).",
         "tokens": [
           {
             "index": 1,
@@ -15188,21 +15188,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Mikol",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Termo regente no construto com preposição inseparável ('de toda a')[cite: 53, 68].",
+            "syntax_role": "Termo regente no construto com preposição inseparável ('de toda a').",
             "parts": [
               {
                 "segment": "מִ",
                 "transliteration": "Mi",
                 "type": "Preposição inseparável (variante assimilada de מִן)",
-                "meaning": "de / dentre[cite: 53]",
-                "phonetics": "O nun assimila-se na consoante kaf seguinte através de dagesh forte (Kelley VI.15.3[2])[cite: 53]."
+                "meaning": "de / dentre",
+                "phonetics": "O nun assimila-se na consoante kaf seguinte através de dagesh forte (Kelley VI.15.3[2])."
               },
               {
                 "segment": "כֹּל",
                 "transliteration": "Kol",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "totalidade / toda a[cite: 68]"
+                "meaning": "totalidade / toda a"
               }
             ]
           },
@@ -15213,8 +15213,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עֵץ",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo intermediário no construto singular ('árvore de')[cite: 88]. Unido por maqqef[cite: 31].",
-            "notes": "Preserva a vogal imutavelmente longa șere perante maqqef[cite: 31, 88]."
+            "syntax_role": "Termo intermediário no construto singular ('árvore de'). Unido por maqqef.",
+            "notes": "Preserva a vogal imutavelmente longa șere perante maqqef."
           },
           {
             "index": 3,
@@ -15222,22 +15222,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hagan",
             "lemma": "גַּן",
             "composite": true,
-            "syntax_role": "Termo regido final determinado da cadeia genitiva[cite: 92].",
+            "syntax_role": "Termo regido final determinado da cadeia genitiva.",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte na não-gutural guimel (ג)[cite: 45]."
+                "phonetics": "Patah com dagesh forte na não-gutural guimel (ג)."
               },
               {
                 "segment": "גָּן",
                 "transliteration": "Gan",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "jardim[cite: 47]",
-                "phonetics": "Recebe qamats interno quando determinado pelo artigo (Kelley V.14.3[4])[cite: 47]."
+                "meaning": "jardim",
+                "phonetics": "Recebe qamats interno quando determinado pelo artigo (Kelley V.14.3[4])."
               }
             ]
           },
@@ -15248,8 +15248,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָכַל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Infinitivo absoluto Qal com função enfática / adverbial ('certamente' / 'livremente')[cite: 8].",
-            "notes": "Estrutura do infinitivo absoluto Qal do verbo Pe Alef com qamats e holem (Kelley XIX.57)[cite: 8]."
+            "syntax_role": "Infinitivo absoluto Qal com função enfática / adverbial ('certamente' / 'livremente').",
+            "notes": "Estrutura do infinitivo absoluto Qal do verbo Pe Alef com qamats e holem (Kelley XIX.57)."
           },
           {
             "index": 5,
@@ -15258,8 +15258,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָכַל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino singular do imperfeito Qal ('comerás')[cite: 161].",
-            "notes": "No verbo Pe Alef, o alef torna-se quiescente e a vogal do preformativo transforma-se em holem pleno (Kelley XXIII.67)[cite: 9, 39]."
+            "syntax_role": "Núcleo do predicado verbal. 2ª pessoa masculino singular do imperfeito Qal ('comerás').",
+            "notes": "No verbo Pe Alef, o alef torna-se quiescente e a vogal do preformativo transforma-se em holem pleno (Kelley XXIII.67)."
           }
         ]
       },
@@ -15279,22 +15279,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayomer",
             "lemma": "אָמַר",
             "composite": true,
-            "syntax_role": "Núcleo verbal da oração principal com vav consecutivo ('e disse')[cite: 180].",
+            "syntax_role": "Núcleo verbal da oração principal com vav consecutivo ('e disse').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יֹּאמֶר",
                 "transliteration": "Yomer",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
-                "meaning": "ele disse[cite: 180]",
-                "phonetics": "Forma apocopada clássica com holem sob o preformativo e segol temático na raiz Pe Alef (Kelley XVI.43.3)[cite: 180]."
+                "meaning": "ele disse",
+                "phonetics": "Forma apocopada clássica com holem sob o preformativo e segol temático na raiz Pe Alef (Kelley XVI.43.3)."
               }
             ]
           },
@@ -15305,8 +15305,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶל",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Rege o destinatário do verbo de elocução ('a' / 'para')[cite: 53]. Unido por maqqef[cite: 31].",
-            "notes": "Forma monossilábica ligada por maqqef com perda do acento tónico (Kelley III.4)[cite: 31]."
+            "syntax_role": "Rege o destinatário do verbo de elocução ('a' / 'para'). Unido por maqqef.",
+            "notes": "Forma monossilábica ligada por maqqef com perda do acento tónico (Kelley III.4)."
           },
           {
             "index": 3,
@@ -15314,21 +15314,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'ishah",
             "lemma": "אִשָּׁה",
             "composite": true,
-            "syntax_role": "Termo regido pela preposição אֶל ('a mulher')[cite: 53, 92].",
+            "syntax_role": "Termo regido pela preposição אֶל ('a mulher').",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante de alef (א) (Kelley V.14.3[2]b)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א) (Kelley V.14.3[2]b)."
               },
               {
                 "segment": "אִשָּׁה",
                 "transliteration": "Ishah",
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
-                "meaning": "mulher[cite: 62]"
+                "meaning": "mulher"
               }
             ]
           },
@@ -15348,7 +15348,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa",
-            "syntax_role": "Conjunção integrante que introduz o conteúdo citado ('que')[cite: 68]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Conjunção integrante que introduz o conteúdo citado ('que'). Unida por maqqef."
           },
           {
             "index": 6,
@@ -15357,8 +15357,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָמַר",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da oração subordinada. 3ª pessoa masculino singular do perfeito Qal ('disse')[cite: 109, 110].",
-            "notes": "Verbo Pe Alef regular no tronco Qal perfeito (Kelley XII.29.2 e XXIII.67)[cite: 9, 110]."
+            "syntax_role": "Núcleo verbal da oração subordinada. 3ª pessoa masculino singular do perfeito Qal ('disse').",
+            "notes": "Verbo Pe Alef regular no tronco Qal perfeito (Kelley XII.29.2 e XXIII.67)."
           },
           {
             "index": 7,
@@ -15367,7 +15367,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Sujeito da oração subordinada ('Deus')[cite: 35]."
+            "syntax_role": "Sujeito da oração subordinada ('Deus')."
           },
           {
             "index": 8,
@@ -15376,7 +15376,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לֹא",
             "composite": false,
             "word_class": "Partícula de negação",
-            "syntax_role": "Negação verbal anteposta ('não')[cite: 60, 118]."
+            "syntax_role": "Negação verbal anteposta ('não')."
           },
           {
             "index": 9,
@@ -15385,8 +15385,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָכַל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal proibitivo. 2ª pessoa masculino plural do imperfeito Qal ('comereis')[cite: 161].",
-            "notes": "Holem sob o preformativo pela quiescência do alef na raiz Pe Alef (Kelley XXIII.67)[cite: 9, 39]."
+            "syntax_role": "Núcleo do predicado verbal proibitivo. 2ª pessoa masculino plural do imperfeito Qal ('comereis').",
+            "notes": "Holem sob o preformativo pela quiescência do alef na raiz Pe Alef (Kelley XXIII.67)."
           },
           {
             "index": 10,
@@ -15394,21 +15394,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Mikol",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Termo regente no construto partitivo ('de toda a')[cite: 53, 68].",
+            "syntax_role": "Termo regente no construto partitivo ('de toda a').",
             "parts": [
               {
                 "segment": "מִ",
                 "transliteration": "Mi",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "de",
-                "phonetics": "Nun assimilado por dagesh forte no kaf (Kelley VI.15.3[2])[cite: 53]."
+                "phonetics": "Nun assimilado por dagesh forte no kaf (Kelley VI.15.3[2])."
               },
               {
                 "segment": "כֹּל",
                 "transliteration": "Kol",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "toda a / qualquer[cite: 68]"
+                "meaning": "toda a / qualquer"
               }
             ]
           },
@@ -15419,7 +15419,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עֵץ",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo intermediário no construto singular ('árvore de')[cite: 88]."
+            "syntax_role": "Termo intermediário no construto singular ('árvore de')."
           },
           {
             "index": 12,
@@ -15427,21 +15427,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hagan",
             "lemma": "גַּן",
             "composite": true,
-            "syntax_role": "Termo regido final determinado ('o jardim')[cite: 92].",
+            "syntax_role": "Termo regido final determinado ('o jardim').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no guimel (ג)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no guimel (ג)."
               },
               {
                 "segment": "גָּן",
                 "transliteration": "Gan",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "jardim[cite: 47]"
+                "meaning": "jardim"
               }
             ]
           }
@@ -15464,8 +15464,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto em função de sujeito ('todo')[cite: 31, 68]. Unido por maqqef[cite: 31].",
-            "notes": "Qamats-hatuf perante maqqef (Kelley III.4)[cite: 31]."
+            "syntax_role": "Termo regente no construto em função de sujeito ('todo'). Unido por maqqef.",
+            "notes": "Qamats-hatuf perante maqqef (Kelley III.4)."
           },
           {
             "index": 2,
@@ -15474,7 +15474,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "זָכָר",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regido genitivo ('macho / indivíduo do sexo masculino')[cite: 160]."
+            "syntax_role": "Termo regido genitivo ('macho / indivíduo do sexo masculino')."
           },
           {
             "index": 3,
@@ -15482,21 +15482,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bakohanim",
             "lemma": "כֹּהֵן",
             "composite": true,
-            "syntax_role": "Adjunto partitivo ('entre os sacerdotes')[cite: 51, 160].",
+            "syntax_role": "Adjunto partitivo ('entre os sacerdotes').",
             "parts": [
               {
                 "segment": "בַּ",
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "entre os / nos",
-                "phonetics": "A preposição בְּ assimila o artigo הַ e herda o patah e o dagesh forte no kaf (Kelley VI.15.1[4])[cite: 51]."
+                "phonetics": "A preposição בְּ assimila o artigo הַ e herda o patah e o dagesh forte no kaf (Kelley VI.15.1[4])."
               },
               {
                 "segment": "כֹּהֲנִים",
                 "transliteration": "Kohanim",
                 "type": "Substantivo",
                 "inflection": "masculino plural absoluto",
-                "meaning": "sacerdotes[cite: 160]"
+                "meaning": "sacerdotes"
               }
             ]
           },
@@ -15506,7 +15506,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Yochlennu",
             "lemma": "אָכַל",
             "composite": true,
-            "syntax_role": "Núcleo verbal da primeira oração com sufixo acusativo ('dele comerá')[cite: 101, 102, 161].",
+            "syntax_role": "Núcleo verbal da primeira oração com sufixo acusativo ('dele comerá').",
             "parts": [
               {
                 "segment": "יֹאכְל",
@@ -15514,14 +15514,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
                 "meaning": "ele comerá",
-                "phonetics": "Holem sob o preformativo característico da raiz Pe Alef (Kelley XXIII.67)[cite: 9, 39]."
+                "phonetics": "Holem sob o preformativo característico da raiz Pe Alef (Kelley XXIII.67)."
               },
               {
                 "segment": "ֶנּוּ",
                 "transliteration": "Ennu",
                 "type": "Sufixo pronominal (com nun enérgico assimilado)",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "dele / a ele (objeto direto)[cite: 101, 102]"
+                "meaning": "dele / a ele (objeto direto)"
               }
             ]
           },
@@ -15531,21 +15531,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bemakom",
             "lemma": "מָקוֹם",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo anteposto da oração passiva ('em lugar')[cite: 50, 60].",
+            "syntax_role": "Adjunto adverbial locativo anteposto da oração passiva ('em lugar').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
                 "meaning": "em",
-                "phonetics": "Bet com shva simples diante de consoante com vogal cheia[cite: 50]."
+                "phonetics": "Bet com shva simples diante de consoante com vogal cheia."
               },
               {
                 "segment": "מָקוֹם",
                 "transliteration": "Makom",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "lugar[cite: 60]"
+                "meaning": "lugar"
               }
             ]
           },
@@ -15556,7 +15556,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָדוֹשׁ",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo modificando מָקוֹם ('santo / sagrado')[cite: 71]."
+            "syntax_role": "Adjetivo atributivo modificando מָקוֹם ('santo / sagrado')."
           },
           {
             "index": 7,
@@ -15565,8 +15565,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָכַל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal passivo. 3ª pessoa masculino singular do imperfeito Nif'al ('será comido')[cite: 172, 173].",
-            "notes": "No imperfeito Nif'al de Pe Alef, a gutural alef rejeita o dagesh forte, provocando alongamento compensatório para șere sob o preformativo (Kelley XXII.66.2 e XXIII.67)[cite: 9, 44]."
+            "syntax_role": "Núcleo do predicado verbal passivo. 3ª pessoa masculino singular do imperfeito Nif'al ('será comido').",
+            "notes": "No imperfeito Nif'al de Pe Alef, a gutural alef rejeita o dagesh forte, provocando alongamento compensatório para șere sob o preformativo (Kelley XXII.66.2 e XXIII.67)."
           }
         ]
       },
@@ -15586,14 +15586,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayivra",
             "lemma": "בָּרָא",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal narrativo ('e criou')[cite: 179].",
+            "syntax_role": "Núcleo do predicado verbal narrativo ('e criou').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יִּבְרָא",
@@ -15601,7 +15601,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
                 "meaning": "ele criou",
-                "phonetics": "Verbo Lamed Alef conservando qamats temático final (Kelley XXVI.71)[cite: 10]."
+                "phonetics": "Verbo Lamed Alef conservando qamats temático final (Kelley XXVI.71)."
               }
             ]
           },
@@ -15612,7 +15612,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Sujeito da oração ('Deus')[cite: 35]."
+            "syntax_role": "Sujeito da oração ('Deus')."
           },
           {
             "index": 3,
@@ -15621,7 +15621,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado[cite: 31]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado. Unida por maqqef."
           },
           {
             "index": 4,
@@ -15629,21 +15629,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'adam",
             "lemma": "אָדָם",
             "composite": true,
-            "syntax_role": "Objeto direto determinado ('o homem / a humanidade')[cite: 35, 92].",
+            "syntax_role": "Objeto direto determinado ('o homem / a humanidade').",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אָדָם",
                 "transliteration": "Adam",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "homem / ser humano[cite: 35]"
+                "meaning": "homem / ser humano"
               }
             ]
           },
@@ -15653,27 +15653,27 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Betzelmo",
             "lemma": "צֶלֶם",
             "composite": true,
-            "syntax_role": "Adjunto adverbial modal com sufixo possessivo ('à sua imagem')[cite: 50, 102].",
+            "syntax_role": "Adjunto adverbial modal com sufixo possessivo ('à sua imagem').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
-                "meaning": "em / à[cite: 50]"
+                "meaning": "em / à"
               },
               {
                 "segment": "צַלְמ",
                 "transliteration": "Tzalm",
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular construto",
-                "meaning": "imagem / semelhança de[cite: 85, 138]"
+                "meaning": "imagem / semelhança de"
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "sua / dele[cite: 102]"
+                "meaning": "sua / dele"
               }
             ]
           },
@@ -15683,20 +15683,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Betzelem",
             "lemma": "צֶלֶם",
             "composite": true,
-            "syntax_role": "Termo regente no construto com preposição prefixada ('à imagem de')[cite: 50, 85].",
+            "syntax_role": "Termo regente no construto com preposição prefixada ('à imagem de').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
-                "meaning": "em / à[cite: 50]"
+                "meaning": "em / à"
               },
               {
                 "segment": "צֶלֶם",
                 "transliteration": "Tzelem",
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular construto",
-                "meaning": "imagem de[cite: 85, 138]"
+                "meaning": "imagem de"
               }
             ]
           },
@@ -15707,7 +15707,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Termo regido genitivo da relação de construto ('de Deus')[cite: 35, 92]."
+            "syntax_role": "Termo regido genitivo da relação de construto ('de Deus')."
           },
           {
             "index": 8,
@@ -15716,8 +15716,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּרָא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Predicado verbal iterativo. 3ª pessoa masculino singular do perfeito Qal ('criou')[cite: 109, 110].",
-            "notes": "Verbo Lamed Alef (Kelley XXVI.71)[cite: 10]."
+            "syntax_role": "Predicado verbal iterativo. 3ª pessoa masculino singular do perfeito Qal ('criou').",
+            "notes": "Verbo Lamed Alef (Kelley XXVI.71)."
           },
           {
             "index": 9,
@@ -15725,20 +15725,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Oto",
             "lemma": "אֵת",
             "composite": true,
-            "syntax_role": "Objeto direto pronominal ('o')[cite: 101, 102].",
+            "syntax_role": "Objeto direto pronominal ('o').",
             "parts": [
               {
                 "segment": "אֹת",
                 "transliteration": "Ot",
                 "type": "Partícula indicadora de objeto direto",
-                "meaning": "objeto direto[cite: 101, 102]"
+                "meaning": "objeto direto"
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "ele / o[cite: 101, 102]"
+                "meaning": "ele / o"
               }
             ]
           },
@@ -15749,7 +15749,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "זָכָר",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Predicativo do objeto direto ('homem / macho')[cite: 160]."
+            "syntax_role": "Predicativo do objeto direto ('homem / macho')."
           },
           {
             "index": 11,
@@ -15757,21 +15757,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Unekevah",
             "lemma": "נְקֵבָה",
             "composite": true,
-            "syntax_role": "Predicativo coordenado do objeto direto ('e mulher / fêmea')[cite: 54, 160].",
+            "syntax_role": "Predicativo coordenado do objeto direto ('e mulher / fêmea').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante de consoante com shva simples (nun, Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante de consoante com shva simples (nun, Kelley VI.16.2)."
               },
               {
                 "segment": "נְקֵבָה",
                 "transliteration": "Nekevah",
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
-                "meaning": "fêmea / mulher[cite: 160]"
+                "meaning": "fêmea / mulher"
               }
             ]
           },
@@ -15782,7 +15782,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּרָא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Predicado verbal final. 3ª pessoa masculino singular do perfeito Qal ('criou')[cite: 109, 110]."
+            "syntax_role": "Predicado verbal final. 3ª pessoa masculino singular do perfeito Qal ('criou')."
           },
           {
             "index": 13,
@@ -15790,20 +15790,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Otam",
             "lemma": "אֵת",
             "composite": true,
-            "syntax_role": "Objeto direto pronominal plural ('os')[cite: 101, 102].",
+            "syntax_role": "Objeto direto pronominal plural ('os').",
             "parts": [
               {
                 "segment": "אֹת",
                 "transliteration": "Ot",
                 "type": "Partícula indicadora de objeto direto",
-                "meaning": "objeto direto[cite: 101, 102]"
+                "meaning": "objeto direto"
               },
               {
                 "segment": "ָם",
                 "transliteration": "Am",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino plural",
-                "meaning": "eles / os[cite: 101, 102]"
+                "meaning": "eles / os"
               }
             ]
           }
@@ -15826,7 +15826,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לָמָה",
             "composite": false,
             "word_class": "Advérbio interrogativo",
-            "syntax_role": "Introduz pergunta deliberativa ('por que...?')[cite: 129]."
+            "syntax_role": "Introduz pergunta deliberativa ('por que...?')."
           },
           {
             "index": 2,
@@ -15835,8 +15835,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָמַר",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal deliberativo. 3ª pessoa masculino plural do imperfeito Qal ('diriam' / 'deveriam dizer')[cite: 161, 164].",
-            "notes": "Holem sob o preformativo e volatilização vocálica perante aformativo vocálico plural na raiz Pe Alef (Kelley XXIII.67)[cite: 9, 114]."
+            "syntax_role": "Núcleo do predicado verbal deliberativo. 3ª pessoa masculino plural do imperfeito Qal ('diriam' / 'deveriam dizer').",
+            "notes": "Holem sob o preformativo e volatilização vocálica perante aformativo vocálico plural na raiz Pe Alef (Kelley XXIII.67)."
           },
           {
             "index": 3,
@@ -15844,14 +15844,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hagoyim",
             "lemma": "גּוֹי",
             "composite": true,
-            "syntax_role": "Sujeito da oração verbal ('as nações / os povos')[cite: 92].",
+            "syntax_role": "Sujeito da oração verbal ('as nações / os povos').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "as",
-                "phonetics": "Patah com dagesh forte no guimel (ג)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no guimel (ג)."
               },
               {
                 "segment": "גּוֹיִם",
@@ -15869,7 +15869,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אַיֵּה",
             "composite": false,
             "word_class": "Advérbio interrogativo de lugar",
-            "syntax_role": "Predicado nominal interrogativo de presença locativa ('onde está...?')[cite: 129]."
+            "syntax_role": "Predicado nominal interrogativo de presença locativa ('onde está...?')."
           },
           {
             "index": 5,
@@ -15877,21 +15877,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eloheihem",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Sujeito da citação interrogativa com sufixo possessivo ('o seu Deus')[cite: 103].",
+            "syntax_role": "Sujeito da citação interrogativa com sufixo possessivo ('o seu Deus').",
             "parts": [
               {
                 "segment": "אֱלֹהֵי",
                 "transliteration": "Elohei",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "Deus de[cite: 87, 103]"
+                "meaning": "Deus de"
               },
               {
                 "segment": "הֶם",
                 "transliteration": "Hem",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino plural",
-                "meaning": "deles / seu[cite: 103]"
+                "meaning": "deles / seu"
               }
             ]
           }
@@ -16070,7 +16070,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Deítica com Oração Relativa (Verbo Ayin Gutural)",
-        "notes": "No verbo Ayin Gutural בָּחַר, a gutural het prefere vogais da classe 'a' e toma hatef-patah no lugar de shva simples sob certas formas (Kelley XXIV.69)[cite: 9, 44].",
+        "notes": "No verbo Ayin Gutural בָּחַר, a gutural het prefere vogais da classe 'a' e toma hatef-patah no lugar de shva simples sob certas formas (Kelley XXIV.69).",
         "tokens": [
           {
             "index": 1,
@@ -16079,7 +16079,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עַתָּה",
             "composite": false,
             "word_class": "Advérbio de tempo",
-            "syntax_role": "Marcador temporal discursivo de transição ('agora')[cite: 109]."
+            "syntax_role": "Marcador temporal discursivo de transição ('agora')."
           },
           {
             "index": 2,
@@ -16088,7 +16088,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הִנֵּה",
             "composite": false,
             "word_class": "Partícula deíctica demonstrativa",
-            "syntax_role": "Atrai a atenção direta sobre o termo subsequente ('eis' / 'eis aqui')[cite: 101, 102, 126]."
+            "syntax_role": "Atrai a atenção direta sobre o termo subsequente ('eis' / 'eis aqui')."
           },
           {
             "index": 3,
@@ -16096,21 +16096,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hamelech",
             "lemma": "מֶלֶךְ",
             "composite": true,
-            "syntax_role": "Núcleo substantivo evidenciado ('o rei')[cite: 92].",
+            "syntax_role": "Núcleo substantivo evidenciado ('o rei').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no mem (מ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no mem (מ)."
               },
               {
                 "segment": "מֶּלֶךְ",
                 "transliteration": "Melech",
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular absoluto",
-                "meaning": "rei[cite: 84]"
+                "meaning": "rei"
               }
             ]
           },
@@ -16121,7 +16121,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que' / 'o qual')[cite: 46]."
+            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que' / 'o qual')."
           },
           {
             "index": 5,
@@ -16130,8 +16130,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּחַר",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da oração relativa. 2ª pessoa masculino plural do perfeito Qal ('escolhestes')[cite: 114].",
-            "notes": "Verbo da classe Ayin Gutural retendo patah sob o segundo radical het perante o aformativo consonantal pesado -tem (Kelley XII.30.4[4] e XXIV.69)[cite: 9, 115]."
+            "syntax_role": "Núcleo verbal da oração relativa. 2ª pessoa masculino plural do perfeito Qal ('escolhestes').",
+            "notes": "Verbo da classe Ayin Gutural retendo patah sob o segundo radical het perante o aformativo consonantal pesado -tem (Kelley XII.30.4[4] e XXIV.69)."
           }
         ]
       },
@@ -16144,7 +16144,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Bênção Sacerdotal Paratática com Jussivo Pi'el de Ayin Gutural",
-        "notes": "No tronco Pi'el do verbo בָּרַךְ, a consoante mediana resh (tratada como gutural) recusa o dagesh forte, sofrendo compensação vocálica com șere no preformativo (Kelley XIV.36.2 e XXIV.69)[cite: 9, 44, 140].",
+        "notes": "No tronco Pi'el do verbo בָּרַךְ, a consoante mediana resh (tratada como gutural) recusa o dagesh forte, sofrendo compensação vocálica com șere no preformativo (Kelley XIV.36.2 e XXIV.69).",
         "tokens": [
           {
             "index": 1,
@@ -16152,7 +16152,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Yevarechecha",
             "lemma": "בָּרַךְ",
             "composite": true,
-            "syntax_role": "Primeiro predicado verbal impetratório / jussivo com sufixo ('ele te abençoe')[cite: 102, 166].",
+            "syntax_role": "Primeiro predicado verbal impetratório / jussivo com sufixo ('ele te abençoe').",
             "parts": [
               {
                 "segment": "יְבָרֶךְ",
@@ -16160,14 +16160,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito/jussivo Pi'el",
                 "meaning": "ele abençoe",
-                "phonetics": "Șere alongado compensatório no bet da raiz decorrente da recusa de reduplicação pelo resh gutural (Kelley XIV.36.2)[cite: 44, 140]."
+                "phonetics": "Șere alongado compensatório no bet da raiz decorrente da recusa de reduplicação pelo resh gutural (Kelley XIV.36.2)."
               },
               {
                 "segment": "ךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "te / a ti (objeto direto)[cite: 102]"
+                "meaning": "te / a ti (objeto direto)"
               }
             ]
           },
@@ -16178,7 +16178,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração volitiva ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração volitiva ('o SENHOR')."
           },
           {
             "index": 3,
@@ -16186,28 +16186,28 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Veyishmerecha",
             "lemma": "שָׁמַר",
             "composite": true,
-            "syntax_role": "Segundo predicado verbal coordenado com sufixo acusativo ('e te guarde')[cite: 54, 102, 166].",
+            "syntax_role": "Segundo predicado verbal coordenado com sufixo acusativo ('e te guarde').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "יִשְׁמְר",
                 "transliteration": "Yishmer",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito/jussivo Qal",
-                "meaning": "ele guarde[cite: 161, 166]"
+                "meaning": "ele guarde"
               },
               {
                 "segment": "ֶךָ",
                 "transliteration": "Echa",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "te / a ti[cite: 102]"
+                "meaning": "te / a ti"
               }
             ]
           }
@@ -16229,20 +16229,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Al-ken",
             "lemma": "עַל־כֵּן",
             "composite": true,
-            "syntax_role": "Locução conjuntiva conclusiva ('por isso' / 'portanto')[cite: 138].",
+            "syntax_role": "Locução conjuntiva conclusiva ('por isso' / 'portanto').",
             "parts": [
               {
                 "segment": "עַל־",
                 "transliteration": "Al-",
                 "type": "Preposição",
-                "meaning": "sobre[cite: 52]",
-                "phonetics": "Unida por maqqef[cite: 31]."
+                "meaning": "sobre",
+                "phonetics": "Unida por maqqef."
               },
               {
                 "segment": "כֵּן",
                 "transliteration": "Ken",
                 "type": "Advérbio",
-                "meaning": "assim[cite: 68]"
+                "meaning": "assim"
               }
             ]
           },
@@ -16253,8 +16253,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּרַךְ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro núcleo verbal. 3ª pessoa masculino singular do perfeito Pi'el ('abençoou')[cite: 185].",
-            "notes": "Alongamento compensatório do patah para șere sob o bet da raiz diante da gutural resh que não aceita dagesh forte (Kelley XIV.36.2)[cite: 44, 140]."
+            "syntax_role": "Primeiro núcleo verbal. 3ª pessoa masculino singular do perfeito Pi'el ('abençoou').",
+            "notes": "Alongamento compensatório do patah para șere sob o bet da raiz diante da gutural resh que não aceita dagesh forte (Kelley XIV.36.2)."
           },
           {
             "index": 3,
@@ -16263,7 +16263,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração ('o SENHOR')."
           },
           {
             "index": 4,
@@ -16272,7 +16272,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado[cite: 31]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado. Unida por maqqef."
           },
           {
             "index": 5,
@@ -16281,7 +16281,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יוֹם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular do objeto direto ('o dia de')[cite: 89]."
+            "syntax_role": "Termo regente no construto singular do objeto direto ('o dia de')."
           },
           {
             "index": 6,
@@ -16289,21 +16289,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hashabbat",
             "lemma": "שַׁבָּת",
             "composite": true,
-            "syntax_role": "Termo regido determinado da relação de construto ('do sábado')[cite: 92].",
+            "syntax_role": "Termo regido determinado da relação de construto ('do sábado').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no shin (ש)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no shin (ש)."
               },
               {
                 "segment": "שַּׁבָּת",
                 "transliteration": "Shabbat",
                 "type": "Substantivo",
                 "inflection": "comum singular absoluto",
-                "meaning": "sábado / descanso[cite: 109]"
+                "meaning": "sábado / descanso"
               }
             ]
           },
@@ -16313,29 +16313,29 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vaykaddeshehu",
             "lemma": "קָדַשׁ",
             "composite": true,
-            "syntax_role": "Segundo predicado verbal narrativo com sufixo acusativo ('e o santificou')[cite: 102, 141, 179].",
+            "syntax_role": "Segundo predicado verbal narrativo com sufixo acusativo ('e o santificou').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah sem dagesh no yod com shva simples (Kelley XVI.43.2)[cite: 180]."
+                "phonetics": "Vav com patah sem dagesh no yod com shva simples (Kelley XVI.43.2)."
               },
               {
                 "segment": "יְקַדְּשֵׁ",
                 "transliteration": "Yekaddeshe",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Pi'el",
-                "meaning": "ele santificou / consagrou[cite: 141]",
-                "phonetics": "Dagesh forte característico do tronco Pi'el no dalet mediano (Kelley XIV.36.2)[cite: 140, 141]."
+                "meaning": "ele santificou / consagrou",
+                "phonetics": "Dagesh forte característico do tronco Pi'el no dalet mediano (Kelley XIV.36.2)."
               },
               {
                 "segment": "הוּ",
                 "transliteration": "Hu",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "o / a ele (objeto direto referindo-se ao sábado)[cite: 98, 102]"
+                "meaning": "o / a ele (objeto direto referindo-se ao sábado)"
               }
             ]
           }
@@ -16357,20 +16357,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ke'ish",
             "lemma": "אִישׁ",
             "composite": true,
-            "syntax_role": "Termo de comparação introduzido pela preposição כְּ ('como alguém / um homem')[cite: 50].",
+            "syntax_role": "Termo de comparação introduzido pela preposição כְּ ('como alguém / um homem').",
             "parts": [
               {
                 "segment": "כְּ",
                 "transliteration": "Ke",
                 "type": "Preposição inseparável",
-                "meaning": "como / conforme[cite: 50]"
+                "meaning": "como / conforme"
               },
               {
                 "segment": "אִישׁ",
                 "transliteration": "Ish",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "homem / alguém[cite: 35]"
+                "meaning": "homem / alguém"
               }
             ]
           },
@@ -16381,7 +16381,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração adjetiva ('a quem')[cite: 46]."
+            "syntax_role": "Introduz a oração adjetiva ('a quem')."
           },
           {
             "index": 3,
@@ -16389,21 +16389,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Immo",
             "lemma": "אֵם",
             "composite": true,
-            "syntax_role": "Sujeito da oração relativa com sufixo possessivo ('sua mãe')[cite: 102].",
+            "syntax_role": "Sujeito da oração relativa com sufixo possessivo ('sua mãe').",
             "parts": [
               {
                 "segment": "אִמּ",
                 "transliteration": "Imm",
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
-                "meaning": "mãe de[cite: 102]"
+                "meaning": "mãe de"
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "dele / sua[cite: 102]"
+                "meaning": "dele / sua"
               }
             ]
           },
@@ -16413,7 +16413,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Tenachamennu",
             "lemma": "נִחַם",
             "composite": true,
-            "syntax_role": "Núcleo verbal da oração relativa com sufixo acusativo ('o consola')[cite: 101, 102, 174].",
+            "syntax_role": "Núcleo verbal da oração relativa com sufixo acusativo ('o consola').",
             "parts": [
               {
                 "segment": "תְּנַחַם",
@@ -16421,14 +16421,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa feminino singular do imperfeito Pi'el",
                 "meaning": "ela consola",
-                "phonetics": "A gutural mediana het (ח) sofre reduplicação virtual mantendo patah anterior (Kelley V.13.1 e XXIV.69)[cite: 9, 44]."
+                "phonetics": "A gutural mediana het (ח) sofre reduplicação virtual mantendo patah anterior (Kelley V.13.1 e XXIV.69)."
               },
               {
                 "segment": "ֶנּוּ",
                 "transliteration": "Ennu",
                 "type": "Sufixo pronominal (com nun enérgico assimilado)",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "o / a ele[cite: 101, 102]"
+                "meaning": "o / a ele"
               }
             ]
           },
@@ -16439,7 +16439,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֵּן",
             "composite": false,
             "word_class": "Advérbio de correspondência",
-            "syntax_role": "Correlativo de כְּ ('assim' / 'da mesma forma')[cite: 68]."
+            "syntax_role": "Correlativo de כְּ ('assim' / 'da mesma forma')."
           },
           {
             "index": 6,
@@ -16448,7 +16448,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָנֹכִי",
             "composite": false,
             "word_class": "Pronome pessoal independente",
-            "syntax_role": "Sujeito da oração principal anteposto em ênfase expressiva ('Eu')[cite: 77, 118]."
+            "syntax_role": "Sujeito da oração principal anteposto em ênfase expressiva ('Eu')."
           },
           {
             "index": 7,
@@ -16456,22 +16456,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Anachemchem",
             "lemma": "נִחַם",
             "composite": true,
-            "syntax_role": "Núcleo verbal da oração principal com sufixo acusativo ('vos consolarei')[cite: 101, 102, 174].",
+            "syntax_role": "Núcleo verbal da oração principal com sufixo acusativo ('vos consolarei').",
             "parts": [
               {
                 "segment": "אֲנַחֵם",
                 "transliteration": "Anachem",
                 "type": "Verbo",
                 "inflection": "1ª pessoa comum do singular do imperfeito Pi'el",
-                "meaning": "eu consolarei[cite: 174]",
-                "phonetics": "Hatef-patah sob o preformativo alef gutural (Kelley XVI.42)[cite: 172]."
+                "meaning": "eu consolarei",
+                "phonetics": "Hatef-patah sob o preformativo alef gutural (Kelley XVI.42)."
               },
               {
                 "segment": "כֶם",
                 "transliteration": "Chem",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino plural",
-                "meaning": "vos / a vós (objeto direto)[cite: 101, 102]"
+                "meaning": "vos / a vós (objeto direto)"
               }
             ]
           }
@@ -16494,8 +16494,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הָיָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Cópula volitiva / jussivo Qal ('seja')[cite: 54, 166].",
-            "notes": "Forma apocopada do jussivo Qal do verbo Lamed He הָיָה (Kelley XV.41.1 e XXVII.72)[cite: 10, 166]."
+            "syntax_role": "Cópula volitiva / jussivo Qal ('seja').",
+            "notes": "Forma apocopada do jussivo Qal do verbo Lamed He הָיָה (Kelley XV.41.1 e XXVII.72)."
           },
           {
             "index": 2,
@@ -16504,7 +16504,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שֵׁם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de sujeito ('o nome de')[cite: 89]."
+            "syntax_role": "Termo regente no construto singular em função de sujeito ('o nome de')."
           },
           {
             "index": 3,
@@ -16513,7 +16513,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo ('do SENHOR')."
           },
           {
             "index": 4,
@@ -16522,8 +16522,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּרַךְ",
             "composite": false,
             "word_class": "Verbo (particípio passivo)",
-            "syntax_role": "Predicativo do sujeito. Particípio masculino singular do tronco Pu'al ('bendito')[cite: 9, 142].",
-            "notes": "O qibbus do Pu'al é alongado compensatoriamente para holem pleno perante a recusa de reduplicação pelo resh gutural (Kelley XIV.36.3)[cite: 44, 141]."
+            "syntax_role": "Predicativo do sujeito. Particípio masculino singular do tronco Pu'al ('bendito').",
+            "notes": "O qibbus do Pu'al é alongado compensatoriamente para holem pleno perante a recusa de reduplicação pelo resh gutural (Kelley XIV.36.3)."
           },
           {
             "index": 5,
@@ -16531,20 +16531,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Me'attah",
             "lemma": "עַתָּה",
             "composite": true,
-            "syntax_role": "Adjunto adverbial temporal inicial ('desde agora')[cite: 53, 109].",
+            "syntax_role": "Adjunto adverbial temporal inicial ('desde agora').",
             "parts": [
               {
                 "segment": "מֵ",
                 "transliteration": "Me",
                 "type": "Preposição inseparável (variante de מִן)",
-                "meaning": "desde / a partir de[cite: 53]",
-                "phonetics": "Alongamento compensatório para șere perante a gutural ayin (ע) (Kelley VI.15.3[3])[cite: 53]."
+                "meaning": "desde / a partir de",
+                "phonetics": "Alongamento compensatório para șere perante a gutural ayin (ע) (Kelley VI.15.3[3])."
               },
               {
                 "segment": "עַתָּה",
                 "transliteration": "Attah",
                 "type": "Advérbio de tempo",
-                "meaning": "agora[cite: 109]"
+                "meaning": "agora"
               }
             ]
           },
@@ -16554,20 +16554,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'ad",
             "lemma": "עַד",
             "composite": true,
-            "syntax_role": "Conjunção e preposição temporal final ('e até')[cite: 53, 54].",
+            "syntax_role": "Conjunção e preposição temporal final ('e até').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "עַד",
                 "transliteration": "Ad",
                 "type": "Preposição",
-                "meaning": "até[cite: 53]"
+                "meaning": "até"
               }
             ]
           },
@@ -16578,7 +16578,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עוֹלָם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regido pela preposição עַד ('eternidade / sempre')[cite: 170]."
+            "syntax_role": "Termo regido pela preposição עַד ('eternidade / sempre')."
           }
         ]
       }
@@ -16744,7 +16744,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa Complexa com Verbos Lamed Gutural",
-        "notes": "Os verbos שָׁמַע e שָׁלַח terminam em gutural (Lamed Gutural), exibindo patah regular na segunda sílaba do imperfeito Qal (Kelley XXV.70)[cite: 10, 110].",
+        "notes": "Os verbos שָׁמַע e שָׁלַח terminam em gutural (Lamed Gutural), exibindo patah regular na segunda sílaba do imperfeito Qal (Kelley XXV.70).",
         "tokens": [
           {
             "index": 1,
@@ -16752,14 +16752,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Va'eshma",
             "lemma": "שָׁמַע",
             "composite": true,
-            "syntax_role": "Núcleo verbal narrativo principal ('e ouvi')[cite: 179].",
+            "syntax_role": "Núcleo verbal narrativo principal ('e ouvi').",
             "parts": [
               {
                 "segment": "וָ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com qamats decorrente do alongamento compensatório perante o alef gutural que recusa dagesh forte (Kelley XVI.43.2)[cite: 44, 180]."
+                "phonetics": "Vav com qamats decorrente do alongamento compensatório perante o alef gutural que recusa dagesh forte (Kelley XVI.43.2)."
               },
               {
                 "segment": "אֶשְׁמַע",
@@ -16767,7 +16767,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "1ª pessoa comum do singular do imperfeito Qal",
                 "meaning": "eu ouvi",
-                "phonetics": "Patah sob o radical ayin característico de verbos Lamed Gutural (Kelley XXV.70)[cite: 10]."
+                "phonetics": "Patah sob o radical ayin característico de verbos Lamed Gutural (Kelley XXV.70)."
               }
             ]
           },
@@ -16778,7 +16778,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado[cite: 31]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado. Unida por maqqef."
           },
           {
             "index": 3,
@@ -16787,7 +16787,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קוֹל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de objeto direto ('a voz de')[cite: 89]."
+            "syntax_role": "Termo regente no construto singular em função de objeto direto ('a voz de')."
           },
           {
             "index": 4,
@@ -16796,7 +16796,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲדֹנָי",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo da relação de construto ('do Senhor')[cite: 57, 92]."
+            "syntax_role": "Termo regido genitivo da relação de construto ('do Senhor')."
           },
           {
             "index": 5,
@@ -16805,7 +16805,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָמַר",
             "composite": false,
             "word_class": "Verbo (particípio ativo)",
-            "syntax_role": "Particípio ativo Qal circunstancial predicativo ('dizendo')[cite: 9]."
+            "syntax_role": "Particípio ativo Qal circunstancial predicativo ('dizendo')."
           },
           {
             "index": 6,
@@ -16813,20 +16813,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Et-mi",
             "lemma": "מִי",
             "composite": true,
-            "syntax_role": "Objeto direto interrogativo anteposto da citação direta ('a quem...?')[cite: 31, 128].",
+            "syntax_role": "Objeto direto interrogativo anteposto da citação direta ('a quem...?').",
             "parts": [
               {
                 "segment": "אֶת־",
                 "transliteration": "Et-",
                 "type": "Partícula indicadora de objeto direto",
                 "meaning": "a (acusativo)",
-                "phonetics": "Șere abreviado em segol perante maqqef[cite: 31]."
+                "phonetics": "Șere abreviado em segol perante maqqef."
               },
               {
                 "segment": "מִי",
                 "transliteration": "Mi",
                 "type": "Pronome interrogativo",
-                "meaning": "quem?[cite: 128]"
+                "meaning": "quem?"
               }
             ]
           },
@@ -16837,8 +16837,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁלַח",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da pergunta deliberativa. 1ª pessoa comum do singular do imperfeito Qal ('enviarei' / 'hei de enviar')[cite: 161, 166].",
-            "notes": "Patah temático no segundo radical het por ser verbo Lamed Gutural (Kelley XXV.70)[cite: 10]."
+            "syntax_role": "Núcleo verbal da pergunta deliberativa. 1ª pessoa comum do singular do imperfeito Qal ('enviarei' / 'hei de enviar').",
+            "notes": "Patah temático no segundo radical het por ser verbo Lamed Gutural (Kelley XXV.70)."
           }
         ]
       },
@@ -16858,28 +16858,28 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Uve'et",
             "lemma": "עֵת",
             "composite": true,
-            "syntax_role": "Termo regente no construto temporal com conjunção e preposição ('e no tempo de')[cite: 50, 54, 96].",
+            "syntax_role": "Termo regente no construto temporal com conjunção e preposição ('e no tempo de').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante da labial bet (ב) (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante da labial bet (ב) (Kelley VI.16.2)."
               },
               {
                 "segment": "בְ",
                 "transliteration": "Ve",
                 "type": "Preposição inseparável",
-                "meaning": "em / no[cite: 50]",
-                "phonetics": "Bet sem dagesh lene por vir após vogal[cite: 20, 21]."
+                "meaning": "em / no",
+                "phonetics": "Bet sem dagesh lene por vir após vogal."
               },
               {
                 "segment": "עֵת",
                 "transliteration": "Et",
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
-                "meaning": "tempo / época de[cite: 96]"
+                "meaning": "tempo / época de"
               }
             ]
           },
@@ -16889,21 +16889,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Tzaratam",
             "lemma": "צָרָה",
             "composite": true,
-            "syntax_role": "Termo regido genitivo com sufixo possessivo ('sua angústia')[cite: 102].",
+            "syntax_role": "Termo regido genitivo com sufixo possessivo ('sua angústia').",
             "parts": [
               {
                 "segment": "צָרַת",
                 "transliteration": "Tzarat",
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
-                "meaning": "angústia / aflição de[cite: 91]"
+                "meaning": "angústia / aflição de"
               },
               {
                 "segment": "ָם",
                 "transliteration": "Am",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino plural",
-                "meaning": "deles / sua[cite: 102]"
+                "meaning": "deles / sua"
               }
             ]
           },
@@ -16914,8 +16914,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "צָעַק",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da primeira oração. 3ª pessoa masculino plural do imperfeito Qal ('clamarão')[cite: 161].",
-            "notes": "Hatef-patah sob a gutural mediana ayin decorrente da adição do aformativo vocálico (Kelley XXIV.69)[cite: 9, 44]."
+            "syntax_role": "Núcleo verbal da primeira oração. 3ª pessoa masculino plural do imperfeito Qal ('clamarão').",
+            "notes": "Hatef-patah sob a gutural mediana ayin decorrente da adição do aformativo vocálico (Kelley XXIV.69)."
           },
           {
             "index": 4,
@@ -16923,20 +16923,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eleicha",
             "lemma": "אֶל",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido ('a ti')[cite: 99, 100].",
+            "syntax_role": "Complemento preposicional regido ('a ti').",
             "parts": [
               {
                 "segment": "אֵלֶי",
                 "transliteration": "Elei",
                 "type": "Preposição",
-                "meaning": "a / em direção a[cite: 99, 100]"
+                "meaning": "a / em direção a"
               },
               {
                 "segment": "ךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "ti[cite: 99, 100]"
+                "meaning": "ti"
               }
             ]
           },
@@ -16946,21 +16946,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'attah",
             "lemma": "אַתָּה",
             "composite": true,
-            "syntax_role": "Sujeito anteposto enfático da segunda oração ('e tu')[cite: 77, 118].",
+            "syntax_role": "Sujeito anteposto enfático da segunda oração ('e tu').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "אַתָּה",
                 "transliteration": "Attah",
                 "type": "Pronome pessoal independente",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "tu[cite: 77]"
+                "meaning": "tu"
               }
             ]
           },
@@ -16970,21 +16970,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Mishamayim",
             "lemma": "שָׁמַיִם",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo de procedência ('dos céus')[cite: 53].",
+            "syntax_role": "Adjunto adverbial locativo de procedência ('dos céus').",
             "parts": [
               {
                 "segment": "מִ",
                 "transliteration": "Mi",
                 "type": "Preposição inseparável (variante de מִן)",
-                "meaning": "de / desde[cite: 53]",
-                "phonetics": "Nun assimilado por dagesh forte no shin (ש) (Kelley VI.15.3[2])[cite: 53]."
+                "meaning": "de / desde",
+                "phonetics": "Nun assimilado por dagesh forte no shin (ש) (Kelley VI.15.3[2])."
               },
               {
                 "segment": "שָּׁמַיִם",
                 "transliteration": "Shamayim",
                 "type": "Substantivo",
                 "inflection": "masculino plural/dual absoluto",
-                "meaning": "céus[cite: 68]"
+                "meaning": "céus"
               }
             ]
           },
@@ -16995,8 +16995,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da segunda oração. 2ª pessoa masculino singular do imperfeito Qal ('ouvirás')[cite: 161].",
-            "notes": "Patah temático e alongamento em pausa sob o radical gutural ayin (Kelley IV.8.3 e XXV.70)[cite: 10, 37]."
+            "syntax_role": "Núcleo verbal da segunda oração. 2ª pessoa masculino singular do imperfeito Qal ('ouvirás').",
+            "notes": "Patah temático e alongamento em pausa sob o radical gutural ayin (Kelley IV.8.3 e XXV.70)."
           }
         ]
       },
@@ -17016,14 +17016,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayimshach",
             "lemma": "מָשַׁח",
             "composite": true,
-            "syntax_role": "Primeiro núcleo verbal narrativo ('e ungiu')[cite: 179].",
+            "syntax_role": "Primeiro núcleo verbal narrativo ('e ungiu').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יִּמְשַׁח",
@@ -17031,7 +17031,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
                 "meaning": "ele ungiu",
-                "phonetics": "Patah temático sob o het final gutural da raiz מָשַׁח (Kelley XXV.70)[cite: 10]."
+                "phonetics": "Patah temático sob o het final gutural da raiz מָשַׁח (Kelley XXV.70)."
               }
             ]
           },
@@ -17042,7 +17042,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto próprio determinado[cite: 31, 92]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto próprio determinado. Unida por maqqef."
           },
           {
             "index": 3,
@@ -17051,7 +17051,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שְׁלֹמֹה",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Objeto direto determinado ('Salomão')[cite: 23]."
+            "syntax_role": "Objeto direto determinado ('Salomão')."
           },
           {
             "index": 4,
@@ -17059,14 +17059,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayitke'u",
             "lemma": "תָּקַע",
             "composite": true,
-            "syntax_role": "Segundo núcleo verbal narrativo ('e tocaram')[cite: 179].",
+            "syntax_role": "Segundo núcleo verbal narrativo ('e tocaram').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod."
               },
               {
                 "segment": "יִּתְקְעוּ",
@@ -17074,7 +17074,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino plural do imperfeito Qal",
                 "meaning": "eles tocaram",
-                "phonetics": "Shva audível sob a gutural ayin decorrente do aformativo plural (Kelley XXV.70)[cite: 10]."
+                "phonetics": "Shva audível sob a gutural ayin decorrente do aformativo plural (Kelley XXV.70)."
               }
             ]
           },
@@ -17084,21 +17084,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bashofar",
             "lemma": "שׁוֹפָר",
             "composite": true,
-            "syntax_role": "Complemento preposicional instrumental regido ('a trombeta / com o shofar')[cite: 51, 170].",
+            "syntax_role": "Complemento preposicional instrumental regido ('a trombeta / com o shofar').",
             "parts": [
               {
                 "segment": "בַּ",
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "no / a",
-                "phonetics": "A preposição בְּ assimila o artigo הַ com patah e dagesh forte no shin (Kelley VI.15.1[4])[cite: 51]."
+                "phonetics": "A preposição בְּ assimila o artigo הַ com patah e dagesh forte no shin (Kelley VI.15.1[4])."
               },
               {
                 "segment": "שּׁוֹפָר",
                 "transliteration": "Shofar",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "trombeta / chifre de carneiro[cite: 170]"
+                "meaning": "trombeta / chifre de carneiro"
               }
             ]
           }
@@ -17121,7 +17121,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הִנֵּה",
             "composite": false,
             "word_class": "Partícula deíctica",
-            "syntax_role": "Marcador de certeza e iminência de ação ('eis que')[cite: 101, 102, 126]."
+            "syntax_role": "Marcador de certeza e iminência de ação ('eis que')."
           },
           {
             "index": 2,
@@ -17130,7 +17130,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָנֹכִי",
             "composite": false,
             "word_class": "Pronome pessoal independente",
-            "syntax_role": "Sujeito da oração com particípio ('eu')[cite: 77]."
+            "syntax_role": "Sujeito da oração com particípio ('eu')."
           },
           {
             "index": 3,
@@ -17139,8 +17139,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁלַח",
             "composite": false,
             "word_class": "Verbo (particípio ativo)",
-            "syntax_role": "Predicado verbal participial com valor de presente progressivo / futuro iminente ('estou enviando' / 'envio')[cite: 9].",
-            "notes": "Patah furtivo sob o radical gutural het precedido de vogal imutável (Kelley V.13.2 e XX.59)[cite: 9, 44]."
+            "syntax_role": "Predicado verbal participial com valor de presente progressivo / futuro iminente ('estou enviando' / 'envio').",
+            "notes": "Patah furtivo sob o radical gutural het precedido de vogal imutável (Kelley V.13.2 e XX.59)."
           },
           {
             "index": 4,
@@ -17157,20 +17157,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lefaneicha",
             "lemma": "לִפְנֵי",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo de precedência ('diante de ti')[cite: 99, 100].",
+            "syntax_role": "Adjunto adverbial locativo de precedência ('diante de ti').",
             "parts": [
               {
                 "segment": "לְפָנֶי",
                 "transliteration": "Lefanei",
                 "type": "Preposição composta (base construta plural de פָּנִים)",
-                "meaning": "diante de / perante[cite: 99, 100]"
+                "meaning": "diante de / perante"
               },
               {
                 "segment": "ךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "ti[cite: 99, 100]"
+                "meaning": "ti"
               }
             ]
           },
@@ -17180,28 +17180,28 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lishmorcha",
             "lemma": "שָׁמַר",
             "composite": true,
-            "syntax_role": "Oração reduzida de infinitivo construto com valor final e sufixo acusativo ('para te guardar')[cite: 8, 50, 102].",
+            "syntax_role": "Oração reduzida de infinitivo construto com valor final e sufixo acusativo ('para te guardar').",
             "parts": [
               {
                 "segment": "לִ",
                 "transliteration": "Li",
                 "type": "Preposição inseparável",
                 "meaning": "para",
-                "phonetics": "Preposição לְ com hireq perante o shva simples inicial da forma verbal (Kelley VI.15.1[2])[cite: 50]."
+                "phonetics": "Preposição לְ com hireq perante o shva simples inicial da forma verbal (Kelley VI.15.1[2])."
               },
               {
                 "segment": "שְׁמָר",
                 "transliteration": "Shmor",
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
-                "meaning": "guardar[cite: 8]"
+                "meaning": "guardar"
               },
               {
                 "segment": "ְךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "te / a ti (objeto direto)[cite: 102]"
+                "meaning": "te / a ti (objeto direto)"
               }
             ]
           },
@@ -17211,21 +17211,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Baddarech",
             "lemma": "דֶּרֶךְ",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo determinado ('no caminho')[cite: 51, 68].",
+            "syntax_role": "Adjunto adverbial locativo determinado ('no caminho').",
             "parts": [
               {
                 "segment": "בַּ",
                 "transliteration": "Ba",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "no (em + o)",
-                "phonetics": "A preposição בְּ assume o patah do artigo e o dagesh forte no dalet (Kelley VI.15.1[4])[cite: 51]."
+                "phonetics": "A preposição בְּ assume o patah do artigo e o dagesh forte no dalet (Kelley VI.15.1[4])."
               },
               {
                 "segment": "דָּרֶךְ",
                 "transliteration": "Darech",
                 "type": "Substantivo segolado",
                 "inflection": "comum singular absoluto",
-                "meaning": "caminho[cite: 68]"
+                "meaning": "caminho"
               }
             ]
           }
@@ -17248,8 +17248,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "זֶה",
             "composite": false,
             "word_class": "Pronome demonstrativo",
-            "syntax_role": "Predicado nominal demonstrativo sem artigo ('este é')[cite: 79]. Unido por maqqef[cite: 31].",
-            "notes": "Uso predicativo do pronome demonstrativo (Kelley IX.24.3[2])[cite: 79]."
+            "syntax_role": "Predicado nominal demonstrativo sem artigo ('este é'). Unido por maqqef.",
+            "notes": "Uso predicativo do pronome demonstrativo (Kelley IX.24.3[2])."
           },
           {
             "index": 2,
@@ -17257,14 +17257,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hayom",
             "lemma": "יוֹם",
             "composite": true,
-            "syntax_role": "Sujeito determinado da oração nominal inicial ('o dia')[cite: 92].",
+            "syntax_role": "Sujeito determinado da oração nominal inicial ('o dia').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte no yod (י)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no yod (י)."
               },
               {
                 "segment": "יוֹם",
@@ -17282,8 +17282,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עָשָׂה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo da oração relativa sindética elíptica ('que fez')[cite: 110, 138].",
-            "notes": "Verbo fraco Pe Gutural e Lamed He no perfeito Qal 3ms (Kelley XXVII.72)[cite: 10, 112]."
+            "syntax_role": "Núcleo da oração relativa sindética elíptica ('que fez').",
+            "notes": "Verbo fraco Pe Gutural e Lamed He no perfeito Qal 3ms (Kelley XXVII.72)."
           },
           {
             "index": 4,
@@ -17292,7 +17292,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração relativa ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração relativa ('o SENHOR')."
           },
           {
             "index": 5,
@@ -17301,8 +17301,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "גִּיל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro predicado volitivo. 1ª pessoa comum do plural do coortativo Qal ('regozijemo-nos' / 'exultemos')[cite: 167].",
-            "notes": "Verbo oco médio-yod acrescido do aformativo coortativo -ah (Kelley XV.41.2 e XXIX.74)[cite: 10, 167]."
+            "syntax_role": "Primeiro predicado volitivo. 1ª pessoa comum do plural do coortativo Qal ('regozijemo-nos' / 'exultemos').",
+            "notes": "Verbo oco médio-yod acrescido do aformativo coortativo -ah (Kelley XV.41.2 e XXIX.74)."
           },
           {
             "index": 6,
@@ -17310,14 +17310,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Venismechah",
             "lemma": "שָׂמַח",
             "composite": true,
-            "syntax_role": "Segundo predicado verbal coortativo coordenado ('e alegremo-nos')[cite: 54, 167].",
+            "syntax_role": "Segundo predicado verbal coortativo coordenado ('e alegremo-nos').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "נִשְׁמְחָה",
@@ -17325,7 +17325,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "1ª pessoa comum do plural do coortativo Qal",
                 "meaning": "alegremo-nos",
-                "phonetics": "Aformativo coortativo -ah que atrai o acento tónico (Kelley XV.41.2)[cite: 167]."
+                "phonetics": "Aformativo coortativo -ah que atrai o acento tónico (Kelley XV.41.2)."
               }
             ]
           },
@@ -17335,20 +17335,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vo",
             "lemma": "בְּ",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido com sufixo ('nele')[cite: 98].",
+            "syntax_role": "Complemento preposicional regido com sufixo ('nele').",
             "parts": [
               {
                 "segment": "בּ",
                 "transliteration": "B",
                 "type": "Preposição inseparável",
-                "meaning": "em[cite: 98]"
+                "meaning": "em"
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "ele / nele[cite: 98]"
+                "meaning": "ele / nele"
               }
             ]
           }
@@ -17501,7 +17501,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Existencial Negativa com Relativa no Imperfeito (Lamed Alef)",
-        "notes": "Nos verbos Lamed Alef como חָטָא, o alef final torna-se quiescente e a vogal temática no imperfeito Qal é qamats (Kelley XXVI.71)[cite: 10, 39].",
+        "notes": "Nos verbos Lamed Alef como חָטָא, o alef final torna-se quiescente e a vogal temática no imperfeito Qal é qamats (Kelley XXVI.71).",
         "tokens": [
           {
             "index": 1,
@@ -17510,7 +17510,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa",
-            "syntax_role": "Conjunção causal subordinada ('pois' / 'porque')[cite: 68]."
+            "syntax_role": "Conjunção causal subordinada ('pois' / 'porque')."
           },
           {
             "index": 2,
@@ -17519,7 +17519,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵין",
             "composite": false,
             "word_class": "Partícula negativa de existência",
-            "syntax_role": "Núcleo existencial negativo ('não há')[cite: 60]."
+            "syntax_role": "Núcleo existencial negativo ('não há')."
           },
           {
             "index": 3,
@@ -17528,7 +17528,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָדָם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Sujeito indeterminado da oração existencial ('homem / ser humano')[cite: 35]."
+            "syntax_role": "Sujeito indeterminado da oração existencial ('homem / ser humano')."
           },
           {
             "index": 4,
@@ -17537,7 +17537,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que')[cite: 46]."
+            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que')."
           },
           {
             "index": 5,
@@ -17546,7 +17546,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לֹא",
             "composite": false,
             "word_class": "Partícula de negação",
-            "syntax_role": "Negação do predicado verbal ('não')[cite: 60, 118]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Negação do predicado verbal ('não'). Unida por maqqef."
           },
           {
             "index": 6,
@@ -17555,8 +17555,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "חָטָא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da oração relativa. 3ª pessoa masculino singular do imperfeito Qal ('peque')[cite: 161].",
-            "notes": "Verbo duplamente fraco Pe Gutural e Lamed Alef com hatef-segol sob o het e qamats final antes do alef quiescente (Kelley XXII.66 e XXVI.71)[cite: 9, 10, 39]."
+            "syntax_role": "Núcleo verbal da oração relativa. 3ª pessoa masculino singular do imperfeito Qal ('peque').",
+            "notes": "Verbo duplamente fraco Pe Gutural e Lamed Alef com hatef-segol sob o het e qamats final antes do alef quiescente (Kelley XXII.66 e XXVI.71)."
           }
         ]
       },
@@ -17577,7 +17577,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa",
-            "syntax_role": "Conjunção causal subordinada ('porque')[cite: 68]."
+            "syntax_role": "Conjunção causal subordinada ('porque')."
           },
           {
             "index": 2,
@@ -17585,21 +17585,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Veiti",
             "lemma": "בַּיִת",
             "composite": true,
-            "syntax_role": "Sujeito da oração passiva com sufixo possessivo ('a minha casa')[cite: 102, 105].",
+            "syntax_role": "Sujeito da oração passiva com sufixo possessivo ('a minha casa').",
             "parts": [
               {
                 "segment": "בֵית",
                 "transliteration": "Veit",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "casa de[cite: 91, 105]"
+                "meaning": "casa de"
               },
               {
                 "segment": "ִי",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "minha[cite: 102, 105]"
+                "meaning": "minha"
               }
             ]
           },
@@ -17610,8 +17610,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בַּיִת",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de predicativo do sujeito ('casa de')[cite: 91]. Unido por maqqef[cite: 31].",
-            "notes": "Preserva a base construta singular em sere-yod (Kelley X.26.4[2]i)[cite: 91]."
+            "syntax_role": "Termo regente no construto singular em função de predicativo do sujeito ('casa de'). Unido por maqqef.",
+            "notes": "Preserva a base construta singular em sere-yod (Kelley X.26.4[2]i)."
           },
           {
             "index": 4,
@@ -17620,7 +17620,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "תְּפִלָּה",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regido genitivo da relação de construto ('oração')[cite: 170]."
+            "syntax_role": "Termo regido genitivo da relação de construto ('oração')."
           },
           {
             "index": 5,
@@ -17629,8 +17629,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָרָא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal passivo. 3ª pessoa masculino singular do imperfeito Nif'al ('será chamada')[cite: 172, 173].",
-            "notes": "Assimilação do nun do Nif'al no qof com dagesh forte; o alef quiescente final condiciona a terminação em șere no imperfeito Nif'al (Kelley XXVI.71)[cite: 10, 172]."
+            "syntax_role": "Núcleo do predicado verbal passivo. 3ª pessoa masculino singular do imperfeito Nif'al ('será chamada').",
+            "notes": "Assimilação do nun do Nif'al no qof com dagesh forte; o alef quiescente final condiciona a terminação em șere no imperfeito Nif'al (Kelley XXVI.71)."
           },
           {
             "index": 6,
@@ -17638,20 +17638,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lechol-",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Complemento preposicional de extensão ou interesse ('para todos os')[cite: 31, 50]. Unido por maqqef[cite: 31].",
+            "syntax_role": "Complemento preposicional de extensão ou interesse ('para todos os'). Unido por maqqef.",
             "parts": [
               {
                 "segment": "לְ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
-                "meaning": "para[cite: 50]"
+                "meaning": "para"
               },
               {
                 "segment": "כָל־",
                 "transliteration": "Chol-",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "todos os[cite: 68]"
+                "meaning": "todos os"
               }
             ]
           },
@@ -17661,21 +17661,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'ammim",
             "lemma": "עַם",
             "composite": true,
-            "syntax_role": "Termo regido genitivo plural determinado ('os povos')[cite: 92].",
+            "syntax_role": "Termo regido genitivo plural determinado ('os povos').",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Qamats compensatório diante da gutural ayin (ע)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante da gutural ayin (ע)."
               },
               {
                 "segment": "עַמִּים",
                 "transliteration": "Ammim",
                 "type": "Substantivo",
                 "inflection": "masculino plural absoluto",
-                "meaning": "povos[cite: 89]"
+                "meaning": "povos"
               }
             ]
           }
@@ -17698,7 +17698,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "דָּרַשׁ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro predicado verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('buscai')[cite: 115]."
+            "syntax_role": "Primeiro predicado verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('buscai')."
           },
           {
             "index": 2,
@@ -17707,7 +17707,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Objeto do verbo de busca ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Objeto do verbo de busca ('o SENHOR')."
           },
           {
             "index": 3,
@@ -17715,28 +17715,28 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Behimmatz'o",
             "lemma": "מָצָא",
             "composite": true,
-            "syntax_role": "Oração temporal de infinitivo passivo com preposição e sufixo ('ao ser ele achado' / 'enquanto se pode achar')[cite: 8, 102].",
+            "syntax_role": "Oração temporal de infinitivo passivo com preposição e sufixo ('ao ser ele achado' / 'enquanto se pode achar').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
-                "meaning": "em / enquanto[cite: 50]"
+                "meaning": "em / enquanto"
               },
               {
                 "segment": "הִמָּצֵא",
                 "transliteration": "Himmatze",
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Nif'al",
-                "meaning": "ser achado[cite: 8]",
-                "phonetics": "Prefixo he com hireq e dagesh forte no mem do infinitivo Nif'al da raiz Lamed Alef מָצָא (Kelley XIX.56 e XXVI.71)[cite: 8, 10]."
+                "meaning": "ser achado",
+                "phonetics": "Prefixo he com hireq e dagesh forte no mem do infinitivo Nif'al da raiz Lamed Alef מָצָא (Kelley XIX.56 e XXVI.71)."
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "ele (sujeito passivo do infinitivo)[cite: 8, 102]"
+                "meaning": "ele (sujeito passivo do infinitivo)"
               }
             ]
           },
@@ -17746,21 +17746,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Kera'uhu",
             "lemma": "קָרָא",
             "composite": true,
-            "syntax_role": "Segundo predicado verbal imperativo com sufixo acusativo ('invocai-o')[cite: 101, 102, 115].",
+            "syntax_role": "Segundo predicado verbal imperativo com sufixo acusativo ('invocai-o').",
             "parts": [
               {
                 "segment": "קְרָאוּ",
                 "transliteration": "Kera'u",
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino plural do imperativo Qal",
-                "meaning": "invocai / chamai[cite: 115]"
+                "meaning": "invocai / chamai"
               },
               {
                 "segment": "הוּ",
                 "transliteration": "Hu",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "o / a ele[cite: 98, 101, 102]"
+                "meaning": "o / a ele"
               }
             ]
           },
@@ -17770,29 +17770,29 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bihyoto",
             "lemma": "הָיָה",
             "composite": true,
-            "syntax_role": "Segunda oração temporal de infinitivo ('ao estar ele' / 'enquanto ele está')[cite: 8, 102].",
+            "syntax_role": "Segunda oração temporal de infinitivo ('ao estar ele' / 'enquanto ele está').",
             "parts": [
               {
                 "segment": "בִּ",
                 "transliteration": "Bi",
                 "type": "Preposição inseparável",
                 "meaning": "em / enquanto",
-                "phonetics": "Preposição בְּ com hireq diante do yod com shva simples (Kelley VI.15.1[2])[cite: 52]."
+                "phonetics": "Preposição בְּ com hireq diante do yod com shva simples (Kelley VI.15.1[2])."
               },
               {
                 "segment": "הְיוֹת",
                 "transliteration": "Hyot",
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
-                "meaning": "ser / estar[cite: 8]",
-                "phonetics": "Infinitivo construto de verbo Lamed He terminado em -ot (Kelley XXVII.72)[cite: 10]."
+                "meaning": "ser / estar",
+                "phonetics": "Infinitivo construto de verbo Lamed He terminado em -ot (Kelley XXVII.72)."
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "ele (sujeito do infinitivo)[cite: 8, 102]"
+                "meaning": "ele (sujeito do infinitivo)"
               }
             ]
           },
@@ -17803,7 +17803,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָרוֹב",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Predicativo do sujeito do infinitivo ('perto' / 'próximo')[cite: 72]."
+            "syntax_role": "Predicativo do sujeito do infinitivo ('perto' / 'próximo')."
           }
         ]
       },
@@ -17823,14 +17823,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Halo",
             "lemma": "לוֹא",
             "composite": true,
-            "syntax_role": "Partícula interrogativa retórica inicial ('não é verdade que...?')[cite: 127].",
+            "syntax_role": "Partícula interrogativa retórica inicial ('não é verdade que...?').",
             "parts": [
               {
                 "segment": "הֲ",
                 "transliteration": "Ha",
                 "type": "Partícula interrogativa (he interrogativo)",
                 "meaning": "acaso?",
-                "phonetics": "Pontuado com hatef-patah diante de consoante não-gutural com vogal plena (Kelley XIII.34.1[1])[cite: 127]."
+                "phonetics": "Pontuado com hatef-patah diante de consoante não-gutural com vogal plena (Kelley XIII.34.1[1])."
               },
               {
                 "segment": "לוֹא",
@@ -17847,7 +17847,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אָב",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Sujeito da primeira oração nominal ('um pai')[cite: 35]."
+            "syntax_role": "Sujeito da primeira oração nominal ('um pai')."
           },
           {
             "index": 3,
@@ -17856,7 +17856,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶחָד",
             "composite": false,
             "word_class": "Numeral cardinal / Adjetivo",
-            "syntax_role": "Adjetivo atributivo quantitativo concordando em gênero com אָב ('único' / 'um só')[cite: 130]."
+            "syntax_role": "Adjetivo atributivo quantitativo concordando em gênero com אָב ('único' / 'um só')."
           },
           {
             "index": 4,
@@ -17864,13 +17864,13 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lechullanu",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Predicado preposicional de pertença ('pertence a todos nós' = 'nós temos')[cite: 50, 98].",
+            "syntax_role": "Predicado preposicional de pertença ('pertence a todos nós' = 'nós temos').",
             "parts": [
               {
                 "segment": "לְ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
-                "meaning": "a / para[cite: 50]"
+                "meaning": "a / para"
               },
               {
                 "segment": "כֻלָּ",
@@ -17878,14 +17878,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "todos de",
-                "phonetics": "Kaf aspirado sem dagesh lene; vogal qibbus com dagesh forte característico no lamed perante sufixo pronominal leve[cite: 20, 32]."
+                "phonetics": "Kaf aspirado sem dagesh lene; vogal qibbus com dagesh forte característico no lamed perante sufixo pronominal leve."
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nós[cite: 98]"
+                "meaning": "nós"
               }
             ]
           },
@@ -17895,13 +17895,13 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Halo",
             "lemma": "לוֹא",
             "composite": true,
-            "syntax_role": "Segunda partícula interrogativa retórica iterativa[cite: 127].",
+            "syntax_role": "Segunda partícula interrogativa retórica iterativa.",
             "parts": [
               {
                 "segment": "הֲ",
                 "transliteration": "Ha",
                 "type": "Partícula interrogativa",
-                "meaning": "acaso?[cite: 127]"
+                "meaning": "acaso?"
               },
               {
                 "segment": "לוֹא",
@@ -17918,7 +17918,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Sujeito da oração verbal ('um Deus')[cite: 126]."
+            "syntax_role": "Sujeito da oração verbal ('um Deus')."
           },
           {
             "index": 7,
@@ -17927,7 +17927,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶחָד",
             "composite": false,
             "word_class": "Numeral cardinal / Adjetivo",
-            "syntax_role": "Adjetivo atributivo modificando אֵל ('único' / 'um só')[cite: 130]."
+            "syntax_role": "Adjetivo atributivo modificando אֵל ('único' / 'um só')."
           },
           {
             "index": 8,
@@ -17935,22 +17935,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bra'anu",
             "lemma": "בָּרָא",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal com sufixo acusativo ('nos criou')[cite: 101, 102, 110].",
+            "syntax_role": "Núcleo do predicado verbal com sufixo acusativo ('nos criou').",
             "parts": [
               {
                 "segment": "בְּרָא",
                 "transliteration": "Bara",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do perfeito Qal",
-                "meaning": "ele criou[cite: 110]",
-                "phonetics": "A primeira sílaba com qamats volatiliza-se em shva perante aformativo/sufixo que atrai o acento tónico (Kelley XII.30.4[3])[cite: 114, 115]."
+                "meaning": "ele criou",
+                "phonetics": "A primeira sílaba com qamats volatiliza-se em shva perante aformativo/sufixo que atrai o acento tónico (Kelley XII.30.4[3])."
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nos (objeto direto)[cite: 101, 102]"
+                "meaning": "nos (objeto direto)"
               }
             ]
           }
@@ -17972,22 +17972,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Refa'eni",
             "lemma": "רָפָא",
             "composite": true,
-            "syntax_role": "Núcleo verbal volitivo com sufixo acusativo ('cura-me')[cite: 101, 102, 115].",
+            "syntax_role": "Núcleo verbal volitivo com sufixo acusativo ('cura-me').",
             "parts": [
               {
                 "segment": "רְפָא",
                 "transliteration": "Refa",
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino singular do imperativo Qal",
-                "meaning": "cura / sara[cite: 115]",
-                "phonetics": "Verbo Lamed Alef retendo o qamats sob a raiz perante o alef quiescente (Kelley XXVI.71)[cite: 10, 39]."
+                "meaning": "cura / sara",
+                "phonetics": "Verbo Lamed Alef retendo o qamats sob a raiz perante o alef quiescente (Kelley XXVI.71)."
               },
               {
                 "segment": "נִי",
                 "transliteration": "Ni",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "me (objeto direto)[cite: 101, 102]"
+                "meaning": "me (objeto direto)"
               }
             ]
           },
@@ -17998,7 +17998,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Vocativo direto da prece ('ó SENHOR')[cite: 56, 57]."
+            "syntax_role": "Vocativo direto da prece ('ó SENHOR')."
           },
           {
             "index": 3,
@@ -18006,22 +18006,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'erafe",
             "lemma": "רָפָא",
             "composite": true,
-            "syntax_role": "Predicado verbal passivo consecutivo / promissório ('e sararei / e serei curado')[cite: 54, 172, 173].",
+            "syntax_role": "Predicado verbal passivo consecutivo / promissório ('e sararei / e serei curado').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa (com valor de consequência)",
                 "meaning": "e (então)",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "אֵרָפֵא",
                 "transliteration": "Erafe",
                 "type": "Verbo",
                 "inflection": "1ª pessoa comum do singular do imperfeito Nif'al",
-                "meaning": "eu serei curado[cite: 172, 173]",
-                "phonetics": "No imperfeito Nif'al dos verbos Lamed Alef, o segundo radical leva șere e o alef final permanece quiescente (Kelley XXVI.71)[cite: 10, 39]."
+                "meaning": "eu serei curado",
+                "phonetics": "No imperfeito Nif'al dos verbos Lamed Alef, o segundo radical leva șere e o alef final permanece quiescente (Kelley XXVI.71)."
               }
             ]
           }
@@ -18202,7 +18202,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa com Discurso Direto e Verbo Nif'al Lamed He",
-        "notes": "O verbo רָאָה no Nif'al significa 'aparecer' / 'ser visto'; nos verbos Lamed He, o he final é vocalizado com qamats na 3ª pessoa do masculino singular do perfeito (Kelley XXVII.72)[cite: 10, 110].",
+        "notes": "O verbo רָאָה no Nif'al significa 'aparecer' / 'ser visto'; nos verbos Lamed He, o he final é vocalizado com qamats na 3ª pessoa do masculino singular do perfeito (Kelley XXVII.72).",
         "tokens": [
           {
             "index": 1,
@@ -18210,21 +18210,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayomer",
             "lemma": "אָמַר",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal narrativo ('e disse')[cite: 179, 180].",
+            "syntax_role": "Núcleo do predicado verbal narrativo ('e disse').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יֹּאמֶר",
                 "transliteration": "Yomer",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
-                "meaning": "ele disse[cite: 180]"
+                "meaning": "ele disse"
               }
             ]
           },
@@ -18235,7 +18235,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יַעֲקֹב",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Sujeito da oração de elocução ('Jacó')[cite: 95]."
+            "syntax_role": "Sujeito da oração de elocução ('Jacó')."
           },
           {
             "index": 3,
@@ -18244,7 +18244,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶל",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Rege o destinatário da fala ('a')[cite: 53]. Unido por maqqef[cite: 31]."
+            "syntax_role": "Rege o destinatário da fala ('a'). Unido por maqqef."
           },
           {
             "index": 4,
@@ -18262,7 +18262,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Primeiro elemento do sujeito divino da citação ('Deus')[cite: 126]."
+            "syntax_role": "Primeiro elemento do sujeito divino da citação ('Deus')."
           },
           {
             "index": 6,
@@ -18280,8 +18280,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "רָאָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da citação. 3ª pessoa masculino singular do perfeito Nif'al ('apareceu' / 'foi visto')[cite: 140, 145].",
-            "notes": "Verbo da classe Lamed He no tronco Nif'al mantendo qamats-he característico na terminação (Kelley XXVII.72)[cite: 10]."
+            "syntax_role": "Núcleo verbal da citação. 3ª pessoa masculino singular do perfeito Nif'al ('apareceu' / 'foi visto').",
+            "notes": "Verbo da classe Lamed He no tronco Nif'al mantendo qamats-he característico na terminação (Kelley XXVII.72)."
           },
           {
             "index": 8,
@@ -18289,20 +18289,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Elai",
             "lemma": "אֶל",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido ('a mim')[cite: 99, 100].",
+            "syntax_role": "Complemento preposicional regido ('a mim').",
             "parts": [
               {
                 "segment": "אֵל",
                 "transliteration": "El",
                 "type": "Preposição",
-                "meaning": "a / em direção a[cite: 99, 100]"
+                "meaning": "a / em direção a"
               },
               {
                 "segment": "ַי",
                 "transliteration": "Ai",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "mim[cite: 99, 100]"
+                "meaning": "mim"
               }
             ]
           }
@@ -18324,28 +18324,28 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vehabayit",
             "lemma": "בַּיִת",
             "composite": true,
-            "syntax_role": "Sujeito da oração nominal principal ('e a casa')[cite: 51, 54, 91].",
+            "syntax_role": "Sujeito da oração nominal principal ('e a casa').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Patah com dagesh forte no bet (ב)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no bet (ב)."
               },
               {
                 "segment": "בַּיִת",
                 "transliteration": "Bayit",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "casa[cite: 91]"
+                "meaning": "casa"
               }
             ]
           },
@@ -18356,7 +18356,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração adjetiva restritiva ('que')[cite: 46]. Unido por maqqef[cite: 31]."
+            "syntax_role": "Introduz a oração adjetiva restritiva ('que'). Unido por maqqef."
           },
           {
             "index": 3,
@@ -18365,7 +18365,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲנִי",
             "composite": false,
             "word_class": "Pronome pessoal independente",
-            "syntax_role": "Sujeito da oração relativa participial ('eu')[cite: 77]."
+            "syntax_role": "Sujeito da oração relativa participial ('eu')."
           },
           {
             "index": 4,
@@ -18374,8 +18374,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּנָה",
             "composite": false,
             "word_class": "Verbo (particípio ativo)",
-            "syntax_role": "Predicado verbal da oração relativa. Particípio ativo Qal masculino singular ('edifico' / 'estou edificando')[cite: 9].",
-            "notes": "Nos verbos Lamed He, o particípio ativo masculino singular termina regularmente em segol-he (Kelley XX.59 e XXVII.72)[cite: 9, 10]."
+            "syntax_role": "Predicado verbal da oração relativa. Particípio ativo Qal masculino singular ('edifico' / 'estou edificando').",
+            "notes": "Nos verbos Lamed He, o particípio ativo masculino singular termina regularmente em segol-he (Kelley XX.59 e XXVII.72)."
           },
           {
             "index": 5,
@@ -18384,7 +18384,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "גָּדוֹל",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Predicado nominal da oração principal ('é grande')[cite: 72]. O verbo de ligação 'ser' fica implícito (Kelley VIII.22.1)[cite: 72]."
+            "syntax_role": "Predicado nominal da oração principal ('é grande'). O verbo de ligação 'ser' fica implícito (Kelley VIII.22.1)."
           }
         ]
       },
@@ -18404,7 +18404,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Kullanu",
             "lemma": "כֹּל",
             "composite": true,
-            "syntax_role": "Sujeito da primeira oração com sufixo pronominal ('todos nós')[cite: 98, 102].",
+            "syntax_role": "Sujeito da primeira oração com sufixo pronominal ('todos nós').",
             "parts": [
               {
                 "segment": "כֻּלָּ",
@@ -18412,14 +18412,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "totalidade de",
-                "phonetics": "Qibbus com dagesh forte característico no lamed perante sufixo pronominal leve[cite: 20, 32]."
+                "phonetics": "Qibbus com dagesh forte característico no lamed perante sufixo pronominal leve."
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nós[cite: 98]"
+                "meaning": "nós"
               }
             ]
           },
@@ -18429,21 +18429,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Katzon",
             "lemma": "צֹאן",
             "composite": true,
-            "syntax_role": "Adjunto adverbial comparativo determinado ('como as ovelhas')[cite: 51, 138].",
+            "syntax_role": "Adjunto adverbial comparativo determinado ('como as ovelhas').",
             "parts": [
               {
                 "segment": "כַּ",
                 "transliteration": "Ka",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "como as",
-                "phonetics": "A preposição כְּ absorve o artigo הַ e herda o patah com dagesh forte no tsade (Kelley VI.15.1[4])[cite: 51]."
+                "phonetics": "A preposição כְּ absorve o artigo הַ e herda o patah com dagesh forte no tsade (Kelley VI.15.1[4])."
               },
               {
                 "segment": "צֹּאן",
                 "transliteration": "Tzon",
                 "type": "Substantivo",
                 "inflection": "coletivo singular absoluto",
-                "meaning": "ovelhas / rebanho pequeno[cite: 138]"
+                "meaning": "ovelhas / rebanho pequeno"
               }
             ]
           },
@@ -18454,8 +18454,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "תָּעָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado da primeira oração. 1ª pessoa comum do plural do perfeito Qal ('andávamos errantes' / 'desgarrámo-nos')[cite: 114].",
-            "notes": "Nos verbos Lamed He, perante aformativos consonantais como -nu, o he final cai e dá lugar a um yod precedido de hireq (Kelley XXVII.72)[cite: 10]."
+            "syntax_role": "Núcleo do predicado da primeira oração. 1ª pessoa comum do plural do perfeito Qal ('andávamos errantes' / 'desgarrámo-nos').",
+            "notes": "Nos verbos Lamed He, perante aformativos consonantais como -nu, o he final cai e dá lugar a um yod precedido de hireq (Kelley XXVII.72)."
           },
           {
             "index": 4,
@@ -18464,7 +18464,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אִישׁ",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Sujeito distributivo da segunda oração ('cada um')[cite: 35]."
+            "syntax_role": "Sujeito distributivo da segunda oração ('cada um')."
           },
           {
             "index": 5,
@@ -18472,27 +18472,27 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ledarko",
             "lemma": "דֶּרֶךְ",
             "composite": true,
-            "syntax_role": "Adjunto adverbial de direção com sufixo possessivo ('para o seu caminho')[cite: 50, 102].",
+            "syntax_role": "Adjunto adverbial de direção com sufixo possessivo ('para o seu caminho').",
             "parts": [
               {
                 "segment": "לְ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
-                "meaning": "para[cite: 50]"
+                "meaning": "para"
               },
               {
                 "segment": "דַרְכּ",
                 "transliteration": "Dark",
                 "type": "Substantivo segolado",
                 "inflection": "comum singular construto",
-                "meaning": "caminho de[cite: 68, 91]"
+                "meaning": "caminho de"
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "seu / dele[cite: 102]"
+                "meaning": "seu / dele"
               }
             ]
           },
@@ -18503,8 +18503,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "פָּנָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado da segunda oração. 1ª pessoa comum do plural do perfeito Qal ('virámo-nos' / 'desviámo-nos')[cite: 114].",
-            "notes": "Verbo da classe Lamed He com substituição do he por yod com hireq diante do aformativo consonantal -nu (Kelley XXVII.72)[cite: 10]."
+            "syntax_role": "Núcleo do predicado da segunda oração. 1ª pessoa comum do plural do perfeito Qal ('virámo-nos' / 'desviámo-nos').",
+            "notes": "Verbo da classe Lamed He com substituição do he por yod com hireq diante do aformativo consonantal -nu (Kelley XXVII.72)."
           }
         ]
       },
@@ -18525,7 +18525,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa",
-            "syntax_role": "Conjunção causal subordinada ('porque' / 'pois')[cite: 68]."
+            "syntax_role": "Conjunção causal subordinada ('porque' / 'pois')."
           },
           {
             "index": 2,
@@ -18534,8 +18534,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מָלֵא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal passivo. 3ª pessoa feminino singular do imperfeito Nif'al ('se encherá')[cite: 172, 173].",
-            "notes": "Verbo Lamed Alef com dagesh forte de assimilação do nun no mem da raiz; concorda em gênero feminino com הָאָרֶץ (Kelley XVI.42.1 e XXVI.71)[cite: 10, 172]."
+            "syntax_role": "Núcleo do predicado verbal passivo. 3ª pessoa feminino singular do imperfeito Nif'al ('se encherá').",
+            "notes": "Verbo Lamed Alef com dagesh forte de assimilação do nun no mem da raiz; concorda em gênero feminino com הָאָרֶץ (Kelley XVI.42.1 e XXVI.71)."
           },
           {
             "index": 3,
@@ -18543,21 +18543,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'aretz",
             "lemma": "אֶרֶץ",
             "composite": true,
-            "syntax_role": "Sujeito determinado da oração ('a terra')[cite: 47, 92].",
+            "syntax_role": "Sujeito determinado da oração ('a terra').",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante da gutural alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante da gutural alef (א)."
               },
               {
                 "segment": "אָרֶץ",
                 "transliteration": "Aretz",
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
-                "meaning": "terra[cite: 47]"
+                "meaning": "terra"
               }
             ]
           },
@@ -18567,14 +18567,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lada'at",
             "lemma": "יָדַע",
             "composite": true,
-            "syntax_role": "Infinitivo construto especificativo ('do conhecimento / para conhecer')[cite: 8].",
+            "syntax_role": "Infinitivo construto especificativo ('do conhecimento / para conhecer').",
             "parts": [
               {
                 "segment": "לָ",
                 "transliteration": "La",
                 "type": "Preposição inseparável",
                 "meaning": "de / para",
-                "phonetics": "Preposição לְ vocalizada com qamats diante de substantivo/infinitivo com acento na primeira sílaba (Kelley VI.15.1[5])[cite: 52]."
+                "phonetics": "Preposição לְ vocalizada com qamats diante de substantivo/infinitivo com acento na primeira sílaba (Kelley VI.15.1[5])."
               },
               {
                 "segment": "דַעַת",
@@ -18582,7 +18582,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
                 "meaning": "conhecer / saber",
-                "phonetics": "Infinitivo construto de verbo Pe Yod com queda do yod inicial e adição do sufixo feminino tav (Kelley XXX.75)[cite: 10]."
+                "phonetics": "Infinitivo construto de verbo Pe Yod com queda do yod inicial e adição do sufixo feminino tav (Kelley XXX.75)."
               }
             ]
           },
@@ -18593,7 +18593,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto do infinitivo construto[cite: 8, 31]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto do infinitivo construto. Unida por maqqef."
           },
           {
             "index": 6,
@@ -18602,8 +18602,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כָּבוֹד",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de objeto ('a glória de')[cite: 89, 109].",
-            "notes": "Redução vocálica do qamats para shva simples no estado construto (Kelley X.26.4[2]e)[cite: 90]."
+            "syntax_role": "Termo regente no construto singular em função de objeto ('a glória de').",
+            "notes": "Redução vocálica do qamats para shva simples no estado construto (Kelley X.26.4[2]e)."
           },
           {
             "index": 7,
@@ -18612,7 +18612,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo final determinado ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo final determinado ('do SENHOR')."
           }
         ]
       },
@@ -18632,14 +18632,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayar",
             "lemma": "רָאָה",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal narrativo ('e viu')[cite: 179].",
+            "syntax_role": "Núcleo do predicado verbal narrativo ('e viu').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יַּרְא",
@@ -18647,7 +18647,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito apocopado Qal",
                 "meaning": "ele viu",
-                "phonetics": "Forma apocopada clássica do imperfeito com vav consecutivo na raiz Lamed He com apócope do he final (Kelley XXVII.72)[cite: 10, 179]."
+                "phonetics": "Forma apocopada clássica do imperfeito com vav consecutivo na raiz Lamed He com apócope do he final (Kelley XXVII.72)."
               }
             ]
           },
@@ -18658,7 +18658,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֱלֹהִים",
             "composite": false,
             "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Sujeito da oração verbal ('Deus')[cite: 35]."
+            "syntax_role": "Sujeito da oração verbal ('Deus')."
           },
           {
             "index": 3,
@@ -18667,7 +18667,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado[cite: 31]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado. Unida por maqqef."
           },
           {
             "index": 4,
@@ -18676,8 +18676,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular ('tudo o que' / 'a totalidade de')[cite: 31, 68]. Unido por maqqef[cite: 31].",
-            "notes": "Holem reduz-se a qamats-hatuf perante maqqef[cite: 31]."
+            "syntax_role": "Termo regente no construto singular ('tudo o que' / 'a totalidade de'). Unido por maqqef.",
+            "notes": "Holem reduz-se a qamats-hatuf perante maqqef."
           },
           {
             "index": 5,
@@ -18686,7 +18686,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração adjetiva restritiva ('quanto' / 'que')[cite: 46]."
+            "syntax_role": "Introduz a oração adjetiva restritiva ('quanto' / 'que')."
           },
           {
             "index": 6,
@@ -18695,8 +18695,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עָשָׂה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da oração relativa com valor de mais-que-perfeito ('tinha feito')[cite: 110, 118].",
-            "notes": "Verbo da classe Lamed He no perfeito Qal 3ms com qamats-he característico (Kelley XII.31.2 e XXVII.72)[cite: 10, 110]."
+            "syntax_role": "Núcleo verbal da oração relativa com valor de mais-que-perfeito ('tinha feito').",
+            "notes": "Verbo da classe Lamed He no perfeito Qal 3ms com qamats-he característico (Kelley XII.31.2 e XXVII.72)."
           },
           {
             "index": 7,
@@ -18704,20 +18704,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vehinneh-",
             "lemma": "הִנֵּה",
             "composite": true,
-            "syntax_role": "Marcador de percepção imediata com conjunção coordenativa ('e eis que')[cite: 101, 102, 126]. Unido por maqqef[cite: 31].",
+            "syntax_role": "Marcador de percepção imediata com conjunção coordenativa ('e eis que'). Unido por maqqef.",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "הִנֵּה־",
                 "transliteration": "Hinneh-",
                 "type": "Partícula demonstrativa",
-                "meaning": "eis que[cite: 101, 102, 126]"
+                "meaning": "eis que"
               }
             ]
           },
@@ -18728,7 +18728,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "טוֹב",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Predicado nominal da oração de constatação ('era bom')[cite: 70, 72]. O verbo de ligação 'ser' fica implícito (Kelley VIII.22.1)[cite: 72]."
+            "syntax_role": "Predicado nominal da oração de constatação ('era bom'). O verbo de ligação 'ser' fica implícito (Kelley VIII.22.1)."
           },
           {
             "index": 9,
@@ -18737,7 +18737,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מְאֹד",
             "composite": false,
             "word_class": "Advérbio de intensidade",
-            "syntax_role": "Modificador adverbial que intensifica o predicativo טוֹב ('muito')[cite: 68]."
+            "syntax_role": "Modificador adverbial que intensifica o predicativo טוֹב ('muito')."
           }
         ]
       }
@@ -18920,7 +18920,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa com Verbo Assimilativo e Sufixo Acusativo",
-        "notes": "O verbo לָקַח comporta-se como um verbo Pe Nun no imperfeito, assimilando o lamed inicial na consoante qof através de dagesh forte (Kelley XXVIII.73)[cite: 10, 187].",
+        "notes": "O verbo לָקַח comporta-se como um verbo Pe Nun no imperfeito, assimilando o lamed inicial na consoante qof através de dagesh forte (Kelley XXVIII.73).",
         "tokens": [
           {
             "index": 1,
@@ -18928,14 +18928,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayikkacheni",
             "lemma": "לָקַח",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal narrativo com pronome acusativo ('e tirou-me' / 'e tomou-me')[cite: 101, 102, 179].",
+            "syntax_role": "Núcleo do predicado verbal narrativo com pronome acusativo ('e tirou-me' / 'e tomou-me').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod preformativo (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod preformativo (Kelley XVI.43.2)."
               },
               {
                 "segment": "יִּקָּחֵ",
@@ -18943,14 +18943,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
                 "meaning": "ele tomou / tirou",
-                "phonetics": "O lamed inicial é assimilado no qof seguinte por meio de dagesh forte análogo aos verbos Pe Nun (Kelley XXVIII.73)[cite: 10]."
+                "phonetics": "O lamed inicial é assimilado no qof seguinte por meio de dagesh forte análogo aos verbos Pe Nun (Kelley XXVIII.73)."
               },
               {
                 "segment": "נִי",
                 "transliteration": "Ni",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "me (objeto direto)[cite: 101, 102]"
+                "meaning": "me (objeto direto)"
               }
             ]
           },
@@ -18961,7 +18961,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração verbal ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração verbal ('o SENHOR')."
           },
           {
             "index": 3,
@@ -18969,20 +18969,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Me'acharei",
             "lemma": "אַחֲרֵי",
             "composite": true,
-            "syntax_role": "Locução preposicional composta de afastamento ('de detrás de' / 'de após')[cite: 53, 60].",
+            "syntax_role": "Locução preposicional composta de afastamento ('de detrás de' / 'de após').",
             "parts": [
               {
                 "segment": "מֵ",
                 "transliteration": "Me",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "de",
-                "phonetics": "Alongamento compensatório para șere diante da gutural alef (Kelley VI.15.3[3])[cite: 53]."
+                "phonetics": "Alongamento compensatório para șere diante da gutural alef (Kelley VI.15.3[3])."
               },
               {
                 "segment": "אַחֲרֵי",
                 "transliteration": "Acharei",
                 "type": "Preposição",
-                "meaning": "atrás de / após[cite: 60]"
+                "meaning": "atrás de / após"
               }
             ]
           },
@@ -18992,21 +18992,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hatzon",
             "lemma": "צֹאן",
             "composite": true,
-            "syntax_role": "Termo regido pela preposição ('o rebanho / o gado miúdo')[cite: 92, 138].",
+            "syntax_role": "Termo regido pela preposição ('o rebanho / o gado miúdo').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Patah com dagesh forte regular no tsade (צ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte regular no tsade (צ)."
               },
               {
                 "segment": "צֹּאן",
                 "transliteration": "Tzon",
                 "type": "Substantivo",
                 "inflection": "coletivo singular absoluto",
-                "meaning": "ovelhas / rebanho[cite: 138]"
+                "meaning": "ovelhas / rebanho"
               }
             ]
           }
@@ -19021,7 +19021,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Mandamento Proibitivo com Verbo Pe Nun no Imperfeito Qal",
-        "notes": "No verbo נָשָׂא, o nun inicial fecha a sílaba e assimila-se no sin com dagesh forte (תִּנְשָׂא -> תִּשָּׂא, Kelley XXVIII.73)[cite: 10, 172].",
+        "notes": "No verbo נָשָׂא, o nun inicial fecha a sílaba e assimila-se no sin com dagesh forte (תִּנְשָׂא -> תִּשָּׂא, Kelley XXVIII.73).",
         "tokens": [
           {
             "index": 1,
@@ -19030,7 +19030,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לֹא",
             "composite": false,
             "word_class": "Partícula de negação",
-            "syntax_role": "Negação categórica e permanente associada ao imperfeito com valor prescritivo ('não')[cite: 60, 118]."
+            "syntax_role": "Negação categórica e permanente associada ao imperfeito com valor prescritivo ('não')."
           },
           {
             "index": 2,
@@ -19039,8 +19039,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "נָשָׂא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal proibitivo. 2ª pessoa masculino singular do imperfeito Qal ('tomarás' / 'levantarás')[cite: 161, 185].",
-            "notes": "Verbo duplamente fraco Pe Nun e Lamed Alef com dagesh forte no sin e qamats final antes do alef quiescente (Kelley XXVI.71 e XXVIII.73)[cite: 10, 39]."
+            "syntax_role": "Núcleo do predicado verbal proibitivo. 2ª pessoa masculino singular do imperfeito Qal ('tomarás' / 'levantarás').",
+            "notes": "Verbo duplamente fraco Pe Nun e Lamed Alef com dagesh forte no sin e qamats final antes do alef quiescente (Kelley XXVI.71 e XXVIII.73)."
           },
           {
             "index": 3,
@@ -19049,7 +19049,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado seguinte[cite: 31]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado seguinte. Unida por maqqef."
           },
           {
             "index": 4,
@@ -19058,8 +19058,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שֵׁם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de objeto direto ('o nome de')[cite: 89]. Unido por maqqef[cite: 31].",
-            "notes": "Mantém o șere na base construta perante maqqef[cite: 31, 89]."
+            "syntax_role": "Termo regente no construto singular em função de objeto direto ('o nome de'). Unido por maqqef.",
+            "notes": "Mantém o șere na base construta perante maqqef."
           },
           {
             "index": 5,
@@ -19068,7 +19068,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo da cadeia ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo da cadeia ('do SENHOR')."
           },
           {
             "index": 6,
@@ -19076,21 +19076,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eloheicha",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Aposto explicativo com sufixo possessivo ('teu Deus')[cite: 103].",
+            "syntax_role": "Aposto explicativo com sufixo possessivo ('teu Deus').",
             "parts": [
               {
                 "segment": "אֱלֹהֵ",
                 "transliteration": "Elohe",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "Deus de[cite: 87, 103]"
+                "meaning": "Deus de"
               },
               {
                 "segment": "יךָ",
                 "transliteration": "Icha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "teu[cite: 103]"
+                "meaning": "teu"
               }
             ]
           },
@@ -19100,14 +19100,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lashav",
             "lemma": "שָׁוְא",
             "composite": true,
-            "syntax_role": "Adjunto adverbial modal determinado ('em vão' / 'para a falsidade')[cite: 51].",
+            "syntax_role": "Adjunto adverbial modal determinado ('em vão' / 'para a falsidade').",
             "parts": [
               {
                 "segment": "לַ",
                 "transliteration": "La",
                 "type": "Preposição inseparável com artigo absorvido",
                 "meaning": "em / para a",
-                "phonetics": "A preposição לְ assume o patah do artigo e o dagesh forte no shin (Kelley VI.15.1[4])[cite: 51]."
+                "phonetics": "A preposição לְ assume o patah do artigo e o dagesh forte no shin (Kelley VI.15.1[4])."
               },
               {
                 "segment": "שָּׁוְא",
@@ -19136,14 +19136,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Va'er'eh",
             "lemma": "רָאָה",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal narrativo ('e vi' / 'eu vi')[cite: 179].",
+            "syntax_role": "Núcleo do predicado verbal narrativo ('e vi' / 'eu vi').",
             "parts": [
               {
                 "segment": "וָ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Alongamento compensatório do patah para qamats perante alef gutural (Kelley XVI.43.2)[cite: 44, 180]."
+                "phonetics": "Alongamento compensatório do patah para qamats perante alef gutural (Kelley XVI.43.2)."
               },
               {
                 "segment": "אֶרְאֶה",
@@ -19151,7 +19151,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "1ª pessoa comum do singular do imperfeito Qal",
                 "meaning": "eu vi",
-                "phonetics": "Verbo da classe Lamed He no imperfeito Qal terminado em segol-he (Kelley XXVII.72)[cite: 10]."
+                "phonetics": "Verbo da classe Lamed He no imperfeito Qal terminado em segol-he (Kelley XXVII.72)."
               }
             ]
           },
@@ -19162,7 +19162,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado[cite: 31]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado. Unida por maqqef."
           },
           {
             "index": 3,
@@ -19171,7 +19171,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲדֹנָי",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Objeto direto da visão profética ('o Senhor')[cite: 57, 68]."
+            "syntax_role": "Objeto direto da visão profética ('o Senhor')."
           },
           {
             "index": 4,
@@ -19180,8 +19180,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָשַׁב",
             "composite": false,
             "word_class": "Verbo (particípio ativo)",
-            "syntax_role": "Predicativo do objeto direto. Particípio ativo Qal masculino singular ('assentado')[cite: 9, 187].",
-            "notes": "Verbo da classe Pe Yod no particípio ativo regular (Kelley XX.59)[cite: 9]."
+            "syntax_role": "Predicativo do objeto direto. Particípio ativo Qal masculino singular ('assentado').",
+            "notes": "Verbo da classe Pe Yod no particípio ativo regular (Kelley XX.59)."
           },
           {
             "index": 5,
@@ -19190,7 +19190,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עַל",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Rege o adjunto adverbial de lugar ('sobre')[cite: 60]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Rege o adjunto adverbial de lugar ('sobre'). Unida por maqqef."
           },
           {
             "index": 6,
@@ -19199,7 +19199,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּסֵּא",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regido pela preposição עַל ('trono')[cite: 34]."
+            "syntax_role": "Termo regido pela preposição עַל ('trono')."
           },
           {
             "index": 7,
@@ -19208,8 +19208,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "רוּם",
             "composite": false,
             "word_class": "Verbo (particípio ativo) / Adjetivo",
-            "syntax_role": "Primeiro atributivo qualificando כִּסֵּא ('alto' / 'elevado')[cite: 71, 111].",
-            "notes": "Particípio ativo de verbo oco / médio vav (Kelley XXIX.74)[cite: 10, 111]."
+            "syntax_role": "Primeiro atributivo qualificando כִּסֵּא ('alto' / 'elevado').",
+            "notes": "Particípio ativo de verbo oco / médio vav (Kelley XXIX.74)."
           },
           {
             "index": 8,
@@ -19217,14 +19217,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Venissa",
             "lemma": "נָשָׂא",
             "composite": true,
-            "syntax_role": "Segundo atributivo coordenado ('e sublime' / 'exaltado')[cite: 54, 71].",
+            "syntax_role": "Segundo atributivo coordenado ('e sublime' / 'exaltado').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "נִשָּׂא",
@@ -19232,7 +19232,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo (particípio passivo)",
                 "inflection": "masculino singular do particípio Nif'al",
                 "meaning": "elevado / exaltado",
-                "phonetics": "Verbo Pe Nun no Nif'al: nun da raiz retido e alef final quiescente após qamats (Kelley XXVIII.73)[cite: 10, 39]."
+                "phonetics": "Verbo Pe Nun no Nif'al: nun da raiz retido e alef final quiescente após qamats (Kelley XXVIII.73)."
               }
             ]
           }
@@ -19247,7 +19247,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Exortativa com Imperativo Hif'il de Verbo Pe Nun",
-        "notes": "No imperativo Hif'il do verbo Pe Nun נָבַט, o nun da raiz é assimilado no bet com dagesh forte (הַנְבִּיטוּ -> הַבִּיטוּ, Kelley XXVIII.73)[cite: 10, 172].",
+        "notes": "No imperativo Hif'il do verbo Pe Nun נָבַט, o nun da raiz é assimilado no bet com dagesh forte (הַנְבִּיטוּ -> הַבִּיטוּ, Kelley XXVIII.73).",
         "tokens": [
           {
             "index": 1,
@@ -19256,8 +19256,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "נָבַט",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal volitivo. 2ª pessoa masculino plural do imperativo Hif'il ('olhai' / 'contemplai')[cite: 8, 143].",
-            "notes": "Prefixo he com patah, assimilação do nun no bet com dagesh forte e hireq-yod temático (Kelley XIV.36.5 e XXVIII.73)[cite: 10, 143]."
+            "syntax_role": "Núcleo do predicado verbal volitivo. 2ª pessoa masculino plural do imperativo Hif'il ('olhai' / 'contemplai').",
+            "notes": "Prefixo he com patah, assimilação do nun no bet com dagesh forte e hireq-yod temático (Kelley XIV.36.5 e XXVIII.73)."
           },
           {
             "index": 2,
@@ -19266,7 +19266,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶל",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Rege o complemento de direção do olhar ('para')[cite: 53]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Rege o complemento de direção do olhar ('para'). Unida por maqqef."
           },
           {
             "index": 3,
@@ -19275,7 +19275,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אַבְרָהָם",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido pela preposição אֶל ('Abraão')[cite: 23]."
+            "syntax_role": "Termo regido pela preposição אֶל ('Abraão')."
           },
           {
             "index": 4,
@@ -19283,7 +19283,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Avichem",
             "lemma": "אָב",
             "composite": true,
-            "syntax_role": "Aposto explicativo com sufixo possessivo ('vosso pai')[cite: 104].",
+            "syntax_role": "Aposto explicativo com sufixo possessivo ('vosso pai').",
             "parts": [
               {
                 "segment": "אֲבִי",
@@ -19291,14 +19291,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "pai de",
-                "phonetics": "Base construta irregular do substantivo אָב diante de sufixos pronominais (Kelley X.26.4[2]d)[cite: 90, 104]."
+                "phonetics": "Base construta irregular do substantivo אָב diante de sufixos pronominais (Kelley X.26.4[2]d)."
               },
               {
                 "segment": "כֶם",
                 "transliteration": "Chem",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino plural",
-                "meaning": "vosso / de vós[cite: 104]"
+                "meaning": "vosso / de vós"
               }
             ]
           }
@@ -19321,7 +19321,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito anteposto enfático da primeira oração ('o SENHOR')[cite: 56, 57, 118]."
+            "syntax_role": "Sujeito anteposto enfático da primeira oração ('o SENHOR')."
           },
           {
             "index": 2,
@@ -19330,8 +19330,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "נָתַן",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal da primeira oração. 3ª pessoa masculino singular do perfeito Qal ('deu')[cite: 138, 155].",
-            "notes": "Verbo duplamente fraco Pe Nun e Lamed Nun no perfeito Qal regular (Kelley XXVIII.73)[cite: 10, 155]."
+            "syntax_role": "Núcleo do predicado verbal da primeira oração. 3ª pessoa masculino singular do perfeito Qal ('deu').",
+            "notes": "Verbo duplamente fraco Pe Nun e Lamed Nun no perfeito Qal regular (Kelley XXVIII.73)."
           },
           {
             "index": 3,
@@ -19339,20 +19339,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Va'adonai",
             "lemma": "יְהוָה",
             "composite": true,
-            "syntax_role": "Sujeito coordenado anteposto da segunda oração ('e o SENHOR')[cite: 56, 57, 118].",
+            "syntax_role": "Sujeito coordenado anteposto da segunda oração ('e o SENHOR').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vocalizado com patah por ser o Tetragrama pronunciado Adonai, cujo alef inicial requer patah (Kelley VI.16.6)[cite: 56, 57]."
+                "phonetics": "Vocalizado com patah por ser o Tetragrama pronunciado Adonai, cujo alef inicial requer patah (Kelley VI.16.6)."
               },
               {
                 "segment": "יהוָה",
                 "transliteration": "Adonai",
                 "type": "Nome Divino",
-                "meaning": "o SENHOR[cite: 56, 57]"
+                "meaning": "o SENHOR"
               }
             ]
           },
@@ -19363,8 +19363,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לָקַח",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal da segunda oração. 3ª pessoa masculino singular do perfeito Qal ('tomou')[cite: 126].",
-            "notes": "Verbo forte no perfeito, mas com comportamento de Pe Nun no imperfeito (Kelley XXVIII.73)[cite: 10, 126]."
+            "syntax_role": "Núcleo do predicado verbal da segunda oração. 3ª pessoa masculino singular do perfeito Qal ('tomou').",
+            "notes": "Verbo forte no perfeito, mas com comportamento de Pe Nun no imperfeito (Kelley XXVIII.73)."
           },
           {
             "index": 5,
@@ -19373,8 +19373,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הָיָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Cópula volitiva da oração jussiva conclusiva ('seja')[cite: 54, 166].",
-            "notes": "Forma apocopada do jussivo Qal do verbo Lamed He הָיָה (Kelley XV.41.1 e XXVII.72)[cite: 10, 166]."
+            "syntax_role": "Cópula volitiva da oração jussiva conclusiva ('seja').",
+            "notes": "Forma apocopada do jussivo Qal do verbo Lamed He הָיָה (Kelley XV.41.1 e XXVII.72)."
           },
           {
             "index": 6,
@@ -19383,7 +19383,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שֵׁם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de sujeito ('o nome de')[cite: 89]."
+            "syntax_role": "Termo regente no construto singular em função de sujeito ('o nome de')."
           },
           {
             "index": 7,
@@ -19392,7 +19392,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo ('do SENHOR')."
           },
           {
             "index": 8,
@@ -19401,8 +19401,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּרַךְ",
             "composite": false,
             "word_class": "Verbo (particípio passivo)",
-            "syntax_role": "Predicativo do sujeito. Particípio passivo masculino singular do tronco Pu'al ('bendito')[cite: 9, 142].",
-            "notes": "Holem compensatório decorrente da recusa de reduplicação pela líquida resh tratada como gutural (Kelley XIV.36.3)[cite: 44, 141]."
+            "syntax_role": "Predicativo do sujeito. Particípio passivo masculino singular do tronco Pu'al ('bendito').",
+            "notes": "Holem compensatório decorrente da recusa de reduplicação pela líquida resh tratada como gutural (Kelley XIV.36.3)."
           }
         ]
       }
@@ -19577,7 +19577,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Poética Complexa com Infinitivo Construto Substantivado",
-        "notes": "O infinitivo construto שִׁבְתִּי (de יָשַׁב) atua com sufixo pronominal como complemento oracional direto explicativo de אַחַת (Kelley XIX.56 e XXX.75)[cite: 8, 10].",
+        "notes": "O infinitivo construto שִׁבְתִּי (de יָשַׁב) atua com sufixo pronominal como complemento oracional direto explicativo de אַחַת (Kelley XIX.56 e XXX.75).",
         "tokens": [
           {
             "index": 1,
@@ -19586,7 +19586,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶחָד",
             "composite": false,
             "word_class": "Numeral cardinal / Substantivo feminino",
-            "syntax_role": "Objeto direto anteposto tópico ('uma coisa')[cite: 118, 130]."
+            "syntax_role": "Objeto direto anteposto tópico ('uma coisa')."
           },
           {
             "index": 2,
@@ -19595,8 +19595,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁאַל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da primeira oração. 1ª pessoa comum do singular do perfeito Qal ('pedi')[cite: 114, 170].",
-            "notes": "Verbo Ayin Gutural regular no perfeito Qal com aformativo consonantal -ti (Kelley XII.30.4 e XXIV.69)[cite: 9, 114]."
+            "syntax_role": "Núcleo verbal da primeira oração. 1ª pessoa comum do singular do perfeito Qal ('pedi').",
+            "notes": "Verbo Ayin Gutural regular no perfeito Qal com aformativo consonantal -ti (Kelley XII.30.4 e XXIV.69)."
           },
           {
             "index": 3,
@@ -19604,7 +19604,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Me'et-",
             "lemma": "מֵאֵת",
             "composite": true,
-            "syntax_role": "Locução preposicional de procedência ('da parte de' / 'do')[cite: 53, 98]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Locução preposicional de procedência ('da parte de' / 'do'). Unida por maqqef."
           },
           {
             "index": 4,
@@ -19613,7 +19613,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido pela preposição מֵאֵת ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Termo regido pela preposição מֵאֵת ('o SENHOR')."
           },
           {
             "index": 5,
@@ -19621,21 +19621,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Otah",
             "lemma": "אֵת",
             "composite": true,
-            "syntax_role": "Objeto direto anafórico anteposto retomando אַחַת ('a ela / essa')[cite: 101, 102, 118].",
+            "syntax_role": "Objeto direto anafórico anteposto retomando אַחַת ('a ela / essa').",
             "parts": [
               {
                 "segment": "אוֹת",
                 "transliteration": "Ot",
                 "type": "Partícula indicadora de objeto direto",
-                "meaning": "objeto direto[cite: 101, 102]"
+                "meaning": "objeto direto"
               },
               {
                 "segment": "ָהּ",
                 "transliteration": "Ah",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa feminino singular",
-                "meaning": "ela[cite: 101, 102]",
-                "phonetics": "Mappiq no he final indicando consoante audível (Kelley IV.11)[cite: 40]."
+                "meaning": "ela",
+                "phonetics": "Mappiq no he final indicando consoante audível (Kelley IV.11)."
               }
             ]
           },
@@ -19646,8 +19646,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּקַשׁ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da segunda oração. 1ª pessoa comum do singular do imperfeito Pi'el ('buscarei')[cite: 141, 172].",
-            "notes": "Hatef-patah sob o preformativo alef gutural e dagesh forte no qof característico do tronco Pi'el (Kelley XIV.36.2 e XVI.42)[cite: 140, 172]."
+            "syntax_role": "Núcleo verbal da segunda oração. 1ª pessoa comum do singular do imperfeito Pi'el ('buscarei').",
+            "notes": "Hatef-patah sob o preformativo alef gutural e dagesh forte no qof característico do tronco Pi'el (Kelley XIV.36.2 e XVI.42)."
           },
           {
             "index": 7,
@@ -19655,7 +19655,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Shivti",
             "lemma": "יָשַׁב",
             "composite": true,
-            "syntax_role": "Oração subordinada substantiva de infinitivo construto com sufixo ('o meu habitar' / 'que eu habite')[cite: 8, 102].",
+            "syntax_role": "Oração subordinada substantiva de infinitivo construto com sufixo ('o meu habitar' / 'que eu habite').",
             "parts": [
               {
                 "segment": "שֶׁבֶת",
@@ -19663,14 +19663,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
                 "meaning": "habitar / morar",
-                "phonetics": "Infinitivo construto da classe Pe Yod com afixação de tav e queda do yod inicial (Kelley XXX.75)[cite: 10]."
+                "phonetics": "Infinitivo construto da classe Pe Yod com afixação de tav e queda do yod inicial (Kelley XXX.75)."
               },
               {
                 "segment": "ִי",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "meu (sujeito do infinitivo)[cite: 8, 102]"
+                "meaning": "meu (sujeito do infinitivo)"
               }
             ]
           },
@@ -19680,21 +19680,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Beveit-",
             "lemma": "בַּיִת",
             "composite": true,
-            "syntax_role": "Termo regente no construto singular com preposição inseparável ('na casa de')[cite: 50, 91]. Unido por maqqef[cite: 31].",
+            "syntax_role": "Termo regente no construto singular com preposição inseparável ('na casa de'). Unido por maqqef.",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
-                "meaning": "em / na[cite: 50]"
+                "meaning": "em / na"
               },
               {
                 "segment": "בֵית־",
                 "transliteration": "Veit-",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "casa de[cite: 91]",
-                "phonetics": "Bet sem dagesh lene por vir após vogal (Kelley I.1.9)[cite: 20, 21]."
+                "meaning": "casa de",
+                "phonetics": "Bet sem dagesh lene por vir após vogal (Kelley I.1.9)."
               }
             ]
           },
@@ -19705,7 +19705,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo da relação de construto ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo da relação de construto ('do SENHOR')."
           },
           {
             "index": 10,
@@ -19714,8 +19714,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto ('todos os')[cite: 31, 68]. Unido por maqqef[cite: 31].",
-            "notes": "Qamats-hatuf em razão da perda de tonicidade perante maqqef[cite: 31]."
+            "syntax_role": "Termo regente no construto ('todos os'). Unido por maqqef.",
+            "notes": "Qamats-hatuf em razão da perda de tonicidade perante maqqef."
           },
           {
             "index": 11,
@@ -19724,8 +19724,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יוֹם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo intermediário no construto plural ('dias de')[cite: 87, 89].",
-            "notes": "Plural construto em sere-yod (Kelley X.26.4[1]a)[cite: 87, 89]."
+            "syntax_role": "Termo intermediário no construto plural ('dias de').",
+            "notes": "Plural construto em sere-yod (Kelley X.26.4[1]a)."
           },
           {
             "index": 12,
@@ -19733,7 +19733,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Chayai",
             "lemma": "חַיִּים",
             "composite": true,
-            "syntax_role": "Termo regido genitivo com sufixo possessivo ('minha vida')[cite: 103].",
+            "syntax_role": "Termo regido genitivo com sufixo possessivo ('minha vida').",
             "parts": [
               {
                 "segment": "חַיֵּ",
@@ -19747,7 +19747,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ai",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "minha[cite: 103]"
+                "meaning": "minha"
               }
             ]
           }
@@ -19769,14 +19769,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayired",
             "lemma": "יָרַד",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal narrativo ('e desceu')[cite: 179].",
+            "syntax_role": "Núcleo do predicado verbal narrativo ('e desceu').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יִּרֶד",
@@ -19784,7 +19784,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito apocopado Qal",
                 "meaning": "ele desceu",
-                "phonetics": "Verbo Pe Yod com queda do yod no imperfeito e terminação com segol perante vav consecutivo (Kelley XXX.75)[cite: 10, 179]."
+                "phonetics": "Verbo Pe Yod com queda do yod no imperfeito e terminação com segol perante vav consecutivo (Kelley XXX.75)."
               }
             ]
           },
@@ -19795,7 +19795,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração verbal principal ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração verbal principal ('o SENHOR')."
           },
           {
             "index": 3,
@@ -19803,14 +19803,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lir'ot",
             "lemma": "רָאָה",
             "composite": true,
-            "syntax_role": "Oração reduzida de infinitivo construto de propósito ('para ver')[cite: 8, 50].",
+            "syntax_role": "Oração reduzida de infinitivo construto de propósito ('para ver').",
             "parts": [
               {
                 "segment": "לִ",
                 "transliteration": "Li",
                 "type": "Preposição inseparável",
                 "meaning": "para",
-                "phonetics": "Preposição לְ com hireq diante de consoante com shva simples (Kelley VI.15.1[2])[cite: 50]."
+                "phonetics": "Preposição לְ com hireq diante de consoante com shva simples (Kelley VI.15.1[2])."
               },
               {
                 "segment": "רְאֹת",
@@ -19818,7 +19818,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
                 "meaning": "ver",
-                "phonetics": "Infinitivo construto de verbo Lamed He terminado em -ot (Kelley XXVII.72)[cite: 10]."
+                "phonetics": "Infinitivo construto de verbo Lamed He terminado em -ot (Kelley XXVII.72)."
               }
             ]
           },
@@ -19829,7 +19829,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o primeiro objeto direto determinado[cite: 31]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o primeiro objeto direto determinado. Unida por maqqef."
           },
           {
             "index": 5,
@@ -19837,21 +19837,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'ir",
             "lemma": "עִיר",
             "composite": true,
-            "syntax_role": "Primeiro objeto direto determinado ('a cidade')[cite: 92].",
+            "syntax_role": "Primeiro objeto direto determinado ('a cidade').",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante de ayin (ע) (Kelley V.14.3[2]b)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de ayin (ע) (Kelley V.14.3[2]b)."
               },
               {
                 "segment": "עִיר",
                 "transliteration": "Ir",
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
-                "meaning": "cidade[cite: 35]"
+                "meaning": "cidade"
               }
             ]
           },
@@ -19861,21 +19861,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'et-",
             "lemma": "אֵת",
             "composite": true,
-            "syntax_role": "Conjunção coordenativa com sinal de objeto direto ('e a')[cite: 31, 54].",
+            "syntax_role": "Conjunção coordenativa com sinal de objeto direto ('e a').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "אֶת־",
                 "transliteration": "Et-",
                 "type": "Partícula indicadora de objeto direto",
                 "meaning": "objeto direto",
-                "phonetics": "Șere abreviado em segol perante maqqef[cite: 31]."
+                "phonetics": "Șere abreviado em segol perante maqqef."
               }
             ]
           },
@@ -19885,21 +19885,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hammigdal",
             "lemma": "מִגְדָּל",
             "composite": true,
-            "syntax_role": "Segundo objeto direto determinado ('a torre')[cite: 92].",
+            "syntax_role": "Segundo objeto direto determinado ('a torre').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Patah com dagesh forte no mem (מ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no mem (מ)."
               },
               {
                 "segment": "מִּגְדָּל",
                 "transliteration": "Migdal",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "torre / fortaleza[cite: 90]"
+                "meaning": "torre / fortaleza"
               }
             ]
           },
@@ -19910,7 +19910,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que')[cite: 46]."
+            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que')."
           },
           {
             "index": 9,
@@ -19919,8 +19919,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּנָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da oração relativa. 3ª pessoa comum do plural do perfeito Qal ('edificavam' / 'construíram')[cite: 114].",
-            "notes": "Verbo Lamed He com apócope do he final perante o aformativo vocálico plural -u (Kelley XXVII.72)[cite: 10, 114]."
+            "syntax_role": "Núcleo verbal da oração relativa. 3ª pessoa comum do plural do perfeito Qal ('edificavam' / 'construíram').",
+            "notes": "Verbo Lamed He com apócope do he final perante o aformativo vocálico plural -u (Kelley XXVII.72)."
           },
           {
             "index": 10,
@@ -19929,8 +19929,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בֵּן",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto plural em função de sujeito da oração relativa ('os filhos de')[cite: 87].",
-            "notes": "Desinência de construto plural em sere-yod (Kelley X.26.4[1]a)[cite: 86, 87]."
+            "syntax_role": "Termo regente no construto plural em função de sujeito da oração relativa ('os filhos de').",
+            "notes": "Desinência de construto plural em sere-yod (Kelley X.26.4[1]a)."
           },
           {
             "index": 11,
@@ -19938,21 +19938,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'adam",
             "lemma": "אָדָם",
             "composite": true,
-            "syntax_role": "Termo regido final determinado ('os homens' = 'a humanidade')[cite: 35, 92].",
+            "syntax_role": "Termo regido final determinado ('os homens' = 'a humanidade').",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Qamats compensatório diante de alef (א) (Kelley V.14.3[2]b)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א) (Kelley V.14.3[2]b)."
               },
               {
                 "segment": "אָדָם",
                 "transliteration": "Adam",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "homens / humanidade[cite: 35]"
+                "meaning": "homens / humanidade"
               }
             ]
           }
@@ -19975,7 +19975,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa",
-            "syntax_role": "Conjunção causal subordinada ('porque')[cite: 68]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Conjunção causal subordinada ('porque'). Unida por maqqef."
           },
           {
             "index": 2,
@@ -19984,7 +19984,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יֶלֶד",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Sujeito anteposto da primeira oração passiva ('um menino')[cite: 84, 109, 118]."
+            "syntax_role": "Sujeito anteposto da primeira oração passiva ('um menino')."
           },
           {
             "index": 3,
@@ -19993,8 +19993,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָלַד",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal passivo. 3ª pessoa masculino singular do perfeito Pu'al ('foi gerado' / 'nasceu')[cite: 147]. Unido por maqqef[cite: 31].",
-            "notes": "Tronco passivo Pu'al com qibbus no primeiro radical e dagesh forte no lamed mediano (Kelley XIV.36.3)[cite: 140, 147]."
+            "syntax_role": "Núcleo verbal passivo. 3ª pessoa masculino singular do perfeito Pu'al ('foi gerado' / 'nasceu'). Unido por maqqef.",
+            "notes": "Tronco passivo Pu'al com qibbus no primeiro radical e dagesh forte no lamed mediano (Kelley XIV.36.3)."
           },
           {
             "index": 4,
@@ -20002,21 +20002,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lanu",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Complemento de interesse / benefício ('para nós' / 'a nós')[cite: 98].",
+            "syntax_role": "Complemento de interesse / benefício ('para nós' / 'a nós').",
             "parts": [
               {
                 "segment": "לָ",
                 "transliteration": "La",
                 "type": "Preposição inseparável",
                 "meaning": "para / a",
-                "phonetics": "Vocalizada com qamats antes do sufixo pronominal de 1ª pessoa plural (Kelley XI.27.1[1]b)[cite: 98]."
+                "phonetics": "Vocalizada com qamats antes do sufixo pronominal de 1ª pessoa plural (Kelley XI.27.1[1]b)."
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nós[cite: 98]"
+                "meaning": "nós"
               }
             ]
           },
@@ -20027,7 +20027,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בֵּן",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Sujeito anteposto da segunda oração passiva ('um filho')[cite: 35, 118]."
+            "syntax_role": "Sujeito anteposto da segunda oração passiva ('um filho')."
           },
           {
             "index": 6,
@@ -20036,8 +20036,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "נָתַן",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal passivo coordenado. 3ª pessoa masculino singular do perfeito Nif'al ('foi dado')[cite: 140, 145]. Unido por maqqef[cite: 31].",
-            "notes": "Verbo Pe Nun no Nif'al: o nun da raiz é assimilado no tav com dagesh forte (Kelley XXVIII.73)[cite: 10, 172]."
+            "syntax_role": "Núcleo verbal passivo coordenado. 3ª pessoa masculino singular do perfeito Nif'al ('foi dado'). Unido por maqqef.",
+            "notes": "Verbo Pe Nun no Nif'al: o nun da raiz é assimilado no tav com dagesh forte (Kelley XXVIII.73)."
           },
           {
             "index": 7,
@@ -20045,21 +20045,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lanu",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Segundo complemento de interesse ('para nós')[cite: 98].",
+            "syntax_role": "Segundo complemento de interesse ('para nós').",
             "parts": [
               {
                 "segment": "לָ",
                 "transliteration": "La",
                 "type": "Preposição inseparável",
                 "meaning": "para",
-                "phonetics": "Qamats sob o lamed perante o sufixo[cite: 98]."
+                "phonetics": "Qamats sob o lamed perante o sufixo."
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nós[cite: 98]"
+                "meaning": "nós"
               }
             ]
           }
@@ -20074,7 +20074,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa com Verbo Oco (Ayin Vav) e Oração Relativa Negativa",
-        "notes": "No verbo oco קוּם, a consoante vav desaparece e o imperfeito narrativo com vav consecutivo assume a forma apocopada וַיָּקָם com qamats-hatuf / patah breve (Kelley XXIX.74)[cite: 10, 111].",
+        "notes": "No verbo oco קוּם, a consoante vav desaparece e o imperfeito narrativo com vav consecutivo assume a forma apocopada וַיָּקָם com qamats-hatuf / patah breve (Kelley XXIX.74).",
         "tokens": [
           {
             "index": 1,
@@ -20082,14 +20082,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayakam",
             "lemma": "קוּם",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal narrativo ('e levantou-se')[cite: 179].",
+            "syntax_role": "Núcleo do predicado verbal narrativo ('e levantou-se').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יָּקָם",
@@ -20097,7 +20097,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito apocopado Qal",
                 "meaning": "ele levantou-se / ergueu-se",
-                "phonetics": "Forma apocopada de verbo oco/médio vav com retração do acento tónico (Kelley XXIX.74)[cite: 10, 111]."
+                "phonetics": "Forma apocopada de verbo oco/médio vav com retração do acento tónico (Kelley XXIX.74)."
               }
             ]
           },
@@ -20108,8 +20108,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מֶלֶךְ",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Sujeito indeterminado da oração verbal ('um rei')[cite: 84]. Unido por maqqef[cite: 31].",
-            "notes": "Monossílabo métrico ligado ao adjetivo por maqqef[cite: 31]."
+            "syntax_role": "Sujeito indeterminado da oração verbal ('um rei'). Unido por maqqef.",
+            "notes": "Monossílabo métrico ligado ao adjetivo por maqqef."
           },
           {
             "index": 3,
@@ -20118,7 +20118,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "חָדָשׁ",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo masculino singular ('novo'), concordando com מֶלֶךְ[cite: 71]."
+            "syntax_role": "Adjetivo atributivo masculino singular ('novo'), concordando com מֶלֶךְ."
           },
           {
             "index": 4,
@@ -20127,7 +20127,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עַל",
             "composite": false,
             "word_class": "Preposição",
-            "syntax_role": "Rege o complemento de domínio e autoridade ('sobre')[cite: 60]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Rege o complemento de domínio e autoridade ('sobre'). Unida por maqqef."
           },
           {
             "index": 5,
@@ -20136,7 +20136,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מִצְרַיִם",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido pela preposição ('o Egito')[cite: 66, 96]."
+            "syntax_role": "Termo regido pela preposição ('o Egito')."
           },
           {
             "index": 6,
@@ -20145,7 +20145,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲשֶׁר",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que')[cite: 46]."
+            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que')."
           },
           {
             "index": 7,
@@ -20154,7 +20154,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לֹא",
             "composite": false,
             "word_class": "Partícula de negação",
-            "syntax_role": "Negação verbal ('não')[cite: 60, 118]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Negação verbal ('não'). Unida por maqqef."
           },
           {
             "index": 8,
@@ -20163,8 +20163,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָדַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da oração relativa. 3ª pessoa masculino singular do perfeito Qal ('conhecia')[cite: 110, 118].",
-            "notes": "Verbo Pe Yod e Lamed Gutural (Kelley XII.29.2 e XXV.70)[cite: 10, 110]."
+            "syntax_role": "Núcleo verbal da oração relativa. 3ª pessoa masculino singular do perfeito Qal ('conhecia').",
+            "notes": "Verbo Pe Yod e Lamed Gutural (Kelley XII.29.2 e XXV.70)."
           },
           {
             "index": 9,
@@ -20173,7 +20173,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado próprio[cite: 31, 92]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado próprio. Unida por maqqef."
           },
           {
             "index": 10,
@@ -20203,8 +20203,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּרַךְ",
             "composite": false,
             "word_class": "Verbo (particípio passivo)",
-            "syntax_role": "Predicado nominal inicial anteposto. Particípio passivo Qal masculino singular ('bendito')[cite: 9, 72].",
-            "notes": "Padrão passivo Qal com šureq entre o segundo e o terceiro radical (Kelley XX.59)[cite: 9]."
+            "syntax_role": "Predicado nominal inicial anteposto. Particípio passivo Qal masculino singular ('bendito').",
+            "notes": "Padrão passivo Qal com šureq entre o segundo e o terceiro radical (Kelley XX.59)."
           },
           {
             "index": 2,
@@ -20212,14 +20212,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Haba",
             "lemma": "בּוֹא",
             "composite": true,
-            "syntax_role": "Sujeito determinado da primeira oração. Particípio ativo substantivado de verbo oco ('aquele que vem')[cite: 9, 92].",
+            "syntax_role": "Sujeito determinado da primeira oração. Particípio ativo substantivado de verbo oco ('aquele que vem').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o / aquele que",
-                "phonetics": "Patah com dagesh forte no bet (ב) (Kelley V.14.3[1])[cite: 45]."
+                "phonetics": "Patah com dagesh forte no bet (ב) (Kelley V.14.3[1])."
               },
               {
                 "segment": "בָּא",
@@ -20227,7 +20227,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo (particípio ativo)",
                 "inflection": "masculino singular do particípio ativo Qal",
                 "meaning": "o que vem",
-                "phonetics": "Particípio ativo de verbo oco / médio vav com qamats na raiz (Kelley XXIX.74)[cite: 10, 111]."
+                "phonetics": "Particípio ativo de verbo oco / médio vav com qamats na raiz (Kelley XXIX.74)."
               }
             ]
           },
@@ -20237,20 +20237,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Beshem",
             "lemma": "שֵׁם",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido ('em nome de')[cite: 50, 89].",
+            "syntax_role": "Complemento preposicional regido ('em nome de').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
-                "meaning": "em / no[cite: 50]"
+                "meaning": "em / no"
               },
               {
                 "segment": "שֵׁם",
                 "transliteration": "Shem",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "nome de[cite: 89]"
+                "meaning": "nome de"
               }
             ]
           },
@@ -20261,7 +20261,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo da relação de construto ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo da relação de construto ('do SENHOR')."
           },
           {
             "index": 5,
@@ -20269,7 +20269,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Berachnuchem",
             "lemma": "בָּרַךְ",
             "composite": true,
-            "syntax_role": "Núcleo verbal da segunda oração no Pi'el com sufixo acusativo ('nós vos abençoamos')[cite: 101, 102, 141].",
+            "syntax_role": "Núcleo verbal da segunda oração no Pi'el com sufixo acusativo ('nós vos abençoamos').",
             "parts": [
               {
                 "segment": "בֵּרַכְנוּ",
@@ -20277,14 +20277,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "1ª pessoa comum do plural do perfeito Pi'el",
                 "meaning": "nós abençoamos",
-                "phonetics": "Șere compensatório no bet da raiz decorrente da recusa de dagesh forte pela gutural líquida resh (Kelley XIV.36.2)[cite: 44, 140]."
+                "phonetics": "Șere compensatório no bet da raiz decorrente da recusa de dagesh forte pela gutural líquida resh (Kelley XIV.36.2)."
               },
               {
                 "segment": "כֶם",
                 "transliteration": "Chem",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino plural",
-                "meaning": "vos / a vós (objeto direto)[cite: 101, 102]"
+                "meaning": "vos / a vós (objeto direto)"
               }
             ]
           },
@@ -20294,21 +20294,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Mibeit",
             "lemma": "בַּיִת",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo de origem no construto ('desde a casa de')[cite: 53, 91].",
+            "syntax_role": "Adjunto adverbial locativo de origem no construto ('desde a casa de').",
             "parts": [
               {
                 "segment": "מִ",
                 "transliteration": "Mi",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "de / desde",
-                "phonetics": "Nun assimilado por dagesh forte no bet seguinte (Kelley VI.15.3[2])[cite: 53]."
+                "phonetics": "Nun assimilado por dagesh forte no bet seguinte (Kelley VI.15.3[2])."
               },
               {
                 "segment": "בֵּית",
                 "transliteration": "Beit",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "casa de[cite: 91]"
+                "meaning": "casa de"
               }
             ]
           },
@@ -20319,7 +20319,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Termo regido genitivo final determinado ('do SENHOR')[cite: 56, 57, 92]."
+            "syntax_role": "Termo regido genitivo final determinado ('do SENHOR')."
           }
         ]
       }
@@ -20501,7 +20501,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Exortativo e Monoteísta com Verbos Pe Vav/Yod e Lamed He",
-        "notes": "O verbo יָשַׁע no tronco Nif'al reflexivo/passivo assume o prefixo com dagesh forte por assimilação do radical original (Kelley XXX.75)[cite: 10].",
+        "notes": "O verbo יָשַׁע no tronco Nif'al reflexivo/passivo assume o prefixo com dagesh forte por assimilação do radical original (Kelley XXX.75).",
         "tokens": [
           {
             "index": 1,
@@ -20510,8 +20510,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "פָּנָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro núcleo verbal imperativo. 2ª pessoa masculino plural do imperativo Qal ('virai-vos' / 'olhai')[cite: 115]. Unido por maqqef[cite: 31].",
-            "notes": "Verbo Lamed He com apócope do he perante aformativo vocálico plural (Kelley XXVII.72)[cite: 10]."
+            "syntax_role": "Primeiro núcleo verbal imperativo. 2ª pessoa masculino plural do imperativo Qal ('virai-vos' / 'olhai'). Unido por maqqef.",
+            "notes": "Verbo Lamed He com apócope do he perante aformativo vocálico plural (Kelley XXVII.72)."
           },
           {
             "index": 2,
@@ -20519,20 +20519,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Elai",
             "lemma": "אֶל",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido de direção ('a mim')[cite: 99, 100].",
+            "syntax_role": "Complemento preposicional regido de direção ('a mim').",
             "parts": [
               {
                 "segment": "אֵל",
                 "transliteration": "El",
                 "type": "Preposição",
-                "meaning": "a / para[cite: 99, 100]"
+                "meaning": "a / para"
               },
               {
                 "segment": "ַי",
                 "transliteration": "Ai",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "mim[cite: 99, 100]"
+                "meaning": "mim"
               }
             ]
           },
@@ -20542,14 +20542,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vehinnash'u",
             "lemma": "יָשַׁע",
             "composite": true,
-            "syntax_role": "Segundo predicado verbal coordenado imperativo com valor passivo/promissório ('e sede salvos')[cite: 54, 140].",
+            "syntax_role": "Segundo predicado verbal coordenado imperativo com valor passivo/promissório ('e sede salvos').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "הִנָּשְׁעוּ",
@@ -20557,7 +20557,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino plural do imperativo Nif'al",
                 "meaning": "sede salvos",
-                "phonetics": "Prefixo do imperativo Nif'al com assimilação do primeiro radical vav/yod com dagesh forte no nun/shin (Kelley XXX.75)[cite: 10]."
+                "phonetics": "Prefixo do imperativo Nif'al com assimilação do primeiro radical vav/yod com dagesh forte no nun/shin (Kelley XXX.75)."
               }
             ]
           },
@@ -20568,8 +20568,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular em função de vocativo/sujeito ('todos os')[cite: 31, 68]. Unido por maqqef[cite: 31].",
-            "notes": "Qamats-hatuf em razão do maqqef (Kelley III.4)[cite: 31]."
+            "syntax_role": "Termo regente no construto singular em função de vocativo/sujeito ('todos os'). Unido por maqqef.",
+            "notes": "Qamats-hatuf em razão do maqqef (Kelley III.4)."
           },
           {
             "index": 5,
@@ -20578,8 +20578,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶפֶס",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Termo intermediário no construto plural ('limites / confins de')[cite: 87]. Unido por maqqef[cite: 31].",
-            "notes": "Desinência de construto plural em sere-yod (Kelley X.26.4[1]a)[cite: 86, 87]."
+            "syntax_role": "Termo intermediário no construto plural ('limites / confins de'). Unido por maqqef.",
+            "notes": "Desinência de construto plural em sere-yod (Kelley X.26.4[1]a)."
           },
           {
             "index": 6,
@@ -20588,7 +20588,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֶרֶץ",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Termo regido genitivo final ('terra')[cite: 50, 85]."
+            "syntax_role": "Termo regido genitivo final ('terra')."
           },
           {
             "index": 7,
@@ -20597,7 +20597,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa",
-            "syntax_role": "Conjunção causal subordinada ('porque' / 'pois')[cite: 68]."
+            "syntax_role": "Conjunção causal subordinada ('porque' / 'pois')."
           },
           {
             "index": 8,
@@ -20606,7 +20606,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֲנִי",
             "composite": false,
             "word_class": "Pronome pessoal independente",
-            "syntax_role": "Sujeito da oração nominal causal ('eu sou')[cite: 77]. Unido por maqqef[cite: 31]."
+            "syntax_role": "Sujeito da oração nominal causal ('eu sou'). Unido por maqqef."
           },
           {
             "index": 9,
@@ -20615,7 +20615,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵל",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Predicado nominal ('Deus')[cite: 77, 126]."
+            "syntax_role": "Predicado nominal ('Deus')."
           },
           {
             "index": 10,
@@ -20623,20 +20623,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'ein",
             "lemma": "אֵין",
             "composite": true,
-            "syntax_role": "Predicado existencial negativo coordenado ('e não há')[cite: 54, 60].",
+            "syntax_role": "Predicado existencial negativo coordenado ('e não há').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "אֵין",
                 "transliteration": "Ein",
                 "type": "Partícula negativa de existência",
-                "meaning": "não há / não existe[cite: 60]"
+                "meaning": "não há / não existe"
               }
             ]
           },
@@ -20647,7 +20647,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עוֹד",
             "composite": false,
             "word_class": "Advérbio de exclusividade",
-            "syntax_role": "Complemento existencial restritivo ('outro' / 'além de mim')[cite: 109]."
+            "syntax_role": "Complemento existencial restritivo ('outro' / 'além de mim')."
           }
         ]
       },
@@ -20660,7 +20660,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Paralelismo Poético Antitético com Verbos Pe Yod e Médio Vav",
-        "notes": "O verbo יָבֵשׁ é um verbo Pe Yod estativo no perfeito Qal, contrastado com o verbo oco קוּם no imperfeito (Kelley XII.29.4 e XXX.75)[cite: 10, 111].",
+        "notes": "O verbo יָבֵשׁ é um verbo Pe Yod estativo no perfeito Qal, contrastado com o verbo oco קוּם no imperfeito (Kelley XII.29.4 e XXX.75).",
         "tokens": [
           {
             "index": 1,
@@ -20669,8 +20669,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָבֵשׁ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro predicado verbal estativo anteposto. 3ª pessoa masculino singular do perfeito Qal ('seca-se')[cite: 110, 117].",
-            "notes": "Verbo estativo da classe Pe Yod com tsere na segunda sílaba (Kelley XII.29.3 e XXX.75)[cite: 10, 110]."
+            "syntax_role": "Primeiro predicado verbal estativo anteposto. 3ª pessoa masculino singular do perfeito Qal ('seca-se').",
+            "notes": "Verbo estativo da classe Pe Yod com tsere na segunda sílaba (Kelley XII.29.3 e XXX.75)."
           },
           {
             "index": 2,
@@ -20688,7 +20688,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "נָבֵל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Segundo predicado verbal coordenado assimétrico. 3ª pessoa masculino singular do perfeito Qal ('murcha' / 'cai')[cite: 110]."
+            "syntax_role": "Segundo predicado verbal coordenado assimétrico. 3ª pessoa masculino singular do perfeito Qal ('murcha' / 'cai')."
           },
           {
             "index": 4,
@@ -20705,14 +20705,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Udevar-",
             "lemma": "דָּבָר",
             "composite": true,
-            "syntax_role": "Termo regente no construto singular com conjunção coordenativa adversativa ('mas a palavra de')[cite: 54, 87, 90]. Unido por maqqef[cite: 31].",
+            "syntax_role": "Termo regente no construto singular com conjunção coordenativa adversativa ('mas a palavra de'). Unido por maqqef.",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa (adversativa)",
                 "meaning": "mas / e",
-                "phonetics": "Šureq (וּ) diante de consoante apoiada por shva simples audível (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante de consoante apoiada por shva simples audível (Kelley VI.16.2)."
               },
               {
                 "segment": "דְבַר־",
@@ -20720,7 +20720,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "palavra de",
-                "phonetics": "A primeira vogal qamats volatiliza-se em shva e a segunda abrevia-se em patah no construto (Kelley X.26.4[2]e)[cite: 90]."
+                "phonetics": "A primeira vogal qamats volatiliza-se em shva e a segunda abrevia-se em patah no construto (Kelley X.26.4[2]e)."
               }
             ]
           },
@@ -20730,21 +20730,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Eloheinu",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Termo regido genitivo com sufixo possessivo ('nosso Deus')[cite: 103].",
+            "syntax_role": "Termo regido genitivo com sufixo possessivo ('nosso Deus').",
             "parts": [
               {
                 "segment": "אֱלֹהֵי",
                 "transliteration": "Elohei",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "Deus de[cite: 87, 103]"
+                "meaning": "Deus de"
               },
               {
                 "segment": "נוּ",
                 "transliteration": "Nu",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do plural",
-                "meaning": "nosso[cite: 103]"
+                "meaning": "nosso"
               }
             ]
           },
@@ -20755,8 +20755,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קוּם",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal principal. 3ª pessoa masculino singular do imperfeito Qal ('permanece' / 'subsistirá')[cite: 161, 165].",
-            "notes": "Verbo oco / médio vav com šureq longo imutável característico no imperfeito Qal (Kelley XII.29.4 e XXIX.74)[cite: 10, 111]."
+            "syntax_role": "Núcleo do predicado verbal principal. 3ª pessoa masculino singular do imperfeito Qal ('permanece' / 'subsistirá').",
+            "notes": "Verbo oco / médio vav com šureq longo imutável característico no imperfeito Qal (Kelley XII.29.4 e XXIX.74)."
           },
           {
             "index": 8,
@@ -20764,20 +20764,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Le'olam",
             "lemma": "עוֹלָם",
             "composite": true,
-            "syntax_role": "Adjunto adverbial temporal de duração perpétua ('para sempre')[cite: 50, 170].",
+            "syntax_role": "Adjunto adverbial temporal de duração perpétua ('para sempre').",
             "parts": [
               {
                 "segment": "לְ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
-                "meaning": "para[cite: 50]"
+                "meaning": "para"
               },
               {
                 "segment": "עוֹלָם",
                 "transliteration": "Olam",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "eternidade / sempre[cite: 170]"
+                "meaning": "eternidade / sempre"
               }
             ]
           }
@@ -20800,8 +20800,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בּוֹא",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro predicado verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('entrai')[cite: 115].",
-            "notes": "Verbo oco / médio vav no imperativo Qal plural com holem pleno (Kelley XXIX.74)[cite: 10, 111]."
+            "syntax_role": "Primeiro predicado verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('entrai').",
+            "notes": "Verbo oco / médio vav no imperativo Qal plural com holem pleno (Kelley XXIX.74)."
           },
           {
             "index": 2,
@@ -20809,7 +20809,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "She'arav",
             "lemma": "שַׁעַר",
             "composite": true,
-            "syntax_role": "Objeto direto locativo com sufixo possessivo ('suas portas')[cite: 103].",
+            "syntax_role": "Objeto direto locativo com sufixo possessivo ('suas portas').",
             "parts": [
               {
                 "segment": "שַׁעֲרֵ",
@@ -20817,14 +20817,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo segolado",
                 "inflection": "masculino plural construto",
                 "meaning": "portas de",
-                "phonetics": "Plural construto com hatef-patah sob o ayin gutural (Kelley X.25.4 e XXIV.69)[cite: 9, 85]."
+                "phonetics": "Plural construto com hatef-patah sob o ayin gutural (Kelley X.25.4 e XXIV.69)."
               },
               {
                 "segment": "ָיו",
                 "transliteration": "Av",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "suas / dele[cite: 103]"
+                "meaning": "suas / dele"
               }
             ]
           },
@@ -20834,13 +20834,13 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Betodah",
             "lemma": "תּוֹדָה",
             "composite": true,
-            "syntax_role": "Adjunto adverbial modal ('com ações de graças')[cite: 50].",
+            "syntax_role": "Adjunto adverbial modal ('com ações de graças').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
-                "meaning": "com / em[cite: 50]"
+                "meaning": "com / em"
               },
               {
                 "segment": "תוֹדָה",
@@ -20857,7 +20857,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Chatzerotav",
             "lemma": "חָצֵר",
             "composite": true,
-            "syntax_role": "Segundo objeto locativo elíptico com sufixo possessivo ('seus átrios')[cite: 103].",
+            "syntax_role": "Segundo objeto locativo elíptico com sufixo possessivo ('seus átrios').",
             "parts": [
               {
                 "segment": "חַצְרוֹת",
@@ -20871,7 +20871,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Av",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "seus / dele[cite: 103]"
+                "meaning": "seus / dele"
               }
             ]
           },
@@ -20881,14 +20881,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Bitehillah",
             "lemma": "תְּהִלָּה",
             "composite": true,
-            "syntax_role": "Segundo adjunto adverbial modal ('com louvor')[cite: 50].",
+            "syntax_role": "Segundo adjunto adverbial modal ('com louvor').",
             "parts": [
               {
                 "segment": "בִּ",
                 "transliteration": "Bi",
                 "type": "Preposição inseparável",
                 "meaning": "com",
-                "phonetics": "A preposição בְּ assume hireq antes de consoante com shva simples para evitar dois shvas audíveis adjacentes (Kelley VI.15.1[2])[cite: 50]."
+                "phonetics": "A preposição בְּ assume hireq antes de consoante com shva simples para evitar dois shvas audíveis adjacentes (Kelley VI.15.1[2])."
               },
               {
                 "segment": "תְהִלָּה",
@@ -20906,8 +20906,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָדָה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Terceiro núcleo verbal imperativo. 2ª pessoa masculino plural do imperativo Hif'il ('dai graças' / 'louvai')[cite: 143]. Unido por maqqef[cite: 31].",
-            "notes": "Verbo Pe Vav/Yod: no tronco Hif'il, o radical converte-se em holem-vav longo (הוֹדָה, Kelley XXX.75)[cite: 10]."
+            "syntax_role": "Terceiro núcleo verbal imperativo. 2ª pessoa masculino plural do imperativo Hif'il ('dai graças' / 'louvai'). Unido por maqqef.",
+            "notes": "Verbo Pe Vav/Yod: no tronco Hif'il, o radical converte-se em holem-vav longo (הוֹדָה, Kelley XXX.75)."
           },
           {
             "index": 7,
@@ -20915,20 +20915,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lo",
             "lemma": "לְ",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido ('a ele')[cite: 98].",
+            "syntax_role": "Complemento preposicional regido ('a ele').",
             "parts": [
               {
                 "segment": "ל",
                 "transliteration": "L",
                 "type": "Preposição inseparável",
-                "meaning": "a / para[cite: 98]"
+                "meaning": "a / para"
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "ele[cite: 98]"
+                "meaning": "ele"
               }
             ]
           },
@@ -20939,8 +20939,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּרַךְ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Quarto núcleo verbal volitivo coordenado. 2ª pessoa masculino plural do imperativo Pi'el ('bendizei')[cite: 115, 142].",
-            "notes": "Radical mediano resh com hatef-patah em virtude da recusa de reduplicação no Pi'el (Kelley XIV.36.2 e XXIV.69)[cite: 9, 140]."
+            "syntax_role": "Quarto núcleo verbal volitivo coordenado. 2ª pessoa masculino plural do imperativo Pi'el ('bendizei').",
+            "notes": "Radical mediano resh com hatef-patah em virtude da recusa de reduplicação no Pi'el (Kelley XIV.36.2 e XXIV.69)."
           },
           {
             "index": 9,
@@ -20948,7 +20948,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Shemo",
             "lemma": "שֵׁם",
             "composite": true,
-            "syntax_role": "Objeto direto determinado com sufixo possessivo ('o seu nome')[cite: 102].",
+            "syntax_role": "Objeto direto determinado com sufixo possessivo ('o seu nome').",
             "parts": [
               {
                 "segment": "שְׁמ",
@@ -20956,14 +20956,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "nome de",
-                "phonetics": "A vogal șere volatiliza-se em shva sob afixação de sufixo pronominal leve (Kelley XI.28.1)[cite: 102]."
+                "phonetics": "A vogal șere volatiliza-se em shva sob afixação de sufixo pronominal leve (Kelley XI.28.1)."
               },
               {
                 "segment": "וֹ",
                 "transliteration": "O",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "dele / seu[cite: 102]"
+                "meaning": "dele / seu"
               }
             ]
           }
@@ -20978,7 +20978,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa com Verbo Pe Yod e Oração Integrante com Verbo Geminado",
-        "notes": "O verbo יָדַע é Pe Yod e Lamed Gutural; o verbo קָלַל pertence à classe dos verbos geminados (Ayin Duplo) que reduplicam o radical no perfeito plural (Kelley XXX.75 e XXXI.76)[cite: 10].",
+        "notes": "O verbo יָדַע é Pe Yod e Lamed Gutural; o verbo קָלַל pertence à classe dos verbos geminados (Ayin Duplo) que reduplicam o radical no perfeito plural (Kelley XXX.75 e XXXI.76).",
         "tokens": [
           {
             "index": 1,
@@ -20986,14 +20986,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vayeda",
             "lemma": "יָדַע",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal narrativo principal ('e soube')[cite: 179].",
+            "syntax_role": "Núcleo do predicado verbal narrativo principal ('e soube').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
                 "segment": "יֵּדַע",
@@ -21001,7 +21001,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
                 "meaning": "ele soube / conheceu",
-                "phonetics": "Verbo Pe Yod com preformativo em șere e patah temático antes do ayin gutural (Kelley XXV.70 e XXX.75)[cite: 10]."
+                "phonetics": "Verbo Pe Yod com preformativo em șere e patah temático antes do ayin gutural (Kelley XXV.70 e XXX.75)."
               }
             ]
           },
@@ -21021,7 +21021,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa integrante",
-            "syntax_role": "Introduz a oração substantiva objetiva direta ('que')[cite: 68]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Introduz a oração substantiva objetiva direta ('que'). Unida por maqqef."
           },
           {
             "index": 4,
@@ -21030,8 +21030,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "קָלַל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da oração subordinada integrante. 3ª pessoa comum do plural do perfeito Qal ('tinham diminuído' / 'minguaram')[cite: 114, 118].",
-            "notes": "Verbo geminado / Ayin Duplo: as duas consoantes idênticas contraem-se recebendo dagesh forte no lamed perante o aformativo vocálico plural (Kelley XXXI.76)[cite: 10]."
+            "syntax_role": "Núcleo verbal da oração subordinada integrante. 3ª pessoa comum do plural do perfeito Qal ('tinham diminuído' / 'minguaram').",
+            "notes": "Verbo geminado / Ayin Duplo: as duas consoantes idênticas contraem-se recebendo dagesh forte no lamed perante o aformativo vocálico plural (Kelley XXXI.76)."
           },
           {
             "index": 5,
@@ -21039,21 +21039,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hamayim",
             "lemma": "מַיִם",
             "composite": true,
-            "syntax_role": "Sujeito da oração subordinada integrante ('as águas')[cite: 92].",
+            "syntax_role": "Sujeito da oração subordinada integrante ('as águas').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "as",
-                "phonetics": "Patah com dagesh forte no mem (מ)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no mem (מ)."
               },
               {
                 "segment": "מַּיִם",
                 "transliteration": "Mayim",
                 "type": "Substantivo",
                 "inflection": "masculino plural/dual absoluto",
-                "meaning": "águas[cite: 41, 50]"
+                "meaning": "águas"
               }
             ]
           },
@@ -21063,20 +21063,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Me'al",
             "lemma": "עַל",
             "composite": true,
-            "syntax_role": "Locução preposicional composta de afastamento ('de sobre')[cite: 53].",
+            "syntax_role": "Locução preposicional composta de afastamento ('de sobre').",
             "parts": [
               {
                 "segment": "מֵ",
                 "transliteration": "Me",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "de",
-                "phonetics": "Alongamento compensatório para șere perante a gutural ayin (ע) (Kelley VI.15.3[3])[cite: 53]."
+                "phonetics": "Alongamento compensatório para șere perante a gutural ayin (ע) (Kelley VI.15.3[3])."
               },
               {
                 "segment": "עַל",
                 "transliteration": "Al",
                 "type": "Preposição",
-                "meaning": "sobre[cite: 52]"
+                "meaning": "sobre"
               }
             ]
           },
@@ -21086,14 +21086,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'aretz",
             "lemma": "אֶרֶץ",
             "composite": true,
-            "syntax_role": "Termo regido pela locução preposicional ('a terra')[cite: 53].",
+            "syntax_role": "Termo regido pela locução preposicional ('a terra').",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Qamats compensatório diante de alef (א)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א)."
               },
               {
                 "segment": "אָרֶץ",
@@ -21101,7 +21101,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
                 "meaning": "terra",
-                "phonetics": "Modificação vocálica para qamats com o artigo definido (Kelley V.14.3[4])[cite: 47]."
+                "phonetics": "Modificação vocálica para qamats com o artigo definido (Kelley V.14.3[4])."
               }
             ]
           }
@@ -21124,7 +21124,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Sujeito da oração verbal ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Sujeito da oração verbal ('o SENHOR')."
           },
           {
             "index": 2,
@@ -21133,8 +21133,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שָׁמַר",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do imperfeito Qal ('guardará')[cite: 161]. Unido por maqqef[cite: 31].",
-            "notes": "Redução acentual devida ao maqqef (Kelley III.4)[cite: 31]."
+            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do imperfeito Qal ('guardará'). Unido por maqqef.",
+            "notes": "Redução acentual devida ao maqqef (Kelley III.4)."
           },
           {
             "index": 3,
@@ -21142,7 +21142,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Tzetcha",
             "lemma": "יָצָא",
             "composite": true,
-            "syntax_role": "Primeiro objeto direto nominal com sufixo possessivo ('a tua saída')[cite: 8, 102].",
+            "syntax_role": "Primeiro objeto direto nominal com sufixo possessivo ('a tua saída').",
             "parts": [
               {
                 "segment": "צֵאת",
@@ -21150,14 +21150,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
                 "meaning": "saída de",
-                "phonetics": "Infinitivo construto do verbo Pe Yod com afixação de tav e queda do yod inicial (Kelley XXX.75)[cite: 10]."
+                "phonetics": "Infinitivo construto do verbo Pe Yod com afixação de tav e queda do yod inicial (Kelley XXX.75)."
               },
               {
                 "segment": "ְךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "tua[cite: 102]"
+                "meaning": "tua"
               }
             ]
           },
@@ -21167,14 +21167,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Uvo'echa",
             "lemma": "בּוֹא",
             "composite": true,
-            "syntax_role": "Segundo objeto direto coordenado com sufixo possessivo ('e a tua entrada')[cite: 8, 54].",
+            "syntax_role": "Segundo objeto direto coordenado com sufixo possessivo ('e a tua entrada').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante da labial bet (ב) (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante da labial bet (ב) (Kelley VI.16.2)."
               },
               {
                 "segment": "בוֹא",
@@ -21182,14 +21182,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Qal",
                 "meaning": "entrada de",
-                "phonetics": "Infinitivo construto de verbo oco / médio vav (Kelley XXIX.74)[cite: 10, 111]."
+                "phonetics": "Infinitivo construto de verbo oco / médio vav (Kelley XXIX.74)."
               },
               {
                 "segment": "ֶךָ",
                 "transliteration": "Echa",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "tua[cite: 102]"
+                "meaning": "tua"
               }
             ]
           },
@@ -21199,20 +21199,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Me'attah",
             "lemma": "עַתָּה",
             "composite": true,
-            "syntax_role": "Adjunto adverbial temporal inicial ('desde agora')[cite: 53, 109].",
+            "syntax_role": "Adjunto adverbial temporal inicial ('desde agora').",
             "parts": [
               {
                 "segment": "מֵ",
                 "transliteration": "Me",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "desde",
-                "phonetics": "Alongamento compensatório para șere perante a gutural ayin (ע) (Kelley VI.15.3[3])[cite: 53]."
+                "phonetics": "Alongamento compensatório para șere perante a gutural ayin (ע) (Kelley VI.15.3[3])."
               },
               {
                 "segment": "עַתָּה",
                 "transliteration": "Attah",
                 "type": "Advérbio de tempo",
-                "meaning": "agora[cite: 109]"
+                "meaning": "agora"
               }
             ]
           },
@@ -21222,20 +21222,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ve'ad-",
             "lemma": "עַד",
             "composite": true,
-            "syntax_role": "Conjunção com preposição temporal de término ('e até')[cite: 53, 54]. Unida por maqqef[cite: 31].",
+            "syntax_role": "Conjunção com preposição temporal de término ('e até'). Unida por maqqef.",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "עַד־",
                 "transliteration": "Ad-",
                 "type": "Preposição",
-                "meaning": "até[cite: 53]"
+                "meaning": "até"
               }
             ]
           },
@@ -21246,7 +21246,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עוֹלָם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regido pela preposição עַד ('eternidade / para sempre')[cite: 170]."
+            "syntax_role": "Termo regido pela preposição עַד ('eternidade / para sempre')."
           }
         ]
       }
@@ -21426,7 +21426,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Paralelismo Poético Exortativo com Verbo Geminado (Ayin Duplo)",
-        "notes": "No verbo Ayin Duplo סָבַב, os dois radicais bet contraem-se no imperativo Qal plural com dagesh forte assimilativo (Kelley XXXI.76)[cite: 10].",
+        "notes": "No verbo Ayin Duplo סָבַב, os dois radicais bet contraem-se no imperativo Qal plural com dagesh forte assimilativo (Kelley XXXI.76).",
         "tokens": [
           {
             "index": 1,
@@ -21435,8 +21435,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "סָבַב",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('rodeai' / 'circundai')[cite: 115].",
-            "notes": "Verbo geminado com holem e dagesh forte no bet decorrente da contração dos radicais idênticos (Kelley XXXI.76)[cite: 10]."
+            "syntax_role": "Primeiro núcleo verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('rodeai' / 'circundai').",
+            "notes": "Verbo geminado com holem e dagesh forte no bet decorrente da contração dos radicais idênticos (Kelley XXXI.76)."
           },
           {
             "index": 2,
@@ -21454,8 +21454,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "סָפַר",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Segundo núcleo verbal volitivo coordenado assimétrico. 2ª pessoa masculino plural do imperativo Qal ('contai')[cite: 115].",
-            "notes": "Forma regular do imperativo Qal do verbo forte (Kelley XVIII.48)[cite: 8, 115]."
+            "syntax_role": "Segundo núcleo verbal volitivo coordenado assimétrico. 2ª pessoa masculino plural do imperativo Qal ('contai').",
+            "notes": "Forma regular do imperativo Qal do verbo forte (Kelley XVIII.48)."
           },
           {
             "index": 4,
@@ -21463,21 +21463,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Migdaleha",
             "lemma": "מִגְדָּל",
             "composite": true,
-            "syntax_role": "Objeto direto determinado com sufixo possessivo ('as suas torres')[cite: 103].",
+            "syntax_role": "Objeto direto determinado com sufixo possessivo ('as suas torres').",
             "parts": [
               {
                 "segment": "מִגְדָּלֵ",
                 "transliteration": "Migdale",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
-                "meaning": "torres de[cite: 90]"
+                "meaning": "torres de"
               },
               {
                 "segment": "יהָ",
                 "transliteration": "Ha",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa feminino singular",
-                "meaning": "suas / dela (referindo-se a Sião)[cite: 103]"
+                "meaning": "suas / dela (referindo-se a Sião)"
               }
             ]
           }
@@ -21499,14 +21499,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vattavo",
             "lemma": "בּוֹא",
             "composite": true,
-            "syntax_role": "Núcleo do predicado verbal narrativo ('e veio' / 'e voltou')[cite: 179].",
+            "syntax_role": "Núcleo do predicado verbal narrativo ('e veio' / 'e voltou').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no tav preformativo (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no tav preformativo (Kelley XVI.43.2)."
               },
               {
                 "segment": "תָּבֹא",
@@ -21514,7 +21514,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa feminino singular do imperfeito Qal",
                 "meaning": "ela veio",
-                "phonetics": "Verbo oco / médio vav com concordância feminina singular com הַיּוֹנָה (Kelley XXIX.74)[cite: 10, 111]."
+                "phonetics": "Verbo oco / médio vav com concordância feminina singular com הַיּוֹנָה (Kelley XXIX.74)."
               }
             ]
           },
@@ -21524,20 +21524,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Elav",
             "lemma": "אֶל",
             "composite": true,
-            "syntax_role": "Complemento preposicional regido de direção ('a ele')[cite: 99, 100].",
+            "syntax_role": "Complemento preposicional regido de direção ('a ele').",
             "parts": [
               {
                 "segment": "אֵלָ",
                 "transliteration": "Ela",
                 "type": "Preposição",
-                "meaning": "a / em direção a[cite: 99, 100]"
+                "meaning": "a / em direção a"
               },
               {
                 "segment": "יו",
                 "transliteration": "V",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa masculino singular",
-                "meaning": "ele[cite: 99, 100]"
+                "meaning": "ele"
               }
             ]
           },
@@ -21547,14 +21547,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hayonah",
             "lemma": "יוֹנָה",
             "composite": true,
-            "syntax_role": "Sujeito determinado da oração verbal ('a pomba')[cite: 92].",
+            "syntax_role": "Sujeito determinado da oração verbal ('a pomba').",
             "parts": [
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a",
-                "phonetics": "Patah com dagesh forte no yod (י)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no yod (י)."
               },
               {
                 "segment": "יּוֹנָה",
@@ -21571,20 +21571,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Le'et",
             "lemma": "עֵת",
             "composite": true,
-            "syntax_role": "Termo regente no construto temporal com preposição inseparável ('ao tempo de')[cite: 50, 96].",
+            "syntax_role": "Termo regente no construto temporal com preposição inseparável ('ao tempo de').",
             "parts": [
               {
                 "segment": "לְ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
-                "meaning": "a / ao[cite: 50]"
+                "meaning": "a / ao"
               },
               {
                 "segment": "עֵת",
                 "transliteration": "Et",
                 "type": "Substantivo",
                 "inflection": "feminino singular construto",
-                "meaning": "tempo de / momento de[cite: 96]"
+                "meaning": "tempo de / momento de"
               }
             ]
           },
@@ -21595,7 +21595,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עֶרֶב",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Termo regido genitivo temporal ('entardecer' / 'tarde')[cite: 60, 84]."
+            "syntax_role": "Termo regido genitivo temporal ('entardecer' / 'tarde')."
           },
           {
             "index": 6,
@@ -21603,20 +21603,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vehinneh",
             "lemma": "הִנֵּה",
             "composite": true,
-            "syntax_role": "Marcador de surpresa ou evidência imediata com conjunção coordenativa ('e eis que')[cite: 54, 101, 102].",
+            "syntax_role": "Marcador de surpresa ou evidência imediata com conjunção coordenativa ('e eis que').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "הִנֵּה",
                 "transliteration": "Hinneh",
                 "type": "Partícula demonstrativa",
-                "meaning": "eis que[cite: 101, 102, 126]"
+                "meaning": "eis que"
               }
             ]
           },
@@ -21627,8 +21627,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עָלֶה",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Termo regente no construto singular ('folha de'). Unido por maqqef[cite: 31].",
-            "notes": "Substantivo da classe Lamed He com terminação segol-he no construto singular (Kelley X.26.4 e XXVII.72)[cite: 10, 87]."
+            "syntax_role": "Termo regente no construto singular ('folha de'). Unido por maqqef.",
+            "notes": "Substantivo da classe Lamed He com terminação segol-he no construto singular (Kelley X.26.4 e XXVII.72)."
           },
           {
             "index": 8,
@@ -21637,7 +21637,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "זַיִת",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Termo regido genitivo ('oliveira')[cite: 91]."
+            "syntax_role": "Termo regido genitivo ('oliveira')."
           },
           {
             "index": 9,
@@ -21646,7 +21646,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "טָרָף",
             "composite": false,
             "word_class": "Adjetivo / Particípio",
-            "syntax_role": "Modificador atributivo qualificando עָלֶה ('arrancada' / 'fresca')[cite: 71]."
+            "syntax_role": "Modificador atributivo qualificando עָלֶה ('arrancada' / 'fresca')."
           },
           {
             "index": 10,
@@ -21654,13 +21654,13 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Befiha",
             "lemma": "פֶּה",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo com sufixo possessivo ('no seu bico / na sua boca')[cite: 50, 96, 102].",
+            "syntax_role": "Adjunto adverbial locativo com sufixo possessivo ('no seu bico / na sua boca').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
-                "meaning": "em / no[cite: 50]"
+                "meaning": "em / no"
               },
               {
                 "segment": "פִי",
@@ -21668,14 +21668,14 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
                 "meaning": "boca de / bico de",
-                "phonetics": "Base construta do substantivo פֶּה perante sufixo pronominal (Kelley X.26.4 e XI.28)[cite: 87, 102]."
+                "phonetics": "Base construta do substantivo פֶּה perante sufixo pronominal (Kelley X.26.4 e XI.28)."
               },
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Sufixo pronominal",
                 "inflection": "3ª pessoa feminino singular",
-                "meaning": "dela / seu[cite: 102]"
+                "meaning": "dela / seu"
               }
             ]
           }
@@ -21698,8 +21698,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "בָּרַךְ",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal volitivo. 2ª pessoa feminino singular do imperativo Pi'el ('bendize / louva')[cite: 115, 142].",
-            "notes": "Hatef-patah sob o resh gutural no tronco Pi'el com concordância no feminino singular com נֶפֶשׁ (Kelley XVIII.50 e XXIV.69)[cite: 8, 9, 64]."
+            "syntax_role": "Núcleo verbal volitivo. 2ª pessoa feminino singular do imperativo Pi'el ('bendize / louva').",
+            "notes": "Hatef-patah sob o resh gutural no tronco Pi'el com concordância no feminino singular com נֶפֶשׁ (Kelley XVIII.50 e XXIV.69)."
           },
           {
             "index": 2,
@@ -21707,21 +21707,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Nafshi",
             "lemma": "נֶפֶשׁ",
             "composite": true,
-            "syntax_role": "Vocativo direto reflexivo com sufixo possessivo ('ó minha alma')[cite: 64, 102].",
+            "syntax_role": "Vocativo direto reflexivo com sufixo possessivo ('ó minha alma').",
             "parts": [
               {
                 "segment": "נַפְש",
                 "transliteration": "Nafesh",
                 "type": "Substantivo segolado",
                 "inflection": "feminino singular construto",
-                "meaning": "alma / vida de[cite: 64, 91]"
+                "meaning": "alma / vida de"
               },
               {
                 "segment": "ִי",
                 "transliteration": "I",
                 "type": "Sufixo pronominal",
                 "inflection": "1ª pessoa comum do singular",
-                "meaning": "minha[cite: 102]"
+                "meaning": "minha"
               }
             ]
           },
@@ -21732,7 +21732,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אֵת",
             "composite": false,
             "word_class": "Partícula indicadora de objeto direto",
-            "syntax_role": "Assinala o objeto direto determinado[cite: 31]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Assinala o objeto direto determinado. Unida por maqqef."
           },
           {
             "index": 4,
@@ -21741,7 +21741,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יְהוָה",
             "composite": false,
             "word_class": "Nome Divino",
-            "syntax_role": "Objeto direto do imperativo ('o SENHOR')[cite: 56, 57]."
+            "syntax_role": "Objeto direto do imperativo ('o SENHOR')."
           },
           {
             "index": 5,
@@ -21749,22 +21749,22 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Hallelu-yah",
             "lemma": "הָלַל",
             "composite": true,
-            "syntax_role": "Exclamação doxológica litúrgica imperativa ('louvai ao SENHOR / Aleluia')[cite: 40, 142].",
+            "syntax_role": "Exclamação doxológica litúrgica imperativa ('louvai ao SENHOR / Aleluia').",
             "parts": [
               {
                 "segment": "הַלְלוּ־",
                 "transliteration": "Hallelu-",
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino plural do imperativo Pi'el",
-                "meaning": "louvai[cite: 142]",
-                "phonetics": "Dagesh forte característico do Pi'el no lamed da raiz geminada הָלַל (Kelley XIV.36.2)[cite: 140, 142]."
+                "meaning": "louvai",
+                "phonetics": "Dagesh forte característico do Pi'el no lamed da raiz geminada הָלַל (Kelley XIV.36.2)."
               },
               {
                 "segment": "יָהּ",
                 "transliteration": "Yah",
                 "type": "Nome Divino",
                 "meaning": "o SENHOR",
-                "phonetics": "Forma poética abreviada de YHWH com mappiq no he final (Kelley IV.11)[cite: 40]."
+                "phonetics": "Forma poética abreviada de YHWH com mappiq no he final (Kelley IV.11)."
               }
             ]
           }
@@ -21779,7 +21779,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Provérbio Sapiencial com Proibição no Hitpa'el (Geminado) e Verbos Pe Yod",
-        "notes": "O verbo הָלַל no Hitpa'el reflexivo significa 'gloriar-se' / 'jactar-se' (Kelley XIV.36.4 e XXXI.76)[cite: 10, 142].",
+        "notes": "O verbo הָלַל no Hitpa'el reflexivo significa 'gloriar-se' / 'jactar-se' (Kelley XIV.36.4 e XXXI.76).",
         "tokens": [
           {
             "index": 1,
@@ -21788,7 +21788,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "אַל",
             "composite": false,
             "word_class": "Partícula de negação subjetiva / proibitiva",
-            "syntax_role": "Rege a forma volitiva no sentido proibitivo imediato ('não'). Unida por maqqef[cite: 31]."
+            "syntax_role": "Rege a forma volitiva no sentido proibitivo imediato ('não'). Unida por maqqef."
           },
           {
             "index": 2,
@@ -21797,8 +21797,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "הָלַל",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal proibitivo. 2ª pessoa masculino singular do jussivo/imperfeito Hitpa'el ('não te glories' / 'não te jactes')[cite: 142, 166].",
-            "notes": "Prefixo do Hitpa'el com dagesh forte característico no lamed do verbo geminado (Kelley XIV.36.4)[cite: 142]."
+            "syntax_role": "Núcleo do predicado verbal proibitivo. 2ª pessoa masculino singular do jussivo/imperfeito Hitpa'el ('não te glories' / 'não te jactes').",
+            "notes": "Prefixo do Hitpa'el com dagesh forte característico no lamed do verbo geminado (Kelley XIV.36.4)."
           },
           {
             "index": 3,
@@ -21806,20 +21806,20 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Beyom",
             "lemma": "יוֹם",
             "composite": true,
-            "syntax_role": "Termo regente no construto temporal com preposição inseparável ('no dia de')[cite: 50, 89].",
+            "syntax_role": "Termo regente no construto temporal com preposição inseparável ('no dia de').",
             "parts": [
               {
                 "segment": "בְּ",
                 "transliteration": "Be",
                 "type": "Preposição inseparável",
-                "meaning": "em / no[cite: 50]"
+                "meaning": "em / no"
               },
               {
                 "segment": "יוֹם",
                 "transliteration": "Yom",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
-                "meaning": "dia de[cite: 89]"
+                "meaning": "dia de"
               }
             ]
           },
@@ -21839,7 +21839,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "כִּי",
             "composite": false,
             "word_class": "Conjunção subordinativa",
-            "syntax_role": "Conjunção causal subordinada ('porque' / 'pois')[cite: 68]."
+            "syntax_role": "Conjunção causal subordinada ('porque' / 'pois')."
           },
           {
             "index": 6,
@@ -21848,7 +21848,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "לֹא",
             "composite": false,
             "word_class": "Partícula de negação",
-            "syntax_role": "Negação verbal ('não')[cite: 60, 118]. Unida por maqqef[cite: 31]."
+            "syntax_role": "Negação verbal ('não'). Unida por maqqef."
           },
           {
             "index": 7,
@@ -21857,8 +21857,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָדַע",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da oração causal. 2ª pessoa masculino singular do imperfeito Qal ('sabes')[cite: 161].",
-            "notes": "Verbo Pe Yod com queda do yod inicial e preformativo em tsere (Kelley XXX.75)[cite: 10]."
+            "syntax_role": "Núcleo verbal da oração causal. 2ª pessoa masculino singular do imperfeito Qal ('sabes').",
+            "notes": "Verbo Pe Yod com queda do yod inicial e preformativo em tsere (Kelley XXX.75)."
           },
           {
             "index": 8,
@@ -21867,8 +21867,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "מָה",
             "composite": false,
             "word_class": "Pronome interrogativo",
-            "syntax_role": "Objeto direto anteposto da oração interrogativa indireta ('o que')[cite: 128]. Unido por maqqef[cite: 31].",
-            "notes": "Patah motivado pelo maqqef que atrai dagesh conjuntivo na consoante seguinte (Kelley III.4 e XVI.45)[cite: 31, 182]."
+            "syntax_role": "Objeto direto anteposto da oração interrogativa indireta ('o que'). Unido por maqqef.",
+            "notes": "Patah motivado pelo maqqef que atrai dagesh conjuntivo na consoante seguinte (Kelley III.4 e XVI.45)."
           },
           {
             "index": 9,
@@ -21877,8 +21877,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָלַד",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo verbal da oração interrogativa indireta. 3ª pessoa masculino singular do imperfeito Qal ('dará à luz' / 'gerará')[cite: 161].",
-            "notes": "Verbo Pe Yod com queda do yod, preformativo com tsere e dagesh conjuntivo eufónico após מַה־ (Kelley XVI.45 e XXX.75)[cite: 10, 182]."
+            "syntax_role": "Núcleo verbal da oração interrogativa indireta. 3ª pessoa masculino singular do imperfeito Qal ('dará à luz' / 'gerará').",
+            "notes": "Verbo Pe Yod com queda do yod, preformativo com tsere e dagesh conjuntivo eufónico após מַה־ (Kelley XVI.45 e XXX.75)."
           },
           {
             "index": 10,
@@ -21887,7 +21887,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יוֹם",
             "composite": false,
             "word_class": "Substantivo",
-            "syntax_role": "Sujeito posposto da oração ('um dia')[cite: 60, 118]."
+            "syntax_role": "Sujeito posposto da oração ('um dia')."
           }
         ]
       },
@@ -21900,7 +21900,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Histórico Narrativo com Infinitivos Construtos e Vav Consecutivo",
-        "notes": "O infinitivo construto כַּלּוֹת (Pi'el de כָּלָה, Lamed He) com a preposição כְּ expressa oração temporal de simultaneidade ou conclusão imediata ('ao terminar', Kelley XIX.56 e XXVII.72)[cite: 8, 10].",
+        "notes": "O infinitivo construto כַּלּוֹת (Pi'el de כָּלָה, Lamed He) com a preposição כְּ expressa oração temporal de simultaneidade ou conclusão imediata ('ao terminar', Kelley XIX.56 e XXVII.72).",
         "tokens": [
           {
             "index": 1,
@@ -21908,21 +21908,21 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Uchechallot",
             "lemma": "כָּלָה",
             "composite": true,
-            "syntax_role": "Oração temporal de infinitivo construto ('e ao terminar' / 'e acabando')[cite: 8, 54].",
+            "syntax_role": "Oração temporal de infinitivo construto ('e ao terminar' / 'e acabando').",
             "parts": [
               {
                 "segment": "וּ",
                 "transliteration": "U",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Šureq (וּ) diante de consoante com shva simples (Kelley VI.16.2)[cite: 54]."
+                "phonetics": "Šureq (וּ) diante de consoante com shva simples (Kelley VI.16.2)."
               },
               {
                 "segment": "כְ",
                 "transliteration": "Che",
                 "type": "Preposição inseparável",
                 "meaning": "quando / ao",
-                "phonetics": "Kaf sem dagesh lene por vir após som vocálico pleno (Kelley I.1.9)[cite: 20, 21]."
+                "phonetics": "Kaf sem dagesh lene por vir após som vocálico pleno (Kelley I.1.9)."
               },
               {
                 "segment": "כַלּוֹת",
@@ -21930,7 +21930,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Pi'el",
                 "meaning": "terminar / completar",
-                "phonetics": "Infinitivo construto Pi'el da classe Lamed He terminado em -ot com dagesh forte no lamed (Kelley XIX.56 e XXVII.72)[cite: 8, 10, 140]."
+                "phonetics": "Infinitivo construto Pi'el da classe Lamed He terminado em -ot com dagesh forte no lamed (Kelley XIX.56 e XXVII.72)."
               }
             ]
           },
@@ -21941,7 +21941,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "שְׁלֹמֹה",
             "composite": false,
             "word_class": "Nome Próprio",
-            "syntax_role": "Sujeito agente do infinitivo construto ('Salomão')[cite: 8, 23]."
+            "syntax_role": "Sujeito agente do infinitivo construto ('Salomão')."
           },
           {
             "index": 3,
@@ -21949,13 +21949,13 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lehitpallel",
             "lemma": "פָּלַל",
             "composite": true,
-            "syntax_role": "Infinitivo construto complementar de ação ('de orar')[cite: 8, 50, 142].",
+            "syntax_role": "Infinitivo construto complementar de ação ('de orar').",
             "parts": [
               {
                 "segment": "לְ",
                 "transliteration": "Le",
                 "type": "Preposição inseparável",
-                "meaning": "a / de[cite: 50]"
+                "meaning": "a / de"
               },
               {
                 "segment": "הִתְפַּלֵּל",
@@ -21963,7 +21963,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "Infinitivo construto Hitpa'el",
                 "meaning": "orar / interceder",
-                "phonetics": "Prefixo Hitpa'el regular da raiz geminada פָּלַל com dagesh forte no lamed mediano (Kelley XIV.36.4 e XIX.56)[cite: 8, 142]."
+                "phonetics": "Prefixo Hitpa'el regular da raiz geminada פָּלַל com dagesh forte no lamed mediano (Kelley XIV.36.4 e XIX.56)."
               }
             ]
           },
@@ -21973,28 +21973,28 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Veha'esh",
             "lemma": "אֵשׁ",
             "composite": true,
-            "syntax_role": "Sujeito da oração verbal principal anteposto ('e o fogo')[cite: 46, 47, 54].",
+            "syntax_role": "Sujeito da oração verbal principal anteposto ('e o fogo').",
             "parts": [
               {
                 "segment": "וְ",
                 "transliteration": "Ve",
                 "type": "Conjunção coordenativa",
                 "meaning": "e",
-                "phonetics": "Vav com shva simples[cite: 54]."
+                "phonetics": "Vav com shva simples."
               },
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante de alef (א) (Kelley V.14.3[2]b)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante de alef (א) (Kelley V.14.3[2]b)."
               },
               {
                 "segment": "אֵשׁ",
                 "transliteration": "Esh",
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
-                "meaning": "fogo[cite: 96]"
+                "meaning": "fogo"
               }
             ]
           },
@@ -22005,8 +22005,8 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "יָרַד",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal principal. 3ª pessoa feminino singular do perfeito Qal ('desceu')[cite: 114].",
-            "notes": "Verbo Pe Yod concordando em gênero feminino com o substantivo אֵשׁ (Kelley XII.30 e XXX.75)[cite: 10, 64, 114]."
+            "syntax_role": "Núcleo do predicado verbal principal. 3ª pessoa feminino singular do perfeito Qal ('desceu').",
+            "notes": "Verbo Pe Yod concordando em gênero feminino com o substantivo אֵשׁ (Kelley XII.30 e XXX.75)."
           },
           {
             "index": 6,
@@ -22014,28 +22014,28 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Mehashamayim",
             "lemma": "שָׁמַיִם",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo de procedência ('dos céus')[cite: 45, 53].",
+            "syntax_role": "Adjunto adverbial locativo de procedência ('dos céus').",
             "parts": [
               {
                 "segment": "מֵ",
                 "transliteration": "Me",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "de / desde",
-                "phonetics": "Șere perante o artigo הַ para evitar choque consonantal (Kelley VI.15.3[3])[cite: 53]."
+                "phonetics": "Șere perante o artigo הַ para evitar choque consonantal (Kelley VI.15.3[3])."
               },
               {
                 "segment": "הַ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah com dagesh forte no shin (ש)[cite: 45]."
+                "phonetics": "Patah com dagesh forte no shin (ש)."
               },
               {
                 "segment": "שָּׁמַיִם",
                 "transliteration": "Shamayim",
                 "type": "Substantivo",
                 "inflection": "masculino plural/dual absoluto",
-                "meaning": "céus[cite: 68]"
+                "meaning": "céus"
               }
             ]
           },
@@ -22045,14 +22045,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Vattochal",
             "lemma": "אָכַל",
             "composite": true,
-            "syntax_role": "Segundo predicado verbal coordenado narrativo ('e consumiu' / 'e devorou')[cite: 179].",
+            "syntax_role": "Segundo predicado verbal coordenado narrativo ('e consumiu' / 'e devorou').",
             "parts": [
               {
                 "segment": "וַ",
                 "transliteration": "Va",
                 "type": "Conjunção (vav consecutivo)",
                 "meaning": "e",
-                "phonetics": "Vav com patah e dagesh forte no tav preformativo (Kelley XVI.43.2)[cite: 179, 180]."
+                "phonetics": "Vav com patah e dagesh forte no tav preformativo (Kelley XVI.43.2)."
               },
               {
                 "segment": "תֹּאכַל",
@@ -22060,7 +22060,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa feminino singular do imperfeito apocopado Qal",
                 "meaning": "ela consumiu / devorou",
-                "phonetics": "Verbo Pe Alef com alef quiescente e holem sob o preformativo (Kelley XXIII.67)[cite: 9, 39]."
+                "phonetics": "Verbo Pe Alef com alef quiescente e holem sob o preformativo (Kelley XXIII.67)."
               }
             ]
           },
@@ -22070,14 +22070,14 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ha'olah",
             "lemma": "עֹלָה",
             "composite": true,
-            "syntax_role": "Objeto direto determinado ('o holocausto')[cite: 92].",
+            "syntax_role": "Objeto direto determinado ('o holocausto').",
             "parts": [
               {
                 "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "o",
-                "phonetics": "Qamats compensatório diante da gutural ayin (ע) (Kelley V.14.3[2]b)[cite: 46, 47]."
+                "phonetics": "Qamats compensatório diante da gutural ayin (ע) (Kelley V.14.3[2]b)."
               },
               {
                 "segment": "עֹלָה",
