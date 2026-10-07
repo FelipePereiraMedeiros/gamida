@@ -446,13 +446,14 @@ function updateVocabCategoryFilterUI() {
     ? getAvailableVocabCategories
     : (typeof window !== "undefined" && window.getAvailableVocabCategories
       ? window.getAvailableVocabCategories
-      : () => ({ totalItems: 0, totalWords: 0, totalSentences: 0, categories: [] }));
+      : () => ({ totalItems: 0, totalWords: 0, totalSentences: 0, totalFavorites: 0, categories: [] }));
 
-  const { totalItems, totalWords, totalSentences, categories } = getCatsFn();
+  const { totalItems, totalWords, totalSentences, totalFavorites = 0, categories } = getCatsFn();
 
   const currentVal = (typeof AppState !== "undefined" && AppState.vocabCategory) || "all";
   const isValidSelection =
     currentVal === "all" ||
+    currentVal === "favorites" ||
     currentVal === "words" ||
     currentVal === "sentences" ||
     categories.some((c) => c.id === currentVal);
@@ -467,6 +468,11 @@ function updateVocabCategoryFilterUI() {
   optAll.value = "all";
   optAll.textContent = `Todos os itens (${totalItems})`;
   select.appendChild(optAll);
+
+  const optFav = document.createElement("option");
+  optFav.value = "favorites";
+  optFav.textContent = `⭐ Apenas Favoritos (${totalFavorites})`;
+  select.appendChild(optFav);
 
   if (totalWords > 0) {
     const optWords = document.createElement("option");
@@ -495,6 +501,86 @@ function updateVocabCategoryFilterUI() {
   }
 
   select.value = (typeof AppState !== "undefined" && AppState.vocabCategory) || "all";
+}
+
+/**
+ * Alterna o estado de favorito de um vocábulo ou frase e persiste no storage
+ * @param {Object} item
+ */
+function toggleItemFavorite(item) {
+  if (!item || typeof AppState === "undefined") return;
+  item.favorite = !item.favorite;
+
+  // Marca o capítulo atual como modificado pelo aluno
+  if (AppState.currentChapter) {
+    AppState.currentChapter._userModified = true;
+  }
+
+  // Sincroniza em todos os capítulos caso o mesmo termo apareça
+  if (Array.isArray(AppState.chapters)) {
+    const termFn = typeof getTerm === "function" ? getTerm : (i) => i.term || i.hebrew || "";
+    const targetTerm = termFn(item);
+    AppState.chapters.forEach((chap) => {
+      const matchWord = (chap.items || []).find((i) => termFn(i) === targetTerm);
+      if (matchWord) {
+        matchWord.favorite = item.favorite;
+        chap._userModified = true;
+      }
+      const matchSent = (chap.sentences || []).find((s) => termFn(s) === targetTerm);
+      if (matchSent) {
+        matchSent.favorite = item.favorite;
+        chap._userModified = true;
+      }
+    });
+  }
+
+  // Persiste no storage unificado
+  if (typeof saveChaptersToStorage === "function") {
+    saveChaptersToStorage();
+  } else if (typeof window !== "undefined" && typeof window.saveChaptersToStorage === "function") {
+    window.saveChaptersToStorage();
+  }
+
+  // Se o filtro ativo no dicionário for 'favorites', re-renderiza a tabela
+  if (AppState.vocabCategory === "favorites") {
+    lastRenderedVocabChapter = null;
+    renderVocabTable();
+  } else {
+    // Atualiza contadores nas opções do filtro
+    updateVocabCategoryFilterUI();
+    // Atualiza visualmente o botão na linha do DOM correspondente
+    if (typeof document !== "undefined") {
+      const rows = document.querySelectorAll("#vocab-table-body tr");
+      const termFn = typeof getTerm === "function" ? getTerm : (i) => i.term || i.hebrew || "";
+      const targetTerm = termFn(item);
+      rows.forEach((r) => {
+        const firstCell = r.querySelector("td");
+        if (firstCell && firstCell.textContent.trim() === targetTerm.trim()) {
+          const btn = r.querySelector(".btn-vocab-favorite");
+          if (btn) {
+            const isFav = !!item.favorite;
+            btn.innerHTML = isFav ? "⭐" : "☆";
+            btn.className = `btn-vocab-favorite p-2 rounded-xl text-lg transition duration-150 hover:scale-125 focus:outline-none cursor-pointer ${isFav ? "text-amber-400 hover:text-amber-300" : "text-slate-600 hover:text-amber-400"}`;
+            btn.title = isFav ? "Remover dos favoritos" : "Marcar como favorito";
+          }
+          const normFn = typeof normalizeText === "function" ? normalizeText : (s) => String(s || "").toLowerCase().trim();
+          const translitText = item.transliteration || "-";
+          const typeText = item.type || "Geral";
+          let translationsText = Array.isArray(item.translations) ? item.translations.join(" / ") : item.translations || "";
+          r.setAttribute("data-search", normFn(`${targetTerm} ${translitText} ${translationsText} ${typeText} ${item.favorite ? "favorito favorita estrela star" : ""}`));
+        }
+      });
+    }
+  }
+
+  // Se a interface de prática estiver ativa e no modo de favoritas, sincroniza
+  if (AppState.exerciseMode === "favorites") {
+    if (typeof buildPracticeQueue === "function") buildPracticeQueue();
+    else if (typeof window !== "undefined" && typeof window.buildPracticeQueue === "function") window.buildPracticeQueue();
+
+    if (typeof renderCurrentQuestion === "function") renderCurrentQuestion();
+    else if (typeof window !== "undefined" && typeof window.renderCurrentQuestion === "function") window.renderCurrentQuestion();
+  }
 }
 
 function renderVocabTable() {
@@ -551,6 +637,8 @@ function renderVocabTable() {
 
   if (categoryFilter === "all") {
     displayList = [...wordsPool, ...sentencesPool];
+  } else if (categoryFilter === "favorites") {
+    displayList = [...wordsPool, ...sentencesPool].filter((item) => !!item.favorite);
   } else if (categoryFilter === "words") {
     displayList = [...wordsPool];
   } else if (categoryFilter === "sentences") {
@@ -572,9 +660,12 @@ function renderVocabTable() {
 
   if (displayList.length === 0) {
     const trEmpty = document.createElement("tr");
+    const emptyMsg = categoryFilter === "favorites"
+      ? "Nenhum item marcado como favorito ainda. Clique no ícone de estrela (☆) para favoritar palavras e frases!"
+      : "Nenhum item encontrado para os filtros selecionados.";
     trEmpty.innerHTML = `
-      <td colspan="4" class="px-6 py-8 text-center text-slate-500 text-xs italic">
-        Nenhum item encontrado para os filtros selecionados.
+      <td colspan="5" class="px-6 py-8 text-center text-slate-500 text-xs italic">
+        ${emptyMsg}
       </td>
     `;
     fragment.appendChild(trEmpty);
@@ -588,12 +679,13 @@ function renderVocabTable() {
       const termText = termFn(item);
       const translitText = item.transliteration || "-";
       const typeText = item.type || "Geral";
+      const isFavorite = !!item.favorite;
       let translationsText = Array.isArray(item.translations)
         ? item.translations.join(" / ")
         : item.translations || "Tradução ausente";
 
       // Cache de busca no atributo data-search para evitar layout thrashing ao digitar
-      const searchHaystack = normFn(`${termText} ${translitText} ${translationsText} ${typeText}`);
+      const searchHaystack = normFn(`${termText} ${translitText} ${translationsText} ${typeText} ${isFavorite ? "favorito favorita estrela star" : ""}`);
       tr.setAttribute("data-search", searchHaystack);
 
       const textClass = AppState.language === "hebrew"
@@ -620,7 +712,25 @@ function renderVocabTable() {
             ` : ""}
           </div>
         </td>
+        <td class="px-4 py-4 text-center">
+          <button
+            type="button"
+            class="btn-vocab-favorite p-2 rounded-xl text-lg transition duration-150 hover:scale-125 focus:outline-none cursor-pointer ${isFavorite ? "text-amber-400 hover:text-amber-300" : "text-slate-600 hover:text-amber-400"}"
+            title="${isFavorite ? "Remover dos favoritos" : "Marcar como favorito"}"
+            aria-label="${isFavorite ? "Desfavoritar" : "Favoritar"}"
+          >
+            ${isFavorite ? "⭐" : "☆"}
+          </button>
+        </td>
       `;
+
+      const btnFav = tr.querySelector(".btn-vocab-favorite");
+      if (btnFav) {
+        btnFav.onclick = (e) => {
+          e.stopPropagation();
+          toggleItemFavorite(item);
+        };
+      }
 
       if (canAnalyze) {
         const btnAnalyze = tr.querySelector(".btn-vocab-analyze");
@@ -830,6 +940,7 @@ if (typeof window !== "undefined") {
   window.updateVocabCategoryFilterUI = updateVocabCategoryFilterUI;
   window.renderVocabTable = renderVocabTable;
   window.filterVocabTable = filterVocabTable;
+  window.toggleItemFavorite = toggleItemFavorite;
   window.applyLanguageUI = applyLanguageUI;
   window.toggleLanguage = toggleLanguage;
   window.UIModule = {
@@ -851,6 +962,7 @@ if (typeof window !== "undefined") {
     updateVocabCategoryFilterUI,
     renderVocabTable,
     filterVocabTable,
+    toggleItemFavorite,
     applyLanguageUI,
     toggleLanguage,
   };
@@ -876,6 +988,7 @@ if (typeof module !== "undefined" && module.exports) {
     updateVocabCategoryFilterUI,
     renderVocabTable,
     filterVocabTable,
+    toggleItemFavorite,
     applyLanguageUI,
     toggleLanguage,
   };

@@ -511,6 +511,7 @@
     "sentences": [
       {
         "id": "sent_03_01",
+        "favorite": false,
         "hebrew": "אָב וּבֵן",
         "transliteration": "av u'ven",
         "translations": [
@@ -557,6 +558,7 @@
       },
       {
         "id": "sent_03_02",
+        "favorite": false,
         "hebrew": "אִישׁ וְאִשָּׁה",
         "transliteration": "ish v'isha",
         "translations": [
@@ -603,6 +605,7 @@
       },
       {
         "id": "sent_03_03",
+        "favorite": false,
         "hebrew": "אֵם וּבַת",
         "transliteration": "em u'vat",
         "translations": [
@@ -650,6 +653,7 @@
       },
       {
         "id": "sent_03_04",
+        "favorite": false,
         "hebrew": "קוֹל עַם",
         "transliteration": "kol am",
         "translations": [
@@ -682,6 +686,7 @@
       },
       {
         "id": "sent_03_05",
+        "favorite": false,
         "hebrew": "שֵׁם אֱלֹהִים",
         "transliteration": "shem elohim",
         "translations": [
@@ -882,6 +887,7 @@
     "sentences": [
       {
         "id": "sent_05_01",
+        "favorite": false,
         "hebrew": "הָאָב וְהָאֵם",
         "transliteration": "ha'av v'ha'em",
         "translations": [
@@ -950,6 +956,7 @@
       },
       {
         "id": "sent_05_02",
+        "favorite": false,
         "hebrew": "הָאִישׁ וְהָאִשָּׁה",
         "transliteration": "ha'ish v'ha'isha",
         "translations": [
@@ -1017,6 +1024,7 @@
       },
       {
         "id": "sent_05_03",
+        "favorite": false,
         "hebrew": "הַבֵּן וְהַבַּת",
         "transliteration": "haben v'habat",
         "translations": [
@@ -1084,6 +1092,7 @@
       },
       {
         "id": "sent_05_04",
+        "favorite": false,
         "hebrew": "הָעִיר וְהַהָר",
         "transliteration": "ha'ir v'hahar",
         "translations": [
@@ -1153,6 +1162,7 @@
       },
       {
         "id": "sent_05_05",
+        "favorite": false,
         "hebrew": "הָאוֹר וְהַחֹשֶׁךְ",
         "transliteration": "ha'or v'hachoshech",
         "translations": [
@@ -1221,6 +1231,7 @@
       },
       {
         "id": "sent_05_06",
+        "favorite": false,
         "hebrew": "הַמַּיִם וְהַיָּם",
         "transliteration": "hamayim v'hayam",
         "translations": [
@@ -1469,6 +1480,7 @@
     "sentences": [
       {
         "id": "sent_06_01",
+        "favorite": false,
         "hebrew": "אֵין אִישׁ בָּעִיר",
         "transliteration": "ein ish ba'ir",
         "translations": [
@@ -1524,6 +1536,7 @@
       },
       {
         "id": "sent_06_02",
+        "favorite": false,
         "hebrew": "אֵין אוֹר לָעָם",
         "transliteration": "ein or la'am",
         "translations": [
@@ -1580,6 +1593,7 @@
       },
       {
         "id": "sent_06_03",
+        "favorite": false,
         "hebrew": "הַגַּן אֵצֶל הַבַּיִת",
         "transliteration": "hagan etzel habayit",
         "translations": [
@@ -1650,6 +1664,7 @@
       },
       {
         "id": "sent_06_04",
+        "favorite": false,
         "hebrew": "אֵין אִשָּׁה בַּבַּיִת",
         "transliteration": "ein isha babayit",
         "translations": [
@@ -1705,6 +1720,7 @@
       },
       {
         "id": "sent_06_05",
+        "favorite": false,
         "hebrew": "אֵין שָׁלוֹם בָּאָרֶץ",
         "transliteration": "ein shalom ba'aretz",
         "translations": [
@@ -1761,6 +1777,7 @@
       },
       {
         "id": "sent_06_06",
+        "favorite": false,
         "hebrew": "הָעִיר עַל־הָהָר",
         "transliteration": "ha'ir al-hahar",
         "translations": [
@@ -1833,6 +1850,7 @@
       },
       {
         "id": "sent_06_07",
+        "favorite": false,
         "hebrew": "טוֹב הָאוֹר מִן־הַחֹשֶׁךְ",
         "transliteration": "tov ha'or min-hachoshech",
         "translations": [
@@ -1913,6 +1931,7 @@
       },
       {
         "id": "sent_06_08",
+        "favorite": false,
         "hebrew": "טוֹב הַיּוֹם מִן־הַלַּיְלָה",
         "transliteration": "tov hayom min-halaila",
         "translations": [
@@ -1991,6 +2010,7 @@
       },
       {
         "id": "sent_06_09",
+        "favorite": false,
         "hebrew": "בֵּין הָאוֹר וּבֵין הַחֹשֶׁךְ",
         "transliteration": "bein ha'or u'vein hachoshech",
         "translations": [
@@ -2084,6 +2104,7 @@
       },
       {
         "id": "sent_06_10",
+        "favorite": false,
         "hebrew": "פְּרִי מִן־הָעֵץ",
         "transliteration": "pri min-ha'etz",
         "translations": [
@@ -2308,6 +2329,7 @@
     "sentences": [
       {
         "id": "sent_07_01",
+        "favorite": false,
         "hebrew": "הָאֲנָשִׁים וְהַסּוּסִים",
         "transliteration": "ha'anashim v'hasusim",
         "translations": [
@@ -2375,6 +2397,7 @@
       },
       {
         "id": "sent_07_02",
+        "favorite": false,
         "hebrew": "הַמִּצְוֹת אֲשֶׁר בַּסֵּפֶר",
         "transliteration": "hamitsvot asher basefer",
         "translations": [
@@ -2444,6 +2467,7 @@
       },
       {
         "id": "sent_07_03",
+        "favorite": false,
         "hebrew": "הַנָּשִׁים אֲשֶׁר בַּבַּיִת",
         "transliteration": "hanashim asher babayit",
         "translations": [
@@ -2514,6 +2538,7 @@
       },
       {
         "id": "sent_07_04",
+        "favorite": false,
         "hebrew": "הַמְּלָכִים וְהַנְּבִיאִים",
         "transliteration": "hamelechim v'hanevi'im",
         "translations": [
@@ -2581,6 +2606,7 @@
       },
       {
         "id": "sent_07_05",
+        "favorite": false,
         "hebrew": "הַמַּיִם בְּתוֹךְ הַיָּם",
         "transliteration": "hamayim betoch hayam",
         "translations": [
@@ -2666,6 +2692,7 @@
       },
       {
         "id": "sent_07_06",
+        "favorite": false,
         "hebrew": "הָעוֹף בַּשָּׁמַיִם",
         "transliteration": "ha'of bashamayim",
         "translations": [
@@ -2727,6 +2754,7 @@
       },
       {
         "id": "sent_07_07",
+        "favorite": false,
         "hebrew": "הַבְּרִית עִם־הַמֶּלֶךְ",
         "transliteration": "habrit im-hamelech",
         "translations": [
@@ -2797,6 +2825,7 @@
       },
       {
         "id": "sent_07_08",
+        "favorite": false,
         "hebrew": "הַמִּצְוֹת בַּתּוֹרָה",
         "transliteration": "hamitsvot batora",
         "translations": [
@@ -2857,6 +2886,7 @@
       },
       {
         "id": "sent_07_09",
+        "favorite": false,
         "hebrew": "עָפָר מִן־הָאֲדָמָה",
         "transliteration": "afar min-ha'adama",
         "translations": [
@@ -2913,6 +2943,7 @@
       },
       {
         "id": "sent_07_10",
+        "favorite": false,
         "hebrew": "הַשָּׁמַיִם וְהָאָרֶץ",
         "transliteration": "hashamayim v'ha'aretz",
         "translations": [
@@ -2981,6 +3012,7 @@
       },
       {
         "id": "sent_07_11",
+        "favorite": false,
         "hebrew": "הַיָּדַיִם וְהָרַגְלַיִם",
         "transliteration": "ha-yadayim ve-ha-raglayim",
         "translations": [
@@ -3217,6 +3249,7 @@
     "sentences": [
       {
         "id": "sent_08_01",
+        "favorite": false,
         "hebrew": "מֵאָדָם רָע",
         "transliteration": "me'adam ra",
         "translations": [
@@ -3263,6 +3296,7 @@
       },
       {
         "id": "sent_08_02",
+        "favorite": false,
         "hebrew": "הָאִישׁ מֹשֶׁה גָּדוֹל מְאֹד",
         "transliteration": "ha'ish moshe gadol meod",
         "translations": [
@@ -3327,6 +3361,7 @@
       },
       {
         "id": "sent_08_03",
+        "favorite": false,
         "hebrew": "מִי־אֵל גָּדוֹל בֵּאלֹהִים",
         "transliteration": "mi-el gadol belohim",
         "translations": [
@@ -3390,6 +3425,7 @@
       },
       {
         "id": "sent_08_04",
+        "favorite": false,
         "hebrew": "כִּי אֵל גָּדוֹל יְהוָה וּמֶלֶךְ גָּדוֹל",
         "transliteration": "ki el gadol adonai u'melech gadol",
         "translations": [
@@ -3471,6 +3507,7 @@
       },
       {
         "id": "sent_08_05",
+        "favorite": false,
         "hebrew": "הַשָּׁמַיִם הַחֲדָשִׁים וְהָאָרֶץ הַחֲדָשָׁה",
         "transliteration": "hashamayim hachadashim v'ha'aretz hachadasha",
         "translations": [
@@ -3588,6 +3625,7 @@
       },
       {
         "id": "sent_08_06",
+        "favorite": false,
         "hebrew": "לֵב חָדָשׁ וְרוּחַ חֲדָשָׁה",
         "transliteration": "lev chadash v'ruach chadasha",
         "translations": [
@@ -3652,6 +3690,7 @@
       },
       {
         "id": "sent_08_07",
+        "favorite": false,
         "hebrew": "טוֹב וְיָשָׁר יְהוָה",
         "transliteration": "tov v'yashar adonai",
         "translations": [
@@ -3708,6 +3747,7 @@
       },
       {
         "id": "sent_08_08",
+        "favorite": false,
         "hebrew": "וְדָוִיד זָקֵן",
         "transliteration": "v'david zaken",
         "translations": [
@@ -3752,6 +3792,7 @@
       },
       {
         "id": "sent_08_09",
+        "favorite": false,
         "hebrew": "רוּחַ־רָעָה מֵאֵת יְהוָה",
         "transliteration": "ruach-raa me'et adonai",
         "translations": [
@@ -3815,6 +3856,7 @@
       },
       {
         "id": "sent_08_10",
+        "favorite": false,
         "hebrew": "אֶבֶן גְדוֹלָה",
         "transliteration": "even gedolah",
         "translations": [
@@ -3847,6 +3889,7 @@
       },
       {
         "id": "sent_08_11",
+        "favorite": false,
         "hebrew": "בְּדֶרֶךְ יְשָׁרָה",
         "transliteration": "be-derech yesharah",
         "translations": [
@@ -3893,6 +3936,7 @@
       },
       {
         "id": "sent_08_12",
+        "favorite": false,
         "hebrew": "קָרוֹב הַיּוֹם",
         "transliteration": "karov ha-yom",
         "translations": [
@@ -4219,6 +4263,7 @@
     "sentences": [
       {
         "id": "sent_09_01",
+        "favorite": false,
         "hebrew": "הַדָּבָר הַגָּדוֹל הַזֶּה",
         "transliteration": "hadavar hagadol hazeh",
         "translations": [
@@ -4305,6 +4350,7 @@
       },
       {
         "id": "sent_09_02",
+        "favorite": false,
         "hebrew": "כִּי קָרוֹב הוּא",
         "transliteration": "ki karov hu",
         "translations": [
@@ -4345,6 +4391,7 @@
       },
       {
         "id": "sent_09_03",
+        "favorite": false,
         "hebrew": "וְאָנֹכִי נַעַר קָטֹן",
         "transliteration": "v'anochi naar katan",
         "translations": [
@@ -4400,6 +4447,7 @@
       },
       {
         "id": "sent_09_04",
+        "favorite": false,
         "hebrew": "נֹחַ אִישׁ צַדִּיק",
         "transliteration": "noach ish tzadik",
         "translations": [
@@ -4440,6 +4488,7 @@
       },
       {
         "id": "sent_09_05",
+        "favorite": false,
         "hebrew": "צַדִּיק וְיָשָׁר הוּא",
         "transliteration": "tzadik v'yashar hu",
         "translations": [
@@ -4494,6 +4543,7 @@
       },
       {
         "id": "sent_09_06",
+        "favorite": false,
         "hebrew": "לֹא אִישׁ אֵל",
         "transliteration": "lo ish el",
         "translations": [
@@ -4533,6 +4583,7 @@
       },
       {
         "id": "sent_09_07",
+        "favorite": false,
         "hebrew": "עַם־חָכָם הַגּוֹי הַגָּדוֹל הַזֶּה",
         "transliteration": "am-chacham hagoy hagadol hazeh",
         "translations": [
@@ -4635,6 +4686,7 @@
       },
       {
         "id": "sent_09_08",
+        "favorite": false,
         "hebrew": "זֶה הַיּוֹם",
         "transliteration": "zeh hayom",
         "translations": [
@@ -4681,6 +4733,7 @@
       },
       {
         "id": "sent_09_09",
+        "favorite": false,
         "hebrew": "אֲנִי יְהוָה",
         "transliteration": "ani adonai",
         "translations": [
@@ -4711,6 +4764,7 @@
       },
       {
         "id": "sent_09_10",
+        "favorite": false,
         "hebrew": "אַתָּה הָאִישׁ",
         "transliteration": "attah ha-ish",
         "translations": [
@@ -4756,6 +4810,7 @@
       },
       {
         "id": "sent_09_11",
+        "favorite": false,
         "hebrew": "הַמָּקוֹם הַזֶּה",
         "transliteration": "ha-makom ha-zeh",
         "translations": [
@@ -4816,6 +4871,7 @@
       },
       {
         "id": "sent_09_12",
+        "favorite": false,
         "hebrew": "הָאָרֶץ הַזֹּאת",
         "transliteration": "ha-aretz ha-zot",
         "translations": [
@@ -4876,6 +4932,7 @@
       },
       {
         "id": "sent_09_13",
+        "favorite": false,
         "hebrew": "אֵלֶּה הַדְּבָרִים",
         "transliteration": "elleh ha-devarim",
         "translations": [
@@ -4922,6 +4979,7 @@
       },
       {
         "id": "sent_09_14",
+        "favorite": false,
         "hebrew": "כִּי גָדוֹל הַיּוֹם הַהוּא",
         "transliteration": "ki gadol hayom hahu",
         "translations": [
@@ -5003,6 +5061,7 @@
       },
       {
         "id": "sent_09_15",
+        "favorite": false,
         "hebrew": "הַדְּבָרִים הָאֵלֶּה",
         "transliteration": "hadevarim ha'elleh",
         "translations": [
@@ -5221,6 +5280,7 @@
     "sentences": [
       {
         "id": "sent_10_01",
+        "favorite": false,
         "hebrew": "מִיַּד הָאִשָּׁה",
         "transliteration": "miyad ha'isha",
         "translations": [
@@ -5282,6 +5342,7 @@
       },
       {
         "id": "sent_10_02",
+        "favorite": false,
         "hebrew": "יוֹם הַשַּׁבָּת",
         "transliteration": "yom hashabat",
         "translations": [
@@ -5329,6 +5390,7 @@
       },
       {
         "id": "sent_10_03",
+        "favorite": false,
         "hebrew": "מִבְּנֵי הַנְּבִיאִים",
         "transliteration": "mibnei hanevi'im",
         "translations": [
@@ -5390,6 +5452,7 @@
       },
       {
         "id": "sent_10_04",
+        "favorite": false,
         "hebrew": "בֶּן־אָדָם",
         "transliteration": "ben-adam",
         "translations": [
@@ -5422,6 +5485,7 @@
       },
       {
         "id": "sent_10_05",
+        "favorite": false,
         "hebrew": "בְּנוֹת אַנְשֵׁי הָעִיר",
         "transliteration": "bnot anashei ha'ir",
         "translations": [
@@ -5479,6 +5543,7 @@
       },
       {
         "id": "sent_10_06",
+        "favorite": false,
         "hebrew": "בְּשֵׁם הַמֶּלֶךְ",
         "transliteration": "beshem hamelech",
         "translations": [
@@ -5540,6 +5605,7 @@
       },
       {
         "id": "sent_10_07",
+        "favorite": false,
         "hebrew": "רָאשֵׁי הֶהָרִים",
         "transliteration": "rashei heharim",
         "translations": [
@@ -5587,6 +5653,7 @@
       },
       {
         "id": "sent_10_08",
+        "favorite": false,
         "hebrew": "מֹשֶׁה עֶבֶד יְהוָה",
         "transliteration": "moshe eved adonai",
         "translations": [
@@ -5627,6 +5694,7 @@
       },
       {
         "id": "sent_10_09",
+        "favorite": false,
         "hebrew": "עַבְדֵי הַמֶּלֶךְ",
         "transliteration": "avdei hamelech",
         "translations": [
@@ -5673,6 +5741,7 @@
       },
       {
         "id": "sent_10_10",
+        "favorite": false,
         "hebrew": "דַּם־כָּל־בָּשָׂר",
         "transliteration": "dam-kol-basar",
         "translations": [
@@ -5715,6 +5784,7 @@
       },
       {
         "id": "sent_10_11",
+        "favorite": false,
         "hebrew": "אֶת־דֶּרֶךְ עֵץ הַחַיִּים",
         "transliteration": "et-derech etz hachayim",
         "translations": [
@@ -5780,6 +5850,7 @@
       },
       {
         "id": "sent_10_12",
+        "favorite": false,
         "hebrew": "בְּתוֹרַת מֹשֶׁה עֶבֶד־הָאֱלֹהִים",
         "transliteration": "betorat moshe eved-haelohim",
         "translations": [
@@ -5859,6 +5930,7 @@
       },
       {
         "id": "sent_10_13",
+        "favorite": false,
         "hebrew": "רָאשֵׁי בְנֵי־יִשְׂרָאֵל הֵמָּה",
         "transliteration": "rashei vnei-yisrael hemmah",
         "translations": [
@@ -6082,6 +6154,7 @@
     "sentences": [
       {
         "id": "sent_11_01",
+        "favorite": false,
         "hebrew": "אַתָּה אָבִינוּ",
         "transliteration": "ata avinu",
         "translations": [
@@ -6130,6 +6203,7 @@
       },
       {
         "id": "sent_11_02",
+        "favorite": false,
         "hebrew": "כִּי לִי כָּל־הָאָרֶץ",
         "transliteration": "ki li kol-ha'aretz",
         "translations": [
@@ -6210,6 +6284,7 @@
       },
       {
         "id": "sent_11_03",
+        "favorite": false,
         "hebrew": "וְכָל־אַנְשֵׁי בֵיתוֹ",
         "transliteration": "v'chol-anashei veito",
         "translations": [
@@ -6282,6 +6357,7 @@
       },
       {
         "id": "sent_11_04",
+        "favorite": false,
         "hebrew": "אֱלֹהֵי אָבִי אַבְרָהָם",
         "transliteration": "elohei avi avraham",
         "translations": [
@@ -6339,6 +6415,7 @@
       },
       {
         "id": "sent_11_05",
+        "favorite": false,
         "hebrew": "כִּי אֲנִי יְהוָה אֱלֹהֵיכֶם",
         "transliteration": "ki ani adonai eloheichem",
         "translations": [
@@ -6405,6 +6482,7 @@
       },
       {
         "id": "sent_11_06",
+        "favorite": false,
         "hebrew": "כִּי אֵין לָהּ אָב וָאֵם",
         "transliteration": "ki ein lah av va'em",
         "translations": [
@@ -6493,6 +6571,7 @@
       },
       {
         "id": "sent_11_07",
+        "favorite": false,
         "hebrew": "וְעַתָּה יְהוָה אָבִינוּ אָתָּה",
         "transliteration": "v'ata adonai avinu ata",
         "translations": [
@@ -6571,6 +6650,7 @@
       },
       {
         "id": "sent_11_08",
+        "favorite": false,
         "hebrew": "עַמֵּךְ עַמִּי וֵאלֹהַיִךְ אֱלֹהָי",
         "transliteration": "amech ami v'elohayich elohai",
         "translations": [
@@ -6689,6 +6769,7 @@
       },
       {
         "id": "sent_11_09",
+        "favorite": false,
         "hebrew": "בֵּן אֵין־לָהּ וְאִישָׁהּ זָקֵן",
         "transliteration": "ben ein-lah v'isha zaken",
         "translations": [
@@ -6784,6 +6865,7 @@
       },
       {
         "id": "sent_11_10",
+        "favorite": false,
         "hebrew": "לִי הַכֶּסֶף וְלִי הַזָּהָב",
         "transliteration": "li hakesef v'li hazahav",
         "translations": [
@@ -6898,6 +6980,7 @@
       },
       {
         "id": "sent_11_11",
+        "favorite": false,
         "hebrew": "אֲנַחְנוּ אַחִים בְּנֵי אָבִינוּ",
         "transliteration": "anachnu achim bnei avinu",
         "translations": [
@@ -6966,6 +7049,7 @@
       },
       {
         "id": "sent_11_12",
+        "favorite": false,
         "hebrew": "אֲנַחְנוּ נָשִׁינוּ בָּנֵינוּ וּבְנֹתֵינוּ",
         "transliteration": "anachnu nashinu baneinu uvenoteinu",
         "translations": [
@@ -7071,6 +7155,7 @@
       },
       {
         "id": "sent_11_13",
+        "favorite": false,
         "hebrew": "אֱלֹהֵי אֲבֹתֵיהֶם",
         "transliteration": "elohei avoteihem",
         "translations": [
@@ -7121,6 +7206,7 @@
       },
       {
         "id": "sent_11_14",
+        "favorite": false,
         "hebrew": "הוּא וְכָל־הָעָם אֲשֶׁר עִמּוֹ",
         "transliteration": "hu vechol-ha'am asher immo",
         "translations": [
@@ -7227,6 +7313,7 @@
       },
       {
         "id": "sent_11_15",
+        "favorite": false,
         "hebrew": "לָךְ אֲנִי וְכָל־אֲשֶׁר־לִי",
         "transliteration": "lach ani vechol-asher-li",
         "translations": [
@@ -7332,6 +7419,7 @@
       },
       {
         "id": "sent_11_16",
+        "favorite": false,
         "hebrew": "כִּי הוּא צַדִּיק בְּעֵינָיו",
         "transliteration": "ki hu tzaddik be'einav",
         "translations": [
@@ -7406,6 +7494,7 @@
       },
       {
         "id": "sent_11_17",
+        "favorite": false,
         "hebrew": "הָאָרֶץ וְכָל־אֲשֶׁר בָּהּ",
         "transliteration": "ha'aretz vechol-asher bah",
         "translations": [
@@ -7504,6 +7593,7 @@
       },
       {
         "id": "sent_11_18",
+        "favorite": false,
         "hebrew": "אֲנִי וְכָל־הָעָם אֲשֶׁר אִתִּי",
         "transliteration": "ani vechol-ha'am asher itti",
         "translations": [
@@ -7610,6 +7700,7 @@
       },
       {
         "id": "sent_11_19",
+        "favorite": false,
         "hebrew": "לָכֶם וְלַאֲבוֹתֵיכֶם",
         "transliteration": "lachem vela'avoteichem",
         "translations": [
@@ -7687,6 +7778,7 @@
       },
       {
         "id": "sent_11_20",
+        "favorite": false,
         "hebrew": "כָל־בָּנָיו וְכָל־בְּנֹתָיו",
         "transliteration": "chol-banav vechol-benotav",
         "translations": [
@@ -7954,6 +8046,7 @@
     "sentences": [
       {
         "id": "sent_12_01",
+        "favorite": false,
         "hebrew": "כִּי־שָׁמַע אֱלֹהִים אֶל־קוֹל הַנַּעַר",
         "transliteration": "ki-shama elohim el-kol hana'ar",
         "translations": [
@@ -8042,6 +8135,7 @@
       },
       {
         "id": "sent_12_02",
+        "favorite": false,
         "hebrew": "כֹּה־אָמַר יְהוָה אֱלֹהֵי יִשְׂרָאֵל",
         "transliteration": "koh-amar adonai elohei yisrael",
         "translations": [
@@ -8101,6 +8195,7 @@
       },
       {
         "id": "sent_12_03",
+        "favorite": false,
         "hebrew": "וּבִירוּשָׁלַם מָלַךְ עַל כָּל־יִשְׂרָאֵל",
         "transliteration": "u'virushalayim malach al kol-yisrael",
         "translations": [
@@ -8183,6 +8278,7 @@
       },
       {
         "id": "sent_12_04",
+        "favorite": false,
         "hebrew": "וּלְכָל־בְּנֵי יִשְׂרָאֵל הָיָה אוֹר",
         "transliteration": "u'lechol-bnei yisrael haya or",
         "translations": [
@@ -8265,6 +8361,7 @@
       },
       {
         "id": "sent_12_05",
+        "favorite": false,
         "hebrew": "וּמֹשֶׁה עָלָה אֶל־הָאֱלֹהִים",
         "transliteration": "u'moshe ala el-haelohim",
         "translations": [
@@ -8344,6 +8441,7 @@
       },
       {
         "id": "sent_12_06",
+        "favorite": false,
         "hebrew": "כִּי־שָׁכַב דָּוִד עִם־אֲבֹתָיו",
         "transliteration": "ki-shachav david im-avotav",
         "translations": [
@@ -8420,6 +8518,7 @@
       },
       {
         "id": "sent_12_07",
+        "favorite": false,
         "hebrew": "וּדְבָרָיו שָׁמַעְתָּ מִתּוֹךְ הָאֵשׁ",
         "transliteration": "u'devarav shamat mitoch ha'esh",
         "translations": [
@@ -8522,6 +8621,7 @@
       },
       {
         "id": "sent_12_08",
+        "favorite": false,
         "hebrew": "לֹא שָׁמְרוּ בְּרִית אֱלֹהִים",
         "transliteration": "lo shamru brit elohim",
         "translations": [
@@ -8572,6 +8672,7 @@
       },
       {
         "id": "sent_12_09",
+        "favorite": false,
         "hebrew": "בְּצֶלֶם אֱלֹהִים בָּרָא אֹתוֹ",
         "transliteration": "betzelem elohim bara oto",
         "translations": [
@@ -8651,6 +8752,7 @@
       },
       {
         "id": "sent_12_10",
+        "favorite": false,
         "hebrew": "וּבְנֵי יִשְׂרָאֵל הָלְכוּ בַיַּבָּשָׁה",
         "transliteration": "u'vnei yisrael halchu vayabasha",
         "translations": [
@@ -8732,6 +8834,7 @@
       },
       {
         "id": "sent_12_11",
+        "favorite": false,
         "hebrew": "סֵפֶר נָתַן לִי חִלְקִיָּה הַכֹּהֵן",
         "transliteration": "sefer natan li chilkiya hacohen",
         "translations": [
@@ -8821,6 +8924,7 @@
       },
       {
         "id": "sent_12_12",
+        "favorite": false,
         "hebrew": "בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ",
         "transliteration": "b'reshit bara elohim et hashamayim v'et ha'aretz",
         "translations": [
@@ -8959,6 +9063,7 @@
       },
       {
         "id": "sent_12_13",
+        "favorite": false,
         "hebrew": "וְהָאָדָם יָדַע אֶת־חַוָּה אִשְׁתּוֹ",
         "transliteration": "v'ha'adam yada et-chava ishto",
         "translations": [
@@ -9055,6 +9160,7 @@
       },
       {
         "id": "sent_12_14",
+        "favorite": false,
         "hebrew": "אֶת־קוֹלְךָ שָׁמַעְתִּי בַּגָּן",
         "transliteration": "et-kolcha shamati bagan",
         "translations": [
@@ -9308,6 +9414,7 @@
     "sentences": [
       {
         "id": "sent_13_01",
+        "favorite": false,
         "hebrew": "יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד",
         "transliteration": "adonai eloheinu adonai echad",
         "translations": [
@@ -9374,6 +9481,7 @@
       },
       {
         "id": "sent_13_02",
+        "favorite": false,
         "hebrew": "הֲשָׁלוֹם לָךְ הֲשָׁלוֹם לְאִישֵׁךְ הֲשָׁלוֹם לַיָּלֶד",
         "transliteration": "ha-shalom lach, ha-shalom le-ishech, ha-shalom la-yaled",
         "translations": [
@@ -9540,6 +9648,7 @@
       },
       {
         "id": "sent_13_03",
+        "favorite": false,
         "hebrew": "הֲלוֹא אָח עֵשָׂו לְיַעֲקֹב",
         "transliteration": "ha-lo ach esav le-ya'akov",
         "translations": [
@@ -9617,6 +9726,7 @@
       },
       {
         "id": "sent_13_04",
+        "favorite": false,
         "hebrew": "מַה־זֹאת עָשָׂה אֱלֹהִים לָנוּ",
         "transliteration": "mah-zot asah elohim lanu",
         "translations": [
@@ -9692,6 +9802,7 @@
       },
       {
         "id": "sent_13_05",
+        "favorite": false,
         "hebrew": "טוֹבִים הַשְּׁנַיִם מִן־הָאֶחָד",
         "transliteration": "tovim ha-shenayim min-ha-echad",
         "translations": [
@@ -9774,6 +9885,7 @@
       },
       {
         "id": "sent_13_06",
+        "favorite": false,
         "hebrew": "וּמָלַךְ יְהוָה עֲלֵיהֶם בְּהַר צִיּוֹן",
         "transliteration": "u-malach adonai aleihem be-har tzion",
         "translations": [
@@ -10060,6 +10172,7 @@
     "sentences": [
       {
         "id": "sent_14_01",
+        "favorite": false,
         "hebrew": "בְּצֶלֶם אֱלֹהִים בָּרָא אֹתוֹ",
         "transliteration": "be-tzelem elohim bara oto",
         "translations": [
@@ -10139,6 +10252,7 @@
       },
       {
         "id": "sent_14_02",
+        "favorite": false,
         "hebrew": "וּבְנֵי יִשְׂרָאֵל הָלְכוּ בַיַּבָּשָׁה",
         "transliteration": "u-venei yisrael halchu va-yabbashah",
         "translations": [
@@ -10221,6 +10335,7 @@
       },
       {
         "id": "sent_14_03",
+        "favorite": false,
         "hebrew": "קָדוֹשׁ קָדוֹשׁ קָדוֹשׁ יְהוָה צְבָאוֹת",
         "transliteration": "kadosh kadosh kadosh adonai tzva'ot",
         "translations": [
@@ -10281,6 +10396,7 @@
       },
       {
         "id": "sent_14_04",
+        "favorite": false,
         "hebrew": "סֵפֶר נָתַן לִי חִלְקִיָּה הַכֹּהֵן",
         "transliteration": "sefer natan li chilkiyah ha-kohen",
         "translations": [
@@ -10371,6 +10487,7 @@
       },
       {
         "id": "sent_14_05",
+        "favorite": false,
         "hebrew": "הֵן הָאָדָם הָיָה כְּאַחַד מִמֶּנּוּ",
         "transliteration": "hen ha-adam hayah ke-achad mimmennu",
         "translations": [
@@ -10475,6 +10592,7 @@
       },
       {
         "id": "sent_14_06",
+        "favorite": false,
         "hebrew": "וְאֵין־דַּעַת אֱלֹהִים בָּאָרֶץ",
         "transliteration": "ve-ein-da'at elohim ba-aretz",
         "translations": [
@@ -10555,6 +10673,7 @@
       },
       {
         "id": "sent_14_07",
+        "favorite": false,
         "hebrew": "אָכֵן יֵשׁ יְהוָה בַּמָּקוֹם הַזֶּה",
         "transliteration": "achen yesh adonai ba-makom ha-zeh",
         "translations": [
@@ -10815,6 +10934,7 @@
     "sentences": [
       {
         "id": "sent_15_01",
+        "favorite": false,
         "hebrew": "פֶּן־נִשְׂרֹף אוֹתָךְ וְאֶת־בֵּית אָבִיךָ בָּאֵשׁ",
         "transliteration": "pen-nisrof otach ve-et-beit avich ba-esh",
         "translations": [
@@ -10953,6 +11073,7 @@
       },
       {
         "id": "sent_15_02",
+        "favorite": false,
         "hebrew": "אַל־תִּשְׁלַח יָדְךָ אֶל־הַנַּעַר",
         "transliteration": "al-tishlach yadcha el-ha-na'ar",
         "translations": [
@@ -11043,6 +11164,7 @@
       },
       {
         "id": "sent_15_03",
+        "favorite": false,
         "hebrew": "יוֹמָם וָלַיְלָה תִּכְבַּד עָלַי יָדְךָ",
         "transliteration": "yomam va-laylah tichbad alai yadcha",
         "translations": [
@@ -11147,6 +11269,7 @@
       },
       {
         "id": "sent_15_04",
+        "favorite": false,
         "hebrew": "בְּיָד חֲזָקָה אֶמְלוֹךְ עֲלֵיכֶם",
         "transliteration": "be-yad chazakah emloch aleihem",
         "translations": [
@@ -11227,6 +11350,7 @@
       },
       {
         "id": "sent_15_05",
+        "favorite": false,
         "hebrew": "יִזְכֹּר עֲוֹנָם וְיִפְקֹד חַטָּאתָם",
         "transliteration": "yizcor avonam ve-yifkod chattatam",
         "translations": [
@@ -11321,6 +11445,7 @@
       },
       {
         "id": "sent_15_06",
+        "favorite": false,
         "hebrew": "וְלֹא־יִלְמְדוּן עוֹד מִלְחָמָה",
         "transliteration": "ve-lo-yilmedun od milchamah",
         "translations": [
@@ -11554,6 +11679,7 @@
     "sentences": [
       {
         "id": "sent_16_01",
+        "favorite": false,
         "hebrew": "אַכְרִית אֶת־שְׁמוֹת הָעֲצַבִּים מִן־הָאָרֶץ",
         "transliteration": "achrit et-shemot ha-atzabbim min-ha-aretz",
         "translations": [
@@ -11655,6 +11781,7 @@
       },
       {
         "id": "sent_16_02",
+        "favorite": false,
         "hebrew": "כֹּל אֲשֶׁר־יִקְרָא בְּשֵׁם יְהוָה יִמָּלֵט",
         "transliteration": "kol asher-yikra be-shem adonai yimmalet",
         "translations": [
@@ -11738,6 +11865,7 @@
       },
       {
         "id": "sent_16_03",
+        "favorite": false,
         "hebrew": "וַיִּשְׁכֹּן כְּבוֹד־יְהוָה עַל־הַר סִינַי",
         "transliteration": "va-yishkon kevod-adonai al-har sinai",
         "translations": [
@@ -11821,6 +11949,7 @@
       },
       {
         "id": "sent_16_04",
+        "favorite": false,
         "hebrew": "וַיְלַמְדוּ סֵפֶר תּוֹרַת יְהוָה בְּכָל־עָרֵי יְהוּדָה",
         "transliteration": "va-yelamdu sefer torat adonai be-chol-arei yehudah",
         "translations": [
@@ -11931,6 +12060,7 @@
       },
       {
         "id": "sent_16_05",
+        "favorite": false,
         "hebrew": "וַיִּתְהַלֵּךְ חֲנוֹךְ אֶת־הָאֱלֹהִים",
         "transliteration": "va-yithallech chanoch et-ha-elohim",
         "translations": [
@@ -12197,6 +12327,7 @@
     "sentences": [
       {
         "id": "sent_17_01",
+        "favorite": false,
         "hebrew": "יְהוָה יִשְׁמָרְךָ מִכָּל־רָע",
         "transliteration": "adonai yishmorcha mikol-ra",
         "translations": [
@@ -12277,6 +12408,7 @@
       },
       {
         "id": "sent_17_02",
+        "favorite": false,
         "hebrew": "אֵלִי אֵלִי לָמָה עֲזַבְתָּנִי",
         "transliteration": "eli eli lamah azavtani",
         "translations": [
@@ -12370,6 +12502,7 @@
       },
       {
         "id": "sent_17_03",
+        "favorite": false,
         "hebrew": "אַךְ טוֹב וָחֶסֶד יִרְדְּפוּנִי כָּל־יְמֵי חַיָּי",
         "transliteration": "ach tov va-chesed yirdefuni kol-yemei chayai",
         "translations": [
@@ -12492,6 +12625,7 @@
       },
       {
         "id": "sent_17_04",
+        "favorite": false,
         "hebrew": "יְהוָה אֱלֹהֵי הַשָּׁמַיִם אֲשֶׁר לְקָחַנִי מִבֵּית אָבִי",
         "transliteration": "adonai elohei ha-shamayim asher lekachani mi-beit avi",
         "translations": [
@@ -12629,6 +12763,7 @@
       },
       {
         "id": "sent_17_05",
+        "favorite": false,
         "hebrew": "כִּי־אָבִי וְאִמִּי עֲזָבוּנִי",
         "transliteration": "ki-avi ve-immi azavuni",
         "translations": [
@@ -12911,6 +13046,7 @@
     "sentences": [
       {
         "id": "sent_18_01",
+        "favorite": false,
         "hebrew": "הַלְלוּ יָהּ הַלְלוּ־אֵל בְּקָדְשׁוֹ",
         "transliteration": "hallelu yah, hallelu-el be-kodsho",
         "translations": [
@@ -12994,6 +13130,7 @@
       },
       {
         "id": "sent_18_02",
+        "favorite": false,
         "hebrew": "בַּקֵּשׁ שָׁלוֹם וְרָדְפֵהוּ",
         "transliteration": "bakkesh shalom ve-radfehu",
         "translations": [
@@ -13058,6 +13195,7 @@
       },
       {
         "id": "sent_18_03",
+        "favorite": false,
         "hebrew": "שִׁמְרוּ כָּל־מִצְוֹת יְהוָה",
         "transliteration": "shimru kol-mitzvot adonai",
         "translations": [
@@ -13109,6 +13247,7 @@
       },
       {
         "id": "sent_18_04",
+        "favorite": false,
         "hebrew": "שְׁמַע יִשְׂרָאֵל יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד",
         "transliteration": "shama yisrael adonai eloheinu adonai echad",
         "translations": [
@@ -13191,6 +13330,7 @@
       },
       {
         "id": "sent_18_05",
+        "favorite": false,
         "hebrew": "כַּבֵּד אֶת־אָבִיךָ וְאֶת־אִמֶּךָ",
         "transliteration": "kabbed et-avicha ve-et-immecha",
         "translations": [
@@ -13533,6 +13673,7 @@
     "sentences": [
       {
         "id": "sent_19_01",
+        "favorite": false,
         "hebrew": "מִכֹּל עֵץ־הַגָּן אָכֹל תֹּאכֵל",
         "transliteration": "mi-kol etz-ha-gan achol tochel",
         "translations": [
@@ -13625,6 +13766,7 @@
       },
       {
         "id": "sent_19_02",
+        "favorite": false,
         "hebrew": "לָחֶם לֶאֱכֹל וּבֶגֶד לִלְבֹּשׁ",
         "transliteration": "lechem le-echol u-veged lilbosh",
         "translations": [
@@ -13723,6 +13865,7 @@
       },
       {
         "id": "sent_19_03",
+        "favorite": false,
         "hebrew": "לִדְרֹשׁ אֶת־תּוֹרַת יְהוָה",
         "transliteration": "lidrosh et-torat adonai",
         "translations": [
@@ -13788,6 +13931,7 @@
       },
       {
         "id": "sent_19_04",
+        "favorite": false,
         "hebrew": "עַל נַהֲרוֹת בָּבֶל שָׁם יָשַׁבְנוּ גַּם־בָּכִינוּ בְּזָכְרֵנוּ אֶת־צִיּוֹן",
         "transliteration": "al naharot bavel sham yashavnu gam-bachinu be-zochreinu et-tzion",
         "translations": [
@@ -13918,6 +14062,7 @@
       },
       {
         "id": "sent_19_05",
+        "favorite": false,
         "hebrew": "כִּי בֵיתִי בֵּית־תְּפִלָּה יִקָּרֵא לְכָל־הָעַמִּים",
         "transliteration": "ki veiti beit-tefillah yikkare le-chol-ha'ammim",
         "translations": [
@@ -14266,6 +14411,7 @@
     "sentences": [
       {
         "id": "sent_20_01",
+        "favorite": false,
         "hebrew": "שֹׁפֵךְ דַּם הָאָדָם בָּאָדָם דָּמוֹ יִשָּׁפֵךְ",
         "transliteration": "shofech dam ha-adam ba-adam damo yishafech",
         "translations": [
@@ -14381,6 +14527,7 @@
       },
       {
         "id": "sent_20_02",
+        "favorite": false,
         "hebrew": "הָרֹפֵא לִשְׁבוּרֵי לֵב",
         "transliteration": "ha-rofe li-shvurei lev",
         "translations": [
@@ -14451,6 +14598,7 @@
       },
       {
         "id": "sent_20_03",
+        "favorite": false,
         "hebrew": "יְהוָה יִשְׁמָר־צֵאתְךָ וּבוֹאֶךָ מֵעַתָּה וְעַד־עוֹלָם",
         "transliteration": "adonai yishmor-tzetcha u-vo'echa me-attah ve-ad-olam",
         "translations": [
@@ -14595,6 +14743,7 @@
       },
       {
         "id": "sent_20_04",
+        "favorite": false,
         "hebrew": "שִׁמְעוּ אֵלַי רֹדְפֵי צֶדֶק מְבַקְשֵׁי יְהוָה",
         "transliteration": "shim'u elai rodfei tzedek mevakshei adonai",
         "translations": [
@@ -14846,6 +14995,7 @@
     "sentences": [
       {
         "id": "sent_21_01",
+        "favorite": false,
         "hebrew": "שְׁמַע יִשְׂרָאֵל יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד",
         "transliteration": "shama yisrael adonai eloheinu adonai echad",
         "translations": [
@@ -14928,6 +15078,7 @@
       },
       {
         "id": "sent_21_02",
+        "favorite": false,
         "hebrew": "וְאָהַבְתָּ אֵת יְהוָה אֱלֹהֶיךָ בְּכָל־לְבָבְךָ וּבְכָל־נַפְשְׁךָ",
         "transliteration": "ve-ahavta et adonai eloheicha be-chol-levavcha u-ve-chol-nafshecha",
         "translations": [
@@ -15112,6 +15263,7 @@
       },
       {
         "id": "sent_21_03",
+        "favorite": false,
         "hebrew": "טַעֲמוּ וּרְאוּ כִּי־טוֹב יְהוָה",
         "transliteration": "ta'amu u-re'u ki-tov adonai",
         "translations": [
@@ -15185,6 +15337,7 @@
       },
       {
         "id": "sent_21_04",
+        "favorite": false,
         "hebrew": "פְּרוּ וּרְבוּ וּמִלְאוּ אֶת־הָאָרֶץ",
         "transliteration": "peru u-revu u-mil'u et-ha-aretz",
         "translations": [
@@ -15288,6 +15441,7 @@
       },
       {
         "id": "sent_21_05",
+        "favorite": false,
         "hebrew": "יִשְׁלַח דְּבָרוֹ וְיִרְפָּאֵם",
         "transliteration": "yishlach devaro ve-yirpa'em",
         "translations": [
@@ -15531,6 +15685,7 @@
     "sentences": [
       {
         "id": "sent_22_01",
+        "favorite": false,
         "hebrew": "וַיִּהָפְכוּ כָּל־הַמַּיִם אֲשֶׁר בַּיְאֹר לְדָם",
         "transliteration": "va-yihafechu kol-ha-mayim asher ba-ye'or le-dam",
         "translations": [
@@ -15660,6 +15815,7 @@
       },
       {
         "id": "sent_22_02",
+        "favorite": false,
         "hebrew": "וְאַתֶּם חֲשַׁבְתֶּם עָלַי רָעָה אֱלֹהִים חֲשָׁבָהּ לְטוֹבָה",
         "transliteration": "ve-athem chashavtem alai ra'ah elohim chashavah le-tovah",
         "translations": [
@@ -15797,6 +15953,7 @@
       },
       {
         "id": "sent_22_03",
+        "favorite": false,
         "hebrew": "וַיְחַזֵּק יְהוָה אֶת־לֵב פַּרְעֹה וְלֹא שָׁמַע אֲלֵיהֶם",
         "transliteration": "va-yechazzek adonai et-lev par'oh ve-lo shama aleihem",
         "translations": [
@@ -15928,6 +16085,7 @@
       },
       {
         "id": "sent_22_04",
+        "favorite": false,
         "hebrew": "בָּקַע יָם וַיַּעֲבִירֵם",
         "transliteration": "baka yam va-ya'avirem",
         "translations": [
@@ -15992,6 +16150,7 @@
       },
       {
         "id": "sent_22_05",
+        "favorite": false,
         "hebrew": "הַאֲמִינוּ בַּיהוָה אֱלֹהֵיכֶם וְתֵאָמֵנוּ",
         "transliteration": "ha'aminu ba-adonai eloheichem ve-te'amenu",
         "translations": [
@@ -16252,6 +16411,7 @@
     "sentences": [
       {
         "id": "sent_23_01",
+        "favorite": false,
         "hebrew": "מִכֹּל עֵץ־הַגָּן אָכֹל תֹּאכֵל",
         "transliteration": "mi-kol etz-ha-gan achol tochel",
         "translations": [
@@ -16344,6 +16504,7 @@
       },
       {
         "id": "sent_23_02",
+        "favorite": false,
         "hebrew": "וַיֹּאמֶר אֶל־הָאִשָּׁה אַף כִּי־אָמַר אֱלֹהִים לֹא תֹאכְלוּ מִכֹּל עֵץ הַגָּן",
         "transliteration": "va-yomer el-ha-ishah af ki-amar elohim lo tochlu mi-kol etz ha-gan",
         "translations": [
@@ -16528,6 +16689,7 @@
       },
       {
         "id": "sent_23_03",
+        "favorite": false,
         "hebrew": "כָּל־זָכָר בַּכֹּהֲנִים יֹאכְלֶנּוּ בְּמָקוֹם קָדוֹשׁ יֵאָכֵל",
         "transliteration": "kol-zachar ba-kohanim yochlennu be-makom kadosh yieachel",
         "translations": [
@@ -16651,6 +16813,7 @@
       },
       {
         "id": "sent_23_04",
+        "favorite": false,
         "hebrew": "וַיִּבְרָא אֱלֹהִים אֶת־הָאָדָם בְּצַלְמוֹ בְּצֶלֶם אֱלֹהִים בָּרָא אֹתוֹ זָכָר וּנְקֵבָה בָּרָא אֹתָם",
         "transliteration": "va-yivra elohim et-ha-adam be-tzelmo be-tzelem elohim bara oto zachar u-nekevah bara otam",
         "translations": [
@@ -16890,6 +17053,7 @@
       },
       {
         "id": "sent_23_05",
+        "favorite": false,
         "hebrew": "לָמָּה יֹאמְרוּ הַגּוֹיִם אַיֵּה אֱלֹהֵיהֶם",
         "transliteration": "lamah yomru ha-goyim ayei eloheihem",
         "translations": [
@@ -17142,6 +17306,7 @@
     "sentences": [
       {
         "id": "sent_24_01",
+        "favorite": false,
         "hebrew": "עַתָּה הִנֵּה הַמֶּלֶךְ אֲשֶׁר בְּחַרְתֶּם",
         "transliteration": "attah hinneh ha-melech asher bechartem",
         "translations": [
@@ -17216,6 +17381,7 @@
       },
       {
         "id": "sent_24_02",
+        "favorite": false,
         "hebrew": "יְבָרֶכְךָ יְהוָה וְיִשְׁמְרֶךָ",
         "transliteration": "yevarechecha adonai ve-yishmerecha",
         "translations": [
@@ -17294,6 +17460,7 @@
       },
       {
         "id": "sent_24_03",
+        "favorite": false,
         "hebrew": "עַל־כֵּן בֵּרַךְ יְהוָה אֶת־יוֹם הַשַּׁבָּת וַיְקַדְּשֵׁהוּ",
         "transliteration": "al-ken berach adonai et-yom ha-shabbat va-yekaddeshehu",
         "translations": [
@@ -17422,6 +17589,7 @@
       },
       {
         "id": "sent_24_04",
+        "favorite": false,
         "hebrew": "כְּאִישׁ אֲשֶׁר אִמּוֹ תְּנַחֲמֶנּוּ כֵּן אָנֹכִי אֲנַחֶמְכֶם",
         "transliteration": "ke-ish asher immo tenachamennu ken anochi anachemchem",
         "translations": [
@@ -17558,6 +17726,7 @@
       },
       {
         "id": "sent_24_05",
+        "favorite": false,
         "hebrew": "יְהִי שֵׁם יְהוָה מְבֹרָךְ מֵעַתָּה וְעַד עוֹלָם",
         "transliteration": "yehi shem adonai mevorach me-attah ve-ad olam",
         "translations": [
@@ -17816,6 +17985,7 @@
     "sentences": [
       {
         "id": "sent_25_01",
+        "favorite": false,
         "hebrew": "וָאֶשְׁמַע אֶת־קוֹל אֲדֹנָי אֹמֵר אֶת־מִי אֶשְׁלַח",
         "transliteration": "Va-eshma et-kol Adonai omer et-mi eshlach",
         "translations": [
@@ -17923,6 +18093,7 @@
       },
       {
         "id": "sent_25_02",
+        "favorite": false,
         "hebrew": "וּבְעֵת צָרָתָם יִצְעֲקוּ אֵלֶיךָ וְאַתָּה מִשָּׁמַיִם תִּשְׁמָע",
         "transliteration": "U-ve-et tzaratam yitza'aku eleicha ve-attah mi-shamayim tishma",
         "translations": [
@@ -18081,6 +18252,7 @@
       },
       {
         "id": "sent_25_03",
+        "favorite": false,
         "hebrew": "וַיִּמְשַׁח אֶת־שְׁלֹמֹה וַיִּתְקְעוּ בַּשּׁוֹפָר",
         "transliteration": "Va-yimshach et-Shelomoh va-yitke'u ba-shofar",
         "translations": [
@@ -18185,6 +18357,7 @@
       },
       {
         "id": "sent_25_04",
+        "favorite": false,
         "hebrew": "הִנֵּה אָנֹכִי שֹׁלֵחַ מַלְאָךְ לְפָנֶיךָ לִשְׁמָרְךָ בַּדָּרֶךְ",
         "transliteration": "Hinneh anochi sholeach mal'ach le-faneicha lishmorcha ba-darech",
         "translations": [
@@ -18312,6 +18485,7 @@
       },
       {
         "id": "sent_25_05",
+        "favorite": false,
         "hebrew": "זֶה־הַיּוֹם עָשָׂה יְהוָה נָגִילָה וְנִשְׁמְחָה בוֹ",
         "transliteration": "Zeh-ha-yom asah Adonai nagilah ve-nismachah vo",
         "translations": [
@@ -18573,6 +18747,7 @@
     "sentences": [
       {
         "id": "sent_26_01",
+        "favorite": false,
         "hebrew": "כִּי אֵין אָדָם אֲשֶׁר לֹא־יֶחֱטָא",
         "transliteration": "Ki ein adam asher lo-yecheta",
         "translations": [
@@ -18641,6 +18816,7 @@
       },
       {
         "id": "sent_26_02",
+        "favorite": false,
         "hebrew": "כִּי בֵיתִי בֵּית־תְּפִלָּה יִקָּרֵא לְכָל־הָעַמִּים",
         "transliteration": "Ki veiti beit-tefillah yikkare le-chol-ha'ammim",
         "translations": [
@@ -18762,6 +18938,7 @@
       },
       {
         "id": "sent_26_03",
+        "favorite": false,
         "hebrew": "דִּרְשׁוּ יְהוָה בְּהִמָּצְאוֹ קְרָאֻהוּ בִּהְיוֹתוֹ קָרוֹב",
         "transliteration": "Dirshu Adonai be-himmatz'o kera'uhu bi-hyoto karov",
         "translations": [
@@ -18888,6 +19065,7 @@
       },
       {
         "id": "sent_26_04",
+        "favorite": false,
         "hebrew": "הֲלוֹא אָב אֶחָד לְכֻלָּנוּ הֲלוֹא אֵל אֶחָד בְּרָאָנוּ",
         "transliteration": "Halo av echad le-chullanu halo El echad bra'anu",
         "translations": [
@@ -19037,6 +19215,7 @@
       },
       {
         "id": "sent_26_05",
+        "favorite": false,
         "hebrew": "רְפָאֵנִי יְהוָה וְאֵרָפֵא",
         "transliteration": "Refa'eni Adonai ve-erafe",
         "translations": [
@@ -19274,6 +19453,7 @@
     "sentences": [
       {
         "id": "sent_27_01",
+        "favorite": false,
         "hebrew": "וַיֹּאמֶר יַעֲקֹב אֶל־יוֹסֵף אֵל שַׁדַּי נִרְאָה אֵלַי",
         "transliteration": "Va-yomer Ya'akov el-Yosef El Shaddai nir'ah elai",
         "translations": [
@@ -19389,6 +19569,7 @@
       },
       {
         "id": "sent_27_02",
+        "favorite": false,
         "hebrew": "וְהַבַּיִת אֲשֶׁר־אֲנִי בוֹנֶה גָּדוֹל",
         "transliteration": "Ve-ha-bayit asher-ani voneh gadol",
         "translations": [
@@ -19469,6 +19650,7 @@
       },
       {
         "id": "sent_27_03",
+        "favorite": false,
         "hebrew": "כֻּלָּנוּ כַּצֹּאן תָּעִינוּ אִישׁ לְדַרְכּוֹ פָּנִינוּ",
         "transliteration": "Kullanu ka-tzon ta'inu ish le-darko paninu",
         "translations": [
@@ -19589,6 +19771,7 @@
       },
       {
         "id": "sent_27_04",
+        "favorite": false,
         "hebrew": "כִּי תִּמָּלֵא הָאָרֶץ לָדַעַת אֶת־כְּבוֹד יְהוָה",
         "transliteration": "Ki timmale ha-aretz la-da'at et-kevod Adonai",
         "translations": [
@@ -19697,6 +19880,7 @@
       },
       {
         "id": "sent_27_05",
+        "favorite": false,
         "hebrew": "וַיַּרְא אֱלֹהִים אֶת־כָּל־אֲשֶׁר עָשָׂה וְהִנֵּה־טוֹב מְאֹד",
         "transliteration": "Va-yar Elohim et-kol-asher asah ve-hinneh-tov me'od",
         "translations": [
@@ -19992,6 +20176,7 @@
     "sentences": [
       {
         "id": "sent_28_01",
+        "favorite": false,
         "hebrew": "וַיִּקָּחֵנִי יְהוָה מֵאַחֲרֵי הַצֹּאן",
         "transliteration": "Va-yikkacheni Adonai me-acharei ha-tzon",
         "translations": [
@@ -20093,6 +20278,7 @@
       },
       {
         "id": "sent_28_02",
+        "favorite": false,
         "hebrew": "לֹא תִשָּׂא אֶת־שֵׁם־יְהוָה אֱלֹהֶיךָ לַשָּׁוְא",
         "transliteration": "Lo tissa et-shem-Adonai Eloheicha la-shav",
         "translations": [
@@ -20201,6 +20387,7 @@
       },
       {
         "id": "sent_28_03",
+        "favorite": false,
         "hebrew": "וָאֶרְאֶה אֶת־אֲדֹנָי יֹשֵׁב עַל־כִּסֵּא רָם וְנִשָּׂא",
         "transliteration": "Va-er'eh et-Adonai yoshev al-kisse ram ve-nissa",
         "translations": [
@@ -20319,6 +20506,7 @@
       },
       {
         "id": "sent_28_04",
+        "favorite": false,
         "hebrew": "הַבִּיטוּ אֶל־אַבְרָהָם אֲבִיכֶם",
         "transliteration": "Habbitu el-Avraham avichem",
         "translations": [
@@ -20385,6 +20573,7 @@
       },
       {
         "id": "sent_28_05",
+        "favorite": false,
         "hebrew": "יְהוָה נָתַן וַיהוָה לָקַח יְהִי שֵׁם יְהוָה מְבֹרָךְ",
         "transliteration": "Adonai natan va-Adonai lakach yehi shem Adonai mevorach",
         "translations": [
@@ -20649,6 +20838,7 @@
     "sentences": [
       {
         "id": "sent_29_01",
+        "favorite": false,
         "hebrew": "אַחַת שָׁאַלְתִּי מֵאֵת־יְהוָה אוֹתָהּ אֲבַקֵּשׁ שִׁבְתִּי בְּבֵית־יְהוָה כָּל־יְמֵי חַיָּי",
         "transliteration": "achat sha'alti me-et-adonai otah avakkesh shivti be-veit-adonai kol-yemei chayai",
         "translations": [
@@ -20834,6 +21024,7 @@
       },
       {
         "id": "sent_29_02",
+        "favorite": false,
         "hebrew": "וַיִּרֶד יְהוָה לִרְאֹת אֶת־הָעִיר וְאֶת־הַמִּגְדָּל אֲשֶׁר בָּנוּ בְּנֵי הָאָדָם",
         "transliteration": "va-yired adonai lir'ot et-ha-ir ve-et-ha-migdal asher banu benei ha-adam",
         "translations": [
@@ -21039,6 +21230,7 @@
       },
       {
         "id": "sent_29_03",
+        "favorite": false,
         "hebrew": "כִּי־יֶלֶד יֻלַּד־לָנוּ בֵּן נִתַּן־לָנוּ",
         "transliteration": "ki-yeled yullad-lanu ben nittan-lanu",
         "translations": [
@@ -21146,6 +21338,7 @@
       },
       {
         "id": "sent_29_04",
+        "favorite": false,
         "hebrew": "וַיָּקָם מֶלֶךְ־חָדָשׁ עַל־מִצְרָיִם אֲשֶׁר לֹא־יָדַע אֶת־יוֹסֵף",
         "transliteration": "va-yakam melech-chadash al-mitzvayim asher lo-yada et-yosef",
         "translations": [
@@ -21267,6 +21460,7 @@
       },
       {
         "id": "sent_29_05",
+        "favorite": false,
         "hebrew": "בָּרוּךְ הַבָּא בְּשֵׁם יְהוָה בֵּרַכְנוּכֶם מִבֵּית יְהוָה",
         "transliteration": "baruch ha-ba be-shem adonai berachnuchem mi-beit adonai",
         "translations": [
@@ -21573,6 +21767,7 @@
     "sentences": [
       {
         "id": "sent_30_01",
+        "favorite": false,
         "hebrew": "פְּנוּ־אֵלַי וְהִנָּשְׁעוּ כָּל־אַפְסֵי־אֶרֶץ כִּי אֲנִי־אֵל וְאֵין עוֹד",
         "transliteration": "penu-elai ve-hinnasheu kol-afsei-aretz ki ani-el ve-ein od",
         "translations": [
@@ -21732,6 +21927,7 @@
       },
       {
         "id": "sent_30_02",
+        "favorite": false,
         "hebrew": "יָבֵשׁ חָצִיר נָבֵל צִיץ וּדְבַר־אֱלֹהֵינוּ יָקוּם לְעוֹלָם",
         "transliteration": "yavesh chatzir navel tzitz u-devar-eloheinu yakum le-olam",
         "translations": [
@@ -21864,6 +22060,7 @@
       },
       {
         "id": "sent_30_03",
+        "favorite": false,
         "hebrew": "בֹּאוּ שְׁעָרָיו בְּתוֹדָה חֲצֵרֹתָיו בִּתְהִלָּה הוֹדוּ־לוֹ בָּרֲכוּ שְׁמוֹ",
         "transliteration": "bo'u she'arav be-todah chatzerotav bi-tehillah hodu-lo barachu shemo",
         "translations": [
@@ -22050,6 +22247,7 @@
       },
       {
         "id": "sent_30_04",
+        "favorite": false,
         "hebrew": "וַיֵּדַע נֹחַ כִּי־קַלּוּ הַמַּיִם מֵעַל הָאָרֶץ",
         "transliteration": "va-yeda noach ki-kallu ha-mayim me-al ha-aretz",
         "translations": [
@@ -22188,6 +22386,7 @@
       },
       {
         "id": "sent_30_05",
+        "favorite": false,
         "hebrew": "יְהוָה יִשְׁמָר־צֵאתְךָ וּבוֹאֶךָ מֵעַתָּה וְעַד־עוֹלָם",
         "transliteration": "adonai yishmor-tzetcha u-vo'echa me-attah ve-ad-olam",
         "translations": [
@@ -22498,6 +22697,7 @@
     "sentences": [
       {
         "id": "sent_31_01",
+        "favorite": false,
         "hebrew": "סֹבּוּ צִיּוֹן סִפְרוּ מִגְדָּלֶיהָ",
         "transliteration": "sobbu tzion sifru migdaleha",
         "translations": [
@@ -22564,6 +22764,7 @@
       },
       {
         "id": "sent_31_02",
+        "favorite": false,
         "hebrew": "וַתָּבֹא אֵלָיו הַיּוֹנָה לְעֵת עֶרֶב וְהִנֵּה עֲלֵה־זַיִת טָרָף בְּפִיהָ",
         "transliteration": "va-tavo elav ha-yonah le-et erev ve-hinneh aleh-zayit taraf be-fiha",
         "translations": [
@@ -22762,6 +22963,7 @@
       },
       {
         "id": "sent_31_03",
+        "favorite": false,
         "hebrew": "בָּרֲכִי נַפְשִׁי אֶת־יְהוָה הַלְלוּ־יָהּ",
         "transliteration": "barachi nafshi et-adonai hallelu-yah",
         "translations": [
@@ -22851,6 +23053,7 @@
       },
       {
         "id": "sent_31_04",
+        "favorite": false,
         "hebrew": "אַל־תִּתְהַלֵּל בְּיוֹם מָחָר כִּי לֹא־תֵדַע מַה־יֵּלֶד יוֹם",
         "transliteration": "al-tithallel be-yom machar ki lo-teda mah-yeled yom",
         "translations": [
@@ -22972,6 +23175,7 @@
       },
       {
         "id": "sent_31_05",
+        "favorite": false,
         "hebrew": "וּכְכַלּוֹת שְׁלֹמֹה לְהִתְפַּלֵּל וְהָאֵשׁ יָרְדָה מֵהַשָּׁמַיִם וַתֹּאכַל הָעֹלָה",
         "transliteration": "u-che-challot shelomoh le-hitpallel ve-ha-esh yardah me-ha-shamayim va-tochal ha-olah",
         "translations": [

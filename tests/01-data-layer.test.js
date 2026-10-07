@@ -47,6 +47,23 @@ suite.test('Todos os vocábulos e frases possuem termos e listas de traduções 
   });
 });
 
+// 3.1 Validação do Campo Favorite nas Frases
+suite.test('Todas as frases do banco de dados possuem o campo booleano favorite', () => {
+  const allHebrewSentences = hebrewData.flatMap(c => c.sentences || []);
+  const allGreekSentences = greekData.flatMap(c => c.sentences || []);
+
+  assert.isGreaterThan(allHebrewSentences.length, 0, 'Deve conter frases em hebraico');
+  assert.isGreaterThan(allGreekSentences.length, 0, 'Deve conter frases em grego');
+
+  allHebrewSentences.forEach(s => {
+    assert.isTrue(typeof s.favorite === 'boolean', `Frase em hebraico deve possuir favorite booleano: ${getTerm(s)}`);
+  });
+
+  allGreekSentences.forEach(s => {
+    assert.isTrue(typeof s.favorite === 'boolean', `Frase em grego deve possuir favorite booleano: ${getTerm(s)}`);
+  });
+});
+
 // 4. Módulo DataLoader JS
 suite.test('DataLoader implementa métodos fetchDefaultChapters e loadChapters', () => {
   assert.includes(dataLoaderJs, 'fetchDefaultChapters(language)', 'Método fetchDefaultChapters ausente');

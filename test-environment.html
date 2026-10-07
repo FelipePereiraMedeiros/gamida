@@ -312,6 +312,14 @@
                 name: "Funções de validação de integridade (isValidChapter, hasUniqueChapterIds)",
                 fn: () => typeof iframeWin.isValidChapter === "function" && typeof iframeWin.hasUniqueChapterIds === "function",
               },
+              {
+                name: "Todas as frases possuem o campo booleano favorite no banco de dados",
+                fn: () => {
+                  const chaps = iframeWin.AppState.chapters || [];
+                  const allSentences = chaps.flatMap(c => c.sentences || []);
+                  return allSentences.length > 0 && allSentences.every(s => typeof s.favorite === "boolean");
+                },
+              },
             ],
           },
           {
@@ -349,12 +357,14 @@
                 fn: () => typeof iframeWin.buildPracticeQueue === "function" && typeof iframeWin.renderCurrentQuestion === "function",
               },
               {
-                name: "Alternância entre modos (typing, choice, sentences)",
+                name: "Alternância entre modos (typing, choice, sentences, favorites)",
                 fn: () => {
                   iframeWin.setExerciseMode("choice");
                   const isChoice = iframeWin.AppState.exerciseMode === "choice";
+                  iframeWin.setExerciseMode("favorites");
+                  const isFav = iframeWin.AppState.exerciseMode === "favorites";
                   iframeWin.setExerciseMode("typing");
-                  return isChoice && iframeWin.AppState.exerciseMode === "typing";
+                  return isChoice && isFav && iframeWin.AppState.exerciseMode === "typing";
                 },
               },
               {
@@ -449,6 +459,10 @@
               {
                 name: "Filtro dinâmico por categoria/tipo (setVocabCategory)",
                 fn: () => typeof iframeWin.setVocabCategory === "function" && typeof iframeWin.getAvailableVocabCategories === "function",
+              },
+              {
+                name: "Marcação de favoritos no dicionário (toggleItemFavorite)",
+                fn: () => typeof iframeWin.toggleItemFavorite === "function",
               },
             ],
           },

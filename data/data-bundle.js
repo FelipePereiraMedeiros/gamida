@@ -1,7 +1,7 @@
 /**
  * Gamida Data Bundle - Offline & Standalone Fallback
  * Gerado automaticamente via scripts/build-bundle.js
- * Data: 2026-10-07T05:21:40.144Z
+ * Data: 2026-10-07T10:00:00.000Z
  */
 window.GAMIDA_DEFAULT_DATA = {
   hebrew: [
@@ -517,6 +517,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_03_01",
+        "favorite": false,
         "hebrew": "אָב וּבֵן",
         "transliteration": "av u'ven",
         "translations": [
@@ -563,6 +564,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_03_02",
+        "favorite": false,
         "hebrew": "אִישׁ וְאִשָּׁה",
         "transliteration": "ish v'isha",
         "translations": [
@@ -609,6 +611,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_03_03",
+        "favorite": false,
         "hebrew": "אֵם וּבַת",
         "transliteration": "em u'vat",
         "translations": [
@@ -656,6 +659,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_03_04",
+        "favorite": false,
         "hebrew": "קוֹל עַם",
         "transliteration": "kol am",
         "translations": [
@@ -688,6 +692,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_03_05",
+        "favorite": false,
         "hebrew": "שֵׁם אֱלֹהִים",
         "transliteration": "shem elohim",
         "translations": [
@@ -888,6 +893,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_05_01",
+        "favorite": false,
         "hebrew": "הָאָב וְהָאֵם",
         "transliteration": "ha'av v'ha'em",
         "translations": [
@@ -956,6 +962,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_05_02",
+        "favorite": false,
         "hebrew": "הָאִישׁ וְהָאִשָּׁה",
         "transliteration": "ha'ish v'ha'isha",
         "translations": [
@@ -1023,6 +1030,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_05_03",
+        "favorite": false,
         "hebrew": "הַבֵּן וְהַבַּת",
         "transliteration": "haben v'habat",
         "translations": [
@@ -1090,6 +1098,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_05_04",
+        "favorite": false,
         "hebrew": "הָעִיר וְהַהָר",
         "transliteration": "ha'ir v'hahar",
         "translations": [
@@ -1159,6 +1168,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_05_05",
+        "favorite": false,
         "hebrew": "הָאוֹר וְהַחֹשֶׁךְ",
         "transliteration": "ha'or v'hachoshech",
         "translations": [
@@ -1227,6 +1237,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_05_06",
+        "favorite": false,
         "hebrew": "הַמַּיִם וְהַיָּם",
         "transliteration": "hamayim v'hayam",
         "translations": [
@@ -1475,6 +1486,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_06_01",
+        "favorite": false,
         "hebrew": "אֵין אִישׁ בָּעִיר",
         "transliteration": "ein ish ba'ir",
         "translations": [
@@ -1530,6 +1542,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_06_02",
+        "favorite": false,
         "hebrew": "אֵין אוֹר לָעָם",
         "transliteration": "ein or la'am",
         "translations": [
@@ -1586,6 +1599,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_06_03",
+        "favorite": false,
         "hebrew": "הַגַּן אֵצֶל הַבַּיִת",
         "transliteration": "hagan etzel habayit",
         "translations": [
@@ -1656,6 +1670,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_06_04",
+        "favorite": false,
         "hebrew": "אֵין אִשָּׁה בַּבַּיִת",
         "transliteration": "ein isha babayit",
         "translations": [
@@ -1711,6 +1726,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_06_05",
+        "favorite": false,
         "hebrew": "אֵין שָׁלוֹם בָּאָרֶץ",
         "transliteration": "ein shalom ba'aretz",
         "translations": [
@@ -1767,6 +1783,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_06_06",
+        "favorite": false,
         "hebrew": "הָעִיר עַל־הָהָר",
         "transliteration": "ha'ir al-hahar",
         "translations": [
@@ -1839,6 +1856,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_06_07",
+        "favorite": false,
         "hebrew": "טוֹב הָאוֹר מִן־הַחֹשֶׁךְ",
         "transliteration": "tov ha'or min-hachoshech",
         "translations": [
@@ -1919,6 +1937,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_06_08",
+        "favorite": false,
         "hebrew": "טוֹב הַיּוֹם מִן־הַלַּיְלָה",
         "transliteration": "tov hayom min-halaila",
         "translations": [
@@ -1997,6 +2016,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_06_09",
+        "favorite": false,
         "hebrew": "בֵּין הָאוֹר וּבֵין הַחֹשֶׁךְ",
         "transliteration": "bein ha'or u'vein hachoshech",
         "translations": [
@@ -2090,6 +2110,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_06_10",
+        "favorite": false,
         "hebrew": "פְּרִי מִן־הָעֵץ",
         "transliteration": "pri min-ha'etz",
         "translations": [
@@ -2314,6 +2335,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_07_01",
+        "favorite": false,
         "hebrew": "הָאֲנָשִׁים וְהַסּוּסִים",
         "transliteration": "ha'anashim v'hasusim",
         "translations": [
@@ -2381,6 +2403,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_07_02",
+        "favorite": false,
         "hebrew": "הַמִּצְוֹת אֲשֶׁר בַּסֵּפֶר",
         "transliteration": "hamitsvot asher basefer",
         "translations": [
@@ -2450,6 +2473,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_07_03",
+        "favorite": false,
         "hebrew": "הַנָּשִׁים אֲשֶׁר בַּבַּיִת",
         "transliteration": "hanashim asher babayit",
         "translations": [
@@ -2520,6 +2544,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_07_04",
+        "favorite": false,
         "hebrew": "הַמְּלָכִים וְהַנְּבִיאִים",
         "transliteration": "hamelechim v'hanevi'im",
         "translations": [
@@ -2587,6 +2612,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_07_05",
+        "favorite": false,
         "hebrew": "הַמַּיִם בְּתוֹךְ הַיָּם",
         "transliteration": "hamayim betoch hayam",
         "translations": [
@@ -2672,6 +2698,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_07_06",
+        "favorite": false,
         "hebrew": "הָעוֹף בַּשָּׁמַיִם",
         "transliteration": "ha'of bashamayim",
         "translations": [
@@ -2733,6 +2760,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_07_07",
+        "favorite": false,
         "hebrew": "הַבְּרִית עִם־הַמֶּלֶךְ",
         "transliteration": "habrit im-hamelech",
         "translations": [
@@ -2803,6 +2831,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_07_08",
+        "favorite": false,
         "hebrew": "הַמִּצְוֹת בַּתּוֹרָה",
         "transliteration": "hamitsvot batora",
         "translations": [
@@ -2863,6 +2892,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_07_09",
+        "favorite": false,
         "hebrew": "עָפָר מִן־הָאֲדָמָה",
         "transliteration": "afar min-ha'adama",
         "translations": [
@@ -2919,6 +2949,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_07_10",
+        "favorite": false,
         "hebrew": "הַשָּׁמַיִם וְהָאָרֶץ",
         "transliteration": "hashamayim v'ha'aretz",
         "translations": [
@@ -2987,6 +3018,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_07_11",
+        "favorite": false,
         "hebrew": "הַיָּדַיִם וְהָרַגְלַיִם",
         "transliteration": "ha-yadayim ve-ha-raglayim",
         "translations": [
@@ -3223,6 +3255,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_08_01",
+        "favorite": false,
         "hebrew": "מֵאָדָם רָע",
         "transliteration": "me'adam ra",
         "translations": [
@@ -3269,6 +3302,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_02",
+        "favorite": false,
         "hebrew": "הָאִישׁ מֹשֶׁה גָּדוֹל מְאֹד",
         "transliteration": "ha'ish moshe gadol meod",
         "translations": [
@@ -3333,6 +3367,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_03",
+        "favorite": false,
         "hebrew": "מִי־אֵל גָּדוֹל בֵּאלֹהִים",
         "transliteration": "mi-el gadol belohim",
         "translations": [
@@ -3396,6 +3431,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_04",
+        "favorite": false,
         "hebrew": "כִּי אֵל גָּדוֹל יְהוָה וּמֶלֶךְ גָּדוֹל",
         "transliteration": "ki el gadol adonai u'melech gadol",
         "translations": [
@@ -3477,6 +3513,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_05",
+        "favorite": false,
         "hebrew": "הַשָּׁמַיִם הַחֲדָשִׁים וְהָאָרֶץ הַחֲדָשָׁה",
         "transliteration": "hashamayim hachadashim v'ha'aretz hachadasha",
         "translations": [
@@ -3594,6 +3631,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_06",
+        "favorite": false,
         "hebrew": "לֵב חָדָשׁ וְרוּחַ חֲדָשָׁה",
         "transliteration": "lev chadash v'ruach chadasha",
         "translations": [
@@ -3658,6 +3696,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_07",
+        "favorite": false,
         "hebrew": "טוֹב וְיָשָׁר יְהוָה",
         "transliteration": "tov v'yashar adonai",
         "translations": [
@@ -3714,6 +3753,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_08",
+        "favorite": false,
         "hebrew": "וְדָוִיד זָקֵן",
         "transliteration": "v'david zaken",
         "translations": [
@@ -3758,6 +3798,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_09",
+        "favorite": false,
         "hebrew": "רוּחַ־רָעָה מֵאֵת יְהוָה",
         "transliteration": "ruach-raa me'et adonai",
         "translations": [
@@ -3821,6 +3862,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_10",
+        "favorite": false,
         "hebrew": "אֶבֶן גְדוֹלָה",
         "transliteration": "even gedolah",
         "translations": [
@@ -3853,6 +3895,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_11",
+        "favorite": false,
         "hebrew": "בְּדֶרֶךְ יְשָׁרָה",
         "transliteration": "be-derech yesharah",
         "translations": [
@@ -3899,6 +3942,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_12",
+        "favorite": false,
         "hebrew": "קָרוֹב הַיּוֹם",
         "transliteration": "karov ha-yom",
         "translations": [
@@ -4225,6 +4269,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_09_01",
+        "favorite": false,
         "hebrew": "הַדָּבָר הַגָּדוֹל הַזֶּה",
         "transliteration": "hadavar hagadol hazeh",
         "translations": [
@@ -4311,6 +4356,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_02",
+        "favorite": false,
         "hebrew": "כִּי קָרוֹב הוּא",
         "transliteration": "ki karov hu",
         "translations": [
@@ -4351,6 +4397,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_03",
+        "favorite": false,
         "hebrew": "וְאָנֹכִי נַעַר קָטֹן",
         "transliteration": "v'anochi naar katan",
         "translations": [
@@ -4406,6 +4453,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_04",
+        "favorite": false,
         "hebrew": "נֹחַ אִישׁ צַדִּיק",
         "transliteration": "noach ish tzadik",
         "translations": [
@@ -4446,6 +4494,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_05",
+        "favorite": false,
         "hebrew": "צַדִּיק וְיָשָׁר הוּא",
         "transliteration": "tzadik v'yashar hu",
         "translations": [
@@ -4500,6 +4549,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_06",
+        "favorite": false,
         "hebrew": "לֹא אִישׁ אֵל",
         "transliteration": "lo ish el",
         "translations": [
@@ -4539,6 +4589,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_07",
+        "favorite": false,
         "hebrew": "עַם־חָכָם הַגּוֹי הַגָּדוֹל הַזֶּה",
         "transliteration": "am-chacham hagoy hagadol hazeh",
         "translations": [
@@ -4641,6 +4692,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_08",
+        "favorite": false,
         "hebrew": "זֶה הַיּוֹם",
         "transliteration": "zeh hayom",
         "translations": [
@@ -4687,6 +4739,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_09",
+        "favorite": false,
         "hebrew": "אֲנִי יְהוָה",
         "transliteration": "ani adonai",
         "translations": [
@@ -4717,6 +4770,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_10",
+        "favorite": false,
         "hebrew": "אַתָּה הָאִישׁ",
         "transliteration": "attah ha-ish",
         "translations": [
@@ -4762,6 +4816,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_11",
+        "favorite": false,
         "hebrew": "הַמָּקוֹם הַזֶּה",
         "transliteration": "ha-makom ha-zeh",
         "translations": [
@@ -4822,6 +4877,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_12",
+        "favorite": false,
         "hebrew": "הָאָרֶץ הַזֹּאת",
         "transliteration": "ha-aretz ha-zot",
         "translations": [
@@ -4882,6 +4938,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_13",
+        "favorite": false,
         "hebrew": "אֵלֶּה הַדְּבָרִים",
         "transliteration": "elleh ha-devarim",
         "translations": [
@@ -4928,6 +4985,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_14",
+        "favorite": false,
         "hebrew": "כִּי גָדוֹל הַיּוֹם הַהוּא",
         "transliteration": "ki gadol hayom hahu",
         "translations": [
@@ -5009,6 +5067,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_09_15",
+        "favorite": false,
         "hebrew": "הַדְּבָרִים הָאֵלֶּה",
         "transliteration": "hadevarim ha'elleh",
         "translations": [
@@ -5227,6 +5286,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_10_01",
+        "favorite": false,
         "hebrew": "מִיַּד הָאִשָּׁה",
         "transliteration": "miyad ha'isha",
         "translations": [
@@ -5288,6 +5348,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_02",
+        "favorite": false,
         "hebrew": "יוֹם הַשַּׁבָּת",
         "transliteration": "yom hashabat",
         "translations": [
@@ -5335,6 +5396,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_03",
+        "favorite": false,
         "hebrew": "מִבְּנֵי הַנְּבִיאִים",
         "transliteration": "mibnei hanevi'im",
         "translations": [
@@ -5396,6 +5458,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_04",
+        "favorite": false,
         "hebrew": "בֶּן־אָדָם",
         "transliteration": "ben-adam",
         "translations": [
@@ -5428,6 +5491,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_05",
+        "favorite": false,
         "hebrew": "בְּנוֹת אַנְשֵׁי הָעִיר",
         "transliteration": "bnot anashei ha'ir",
         "translations": [
@@ -5485,6 +5549,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_06",
+        "favorite": false,
         "hebrew": "בְּשֵׁם הַמֶּלֶךְ",
         "transliteration": "beshem hamelech",
         "translations": [
@@ -5546,6 +5611,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_07",
+        "favorite": false,
         "hebrew": "רָאשֵׁי הֶהָרִים",
         "transliteration": "rashei heharim",
         "translations": [
@@ -5593,6 +5659,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_08",
+        "favorite": false,
         "hebrew": "מֹשֶׁה עֶבֶד יְהוָה",
         "transliteration": "moshe eved adonai",
         "translations": [
@@ -5633,6 +5700,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_09",
+        "favorite": false,
         "hebrew": "עַבְדֵי הַמֶּלֶךְ",
         "transliteration": "avdei hamelech",
         "translations": [
@@ -5679,6 +5747,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_10",
+        "favorite": false,
         "hebrew": "דַּם־כָּל־בָּשָׂר",
         "transliteration": "dam-kol-basar",
         "translations": [
@@ -5721,6 +5790,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_11",
+        "favorite": false,
         "hebrew": "אֶת־דֶּרֶךְ עֵץ הַחַיִּים",
         "transliteration": "et-derech etz hachayim",
         "translations": [
@@ -5786,6 +5856,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_12",
+        "favorite": false,
         "hebrew": "בְּתוֹרַת מֹשֶׁה עֶבֶד־הָאֱלֹהִים",
         "transliteration": "betorat moshe eved-haelohim",
         "translations": [
@@ -5865,6 +5936,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_10_13",
+        "favorite": false,
         "hebrew": "רָאשֵׁי בְנֵי־יִשְׂרָאֵל הֵמָּה",
         "transliteration": "rashei vnei-yisrael hemmah",
         "translations": [
@@ -6088,6 +6160,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_11_01",
+        "favorite": false,
         "hebrew": "אַתָּה אָבִינוּ",
         "transliteration": "ata avinu",
         "translations": [
@@ -6136,6 +6209,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_02",
+        "favorite": false,
         "hebrew": "כִּי לִי כָּל־הָאָרֶץ",
         "transliteration": "ki li kol-ha'aretz",
         "translations": [
@@ -6216,6 +6290,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_03",
+        "favorite": false,
         "hebrew": "וְכָל־אַנְשֵׁי בֵיתוֹ",
         "transliteration": "v'chol-anashei veito",
         "translations": [
@@ -6288,6 +6363,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_04",
+        "favorite": false,
         "hebrew": "אֱלֹהֵי אָבִי אַבְרָהָם",
         "transliteration": "elohei avi avraham",
         "translations": [
@@ -6345,6 +6421,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_05",
+        "favorite": false,
         "hebrew": "כִּי אֲנִי יְהוָה אֱלֹהֵיכֶם",
         "transliteration": "ki ani adonai eloheichem",
         "translations": [
@@ -6411,6 +6488,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_06",
+        "favorite": false,
         "hebrew": "כִּי אֵין לָהּ אָב וָאֵם",
         "transliteration": "ki ein lah av va'em",
         "translations": [
@@ -6499,6 +6577,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_07",
+        "favorite": false,
         "hebrew": "וְעַתָּה יְהוָה אָבִינוּ אָתָּה",
         "transliteration": "v'ata adonai avinu ata",
         "translations": [
@@ -6577,6 +6656,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_08",
+        "favorite": false,
         "hebrew": "עַמֵּךְ עַמִּי וֵאלֹהַיִךְ אֱלֹהָי",
         "transliteration": "amech ami v'elohayich elohai",
         "translations": [
@@ -6695,6 +6775,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_09",
+        "favorite": false,
         "hebrew": "בֵּן אֵין־לָהּ וְאִישָׁהּ זָקֵן",
         "transliteration": "ben ein-lah v'isha zaken",
         "translations": [
@@ -6790,6 +6871,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_10",
+        "favorite": false,
         "hebrew": "לִי הַכֶּסֶף וְלִי הַזָּהָב",
         "transliteration": "li hakesef v'li hazahav",
         "translations": [
@@ -6904,6 +6986,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_11",
+        "favorite": false,
         "hebrew": "אֲנַחְנוּ אַחִים בְּנֵי אָבִינוּ",
         "transliteration": "anachnu achim bnei avinu",
         "translations": [
@@ -6972,6 +7055,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_12",
+        "favorite": false,
         "hebrew": "אֲנַחְנוּ נָשִׁינוּ בָּנֵינוּ וּבְנֹתֵינוּ",
         "transliteration": "anachnu nashinu baneinu uvenoteinu",
         "translations": [
@@ -7077,6 +7161,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_13",
+        "favorite": false,
         "hebrew": "אֱלֹהֵי אֲבֹתֵיהֶם",
         "transliteration": "elohei avoteihem",
         "translations": [
@@ -7127,6 +7212,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_14",
+        "favorite": false,
         "hebrew": "הוּא וְכָל־הָעָם אֲשֶׁר עִמּוֹ",
         "transliteration": "hu vechol-ha'am asher immo",
         "translations": [
@@ -7233,6 +7319,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_15",
+        "favorite": false,
         "hebrew": "לָךְ אֲנִי וְכָל־אֲשֶׁר־לִי",
         "transliteration": "lach ani vechol-asher-li",
         "translations": [
@@ -7338,6 +7425,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_16",
+        "favorite": false,
         "hebrew": "כִּי הוּא צַדִּיק בְּעֵינָיו",
         "transliteration": "ki hu tzaddik be'einav",
         "translations": [
@@ -7412,6 +7500,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_17",
+        "favorite": false,
         "hebrew": "הָאָרֶץ וְכָל־אֲשֶׁר בָּהּ",
         "transliteration": "ha'aretz vechol-asher bah",
         "translations": [
@@ -7510,6 +7599,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_18",
+        "favorite": false,
         "hebrew": "אֲנִי וְכָל־הָעָם אֲשֶׁר אִתִּי",
         "transliteration": "ani vechol-ha'am asher itti",
         "translations": [
@@ -7616,6 +7706,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_19",
+        "favorite": false,
         "hebrew": "לָכֶם וְלַאֲבוֹתֵיכֶם",
         "transliteration": "lachem vela'avoteichem",
         "translations": [
@@ -7693,6 +7784,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_11_20",
+        "favorite": false,
         "hebrew": "כָל־בָּנָיו וְכָל־בְּנֹתָיו",
         "transliteration": "chol-banav vechol-benotav",
         "translations": [
@@ -7960,6 +8052,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_12_01",
+        "favorite": false,
         "hebrew": "כִּי־שָׁמַע אֱלֹהִים אֶל־קוֹל הַנַּעַר",
         "transliteration": "ki-shama elohim el-kol hana'ar",
         "translations": [
@@ -8048,6 +8141,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_02",
+        "favorite": false,
         "hebrew": "כֹּה־אָמַר יְהוָה אֱלֹהֵי יִשְׂרָאֵל",
         "transliteration": "koh-amar adonai elohei yisrael",
         "translations": [
@@ -8107,6 +8201,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_03",
+        "favorite": false,
         "hebrew": "וּבִירוּשָׁלַם מָלַךְ עַל כָּל־יִשְׂרָאֵל",
         "transliteration": "u'virushalayim malach al kol-yisrael",
         "translations": [
@@ -8189,6 +8284,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_04",
+        "favorite": false,
         "hebrew": "וּלְכָל־בְּנֵי יִשְׂרָאֵל הָיָה אוֹר",
         "transliteration": "u'lechol-bnei yisrael haya or",
         "translations": [
@@ -8271,6 +8367,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_05",
+        "favorite": false,
         "hebrew": "וּמֹשֶׁה עָלָה אֶל־הָאֱלֹהִים",
         "transliteration": "u'moshe ala el-haelohim",
         "translations": [
@@ -8350,6 +8447,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_06",
+        "favorite": false,
         "hebrew": "כִּי־שָׁכַב דָּוִד עִם־אֲבֹתָיו",
         "transliteration": "ki-shachav david im-avotav",
         "translations": [
@@ -8426,6 +8524,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_07",
+        "favorite": false,
         "hebrew": "וּדְבָרָיו שָׁמַעְתָּ מִתּוֹךְ הָאֵשׁ",
         "transliteration": "u'devarav shamat mitoch ha'esh",
         "translations": [
@@ -8528,6 +8627,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_08",
+        "favorite": false,
         "hebrew": "לֹא שָׁמְרוּ בְּרִית אֱלֹהִים",
         "transliteration": "lo shamru brit elohim",
         "translations": [
@@ -8578,6 +8678,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_09",
+        "favorite": false,
         "hebrew": "בְּצֶלֶם אֱלֹהִים בָּרָא אֹתוֹ",
         "transliteration": "betzelem elohim bara oto",
         "translations": [
@@ -8657,6 +8758,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_10",
+        "favorite": false,
         "hebrew": "וּבְנֵי יִשְׂרָאֵל הָלְכוּ בַיַּבָּשָׁה",
         "transliteration": "u'vnei yisrael halchu vayabasha",
         "translations": [
@@ -8738,6 +8840,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_11",
+        "favorite": false,
         "hebrew": "סֵפֶר נָתַן לִי חִלְקִיָּה הַכֹּהֵן",
         "transliteration": "sefer natan li chilkiya hacohen",
         "translations": [
@@ -8827,6 +8930,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_12",
+        "favorite": false,
         "hebrew": "בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ",
         "transliteration": "b'reshit bara elohim et hashamayim v'et ha'aretz",
         "translations": [
@@ -8965,6 +9069,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_13",
+        "favorite": false,
         "hebrew": "וְהָאָדָם יָדַע אֶת־חַוָּה אִשְׁתּוֹ",
         "transliteration": "v'ha'adam yada et-chava ishto",
         "translations": [
@@ -9061,6 +9166,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_12_14",
+        "favorite": false,
         "hebrew": "אֶת־קוֹלְךָ שָׁמַעְתִּי בַּגָּן",
         "transliteration": "et-kolcha shamati bagan",
         "translations": [
@@ -9314,6 +9420,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_13_01",
+        "favorite": false,
         "hebrew": "יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד",
         "transliteration": "adonai eloheinu adonai echad",
         "translations": [
@@ -9380,6 +9487,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_13_02",
+        "favorite": false,
         "hebrew": "הֲשָׁלוֹם לָךְ הֲשָׁלוֹם לְאִישֵׁךְ הֲשָׁלוֹם לַיָּלֶד",
         "transliteration": "ha-shalom lach, ha-shalom le-ishech, ha-shalom la-yaled",
         "translations": [
@@ -9546,6 +9654,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_13_03",
+        "favorite": false,
         "hebrew": "הֲלוֹא אָח עֵשָׂו לְיַעֲקֹב",
         "transliteration": "ha-lo ach esav le-ya'akov",
         "translations": [
@@ -9623,6 +9732,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_13_04",
+        "favorite": false,
         "hebrew": "מַה־זֹאת עָשָׂה אֱלֹהִים לָנוּ",
         "transliteration": "mah-zot asah elohim lanu",
         "translations": [
@@ -9698,6 +9808,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_13_05",
+        "favorite": false,
         "hebrew": "טוֹבִים הַשְּׁנַיִם מִן־הָאֶחָד",
         "transliteration": "tovim ha-shenayim min-ha-echad",
         "translations": [
@@ -9780,6 +9891,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_13_06",
+        "favorite": false,
         "hebrew": "וּמָלַךְ יְהוָה עֲלֵיהֶם בְּהַר צִיּוֹן",
         "transliteration": "u-malach adonai aleihem be-har tzion",
         "translations": [
@@ -10066,6 +10178,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_14_01",
+        "favorite": false,
         "hebrew": "בְּצֶלֶם אֱלֹהִים בָּרָא אֹתוֹ",
         "transliteration": "be-tzelem elohim bara oto",
         "translations": [
@@ -10145,6 +10258,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_14_02",
+        "favorite": false,
         "hebrew": "וּבְנֵי יִשְׂרָאֵל הָלְכוּ בַיַּבָּשָׁה",
         "transliteration": "u-venei yisrael halchu va-yabbashah",
         "translations": [
@@ -10227,6 +10341,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_14_03",
+        "favorite": false,
         "hebrew": "קָדוֹשׁ קָדוֹשׁ קָדוֹשׁ יְהוָה צְבָאוֹת",
         "transliteration": "kadosh kadosh kadosh adonai tzva'ot",
         "translations": [
@@ -10287,6 +10402,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_14_04",
+        "favorite": false,
         "hebrew": "סֵפֶר נָתַן לִי חִלְקִיָּה הַכֹּהֵן",
         "transliteration": "sefer natan li chilkiyah ha-kohen",
         "translations": [
@@ -10377,6 +10493,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_14_05",
+        "favorite": false,
         "hebrew": "הֵן הָאָדָם הָיָה כְּאַחַד מִמֶּנּוּ",
         "transliteration": "hen ha-adam hayah ke-achad mimmennu",
         "translations": [
@@ -10481,6 +10598,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_14_06",
+        "favorite": false,
         "hebrew": "וְאֵין־דַּעַת אֱלֹהִים בָּאָרֶץ",
         "transliteration": "ve-ein-da'at elohim ba-aretz",
         "translations": [
@@ -10561,6 +10679,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_14_07",
+        "favorite": false,
         "hebrew": "אָכֵן יֵשׁ יְהוָה בַּמָּקוֹם הַזֶּה",
         "transliteration": "achen yesh adonai ba-makom ha-zeh",
         "translations": [
@@ -10821,6 +10940,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_15_01",
+        "favorite": false,
         "hebrew": "פֶּן־נִשְׂרֹף אוֹתָךְ וְאֶת־בֵּית אָבִיךָ בָּאֵשׁ",
         "transliteration": "pen-nisrof otach ve-et-beit avich ba-esh",
         "translations": [
@@ -10959,6 +11079,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_15_02",
+        "favorite": false,
         "hebrew": "אַל־תִּשְׁלַח יָדְךָ אֶל־הַנַּעַר",
         "transliteration": "al-tishlach yadcha el-ha-na'ar",
         "translations": [
@@ -11049,6 +11170,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_15_03",
+        "favorite": false,
         "hebrew": "יוֹמָם וָלַיְלָה תִּכְבַּד עָלַי יָדְךָ",
         "transliteration": "yomam va-laylah tichbad alai yadcha",
         "translations": [
@@ -11153,6 +11275,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_15_04",
+        "favorite": false,
         "hebrew": "בְּיָד חֲזָקָה אֶמְלוֹךְ עֲלֵיכֶם",
         "transliteration": "be-yad chazakah emloch aleihem",
         "translations": [
@@ -11233,6 +11356,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_15_05",
+        "favorite": false,
         "hebrew": "יִזְכֹּר עֲוֹנָם וְיִפְקֹד חַטָּאתָם",
         "transliteration": "yizcor avonam ve-yifkod chattatam",
         "translations": [
@@ -11327,6 +11451,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_15_06",
+        "favorite": false,
         "hebrew": "וְלֹא־יִלְמְדוּן עוֹד מִלְחָמָה",
         "transliteration": "ve-lo-yilmedun od milchamah",
         "translations": [
@@ -11560,6 +11685,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_16_01",
+        "favorite": false,
         "hebrew": "אַכְרִית אֶת־שְׁמוֹת הָעֲצַבִּים מִן־הָאָרֶץ",
         "transliteration": "achrit et-shemot ha-atzabbim min-ha-aretz",
         "translations": [
@@ -11661,6 +11787,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_16_02",
+        "favorite": false,
         "hebrew": "כֹּל אֲשֶׁר־יִקְרָא בְּשֵׁם יְהוָה יִמָּלֵט",
         "transliteration": "kol asher-yikra be-shem adonai yimmalet",
         "translations": [
@@ -11744,6 +11871,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_16_03",
+        "favorite": false,
         "hebrew": "וַיִּשְׁכֹּן כְּבוֹד־יְהוָה עַל־הַר סִינַי",
         "transliteration": "va-yishkon kevod-adonai al-har sinai",
         "translations": [
@@ -11827,6 +11955,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_16_04",
+        "favorite": false,
         "hebrew": "וַיְלַמְדוּ סֵפֶר תּוֹרַת יְהוָה בְּכָל־עָרֵי יְהוּדָה",
         "transliteration": "va-yelamdu sefer torat adonai be-chol-arei yehudah",
         "translations": [
@@ -11937,6 +12066,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_16_05",
+        "favorite": false,
         "hebrew": "וַיִּתְהַלֵּךְ חֲנוֹךְ אֶת־הָאֱלֹהִים",
         "transliteration": "va-yithallech chanoch et-ha-elohim",
         "translations": [
@@ -12203,6 +12333,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_17_01",
+        "favorite": false,
         "hebrew": "יְהוָה יִשְׁמָרְךָ מִכָּל־רָע",
         "transliteration": "adonai yishmorcha mikol-ra",
         "translations": [
@@ -12283,6 +12414,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_17_02",
+        "favorite": false,
         "hebrew": "אֵלִי אֵלִי לָמָה עֲזַבְתָּנִי",
         "transliteration": "eli eli lamah azavtani",
         "translations": [
@@ -12376,6 +12508,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_17_03",
+        "favorite": false,
         "hebrew": "אַךְ טוֹב וָחֶסֶד יִרְדְּפוּנִי כָּל־יְמֵי חַיָּי",
         "transliteration": "ach tov va-chesed yirdefuni kol-yemei chayai",
         "translations": [
@@ -12498,6 +12631,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_17_04",
+        "favorite": false,
         "hebrew": "יְהוָה אֱלֹהֵי הַשָּׁמַיִם אֲשֶׁר לְקָחַנִי מִבֵּית אָבִי",
         "transliteration": "adonai elohei ha-shamayim asher lekachani mi-beit avi",
         "translations": [
@@ -12635,6 +12769,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_17_05",
+        "favorite": false,
         "hebrew": "כִּי־אָבִי וְאִמִּי עֲזָבוּנִי",
         "transliteration": "ki-avi ve-immi azavuni",
         "translations": [
@@ -12917,6 +13052,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_18_01",
+        "favorite": false,
         "hebrew": "הַלְלוּ יָהּ הַלְלוּ־אֵל בְּקָדְשׁוֹ",
         "transliteration": "hallelu yah, hallelu-el be-kodsho",
         "translations": [
@@ -13000,6 +13136,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_18_02",
+        "favorite": false,
         "hebrew": "בַּקֵּשׁ שָׁלוֹם וְרָדְפֵהוּ",
         "transliteration": "bakkesh shalom ve-radfehu",
         "translations": [
@@ -13064,6 +13201,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_18_03",
+        "favorite": false,
         "hebrew": "שִׁמְרוּ כָּל־מִצְוֹת יְהוָה",
         "transliteration": "shimru kol-mitzvot adonai",
         "translations": [
@@ -13115,6 +13253,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_18_04",
+        "favorite": false,
         "hebrew": "שְׁמַע יִשְׂרָאֵל יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד",
         "transliteration": "shama yisrael adonai eloheinu adonai echad",
         "translations": [
@@ -13197,6 +13336,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_18_05",
+        "favorite": false,
         "hebrew": "כַּבֵּד אֶת־אָבִיךָ וְאֶת־אִמֶּךָ",
         "transliteration": "kabbed et-avicha ve-et-immecha",
         "translations": [
@@ -13539,6 +13679,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_19_01",
+        "favorite": false,
         "hebrew": "מִכֹּל עֵץ־הַגָּן אָכֹל תֹּאכֵל",
         "transliteration": "mi-kol etz-ha-gan achol tochel",
         "translations": [
@@ -13631,6 +13772,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_19_02",
+        "favorite": false,
         "hebrew": "לָחֶם לֶאֱכֹל וּבֶגֶד לִלְבֹּשׁ",
         "transliteration": "lechem le-echol u-veged lilbosh",
         "translations": [
@@ -13729,6 +13871,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_19_03",
+        "favorite": false,
         "hebrew": "לִדְרֹשׁ אֶת־תּוֹרַת יְהוָה",
         "transliteration": "lidrosh et-torat adonai",
         "translations": [
@@ -13794,6 +13937,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_19_04",
+        "favorite": false,
         "hebrew": "עַל נַהֲרוֹת בָּבֶל שָׁם יָשַׁבְנוּ גַּם־בָּכִינוּ בְּזָכְרֵנוּ אֶת־צִיּוֹן",
         "transliteration": "al naharot bavel sham yashavnu gam-bachinu be-zochreinu et-tzion",
         "translations": [
@@ -13924,6 +14068,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_19_05",
+        "favorite": false,
         "hebrew": "כִּי בֵיתִי בֵּית־תְּפִלָּה יִקָּרֵא לְכָל־הָעַמִּים",
         "transliteration": "ki veiti beit-tefillah yikkare le-chol-ha'ammim",
         "translations": [
@@ -14272,6 +14417,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_20_01",
+        "favorite": false,
         "hebrew": "שֹׁפֵךְ דַּם הָאָדָם בָּאָדָם דָּמוֹ יִשָּׁפֵךְ",
         "transliteration": "shofech dam ha-adam ba-adam damo yishafech",
         "translations": [
@@ -14387,6 +14533,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_20_02",
+        "favorite": false,
         "hebrew": "הָרֹפֵא לִשְׁבוּרֵי לֵב",
         "transliteration": "ha-rofe li-shvurei lev",
         "translations": [
@@ -14457,6 +14604,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_20_03",
+        "favorite": false,
         "hebrew": "יְהוָה יִשְׁמָר־צֵאתְךָ וּבוֹאֶךָ מֵעַתָּה וְעַד־עוֹלָם",
         "transliteration": "adonai yishmor-tzetcha u-vo'echa me-attah ve-ad-olam",
         "translations": [
@@ -14601,6 +14749,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_20_04",
+        "favorite": false,
         "hebrew": "שִׁמְעוּ אֵלַי רֹדְפֵי צֶדֶק מְבַקְשֵׁי יְהוָה",
         "transliteration": "shim'u elai rodfei tzedek mevakshei adonai",
         "translations": [
@@ -14852,6 +15001,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_21_01",
+        "favorite": false,
         "hebrew": "שְׁמַע יִשְׂרָאֵל יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד",
         "transliteration": "shama yisrael adonai eloheinu adonai echad",
         "translations": [
@@ -14934,6 +15084,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_21_02",
+        "favorite": false,
         "hebrew": "וְאָהַבְתָּ אֵת יְהוָה אֱלֹהֶיךָ בְּכָל־לְבָבְךָ וּבְכָל־נַפְשְׁךָ",
         "transliteration": "ve-ahavta et adonai eloheicha be-chol-levavcha u-ve-chol-nafshecha",
         "translations": [
@@ -15118,6 +15269,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_21_03",
+        "favorite": false,
         "hebrew": "טַעֲמוּ וּרְאוּ כִּי־טוֹב יְהוָה",
         "transliteration": "ta'amu u-re'u ki-tov adonai",
         "translations": [
@@ -15191,6 +15343,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_21_04",
+        "favorite": false,
         "hebrew": "פְּרוּ וּרְבוּ וּמִלְאוּ אֶת־הָאָרֶץ",
         "transliteration": "peru u-revu u-mil'u et-ha-aretz",
         "translations": [
@@ -15294,6 +15447,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_21_05",
+        "favorite": false,
         "hebrew": "יִשְׁלַח דְּבָרוֹ וְיִרְפָּאֵם",
         "transliteration": "yishlach devaro ve-yirpa'em",
         "translations": [
@@ -15537,6 +15691,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_22_01",
+        "favorite": false,
         "hebrew": "וַיִּהָפְכוּ כָּל־הַמַּיִם אֲשֶׁר בַּיְאֹר לְדָם",
         "transliteration": "va-yihafechu kol-ha-mayim asher ba-ye'or le-dam",
         "translations": [
@@ -15666,6 +15821,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_22_02",
+        "favorite": false,
         "hebrew": "וְאַתֶּם חֲשַׁבְתֶּם עָלַי רָעָה אֱלֹהִים חֲשָׁבָהּ לְטוֹבָה",
         "transliteration": "ve-athem chashavtem alai ra'ah elohim chashavah le-tovah",
         "translations": [
@@ -15803,6 +15959,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_22_03",
+        "favorite": false,
         "hebrew": "וַיְחַזֵּק יְהוָה אֶת־לֵב פַּרְעֹה וְלֹא שָׁמַע אֲלֵיהֶם",
         "transliteration": "va-yechazzek adonai et-lev par'oh ve-lo shama aleihem",
         "translations": [
@@ -15934,6 +16091,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_22_04",
+        "favorite": false,
         "hebrew": "בָּקַע יָם וַיַּעֲבִירֵם",
         "transliteration": "baka yam va-ya'avirem",
         "translations": [
@@ -15998,6 +16156,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_22_05",
+        "favorite": false,
         "hebrew": "הַאֲמִינוּ בַּיהוָה אֱלֹהֵיכֶם וְתֵאָמֵנוּ",
         "transliteration": "ha'aminu ba-adonai eloheichem ve-te'amenu",
         "translations": [
@@ -16258,6 +16417,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_23_01",
+        "favorite": false,
         "hebrew": "מִכֹּל עֵץ־הַגָּן אָכֹל תֹּאכֵל",
         "transliteration": "mi-kol etz-ha-gan achol tochel",
         "translations": [
@@ -16350,6 +16510,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_23_02",
+        "favorite": false,
         "hebrew": "וַיֹּאמֶר אֶל־הָאִשָּׁה אַף כִּי־אָמַר אֱלֹהִים לֹא תֹאכְלוּ מִכֹּל עֵץ הַגָּן",
         "transliteration": "va-yomer el-ha-ishah af ki-amar elohim lo tochlu mi-kol etz ha-gan",
         "translations": [
@@ -16534,6 +16695,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_23_03",
+        "favorite": false,
         "hebrew": "כָּל־זָכָר בַּכֹּהֲנִים יֹאכְלֶנּוּ בְּמָקוֹם קָדוֹשׁ יֵאָכֵל",
         "transliteration": "kol-zachar ba-kohanim yochlennu be-makom kadosh yieachel",
         "translations": [
@@ -16657,6 +16819,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_23_04",
+        "favorite": false,
         "hebrew": "וַיִּבְרָא אֱלֹהִים אֶת־הָאָדָם בְּצַלְמוֹ בְּצֶלֶם אֱלֹהִים בָּרָא אֹתוֹ זָכָר וּנְקֵבָה בָּרָא אֹתָם",
         "transliteration": "va-yivra elohim et-ha-adam be-tzelmo be-tzelem elohim bara oto zachar u-nekevah bara otam",
         "translations": [
@@ -16896,6 +17059,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_23_05",
+        "favorite": false,
         "hebrew": "לָמָּה יֹאמְרוּ הַגּוֹיִם אַיֵּה אֱלֹהֵיהֶם",
         "transliteration": "lamah yomru ha-goyim ayei eloheihem",
         "translations": [
@@ -17148,6 +17312,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_24_01",
+        "favorite": false,
         "hebrew": "עַתָּה הִנֵּה הַמֶּלֶךְ אֲשֶׁר בְּחַרְתֶּם",
         "transliteration": "attah hinneh ha-melech asher bechartem",
         "translations": [
@@ -17222,6 +17387,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_24_02",
+        "favorite": false,
         "hebrew": "יְבָרֶכְךָ יְהוָה וְיִשְׁמְרֶךָ",
         "transliteration": "yevarechecha adonai ve-yishmerecha",
         "translations": [
@@ -17300,6 +17466,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_24_03",
+        "favorite": false,
         "hebrew": "עַל־כֵּן בֵּרַךְ יְהוָה אֶת־יוֹם הַשַּׁבָּת וַיְקַדְּשֵׁהוּ",
         "transliteration": "al-ken berach adonai et-yom ha-shabbat va-yekaddeshehu",
         "translations": [
@@ -17428,6 +17595,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_24_04",
+        "favorite": false,
         "hebrew": "כְּאִישׁ אֲשֶׁר אִמּוֹ תְּנַחֲמֶנּוּ כֵּן אָנֹכִי אֲנַחֶמְכֶם",
         "transliteration": "ke-ish asher immo tenachamennu ken anochi anachemchem",
         "translations": [
@@ -17564,6 +17732,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_24_05",
+        "favorite": false,
         "hebrew": "יְהִי שֵׁם יְהוָה מְבֹרָךְ מֵעַתָּה וְעַד עוֹלָם",
         "transliteration": "yehi shem adonai mevorach me-attah ve-ad olam",
         "translations": [
@@ -17822,6 +17991,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_25_01",
+        "favorite": false,
         "hebrew": "וָאֶשְׁמַע אֶת־קוֹל אֲדֹנָי אֹמֵר אֶת־מִי אֶשְׁלַח",
         "transliteration": "Va-eshma et-kol Adonai omer et-mi eshlach",
         "translations": [
@@ -17929,6 +18099,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_25_02",
+        "favorite": false,
         "hebrew": "וּבְעֵת צָרָתָם יִצְעֲקוּ אֵלֶיךָ וְאַתָּה מִשָּׁמַיִם תִּשְׁמָע",
         "transliteration": "U-ve-et tzaratam yitza'aku eleicha ve-attah mi-shamayim tishma",
         "translations": [
@@ -18087,6 +18258,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_25_03",
+        "favorite": false,
         "hebrew": "וַיִּמְשַׁח אֶת־שְׁלֹמֹה וַיִּתְקְעוּ בַּשּׁוֹפָר",
         "transliteration": "Va-yimshach et-Shelomoh va-yitke'u ba-shofar",
         "translations": [
@@ -18191,6 +18363,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_25_04",
+        "favorite": false,
         "hebrew": "הִנֵּה אָנֹכִי שֹׁלֵחַ מַלְאָךְ לְפָנֶיךָ לִשְׁמָרְךָ בַּדָּרֶךְ",
         "transliteration": "Hinneh anochi sholeach mal'ach le-faneicha lishmorcha ba-darech",
         "translations": [
@@ -18318,6 +18491,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_25_05",
+        "favorite": false,
         "hebrew": "זֶה־הַיּוֹם עָשָׂה יְהוָה נָגִילָה וְנִשְׁמְחָה בוֹ",
         "transliteration": "Zeh-ha-yom asah Adonai nagilah ve-nismachah vo",
         "translations": [
@@ -18579,6 +18753,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_26_01",
+        "favorite": false,
         "hebrew": "כִּי אֵין אָדָם אֲשֶׁר לֹא־יֶחֱטָא",
         "transliteration": "Ki ein adam asher lo-yecheta",
         "translations": [
@@ -18647,6 +18822,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_26_02",
+        "favorite": false,
         "hebrew": "כִּי בֵיתִי בֵּית־תְּפִלָּה יִקָּרֵא לְכָל־הָעַמִּים",
         "transliteration": "Ki veiti beit-tefillah yikkare le-chol-ha'ammim",
         "translations": [
@@ -18768,6 +18944,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_26_03",
+        "favorite": false,
         "hebrew": "דִּרְשׁוּ יְהוָה בְּהִמָּצְאוֹ קְרָאֻהוּ בִּהְיוֹתוֹ קָרוֹב",
         "transliteration": "Dirshu Adonai be-himmatz'o kera'uhu bi-hyoto karov",
         "translations": [
@@ -18894,6 +19071,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_26_04",
+        "favorite": false,
         "hebrew": "הֲלוֹא אָב אֶחָד לְכֻלָּנוּ הֲלוֹא אֵל אֶחָד בְּרָאָנוּ",
         "transliteration": "Halo av echad le-chullanu halo El echad bra'anu",
         "translations": [
@@ -19043,6 +19221,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_26_05",
+        "favorite": false,
         "hebrew": "רְפָאֵנִי יְהוָה וְאֵרָפֵא",
         "transliteration": "Refa'eni Adonai ve-erafe",
         "translations": [
@@ -19280,6 +19459,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_27_01",
+        "favorite": false,
         "hebrew": "וַיֹּאמֶר יַעֲקֹב אֶל־יוֹסֵף אֵל שַׁדַּי נִרְאָה אֵלַי",
         "transliteration": "Va-yomer Ya'akov el-Yosef El Shaddai nir'ah elai",
         "translations": [
@@ -19395,6 +19575,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_27_02",
+        "favorite": false,
         "hebrew": "וְהַבַּיִת אֲשֶׁר־אֲנִי בוֹנֶה גָּדוֹל",
         "transliteration": "Ve-ha-bayit asher-ani voneh gadol",
         "translations": [
@@ -19475,6 +19656,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_27_03",
+        "favorite": false,
         "hebrew": "כֻּלָּנוּ כַּצֹּאן תָּעִינוּ אִישׁ לְדַרְכּוֹ פָּנִינוּ",
         "transliteration": "Kullanu ka-tzon ta'inu ish le-darko paninu",
         "translations": [
@@ -19595,6 +19777,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_27_04",
+        "favorite": false,
         "hebrew": "כִּי תִּמָּלֵא הָאָרֶץ לָדַעַת אֶת־כְּבוֹד יְהוָה",
         "transliteration": "Ki timmale ha-aretz la-da'at et-kevod Adonai",
         "translations": [
@@ -19703,6 +19886,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_27_05",
+        "favorite": false,
         "hebrew": "וַיַּרְא אֱלֹהִים אֶת־כָּל־אֲשֶׁר עָשָׂה וְהִנֵּה־טוֹב מְאֹד",
         "transliteration": "Va-yar Elohim et-kol-asher asah ve-hinneh-tov me'od",
         "translations": [
@@ -19998,6 +20182,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_28_01",
+        "favorite": false,
         "hebrew": "וַיִּקָּחֵנִי יְהוָה מֵאַחֲרֵי הַצֹּאן",
         "transliteration": "Va-yikkacheni Adonai me-acharei ha-tzon",
         "translations": [
@@ -20099,6 +20284,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_28_02",
+        "favorite": false,
         "hebrew": "לֹא תִשָּׂא אֶת־שֵׁם־יְהוָה אֱלֹהֶיךָ לַשָּׁוְא",
         "transliteration": "Lo tissa et-shem-Adonai Eloheicha la-shav",
         "translations": [
@@ -20207,6 +20393,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_28_03",
+        "favorite": false,
         "hebrew": "וָאֶרְאֶה אֶת־אֲדֹנָי יֹשֵׁב עַל־כִּסֵּא רָם וְנִשָּׂא",
         "transliteration": "Va-er'eh et-Adonai yoshev al-kisse ram ve-nissa",
         "translations": [
@@ -20325,6 +20512,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_28_04",
+        "favorite": false,
         "hebrew": "הַבִּיטוּ אֶל־אַבְרָהָם אֲבִיכֶם",
         "transliteration": "Habbitu el-Avraham avichem",
         "translations": [
@@ -20391,6 +20579,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_28_05",
+        "favorite": false,
         "hebrew": "יְהוָה נָתַן וַיהוָה לָקַח יְהִי שֵׁם יְהוָה מְבֹרָךְ",
         "transliteration": "Adonai natan va-Adonai lakach yehi shem Adonai mevorach",
         "translations": [
@@ -20655,6 +20844,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_29_01",
+        "favorite": false,
         "hebrew": "אַחַת שָׁאַלְתִּי מֵאֵת־יְהוָה אוֹתָהּ אֲבַקֵּשׁ שִׁבְתִּי בְּבֵית־יְהוָה כָּל־יְמֵי חַיָּי",
         "transliteration": "achat sha'alti me-et-adonai otah avakkesh shivti be-veit-adonai kol-yemei chayai",
         "translations": [
@@ -20840,6 +21030,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_29_02",
+        "favorite": false,
         "hebrew": "וַיִּרֶד יְהוָה לִרְאֹת אֶת־הָעִיר וְאֶת־הַמִּגְדָּל אֲשֶׁר בָּנוּ בְּנֵי הָאָדָם",
         "transliteration": "va-yired adonai lir'ot et-ha-ir ve-et-ha-migdal asher banu benei ha-adam",
         "translations": [
@@ -21045,6 +21236,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_29_03",
+        "favorite": false,
         "hebrew": "כִּי־יֶלֶד יֻלַּד־לָנוּ בֵּן נִתַּן־לָנוּ",
         "transliteration": "ki-yeled yullad-lanu ben nittan-lanu",
         "translations": [
@@ -21152,6 +21344,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_29_04",
+        "favorite": false,
         "hebrew": "וַיָּקָם מֶלֶךְ־חָדָשׁ עַל־מִצְרָיִם אֲשֶׁר לֹא־יָדַע אֶת־יוֹסֵף",
         "transliteration": "va-yakam melech-chadash al-mitzvayim asher lo-yada et-yosef",
         "translations": [
@@ -21273,6 +21466,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_29_05",
+        "favorite": false,
         "hebrew": "בָּרוּךְ הַבָּא בְּשֵׁם יְהוָה בֵּרַכְנוּכֶם מִבֵּית יְהוָה",
         "transliteration": "baruch ha-ba be-shem adonai berachnuchem mi-beit adonai",
         "translations": [
@@ -21579,6 +21773,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_30_01",
+        "favorite": false,
         "hebrew": "פְּנוּ־אֵלַי וְהִנָּשְׁעוּ כָּל־אַפְסֵי־אֶרֶץ כִּי אֲנִי־אֵל וְאֵין עוֹד",
         "transliteration": "penu-elai ve-hinnasheu kol-afsei-aretz ki ani-el ve-ein od",
         "translations": [
@@ -21738,6 +21933,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_30_02",
+        "favorite": false,
         "hebrew": "יָבֵשׁ חָצִיר נָבֵל צִיץ וּדְבַר־אֱלֹהֵינוּ יָקוּם לְעוֹלָם",
         "transliteration": "yavesh chatzir navel tzitz u-devar-eloheinu yakum le-olam",
         "translations": [
@@ -21870,6 +22066,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_30_03",
+        "favorite": false,
         "hebrew": "בֹּאוּ שְׁעָרָיו בְּתוֹדָה חֲצֵרֹתָיו בִּתְהִלָּה הוֹדוּ־לוֹ בָּרֲכוּ שְׁמוֹ",
         "transliteration": "bo'u she'arav be-todah chatzerotav bi-tehillah hodu-lo barachu shemo",
         "translations": [
@@ -22056,6 +22253,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_30_04",
+        "favorite": false,
         "hebrew": "וַיֵּדַע נֹחַ כִּי־קַלּוּ הַמַּיִם מֵעַל הָאָרֶץ",
         "transliteration": "va-yeda noach ki-kallu ha-mayim me-al ha-aretz",
         "translations": [
@@ -22194,6 +22392,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_30_05",
+        "favorite": false,
         "hebrew": "יְהוָה יִשְׁמָר־צֵאתְךָ וּבוֹאֶךָ מֵעַתָּה וְעַד־עוֹלָם",
         "transliteration": "adonai yishmor-tzetcha u-vo'echa me-attah ve-ad-olam",
         "translations": [
@@ -22504,6 +22703,7 @@ window.GAMIDA_DEFAULT_DATA = {
     "sentences": [
       {
         "id": "sent_31_01",
+        "favorite": false,
         "hebrew": "סֹבּוּ צִיּוֹן סִפְרוּ מִגְדָּלֶיהָ",
         "transliteration": "sobbu tzion sifru migdaleha",
         "translations": [
@@ -22570,6 +22770,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_31_02",
+        "favorite": false,
         "hebrew": "וַתָּבֹא אֵלָיו הַיּוֹנָה לְעֵת עֶרֶב וְהִנֵּה עֲלֵה־זַיִת טָרָף בְּפִיהָ",
         "transliteration": "va-tavo elav ha-yonah le-et erev ve-hinneh aleh-zayit taraf be-fiha",
         "translations": [
@@ -22768,6 +22969,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_31_03",
+        "favorite": false,
         "hebrew": "בָּרֲכִי נַפְשִׁי אֶת־יְהוָה הַלְלוּ־יָהּ",
         "transliteration": "barachi nafshi et-adonai hallelu-yah",
         "translations": [
@@ -22857,6 +23059,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_31_04",
+        "favorite": false,
         "hebrew": "אַל־תִּתְהַלֵּל בְּיוֹם מָחָר כִּי לֹא־תֵדַע מַה־יֵּלֶד יוֹם",
         "transliteration": "al-tithallel be-yom machar ki lo-teda mah-yeled yom",
         "translations": [
@@ -22978,6 +23181,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_31_05",
+        "favorite": false,
         "hebrew": "וּכְכַלּוֹת שְׁלֹמֹה לְהִתְפַּלֵּל וְהָאֵשׁ יָרְדָה מֵהַשָּׁמַיִם וַתֹּאכַל הָעֹלָה",
         "transliteration": "u-che-challot shelomoh le-hitpallel ve-ha-esh yardah me-ha-shamayim va-tochal ha-olah",
         "translations": [
@@ -23177,7 +23381,8 @@ window.GAMIDA_DEFAULT_DATA = {
       }
     ]
   }
-],
+]
+,
   greek: [
   {
     "id": "bergmann_01",
@@ -23806,7 +24011,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E este é o testemunho de João"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὐκ εἰμὶ ἐγὼ ὁ Χριστός.",
@@ -23815,7 +24021,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Eu não sou o Cristo",
           "Não sou eu o Cristo"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ ἠρώτησαν αὐτόν· Τί οὖν;",
@@ -23823,7 +24030,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E perguntaram a ele: O que então?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἠλίας εἶ σύ; Καὶ λέγει· Οὐκ εἰμί.",
@@ -23832,7 +24040,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Elias és tu? E diz: Não sou",
           "Tu és Elias? E diz: Não sou"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὁ προφήτης εἶ σύ; Οὔ.",
@@ -23841,7 +24050,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "O profeta és tu? Não",
           "Tu és o profeta? Não"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὑμεῖς ἐκ τοῦ Θεοῦ ἐστέ, τεκνία",
@@ -23849,7 +24059,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Vocês são de Deus, filhinhos"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Αὐτοὶ ἐκ τοῦ κόσμου εἰσίν",
@@ -23857,7 +24068,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Eles são do mundo"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἡμεῖς ἐκ τοῦ Θεοῦ ἐσμεν.",
@@ -23865,7 +24077,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Nós somos de Deus"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Τὰ πρόβατα τὰ ἐμὰ τῆς φωνῆς μου ἀκούουσιν,",
@@ -23873,7 +24086,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "As minhas ovelhas ouvem a minha voz"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "κἀγὼ γινώσκω αὐτὰ καὶ ἀκολουθοῦσίν μοι·",
@@ -23881,7 +24095,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "e eu as conheço e elas me seguem"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "κἀγὼ δίδωμι αὐτοῖς ζωὴν αἰώνιον,",
@@ -23889,7 +24104,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "e eu lhes dou vida eterna"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "καὶ οὐ μὴ ἀπόλωνται εἰς τὸν αἰῶνα",
@@ -23897,7 +24113,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "e elas jamais perecerão"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "καὶ οὐχ ἁρπάσει τις αὐτὰ ἐκ τῆς χειρός μου.",
@@ -23905,7 +24122,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "e ninguém as arrancará da minha mão"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -24268,7 +24486,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Assim pois amou Deus o mundo, de tal maneira que o seu filho unigênito deu,"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ἵνα πᾶς ὁ πιστεύων εἰς αὐτὸν μὴ ἀπόληται, ἀλλ᾽ ἔχῃ ζωὴν αἰώνιον.",
@@ -24276,7 +24495,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "para que todo o que crê nele não pereça, mas tenha vida eterna."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐγὼ ἦλθον ἵνα ζωὴν ἔχωσιν.",
@@ -24284,7 +24504,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Eu vim para que tenham vida."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐγὼ οὐ κρίνω αὐτόν, οὐ γὰρ ἦλθον ἵνα κρίνω",
@@ -24292,7 +24513,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Eu não o julgo, pois não vim para que eu julgue"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Μὴ κρίνωμεν ἀλλήλους, ἵνα μὴ κρινώμεθα.",
@@ -24300,7 +24522,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Não julguemos uns aos outros, para que não sejamos julgados."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Πνεύματι περιπατεῖτε, καὶ ἐπιθυμίαν σαρκὸς οὐ μὴ τελέσητε.",
@@ -24308,7 +24531,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Vivam pelo Espírito, e com certeza vocês não satisfarão os desejos da carne!"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -24681,7 +24905,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "vai ir e ensinar aos gregos?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ὑμεῖς βαπτισθήσεσθε ἐν Πνεύματι Ἁγίῳ.",
@@ -24689,7 +24914,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "vocês serão batizados com o Espírito Santo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἀγαπήσεις τὸν πλησίον σου",
@@ -24698,7 +24924,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Você amará o seu próximo",
           "Ame o seu próximo"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Κύριε, πρὸς τίνα ἀπελευσόμεθα;",
@@ -24707,7 +24934,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Senhor, a quem iremos?",
           "Senhor, a quem iríamos?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Μόλις ὑπὲρ δικαίου τις ἀποθανεῖται.",
@@ -24715,7 +24943,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Dificilmente alguém morrerá por um justo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐάν τις ἀγαπᾷ με τὸν λόγον μου τηρήσει,",
@@ -24724,7 +24953,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Se alguém me ama guardará a minha palavra,",
           "Se alguém ama a mim a minha palavra guardará,"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "καὶ ὁ πατήρ μου ἀγαπήσει αὐτὸν, καὶ πρὸς αὐτὸν ἐλευσόμεθα",
@@ -24733,7 +24963,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "e o meu Pai o amará, e viremos a ele",
           "e o Pai meu amará a ele, e para ele viremos"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "καὶ μονὴν παρ᾽ αὐτῷ ποιήσομεν.",
@@ -24742,7 +24973,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "e faremos morada com ele.",
           "e morada junto a ele faremos."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Τὸ Πνεῦμα ὁδηγήσει ὑμᾶς εἰς πᾶσαν τὴν ἀλήθειαν·",
@@ -24750,7 +24982,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "O Espírito guiará vocês a toda a verdade;"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Πίστευσον ἐπὶ τὸν Κύριον Ἰησοῦν Χριστόν καὶ σωθήσῃ σὺ καὶ ὁ οἶκός σου.",
@@ -24759,7 +24992,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Creia no Senhor Jesus Cristo e será salvo, tu e a tua casa.",
           "Creia no Senhor Jesus Cristo e será salvo você e a casa sua."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Τί μέλλεις ποιεῖν;",
@@ -24769,7 +25003,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "O que você vai fazer?",
           "O que está a ponto de fazer?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐὰν ὁ Κύριος θελήσῃ καὶ ζήσωμεν καὶ ποιήσομεν τοῦτο ἢ ἐκεῖνο.",
@@ -24778,7 +25013,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Se o Senhor quiser e vivermos e faremos isto ou aquilo.",
           "Se o Senhor quiser viveremos e faremos isto ou aquilo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ψυγήσεται ἡ ἀγάπη τῶν πολλῶν",
@@ -24786,7 +25022,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "esfriará o amor de muitos."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ὁ δὲ ὑπομείνας εἰς τέλος, οὗτος σωθήσεται",
@@ -24794,7 +25031,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "no entanto, quem perseverar até o fim, este será salvo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -25141,7 +25379,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "No princípio era a Palavra, e a Palavra estava com Deus, e Deus era a Palavra.",
           "Em princípio era a Palavra, e a Palavra estava com Deus, e Deus era a Palavra."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὗτος ἦν ἐν ἀρχῇ πρὸς τὸν Θεόν.",
@@ -25149,7 +25388,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Este estava no princípio com Deus."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ναθαναήλ λέγει αὐτῷ, Ῥαββί, σὺ εἶ ὁ υἱὸς τοῦ Θεοῦ.",
@@ -25158,7 +25398,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Natanael lhe diz: Rabi, tu és o Filho de Deus.",
           "Natanael diz a ele: Rabi, tu és o Filho de Deus."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἀπεκρίθη Ἰησοῦς καὶ εἶπεν αὐτῷ, Ὅτι εἶπόν σοι, εἶδόν σε ὑποκάτω τῆς συκῆς, πιστεύεις;",
@@ -25167,7 +25408,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Respondeu Jesus e disse-lhe: Porque te disse, vi você debaixo da figueira, crês?",
           "Respondeu Jesus e disse a ele: Porque disse a você, vi você debaixo de a figueira, você crê?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ λέγει αὐτῷ, Ἀμὴν ἀμὴν λέγω ὑμῖν, ἀπ᾿ ἄρτι ὄψεσθε τὸν οὐρανὸν ἀνεῳγότα, καὶ τοὺς ἀγγέλους τοῦ Θεοῦ ἀναβαίνοντας καὶ καταβαίνοντας ἐπὶ τὸν υἱὸν τοῦ ἀνθρώπου.",
@@ -25176,7 +25418,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "E lhe diz: Em verdade, em verdade digo a vocês: de agora em diante verão o céu aberto, e os anjos de Deus subindo e descendo sobre o Filho do Homem.",
           "E diz a ele, Em verdade em verdade digo a vocês, agora verão o céu aberto, e os anjos de Deus subindo e descendo sobre o filho do homem."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐλέησόν με, Κύριε, υἱὲ Δαυίδ·",
@@ -25184,7 +25427,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Tem misericórdia de mim, Senhor, filho de Davi!"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή.",
@@ -25192,7 +25436,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Eu sou o caminho e a verdade e a vida."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -25600,7 +25845,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "O Pai ama o filho."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Παῦλος, δοῦλος Ἰησοῦ Χριστοῦ...",
@@ -25608,7 +25854,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Paulo, servo de Jesus Cristo..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "μὴ ποιεῖτε τὸν οἶκον τοῦ πατρός μου οἶκον ἐμπορίου.",
@@ -25616,7 +25863,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Não façam da casa de meu Pai uma casa de negócio."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Τίς ἡμᾶς χωρίσει ἀπὸ τῆς ἀγάπης τοῦ Χριστοῦ;",
@@ -25625,7 +25873,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Quem nos separará do amor de Cristo?",
           "Quem nos separará do amor com que Cristo nos ama?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Αὕτη ἐστιν ἡ ἀγάπη τοῦ Θεοῦ, ἵνα τηρῶμεν...",
@@ -25633,7 +25882,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Este é o amor a Deus, que guardemos..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ καταβαινόντων αὐτῶν ἐκ τοῦ ὄρους...",
@@ -25641,7 +25891,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E quando eles desceram do monte..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐλέησον ἡμᾶς, Κύριε·",
@@ -25649,7 +25900,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Tem misericórdia de nós, Senhor!"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Σὺ δέ, ὦ ἄνθρωπε τοῦ Θεοῦ, ταῦτα φεῦγε·",
@@ -25657,7 +25909,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Mas tu, ó homem de Deus, foge destas coisas!"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐν τούτῳ γνώσονται πάντες ὅτι ἐμοὶ μαθηταί ἐστε, ἐὰν ἀγάπην ἔχητε ἐν ἀλλήλοις.",
@@ -25666,7 +25919,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Nisto todos conhecerão que sois meus discípulos, se tiverdes amor uns pelos outros.",
           "Nisto conhecerão todos que meus discípulos sois, se amor tiverdes uns aos outros."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐν τῇ οἰκίᾳ τοῦ πατρός μου μοναὶ πολλαί εἰσιν·",
@@ -25675,7 +25929,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Na casa de meu Pai há muitas moradas.",
           "Em a casa do meu pai moradas muitas há;"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ ὅπου ἐγὼ ὑπάγω οἴδατε, καὶ τὴν ὁδὸν οἴδατε.",
@@ -25684,7 +25939,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "E aonde eu vou sabeis, e o caminho sabeis.",
           "E aonde eu vou sabem, e o caminho conhecem."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Λέγει αὐτῷ Θωμᾶς, Κύριε, οὐκ οἴδαμεν ποῦ ὑπάγεις·",
@@ -25692,7 +25948,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Diz a ele Tomé: Senhor, não sabemos aonde vais;"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Λέγει αὐτῷ ὁ Ἰησοῦς, Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή·",
@@ -25700,7 +25957,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Diz a ele Jesus: Eu sou o caminho e a verdade e a vida;"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "πῶς δυνάμεθα τὴν ὁδὸν εἰδέναι;",
@@ -25709,7 +25967,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "como podemos saber o caminho?",
           "como podemos o caminho conhecer?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Πιστεύεις, βασιλεῦ Ἀγρίππα, τοῖς προφήταις;",
@@ -25717,7 +25976,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Crês, rei Agripa, nos profetas?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ὁ Θεὸς ἀγάπη ἐστίν.",
@@ -25726,7 +25986,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Deus é amor.",
           "Deus amor é."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "τὴν ἀγάπην τοῦ Θεοῦ οὐκ ἔχετε.",
@@ -25736,7 +25997,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "vocês não têm o amor de Deus.",
           "o amor de Deus não tendes."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Κύριός ἐστιν ὁ υἱὸς τοῦ ἀνθρώπου καὶ τοῦ σαββάτου.",
@@ -25745,7 +26007,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "O Filho do Homem é Senhor até do sábado.",
           "Senhor é o filho do homem e do sábado."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "...ἡ ἀγάπη τοῦ Θεοῦ ἐκκέχυται ἐν ταῖς καρδίαις ἡμῶν διὰ Πνεύματος Ἁγίου τοῦ δοθέντος ἡμῖν.",
@@ -25754,7 +26017,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "...o amor de Deus foi derramado em nossos corações pelo Espírito Santo que nos foi dado.",
           "...o amor a Deus foi derramado em nossos corações pelo Espírito Santo que nos foi dado."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -26165,7 +26429,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "a vida eterna"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "τὴν ζωὴν τὴν αἰώνιον",
@@ -26173,7 +26438,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "a vida eterna"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὗτοι οἱ λόγοι πιστοὶ καὶ ἀληθινοί",
@@ -26181,7 +26447,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Estas palavras são confiáveis e verdadeiras"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "... ἵνα γινώσκωμεν τὸν ἀληθινόν.",
@@ -26189,7 +26456,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "para que conheçamos o verdadeiro."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ζῶν γὰρ ὁ λόγος τοῦ Θεοῦ, καὶ ἐνεργής...",
@@ -26197,7 +26465,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Pois viva é a palavra de Deus, e eficaz..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "μείζων ἐστὶν ὁ ἐν ὑμῖν ἢ ὁ ἐν τῷ κόσμῳ.",
@@ -26205,7 +26474,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Maior é o que está em vocês do que o que está no mundo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ὁ λόγος τοῦ Θεοῦ τομώτερος ὑπὲρ πᾶσαν μάχαιραν δίστομον.",
@@ -26213,7 +26483,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "A palavra de Deus é mais cortante que qualquer espada de dois gumes."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "καλόν ἐστίν σε εἰσελθεῖν εἰς τὴν ζωὴν χωλόν, ἢ τοὺς δύο πόδας ἔχοντα βληθῆναι εἰς τὴν γέενναν.",
@@ -26221,7 +26492,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Melhor é para você entrar na vida aleijado do que, tendo os dois pés, ser lançado no inferno."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καλόν ἐστιν αὐτῷ μᾶλλον εἰ...",
@@ -26229,7 +26501,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Melhor seria para ele se..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ποία ἐντολὴ μεγάλη ἐν τῷ νόμῳ;",
@@ -26237,7 +26510,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Qual mandamento é o maior na lei?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "... μείζων δὲ τούτων ἡ ἀγάπη.",
@@ -26245,7 +26519,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "mas o maior destes é o amor."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "σπουδαιότερος ὑπάρχων, ἐξῆλθεν πρὸς ὑμᾶς.",
@@ -26253,7 +26528,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Sendo muito diligente, partiu para vocês."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "...ἵνα πᾶς ὁ πιστεύων εἰς αὐτὸν μὴ ἀπόληται, ἀλλ᾽ ἔχῃ ζωὴν αἰώνιον.",
@@ -26261,7 +26537,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "...para que todo o que crê nele não pereça, mas tenha vida eterna."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Τίς ἐστὶν ὁ πιστὸς δοῦλος;",
@@ -26269,7 +26546,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Quem é o servo fiel?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Διδάσκαλε ἀγαθέ, τί ποιήσω ἵνα ἔχω ζωὴν αἰώνιον;",
@@ -26278,7 +26556,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Bom mestre, o que farei para ter a vida eterna?",
           "Mestre bom, que farei para ter a vida eterna?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Αὕτη ἐστιν ἡ αἰώνιος ζωή, ἵνα γινώσκωσίν σε τὸν μόνον ἀληθινὸν Θεόν...",
@@ -26286,7 +26565,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Esta é a vida eterna, que conheçam a ti, o único Deus verdadeiro..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ἡ ζωὴ ἐφανερώθη, καὶ ἑωράκαμεν τὴν ζωὴν τὴν αἰώνιον...",
@@ -26294,7 +26574,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "a vida foi manifestada, e temos visto a vida eterna..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ὁ υἱὸς τοῦ Θεοῦ... δέδωκεν ἡμῖν διάνοιαν ἵνα γινώσκωμεν τὸν ἀληθινόν...",
@@ -26302,7 +26583,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "o filho de Deus... nos deu entendimento para que conheçamos o verdadeiro..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὗτός ἐστιν ὁ ἀληθινὸς Θεός, καὶ ζωὴ αἰώνιος.",
@@ -26310,7 +26592,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Este é o verdadeiro Deus e a vida eterna."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -26689,7 +26972,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Achamos Jesus, o filho de José, o de Nazaré.",
           "Achamos Jesus o filho de José o de Nazaré."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐκ Ναζαρέτ δύναταί τι ἀγαθὸν εἶναι;",
@@ -26699,7 +26983,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Pode vir alguma coisa boa de Nazaré?",
           "De Nazaré pode bom vir?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Εἶδεν ὁ Ἰησοῦς τὸν Ναθαναὴλ ἐρχόμενον πρὸς αὐτόν καὶ λέγει περὶ αὐτοῦ, Ἴδε ἀληθῶς Ἰσραηλίτης, ἐν ᾧ δόλος οὐκ ἔστιν.",
@@ -26707,7 +26992,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Viu Jesus a Natanael vindo a ele e diz dele: Eis verdadeiramente um Israelita, em quem engano não há."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Λέγει αὐτῷ Ναθαναήλ, Πόθεν με γινώσκεις;",
@@ -26715,7 +27001,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Diz a ele Natanael: De onde me conheces?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἀπεκρίθη Ἰησοῦς καὶ εἶπεν αὐτῷ, Πρὸ τοῦ σε Φίλιππον φωνῆσαι, ὄντα ὑπὸ τὴν συκῆν, εἶδόν σε.",
@@ -26724,7 +27011,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Respondeu Jesus e disse a ele: Antes de a ti Filipe chamar, estando debaixo da figueira, vi a ti.",
           "Antes de Filipe te chamar, estando tu debaixo da figueira, te vi."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Εγώ εἰμι ἡ ἄμπελος, ὑμεῖς τὰ κλήματα.",
@@ -26732,7 +27020,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Eu sou a videira, vocês são os ramos."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὁ μένων ἐν ἐμοί, κἀγὼ ἐν αὐτῷ, οὗτος φέρει καρπὸν πολύν·",
@@ -26740,7 +27029,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Quem permanece em mim, e eu nele, este dá muito fruto;"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ὅτι χωρὶς ἐμοῦ οὐ δύνασθε ποιεῖν οὐδέν.",
@@ -26748,7 +27038,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "porque sem mim vocês não podem fazer nada."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -27059,7 +27350,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "João vê a Jesus vindo para ele e diz:"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἴδε ὁ ἀμνὸς τοῦ Θεοῦ, ὁ αἴρων τὴν ἁμαρτίαν τοῦ κόσμου.",
@@ -27067,7 +27359,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Eis o cordeiro de Deus, o que tira o pecado do mundo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὗτός ἐστιν περὶ οὗ ἐγὼ εἶπον,",
@@ -27075,7 +27368,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Este é a respeito de quem eu disse:"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὀπίσω μου ἔρχεται ἀνὴρ ὃς ἔμπροσθέν μου γέγονεν, ὅτι πρῶτός μου ἦν.",
@@ -27083,7 +27377,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Atrás de mim vem um homem que existia antes de mim, porque primeiro que eu era."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Κἀγὼ οὐκ ᾔδειν αὐτόν, ἀλλ᾽ ἵνα φανερωθῇ τῷ Ἰσραήλ, διὰ τοῦτο ἦλθον ἐγὼ ἐν ὕδατι βαπτίζων.",
@@ -27091,7 +27386,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E eu não o conhecia, mas para que fosse manifesto a Israel, por causa disto vim eu batizando em água."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ ἐμαρτύρησεν Ἰωάννης λέγων ὅτι Τεθέαμαι τὸ Πνεῦμα καταβαῖνον ὡσεὶ περιστερὰν ἐξ οὐρανοῦ, καὶ ἔμεινεν ἐπ᾽ αὐτόν.",
@@ -27099,7 +27395,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E testemunhou João dizendo: Vi o Espírito descendo como pomba do céu, e permaneceu sobre ele."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Κἀγὼ οὐκ ᾔδειν αὐτόν, ἀλλ᾽ ὁ πέμψας με βαπτίζειν ἐν ὕδατι, ἐκεῖνός μοι εἶπεν,",
@@ -27107,7 +27404,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E eu não o conhecia, mas o que me enviou a batizar em água, aquele me disse:"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐφ᾽ ὃν ἂν ἴδῃς τὸ Πνεῦμα καταβαῖνον καὶ μένον ἐπ᾽ αὐτόν, οὗτός ἐστιν ὁ βαπτίζων ἐν Πνεύματι Ἁγίῳ.",
@@ -27115,7 +27413,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Sobre quem você vir o Espírito descendo e permanecendo sobre ele, este é o que batiza em Espírito Santo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Κἀγὼ ἑώρακα ὅτι οὗτός ἐστιν ὁ υἱὸς τοῦ Θεοῦ.",
@@ -27123,7 +27422,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E eu tenho visto que este é o filho de Deus."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐὰν ἐμοὶ διακονῇ τις, ἐμοὶ ἀκολουθείτω·",
@@ -27131,7 +27431,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Se alguém me quiser servir, a mim me siga;"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "καὶ ὅπου εἰμὶ ἐγώ, ἐκεῖ καὶ ὁ διάκονος ὁ ἐμὸς ἔσται·",
@@ -27139,7 +27440,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "e onde eu estou, ali também estará o meu servo;"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "καὶ ἐάν τις ἐμοὶ διακονῇ, τιμήσει αὐτὸν ὁ πατήρ.",
@@ -27147,7 +27449,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "e se alguém me servir a mim, o Pai o honrará."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -27654,7 +27957,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "João testemunha a respeito dele dizendo,"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὗτος ἔμπροσθέν μου γέγονεν, ὅτι πρῶτός μου ἦν.",
@@ -27662,7 +27966,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Este existia antes de mim, porque primeiro que eu era."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Αὐτὸς δὲ ὁ Ἰησοῦς οὐκ ἐπίστευεν ἑαυτὸν αὐτοῖς,",
@@ -27670,7 +27975,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Mas o próprio Jesus não confiava a si mesmo a eles,"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "διὰ τὸ αὐτὸν γινώσκειν πάντας, καὶ ὅτι οὐ χρείαν εἶχεν",
@@ -27678,7 +27984,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "por ele conhecer todos, e porque não tinha necessidade"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ἵνα τις μαρτυρήσῃ περὶ τοῦ ἀνθρώπου·",
@@ -27686,7 +27993,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "que alguém testemunhasse a respeito do ser humano;"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "αὐτὸς γὰρ ἐγίνωσκεν τί ἦν ἐν τῷ ἀνθρώπῳ.",
@@ -27694,7 +28002,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "pois ele mesmo conhecia o que havia no ser humano."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ ἐδίδασκεν αὐτοὺς ἐν παραβολαῖς πολλά,",
@@ -27702,7 +28011,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E ensinava-lhes em parábolas muitas coisas,"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "καὶ ἔλεγεν αὐτοῖς ἐν τῇ διδαχῇ αὐτοῦ…",
@@ -27710,7 +28020,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "e dizia a eles no seu ensino..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "πολλοὶ τῶν Κορινθίων ἀκούοντες ἐπίστευον καὶ ἐβαπτίζοντο.",
@@ -27718,7 +28029,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "muitos dos coríntios ouvindo criam e eram batizados."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἦσαν προσκαρτεροῦντες τῇ διδαχῇ τῶν ἀποστόλων καὶ τῇ κοινωνίᾳ, καὶ τῇ κλάσει τοῦ ἄρτου καὶ ταῖς προσευχαῖς.",
@@ -27726,7 +28038,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Eles continuavam firmes no ensino dos apóstolos e na comunhão, no partir do pão e nas orações."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐγένετο δὲ πάσῃ ψυχῇ φόβος, πολλά τε τέρατα καὶ σημεῖα διὰ τῶν ἀποστόλων ἐγίνετο.",
@@ -27734,7 +28047,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Em cada alma havia temor; e muitas maravilhas e sinais eram realizados por meio dos apóstolos."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Πάντες δὲ οἱ πιστεύοντες ἦσαν ἐπὶ τὸ αὐτό, καὶ εἶχον ἅπαντα κοινά,",
@@ -27742,7 +28056,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Todos os que criam estavam juntos e unidos e tinham tudo em comum,"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "καὶ τὰ κτήματα καὶ τὰς ὑπάρξεις ἐπίπρασκον, καὶ διεμέριζον αὐτὰ πᾶσιν, καθότι ἄν τις χρείαν εἶχεν.",
@@ -27750,7 +28065,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Vendiam suas propriedades e bens, e distribuíam o produto entre todos, à medida que alguém tinha necessidade."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καθ᾽ ἡμέραν τε προσκαρτεροῦντες ὁμοθυμαδὸν ἐν τῷ ἱερῷ,",
@@ -27758,7 +28074,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Diariamente perseveravam unânimes no templo,"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "κλῶντές τε κατ᾽ οἶκον ἄρτον, μετελάμβανον τροφῆς ἐν ἀγαλλιάσει καὶ ἀφελότητι καρδίας,",
@@ -27766,7 +28083,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "partiam o pão em suas casas e participavam das refeições com alegria e singeleza de coração,"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "αἰνοῦντες τὸν Θεόν, καὶ ἔχοντες χάριν πρὸς ὅλον τὸν λαόν.",
@@ -27774,7 +28092,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "louvando a Deus e contando com a simpatia de todo o povo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὁ δὲ Κύριος προσετίθει τοὺς σῳζομένους καθ᾽ ἡμέραν τῇ ἐκκλησίᾳ.",
@@ -27782,7 +28101,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E o Senhor acrescentava à igreja cada dia os que iam sendo salvos."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -28095,7 +28415,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "o Verbo se fez carne...",
           "a Palavra se fez carne..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ ἰδὼν συκῆν μίαν ἐπὶ τῆς ὁδοῦ, ἦλθεν ἐπ᾽ αὐτήν, καὶ οὐδὲν εὗρεν ἐν αὐτῇ...",
@@ -28103,7 +28424,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E vendo uma figueira no caminho, foi até ela, e nada achou nela..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Εἶπεν δὲ αὐτοῖς ὁ Ἰησοῦς, Ἐγώ εἰμι ὁ ἄρτος τῆς ζωῆς.",
@@ -28111,7 +28433,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Disse-lhes Jesus: Eu sou o pão da vida."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐσθιόντων δὲ αὐτῶν, λαβὼν ὁ Ἰησοῦς τὸν ἄρτον καὶ εὐχαριστήσας, ἔκλασεν καὶ δοὺς τοῖς μαθηταῖς, εἶπεν, Λάβετε, φάγετε· τοῦτό ἐστιν τὸ σῶμά μου.",
@@ -28119,7 +28442,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Comendo eles, tendo tomado Jesus o pão e tendo agradecido, partiu e dando aos discípulos, disse: Tomem, comam; isto é o meu corpo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὅτε οὖν ἠγέρθη ἐκ νεκρῶν, ἐμνήσθησαν οἱ μαθηταὶ αὐτοῦ ὅτι τοῦτο ἔλεγεν, καὶ ἐπίστευσαν τῇ γραφῇ καὶ τῷ λόγῳ ᾧ εἶπεν ὁ Ἰησοῦς.",
@@ -28127,7 +28451,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Quando pois foi levantado dentre os mortos, lembraram-se os seus discípulos de que dizia isto, e creram na Escritura e na palavra que dissera Jesus."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ἃ καὶ ἐμάθετε καὶ παρελάβετε καὶ ἠκούσατε καὶ εἴδετε ἐν ἐμοί, ταῦτα πράσσετε· καὶ ὁ Θεὸς τῆς εἰρήνης ἔσται μεθ᾽ ὑμῶν.",
@@ -28135,7 +28460,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "o que também aprendestes e recebestes e ouvistes e vistes em mim, isso continuai a pôr em prática; e o Deus da paz estará com vocês."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -28505,7 +28831,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Eu vos batizei em água, mas ele vos batizará no Espírito Santo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ ἐγένετο ἐν ἐκείναις ταῖς ἡμέραις, ἦλθεν Ἰησοῦς καὶ ἐβαπτίσθη ὑπὸ Ἰωάννου εἰς τὸν Ἰορδάνην.",
@@ -28513,7 +28840,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E aconteceu naqueles dias que veio Jesus e foi batizado por João no Jordão."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "... ὁ υἱὸς τοῦ ἀνθρώπου οὐκ ἦλθεν διακονηθῆναι, ἀλλὰ διακονῆσαι, καὶ δοῦναι τὴν ψυχὴν αὐτοῦ λύτρον...",
@@ -28521,7 +28849,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "... o Filho do homem não veio para ser servido, mas para servir e dar a sua vida em resgate..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Τί θέλεις ποιήσω σοί; Ὁ δὲ τυφλὸς εἶπεν ... Ῥαββουνί, ἵνα ἀναβλέψω.",
@@ -28529,7 +28858,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Que queres que eu te faça? E o cego disse: Mestre, que eu veja novamente."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ ὁ Ἰησοῦς εἶπεν αὐτῷ, Ὕπαγε, ἡ πίστις σου σέσωκέν σε. Καὶ εὐθέως ἀνέβλεψεν καὶ ἠκολούθει τῷ Ἰησοῦ ἐν τῇ ὁδῷ.",
@@ -28537,7 +28867,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E Jesus lhe disse: Vá, a sua fé salvou você. E imediatamente voltou a ver e seguia Jesus no caminho."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὐ δυνάμεθα ἡμεῖς, ἃ εἴδομεν καὶ ἠκούσαμεν, μὴ λαλεῖν.",
@@ -28545,7 +28876,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Nós não podemos não falar das coisas que vimos e ouvimos."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -28932,7 +29264,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Houve um homem enviado por Deus, cujo nome era João."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὗτος ἦλθεν εἰς μαρτυρίαν, ἵνα μαρτυρήσῃ περὶ τοῦ φωτός, ἵνα πάντες πιστεύσωσιν δι᾽ αὐτοῦ.",
@@ -28940,7 +29273,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Este veio para testemunho, a fim de que testificasse a respeito da luz, para que todos cressem por meio dele."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὐκ ἦν ἐκεῖνος τὸ φῶς, ἀλλ᾽ ἵνα μαρτυρήσῃ περὶ τοῦ φωτός.",
@@ -28948,7 +29282,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Ele não era a luz, mas veio para que testemunhasse a respeito da luz."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Εἰς τὰ ἴδια ἦλθεν, καὶ οἱ ἴδιοι αὐτὸν οὐ παρέλαβον.",
@@ -28956,7 +29291,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Veio para o que era seu, e os seus não o receberam."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὅσοι δὲ ἔλαβον αὐτόν, ἔδωκεν αὐτοῖς ἐξουσίαν τέκνα Θεοῦ γενέσθαι, τοῖς πιστεύουσιν εἰς τὸ ὄνομα αὐτοῦ",
@@ -28964,7 +29300,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Mas a todos quantos o receberam, deu-lhes a autoridade de se tornarem filhos de Deus, aos que creem no seu nome;"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "οἳ οὐκ ἐξ αἱμάτων, οὐδὲ ἐκ θελήματος σαρκός, οὐδὲ ἐκ θελήματος ἀνδρός, ἀλλ᾽ ἐκ Θεοῦ ἐγεννήθησαν.",
@@ -28972,7 +29309,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "os quais não nasceram do sangue, nem da vontade da carne, nem da vontade do varão, mas de Deus."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Λέγω δέ, Πνεύματι περιπατεῖτε, καὶ ἐπιθυμίαν σαρκὸς οὐ μὴ τελέσητε.",
@@ -28980,7 +29318,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Digo, porém: Vivam pelo Espírito, e com certeza vocês não satisfarão os desejos da carne."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "εἰς τὸ μηκέτι ἀνθρώπων ἐπιθυμίαις, ἀλλὰ θελήματι Θεοῦ βιῶσαι τὸν ἐπίλοιπον ἐν σαρκὶ χρόνον.",
@@ -28988,7 +29327,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "para viver não mais satisfazendo os desejos humanos, mas fazendo a vontade de Deus no tempo de vida que resta."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -29334,7 +29674,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E percorria Jesus todas as cidades e os povoados, ensinando nas sinagogas deles e pregando o evangelho do reino e curando toda enfermidade e toda fraqueza no povo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ προσελθὼν ὁ Ἰησοῦς ἐλάλησεν αὐτοῖς λέγων· Ἐδόθη μοι πᾶσα ἐξουσία ἐν οὐρανῷ καὶ ἐπὶ γῆς.",
@@ -29342,7 +29683,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E aproximando-se Jesus lhes falou dizendo: Foi-me dada toda autoridade no céu e sobre a terra."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Πορευθέντες μαθητεύσατε πάντα τὰ ἔθνη, βαπτίζοντες αὐτοὺς εἰς τὸ ὄνομα τοῦ πατρὸς καὶ τοῦ υἱοῦ καὶ τοῦ Ἁγίου Πνεύματος,",
@@ -29350,7 +29692,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Indo, façam discípulos de todas as nações, batizando-os no nome do Pai e do Filho e do Espírito Santo,"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "διδάσκοντες αὐτοὺς τηρεῖν πάντα ὅσα ἐνετειλάμην ὑμῖν· καὶ ἰδού, ἐγὼ μεθ᾽ ὑμῶν εἰμι πάσας τὰς ἡμέρας ἕως τῆς συντελείας τοῦ αἰῶνος. Ἀμήν.",
@@ -29358,7 +29701,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "ensinando-os a guardar tudo o que vos mandei; e eis que eu estou com vocês todos os dias até o fim dos tempos. Amém."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ἐνεδυναμώθη τῇ πίστει, δοὺς δόξαν τῷ Θεῷ...",
@@ -29366,7 +29710,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "foi fortalecido na sua fé, dando glória a Deus..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -29777,7 +30122,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Disse Pedro: Homem, não sei o que dizes."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ παραχρῆμα, ἔτι λαλοῦντος αὐτοῦ, ἐφώνησεν ἀλέκτωρ.",
@@ -29785,7 +30131,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E imediatamente, enquanto ele ainda falava, cantou o galo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ὑπὲρ πάντων ἀπέθανεν ἵνα οἱ ζῶντες … ζῶσιν … τῷ ὑπὲρ αὐτῶν ἀποθανόντι καὶ ἐγερθέντι.",
@@ -29793,7 +30140,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "morreu por todos para que os que vivem vivam para aquele que por eles morreu e ressuscitou."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὐ γὰρ ἐπαισχύνομαι τὸ εὐαγγέλιον τοῦ Χριστοῦ· δύναμις γὰρ Θεοῦ ἐστιν εἰς σωτηρίαν παντὶ τῷ πιστεύοντι.",
@@ -29801,7 +30149,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Pois não me envergonho do evangelho de Cristo, porque é o poder de Deus para salvação de todo aquele que crê."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "πάντες ἐφοβοῦντο αὐτόν, μὴ πιστεύοντες ὅτι ἐστὶν μαθητής.",
@@ -29809,7 +30158,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "todos o temiam, não crendo que fosse discípulo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἔγνω Κύριος τοὺς ὄντας αὐτοῦ.",
@@ -29817,7 +30167,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "O Senhor conhece os que são seus."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὁ ἔχων τὸν υἱὸν ἔχει τὴν ζωήν· ὁ μὴ ἔχων τὸν υἱὸν τοῦ Θεοῦ τὴν ζωὴν οὐκ ἔχει.",
@@ -29825,7 +30176,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Quem tem o Filho tem a vida; quem não tem o Filho de Deus não tem a vida."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ὁ ποιῶν τὸ θέλημα τοῦ Θεοῦ μένει εἰς τὸν αἰῶνα.",
@@ -29833,7 +30185,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "aquele que faz a vontade de Deus permanece para sempre."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οἴδαμεν ὅτι τοῖς ἀγαπῶσιν τὸν Θεὸν πάντα συνεργεῖ εἰς ἀγαθόν, τοῖς κατὰ πρόθεσιν κλητοῖς οὖσιν.",
@@ -29841,7 +30194,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Sabemos que todas as coisas cooperam para o bem daqueles que amam a Deus, daqueles que são chamados segundo o seu propósito."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -30074,7 +30428,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Todo o que se exalta a si mesmo será humilhado, e o que se humilha a si mesmo será exaltado."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὐ γὰρ ἑαυτοὺς κηρύσσομεν, ἀλλὰ Χριστὸν Ἰησοῦν Κύριον· ἑαυτοὺς δὲ δούλους ὑμῶν διὰ Ἰησοῦν.",
@@ -30082,7 +30437,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Porque não nos proclamamos a nós mesmos, mas a Cristo Jesus como Senhor; e a nós mesmos como servos de vocês por amor de Jesus."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "(Σαῦλος) ἤκουσεν φωνὴν λέγουσαν αὐτῷ, Σαούλ, Σαούλ, τί με διώκεις;",
@@ -30090,7 +30446,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Saulo ouviu uma voz dizendo a ele: Saulo, Saulo, por que me persegues?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Εἶπεν δὲ ἐν ἑαυτῷ ὁ οἰκονόμος, Τί ποιήσω;",
@@ -30098,7 +30455,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Disse porém consigo mesmo o administrador: Que farei?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ἀγαπήσεις τὸν πλησίον σου ὡς σεαυτόν.",
@@ -30106,7 +30464,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Amarás o teu próximo como a ti mesmo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Πῶς δύναταί τις εἰσελθεῖν εἰς τὴν οἰκίαν τοῦ ἰσχυροῦ;",
@@ -30114,7 +30473,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Como pode alguém entrar na casa do homem forte?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐὰν ὁμολογήσῃς ἐν τῷ στόματί σου Κύριον Ἰησοῦν, καὶ πιστεύσῃς ἐν τῇ καρδίᾳ σου ὅτι ὁ Θεὸς αὐτὸν ἤγειρεν ἐκ νεκρῶν, σωθήσῃ·",
@@ -30122,7 +30482,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Se com a tua boca confessares a Jesus como Senhor, e no teu coração creres que Deus o ressuscitou dentre os mortos, serás salvo;"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -30499,7 +30860,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "O tempo está cumprido, e o reino de Deus está próximo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὃ ἦν ἀπ᾽ ἀρχῆς, ὃ ἀκηκόαμεν, ὃ ἑωράκαμεν toῖς ὀφθαλμοῖς ἡμῶν, ὃ ἐθεασάμεθα, καὶ αἱ χεῖρες ἡμῶν ἐψηλάφησαν περὶ τοῦ λόγου τῆς ζωῆς... ἀπαγγέλλομεν ὑμῖν.",
@@ -30507,7 +30869,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "O que era desde o princípio, o que ouvimos, o que vimos com os nossos olhos, o que contemplamos e as nossas mãos apalparam a respeito do Verbo da vida... isso vos anunciamos."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ὁ πιστεύων εἰς τὸν υἱὸν τοῦ Θεοῦ ἔχει τὴν μαρτυρίαν ἐν ἑαυτῷ, ὁ μὴ πιστεύων τῷ Θεῷ ψεύστην πεποίηκεν αὐτόν, ὅτι οὐ πεπίστευκεν εἰς τὴν μαρτυρίαν ἣν μεμαρτύρηκεν ὁ Θεὸς περὶ τοῦ υἱοῦ αὐτοῦ.",
@@ -30515,7 +30878,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Aquele que crê no Filho de Deus tem o testemunho em si mesmo; aquele que não crê em Deus o fez mentiroso, porque não creu no testemunho que Deus deu acerca do seu Filho."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὁ πατὴρ φιλεῖ ὑμᾶς, ὅτι ὑμεῖς ἐμὲ πεφιλήκατε, καὶ πεπιστεύκατε ὅτι ἐγὼ παρὰ τοῦ Θεοῦ ἐξῆλθον.",
@@ -30523,7 +30887,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "O Pai mesmo vos ama, porque vós me amastes e crestes que eu saí de Deus."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἡ ἀγάπη τοῦ Θεοῦ ἐκκέχυται ἐν ταῖς καρδίαις ἡμῶν διὰ Πνεύματος Ἁγίου τοῦ δοθέντος ἡμῖν.",
@@ -30531,7 +30896,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "O amor de Deus está derramado em nossos corações pelo Espírito Santo que nos foi dado."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -30885,7 +31251,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Alegrem-se sempre; orem sem cessar; em tudo deem graças; porque esta é a vontade de Deus em Cristo Jesus para vocês."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Αὐτὸς ὁ Θεὸς τῆς εἰρήνης ἁγιάσαι ὑμᾶς ὁλοτελεῖς· καὶ ὁλόκληρον ὑμῶν τὸ πνεῦμα καὶ ἡ ψυχὴ καὶ τὸ σῶμα ἀμέμπτως ἐν τῇ παρουσίᾳ τοῦ Κυρίου ἡμῶν Ἰησοῦ Χριστοῦ τηρηθείη.",
@@ -30893,7 +31260,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "O próprio Deus da paz vos santifique completamente; e todo o vosso espírito, alma e corpo sejam conservados íntegros e irrepreensíveis na vinda de nosso Senhor Jesus Cristo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Πιστὸς ὁ καλῶν ὑμᾶς, ὃς καὶ ποιήσει.",
@@ -30901,7 +31269,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Fiel é o que vos chama, o qual também o fará."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ἐκκλινάτω ἀπὸ κακοῦ, καὶ ποιησάτω ἀγαθόν· ζητησάτω εἰρήνην, καὶ διωξάτω αὐτήν.",
@@ -30909,7 +31278,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Afaste-se do mal e faça o bem; busque a paz e vá atrás dela."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Τίνι γὰρ εἶπέν ποτε τῶν ἀγγέλων, Υἱός μου εἶ σύ, ἐγὼ σήμερον γεγέννηκά σε; Καὶ πάλιν, Ἐγὼ ἔσομαι αὐτῷ εἰς πατέρα, καὶ αὐτὸς ἔσται μοι εἰς υἱόν;",
@@ -30917,7 +31287,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Pois a qual dos anjos disse jamais: Tu és meu Filho, eu hoje te gerei? E outra vez: Eu serei para ele Pai, e ele será para mim Filho?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Μηδὲν μεριμνᾶτε...",
@@ -30925,7 +31296,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Não andeis ansiosos por coisa alguma..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -31312,7 +31684,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Não pensem que vim revogar a lei ou os profetas; não vim revogar, mas cumprir."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἦλθεν ὁ υἱὸς τοῦ ἀνθρώπου ζητῆσαι καὶ σῶσαι τὸ ἀπολωλός.",
@@ -31320,7 +31693,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Veio o Filho do homem para buscar e salvar o perdido."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Τίς δύναται σωθῆναι;",
@@ -31328,7 +31702,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Quem pode ser salvo?"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ ἐποίησεν δώδεκα, ἵνα ὦσιν μετ᾽ αὐτοῦ, καὶ ἵνα ἀποστέλλῃ αὐτοὺς κηρύσσειν, καὶ ἔχειν ἐξουσίαν θεραπεύειν τὰς νόσους, καὶ ἐκβάλλειν τὰ δαιμόνια.",
@@ -31336,7 +31711,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E constituiu doze para que estivessem com ele, e para que os enviasse a proclamar, e ter autoridade para curar as enfermidades e expulsar os demônios."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "... ὅστις οὐ βαστάζει τὸν σταυρὸν αὐτοῦ καὶ ἔρχεται ὀπίσω μου, οὐ δύναται εἶναί μου μαθητής.",
@@ -31344,7 +31720,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "... quem não carrega a sua cruz e vem após mim, não pode ser meu discípulo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Μετὰ τὸ γενέσθαι με ἐκεῖ, δεῖ με καὶ Ῥώμην ἰδεῖν.",
@@ -31352,7 +31729,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Depois de ter estado eu ali, é necessário que eu veja também Roma."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ ταῖς ἑτέραις πόλεσιν εὐαγγελίσασθαί με δεῖ τὴν βασιλείαν τοῦ Θεοῦ· ὅτι εἰς τοῦτο ἀπέσταλμαι.",
@@ -31360,7 +31738,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Também nas outras cidades é necessário que eu anuncie a boa nova do Reino de Deus, porque para isso fui enviado."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -31692,7 +32071,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "A lei foi dada por meio de Moisés; a graça e a verdade vieram por meio de Jesus Cristo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐγώ εἰμι ὁ ποιμὴν ὁ καλός· ὁ ποιμὴν ὁ καλὸς τὴν ψυχὴν αὐτοῦ τίθησιν ὑπὲρ τῶν προβάτων.",
@@ -31700,7 +32080,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Eu sou o bom pastor; o bom pastor dá a sua vida pelas ovelhas."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ὁ λέγων ἐν αὐτῷ μένειν ὀφείλει καθὼς ἐκεῖνος περιεπάτησεν καὶ αὐτὸς οὕτως περιπατεῖν.",
@@ -31708,7 +32089,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Aquele que diz que permanece nele, esse mesmo também deve andar como ele andou."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Μὴ θαυμάζετε, ἀδελφοί μου, εἰ μισεῖ ὑμᾶς ὁ κόσμος.",
@@ -31716,7 +32098,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Não vos maravilheis, meus irmãos, se o mundo vos odeia."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ προσελθὼν ὁ Ἰησοῦς ἐλάλησεν αὐτοῖς λέγων, Ἐδόθη μοι πᾶσα ἐξουσία ἐν οὐρανῷ καὶ ἐπὶ γῆς.",
@@ -31724,7 +32107,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E aproximando-se Jesus lhes falou dizendo: Foi-me dada toda a autoridade no céu e sobre a terra."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἀπεκρίθη Ἰησοῦς, Ἀμὴν ἀμὴν λέγω σοι, ἐὰν μή τις γεννηθῇ ἐξ ὕδατος καὶ πνεύματος, οὐ δύναται εἰσελθεῖν εἰς τὴν βασιλείαν τοῦ Θεοῦ.",
@@ -31732,7 +32116,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Respondeu Jesus: Em verdade, em verdade te digo, se alguém não nascer da água e do Espírito, não pode entrar no Reino de Deus."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "ἡμεῖς οἴδαμεν ὅτι μεταβεβήκαμεν ἐκ τοῦ θανάτου εἰς τὴν ζωήν, ὅτι ἀγαπῶμεν τοὺς ἀδελφούς. Ὁ μὴ ἀγαπῶν τὸν ἀδελφόν, μένει ἐν τῷ θανάτῳ.",
@@ -31740,7 +32125,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Nós sabemos que já passamos da morte para a vida porque amamos os irmãos. Quem não ama o irmão permanece na morte."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Τεκνία μου, μὴ ἀγαπῶμεν λόγῳ μηδὲ τῇ γλώσσῃ, ἀλλ᾽ ἐν ἔργῳ καὶ ἀληθείᾳ.",
@@ -31748,7 +32134,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Filhinhos, não amemos de palavra, nem da boca para fora, mas em ação e de verdade."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -32138,7 +32525,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Ensinava aos seus discípulos e lhes dizia que o Filho do homem é entregue nas mãos dos homens, e o matarão; e ao terceiro dia ressuscitará."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἡμεῖς ἀγαπῶμεν αὐτόν ὅτι αὐτὸς πρῶτος ἠγάπησεν ἡμᾶς.",
@@ -32146,7 +32534,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Nós amamos porque ele nos amou primeiro."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἓν σῶμα καὶ ἓν πνεῦμα, καθὼς καὶ ἐκλήθητε ἐν μιᾷ ἐλπίδι τῆς κλήσεως ὑμῶν· εἷς Κύριος, μία πίστις, ἓν βάπτισμα, εἷς Θεὸς καὶ πατὴρ πάντων...",
@@ -32154,7 +32543,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Há um só corpo e um só Espírito, como também fostes chamados em uma só esperança da vossa vocação; um só Senhor, uma só fé, um só batismo, um só Deus e Pai de todos..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Καὶ οὓς ἔθετο ὁ Θεὸς ἐν τῇ ἐκκλησίᾳ πρῶτον ἀποστόλους, δεύτερον προφήτας, τρίτον διδασκάλους...",
@@ -32162,7 +32552,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "E a uns pôs Deus na igreja, primeiramente apóstolos, em segundo lugar profetas, em terceiro mestres..."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Νυνὶ δὲ μένει πίστις, ἐλπίς, ἀγάπη, τὰ τρία ταῦτα· μείζων δὲ τούτων ἡ ἀγάπη.",
@@ -32170,7 +32561,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Agora, pois, permanecem a fé, a esperança e o amor, estas três coisas; mas a maior delas é o amor."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὁ δὲ παρακύψας εἰς νόμον τέλειον τὸν τῆς ἐλευθερίας καὶ παραμείνας, οὗτος οὐκ ἀκροατὴς ἐπιλησμονῆς γενόμενος ἀλλὰ ποιητὴς ἔργου, οὗτος μακάριος ἐν τῇ ποιήσει αὐτοῦ ἔσται.",
@@ -32178,7 +32570,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Mas aquele que observa atentamente a lei perfeita, que dá liberdade, e nela persevera, quem não é ouvinte negligente que logo se esquece, mas operoso praticante do que ela diz, esse será bem-aventurado no que fizer."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
@@ -32547,7 +32940,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Se alguém serve, faça-o na força que Deus supre, para que em todas as coisas Deus seja glorificado por meio de Jesus Cristo."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Κύριε, εἰ ἦς ὧδε οὐκ ἂν ἀπέθανέν μου ὁ ἀδελφός.",
@@ -32555,7 +32949,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Senhor, se tu estivesses aqui, meu irmão não teria morrido."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Εἰ ἔτι ἀνθρώποις ἤρεσκον, Χριστοῦ δοῦλος οὐκ ἂν ἤμην.",
@@ -32563,7 +32958,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Se ainda agradasse a homens, servo de Cristo não seria."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐὰν μείνητε ἐν ἐμοί, καὶ τὰ ῥήματά μου ἐν ὑμῖν μείνῃ, ὃ ἐὰν θέλητε αἰτήσεσθε, καὶ γενήσεται ὑμῖν.",
@@ -32571,7 +32967,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Se permanecerdes em mim, e as minhas palavras permanecerem em vós, pedireis o que quiserdes, e vos será feito."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ὑμεῖς φίλοι μου ἐστέ, ἐὰν ποιῆτε ὅσα ἐγὼ ἐντέλλομαι ὑμῖν.",
@@ -32579,7 +32976,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Vós sois meus amigos se fizerdes o que eu vos ordeno."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐὰν ταῖς γλώσσαις τῶν ἀνθρώπων λαλῶ καὶ τῶν ἀγγέλων, ἀγάπην δὲ μὴ ἔχω…, καὶ ἐὰν ἔχω πᾶσαν τὴν πίστιν…, ἀγάπην δὲ μὴ ἔχω, οὐθέν εἰμι.",
@@ -32587,7 +32985,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Se eu falar as línguas dos homens e dos anjos, e não tiver amor..., e se tiver toda a fé..., e não tiver amor, nada sou."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Ἐὰν ὁμολογήσῃς ἐν τῷ στόματί σου Κύριον Ἰησοῦν, καὶ πιστεύσῃς ἐν τῇ καρδίᾳ σου ὅτι ὁ Θεὸς αὐτὸν ἤγειρεν ἐκ νεκρῶν, σωθήσῃ·",
@@ -32595,7 +32994,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Se com a tua boca confessares a Jesus como Senhor, e no teu coração creres que Deus o ressuscitou dentre os mortos, serás salvo;"
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       },
       {
         "term": "Οὕτως γὰρ ἠγάπησεν ὁ Θεὸς τὸν κόσμον, ὥστε τὸν υἱὸν αὐτοῦ τὸν μονογενῆ ἔδωκεν, ἵνα πᾶς ὁ πιστεύων εἰς αὐτὸν μὴ ἀπόληται, ἀλλ᾽ ἔχῃ ζωὴν αἰώνιον.",
@@ -32603,7 +33003,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna."
         ],
-        "type": "Frase"
+        "type": "Frase",
+        "favorite": false
       }
     ],
     "paradigms": [
