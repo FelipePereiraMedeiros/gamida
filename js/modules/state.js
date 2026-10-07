@@ -40,6 +40,7 @@ const AppState = (typeof window !== "undefined" && window.AppState) || {
   totalAnswered: 0,
   correctCount: 0,
   isNewRoundPending: false,
+  isPracticeAnswered: false,
   distractorCache: { words: [], sentences: [] },
   srs: {},
   survivalHighScore: 0,

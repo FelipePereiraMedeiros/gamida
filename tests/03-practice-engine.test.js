@@ -192,6 +192,27 @@ suite.test('Primeira resposta do novo ciclo executa resetStats antes de pontuar 
   assert.equal(AppState.streak, 1, 'Sequência deve refletir apenas o novo ciclo');
 });
 
+suite.test('AppState possui flag isPracticeAnswered e resetStats a reinicia para false', () => {
+  assert.isDefined(AppState.isPracticeAnswered, 'isPracticeAnswered deve estar definido no AppState');
+  AppState.isPracticeAnswered = true;
+  resetStats();
+  assert.isFalse(AppState.isPracticeAnswered, 'resetStats deve resetar isPracticeAnswered para false');
+});
+
+suite.test('Funções de transmutação de botão de ação (resetPracticeActionButtons, updatePracticeActionButtonToNext) existem no app.js', () => {
+  assert.includes(appJs, 'function resetPracticeActionButtons', 'resetPracticeActionButtons não encontrada no app.js');
+  assert.includes(appJs, 'function updatePracticeActionButtonToNext', 'updatePracticeActionButtonToNext não encontrada no app.js');
+});
+
+suite.test('submitAnswer e submitSentenceAnswer invocam nextQuestion quando isPracticeAnswered for verdadeiro', () => {
+  assert.includes(appJs, 'if (AppState.isPracticeAnswered)', 'submitAnswer deve verificar isPracticeAnswered para avançar');
+});
+
+suite.test('Interceptador de teclado trata tecla Enter para envio e avanço contínuo no praticar', () => {
+  assert.includes(appJs, 'isPracticeVisible && isStdPanelVisible && e.key === "Enter"', 'Interceptador de Enter no praticar ausente');
+  assert.includes(appJs, 'if (AppState.isPracticeAnswered)', 'Enter após resposta deve verificar isPracticeAnswered');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

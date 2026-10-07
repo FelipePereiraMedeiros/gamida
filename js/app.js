@@ -106,6 +106,9 @@ function ensureDOM() {
   if (!DOM.btnPracticeAnalysis) DOM.btnPracticeAnalysis = document.getElementById("btn-practice-analysis");
   if (!DOM.btnFeedbackAnalysis) DOM.btnFeedbackAnalysis = document.getElementById("btn-feedback-analysis");
   if (!DOM.btnPracticeFav) DOM.btnPracticeFav = document.getElementById("btn-practice-fav");
+  if (!DOM.btnNext) DOM.btnNext = document.getElementById("btn-next");
+  if (!DOM.btnSubmitTyping) DOM.btnSubmitTyping = document.getElementById("btn-submit-typing");
+  if (!DOM.btnSubmitSentence) DOM.btnSubmitSentence = document.getElementById("btn-submit-sentence");
 }
 
 async function initApp() {
@@ -676,8 +679,74 @@ function buildPracticeQueue() {
   practiceQueue = shuffleArray(baseList);
 }
 
+function resetPracticeActionButtons() {
+  ensureDOM();
+  AppState.isPracticeAnswered = false;
+
+  const btnTyping = DOM.btnSubmitTyping || (typeof document !== "undefined" ? document.getElementById("btn-submit-typing") : null);
+  if (btnTyping) {
+    btnTyping.innerHTML = 'Verificar ➔';
+    btnTyping.className =
+      "absolute right-2 top-2 bottom-2 px-6 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer";
+    btnTyping.disabled = false;
+  }
+
+  const btnSentence = DOM.btnSubmitSentence || (typeof document !== "undefined" ? document.getElementById("btn-submit-sentence") : null);
+  if (btnSentence) {
+    btnSentence.innerHTML = 'Verificar Tradução ➔';
+    btnSentence.className =
+      "px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer";
+    btnSentence.disabled = false;
+  }
+
+  const btnNext = DOM.btnNext || (typeof document !== "undefined" ? document.getElementById("btn-next") : null);
+  if (btnNext) {
+    btnNext.classList.add("hidden");
+  }
+}
+
+function updatePracticeActionButtonToNext() {
+  ensureDOM();
+  AppState.isPracticeAnswered = true;
+
+  const isTypingActive = DOM.interfaces?.typing && !DOM.interfaces.typing.classList.contains("hidden");
+  const isSentenceActive = DOM.interfaces?.sentences && !DOM.interfaces.sentences.classList.contains("hidden");
+  const isChoiceActive = DOM.interfaces?.choice && !DOM.interfaces.choice.classList.contains("hidden");
+  const btnNext = DOM.btnNext || (typeof document !== "undefined" ? document.getElementById("btn-next") : null);
+
+  const nextLabelHtml = `Próxima Questão ➔ <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] bg-white/20 text-white rounded font-mono font-medium ml-1">↵ Enter</kbd>`;
+
+  if (isTypingActive) {
+    const btnTyping = DOM.btnSubmitTyping || (typeof document !== "undefined" ? document.getElementById("btn-submit-typing") : null);
+    if (btnTyping) {
+      btnTyping.innerHTML = nextLabelHtml;
+      btnTyping.className =
+        "absolute right-2 top-2 bottom-2 px-6 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02] active:scale-95 animate-pulse-once";
+      btnTyping.disabled = false;
+    }
+    if (btnNext) btnNext.classList.add("hidden");
+  } else if (isSentenceActive) {
+    const btnSentence = DOM.btnSubmitSentence || (typeof document !== "undefined" ? document.getElementById("btn-submit-sentence") : null);
+    if (btnSentence) {
+      btnSentence.innerHTML = nextLabelHtml;
+      btnSentence.className =
+        "px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02] active:scale-95 animate-pulse-once";
+      btnSentence.disabled = false;
+    }
+    if (btnNext) btnNext.classList.add("hidden");
+  } else if (isChoiceActive) {
+    if (btnNext) {
+      btnNext.innerHTML = nextLabelHtml;
+      btnNext.className =
+        "w-full md:w-auto px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs rounded-xl transition shadow-md cursor-pointer flex items-center justify-center gap-1.5";
+      btnNext.classList.remove("hidden");
+    }
+  }
+}
+
 function renderCurrentQuestion() {
   ensureDOM();
+  resetPracticeActionButtons();
 
   if (practiceQueue.length === 0) {
     AppState.currentQuestion = null;
@@ -867,20 +936,34 @@ function renderChoiceInterface() {
   options.forEach((opt) => {
     const btn = document.createElement("button");
     btn.className =
-      "w-full text-left p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-brand-500 font-medium text-sm text-slate-200 transition active:scale-[0.99]";
+      "w-full text-left p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-brand-500 font-medium text-sm text-slate-200 transition active:scale-[0.99] cursor-pointer";
     btn.textContent = opt;
-    btn.onclick = () => checkPracticeAnswer(opt);
+    btn.onclick = () => {
+      if (AppState.isPracticeAnswered) {
+        nextQuestion();
+        return;
+      }
+      checkPracticeAnswer(opt);
+    };
     DOM.interfaces.choice.appendChild(btn);
   });
 }
 
 function submitAnswer(e) {
   if (e) e.preventDefault();
+  if (AppState.isPracticeAnswered) {
+    nextQuestion();
+    return;
+  }
   checkPracticeAnswer(DOM.inputs.typing.value);
 }
 
 function submitSentenceAnswer(e) {
   if (e) e.preventDefault();
+  if (AppState.isPracticeAnswered) {
+    nextQuestion();
+    return;
+  }
   checkPracticeAnswer(DOM.inputs.sentences.value);
 }
 
@@ -952,6 +1035,29 @@ function checkPracticeAnswer(userAnswer) {
   DOM.inputs.typing.disabled = true;
   DOM.inputs.sentences.disabled = true;
 
+  // Desabilita e estiliza botões de múltipla escolha se estiverem presentes
+  if (DOM.interfaces && DOM.interfaces.choice) {
+    const choiceButtons = DOM.interfaces.choice.querySelectorAll("button");
+    choiceButtons.forEach((b) => {
+      b.disabled = true;
+      b.classList.remove("hover:border-brand-500", "active:scale-[0.99]");
+      if (
+        b.textContent === evalResult.expected ||
+        (AppState.currentQuestion?.translations &&
+          AppState.currentQuestion.translations.includes(b.textContent))
+      ) {
+        b.classList.add("border-emerald-500", "bg-emerald-950/40", "text-emerald-200");
+      } else if (b.textContent === userAnswer && evalResult.status !== "correct") {
+        b.classList.add("border-rose-500", "bg-rose-950/40", "text-rose-200");
+      } else {
+        b.classList.add("opacity-50");
+      }
+    });
+  }
+
+  // Transforma o botão "Verificar" em "Próxima Questão" e ajusta estado
+  updatePracticeActionButtonToNext();
+
   const isSentenceWithAnalysis = AppState.currentQuestion &&
     AppState.language === "hebrew" &&
     ((AppState.currentQuestion.tokens && AppState.currentQuestion.tokens.length > 0) ||
@@ -1006,6 +1112,7 @@ function resetStats() {
   AppState.totalAnswered = 0;
   AppState.correctCount = 0;
   AppState.isNewRoundPending = false;
+  AppState.isPracticeAnswered = false;
   updateStatsUI();
 
   if (typeof document !== "undefined") {
@@ -1574,12 +1681,14 @@ function finishSurvival(surrendered = false) {
   return null;
 }
 
-// Interceptador da tecla ENTER no input do Modo Sobrevivência
+// Interceptador global da tecla ENTER (Modo Sobrevivência e Modo de Prática)
 if (typeof document !== "undefined") {
   document.addEventListener("keydown", (e) => {
     if (e.defaultPrevented) return;
     const modal = document.getElementById("sentence-analysis-modal");
     if (modal && !modal.classList.contains("hidden")) return;
+
+    // 1. Modo Sobrevivência
     const survActive = document.getElementById("survival-active");
     if (
       survActive &&
@@ -1590,6 +1699,36 @@ if (typeof document !== "undefined") {
       if (document.activeElement === input) {
         e.preventDefault();
         submitSurvivalAnswer();
+      }
+      return;
+    }
+
+    // 2. Modo de Prática Padrão
+    const tabPractice = document.getElementById("tab-practice");
+    const stdPanel = document.getElementById("standard-practice-panel");
+    const isPracticeVisible = tabPractice && !tabPractice.classList.contains("hidden");
+    const isStdPanelVisible = stdPanel && !stdPanel.classList.contains("hidden");
+
+    if (isPracticeVisible && isStdPanelVisible && e.key === "Enter") {
+      // Se a resposta já foi verificada, QUALQUER tecla Enter avança imediatamente para a próxima questão
+      if (AppState.isPracticeAnswered) {
+        e.preventDefault();
+        nextQuestion();
+        return;
+      }
+
+      // Se ainda não foi verificada e o usuário está no textarea de frases:
+      // Enter sem Shift submete a tradução (Shift+Enter permite quebra de linha)
+      if (
+        DOM.inputs &&
+        DOM.inputs.sentences &&
+        document.activeElement === DOM.inputs.sentences
+      ) {
+        if (!e.shiftKey) {
+          e.preventDefault();
+          submitSentenceAnswer();
+          return;
+        }
       }
     }
   });
@@ -1844,6 +1983,8 @@ if (typeof window !== "undefined") {
   window.WORD_CATEGORIES = WORD_CATEGORIES;
   window.matchItemCategory = matchItemCategory;
   window.openCurrentPracticeSentenceAnalysis = openCurrentPracticeSentenceAnalysis;
+  window.resetPracticeActionButtons = resetPracticeActionButtons;
+  window.updatePracticeActionButtonToNext = updatePracticeActionButtonToNext;
   if (typeof openSentenceAnalysisModal !== "undefined") {
     window.openSentenceAnalysisModal = openSentenceAnalysisModal;
   }
@@ -1871,6 +2012,8 @@ if (typeof module !== "undefined" && module.exports) {
     WORD_CATEGORIES,
     matchItemCategory,
     openCurrentPracticeSentenceAnalysis,
+    resetPracticeActionButtons,
+    updatePracticeActionButtonToNext,
   };
 }
 
