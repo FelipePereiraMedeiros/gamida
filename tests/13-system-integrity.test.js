@@ -442,7 +442,7 @@ suite.test('Anki E2E: Início -> Exibição -> Revelação -> Classificação ->
 
   // 3. Avaliar com 'good'
   const currentCard = SRSModule.getAnkiCurrentCard();
-  const cardId = currentCard.id || currentCard.hebrew || currentCard.greek || currentCard.term;
+  const cardId = StateModule.getTerm(currentCard) || currentCard.hebrew || currentCard.greek || currentCard.term || currentCard.id;
   SRSModule.answerAnki('good');
 
   const srsRecord = AppState.srs[cardId];

@@ -41,6 +41,7 @@
           },
         },
       };
+      window.APP_VERSION = "2.7.1";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
@@ -508,7 +509,7 @@
             >
               שָׁלוֹם
             </div>
-            <div id="hint-container" class="min-h-[24px]">
+            <div id="hint-container" class="min-h-[24px] flex flex-wrap items-center justify-center gap-3">
               <button
                 type="button"
                 id="btn-show-hint"
@@ -517,9 +518,17 @@
               >
                 💡 Mostrar Transliteração / Dica
               </button>
+              <button
+                type="button"
+                id="btn-practice-analysis"
+                onclick="openCurrentPracticeSentenceAnalysis()"
+                class="hidden text-xs text-indigo-400 hover:text-indigo-300 underline transition cursor-pointer"
+              >
+                🔬 Analisar Morfemas
+              </button>
               <p
                 id="hint-text"
-                class="text-sm font-mono text-amber-400/90 hidden"
+                class="w-full text-sm font-mono text-amber-400/90 hidden"
               ></p>
             </div>
           </div>
@@ -595,14 +604,24 @@
                 ></p>
               </div>
             </div>
-            <button
-              type="button"
-              id="btn-next"
-              onclick="nextQuestion()"
-              class="w-full md:w-auto px-6 py-2.5 bg-slate-100 text-slate-900 font-bold text-xs rounded-xl hover:bg-white transition shadow-md"
-            >
-              Próxima Questão ➔
-            </button>
+            <div class="flex items-center gap-2 w-full md:w-auto">
+              <button
+                type="button"
+                id="btn-feedback-analysis"
+                onclick="openCurrentPracticeSentenceAnalysis()"
+                class="hidden w-full md:w-auto px-4 py-2.5 bg-indigo-600/80 hover:bg-indigo-600 text-white font-bold text-xs rounded-xl transition shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+              >
+                🔬 Análise Morfossintática
+              </button>
+              <button
+                type="button"
+                id="btn-next"
+                onclick="nextQuestion()"
+                class="w-full md:w-auto px-6 py-2.5 bg-slate-100 text-slate-900 font-bold text-xs rounded-xl hover:bg-white transition shadow-md"
+              >
+                Próxima Questão ➔
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -1568,13 +1587,127 @@
         <div class="flex flex-wrap items-center justify-center gap-3 pt-1 text-[11px] text-slate-500 font-mono">
           <span>Gamida Biblical Language Trainer</span>
           <span>•</span>
-          <span id="footer-version-tag" class="px-2 py-0.5 rounded-full bg-slate-800/80 border border-slate-700/60 text-brand-400 font-bold">v2.6.8</span>
+          <span id="footer-version-tag" class="px-2 py-0.5 rounded-full bg-slate-800/80 border border-slate-700/60 text-brand-400 font-bold">v2.7.0</span>
           <span>•</span>
           <span>Hebraico & Grego Bíblico</span>
         </div>
       </div>
     </footer>
 
+    <!-- Modal de Análise Morfossintática de Frases Hebraicas (Page Kelley) -->
+    <div
+      id="sentence-analysis-modal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-slate-950/85 backdrop-blur-md transition-opacity duration-200"
+      aria-modal="true"
+      role="dialog"
+      aria-labelledby="analysis-modal-title"
+    >
+      <div
+        id="sentence-analysis-card"
+        class="w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] animate-in fade-in zoom-in-95 duration-150"
+      >
+        <!-- Cabeçalho do Modal -->
+        <div class="px-6 py-4 border-b border-slate-800/80 bg-slate-900/90 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">🔬</span>
+            <div>
+              <h3 id="analysis-modal-title" class="font-bold text-base md:text-lg text-white">
+                Análise Morfossintática de Frases Hebraicas
+              </h3>
+              <p class="text-xs text-slate-400 font-medium">
+                Dissecação granular de partículas, raízes e morfemas (Gramática de Page Kelley)
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            id="btn-close-analysis-modal"
+            onclick="closeSentenceAnalysisModal()"
+            class="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition cursor-pointer"
+            title="Fechar Modal (Esc)"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Conteúdo Rolável do Modal -->
+        <div class="p-4 sm:p-6 md:p-8 space-y-6 overflow-y-auto flex-1">
+          <!-- Frase Hebraica em Evidência -->
+          <div class="bg-slate-950/90 border border-slate-800 rounded-2xl p-6 md:p-8 text-center relative overflow-hidden shadow-inner">
+            <div class="text-[11px] font-mono uppercase tracking-wider text-slate-500 mb-3 flex items-center justify-center gap-2">
+              <span>Frase em Evidência</span>
+              <span>•</span>
+              <span id="analysis-pinned-indicator" class="text-amber-400 hidden">📌 Morfema Fixado</span>
+            </div>
+            
+            <div
+              id="sentence-morphemes-container"
+              class="hebrew-sentence-container text-white py-2"
+              dir="rtl"
+            >
+              <!-- Tokens e morfemas inseridos dinamicamente -->
+            </div>
+
+            <!-- Barra Interativa de Fragmentos Anatômicos (Morphemes Ribbon) -->
+            <div
+              id="sentence-morphemes-ribbon"
+              class="mt-4 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-center gap-1.5"
+            >
+              <!-- Chips com cada morfema atômico inseridos dinamicamente -->
+            </div>
+
+            <!-- Legenda Rápida de Cores por Categoria Morfológica -->
+            <div class="mt-4 pt-4 border-t border-slate-800/60 flex flex-wrap items-center justify-center gap-2 text-[11px]">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Artigo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Conjunção
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Preposição
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Substantivo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Adjetivo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>Verbo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span>Sufixo Pronominal
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Partícula / Pronome
+              </span>
+            </div>
+          </div>
+
+          <!-- Painel Dinâmico de Análise -->
+          <div
+            id="sentence-analysis-panel"
+            class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-5 md:p-6 min-h-[220px] flex flex-col justify-center transition-all"
+          >
+            <!-- Conteúdo dinâmico (Visão Global ou Dissecação Anatômica) -->
+          </div>
+        </div>
+
+        <!-- Rodapé com Dicas e Atalhos -->
+        <div class="px-6 py-3 border-t border-slate-800/80 bg-slate-900/60 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
+          <div class="flex items-center gap-2">
+            <span>💡</span>
+            <span>Passe o mouse ou toque para dissecar • Clique para fixar/desafixar</span>
+          </div>
+          <div class="font-mono text-[11px] text-slate-500 flex items-center gap-3">
+            <span>⌨️ Setas ◀ / ▶ navegam</span>
+            <span>•</span>
+            <span>Esc fecha</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Módulos e Scripts da Aplicação -->
     <script src="data/data-bundle.js"></script>
@@ -1586,6 +1719,7 @@
     <script src="js/modules/survival.js"></script>
     <script src="js/modules/assessment.js"></script>
     <script src="js/modules/paradigms.js"></script>
+    <script src="js/modules/sentence-analysis.js"></script>
     <script src="js/modules/ui.js"></script>
     <script src="js/app.js"></script>
   </body>

@@ -24,6 +24,7 @@ const modules = [
   { id: 11, name: 'Apoio ("Pague-me um café!" & PIX)', file: './tests/11-coffee-pix.test.js' },
   { id: 12, name: 'Motor Gamificado do Alfabeto', file: './tests/12-alphabet-engine.test.js' },
   { id: 13, name: 'Integridade Geral do Sistema (E2E & Contrato DOM)', file: './tests/13-system-integrity.test.js' },
+  { id: 14, name: 'Análise Morfossintática Granular (Page Kelley)', file: './tests/14-sentence-analysis.test.js' },
 ];
 
 async function run() {

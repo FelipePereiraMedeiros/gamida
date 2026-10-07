@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.6.8";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.7.1";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -94,6 +94,8 @@ function ensureDOM() {
       sentences: document.getElementById("input-sentence"),
     };
   }
+  if (!DOM.btnPracticeAnalysis) DOM.btnPracticeAnalysis = document.getElementById("btn-practice-analysis");
+  if (!DOM.btnFeedbackAnalysis) DOM.btnFeedbackAnalysis = document.getElementById("btn-feedback-analysis");
 }
 
 async function initApp() {
@@ -760,6 +762,21 @@ function renderCurrentQuestion() {
   if (DOM.btnHint) DOM.btnHint.classList.remove("hidden");
   if (DOM.banner) DOM.banner.classList.add("hidden");
 
+  const isSentenceWithAnalysis = AppState.currentQuestion &&
+    AppState.language === "hebrew" &&
+    ((AppState.currentQuestion.tokens && AppState.currentQuestion.tokens.length > 0) ||
+      AppState.currentQuestion.type === "Frase" ||
+      AppState.exerciseMode === "sentences");
+
+  const btnPracticeAnalysis = DOM.btnPracticeAnalysis || (typeof document !== "undefined" ? document.getElementById("btn-practice-analysis") : null);
+  if (btnPracticeAnalysis) {
+    if (isSentenceWithAnalysis) {
+      btnPracticeAnalysis.classList.remove("hidden");
+    } else {
+      btnPracticeAnalysis.classList.add("hidden");
+    }
+  }
+
   if (DOM.interfaces) {
     Object.values(DOM.interfaces).forEach((i) => {
       if (i) i.classList.add("hidden");
@@ -894,12 +911,37 @@ function checkPracticeAnswer(userAnswer) {
 
   DOM.inputs.typing.disabled = true;
   DOM.inputs.sentences.disabled = true;
+
+  const isSentenceWithAnalysis = AppState.currentQuestion &&
+    AppState.language === "hebrew" &&
+    ((AppState.currentQuestion.tokens && AppState.currentQuestion.tokens.length > 0) ||
+      AppState.currentQuestion.type === "Frase" ||
+      AppState.exerciseMode === "sentences");
+
+  const btnFeedbackAnalysis = DOM.btnFeedbackAnalysis || (typeof document !== "undefined" ? document.getElementById("btn-feedback-analysis") : null);
+  if (btnFeedbackAnalysis) {
+    if (isSentenceWithAnalysis) {
+      btnFeedbackAnalysis.classList.remove("hidden");
+    } else {
+      btnFeedbackAnalysis.classList.add("hidden");
+    }
+  }
+
   updateStatsUI();
 }
 
 function nextQuestion() {
   AppState.currentQuestionIndex++;
   renderCurrentQuestion();
+}
+
+function openCurrentPracticeSentenceAnalysis() {
+  if (!AppState.currentQuestion) return;
+  if (typeof openSentenceAnalysisModal === "function") {
+    openSentenceAnalysisModal(AppState.currentQuestion);
+  } else if (typeof window !== "undefined" && window.SentenceAnalysisModule && typeof window.SentenceAnalysisModule.openSentenceAnalysisModal === "function") {
+    window.SentenceAnalysisModule.openSentenceAnalysisModal(AppState.currentQuestion);
+  }
 }
 
 function resetStats() {
@@ -1527,6 +1569,13 @@ if (typeof window !== "undefined") {
   window.filterVocabTable = filterVocabTable;
   window.WORD_CATEGORIES = WORD_CATEGORIES;
   window.matchItemCategory = matchItemCategory;
+  window.openCurrentPracticeSentenceAnalysis = openCurrentPracticeSentenceAnalysis;
+  if (typeof openSentenceAnalysisModal !== "undefined") {
+    window.openSentenceAnalysisModal = openSentenceAnalysisModal;
+  }
+  if (typeof closeSentenceAnalysisModal !== "undefined") {
+    window.closeSentenceAnalysisModal = closeSentenceAnalysisModal;
+  }
 }
 
 if (typeof module !== "undefined" && module.exports) {
@@ -1545,6 +1594,7 @@ if (typeof module !== "undefined" && module.exports) {
     filterVocabTable,
     WORD_CATEGORIES,
     matchItemCategory,
+    openCurrentPracticeSentenceAnalysis,
   };
 }
 
