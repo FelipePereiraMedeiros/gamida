@@ -237,6 +237,186 @@
   transform: scale(0.97);
 }
 
+/* ==========================================================================
+   MODAL DE ANÁLISE MORFOSSINTÁTICA DE FRASES HEBRAICAS (PAGE KELLEY)
+   ========================================================================== */
+
+/* Contêiner da Frase Hebraica em Evidência */
+.hebrew-sentence-container {
+  direction: rtl;
+  font-family: "Noto Sans Hebrew", "SBL Hebrew", "Ezra SIL", serif;
+  font-size: clamp(2.4rem, 5vw, 3rem);
+  line-height: 2.2;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Tokens e Morfemas RTL */
+.hebrew-sentence-container .token-wrapper {
+  display: inline-block;
+  white-space: nowrap;
+  margin-inline-end: 0.65rem; /* Espaço entre palavras em RTL */
+  vertical-align: baseline;
+  transition: transform 0.15s ease;
+}
+
+/* Regra de Maqqef: quando o token termina com maqqef (־ ou -), sem espaçamento após ele */
+.hebrew-sentence-container .token-wrapper.has-maqqef {
+  margin-inline-end: 0 !important;
+}
+
+/* Morfemas individuais: zero espaçamento entre partículas do mesmo token, blocos interativos */
+.hebrew-sentence-container .morpheme {
+  display: inline-block;
+  vertical-align: baseline;
+  position: relative;
+  cursor: pointer;
+  border-radius: 0.45rem;
+  padding: 0.12rem 0.32rem;
+  margin: 0 0.05rem !important;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.25);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Destaque sutil ao passar o cursor / foco */
+.hebrew-sentence-container .morpheme:hover,
+.hebrew-sentence-container .morpheme.is-active,
+.hebrew-sentence-container .morpheme.is-pinned {
+  z-index: 10;
+  border-bottom-style: solid;
+  transform: translateY(-2px);
+}
+
+/* Códigos de Cores por Categoria Morfológica */
+
+/* 1. Artigo Definido: Ciano */
+.morpheme-article:hover,
+.morpheme-article.is-active,
+.morpheme-article.is-pinned {
+  background-color: rgba(6, 182, 212, 0.25) !important;
+  color: #67e8f9 !important;
+  box-shadow: 0 0 0 2px #22d3ee, 0 0 16px rgba(34, 211, 238, 0.5) !important;
+}
+
+/* 2. Conjunção: Âmbar */
+.morpheme-conjunction:hover,
+.morpheme-conjunction.is-active,
+.morpheme-conjunction.is-pinned {
+  background-color: rgba(245, 158, 11, 0.25) !important;
+  color: #fcd34d !important;
+  box-shadow: 0 0 0 2px #fbbf24, 0 0 16px rgba(251, 191, 36, 0.5) !important;
+}
+
+/* 3. Preposição: Azul */
+.morpheme-preposition:hover,
+.morpheme-preposition.is-active,
+.morpheme-preposition.is-pinned {
+  background-color: rgba(59, 130, 246, 0.25) !important;
+  color: #93c5fd !important;
+  box-shadow: 0 0 0 2px #60a5fa, 0 0 16px rgba(96, 165, 250, 0.5) !important;
+}
+
+/* 4. Substantivo: Verde Esmeralda */
+.morpheme-noun:hover,
+.morpheme-noun.is-active,
+.morpheme-noun.is-pinned {
+  background-color: rgba(16, 185, 129, 0.25) !important;
+  color: #6ee7b7 !important;
+  box-shadow: 0 0 0 2px #34d399, 0 0 16px rgba(52, 211, 153, 0.5) !important;
+}
+
+/* 5. Adjetivo: Violeta/Púrpura */
+.morpheme-adjective:hover,
+.morpheme-adjective.is-active,
+.morpheme-adjective.is-pinned {
+  background-color: rgba(168, 85, 247, 0.25) !important;
+  color: #d8b4fe !important;
+  box-shadow: 0 0 0 2px #c084fc, 0 0 16px rgba(192, 132, 252, 0.5) !important;
+}
+
+/* 6. Verbo: Laranja */
+.morpheme-verb:hover,
+.morpheme-verb.is-active,
+.morpheme-verb.is-pinned {
+  background-color: rgba(249, 115, 22, 0.25) !important;
+  color: #fdba74 !important;
+  box-shadow: 0 0 0 2px #fb923c, 0 0 16px rgba(251, 146, 60, 0.5) !important;
+}
+
+/* 7. Sufixo Pronominal: Rosa/Magenta */
+.morpheme-suffix:hover,
+.morpheme-suffix.is-active,
+.morpheme-suffix.is-pinned {
+  background-color: rgba(236, 72, 153, 0.25) !important;
+  color: #f472b6 !important;
+  box-shadow: 0 0 0 2px #f472b6, 0 0 16px rgba(244, 114, 182, 0.5) !important;
+}
+
+/* 8. Partícula / Pronome: Índigo */
+.morpheme-particle:hover,
+.morpheme-particle.is-active,
+.morpheme-particle.is-pinned {
+  background-color: rgba(99, 102, 241, 0.25) !important;
+  color: #a5b4fc !important;
+  box-shadow: 0 0 0 2px #818cf8, 0 0 16px rgba(129, 140, 248, 0.5) !important;
+}
+
+/* Indicador de Fixação no Morfema */
+.morpheme.is-pinned::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: currentColor;
+  box-shadow: 0 0 6px currentColor;
+}
+
+/* Barra Interativa de Fragmentos (Morpheme Ribbon) */
+.morpheme-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.75);
+  color: #94a3b8;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.morpheme-chip:hover {
+  background: rgba(30, 41, 59, 0.95);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.morpheme-chip.is-active,
+.morpheme-chip.is-pinned {
+  color: #ffffff;
+  border-color: currentColor;
+  box-shadow: 0 0 14px rgba(99, 102, 241, 0.4);
+  background: rgba(30, 41, 59, 1);
+  transform: translateY(-1px);
+}
+
+.morpheme-chip.global-chip.is-active {
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.25);
+  color: #a5b4fc;
+}
+
+
 
 
 

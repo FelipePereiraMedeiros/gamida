@@ -7,7 +7,7 @@
  */
 
 const DataLoader = {
-  VERSION: "2.6.8",
+  VERSION: "2.7.1",
   cache: {},
 
   /**
@@ -99,10 +99,10 @@ const DataLoader = {
       return this.cache[language];
     }
 
-    // 1. Tenta buscar via fetch (servidor HTTP / Web)
+    // 1. Tenta buscar via fetch (servidor HTTP / Web) com cache-busting
     try {
       const filename = language === "hebrew" ? "hebrew_chapters.json" : "greek_chapters.json";
-      const res = await fetch(`./data/${filename}`);
+      const res = await fetch(`./data/${filename}?t=${Date.now()}`);
       if (res.ok) {
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
@@ -176,7 +176,13 @@ const DataLoader = {
       }
     }
 
-    if (parsedStored && storedVersion === version) {
+    // No Hebraico, garante que TODAS as frases possuem tokens estruturados (migração estrita de versão/dados)
+    const hasMorphologyTokens = language !== "hebrew" || (
+      Array.isArray(parsedStored) &&
+      parsedStored.every((c) => !Array.isArray(c.sentences) || c.sentences.length === 0 || c.sentences.every((s) => Array.isArray(s.tokens) && s.tokens.length > 0))
+    );
+
+    if (parsedStored && storedVersion === version && hasMorphologyTokens) {
       return parsedStored;
     }
 

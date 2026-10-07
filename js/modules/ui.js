@@ -558,7 +558,8 @@ function renderVocabTable() {
       const tr = document.createElement("tr");
       tr.className = "hover:bg-slate-800/40 transition";
 
-      const isSentence = item.type === "Frase" || item.type === "Expressão";
+      const isSentence = item.type === "Frase" || item.type === "Expressão" || (Array.isArray(item.tokens) && item.tokens.length > 0);
+      const canAnalyze = AppState.language === "hebrew" && ((item.tokens && item.tokens.length > 0) || isSentence);
       const termText = termFn(item);
       const translitText = item.transliteration || "-";
       const typeText = item.type || "Geral";
@@ -575,11 +576,37 @@ function renderVocabTable() {
         <td class="px-6 py-4 font-mono text-xs text-amber-400">${escapeFn(translitText)}</td>
         <td class="px-6 py-4 font-medium text-slate-200">${escapeFn(translationsText)}</td>
         <td class="px-6 py-4">
-          <span class="px-2.5 py-1 rounded-full ${isSentence ? "bg-indigo-900/60 border-indigo-700 text-indigo-300" : "bg-slate-800 border-slate-700 text-slate-400"} border text-[10px] font-mono">
-            ${escapeFn(typeText)}
-          </span>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-1 rounded-full ${isSentence ? "bg-indigo-900/60 border-indigo-700 text-indigo-300" : "bg-slate-800 border-slate-700 text-slate-400"} border text-[10px] font-mono">
+              ${escapeFn(typeText)}
+            </span>
+            ${canAnalyze ? `
+              <button
+                type="button"
+                class="btn-vocab-analyze px-2.5 py-1 rounded-full bg-indigo-600/30 hover:bg-indigo-600/60 border border-indigo-500/40 text-[10px] text-indigo-300 hover:text-white transition cursor-pointer font-mono inline-flex items-center gap-1 shadow-sm"
+                title="Abrir Análise Morfossintática Granular (Page Kelley)"
+              >
+                <span>🔬</span> Análise
+              </button>
+            ` : ""}
+          </div>
         </td>
       `;
+
+      if (canAnalyze) {
+        const btnAnalyze = tr.querySelector(".btn-vocab-analyze");
+        if (btnAnalyze) {
+          btnAnalyze.onclick = (e) => {
+            e.stopPropagation();
+            if (typeof openSentenceAnalysisModal === "function") {
+              openSentenceAnalysisModal(item);
+            } else if (typeof window !== "undefined" && window.SentenceAnalysisModule && typeof window.SentenceAnalysisModule.openSentenceAnalysisModal === "function") {
+              window.SentenceAnalysisModule.openSentenceAnalysisModal(item);
+            }
+          };
+        }
+      }
+
       tbody.appendChild(tr);
     });
   }
