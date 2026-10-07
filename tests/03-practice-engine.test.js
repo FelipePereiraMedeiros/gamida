@@ -50,6 +50,11 @@ suite.test('Modos de exercício (typing, choice, sentences) são suportados', ()
   assert.includes(appJs, '"sentences"', 'Modo sentences não suportado');
 });
 
+suite.test('Modo de exercício de favoritas (favorites) é suportado no app.js', () => {
+  assert.includes(appJs, '"favorites"', 'Modo favorites não suportado no app.js');
+  assert.includes(appJs, 'AppState.exerciseMode === "favorites"', 'Verificação do modo favorites ausente no app.js');
+});
+
 suite.test('Pontuação e streak são calculados corretamente conforme o modo', () => {
   // Frases dão 20 pontos, palavras dão 10 pontos
   assert.includes(appJs, 'AppState.score += AppState.exerciseMode === "sentences" ? 20 : 10;');

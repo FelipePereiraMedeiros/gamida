@@ -303,6 +303,15 @@
                   >
                     📜 Frases
                   </button>
+                  <button
+                    type="button"
+                    id="mode-favorites"
+                    onclick="setExerciseMode('favorites')"
+                    class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1"
+                    title="Praticar apenas frases e palavras marcadas como favoritas"
+                  >
+                    <span>⭐</span> Favoritas
+                  </button>
                 </div>
               </div>
 
@@ -494,11 +503,23 @@
           <div
             class="flex items-center justify-between text-xs text-slate-400 mb-4"
           >
-            <span
-              id="question-category"
-              class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 font-medium"
-              >Vocabulário</span
-            >
+            <div class="flex items-center gap-2">
+              <span
+                id="question-category"
+                class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 font-medium"
+                >Vocabulário</span
+              >
+              <button
+                type="button"
+                id="btn-practice-fav"
+                onclick="toggleCurrentPracticeFavorite()"
+                class="p-1 rounded-lg text-slate-500 hover:text-amber-400 hover:scale-125 transition cursor-pointer text-sm"
+                title="Marcar / desmarcar como favorito"
+                aria-label="Favoritar"
+              >
+                ☆
+              </button>
+            </div>
             <span id="question-progress" class="font-mono">Item 1 de 10</span>
           </div>
 
@@ -1452,6 +1473,7 @@
                   class="bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl px-3 py-1.5 text-xs text-slate-200 font-medium focus:outline-none transition cursor-pointer min-w-[180px]"
                 >
                   <option value="all">Todos os itens</option>
+                  <option value="favorites">⭐ Apenas Favoritos</option>
                   <option value="words">Apenas Palavras</option>
                   <option value="sentences">Apenas Frases / Expressões</option>
                 </select>
@@ -1486,6 +1508,7 @@
                   <th class="px-6 py-3.5">Transliteração</th>
                   <th class="px-6 py-3.5">Tradução (PT-BR)</th>
                   <th class="px-6 py-3.5">Tipo</th>
+                  <th class="px-4 py-3.5 text-center w-20">⭐ Favorito</th>
                 </tr>
               </thead>
               <tbody

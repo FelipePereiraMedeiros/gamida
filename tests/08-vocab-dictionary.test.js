@@ -54,6 +54,27 @@ suite.test('Funções de escopo e categoria do dicionário exportadas no ui.js, 
   assert.includes(appJs, 'function getAvailableVocabCategories', 'getAvailableVocabCategories ausente no app.js');
 });
 
+suite.test('toggleItemFavorite permite alternar favorito em palavras e frases e sincroniza estado', () => {
+  const { toggleItemFavorite } = require('../js/modules/ui.js');
+  assert.isFunction(toggleItemFavorite, 'toggleItemFavorite deve ser uma função exportada');
+  assert.includes(appJs, 'toggleItemFavorite', 'toggleItemFavorite deve estar presente no app.js');
+
+  const testWord = { hebrew: 'סוּס', translations: ['cavalo'], favorite: false };
+  const testPhrase = { hebrew: 'סוּס טוֹב', translations: ['bom cavalo'], type: 'Frase', favorite: false };
+
+  toggleItemFavorite(testWord);
+  assert.isTrue(testWord.favorite, 'Palavra deve ter favorite === true após toggle');
+
+  toggleItemFavorite(testWord);
+  assert.isFalse(testWord.favorite, 'Palavra deve ter favorite === false após segundo toggle');
+
+  toggleItemFavorite(testPhrase);
+  assert.isTrue(testPhrase.favorite, 'Frase deve ter favorite === true após toggle');
+
+  toggleItemFavorite(testPhrase);
+  assert.isFalse(testPhrase.favorite, 'Frase deve ter favorite === false após segundo toggle');
+});
+
 suite.test('getAvailableVocabCategories contabiliza palavras, frases e categorias no modo normal e acumulativo', () => {
   const { getAvailableVocabCategories } = require('../js/modules/state.js');
   const mockState = {

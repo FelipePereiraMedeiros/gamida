@@ -267,6 +267,7 @@ const WORD_CATEGORIES = [
  */
 function matchItemCategory(item, categoryId) {
   if (!categoryId || categoryId === "all") return true;
+  if (categoryId === "favorites") return !!item?.favorite;
   const cat = WORD_CATEGORIES.find((c) => c.id === categoryId);
   if (!cat) return true;
   return cat.match.test(item?.type || "");
@@ -314,9 +315,9 @@ function getAvailablePracticeCategories(state = AppState) {
 
 /**
  * Extrai as categorias disponíveis para o dicionário com base no escopo (normal ou acumulativo)
- * Retorna contagem de palavras, frases e categorias gramaticais de palavras
+ * Retorna contagem de palavras, frases, favoritos e categorias gramaticais de palavras
  * @param {Object} [state]
- * @returns {{ totalItems: number, totalWords: number, totalSentences: number, categories: Array<{ id: string, label: string, count: number }> }}
+ * @returns {{ totalItems: number, totalWords: number, totalSentences: number, totalFavorites: number, categories: Array<{ id: string, label: string, count: number }> }}
  */
 function getAvailableVocabCategories(state = AppState) {
   let wordsPool = [];
@@ -355,10 +356,13 @@ function getAvailableVocabCategories(state = AppState) {
     }
   });
 
+  const totalFavorites = [...wordsPool, ...sentencesPool].filter((item) => !!item?.favorite).length;
+
   return {
     totalItems: wordsPool.length + sentencesPool.length,
     totalWords: wordsPool.length,
     totalSentences: sentencesPool.length,
+    totalFavorites,
     categories,
   };
 }

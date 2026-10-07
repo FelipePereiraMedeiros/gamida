@@ -105,6 +105,7 @@ function ensureDOM() {
   }
   if (!DOM.btnPracticeAnalysis) DOM.btnPracticeAnalysis = document.getElementById("btn-practice-analysis");
   if (!DOM.btnFeedbackAnalysis) DOM.btnFeedbackAnalysis = document.getElementById("btn-feedback-analysis");
+  if (!DOM.btnPracticeFav) DOM.btnPracticeFav = document.getElementById("btn-practice-fav");
 }
 
 async function initApp() {
@@ -374,13 +375,13 @@ function changeGlobalChapter(chapterId) {
 
 function setExerciseMode(mode) {
   AppState.exerciseMode = mode;
-  ["typing", "choice", "sentences"].forEach((m) => {
+  ["typing", "choice", "sentences", "favorites"].forEach((m) => {
     const btn = document.getElementById(`mode-${m}`);
     if (btn) {
       btn.className =
         m === mode
-          ? "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white"
-          : "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200";
+          ? "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1"
+          : "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1";
     }
   });
   AppState.currentQuestionIndex = 0;
@@ -629,7 +630,12 @@ function buildPracticeQueue() {
       cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
     }
 
-    if (AppState.exerciseMode === "sentences") {
+    if (AppState.exerciseMode === "favorites") {
+      cumulativeChapters.forEach((chap) => {
+        (chap.items || []).filter((i) => !!i.favorite).forEach((i) => baseList.push(i));
+        (chap.sentences || []).filter((s) => !!s.favorite).forEach((s) => baseList.push(s));
+      });
+    } else if (AppState.exerciseMode === "sentences") {
       cumulativeChapters.forEach((chap) => {
         (chap.sentences || []).forEach((s) => baseList.push(s));
       });
@@ -647,7 +653,12 @@ function buildPracticeQueue() {
     // Deduplica itens por termo
     baseList = Array.from(new Map(baseList.map((item) => [getTerm(item), item])).values());
   } else {
-    if (AppState.exerciseMode === "sentences") {
+    if (AppState.exerciseMode === "favorites") {
+      const favWords = (AppState.currentChapter.items || []).filter((i) => !!i.favorite);
+      const favSentences = (AppState.currentChapter.sentences || []).filter((s) => !!s.favorite);
+      baseList = [...favWords, ...favSentences];
+      baseList = Array.from(new Map(baseList.map((item) => [getTerm(item), item])).values());
+    } else if (AppState.exerciseMode === "sentences") {
       baseList = AppState.currentChapter.sentences?.length
         ? AppState.currentChapter.sentences
         : AppState.currentChapter.items || [];
@@ -670,6 +681,39 @@ function renderCurrentQuestion() {
 
   if (practiceQueue.length === 0) {
     AppState.currentQuestion = null;
+    if (DOM.btnPracticeFav) {
+      DOM.btnPracticeFav.classList.add("hidden");
+    }
+    if (AppState.exerciseMode === "favorites") {
+      if (DOM.hebPrompt) DOM.hebPrompt.textContent = "⭐ Nenhuma favorita";
+      if (DOM.qCategory) DOM.qCategory.textContent = "Modo Favoritas";
+      if (DOM.qProgress) DOM.qProgress.textContent = "0 de 0 itens";
+      if (DOM.hintText) {
+        DOM.hintText.innerHTML = `
+          <span class="block text-slate-300 text-xs md:text-sm leading-relaxed mb-3">
+            Você ainda não marcou nenhuma frase ou palavra como favorita ${AppState.isPracticeCumulative ? "nas lições acumuladas" : "neste capítulo"}.
+          </span>
+          <button
+            type="button"
+            onclick="switchTab('vocab')"
+            class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs rounded-xl shadow-lg transition inline-flex items-center gap-1.5 cursor-pointer"
+          >
+            <span>📖</span> Ir para o Dicionário & Favoritar Itens
+          </button>
+        `;
+        DOM.hintText.classList.remove("hidden");
+      }
+      if (DOM.btnHint) DOM.btnHint.classList.add("hidden");
+      if (DOM.banner) DOM.banner.classList.add("hidden");
+      if (DOM.btnPracticeAnalysis) DOM.btnPracticeAnalysis.classList.add("hidden");
+      if (DOM.interfaces) {
+        Object.values(DOM.interfaces).forEach((i) => {
+          if (i) i.classList.add("hidden");
+        });
+      }
+      return;
+    }
+
     if (DOM.hebPrompt) DOM.hebPrompt.textContent = "Sem itens disponíveis.";
     if (DOM.qCategory) DOM.qCategory.textContent = "Sem conteúdo";
     if (DOM.qProgress) DOM.qProgress.textContent = "Nenhum item disponível";
@@ -696,8 +740,29 @@ function renderCurrentQuestion() {
 
   AppState.currentQuestion = practiceQueue[AppState.currentQuestionIndex];
 
-  if (DOM.qCategory) DOM.qCategory.textContent = AppState.currentQuestion.type || "Geral";
-  if (DOM.qProgress) DOM.qProgress.textContent = `Item ${AppState.currentQuestionIndex + 1} de ${practiceQueue.length}`;
+  const isQuestionFavorite = !!AppState.currentQuestion?.favorite;
+  const btnPracticeFav = DOM.btnPracticeFav || (typeof document !== "undefined" ? document.getElementById("btn-practice-fav") : null);
+  if (btnPracticeFav) {
+    btnPracticeFav.classList.remove("hidden");
+    btnPracticeFav.innerHTML = isQuestionFavorite ? "⭐" : "☆";
+    btnPracticeFav.className = `p-1 rounded-lg hover:scale-125 transition cursor-pointer text-sm ${isQuestionFavorite ? "text-amber-400 hover:text-amber-300" : "text-slate-500 hover:text-amber-400"}`;
+    btnPracticeFav.title = isQuestionFavorite ? "Remover dos favoritos" : "Marcar como favorito";
+  }
+
+  const isSentenceQuestion =
+    AppState.currentQuestion.type === "Frase" ||
+    AppState.currentQuestion.type === "Expressão" ||
+    (Array.isArray(AppState.currentQuestion.tokens) && AppState.currentQuestion.tokens.length > 0) ||
+    AppState.exerciseMode === "sentences";
+
+  if (DOM.qCategory) {
+    const catLabel = AppState.currentQuestion.type || "Geral";
+    DOM.qCategory.textContent = AppState.exerciseMode === "favorites" ? `${catLabel} ⭐` : catLabel;
+  }
+  if (DOM.qProgress) {
+    const modeSuffix = AppState.exerciseMode === "favorites" ? " (Favoritas)" : "";
+    DOM.qProgress.textContent = `Item ${AppState.currentQuestionIndex + 1} de ${practiceQueue.length}${modeSuffix}`;
+  }
   if (DOM.hebPrompt) DOM.hebPrompt.textContent = getTerm(AppState.currentQuestion);
 
   if (DOM.hintText) {
@@ -754,6 +819,30 @@ function renderCurrentQuestion() {
     }
     if (DOM.interfaces && DOM.interfaces.sentences) {
       DOM.interfaces.sentences.classList.remove("hidden");
+    }
+  } else if (AppState.exerciseMode === "favorites") {
+    if (isSentenceQuestion) {
+      if (DOM.inputs && DOM.inputs.sentences) {
+        DOM.inputs.sentences.value = "";
+        DOM.inputs.sentences.disabled = false;
+        if (typeof DOM.inputs.sentences.focus === "function") {
+          setTimeout(() => DOM.inputs.sentences.focus(), 100);
+        }
+      }
+      if (DOM.interfaces && DOM.interfaces.sentences) {
+        DOM.interfaces.sentences.classList.remove("hidden");
+      }
+    } else {
+      if (DOM.inputs && DOM.inputs.typing) {
+        DOM.inputs.typing.value = "";
+        DOM.inputs.typing.disabled = false;
+        if (typeof DOM.inputs.typing.focus === "function") {
+          setTimeout(() => DOM.inputs.typing.focus(), 100);
+        }
+      }
+      if (DOM.interfaces && DOM.interfaces.typing) {
+        DOM.interfaces.typing.classList.remove("hidden");
+      }
     }
   }
 }
@@ -825,6 +914,9 @@ function checkPracticeAnswer(userAnswer) {
   if (evalResult.status === "correct") {
     AppState.correctCount++;
     AppState.score += AppState.exerciseMode === "sentences" ? 20 : 10;
+    if (AppState.exerciseMode === "favorites" && (AppState.currentQuestion?.type === "Frase" || AppState.currentQuestion?.type === "Expressão" || (AppState.currentQuestion?.tokens && AppState.currentQuestion.tokens.length > 0))) {
+      AppState.score += 10;
+    }
     AppState.streak++;
     DOM.banner.classList.add(
       "bg-emerald-950/80",
@@ -837,6 +929,9 @@ function checkPracticeAnswer(userAnswer) {
   } else if (evalResult.status === "typo") {
     AppState.correctCount++; // Pontua como acerto
     AppState.score += AppState.exerciseMode === "sentences" ? 20 : 10;
+    if (AppState.exerciseMode === "favorites" && (AppState.currentQuestion?.type === "Frase" || AppState.currentQuestion?.type === "Expressão" || (AppState.currentQuestion?.tokens && AppState.currentQuestion.tokens.length > 0))) {
+      AppState.score += 10;
+    }
     AppState.streak++;
     DOM.banner.classList.add("bg-amber-950/80", "border-amber-500/50");
     icon.textContent = "⚠️";
@@ -886,6 +981,22 @@ function openCurrentPracticeSentenceAnalysis() {
     openSentenceAnalysisModal(AppState.currentQuestion);
   } else if (typeof window !== "undefined" && window.SentenceAnalysisModule && typeof window.SentenceAnalysisModule.openSentenceAnalysisModal === "function") {
     window.SentenceAnalysisModule.openSentenceAnalysisModal(AppState.currentQuestion);
+  }
+}
+
+function toggleCurrentPracticeFavorite() {
+  if (!AppState.currentQuestion) return;
+  if (typeof toggleItemFavorite === "function") {
+    toggleItemFavorite(AppState.currentQuestion);
+  } else if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.toggleItemFavorite === "function") {
+    window.UIModule.toggleItemFavorite(AppState.currentQuestion);
+  }
+  const isFav = !!AppState.currentQuestion.favorite;
+  const btn = document.getElementById("btn-practice-fav");
+  if (btn) {
+    btn.innerHTML = isFav ? "⭐" : "☆";
+    btn.className = `p-1 rounded-lg hover:scale-125 transition cursor-pointer text-sm ${isFav ? "text-amber-400 hover:text-amber-300" : "text-slate-500 hover:text-amber-400"}`;
+    btn.title = isFav ? "Remover dos favoritos" : "Marcar como favorito";
   }
 }
 
@@ -1248,6 +1359,13 @@ function renderVocabTable() {
 function filterVocabTable() {
   if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.filterVocabTable === "function") {
     return window.UIModule.filterVocabTable();
+  }
+  return null;
+}
+
+function toggleItemFavorite(item) {
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.toggleItemFavorite === "function") {
+    return window.UIModule.toggleItemFavorite(item);
   }
   return null;
 }
@@ -1721,6 +1839,8 @@ if (typeof window !== "undefined") {
   window.updateVocabCategoryFilterUI = updateVocabCategoryFilterUI;
   window.renderVocabTable = renderVocabTable;
   window.filterVocabTable = filterVocabTable;
+  window.toggleItemFavorite = toggleItemFavorite;
+  window.toggleCurrentPracticeFavorite = toggleCurrentPracticeFavorite;
   window.WORD_CATEGORIES = WORD_CATEGORIES;
   window.matchItemCategory = matchItemCategory;
   window.openCurrentPracticeSentenceAnalysis = openCurrentPracticeSentenceAnalysis;
@@ -1746,6 +1866,8 @@ if (typeof module !== "undefined" && module.exports) {
     updateVocabCategoryFilterUI,
     renderVocabTable,
     filterVocabTable,
+    toggleItemFavorite,
+    toggleCurrentPracticeFavorite,
     WORD_CATEGORIES,
     matchItemCategory,
     openCurrentPracticeSentenceAnalysis,
