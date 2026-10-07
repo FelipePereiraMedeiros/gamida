@@ -111,6 +111,87 @@ suite.test('getAvailableVocabCategories contabiliza palavras, frases e categoria
   assert.isTrue(cumulCats.categories.some(c => c.id === 'substantivo' && c.count === 2), 'Deve conter substantivos acumulados');
 });
 
+suite.test('renderVocabTable anexa atributo data-search pré-calculado e filterVocabTable opera com cache', () => {
+  const { AppState } = require('../js/modules/state.js');
+  const tbody = {
+    children: [],
+    innerHTML: '',
+    appendChild(child) {
+      this.children.push(child);
+    }
+  };
+  const searchInput = { value: '' };
+
+  const prevDoc = global.document;
+  const prevChapter = AppState.currentChapter;
+  const prevChapters = AppState.chapters;
+  const prevIsCumulative = AppState.isVocabCumulative;
+  const prevCategory = AppState.vocabCategory;
+  const prevLang = AppState.language;
+
+  AppState.language = 'hebrew';
+  AppState.currentChapter = {
+    id: 'mock_chap_opt',
+    items: [{ hebrew: 'אִישׁ', transliteration: 'ish', translations: ['homem'], type: 'Substantivo' }],
+    sentences: []
+  };
+  AppState.chapters = [AppState.currentChapter];
+  AppState.isVocabCumulative = false;
+  AppState.vocabCategory = 'all';
+
+  const rowsCreated = [];
+  global.document = {
+    getElementById: (id) => {
+      if (id === 'vocab-table-body') return tbody;
+      if (id === 'vocab-search') return searchInput;
+      return null;
+    },
+    createElement: (tag) => {
+      const el = {
+        tagName: tag,
+        className: '',
+        attributes: {},
+        style: {},
+        setAttribute(k, v) { this.attributes[k] = v; },
+        getAttribute(k) { return this.attributes[k] !== undefined ? this.attributes[k] : null; },
+        querySelector: () => null,
+        appendChild() {}
+      };
+      if (tag === 'tr') rowsCreated.push(el);
+      return el;
+    },
+    querySelectorAll: (sel) => {
+      if (sel.includes('#vocab-table-body tr')) return rowsCreated;
+      return [];
+    }
+  };
+
+  const { setVocabCategory } = require('../js/modules/ui.js');
+  setVocabCategory('all');
+
+  assert.isTrue(rowsCreated.length > 0, 'Deve gerar linhas na tabela');
+  const dataSearch = rowsCreated[0].getAttribute('data-search');
+  assert.isTrue(!!dataSearch, 'Linha deve possuir atributo data-search pré-calculado');
+  assert.includes(dataSearch, 'ish', 'data-search deve conter a transliteração');
+  assert.includes(dataSearch, 'homem', 'data-search deve conter a tradução');
+
+  // Teste de filtragem usando cache data-search
+  searchInput.value = 'homem';
+  filterVocabTable(true);
+  assert.equal(rowsCreated[0].style.display, '', 'Linha correspondente deve permanecer visível');
+
+  searchInput.value = 'inexistente';
+  filterVocabTable(true);
+  assert.equal(rowsCreated[0].style.display, 'none', 'Linha não correspondente deve ser ocultada');
+
+  global.document = prevDoc;
+  AppState.currentChapter = prevChapter;
+  AppState.chapters = prevChapters;
+  AppState.isVocabCumulative = prevIsCumulative;
+  AppState.vocabCategory = prevCategory;
+  AppState.language = prevLang;
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

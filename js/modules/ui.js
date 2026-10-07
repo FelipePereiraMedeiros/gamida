@@ -142,11 +142,26 @@ function updateTabsScrollIndicators() {
   }
 }
 
-// Ouvinte de resize para recalcular indicadores de abas
-if (typeof window !== "undefined" && typeof window.addEventListener === "function") {
-  window.addEventListener("resize", () => {
+let _tabScrollRafId = null;
+
+function scheduleUpdateTabsScrollIndicators() {
+  if (_tabScrollRafId) return;
+  if (typeof requestAnimationFrame === "function") {
+    _tabScrollRafId = requestAnimationFrame(() => {
+      _tabScrollRafId = null;
+      updateTabsScrollIndicators();
+    });
+  } else {
     updateTabsScrollIndicators();
-  });
+  }
+}
+
+// Ouvinte de resize para recalcular indicadores de abas (otimizado via RAF e blindado contra duplicidade)
+if (typeof window !== "undefined" && typeof window.addEventListener === "function") {
+  if (!window._tabsResizeListenerBound) {
+    window._tabsResizeListenerBound = true;
+    window.addEventListener("resize", scheduleUpdateTabsScrollIndicators);
+  }
 }
 
 /* ================= COFFEE & PIX DONATION ================= */
@@ -549,6 +564,12 @@ function renderVocabTable() {
     ? escapeHTML
     : (str) => String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+  const hasFragment = typeof document !== "undefined" && typeof document.createDocumentFragment === "function";
+  const fragment = hasFragment ? document.createDocumentFragment() : tbody;
+  const normFn = typeof normalizeText === "function"
+    ? normalizeText
+    : (str) => String(str || "").toLowerCase().trim();
+
   if (displayList.length === 0) {
     const trEmpty = document.createElement("tr");
     trEmpty.innerHTML = `
@@ -556,7 +577,7 @@ function renderVocabTable() {
         Nenhum item encontrado para os filtros selecionados.
       </td>
     `;
-    tbody.appendChild(trEmpty);
+    fragment.appendChild(trEmpty);
   } else {
     displayList.forEach((item) => {
       const tr = document.createElement("tr");
@@ -570,6 +591,10 @@ function renderVocabTable() {
       let translationsText = Array.isArray(item.translations)
         ? item.translations.join(" / ")
         : item.translations || "Tradução ausente";
+
+      // Cache de busca no atributo data-search para evitar layout thrashing ao digitar
+      const searchHaystack = normFn(`${termText} ${translitText} ${translationsText} ${typeText}`);
+      tr.setAttribute("data-search", searchHaystack);
 
       const textClass = AppState.language === "hebrew"
         ? "hebrew-text text-2xl md:text-3xl"
@@ -611,7 +636,7 @@ function renderVocabTable() {
         }
       }
 
-      tbody.appendChild(tr);
+      fragment.appendChild(tr);
     });
   }
 
@@ -643,6 +668,7 @@ function renderVocabTable() {
       paradigmsToRender.forEach((paradigm) => {
         const trParadigm = document.createElement("tr");
         trParadigm.className = "bg-slate-900/10";
+        trParadigm.setAttribute("data-search", normFn(paradigm.title || paradigm.name || "paradigma"));
 
         const tdParadigm = document.createElement("td");
         tdParadigm.colSpan = 4;
@@ -655,29 +681,58 @@ function renderVocabTable() {
         }
 
         trParadigm.appendChild(tdParadigm);
-        tbody.appendChild(trParadigm);
+        fragment.appendChild(trParadigm);
       });
     }
+  }
+
+  // Inserção atômica em lote (reduz reflow a uma única operação)
+  if (hasFragment) {
+    tbody.appendChild(fragment);
   }
 
   lastRenderedVocabChapter = cacheKey;
 
   // Aplica filtro textual existente após desenhar linhas
-  filterVocabTable();
+  filterVocabTable(true);
 }
 
-function filterVocabTable() {
-  const searchInput = document.getElementById("vocab-search");
-  if (!searchInput) return;
-  const normFn = typeof normalizeText === "function"
-    ? normalizeText
-    : (str) => String(str || "").toLowerCase().trim();
-  const query = normFn(searchInput.value);
-  document.querySelectorAll("#vocab-table-body tr").forEach((tr) => {
-    tr.style.display = normFn(tr.textContent).includes(query)
-      ? ""
-      : "none";
-  });
+let _vocabFilterTimeout = null;
+
+function filterVocabTable(immediate = false) {
+  const isInputEvent = typeof window !== "undefined" && window.event && window.event.type === "input";
+  const shouldDebounce = !immediate && isInputEvent;
+
+  const runFilter = () => {
+    _vocabFilterTimeout = null;
+    const searchInput = document.getElementById("vocab-search");
+    if (!searchInput) return;
+    const normFn = typeof normalizeText === "function"
+      ? normalizeText
+      : (str) => String(str || "").toLowerCase().trim();
+    const query = normFn(searchInput.value);
+
+    const rows = document.querySelectorAll("#vocab-table-body tr");
+    rows.forEach((tr) => {
+      const cached = tr.getAttribute("data-search");
+      if (cached !== null) {
+        tr.style.display = (!query || cached.includes(query)) ? "" : "none";
+      } else {
+        tr.style.display = (!query || normFn(tr.textContent).includes(query)) ? "" : "none";
+      }
+    });
+  };
+
+  if (shouldDebounce) {
+    if (_vocabFilterTimeout) clearTimeout(_vocabFilterTimeout);
+    _vocabFilterTimeout = setTimeout(runFilter, 100);
+  } else {
+    if (_vocabFilterTimeout) {
+      clearTimeout(_vocabFilterTimeout);
+      _vocabFilterTimeout = null;
+    }
+    runFilter();
+  }
 }
 
 function applyLanguageUI() {
@@ -782,6 +837,7 @@ if (typeof window !== "undefined") {
     toggleMobileMenu,
     scrollTabs,
     updateTabsScrollIndicators,
+    scheduleUpdateTabsScrollIndicators,
     coffeeButtonTimeout,
     copyPixCoffee,
     resetCoffeeButton,
@@ -806,6 +862,7 @@ if (typeof module !== "undefined" && module.exports) {
     toggleMobileMenu,
     scrollTabs,
     updateTabsScrollIndicators,
+    scheduleUpdateTabsScrollIndicators,
     coffeeButtonTimeout,
     copyPixCoffee,
     resetCoffeeButton,

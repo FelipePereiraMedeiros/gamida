@@ -185,8 +185,11 @@
       .replace(/[\u0591-\u05C7\u05BE\s]/g, "");
   }
 
+  const _sentenceDbCache = new Map();
+
   /**
    * Localiza a oração completa com tokens e morfemas no banco de dados pré-carregado
+   * Otimizado com índice em memória para buscas subsequentes O(1)
    * @param {Object} sentence
    * @returns {Object|null}
    */
@@ -195,6 +198,11 @@
     const sId = sentence.id;
     const sText = (sentence.hebrew || sentence.term || "").trim();
     const sNorm = normalizeHebrewForSearch(sText);
+
+    // Consulta O(1) no índice em cache
+    if (sId && _sentenceDbCache.has("id:" + sId)) return _sentenceDbCache.get("id:" + sId);
+    if (sText && _sentenceDbCache.has("text:" + sText)) return _sentenceDbCache.get("text:" + sText);
+    if (sNorm && _sentenceDbCache.has("norm:" + sNorm)) return _sentenceDbCache.get("norm:" + sNorm);
 
     const pools = [];
 
@@ -231,11 +239,21 @@
       for (const ch of chapters) {
         for (const s of (ch.sentences || [])) {
           if (!Array.isArray(s.tokens) || s.tokens.length === 0) continue;
+
+          // Indexa para consultas futuras O(1)
+          if (s.id) _sentenceDbCache.set("id:" + s.id, s);
+          const t1 = (s.hebrew || "").trim();
+          const t2 = (s.term || "").trim();
+          if (t1) _sentenceDbCache.set("text:" + t1, s);
+          if (t2) _sentenceDbCache.set("text:" + t2, s);
+          const n1 = normalizeHebrewForSearch(t1);
+          const n2 = normalizeHebrewForSearch(t2);
+          if (n1) _sentenceDbCache.set("norm:" + n1, s);
+          if (n2) _sentenceDbCache.set("norm:" + n2, s);
+
           if (sId && s.id === sId) return s;
-          if (sText && (s.hebrew === sText || s.term === sText)) return s;
-          if (sNorm && (normalizeHebrewForSearch(s.hebrew) === sNorm || normalizeHebrewForSearch(s.term) === sNorm)) {
-            return s;
-          }
+          if (sText && (t1 === sText || t2 === sText)) return s;
+          if (sNorm && (n1 === sNorm || n2 === sNorm)) return s;
         }
       }
     }
