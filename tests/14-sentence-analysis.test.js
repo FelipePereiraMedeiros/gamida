@@ -374,5 +374,27 @@ suite.test('setActiveMorphemeIndex otimiza hover ignorando chamadas redundantes 
   assert.isFalse(ModalState.isOpen, 'Modal fechado com sucesso');
 });
 
+// --------------------------------------------------------------------------
+// TESTE 13: Hover no mesmo nível do background (sem saltinho / elevação vertical)
+// --------------------------------------------------------------------------
+suite.test('Hover dos morfemas e chips permanece no mesmo nível do background sem saltinho (sem translateY)', () => {
+  const currentCss = require('fs').readFileSync(require('path').join(__dirname, '..', 'css', 'styles.css'), 'utf8');
+
+  // Regra do .hebrew-sentence-container .morpheme:hover
+  const morphemeHoverRule = currentCss.match(/\.hebrew-sentence-container\s+\.morpheme:hover[^{]*\{[^}]+\}/);
+  assert.isTrue(!!morphemeHoverRule, 'Regra de hover de morfemas deve existir no styles.css');
+  assert.isFalse(morphemeHoverRule[0].includes('translateY'), 'Morfemas em hover não devem conter deslocamento vertical translateY');
+
+  // Regra do .morpheme-chip:hover
+  const chipHoverRule = currentCss.match(/\.morpheme-chip:hover\s*\{[^}]+\}/);
+  assert.isTrue(!!chipHoverRule, 'Regra .morpheme-chip:hover deve existir no styles.css');
+  assert.isFalse(chipHoverRule[0].includes('translateY'), 'Chips em hover não devem conter deslocamento vertical translateY');
+
+  // Validação: Morfemas não possuem borda inferior pontilhada/tracejada
+  const morphemeBaseRule = currentCss.match(/\.hebrew-sentence-container\s+\.morpheme\s*\{[^}]+\}/);
+  assert.isTrue(!!morphemeBaseRule, 'Regra base de morfemas deve existir no styles.css');
+  assert.isFalse(morphemeBaseRule[0].includes('dashed'), 'Morfemas não devem conter borda inferior tracejada/pontilhada');
+});
+
 module.exports = suite;
 
