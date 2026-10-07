@@ -149,6 +149,96 @@ suite.test('startSurvival e finishSurvival operam no DOM de forma resiliente', (
   if (oldAlert === undefined) delete global.alert; else global.alert = oldAlert;
 });
 
+suite.test('Rastreamento da pontuação máxima da partida e persistência do recorde após erros e Game Over', () => {
+  const elementsById = {};
+  const mockClassList = () => ({
+    classes: new Set(),
+    add(c) { this.classes.add(c); },
+    remove(c) { this.classes.delete(c); },
+    contains(c) { return this.classes.has(c); },
+  });
+
+  const createMockEl = (id) => {
+    const el = {
+      id,
+      textContent: '',
+      classList: mockClassList(),
+      value: '',
+      disabled: false,
+      focus: () => {},
+    };
+    elementsById[id] = el;
+    return el;
+  };
+
+  createMockEl('assess-dashboard');
+  createMockEl('survival-active');
+  createMockEl('survival-results');
+  createMockEl('surv-correction-box');
+  createMockEl('survival-streak');
+  createMockEl('survival-hearts');
+  createMockEl('survival-hebrew');
+  createMockEl('survival-input');
+  createMockEl('surv-res-streak');
+  createMockEl('surv-res-high');
+
+  const oldDoc = global.document;
+  const oldWindow = global.window;
+  const oldAlert = global.alert;
+
+  global.document = {
+    getElementById: (id) => elementsById[id] || null,
+    querySelectorAll: () => [],
+    addEventListener: () => {},
+  };
+  global.alert = () => {};
+
+  AppState.currentChapter = {
+    id: "chap_test2",
+    title: "Lição Teste 2",
+    items: [
+      { term: "דָּבָר", translations: ["palavra", "coisa"] },
+      { term: "מֶלֶךְ", translations: ["rei"] },
+      { term: "בַּיִת", translations: ["casa"] },
+    ],
+  };
+  AppState.chapters = [AppState.currentChapter];
+  AppState.survivalHighScore = 0;
+
+  const { SurvivalModule } = require('../js/modules/survival.js');
+
+  startSurvival();
+
+  // Acerto 1
+  const q1 = SurvivalModule.getSurvCurrent();
+  elementsById['survival-input'].value = q1.translations[0];
+  submitSurvivalAnswer();
+  assert.equal(SurvivalModule.getSurvStreak(), 1);
+
+  // Erro 1 (vidas caem para 2, streak zera)
+  elementsById['survival-input'].value = "errado";
+  submitSurvivalAnswer();
+  assert.equal(SurvivalModule.getSurvStreak(), 0);
+  assert.equal(SurvivalModule.getSurvLives(), 2);
+  assert.equal(SurvivalModule.getSurvMaxStreak(), 1);
+
+  // Erros 2 e 3
+  elementsById['survival-input'].value = "errado2";
+  submitSurvivalAnswer();
+  elementsById['survival-input'].value = "errado3";
+  submitSurvivalAnswer();
+
+  finishSurvival(false);
+
+  assert.equal(elementsById['surv-res-streak'].textContent, '1', 'Sequência alcançada deve registrar o melhor streak da partida');
+  assert.equal(elementsById['surv-res-high'].textContent, '1', 'Recorde máximo deve persistir o melhor streak');
+  assert.equal(AppState.survivalHighScore, 1);
+
+  if (oldDoc === undefined) delete global.document; else global.document = oldDoc;
+  if (oldWindow === undefined) delete global.window; else global.window = oldWindow;
+  if (oldAlert === undefined) delete global.alert; else global.alert = oldAlert;
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

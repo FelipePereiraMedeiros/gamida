@@ -439,6 +439,32 @@
                 name: "Persistência do High Score (AppState.survivalHighScore)",
                 fn: () => typeof iframeWin.AppState.survivalHighScore === "number",
               },
+              {
+                name: "Retenção e persistência da pontuação da partida após Game Over",
+                fn: () => {
+                  iframeWin.AppState.survivalHighScore = 0;
+                  iframeWin.startSurvival();
+                  const cur = iframeWin.SurvivalModule.getSurvCurrent();
+                  if (!cur) return false;
+                  iframeWin.document.getElementById("survival-input").value = cur.translations[0];
+                  iframeWin.submitSurvivalAnswer();
+                  const cur2 = iframeWin.SurvivalModule.getSurvCurrent();
+                  iframeWin.document.getElementById("survival-input").value = cur2.translations[0];
+                  iframeWin.submitSurvivalAnswer();
+                  if (iframeWin.SurvivalModule.getSurvStreak() !== 2) return false;
+                  iframeWin.document.getElementById("survival-input").value = "errado_xyz_1";
+                  iframeWin.submitSurvivalAnswer();
+                  iframeWin.document.getElementById("survival-input").value = "errado_xyz_2";
+                  iframeWin.submitSurvivalAnswer();
+                  iframeWin.document.getElementById("survival-input").value = "errado_xyz_3";
+                  iframeWin.submitSurvivalAnswer();
+                  iframeWin.finishSurvival(false);
+                  const resStreak = parseInt(iframeWin.document.getElementById("surv-res-streak").textContent, 10);
+                  const resHigh = parseInt(iframeWin.document.getElementById("surv-res-high").textContent, 10);
+                  iframeWin.resetSurvival();
+                  return resStreak === 2 && resHigh === 2 && iframeWin.AppState.survivalHighScore === 2;
+                },
+              },
             ],
           },
           {

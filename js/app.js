@@ -1681,6 +1681,20 @@ function finishSurvival(surrendered = false) {
   return null;
 }
 
+function resetSurvival() {
+  if (typeof window !== "undefined" && window.SurvivalModule && typeof window.SurvivalModule.resetSurvival === "function") {
+    return window.SurvivalModule.resetSurvival();
+  }
+  return null;
+}
+
+function updateSurvivalDashboardRecord() {
+  if (typeof window !== "undefined" && window.SurvivalModule && typeof window.SurvivalModule.updateSurvivalDashboardRecord === "function") {
+    return window.SurvivalModule.updateSurvivalDashboardRecord();
+  }
+  return null;
+}
+
 // Interceptador global da tecla ENTER (Modo Sobrevivência e Modo de Prática)
 if (typeof document !== "undefined") {
   document.addEventListener("keydown", (e) => {
