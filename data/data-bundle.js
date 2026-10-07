@@ -1,7 +1,7 @@
 /**
  * Gamida Data Bundle - Offline & Standalone Fallback
  * Gerado automaticamente via scripts/build-bundle.js
- * Data: 2026-10-07T02:36:16.004Z
+ * Data: 2026-10-07T03:14:58.600Z
  */
 window.GAMIDA_DEFAULT_DATA = {
   hebrew: [
@@ -4925,6 +4925,149 @@ window.GAMIDA_DEFAULT_DATA = {
             ]
           }
         ]
+      },
+      {
+        "id": "sent_09_14",
+        "hebrew": "כִּי גָדוֹל הַיּוֹם הַהוּא",
+        "transliteration": "ki gadol hayom hahu",
+        "translations": [
+          "porque grande é aquele dia",
+          "pois grande é esse dia"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Nominal Causal com Demonstrativo Atributivo",
+        "notes": "Oração nominal causal sem cópula explícita; o adjetivo predicativo גָדוֹל precede o sujeito determinado הַיּוֹם, o qual é qualificado pelo demonstrativo atributivo הַהוּא.",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "כִּי",
+            "transliteration": "Ki",
+            "lemma": "כִּי",
+            "composite": false,
+            "word_class": "Conjunção subordinativa",
+            "syntax_role": "Conjunção causal subordinativa ('pois' / 'porque')."
+          },
+          {
+            "index": 2,
+            "text": "גָדוֹל",
+            "transliteration": "Gadol",
+            "lemma": "גָּדוֹל",
+            "composite": false,
+            "word_class": "Adjetivo",
+            "syntax_role": "Predicado nominal anteposto sem artigo ('grande é'). O verbo de ligação 'ser' fica subentendido.",
+            "notes": "Posição predicativa típica anteposta ao sujeito determinado (Kelley VIII.22)."
+          },
+          {
+            "index": 3,
+            "text": "הַיּוֹם",
+            "transliteration": "Hayom",
+            "lemma": "יוֹם",
+            "composite": true,
+            "syntax_role": "Sujeito determinado da oração nominal.",
+            "parts": [
+              {
+                "segment": "הַ",
+                "transliteration": "Ha",
+                "type": "Artigo definido",
+                "meaning": "o",
+                "phonetics": "Patah com dagesh forte regular no yod (י) (Kelley V.14.3[1])."
+              },
+              {
+                "segment": "יּוֹם",
+                "transliteration": "Yom",
+                "type": "Substantivo",
+                "inflection": "masculino singular absoluto",
+                "meaning": "dia"
+              }
+            ]
+          },
+          {
+            "index": 4,
+            "text": "הַהוּא",
+            "transliteration": "Hahu",
+            "lemma": "הוּא",
+            "composite": true,
+            "syntax_role": "Pronome demonstrativo atributivo determinado concordando em gênero, número e definição com הַיּוֹם ('aquele').",
+            "parts": [
+              {
+                "segment": "הַ",
+                "transliteration": "Ha",
+                "type": "Artigo definido",
+                "meaning": "aquele",
+                "phonetics": "Patah sem dagesh forte devido à reduplicação virtual sob a gutural he (ה) (Kelley V.14.3[2]a)."
+              },
+              {
+                "segment": "הוּא",
+                "transliteration": "Hu",
+                "type": "Pronome demonstrativo",
+                "inflection": "masculino singular",
+                "meaning": "aquele"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_09_15",
+        "hebrew": "הַדְּבָרִים הָאֵלֶּה",
+        "transliteration": "hadevarim ha'elleh",
+        "translations": [
+          "estas palavras",
+          "estas coisas"
+        ],
+        "type": "Frase",
+        "syntax_type": "Sintagma Nominal com Pronome Demonstrativo Atributivo",
+        "notes": "Substantivo determinado qualificado pelo demonstrativo plural הָאֵלֶּה, concordando em gênero, número e determinação (Kelley IX.24.3[1]).",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "הַדְּבָרִים",
+            "transliteration": "Hadevarim",
+            "lemma": "דָּבָר",
+            "composite": true,
+            "syntax_role": "Núcleo substantivo determinado.",
+            "parts": [
+              {
+                "segment": "הַ",
+                "transliteration": "Ha",
+                "type": "Artigo definido",
+                "meaning": "as",
+                "phonetics": "Patah com dagesh forte regular no dalet (ד) (Kelley V.14.3[1])."
+              },
+              {
+                "segment": "דְּבָרִים",
+                "transliteration": "Devarim",
+                "type": "Substantivo",
+                "inflection": "masculino plural absoluto",
+                "meaning": "palavras / coisas"
+              }
+            ]
+          },
+          {
+            "index": 2,
+            "text": "הָאֵלֶּה",
+            "transliteration": "Ha'elleh",
+            "lemma": "אֵלֶּה",
+            "composite": true,
+            "syntax_role": "Pronome demonstrativo atributivo determinado concordando com הַדְּבָרִים ('estas').",
+            "parts": [
+              {
+                "segment": "הָ",
+                "transliteration": "Ha",
+                "type": "Artigo definido",
+                "meaning": "estas",
+                "phonetics": "Qamats compensatório diante da gutural alef (א) (Kelley V.14.3[2]b)."
+              },
+              {
+                "segment": "אֵלֶּה",
+                "transliteration": "Elleh",
+                "type": "Pronome demonstrativo",
+                "inflection": "comum plural",
+                "meaning": "estas / estes"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -5717,6 +5860,58 @@ window.GAMIDA_DEFAULT_DATA = {
                 "meaning": "Deus"
               }
             ]
+          }
+        ]
+      },
+      {
+        "id": "sent_10_13",
+        "hebrew": "רָאשֵׁי בְנֵי־יִשְׂרָאֵל הֵמָּה",
+        "transliteration": "rashei vnei-yisrael hemmah",
+        "translations": [
+          "eles são os cabeças dos filhos de Israel",
+          "são os chefes dos filhos de Israel"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Nominal com Cadeia de Construto Dupla e Sujeito Posposto",
+        "notes": "Cadeia de construto encadeada atuando como predicativo nominal anteposto ao sujeito pronominal הֵמָּה (Kelley IX.23 e X.26.2).",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "רָאשֵׁי",
+            "transliteration": "Rashei",
+            "lemma": "רֹאשׁ",
+            "composite": false,
+            "word_class": "Substantivo",
+            "syntax_role": "Primeiro termo regente no construto plural em função de predicativo anteposto ('chefes de' / 'cabeças de').",
+            "notes": "Desinência de construto plural em sere-yod (-ei) (Kelley X.26.4[1]a)."
+          },
+          {
+            "index": 2,
+            "text": "בְנֵי־",
+            "transliteration": "Venei-",
+            "lemma": "בֵּן",
+            "composite": false,
+            "word_class": "Substantivo",
+            "syntax_role": "Segundo termo regente intermediário no construto plural ('filhos de'). Unido por maqqef.",
+            "notes": "Bet sem dagesh lene por vir após vogal de רָאשֵׁי; ligado ao termo seguinte por maqqef (Kelley I.1.9, III.4 e X.26.2)."
+          },
+          {
+            "index": 3,
+            "text": "יִשְׂרָאֵל",
+            "transliteration": "Yisrael",
+            "lemma": "יִשְׂרָאֵל",
+            "composite": false,
+            "word_class": "Nome Próprio",
+            "syntax_role": "Termo regido genitivo final determinado (confere determinação a toda a cadeia de construto)."
+          },
+          {
+            "index": 4,
+            "text": "הֵמָּה",
+            "transliteration": "Hemmah",
+            "lemma": "הֵמָּה",
+            "composite": false,
+            "word_class": "Pronome pessoal independente",
+            "syntax_role": "Sujeito posposto da oração nominal (3ª pessoa masculino plural: 'eles são')."
           }
         ]
       }
@@ -6702,6 +6897,896 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
                 "meaning": "ouro"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_11_11",
+        "hebrew": "אֲנַחְנוּ אַחִים בְּנֵי אָבִינוּ",
+        "transliteration": "anachnu achim bnei avinu",
+        "translations": [
+          "nós somos irmãos, filhos do nosso pai",
+          "somos irmãos, filhos de nosso pai"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Nominal com Aposto em Construto e Sufixo",
+        "notes": "Oração nominal pura sem verbo explícito; o sujeito pronominal אֲנַחְנוּ rege o predicativo אַחִים, qualificado pelo aposto construto com sufixo possessivo בְּנֵי אָבִינוּ.",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "אֲנַחְנוּ",
+            "transliteration": "Anachnu",
+            "lemma": "אֲנַחְנוּ",
+            "composite": false,
+            "word_class": "Pronome pessoal independente",
+            "syntax_role": "Sujeito da oração nominal (1ª pessoa comum do plural: 'Nós')."
+          },
+          {
+            "index": 2,
+            "text": "אַחִים",
+            "transliteration": "Achim",
+            "lemma": "אָח",
+            "composite": false,
+            "word_class": "Substantivo",
+            "syntax_role": "Predicativo nominal do sujeito ('somos irmãos'). O verbo 'ser' fica subentendido."
+          },
+          {
+            "index": 3,
+            "text": "בְּנֵי",
+            "transliteration": "Bnei",
+            "lemma": "בֵּן",
+            "composite": false,
+            "word_class": "Substantivo",
+            "syntax_role": "Termo regente no estado construto plural em função de aposto explicativo ('filhos de').",
+            "notes": "A terminação de plural absoluto -im transforma-se em sere-yod (-ei) no construto plural (Kelley X.26.4[1]a)."
+          },
+          {
+            "index": 4,
+            "text": "אָבִינוּ",
+            "transliteration": "Avinu",
+            "lemma": "אָב",
+            "composite": true,
+            "syntax_role": "Termo regido genitivo com sufixo possessivo ('nosso pai').",
+            "parts": [
+              {
+                "segment": "אָבִי",
+                "transliteration": "Avi",
+                "type": "Substantivo",
+                "inflection": "masculino singular construto",
+                "meaning": "pai de",
+                "phonetics": "Base construta irregular do substantivo אָב diante de afixação pronominal (Kelley X.26.4[2]d e XI.28.3[2])."
+              },
+              {
+                "segment": "נוּ",
+                "transliteration": "Nu",
+                "type": "Sufixo pronominal",
+                "inflection": "1ª pessoa comum do plural",
+                "meaning": "nosso",
+                "phonetics": "Sufixo pronominal de 1ª pessoa plural afixado a substantivo no singular (Kelley XI.28.1)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_11_12",
+        "hebrew": "אֲנַחְנוּ נָשִׁינוּ בָּנֵינוּ וּבְנֹתֵינוּ",
+        "transliteration": "anachnu nashinu baneinu uvenoteinu",
+        "translations": [
+          "nós, as nossas mulheres, os nossos filhos e as nossas filhas",
+          "nós, nossas esposas, nossos filhos e nossas filhas"
+        ],
+        "type": "Frase",
+        "syntax_type": "Sintagma Nominal Coordenado em Aposição com Sufixos Pronominais Plurais",
+        "notes": "Sequência de substantivos no plural flexionados com o sufixo pronominal de 1ª pessoa comum do plural -einu (Kelley XI.28.2).",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "אֲנַחְנוּ",
+            "transliteration": "Anachnu",
+            "lemma": "אֲנַחְנוּ",
+            "composite": false,
+            "word_class": "Pronome pessoal independente",
+            "syntax_role": "Núcleo pronominal inicial ('Nós')."
+          },
+          {
+            "index": 2,
+            "text": "נָשִׁינוּ",
+            "transliteration": "Nashinu",
+            "lemma": "אִשָּׁה",
+            "composite": true,
+            "syntax_role": "Primeiro termo em aposição com sufixo possessivo ('as nossas mulheres').",
+            "parts": [
+              {
+                "segment": "נָשֵׁי",
+                "transliteration": "Nashei",
+                "type": "Substantivo",
+                "inflection": "feminino plural construto (irregular)",
+                "meaning": "mulheres / esposas de",
+                "phonetics": "Base plural construta de אִשָּׁה com terminação em sere-yod (Kelley X.26.4[2]h)."
+              },
+              {
+                "segment": "נוּ",
+                "transliteration": "Nu",
+                "type": "Sufixo pronominal",
+                "inflection": "1ª pessoa comum do plural",
+                "meaning": "nossas"
+              }
+            ]
+          },
+          {
+            "index": 3,
+            "text": "בָּנֵינוּ",
+            "transliteration": "Baneinu",
+            "lemma": "בֵּן",
+            "composite": true,
+            "syntax_role": "Segundo termo em aposição com sufixo possessivo ('os nossos filhos').",
+            "parts": [
+              {
+                "segment": "בָּנֵי",
+                "transliteration": "Banei",
+                "type": "Substantivo",
+                "inflection": "masculino plural construto",
+                "meaning": "filhos de",
+                "phonetics": "Base plural construta de בֵּן antes de sufixos de plural (Kelley XI.28.3[1])."
+              },
+              {
+                "segment": "נוּ",
+                "transliteration": "Nu",
+                "type": "Sufixo pronominal",
+                "inflection": "1ª pessoa comum do plural",
+                "meaning": "nossos"
+              }
+            ]
+          },
+          {
+            "index": 4,
+            "text": "וּבְנֹתֵינוּ",
+            "transliteration": "Uvenoteinu",
+            "lemma": "בַּת",
+            "composite": true,
+            "syntax_role": "Terceiro termo coordenado com sufixo possessivo ('e as nossas filhas').",
+            "parts": [
+              {
+                "segment": "וּ",
+                "transliteration": "U",
+                "type": "Conjunção coordenativa",
+                "meaning": "e",
+                "phonetics": "Vocalizada como šureq (וּ) diante da consoante labial bet (ב) (Kelley VI.16.2)."
+              },
+              {
+                "segment": "בְנֹתֵי",
+                "transliteration": "Venotei",
+                "type": "Substantivo",
+                "inflection": "feminino plural construto",
+                "meaning": "filhas de",
+                "phonetics": "Bet sem dagesh lene por suceder som vocálico pleno; base plural construta feminina (Kelley I.1.9 e XI.28.3[3])."
+              },
+              {
+                "segment": "נוּ",
+                "transliteration": "Nu",
+                "type": "Sufixo pronominal",
+                "inflection": "1ª pessoa comum do plural",
+                "meaning": "nossas"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_11_13",
+        "hebrew": "אֱלֹהֵי אֲבֹתֵיהֶם",
+        "transliteration": "elohei avoteihem",
+        "translations": [
+          "o Deus dos seus antepassados",
+          "o Deus dos pais deles"
+        ],
+        "type": "Frase",
+        "syntax_type": "Cadeia de Construto com Sufixo Pronominal de 3ª Pessoa Plural",
+        "notes": "Exercício textual de Kelley (Lição XI, Exercício 3.6, pág. 107). Substantivo plural אָבוֹת com o sufixo -eihem.",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "אֱלֹהֵי",
+            "transliteration": "Elohei",
+            "lemma": "אֱלֹהִים",
+            "composite": false,
+            "word_class": "Substantivo",
+            "syntax_role": "Termo regente no construto plural ('Deus de').",
+            "notes": "Desinência de construto plural em sere-yod (-ei) (Kelley X.26.4[1]a)."
+          },
+          {
+            "index": 2,
+            "text": "אֲבֹתֵיהֶם",
+            "transliteration": "Avoteihem",
+            "lemma": "אָב",
+            "composite": true,
+            "syntax_role": "Termo regido genitivo plural com sufixo possessivo ('pais deles / seus antepassados').",
+            "parts": [
+              {
+                "segment": "אֲבֹתֵי",
+                "transliteration": "Avotei",
+                "type": "Substantivo",
+                "inflection": "masculino plural construto",
+                "meaning": "pais / antepassados de",
+                "phonetics": "Plural masculino irregular em -ot recebendo a terminação construta plural -ei para recepção de sufixos (Kelley X.26.4[1]d e XI.28.3[2])."
+              },
+              {
+                "segment": "הֶם",
+                "transliteration": "Hem",
+                "type": "Sufixo pronominal",
+                "inflection": "3ª pessoa masculino plural",
+                "meaning": "deles / seus",
+                "phonetics": "Sufixo pronominal afixado a substantivo plural (Kelley XI.28.2)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_11_14",
+        "hebrew": "הוּא וְכָל־הָעָם אֲשֶׁר עִמּוֹ",
+        "transliteration": "hu vechol-ha'am asher immo",
+        "translations": [
+          "ele e todo o povo que estava com ele",
+          "ele e todo o povo que com ele estava"
+        ],
+        "type": "Frase",
+        "syntax_type": "Sintagma Nominal Coordenado com Oração Relativa Preposicional",
+        "notes": "Combina pronome pessoal com preposição עִם acompanhada de sufixo pronominal de 3ª pessoa masculina singular (Kelley XI.27.1[3]c).",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "הוּא",
+            "transliteration": "Hu",
+            "lemma": "הוּא",
+            "composite": false,
+            "word_class": "Pronome pessoal independente",
+            "syntax_role": "Primeiro núcleo do sujeito coordenado ('Ele')."
+          },
+          {
+            "index": 2,
+            "text": "וְכָל־",
+            "transliteration": "Vechol-",
+            "lemma": "כֹּל",
+            "composite": true,
+            "syntax_role": "Segundo núcleo coordenado no construto ('e todo o'). Unido por maqqef.",
+            "parts": [
+              {
+                "segment": "וְ",
+                "transliteration": "Ve",
+                "type": "Conjunção coordenativa",
+                "meaning": "e",
+                "phonetics": "Vav com shva simples diante de consoante com vogal cheia (Kelley VI.16.1)."
+              },
+              {
+                "segment": "כָל־",
+                "transliteration": "Chol-",
+                "type": "Substantivo",
+                "inflection": "masculino singular construto",
+                "meaning": "todo o / totalidade de",
+                "phonetics": "Kaf sem dagesh lene por vir após vogal plena; qamats-hatuf em razão do maqqef (Kelley I.1.9 e III.4)."
+              }
+            ]
+          },
+          {
+            "index": 3,
+            "text": "הָעָם",
+            "transliteration": "Ha'am",
+            "lemma": "עַם",
+            "composite": true,
+            "syntax_role": "Termo regido determinado da relação de construto ('o povo').",
+            "parts": [
+              {
+                "segment": "הָ",
+                "transliteration": "Ha",
+                "type": "Artigo definido",
+                "meaning": "o",
+                "phonetics": "Qamats compensatório diante da gutural ayin (ע) (Kelley V.14.3[2]b)."
+              },
+              {
+                "segment": "עָם",
+                "transliteration": "Am",
+                "type": "Substantivo",
+                "inflection": "masculino singular absoluto",
+                "meaning": "povo",
+                "phonetics": "Recebe qamats interno quando determinado pelo artigo (Kelley V.14.3[4])."
+              }
+            ]
+          },
+          {
+            "index": 4,
+            "text": "אֲשֶׁר",
+            "transliteration": "Asher",
+            "lemma": "אֲשֶׁר",
+            "composite": false,
+            "word_class": "Pronome relativo",
+            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que' / 'o qual')."
+          },
+          {
+            "index": 5,
+            "text": "עִמּוֹ",
+            "transliteration": "Immo",
+            "lemma": "עִם",
+            "composite": true,
+            "syntax_role": "Complemento preposicional de companhia com sufixo ('com ele').",
+            "parts": [
+              {
+                "segment": "עִמּ",
+                "transliteration": "Imm",
+                "type": "Preposição",
+                "meaning": "com",
+                "phonetics": "A preposição עִם recebe dagesh forte assimilativo no mem diante de sufixos leves (Kelley XI.27.1[3]c)."
+              },
+              {
+                "segment": "וֹ",
+                "transliteration": "O",
+                "type": "Sufixo pronominal",
+                "inflection": "3ª pessoa masculino singular",
+                "meaning": "ele"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_11_15",
+        "hebrew": "לָךְ אֲנִי וְכָל־אֲשֶׁר־לִי",
+        "transliteration": "lach ani vechol-asher-li",
+        "translations": [
+          "teu sou eu e tudo o que é meu",
+          "sou teu e tudo quanto tenho é teu"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Nominal de Posse com Preposições Sufixadas",
+        "notes": "A preposição לְ com sufixo pronominal expressa posse predicativa ('a ti pertenço', Kelley XI.27.1[1]b).",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "לָךְ",
+            "transliteration": "Lach",
+            "lemma": "לְ",
+            "composite": true,
+            "syntax_role": "Predicado preposicional de posse anteposto enfático ('teu sou' / 'a ti pertenço').",
+            "parts": [
+              {
+                "segment": "לָ",
+                "transliteration": "La",
+                "type": "Preposição inseparável",
+                "meaning": "a / para",
+                "phonetics": "Vocalizada com qamats antes de sufixo de 2ª pessoa singular (Kelley XI.27.1[1]b)."
+              },
+              {
+                "segment": "ךְ",
+                "transliteration": "Ch",
+                "type": "Sufixo pronominal",
+                "inflection": "2ª pessoa feminino singular (ou masculino singular em pausa)",
+                "meaning": "ti / teu"
+              }
+            ]
+          },
+          {
+            "index": 2,
+            "text": "אֲנִי",
+            "transliteration": "Ani",
+            "lemma": "אֲנִי",
+            "composite": false,
+            "word_class": "Pronome pessoal independente",
+            "syntax_role": "Sujeito da primeira oração nominal ('eu')."
+          },
+          {
+            "index": 3,
+            "text": "וְכָל־",
+            "transliteration": "Vechol-",
+            "lemma": "כֹּל",
+            "composite": true,
+            "syntax_role": "Segundo núcleo sujeito coordenado no construto ('e tudo o'). Unido por maqqef.",
+            "parts": [
+              {
+                "segment": "וְ",
+                "transliteration": "Ve",
+                "type": "Conjunção coordenativa",
+                "meaning": "e",
+                "phonetics": "Vav com shva simples (Kelley VI.16.1)."
+              },
+              {
+                "segment": "כָל־",
+                "transliteration": "Chol-",
+                "type": "Substantivo",
+                "inflection": "masculino singular construto",
+                "meaning": "tudo / totalidade de",
+                "phonetics": "Kaf sem dagesh lene; qamats-hatuf perante maqqef (Kelley I.1.9 e III.4)."
+              }
+            ]
+          },
+          {
+            "index": 4,
+            "text": "אֲשֶׁר־",
+            "transliteration": "Asher-",
+            "lemma": "אֲשֶׁר",
+            "composite": false,
+            "word_class": "Pronome relativo",
+            "syntax_role": "Introduz a oração adjetiva substantivada ('que'). Unido por maqqef."
+          },
+          {
+            "index": 5,
+            "text": "לִי",
+            "transliteration": "Li",
+            "lemma": "לְ",
+            "composite": true,
+            "syntax_role": "Predicado preposicional de posse na oração relativa ('é meu' / 'pertence a mim').",
+            "parts": [
+              {
+                "segment": "לִ",
+                "transliteration": "L'",
+                "type": "Preposição inseparável",
+                "meaning": "a / para",
+                "phonetics": "Preposição לְ com hireq diante de sufixo pronominal de 1ª pessoa comum singular (Kelley XI.27.1[1]b)."
+              },
+              {
+                "segment": "י",
+                "transliteration": "I",
+                "type": "Sufixo pronominal",
+                "inflection": "1ª pessoa comum do singular",
+                "meaning": "mim / meu"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_11_16",
+        "hebrew": "כִּי הוּא צַדִּיק בְּעֵינָיו",
+        "transliteration": "ki hu tzaddik be'einav",
+        "translations": [
+          "porque ele era justo aos seus próprios olhos",
+          "pois ele é justo a seus olhos"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Nominal Causal com Substantivo Dual Sufixado",
+        "notes": "Substantivo dual עַיִן acompanhado do sufixo pronominal de 3ª pessoa masculina singular sobre base plural/dual -av (Kelley XI.28.2).",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "כִּי",
+            "transliteration": "Ki",
+            "lemma": "כִּי",
+            "composite": false,
+            "word_class": "Conjunção subordinativa",
+            "syntax_role": "Conjunção causal subordinativa ('porque' / 'pois')."
+          },
+          {
+            "index": 2,
+            "text": "הוּא",
+            "transliteration": "Hu",
+            "lemma": "הוּא",
+            "composite": false,
+            "word_class": "Pronome pessoal independente",
+            "syntax_role": "Sujeito da oração nominal (3ª pessoa masculino singular: 'ele')."
+          },
+          {
+            "index": 3,
+            "text": "צַדִּיק",
+            "transliteration": "Tzaddik",
+            "lemma": "צַדִּיק",
+            "composite": false,
+            "word_class": "Adjetivo",
+            "syntax_role": "Predicado nominal qualitativo sem artigo ('era justo'). O verbo de ligação fica subentendido."
+          },
+          {
+            "index": 4,
+            "text": "בְּעֵינָיו",
+            "transliteration": "Be'einav",
+            "lemma": "עַיִן",
+            "composite": true,
+            "syntax_role": "Adjunto adverbial de ponto de vista com sufixo possessivo ('aos seus olhos').",
+            "parts": [
+              {
+                "segment": "בְּ",
+                "transliteration": "Be",
+                "type": "Preposição inseparável",
+                "meaning": "em / aos",
+                "phonetics": "Bet com shva simples diante de consoante com vogal plena (Kelley VI.15.1[1])."
+              },
+              {
+                "segment": "עֵינֵ",
+                "transliteration": "Einei",
+                "type": "Substantivo",
+                "inflection": "feminino dual construto",
+                "meaning": "olhos de",
+                "phonetics": "Forma construta dual com ditongo contraído em sere-yod (Kelley X.26.4[1]c)."
+              },
+              {
+                "segment": "ָיו",
+                "transliteration": "Av",
+                "type": "Sufixo pronominal",
+                "inflection": "3ª pessoa masculino singular",
+                "meaning": "seus / dele",
+                "phonetics": "Desinência pronominal para substantivos no plural ou dual (-av) (Kelley II.2.9 e XI.28.2)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_11_17",
+        "hebrew": "הָאָרֶץ וְכָל־אֲשֶׁר בָּהּ",
+        "transliteration": "ha'aretz vechol-asher bah",
+        "translations": [
+          "a terra e tudo o que nela há",
+          "a terra e tudo quanto nela existe"
+        ],
+        "type": "Frase",
+        "syntax_type": "Sintagma Nominal Coordenado com Preposição Sufixada Feminina",
+        "notes": "Preposição בְּ com sufixo de 3ª pessoa feminina singular בָּהּ concordando em gênero com o substantivo feminino הָאָרֶץ (Kelley VII.18.2[2] e XI.27.1[1]a).",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "הָאָרֶץ",
+            "transliteration": "Ha'aretz",
+            "lemma": "אֶרֶץ",
+            "composite": true,
+            "syntax_role": "Primeiro núcleo substantivo determinado.",
+            "parts": [
+              {
+                "segment": "הָ",
+                "transliteration": "Ha",
+                "type": "Artigo definido",
+                "meaning": "a",
+                "phonetics": "Qamats compensatório diante da gutural alef (א) (Kelley V.14.3[2]b)."
+              },
+              {
+                "segment": "אָרֶץ",
+                "transliteration": "Aretz",
+                "type": "Substantivo",
+                "inflection": "feminino singular absoluto",
+                "meaning": "terra",
+                "phonetics": "Modificação vocálica no substantivo determinado com o artigo (Kelley V.14.3[4])."
+              }
+            ]
+          },
+          {
+            "index": 2,
+            "text": "וְכָל־",
+            "transliteration": "Vechol-",
+            "lemma": "כֹּל",
+            "composite": true,
+            "syntax_role": "Segundo núcleo coordenado no construto ('e tudo o'). Unido por maqqef.",
+            "parts": [
+              {
+                "segment": "וְ",
+                "transliteration": "Ve",
+                "type": "Conjunção coordenativa",
+                "meaning": "e",
+                "phonetics": "Vav com shva simples (Kelley VI.16.1)."
+              },
+              {
+                "segment": "כָל־",
+                "transliteration": "Chol-",
+                "type": "Substantivo",
+                "inflection": "masculino singular construto",
+                "meaning": "tudo / totalidade de",
+                "phonetics": "Kaf sem dagesh lene; qamats-hatuf perante maqqef (Kelley I.1.9 e III.4)."
+              }
+            ]
+          },
+          {
+            "index": 3,
+            "text": "אֲשֶׁר",
+            "transliteration": "Asher",
+            "lemma": "אֲשֶׁר",
+            "composite": false,
+            "word_class": "Pronome relativo",
+            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que')."
+          },
+          {
+            "index": 4,
+            "text": "בָּהּ",
+            "transliteration": "Bah",
+            "lemma": "בְּ",
+            "composite": true,
+            "syntax_role": "Adjunto adverbial locativo com sufixo pronominal ('nela' / 'está nela').",
+            "parts": [
+              {
+                "segment": "בָּ",
+                "transliteration": "Ba",
+                "type": "Preposição inseparável",
+                "meaning": "em / nela",
+                "phonetics": "Preposição בְּ com qamats antes do sufixo pronominal feminino singular (Kelley XI.27.1[1]a)."
+              },
+              {
+                "segment": "הּ",
+                "transliteration": "Ah",
+                "type": "Sufixo pronominal",
+                "inflection": "3ª pessoa feminino singular",
+                "meaning": "ela (referindo-se ao substantivo feminino הָאָרֶץ)",
+                "phonetics": "Mappiq no he final indicando valor consonantal audível (Kelley IV.11)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_11_18",
+        "hebrew": "אֲנִי וְכָל־הָעָם אֲשֶׁר אִתִּי",
+        "transliteration": "ani vechol-ha'am asher itti",
+        "translations": [
+          "eu e todo o povo que está comigo",
+          "eu e todo o povo que comigo está"
+        ],
+        "type": "Frase",
+        "syntax_type": "Sintagma Nominal Coordenado com Preposição Sufixada",
+        "notes": "Preposição אֵת ('com') com dagesh forte no tav e sufixo de 1ª pessoa comum singular אִתִּי (Kelley XI.27.1[3]a).",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "אֲנִי",
+            "transliteration": "Ani",
+            "lemma": "אֲנִי",
+            "composite": false,
+            "word_class": "Pronome pessoal independente",
+            "syntax_role": "Primeiro núcleo do sujeito composto ('Eu')."
+          },
+          {
+            "index": 2,
+            "text": "וְכָל־",
+            "transliteration": "Vechol-",
+            "lemma": "כֹּל",
+            "composite": true,
+            "syntax_role": "Segundo núcleo coordenado no construto ('e todo o'). Unido por maqqef.",
+            "parts": [
+              {
+                "segment": "וְ",
+                "transliteration": "Ve",
+                "type": "Conjunção coordenativa",
+                "meaning": "e",
+                "phonetics": "Vav com shva simples (Kelley VI.16.1)."
+              },
+              {
+                "segment": "כָל־",
+                "transliteration": "Chol-",
+                "type": "Substantivo",
+                "inflection": "masculino singular construto",
+                "meaning": "todo o / totalidade de",
+                "phonetics": "Qamats-hatuf perante maqqef (Kelley III.4)."
+              }
+            ]
+          },
+          {
+            "index": 3,
+            "text": "הָעָם",
+            "transliteration": "Ha'am",
+            "lemma": "עַם",
+            "composite": true,
+            "syntax_role": "Termo regido determinado ('o povo').",
+            "parts": [
+              {
+                "segment": "הָ",
+                "transliteration": "Ha",
+                "type": "Artigo definido",
+                "meaning": "o",
+                "phonetics": "Qamats compensatório diante de ayin (ע) (Kelley V.14.3[2]b)."
+              },
+              {
+                "segment": "עָם",
+                "transliteration": "Am",
+                "type": "Substantivo",
+                "inflection": "masculino singular absoluto",
+                "meaning": "povo",
+                "phonetics": "Qamats interno sob artigo definido (Kelley V.14.3[4])."
+              }
+            ]
+          },
+          {
+            "index": 4,
+            "text": "אֲשֶׁר",
+            "transliteration": "Asher",
+            "lemma": "אֲשֶׁר",
+            "composite": false,
+            "word_class": "Pronome relativo",
+            "syntax_role": "Introduz a oração subordinada adjetiva restritiva ('que')."
+          },
+          {
+            "index": 5,
+            "text": "אִתִּי",
+            "transliteration": "Itti",
+            "lemma": "אֵת",
+            "composite": true,
+            "syntax_role": "Complemento preposicional de companhia com sufixo ('está comigo').",
+            "parts": [
+              {
+                "segment": "אִתּ",
+                "transliteration": "Itt",
+                "type": "Preposição",
+                "meaning": "com",
+                "phonetics": "A preposição אֵת ('com') recebe dagesh forte no tav perante sufixos pronominais (Kelley XI.27.1[3]a)."
+              },
+              {
+                "segment": "ִי",
+                "transliteration": "I",
+                "type": "Sufixo pronominal",
+                "inflection": "1ª pessoa comum do singular",
+                "meaning": "mim / comigo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_11_19",
+        "hebrew": "לָכֶם וְלַאֲבוֹתֵיכֶם",
+        "transliteration": "lachem vela'avoteichem",
+        "translations": [
+          "a vós e a vossos pais",
+          "para vós e para os vossos antepassados"
+        ],
+        "type": "Frase",
+        "syntax_type": "Sintagma Preposicional Coordenado com Sufixos Pronominais",
+        "notes": "Exercício textual de Kelley (Lição XI, Exercício 3.4, pág. 107). Preposição לְ com sufixo -chem e substantivo plural com sufixo -eichem.",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "לָכֶם",
+            "transliteration": "Lachem",
+            "lemma": "לְ",
+            "composite": true,
+            "syntax_role": "Primeiro complemento preposicional indireto ('a vós' / 'para vós').",
+            "parts": [
+              {
+                "segment": "לָ",
+                "transliteration": "La",
+                "type": "Preposição inseparável",
+                "meaning": "a / para",
+                "phonetics": "Preposição לְ vocalizada com qamats diante de sufixos de 2ª e 3ª pessoa plural (Kelley XI.27.1[1]b)."
+              },
+              {
+                "segment": "כֶם",
+                "transliteration": "Chem",
+                "type": "Sufixo pronominal",
+                "inflection": "2ª pessoa masculino plural",
+                "meaning": "vós / vocês"
+              }
+            ]
+          },
+          {
+            "index": 2,
+            "text": "וְלַאֲבוֹתֵיכֶם",
+            "transliteration": "Vela'avoteichem",
+            "lemma": "אָב",
+            "composite": true,
+            "syntax_role": "Segundo complemento preposicional indireto coordenado ('e a vossos pais').",
+            "parts": [
+              {
+                "segment": "וְ",
+                "transliteration": "Ve",
+                "type": "Conjunção coordenativa",
+                "meaning": "e",
+                "phonetics": "Vav com shva simples (Kelley VI.16.1)."
+              },
+              {
+                "segment": "לַ",
+                "transliteration": "La",
+                "type": "Preposição inseparável",
+                "meaning": "a / para os",
+                "phonetics": "A preposição לְ assume a vogal breve correspondente ao hatef-patah do alef seguinte (patah, Kelley VI.15.1[3])."
+              },
+              {
+                "segment": "אֲבוֹתֵי",
+                "transliteration": "Avotei",
+                "type": "Substantivo",
+                "inflection": "masculino plural construto",
+                "meaning": "pais / antepassados de",
+                "phonetics": "Base plural de אָב adaptada para receber sufixos sobre nomes plurais (Kelley X.26.4[1]d e XI.28.3[2])."
+              },
+              {
+                "segment": "כֶם",
+                "transliteration": "Chem",
+                "type": "Sufixo pronominal",
+                "inflection": "2ª pessoa masculino plural",
+                "meaning": "vossos / de vocês"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_11_20",
+        "hebrew": "כָל־בָּנָיו וְכָל־בְּנֹתָיו",
+        "transliteration": "chol-banav vechol-benotav",
+        "translations": [
+          "todos os seus filhos e todas as suas filhas",
+          "todos os filhos dele e todas as filhas dele"
+        ],
+        "type": "Frase",
+        "syntax_type": "Sintagma Nominal Coordenado em Construto com Sufixos Pronominais",
+        "notes": "Exercício textual de Kelley (Lição XI, Exercício 3.7, pág. 107 e Lição II.2.9). Terminação -av sobre plurais masculino e feminino.",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "כָל־",
+            "transliteration": "Chol-",
+            "lemma": "כֹּל",
+            "composite": false,
+            "word_class": "Substantivo",
+            "syntax_role": "Primeiro termo regente no construto singular ('todos os'). Unido por maqqef.",
+            "notes": "Kaf aspirado sem dagesh lene; qamats-hatuf perante maqqef (Kelley III.4)."
+          },
+          {
+            "index": 2,
+            "text": "בָּנָיו",
+            "transliteration": "Banav",
+            "lemma": "בֵּן",
+            "composite": true,
+            "syntax_role": "Primeiro termo regido com sufixo possessivo ('seus filhos').",
+            "parts": [
+              {
+                "segment": "בָּנֵ",
+                "transliteration": "Bane",
+                "type": "Substantivo",
+                "inflection": "masculino plural construto",
+                "meaning": "filhos de",
+                "phonetics": "Base plural construta de בֵּן antes de sufixos de plural (Kelley XI.28.3[1])."
+              },
+              {
+                "segment": "ָיו",
+                "transliteration": "Av",
+                "type": "Sufixo pronominal",
+                "inflection": "3ª pessoa masculino singular",
+                "meaning": "seus / dele",
+                "phonetics": "Terminação característica de 3ª pessoa masculina singular sobre substantivos plurais (-av) (Kelley II.2.9 e XI.28.2)."
+              }
+            ]
+          },
+          {
+            "index": 3,
+            "text": "וְכָל־",
+            "transliteration": "Vechol-",
+            "lemma": "כֹּל",
+            "composite": true,
+            "syntax_role": "Segundo termo regente coordenado no construto ('e todas as'). Unido por maqqef.",
+            "parts": [
+              {
+                "segment": "וְ",
+                "transliteration": "Ve",
+                "type": "Conjunção coordenativa",
+                "meaning": "e",
+                "phonetics": "Vav com shva simples (Kelley VI.16.1)."
+              },
+              {
+                "segment": "כָל־",
+                "transliteration": "Chol-",
+                "type": "Substantivo",
+                "inflection": "masculino singular construto",
+                "meaning": "todas as / totalidade de",
+                "phonetics": "Kaf sem dagesh lene; qamats-hatuf perante maqqef (Kelley I.1.9 e III.4)."
+              }
+            ]
+          },
+          {
+            "index": 4,
+            "text": "בְּנֹתָיו",
+            "transliteration": "Benotav",
+            "lemma": "בַּת",
+            "composite": true,
+            "syntax_role": "Segundo termo regido coordenado com sufixo possessivo ('suas filhas').",
+            "parts": [
+              {
+                "segment": "בְּנֹתֵ",
+                "transliteration": "Benote",
+                "type": "Substantivo",
+                "inflection": "feminino plural construto",
+                "meaning": "filhas de",
+                "phonetics": "Base plural feminina construta de בַּת com vocalização característica antes de sufixos (Kelley XI.28.3[3])."
+              },
+              {
+                "segment": "ָיו",
+                "transliteration": "Av",
+                "type": "Sufixo pronominal",
+                "inflection": "3ª pessoa masculino singular",
+                "meaning": "suas / dele",
+                "phonetics": "Terminação -av afixada a substantivo no plural (Kelley II.2.9 e XI.28.2)."
               }
             ]
           }
