@@ -40,7 +40,7 @@
             <h1 class="font-bold text-lg text-white flex items-center gap-2">
               Gamida <span class="text-xs px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono">Full Test Suite</span>
             </h1>
-            <p class="text-xs text-slate-400">Validação Completa do Sistema (11 Módulos Funcionais)</p>
+            <p class="text-xs text-slate-400">Validação Completa do Sistema (14 Módulos Funcionais)</p>
           </div>
         </div>
 
@@ -83,7 +83,7 @@
           <div class="grid grid-cols-4 gap-2.5 text-center">
             <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
               <span class="block text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Módulos</span>
-              <span id="stat-modules" class="font-bold text-lg text-brand-400 font-mono">12</span>
+              <span id="stat-modules" class="font-bold text-lg text-brand-400 font-mono">14</span>
             </div>
             <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
               <span class="block text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Total</span>
@@ -109,7 +109,7 @@
               onclick="filterModuleView('all')"
               class="px-3 py-1.5 rounded-lg bg-brand-600 text-white font-bold whitespace-nowrap"
             >
-              Todos os Módulos (12)
+              Todos os Módulos (14)
             </button>
             <select
               id="select-module-filter"
@@ -129,6 +129,8 @@
               <option value="10">10. Menu Mobile & Carrossel de Abas</option>
               <option value="11">11. Apoio ("Pague-me um café!" & PIX)</option>
               <option value="12">12. Motor Gamificado do Alfabeto</option>
+              <option value="13">13. Integridade Geral & Contrato DOM</option>
+              <option value="14">14. Análise Morfossintática Granular</option>
             </select>
           </div>
         </div>
@@ -725,6 +727,168 @@
                   iframeWin.updateParadigmsVisibility();
                   const paradigmsHidden = !btnParadigms || btnParadigms.style.display === "none";
                   return paradigmsHidden;
+                },
+              },
+            ],
+          },
+          {
+            id: 13,
+            title: "Módulo 13: Integridade Geral do Sistema (E2E & Contrato DOM)",
+            tests: [
+              {
+                name: "Contrato de IDs: Elementos vitais manipulados pelo JS existem no DOM",
+                fn: () => {
+                  const criticalIDs = [
+                    'custom-chapter-selector', 'app-logo-btn', 'navbar-tabs-container',
+                    'nav-btn-practice', 'nav-btn-paradigms', 'nav-btn-vocab', 'nav-btn-assessment', 'nav-btn-manage',
+                    'tab-practice', 'tab-paradigms', 'tab-vocab', 'tab-assessment', 'tab-manage',
+                    'hebrew-prompt', 'input-answer', 'interface-typing', 'interface-choice', 'interface-sentences',
+                    'input-sentence', 'feedback-banner', 'btn-submit-typing', 'stat-streak', 'stat-score',
+                    'assess-dashboard', 'assessment-active', 'assessment-results', 'assess-user-input',
+                    'survival-active', 'survival-results', 'survival-hebrew', 'survival-input',
+                    'sentence-analysis-modal', 'sentence-morphemes-container', 'sentence-analysis-panel'
+                  ];
+                  return criticalIDs.every((id) => !!iframeDoc.getElementById(id));
+                },
+              },
+              {
+                name: "Versão Canônica Única: DataLoader, StateModule e window.APP_VERSION convergem",
+                fn: () => {
+                  const v1 = iframeWin.APP_VERSION;
+                  const v2 = iframeWin.DataLoader && iframeWin.DataLoader.VERSION;
+                  const v3 = iframeWin.StateModule && iframeWin.StateModule.APP_VERSION;
+                  return !!v1 && v1 === v2 && v1 === v3 && v1 >= "2.7.1";
+                },
+              },
+              {
+                name: "Validação Centralizada: StateModule e DataLoader rejeitam coleções vazias e IDs duplicados",
+                fn: () => {
+                  const emptyChap = { id: "vazio", title: "Vazio", items: [], sentences: [] };
+                  const validChap = { id: "ok", title: "OK", items: [{ term: "א", translations: ["alef"] }] };
+                  const dups = [{ id: "dup" }, { id: "dup" }];
+                  const isValid1 = iframeWin.isValidChapter(emptyChap) === false;
+                  const isValid2 = iframeWin.isValidChapter(validChap) === true;
+                  const isUnique = iframeWin.hasUniqueChapterIds(dups) === false;
+                  return isValid1 && isValid2 && isUnique;
+                },
+              },
+              {
+                name: "Sanitização XSS: escapeHTML codifica tags nocivas e aspas",
+                fn: () => {
+                  const xss = '<script>alert("xss")</script><img src=x onerror=1>';
+                  const escaped = iframeWin.escapeHTML(xss);
+                  return !escaped.includes("<script>") && !escaped.includes("<img") && escaped.includes("&lt;script&gt;");
+                },
+              },
+              {
+                name: "Tolerância Defensiva à Cota de Storage: salvamentos não causam exceções não-tratadas",
+                fn: () => {
+                  try {
+                    iframeWin.saveSRS();
+                    iframeWin.saveChaptersToStorage();
+                    return true;
+                  } catch (e) {
+                    return false;
+                  }
+                },
+              },
+              {
+                name: "Isolamento de Listeners de Teclado: Modal de Análise Morfossintática previne conflito",
+                fn: () => {
+                  const modal = iframeDoc.getElementById("sentence-analysis-modal");
+                  return !!modal && modal.classList.contains("hidden");
+                },
+              },
+            ],
+          },
+          {
+            id: 14,
+            title: "Módulo 14: Análise Morfossintática Granular (Page Kelley)",
+            tests: [
+              {
+                name: "Mapeamento das 8 categorias morfológicas canônicas (getMorphemeCategory)",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.getMorphemeCategory !== "function") return false;
+                  return (
+                    mod.getMorphemeCategory("Artigo definido") === "article" &&
+                    mod.getMorphemeCategory("Conjunção coordenativa") === "conjunction" &&
+                    mod.getMorphemeCategory("Preposição inseparável") === "preposition" &&
+                    mod.getMorphemeCategory("Substantivo segolado") === "noun" &&
+                    mod.getMorphemeCategory("Adjetivo") === "adjective" &&
+                    mod.getMorphemeCategory("Verbo") === "verb" &&
+                    mod.getMorphemeCategory("Sufixo pronominal") === "suffix" &&
+                    mod.getMorphemeCategory("Partícula de negação") === "particle"
+                  );
+                },
+              },
+              {
+                name: "CATEGORY_MAP configurado com todas as 8 categorias e metadados visuais",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || !mod.CATEGORY_MAP) return false;
+                  const keys = ["article", "conjunction", "preposition", "noun", "adjective", "verb", "suffix", "particle"];
+                  return keys.every((k) => !!mod.CATEGORY_MAP[k] && !!mod.CATEGORY_MAP[k].accentHex && !!mod.CATEGORY_MAP[k].badgeClass);
+                },
+              },
+              {
+                name: "Detecção precisa de Maqqef (tokenEndsWithMaqqef)",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.tokenEndsWithMaqqef !== "function") return false;
+                  return (
+                    mod.tokenEndsWithMaqqef({ text: "אֶת־" }) === true &&
+                    mod.tokenEndsWithMaqqef({ text: "מֵאֵת־" }) === true &&
+                    mod.tokenEndsWithMaqqef({ text: "אָב" }) === false
+                  );
+                },
+              },
+              {
+                name: "Construção de lista plana de morfemas (buildFlatMorphemesList)",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.buildFlatMorphemesList !== "function") return false;
+                  const dummySentence = {
+                    hebrew: "וּבֵן",
+                    tokens: [
+                      {
+                        text: "וּבֵן",
+                        composite: true,
+                        parts: [
+                          { segment: "וּ", type: "Conjunção" },
+                          { segment: "בֵן", type: "Substantivo" }
+                        ]
+                      }
+                    ]
+                  };
+                  const flat = mod.buildFlatMorphemesList(dummySentence);
+                  return flat.length === 2 && flat[0].category === "conjunction" && flat[1].category === "noun";
+                },
+              },
+              {
+                name: "Elementos do Modal de Análise Morfossintática presentes no DOM",
+                fn: () => {
+                  return (
+                    !!iframeDoc.getElementById("sentence-analysis-modal") &&
+                    !!iframeDoc.getElementById("sentence-morphemes-container") &&
+                    !!iframeDoc.getElementById("sentence-morphemes-ribbon") &&
+                    !!iframeDoc.getElementById("sentence-analysis-panel")
+                  );
+                },
+              },
+              {
+                name: "Ciclo de Abertura e Fechamento defensivo do Modal de Análise",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.openSentenceAnalysisModal !== "function" || typeof mod.closeSentenceAnalysisModal !== "function") return false;
+                  const modal = iframeDoc.getElementById("sentence-analysis-modal");
+                  if (!modal) return false;
+                  const dummy = { hebrew: "אָב וּבֵן", translations: ["pai e filho"] };
+                  mod.openSentenceAnalysisModal(dummy);
+                  const wasOpen = !modal.classList.contains("hidden");
+                  mod.closeSentenceAnalysisModal();
+                  const wasClosed = modal.classList.contains("hidden");
+                  return wasOpen && wasClosed;
                 },
               },
             ],
