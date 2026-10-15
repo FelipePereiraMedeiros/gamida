@@ -1,7 +1,6 @@
 /**
- * Gamida Data Bundle - Offline & Standalone Fallback
- * Gerado automaticamente via scripts/build-bundle.js
- * Data: 2026-10-15T10:35:07.089274Z
+ * Gamida - Default Offline Data Bundle
+ * Autogerado para garantir resiliência offline 100% autônoma (Page Kelley & David Bergmann)
  */
 window.GAMIDA_DEFAULT_DATA = {
   hebrew: [
@@ -9294,7 +9293,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "hoje"
         ],
-        "type": "Adverbio"
+        "type": "Advérbio"
       },
       {
         "hebrew": "הֵיכָל",
@@ -11315,7 +11314,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "continuamente",
           "sempre"
         ],
-        "type": "Adverbio"
+        "type": "Advérbio"
       },
       {
         "hebrew": "תְּפִלָּה",
@@ -12866,7 +12865,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lamah",
             "lemma": "לָמָה",
             "composite": false,
-            "word_class": "Advérbio interrogativo",
+            "word_class": "Advérbio Interrogativo",
             "syntax_role": "Introduz oração interrogativa de causa ou propósito ('por quê?')."
           },
           {
@@ -17463,7 +17462,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Lamah",
             "lemma": "לָמָה",
             "composite": false,
-            "word_class": "Advérbio interrogativo",
+            "word_class": "Advérbio Interrogativo",
             "syntax_role": "Introduz pergunta deliberativa ('por que...?')."
           },
           {
@@ -17506,7 +17505,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ayei",
             "lemma": "אַיֵּה",
             "composite": false,
-            "word_class": "Advérbio interrogativo de lugar",
+            "word_class": "Advérbio Interrogativo de lugar",
             "syntax_role": "Predicado nominal interrogativo de presença locativa ('onde está...?')."
           },
           {

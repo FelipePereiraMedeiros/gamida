@@ -353,7 +353,16 @@
   box-shadow: 0 0 0 2px #fb923c, 0 0 16px rgba(251, 146, 60, 0.5) !important;
 }
 
-/* 7. Sufixo Pronominal: Rosa/Magenta */
+/* 7. Advérbio: Teal / Verde-azulado */
+.morpheme-adverb:hover,
+.morpheme-adverb.is-active,
+.morpheme-adverb.is-pinned {
+  background-color: rgba(20, 184, 166, 0.25) !important;
+  color: #5eead4 !important;
+  box-shadow: 0 0 0 2px #14b8a6, 0 0 16px rgba(20, 184, 166, 0.5) !important;
+}
+
+/* 8. Sufixo Pronominal: Rosa/Magenta */
 .morpheme-suffix:hover,
 .morpheme-suffix.is-active,
 .morpheme-suffix.is-pinned {
@@ -362,7 +371,7 @@
   box-shadow: 0 0 0 2px #f472b6, 0 0 16px rgba(244, 114, 182, 0.5) !important;
 }
 
-/* 8. Partícula / Pronome: Índigo */
+/* 9. Partícula / Pronome: Índigo */
 .morpheme-particle:hover,
 .morpheme-particle.is-active,
 .morpheme-particle.is-pinned {

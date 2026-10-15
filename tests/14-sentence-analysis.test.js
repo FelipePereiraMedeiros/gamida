@@ -27,9 +27,9 @@ const {
 } = SentenceAnalysisModule;
 
 // --------------------------------------------------------------------------
-// TESTE 1: Mapeamento e Classificação das 8 Categorias Morfológicas
+// TESTE 1: Mapeamento e Classificação das 9 Categorias Morfológicas
 // --------------------------------------------------------------------------
-suite.test('Classificação correta das 8 categorias morfológicas canônicas', () => {
+suite.test('Classificação correta das 9 categorias morfológicas canônicas', () => {
   // 1. Artigo
   assert.equal(getMorphemeCategory('Artigo definido'), 'article');
   assert.equal(getMorphemeCategory('Artigo'), 'article');
@@ -59,23 +59,32 @@ suite.test('Classificação correta das 8 categorias morfológicas canônicas', 
   assert.equal(getMorphemeCategory('Verbo (particípio ativo)'), 'verb');
   assert.equal(getMorphemeCategory('Verbo (particípio passivo)'), 'verb');
 
-  // 7. Sufixo Pronominal
+  // 7. Advérbio (incluindo Advérbio Interrogativo)
+  assert.equal(getMorphemeCategory('Advérbio'), 'adverb');
+  assert.equal(getMorphemeCategory('Advérbio Interrogativo'), 'adverb');
+  assert.equal(getMorphemeCategory('Advérbio interrogativo'), 'adverb');
+  assert.equal(getMorphemeCategory('Advérbio interrogativo de lugar'), 'adverb');
+  assert.equal(getMorphemeCategory('Advérbio de tempo'), 'adverb');
+  assert.equal(getMorphemeCategory('Advérbio de lugar'), 'adverb');
+  assert.equal(getMorphemeCategory('Advérbio de intensidade'), 'adverb');
+
+  // 8. Sufixo Pronominal
   assert.equal(getMorphemeCategory('Sufixo pronominal'), 'suffix');
   assert.equal(getMorphemeCategory('Sufixo pronominal (com nun enérgico assimilado)'), 'suffix');
 
-  // 8. Partícula / Pronome
+  // 9. Partícula / Pronome
   assert.equal(getMorphemeCategory('Pronome demonstrativo'), 'particle');
   assert.equal(getMorphemeCategory('Pronome pessoal independente'), 'particle');
+  assert.equal(getMorphemeCategory('Pronome interrogativo'), 'particle');
   assert.equal(getMorphemeCategory('Partícula de negação'), 'particle');
-  assert.equal(getMorphemeCategory('Advérbio de tempo'), 'particle');
   assert.equal(getMorphemeCategory('Partícula indicadora de objeto direto'), 'particle');
 });
 
 // --------------------------------------------------------------------------
 // TESTE 2: Metadados e Códigos de Cores no CATEGORY_MAP e CSS
 // --------------------------------------------------------------------------
-suite.test('CATEGORY_MAP define todas as 8 categorias com classes e hex adequados', () => {
-  const expectedKeys = ['article', 'conjunction', 'preposition', 'noun', 'adjective', 'verb', 'suffix', 'particle'];
+suite.test('CATEGORY_MAP define todas as 9 categorias com classes e hex adequados', () => {
+  const expectedKeys = ['article', 'conjunction', 'preposition', 'noun', 'adjective', 'verb', 'adverb', 'suffix', 'particle'];
   expectedKeys.forEach(k => {
     assert.isTrue(!!CATEGORY_MAP[k], `Categoria ${k} ausente em CATEGORY_MAP`);
     assert.isTrue(!!CATEGORY_MAP[k].badgeClass, `badgeClass ausente para ${k}`);
@@ -90,6 +99,7 @@ suite.test('CATEGORY_MAP define todas as 8 categorias com classes e hex adequado
   assert.includes(css, '.morpheme-noun', 'Classe .morpheme-noun ausente no styles.css');
   assert.includes(css, '.morpheme-adjective', 'Classe .morpheme-adjective ausente no styles.css');
   assert.includes(css, '.morpheme-verb', 'Classe .morpheme-verb ausente no styles.css');
+  assert.includes(css, '.morpheme-adverb', 'Classe .morpheme-adverb ausente no styles.css');
   assert.includes(css, '.morpheme-suffix', 'Classe .morpheme-suffix ausente no styles.css');
   assert.includes(css, '.morpheme-particle', 'Classe .morpheme-particle ausente no styles.css');
 });
