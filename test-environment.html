@@ -806,7 +806,7 @@
             title: "Módulo 14: Análise Morfossintática Granular (Page Kelley)",
             tests: [
               {
-                name: "Mapeamento das 8 categorias morfológicas canônicas (getMorphemeCategory)",
+                name: "Mapeamento das 9 categorias morfológicas canônicas (getMorphemeCategory)",
                 fn: () => {
                   const mod = iframeWin.SentenceAnalysisModule;
                   if (!mod || typeof mod.getMorphemeCategory !== "function") return false;
@@ -817,17 +817,18 @@
                     mod.getMorphemeCategory("Substantivo segolado") === "noun" &&
                     mod.getMorphemeCategory("Adjetivo") === "adjective" &&
                     mod.getMorphemeCategory("Verbo") === "verb" &&
+                    mod.getMorphemeCategory("Advérbio Interrogativo") === "adverb" &&
                     mod.getMorphemeCategory("Sufixo pronominal") === "suffix" &&
                     mod.getMorphemeCategory("Partícula de negação") === "particle"
                   );
                 },
               },
               {
-                name: "CATEGORY_MAP configurado com todas as 8 categorias e metadados visuais",
+                name: "CATEGORY_MAP configurado com todas as 9 categorias e metadados visuais",
                 fn: () => {
                   const mod = iframeWin.SentenceAnalysisModule;
                   if (!mod || !mod.CATEGORY_MAP) return false;
-                  const keys = ["article", "conjunction", "preposition", "noun", "adjective", "verb", "suffix", "particle"];
+                  const keys = ["article", "conjunction", "preposition", "noun", "adjective", "verb", "adverb", "suffix", "particle"];
                   return keys.every((k) => !!mod.CATEGORY_MAP[k] && !!mod.CATEGORY_MAP[k].accentHex && !!mod.CATEGORY_MAP[k].badgeClass);
                 },
               },

@@ -67,6 +67,15 @@
       colorName: "Laranja",
       accentHex: "#fb923c"
     },
+    adverb: {
+      id: "adverb",
+      name: "Advérbio",
+      hebrewExamples: "תֹּאַר הַפֹּעַל (שָׁם / אֵיפֹה / מְאֹד)",
+      badgeClass: "bg-teal-500/20 text-teal-300 border-teal-400/50 ring-teal-400",
+      glowClass: "morpheme-adverb",
+      colorName: "Teal / Verde-azulado",
+      accentHex: "#14b8a6"
+    },
     suffix: {
       id: "suffix",
       name: "Sufixo Pronominal",
@@ -88,9 +97,9 @@
   };
 
   /**
-   * Classifica o tipo de partícula/palavra em uma das 8 categorias canônicas
+   * Classifica o tipo de partícula/palavra em uma das 9 categorias canônicas
    * @param {string} typeStr
-   * @returns {"article"|"conjunction"|"preposition"|"noun"|"adjective"|"verb"|"suffix"|"particle"}
+   * @returns {"article"|"conjunction"|"preposition"|"noun"|"adjective"|"verb"|"adverb"|"suffix"|"particle"}
    */
   function getMorphemeCategory(typeStr) {
     if (!typeStr) return "particle";
@@ -102,10 +111,11 @@
     if (t.includes("conjun") || t.includes("vav")) return "conjunction";
     if (t.includes("verbo") || t.includes("particípio") || t.includes("participio")) return "verb";
     if (t.includes("adjetivo")) return "adjective";
+    if (t.includes("advérbio") || t.includes("adverbio") || t.includes("adverbial")) return "adverb";
     if (t.includes("substantivo") || t.includes("nome próprio") || t.includes("nome proprio") || t.includes("nome divino") || t.includes("epíteto") || t.includes("epiteto")) {
       return "noun";
     }
-    // Partículas, pronomes, advérbios, numerais
+    // Partículas, pronomes, numerais
     return "particle";
   }
 
@@ -1109,6 +1119,35 @@
             </div>
             <div id="sentence-morphemes-container" class="hebrew-sentence-container hebrew-text text-white py-2" dir="rtl"></div>
             <div id="sentence-morphemes-ribbon" class="mt-4 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-center gap-1.5"></div>
+            <div class="mt-4 pt-4 border-t border-slate-800/60 flex flex-wrap items-center justify-center gap-2 text-[11px]">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Artigo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Conjunção
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Preposição
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Substantivo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Adjetivo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>Verbo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span>Advérbio
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span>Sufixo Pronominal
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Partícula / Pronome
+              </span>
+            </div>
           </div>
           <div id="sentence-analysis-panel" class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-5 md:p-6 min-h-[220px] flex flex-col justify-center transition-all"></div>
         </div>

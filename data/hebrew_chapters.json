@@ -9288,7 +9288,7 @@
         "translations": [
           "hoje"
         ],
-        "type": "Adverbio"
+        "type": "Advérbio"
       },
       {
         "hebrew": "הֵיכָל",
@@ -11309,7 +11309,7 @@
           "continuamente",
           "sempre"
         ],
-        "type": "Adverbio"
+        "type": "Advérbio"
       },
       {
         "hebrew": "תְּפִלָּה",
@@ -12860,7 +12860,7 @@
             "transliteration": "Lamah",
             "lemma": "לָמָה",
             "composite": false,
-            "word_class": "Advérbio interrogativo",
+            "word_class": "Advérbio Interrogativo",
             "syntax_role": "Introduz oração interrogativa de causa ou propósito ('por quê?')."
           },
           {
@@ -17457,7 +17457,7 @@
             "transliteration": "Lamah",
             "lemma": "לָמָה",
             "composite": false,
-            "word_class": "Advérbio interrogativo",
+            "word_class": "Advérbio Interrogativo",
             "syntax_role": "Introduz pergunta deliberativa ('por que...?')."
           },
           {
@@ -17500,7 +17500,7 @@
             "transliteration": "Ayei",
             "lemma": "אַיֵּה",
             "composite": false,
-            "word_class": "Advérbio interrogativo de lugar",
+            "word_class": "Advérbio Interrogativo de lugar",
             "syntax_role": "Predicado nominal interrogativo de presença locativa ('onde está...?')."
           },
           {
