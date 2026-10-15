@@ -1,7 +1,7 @@
 /**
  * Gamida Data Bundle - Offline & Standalone Fallback
  * Gerado automaticamente via scripts/build-bundle.js
- * Data: 2026-10-15T11:01:36.499889Z
+ * Data: 2026-10-15T10:35:07.089274Z
  */
 window.GAMIDA_DEFAULT_DATA = {
   hebrew: [
@@ -9415,6 +9415,110 @@ window.GAMIDA_DEFAULT_DATA = {
           "figura"
         ],
         "type": "Substantivo"
+      },
+      {
+        "hebrew": "אֵי",
+        "transliteration": "ei",
+        "translations": [
+          "onde"
+        ],
+        "type": "Advérbio Interrogativo"
+      },
+      {
+        "hebrew": "אַיֵּה",
+        "transliteration": "ayeh",
+        "translations": [
+          "onde"
+        ],
+        "type": "Advérbio Interrogativo"
+      },
+      {
+        "hebrew": "אֵיפֹה",
+        "transliteration": "eifoh",
+        "translations": [
+          "onde"
+        ],
+        "type": "Advérbio Interrogativo"
+      },
+      {
+        "hebrew": "מֵאַיִן",
+        "transliteration": "me'ayin",
+        "translations": [
+          "de onde"
+        ],
+        "type": "Advérbio Interrogativo"
+      },
+      {
+        "hebrew": "אֵי־מִזֶּה",
+        "transliteration": "ei-mizzeh",
+        "translations": [
+          "de onde"
+        ],
+        "type": "Advérbio Interrogativo"
+      },
+      {
+        "hebrew": "אֵיךְ",
+        "transliteration": "eich",
+        "translations": [
+          "como"
+        ],
+        "type": "Advérbio Interrogativo"
+      },
+      {
+        "hebrew": "אָנָה",
+        "transliteration": "ana",
+        "translations": [
+          "para onde",
+          "para que lugar"
+        ],
+        "type": "Advérbio Interrogativo"
+      },
+      {
+        "hebrew": "אָן",
+        "transliteration": "an",
+        "translations": [
+          "para onde",
+          "para que lugar"
+        ],
+        "type": "Advérbio Interrogativo"
+      },
+      {
+        "hebrew": "לָמָּה",
+        "transliteration": "lammah",
+        "translations": [
+          "por que",
+          "para que",
+          "por quê"
+        ],
+        "type": "Advérbio Interrogativo"
+      },
+      {
+        "hebrew": "לָמָה",
+        "transliteration": "lamah",
+        "translations": [
+          "por que",
+          "para que",
+          "por quê"
+        ],
+        "type": "Advérbio Interrogativo"
+      },
+      {
+        "hebrew": "מַדּוּעַ",
+        "transliteration": "madua",
+        "translations": [
+          "por que",
+          "por quê"
+        ],
+        "type": "Advérbio Interrogativo"
+      },
+      {
+        "hebrew": "כַּמָּה",
+        "transliteration": "kammah",
+        "translations": [
+          "quanto",
+          "quantos"
+        ],
+        "type": "Advérbio Interrogativo"
       }
     ],
     "sentences": [
@@ -9990,6 +10094,291 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Nome Próprio",
             "syntax_role": "Termo regido genitivo ('Sião')."
+          }
+        ]
+      },
+      {
+        "id": "sent_13_07",
+        "favorite": false,
+        "hebrew": "אֵי הֶבֶל אָחִיךָ",
+        "transliteration": "ei hevel achicha",
+        "translations": [
+          "onde está Abel, teu irmão?",
+          "onde esta Abel, teu irmao?"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Interrogativa Nominal",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "אֵי",
+            "transliteration": "Ei",
+            "lemma": "אֵי",
+            "composite": false,
+            "word_class": "Advérbio Interrogativo",
+            "syntax_role": "Predicado interrogativo locativo ('onde está?'). O verbo de ligação 'estar' fica subentendido."
+          },
+          {
+            "index": 2,
+            "text": "הֶבֶל",
+            "transliteration": "Hevel",
+            "lemma": "הֶבֶל",
+            "composite": false,
+            "word_class": "Nome Próprio",
+            "syntax_role": "Sujeito da oração interrogativa ('Abel')."
+          },
+          {
+            "index": 3,
+            "text": "אָחִיךָ",
+            "transliteration": "Achicha",
+            "lemma": "אָח",
+            "composite": true,
+            "syntax_role": "Aposto explicativo com sufixo possessivo ('teu irmão').",
+            "parts": [
+              {
+                "segment": "אָחִי",
+                "transliteration": "Achi",
+                "type": "Substantivo",
+                "inflection": "masculino singular construto",
+                "meaning": "irmão de",
+                "phonetics": "Base construta irregular do substantivo אָח perante sufixos pronominais."
+              },
+              {
+                "index": 2,
+                "segment": "ךָ",
+                "transliteration": "Cha",
+                "type": "Sufixo pronominal",
+                "inflection": "2ª pessoa masculino singular",
+                "meaning": "teu"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_13_08",
+        "favorite": false,
+        "hebrew": "אַיֵּה שָׂרָה אִשְׁתֶּךָ",
+        "transliteration": "ayeh sarah ishtecha",
+        "translations": [
+          "onde está Sara, tua mulher?",
+          "onde esta Sara, tua mulher?"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Interrogativa Nominal",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "אַיֵּה",
+            "transliteration": "Ayeh",
+            "lemma": "אַיֵּה",
+            "composite": false,
+            "word_class": "Advérbio Interrogativo",
+            "syntax_role": "Predicado interrogativo locativo ('onde está?')."
+          },
+          {
+            "index": 2,
+            "text": "שָׂרָה",
+            "transliteration": "Sarah",
+            "lemma": "שָׂרָה",
+            "composite": false,
+            "word_class": "Nome Próprio",
+            "syntax_role": "Sujeito da oração interrogativa ('Sara')."
+          },
+          {
+            "index": 3,
+            "text": "אִשְׁתֶּךָ",
+            "transliteration": "Ishtecha",
+            "lemma": "אִשָּׁה",
+            "composite": true,
+            "syntax_role": "Aposto explicativo com sufixo possessivo ('tua mulher / tua esposa').",
+            "parts": [
+              {
+                "segment": "אִשְׁתְּ",
+                "transliteration": "Isht",
+                "type": "Substantivo",
+                "inflection": "feminino singular construto",
+                "meaning": "mulher de / esposa de",
+                "phonetics": "Base construta irregular do substantivo אִשָּׁה diante de afixação pronominal."
+              },
+              {
+                "segment": "ךָ",
+                "transliteration": "Echa",
+                "type": "Sufixo pronominal",
+                "inflection": "2ª pessoa masculino singular",
+                "meaning": "tua"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_13_09",
+        "favorite": false,
+        "hebrew": "אֵיפֹה שְׁמוּאֵל וְדָוִד",
+        "transliteration": "eifoh shemu'el v'david",
+        "translations": [
+          "onde estão Samuel e Davi?",
+          "onde estao Samuel e Davi?"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Interrogativa Nominal com Sujeito Composto",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "אֵיפֹה",
+            "transliteration": "Eifoh",
+            "lemma": "אֵיפֹה",
+            "composite": false,
+            "word_class": "Advérbio Interrogativo",
+            "syntax_role": "Predicado interrogativo locativo ('onde estão?')."
+          },
+          {
+            "index": 2,
+            "text": "שְׁמוּאֵל",
+            "transliteration": "Shemu'el",
+            "lemma": "שְׁמוּאֵל",
+            "composite": false,
+            "word_class": "Nome Próprio",
+            "syntax_role": "Primeiro núcleo do sujeito composto ('Samuel')."
+          },
+          {
+            "index": 3,
+            "text": "וְדָוִד",
+            "transliteration": "V'david",
+            "lemma": "דָּוִד",
+            "composite": true,
+            "syntax_role": "Segundo núcleo coordenado do sujeito ('e Davi').",
+            "parts": [
+              {
+                "segment": "וְ",
+                "transliteration": "V'",
+                "type": "Conjunção coordenativa",
+                "meaning": "e",
+                "phonetics": "Vav com shva simples diante de consoante com vogal cheia."
+              },
+              {
+                "segment": "דָוִד",
+                "transliteration": "David",
+                "type": "Nome Próprio",
+                "meaning": "Davi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sent_13_10",
+        "favorite": false,
+        "hebrew": "אַחַי מֵאַיִן אַתֶּם",
+        "transliteration": "achai me'ayin attem",
+        "translations": [
+          "meus irmãos, de onde sois vós?",
+          "meus irmãos, de onde sois?",
+          "meus irmãos, de onde vocês são?"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Interrogativa Nominal com Vocativo",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "אַחַי",
+            "transliteration": "Achai",
+            "lemma": "אָח",
+            "composite": true,
+            "syntax_role": "Vocativo inicial com sufixo possessivo ('meus irmãos').",
+            "parts": [
+              {
+                "segment": "אַח",
+                "transliteration": "Ach",
+                "type": "Substantivo",
+                "inflection": "masculino plural construto",
+                "meaning": "irmãos de"
+              },
+              {
+                "segment": "ַי",
+                "transliteration": "Ai",
+                "type": "Sufixo pronominal",
+                "inflection": "1ª pessoa comum do singular",
+                "meaning": "meus",
+                "phonetics": "Sufixo de 1ª pessoa singular sobre base de substantivo plural (-ai)."
+              }
+            ]
+          },
+          {
+            "index": 2,
+            "text": "מֵאַיִן",
+            "transliteration": "Me'ayin",
+            "lemma": "מֵאַיִן",
+            "composite": false,
+            "word_class": "Advérbio Interrogativo",
+            "syntax_role": "Predicado interrogativo de procedência ('de onde [sois]?'). Composto originariamente por מִן + אַיִן."
+          },
+          {
+            "index": 3,
+            "text": "אַתֶּם",
+            "transliteration": "Attem",
+            "lemma": "אַתֶּם",
+            "composite": false,
+            "word_class": "Pronome pessoal independente",
+            "syntax_role": "Sujeito da oração nominal (2ª pessoa masculino plural: 'vós / vocês')."
+          }
+        ]
+      },
+      {
+        "id": "sent_13_11",
+        "favorite": false,
+        "hebrew": "מַדּוּעַ אַתָּה לְבַדֶּךָ",
+        "transliteration": "madua attah levadecha",
+        "translations": [
+          "por que estás sozinho?",
+          "por que estas sozinho?",
+          "por que você está só?"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Interrogativa Nominal Causal/Circunstancial",
+        "tokens": [
+          {
+            "index": 1,
+            "text": "מַדּוּעַ",
+            "transliteration": "Madua",
+            "lemma": "מַדּוּעַ",
+            "composite": false,
+            "word_class": "Advérbio Interrogativo",
+            "syntax_role": "Operador interrogativo causal ('por que?')."
+          },
+          {
+            "index": 2,
+            "text": "אַתָּה",
+            "transliteration": "Attah",
+            "lemma": "אַתָּה",
+            "composite": false,
+            "word_class": "Pronome pessoal independente",
+            "syntax_role": "Sujeito da oração nominal (2ª pessoa masculino singular: 'tu / você')."
+          },
+          {
+            "index": 3,
+            "text": "לְבַדֶּךָ",
+            "transliteration": "Levadecha",
+            "lemma": "לְבַד",
+            "composite": true,
+            "syntax_role": "Predicado adverbial circunstancial / estado com sufixo pronominal ('sozinho').",
+            "parts": [
+              {
+                "segment": "לְבַד",
+                "transliteration": "Levad",
+                "type": "Preposição / Substantivo adverbial",
+                "meaning": "em separação / sozinho",
+                "phonetics": "Composta por לְ + בַּד; recebe dagesh forte na dental dalet diante de sufixos leves."
+              },
+              {
+                "segment": "ֶּךָ",
+                "transliteration": "Echa",
+                "type": "Sufixo pronominal",
+                "inflection": "2ª pessoa masculino singular",
+                "meaning": "tu / você (tu sozinho)"
+              }
+            ]
           }
         ]
       }
