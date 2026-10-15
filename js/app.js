@@ -1159,8 +1159,12 @@ function recordSRSError(termStr) {
 }
 
 /* ================= LANGUAGE SWITCH ENGINE ================= */
-async function toggleLanguage() {
-  AppState.language = AppState.language === "hebrew" ? "greek" : "hebrew";
+async function toggleLanguage(targetLang = null) {
+  if (targetLang === "hebrew" || targetLang === "greek") {
+    AppState.language = targetLang;
+  } else {
+    AppState.language = AppState.language === "hebrew" ? "greek" : "hebrew";
+  }
 
   if (typeof localStorage !== "undefined") {
     try {

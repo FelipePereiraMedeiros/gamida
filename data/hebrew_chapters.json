@@ -20873,7 +20873,23 @@
             "transliteration": "Me'et-",
             "lemma": "מֵאֵת",
             "composite": true,
-            "syntax_role": "Locução preposicional de procedência ('da parte de' / 'do'). Unida por maqqef."
+            "syntax_role": "Locução preposicional de procedência ('da parte de' / 'do'). Unida por maqqef.",
+            "parts": [
+              {
+                "segment": "מֵ",
+                "transliteration": "Me",
+                "type": "Preposição (variante de מִן)",
+                "meaning": "de",
+                "phonetics": "Preposição מִן com nun assimilado e alongamento compensatório para tsere perante a gutural alef (Kelley VI.15.2)."
+              },
+              {
+                "segment": "אֵת־",
+                "transliteration": "Et-",
+                "type": "Preposição",
+                "meaning": "junto a / parte de",
+                "phonetics": "Preposição regida unida ao termo seguinte por maqqef (־)."
+              }
+            ]
           },
           {
             "index": 4,

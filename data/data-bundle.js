@@ -1,7 +1,7 @@
 /**
  * Gamida Data Bundle - Offline & Standalone Fallback
  * Gerado automaticamente via scripts/build-bundle.js
- * Data: 2026-10-07T10:00:00.000Z
+ * Data: 2026-10-15T11:01:36.499889Z
  */
 window.GAMIDA_DEFAULT_DATA = {
   hebrew: [
@@ -20879,7 +20879,23 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Me'et-",
             "lemma": "מֵאֵת",
             "composite": true,
-            "syntax_role": "Locução preposicional de procedência ('da parte de' / 'do'). Unida por maqqef."
+            "syntax_role": "Locução preposicional de procedência ('da parte de' / 'do'). Unida por maqqef.",
+            "parts": [
+              {
+                "segment": "מֵ",
+                "transliteration": "Me",
+                "type": "Preposição (variante de מִן)",
+                "meaning": "de",
+                "phonetics": "Preposição מִן com nun assimilado e alongamento compensatório para tsere perante a gutural alef (Kelley VI.15.2)."
+              },
+              {
+                "segment": "אֵת־",
+                "transliteration": "Et-",
+                "type": "Preposição",
+                "meaning": "junto a / parte de",
+                "phonetics": "Preposição regida unida ao termo seguinte por maqqef (־)."
+              }
+            ]
           },
           {
             "index": 4,
@@ -23381,8 +23397,7 @@ window.GAMIDA_DEFAULT_DATA = {
       }
     ]
   }
-]
-,
+],
   greek: [
   {
     "id": "bergmann_01",

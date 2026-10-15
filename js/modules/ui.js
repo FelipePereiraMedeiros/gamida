@@ -901,8 +901,12 @@ function applyLanguageUI() {
   }
 }
 
-function toggleLanguage() {
-  AppState.language = AppState.language === "hebrew" ? "greek" : "hebrew";
+function toggleLanguage(targetLang = null) {
+  if (targetLang === "hebrew" || targetLang === "greek") {
+    AppState.language = targetLang;
+  } else {
+    AppState.language = AppState.language === "hebrew" ? "greek" : "hebrew";
+  }
   if (typeof localStorage !== "undefined") {
     try {
       localStorage.setItem("gamida_language", AppState.language);
