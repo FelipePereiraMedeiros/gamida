@@ -539,7 +539,7 @@
                 name: "Versão do sistema incrementada para v2.6.8 ou superior",
                 fn: () => {
                   const ver = iframeWin.APP_VERSION || (iframeWin.DataLoader && iframeWin.DataLoader.VERSION);
-                  return !!ver && (ver === "2.6.8" || ver === "2.7.1" || ver >= "2.6.8");
+                  return !!ver && (ver === "2.6.8" || ver === "2.7.1" || ver === "2.7.2" || ver >= "2.6.8");
                 },
               },
             ],
@@ -757,7 +757,7 @@
                   const v1 = iframeWin.APP_VERSION;
                   const v2 = iframeWin.DataLoader && iframeWin.DataLoader.VERSION;
                   const v3 = iframeWin.StateModule && iframeWin.StateModule.APP_VERSION;
-                  return !!v1 && v1 === v2 && v1 === v3 && v1 >= "2.7.1";
+                  return !!v1 && v1 === v2 && v1 === v3 && v1 >= "2.7.2";
                 },
               },
               {
