@@ -566,7 +566,7 @@ suite.test('Validação de Idioma na Importação: Rejeita backups e capítulos 
     document: global.document,
     localStorage: { setItem() {}, getItem() { return null; } },
     AppState: { language: 'hebrew', chapters: [], srs: {}, survivalHighScore: 0 },
-    APP_VERSION: '2.7.1',
+    APP_VERSION: '2.7.2',
     isValidChapter: () => true,
     hasUniqueChapterIds: () => true,
     saveSRS: () => {},
@@ -747,7 +747,7 @@ suite.test('Versão Canônica Única: DataLoader e módulos compartilham a mesma
 
   assert.isTrue(typeof DataLoader.VERSION === 'string' && DataLoader.VERSION.length > 0, 'DataLoader.VERSION deve ser string válida');
   assert.equal(DataLoader.VERSION, APP_VERSION, 'DataLoader.VERSION e StateModule.APP_VERSION devem ser idênticos');
-  assert.equal(DataLoader.VERSION, '2.7.1', 'Versão atual deve ser 2.7.1');
+  assert.equal(DataLoader.VERSION, '2.7.2', 'Versão atual deve ser 2.7.2');
 });
 
 module.exports = suite;
