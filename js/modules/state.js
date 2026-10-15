@@ -7,7 +7,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.7.2";
+  "2.7.3";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
