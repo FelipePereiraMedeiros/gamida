@@ -842,7 +842,7 @@ function renderCurrentQuestion() {
   if (DOM.banner) DOM.banner.classList.add("hidden");
 
   const isSentenceWithAnalysis = AppState.currentQuestion &&
-    AppState.language === "hebrew" &&
+    (AppState.language === "hebrew" || AppState.language === "greek") &&
     ((AppState.currentQuestion.tokens && AppState.currentQuestion.tokens.length > 0) ||
       AppState.currentQuestion.type === "Frase" ||
       AppState.exerciseMode === "sentences");
@@ -1059,7 +1059,7 @@ function checkPracticeAnswer(userAnswer) {
   updatePracticeActionButtonToNext();
 
   const isSentenceWithAnalysis = AppState.currentQuestion &&
-    AppState.language === "hebrew" &&
+    (AppState.language === "hebrew" || AppState.language === "greek") &&
     ((AppState.currentQuestion.tokens && AppState.currentQuestion.tokens.length > 0) ||
       AppState.currentQuestion.type === "Frase" ||
       AppState.exerciseMode === "sentences");

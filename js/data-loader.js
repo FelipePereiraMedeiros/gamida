@@ -313,10 +313,18 @@ const DataLoader = {
       }
     }
 
-    // No Hebraico, garante que TODAS as frases possuem tokens estruturados (migração estrita de versão/dados)
-    const hasMorphologyTokens = language !== "hebrew" || (
+    // No Hebraico e Grego, garante que frases estruturadas possuem tokens de análise morfológica (migração estrita de dados)
+    const hasMorphologyTokens = (
       Array.isArray(parsedStored) &&
-      parsedStored.every((c) => !Array.isArray(c.sentences) || c.sentences.length === 0 || c.sentences.every((s) => Array.isArray(s.tokens) && s.tokens.length > 0))
+      (language === "hebrew"
+        ? parsedStored.every((c) => {
+            if (!Array.isArray(c.sentences) || c.sentences.length === 0) return true;
+            return c.sentences.every((s) => Array.isArray(s.tokens) && s.tokens.length > 0);
+          })
+        : parsedStored.every((c) => {
+            if (!Array.isArray(c.sentences) || c.sentences.length === 0) return true;
+            return c.sentences.every((s) => Array.isArray(s.tokens) && s.tokens.length > 0);
+          }))
     );
 
     if (parsedStored && storedVersion === version && hasMorphologyTokens) {
