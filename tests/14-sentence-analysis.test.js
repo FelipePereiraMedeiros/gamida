@@ -406,5 +406,179 @@ suite.test('Hover dos morfemas e chips permanece no mesmo nível do background s
   assert.isFalse(morphemeBaseRule[0].includes('dashed'), 'Morfemas não devem conter borda inferior tracejada/pontilhada');
 });
 
+// --------------------------------------------------------------------------
+// TESTE 14: Metodologia de Análise Morfológica em 4 Passos no Grego (Johannes Bergmann)
+// --------------------------------------------------------------------------
+suite.test('Metodologia de Tradução em 4 Passos de Johannes Bergmann aplicada ao Grego', () => {
+  const greekSentence = {
+    term: "Καὶ αὕτη ἐστὶν ἡ μαρτυρία τοῦ Ἰωάννου·",
+    transliteration: "Kai hautē estin hē martyria tou Iōannou",
+    type: "Oração Coordenada Copulativa",
+    syntax_type: "Oração Copulativa Declarativa (§ 3.4)",
+    translations: ["E este é o testemunho de João:"],
+    tokens: [
+      {
+        text: "Καὶ",
+        word_class: "Conjunção",
+        syntax_role: "Conjunção coordenativa copulativa. Conectivo interfrasal ('E')",
+        lemma: "καί",
+        meaning: "e, também"
+      },
+      {
+        text: "αὕτη",
+        word_class: "Pronome demonstrativo",
+        syntax_role: "Sujeito da oração copulativa (nominativo feminino singular: 'esta')",
+        lemma: "οὗτος",
+        meaning: "este, esta, isto"
+      },
+      {
+        text: "ἐστὶν",
+        word_class: "Verbo",
+        syntax_role: "Verbo de ligação. Presente do indicativo ativo, 3ª pessoa singular ('é')",
+        lemma: "εἰμί",
+        meaning: "ser, estar"
+      },
+      {
+        text: "ἡ",
+        word_class: "Artigo definido",
+        syntax_role: "Determinante do predicativo (nominativo feminino singular: 'a')",
+        lemma: "ὁ",
+        meaning: "o, a"
+      },
+      {
+        text: "μαρτυρία",
+        word_class: "Substantivo",
+        syntax_role: "Núcleo do predicativo do sujeito (nominativo feminino singular: 'testemunho')",
+        lemma: "μαρτυρία",
+        meaning: "testemunho"
+      }
+    ]
+  };
+
+  const flatList = buildFlatMorphemesList(greekSentence);
+  assert.equal(flatList.length, 5, 'Deve gerar exatamente 5 vocábulos');
+
+  // Passo 1: Classes Gramaticais Canônicas
+  assert.equal(flatList[0].category, 'conjunction', 'Καὶ deve ser conjunção');
+  assert.equal(flatList[1].category, 'pronoun', 'αὕτη deve ser pronome no grego');
+  assert.equal(flatList[2].category, 'verb', 'ἐστὶν deve ser verbo');
+  assert.equal(flatList[3].category, 'article', 'ἡ deve ser artigo');
+  assert.equal(flatList[4].category, 'noun', 'μαρτυρία deve ser substantivo');
+
+  // Passo 2, 3 e 4 via parseGreekStepDetails
+  const verbDetails = parseGreekStepDetails(greekSentence.tokens[2], greekSentence);
+  assert.isTrue(verbDetails.step1Class.includes('Verbo'), 'Passo 1 do verbo: Verbo');
+  assert.isTrue(verbDetails.step2Morphology.includes('Presente do indicativo ativo, 3ª pessoa singular'), 'Passo 2 do verbo: tempo, modo, voz, pessoa e número');
+  assert.equal(verbDetails.step3Lemma, 'εἰμί', 'Passo 3 do verbo: lema no vocabulário');
+  assert.equal(verbDetails.step3Translation, 'é', 'Passo 3 do verbo: tradução contextual no ponto da oração');
+  assert.equal(verbDetails.continuousTranslation, 'E este é o testemunho de João:', 'Passo 4: linha contínua da oração');
+
+  // Passo 2 do Pronome demonstrativo
+  const pronDetails = parseGreekStepDetails(greekSentence.tokens[1], greekSentence);
+  assert.isTrue(pronDetails.step2Morphology.includes('nominativo feminino singular'), 'Passo 2 do pronome: caso, gênero e número');
+  assert.equal(pronDetails.step3Lemma, 'οὗτος', 'Passo 3 do pronome: lema no vocabulário');
+});
+
+// --------------------------------------------------------------------------
+// TESTE 15: Categoria Pronome no Grego e Orientação LTR
+// --------------------------------------------------------------------------
+suite.test('Categoria Pronome e Orientação LTR no Grego (§ Bergmann)', () => {
+  // Teste de classificação
+  assert.equal(getMorphemeCategory('Pronome demonstrativo', true), 'pronoun', 'Deve mapear pronome demonstrativo para pronoun no Grego');
+  assert.equal(getMorphemeCategory('Pronome pessoal', true), 'pronoun', 'Deve mapear pronome pessoal para pronoun no Grego');
+  assert.equal(getMorphemeCategory('Pronome relativo', true), 'pronoun', 'Deve mapear pronome relativo para pronoun no Grego');
+
+  // No hebraico, pronomes isolados caem em particle por padrão histórico da gramática de Kelley
+  assert.equal(getMorphemeCategory('Pronome pessoal', false), 'particle', 'No Hebraico pronomes isolados caem em particle');
+
+  // Metadados do Pronome no CATEGORY_MAP
+  assert.isTrue(!!CATEGORY_MAP.pronoun, 'Categoria pronoun deve existir no CATEGORY_MAP');
+  assert.equal(CATEGORY_MAP.pronoun.colorName, 'Fúcsia / Violeta');
+  assert.equal(CATEGORY_MAP.pronoun.glowClass, 'morpheme-pronoun');
+
+  // Detecção de frase grega LTR
+  const greekSentence = { term: "Ἐν ἀρχῇ ἦν ὁ λόγος" };
+  assert.isTrue(isGreekSentence(greekSentence), 'Deve detectar oração grega com sucesso');
+});
+
+// --------------------------------------------------------------------------
+// TESTE 16: Linha Interlinear e Linha Contínua Pedagógica de Tradução (Passo 4)
+// --------------------------------------------------------------------------
+suite.test('Visão Global com Linha Interlinear e Linha Contínua de Tradução Fluente', () => {
+  const greekSentence = {
+    term: "Ἐν ἀρχῇ ἦν ὁ λόγος",
+    transliteration: "En archē ēn ho logos",
+    syntax_type: "Oração Teológica Declarativa (§ 2.3)",
+    translations: ["No princípio era o Verbo"],
+    tokens: [
+      { text: "Ἐν", word_class: "Preposição", syntax_role: "Preposição que rege o dativo ('Em')", lemma: "ἐν" },
+      { text: "ἀρχῇ", word_class: "Substantivo", syntax_role: "Dativo feminino singular ('princípio')", lemma: "ἀρχή" },
+      { text: "ἦν", word_class: "Verbo", syntax_role: "Imperfeito do indicativo ativo, 3ª sg ('era')", lemma: "εἰμί" },
+      { text: "ὁ", word_class: "Artigo definido", syntax_role: "Nominativo masculino singular ('o')", lemma: "ὁ" },
+      { text: "λόγος", word_class: "Substantivo", syntax_role: "Nominativo masculino singular ('Palavra / Verbo')", lemma: "λόγος" }
+    ]
+  };
+
+  const globalHtml = renderGlobalSentenceView(greekSentence);
+  assert.isTrue(globalHtml.includes('interlinear-word'), 'Deve conter botões de dissecação interlinear');
+  assert.isTrue(globalHtml.includes('continuous-translation-line'), 'Deve conter linha contínua de tradução');
+  assert.isTrue(globalHtml.includes('No princípio era o Verbo'), 'Deve conter a redação fluente em português da oração');
+  assert.isTrue(globalHtml.includes('Johannes Bergmann'), 'Deve remeter à gramática de Johannes Bergmann');
+
+  // Visão dissecada de morfema grego
+  const flat = buildFlatMorphemesList(greekSentence);
+  const dissectionHtml = renderMorphemeDissectionView(flat[2], greekSentence);
+  assert.isTrue(dissectionHtml.includes('Passo 1: Classe Gramatical'), 'Morfema grego deve conter Passo 1');
+  assert.isTrue(dissectionHtml.includes('Passo 2: Morfologia &amp; Inflexão') || dissectionHtml.includes('Passo 2: Morfologia & Inflexão'), 'Morfema grego deve conter Passo 2');
+  assert.isTrue(dissectionHtml.includes('Passo 3: Vocabulário'), 'Morfema grego deve conter Passo 3');
+  assert.isTrue(dissectionHtml.includes('Passo 4: Linha Contínua'), 'Morfema grego deve conter Passo 4');
+});
+
+// --------------------------------------------------------------------------
+// TESTE 17: Validação do Capítulo 13 e Prevenção do Bug "Partícula / Segmento X"
+// --------------------------------------------------------------------------
+suite.test('Capítulo 13 e Frases Gregas não geram genericamente "partícula" nem "segmento x"', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const greekDbPath = path.resolve(__dirname, '../data/greek_chapters.json');
+  const greekData = JSON.parse(fs.readFileSync(greekDbPath, 'utf8'));
+
+  // Localizar capítulo 13
+  const ch13 = greekData.find(c => c.id === 'bergmann_13');
+  assert.isTrue(!!ch13, 'Capítulo 13 deve existir no banco de dados');
+  assert.equal(ch13.sentences.length, 8, 'Capítulo 13 deve conter exatamente 8 sentenças');
+
+  // Testar todas as sentenças do Capítulo 13
+  ch13.sentences.forEach((sent, sIdx) => {
+    assert.isTrue(Array.isArray(sent.tokens) && sent.tokens.length > 0, `Sentença ${sIdx + 1} do Cap 13 deve ter tokens`);
+    const flatList = buildFlatMorphemesList(sent);
+    assert.isTrue(flatList.length > 0, `Sentença ${sIdx + 1} do Cap 13 deve gerar lista de morfemas`);
+
+    // Verificar que NENHUM elemento é genericamente "Vocábulo" ou "Segmento X"
+    flatList.forEach((m, mIdx) => {
+      assert.isTrue(m.word_class !== 'Vocábulo', `Morfema ${mIdx + 1} da sent ${sIdx + 1} não pode ser 'Vocábulo'`);
+      assert.isTrue(!m.syntax_role.includes('Segmento '), `Morfema ${mIdx + 1} da sent ${sIdx + 1} não pode ter 'Segmento X'`);
+      assert.isTrue(m.category !== 'particle' || m.word_class.toLowerCase().includes('partícula') || m.word_class.toLowerCase().includes('conjunção'),
+        `Morfema ${m.text} não deve cair em particle genericamente`);
+    });
+  });
+
+  // Testar também o mecanismo de fallback inferGreekWordFallback caso uma frase sem tokens seja passada
+  const rawSentence = {
+    term: "Ἐγένετο ἄνθρωπος ἀπεσταλμένος παρὰ Θεοῦ"
+  };
+  const fallbackFlat = buildFlatMorphemesList(rawSentence);
+  assert.equal(fallbackFlat.length, 5, 'Deve gerar 5 vocábulos via fallback inteligente');
+  // 'Ἐγένετο' deve ser inferido como verbo (ou com verbo na classe), NÃO 'particle'
+  assert.isTrue(fallbackFlat[0].category === 'verb', 'Ἐγένετο deve ser inferido como verbo no fallback');
+  // 'παρὰ' deve ser preposição
+  assert.isTrue(fallbackFlat[3].category === 'preposition', 'παρὰ deve ser inferido como preposição');
+  // Nenhum deve ser chamado "Segmento 1", "Segmento 2"...
+  fallbackFlat.forEach((m, idx) => {
+    assert.isTrue(!m.syntax_role.includes('Segmento '), `Fallback do token ${idx + 1} não deve ter 'Segmento X'`);
+  });
+});
+
 module.exports = suite;
+
 

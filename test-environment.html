@@ -892,6 +892,57 @@
                   return wasOpen && wasClosed;
                 },
               },
+              {
+                name: "Metodologia de 4 Passos no Grego (§ Johannes Bergmann)",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.buildFlatMorphemesList !== "function") return false;
+                  const dummyGreek = {
+                    term: "Καὶ αὕτη ἐστὶν ἡ μαρτυρία τοῦ Ἰωάννου·",
+                    translations: ["E este é o testemunho de João:"],
+                    tokens: [
+                      { text: "Καὶ", word_class: "Conjunção", syntax_role: "Conjunção coordenativa copulativa ('E')", lemma: "καί" },
+                      { text: "αὕτη", word_class: "Pronome demonstrativo", syntax_role: "Sujeito (nominativo feminino singular: 'esta')", lemma: "οὗτος" },
+                      { text: "ἐστὶν", word_class: "Verbo", syntax_role: "Presente do indicativo ativo, 3ª sg ('é')", lemma: "εἰμί" }
+                    ]
+                  };
+                  const flat = mod.buildFlatMorphemesList(dummyGreek);
+                  return (
+                    flat.length === 3 &&
+                    flat[0].category === "conjunction" &&
+                    flat[1].category === "pronoun" &&
+                    flat[2].category === "verb" &&
+                    mod.isGreekSentence(dummyGreek)
+                  );
+                },
+              },
+              {
+                name: "Modal com Frase Grega aplica LTR, legenda de cores e linha contínua",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.openSentenceAnalysisModal !== "function") return false;
+                  const modal = iframeDoc.getElementById("sentence-analysis-modal");
+                  const container = iframeDoc.getElementById("sentence-morphemes-container");
+                  const legend = iframeDoc.getElementById("sentence-legend-container");
+                  if (!modal || !container) return false;
+
+                  const dummyGreek = {
+                    term: "Ἐν ἀρχῇ ἦν ὁ λόγος",
+                    translations: ["No princípio era o Verbo"],
+                    tokens: [
+                      { text: "Ἐν", word_class: "Preposição", syntax_role: "Preposição com dativo ('Em')", lemma: "ἐν" },
+                      { text: "ἀρχῇ", word_class: "Substantivo", syntax_role: "Dativo feminino singular ('princípio')", lemma: "ἀρχή" }
+                    ]
+                  };
+                  mod.openSentenceAnalysisModal(dummyGreek);
+                  const isLtr = container.getAttribute("dir") === "ltr";
+                  const hasGreekClass = container.classList.contains("greek-text");
+                  const hasPronounInLegend = legend ? legend.innerHTML.includes("Pronome") : true;
+                  mod.closeSentenceAnalysisModal();
+                  const restoredRtl = container.getAttribute("dir") === "rtl";
+                  return isLtr && hasGreekClass && hasPronounInLegend && restoredRtl;
+                },
+              },
             ],
           },
         ];
