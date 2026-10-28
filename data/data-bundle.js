@@ -1,7 +1,7 @@
 /**
  * Gamida Data Bundle - Offline & Standalone Fallback
  * Gerado automaticamente via scripts/build-bundle.py
- * Data: 2026-10-27T11:07:21.382099+00:00
+ * Data: 2026-10-28T15:17:20.015751+00:00
  */
 window.GAMIDA_DEFAULT_DATA = {
   hebrew: [
@@ -23803,8 +23803,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Vogal (1)",
         "order": 1,
-        "name": "Alpha",
-        "sound": "A (como em casa)"
+        "name": "alfa",
+        "sound": "a em amor"
       },
       {
         "term": "β",
@@ -23817,8 +23817,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (2)",
         "order": 2,
-        "name": "Beta",
-        "sound": "B (como em bola)"
+        "name": "beta",
+        "sound": "b em bondade"
       },
       {
         "term": "γ",
@@ -23831,8 +23831,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (3)",
         "order": 3,
-        "name": "Gamma",
-        "sound": "G (como em gato; nasal diante de γ, κ, ξ, χ)"
+        "name": "gama",
+        "sound": "g em gato (não como em gelo); diante de γ, κ, ξ ou χ pronuncia-se n (ἄγκυρα = ankyra)"
       },
       {
         "term": "δ",
@@ -23845,8 +23845,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (4)",
         "order": 4,
-        "name": "Delta",
-        "sound": "D (como em dado)"
+        "name": "delta",
+        "sound": "d em de"
       },
       {
         "term": "ε",
@@ -23860,8 +23860,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Vogal Breve (5)",
         "order": 5,
-        "name": "Epsilon",
-        "sound": "E (breve e fechado como em você)"
+        "name": "épsilon",
+        "sound": "e em era"
       },
       {
         "term": "ζ",
@@ -23875,8 +23875,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante Dupla (6)",
         "order": 6,
-        "name": "Zeta",
-        "sound": "Z / Dz (como em Edson, não o 'z' português!)"
+        "name": "zeta",
+        "sound": "ds em Edson (não o z português!)"
       },
       {
         "term": "η",
@@ -23889,8 +23889,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Vogal Longa (7)",
         "order": 7,
-        "name": "Eta",
-        "sound": "Ê (longo e aberto como em festa)"
+        "name": "eta",
+        "sound": "e em ênfase"
       },
       {
         "term": "θ",
@@ -23904,8 +23904,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (8)",
         "order": 8,
-        "name": "Theta",
-        "sound": "Th (aspirado ou interdental como em think)"
+        "name": "theta",
+        "sound": "th inglês — |th| como no artigo the"
       },
       {
         "term": "ι",
@@ -23918,8 +23918,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Vogal (9)",
         "order": 9,
-        "name": "Iota",
-        "sound": "I (como em ilha)"
+        "name": "iota",
+        "sound": "i em índio"
       },
       {
         "term": "κ",
@@ -23933,8 +23933,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (10)",
         "order": 10,
-        "name": "Kappa",
-        "sound": "K (como em casa)"
+        "name": "kapa",
+        "sound": "c em casa (não como em cifra)"
       },
       {
         "term": "λ",
@@ -23948,14 +23948,15 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (11)",
         "order": 11,
-        "name": "Lambda",
-        "sound": "L (como em livro)"
+        "name": "lambda",
+        "sound": "l em lar"
       },
       {
         "term": "μ",
         "uppercase": "Μ",
         "transliteration": "m",
         "translations": [
+          "my",
           "mi",
           "mu",
           "mü",
@@ -23963,14 +23964,15 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (12)",
         "order": 12,
-        "name": "Mu",
-        "sound": "M (como em mãe)"
+        "name": "my",
+        "sound": "m em manso"
       },
       {
         "term": "ν",
         "uppercase": "Ν",
         "transliteration": "n",
         "translations": [
+          "ny",
           "ni",
           "nu",
           "nü",
@@ -23978,8 +23980,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (13)",
         "order": 13,
-        "name": "Nu",
-        "sound": "N (como em navio)"
+        "name": "ny",
+        "sound": "n em nada"
       },
       {
         "term": "ξ",
@@ -23993,8 +23995,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante Dupla (14)",
         "order": 14,
-        "name": "Xi",
-        "sound": "X / Ks (como em táxi, mas não em lixo)"
+        "name": "xi",
+        "sound": "x em táxi (mas não em lixo)"
       },
       {
         "term": "ο",
@@ -24008,8 +24010,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Vogal Breve (15)",
         "order": 15,
-        "name": "Omicron",
-        "sound": "O (breve e fechado como em avô)"
+        "name": "ómicron",
+        "sound": "o em pó"
       },
       {
         "term": "π",
@@ -24022,14 +24024,15 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (16)",
         "order": 16,
-        "name": "Pi",
-        "sound": "P (como em pão)"
+        "name": "pi",
+        "sound": "p em paz"
       },
       {
         "term": "ρ",
         "uppercase": "Ρ",
-        "transliteration": "r",
+        "transliteration": "r / rh",
         "translations": [
+          "rhô",
           "ro",
           "rho",
           "rô",
@@ -24037,8 +24040,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (17)",
         "order": 17,
-        "name": "Rho",
-        "sound": "R (vibrante como em caro/rato)"
+        "name": "rhô",
+        "sound": "r em respeito ou carro"
       },
       {
         "term": "σ",
@@ -24051,8 +24054,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (18 - Final: ς)",
         "order": 18,
-        "name": "Sigma",
-        "sound": "S (como em sol; ς no fim de palavra)",
+        "name": "sigma",
+        "sound": "s em saúde (não como em casa); σ no início e no meio da palavra, ς no fim",
         "final": "ς"
       },
       {
@@ -24067,14 +24070,15 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (19)",
         "order": 19,
-        "name": "Tau",
-        "sound": "T (como em tempo)"
+        "name": "tau",
+        "sound": "t em tempo"
       },
       {
         "term": "υ",
         "uppercase": "Υ",
-        "transliteration": "y",
+        "transliteration": "y / u",
         "translations": [
+          "ýpsilon",
           "upsilon",
           "ípsilon",
           "úpsilon",
@@ -24083,13 +24087,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Vogal (20)",
         "order": 20,
-        "name": "Upsilon",
-        "sound": "U / Y (francês 'u' ou alemão 'ü')"
+        "name": "ýpsilon",
+        "sound": "u francês ou ü alemão (nos ditongos, pronuncia-se u)"
       },
       {
         "term": "φ",
         "uppercase": "Φ",
-        "transliteration": "ph",
+        "transliteration": "ph / f",
         "translations": [
           "fi",
           "phi",
@@ -24098,8 +24102,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (21)",
         "order": 21,
-        "name": "Phi",
-        "sound": "F / Ph (como em foto)"
+        "name": "phi",
+        "sound": "f em força"
       },
       {
         "term": "χ",
@@ -24113,8 +24117,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante (22)",
         "order": 22,
-        "name": "Chi",
-        "sound": "Kh / Ch (ch alemão ou j espanhol)"
+        "name": "chi",
+        "sound": "ch alemão ou j espanhol — |ch|"
       },
       {
         "term": "ψ",
@@ -24127,8 +24131,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Consoante Dupla (23)",
         "order": 23,
-        "name": "Psi",
-        "sound": "Ps (como em psicologia)"
+        "name": "psi",
+        "sound": "ps em psiquiatria"
       },
       {
         "term": "ω",
@@ -24142,8 +24146,8 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Vogal Longa (24)",
         "order": 24,
-        "name": "Omega",
-        "sound": "Ô (longo e aberto como em avó)"
+        "name": "ômega",
+        "sound": "o em alô"
       }
     ],
     "sentences": []
@@ -24508,7 +24512,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Advérbio de negação",
             "syntax_role": "Negação verbal objetiva do modo indicativo ('Não').",
-            "notes": "Assume a forma οὐκ diante de vogal com aspiração branda por eufonia (Bergmann § 1.3.5, § 2.3)."
+            "notes": "Assume a forma οὐκ diante de vogal com aspiração branda por eufonia (Bergmann § 1.3.5; vocabulário da lição 2, nota 6)."
           },
           {
             "index": 2,
@@ -24577,7 +24581,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Verbo",
             "syntax_role": "Núcleo do predicado verbal. 1º aoristo do indicativo ativo, 3ª pessoa plural ('perguntaram').",
-            "notes": "Aumento temporal vocálico (ε > η) e alongamento da vogal contratual antes do σ do aoristo (Bergmann § 10.2.1, § 12.2)."
+            "notes": "Aumento temporal vocálico (ε > η) e alongamento da vogal contratual antes do σ do aoristo (Bergmann § 10.2.1.b, § 12.2.6, § 20.3)."
           },
           {
             "index": 3,
@@ -24613,7 +24617,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "id": "sent_02_04",
         "favorite": false,
         "term": "Ἠλίας εἶ σύ; Καὶ λέγει· Οὐκ εἰμί.",
-        "transliteration": "Hēlias ei sy? Kai legei: Ouk eimi.",
+        "transliteration": "Ēlias ei sy? Kai legei: Ouk eimi.",
         "translations": [
           "Elias és tu? E diz: Não sou",
           "Tu és Elias? E diz: Não sou"
@@ -24625,7 +24629,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 1,
             "text": "Ἠλίας",
-            "transliteration": "Hēlias",
+            "transliteration": "Ēlias",
             "lemma": "Ἠλίας",
             "composite": false,
             "word_class": "Nome Próprio (1ª declinação masc.)",
@@ -24698,7 +24702,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Interrogativa Copulativa e Negação Absoluta",
-        "notes": "Jo 1.21c. O advérbio proclítico οὐ recebe acento agudo (οὔ) quando usado isoladamente em fim de frase (Bergmann § 1.3.5, § 2.3).",
+        "notes": "Jo 1.21c. O advérbio proclítico οὐ recebe acento agudo (οὔ) quando usado isoladamente em fim de frase (Bergmann § 1.3.5; vocabulário da lição 2: οὐ (οὐκ, οὐχ, οὔ)).",
         "tokens": [
           {
             "index": 1,
@@ -24763,7 +24767,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 1,
             "text": "Ὑμεῖς",
             "transliteration": "Hymeis",
-            "lemma": "ὑμεῖς",
+            "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Sujeito explícito enfático (nominativo de 2ª pessoa plural: 'Vós / Vocês')."
@@ -24890,7 +24894,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 1,
             "text": "Ἡμεῖς",
             "transliteration": "Hēmeis",
-            "lemma": "ἡμεῖς",
+            "lemma": "ἐγώ",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Sujeito explícito enfático (nominativo de 1ª pessoa plural: 'Nós')."
@@ -25113,7 +25117,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal Bitransitiva",
-        "notes": "Jo 10.28a. O adjetivo αἰώνιος é de duas terminações, usando a forma -ον tanto para o masculino/neutro quanto para o feminino (Bergmann § 3.3, § 7.5).",
+        "notes": "Jo 10.28a. O adjetivo αἰώνιος é de duas terminações, usando a forma -ον tanto para o masculino/neutro quanto para o feminino (Bergmann: vocabulário da lição 3, αἰώνιος, -ον; introdução ao vocabulário da lição 7).",
         "tokens": [
           {
             "index": 1,
@@ -25155,7 +25159,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
-            "syntax_role": "Objeto indireto no dativo (dativo neutro/masculino plural: 'a elas / lhes')."
+            "syntax_role": "Objeto indireto no dativo (dativo neutro plural: 'a elas / lhes', referindo-se a τὰ πρόβατα)."
           },
           {
             "index": 4,
@@ -25265,7 +25269,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal Transitiva Negativa",
-        "notes": "Jo 10.28c. O advérbio οὐ assume a forma aspirada οὐχ diante da aspiração áspera inicial de ἁρπάσει (Bergmann § 1.3.5, § 2.3).",
+        "notes": "Jo 10.28c. O advérbio οὐ assume a forma aspirada οὐχ diante da aspiração áspera inicial de ἁρπάσει (Bergmann § 1.3.5; vocabulário da lição 2, nota 6).",
         "tokens": [
           {
             "index": 1,
@@ -25338,7 +25342,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Substantivo (3ª declinação)",
             "syntax_role": "Termo regido pela preposição ἐκ (genitivo ablativo feminino singular: 'mão').",
-            "notes": "Recebe acento agudo na última sílaba em razão do enclítico subsequente μου (Bergmann § 1.3.6)."
+            "notes": "Oxítona por natureza (χειρός); diante do enclítico μου mantém o acento agudo na última sílaba, em vez de trocá-lo pelo grave (Bergmann § 1.3, § 1.3.6)."
           },
           {
             "index": 9,
@@ -25516,7 +25520,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "term": "σῴζω",
+        "term": "σῴζω [σῳδ-]",
         "transliteration": "sōzō",
         "translations": [
           "salvar",
@@ -25538,7 +25542,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Artigo"
       },
       {
-        "term": "ζωή",
+        "term": "ζωή, -ῆς, ἡ",
         "transliteration": "zōē",
         "translations": [
           "vida"
@@ -25546,7 +25550,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "term": "θεός",
+        "term": "θεός, -οῦ, ὁ",
         "transliteration": "theos",
         "translations": [
           "deus",
@@ -25555,7 +25559,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "term": "κόσμος",
+        "term": "κόσμος, -ου, ὁ",
         "transliteration": "kosmos",
         "translations": [
           "mundo",
@@ -25565,7 +25569,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "term": "υἱός",
+        "term": "υἱός, -οῦ, ὁ",
         "transliteration": "huios",
         "translations": [
           "filho",
@@ -25574,7 +25578,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "term": "αἰώνιος",
+        "term": "αἰώνιος, -ον",
         "transliteration": "aiōnios",
         "translations": [
           "eterno"
@@ -25628,7 +25632,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "se"
         ],
-        "type": "Conjunção"
+        "type": "Partícula Condicional"
       },
       {
         "term": "ἀλλά (ἀλλ᾽)",
@@ -25712,11 +25716,12 @@ window.GAMIDA_DEFAULT_DATA = {
         "term": "Οὕτως γὰρ ἠγάπησεν ὁ Θεὸς τὸν κόσμον, ὥστε τὸν υἱὸν αὐτοῦ τὸν μονογενῆ ἔδωκεν,",
         "transliteration": "Houtōs gar ēgapēsen ho Theos ton kosmon, hōste ton huion autou ton monogenē edōken,",
         "translations": [
-          "Assim pois amou Deus o mundo, de tal maneira que o seu filho unigênito deu,"
+          "Pois Deus amou o mundo de tal maneira que deu o seu Filho unigênito,",
+          "Assim pois amou Deus o mundo, que o seu Filho unigênito deu,"
         ],
         "type": "Frase",
         "syntax_type": "Período Composto por Subordinação Consecutiva",
-        "notes": "Jo 3.16a. A correlação οὕτως ... ὥστε introduz a consequência ou resultado da ação principal (Bergmann § 3.3, § 22.6).",
+        "notes": "Jo 3.16a. A correlação οὕτως ... ὥστε introduz a consequência ou resultado da ação principal (Bergmann: vocabulário da lição 3, οὕτω(ς) — \"οὕτως ... ὥστε ≈ de tal maneira ... que\").",
         "tokens": [
           {
             "index": 1,
@@ -25734,7 +25739,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "γάρ",
             "composite": false,
             "word_class": "Conjunção causal pospositiva",
-            "syntax_role": "Conectivo explicativo/causal ('pois / porque'). Nunca ocupa a primeira posição na frase (Bergmann § 3.3)."
+            "syntax_role": "Conectivo explicativo/causal ('pois / porque'). Palavra pospositiva: nunca é a primeira da frase (Bergmann, vocabulário da lição 3, nota 3)."
           },
           {
             "index": 3,
@@ -25999,7 +26004,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Verbo",
             "syntax_role": "Núcleo da oração principal. 2º aoristo do indicativo ativo, 1ª pessoa singular ('vim').",
-            "notes": "Radical modificado ἐλθ- com aumento temporal vocálico η- (Bergmann § 5.5, § 11.3)."
+            "notes": "Radical modificado ἐλθ- com aumento temporal (ε > η) (Bergmann § 10.2, § 11.3; vocabulário da lição 5: ἔρχομαι [rad. 2.º aor.: ἐλθ-])."
           },
           {
             "index": 3,
@@ -26041,7 +26046,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Composto por Coordenação Explicativa e Subordinação Final",
-        "notes": "Jo 12.47. A forma κρίνω é homógrafa na 1ª pessoa singular do presente do indicativo (primeira ocorrência) e do presente do subjuntivo (segunda ocorrência, após ἵνα) (Bergmann § 3.2.1).",
+        "notes": "Jo 12.47. A forma κρίνω é homógrafa na 1ª pessoa singular do presente do indicativo (primeira ocorrência) e do presente do subjuntivo (segunda ocorrência, após ἵνα) (Bergmann § 3.2.1, obs. 3). Observação: a segunda ocorrência também é formalmente idêntica ao aoristo do subjuntivo (aor. ἔκρινα); a gramática a usa na lição 3 como presente do subjuntivo.",
         "tokens": [
           {
             "index": 1,
@@ -26136,7 +26141,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Principal Exortativa com Subordinada Final Negativa",
-        "notes": "Cf. Rm 14.13 / Mt 7.1. A 1ª pessoa do plural do subjuntivo (κρίνωμεν) expressa uma exortação (subjuntivoortativo, Bergmann § 3.3.1).",
+        "notes": "Cf. Mt 7.1 (frase adaptada, como na gramática). A 1ª pessoa do plural do subjuntivo (κρίνωμεν) expressa uma exortação (subjuntivo exortativo, Bergmann § 3.3.1).",
         "tokens": [
           {
             "index": 1,
@@ -26363,19 +26368,56 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "type": "table",
-        "title": "Infinitivos do Subjuntivo",
+        "title": "Terminações: Presente do Indicativo × Presente do Subjuntivo",
         "headers": [
-          "Voz",
-          "Forma do Infinitivo"
+          "Pessoa",
+          "Ind. Ativo",
+          "Subj. Ativo",
+          "Ind. Médio/Passivo",
+          "Subj. Médio/Passivo"
         ],
         "rows": [
           [
-            "Ativa",
-            "λέγειν"
+            "1ª sg.",
+            "-ω",
+            "-ω",
+            "-ομαι",
+            "-ωμαι"
           ],
           [
-            "Média/Passiva",
-            "λύεσθαι"
+            "2ª sg.",
+            "-εις",
+            "-ῃς",
+            "-ῃ",
+            "-ῃ"
+          ],
+          [
+            "3ª sg.",
+            "-ει",
+            "-ῃ",
+            "-εται",
+            "-ηται"
+          ],
+          [
+            "1ª pl.",
+            "-ομεν",
+            "-ωμεν",
+            "-όμεθα",
+            "-ώμεθα"
+          ],
+          [
+            "2ª pl.",
+            "-ετε",
+            "-ητε",
+            "-εσθε",
+            "-ησθε"
+          ],
+          [
+            "3ª pl.",
+            "-ουσι(ν)",
+            "-ωσι(ν)",
+            "-ονται",
+            "-ωνται"
           ]
         ]
       }
@@ -26448,7 +26490,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "term": "ἀλήθεια",
+        "term": "ἀλήθεια, -ας, ἡ",
         "transliteration": "alētheia",
         "translations": [
           "verdade"
@@ -26456,7 +26498,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "term": "κύριος",
+        "term": "κύριος, -ου, ὁ",
         "transliteration": "kyrios",
         "translations": [
           "amo",
@@ -26468,7 +26510,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "term": "λόγος",
+        "term": "λόγος, -ου, ὁ",
         "transliteration": "logos",
         "translations": [
           "palavra",
@@ -26485,7 +26527,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "term": "οἶκος",
+        "term": "οἶκος, -ου, ὁ",
         "transliteration": "oikos",
         "translations": [
           "casa",
@@ -26498,7 +26540,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "term": "πατήρ",
+        "term": "πατήρ, πατρός, ὁ",
         "transliteration": "patēr",
         "translations": [
           "pai"
@@ -26506,7 +26548,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "term": "πνεῦμα",
+        "term": "πνεῦμα, -ατος, τό",
         "transliteration": "pneuma",
         "translations": [
           "vento",
@@ -26517,7 +26559,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "term": "σωτήρ",
+        "term": "σωτήρ, -ῆρος, ὁ",
         "transliteration": "sōtēr",
         "translations": [
           "salvador",
@@ -26541,7 +26583,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "ou seja",
           "a saber"
         ],
-        "type": "Conjunção"
+        "type": "Partícula"
       },
       {
         "term": "ἐκεῖνος, -η, -ο",
@@ -26619,6 +26661,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "term": "παρά (παρ')",
         "transliteration": "para",
         "translations": [
+          "de",
           "da parte de",
           "perto de",
           "junto de",
@@ -26730,7 +26773,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 1,
             "text": "ὑμεῖς",
             "transliteration": "Hymeis",
-            "lemma": "ὑμεῖς",
+            "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Sujeito paciente explícito e enfático (nominativo de 2ª pessoa plural: 'vós / vocês')."
@@ -26914,7 +26957,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "δίκαιος",
             "composite": false,
             "word_class": "Adjetivo substantivado (2ª declinação)",
-            "syntax_role": "Termo regido pela preposição ὑπὲρ (genitivo ablativo masculino singular: '[um] justo')."
+            "syntax_role": "Termo regido pela preposição ὑπὲρ ('em favor de'), genitivo masculino singular: '[um] justo'."
           },
           {
             "index": 4,
@@ -26940,7 +26983,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "id": "sent_04_06",
         "favorite": false,
         "term": "Ἐάν τις ἀγαπᾷ με τὸν λόγον μου τηρήσει,",
-        "transliteration": "Ean tis agapā me ton logon mou tērēsei,",
+        "transliteration": "Ean tis agapa me ton logon mou tērēsei,",
         "translations": [
           "Se alguém me ama guardará a minha palavra,",
           "Se alguém ama a mim a minha palavra guardará,"
@@ -26957,7 +27000,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Conjunção subordinativa condicional",
             "syntax_role": "Introduz a prótase condicional eventual ('Se / No caso de').",
-            "notes": "Recebe acento agudo adicional por ser seguida do enclítico τις (Bergmann § 1.3.6)."
+            "notes": "Oxítona; diante do enclítico τις mantém o acento agudo na última sílaba, em vez de trocá-lo pelo grave (Bergmann § 1.3, § 1.3.6)."
           },
           {
             "index": 2,
@@ -26971,7 +27014,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 3,
             "text": "ἀγαπᾷ",
-            "transliteration": "Agapā",
+            "transliteration": "Agapa",
             "lemma": "ἀγαπάω",
             "composite": false,
             "word_class": "Verbo contraído (-άω)",
@@ -27142,7 +27185,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Verbal Transitiva Coordenada",
-        "notes": "Jo 14.23c. A preposição παρά seguida de caso dativo indica proximidade ou companhia ao lado de alguém ('junto a / com', Bergmann § 4.3, § 8.2).",
+        "notes": "Jo 14.23c. A preposição παρά seguida de caso dativo indica proximidade ou companhia ao lado de alguém ('junto a / com', Bergmann: vocabulário da lição 4, παρά; lição 8).",
         "tokens": [
           {
             "index": 1,
@@ -27236,7 +27279,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "ὑμᾶς",
             "transliteration": "Hymas",
-            "lemma": "ὑμεῖς",
+            "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Objeto direto de ὁδηγήσει (acusativo de 2ª pessoa plural: 'vocês / vos')."
@@ -27363,7 +27406,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Verbo",
             "syntax_role": "Núcleo da segunda oração. Futuro do indicativo passivo, 2ª pessoa singular ('serás salvo').",
-            "notes": "Queda da dental do radical (σῳδ-) antes de -θησ- (Bergmann § 4.2.5)."
+            "notes": "Pela regra da § 4.2.5 (dental + θησ > σθησ) esperar-se-ia σωσθησ-; σῴζω [σῳδ-] forma o futuro passivo sem o σ: σωθήσομαι."
           },
           {
             "index": 9,
@@ -27822,7 +27865,11 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "rows": [
           [
-            "Ativa / Média",
+            "Ativa",
+            "λύσειν"
+          ],
+          [
+            "Média",
             "λύσεσθαι"
           ],
           [
@@ -28401,12 +28448,12 @@ window.GAMIDA_DEFAULT_DATA = {
         "term": "Ἀπεκρίθη Ἰησοῦς καὶ εἶπεν αὐτῷ, Ὅτι εἶπόν σοι, εἶδόν σε ὑποκάτω τῆς συκῆς, πιστεύεις;",
         "transliteration": "Apekrithē Iēsous kai eipen autō, Hoti eipon soi, eidon se hypokatō tēs sykēs, pisteueis?",
         "translations": [
-          "Respondeu Jesus e disse-lhe: Porque te disse, vi você debaixo da figueira, crês?",
-          "Respondeu Jesus e disse a ele: Porque disse a você, vi você debaixo de a figueira, você crê?"
+          "Respondeu Jesus e disse-lhe: Porque te disse que te vi debaixo da figueira, crês?",
+          "Respondeu Jesus e disse a ele: Porque disse a você: vi você debaixo da figueira, você crê?"
         ],
         "type": "Frase",
         "syntax_type": "Período Composto: Introdução Narrativa e Interrogação com Subordinada Causal",
-        "notes": "Jo 1.50. Apresenta os 2ºs aoristos irregulares εἶπον (de λέγω) e εἶδον (de ὁράω) introduzidos no vocabulário da lição (Bergmann § 5.5).",
+        "notes": "Jo 1.50. Apresenta os 2ºs aoristos irregulares εἶπον (de λέγω) e εἶδον (de ὁράω) introduzidos no vocabulário da lição (Bergmann: vocabulário da lição 5 — εἶπον [2.º aor. de λέγω], εἶδον [2.º aor. de ὁράω]; § 11.3).",
         "tokens": [
           {
             "index": 1,
@@ -28609,7 +28656,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "ὑμῖν,",
             "transliteration": "Hymin",
-            "lemma": "ὑμεῖς",
+            "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Objeto indireto de λέγω (dativo de 2ª pessoa plural: 'a vós / a vocês')."
@@ -29361,8 +29408,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "o reino de Deus"
         ],
         "type": "Frase",
-        "syntax_type": "Sintagma Nominal com Genitivo Subjetivo (§ 6)",
-        "notes": "Ilustra substantivo feminino da 1ª declinação em -α puro (Bergmann § 6.1).",
+        "syntax_type": "Sintagma Nominal com Adjunto no Genitivo (§ 6)",
+        "notes": "Ilustra substantivo feminino da 1ª declinação em -α puro (Bergmann § 6.2.1).",
         "favorite": false,
         "tokens": [
           {
@@ -29386,7 +29433,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo nominal (nominativo feminino singular: 'reino', tema em -α puro)",
             "inflection": "Nominativo feminino singular",
             "context_meaning": "reino",
-            "notes": "1ª declinação em -α puro (Bergmann § 6.1)"
+            "notes": "1ª declinação em -α puro (Bergmann § 6.2.1)"
           },
           {
             "index": 3,
@@ -29420,8 +29467,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "a glória de Deus"
         ],
         "type": "Frase",
-        "syntax_type": "Sintagma Nominal com Genitivo Subjetivo (§ 6)",
-        "notes": "Substantivo feminino da 1ª declinação em -α impuro (Bergmann § 6.2).",
+        "syntax_type": "Sintagma Nominal com Adjunto no Genitivo (§ 6)",
+        "notes": "Substantivo feminino da 1ª declinação em -α impuro (Bergmann § 6.2.2).",
         "favorite": false,
         "tokens": [
           {
@@ -29445,7 +29492,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo nominal (nominativo feminino singular: 'glória', tema em -α impuro)",
             "inflection": "Nominativo feminino singular",
             "context_meaning": "glória",
-            "notes": "1ª declinação em -α impuro (Bergmann § 6.2)"
+            "notes": "1ª declinação em -α impuro (Bergmann § 6.2.2)"
           },
           {
             "index": 3,
@@ -29480,7 +29527,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma Nominal Simples (§ 6)",
-        "notes": "1ª declinação em -α puro precedido por vogal iota/épsilon (Bergmann § 6.1).",
+        "notes": "1ª declinação em -α puro precedido por vogal iota/épsilon (Bergmann § 6.2.1).",
         "favorite": false,
         "tokens": [
           {
@@ -29516,7 +29563,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma Nominal com Genitivo de Origem (§ 6)",
-        "notes": "1ª declinação em -η (Bergmann § 6.3).",
+        "notes": "1ª declinação em -η (Bergmann § 6.2.3).",
         "favorite": false,
         "tokens": [
           {
@@ -29540,7 +29587,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo nominal (nominativo feminino singular: 'paz', tema em -η)",
             "inflection": "Nominativo feminino singular",
             "context_meaning": "paz",
-            "notes": "1ª declinação tema em -η (Bergmann § 6.3)"
+            "notes": "1ª declinação tema em -η (Bergmann § 6.2.3)"
           },
           {
             "index": 3,
@@ -29575,7 +29622,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma Nominal Simples (§ 6)",
-        "notes": "1ª declinação oxítona em -η (Bergmann § 6.3).",
+        "notes": "1ª declinação oxítona em -η (Bergmann § 6.2.3).",
         "favorite": false,
         "tokens": [
           {
@@ -29610,8 +29657,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "a voz do Senhor"
         ],
         "type": "Frase",
-        "syntax_type": "Sintagma Nominal com Genitivo Subjetivo (§ 6)",
-        "notes": "1ª declinação feminina em -η oxítona (Bergmann § 6.3).",
+        "syntax_type": "Sintagma Nominal com Adjunto no Genitivo (§ 6)",
+        "notes": "1ª declinação feminina em -η oxítona (Bergmann § 6.2.3).",
         "favorite": false,
         "tokens": [
           {
@@ -29669,7 +29716,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma Nominal Simples (§ 6)",
-        "notes": "1ª declinação em -α puro após iota (Bergmann § 6.1).",
+        "notes": "1ª declinação em -α puro após iota (Bergmann § 6.2.1).",
         "favorite": false,
         "tokens": [
           {
@@ -29705,7 +29752,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma Nominal Simples (§ 6)",
-        "notes": "1ª declinação feminina em -η oxítona (Bergmann § 6.3).",
+        "notes": "1ª declinação feminina em -η oxítona (Bergmann § 6.2.3).",
         "favorite": false,
         "tokens": [
           {
@@ -29741,7 +29788,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma Nominal Simples (§ 6)",
-        "notes": "1ª declinação em -α puro após rho (Bergmann § 6.1).",
+        "notes": "1ª declinação em -α puro após rho (Bergmann § 6.2.1).",
         "favorite": false,
         "tokens": [
           {
@@ -29777,7 +29824,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma Nominal Simples (§ 6)",
-        "notes": "1ª declinação em -α puro após iota (Bergmann § 6.1).",
+        "notes": "1ª declinação em -α puro após iota (Bergmann § 6.2.1).",
         "favorite": false,
         "tokens": [
           {
@@ -29813,7 +29860,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma Nominal Simples (§ 6)",
-        "notes": "1ª declinação em -η oxítona (Bergmann § 6.3).",
+        "notes": "1ª declinação em -η oxítona (Bergmann § 6.2.3).",
         "favorite": false,
         "tokens": [
           {
@@ -29849,7 +29896,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma Nominal Simples (§ 6)",
-        "notes": "1ª declinação em -α puro após iota (Bergmann § 6.1).",
+        "notes": "1ª declinação em -α puro após iota (Bergmann § 6.2.1).",
         "favorite": false,
         "tokens": [
           {
@@ -29885,7 +29932,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Discurso Direto com Oração Copulativa Predicativa Tripla (§ 6)",
-        "notes": "Jo 14.6. Tríplice predicativo: ὁδός (2ª decl. fem.), ἀλήθεια (1ª decl. fem.) e ζωή (1ª decl. fem.) (Bergmann § 6.1, § 6.3).",
+        "notes": "Jo 14.6. Tríplice predicativo: ὁδός (2ª decl. fem.), ἀλήθεια (1ª decl. fem.) e ζωή (1ª decl. fem.) (Bergmann § 5.5.2, § 6.2.1, § 6.2.3).",
         "favorite": false,
         "tokens": [
           {
@@ -30122,7 +30169,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Interrogativa Direta com Vocativo e Dativo Regido (§ 6)",
-        "notes": "At 26.27. O substantivo προφήτης é masculino da 1ª declinação em -ης (Bergmann § 6.4).",
+        "notes": "At 26.27. O substantivo προφήτης é masculino da 1ª declinação em -ης (Bergmann § 6.2.5).",
         "favorite": false,
         "tokens": [
           {
@@ -30179,7 +30226,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Objeto em dativo regido por πιστεύω (dativo masculino plural: 'profetas', masculino da 1ª declinação em -ης)",
             "inflection": "Dativo masculino plural",
             "context_meaning": "profetas",
-            "notes": "Substantivo masculino da 1ª declinação em -ης (Bergmann § 6.4)"
+            "notes": "Substantivo masculino da 1ª declinação em -ης (Bergmann § 6.2.5)"
           }
         ]
       },
@@ -30192,7 +30239,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Copulativa Essencial Teológica (§ 6)",
-        "notes": "1Jo 4.8. ἀγάπη é substantivo da 1ª declinação em -η atuando como predicativo anartro (Bergmann § 6.3).",
+        "notes": "1Jo 4.8. ἀγάπη é substantivo da 1ª declinação em -η atuando como predicativo anartro (Bergmann § 6.2.3; o versículo é o exemplo da § 6.3.A.2, predicativo do sujeito).",
         "favorite": false,
         "tokens": [
           {
@@ -30227,7 +30274,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Predicativo do sujeito anartro (nominativo feminino singular: 'amor', tema em -η)",
             "inflection": "Nominativo feminino singular",
             "context_meaning": "amor",
-            "notes": "1ª declinação tema em -η (Bergmann § 6.3)"
+            "notes": "1ª declinação tema em -η (Bergmann § 6.2.3)"
           },
           {
             "index": 4,
@@ -30251,7 +30298,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Transitiva Direta Negativa com Objeto Topicalizado (§ 6)",
-        "notes": "Jo 5.42. ἀγάπην no acusativo feminino singular da 1ª declinação (Bergmann § 6.3).",
+        "notes": "Jo 5.42. ἀγάπην no acusativo feminino singular da 1ª declinação (Bergmann § 6.2.3).",
         "favorite": false,
         "tokens": [
           {
@@ -30404,7 +30451,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "καὶ",
             "transliteration": "kai",
-            "lemma": "καí",
+            "lemma": "καί",
             "composite": false,
             "word_class": "Advérbio / Conjunção enfática",
             "syntax_role": "Partícula aditiva enfática ('até / também')",
@@ -30444,7 +30491,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Passiva Perfeita com Dativo Locativo e Agente Instrumental (§ 6)",
-        "notes": "Rm 5.5. Apresenta καρδίαις no dativo plural feminino da 1ª declinação em -α puro (Bergmann § 6.1).",
+        "notes": "Rm 5.5. Apresenta καρδίαις no dativo plural feminino da 1ª declinação em -α puro (Bergmann § 6.2.1).",
         "favorite": false,
         "tokens": [
           {
@@ -30487,7 +30534,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo (2ª declinação)",
-            "syntax_role": "Adjunto adnominal no genitivo subjetivo (genitivo masculino singular: 'Deus')",
+            "syntax_role": "Adjunto adnominal no genitivo (genitivo masculino singular: 'Deus'). A gramática discute aqui as leituras descritiva, subjetiva, objetiva e até ablativa, e conclui que o texto comporta todas (§ 6.3.B; 'Aplicando o texto à vida' da lição 6).",
             "inflection": "Genitivo masculino singular",
             "context_meaning": "Deus"
           },
@@ -30534,7 +30581,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo regido pela preposição ἐν (dativo feminino plural: 'corações', tema em -α puro)",
             "inflection": "Dativo feminino plural",
             "context_meaning": "corações",
-            "notes": "1ª declinação dativo plural em -αις (Bergmann § 6.1)"
+            "notes": "1ª declinação dativo plural em -αις (Bergmann § 6.2.1)"
           },
           {
             "index": 9,
@@ -30655,7 +30702,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "type": "table",
-        "title": "1ª Declinação: Fem. -α puro (γλῶσσα)",
+        "title": "1ª Declinação: Fem. -α não precedido por ε, ι, ρ (γλῶσσα)",
         "headers": [
           "Caso",
           "Singular",
@@ -31027,7 +31074,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma com Posição Atributiva do Adjetivo (1ª Posição) (§ 7)",
-        "notes": "Adjetivo de duas terminações αἰώνιος (-ος, -ον) na 1ª posição atributiva (artigo + adjetivo + substantivo, Bergmann § 7.1, § 7.2).",
+        "notes": "Adjetivo de duas terminações αἰώνιος (-ος, -ον) na 1ª posição atributiva (artigo + adjetivo + substantivo, Bergmann § 7.3.1; adjetivo de duas terminações: introdução ao vocabulário da lição 7).",
         "favorite": false,
         "tokens": [
           {
@@ -31051,7 +31098,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Adjunto adnominal atributivo (nominativo feminino singular: 'eterna')",
             "inflection": "Nominativo feminino singular",
             "context_meaning": "eterna",
-            "notes": "Adjetivo de 2 terminações em posição atributiva (Bergmann § 7.1)"
+            "notes": "Adjetivo de 2 terminações em posição atributiva (Bergmann § 7.3.1)"
           },
           {
             "index": 3,
@@ -31075,7 +31122,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Sintagma com Posição Atributiva do Adjetivo (2ª Posição) (§ 7)",
-        "notes": "Ilustra a 2ª posição atributiva com repetição do artigo: artigo + substantivo + artigo + adjetivo (Bergmann § 7.2).",
+        "notes": "Ilustra a 2ª posição atributiva com repetição do artigo: artigo + substantivo + artigo + adjetivo (Bergmann § 7.3.1).",
         "favorite": false,
         "tokens": [
           {
@@ -31121,7 +31168,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Adjunto adnominal na 2ª posição atributiva (acusativo feminino singular: 'eterna')",
             "inflection": "Acusativo feminino singular",
             "context_meaning": "eterna",
-            "notes": "2ª posição atributiva com repetição do artigo (Bergmann § 7.2)"
+            "notes": "2ª posição atributiva com repetição do artigo (Bergmann § 7.3.1)"
           }
         ]
       },
@@ -31134,7 +31181,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Nominal com Posição Predicativa dos Adjetivos (§ 7)",
-        "notes": "Ap 21.5. Adjetivos sem artigo (πιστοὶ, ἀληθινοί) na posição predicativa com elipse do verbo εἰσί (Bergmann § 7.3).",
+        "notes": "Ap 22.6. Adjetivos sem artigo (πιστοὶ, ἀληθινοί) na posição predicativa com elipse do verbo εἰσί (Bergmann § 7.3.2).",
         "favorite": false,
         "tokens": [
           {
@@ -31180,7 +31227,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "1º predicativo do sujeito na posição predicativa (nominativo masculino plural: 'confiáveis / fiéis')",
             "inflection": "Nominativo masculino plural",
             "context_meaning": "confiáveis",
-            "notes": "Posição predicativa anartra (Bergmann § 7.3)"
+            "notes": "Posição predicativa anartra (Bergmann § 7.3.2)"
           },
           {
             "index": 5,
@@ -31215,7 +31262,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Subordinada Adverbial Final com Adjetivo Substantivado (§ 7)",
-        "notes": "1Jo 5.20. Ilustra o uso substantivado do adjetivo pelo artigo definido (Bergmann § 7.4).",
+        "notes": "1Jo 5.20. Ilustra o uso substantivado do adjetivo pelo artigo definido (Bergmann § 7.3.3).",
         "favorite": false,
         "tokens": [
           {
@@ -31272,7 +31319,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Objeto direto substantivado pelo artigo (acusativo masculino singular: 'verdadeiro')",
             "inflection": "Acusativo masculino singular",
             "context_meaning": "verdadeiro",
-            "notes": "Adjetivo substantivado (Bergmann § 7.4)"
+            "notes": "Adjetivo substantivado (Bergmann § 7.3.3)"
           }
         ]
       },
@@ -31285,7 +31332,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Copulativa Elíptica com Predicativo Enfático Anteposto (§ 7)",
-        "notes": "Hb 4.12. Particípio adjetivado ζῶν e adjetivo da 3ª declinação ἐνεργής em posição enfática predicativa inicial (Bergmann § 7.3).",
+        "notes": "Hb 4.12. Particípio adjetivado ζῶν e adjetivo da 3ª declinação ἐνεργής em posição enfática predicativa inicial (Bergmann § 7.3.2; o versículo é o exemplo da § 15.2.3, particípio como adjetivo predicativo).",
         "favorite": false,
         "tokens": [
           {
@@ -31375,7 +31422,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "2º predicativo do sujeito (nominativo masculino singular: 'eficaz / operante')",
             "inflection": "Nominativo masculino singular",
             "context_meaning": "eficaz",
-            "notes": "Adjetivo em -ης da 3ª declinação (Bergmann § 7.1)"
+            "notes": "Adjetivo em -ης da 3ª declinação (Bergmann § 13.3)"
           }
         ]
       },
@@ -31388,7 +31435,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Comparativa de Superioridade (§ 7)",
-        "notes": "1Jo 4.4. Comparativo irregular μείζων (tema em nasal da 3ª declinação) com a partícula de comparação ἤ (Bergmann § 7.5).",
+        "notes": "1Jo 4.4. Comparativo irregular μείζων (tema em nasal da 3ª declinação) com a partícula de comparação ἤ (Bergmann § 7.4.1.a).",
         "favorite": false,
         "tokens": [
           {
@@ -31401,7 +31448,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Predicativo do sujeito em grau comparativo de superioridade (nominativo masculino singular: 'maior')",
             "inflection": "Nominativo masculino singular comparativo",
             "context_meaning": "maior",
-            "notes": "Grau comparativo irregular de μέγας (Bergmann § 7.5)"
+            "notes": "Grau comparativo irregular de μέγας (Bergmann § 7.4)"
           },
           {
             "index": 2,
@@ -31507,13 +31554,13 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_07_07",
         "term": "ὁ λόγος τοῦ Θεοῦ τομώτερος ὑπὲρ πᾶσαν μάχαιραν δίστομον.",
-        "transliteration": "ho logos tou Theou tomōteros hyper pasan mchairan distomon.",
+        "transliteration": "ho logos tou Theou tomōteros hyper pasan machairan distomon.",
         "translations": [
           "A palavra de Deus é mais cortante que qualquer espada de dois gumes."
         ],
         "type": "Frase",
         "syntax_type": "Oração Comparativa com Preposição ὑπέρ (§ 7)",
-        "notes": "Hb 4.12. Comparativo regular em -τερος (τομώτερος) com comparação expressa por ὑπέρ + acusativo (Bergmann § 7.5).",
+        "notes": "Hb 4.12. Comparativo regular em -τερος (τομώτερος) com comparação expressa por ὑπέρ + acusativo (Bergmann § 7.4.1.c).",
         "favorite": false,
         "tokens": [
           {
@@ -31570,7 +31617,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Predicativo do sujeito em grau comparativo (nominativo masculino singular: 'mais cortante')",
             "inflection": "Nominativo masculino singular comparativo",
             "context_meaning": "mais cortante",
-            "notes": "Comparativo regular em -τερος (Bergmann § 7.5)"
+            "notes": "Comparativo regular em -τερος (Bergmann § 7.4)"
           },
           {
             "index": 6,
@@ -31627,7 +31674,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Comparativo com Oração Subjetiva Infinitiva (§ 7)",
-        "notes": "Mc 9.45. Adjetivo neutro καλόν atuando como predicativo impessoal com valor comparativo através de ἤ (Bergmann § 7.5).",
+        "notes": "Mc 9.45. Adjetivo neutro καλόν atuando como predicativo impessoal com valor comparativo através de ἤ (Bergmann § 7.4.1.d).",
         "favorite": false,
         "tokens": [
           {
@@ -31828,7 +31875,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Condicional com Comparação Adverbial (§ 7)",
-        "notes": "Mc 9.42. O comparativo é reforçado pelo advérbio μᾶλλον ('mais / antes') associado a καλόν (Bergmann § 7.5).",
+        "notes": "Mc 9.42. O comparativo é reforçado pelo advérbio μᾶλλον ('mais / antes') associado a καλόν (Bergmann § 7.4.1.e).",
         "favorite": false,
         "tokens": [
           {
@@ -31897,7 +31944,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Interrogativa Direta com Adjetivo em Sentido Superlativo (§ 7)",
-        "notes": "Mt 22.36. O adjetivo positivo μεγάλη ('grande') é empregado no grego bíblico com valor de superlativo ('o maior') (Bergmann § 7.5).",
+        "notes": "Mt 22.36. O adjetivo positivo μεγάλη ('grande') é empregado no grego bíblico com valor de superlativo ('o maior') (Bergmann § 7.4.2.a).",
         "favorite": false,
         "tokens": [
           {
@@ -31932,7 +31979,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Predicativo anartro com força superlativa semítica (nominativo feminino singular: 'grande / maior')",
             "inflection": "Nominativo feminino singular",
             "context_meaning": "o maior",
-            "notes": "Positivo com valor superlativo (Bergmann § 7.5)"
+            "notes": "Positivo com valor superlativo (Bergmann § 7.4.2.a)"
           },
           {
             "index": 4,
@@ -31978,7 +32025,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Copulativa Elíptica com Genitivo de Comparação (§ 7)",
-        "notes": "1Co 13.13. Ilustra o genitivo de comparação τούτων após o comparativo μείζων sem uso da partícula ἤ (Bergmann § 7.5).",
+        "notes": "1Co 13.13. O comparativo μείζων é usado com sentido superlativo: \"o maior destes\" (Bergmann § 7.4.2.b, que usa este versículo). τούτων funciona como genitivo partitivo (\"dentre estes\", § 6.3.B.4).",
         "favorite": false,
         "tokens": [
           {
@@ -32002,7 +32049,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Predicativo do sujeito em posição inicial (nominativo feminino singular: 'maior')",
             "inflection": "Nominativo feminino singular comparativo",
             "context_meaning": "maior",
-            "notes": "Comparativo irregular de μέγας (Bergmann § 7.5)"
+            "notes": "Comparativo de μέγας com sentido superlativo (Bergmann § 7.4.2.b)"
           },
           {
             "index": 3,
@@ -32022,10 +32069,10 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "οὗτος",
             "composite": false,
             "word_class": "Pronome demonstrativo",
-            "syntax_role": "Genitivo de comparação regido pelo comparativo μείζων (genitivo neutro plural: 'destes / destas coisas')",
+            "syntax_role": "Genitivo partitivo dependente de μείζων em sentido superlativo (genitivo neutro plural: 'destes / dentre estes')",
             "inflection": "Genitivo neutro plural",
             "context_meaning": "destes",
-            "notes": "Genitivo de comparação (Bergmann § 7.5)"
+            "notes": "Genitivo partitivo (Bergmann § 6.3.B.4; § 7.4.2.b)"
           },
           {
             "index": 5,
@@ -32060,7 +32107,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Oração Circunstancial de Particípio (§ 7)",
-        "notes": "2Co 8.17. Comparativo absoluto σπουδαιότερος com valor de superlativo/elativo ('muito diligente') (Bergmann § 7.5).",
+        "notes": "2Co 8.17. Comparativo absoluto σπουδαιότερος com valor de superlativo/elativo ('muito diligente') (Bergmann § 7.4.2.c).",
         "favorite": false,
         "tokens": [
           {
@@ -32073,7 +32120,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Predicativo do sujeito em grau comparativo absoluto (nominativo masculino singular: 'muito diligente / mais diligente')",
             "inflection": "Nominativo masculino singular comparativo",
             "context_meaning": "muito diligente",
-            "notes": "Comparativo absoluto / elativo (Bergmann § 7.5)"
+            "notes": "Comparativo absoluto / elativo (Bergmann § 7.4.2.c)"
           },
           {
             "index": 2,
@@ -32130,7 +32177,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Subordinado Final com Substantivação de Particípio e Adjetivo Atributivo (§ 7)",
-        "notes": "Jo 3.16. Contém πᾶς na posição atributiva com o particípio substantivado ὁ πιστεύων e αἰώνιον modificando ζωήν (Bergmann § 7.1, § 7.2).",
+        "notes": "Jo 3.16. πᾶς vem antes do artigo + particípio substantivado (πᾶς ὁ πιστεύων = \"todo aquele que crê\", § 15.2.2); ζωὴν αἰώνιον, sem artigo, tem sentido atributivo (Bergmann § 7.3, observação; lição 7, \"Aplicando o texto à vida\").",
         "favorite": false,
         "tokens": [
           {
@@ -32154,7 +32201,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Modificador universal do sujeito (nominativo masculino singular: 'todo')",
             "inflection": "Nominativo masculino singular",
             "context_meaning": "todo",
-            "notes": "Adjetivo πᾶς (Bergmann § 7.1)"
+            "notes": "Adjetivo πᾶς (vocabulário da lição 3)"
           },
           {
             "index": 3,
@@ -32277,7 +32324,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Interrogativa Direta Copulativa (§ 7)",
-        "notes": "Mt 24.45. Adjetivo πιστός na 1ª posição atributiva (artigo + adjetivo + substantivo, Bergmann § 7.2).",
+        "notes": "Mt 24.45. Adjetivo πιστός na 1ª posição atributiva (artigo + adjetivo + substantivo, Bergmann § 7.3.1).",
         "favorite": false,
         "tokens": [
           {
@@ -32346,7 +32393,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração com Vocativo Qualificado e Subordinação Final (§ 7)",
-        "notes": "Lc 18.18. Vocativo da 2ª declinação qualificado pelo adjetivo ἀγαθέ (vocativo masculino singular, Bergmann § 7.1).",
+        "notes": "Mt 19.16. Vocativo da 2ª declinação qualificado pelo adjetivo ἀγαθέ (vocativo masculino singular, Bergmann § 7.1).",
         "favorite": false,
         "tokens": [
           {
@@ -32448,7 +32495,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Copulativo Declarativo com Oração Explicativa Subordinada (§ 7)",
-        "notes": "Jo 17.3. Acumulação de adjetivos atributivos: μόνον e ἀληθινόν qualificando Θεόν (Bergmann § 7.1, § 7.2).",
+        "notes": "Jo 17.3. Acumulação de adjetivos atributivos: μόνον e ἀληθινόν qualificando Θεόν (Bergmann § 7.3.1).",
         "favorite": false,
         "tokens": [
           {
@@ -32594,7 +32641,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Coordenado Copulativo (§ 7)",
-        "notes": "1Jo 1.2. 2ª posição atributiva com repetição do artigo: τὴν ζωὴν τὴν αἰώνιον (Bergmann § 7.2).",
+        "notes": "1Jo 1.2. 2ª posição atributiva com repetição do artigo: τὴν ζωὴν τὴν αἰώνιον (Bergmann § 7.3.1).",
         "favorite": false,
         "tokens": [
           {
@@ -32695,7 +32742,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Adjunto atributivo na 2ª posição (acusativo feminino singular: 'eterna')",
             "inflection": "Acusativo feminino singular",
             "context_meaning": "eterna",
-            "notes": "2ª posição atributiva (Bergmann § 7.2)"
+            "notes": "2ª posição atributiva (Bergmann § 7.3.1)"
           }
         ]
       },
@@ -32708,7 +32755,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Oração Final e Adjetivo Substantivado (§ 7)",
-        "notes": "1Jo 5.20. Ilustra o adjetivo substantivado com artigo τὸν ἀληθινόν referindo-se a Deus (Bergmann § 7.4).",
+        "notes": "1Jo 5.20. Ilustra o adjetivo substantivado com artigo τὸν ἀληθινόν referindo-se a Deus (Bergmann § 7.3.3).",
         "favorite": false,
         "tokens": [
           {
@@ -32831,7 +32878,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Objeto direto substantivado (acusativo masculino singular: 'verdadeiro')",
             "inflection": "Acusativo masculino singular",
             "context_meaning": "verdadeiro",
-            "notes": "Substantivação do adjetivo (Bergmann § 7.4)"
+            "notes": "Substantivação do adjetivo (Bergmann § 7.3.3)"
           }
         ]
       },
@@ -32844,7 +32891,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Copulativa com Duplo Predicativo Qualificado por Adjetivos (§ 7)",
-        "notes": "1Jo 5.20. Contém ἀληθινός na 1ª posição atributiva com Θεός e αἰώνιος pós-posto na posição atributiva anartra com ζωή (Bergmann § 7.1, § 7.2).",
+        "notes": "1Jo 5.20. Contém ἀληθινός na 1ª posição atributiva com Θεός e αἰώνιος pós-posto na posição atributiva anartra com ζωή (Bergmann § 7.3.1 e observação).",
         "favorite": false,
         "tokens": [
           {
@@ -33065,9 +33112,12 @@ window.GAMIDA_DEFAULT_DATA = {
         "transliteration": "ana",
         "translations": [
           "para cima",
+          "acima",
+          "sobre",
+          "cada",
           "outra vez"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ ac.: para cima; acima, sobre; cada; como prefixo: para cima; outra vez"
       },
       {
         "term": "ἀντί (ἀνθ᾽)",
@@ -33080,7 +33130,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "em oposição a",
           "contra"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen.: em lugar de, em vez de; em troca de; por; como prefixo: em oposição a, contra"
       },
       {
         "term": "ἀπό (ἀπ᾽, ἀφ᾿)",
@@ -33090,7 +33140,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "desde",
           "da parte de"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen. abl.: de; desde; da parte de"
       },
       {
         "term": "διά (δι')",
@@ -33102,7 +33152,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "por causa de",
           "porque"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen.: por; por meio de; através de; c/ ac.: por causa de; διὰ (τό) + inf. ≈ por causa de, porque"
       },
       {
         "term": "εἰς",
@@ -33116,7 +33166,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "para que",
           "de maneira que"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ ac.: para, a; para dentro; em; até; εἰς (τό) + inf. ≈ para, para que; de maneira que"
       },
       {
         "term": "ἐκ (ἐξ)",
@@ -33127,7 +33177,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "a partir de",
           "por"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen. abl.: de; fora de; a partir de; por"
       },
       {
         "term": "ἐν",
@@ -33143,7 +33193,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "quando",
           "depois de"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ dat. loc.: em, dentro de, no meio de; entre; com, por; ἐν (τῷ) + inf. ≈ enquanto, quando, ao + inf."
       },
       {
         "term": "ἐπί (ἐπ᾽, ἐφ᾽)",
@@ -33157,7 +33207,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "durante",
           "para"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen., dat. loc., ac.: sobre, em, em cima de; acima; no tempo de, durante; para"
       },
       {
         "term": "κατά (κατ', καθ΄)",
@@ -33170,7 +33220,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "segundo",
           "conforme"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen.: sobre; por; c/ gen. abl.: para baixo; contra; por; c/ ac.: segundo, conforme; por"
       },
       {
         "term": "μετά (μετ΄, μεθ')",
@@ -33182,7 +33232,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "depois de",
           "após"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen.: com, junto a; entre; c/ ac.: depois de, após; μετὰ τό + inf. ≈ depois de"
       },
       {
         "term": "παρά (παρ΄)",
@@ -33197,7 +33247,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "ao longo de",
           "em comparação com"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen. abl.: de, da parte de; c/ dat. loc.: perto de, junto de, ao lado de; c/ ac.: junto a, perto de, ao longo de; c/ comp.: em comparação com"
       },
       {
         "term": "περί",
@@ -33209,7 +33259,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "ao redor de",
           "em volta de"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen.: concernente a, acerca de, sobre; c/ ac.: ao redor de, em volta de"
       },
       {
         "term": "πρό",
@@ -33220,7 +33270,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "antes de",
           "antes"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen. abl.: diante de, na frente de (posicional); antes de (temporal); πρὸ (τοῦ) + inf. ≈ antes de"
       },
       {
         "term": "πρός",
@@ -33235,7 +33285,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "assim que",
           "de modo que"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen.: (necessário) para; c/ dat. loc.: perto de, junto a; c/ ac.: para; em direção a; com; πρὸς (τό) + inf. ≈ para, a fim de"
       },
       {
         "term": "σύν",
@@ -33243,7 +33293,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "com (expressa companhia, associação)"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ dat. instr.: com (companhia, associação)"
       },
       {
         "term": "ὑπέρ",
@@ -33256,7 +33306,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "acima de",
           "além de"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen. abl.: por; em lugar de; em favor de; c/ ac.: sobre, acima de, além de"
       },
       {
         "term": "ὑπό (ὑπ᾽, ὑφ᾽)",
@@ -33268,7 +33318,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "debaixo de",
           "abaixo de"
         ],
-        "type": "Preposição"
+        "type": "Preposição — c/ gen. abl.: por, por meio de; c/ ac.: sob, debaixo de; abaixo de"
       },
       {
         "term": "δύναμαι",
@@ -33511,7 +33561,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Composto com Preposições de Movimento (πρός), Assunto (περί) e Esfera (ἐν) (§ 8)",
-        "notes": "Jo 1.47. Apresenta três preposições canônicas: πρός + acusativo (direção), περί + genitivo (assunto) e ἐν + dativo (esfera/localização) (Bergmann § 8.1, § 8.2, § 8.3).",
+        "notes": "Jo 1.47. Apresenta três preposições canônicas: πρός + acusativo (direção), περί + genitivo (assunto) e ἐν + dativo (esfera/localização) (Bergmann § 8.1 e vocabulário da lição 8).",
         "favorite": false,
         "tokens": [
           {
@@ -33590,7 +33640,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Preposição de movimento em direção a regendo acusativo ('a / para')",
             "inflection": "Rege caso acusativo",
             "context_meaning": "a",
-            "notes": "Preposição πρός com acusativo (Bergmann § 8.3)"
+            "notes": "Preposição πρός com acusativo (Bergmann, vocabulário da lição 8)"
           },
           {
             "index": 8,
@@ -33635,7 +33685,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Preposição de assunto regendo genitivo ('a respeito de / dele')",
             "inflection": "Rege caso genitivo",
             "context_meaning": "a respeito de",
-            "notes": "Preposição περί com genitivo (Bergmann § 8.2)"
+            "notes": "Preposição περί com genitivo (Bergmann, vocabulário da lição 8)"
           },
           {
             "index": 12,
@@ -33663,7 +33713,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 14,
             "text": "ἀληθῶς",
             "transliteration": "alēthōs",
-            "lemma": "ἀληθής",
+            "lemma": "ἀληθῶς",
             "composite": false,
             "word_class": "Advérbio de modo",
             "syntax_role": "Modificador adverbial de veracidade ('verdadeiramente')",
@@ -33748,7 +33798,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Discurso Direto com Oração Interrogativa de Origem (§ 8)",
-        "notes": "Jo 1.48. O advérbio interrogativo πόθεν ('de onde') expressa a ideia de procedência preposicional ablちativa.",
+        "notes": "Jo 1.48. O advérbio interrogativo πόθεν ('de onde') expressa a ideia de procedência (ideia ablativa, cf. § 6.3.B.8).",
         "favorite": false,
         "tokens": [
           {
@@ -33824,11 +33874,12 @@ window.GAMIDA_DEFAULT_DATA = {
         "term": "Ἀπεκρίθη Ἰησοῦς καὶ εἶπεν αὐτῷ, Πρὸ τοῦ σε Φίλιππον φωνῆσαι, ὄντα ὑπὸ τὴν συκῆν, εἶδόν σε.",
         "transliteration": "Apekrithē Iēsous kai eipen autō, Pro tou se Philippon phōnēsai, onta hypo tēn sykēn, eidon se.",
         "translations": [
+          "Respondeu Jesus e disse-lhe: Antes que Filipe te chamasse, quando estavas debaixo da figueira, eu te vi.",
           "Respondeu Jesus e disse a ele: Antes de a ti Filipe chamar, estando debaixo da figueira, vi a ti."
         ],
         "type": "Frase",
         "syntax_type": "Período com Oração Temporal de Infinitivo Articular Preposicionado e Preposição Locativa (§ 8)",
-        "notes": "Jo 1.48. Apresenta πρό + genitivo com infinitivo articular temporal ('antes de') e ὑπό + acusativo ('debaixo de') (Bergmann § 8.1, § 8.3).",
+        "notes": "Jo 1.48. Apresenta πρό + genitivo com infinitivo articular temporal ('antes de') e ὑπό + acusativo ('debaixo de') (Bergmann: vocabulário da lição 8 — πρὸ (τοῦ) + inf. ≈ antes de; ὑπό c/ ac.; § 19.4).",
         "favorite": false,
         "tokens": [
           {
@@ -33963,7 +34014,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Preposição de posição espacial inferior regendo acusativo ('debaixo de')",
             "inflection": "Rege caso acusativo",
             "context_meaning": "debaixo de",
-            "notes": "Preposição ὑπό com acusativo locativo (Bergmann § 8.3)"
+            "notes": "Preposição ὑπό com acusativo locativo (Bergmann, vocabulário da lição 8)"
           },
           {
             "index": 13,
@@ -34013,19 +34064,19 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_08_06",
-        "term": "Εγώ εἰμι ἡ ἄμπελος, ὑμεῖς τὰ κλήματα.",
+        "term": "Ἐγώ εἰμι ἡ ἄμπελος, ὑμεῖς τὰ κλήματα.",
         "transliteration": "Egō eimi hē ampelos, hymeis ta klēmata.",
         "translations": [
           "Eu sou a videira, vocês são os ramos."
         ],
         "type": "Frase",
         "syntax_type": "Paralelismo Copulativo com Oração Elíptica (§ 8)",
-        "notes": "Jo 15.5. ἄμπελος é substantivo feminino da 2ª declinação em -ος (Bergmann § 5.2).",
+        "notes": "Jo 15.5. ἄμπελος é substantivo feminino da 2ª declinação em -ος (Bergmann § 5.5.2).",
         "favorite": false,
         "tokens": [
           {
             "index": 1,
-            "text": "Εγώ",
+            "text": "Ἐγώ",
             "transliteration": "Egō",
             "lemma": "ἐγώ",
             "composite": false,
@@ -34163,7 +34214,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "κἀγὼ",
             "transliteration": "kagō",
-            "lemma": "καί + ἐγώ",
+            "lemma": "κἀγώ",
             "composite": false,
             "word_class": "Conjunção + Pronome (Crase)",
             "syntax_role": "Conjunção copulativa com elipse verbal em crase com pronome ('e eu')",
@@ -34247,7 +34298,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Subordinada Causal com Preposição Imprópria (§ 8)",
-        "notes": "Jo 15.5. A preposição imprópria χωρίς ('sem / à parte de') rege genitivo de separação (Bergmann § 8.4).",
+        "notes": "Jo 15.5. A preposição imprópria χωρίς ('sem / à parte de') rege genitivo de separação (a gramática não trata χωρίς; o versículo é usado na § 19.3.3.a como exemplo de infinitivo complementar de δύναμαι).",
         "favorite": false,
         "tokens": [
           {
@@ -34271,7 +34322,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Preposição imprópria de exclusão/separação regendo genitivo ('sem / à parte de')",
             "inflection": "Rege caso genitivo",
             "context_meaning": "sem",
-            "notes": "Preposição imprópria χωρίς com genitivo (Bergmann § 8.4)"
+            "notes": "Preposição imprópria χωρίς com genitivo (fora do vocabulário da gramática)"
           },
           {
             "index": 3,
@@ -34391,7 +34442,7 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "term": "ἀντί",
-            "spatial_relation": "Em oposição / Na direção contrária"
+            "spatial_relation": "Frente a frente (→ ἀντί ←): em lugar de, em troca de; oposição"
           },
           {
             "term": "σύν",
@@ -34399,7 +34450,11 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "term": "μετά",
-            "spatial_relation": "Com / Associação"
+            "spatial_relation": "Depois de / após (seta que ultrapassa o objeto); c/ gen.: com, entre"
+          },
+          {
+            "term": "παρά",
+            "spatial_relation": "Ao lado de / junto a / ao longo de (linha paralela ao objeto)"
           }
         ]
       }
@@ -34642,7 +34697,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Coordenado Copulativo com Particípio e Pronome Pessoal (§ 9)",
-        "notes": "Jo 1.29. Pronome pessoal de 3ª pessoa αὐτόν no acusativo após a preposição πρός (Bergmann § 9.1).",
+        "notes": "Jo 1.29. Pronome pessoal de 3ª pessoa αὐτόν no acusativo após a preposição πρός (Bergmann § 9.2).",
         "favorite": false,
         "tokens": [
           {
@@ -34721,7 +34776,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo regido por πρός referindo-se a João (acusativo masculino singular: 'ele')",
             "inflection": "Acusativo masculino singular",
             "context_meaning": "ele",
-            "notes": "Pronome pessoal αὐτός (Bergmann § 9.1)"
+            "notes": "Pronome pessoal αὐτός (Bergmann § 9.2)"
           },
           {
             "index": 8,
@@ -34756,7 +34811,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Proclamação Exclamativa com Aposto Participal Substantivado (§ 9)",
-        "notes": "Jo 1.29. O artigo ὁ funciona com valor relativo-demonstrativo substantivando o particípio αἴρων (Bergmann § 9.3).",
+        "notes": "Jo 1.29. O artigo ὁ substantiva o particípio αἴρων (\"o que tira\"), em aposição a ὁ ἀμνός (Bergmann § 15.2.2).",
         "favorite": false,
         "tokens": [
           {
@@ -34891,7 +34946,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Copulativa com Pronome Demonstrativo e Subordinação Relativa (§ 9)",
-        "notes": "Jo 1.30. Apresenta o pronome demonstrativo οὗτος, o relativo no genitivo οὗ regido por περί, e o pronome pessoal enfático ἐγώ (Bergmann § 9.1, § 9.2, § 9.3).",
+        "notes": "Jo 1.30. Apresenta o pronome demonstrativo οὗτος, o relativo no genitivo οὗ regido por περί, e o pronome pessoal enfático ἐγώ (Bergmann § 9.2, § 9.3, § 9.4).",
         "favorite": false,
         "tokens": [
           {
@@ -34904,7 +34959,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Sujeito enfático da oração principal (nominativo masculino singular: 'Este')",
             "inflection": "Nominativo masculino singular",
             "context_meaning": "Este",
-            "notes": "Pronome demonstrativo οὗτος (Bergmann § 9.2)"
+            "notes": "Pronome demonstrativo οὗτος (Bergmann § 9.3)"
           },
           {
             "index": 2,
@@ -34938,7 +34993,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Pronome relativo regido por περί (genitivo masculino singular: 'quem')",
             "inflection": "Genitivo masculino singular",
             "context_meaning": "quem",
-            "notes": "Pronome relativo ὅς (Bergmann § 9.3)"
+            "notes": "Pronome relativo ὅς (Bergmann § 9.4)"
           },
           {
             "index": 5,
@@ -34950,7 +35005,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Sujeito enfático da oração relativa (nominativo 1ª pessoa singular: 'eu')",
             "inflection": "Nominativo 1ª pessoa singular",
             "context_meaning": "eu",
-            "notes": "Pronome pessoal enfático (Bergmann § 9.1)"
+            "notes": "Pronome pessoal enfático (Bergmann § 9.2.B.1)"
           },
           {
             "index": 6,
@@ -34970,11 +35025,12 @@ window.GAMIDA_DEFAULT_DATA = {
         "term": "Ὀπίσω μου ἔρχεται ἀνὴρ ὃς ἔμπροσθέν μου γέγονεν, ὅτι πρῶτός μου ἦν.",
         "transliteration": "Opisō mou erchetai anēr hos emprosthen mou gegonen, hoti prōtos mou ēn.",
         "translations": [
+          "Depois de mim vem um homem que passou à minha frente, porque existia antes de mim.",
           "Atrás de mim vem um homem que existia antes de mim, porque primeiro que eu era."
         ],
         "type": "Frase",
         "syntax_type": "Período Complexo com Oração Relativa, Causal e Pronomes Pessoais em Genitivo (§ 9)",
-        "notes": "Jo 1.30. Pronomes pessoais no genitivo μου e pronome relativo ὅς referindo-se a ἀνήρ (Bergmann § 9.1, § 9.3).",
+        "notes": "Jo 1.30. Pronomes pessoais no genitivo μου e pronome relativo ὅς referindo-se a ἀνήρ (Bergmann § 9.2, § 9.4).",
         "favorite": false,
         "tokens": [
           {
@@ -35031,7 +35087,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Sujeito da oração subordinada adjetiva (nominativo masculino singular: 'que')",
             "inflection": "Nominativo masculino singular",
             "context_meaning": "que",
-            "notes": "Pronome relativo nominativo masculino singular (Bergmann § 9.3)"
+            "notes": "Pronome relativo nominativo masculino singular (Bergmann § 9.4)"
           },
           {
             "index": 6,
@@ -35121,14 +35177,14 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Complexo Coordenado e Subordinado com Demonstração Correlativa (§ 9)",
-        "notes": "Jo 1.31. Pronome demonstrativo neutro διὰ τοῦτο ('por causa disto') correlacionado com a oração de ἵνα (Bergmann § 9.2).",
+        "notes": "Jo 1.31. Pronome demonstrativo neutro διὰ τοῦτο ('por causa disto') correlacionado com a oração de ἵνα (Bergmann § 9.3).",
         "favorite": false,
         "tokens": [
           {
             "index": 1,
             "text": "Κἀγὼ",
             "transliteration": "Kagō",
-            "lemma": "καί + ἐγώ",
+            "lemma": "κἀγώ",
             "composite": false,
             "word_class": "Conjunção + Pronome (Crase)",
             "syntax_role": "Conjunção copulativa em crase com pronome sujeito enfático ('E eu')",
@@ -35244,7 +35300,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Demonstrativo neutro anafórico de causa (acusativo neutro singular: 'isto')",
             "inflection": "Acusativo neutro singular",
             "context_meaning": "disto",
-            "notes": "Demonstrativo neutro τοῦτο (Bergmann § 9.2)"
+            "notes": "Demonstrativo neutro τοῦτο (Bergmann § 9.3)"
           },
           {
             "index": 12,
@@ -35312,7 +35368,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Discurso Declarativo Indireto/Direto (§ 9)",
-        "notes": "Jo 1.32. Uso do pronome pessoal de 3ª pessoa ἐπ᾽ αὐτόν referindo-se a Jesus (Bergmann § 9.1).",
+        "notes": "Jo 1.32. Uso do pronome pessoal de 3ª pessoa ἐπ᾽ αὐτόν referindo-se a Jesus (Bergmann § 9.2).",
         "favorite": false,
         "tokens": [
           {
@@ -35355,7 +35411,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "λέγω",
             "composite": false,
             "word_class": "Verbo (Particípio)",
-            "syntax_role": "Particípio modal atributivo (nominativo masculino singular: 'dizendo')",
+            "syntax_role": "Particípio circunstancial (modal) concordando com Ἰωάννης (nominativo masculino singular: 'dizendo')",
             "inflection": "Particípio presente ativo, nominativo masculino singular",
             "context_meaning": "dizendo"
           },
@@ -35513,14 +35569,14 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Retomada Enfática por Pronome Demonstrativo Distante ἐκεῖνος (§ 9)",
-        "notes": "Jo 1.33. O pronome demonstrativo ἐκεῖνος retoma com solenidade enfática o sujeito antecedente ὁ πέμψας με (Bergmann § 9.2).",
+        "notes": "Jo 1.33. O pronome demonstrativo ἐκεῖνος retoma com solenidade enfática o sujeito antecedente ὁ πέμψας με (Bergmann § 9.3).",
         "favorite": false,
         "tokens": [
           {
             "index": 1,
             "text": "Κἀγὼ",
             "transliteration": "Kagō",
-            "lemma": "καί + ἐγώ",
+            "lemma": "κἀγώ",
             "composite": false,
             "word_class": "Conjunção + Pronome (Crase)",
             "syntax_role": "Conjunção copulativa em crase com pronome sujeito ('E eu')",
@@ -35647,7 +35703,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Demonstrativo enfático de 3ª pessoa retomando ὁ πέμψας (nominativo masculino singular: 'aquele / ele mesmo')",
             "inflection": "Nominativo masculino singular",
             "context_meaning": "aquele",
-            "notes": "Demonstrativo enfático ἐκεῖνος (Bergmann § 9.2)"
+            "notes": "Demonstrativo enfático ἐκεῖνος (Bergmann § 9.3)"
           },
           {
             "index": 13,
@@ -35682,7 +35738,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Correlativo com Oração Relativa Condicional Indefinida (§ 9)",
-        "notes": "Jo 1.33. Relativo indefinido ὃν ἄν ('quem quer que') correlacionado com o demonstrativo οὗτος (Bergmann § 9.2, § 9.3).",
+        "notes": "Jo 1.33. Relativo indefinido ὃν ἄν ('quem quer que') correlacionado com o demonstrativo οὗτος (Bergmann § 9.3, § 9.4).",
         "favorite": false,
         "tokens": [
           {
@@ -35706,7 +35762,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Pronome relativo regido por ἐπί (acusativo masculino singular: 'quem')",
             "inflection": "Acusativo masculino singular",
             "context_meaning": "quem",
-            "notes": "Pronome relativo acusativo masculino singular (Bergmann § 9.3)"
+            "notes": "Pronome relativo acusativo masculino singular (Bergmann § 9.4)"
           },
           {
             "index": 3,
@@ -35717,7 +35773,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "word_class": "Partícula modal de contingência",
             "syntax_role": "Partícula modal introduzindo eventualidade/generalização no subjuntivo ('quer que / porventura')",
             "inflection": "Partícula modal invariável",
-            "context_meaning": "vir"
+            "context_meaning": "(-quer que; sem tradução isolada)"
           },
           {
             "index": 4,
@@ -35817,7 +35873,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Sujeito enfático da oração principal (nominativo masculino singular: 'este')",
             "inflection": "Nominativo masculino singular",
             "context_meaning": "este",
-            "notes": "Pronome demonstrativo οὗτος (Bergmann § 9.2)"
+            "notes": "Pronome demonstrativo οὗτος (Bergmann § 9.3)"
           },
           {
             "index": 13,
@@ -35896,14 +35952,14 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Declarativo Indireto com Pronome Pessoal e Demonstrativo (§ 9)",
-        "notes": "Jo 1.34. Contém pronome pessoal enfático κἀγώ (crase) e o demonstrativo οὗτος no papel de sujeito (Bergmann § 9.1, § 9.2).",
+        "notes": "Jo 1.34. Contém pronome pessoal enfático κἀγώ (crase) e o demonstrativo οὗτος no papel de sujeito (Bergmann § 9.2, § 9.3).",
         "favorite": false,
         "tokens": [
           {
             "index": 1,
             "text": "Κἀγὼ",
             "transliteration": "Kagō",
-            "lemma": "καί + ἐγώ",
+            "lemma": "κἀγώ",
             "composite": false,
             "word_class": "Conjunção + Pronome (Crase)",
             "syntax_role": "Conjunção copulativa em crase com pronome sujeito enfático ('E eu')",
@@ -35942,7 +35998,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Sujeito da oração subordinada (nominativo masculino singular: 'este')",
             "inflection": "Nominativo masculino singular",
             "context_meaning": "este",
-            "notes": "Pronome demonstrativo οὗτος (Bergmann § 9.2)"
+            "notes": "Pronome demonstrativo οὗτος (Bergmann § 9.3)"
           },
           {
             "index": 5,
@@ -36010,7 +36066,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Condicional Eventual com Pronome Pessoal Enfático em Dativo (§ 9)",
-        "notes": "Jo 12.26. Pronome pessoal tônico de 1ª pessoa ἐμοί em posição enfática pré-verbal antes do verbo no imperativo (Bergmann § 9.1).",
+        "notes": "Jo 12.26. Pronome pessoal tônico de 1ª pessoa ἐμοί em posição enfática pré-verbal antes do verbo no imperativo (Bergmann § 9.2, observação: formas acentuadas são enfáticas).",
         "favorite": false,
         "tokens": [
           {
@@ -36034,7 +36090,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Objeto indireto anteposto enfático regido por διακονέω (dativo 1ª pessoa singular: 'a mim / me')",
             "inflection": "Dativo 1ª pessoa singular",
             "context_meaning": "a mim",
-            "notes": "Pronome pessoal enfático tônico (Bergmann § 9.1)"
+            "notes": "Pronome pessoal enfático tônico (Bergmann § 9.2)"
           },
           {
             "index": 3,
@@ -36057,7 +36113,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Sujeito da prótase (nominativo masculino/feminino singular: 'alguém')",
             "inflection": "Nominativo singular",
             "context_meaning": "alguém",
-            "notes": "Pronome indefinido τις (Bergmann § 9.3)"
+            "notes": "Pronome indefinido τις (Bergmann § 16.3)"
           },
           {
             "index": 5,
@@ -36092,7 +36148,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Correlativo Local com Adjetivo Possessivo enfático (§ 9)",
-        "notes": "Jo 12.26. O possessivo de 1ª pessoa ἐμός é empregado na 2ª posição atributiva enfática: ὁ διάκονος ὁ ἐμός ('o servo, o meu') (Bergmann § 9.1).",
+        "notes": "Jo 12.26. O possessivo de 1ª pessoa ἐμός é empregado na 2ª posição atributiva enfática: ὁ διάκονος ὁ ἐμός ('o servo, o meu') (Bergmann § 9.5).",
         "favorite": false,
         "tokens": [
           {
@@ -36204,7 +36260,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Possessivo enfático na 2ª posição atributiva (nominativo masculino singular: 'meu')",
             "inflection": "Nominativo masculino singular",
             "context_meaning": "meu",
-            "notes": "Adjetivo possessivo enfático ἐμός (Bergmann § 9.1)"
+            "notes": "Adjetivo possessivo enfático ἐμός (Bergmann § 9.5)"
           },
           {
             "index": 11,
@@ -36228,7 +36284,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Condicional Eventual com Pronome Indefinido e Pessoal (§ 9)",
-        "notes": "Jo 12.26. Contém o pronome indefinido τις, o pronome pessoal enfático ἐμοί e o pessoal anafórico αὐτόν (Bergmann § 9.1, § 9.3).",
+        "notes": "Jo 12.26. Contém o pronome indefinido τις, o pronome pessoal enfático ἐμοί e o pessoal anafórico αὐτόν (Bergmann § 9.2; τις: § 16.3).",
         "favorite": false,
         "tokens": [
           {
@@ -36263,7 +36319,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Sujeito da oração condicional (nominativo masculino/feminino singular: 'alguém')",
             "inflection": "Nominativo singular",
             "context_meaning": "alguém",
-            "notes": "Pronome indefinido τις (Bergmann § 9.3)"
+            "notes": "Pronome indefinido τις (Bergmann § 16.3)"
           },
           {
             "index": 4,
@@ -36841,7 +36897,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Declarativa com Particípio Circunstancial (§ 10)",
-        "notes": "Jo 1.15. Verbo contraído μαρτυρέω no presente histórico com particípio λέγων (Bergmann § 10.1).",
+        "notes": "Jo 1.15. Verbo contraído μαρτυρέω no presente histórico com particípio λέγων (Bergmann § 2.3.4; verbos contraídos: § 20.2).",
         "favorite": false,
         "tokens": [
           {
@@ -36895,7 +36951,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "λέγω",
             "composite": false,
             "word_class": "Verbo (Particípio)",
-            "syntax_role": "Particípio modal atributivo (nominativo masculino singular: 'dizendo')",
+            "syntax_role": "Particípio circunstancial (modal) concordando com Ἰωάννης (nominativo masculino singular: 'dizendo')",
             "inflection": "Particípio presente ativo, nominativo masculino singular",
             "context_meaning": "dizendo"
           }
@@ -36906,11 +36962,12 @@ window.GAMIDA_DEFAULT_DATA = {
         "term": "Οὗτος ἔμπροσθέν μου γέγονεν, ὅτι πρῶτός μου ἦν.",
         "transliteration": "Houtos emprosthen mou gegonen, hoti prōtos mou ēn.",
         "translations": [
+          "Este passou à minha frente, porque existia antes de mim.",
           "Este existia antes de mim, porque primeiro que eu era."
         ],
         "type": "Frase",
         "syntax_type": "Período com Oração Causal e Verbo Imperfeito Existencial (§ 10)",
-        "notes": "Jo 1.15. Apresenta o imperfeito do verbo defectivo εἰμί (ἦν) expressando existência anterior e contínua (Bergmann § 10.2).",
+        "notes": "Jo 1.15. Apresenta o imperfeito de εἰμί (ἦν) expressando existência anterior e contínua (Bergmann § 10.2).",
         "favorite": false,
         "tokens": [
           {
@@ -36997,7 +37054,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "εἰμί",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Verbo defectivo existencial. Imperfeito do indicativo ativo, 3ª pessoa singular ('era / existia')",
+            "syntax_role": "Verbo de ligação/existencial. Imperfeito do indicativo ativo, 3ª pessoa singular ('era / existia')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "era",
             "notes": "Imperfeito de εἰμί (Bergmann § 10.2)"
@@ -37013,7 +37070,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração com Verbo no Imperfeito Durativo e Pronome Reflexivo (§ 10)",
-        "notes": "Jo 2.24. ἐπίστευεν está no imperfeito do indicativo ativo com aumento silábico (ἐ-), denotando ação contínua no passado (Bergmann § 10.1).",
+        "notes": "Jo 2.24. ἐπίστευεν está no imperfeito do indicativo ativo com aumento silábico (ἐ-), denotando ação contínua no passado (Bergmann § 10.2.1.a).",
         "favorite": false,
         "tokens": [
           {
@@ -37081,7 +37138,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo da oração no imperfeito com aumento silábico. Imperfeito do indicativo ativo, 3ª pessoa singular com ny móvel ('confiava / entregava')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "confiava",
-            "notes": "Imperfeito com aumento silábico (Bergmann § 10.1)"
+            "notes": "Imperfeito com aumento silábico (Bergmann § 10.2.1.a)"
           },
           {
             "index": 7,
@@ -37116,7 +37173,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Causal Misto com Infinitivo Articular e Imperfeito com Aumento Temporal (§ 10)",
-        "notes": "Jo 2.24-25. εἶχεν apresenta aumento temporal irregular (ἔχω -> εἶχον, Bergmann § 10.1).",
+        "notes": "Jo 2.24-25. εἶχεν apresenta aumento temporal irregular (ἔχω -> εἶχον, Bergmann § 10.2.1.b e nota 1 da lição).",
         "favorite": false,
         "tokens": [
           {
@@ -37228,7 +37285,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo da oração causal com aumento temporal irregular. Imperfeito do indicativo ativo, 3ª pessoa singular com ny móvel ('tinha')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "tinha",
-            "notes": "Imperfeito com aumento temporal irregular ἔχω -> εἶχον (Bergmann § 10.1)"
+            "notes": "Imperfeito com aumento temporal irregular ἔχω -> εἶχον (Bergmann § 10.2.1.b)"
           }
         ]
       },
@@ -37321,7 +37378,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Interrogativa Indireta e Dois Verbos no Imperfeito (§ 10)",
-        "notes": "Jo 2.25. Combinação de ἐγίνωσκεν (imperfeito de γινώσκω com aumento silábico) e ἦν (imperfeito de εἰμί) (Bergmann § 10.1, § 10.2).",
+        "notes": "Jo 2.25. Combinação de ἐγίνωσκεν (imperfeito de γινώσκω com aumento silábico) e ἦν (imperfeito de εἰμί) (Bergmann § 10.2.1.a; imperfeito de εἰμί: § 10.2).",
         "favorite": false,
         "tokens": [
           {
@@ -37356,7 +37413,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo verbal no imperfeito com aumento silábico. Imperfeito do indicativo ativo, 3ª pessoa singular com ny móvel ('conhecia')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "conhecia",
-            "notes": "Imperfeito com aumento silábico (Bergmann § 10.1)"
+            "notes": "Imperfeito com aumento silábico (Bergmann § 10.2.1.a)"
           },
           {
             "index": 4,
@@ -37424,7 +37481,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração com Duplo Acusativo e Imperfeito Iterativo (§ 10)",
-        "notes": "Mc 4.2. ἐδίδασκεν no imperfeito com aumento silábico indica ação costumeira/iterativa (Bergmann § 10.1).",
+        "notes": "Mc 4.2. ἐδίδασκεν no imperfeito com aumento silábico indica ação costumeira/iterativa (Bergmann § 10.1; aumento silábico: § 10.2.1.a).",
         "favorite": false,
         "tokens": [
           {
@@ -37448,7 +37505,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo verbal no imperfeito iterativo. Imperfeito do indicativo ativo, 3ª pessoa singular com ny móvel ('ensinava')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "ensinava",
-            "notes": "Imperfeito com aumento silábico (Bergmann § 10.1)"
+            "notes": "Imperfeito com aumento silábico (Bergmann § 10.2.1.a)"
           },
           {
             "index": 3,
@@ -37505,7 +37562,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa no Imperfeito com Dativo de Objeto Indireto (§ 10)",
-        "notes": "Mc 4.2. ἔλεγεν no imperfeito do indicativo ativo com aumento silábico (Bergmann § 10.1).",
+        "notes": "Mc 4.2. ἔλεγεν no imperfeito do indicativo ativo com aumento silábico (Bergmann § 10.2.1.a).",
         "favorite": false,
         "tokens": [
           {
@@ -37529,7 +37586,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo verbal no imperfeito. Imperfeito do indicativo ativo, 3ª pessoa singular com ny móvel ('dizia')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "dizia",
-            "notes": "Imperfeito com aumento silábico (Bergmann § 10.1)"
+            "notes": "Imperfeito com aumento silábico (Bergmann § 10.2.1.a)"
           },
           {
             "index": 3,
@@ -37597,7 +37654,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Coordenado com Verbos no Imperfeito Ativo e Médio-Passivo (§ 10)",
-        "notes": "At 18.8. Mostra o contraste entre imperfeito ativo (ἐπίστευον) e imperfeito médio/passivo (ἐβαπτίζοντο) com desinência -οντο (Bergmann § 10.1).",
+        "notes": "At 18.8. Mostra o contraste entre imperfeito ativo (ἐπίστευον) e imperfeito médio/passivo (ἐβαπτίζοντο) com desinência -οντο (Bergmann § 10.2.2).",
         "favorite": false,
         "tokens": [
           {
@@ -37654,7 +37711,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "1º núcleo verbal. Imperfeito do indicativo ativo, 3ª pessoa plural ('criam')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa plural",
             "context_meaning": "criam",
-            "notes": "Imperfeito ativo (Bergmann § 10.1)"
+            "notes": "Imperfeito ativo (Bergmann § 10.2)"
           },
           {
             "index": 6,
@@ -37677,7 +37734,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "2º núcleo verbal. Imperfeito do indicativo passivo, 3ª pessoa plural ('eram batizados')",
             "inflection": "Imperfeito do indicativo passivo, 3ª pessoa plural",
             "context_meaning": "eram batizados",
-            "notes": "Imperfeito passivo em -οντο (Bergmann § 10.1)"
+            "notes": "Imperfeito passivo em -οντο (Bergmann § 10.2.2)"
           }
         ]
       },
@@ -37699,11 +37756,11 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Ēsan",
             "lemma": "εἰμί",
             "composite": false,
-            "word_class": "Verbo auxiliar defectivo",
+            "word_class": "Verbo auxiliar",
             "syntax_role": "Verbo auxiliar da perífrase. Imperfeito do indicativo ativo, 3ª pessoa plural ('Eram / Estavam')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa plural",
             "context_meaning": "Estavam",
-            "notes": "Construção perifrástica de imperfeito (Bergmann § 10.3)"
+            "notes": "Construção perifrástica de imperfeito (Bergmann § 10.3; lição 10, nota 2)"
           },
           {
             "index": 2,
@@ -38048,7 +38105,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo da 2ª oração no imperfeito com concordância neutra singular. Imperfeito do indicativo médio, 3ª pessoa singular ('eram realizados / aconteciam')",
             "inflection": "Imperfeito do indicativo médio, 3ª pessoa singular",
             "context_meaning": "eram realizados",
-            "notes": "Sujeito neutro plural com verbo no singular (Bergmann § 10.1)"
+            "notes": "Sujeito neutro plural com verbo no singular (Bergmann, lição 22, nota 7)"
           }
         ]
       },
@@ -38061,7 +38118,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Coordenado Copulativo no Imperfeito com Expressão Idiomática (§ 10)",
-        "notes": "At 2.44. ἐπὶ τὸ αὐτό é expressão idiomática helenística para 'juntos / em união'; εἶχον está no imperfeito com aumento temporal (Bergmann § 10.1, § 10.2).",
+        "notes": "At 2.44. ἐπὶ τὸ αὐτό é expressão idiomática helenística para 'juntos / em união'; εἶχον está no imperfeito com aumento temporal (Bergmann § 10.2.1.b).",
         "favorite": false,
         "tokens": [
           {
@@ -38114,7 +38171,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "ēsan",
             "lemma": "εἰμί",
             "composite": false,
-            "word_class": "Verbo defectivo",
+            "word_class": "Verbo",
             "syntax_role": "Verbo copulativo/locativo no imperfeito. Imperfeito do indicativo ativo, 3ª pessoa plural ('estavam')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa plural",
             "context_meaning": "estavam"
@@ -38173,7 +38230,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo verbal no imperfeito com aumento temporal. Imperfeito do indicativo ativo, 3ª pessoa plural ('tinham')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa plural",
             "context_meaning": "tinham",
-            "notes": "Imperfeito com aumento temporal (Bergmann § 10.1)"
+            "notes": "Imperfeito com aumento temporal (Bergmann § 10.2.1.b)"
           },
           {
             "index": 11,
@@ -38207,8 +38264,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Vendiam suas propriedades e bens, e distribuíam o produto entre todos, à medida que alguém tinha necessidade."
         ],
         "type": "Frase",
-        "syntax_type": "Período Complexo com Sucessão de Imperfeitos Iterativos e Oração Relativa Concessiva (§ 10)",
-        "notes": "At 2.45. Os imperfeitos ἐπίπρασκον, διεμέριζον e εἶχεν expressam ação habitual repetida na comunidade primitiva (Bergmann § 10.1).",
+        "syntax_type": "Período Complexo com Sucessão de Imperfeitos Iterativos e Oração Subordinada Proporcional (καθότι ἄν) (§ 10)",
+        "notes": "At 2.45. Os imperfeitos ἐπίπρασκον, διεμέριζον e εἶχεν expressam ação habitual repetida na comunidade primitiva (Bergmann § 10.1, § 10.3).",
         "favorite": false,
         "tokens": [
           {
@@ -38309,7 +38366,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "2º núcleo verbal no imperfeito com aumento interno. Imperfeito do indicativo ativo, 3ª pessoa plural ('distribuíam / repartiam')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa plural",
             "context_meaning": "distribuíam",
-            "notes": "Imperfeito composto com aumento interno (Bergmann § 10.1)"
+            "notes": "Imperfeito composto com aumento interno (Bergmann § 10.2.1.c)"
           },
           {
             "index": 10,
@@ -38501,7 +38558,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Verbo no Imperfeito Regente de Genitivo Partitivo (§ 10)",
-        "notes": "At 2.46. μετελάμβανον está no imperfeito do indicativo ativo com aumento interno e rege genitivo partitivo τροφῆς (Bergmann § 10.1).",
+        "notes": "At 2.46. μετελάμβανον está no imperfeito do indicativo ativo com aumento interno e rege genitivo partitivo τροφῆς (Bergmann § 10.2.1.c).",
         "favorite": false,
         "tokens": [
           {
@@ -38569,7 +38626,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo verbal no imperfeito com aumento interno. Imperfeito do indicativo ativo, 3ª pessoa plural ('participavam / tomavam parte')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa plural",
             "context_meaning": "participavam",
-            "notes": "Imperfeito com aumento interno (Bergmann § 10.1)"
+            "notes": "Imperfeito com aumento interno (Bergmann § 10.2.1.c)"
           },
           {
             "index": 7,
@@ -38772,7 +38829,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração no Imperfeito com Verbo em -μι e Particípio Passivo Progressivo (§ 10)",
-        "notes": "At 2.47. προσετίθει é o imperfeito do verbo em -μι προστίθημι com aspecto iterativo contínuo, e τοὺς σῳζομένους é particípio presente passivo progressivo ('os que estavam sendo salvos') (Bergmann § 10.1, § 20.3).",
+        "notes": "At 2.47. προσετίθει é o imperfeito do verbo em -μι προστίθημι com aspecto iterativo contínuo, e τοὺς σῳζομένους é particípio presente passivo progressivo ('os que estavam sendo salvos') (Bergmann § 10.2.1.c; verbos em -μι: § 20.4–20.7).",
         "favorite": false,
         "tokens": [
           {
@@ -38818,7 +38875,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo verbal no imperfeito com aumento interno. Imperfeito do indicativo ativo, 3ª pessoa singular ('acrescentava / ia agregando')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "acrescentava",
-            "notes": "Imperfeito de verbo em -μι (Bergmann § 10.1, § 20.3)"
+            "notes": "Imperfeito de verbo em -μι (Bergmann § 10.2.1.c; § 20.4–20.7)"
           },
           {
             "index": 5,
@@ -39201,7 +39258,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Copulativa Pontual no 2º Aoristo com Predicativo da 3ª Declinação (§ 11)",
-        "notes": "Jo 1.14. ἐγένετο é o 2º aoristo médio/depoente do verbo irregular γίνομαι (raiz γεν- / γον- / γν-), com σάρξ como predicativo anartro (Bergmann § 11.1).",
+        "notes": "Jo 1.14. ἐγένετο é o 2º aoristo médio/depoente do verbo irregular γίνομαι (raiz γεν- / γον- / γν-), com σάρξ como predicativo anartro (Bergmann § 11.3; vocabulário da lição 11: γίνομαι, rad. 2.º aor. γεν).",
         "favorite": false,
         "tokens": [
           {
@@ -39247,7 +39304,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo verbal no 2º aoristo com raiz modificada. 2º aoristo do indicativo médio, 3ª pessoa singular ('tornou-se / fez-se')",
             "inflection": "2º aoristo do indicativo médio, 3ª pessoa singular",
             "context_meaning": "se fez",
-            "notes": "2º aoristo depoente de γίνομαι (Bergmann § 11.1)"
+            "notes": "2º aoristo depoente de γίνομαι (Bergmann § 11.3)"
           }
         ]
       },
@@ -39260,7 +39317,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Narrativo com Particípio e Verbos no 2º Aoristo (ἰδών, ἦλθεν, εὗρεν) (§ 11)",
-        "notes": "Mt 21.19. Apresenta três raízes fortes do 2º aoristo: ἰδών (de ὁράω, raiz ἰδ-), ἦλθεν (de ἔρχομαι, raiz ἐλθ-) e εὗρεν (de εὑρίσκω, raiz εὑρ-) (Bergmann § 11.1).",
+        "notes": "Mt 21.19. Apresenta três raízes fortes do 2º aoristo: ἰδών (de ὁράω, raiz ἰδ-), ἦλθεν (de ἔρχομαι, raiz ἐλθ-) e εὗρεν (de εὑρίσκω, raiz εὑρ-) (Bergmann § 11.3 e vocabulário da lição 11; particípio aoristo: § 15.1.4).",
         "favorite": false,
         "tokens": [
           {
@@ -39284,7 +39341,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Particípio circunstancial temporal com raiz forte ἰδ-. 2º aoristo do particípio ativo (nominativo masculino singular: 'tendo visto / vendo')",
             "inflection": "2º aoristo do particípio ativo, nominativo masculino singular",
             "context_meaning": "vendo",
-            "notes": "Particípio 2º aoristo de ὁράω (Bergmann § 11.1)"
+            "notes": "Particípio 2º aoristo de ὁράω (Bergmann § 15.1.4; vocabulário da lição 11)"
           },
           {
             "index": 3,
@@ -39351,7 +39408,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo da 1ª oração. 2º aoristo do indicativo ativo, 3ª pessoa singular com ny móvel ('foi / veio', raiz ἐλθ-)",
             "inflection": "2º aoristo do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "foi",
-            "notes": "2º aoristo de ἔρχομαι (Bergmann § 11.1)"
+            "notes": "2º aoristo de ἔρχομαι (Bergmann § 11.3)"
           },
           {
             "index": 9,
@@ -39407,7 +39464,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo da 2ª oração. 2º aoristo do indicativo ativo, 3ª pessoa singular com ny móvel ('achou / encontrou', raiz εὑρ-)",
             "inflection": "2º aoristo do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "achou",
-            "notes": "2º aoristo de εὑρίσκω (Bergmann § 11.1)"
+            "notes": "2º aoristo de εὑρίσκω (Bergmann § 11.3)"
           },
           {
             "index": 14,
@@ -39442,7 +39499,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Discurso Direto com Verbo Introdutório no 2º Aoristo (εἶπεν) (§ 11)",
-        "notes": "Jo 6.35. εἶπεν é o 2º aoristo polirrizo do verbo λέγω (raiz ἐπ- / εἰπ-, Bergmann § 11.1).",
+        "notes": "Jo 6.35. εἶπεν é o 2º aoristo polirrizo do verbo λέγω (rad. 2.º aor. εἰπ-, Bergmann: vocabulário da lição 11; § 11.3).",
         "favorite": false,
         "tokens": [
           {
@@ -39455,7 +39512,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo da oração introdutória com raiz polirriza. 2º aoristo do indicativo ativo, 3ª pessoa singular com ny móvel ('Disse')",
             "inflection": "2º aoristo do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "Disse",
-            "notes": "2º aoristo polirrizo de λέγω (Bergmann § 11.1)"
+            "notes": "2º aoristo polirrizo de λέγω (Bergmann § 11.3)"
           },
           {
             "index": 2,
@@ -39625,7 +39682,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Particípio 2º aoristo ativo com raiz forte λαβ- (nominativo masculino singular: 'tendo tomado / tomando')",
             "inflection": "2º aoristo do particípio ativo, nominativo masculino singular",
             "context_meaning": "tendo tomado",
-            "notes": "2º aoristo de λαμβάνω (Bergmann § 11.1)"
+            "notes": "2º aoristo de λαμβάνω (Bergmann § 15.1.4)"
           },
           {
             "index": 5,
@@ -39725,7 +39782,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Particípio 2º aoristo ativo com raiz do- (nominativo masculino singular: 'tendo dado / dando')",
             "inflection": "2º aoristo do particípio ativo, nominativo masculino singular",
             "context_meaning": "dando",
-            "notes": "2º aoristo de δίδωμι (Bergmann § 20.3)"
+            "notes": "2º aoristo de δίδωμι (Bergmann § 20.4–20.7)"
           },
           {
             "index": 14,
@@ -39770,7 +39827,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Imperativo 2º aoristo ativo com raiz forte λαβ-, 2ª pessoa plural ('Tomem / Recebam')",
             "inflection": "2º aoristo do imperativo ativo, 2ª pessoa plural",
             "context_meaning": "Tomem",
-            "notes": "Imperativo 2º aoristo (Bergmann § 11.3)"
+            "notes": "Imperativo 2º aoristo (Bergmann § 18.3.3)"
           },
           {
             "index": 18,
@@ -39782,7 +39839,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Imperativo 2º aoristo ativo com raiz polirriza φαγ-, 2ª pessoa plural ('comam')",
             "inflection": "2º aoristo do imperativo ativo, 2ª pessoa plural",
             "context_meaning": "comam",
-            "notes": "Imperativo 2º aoristo de ἐσθίω (Bergmann § 11.3)"
+            "notes": "Imperativo 2º aoristo de ἐσθίω (Bergmann § 18.3.3)"
           },
           {
             "index": 19,
@@ -40069,7 +40126,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "ὅς",
             "composite": false,
             "word_class": "Pronome relativo",
-            "syntax_role": "Objeto direto por atração ou dativo instrumental (dativo masculino singular: 'que')",
+            "syntax_role": "Pronome relativo atraído ao caso do antecedente τῷ λόγῳ (esperar-se-ia ὅν, objeto direto de εἶπεν): 'que'",
             "inflection": "Dativo masculino singular",
             "context_meaning": "que"
           },
@@ -40117,7 +40174,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Correlativo com Oração Relativa Anterior e Imperativo Presente Durativo (§ 11)",
-        "notes": "Fp 4.9. Contraste pedagógico entre os 2º aoristos pontuais (ἐμάθετε de μανθάνω, παρελάβετε de παραλαμβάνω, εἴδετε de ὁράω) e o imperativo presente durativo contínuo πράσσετε ('continuai a praticar') (Bergmann § 11.1, § 18.1).",
+        "notes": "Fp 4.9. Contraste pedagógico entre os 2º aoristos pontuais (ἐμάθετε de μανθάνω, παρελάβετε de παραλαμβάνω, εἴδετε de ὁράω) e o imperativo presente durativo contínuo πράσσετε ('continuai a praticar') (Bergmann § 11.1 e nota 1 da lição 11; § 18.2.1).",
         "favorite": false,
         "tokens": [
           {
@@ -40130,7 +40187,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Objeto direto da oração relativa antecedente (acusativo neutro plural: 'as coisas que / o que')",
             "inflection": "Acusativo neutro plural",
             "context_meaning": "o que",
-            "notes": "Pronome relativo neutro plural (Bergmann § 9.3)"
+            "notes": "Pronome relativo neutro plural (Bergmann § 9.4)"
           },
           {
             "index": 2,
@@ -40266,7 +40323,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo imperativo presente durativo exortativo, 2ª pessoa plural ('praticai / continuai a fazer')",
             "inflection": "Presente do imperativo ativo, 2ª pessoa plural",
             "context_meaning": "praticai / continuai a fazer",
-            "notes": "Imperativo presente durativo (Bergmann § 18.1)"
+            "notes": "Imperativo presente durativo (Bergmann § 18.2.1)"
           },
           {
             "index": 14,
@@ -40511,8 +40568,8 @@ window.GAMIDA_DEFAULT_DATA = {
           ],
           [
             "Passiva",
-            "βαλῆναι",
-            "ser jogado"
+            "ἀποσταλῆναι",
+            "ser enviado"
           ]
         ]
       }
@@ -40729,7 +40786,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Antitético com Contraste entre 1º Aoristo e Futuro (§ 12)",
-        "notes": "Mc 1.8. ἐβάπτισα é 1º aoristo sigmático ativo com desinência -σα (Bergmann § 12.1).",
+        "notes": "Mc 1.8. ἐβάπτισα é 1º aoristo sigmático ativo com desinência -σα (Bergmann § 12.2.1).",
         "favorite": false,
         "tokens": [
           {
@@ -40753,7 +40810,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo da 1ª oração. 1º aoristo do indicativo ativo, 1ª pessoa singular ('batizei')",
             "inflection": "1º aoristo do indicativo ativo, 1ª pessoa singular",
             "context_meaning": "batizei",
-            "notes": "1º aoristo com sufixo -σα (Bergmann § 12.1)"
+            "notes": "1º aoristo com sufixo -σα (Bergmann § 12.2.1)"
           },
           {
             "index": 3,
@@ -40876,7 +40933,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Narrativo com Aoristo Passivo em -θη e Agente da Passiva com ὑπό (§ 12)",
-        "notes": "Mc 1.9. ἐβαπτίσθη ilustra o aoristo passivo em -θη com agente da passiva expresso por ὑπό + genitivo (Bergmann § 12.2).",
+        "notes": "Mc 1.9. ἐβαπτίσθη ilustra o aoristo passivo em -θη com agente da passiva expresso por ὑπό + genitivo (Bergmann § 12.2.2; ὑπό c/ gen.: vocabulário da lição 8).",
         "favorite": false,
         "tokens": [
           {
@@ -40988,7 +41045,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "2º núcleo verbal passivo com sufixo -θη. 1º aoristo do indicativo passivo, 3ª pessoa singular ('foi batizado')",
             "inflection": "1º aoristo do indicativo passivo, 3ª pessoa singular",
             "context_meaning": "foi batizado",
-            "notes": "Aoristo passivo em -θη (Bergmann § 12.2)"
+            "notes": "Aoristo passivo em -θη (Bergmann § 12.2.2)"
           },
           {
             "index": 11,
@@ -41000,7 +41057,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Preposição de agente da passiva regendo genitivo ('por')",
             "inflection": "Rege caso genitivo",
             "context_meaning": "por",
-            "notes": "Agente da passiva com ὑπό (Bergmann § 12.2)"
+            "notes": "Agente da passiva com ὑπό (Bergmann, vocabulário da lição 8: ὑπό c/ gen. abl. \"por\")"
           },
           {
             "index": 12,
@@ -41057,7 +41114,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Infinitivos Aoristos Passivo e Ativo de Finalidade (§ 12)",
-        "notes": "Mc 10.45. Distinção entre o infinitivo aoristo passivo em -θηναι (διακονηθῆναι) e o infinitivo aoristo ativo em -σαι (διακονῆσαι) (Bergmann § 12.1, § 12.2, § 19.1).",
+        "notes": "Mc 10.45. Distinção entre o infinitivo aoristo passivo em -θηναι (διακονηθῆναι) e o infinitivo aoristo ativo em -σαι (διακονῆσαι) (Bergmann § 12.2.5; infinitivo de finalidade: § 19.3.1).",
         "favorite": false,
         "tokens": [
           {
@@ -41147,7 +41204,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Infinitivo de finalidade passivo com sufixo -θηναι ('para ser servido')",
             "inflection": "Aoristo do infinitivo passivo",
             "context_meaning": "ser servido",
-            "notes": "Infinitivo aoristo passivo em -θηναι (Bergmann § 12.2)"
+            "notes": "Infinitivo aoristo passivo em -θηναι (Bergmann § 12.2.5)"
           },
           {
             "index": 9,
@@ -41170,7 +41227,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Infinitivo de finalidade ativo com desinência -σαι ('para servir')",
             "inflection": "1º aoristo do infinitivo ativo",
             "context_meaning": "servir",
-            "notes": "Infinitivo 1º aoristo ativo em -σαι (Bergmann § 12.1)"
+            "notes": "Infinitivo 1º aoristo ativo em -σαι (Bergmann § 12.2.5)"
           },
           {
             "index": 11,
@@ -41243,13 +41300,13 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_12_04",
         "term": "Τί θέλεις ποιήσω σοί; Ὁ δὲ τυφλὸς εἶπεν ... Ῥαββουνί, ἵνα ἀναβλέψω.",
-        "transliteration": "Ti theleis poiēsō soi? Ho de typhlos eipen ... Rabbouni, hina anablepsō.",
+        "transliteration": "Ti theleis poiēsō soi? Ho de typhlos eipen ... Rhabbouni, hina anablepsō.",
         "translations": [
           "Que queres que eu te faça? E o cego disse: Mestre, que eu veja novamente."
         ],
         "type": "Frase",
         "syntax_type": "Diálogo Interrogativo Deliberativo com 1º Aoristo do Subjuntivo (§ 12)",
-        "notes": "Mc 10.51. ποιήσω é 1º aoristo do subjuntivo deliberativo ('que eu faça?') e ἀναβλέψω é 1º aoristo do subjuntivo optativo/volitivo introduzido por ἵνα ('que eu recupere a vista') (Bergmann § 12.3).",
+        "notes": "Mc 10.51. ποιήσω é 1º aoristo do subjuntivo deliberativo ('que eu faça?') e ἀναβλέψω é 1º aoristo do subjuntivo optativo/volitivo introduzido por ἵνα ('que eu recupere a vista') (Bergmann § 12.2.3; pergunta deliberativa: § 3.3.4).",
         "favorite": false,
         "tokens": [
           {
@@ -41284,7 +41341,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Subjuntivo deliberativo oracional sem ἵνα. 1º aoristo do subjuntivo ativo, 1ª pessoa singular ('faça / que eu faça')",
             "inflection": "1º aoristo do subjuntivo ativo, 1ª pessoa singular",
             "context_meaning": "faça",
-            "notes": "1º aoristo do subjuntivo deliberativo (Bergmann § 12.3)"
+            "notes": "1º aoristo do subjuntivo deliberativo (Bergmann § 12.2.3; § 3.3.4)"
           },
           {
             "index": 4,
@@ -41355,7 +41412,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 10,
             "text": "Ῥαββουνί,",
-            "transliteration": "Rabbouni",
+            "transliteration": "Rhabbouni",
             "lemma": "Ῥαββουνί",
             "composite": false,
             "word_class": "Substantivo / Vocativo aramaico",
@@ -41384,7 +41441,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo volitivo no subjuntivo. 1º aoristo do subjuntivo ativo com desinência sigmática, 1ª pessoa singular ('veja novamente / recupere a vista')",
             "inflection": "1º aoristo do subjuntivo ativo, 1ª pessoa singular",
             "context_meaning": "veja novamente",
-            "notes": "1º aoristo do subjuntivo com ἵνα (Bergmann § 12.3)"
+            "notes": "1º aoristo do subjuntivo com ἵνα (Bergmann § 12.2.3)"
           }
         ]
       },
@@ -41397,7 +41454,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Narrativo com Aoristo Pontual (ἀνέβλεψεν) e Imperfeito Contínuo (ἠκολούθει) (§ 12)",
-        "notes": "Mc 10.52. ἀνέβλεψεν é 1º aoristo do indicativo com aumento interno (ἀνα- + ἔ-βλεψε) e ἠκολούθει é imperfeito durativo com aumento temporal (ἀ- -> ἠ-) (Bergmann § 10.1, § 12.1).",
+        "notes": "Mc 10.52. ἀνέβλεψεν é 1º aoristo do indicativo com aumento interno (ἀνα- + ἔ-βλεψε) e ἠκολούθει é imperfeito durativo com aumento temporal (ἀ- -> ἠ-) (Bergmann § 10.2.1.b–c, § 12.2.1).",
         "favorite": false,
         "tokens": [
           {
@@ -41553,7 +41610,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "1º aoristo do indicativo ativo com aumento interno e sufixo sigmático, 3ª pessoa singular ('voltou a ver / recuperou a vista')",
             "inflection": "1º aoristo do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "voltou a ver",
-            "notes": "1º aoristo com aumento interno (Bergmann § 12.1)"
+            "notes": "1º aoristo com aumento interno (Bergmann § 12.2.1; § 10.2.1.c)"
           },
           {
             "index": 15,
@@ -41576,7 +41633,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Imperfeito do indicativo ativo com aumento temporal (ἀ- -> ἠ-), 3ª pessoa singular ('seguia / continuava a seguir')",
             "inflection": "Imperfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "seguia",
-            "notes": "Imperfeito durativo com aumento temporal (Bergmann § 10.1)"
+            "notes": "Imperfeito durativo com aumento temporal (Bergmann § 10.2.1.b)"
           },
           {
             "index": 17,
@@ -41644,7 +41701,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Dupla Negação Litótica e Verbos no 1º e 2º Aoristo (§ 12)",
-        "notes": "At 4.20. Ilustra o contraste lado a lado entre o 2º aoristo εἴδομεν (raiz ἰδ-) e o 1º aoristo ἠκούσαμεν com aumento temporal (Bergmann § 11.1, § 12.1).",
+        "notes": "At 4.20. Ilustra o contraste lado a lado entre o 2º aoristo εἴδομεν (raiz ἰδ-) e o 1º aoristo ἠκούσαμεν com aumento temporal (Bergmann § 11.3, § 12.2.1; lição 12, \"Aplicando o texto à vida\").",
         "favorite": false,
         "tokens": [
           {
@@ -41701,7 +41758,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "1º núcleo da oração relativa. 2º aoristo do indicativo ativo, 1ª pessoa plural ('vimos', raiz ἰδ-/εἰδ-)",
             "inflection": "2º aoristo do indicativo ativo, 1ª pessoa plural",
             "context_meaning": "vimos",
-            "notes": "2º aoristo de ὁράω (Bergmann § 11.1)"
+            "notes": "2º aoristo de ὁράω (Bergmann § 11.3)"
           },
           {
             "index": 6,
@@ -41724,7 +41781,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "2º núcleo relativo. 1º aoristo do indicativo ativo com aumento temporal e desinência sigmática, 1ª pessoa plural ('ouvimos')",
             "inflection": "1º aoristo do indicativo ativo, 1ª pessoa plural",
             "context_meaning": "ouvimos",
-            "notes": "1º aoristo de ἀκούω (Bergmann § 12.1)"
+            "notes": "1º aoristo de ἀκούω (Bergmann § 12.2.1)"
           },
           {
             "index": 8,
@@ -42138,7 +42195,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Existencial / Oração Nominal Incidental (§ 13)",
-        "notes": "Jo 1.6. Ilustra a 3ª declinação neutra: ὄνομα (tema em dental -ατ, nominativo) e o dativo de posse αὐτῷ (Bergmann § 13.1, § 13.5).",
+        "notes": "Jo 1.6. Ilustra a 3ª declinação neutra: ὄνομα (tema em dental -ατ, nominativo) e o dativo de posse αὐτῷ (Bergmann § 13.2; dativo de posse: § 13.4.A.3, que usa este versículo).",
         "favorite": false,
         "tokens": [
           {
@@ -42206,7 +42263,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Sujeito da oração nominal parentética (nominativo neutro singular: 'nome', tema em dental -ατ).",
             "inflection": "Nominativo neutro singular",
             "context_meaning": "nome",
-            "notes": "Substantivo neutro da 3ª declinação, tema ὀνοματ- (Bergmann § 13.1)."
+            "notes": "Substantivo neutro da 3ª declinação, tema ὀνοματ- (Bergmann § 13.2)."
           },
           {
             "index": 7,
@@ -42218,7 +42275,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Dativo de posse associado a ὄνομα (dativo masculino singular: 'a ele / cujo').",
             "inflection": "Dativo masculino singular",
             "context_meaning": "a ele / cujo",
-            "notes": "Construção de dativo de posse comum no grego bíblico (Bergmann § 13.5)."
+            "notes": "Construção de dativo de posse comum no grego bíblico (Bergmann § 13.4.A.3)."
           },
           {
             "index": 8,
@@ -42242,7 +42299,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Composto por Subordinação Final (§ 13)",
-        "notes": "Jo 1.7. Apresenta o substantivo da 3ª declinação φῶς / φωτός (neutro, tema em -τ) regido por περί (Bergmann § 13.1).",
+        "notes": "Jo 1.7. Apresenta o substantivo da 3ª declinação φῶς / φωτός (neutro, tema em -τ) regido por περί (Bergmann § 13.2).",
         "favorite": false,
         "tokens": [
           {
@@ -42343,7 +42400,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo regido pela preposição περί (genitivo neutro singular: 'luz', tema em -τ).",
             "inflection": "Genitivo neutro singular",
             "context_meaning": "luz",
-            "notes": "Neutro da 3ª declinação: nom. φῶς, gen. φωτός (Bergmann § 13.1)."
+            "notes": "Neutro da 3ª declinação: nom. φῶς, gen. φωτός (Bergmann § 13.2)."
           },
           {
             "index": 10,
@@ -42411,7 +42468,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Copulativa Negativa com Subordinação Adversativa/Final (§ 13)",
-        "notes": "Jo 1.8. O contraste é marcado entre o sujeito ἐκεῖνος e o predicativo τὸ φῶς (nominativo neutro da 3ª declinação, Bergmann § 13.1).",
+        "notes": "Jo 1.8. O contraste é marcado entre o sujeito ἐκεῖνος e o predicativo τὸ φῶς (nominativo neutro da 3ª declinação, Bergmann § 13.2).",
         "favorite": false,
         "tokens": [
           {
@@ -42468,7 +42525,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo do predicativo do sujeito (nominativo neutro singular: 'luz', tema em -τ).",
             "inflection": "Nominativo neutro singular",
             "context_meaning": "luz",
-            "notes": "Neutro da 3ª declinação, tema φωτ- (Bergmann § 13.1)."
+            "notes": "Neutro da 3ª declinação, tema φωτ- (Bergmann § 13.2)."
           },
           {
             "index": 6,
@@ -42535,7 +42592,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo regido pela preposição περί (genitivo neutro singular: 'luz', tema em -τ).",
             "inflection": "Genitivo neutro singular",
             "context_meaning": "luz",
-            "notes": "Genitivo neutro da 3ª declinação: φωτός (Bergmann § 13.1)."
+            "notes": "Genitivo neutro da 3ª declinação: φωτός (Bergmann § 13.2)."
           }
         ]
       },
@@ -42672,7 +42729,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Misto com Oração Relativa Correlativa e Infinitivo Complementar (§ 13)",
-        "notes": "Jo 1.12. Contém ὄνομα (3ª declinação, acusativo singular neutro) e o dativo plural autois / tois pisteuousin (Bergmann § 13.1, § 13.5).",
+        "notes": "Jo 1.12. Contém ὄνομα (3ª declinação, acusativo singular neutro) e o dativo plural autois / tois pisteuousin (Bergmann § 13.2; dativo de objeto indireto: § 13.4.A.1).",
         "favorite": false,
         "tokens": [
           {
@@ -42839,7 +42896,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo regido pela preposição εἰς (acusativo neutro singular: 'nome', tema em dental -ατ).",
             "inflection": "Acusativo neutro singular",
             "context_meaning": "nome",
-            "notes": "3ª declinação neutra: nom./ac. ὄνομα, gen. ὀνόματος (Bergmann § 13.1)."
+            "notes": "3ª declinação neutra: nom./ac. ὄνομα, gen. ὀνόματος (Bergmann § 13.2)."
           },
           {
             "index": 16,
@@ -42863,7 +42920,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Subordinada Adjetiva Explicativa com Paralelismo Negativo (§ 13)",
-        "notes": "Jo 1.13. Apresenta quádruplo uso da 3ª declinação: αἷμα/αἱμάτων (neutro), θέλημα/θελήματος (neutro), σάρξ/σαρκός (feminino em gutural -κ) e ἀνήρ/ἀνδρός (masculino sincopado em líquida -ρ) (Bergmann § 13.1, § 13.2).",
+        "notes": "Jo 1.13. Apresenta quádruplo uso da 3ª declinação: αἷμα/αἱμάτων (neutro), θέλημα/θελήματος (neutro), σάρξ/σαρκός (feminino em gutural -κ) e ἀνήρ/ἀνδρός (masculino sincopado em líquida -ρ) (Bergmann § 13.2).",
         "favorite": false,
         "tokens": [
           {
@@ -42909,7 +42966,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo regido por ἐξ (genitivo neutro plural: 'sangues / linhagem humana', tema em -ατ).",
             "inflection": "Genitivo neutro plural",
             "context_meaning": "sangue / linhagem humana",
-            "notes": "3ª declinação neutra: αἷμα, αἵματος, pl. αἵματα, αἱμάτων (Bergmann § 13.1)."
+            "notes": "3ª declinação neutra: αἷμα, αἵματος, pl. αἵματα, αἱμάτων (Bergmann § 13.2)."
           },
           {
             "index": 5,
@@ -42943,7 +43000,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo regido pela preposição ἐκ (genitivo neutro singular: 'vontade', tema em -ατ).",
             "inflection": "Genitivo neutro singular",
             "context_meaning": "vontade",
-            "notes": "3ª declinação neutra em -μα: θέλημα, θελήματος (Bergmann § 13.1)."
+            "notes": "3ª declinação neutra em -μα: θέλημα, θελήματος (Bergmann § 13.2)."
           },
           {
             "index": 8,
@@ -42989,7 +43046,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo regido pela preposição ἐκ (genitivo neutro singular: 'vontade', tema em -ατ).",
             "inflection": "Genitivo neutro singular",
             "context_meaning": "vontade",
-            "notes": "3ª declinação neutra: θέλημα, θελήματος (Bergmann § 13.1)."
+            "notes": "3ª declinação neutra: θέλημα, θελήματος (Bergmann § 13.2)."
           },
           {
             "index": 12,
@@ -43001,7 +43058,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Genitivo subjetivo modificando θελήματος (genitivo masculino singular: 'do varão / marido', tema sincopado em líquida -ρ com delta eufônico).",
             "inflection": "Genitivo masculino singular",
             "context_meaning": "do homem / do varão",
-            "notes": "3ª declinação tema sincopado em líquida: ἀνήρ, gen. ἀνδρός (Bergmann § 13.3)."
+            "notes": "3ª declinação tema sincopado em líquida: ἀνήρ, gen. ἀνδρός (Bergmann § 13.2)."
           },
           {
             "index": 13,
@@ -43058,7 +43115,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Composto com Imperativo Exortativo e Negação Enfática Subjuntiva (§ 13)",
-        "notes": "Gl 5.16. Destaca dois termos fundamentais da 3ª declinação: Πνεῦμα / Πνεύματι (neutro, dativo instrumental) e σάρξ / σαρκός (feminino em gutural, genitivo) (Bergmann § 13.1, § 13.2, § 13.5).",
+        "notes": "Gl 5.16. Destaca dois termos fundamentais da 3ª declinação: Πνεῦμα / Πνεύματι (neutro, dativo instrumental) e σάρξ / σαρκός (feminino em gutural, genitivo) (Bergmann § 13.2; dativo de modo: § 13.4.A.8, que cita Gl 5.16).",
         "favorite": false,
         "tokens": [
           {
@@ -43090,10 +43147,10 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "πνεῦμα",
             "composite": false,
             "word_class": "Substantivo (3ª declinação neutra)",
-            "syntax_role": "Adjunto adverbial de meio/modo no dativo instrumental (dativo neutro singular: 'pelo Espírito', tema em -ατ).",
+            "syntax_role": "Adjunto adverbial no dativo de modo/maneira (dativo neutro singular: 'pelo Espírito'). Bergmann classifica o dativo de Gl 5.16 como de modo/maneira (§ 13.4.A.8); a leitura instrumental também é possível.",
             "inflection": "Dativo neutro singular",
             "context_meaning": "pelo Espírito",
-            "notes": "3ª declinação neutra: πνεῦμα, πνεύματος, dat. πνεύματι (Bergmann § 13.1, § 13.5)."
+            "notes": "3ª declinação neutra: πνεῦμα, πνεύματος, dat. πνεύματι (Bergmann § 13.2, § 13.4.A.8)."
           },
           {
             "index": 4,
@@ -43177,14 +43234,14 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_13_08",
-        "term": "εἰς τὸ μηκέτι ἀνθρώπων ἐπιθυμίαις, ἀλλὰ θελήματι Θεοῦ βιῶσαι τὸν ἐπίλοιπον ἐν σαρκὶ χρόνον.",
-        "transliteration": "eis to mēketi anthrōpōn epithymiais, alla thelēmati Theou biōsai ton epiloipon en sarki chronon.",
+        "term": "εἰς τὸ μηκέτι ἀνθρώπων ἐπιθυμίαις, ἀλλὰ θελήματι Θεοῦ τὸν ἐπίλοιπον ἐν σαρκὶ βιῶσαι χρόνον.",
+        "transliteration": "eis to mēketi anthrōpōn epithymiais, alla thelēmati Theou ton epiloipon en sarki biōsai chronon.",
         "translations": [
           "para viver não mais satisfazendo os desejos humanos, mas fazendo a vontade de Deus no tempo de vida que resta."
         ],
         "type": "Frase",
         "syntax_type": "Oração Reduzida de Infinitivo Articular de Finalidade (§ 13)",
-        "notes": "1Pe 4.2. Excelente exemplo de dativos da 3ª declinação: θελήματι (neutro, dativo de norma) e σαρκὶ (feminino, dativo de esfera com ἐν), além do acusativo de extensão temporal τὸν χρόνον (Bergmann § 13.1, § 13.2, § 13.5).",
+        "notes": "1Pe 4.2. Bergmann discute três leituras possíveis dos dativos ἐπιθυμίαις e θελήματι — interesse pessoal (§ 13.4.A.2), modo/maneira (§ 13.4.A.8) e esfera (§ 13.4.A.9) — e recomenda uma tradução que preserve as duas primeiras; χρόνον é acusativo de extensão temporal (§ 13.4.B.4); εἰς τὸ + infinitivo tem sentido final (§ 19.4.3.b). Formas da 3.ª declinação: θελήματι, σαρκί (§ 13.2).",
         "favorite": false,
         "tokens": [
           {
@@ -43238,7 +43295,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "ἐπιθυμία",
             "composite": false,
             "word_class": "Substantivo (1ª declinação)",
-            "syntax_role": "Dativo de referência/norma indicando a esfera anterior de conduta (dativo feminino plural: 'aos desejos').",
+            "syntax_role": "Dativo de interesse pessoal ou de modo/maneira (Bergmann admite ambas as leituras; § 13.4.A.2 e A.8) (dativo feminino plural: 'para os desejos / segundo os desejos')",
             "inflection": "Dativo feminino plural",
             "context_meaning": "aos desejos"
           },
@@ -43260,10 +43317,10 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "θέλημα",
             "composite": false,
             "word_class": "Substantivo (3ª declinação neutra)",
-            "syntax_role": "Dativo de norma/conformidade regido em antítese (dativo neutro singular: 'segundo a vontade', tema em -ατ).",
+            "syntax_role": "Dativo de interesse pessoal ou de modo/maneira, em antítese a ἐπιθυμίαις (dativo neutro singular: 'para a / segundo a vontade')",
             "inflection": "Dativo neutro singular",
             "context_meaning": "segundo a vontade",
-            "notes": "3ª declinação neutra: θέλημα, θελήματος, dat. θελήματι (Bergmann § 13.1, § 13.5)."
+            "notes": "3ª declinação neutra: θέλημα, θελήματος, dat. θελήματι (Bergmann § 13.2; § 13.4.A)"
           },
           {
             "index": 8,
@@ -43278,17 +43335,6 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 9,
-            "text": "βιῶσαι",
-            "transliteration": "biōsai",
-            "lemma": "βιόω",
-            "composite": false,
-            "word_class": "Verbo (Infinitivo)",
-            "syntax_role": "Núcleo da oração de finalidade articular. Infinitivo aoristo ativo ('viver').",
-            "inflection": "Infinitivo aoristo ativo",
-            "context_meaning": "viver"
-          },
-          {
-            "index": 10,
             "text": "τὸν",
             "transliteration": "ton",
             "lemma": "ὁ",
@@ -43299,7 +43345,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "context_meaning": "o"
           },
           {
-            "index": 11,
+            "index": 10,
             "text": "ἐπίλοιπον",
             "transliteration": "epiloipon",
             "lemma": "ἐπίλοιπος",
@@ -43310,7 +43356,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "context_meaning": "restante"
           },
           {
-            "index": 12,
+            "index": 11,
             "text": "ἐν",
             "transliteration": "en",
             "lemma": "ἐν",
@@ -43321,7 +43367,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "context_meaning": "na"
           },
           {
-            "index": 13,
+            "index": 12,
             "text": "σαρκὶ",
             "transliteration": "sarki",
             "lemma": "σάρξ",
@@ -43330,7 +43376,18 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo regido pela preposição ἐν (dativo feminino singular: 'carne / existência mortal', tema em gutural -κ).",
             "inflection": "Dativo feminino singular",
             "context_meaning": "carne",
-            "notes": "3ª declinação feminina: nom. σάρξ, gen. σαρκός, dat. σαρκί (Bergmann § 13.2, § 13.5)."
+            "notes": "3ª declinação feminina: nom. σάρξ, gen. σαρκός, dat. σαρκί (Bergmann § 13.2; esfera: § 13.4.A.9)."
+          },
+          {
+            "index": 13,
+            "text": "βιῶσαι",
+            "transliteration": "biōsai",
+            "lemma": "βιόω",
+            "composite": false,
+            "word_class": "Verbo (Infinitivo)",
+            "syntax_role": "Núcleo da oração de finalidade articular. Infinitivo aoristo ativo ('viver').",
+            "inflection": "Infinitivo aoristo ativo",
+            "context_meaning": "viver"
           },
           {
             "index": 14,
@@ -43339,7 +43396,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "χρόνος",
             "composite": false,
             "word_class": "Substantivo (2ª declinação)",
-            "syntax_role": "Acusativo de duração temporal / objeto de βιῶσαι (acusativo masculino singular: 'tempo').",
+            "syntax_role": "Acusativo de extensão temporal (Bergmann § 13.4.B.4) (acusativo masculino singular: 'tempo')",
             "inflection": "Acusativo masculino singular",
             "context_meaning": "tempo"
           }
@@ -43692,7 +43749,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Múltiplos Particípios Circunstanciais Modais/Temporais (§ 14)",
-        "notes": "Mt 9.35. Tríplice uso adverbial de particípios presentes ativos (διδάσκων, κηρύσσων, θεραπεύων) indicando ações simultâneas ao verbo principal περιῆγεν (Bergmann § 14.1, § 14.2).",
+        "notes": "Mt 9.35. Tríplice uso adverbial de particípios presentes ativos (διδάσκων, κηρύσσων, θεραπεύων) indicando ações simultâneas ao verbo principal περιῆγεν (Bergmann § 14.2.1; uso adverbial: § 14.4.1–2).",
         "favorite": false,
         "tokens": [
           {
@@ -43815,7 +43872,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "1º particípio presente ativo circunstancial modal/temporal (nominativo masculino singular: 'ensinando')",
             "inflection": "Particípio presente ativo, nominativo masculino singular",
             "context_meaning": "ensinando",
-            "notes": "Particípio adverbial modal simultâneo (Bergmann § 14.2)"
+            "notes": "Particípio adverbial modal simultâneo (Bergmann § 14.4.2)"
           },
           {
             "index": 12,
@@ -44048,7 +44105,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Particípios Temporal e Modal e Aoristo Passivo Divino (§ 14)",
-        "notes": "Mt 28.18. προσελθών é particípio 2º aoristo de tempo anterior e λέγων é particípio presente de ação simultânea; ἐδόθη é passivum divinum (Bergmann § 14.1, § 14.2).",
+        "notes": "Mt 28.18. προσελθών é particípio 2º aoristo de tempo anterior e λέγων é particípio presente de ação simultânea; ἐδόθη é passivum divinum (Bergmann § 14.4.1–2; particípio aoristo: § 15.1; tempo do particípio: § 15.4).",
         "favorite": false,
         "tokens": [
           {
@@ -44238,7 +44295,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Exortativo da Grande Comissão com Particípios Modal e Circunstancial (§ 14)",
-        "notes": "Mt 28.19. O particípio aoristo passivo depoente πορευθέντες assume força auxiliar ('indo / tendo ido'), enquanto βαπτίζοντες é particípio presente de modo contínuo (Bergmann § 14.1, § 14.2).",
+        "notes": "Mt 28.19. O particípio aoristo passivo depoente πορευθέντες assume força auxiliar ('indo / tendo ido'), enquanto βαπτίζοντες é particípio presente de modo contínuo (Bergmann § 14.4; particípio aoristo: § 15.1).",
         "favorite": false,
         "tokens": [
           {
@@ -44251,7 +44308,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Particípio aoristo passivo/depoente circunstancial assumindo força do imperativo conexo (nominativo masculino plural: 'Indo / Tendo ido')",
             "inflection": "Aoristo do particípio passivo, nominativo masculino plural",
             "context_meaning": "Indo",
-            "notes": "Particípio circunstancial aoristo (Bergmann § 14.2)"
+            "notes": "Particípio circunstancial aoristo (Bergmann § 14.4; § 15.1)"
           },
           {
             "index": 2,
@@ -44307,7 +44364,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Particípio presente ativo modal instrumental explicando a execução do discipulado ('batizando')",
             "inflection": "Particípio presente ativo, nominativo masculino plural",
             "context_meaning": "batizando",
-            "notes": "Particípio modal instrumental (Bergmann § 14.2)"
+            "notes": "Particípio modal instrumental (Bergmann § 14.4.2)"
           },
           {
             "index": 7,
@@ -44463,7 +44520,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Particípio Modal Continuativo, Acusativo de Extensão Temporal e Promessa Messiânica (§ 14)",
-        "notes": "Mt 28.20. διδάσκοντες funciona como segundo particípio modal de discipulado, seguido de infinitivo complementar τηρεῖν e acusativo de extensão temporal πάσας τὰς ἡμέρας (Bergmann § 14.2).",
+        "notes": "Mt 28.20. διδάσκοντες funciona como segundo particípio modal de discipulado, seguido de infinitivo complementar τηρεῖν e acusativo de extensão temporal πάσας τὰς ἡμέρας (Bergmann § 14.4.2; infinitivo complementar: § 19.3.3; acusativo de extensão: § 13.4.B.4).",
         "favorite": false,
         "tokens": [
           {
@@ -44558,7 +44615,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "ἰδού,",
             "transliteration": "idou",
-            "lemma": "ὁράω",
+            "lemma": "ἰδού",
             "composite": false,
             "word_class": "Interjeição demonstrativa",
             "syntax_role": "Partícula exclamativa demonstrativa ('eis que / vede')",
@@ -44719,7 +44776,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Passiva no Aoristo com Dativo de Esfera e Particípio Modal (§ 14)",
-        "notes": "Rm 4.20. δοὺς é particípio 2º aoristo de δίδωμι indicando a atitude modal e concomitante de Abraão (Bergmann § 14.2).",
+        "notes": "Rm 4.20. δοὺς é particípio 2º aoristo de δίδωμι indicando a atitude modal e concomitante de Abraão (Bergmann § 14.4.1–3; a gramática admite aqui as leituras temporal, modal e causal — lição 14, \"Aplicando o texto à vida\").",
         "favorite": false,
         "tokens": [
           {
@@ -44765,7 +44822,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Particípio modal circunstancial de modo concomitante (nominativo masculino singular: 'tendo dado / dando')",
             "inflection": "2º aoristo do particípio ativo, nominativo masculino singular",
             "context_meaning": "dando",
-            "notes": "Particípio modal de δίδωμι (Bergmann § 14.2)"
+            "notes": "Particípio de δίδωμι: leitura temporal, modal ou causal (Bergmann § 14.4.1–3)"
           },
           {
             "index": 5,
@@ -44971,6 +45028,18 @@ window.GAMIDA_DEFAULT_DATA = {
             "ὄντος"
           ],
           [
+            "Dat. Sg.",
+            "ὄντι",
+            "οὔσῃ",
+            "ὄντι"
+          ],
+          [
+            "Ac. Sg.",
+            "ὄντα",
+            "οὖσαν",
+            "ὄν"
+          ],
+          [
             "Nom. Pl.",
             "ὄντες",
             "οὖσαι",
@@ -44979,8 +45048,20 @@ window.GAMIDA_DEFAULT_DATA = {
           [
             "Gen. Pl.",
             "ὄντων",
-            "οὔσων",
+            "οὐσῶν",
             "ὄντων"
+          ],
+          [
+            "Dat. Pl.",
+            "οὖσι(ν)",
+            "οὔσαις",
+            "οὖσι(ν)"
+          ],
+          [
+            "Ac. Pl.",
+            "ὄντας",
+            "οὔσας",
+            "ὄντα"
           ]
         ]
       }
@@ -45214,7 +45295,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Discurso Direto com Vocativo da 2ª Declinação e Oração Relativa (§ 15)",
-        "notes": "Lc 22.60. Vocativo da 2ª declinação Ἄνθρωπε com desinência -ε e pronome relativo neutro ὅ (Bergmann § 5.1, § 9.3).",
+        "notes": "Lc 22.60. Vocativo da 2ª declinação Ἄνθρωπε com desinência -ε e pronome relativo neutro ὅ (Bergmann § 5.5.1; pronome relativo: § 9.4).",
         "favorite": false,
         "tokens": [
           {
@@ -45278,7 +45359,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "oida",
             "lemma": "οἶδα",
             "composite": false,
-            "word_class": "Verbo defectivo",
+            "word_class": "Verbo (perfeito com sentido de presente)",
             "syntax_role": "Núcleo verbal da oração citada. Perfeito do indicativo ativo com sentido de presente, 1ª pessoa singular ('sei / conheço')",
             "inflection": "Perfeito do indicativo ativo, 1ª pessoa singular",
             "context_meaning": "sei"
@@ -45408,7 +45489,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Particípios Substantivados Atributivos no Dativo de Destinação (§ 15)",
-        "notes": "2Co 5.15. Acumulação de particípios substantivados com artigo: οἱ ζῶντες (nominativo plural) e τῷ ἀποθανόντι καὶ ἐγερθέντι (2º aoristo e aoristo passivo substantivados no dativo) (Bergmann § 15.1, § 15.2).",
+        "notes": "2Co 5.15. Acumulação de particípios substantivados com artigo: οἱ ζῶντες (nominativo plural) e τῷ ἀποθανόντι καὶ ἐγερθέντι (2º aoristo e aoristo passivo substantivados no dativo) (Bergmann § 15.2.2; formas: § 15.1).",
         "favorite": false,
         "tokens": [
           {
@@ -45476,7 +45557,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Particípio presente ativo em função de sujeito ('que vivem')",
             "inflection": "Particípio presente ativo, nominativo masculino plural",
             "context_meaning": "vivem",
-            "notes": "Particípio adjetivo substantivado (Bergmann § 15.1)"
+            "notes": "Particípio adjetivo substantivado (Bergmann § 15.2.2)"
           },
           {
             "index": 7,
@@ -45554,7 +45635,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "1º particípio 2º aoristo substantivado pelo artigo τῷ (dativo masculino singular: 'morreu')",
             "inflection": "2º aoristo do particípio ativo, dativo masculino singular",
             "context_meaning": "morreu",
-            "notes": "Particípio substantivado no dativo (Bergmann § 15.1)"
+            "notes": "Particípio substantivado no dativo (Bergmann § 15.2.2)"
           },
           {
             "index": 14,
@@ -45589,7 +45670,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Explicativo com Particípio Substantivado no Dativo de Vantagem (§ 15)",
-        "notes": "Rm 1.16. Ilustra o particípio substantivado τῷ πιστεύοντι qualificado por παντί ('a todo aquele que crê') (Bergmann § 15.1).",
+        "notes": "Rm 1.16. Ilustra o particípio substantivado τῷ πιστεύοντι qualificado por παντί ('a todo aquele que crê') (Bergmann § 15.2.2).",
         "favorite": false,
         "tokens": [
           {
@@ -45767,7 +45848,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Particípio presente ativo em função substantivada em dativo de vantagem ('crê')",
             "inflection": "Particípio presente ativo, dativo masculino singular",
             "context_meaning": "crê",
-            "notes": "Particípio substantivado pelo artigo (Bergmann § 15.1)"
+            "notes": "Particípio substantivado pelo artigo (Bergmann § 15.2.2)"
           }
         ]
       },
@@ -45780,7 +45861,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração com Imperfeito Depoente e Particípio Causal Negativo (§ 15)",
-        "notes": "At 9.26. O particípio πιστεύοντες tem valor causal/circunstancial negado pela partícula μή (Bergmann § 14.2, § 15.1).",
+        "notes": "At 9.26. O particípio πιστεύοντες tem valor causal/circunstancial negado pela partícula μή (Bergmann § 14.4.3).",
         "favorite": false,
         "tokens": [
           {
@@ -45882,7 +45963,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração com Aoristo Gnômico e Particípio de εἰμί Substantivado com Genitivo de Posse (§ 15)",
-        "notes": "2Tm 2.19. Particípio presente do verbo εἰμί substantivado pelo artigo acusativo (τοὺς ὄντας) seguido de genitivo de pertença αὐτοῦ (Bergmann § 15.1).",
+        "notes": "2Tm 2.19. Particípio presente do verbo εἰμί substantivado pelo artigo acusativo (τοὺς ὄντας) seguido de genitivo de pertença αὐτοῦ (Bergmann § 15.2.2).",
         "favorite": false,
         "tokens": [
           {
@@ -45925,11 +46006,11 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "ontas",
             "lemma": "εἰμί",
             "composite": false,
-            "word_class": "Verbo defectivo (Particípio substantivado)",
+            "word_class": "Verbo (Particípio substantivado)",
             "syntax_role": "Particípio presente ativo em função de objeto direto substantivado ('que são / existentes')",
             "inflection": "Particípio presente ativo, acusativo masculino plural",
             "context_meaning": "são",
-            "notes": "Particípio substantivado de εἰμί (Bergmann § 15.1)"
+            "notes": "Particípio substantivado de εἰμί (Bergmann § 15.2.2)"
           },
           {
             "index": 5,
@@ -45953,7 +46034,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Paralelismo Antitético Perfeito com Particípios Substantivados em Nominativo (§ 15)",
-        "notes": "1Jo 5.12. Demonstração magistral do particípio substantivado afirmativo (ὁ ἔχων) versus o particípio substantivado negativo com μή (ὁ μὴ ἔχων) atuando como núcleos de sujeito (Bergmann § 15.1).",
+        "notes": "1Jo 5.12. Demonstração magistral do particípio substantivado afirmativo (ὁ ἔχων) versus o particípio substantivado negativo com μή (ὁ μὴ ἔχων) atuando como núcleos de sujeito (Bergmann § 15.2.2).",
         "favorite": false,
         "tokens": [
           {
@@ -45977,7 +46058,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Particípio presente ativo como núcleo do 1º sujeito ('tem')",
             "inflection": "Particípio presente ativo, nominativo masculino singular",
             "context_meaning": "tem",
-            "notes": "Particípio substantivado (Bergmann § 15.1)"
+            "notes": "Particípio substantivado (Bergmann § 15.2.2)"
           },
           {
             "index": 3,
@@ -46166,7 +46247,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Declarativa com Particípio Contraído Substantivado (§ 15)",
-        "notes": "1Jo 2.17. Particípio presente ativo contraído de ποιέω (ποιῶν) como sujeito substantivado com objeto na 3ª declinação neutra θέλημα (Bergmann § 13.1, § 15.1, § 20.1).",
+        "notes": "1Jo 2.17. Particípio presente ativo contraído de ποιέω (ποιῶν) como sujeito substantivado com objeto na 3ª declinação neutra θέλημα (Bergmann § 13.2, § 15.2.2, § 20.2.6).",
         "favorite": false,
         "tokens": [
           {
@@ -46190,7 +46271,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Particípio presente ativo contraído em função de núcleo do sujeito ('faz / pratica')",
             "inflection": "Particípio presente ativo, nominativo masculino singular",
             "context_meaning": "faz",
-            "notes": "Particípio contraído substantivado (Bergmann § 15.1, § 20.1)"
+            "notes": "Particípio contraído substantivado (Bergmann § 15.2.2, § 20.2.6)"
           },
           {
             "index": 3,
@@ -46291,7 +46372,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Complexo com Particípios em Dativo de Vantagem e Aposição Participial (§ 15)",
-        "notes": "Rm 8.28. τοῖς ἀγαπῶσιν é particípio substantivado no dativo plural, com aposto explicativo formado pelo adjetivo κλητοῖς e o particípio οὖσιν no dativo (Bergmann § 15.1).",
+        "notes": "Rm 8.28. τοῖς ἀγαπῶσιν é particípio substantivado no dativo plural, com aposto explicativo formado pelo adjetivo κλητοῖς e o particípio οὖσιν no dativo (Bergmann § 15.2.2; lição 15, \"Aplicando o texto à vida\", notas 4 e 6).",
         "favorite": false,
         "tokens": [
           {
@@ -46300,7 +46381,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "Oidamen",
             "lemma": "οἶδα",
             "composite": false,
-            "word_class": "Verbo defectivo",
+            "word_class": "Verbo (perfeito com sentido de presente)",
             "syntax_role": "Núcleo da oração principal. Perfeito ativo com sentido de presente, 1ª pessoa plural ('Sabemos')",
             "inflection": "Perfeito do indicativo ativo, 1ª pessoa plural",
             "context_meaning": "Sabemos"
@@ -46337,7 +46418,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Particípio presente ativo contraído substantivado em dativo plural ('amam')",
             "inflection": "Particípio presente ativo, dativo masculino plural",
             "context_meaning": "amam",
-            "notes": "Particípio substantivado no dativo (Bergmann § 15.1)"
+            "notes": "Particípio substantivado no dativo (Bergmann § 15.2.2)"
           },
           {
             "index": 5,
@@ -46455,7 +46536,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "ousin",
             "lemma": "εἰμί",
             "composite": false,
-            "word_class": "Verbo defectivo (Particípio)",
+            "word_class": "Verbo (Particípio)",
             "syntax_role": "Particípio presente ativo em aposição explicativa (dativo masculino plural com ny móvel: 'que são / sendo')",
             "inflection": "Particípio presente ativo, dativo masculino plural",
             "context_meaning": "são"
@@ -46509,6 +46590,18 @@ window.GAMIDA_DEFAULT_DATA = {
             "λυσάντων",
             "λυσασῶν",
             "λυσάντων"
+          ],
+          [
+            "Dat. Pl.",
+            "λύσασι(ν)",
+            "λυσάσαις",
+            "λύσασι(ν)"
+          ],
+          [
+            "Ac. Pl.",
+            "λύσαντας",
+            "λυσάσας",
+            "λύσαντα"
           ]
         ]
       },
@@ -46557,6 +46650,18 @@ window.GAMIDA_DEFAULT_DATA = {
             "λυσαμένων",
             "λυσαμένων",
             "λυσαμένων"
+          ],
+          [
+            "Dat. Pl.",
+            "λυσαμένοις",
+            "λυσαμέναις",
+            "λυσαμένοις"
+          ],
+          [
+            "Ac. Pl.",
+            "λυσαμένους",
+            "λυσαμένας",
+            "λυσάμενα"
           ]
         ]
       },
@@ -46605,6 +46710,18 @@ window.GAMIDA_DEFAULT_DATA = {
             "λυθέντων",
             "λυθεισῶν",
             "λυθέντων"
+          ],
+          [
+            "Dat. Pl.",
+            "λυθεῖσι(ν)",
+            "λυθείσαις",
+            "λυθεῖσι(ν)"
+          ],
+          [
+            "Ac. Pl.",
+            "λυθέντας",
+            "λυθείσας",
+            "λυθέντα"
           ]
         ]
       }
@@ -46619,7 +46736,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "transliteration": "allēlois",
         "translations": [
           "uns aos outros",
-          "para os outros"
+          "uns para os outros"
         ],
         "type": "Pronome Recíproco (Dat)"
       },
@@ -46696,7 +46813,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Paralelismo Quiástico com Pronome Reflexivo ἑαυτόν e Futuro Passivo (§ 16)",
-        "notes": "Lc 14.11. Duplo uso do pronome reflexivo de 3ª pessoa ἑαυτόν com particípios substantivados e futuros passivos (Bergmann § 16.2).",
+        "notes": "Lc 14.11. Duplo uso do pronome reflexivo de 3ª pessoa ἑαυτόν com particípios substantivados e futuros passivos (Bergmann § 16.4).",
         "favorite": false,
         "tokens": [
           {
@@ -46742,7 +46859,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Objeto direto reflexivo (acusativo masculino singular: 'a si mesmo / se')",
             "inflection": "Acusativo masculino singular",
             "context_meaning": "a si mesmo",
-            "notes": "Pronome reflexivo ἑαυτόν (Bergmann § 16.2)"
+            "notes": "Pronome reflexivo ἑαυτόν (Bergmann § 16.4)"
           },
           {
             "index": 5,
@@ -46798,7 +46915,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Objeto direto reflexivo (acusativo masculino singular: 'a si mesmo / se')",
             "inflection": "Acusativo masculino singular",
             "context_meaning": "a si mesmo",
-            "notes": "Pronome reflexivo ἑαυτόν (Bergmann § 16.2)"
+            "notes": "Pronome reflexivo ἑαυτόν (Bergmann § 16.4)"
           },
           {
             "index": 10,
@@ -46822,7 +46939,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período Antitético com Pronome Reflexivo Plural ἑαυτούς em Função de 1ª Pessoa Plural (§ 16)",
-        "notes": "2Co 4.5. Uso helenístico frequente do pronome reflexivo ἑαυτούς para a 1ª pessoa plural ('a nós mesmos') (Bergmann § 16.2).",
+        "notes": "2Co 4.5. Uso helenístico frequente do pronome reflexivo ἑαυτούς para a 1ª pessoa plural ('a nós mesmos') (Bergmann § 16.4.2.b, que usa este versículo).",
         "favorite": false,
         "tokens": [
           {
@@ -46857,7 +46974,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Objeto direto reflexivo topicalizado enfático (acusativo masculino plural: 'a nós mesmos')",
             "inflection": "Acusativo masculino plural",
             "context_meaning": "a nós mesmos",
-            "notes": "Pronome reflexivo para 1ª pessoa plural (Bergmann § 16.2)"
+            "notes": "Pronome reflexivo para 1ª pessoa plural (Bergmann § 16.4.2.b)"
           },
           {
             "index": 4,
@@ -46990,8 +47107,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Saulo ouviu uma voz dizendo a ele: Saulo, Saulo, por que me persegues?"
         ],
         "type": "Frase",
-        "syntax_type": "Período com Pergunta Interrogativa Causal Direta tí (§ 16)",
-        "notes": "At 9.4. O pronome interrogativo neutro τί tem valor adverbial de 'por que / para que' (Bergmann § 16.1).",
+        "syntax_type": "Período com Pergunta Interrogativa Causal Direta τί (§ 16)",
+        "notes": "At 9.4. O pronome interrogativo neutro τί tem valor adverbial de 'por que / para que' (Bergmann § 16.2.2.c).",
         "favorite": false,
         "tokens": [
           {
@@ -47081,7 +47198,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Interrogativo em uso adverbial de causa (acusativo neutro singular: 'por que / que')",
             "inflection": "Acusativo neutro singular",
             "context_meaning": "por que",
-            "notes": "Pronome interrogativo τί com valor de 'por que' (Bergmann § 16.1)"
+            "notes": "Pronome interrogativo τί com valor de 'por que' (Bergmann § 16.2.2.c)"
           },
           {
             "index": 9,
@@ -47116,7 +47233,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Discurso Direto com Pronome Reflexivo Indireto e Pergunta Deliberativa (§ 16)",
-        "notes": "Lc 16.3. ἐν ἑαυτῷ expressa reflexividade íntima ('consigo mesmo') e τί ποιήσω é pergunta deliberativa no aoristo do subjuntivo (Bergmann § 16.1, § 16.2).",
+        "notes": "Lc 16.3. ἐν ἑαυτῷ expressa reflexividade íntima ('consigo mesmo') e τί ποιήσω é pergunta deliberativa no aoristo do subjuntivo (Bergmann § 16.4, § 16.2; subjuntivo deliberativo: § 3.3.4).",
         "favorite": false,
         "tokens": [
           {
@@ -47162,7 +47279,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo regido por ἐν expressando reflexividade íntima (dativo masculino singular: 'si mesmo')",
             "inflection": "Dativo masculino singular",
             "context_meaning": "mesmo",
-            "notes": "Pronome reflexivo ἑαυτοῦ (Bergmann § 16.2)"
+            "notes": "Pronome reflexivo ἑαυτοῦ (Bergmann § 16.4)"
           },
           {
             "index": 5,
@@ -47196,7 +47313,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Objeto direto da oração interrogativa deliberativa (acusativo neutro singular: 'Que / O que')",
             "inflection": "Acusativo neutro singular",
             "context_meaning": "Que",
-            "notes": "Pronome interrogativo τί (Bergmann § 16.1)"
+            "notes": "Pronome interrogativo τί (Bergmann § 16.2)"
           },
           {
             "index": 8,
@@ -47220,7 +47337,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Mandamento no Futuro Legal com Pronome Reflexivo de 2ª Pessoa σεαυτόν (§ 16)",
-        "notes": "Mt 22.39. Uso específico do pronome reflexivo de 2ª pessoa singular σεαυτόν no acusativo (Bergmann § 16.2).",
+        "notes": "Mt 19.19. Uso específico do pronome reflexivo de 2ª pessoa singular σεαυτόν no acusativo (Bergmann § 16.4).",
         "favorite": false,
         "tokens": [
           {
@@ -47288,7 +47405,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo de comparação reflexivo de 2ª pessoa (acusativo masculino singular: 'a ti mesmo')",
             "inflection": "Acusativo masculino singular",
             "context_meaning": "a ti mesmo",
-            "notes": "Pronome reflexivo de 2ª pessoa σεαυτοῦ (Bergmann § 16.2)"
+            "notes": "Pronome reflexivo de 2ª pessoa σεαυτοῦ (Bergmann § 16.4)"
           }
         ]
       },
@@ -47301,7 +47418,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Interrogativa Direta com Pronome Indefinido Enclítico τις (§ 16)",
-        "notes": "Mt 12.29. O pronome indefinido τις (enclítico sem acento) atua como sujeito genérico ('alguém / pessoa alguma') (Bergmann § 16.1).",
+        "notes": "Mt 12.29. O pronome indefinido τις (enclítico sem acento) atua como sujeito genérico ('alguém / pessoa alguma') (Bergmann § 16.3).",
         "favorite": false,
         "tokens": [
           {
@@ -47336,7 +47453,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Sujeito da oração interrogativa modal (nominativo masculino/feminino singular: 'alguém')",
             "inflection": "Nominativo singular",
             "context_meaning": "alguém",
-            "notes": "Pronome indefinido τις enclítico (Bergmann § 16.1)"
+            "notes": "Pronome indefinido τις enclítico (Bergmann § 16.3)"
           },
           {
             "index": 4,
@@ -47403,262 +47520,6 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Adjunto adnominal genitivo de posse (genitivo masculino singular: 'homem forte')",
             "inflection": "Genitivo masculino singular",
             "context_meaning": "homem forte"
-          }
-        ]
-      },
-      {
-        "id": "sent_16_07",
-        "term": "Ἐὰν ὁμολογήσῃς ἐν τῷ στόματί σου Κύριον Ἰησοῦν, καὶ πιστεύσῃς ἐν τῇ καρδίᾳ σου ὅτι ὁ Θεὸς αὐτὸν ἤγειρεν ἐκ νεκρῶν, σωθήσῃ·",
-        "transliteration": "Ean homologēsēs en tō stomati sou Kyrion Iēsoun, kai pisteusēs en tē kardia sou hoti ho Theos auton ēgeiren ek nekrōn, sōthēsē:",
-        "translations": [
-          "Se com a tua boca confessares a Jesus como Senhor, e no teu coração creres que Deus o ressuscitou dentre os mortos, serás salvo;"
-        ],
-        "type": "Frase",
-        "syntax_type": "Período Condicional Eventual de Confissão e Salvação no Futuro Passivo (§ 16)",
-        "notes": "Rm 10.9. Contém o pronome pessoal na oração integrante (αὐτόν) e a apódose no futuro passivo σωθήσῃ (Bergmann § 9.1, § 12.2, § 22.1).",
-        "favorite": false,
-        "tokens": [
-          {
-            "index": 1,
-            "text": "Ἐὰν",
-            "transliteration": "Ean",
-            "lemma": "ἐάν",
-            "composite": false,
-            "word_class": "Conjunção condicional eventual",
-            "syntax_role": "Conjunção subordinativa condicional ('Se')",
-            "inflection": "Conjunção invariável",
-            "context_meaning": "Se"
-          },
-          {
-            "index": 2,
-            "text": "ὁμολογήσῃς",
-            "transliteration": "homologēsēs",
-            "lemma": "ὁμολογέω",
-            "composite": false,
-            "word_class": "Verbo contraído (1º Aoristo do Subjuntivo)",
-            "syntax_role": "1º núcleo da prótase. 1º aoristo do subjuntivo ativo, 2ª pessoa singular ('confessares')",
-            "inflection": "1º aoristo do subjuntivo ativo, 2ª pessoa singular",
-            "context_meaning": "confessares"
-          },
-          {
-            "index": 3,
-            "text": "ἐν",
-            "transliteration": "en",
-            "lemma": "ἐν",
-            "composite": false,
-            "word_class": "Preposição (rege dativo)",
-            "syntax_role": "Preposição de instrumento/esfera ('com / em')",
-            "inflection": "Rege caso dativo",
-            "context_meaning": "com"
-          },
-          {
-            "index": 4,
-            "text": "τῷ",
-            "transliteration": "tō",
-            "lemma": "ὁ",
-            "composite": false,
-            "word_class": "Artigo definido",
-            "syntax_role": "Determinante de στόματι (dativo neutro singular: 'a')",
-            "inflection": "Dativo neutro singular",
-            "context_meaning": "a"
-          },
-          {
-            "index": 5,
-            "text": "στόματί",
-            "transliteration": "stomati",
-            "lemma": "στόμα",
-            "composite": false,
-            "word_class": "Substantivo (3ª declinação neutra)",
-            "syntax_role": "Termo regido por ἐν (dativo neutro singular: 'boca', tema em dental -ατ)",
-            "inflection": "Dativo neutro singular",
-            "context_meaning": "boca"
-          },
-          {
-            "index": 6,
-            "text": "σου",
-            "transliteration": "sou",
-            "lemma": "σύ",
-            "composite": false,
-            "word_class": "Pronome pessoal enclítico",
-            "syntax_role": "Genitivo possessivo (genitivo 2ª pessoa singular: 'tua')",
-            "inflection": "Genitivo 2ª pessoa singular",
-            "context_meaning": "tua"
-          },
-          {
-            "index": 7,
-            "text": "Κύριον",
-            "transliteration": "Kyrion",
-            "lemma": "κύριος",
-            "composite": false,
-            "word_class": "Substantivo (2ª declinação)",
-            "syntax_role": "Predicativo do objeto direto (acusativo masculino singular: 'como Senhor')",
-            "inflection": "Acusativo masculino singular",
-            "context_meaning": "como Senhor"
-          },
-          {
-            "index": 8,
-            "text": "Ἰησοῦν,",
-            "transliteration": "Iēsoun",
-            "lemma": "Ἰησοῦς",
-            "composite": false,
-            "word_class": "Nome Próprio",
-            "syntax_role": "Objeto direto de ὁμολογήσῃς (acusativo masculino singular: 'Jesus')",
-            "inflection": "Acusativo masculino singular",
-            "context_meaning": "Jesus"
-          },
-          {
-            "index": 9,
-            "text": "καὶ",
-            "transliteration": "kai",
-            "lemma": "καί",
-            "composite": false,
-            "word_class": "Conjunção coordenativa copulativa",
-            "syntax_role": "Conectivo coordenativo ('e')",
-            "inflection": "Conjunção invariável",
-            "context_meaning": "e"
-          },
-          {
-            "index": 10,
-            "text": "πιστεύσῃς",
-            "transliteration": "pisteusēs",
-            "lemma": "πιστεύω",
-            "composite": false,
-            "word_class": "Verbo (1º Aoristo do Subjuntivo)",
-            "syntax_role": "2º núcleo da prótase. 1º aoristo do subjuntivo ativo, 2ª pessoa singular ('creres')",
-            "inflection": "1º aoristo do subjuntivo ativo, 2ª pessoa singular",
-            "context_meaning": "creres"
-          },
-          {
-            "index": 11,
-            "text": "ἐν",
-            "transliteration": "en",
-            "lemma": "ἐν",
-            "composite": false,
-            "word_class": "Preposição (rege dativo)",
-            "syntax_role": "Preposição de esfera interior ('em / no')",
-            "inflection": "Rege caso dativo",
-            "context_meaning": "no"
-          },
-          {
-            "index": 12,
-            "text": "τῇ",
-            "transliteration": "tē",
-            "lemma": "ὁ",
-            "composite": false,
-            "word_class": "Artigo definido",
-            "syntax_role": "Determinante de καρδίᾳ (dativo feminino singular: 'o')",
-            "inflection": "Dativo feminino singular",
-            "context_meaning": "o"
-          },
-          {
-            "index": 13,
-            "text": "καρδίᾳ",
-            "transliteration": "kardia",
-            "lemma": "καρδία",
-            "composite": false,
-            "word_class": "Substantivo (1ª declinação)",
-            "syntax_role": "Termo regido por ἐν (dativo feminino singular: 'coração', tema em -α puro)",
-            "inflection": "Dativo feminino singular",
-            "context_meaning": "coração"
-          },
-          {
-            "index": 14,
-            "text": "σου",
-            "transliteration": "sou",
-            "lemma": "σύ",
-            "composite": false,
-            "word_class": "Pronome pessoal enclítico",
-            "syntax_role": "Genitivo possessivo (genitivo 2ª pessoa singular: 'teu')",
-            "inflection": "Genitivo 2ª pessoa singular",
-            "context_meaning": "teu"
-          },
-          {
-            "index": 15,
-            "text": "ὅτι",
-            "transliteration": "hoti",
-            "lemma": "ὅτι",
-            "composite": false,
-            "word_class": "Conjunção integrante",
-            "syntax_role": "Conjunção integrante que introduz o conteúdo da fé ('que')",
-            "inflection": "Conjunção invariável",
-            "context_meaning": "que"
-          },
-          {
-            "index": 16,
-            "text": "ὁ",
-            "transliteration": "ho",
-            "lemma": "ὁ",
-            "composite": false,
-            "word_class": "Artigo definido",
-            "syntax_role": "Determinante do sujeito (nominativo masculino singular: 'o')",
-            "inflection": "Nominativo masculino singular",
-            "context_meaning": "o"
-          },
-          {
-            "index": 17,
-            "text": "Θεὸς",
-            "transliteration": "Theos",
-            "lemma": "θεός",
-            "composite": false,
-            "word_class": "Substantivo (2ª declinação)",
-            "syntax_role": "Sujeito da oração subordinada (nominativo masculino singular: 'Deus')",
-            "inflection": "Nominativo masculino singular",
-            "context_meaning": "Deus"
-          },
-          {
-            "index": 18,
-            "text": "αὐτὸν",
-            "transliteration": "auton",
-            "lemma": "αὐτός",
-            "composite": false,
-            "word_class": "Pronome pessoal",
-            "syntax_role": "Objeto direto referindo-se a Jesus (acusativo masculino singular: 'o / a ele')",
-            "inflection": "Acusativo masculino singular",
-            "context_meaning": "o"
-          },
-          {
-            "index": 19,
-            "text": "ἤγειρεν",
-            "transliteration": "ēgeiren",
-            "lemma": "ἐγείρω",
-            "composite": false,
-            "word_class": "Verbo líquido (1º Aoristo)",
-            "syntax_role": "Núcleo verbal com aumento temporal e alongamento compensatório. 1º aoristo do indicativo ativo, 3ª pessoa singular ('ressuscitou / levantou')",
-            "inflection": "1º aoristo do indicativo ativo, 3ª pessoa singular",
-            "context_meaning": "ressuscitou"
-          },
-          {
-            "index": 20,
-            "text": "ἐκ",
-            "transliteration": "ek",
-            "lemma": "ἐκ",
-            "composite": false,
-            "word_class": "Preposição (rege genitivo)",
-            "syntax_role": "Preposição de separação ('dentre')",
-            "inflection": "Rege caso genitivo",
-            "context_meaning": "dentre"
-          },
-          {
-            "index": 21,
-            "text": "νεκρῶν,",
-            "transliteration": "nekrōn",
-            "lemma": "νεκρός",
-            "composite": false,
-            "word_class": "Adjetivo substantivado",
-            "syntax_role": "Termo regido por ἐκ (genitivo masculino plural: 'mortos')",
-            "inflection": "Genitivo masculino plural",
-            "context_meaning": "os mortos"
-          },
-          {
-            "index": 22,
-            "text": "σωθήσῃ·",
-            "transliteration": "sōthēsē",
-            "lemma": "σῴζω",
-            "composite": false,
-            "word_class": "Verbo (Futuro passivo)",
-            "syntax_role": "Núcleo da apódose no futuro passivo. Futuro do indicativo passivo, 2ª pessoa singular com iota subscrito ('serás salvo')",
-            "inflection": "Futuro do indicativo passivo, 2ª pessoa singular",
-            "context_meaning": "serás salvo"
           }
         ]
       }
@@ -48034,13 +47895,13 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_17_01",
         "term": "πεπλήρωται ὁ καιρός, ἤγγικεν ἡ βασιλεία τοῦ Θεοῦ.",
-        "transliteration": "peplērōtai ho kairos, ēggiken hē basileia tou Theou.",
+        "transliteration": "peplērōtai ho kairos, ēngiken hē basileia tou Theou.",
         "translations": [
           "O tempo está cumprido, e o reino de Deus está próximo."
         ],
         "type": "Frase",
         "syntax_type": "Paralelismo Proclamatório com Verbos no Perfeito do Indicativo (§ 17)",
-        "notes": "Mc 1.15. Ilustra dois perfeitos canônicos com estado resultante presente: πεπλήρωται (perfeito médio/passivo com reduplicação consonantal πε-) e ἤγγικεν (perfeito ativo com aumento temporal ἠ- e sufixo -κα) (Bergmann § 17.1).",
+        "notes": "Mc 1.15. Dois perfeitos com estado resultante presente (§ 17.1): πεπλήρωται (perfeito médio/passivo, reduplicação consonantal πε-, § 17.2.1.a) e ἤγγικεν (perfeito ativo de ἐγγίζω com reduplicação vocálica ε + ἐ > ἠ, § 17.2.1.f, e κα; lição 17, nota 1).",
         "favorite": false,
         "tokens": [
           {
@@ -48053,7 +47914,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo da 1ª oração com reduplicação. Perfeito do indicativo passivo, 3ª pessoa singular ('está cumprido / completou-se')",
             "inflection": "Perfeito do indicativo passivo, 3ª pessoa singular",
             "context_meaning": "está cumprido",
-            "notes": "Perfeito passivo com reduplicação (Bergmann § 17.1)"
+            "notes": "Perfeito passivo com reduplicação (Bergmann § 17.2.1.a)"
           },
           {
             "index": 2,
@@ -48080,14 +47941,14 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 4,
             "text": "ἤγγικεν",
-            "transliteration": "ēggiken",
+            "transliteration": "ēngiken",
             "lemma": "ἐγγίζω",
             "composite": false,
             "word_class": "Verbo (Perfeito ativo)",
-            "syntax_role": "Núcleo da 2ª oração com aumento temporal. Perfeito do indicativo ativo, 3ª pessoa singular com ny móvel ('está próximo / aproximou-se')",
+            "syntax_role": "Núcleo da 2ª oração, com reduplicação vocálica (ε + ἐ > ἠ). Perfeito do indicativo ativo, 3ª pessoa singular com ny móvel ('está próximo / aproximou-se')",
             "inflection": "Perfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "está próximo",
-            "notes": "Perfeito ativo em -κα com aumento temporal (Bergmann § 17.1)"
+            "notes": "Perfeito ativo em -κα com reduplicação vocálica (Bergmann § 17.2.1.f)"
           },
           {
             "index": 5,
@@ -48137,14 +47998,14 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "id": "sent_17_02",
-        "term": "Ὃ ἦν ἀπ᾽ ἀρχῆς, ὃ ἀκηκόαμεν, ὃ ἑωράκαμεν toῖς ὀφθαλμοῖς ἡμῶν, ὃ ἐθεασάμεθα, καὶ αἱ χεῖρες ἡμῶν ἐψηλάφησαν περὶ τοῦ λόγου τῆς ζωῆς... ἀπαγγέλλομεν ὑμῖν.",
+        "term": "Ὃ ἦν ἀπ᾽ ἀρχῆς, ὃ ἀκηκόαμεν, ὃ ἑωράκαμεν τοῖς ὀφθαλμοῖς ἡμῶν, ὃ ἐθεασάμεθα, καὶ αἱ χεῖρες ἡμῶν ἐψηλάφησαν περὶ τοῦ λόγου τῆς ζωῆς... ἀπαγγέλλομεν ὑμῖν.",
         "transliteration": "Ho ēn ap’ archēs, ho akēkoamen, ho heōrakamen tois ophthalmois hēmōn, ho etheasametha, kai hai cheires hēmōn epsēlaphēsan peri tou logou tēs zōēs... apangellomen hymin.",
         "translations": [
           "O que era desde o princípio, o que ouvimos, o que vimos com os nossos olhos, o que contemplamos e as nossas mãos apalparam a respeito do Verbo da vida... isso vos anunciamos."
         ],
         "type": "Frase",
         "syntax_type": "Período Solene com Séries de Orações Relativas nos Tempos Perfeito, Aoristo e Imperfeito (§ 17)",
-        "notes": "1Jo 1.1. Apresenta o 2º perfeito com reduplicação ática ἀκηκόαμεν (de ἀκούω) e o perfeito ἑωράκαμεν (de ὁράω) expressando testemunho apostólico perene (Bergmann § 17.1).",
+        "notes": "1Jo 1.1,3. Apresenta o 2º perfeito com reduplicação ática ἀκηκόαμεν (de ἀκούω) e o perfeito ἑωράκαμεν (de ὁράω) expressando testemunho apostólico perene (Bergmann § 17.1; 2.º perfeito: § 17.2.3; ἑωράκαμεν: lição 17, nota 2).",
         "favorite": false,
         "tokens": [
           {
@@ -48212,7 +48073,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo com reduplicação ática (ἀκ-ηκο-). 2º perfeito do indicativo ativo, 1ª pessoa plural ('ouvimos / temos ouvido')",
             "inflection": "Perfeito do indicativo ativo, 1ª pessoa plural",
             "context_meaning": "ouvimos",
-            "notes": "2º perfeito com reduplicação ática (Bergmann § 17.1)"
+            "notes": "2º perfeito com reduplicação ática (Bergmann § 17.2.3)"
           },
           {
             "index": 7,
@@ -48238,7 +48099,7 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 9,
-            "text": "toῖς",
+            "text": "τοῖς",
             "transliteration": "tois",
             "lemma": "ὁ",
             "composite": false,
@@ -48295,7 +48156,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 14,
             "text": "καὶ",
             "transliteration": "kai",
-            "lemma": "καí",
+            "lemma": "καί",
             "composite": false,
             "word_class": "Conjunção coordenativa copulativa",
             "syntax_role": "Conectivo coordenativo ('e')",
@@ -48434,7 +48295,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com Múltiplos Verbos no Perfeito Ativo com Reduplicação (§ 17)",
-        "notes": "1Jo 5.10. Apresenta três perfeitos ativos regulares com reduplicação consonantal e sufixo -κα: πεποίηκεν, πεπίστευκεν e μεμαρτύρηκεν (Bergmann § 17.1).",
+        "notes": "1Jo 5.10. Apresenta três perfeitos ativos regulares com reduplicação consonantal e sufixo -κα: πεποίηκεν, πεπίστευκεν e μεμαρτύρηκεν (Bergmann § 17.2.1.a, § 17.2.2.b).",
         "favorite": false,
         "tokens": [
           {
@@ -48645,7 +48506,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo da 2ª oração. Perfeito do indicativo ativo com reduplicação πε- e sufixo -κα, 3ª pessoa singular com ny móvel ('fez / tornou')",
             "inflection": "Perfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "fez",
-            "notes": "Perfeito ativo com reduplicação (Bergmann § 17.1)"
+            "notes": "Perfeito ativo com reduplicação (Bergmann § 17.2)"
           },
           {
             "index": 20,
@@ -48690,7 +48551,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo da oração causal. Perfeito do indicativo ativo com reduplicação πε-, 3ª pessoa singular com ny móvel ('creu / tem crido')",
             "inflection": "Perfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "creu",
-            "notes": "Perfeito ativo em -κα (Bergmann § 17.1)"
+            "notes": "Perfeito ativo em -κα (Bergmann § 17.2)"
           },
           {
             "index": 24,
@@ -48746,7 +48607,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Núcleo da oração adjetiva. Perfeito do indicativo ativo com reduplicação με-, 3ª pessoa singular com ny móvel ('testemunhou / tem dado testemunho')",
             "inflection": "Perfeito do indicativo ativo, 3ª pessoa singular",
             "context_meaning": "deu / testemunhou",
-            "notes": "Perfeito ativo com reduplicação (Bergmann § 17.1)"
+            "notes": "Perfeito ativo com reduplicação (Bergmann § 17.2)"
           },
           {
             "index": 29,
@@ -48821,11 +48682,11 @@ window.GAMIDA_DEFAULT_DATA = {
         "term": "Ὁ πατὴρ φιλεῖ ὑμᾶς, ὅτι ὑμεῖς ἐμὲ πεφιλήκατε, καὶ πεπιστεύκατε ὅτι ἐγὼ παρὰ τοῦ Θεοῦ ἐξῆλθον.",
         "transliteration": "Ho patēr philei hymas, hoti hymeis eme pephilēkate, kai pepisteukate hoti egō para tou Theou exēlthon.",
         "translations": [
-          "O Pai mesmo vos ama, porque vós me amastes e crestes que eu saí de Deus."
+          "O Pai vos ama, porque vós me amastes e crestes que eu saí de Deus."
         ],
         "type": "Frase",
         "syntax_type": "Período Causal com Verbos no Perfeito Ativo de 2ª Pessoa Plural (§ 17)",
-        "notes": "Jo 16.27. πεφιλήκατε e πεπιστεύκατε exibem a desinência de 2ª pessoa plural do perfeito ativo (-κατε) denotando estado afetuoso e crente resultante permanente (Bergmann § 17.1).",
+        "notes": "Jo 16.27. πεφιλήκατε e πεπιστεύκατε exibem a desinência de 2ª pessoa plural do perfeito ativo (-κατε) denotando estado afetuoso e crente resultante permanente (Bergmann § 17.2.1.b, que usa φιλέω > πεφίληκα como exemplo; § 17.2.1.a).",
         "favorite": false,
         "tokens": [
           {
@@ -48915,7 +48776,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "1º núcleo da oração causal com reduplicação πε- e desinência -κατε. Perfeito do indicativo ativo, 2ª pessoa plural ('amastes / tendes amado')",
             "inflection": "Perfeito do indicativo ativo, 2ª pessoa plural",
             "context_meaning": "amastes",
-            "notes": "Perfeito ativo 2ª pessoa plural em -κατε (Bergmann § 17.1)"
+            "notes": "Perfeito ativo 2ª pessoa plural em -κατε (Bergmann § 17.2.1.b)"
           },
           {
             "index": 9,
@@ -48938,7 +48799,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "2º núcleo causal com reduplicação πε- e desinência -κατε. Perfeito do indicativo ativo, 2ª pessoa plural ('crestes / tendes crido')",
             "inflection": "Perfeito do indicativo ativo, 2ª pessoa plural",
             "context_meaning": "crestes",
-            "notes": "Perfeito ativo 2ª pessoa plural em -κατε (Bergmann § 17.1)"
+            "notes": "Perfeito ativo 2ª pessoa plural em -κατε (Bergmann § 17.2.1.a)"
           },
           {
             "index": 11,
@@ -49060,7 +48921,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo (2ª declinação)",
-            "syntax_role": "Adjunto adnominal genitivo subjetivo (genitivo masculino singular: 'Deus')",
+            "syntax_role": "Adjunto adnominal no genitivo (genitivo masculino singular: 'Deus'). Bergmann vê aqui um genitivo 'plenário' (subjetivo e objetivo ao mesmo tempo; lição 17, 'Aplicando o texto à vida').",
             "inflection": "Genitivo masculino singular",
             "context_meaning": "Deus"
           },
@@ -49233,7 +49094,7 @@ window.GAMIDA_DEFAULT_DATA = {
           [
             "2ª",
             "λέλυσαι",
-            "λέlυσθε"
+            "λέλυσθε"
           ],
           [
             "3ª",
@@ -49290,32 +49151,53 @@ window.GAMIDA_DEFAULT_DATA = {
           [
             "1ª Sg.",
             "(ἐ)πεπιστεύκειν",
-            "ἐλελύμην"
+            "(ἐ)λελύμην"
           ],
           [
             "2ª Sg.",
             "(ἐ)πεπιστεύκεις",
-            "ἐλέλυσο"
+            "(ἐ)λέλυσο"
           ],
           [
             "3ª Sg.",
             "(ἐ)πεπιστεύκει",
-            "ἐλέλυτο"
+            "(ἐ)λέλυτο"
           ],
           [
             "1ª Pl.",
             "(ἐ)πεπιστεύκειμεν",
-            "ἐλελύμεθα"
+            "(ἐ)λελύμεθα"
           ],
           [
             "2ª Pl.",
             "(ἐ)πεπιστεύκειτε",
-            "ἐλέλυσθε"
+            "(ἐ)λέλυσθε"
           ],
           [
             "3ª Pl.",
             "(ἐ)πεπιστεύκεισαν",
-            "ἐλέλυντο"
+            "(ἐ)λέλυντο"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Infinitivos do Perfeito (λύω)",
+        "headers": [
+          "Voz",
+          "Forma do Infinitivo",
+          "Tradução"
+        ],
+        "rows": [
+          [
+            "Ativa",
+            "λελυκέναι",
+            "ter desatado"
+          ],
+          [
+            "Média/Passiva",
+            "λελύσθαι",
+            "ter-se desatado / ter sido desatado"
           ]
         ]
       }
@@ -49544,7 +49426,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Coordenação imperativa exortativa tríplice seguida de oração nominal causal",
-        "notes": "1 Tessalonicenses 5:16-18. Ilustra a série de imperativos presentes para ações contínuas no cotidiano cristão.",
+        "notes": "1Ts 5.16-18. Ilustra a série de imperativos presentes para ações contínuas no cotidiano cristão.",
         "tokens": [
           {
             "index": 1,
@@ -49560,7 +49442,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 2,
             "text": "χαίρετε·",
-            "transliteration": "chairete;",
+            "transliteration": "chairete",
             "lemma": "χαίρω",
             "composite": false,
             "word_class": "Verbo",
@@ -49582,7 +49464,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 4,
             "text": "προσεύχεσθε·",
-            "transliteration": "proseuchesthe;",
+            "transliteration": "proseuchesthe",
             "lemma": "προσεύχομαι",
             "composite": false,
             "word_class": "Verbo",
@@ -49605,7 +49487,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "παντὶ",
             "transliteration": "panti",
-            "lemma": "πᾶς, πᾶσα, πᾶν",
+            "lemma": "πᾶς",
             "composite": false,
             "word_class": "Adjetivo",
             "syntax_role": "Dativo neutro singular ('tudo')",
@@ -49615,7 +49497,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 7,
             "text": "εὐχαριστεῖτε·",
-            "transliteration": "eucharisteite;",
+            "transliteration": "eucharisteite",
             "lemma": "εὐχαριστέω",
             "composite": false,
             "word_class": "Verbo",
@@ -49627,7 +49509,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 8,
             "text": "τοῦτο",
             "transliteration": "touto",
-            "lemma": "οὗτος, αὕτη, τοῦτο",
+            "lemma": "οὗτος",
             "composite": false,
             "word_class": "Pronome demonstrativo",
             "syntax_role": "Nominativo neutro singular, sujeito ('isto, esta')",
@@ -49649,7 +49531,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 10,
             "text": "θέλημα",
             "transliteration": "thelēma",
-            "lemma": "θέλημα, -ματος, τό",
+            "lemma": "θέλημα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo neutro singular, predicativo ('vontade')",
@@ -49660,7 +49542,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 11,
             "text": "Θεοῦ",
             "transliteration": "Theou",
-            "lemma": "θεός, -οῦ, ὁ",
+            "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo masculino singular ('de Deus')",
@@ -49682,7 +49564,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "Χριστῷ",
             "transliteration": "Christō",
-            "lemma": "Χριστός, -οῦ, ὁ",
+            "lemma": "Χριστός",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Dativo masculino singular ('Cristo')",
@@ -49693,7 +49575,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 14,
             "text": "Ἰησοῦ",
             "transliteration": "Iēsou",
-            "lemma": "Ἰησοῦς, -οῦ, ὁ",
+            "lemma": "Ἰησοῦς",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Dativo masculino singular ('Jesus')",
@@ -49714,7 +49596,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 16,
             "text": "ὑμᾶς.",
-            "transliteration": "hymas.",
+            "transliteration": "hymas",
             "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal",
@@ -49734,13 +49616,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração optativa votiva (expressão de desejo/bênção) com ἁγιάσαι e τηρηθείη",
-        "notes": "1 Tessalonicenses 5:23. Clássico exemplo neotestamentário de optativo aoristo em oração de desejo/bênção.",
+        "notes": "1Ts 5.23. Clássico exemplo neotestamentário de optativo aoristo em oração de desejo/bênção.",
         "tokens": [
           {
             "index": 1,
             "text": "Αὐτὸς",
             "transliteration": "Autos",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome intensivo",
             "syntax_role": "Nominativo masculino singular ('o próprio')",
@@ -49751,7 +49633,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -49762,7 +49644,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 3,
             "text": "Θεὸς",
             "transliteration": "Theos",
-            "lemma": "θεός, -οῦ, ὁ",
+            "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito ('Deus')",
@@ -49773,7 +49655,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "τῆς",
             "transliteration": "tēs",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo feminino singular ('da')",
@@ -49784,7 +49666,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "εἰρήνης",
             "transliteration": "eirēnēs",
-            "lemma": "εἰρήνη, -ης, ἡ",
+            "lemma": "εἰρήνη",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo feminino singular ('paz')",
@@ -49816,8 +49698,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 8,
             "text": "ὁλοτελεῖς·",
-            "transliteration": "holoteleis;",
-            "lemma": "ὁλοτελής, -ές",
+            "transliteration": "holoteleis",
+            "lemma": "ὁλοτελής",
             "composite": false,
             "word_class": "Adjetivo",
             "syntax_role": "Acusativo masculino/feminino plural predicativo ('inteiramente, por completo')",
@@ -49839,7 +49721,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 10,
             "text": "ὁλόκληρον",
             "transliteration": "holoklēron",
-            "lemma": "ὁλόκληρος, -ον",
+            "lemma": "ὁλόκληρος",
             "composite": false,
             "word_class": "Adjetivo",
             "syntax_role": "Nominativo neutro singular predicativo ('íntegro, perfeitamente conservado')",
@@ -49861,7 +49743,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "τὸ",
             "transliteration": "to",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo neutro singular ('o')",
@@ -49872,7 +49754,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "πνεῦμα",
             "transliteration": "pneuma",
-            "lemma": "πνεῦμα, -ματος, τό",
+            "lemma": "πνεῦμα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo neutro singular ('espírito')",
@@ -49894,7 +49776,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 15,
             "text": "ἡ",
             "transliteration": "hē",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo feminino singular ('a')",
@@ -49905,7 +49787,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 16,
             "text": "ψυχὴ",
             "transliteration": "psychē",
-            "lemma": "ψυχή, -ῆς, ἡ",
+            "lemma": "ψυχή",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo feminino singular ('alma')",
@@ -49927,7 +49809,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 18,
             "text": "τὸ",
             "transliteration": "to",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo neutro singular ('o')",
@@ -49938,7 +49820,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 19,
             "text": "σῶμα",
             "transliteration": "sōma",
-            "lemma": "σῶμα, -ματος, τό",
+            "lemma": "σῶμα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo neutro singular ('corpo')",
@@ -49971,7 +49853,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 22,
             "text": "τῇ",
             "transliteration": "tē",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Dativo feminino singular ('na')",
@@ -49982,7 +49864,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 23,
             "text": "παρουσίᾳ",
             "transliteration": "parousia",
-            "lemma": "παρουσία, -ας, ἡ",
+            "lemma": "παρουσία",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo feminino singular ('vinda, presença')",
@@ -49993,7 +49875,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 24,
             "text": "τοῦ",
             "transliteration": "tou",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo masculino singular ('do')",
@@ -50004,7 +49886,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 25,
             "text": "Κυρίου",
             "transliteration": "Kyriou",
-            "lemma": "κύριος, -ου, ὁ",
+            "lemma": "κύριος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo masculino singular ('Senhor')",
@@ -50026,7 +49908,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 27,
             "text": "Ἰησοῦ",
             "transliteration": "Iēsou",
-            "lemma": "Ἰησοῦς, -οῦ, ὁ",
+            "lemma": "Ἰησοῦς",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Genitivo masculino singular ('Jesus')",
@@ -50037,7 +49919,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 28,
             "text": "Χριστοῦ",
             "transliteration": "Christou",
-            "lemma": "Χριστός, -οῦ, ὁ",
+            "lemma": "Χριστός",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Genitivo masculino singular ('Cristo')",
@@ -50047,7 +49929,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 29,
             "text": "τηρηθείη.",
-            "transliteration": "tērētheiē.",
+            "transliteration": "tērētheiē",
             "lemma": "τηρέω",
             "composite": false,
             "word_class": "Verbo",
@@ -50067,13 +49949,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração principal nominal atributiva com verbo de ligação elíptico seguida de oração subordinada adjetiva relativa",
-        "notes": "1 Tessalonicenses 5:24. Apresenta particípio substantivado ὁ καλῶν e promessa em futuro indicativo.",
+        "notes": "1Ts 5.24. Apresenta particípio substantivado ὁ καλῶν e promessa em futuro indicativo.",
         "tokens": [
           {
             "index": 1,
             "text": "Πιστὸς",
             "transliteration": "Pistos",
-            "lemma": "πιστός, -ή, -όν",
+            "lemma": "πιστός",
             "composite": false,
             "word_class": "Adjetivo",
             "syntax_role": "Nominativo masculino singular, predicativo enfático ('fiel')",
@@ -50084,7 +49966,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo substantivador",
             "syntax_role": "Nominativo masculino singular com particípio ('aquele que')",
@@ -50105,7 +49987,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 4,
             "text": "ὑμᾶς,",
-            "transliteration": "hymas,",
+            "transliteration": "hymas",
             "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal",
@@ -50117,7 +49999,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "ὃς",
             "transliteration": "hos",
-            "lemma": "ὅς, ἥ, ὅ",
+            "lemma": "ὅς",
             "composite": false,
             "word_class": "Pronome relativo",
             "syntax_role": "Nominativo masculino singular, sujeito ('o qual')",
@@ -50138,7 +50020,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 7,
             "text": "ποιήσει.",
-            "transliteration": "poiēsei.",
+            "transliteration": "poiēsei",
             "lemma": "ποιέω",
             "composite": false,
             "word_class": "Verbo",
@@ -50158,7 +50040,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Coordenação de mandamentos em aoristo imperativo de 3ª pessoa do singular (-τω)",
-        "notes": "1 Pedro 3:11 / Salmo 34:14. Destaque para desinência -τω do imperativo singular da 3ª pessoa.",
+        "notes": "1Pe 3.11 (cf. Sl 34.14). Destaque para desinência -τω do imperativo singular da 3ª pessoa.",
         "tokens": [
           {
             "index": 1,
@@ -50185,8 +50067,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 3,
             "text": "κακοῦ,",
-            "transliteration": "kakou,",
-            "lemma": "κακός, -ή, -όν",
+            "transliteration": "kakou",
+            "lemma": "κακός",
             "composite": false,
             "word_class": "Adjetivo substantivado",
             "syntax_role": "Genitivo neutro singular ('mal')",
@@ -50218,8 +50100,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 6,
             "text": "ἀγαθόν·",
-            "transliteration": "agathon;",
-            "lemma": "ἀγαθός, -ή, -όν",
+            "transliteration": "agathon",
+            "lemma": "ἀγαθός",
             "composite": false,
             "word_class": "Adjetivo substantivado",
             "syntax_role": "Acusativo neutro singular, objeto direto ('o bem')",
@@ -50240,8 +50122,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 8,
             "text": "εἰρήνην,",
-            "transliteration": "eirēnēn,",
-            "lemma": "εἰρήνη, -ης, ἡ",
+            "transliteration": "eirēnēn",
+            "lemma": "εἰρήνη",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo feminino singular, objeto direto ('a paz')",
@@ -50273,8 +50155,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 11,
             "text": "αὐτήν.",
-            "transliteration": "autēn.",
-            "lemma": "αὐτός, -ή, -ό",
+            "transliteration": "autēn",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Acusativo feminino singular, objeto direto ('ela, a ela')",
@@ -50286,20 +50168,20 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_18_05",
         "favorite": false,
-        "term": "Τίνι γὰρ εἶπέν ποτε τῶν ἀγγέλων, Υἱός μου εἶ σύ, ἐγὼ σήμερον γεγέννηκά σε; Καὶ πάλιν, Ἐγὼ ἔσομαι αὐτῷ εἰς πατέρα, καὶ αὐτὸς ἔσται μοι εἰς υἱόν; ",
+        "term": "Τίνι γὰρ εἶπέν ποτε τῶν ἀγγέλων, Υἱός μου εἶ σύ, ἐγὼ σήμερον γεγέννηκά σε; Καὶ πάλιν, Ἐγὼ ἔσομαι αὐτῷ εἰς πατέρα, καὶ αὐτὸς ἔσται μοι εἰς υἱόν;",
         "transliteration": "Tini gar eipen pote tōn angelōn, Huios mou ei sy, egō sēmeron gegennēka se; Kai palin, Egō esomai autō eis patera, kai autos estai moi eis huion;",
         "translations": [
           "Pois a qual dos anjos disse jamais: Tu és meu Filho, eu hoje te gerei? E outra vez: Eu serei para ele Pai, e ele será para mim Filho?"
         ],
         "type": "Frase",
         "syntax_type": "Pergunta retórica introdutória e duas citações veterotestamentárias em estilo direto com hebraísmo εἰς + acusativo",
-        "notes": "Hebreus 1:5 citando Sl 2:7 e 2 Sm 7:14. O uso de εἰς + acusativo traduz o hebraico lə- indicando transformação/relação predicativa.",
+        "notes": "Hb 1.5, citando Sl 2.7 e 2Sm 7.14. O uso de εἰς + acusativo traduz o hebraico lə- indicando transformação/relação predicativa.",
         "tokens": [
           {
             "index": 1,
             "text": "Τίνι",
             "transliteration": "Tini",
-            "lemma": "τίς, τί",
+            "lemma": "τίς",
             "composite": false,
             "word_class": "Pronome interrogativo",
             "syntax_role": "Dativo masculino singular ('a qual')",
@@ -50334,16 +50216,16 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "pote",
             "lemma": "ποτέ",
             "composite": false,
-            "word_class": "Particípio/Advérbio indefinido",
+            "word_class": "Advérbio indefinido enclítico",
             "syntax_role": "Advérbio temporal indefinido ('em algum momento, jamais')",
-            "inflection": "Particípio/Advérbio indefinido invariável",
+            "inflection": "Advérbio indefinido enclítico invariável",
             "context_meaning": "em algum momento, jamais"
           },
           {
             "index": 5,
             "text": "τῶν",
             "transliteration": "tōn",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo masculino plural partitivo ('dos')",
@@ -50353,8 +50235,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 6,
             "text": "ἀγγέλων,",
-            "transliteration": "angelōn,",
-            "lemma": "ἄγγελος, -ου, ὁ",
+            "transliteration": "angelōn",
+            "lemma": "ἄγγελος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo masculino plural ('anjos')",
@@ -50365,7 +50247,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "Υἱός",
             "transliteration": "Huios",
-            "lemma": "υἱός, -οῦ, ὁ",
+            "lemma": "υἱός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, predicativo ('Filho')",
@@ -50397,7 +50279,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 10,
             "text": "σύ,",
-            "transliteration": "sy,",
+            "transliteration": "sy",
             "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal enfático",
@@ -50441,7 +50323,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 14,
             "text": "σε;",
-            "transliteration": "se;",
+            "transliteration": "se",
             "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal enclítico",
@@ -50463,7 +50345,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 16,
             "text": "πάλιν,",
-            "transliteration": "palin,",
+            "transliteration": "palin",
             "lemma": "πάλιν",
             "composite": false,
             "word_class": "Advérbio de repetição",
@@ -50497,7 +50379,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 19,
             "text": "αὐτῷ",
             "transliteration": "autō",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Dativo masculino singular de interesse ('para ele, a ele')",
@@ -50518,8 +50400,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 21,
             "text": "πατέρα,",
-            "transliteration": "patera,",
-            "lemma": "πατήρ, πατρός, ὁ",
+            "transliteration": "patera",
+            "lemma": "πατήρ",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino singular ('pai')",
@@ -50541,7 +50423,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 23,
             "text": "αὐτὸς",
             "transliteration": "autos",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome intensivo / pessoal",
             "syntax_role": "Nominativo masculino singular, sujeito ('ele')",
@@ -50584,8 +50466,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 27,
             "text": "υἱόν;",
-            "transliteration": "huion;",
-            "lemma": "υἱός, -οῦ, ὁ",
+            "transliteration": "huion",
+            "lemma": "υἱός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino singular ('filho')",
@@ -50604,13 +50486,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Proibição com μηδέν + presente do imperativo expressando cessação de hábito contínuo",
-        "notes": "Filipenses 4:6. Ilustra a proibição com presente imperativo (não continueis ansiosos).",
+        "notes": "Fp 4.6. Ilustra a proibição com μή + presente do imperativo, que em geral manda interromper ou não continuar uma ação (Bergmann § 18.2.2).",
         "tokens": [
           {
             "index": 1,
             "text": "Μηδὲν",
             "transliteration": "Mēden",
-            "lemma": "μηδείς, μηδεμία, μηδέν",
+            "lemma": "μηδείς",
             "composite": false,
             "word_class": "Pronome indefinido / advérbio",
             "syntax_role": "Acusativo neutro singular acusativo adverbial ('por coisa alguma, de nada')",
@@ -50620,7 +50502,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 2,
             "text": "μεριμνᾶτε...",
-            "transliteration": "merimnate...",
+            "transliteration": "merimnate",
             "lemma": "μεριμνάω",
             "composite": false,
             "word_class": "Verbo",
@@ -50688,7 +50570,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "λυσάσθω",
             "λυσάσθωσαν",
             "λυθήτω",
-            "λυθήτωσan"
+            "λυθήτωσαν"
           ]
         ]
       },
@@ -51019,7 +50901,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração subordinada com subjuntivo proibitivo (μὴ νομίσητε) e orações subordinadas de infinitivo com valor de finalidade (καταλῦσαι, πληρῶσαι)",
-        "notes": "Mateus 5:17. Demonstra o infinitivo aoristo usado para expressar intenção/propósito.",
+        "notes": "Mt 5.17. Demonstra o infinitivo aoristo usado para expressar intenção/propósito.",
         "tokens": [
           {
             "index": 1,
@@ -51080,7 +50962,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "τὸν",
             "transliteration": "ton",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo masculino singular ('a')",
@@ -51091,7 +50973,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "νόμον",
             "transliteration": "nomon",
-            "lemma": "νόμος, -ου, ὁ",
+            "lemma": "νόμος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino singular, objeto ('lei')",
@@ -51113,7 +50995,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "τοὺς",
             "transliteration": "tous",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo masculino plural ('os')",
@@ -51123,8 +51005,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 10,
             "text": "προφήτας·",
-            "transliteration": "prophētas;",
-            "lemma": "προφήτης, -ου, ὁ",
+            "transliteration": "prophētas",
+            "lemma": "προφήτης",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino plural, objeto ('profetas')",
@@ -51178,7 +51060,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 15,
             "text": "πληρῶσαι.",
-            "transliteration": "plērōsai.",
+            "transliteration": "plērōsai",
             "lemma": "πληρόω",
             "composite": false,
             "word_class": "Infinitivo verbal",
@@ -51198,7 +51080,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração principal com verbos de finalidade no aoristo infinitivo ativo e particípio perfeito neutro substantivado",
-        "notes": "Lucas 19:10. Uso emblemático de infinitivos complementares de desígnio/finalidade.",
+        "notes": "Lc 19.10. Infinitivos de finalidade após verbo de movimento (Bergmann § 19.3.1).",
         "tokens": [
           {
             "index": 1,
@@ -51215,7 +51097,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -51226,7 +51108,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 3,
             "text": "υἱὸς",
             "transliteration": "huios",
-            "lemma": "υἱός, -οῦ, ὁ",
+            "lemma": "υἱός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito ('Filho')",
@@ -51237,7 +51119,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "τοῦ",
             "transliteration": "tou",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo masculino singular ('do')",
@@ -51248,7 +51130,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "ἀνθρώπου",
             "transliteration": "anthrōpou",
-            "lemma": "ἄνθρωπος, -ου, ὁ",
+            "lemma": "ἄνθρωπος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo masculino singular ('homem')",
@@ -51292,7 +51174,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "τὸ",
             "transliteration": "to",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo substantivador",
             "syntax_role": "Acusativo neutro singular ('o')",
@@ -51302,7 +51184,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 10,
             "text": "ἀπολωλός.",
-            "transliteration": "apolōlos.",
+            "transliteration": "apolōlos",
             "lemma": "ἀπόλλυμι",
             "composite": false,
             "word_class": "Particípio verbal substantivado",
@@ -51322,13 +51204,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Interrogação direta com verbo modal δύναμαι e infinitivo passivo complementar (-θῆναι)",
-        "notes": "Marcos 10:26. Mostra a formação do infinitivo aoristo passivo em -θῆναι.",
+        "notes": "Mc 10.26. Mostra a formação do infinitivo aoristo passivo em -θῆναι.",
         "tokens": [
           {
             "index": 1,
             "text": "Τίς",
             "transliteration": "Tis",
-            "lemma": "τίς, τί",
+            "lemma": "τίς",
             "composite": false,
             "word_class": "Pronome interrogativo",
             "syntax_role": "Nominativo masculino singular, sujeito ('quem')",
@@ -51349,7 +51231,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 3,
             "text": "σωθῆναι;",
-            "transliteration": "sōthēnai;",
+            "transliteration": "sōthēnai",
             "lemma": "σῴζω",
             "composite": false,
             "word_class": "Infinitivo verbal",
@@ -51369,7 +51251,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período complexo com orações finais (ἵνα) encadeadas com múltiplos infinitivos presentes explicativos e complementares",
-        "notes": "Marcos 3:14-15. Combinação pedagógica rica de infinitivos (κηρύσσειν, ἔχειν, θεραπεύειν, ἐκβάλλειν).",
+        "notes": "Mc 3.14-15. Combinação pedagógica rica de infinitivos (κηρύσσειν, ἔχειν, θεραπεύειν, ἐκβάλλειν).",
         "tokens": [
           {
             "index": 1,
@@ -51396,7 +51278,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 3,
             "text": "δώδεκα,",
-            "transliteration": "dōdeka,",
+            "transliteration": "dōdeka",
             "lemma": "δώδεκα",
             "composite": false,
             "word_class": "Numeral cardinal",
@@ -51440,8 +51322,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 7,
             "text": "αὐτοῦ,",
-            "transliteration": "autou,",
-            "lemma": "αὐτός, -ή, -ό",
+            "transliteration": "autou",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Genitivo masculino singular ('ele')",
@@ -51485,7 +51367,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 11,
             "text": "αὐτοὺς",
             "transliteration": "autous",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Acusativo masculino plural, objeto direto ('os, eles')",
@@ -51495,7 +51377,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 12,
             "text": "κηρύσσειν,",
-            "transliteration": "kēryssein,",
+            "transliteration": "kēryssein",
             "lemma": "κηρύσσω",
             "composite": false,
             "word_class": "Infinitivo verbal",
@@ -51529,7 +51411,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 15,
             "text": "ἐξουσίαν",
             "transliteration": "exousian",
-            "lemma": "ἐξουσία, -ας, ἡ",
+            "lemma": "ἐξουσία",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo feminino singular, objeto direto ('autoridade')",
@@ -51551,7 +51433,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 17,
             "text": "τὰς",
             "transliteration": "tas",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo feminino plural ('as')",
@@ -51561,8 +51443,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 18,
             "text": "νόσους,",
-            "transliteration": "nosous,",
-            "lemma": "νόσος, -ου, ἡ",
+            "transliteration": "nosous",
+            "lemma": "νόσος",
             "composite": false,
             "word_class": "Substantivo feminino",
             "syntax_role": "Acusativo feminino plural, objeto direto ('doenças, enfermidades')",
@@ -51595,7 +51477,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 21,
             "text": "τὰ",
             "transliteration": "ta",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo neutro plural ('os')",
@@ -51605,8 +51487,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 22,
             "text": "δαιμόνια.",
-            "transliteration": "daimonia.",
-            "lemma": "δαιμόνιον, -ου, τό",
+            "transliteration": "daimonia",
+            "lemma": "δαιμόνιον",
             "composite": false,
             "word_class": "Substantivo neutro",
             "syntax_role": "Acusativo neutro plural, objeto direto ('demônios')",
@@ -51625,7 +51507,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração relativa condicional generalizadora seguida de oração principal negativa com infinitivo copulativo",
-        "notes": "Lucas 14:27. O infinitivo εἶναι complementa δύναται e governa predicativo no nominativo (μαθητής).",
+        "notes": "Lc 14.27. O infinitivo εἶναι complementa δύναται e governa predicativo no nominativo (μαθητής).",
         "tokens": [
           {
             "index": 1,
@@ -51642,7 +51524,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "ὅστις",
             "transliteration": "hostis",
-            "lemma": "ὅστις, ἥτις, ὅτι",
+            "lemma": "ὅστις",
             "composite": false,
             "word_class": "Pronome relativo indefinido",
             "syntax_role": "Nominativo masculino singular, sujeito ('quem quer que, todo aquele que')",
@@ -51675,7 +51557,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "τὸν",
             "transliteration": "ton",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo masculino singular ('a')",
@@ -51686,7 +51568,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "σταυρὸν",
             "transliteration": "stauron",
-            "lemma": "σταυρός, -οῦ, ὁ",
+            "lemma": "σταυρός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino singular, objeto direto ('cruz')",
@@ -51697,7 +51579,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "αὐτοῦ",
             "transliteration": "autou",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal possessivo",
             "syntax_role": "Genitivo masculino singular ('dele, sua')",
@@ -51740,7 +51622,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 11,
             "text": "μου,",
-            "transliteration": "mou,",
+            "transliteration": "mou",
             "lemma": "ἐγώ",
             "composite": false,
             "word_class": "Pronome pessoal",
@@ -51795,8 +51677,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 16,
             "text": "μαθητής.",
-            "transliteration": "mathētēs.",
-            "lemma": "μαθητής, -οῦ, ὁ",
+            "transliteration": "mathētēs",
+            "lemma": "μαθητής",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, predicativo ('discípulo')",
@@ -51815,7 +51697,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Infinitivo articular temporal preposicionado (μετὰ τὸ γενέσθαι) e construção impessoal δεῖ + acusativo e infinitivo",
-        "notes": "Atos 19:21. Demonstração magistral do infinitivo articular temporal e da sintaxe do verbo impessoal δεῖ.",
+        "notes": "At 19.21. Demonstração magistral do infinitivo articular temporal e da sintaxe do verbo impessoal δεῖ.",
         "tokens": [
           {
             "index": 1,
@@ -51832,7 +51714,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "τὸ",
             "transliteration": "to",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo substantivador de infinitivo",
             "syntax_role": "Acusativo neutro singular regido por μετά ('o')",
@@ -51864,7 +51746,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 5,
             "text": "ἐκεῖ,",
-            "transliteration": "ekei,",
+            "transliteration": "ekei",
             "lemma": "ἐκεῖ",
             "composite": false,
             "word_class": "Advérbio de lugar",
@@ -51909,7 +51791,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "Ῥώμην",
             "transliteration": "Rhōmēn",
-            "lemma": "Ῥώμη, -ης, ἡ",
+            "lemma": "Ῥώμη",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Acusativo feminino singular, objeto direto ('Roma')",
@@ -51919,7 +51801,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 10,
             "text": "ἰδεῖν.",
-            "transliteration": "idein.",
+            "transliteration": "idein",
             "lemma": "ὁράω",
             "composite": false,
             "word_class": "Infinitivo verbal",
@@ -51939,7 +51821,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Construção de oração infinitiva com verbo impessoal δεῖ seguida de oração causal com perfeito passivo",
-        "notes": "Lucas 4:43. Apresenta o verbo impessoal δεῖ com infinitivo aoristo médio εὐαγγελίσασθαι e o perfeito passivo ἀπέσταλμαι.",
+        "notes": "Lc 4.43. Apresenta o verbo impessoal δεῖ com infinitivo aoristo médio εὐαγγελίσασθαι e o perfeito passivo ἀπέσταλμαι.",
         "tokens": [
           {
             "index": 1,
@@ -51956,7 +51838,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "ταῖς",
             "transliteration": "tais",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Dativo feminino plural ('às, nas')",
@@ -51967,7 +51849,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 3,
             "text": "ἑτέραις",
             "transliteration": "heterais",
-            "lemma": "ἕτερος, -α, -ον",
+            "lemma": "ἕτερος",
             "composite": false,
             "word_class": "Adjetivo",
             "syntax_role": "Dativo feminino plural ('outras')",
@@ -51978,7 +51860,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "πόλεσιν",
             "transliteration": "polesin",
-            "lemma": "πόλις, -εως, ἡ",
+            "lemma": "πόλις",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo feminino plural, objeto indireto ('cidades')",
@@ -51989,7 +51871,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "εὐαγγελίσασθαί",
             "transliteration": "euangelisasthai",
-            "lemma": "εὐαγγελίζω / εὐαγγελίζομαι",
+            "lemma": "εὐαγγελίζω",
             "composite": false,
             "word_class": "Infinitivo verbal depoente",
             "syntax_role": "Aoristo infinitivo médio ('evangelizar, anunciar a boa nova')",
@@ -52022,7 +51904,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 8,
             "text": "τὴν",
             "transliteration": "tēn",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo feminino singular ('o')",
@@ -52033,7 +51915,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "βασιλείαν",
             "transliteration": "basileian",
-            "lemma": "βασιλεία, -ας, ἡ",
+            "lemma": "βασιλεία",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo feminino singular, objeto direto ('reino')",
@@ -52044,7 +51926,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 10,
             "text": "τοῦ",
             "transliteration": "tou",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo masculino singular ('de')",
@@ -52054,8 +51936,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 11,
             "text": "Θεοῦ·",
-            "transliteration": "Theou;",
-            "lemma": "θεός, -οῦ, ὁ",
+            "transliteration": "Theou",
+            "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo masculino singular ('Deus')",
@@ -52088,7 +51970,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 14,
             "text": "τοῦτο",
             "transliteration": "touto",
-            "lemma": "οὗτος, αὕτη, τοῦτο",
+            "lemma": "οὗτος",
             "composite": false,
             "word_class": "Pronome demonstrativo",
             "syntax_role": "Acusativo neutro singular ('isto')",
@@ -52098,7 +51980,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 15,
             "text": "ἀπέσταλμαι.",
-            "transliteration": "apestalmai.",
+            "transliteration": "apestalmai",
             "lemma": "ἀποστέλλω",
             "composite": false,
             "word_class": "Verbo",
@@ -52142,7 +52024,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "2º Aoristo",
             "-εῖν (βαλεῖν)",
             "-έσθαι (βαλέσθαι)",
-            "-ῆναι (βαλῆναι)"
+            "-ῆναι (ἀποσταλῆναι)"
           ],
           [
             "Perfeito",
@@ -52442,13 +52324,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período composto por coordenação antitética com aoristo passivo do verbo em -μι δίδωμι (ἐδόθη) e aoristo depoente de γίνομαι",
-        "notes": "João 1:17. Exemplo fundamental do tema verbal de δίδωμι no aoristo passivo com raiz δο- alargada para ἐ-δό-θη.",
+        "notes": "Jo 1.17. Exemplo fundamental do tema verbal de δίδωμι no aoristo passivo com raiz δο- alargada para ἐ-δό-θη.",
         "tokens": [
           {
             "index": 1,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('a')",
@@ -52459,7 +52341,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "νόμος",
             "transliteration": "nomos",
-            "lemma": "νόμος, -ου, ὁ",
+            "lemma": "νόμος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito ('lei')",
@@ -52481,7 +52363,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "Μωσέως",
             "transliteration": "Mōseōs",
-            "lemma": "Μωϋσῆς, -έως, ὁ",
+            "lemma": "Μωϋσῆς",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Genitivo masculino singular ('Moisés')",
@@ -52491,7 +52373,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 5,
             "text": "ἐδόθη,",
-            "transliteration": "edothē,",
+            "transliteration": "edothē",
             "lemma": "δίδωμι",
             "composite": false,
             "word_class": "Verbo em -μι",
@@ -52503,7 +52385,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "ἡ",
             "transliteration": "hē",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo feminino singular ('a')",
@@ -52514,7 +52396,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "χάρις",
             "transliteration": "charis",
-            "lemma": "χάρις, -ιτος, ἡ",
+            "lemma": "χάρις",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo feminino singular, sujeito ('graça')",
@@ -52536,7 +52418,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "ἡ",
             "transliteration": "hē",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo feminino singular ('a')",
@@ -52547,7 +52429,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 10,
             "text": "ἀλήθεια",
             "transliteration": "alētheia",
-            "lemma": "ἀλήθεια, -ας, ἡ",
+            "lemma": "ἀλήθεια",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo feminino singular, sujeito ('verdade')",
@@ -52569,7 +52451,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "Ἰησοῦ",
             "transliteration": "Iēsou",
-            "lemma": "Ἰησοῦς, -οῦ, ὁ",
+            "lemma": "Ἰησοῦς",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Genitivo masculino singular ('Jesus')",
@@ -52580,7 +52462,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "Χριστοῦ",
             "transliteration": "Christou",
-            "lemma": "Χριστός, -οῦ, ὁ",
+            "lemma": "Χριστός",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Genitivo masculino singular ('Cristo')",
@@ -52590,7 +52472,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 14,
             "text": "ἐγένετο.",
-            "transliteration": "egeneto.",
+            "transliteration": "egeneto",
             "lemma": "γίνομαι",
             "composite": false,
             "word_class": "Verbo depoente",
@@ -52610,7 +52492,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Declaração afirmativa predicativa seguida de oração transitiva com verbo em -μι τίθημι e sintagma preposicional de benefício",
-        "notes": "João 10:11. Destaque para τίθησιν (presente em -μι de τίθημι) com o sentido idiomático de 'dar a vida'.",
+        "notes": "Jo 10.11. Destaque para τίθησιν (presente em -μι de τίθημι) com o sentido idiomático de 'dar a vida'.",
         "tokens": [
           {
             "index": 1,
@@ -52638,7 +52520,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 3,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -52649,7 +52531,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "ποιμὴν",
             "transliteration": "poimēn",
-            "lemma": "ποιμήν, -ένος, ὁ",
+            "lemma": "ποιμήν",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, predicativo ('pastor')",
@@ -52660,7 +52542,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido repetido",
             "syntax_role": "Artigo em posição atributiva posterior ('o')",
@@ -52670,8 +52552,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 6,
             "text": "καλός·",
-            "transliteration": "kalos;",
-            "lemma": "καλός, -ή, -όν",
+            "transliteration": "kalos",
+            "lemma": "καλός",
             "composite": false,
             "word_class": "Adjetivo atributivo",
             "syntax_role": "Nominativo masculino singular ('bom')",
@@ -52682,7 +52564,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -52693,7 +52575,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 8,
             "text": "ποιμὴν",
             "transliteration": "poimēn",
-            "lemma": "ποιμήν, -ένος, ὁ",
+            "lemma": "ποιμήν",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito ('pastor')",
@@ -52704,7 +52586,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -52715,7 +52597,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 10,
             "text": "καλὸς",
             "transliteration": "kalos",
-            "lemma": "καλός, -ή, -όν",
+            "lemma": "καλός",
             "composite": false,
             "word_class": "Adjetivo atributivo",
             "syntax_role": "Nominativo masculino singular ('bom')",
@@ -52726,7 +52608,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 11,
             "text": "τὴν",
             "transliteration": "tēn",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo feminino singular ('a')",
@@ -52737,7 +52619,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "ψυχὴν",
             "transliteration": "psychēn",
-            "lemma": "ψυχή, -ῆς, ἡ",
+            "lemma": "ψυχή",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo feminino singular, objeto direto ('vida, alma')",
@@ -52748,7 +52630,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "αὐτοῦ",
             "transliteration": "autou",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal possessivo",
             "syntax_role": "Genitivo masculino singular ('dele, sua')",
@@ -52781,7 +52663,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 16,
             "text": "τῶν",
             "transliteration": "tōn",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo neutro plural ('das')",
@@ -52791,8 +52673,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 17,
             "text": "προβάτων.",
-            "transliteration": "probatōn.",
-            "lemma": "πρόβατον, -ου, τό",
+            "transliteration": "probatōn",
+            "lemma": "πρόβατον",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo neutro plural ('ovelhas')",
@@ -52811,13 +52693,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com particípio substantivado, infinitivo objetivo de discurso indireto, oração subordinada comparativa e verbo contraído περιπατέω",
-        "notes": "1 João 2:6. Demonstra o verbo contraído em -έω περιπατέω no aoristo indicativo (περιεπάτησεν) e no infinitivo presente contraído (περιπατεῖν).",
+        "notes": "1Jo 2.6. Demonstra o verbo contraído em -έω περιπατέω no aoristo indicativo (περιεπάτησεν) e no infinitivo presente contraído (περιπατεῖν).",
         "tokens": [
           {
             "index": 1,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo substantivador",
             "syntax_role": "Nominativo masculino singular com particípio ('aquele que')",
@@ -52850,7 +52732,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "αὐτῷ",
             "transliteration": "autō",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Dativo masculino singular ('ele')",
@@ -52894,7 +52776,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 8,
             "text": "ἐκεῖνος",
             "transliteration": "ekeinos",
-            "lemma": "ἐκεῖνος, -η, -ο",
+            "lemma": "ἐκεῖνος",
             "composite": false,
             "word_class": "Pronome demonstrativo enfático",
             "syntax_role": "Nominativo masculino singular, sujeito ('aquele, Ele')",
@@ -52927,7 +52809,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 11,
             "text": "αὐτὸς",
             "transliteration": "autos",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome intensivo",
             "syntax_role": "Nominativo masculino singular ('ele mesmo')",
@@ -52938,7 +52820,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "οὕτως",
             "transliteration": "houtōs",
-            "lemma": "οὕτω / οὕτως",
+            "lemma": "οὕτως",
             "composite": false,
             "word_class": "Advérbio de modo demonstrativo",
             "syntax_role": "Advérbio correspondente a καθώς ('assim, do mesmo modo')",
@@ -52948,7 +52830,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 13,
             "text": "περιπατεῖν.",
-            "transliteration": "peripatein.",
+            "transliteration": "peripatein",
             "lemma": "περιπατέω",
             "composite": false,
             "word_class": "Verbo contraído em -έω",
@@ -52968,7 +52850,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Proibição imperativa com apóstrofe vocativa seguida de oração subordinada com verbo contraído μισέω",
-        "notes": "1 João 3:13. Ilustra a contração de ε + ε = ει em μισεῖ (μισέ-ει > μισεῖ).",
+        "notes": "1Jo 3.13. Ilustra a contração de ε + ε = ει em μισεῖ (μισέ-ει > μισεῖ).",
         "tokens": [
           {
             "index": 1,
@@ -52984,7 +52866,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 2,
             "text": "θαυμάζετε,",
-            "transliteration": "thaumazete,",
+            "transliteration": "thaumazete",
             "lemma": "θαυμάζω",
             "composite": false,
             "word_class": "Verbo",
@@ -52996,7 +52878,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 3,
             "text": "ἀδελφοί",
             "transliteration": "adelphoi",
-            "lemma": "ἀδελφός, -οῦ, ὁ",
+            "lemma": "ἀδελφός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Vocativo masculino plural, interpelação direta ('irmãos')",
@@ -53006,7 +52888,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 4,
             "text": "μου,",
-            "transliteration": "mou,",
+            "transliteration": "mou",
             "lemma": "ἐγώ",
             "composite": false,
             "word_class": "Pronome pessoal enclítico",
@@ -53051,7 +52933,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 8,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -53061,8 +52943,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 9,
             "text": "κόσμος.",
-            "transliteration": "kosmos.",
-            "lemma": "κόσμος, -ου, ὁ",
+            "transliteration": "kosmos",
+            "lemma": "κόσμος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito pós-posto ('mundo')",
@@ -53081,7 +52963,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período narrativo com particípios aoristo e presente antecedendo discurso direto com verbo passivo em -μι (ἐδόθη)",
-        "notes": "Mateus 28:18. Passagem da Grande Comissão com o aoristo passivo divino ἐδόθη de δίδωμι.",
+        "notes": "Mt 28.18. Passagem da Grande Comissão com o aoristo passivo divino ἐδόθη de δίδωμι.",
         "tokens": [
           {
             "index": 1,
@@ -53109,7 +52991,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 3,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -53120,7 +53002,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "Ἰησοῦς",
             "transliteration": "Iēsous",
-            "lemma": "Ἰησοῦς, -οῦ, ὁ",
+            "lemma": "Ἰησοῦς",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Nominativo masculino singular, sujeito ('Jesus')",
@@ -53142,7 +53024,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "αὐτοῖς",
             "transliteration": "autois",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Dativo masculino plural, objeto indireto ('lhes, a eles')",
@@ -53152,7 +53034,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 7,
             "text": "λέγων,",
-            "transliteration": "legōn,",
+            "transliteration": "legōn",
             "lemma": "λέγω",
             "composite": false,
             "word_class": "Particípio modal",
@@ -53186,7 +53068,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 10,
             "text": "πᾶσα",
             "transliteration": "pasa",
-            "lemma": "πᾶς, πᾶσα, πᾶν",
+            "lemma": "πᾶς",
             "composite": false,
             "word_class": "Adjetivo",
             "syntax_role": "Nominativo feminino singular ('toda')",
@@ -53197,7 +53079,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 11,
             "text": "ἐξουσία",
             "transliteration": "exousia",
-            "lemma": "ἐξουσία, -ας, ἡ",
+            "lemma": "ἐξουσία",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo feminino singular, sujeito passivo ('autoridade')",
@@ -53219,7 +53101,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "οὐρανῷ",
             "transliteration": "ouranō",
-            "lemma": "οὐρανός, -οῦ, ὁ",
+            "lemma": "οὐρανός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo masculino singular ('céu')",
@@ -53230,7 +53112,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 14,
             "text": "καὶ",
             "transliteration": "kai",
-            "lemma": "καí",
+            "lemma": "καί",
             "composite": false,
             "word_class": "Conjunção coordenativa",
             "syntax_role": "Conjunção aditiva ('e')",
@@ -53251,8 +53133,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 16,
             "text": "γῆς.",
-            "transliteration": "gēs.",
-            "lemma": "γῆ, γῆς, ἡ",
+            "transliteration": "gēs",
+            "lemma": "γῆ",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo feminino singular ('terra')",
@@ -53271,7 +53153,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período condicional futuro/eventual (3ª classe: ἐάν μή + aoristo passivo do subjuntivo) com verbo modal δύναμαι e infinitivo",
-        "notes": "João 3:5. Apresenta o verbo contraído γεννάω no aoristo passivo do subjuntivo (γεννηθῇ) e o verbo em -μι δύναται.",
+        "notes": "Jo 3.5. Apresenta o verbo contraído γεννάω no aoristo passivo do subjuntivo (γεννηθῇ) e o verbo em -μι δύναται.",
         "tokens": [
           {
             "index": 1,
@@ -53287,8 +53169,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 2,
             "text": "Ἰησοῦς,",
-            "transliteration": "Iēsous,",
-            "lemma": "Ἰησοῦς, -οῦ, ὁ",
+            "transliteration": "Iēsous",
+            "lemma": "Ἰησοῦς",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Nominativo masculino singular, sujeito ('Jesus')",
@@ -53331,7 +53213,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 6,
             "text": "σοι,",
-            "transliteration": "soi,",
+            "transliteration": "soi",
             "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal enclítico",
@@ -53365,7 +53247,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "τις",
             "transliteration": "tis",
-            "lemma": "τις, τι",
+            "lemma": "τις",
             "composite": false,
             "word_class": "Pronome indefinido enclítico",
             "syntax_role": "Nominativo masculino singular, sujeito da oração condicional ('alguém')",
@@ -53398,7 +53280,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "ὕδατος",
             "transliteration": "hydatos",
-            "lemma": "ὕδωρ, ὕδατος, τό",
+            "lemma": "ὕδωρ",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo neutro singular de origem ('água')",
@@ -53419,8 +53301,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 14,
             "text": "πνεύματος,",
-            "transliteration": "pneumatos,",
-            "lemma": "πνεῦμα, -ματος, τό",
+            "transliteration": "pneumatos",
+            "lemma": "πνεῦμα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo neutro singular ('espírito')",
@@ -53475,7 +53357,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 19,
             "text": "τὴν",
             "transliteration": "tēn",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo feminino singular ('o')",
@@ -53486,7 +53368,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 20,
             "text": "βασιλείαν",
             "transliteration": "basileian",
-            "lemma": "βασιλεία, -ας, ἡ",
+            "lemma": "βασιλεία",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo feminino singular, objeto ('reino')",
@@ -53497,7 +53379,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 21,
             "text": "τοῦ",
             "transliteration": "tou",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo masculino singular ('de')",
@@ -53507,8 +53389,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 22,
             "text": "Θεοῦ.",
-            "transliteration": "Theou.",
-            "lemma": "θεός, -οῦ, ὁ",
+            "transliteration": "Theou",
+            "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo masculino singular ('Deus')",
@@ -53527,7 +53409,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período com verbo οἶδα, oração causal com verbo contraído ἀγαπάω e período antitético com particípio substantivado negativo",
-        "notes": "1 João 3:14. Demonstra a contração de α + ο = ω em ἀγαπῶμεν e α + ω = ω em ἀγαπῶν.",
+        "notes": "1Jo 3.14. Demonstra a contração de α + ο = ω em ἀγαπῶμεν e α + ω = ω em ἀγαπῶν.",
         "tokens": [
           {
             "index": 1,
@@ -53546,7 +53428,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "oidamen",
             "lemma": "οἶδα",
             "composite": false,
-            "word_class": "Verbo em -μι perfeito com sentido de presente",
+            "word_class": "Verbo (perfeito com sentido de presente)",
             "syntax_role": "Perfeito indicativo ativo, 1ª plural ('sabemos')",
             "inflection": "Perfeito indicativo ativo, 1ª pessoa do plural",
             "context_meaning": "sabemos"
@@ -53588,7 +53470,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "τοῦ",
             "transliteration": "tou",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo masculino singular ('da')",
@@ -53599,7 +53481,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "θανάτου",
             "transliteration": "thanatou",
-            "lemma": "θάνατος, -ου, ὁ",
+            "lemma": "θάνατος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo masculino singular ('morte')",
@@ -53621,7 +53503,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "τὴν",
             "transliteration": "tēn",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo feminino singular ('a')",
@@ -53631,8 +53513,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 10,
             "text": "ζωήν,",
-            "transliteration": "zōēn,",
-            "lemma": "ζωή, -ῆς, ἡ",
+            "transliteration": "zōēn",
+            "lemma": "ζωή",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo feminino singular ('vida')",
@@ -53665,7 +53547,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "τοὺς",
             "transliteration": "tous",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo masculino plural ('os')",
@@ -53675,8 +53557,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 14,
             "text": "ἀδελφούς.",
-            "transliteration": "adelphous.",
-            "lemma": "ἀδελφός, -οῦ, ὁ",
+            "transliteration": "adelphous",
+            "lemma": "ἀδελφός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino plural, objeto direto ('irmãos')",
@@ -53687,7 +53569,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 15,
             "text": "Ὁ",
             "transliteration": "Ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo substantivador",
             "syntax_role": "Nominativo masculino singular com particípio ('aquele que')",
@@ -53720,7 +53602,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 18,
             "text": "τὸν",
             "transliteration": "ton",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo masculino singular ('o')",
@@ -53730,8 +53612,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 19,
             "text": "ἀδελφόν,",
-            "transliteration": "adelphon,",
-            "lemma": "ἀδελφός, -οῦ, ὁ",
+            "transliteration": "adelphon",
+            "lemma": "ἀδελφός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino singular, objeto ('irmão')",
@@ -53764,7 +53646,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 22,
             "text": "τῷ",
             "transliteration": "tō",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Dativo masculino singular ('na')",
@@ -53774,8 +53656,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 23,
             "text": "θανάτῳ.",
-            "transliteration": "thanatō.",
-            "lemma": "θάνατος, -ου, ὁ",
+            "transliteration": "thanatō",
+            "lemma": "θάνατος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo masculino singular ('morte')",
@@ -53794,13 +53676,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Exortação carinhosa com vocativo e subjuntivo exortativo de verbo contraído acompanhado de dativos instrumentais contrastantes",
-        "notes": "1 João 3:18. Exemplo expressivo de subjuntivo exortativo em -ῶμεν com antítese instrumental (palavra vs ação/verdade).",
+        "notes": "1Jo 3.18. Exemplo expressivo de subjuntivo exortativo em -ῶμεν com antítese instrumental (palavra vs ação/verdade).",
         "tokens": [
           {
             "index": 1,
             "text": "Τεκνία",
             "transliteration": "Teknia",
-            "lemma": "τεκνίον, -ου, τό",
+            "lemma": "τεκνίον",
             "composite": false,
             "word_class": "Substantivo diminutivo carinhoso",
             "syntax_role": "Vocativo neutro plural, apóstrofe pastoral ('filhinhos')",
@@ -53810,7 +53692,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 2,
             "text": "μου,",
-            "transliteration": "mou,",
+            "transliteration": "mou",
             "lemma": "ἐγώ",
             "composite": false,
             "word_class": "Pronome pessoal enclítico",
@@ -53844,7 +53726,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "λόγῳ",
             "transliteration": "logō",
-            "lemma": "λόγος, -ου, ὁ",
+            "lemma": "λόγος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo masculino singular instrumental ('de palavra')",
@@ -53866,7 +53748,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "τῇ",
             "transliteration": "tē",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Dativo feminino singular ('com a')",
@@ -53876,8 +53758,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 8,
             "text": "γλώσσῃ,",
-            "transliteration": "glōssē,",
-            "lemma": "γλῶσσα, -ης, ἡ",
+            "transliteration": "glōssē",
+            "lemma": "γλῶσσα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo feminino singular instrumental ('língua')",
@@ -53910,7 +53792,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 11,
             "text": "ἔργῳ",
             "transliteration": "ergō",
-            "lemma": "ἔργον, -ου, τό",
+            "lemma": "ἔργον",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo neutro singular instrumental ('obra, ação')",
@@ -53931,8 +53813,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 13,
             "text": "ἀληθείᾳ.",
-            "transliteration": "alētheia.",
-            "lemma": "ἀλήθεια, -ας, ἡ",
+            "transliteration": "alētheia",
+            "lemma": "ἀλήθεια",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo feminino singular instrumental ('verdade')",
@@ -54329,11 +54211,11 @@ window.GAMIDA_DEFAULT_DATA = {
         "term": "Ἐδίδασκεν τοὺς μαθητὰς αὐτοῦ, καὶ ἔλεγεν αὐτοῖς ὅτι Ὁ υἱὸς τοῦ ἀνθρώπου παραδίδοται εἰς χεῖρας ἀνθρώπων, καὶ ἀποκτενοῦσιν αὐτόν· καὶ ἀποκτανθεὶς τῇ τρίτῃ ἡμέρᾳ ἀναστήσεται.",
         "transliteration": "Edidasken tous mathētas autou, kai elegen autois hoti Ho huios tou anthrōpou paradidotai eis cheiras anthrōpōn, kai apoktenousin auton; kai apoktantheis tē tritē hēmera anastēsetai.",
         "translations": [
-          "Ensinava aos seus discípulos e lhes dizia que o Filho do homem é entregue nas mãos dos homens, e o matarão; e ao terceiro dia ressuscitará."
+          "Ensinava aos seus discípulos e lhes dizia que o Filho do homem é entregue nas mãos dos homens, e o matarão; e, depois de morto, ao terceiro dia ressuscitará."
         ],
         "type": "Frase",
         "syntax_type": "Período profético narrativo com imperfeitos iterativos, discurso indireto, particípio passivo aoristo e numeral ordinal temporal (τῇ τρίτῃ ἡμέρᾳ)",
-        "notes": "Marcos 9:31. Destaca o numeral ordinal τρίτος no dativo temporal de ponto no tempo.",
+        "notes": "Mc 9.31. Destaca o numeral ordinal τρίτος no dativo temporal de ponto no tempo.",
         "tokens": [
           {
             "index": 1,
@@ -54350,7 +54232,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "τοὺς",
             "transliteration": "tous",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo masculino plural ('aos, os')",
@@ -54361,7 +54243,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 3,
             "text": "μαθητὰς",
             "transliteration": "mathētas",
-            "lemma": "μαθητής, -οῦ, ὁ",
+            "lemma": "μαθητής",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino plural, objeto direto ('discípulos')",
@@ -54371,8 +54253,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 4,
             "text": "αὐτοῦ,",
-            "transliteration": "autou,",
-            "lemma": "αὐτός, -ή, -ό",
+            "transliteration": "autou",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal possessivo",
             "syntax_role": "Genitivo masculino singular ('seus, dele')",
@@ -54405,7 +54287,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "αὐτοῖς",
             "transliteration": "autois",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Dativo masculino plural, objeto indireto ('lhes, a eles')",
@@ -54427,7 +54309,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "Ὁ",
             "transliteration": "Ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -54438,7 +54320,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 10,
             "text": "υἱὸς",
             "transliteration": "huios",
-            "lemma": "υἱός, -οῦ, ὁ",
+            "lemma": "υἱός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito ('Filho')",
@@ -54449,7 +54331,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 11,
             "text": "τοῦ",
             "transliteration": "tou",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo masculino singular ('do')",
@@ -54460,7 +54342,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "ἀνθρώπου",
             "transliteration": "anthrōpou",
-            "lemma": "ἄνθρωπος, -ου, ὁ",
+            "lemma": "ἄνθρωπος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo masculino singular ('homem')",
@@ -54493,7 +54375,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 15,
             "text": "χεῖρας",
             "transliteration": "cheiras",
-            "lemma": "χείρ, χειρός, ἡ",
+            "lemma": "χείρ",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo feminino plural ('mãos')",
@@ -54503,8 +54385,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 16,
             "text": "ἀνθρώπων,",
-            "transliteration": "anthrōpōn,",
-            "lemma": "ἄνθρωπος, -ου, ὁ",
+            "transliteration": "anthrōpōn",
+            "lemma": "ἄνθρωπος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo masculino plural ('dos homens')",
@@ -54536,8 +54418,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 19,
             "text": "αὐτόν·",
-            "transliteration": "auton;",
-            "lemma": "αὐτός, -ή, -ό",
+            "transliteration": "auton",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Acusativo masculino singular, objeto direto ('o, a ele')",
@@ -54562,15 +54444,15 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "ἀποκτείνω",
             "composite": false,
             "word_class": "Particípio verbal circunstancial passivo",
-            "syntax_role": "Aoristo passivo particípio, nominativo masculino singular ('sendo morto')",
+            "syntax_role": "Aoristo passivo particípio, nominativo masculino singular, circunstancial temporal ('tendo sido morto; depois de morto')",
             "inflection": "Aoristo passivo particípio, nominativo masculino singular",
-            "context_meaning": "sendo morto"
+            "context_meaning": "tendo sido morto, depois de morto"
           },
           {
             "index": 22,
             "text": "τῇ",
             "transliteration": "tē",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Dativo feminino singular ('no, ao')",
@@ -54581,7 +54463,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 23,
             "text": "τρίτῃ",
             "transliteration": "tritē",
-            "lemma": "τρίτος, -η, -ον",
+            "lemma": "τρίτος",
             "composite": false,
             "word_class": "Numeral ordinal",
             "syntax_role": "Dativo feminino singular temporal ('terceiro')",
@@ -54592,7 +54474,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 24,
             "text": "ἡμέρᾳ",
             "transliteration": "hēmera",
-            "lemma": "ἡμέρα, -ας, ἡ",
+            "lemma": "ἡμέρα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo feminino singular de tempo ('dia')",
@@ -54602,7 +54484,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 25,
             "text": "ἀναστήσεται.",
-            "transliteration": "anastēsetai.",
+            "transliteration": "anastēsetai",
             "lemma": "ἀνίστημι",
             "composite": false,
             "word_class": "Verbo em -μι composto",
@@ -54618,11 +54500,11 @@ window.GAMIDA_DEFAULT_DATA = {
         "term": "Ἡμεῖς ἀγαπῶμεν αὐτόν ὅτι αὐτὸς πρῶτος ἠγάπησεν ἡμᾶς.",
         "transliteration": "Hēmeis agapōmen auton hoti autos prōtos ēgapēsen hēmas.",
         "translations": [
-          "Nós amamos porque ele nos amou primeiro."
+          "Nós o amamos porque ele nos amou primeiro."
         ],
         "type": "Frase",
         "syntax_type": "Oração principal afirmativa seguida de oração causal com adjetivo numeral ordinal predicativo (πρῶτος)",
-        "notes": "1 João 4:19. πρῶτος concorda com o sujeito αὐτός com valor adverbial ('foi ele o primeiro a amar').",
+        "notes": "1Jo 4.19. πρῶτος concorda com o sujeito αὐτός com valor adverbial ('foi ele o primeiro a amar').",
         "tokens": [
           {
             "index": 1,
@@ -54650,7 +54532,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 3,
             "text": "αὐτόν",
             "transliteration": "auton",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Acusativo masculino singular, objeto direto ('ele, a ele')",
@@ -54672,7 +54554,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "αὐτὸς",
             "transliteration": "autos",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome intensivo enfático",
             "syntax_role": "Nominativo masculino singular, sujeito ('ele próprio')",
@@ -54683,7 +54565,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "πρῶτος",
             "transliteration": "prōtos",
-            "lemma": "πρῶτος, -η, -ον",
+            "lemma": "πρῶτος",
             "composite": false,
             "word_class": "Numeral ordinal / adjetivo predicativo",
             "syntax_role": "Nominativo masculino singular com valor adverbial ('primeiro')",
@@ -54704,7 +54586,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 8,
             "text": "ἡμᾶς.",
-            "transliteration": "hēmas.",
+            "transliteration": "hēmas",
             "lemma": "ἐγώ",
             "composite": false,
             "word_class": "Pronome pessoal",
@@ -54724,13 +54606,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Credo eclesiológico e trinitário em aclamações nominais assindéticas com flexão do numeral cardinal εἷς, μία, ἕν nos três gêneros e casos",
-        "notes": "Efésios 4:4-6. Lição mestra da declinação do numeral 1: εἷς (masc. nom.), μία (fem. nom.), ἓν (neut. nom.) e μιᾷ (fem. dat.).",
+        "notes": "Ef 4.4-6. Lição mestra da declinação do numeral 1: εἷς (masc. nom.), μία (fem. nom.), ἓν (neut. nom.) e μιᾷ (fem. dat.).",
         "tokens": [
           {
             "index": 1,
             "text": "Ἓν",
             "transliteration": "Hen",
-            "lemma": "εἷς, μία, ἕν",
+            "lemma": "εἷς",
             "composite": false,
             "word_class": "Numeral cardinal",
             "syntax_role": "Nominativo neutro singular ('um só')",
@@ -54741,7 +54623,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "σῶμα",
             "transliteration": "sōma",
-            "lemma": "σῶμα, -ματος, τό",
+            "lemma": "σῶμα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo neutro singular ('corpo')",
@@ -54763,7 +54645,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "ἓν",
             "transliteration": "hen",
-            "lemma": "εἷς, μία, ἕν",
+            "lemma": "εἷς",
             "composite": false,
             "word_class": "Numeral cardinal",
             "syntax_role": "Nominativo neutro singular ('um só')",
@@ -54773,8 +54655,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 5,
             "text": "πνεῦμα,",
-            "transliteration": "pneuma,",
-            "lemma": "πνεῦμα, -ματος, τό",
+            "transliteration": "pneuma",
+            "lemma": "πνεῦμα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo neutro singular ('espírito')",
@@ -54829,7 +54711,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 10,
             "text": "μιᾷ",
             "transliteration": "mia",
-            "lemma": "εἷς, μία, ἕν",
+            "lemma": "εἷς",
             "composite": false,
             "word_class": "Numeral cardinal",
             "syntax_role": "Dativo feminino singular ('uma só')",
@@ -54840,7 +54722,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 11,
             "text": "ἐλπίδι",
             "transliteration": "elpidi",
-            "lemma": "ἐλπίς, -ίδος, ἡ",
+            "lemma": "ἐλπίς",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo feminino singular ('esperança')",
@@ -54851,7 +54733,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "τῆς",
             "transliteration": "tēs",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo feminino singular ('da')",
@@ -54862,7 +54744,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "κλήσεως",
             "transliteration": "klēseōs",
-            "lemma": "κλῆσις, -εως, ἡ",
+            "lemma": "κλῆσις",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo feminino singular ('vocação, chamada')",
@@ -54872,7 +54754,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 14,
             "text": "ὑμῶν·",
-            "transliteration": "hymōn;",
+            "transliteration": "hymōn",
             "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal",
@@ -54884,7 +54766,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 15,
             "text": "εἷς",
             "transliteration": "heis",
-            "lemma": "εἷς, μία, ἕν",
+            "lemma": "εἷς",
             "composite": false,
             "word_class": "Numeral cardinal",
             "syntax_role": "Nominativo masculino singular ('um só')",
@@ -54894,8 +54776,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 16,
             "text": "Κύριος,",
-            "transliteration": "Kyrios,",
-            "lemma": "κύριος, -ου, ὁ",
+            "transliteration": "Kyrios",
+            "lemma": "κύριος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular ('Senhor')",
@@ -54906,7 +54788,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 17,
             "text": "μία",
             "transliteration": "mia",
-            "lemma": "εἷς, μία, ἕν",
+            "lemma": "εἷς",
             "composite": false,
             "word_class": "Numeral cardinal",
             "syntax_role": "Nominativo feminino singular ('uma só')",
@@ -54916,8 +54798,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 18,
             "text": "πίστις,",
-            "transliteration": "pistis,",
-            "lemma": "πίστις, -εως, ἡ",
+            "transliteration": "pistis",
+            "lemma": "πίστις",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo feminino singular ('fé')",
@@ -54928,7 +54810,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 19,
             "text": "ἓν",
             "transliteration": "hen",
-            "lemma": "εἷς, μία, ἕν",
+            "lemma": "εἷς",
             "composite": false,
             "word_class": "Numeral cardinal",
             "syntax_role": "Nominativo neutro singular ('um só')",
@@ -54938,8 +54820,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 20,
             "text": "βάπτισμα,",
-            "transliteration": "baptisma,",
-            "lemma": "βάπτισμα, -ματος, τό",
+            "transliteration": "baptisma",
+            "lemma": "βάπτισμα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo neutro singular ('batismo')",
@@ -54950,7 +54832,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 21,
             "text": "εἷς",
             "transliteration": "heis",
-            "lemma": "εἷς, μία, ἕν",
+            "lemma": "εἷς",
             "composite": false,
             "word_class": "Numeral cardinal",
             "syntax_role": "Nominativo masculino singular ('um só')",
@@ -54961,7 +54843,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 22,
             "text": "Θεὸς",
             "transliteration": "Theos",
-            "lemma": "θεός, -οῦ, ὁ",
+            "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular ('Deus')",
@@ -54983,7 +54865,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 24,
             "text": "πατὴρ",
             "transliteration": "patēr",
-            "lemma": "πατήρ, πατρός, ὁ",
+            "lemma": "πατήρ",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular ('Pai')",
@@ -54993,8 +54875,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 25,
             "text": "πάντων...",
-            "transliteration": "pantōn...",
-            "lemma": "πᾶς, πᾶσα, πᾶν",
+            "transliteration": "pantōn",
+            "lemma": "πᾶς",
             "composite": false,
             "word_class": "Adjetivo substantivado",
             "syntax_role": "Genitivo masculino plural partitivo/universal ('de todos')",
@@ -55013,7 +54895,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração com verbo em -μι (τίθημι no aoristo médio) e enumeração sequencial por numerais ordinais adverbiais (πρῶτον, δεύτερον, τρίτον)",
-        "notes": "1 Coríntios 12:28. Ilustra a série de numerais ordinais empregados em ordenação adverbial.",
+        "notes": "1Co 12.28. Ilustra a série de numerais ordinais empregados em ordenação adverbial.",
         "tokens": [
           {
             "index": 1,
@@ -55030,7 +54912,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "οὓς",
             "transliteration": "hous",
-            "lemma": "ὅς, ἥ, ὅ",
+            "lemma": "ὅς",
             "composite": false,
             "word_class": "Pronome relativo com valor distributivo",
             "syntax_role": "Acusativo masculino plural ('a uns, aos quais')",
@@ -55052,7 +54934,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -55063,7 +54945,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "Θεὸς",
             "transliteration": "Theos",
-            "lemma": "θεός, -οῦ, ὁ",
+            "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito ('Deus')",
@@ -55085,7 +54967,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "τῇ",
             "transliteration": "tē",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Dativo feminino singular ('na')",
@@ -55096,7 +54978,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 8,
             "text": "ἐκκλησίᾳ",
             "transliteration": "ekklēsia",
-            "lemma": "ἐκκλησία, -ας, ἡ",
+            "lemma": "ἐκκλησία",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo feminino singular locativo ('igreja')",
@@ -55107,7 +54989,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "πρῶτον",
             "transliteration": "prōton",
-            "lemma": "πρῶτος, -η, -ον",
+            "lemma": "πρῶτος",
             "composite": false,
             "word_class": "Advérbio numeral ordinal",
             "syntax_role": "Acusativo neutro singular com função adverbial ('primeiramente')",
@@ -55117,8 +54999,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 10,
             "text": "ἀποστόλους,",
-            "transliteration": "apostolous,",
-            "lemma": "ἀπόστολος, -ου, ὁ",
+            "transliteration": "apostolous",
+            "lemma": "ἀπόστολος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino plural, predicativo do objeto ('apóstolos')",
@@ -55129,7 +55011,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 11,
             "text": "δεύτερον",
             "transliteration": "deuteron",
-            "lemma": "δεύτερος, -α, -ον",
+            "lemma": "δεύτερος",
             "composite": false,
             "word_class": "Advérbio numeral ordinal",
             "syntax_role": "Acusativo neutro singular adverbial ('em segundo lugar')",
@@ -55139,8 +55021,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 12,
             "text": "προφήτας,",
-            "transliteration": "prophētas,",
-            "lemma": "προφήτης, -ου, ὁ",
+            "transliteration": "prophētas",
+            "lemma": "προφήτης",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino plural, predicativo do objeto ('profetas')",
@@ -55151,7 +55033,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "τρίτον",
             "transliteration": "triton",
-            "lemma": "τρίτος, -η, -ον",
+            "lemma": "τρίτος",
             "composite": false,
             "word_class": "Advérbio numeral ordinal",
             "syntax_role": "Acusativo neutro singular adverbial ('em terceiro lugar')",
@@ -55161,8 +55043,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 14,
             "text": "διδασκάλους...",
-            "transliteration": "didaskalous...",
-            "lemma": "διδάσκαλος, -ου, ὁ",
+            "transliteration": "didaskalous",
+            "lemma": "διδάσκαλος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino plural, predicativo do objeto ('mestres, instrutores')",
@@ -55181,7 +55063,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Assíndeto triplo com aposto numeral neutro (τὰ τρία ταῦτα) seguido de oração comparativa com adjetivo comparativo irregular e genitivo de comparação",
-        "notes": "1 Coríntios 13:13. Exemplo marcante do numeral 3 (τρία) e do comparativo irregular μείζων com genitivo de comparação τούτων.",
+        "notes": "1Co 13.13. Exemplo marcante do numeral 3 (τρία) e do comparativo irregular μείζων usado com sentido superlativo (Bergmann § 7.4.2.b), seguido do genitivo τούτων (\"o maior destes\", tradução da própria gramática).",
         "tokens": [
           {
             "index": 1,
@@ -55212,15 +55094,15 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "μένω",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Presente indicativo ativo, 3ª singular no neutro distributivo ('permanecem')",
+            "syntax_role": "Presente indicativo ativo, 3ª singular, concordando com o sujeito composto pelo elemento mais próximo ('permanece(m)')",
             "inflection": "Presente indicativo ativo, 3ª pessoa do singular",
             "context_meaning": "permanecem"
           },
           {
             "index": 4,
             "text": "πίστις,",
-            "transliteration": "pistis,",
-            "lemma": "πίστις, -εως, ἡ",
+            "transliteration": "pistis",
+            "lemma": "πίστις",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo feminino singular, sujeito ('fé')",
@@ -55230,8 +55112,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 5,
             "text": "ἐλπίς,",
-            "transliteration": "elpis,",
-            "lemma": "ἐλπίς, -ίδος, ἡ",
+            "transliteration": "elpis",
+            "lemma": "ἐλπίς",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo feminino singular, sujeito ('esperança')",
@@ -55241,8 +55123,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 6,
             "text": "ἀγάπη,",
-            "transliteration": "agapē,",
-            "lemma": "ἀγάπη, -ης, ἡ",
+            "transliteration": "agapē",
+            "lemma": "ἀγάπη",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo feminino singular, sujeito ('amor')",
@@ -55253,7 +55135,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "τὰ",
             "transliteration": "ta",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo neutro plural ('as, estes')",
@@ -55264,7 +55146,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 8,
             "text": "τρία",
             "transliteration": "tria",
-            "lemma": "τρεῖς, τρία",
+            "lemma": "τρεῖς",
             "composite": false,
             "word_class": "Numeral cardinal",
             "syntax_role": "Nominativo neutro plural em aposição ('três')",
@@ -55274,8 +55156,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 9,
             "text": "ταῦτα·",
-            "transliteration": "tauta;",
-            "lemma": "οὗτος, αὕτη, τοῦτο",
+            "transliteration": "tauta",
+            "lemma": "οὗτος",
             "composite": false,
             "word_class": "Pronome demonstrativo",
             "syntax_role": "Nominativo neutro plural em aposição ('estas coisas')",
@@ -55286,10 +55168,10 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 10,
             "text": "μείζων",
             "transliteration": "meizōn",
-            "lemma": "μέγας, μεγάλη, μέγα",
+            "lemma": "μέγας",
             "composite": false,
             "word_class": "Adjetivo comparativo irregular",
-            "syntax_role": "Nominativo feminino singular comparativo ('maior')",
+            "syntax_role": "Nominativo feminino singular, forma comparativa com sentido superlativo ('a maior')",
             "inflection": "Nominativo feminino singular",
             "context_meaning": "maior"
           },
@@ -55308,7 +55190,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "τούτων",
             "transliteration": "toutōn",
-            "lemma": "οὗτος, αὕτη, τοῦτο",
+            "lemma": "οὗτος",
             "composite": false,
             "word_class": "Pronome demonstrativo",
             "syntax_role": "Genitivo neutro plural de comparação ('destas coisas, deles')",
@@ -55319,7 +55201,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "ἡ",
             "transliteration": "hē",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo feminino singular ('o')",
@@ -55329,8 +55211,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 14,
             "text": "ἀγάπη.",
-            "transliteration": "agapē.",
-            "lemma": "ἀγάπη, -ης, ἡ",
+            "transliteration": "agapē",
+            "lemma": "ἀγάπη",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo feminino singular, sujeito com artigo ('amor')",
@@ -55349,13 +55231,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período complexo com particípios substantivados no aoristo, segunda posição atributiva com genitivo (τὸν τῆς ἐλευθερίας), genitivo hebraizante de qualidade (ἐπιλησμονῆς) e anáfora demonstrativa (οὗτος)",
-        "notes": "Tiago 1:25. Obra-prima sintática do grego bíblico, ilustrando o artigo de retorno atributivo τὸν τῆς ἐλευθερίας e a flexão de substantivos masculinos da 1ª declinação em -της (ἀκροατής, ποιητής).",
+        "notes": "Tg 1.25. Obra-prima sintática do grego bíblico, ilustrando o artigo de retorno atributivo τὸν τῆς ἐλευθερίας e a flexão de substantivos masculinos da 1ª declinação em -της (ἀκροατής, ποιητής). Os particípios παρακύψας e παραμείνας, sob um único artigo (Ὁ), referem-se à mesma pessoa (Bergmann § 21.2.7.b).",
         "tokens": [
           {
             "index": 1,
             "text": "Ὁ",
             "transliteration": "Ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo substantivador",
             "syntax_role": "Nominativo masculino singular ('aquele que')",
@@ -55380,7 +55262,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "παρακύπτω",
             "composite": false,
             "word_class": "Particípio verbal substantivado",
-            "syntax_role": "Aoristo indicativo particípio ativo, nominativo masculino singular ('observa atentamente, inclina-se sobre')",
+            "syntax_role": "Aoristo particípio ativo, nominativo masculino singular, substantivado ('aquele que se inclina para olhar atentamente')",
             "inflection": "Aoristo particípio ativo, nominativo masculino singular",
             "context_meaning": "observa atentamente, inclina-se sobre"
           },
@@ -55399,7 +55281,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "νόμον",
             "transliteration": "nomon",
-            "lemma": "νόμος, -ου, ὁ",
+            "lemma": "νόμος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino singular ('lei')",
@@ -55410,7 +55292,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "τέλειον",
             "transliteration": "teleion",
-            "lemma": "τέλειος, -α, -ον",
+            "lemma": "τέλειος",
             "composite": false,
             "word_class": "Adjetivo",
             "syntax_role": "Acusativo masculino singular atributivo ('perfeita')",
@@ -55421,7 +55303,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "τὸν",
             "transliteration": "ton",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido repetido",
             "syntax_role": "Acusativo masculino singular ('a')",
@@ -55432,7 +55314,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 8,
             "text": "τῆς",
             "transliteration": "tēs",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo substantivador / genitivo",
             "syntax_role": "Genitivo feminino singular ('da')",
@@ -55443,7 +55325,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "ἐλευθερίας",
             "transliteration": "eleutherias",
-            "lemma": "ἐλευθερία, -ας, ἡ",
+            "lemma": "ἐλευθερία",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo feminino singular atributivo ('liberdade')",
@@ -55464,7 +55346,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 11,
             "text": "παραμείνας,",
-            "transliteration": "parameinas,",
+            "transliteration": "parameinas",
             "lemma": "παραμένω",
             "composite": false,
             "word_class": "Particípio verbal",
@@ -55476,7 +55358,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "οὗτος",
             "transliteration": "houtos",
-            "lemma": "οὗτος, αὕτη, τοῦτο",
+            "lemma": "οὗτος",
             "composite": false,
             "word_class": "Pronome demonstrativo enfático",
             "syntax_role": "Nominativo masculino singular ('este, esse')",
@@ -55498,7 +55380,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 14,
             "text": "ἀκροατὴς",
             "transliteration": "akroatēs",
-            "lemma": "ἀκροατής, -οῦ, ὁ",
+            "lemma": "ἀκροατής",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular ('ouvinte')",
@@ -55509,7 +55391,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 15,
             "text": "ἐπιλησμονῆς",
             "transliteration": "epilēsmonēs",
-            "lemma": "ἐπιλησμονή, -ῆς, ἡ",
+            "lemma": "ἐπιλησμονή",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo feminino singular de qualidade ('do esquecimento, negligente')",
@@ -55542,7 +55424,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 18,
             "text": "ποιητὴς",
             "transliteration": "poiētēs",
-            "lemma": "ποιητής, -οῦ, ὁ",
+            "lemma": "ποιητής",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular ('praticante, cumpridor')",
@@ -55551,9 +55433,9 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 19,
-            "text": "έργου,",
-            "transliteration": "ergou,",
-            "lemma": "ἔργον, -ου, τό",
+            "text": "ἔργου,",
+            "transliteration": "ergou",
+            "lemma": "ἔργον",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo neutro singular de ação/obra ('de obra, prático')",
@@ -55564,7 +55446,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 20,
             "text": "οὗτος",
             "transliteration": "houtos",
-            "lemma": "οὗτος, αὕτη, τοῦτο",
+            "lemma": "οὗτος",
             "composite": false,
             "word_class": "Pronome demonstrativo anafórico",
             "syntax_role": "Nominativo masculino singular, sujeito ('esse tal')",
@@ -55575,7 +55457,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 21,
             "text": "μακάριος",
             "transliteration": "makarios",
-            "lemma": "μακάριος, -α, -ον",
+            "lemma": "μακάριος",
             "composite": false,
             "word_class": "Adjetivo predicativo",
             "syntax_role": "Nominativo masculino singular ('bem-aventurado')",
@@ -55597,7 +55479,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 23,
             "text": "τῇ",
             "transliteration": "tē",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Dativo feminino singular ('na')",
@@ -55608,7 +55490,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 24,
             "text": "ποιήσει",
             "transliteration": "poiēsei",
-            "lemma": "ποίησις, -εως, ἡ",
+            "lemma": "ποίησις",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo feminino singular de ação ('prática, ato de fazer')",
@@ -55619,7 +55501,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 25,
             "text": "αὐτοῦ",
             "transliteration": "autou",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal possessivo",
             "syntax_role": "Genitivo masculino singular ('seu, dele')",
@@ -55629,7 +55511,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 26,
             "text": "ἔσται.",
-            "transliteration": "estai.",
+            "transliteration": "estai",
             "lemma": "εἰμί",
             "composite": false,
             "word_class": "Verbo",
@@ -55678,7 +55560,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "ἕνα / μίαν / ἕν",
             "δύο",
             "τρεῖς / τρία",
-            "τέσσαρας / τέσσαρα"
+            "τέσσαρας (ou τέσσαρες) / τέσσαρα"
           ]
         ]
       },
@@ -56009,8 +55891,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "Se alguém serve, faça-o na força que Deus supre, para que em todas as coisas Deus seja glorificado por meio de Jesus Cristo."
         ],
         "type": "Frase",
-        "syntax_type": "Oração condicional de 1ª classe (prótase assumida como verdadeira: εἰ + presente indicativo) associada a oração final subordinada com ἵνα e subjuntivo passivo",
-        "notes": "1 Pedro 4:11. Ilustra a condicional de primeira classe com εἰ + indicativo e oração de finalidade com ἵνα.",
+        "syntax_type": "Oração condicional de 1ª classe (real ou realizável: εἰ + presente do indicativo — a forma não diz se a premissa é verdadeira) associada a oração final com ἵνα e subjuntivo passivo",
+        "notes": "1Pe 4.11. Ilustra a condicional de primeira classe (real ou realizável, Bergmann § 22.2.1) com εἰ + indicativo e oração de finalidade com ἵνα.",
         "tokens": [
           {
             "index": 1,
@@ -56019,7 +55901,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "εἰ",
             "composite": false,
             "word_class": "Conjunção condicional",
-            "syntax_role": "Conjunção condicional de 1ª classe que assume a realidade da premissa ('se')",
+            "syntax_role": "Conjunção condicional de 1ª classe — condição real ou realizável ('se')",
             "inflection": "Conjunção condicional",
             "context_meaning": "se"
           },
@@ -56027,7 +55909,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "τις",
             "transliteration": "tis",
-            "lemma": "τις, τι",
+            "lemma": "τις",
             "composite": false,
             "word_class": "Pronome indefinido enclítico",
             "syntax_role": "Nominativo masculino singular, sujeito ('alguém')",
@@ -56037,7 +55919,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 3,
             "text": "διακονεῖ,",
-            "transliteration": "diakonei,",
+            "transliteration": "diakonei",
             "lemma": "διακονέω",
             "composite": false,
             "word_class": "Verbo contraído em -έω",
@@ -56052,9 +55934,9 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "ὡς",
             "composite": false,
             "word_class": "Advérbio comparativo modal",
-            "syntax_role": "Partícula comparativa modal ('como, façao como')",
+            "syntax_role": "Partícula comparativa modal ('como, faça-o como')",
             "inflection": "Advérbio comparativo modal invariável",
-            "context_meaning": "como, façao como"
+            "context_meaning": "como, faça-o como"
           },
           {
             "index": 5,
@@ -56071,7 +55953,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "ἰσχύος",
             "transliteration": "ischyos",
-            "lemma": "ἰσχύς, -ύος, ἡ",
+            "lemma": "ἰσχύς",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo feminino singular ('força, vigor')",
@@ -56084,10 +55966,10 @@ window.GAMIDA_DEFAULT_DATA = {
             "transliteration": "hōs",
             "lemma": "ὡς",
             "composite": false,
-            "word_class": "Pronome relativo por atração",
-            "syntax_role": "Pronome relativo atraído ao caso do antecedente ('que')",
-            "inflection": "Genitivo feminino singular",
-            "context_meaning": "que"
+            "word_class": "Partícula comparativa",
+            "syntax_role": "Partícula comparativa que introduz oração ('conforme, segundo o que')",
+            "inflection": "Partícula comparativa invariável",
+            "context_meaning": "conforme, segundo"
           },
           {
             "index": 8,
@@ -56104,7 +55986,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -56114,8 +55996,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 10,
             "text": "Θεός·",
-            "transliteration": "Theos;",
-            "lemma": "θεός, -οῦ, ὁ",
+            "transliteration": "Theos",
+            "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito ('Deus')",
@@ -56148,7 +56030,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "πᾶσιν",
             "transliteration": "pasin",
-            "lemma": "πᾶς, πᾶσα, πᾶν",
+            "lemma": "πᾶς",
             "composite": false,
             "word_class": "Adjetivo",
             "syntax_role": "Dativo neutro plural ('todas as coisas')",
@@ -56170,7 +56052,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 15,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -56181,7 +56063,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 16,
             "text": "Θεὸς",
             "transliteration": "Theos",
-            "lemma": "θεός, -οῦ, ὁ",
+            "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito passivo ('Deus')",
@@ -56203,7 +56085,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 18,
             "text": "Ἰησοῦ",
             "transliteration": "Iēsou",
-            "lemma": "Ἰησοῦς, -οῦ, ὁ",
+            "lemma": "Ἰησοῦς",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Genitivo masculino singular ('Jesus')",
@@ -56213,8 +56095,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 19,
             "text": "Χριστοῦ.",
-            "transliteration": "Christou.",
-            "lemma": "Χριστός, -οῦ, ὁ",
+            "transliteration": "Christou",
+            "lemma": "Χριστός",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Genitivo masculino singular ('Cristo')",
@@ -56233,13 +56115,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração condicional de 2ª classe (irreal ou contrária ao fato no passado: εἰ + imperfeito/aoristo na prótase e ἄν + aoristo indicativo na apódose)",
-        "notes": "João 11:21. Exemplo clássico da condicional de segunda classe (irrealidade evidente no passado com a partícula modal ἄν).",
+        "notes": "Jo 11.32. Exemplo clássico da condicional de segunda classe (irrealidade evidente no passado com a partícula modal ἄν).",
         "tokens": [
           {
             "index": 1,
             "text": "Κύριε,",
-            "transliteration": "Kyrie,",
-            "lemma": "κύριος, -ου, ὁ",
+            "transliteration": "Kyrie",
+            "lemma": "κύριος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Vocativo masculino singular de apóstrofe ('Senhor')",
@@ -56327,7 +56209,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -56337,8 +56219,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 10,
             "text": "ἀδελφός.",
-            "transliteration": "adelphos.",
-            "lemma": "ἀδελφός, -οῦ, ὁ",
+            "transliteration": "adelphos",
+            "lemma": "ἀδελφός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito ('irmão')",
@@ -56357,7 +56239,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração condicional de 2ª classe referente ao tempo presente (εἰ + imperfeito na prótase e ἄν + imperfeito na apódose: irreal do presente)",
-        "notes": "Gálatas 1:10. Demonstra a condição contrária ao fato presente com o verbo regendo dativo (ἀρέσκω + ἀνθρώποις).",
+        "notes": "Gl 1.10. Demonstra a condição contrária ao fato presente com o verbo regendo dativo (ἀρέσκω + ἀνθρώποις).",
         "tokens": [
           {
             "index": 1,
@@ -56385,7 +56267,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 3,
             "text": "ἀνθρώποις",
             "transliteration": "anthrōpois",
-            "lemma": "ἄνθρωπος, -ου, ὁ",
+            "lemma": "ἄνθρωπος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo masculino plural regido por ἀρέσκω ('a homens')",
@@ -56395,7 +56277,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 4,
             "text": "ἤρεσκον,",
-            "transliteration": "ēreskon,",
+            "transliteration": "ēreskon",
             "lemma": "ἀρέσκω",
             "composite": false,
             "word_class": "Verbo",
@@ -56407,7 +56289,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "Χριστοῦ",
             "transliteration": "Christou",
-            "lemma": "Χριστός, -οῦ, ὁ",
+            "lemma": "Χριστός",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Genitivo masculino singular de posse ('de Cristo')",
@@ -56418,7 +56300,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "δοῦλος",
             "transliteration": "doulos",
-            "lemma": "δοῦλος, -ου, ὁ",
+            "lemma": "δοῦλος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, predicativo ('servo')",
@@ -56450,12 +56332,12 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 9,
             "text": "ἤμην.",
-            "transliteration": "ēmēn.",
+            "transliteration": "ēmēn",
             "lemma": "εἰμί",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Imperfeito indicativo médio/ativo clássico tardio, 1ª singular ('era, seria')",
-            "inflection": "Imperfeito indicativo médio, 1ª pessoa do singular",
+            "syntax_role": "Imperfeito do indicativo de εἰμί, 1ª singular, na apódose irreal do presente ('seria')",
+            "inflection": "Imperfeito do indicativo de εἰμί, 1ª pessoa do singular",
             "context_meaning": "era, seria"
           }
         ]
@@ -56470,7 +56352,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração condicional de 3ª classe (futura mais provável/eventual: ἐάν + subjuntivo aoristo com concordância de sujeito neutro plural em verbo no singular μείνῃ) com apódose no futuro indicativo",
-        "notes": "João 15:7. Excelente ilustração da regra clássica de concordância: sujeito neutro plural (τὰ ῥήματα) com verbo na 3ª pessoa do singular (μείνῃ).",
+        "notes": "Jo 15.7. Excelente ilustração da regra clássica de concordância: sujeito neutro plural (τὰ ῥήματα) com verbo na 3ª pessoa do singular (μείνῃ) — Bergmann, lição 22, nota 7. Condicional de 3ª classe (ἐάν + subjuntivo, § 22.2.3).",
         "tokens": [
           {
             "index": 1,
@@ -56508,7 +56390,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 4,
             "text": "ἐμοί,",
-            "transliteration": "emoi,",
+            "transliteration": "emoi",
             "lemma": "ἐγώ",
             "composite": false,
             "word_class": "Pronome pessoal enfático",
@@ -56531,7 +56413,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "τὰ",
             "transliteration": "ta",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo neutro plural ('as')",
@@ -56542,7 +56424,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "ῥήματά",
             "transliteration": "rhēmata",
-            "lemma": "ῥῆμα, -ματος, τό",
+            "lemma": "ῥῆμα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo neutro plural, sujeito ('palavras')",
@@ -56585,7 +56467,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 11,
             "text": "μείνῃ,",
-            "transliteration": "meinē,",
+            "transliteration": "meinē",
             "lemma": "μένω",
             "composite": false,
             "word_class": "Verbo",
@@ -56597,7 +56479,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "ὃ",
             "transliteration": "ho",
-            "lemma": "ὅς, ἥ, ὅ",
+            "lemma": "ὅς",
             "composite": false,
             "word_class": "Pronome relativo",
             "syntax_role": "Acusativo neutro singular, objeto direto ('o que')",
@@ -56629,7 +56511,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 15,
             "text": "αἰτήσεσθε,",
-            "transliteration": "aitēsesthe,",
+            "transliteration": "aitēsesthe",
             "lemma": "αἰτέω",
             "composite": false,
             "word_class": "Verbo contraído em -έω",
@@ -56662,7 +56544,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 18,
             "text": "ὑμῖν.",
-            "transliteration": "hymin.",
+            "transliteration": "hymin",
             "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal",
@@ -56682,7 +56564,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração afirmativa predicativa seguida de prótase condicional eventual com verbo contraído no subjuntivo presente (ποιῆτε)",
-        "notes": "João 15:14. Demonstra a contração de ε + η = η (com subscrito) em ποιῆτε.",
+        "notes": "Jo 15.14. Demonstra a contração ε + η > η em ποιῆτε (sem iota subscrito; ῃ só surge quando a terminação já tem ι, como em ποιῇ — Bergmann § 20.2.2).",
         "tokens": [
           {
             "index": 1,
@@ -56699,7 +56581,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "φίλοι",
             "transliteration": "philoi",
-            "lemma": "φίλος, -ου, ὁ",
+            "lemma": "φίλος",
             "composite": false,
             "word_class": "Substantivo / Adjetivo",
             "syntax_role": "Nominativo masculino plural, predicativo ('amigos')",
@@ -56720,7 +56602,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 4,
             "text": "ἐστέ,",
-            "transliteration": "este,",
+            "transliteration": "este",
             "lemma": "εἰμί",
             "composite": false,
             "word_class": "Verbo de ligação",
@@ -56754,7 +56636,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "ὅσα",
             "transliteration": "hosa",
-            "lemma": "ὅσος, -η, -ον",
+            "lemma": "ὅσος",
             "composite": false,
             "word_class": "Pronome relativo quantitativo",
             "syntax_role": "Acusativo neutro plural ('tudo quanto, quantas coisas')",
@@ -56786,7 +56668,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 10,
             "text": "ὑμῖν.",
-            "transliteration": "hymin.",
+            "transliteration": "hymin",
             "lemma": "σύ",
             "composite": false,
             "word_class": "Pronome pessoal",
@@ -56806,7 +56688,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Prótases condicionais de concessão/suposição em série coordenada (ἐάν + subjuntivo) com apódose nominal categórica",
-        "notes": "1 Coríntios 13:1-2. Destaca o pronome grego coiné οὐθέν (= οὐδέν) e a contração verbal em λαλῶ.",
+        "notes": "1Co 13.1-2. Condicional de 3ª classe (ἐάν + subjuntivo, Bergmann § 22.2.3). Destaca a forma helenística οὐθέν (= οὐδέν) e a contração verbal em λαλῶ.",
         "tokens": [
           {
             "index": 1,
@@ -56823,7 +56705,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 2,
             "text": "ταῖς",
             "transliteration": "tais",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Dativo feminino plural ('as')",
@@ -56834,7 +56716,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 3,
             "text": "γλώσσαις",
             "transliteration": "glōssais",
-            "lemma": "γλῶσσα, -ης, ἡ",
+            "lemma": "γλῶσσα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo feminino plural instrumental ('línguas')",
@@ -56845,7 +56727,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "τῶν",
             "transliteration": "tōn",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo masculino plural ('dos')",
@@ -56856,7 +56738,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "ἀνθρώπων",
             "transliteration": "anthrōpōn",
-            "lemma": "ἄνθρωπος, -ου, ὁ",
+            "lemma": "ἄνθρωπος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo masculino plural ('homens')",
@@ -56889,7 +56771,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 8,
             "text": "τῶν",
             "transliteration": "tōn",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Genitivo masculino plural ('dos')",
@@ -56899,8 +56781,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 9,
             "text": "ἀγγέλων,",
-            "transliteration": "angelōn,",
-            "lemma": "ἄγγελος, -ου, ὁ",
+            "transliteration": "angelōn",
+            "lemma": "ἄγγελος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Genitivo masculino plural ('anjos')",
@@ -56911,7 +56793,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 10,
             "text": "ἀγάπην",
             "transliteration": "agapēn",
-            "lemma": "ἀγάπη, -ης, ἡ",
+            "lemma": "ἀγάπη",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo feminino singular, objeto direto ('amor')",
@@ -56943,7 +56825,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 13,
             "text": "ἔχω…,",
-            "transliteration": "echō...,",
+            "transliteration": "echō",
             "lemma": "ἔχω",
             "composite": false,
             "word_class": "Verbo",
@@ -56988,7 +56870,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 17,
             "text": "πᾶσαν",
             "transliteration": "pasan",
-            "lemma": "πᾶς, πᾶσα, πᾶν",
+            "lemma": "πᾶς",
             "composite": false,
             "word_class": "Adjetivo",
             "syntax_role": "Acusativo feminino singular ('toda')",
@@ -56999,7 +56881,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 18,
             "text": "τὴν",
             "transliteration": "tēn",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo feminino singular ('a')",
@@ -57009,8 +56891,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 19,
             "text": "πίστιν…,",
-            "transliteration": "pistin...,",
-            "lemma": "πίστις, -εως, ἡ",
+            "transliteration": "pistin",
+            "lemma": "πίστις",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo feminino singular ('fé')",
@@ -57021,7 +56903,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 20,
             "text": "ἀγάπην",
             "transliteration": "agapēn",
-            "lemma": "ἀγάπη, -ης, ἡ",
+            "lemma": "ἀγάπη",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo feminino singular ('amor')",
@@ -57053,7 +56935,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 23,
             "text": "ἔχω,",
-            "transliteration": "echō,",
+            "transliteration": "echō",
             "lemma": "ἔχω",
             "composite": false,
             "word_class": "Verbo",
@@ -57065,7 +56947,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 24,
             "text": "οὐθέν",
             "transliteration": "outhen",
-            "lemma": "οὐθείς, οὐδεμία, οὐθέν",
+            "lemma": "οὐθείς",
             "composite": false,
             "word_class": "Pronome neutro negativo",
             "syntax_role": "Nominativo neutro singular com valor predicativo enfático do grego helenístico ('nada')",
@@ -57075,7 +56957,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 25,
             "text": "εἰμι.",
-            "transliteration": "eimi.",
+            "transliteration": "eimi",
             "lemma": "εἰμί",
             "composite": false,
             "word_class": "Verbo de ligação",
@@ -57095,7 +56977,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período condicional de 3ª classe com duplo aoristo subjuntivo (ὁμολογήσῃς, πιστεύσῃς), oração substantiva objetiva de credo e apódose no futuro passivo",
-        "notes": "Romanos 10:9. Oração de magna promessa soteriológica com futuro passivo em -θήσῃ.",
+        "notes": "Rm 10.9. Oração de magna promessa soteriológica com futuro passivo em -θήσῃ.",
         "tokens": [
           {
             "index": 1,
@@ -57134,7 +57016,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "τῷ",
             "transliteration": "tō",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Dativo neutro singular ('a')",
@@ -57145,7 +57027,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "στόματί",
             "transliteration": "stomati",
-            "lemma": "στόμα, -ματος, τό",
+            "lemma": "στόμα",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo neutro singular ('boca')",
@@ -57167,7 +57049,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 7,
             "text": "Κύριον",
             "transliteration": "Kyrion",
-            "lemma": "κύριος, -ου, ὁ",
+            "lemma": "κύριος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino singular, duplo acusativo / predicativo ('Senhor')",
@@ -57177,8 +57059,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 8,
             "text": "Ἰησοῦν,",
-            "transliteration": "Iēsoun,",
-            "lemma": "Ἰησοῦς, -οῦ, ὁ",
+            "transliteration": "Iēsoun",
+            "lemma": "Ἰησοῦς",
             "composite": false,
             "word_class": "Substantivo próprio",
             "syntax_role": "Acusativo masculino singular, objeto direto ('Jesus')",
@@ -57222,7 +57104,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "τῇ",
             "transliteration": "tē",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Dativo feminino singular ('o')",
@@ -57233,7 +57115,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "καρδίᾳ",
             "transliteration": "kardia",
-            "lemma": "καρδία, -ας, ἡ",
+            "lemma": "καρδία",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Dativo feminino singular locativo ('coração')",
@@ -57266,7 +57148,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 16,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -57277,7 +57159,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 17,
             "text": "Θεὸς",
             "transliteration": "Theos",
-            "lemma": "θεός, -οῦ, ὁ",
+            "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito ('Deus')",
@@ -57288,7 +57170,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 18,
             "text": "αὐτὸν",
             "transliteration": "auton",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Acusativo masculino singular, objeto direto ('o, a ele')",
@@ -57320,8 +57202,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 21,
             "text": "νεκρῶν,",
-            "transliteration": "nekrōn,",
-            "lemma": "νεκρός, -ά, -όν",
+            "transliteration": "nekrōn",
+            "lemma": "νεκρός",
             "composite": false,
             "word_class": "Adjetivo substantivado",
             "syntax_role": "Genitivo masculino plural ('mortos')",
@@ -57331,7 +57213,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 22,
             "text": "σωθήσῃ·",
-            "transliteration": "sōthēsē;",
+            "transliteration": "sōthēsē",
             "lemma": "σῴζω",
             "composite": false,
             "word_class": "Verbo",
@@ -57351,13 +57233,13 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Período composto com oração consecutiva real (ὥστε + indicativo com aoristo em -κα de δίδωμι) e oração final contrastada (ἵνα + subjuntivos aoristo médio e presente)",
-        "notes": "João 3:16. O versículo mais célebre do Novo Testamento grego, combinando conjunção consecutiva (ὥστε), adjetivo de 3ª declinação (μονογενής), verbo em -μι no aoristo (ἔδωκεν), e particípio presente articular (ὁ πιστεύων).",
+        "notes": "Jo 3.16. O versículo mais célebre do Novo Testamento grego, combinando conjunção consecutiva (ὥστε), adjetivo de 3ª declinação (μονογενής), verbo em -μι no aoristo (ἔδωκεν), e particípio presente articular (ὁ πιστεύων).",
         "tokens": [
           {
             "index": 1,
             "text": "Οὕτως",
             "transliteration": "Houtōs",
-            "lemma": "οὕτω / οὕτως",
+            "lemma": "οὕτως",
             "composite": false,
             "word_class": "Advérbio demonstrativo de intensidade",
             "syntax_role": "Advérbio correlativo de modo/grau ('De tal maneira, assim')",
@@ -57390,7 +57272,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 4,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Nominativo masculino singular ('o')",
@@ -57401,7 +57283,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 5,
             "text": "Θεὸς",
             "transliteration": "Theos",
-            "lemma": "θεός, -οῦ, ὁ",
+            "lemma": "θεός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Nominativo masculino singular, sujeito ('Deus')",
@@ -57412,7 +57294,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 6,
             "text": "τὸν",
             "transliteration": "ton",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo masculino singular ('o')",
@@ -57422,8 +57304,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 7,
             "text": "κόσμον,",
-            "transliteration": "kosmon,",
-            "lemma": "κόσμος, -ου, ὁ",
+            "transliteration": "kosmon",
+            "lemma": "κόσμος",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino singular, objeto direto ('mundo')",
@@ -57445,7 +57327,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 9,
             "text": "τὸν",
             "transliteration": "ton",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido",
             "syntax_role": "Acusativo masculino singular ('o')",
@@ -57456,7 +57338,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 10,
             "text": "υἱὸν",
             "transliteration": "huion",
-            "lemma": "υἱός, -οῦ, ὁ",
+            "lemma": "υἱός",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo masculino singular, objeto direto ('Filho')",
@@ -57467,7 +57349,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 11,
             "text": "αὐτοῦ",
             "transliteration": "autou",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal possessivo",
             "syntax_role": "Genitivo masculino singular ('seu, dele')",
@@ -57478,7 +57360,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 12,
             "text": "τὸν",
             "transliteration": "ton",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo definido repetido",
             "syntax_role": "Artigo em posição atributiva posterior ('o')",
@@ -57489,7 +57371,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 13,
             "text": "μονογενῆ",
             "transliteration": "monogenē",
-            "lemma": "μονογενής, -ές",
+            "lemma": "μονογενής",
             "composite": false,
             "word_class": "Adjetivo atributivo",
             "syntax_role": "3ª declinação, acusativo masculino singular (-έα > -ῆ) ('unigênito, único')",
@@ -57499,7 +57381,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 14,
             "text": "ἔδωκεν,",
-            "transliteration": "edōken,",
+            "transliteration": "edōken",
             "lemma": "δίδωμι",
             "composite": false,
             "word_class": "Verbo em -μι",
@@ -57522,7 +57404,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 16,
             "text": "πᾶς",
             "transliteration": "pas",
-            "lemma": "πᾶς, πᾶσα, πᾶν",
+            "lemma": "πᾶς",
             "composite": false,
             "word_class": "Adjetivo",
             "syntax_role": "Nominativo masculino singular ('todo')",
@@ -57533,7 +57415,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 17,
             "text": "ὁ",
             "transliteration": "ho",
-            "lemma": "ὁ, ἡ, τό",
+            "lemma": "ὁ",
             "composite": false,
             "word_class": "Artigo substantivador",
             "syntax_role": "Nominativo masculino singular com particípio ('aquele que')",
@@ -57566,7 +57448,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 20,
             "text": "αὐτὸν",
             "transliteration": "auton",
-            "lemma": "αὐτός, -ή, -ό",
+            "lemma": "αὐτός",
             "composite": false,
             "word_class": "Pronome pessoal",
             "syntax_role": "Acusativo masculino singular ('ele')",
@@ -57587,7 +57469,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 22,
             "text": "ἀπόληται,",
-            "transliteration": "apolētai,",
+            "transliteration": "apolētai",
             "lemma": "ἀπόλλυμι",
             "composite": false,
             "word_class": "Verbo em -μι composto",
@@ -57621,7 +57503,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 25,
             "text": "ζωὴν",
             "transliteration": "zōēn",
-            "lemma": "ζωή, -ῆς, ἡ",
+            "lemma": "ζωή",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Acusativo feminino singular, objeto direto ('vida')",
@@ -57631,8 +57513,8 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 26,
             "text": "αἰώνιον.",
-            "transliteration": "aiōnion.",
-            "lemma": "αἰώνιος, -ον",
+            "transliteration": "aiōnion",
+            "lemma": "αἰώνιος",
             "composite": false,
             "word_class": "Adjetivo de dois gêneros",
             "syntax_role": "Acusativo feminino singular atributivo ('eterna')",
@@ -57732,6 +57614,26 @@ window.GAMIDA_DEFAULT_DATA = {
             "Temporais",
             "ἄχρι(ς), ἕως, ὅταν, ὅτε",
             "até que, enquanto, sempre que, quando"
+          ],
+          [
+            "Disjuntivas",
+            "ἤ",
+            "ou"
+          ],
+          [
+            "Explicativas",
+            "γάρ, δέ, καί; ἵνα, ὅτι",
+            "pois, isto é; que"
+          ],
+          [
+            "Transicionais",
+            "οὖν, δέ",
+            "então, ora, e"
+          ],
+          [
+            "Comparativas",
+            "καθώς, ὡς",
+            "como, assim como"
           ]
         ]
       }
