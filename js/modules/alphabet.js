@@ -56,54 +56,71 @@ const AlphabetGameEngine = {
   ],
 
   greekAlphabet: [
-    { order: 1, glyph: "α", uppercase: "Α", name: "Alpha", sound: "A", translit: "a" },
-    { order: 2, glyph: "β", uppercase: "Β", name: "Beta", sound: "B", translit: "b" },
-    { order: 3, glyph: "γ", uppercase: "Γ", name: "Gamma", sound: "G", translit: "g" },
-    { order: 4, glyph: "δ", uppercase: "Δ", name: "Delta", sound: "D", translit: "d" },
-    { order: 5, glyph: "ε", uppercase: "Ε", name: "Epsilon", sound: "E (breve)", translit: "e" },
-    { order: 6, glyph: "ζ", uppercase: "Ζ", name: "Zeta", sound: "Z / Dz", translit: "z" },
-    { order: 7, glyph: "η", uppercase: "Η", name: "Eta", sound: "Ê (longo)", translit: "ē" },
-    { order: 8, glyph: "θ", uppercase: "Θ", name: "Theta", sound: "Th (aspirado)", translit: "th" },
-    { order: 9, glyph: "ι", uppercase: "Ι", name: "Iota", sound: "I", translit: "i" },
-    { order: 10, glyph: "κ", uppercase: "Κ", name: "Kappa", sound: "K", translit: "k" },
-    { order: 11, glyph: "λ", uppercase: "Λ", name: "Lambda", sound: "L", translit: "l" },
-    { order: 12, glyph: "μ", uppercase: "Μ", name: "Mu", sound: "M", translit: "m" },
-    { order: 13, glyph: "ν", uppercase: "Ν", name: "Nu", sound: "N", translit: "n" },
-    { order: 14, glyph: "ξ", uppercase: "Ξ", name: "Xi", sound: "X / Ks", translit: "x" },
-    { order: 15, glyph: "ο", uppercase: "Ο", name: "Omicron", sound: "O (breve)", translit: "o" },
-    { order: 16, glyph: "π", uppercase: "Π", name: "Pi", sound: "P", translit: "p" },
-    { order: 17, glyph: "ρ", uppercase: "Ρ", name: "Rho", sound: "R", translit: "r" },
-    { order: 18, glyph: "σ", uppercase: "Σ", name: "Sigma", sound: "S", translit: "s", final: "ς" },
-    { order: 19, glyph: "τ", uppercase: "Τ", name: "Tau", sound: "T", translit: "t" },
-    { order: 20, glyph: "υ", uppercase: "Υ", name: "Upsilon", sound: "U / Y (ü)", translit: "y" },
-    { order: 21, glyph: "φ", uppercase: "Φ", name: "Phi", sound: "Ph / F", translit: "ph" },
-    { order: 22, glyph: "χ", uppercase: "Χ", name: "Chi", sound: "Ch / Kh", translit: "ch" },
-    { order: 23, glyph: "ψ", uppercase: "Ψ", name: "Psi", sound: "Ps", translit: "ps" },
-    { order: 24, glyph: "ω", uppercase: "Ω", name: "Omega", sound: "Ô (longo)", translit: "ō" }
+    { order: 1, glyph: "α", uppercase: "Α", name: "alfa", sound: "a em amor", translit: "a" },
+    { order: 2, glyph: "β", uppercase: "Β", name: "beta", sound: "b em bondade", translit: "b" },
+    { order: 3, glyph: "γ", uppercase: "Γ", name: "gama", sound: "g em gato (não como em gelo); diante de γ, κ, ξ ou χ pronuncia-se n (ἄγκυρα = ankyra)", translit: "g" },
+    { order: 4, glyph: "δ", uppercase: "Δ", name: "delta", sound: "d em de", translit: "d" },
+    { order: 5, glyph: "ε", uppercase: "Ε", name: "épsilon", sound: "e em era", translit: "e" },
+    { order: 6, glyph: "ζ", uppercase: "Ζ", name: "zeta", sound: "ds em Edson (não o z português!)", translit: "z" },
+    { order: 7, glyph: "η", uppercase: "Η", name: "eta", sound: "e em ênfase", translit: "ē" },
+    { order: 8, glyph: "θ", uppercase: "Θ", name: "theta", sound: "th inglês — |th| como no artigo the", translit: "th" },
+    { order: 9, glyph: "ι", uppercase: "Ι", name: "iota", sound: "i em índio", translit: "i" },
+    { order: 10, glyph: "κ", uppercase: "Κ", name: "kapa", sound: "c em casa (não como em cifra)", translit: "k" },
+    { order: 11, glyph: "λ", uppercase: "Λ", name: "lambda", sound: "l em lar", translit: "l" },
+    { order: 12, glyph: "μ", uppercase: "Μ", name: "my", sound: "m em manso", translit: "m" },
+    { order: 13, glyph: "ν", uppercase: "Ν", name: "ny", sound: "n em nada", translit: "n" },
+    { order: 14, glyph: "ξ", uppercase: "Ξ", name: "xi", sound: "x em táxi (mas não em lixo)", translit: "x" },
+    { order: 15, glyph: "ο", uppercase: "Ο", name: "ómicron", sound: "o em pó", translit: "o" },
+    { order: 16, glyph: "π", uppercase: "Π", name: "pi", sound: "p em paz", translit: "p" },
+    { order: 17, glyph: "ρ", uppercase: "Ρ", name: "rhô", sound: "r em respeito ou carro", translit: "r" },
+    { order: 18, glyph: "σ", uppercase: "Σ", name: "sigma", sound: "s em saúde (não como em casa); σ no início e no meio da palavra, ς no fim", translit: "s", final: "ς" },
+    { order: 19, glyph: "τ", uppercase: "Τ", name: "tau", sound: "t em tempo", translit: "t" },
+    { order: 20, glyph: "υ", uppercase: "Υ", name: "ýpsilon", sound: "u francês ou ü alemão (nos ditongos, pronuncia-se u)", translit: "y" },
+    { order: 21, glyph: "φ", uppercase: "Φ", name: "phi", sound: "f em força", translit: "ph" },
+    { order: 22, glyph: "χ", uppercase: "Χ", name: "chi", sound: "ch alemão ou j espanhol — |ch|", translit: "ch" },
+    { order: 23, glyph: "ψ", uppercase: "Ψ", name: "psi", sound: "ps em psiquiatria", translit: "ps" },
+    { order: 24, glyph: "ω", uppercase: "Ω", name: "ômega", sound: "o em alô", translit: "ō" }
   ],
 
   greekTwinGroups: [
-    { target: "ν", name: "Nu", twins: ["υ", "γ", "κ"], tip: "Nu (ν) parece 'v' mas equivale ao som 'n' (como em navio); Upsilon (υ) é arredondado." },
-    { target: "υ", name: "Upsilon", twins: ["ν", "γ", "μ"], tip: "Upsilon (υ) tem base curvada e arredondada, parecendo um cálice." },
-    { target: "η", name: "Eta", twins: ["μ", "π", "ν"], tip: "Eta (η) parece 'n' com a perna direita alongada para baixo; é a vogal 'ê' longa." },
-    { target: "ρ", name: "Rho", twins: ["β", "φ", "θ"], tip: "Rho (ρ) parece 'p' mas equivale ao 'r' vibrante." },
-    { target: "χ", name: "Chi", twins: ["κ", "γ", "λ"], tip: "Chi (χ) parece 'x' mas tem som gutural aspirado /kh/." },
-    { target: "θ", name: "Theta", twins: ["ο", "φ", "σ"], tip: "Theta (θ) é um círculo cortado horizontalmente no meio." },
-    { target: "φ", name: "Phi", twins: ["ψ", "θ", "ρ"], tip: "Phi (φ) é um círculo cortado verticalmente no meio." },
-    { target: "ψ", name: "Psi", twins: ["φ", "υ", "ξ"], tip: "Psi (ψ) é um tridente com haste central vertical." },
-    { target: "ξ", name: "Xi", twins: ["ζ", "ε", "ψ"], tip: "Xi (ξ) são três curvas horizontais empilhadas." },
-    { target: "ς", name: "Sigma Final", twins: ["σ", "ο", "δ"], tip: "Sigma final (ς) é usado estritamente na última letra de palavras gregas." }
+    { target: "ν", name: "ny", twins: ["υ", "γ", "κ"], tip: "Ny (ν) parece 'v' mas equivale ao som 'n' (como em nada); Ýpsilon (υ) é arredondado." },
+    { target: "υ", name: "ýpsilon", twins: ["ν", "γ", "μ"], tip: "Ýpsilon (υ) tem base curvada e arredondada, parecendo um cálice." },
+    { target: "η", name: "eta", twins: ["μ", "π", "ν"], tip: "Eta (η) parece 'n' com a perna direita alongada para baixo; é a vogal de som 'e em ênfase'." },
+    { target: "ρ", name: "rhô", twins: ["β", "φ", "θ"], tip: "Rhô (ρ) parece 'p' mas equivale ao som 'r' (em respeito ou carro)." },
+    { target: "χ", name: "chi", twins: ["κ", "γ", "λ"], tip: "Chi (χ) parece 'x' mas tem som ch alemão ou j espanhol." },
+    { target: "θ", name: "theta", twins: ["ο", "φ", "σ"], tip: "Theta (θ) é um círculo cortado horizontalmente no meio; som de th inglês." },
+    { target: "φ", name: "phi", twins: ["ψ", "θ", "ρ"], tip: "Phi (φ) é um círculo cortado verticalmente no meio; som de f em força." },
+    { target: "ψ", name: "psi", twins: ["φ", "υ", "ξ"], tip: "Psi (ψ) é um tridente com haste central vertical; som de ps em psiquiatria." },
+    { target: "ξ", name: "xi", twins: ["ζ", "ε", "ψ"], tip: "Xi (ξ) são três curvas horizontais empilhadas; som de x em táxi." },
+    { target: "ς", name: "sigma final", twins: ["σ", "ο", "δ"], tip: "Sigma final (ς) é usado estritamente no encerramento de palavras gregas." }
   ],
 
   currentChallenge: null,
   answered: false,
 
-  getCurrentList() {
-    return AppState.language === "hebrew" ? this.hebrewAlphabet : this.greekAlphabet;
+  getCurrentList(lang) {
+    const l = lang || (AppState && AppState.language);
+    if (l === "hebrew") return this.hebrewAlphabet;
+    if (AppState && AppState.chapters && AppState.chapters.length > 0) {
+      const ch1 = AppState.chapters.find((c) => c && c.id === "bergmann_01");
+      if (ch1 && Array.isArray(ch1.items) && ch1.items.length === 24) {
+        return ch1.items.map((it) => ({
+          order: it.order,
+          glyph: it.term,
+          uppercase: it.uppercase || "",
+          name: it.name || "",
+          sound: it.sound || "",
+          translit: it.transliteration || "",
+          final: it.term === "σ" ? "ς" : undefined,
+        }));
+      }
+    }
+    return this.greekAlphabet;
   },
 
-  getTwinGroups() {
-    return AppState.language === "hebrew" ? this.hebrewTwinGroups : this.greekTwinGroups;
+  getTwinGroups(lang) {
+    const l = lang || (AppState && AppState.language);
+    return l === "hebrew" ? this.hebrewTwinGroups : this.greekTwinGroups;
   },
 
   init(submode = "order") {
@@ -131,8 +148,8 @@ const AlphabetGameEngine = {
     this.renderChallenge();
   },
 
-  generateOrderChallenge() {
-    const list = this.getCurrentList();
+  generateOrderChallenge(lang) {
+    const list = this.getCurrentList(lang);
     const maxOrder = list.length;
 
     const randIdx = Math.floor(Math.random() * list.length);
@@ -170,10 +187,10 @@ const AlphabetGameEngine = {
     };
   },
 
-  generateImpostorChallenge() {
-    const groups = this.getTwinGroups();
+  generateImpostorChallenge(lang) {
+    const groups = this.getTwinGroups(lang);
     const group = groups[Math.floor(Math.random() * groups.length)];
-    const list = this.getCurrentList();
+    const list = this.getCurrentList(lang);
 
     const uniqueTwins = Array.from(
       new Set(group.twins.filter((t) => t !== group.target)),
@@ -209,8 +226,9 @@ const AlphabetGameEngine = {
     };
   },
 
-  generateShapesChallenge() {
-    if (AppState.language === "hebrew") {
+  generateShapesChallenge(lang) {
+    const l = lang || (AppState && AppState.language);
+    if (l === "hebrew") {
       const isSofit = Math.random() > 0.4;
       if (isSofit) {
         const sofitLetters = [
@@ -282,7 +300,7 @@ const AlphabetGameEngine = {
         };
       }
     } else {
-      const list = this.greekAlphabet;
+      const list = this.getCurrentList(lang);
       const target = list[Math.floor(Math.random() * list.length)];
       const askLower = Math.random() > 0.5;
       const otherLetters = shuffleArray(list.filter((l) => l.order !== target.order));
