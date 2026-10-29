@@ -1,7 +1,7 @@
 /**
  * Gamida Data Bundle - Offline & Standalone Fallback
  * Gerado automaticamente via scripts/build-bundle.py
- * Data: 2026-10-28T15:17:20.015751+00:00
+ * Data: 2026-10-29T17:31:26.226040+00:00
  */
 window.GAMIDA_DEFAULT_DATA = {
   hebrew: [
@@ -18,11 +18,12 @@ window.GAMIDA_DEFAULT_DATA = {
           "álef",
           "letra alef"
         ],
-        "type": "Consoante (1)",
+        "type": "Consoante (1 - Gutural)",
         "order": 1,
         "name": "Alef",
         "sound": "Mudo / Oclusiva glotal",
-        "value": 1
+        "value": 1,
+        "guttural": true
       },
       {
         "hebrew": "ב",
@@ -355,7 +356,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_03",
-    "title": "Lição III - Substantivos Básicos 2026",
+    "title": "Lição III - Substantivos Básicos",
     "items": [
       {
         "hebrew": "אָב",
@@ -725,7 +726,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_05",
-    "title": "Lição V - O Artigo Definido e Natureza 2026",
+    "title": "Lição V - O Artigo Definido e Natureza",
     "items": [
       {
         "hebrew": "אוֹר",
@@ -1099,7 +1100,7 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_05_04",
         "favorite": false,
-        "hebrew": "הָעִיר וְהַהָר",
+        "hebrew": "הָעִיר וְהָהָר",
         "transliteration": "ha'ir v'hahar",
         "translations": [
           "a cidade e a montanha",
@@ -1134,7 +1135,7 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 2,
-            "text": "וְהַהָר",
+            "text": "וְהָהָר",
             "transliteration": "V'hahar",
             "lemma": "הַר",
             "composite": true,
@@ -1148,11 +1149,11 @@ window.GAMIDA_DEFAULT_DATA = {
                 "phonetics": "Vav com shva simples."
               },
               {
-                "segment": "הַ",
+                "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "a / o",
-                "phonetics": "Patah sem dagesh forte; a gutural he (ה) sofre reduplicação virtual."
+                "phonetics": "O artigo leva qamats diante de הָר: הַר pertence à lista de Kelley V.14.3[4] (p. 47) de substantivos que se alteram com o artigo (הָהָר, הָעָם, הַגָּן...)."
               },
               {
                 "segment": "הָר",
@@ -1308,7 +1309,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_06",
-    "title": "Lição VI - Preposições e Conjunções 2026",
+    "title": "Lição VI - Preposições e Conjunções",
     "items": [
       {
         "hebrew": "אַחֲרֵי",
@@ -1438,6 +1439,14 @@ window.GAMIDA_DEFAULT_DATA = {
           "existe"
         ],
         "type": "Partícula"
+      },
+      {
+        "hebrew": "לֹא",
+        "transliteration": "lo",
+        "translations": [
+          "não"
+        ],
+        "type": "Partícula (negação)"
       },
       {
         "hebrew": "לַיְלָה",
@@ -1600,7 +1609,7 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_06_03",
         "favorite": false,
-        "hebrew": "הַגַּן אֵצֶל הַבַּיִת",
+        "hebrew": "הַגָּן אֵצֶל הַבַּיִת",
         "transliteration": "hagan etzel habayit",
         "translations": [
           "o jardim está ao lado da casa",
@@ -1611,7 +1620,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "tokens": [
           {
             "index": 1,
-            "text": "הַגַּן",
+            "text": "הַגָּן",
             "transliteration": "Hagan",
             "lemma": "גַּן",
             "composite": true,
@@ -1625,11 +1634,12 @@ window.GAMIDA_DEFAULT_DATA = {
                 "phonetics": "Patah com dagesh forte no guimel (ג)."
               },
               {
-                "segment": "גַּן",
+                "segment": "גָּן",
                 "transliteration": "Gan",
                 "type": "Substantivo",
                 "inflection": "masculino singular absoluto",
-                "meaning": "jardim"
+                "meaning": "jardim",
+                "phonetics": "Com o artigo, גַּן torna-se הַגָּן (qamats interno; Kelley V.14.3[4], p. 47)."
               }
             ]
           },
@@ -2169,7 +2179,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_07",
-    "title": "Lição VII - Gênero, Número e Termos do Cotidiano 2026",
+    "title": "Lição VII - Gênero, Número e Termos do Cotidiano",
     "items": [
       {
         "hebrew": "אֲדָמָה",
@@ -2237,7 +2247,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "caminho"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo (m. e f.)"
       },
       {
         "hebrew": "יַבָּשָׁה",
@@ -3088,7 +3098,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_08",
-    "title": "Lição VIII - Adjetivos Essenciais 2026",
+    "title": "Lição VIII - Adjetivos Essenciais",
     "items": [
       {
         "hebrew": "גָּדוֹל",
@@ -3368,13 +3378,15 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_08_03",
         "favorite": false,
-        "hebrew": "מִי־אֵל גָּדוֹל בֵּאלֹהִים",
-        "transliteration": "mi-el gadol belohim",
+        "hebrew": "מִי־אֵל גָּדוֹל כֵּאלֹהִים",
+        "transliteration": "mi-el gadol kelohim",
         "translations": [
-          "quem é grande deus entre os deuses?"
+          "que deus é grande como Deus?",
+          "qual deus é tão grande como Deus?",
+          "quem é deus grande como Deus?"
         ],
         "type": "Frase",
-        "syntax_type": "Oração Interrogativa Nominal",
+        "syntax_type": "Oração Interrogativa Nominal (Comparativa)",
         "tokens": [
           {
             "index": 1,
@@ -3401,29 +3413,29 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "גָּדוֹל",
             "composite": false,
             "word_class": "Adjetivo",
-            "syntax_role": "Adjetivo atributivo modificando אֵל ('grande deus')."
+            "syntax_role": "Predicado nominal ('é grande'), sem artigo (Kelley VIII.22)."
           },
           {
             "index": 4,
-            "text": "בֵּאלֹהִים",
-            "transliteration": "Belohim",
+            "text": "כֵּאלֹהִים",
+            "transliteration": "Kelohim",
             "lemma": "אֱלֹהִים",
             "composite": true,
-            "syntax_role": "Adjunto adverbial restritivo ('entre os deuses').",
+            "syntax_role": "Termo de comparação ('como Deus').",
             "parts": [
               {
-                "segment": "בֵּ",
-                "transliteration": "Be",
+                "segment": "כֵּ",
+                "transliteration": "Ke",
                 "type": "Preposição inseparável",
-                "meaning": "entre / em",
-                "phonetics": "A preposição בְּ diante do alef gutural com hatef-segol recebe șere e o hatef-segol é suprimido."
+                "meaning": "como",
+                "phonetics": "Diante de אֱ (hatef-segol), a preposição pode levar sere e o hatef-segol do א cai, que fica mudo (Kelley VI.15.1[3], p. 51: לֵאלֹהִים)."
               },
               {
                 "segment": "אלֹהִים",
-                "transliteration": "Elohim",
-                "type": "Substantivo",
-                "inflection": "masculino plural",
-                "meaning": "deuses"
+                "transliteration": "Lohim",
+                "type": "Substantivo / Nome Divino",
+                "meaning": "Deus",
+                "inflection": "masculino plural (sentido singular)"
               }
             ]
           }
@@ -3863,7 +3875,7 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_08_10",
         "favorite": false,
-        "hebrew": "אֶבֶן גְדוֹלָה",
+        "hebrew": "אֶבֶן גְּדוֹלָה",
         "transliteration": "even gedolah",
         "translations": [
           "uma grande pedra"
@@ -3883,7 +3895,7 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 2,
-            "text": "גְדוֹלָה",
+            "text": "גְּדוֹלָה",
             "transliteration": "Gedolah",
             "lemma": "גָּדוֹל",
             "composite": false,
@@ -3991,7 +4003,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_09",
-    "title": "Lição IX - Pronomes e Lugares 2026",
+    "title": "Lição IX - Pronomes e Lugares",
     "items": [
       {
         "hebrew": "אֶבֶן",
@@ -4197,7 +4209,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Pronome Pessoal / Demonstrativo"
       },
       {
-        "hebrew": "הִוא",
+        "hebrew": "הִיא",
         "transliteration": "hi",
         "translations": [
           "ela",
@@ -5132,7 +5144,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_10",
-    "title": "Lição X - Segolados e Relação de Construto 2026",
+    "title": "Lição X - Segolados e Relação de Construto",
     "items": [
       {
         "hebrew": "אֹהֶל",
@@ -5991,7 +6003,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_11",
-    "title": "Lição XI - Sufixos Pronominais e Termos Religiosos 2026",
+    "title": "Lição XI - Sufixos Pronominais e Termos Religiosos",
     "items": [
       {
         "hebrew": "אָהַב",
@@ -6135,7 +6147,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "sabado",
           "sábado"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo (m. e f.)"
       },
       {
         "hebrew": "שָׁם",
@@ -6677,9 +6689,9 @@ window.GAMIDA_DEFAULT_DATA = {
                 "segment": "עַמֵּ",
                 "transliteration": "Ame",
                 "type": "Substantivo",
-                "inflection": "masculino singular construto",
+                "inflection": "masculino singular (base com sufixo)",
                 "meaning": "povo de",
-                "phonetics": "Consoante duplicada (com dagesh forte implícito na flexão do segolado/geminado) e vogal segol antes do sufixo leve."
+                "phonetics": "Substantivo geminado (raiz עמם): a consoante dupla reaparece com dagesh forte diante do sufixo; a vogal de ligação antes do sufixo de 2ª f. sg. é sere (עַמֵּךְ)."
               },
               {
                 "segment": "ךְ",
@@ -7056,8 +7068,8 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_11_12",
         "favorite": false,
-        "hebrew": "אֲנַחְנוּ נָשִׁינוּ בָּנֵינוּ וּבְנֹתֵינוּ",
-        "transliteration": "anachnu nashinu baneinu uvenoteinu",
+        "hebrew": "אֲנַחְנוּ נָשֵׁינוּ בָּנֵינוּ וּבְנֹתֵינוּ",
+        "transliteration": "anachnu nasheinu baneinu uvenoteinu",
         "translations": [
           "nós, as nossas mulheres, os nossos filhos e as nossas filhas",
           "nós, nossas esposas, nossos filhos e nossas filhas"
@@ -7077,8 +7089,8 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 2,
-            "text": "נָשִׁינוּ",
-            "transliteration": "Nashinu",
+            "text": "נָשֵׁינוּ",
+            "transliteration": "Nasheinu",
             "lemma": "אִשָּׁה",
             "composite": true,
             "syntax_role": "Primeiro termo em aposição com sufixo possessivo ('as nossas mulheres').",
@@ -7162,7 +7174,7 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_11_13",
         "favorite": false,
-        "hebrew": "אֱלֹהֵי אֲבֹתֵיהֶם",
+        "hebrew": "אֱלֹהֵי אֲבוֹתֵיהֶם",
         "transliteration": "elohei avoteihem",
         "translations": [
           "o Deus dos seus antepassados",
@@ -7184,14 +7196,14 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 2,
-            "text": "אֲבֹתֵיהֶם",
+            "text": "אֲבוֹתֵיהֶם",
             "transliteration": "Avoteihem",
             "lemma": "אָב",
             "composite": true,
             "syntax_role": "Termo regido genitivo plural com sufixo possessivo ('pais deles / seus antepassados').",
             "parts": [
               {
-                "segment": "אֲבֹתֵי",
+                "segment": "אֲבוֹתֵי",
                 "transliteration": "Avotei",
                 "type": "Substantivo",
                 "inflection": "masculino plural construto",
@@ -7785,8 +7797,8 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_11_20",
         "favorite": false,
-        "hebrew": "כָל־בָּנָיו וְכָל־בְּנֹתָיו",
-        "transliteration": "chol-banav vechol-benotav",
+        "hebrew": "כָּל־בָּנָיו וְכָל־בְּנֹתָיו",
+        "transliteration": "kol-banav vechol-benotav",
         "translations": [
           "todos os seus filhos e todas as suas filhas",
           "todos os filhos dele e todas as filhas dele"
@@ -7797,13 +7809,13 @@ window.GAMIDA_DEFAULT_DATA = {
         "tokens": [
           {
             "index": 1,
-            "text": "כָל־",
-            "transliteration": "Chol-",
+            "text": "כָּל־",
+            "transliteration": "Kol-",
             "lemma": "כֹּל",
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Primeiro termo regente no construto singular ('todos os'). Unido por maqqef.",
-            "notes": "Kaf aspirado sem dagesh lene; qamats-hatuf perante maqqef (Kelley III.4)."
+            "notes": "Início de frase: o kaf leva dagesh lene; o holem passa a qamats-hatuf diante do maqqef (Kelley III.4)."
           },
           {
             "index": 2,
@@ -7888,7 +7900,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_12",
-    "title": "Lição XII - Verbos no Perfeito (Qal) 2026",
+    "title": "Lição XII - Verbos no Perfeito (Qal)",
     "items": [
       {
         "hebrew": "אוֹ",
@@ -8081,7 +8093,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Verbo",
             "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('ouviu').",
-            "notes": "Apresenta patah na segunda sílaba por ser verbo Lamed Gutural (Kelley XII.29.2 e XXV.70)."
+            "notes": "Perfeito Qal 3ms com patah na segunda sílaba, como todo verbo forte (קָטַל; Kelley XII.30). A gutural final não altera esta forma."
           },
           {
             "index": 3,
@@ -8227,11 +8239,11 @@ window.GAMIDA_DEFAULT_DATA = {
                 "phonetics": "Šureq (וּ) diante de consoante labial bet (ב)."
               },
               {
-                "segment": "בִּי",
+                "segment": "בִי",
                 "transliteration": "Vi",
                 "type": "Preposição inseparável",
                 "meaning": "em",
-                "phonetics": "A preposição בְּ antes de yod com shva assume hireq e contrai com o yod em hireq-yod (Kelley VI.15.1[2])."
+                "phonetics": "A preposição בְּ diante de יְ: o shva vira hireq, que contrai com o yod em hireq-yod (Kelley VI.15.1[2], p. 51). Sem dagesh lene por seguir o šureq da conjunção."
               },
               {
                 "segment": "רוּשָׁלַם",
@@ -8579,7 +8591,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "index": 3,
             "text": "מִתּוֹךְ",
             "transliteration": "Mitoch",
-            "lemma": "בְּתוֹךְ",
+            "lemma": "תּוֹךְ",
             "composite": true,
             "syntax_role": "Locução preposicional regente ('do meio de').",
             "parts": [
@@ -8832,7 +8844,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo",
                 "inflection": "feminino singular absoluto",
                 "meaning": "terra seca",
-                "phonetics": "Dagesh forte característico da determinação no yod e no bet."
+                "phonetics": "O dagesh forte no yod vem do artigo (absorvido por בְּ); o dagesh do bet é lexical (יַבָּשָׁה já o tem sem artigo)."
               }
             ]
           }
@@ -8959,7 +8971,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "segment": "רֵאשִׁית",
                 "transliteration": "Reshit",
                 "type": "Substantivo derivado",
-                "inflection": "feminino singular construto",
+                "inflection": "feminino singular (a pontuação massorética permite lê-lo como absoluto; parte da exegese o lê como construto)",
                 "meaning": "começo / primícias de",
                 "phonetics": "Derivado de רֹאשׁ ('cabeça'); o alef é quiescente no fim da sílaba (Kelley IV.10 e VII.17.3)."
               }
@@ -8973,7 +8985,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Verbo",
             "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('criou').",
-            "notes": "Ação concluída no passado referindo-se à criação primordial ex nihilo (Kelley XII.31.1[c])."
+            "notes": "Perfeito Qal 3ms: ação concluída (Kelley XII.31)."
           },
           {
             "index": 3,
@@ -9167,7 +9179,7 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_12_14",
         "favorite": false,
-        "hebrew": "אֶת־קוֹלְךָ שָׁמַעְתִּי בַּגָּן",
+        "hebrew": "אֶת־קֹלְךָ שָׁמַעְתִּי בַּגָּן",
         "transliteration": "et-kolcha shamati bagan",
         "translations": [
           "ouvi a tua voz no jardim"
@@ -9186,14 +9198,14 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 2,
-            "text": "קוֹלְךָ",
+            "text": "קֹלְךָ",
             "transliteration": "Kolcha",
             "lemma": "קוֹל",
             "composite": true,
             "syntax_role": "Objeto direto determinado anteposto enfático ('a tua voz').",
             "parts": [
               {
-                "segment": "קוֹל",
+                "segment": "קֹל",
                 "transliteration": "Kol",
                 "type": "Substantivo",
                 "inflection": "masculino singular construto",
@@ -9249,7 +9261,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_13",
-    "title": "Lição XIII - Orações Interrogativas e Numerais 2026",
+    "title": "Lição XIII - Orações Interrogativas e Numerais",
     "items": [
       {
         "hebrew": "אָכַל",
@@ -9750,7 +9762,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Substantivo segolado",
                 "inflection": "masculino singular absoluto",
                 "meaning": "criança / menino",
-                "phonetics": "Qamats sob o yod condicionado pela determinação com o artigo."
+                "phonetics": "Forma pausal de יֶלֶד (fim do versículo): sob acento forte, o segol vira qamats (Kelley XXIII.68). O artigo não altera a vogal."
               }
             ]
           }
@@ -9837,7 +9849,7 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_13_04",
         "favorite": false,
-        "hebrew": "מַה־זֹאת עָשָׂה אֱלֹהִים לָנוּ",
+        "hebrew": "מַה־זֹּאת עָשָׂה אֱלֹהִים לָנוּ",
         "transliteration": "mah-zot asah elohim lanu",
         "translations": [
           "que é isto que Deus nos fez?",
@@ -9854,11 +9866,11 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Pronome interrogativo",
             "syntax_role": "Pronome interrogativo neutro para coisas ('o que?' / 'que?'). Unido por maqqef.",
-            "notes": "Reduz o qamats para patah quando ligado por maqqef a consoante com dagesh forte ou gutural (Kelley III.4 e XIII.34.2[2])."
+            "notes": "Diante de não-gutural, מָה liga-se por maqqef como מַה־ e duplica a consoante seguinte com dagesh forte (Kelley XIII.34.2[2]a, p. 127)."
           },
           {
             "index": 2,
-            "text": "זֹאת",
+            "text": "זֹּאת",
             "transliteration": "Zot",
             "lemma": "זֹאת",
             "composite": false,
@@ -9946,7 +9958,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Ha",
                 "type": "Artigo definido",
                 "meaning": "os",
-                "phonetics": "Patah sem dagesh forte diante de shin com shva simples."
+                "phonetics": "Patah com dagesh forte no shin (ש), mesmo com shva: a omissão do dagesh só é regra diante de יְ e, às vezes, de מְ (Kelley V.14.3[3], p. 47)."
               },
               {
                 "segment": "שְׁנַיִם",
@@ -10144,7 +10156,6 @@ window.GAMIDA_DEFAULT_DATA = {
                 "phonetics": "Base construta irregular do substantivo אָח perante sufixos pronominais."
               },
               {
-                "index": 2,
                 "segment": "ךָ",
                 "transliteration": "Cha",
                 "type": "Sufixo pronominal",
@@ -10369,7 +10380,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Levad",
                 "type": "Preposição / Substantivo adverbial",
                 "meaning": "em separação / sozinho",
-                "phonetics": "Composta por לְ + בַּד; recebe dagesh forte na dental dalet diante de sufixos leves."
+                "phonetics": "לְ + בַּד (raiz geminada בדד): diante do sufixo a consoante dupla reaparece com dagesh forte; לְבַדֶּךָ é forma pausal (fora de pausa, לְבַדְּךָ)."
               },
               {
                 "segment": "ֶּךָ",
@@ -10386,260 +10397,243 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_14",
-    "title": "Lição XIV - Verbos: Troncos e Perfeito 2026",
+    "title": "Lição XIV - Verbos: Troncos e Perfeito",
     "items": [
       {
-        "hebrew": "אוֹ",
-        "transliteration": "o",
+        "hebrew": "אֶחָד",
+        "transliteration": "echad",
         "translations": [
-          "ou"
+          "um",
+          "uma"
         ],
-        "type": "Conjunção"
+        "type": "Numeral"
       },
       {
-        "hebrew": "אוֹת",
-        "transliteration": "ot",
+        "hebrew": "אֵת",
+        "transliteration": "et",
         "translations": [
-          "sinal"
+          "com"
+        ],
+        "type": "Preposição"
+      },
+      {
+        "hebrew": "הִבְדִּיל",
+        "transliteration": "hivdil",
+        "translations": [
+          "ele separou",
+          "ele dividiu",
+          "separar"
+        ],
+        "type": "Verbo (Hif'il) — Kelley: [בדל]"
+      },
+      {
+        "hebrew": "בָּנָה",
+        "transliteration": "banah",
+        "translations": [
+          "ele construiu",
+          "construir",
+          "edificar"
+        ],
+        "type": "Verbo"
+      },
+      {
+        "hebrew": "בִּקֵּשׁ",
+        "transliteration": "bikkesh",
+        "translations": [
+          "ele procurou",
+          "procurar",
+          "buscar"
+        ],
+        "type": "Verbo (Pi'el) — Kelley: [בקש]"
+      },
+      {
+        "hebrew": "בַּרְזֶל",
+        "transliteration": "barzel",
+        "translations": [
+          "ferro"
         ],
         "type": "Substantivo"
       },
       {
-        "hebrew": "אֵל",
-        "transliteration": "el",
+        "hebrew": "דִּבֶּר",
+        "transliteration": "dibber",
         "translations": [
-          "deus",
-          "Deus"
+          "ele falou",
+          "falar"
+        ],
+        "type": "Verbo (Pi'el) — Kelley: [דבר]"
+      },
+      {
+        "hebrew": "זָכָר",
+        "transliteration": "zachar",
+        "translations": [
+          "homem",
+          "macho"
         ],
         "type": "Substantivo"
       },
       {
-        "hebrew": "הִנֵּה",
-        "transliteration": "hinneh",
+        "hebrew": "כֹּהֵן",
+        "transliteration": "kohen",
         "translations": [
-          "eis",
-          "eis que",
-          "vede"
-        ],
-        "type": "Partícula"
-      },
-      {
-        "hebrew": "זֶרַע",
-        "transliteration": "zera",
-        "translations": [
-          "semente",
-          "descendência"
+          "sacerdote"
         ],
         "type": "Substantivo"
       },
       {
-        "hebrew": "חֲצִי",
-        "transliteration": "chetzi",
+        "hebrew": "כֶּרֶם",
+        "transliteration": "kerem",
         "translations": [
-          "metade"
+          "vinha"
         ],
         "type": "Substantivo"
       },
       {
-        "hebrew": "לָקַח",
-        "transliteration": "lakach",
+        "hebrew": "כָּרַת",
+        "transliteration": "karat",
         "translations": [
-          "tomar",
-          "pegar",
-          "ele tomou",
-          "ele pegou"
+          "ele cortou",
+          "ele destruiu",
+          "cortar"
         ],
         "type": "Verbo"
       },
       {
-        "hebrew": "מָלַךְ",
-        "transliteration": "malach",
+        "hebrew": "מִין",
+        "transliteration": "min",
         "translations": [
-          "reinar",
-          "ele reinou",
-          "tornar-se rei"
+          "espécie",
+          "gênero"
         ],
-        "type": "Verbo"
+        "type": "Substantivo"
       },
       {
-        "hebrew": "מָצָא",
-        "transliteration": "matza",
+        "hebrew": "מִלְחָמָה",
+        "transliteration": "milchamah",
         "translations": [
-          "achar",
-          "encontrar",
-          "ele achou",
-          "ele encontrou"
+          "guerra",
+          "batalha"
         ],
-        "type": "Verbo"
+        "type": "Substantivo (f)"
       },
       {
-        "hebrew": "נָפַל",
-        "transliteration": "nafal",
+        "hebrew": "נְחֹשֶׁת",
+        "transliteration": "nechoshet",
         "translations": [
-          "cair",
-          "ele caiu"
+          "cobre",
+          "bronze"
         ],
-        "type": "Verbo"
+        "type": "Substantivo"
       },
       {
-        "hebrew": "עָבַד",
-        "transliteration": "avad",
+        "hebrew": "נְקֵבָה",
+        "transliteration": "nekevah",
         "translations": [
-          "servir",
-          "trabalhar",
-          "ele serviu",
-          "ele trabalhou"
+          "mulher",
+          "fêmea"
         ],
-        "type": "Verbo"
+        "type": "Substantivo (f)"
       },
       {
-        "hebrew": "עָלָה",
-        "transliteration": "alah",
+        "hebrew": "עָנָן",
+        "transliteration": "anan",
         "translations": [
-          "subir",
-          "ele subiu"
+          "nuvem"
         ],
-        "type": "Verbo"
+        "type": "Substantivo"
       },
       {
-        "hebrew": "פָּקַד",
-        "transliteration": "pakad",
+        "hebrew": "פַּר",
+        "transliteration": "par",
         "translations": [
-          "visitar",
-          "inspecionar",
-          "ele visitou",
-          "ele inspecionou"
+          "bezerro",
+          "touro"
         ],
-        "type": "Verbo"
+        "type": "Substantivo"
       },
       {
-        "hebrew": "קָרָא",
-        "transliteration": "kara",
+        "hebrew": "קֶרֶב",
+        "transliteration": "kerev",
         "translations": [
-          "chamar",
-          "ler",
-          "ele chamou",
-          "ele leu"
+          "interior",
+          "meio",
+          "o interior",
+          "o meio"
         ],
-        "type": "Verbo"
-      },
-      {
-        "hebrew": "שָׁכַב",
-        "transliteration": "shachav",
-        "translations": [
-          "deitar",
-          "deitar-se",
-          "ele se deitou"
-        ],
-        "type": "Verbo"
-      },
-      {
-        "hebrew": "שָׁלַח",
-        "transliteration": "shalach",
-        "translations": [
-          "enviar",
-          "ele enviou"
-        ],
-        "type": "Verbo"
-      },
-      {
-        "hebrew": "שָׁמַע",
-        "transliteration": "shama",
-        "translations": [
-          "ouvir",
-          "obedecer",
-          "ele ouviu",
-          "ele obedeceu"
-        ],
-        "type": "Verbo"
-      },
-      {
-        "hebrew": "שָׁמַר",
-        "transliteration": "shamar",
-        "translations": [
-          "guardar",
-          "observar",
-          "ele guardou"
-        ],
-        "type": "Verbo"
+        "type": "Substantivo"
       }
     ],
     "sentences": [
       {
         "id": "sent_14_01",
         "favorite": false,
-        "hebrew": "בְּצֶלֶם אֱלֹהִים בָּרָא אֹתוֹ",
-        "transliteration": "be-tzelem elohim bara oto",
+        "hebrew": "מִי־בִקֵּשׁ זֹאת מִיֶּדְכֶם",
+        "transliteration": "mi-vikkesh zot miyedchem",
         "translations": [
-          "à imagem de Deus o criou"
+          "quem requereu isto de vossas mãos?",
+          "quem pediu isto da vossa mão?"
         ],
         "type": "Frase",
-        "syntax_type": "Oração Verbal com Adjunto Adverbial Modal Anteposto",
+        "syntax_type": "Oração Interrogativa Verbal (Perfeito Pi'el)",
+        "notes": "Kelley, Lição XIV, exercício 5.1 (p. 157), Is 1.12. Perfeito Pi'el de [בקש] (vocabulário XIV).",
         "tokens": [
           {
             "index": 1,
-            "text": "בְּצֶלֶם",
-            "transliteration": "Betzelem",
-            "lemma": "צֶלֶם",
-            "composite": true,
-            "syntax_role": "Termo regente no estado construto com preposição prefixada ('à imagem de').",
-            "parts": [
-              {
-                "segment": "בְּ",
-                "transliteration": "Be",
-                "type": "Preposição inseparável",
-                "meaning": "em / à",
-                "phonetics": "Bet com shva simples diante de consoante com vogal plena."
-              },
-              {
-                "segment": "צֶלֶם",
-                "transliteration": "Tzelem",
-                "type": "Substantivo segolado",
-                "inflection": "masculino singular construto",
-                "meaning": "imagem / semelhança de"
-              }
-            ]
+            "text": "מִי־",
+            "transliteration": "Mi-",
+            "lemma": "מִי",
+            "composite": false,
+            "word_class": "Pronome interrogativo",
+            "syntax_role": "Sujeito interrogativo ('quem?'), ligado por maqqef (Kelley XIII.34.2[1])."
           },
           {
             "index": 2,
-            "text": "אֱלֹהִים",
-            "transliteration": "Elohim",
-            "lemma": "אֱלֹהִים",
+            "text": "בִקֵּשׁ",
+            "transliteration": "Vikkesh",
+            "lemma": "בִּקֵּשׁ",
             "composite": false,
-            "word_class": "Substantivo / Nome Divino",
-            "syntax_role": "Termo regido genitivo na relação de construto ('de Deus')."
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo do predicado. 3ª pessoa masculino singular do perfeito Pi'el ('procurou' / 'requereu').",
+            "notes": "Perfeito Pi'el: hireq sob o 1º radical, dagesh forte no 2º (qof) e sere no último (Kelley XIV.37). O bet não leva dagesh lene porque segue a vogal de מִי־ (Kelley I.1.9)."
           },
           {
             "index": 3,
-            "text": "בָּרָא",
-            "transliteration": "Bara",
-            "lemma": "בָּרָא",
+            "text": "זֹאת",
+            "transliteration": "Zot",
+            "lemma": "זֹאת",
             "composite": false,
-            "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('criou').",
-            "notes": "Verbo da classe Lamed Alef com terminação qamats na 3ª pessoa do masculino singular (Kelley XII.29.2 e XXVI.71)."
+            "word_class": "Pronome demonstrativo (feminino singular)",
+            "syntax_role": "Objeto direto ('isto'); o feminino singular funciona como neutro."
           },
           {
             "index": 4,
-            "text": "אֹתוֹ",
-            "transliteration": "Oto",
-            "lemma": "אֵת",
+            "text": "מִיֶּדְכֶם",
+            "transliteration": "Miyedchem",
+            "lemma": "יָד",
             "composite": true,
-            "syntax_role": "Objeto direto pronominal ('o' / 'a ele').",
+            "syntax_role": "Adjunto de procedência ('de vossa mão').",
             "parts": [
               {
-                "segment": "אֹת",
-                "transliteration": "Ot",
-                "type": "Partícula indicadora de objeto direto",
-                "meaning": "objeto direto",
-                "phonetics": "Forma com holem assumida pela partícula אֵת diante de sufixos pronominais (Kelley XI.27.2[1])."
+                "segment": "מִ",
+                "transliteration": "Mi",
+                "type": "Preposição inseparável (forma assimilada de מִן)",
+                "meaning": "de",
+                "phonetics": "O nun assimila-se no yod com dagesh forte (Kelley VI.15.3[2])."
               },
               {
-                "segment": "וֹ",
-                "transliteration": "O",
+                "segment": "יֶדְ",
+                "transliteration": "Yed",
+                "type": "Substantivo",
+                "meaning": "mão de",
+                "inflection": "feminino singular (base com sufixo pesado)",
+                "phonetics": "Diante dos sufixos pesados -כֶם/-הֶם, יָד assume a base יֶד- (Kelley XI.28)."
+              },
+              {
+                "segment": "כֶם",
+                "transliteration": "Chem",
                 "type": "Sufixo pronominal",
-                "inflection": "3ª pessoa masculino singular",
-                "meaning": "ele / o"
+                "meaning": "vossa",
+                "inflection": "2ª pessoa masculino plural"
               }
             ]
           }
@@ -10648,81 +10642,70 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_14_02",
         "favorite": false,
-        "hebrew": "וּבְנֵי יִשְׂרָאֵל הָלְכוּ בַיַּבָּשָׁה",
-        "transliteration": "u-venei yisrael halchu va-yabbashah",
+        "hebrew": "דִּבַּרְנוּ אֵלֶיךָ בְמִצְרַיִם",
+        "transliteration": "dibbarnu eleicha vemitzrayim",
         "translations": [
-          "e os filhos de Israel andaram em terra seca",
-          "e os filhos de israel andaram em terra seca"
+          "falamos a ti no Egito",
+          "nós te dissemos no Egito"
         ],
         "type": "Frase",
-        "syntax_type": "Oração Verbal com Sujeito Complexo Anteposto",
+        "syntax_type": "Oração Verbal (Perfeito Pi'el)",
+        "notes": "Kelley, Lição XIV, exercício 5.12 (p. 158), Êx 14.12. Perfeito Pi'el de [דבר] (vocabulário XIV).",
         "tokens": [
           {
             "index": 1,
-            "text": "וּבְנֵי",
-            "transliteration": "U'vnei",
-            "lemma": "בֵּן",
+            "text": "דִּבַּרְנוּ",
+            "transliteration": "Dibbarnu",
+            "lemma": "דִּבֶּר",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo do predicado. 1ª pessoa comum do plural do perfeito Pi'el ('falamos').",
+            "notes": "Perfeito Pi'el: hireq sob o 1º radical e dagesh forte no 2º (bet); diante do aformativo consonantal -נוּ a vogal temática é patah (Kelley XIV.37)."
+          },
+          {
+            "index": 2,
+            "text": "אֵלֶיךָ",
+            "transliteration": "Eleicha",
+            "lemma": "אֶל",
             "composite": true,
-            "syntax_role": "Termo regente no construto plural com conjunção coordenativa ('e os filhos de').",
+            "syntax_role": "Complemento preposicional ('a ti').",
             "parts": [
               {
-                "segment": "וּ",
-                "transliteration": "U",
-                "type": "Conjunção coordenativa",
-                "meaning": "e",
-                "phonetics": "Šureq (וּ) diante de consoante com shva simples (Kelley VI.16.2)."
+                "segment": "אֵלֶי",
+                "transliteration": "Elei",
+                "type": "Preposição",
+                "meaning": "a / para",
+                "phonetics": "אֶל recebe sufixos sobre a base אֵלֵי- (Kelley XI.27)."
               },
               {
-                "segment": "בְנֵי",
-                "transliteration": "Vnei",
-                "type": "Substantivo",
-                "inflection": "masculino plural construto",
-                "meaning": "filhos de",
-                "phonetics": "Bet sem dagesh lene por vir após vogal; terminação em sere-yod no construto plural."
+                "segment": "ךָ",
+                "transliteration": "Cha",
+                "type": "Sufixo pronominal",
+                "meaning": "ti",
+                "inflection": "2ª pessoa masculino singular"
               }
             ]
           },
           {
-            "index": 2,
-            "text": "יִשְׂרָאֵל",
-            "transliteration": "Yisrael",
-            "lemma": "יִשְׂרָאֵל",
-            "composite": false,
-            "word_class": "Nome Próprio",
-            "syntax_role": "Termo regido genitivo ('de Israel')."
-          },
-          {
             "index": 3,
-            "text": "הָלְכוּ",
-            "transliteration": "Halchu",
-            "lemma": "הָלַךְ",
-            "composite": false,
-            "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa comum do plural do perfeito Qal ('andaram').",
-            "notes": "O aformativo vocálico atrai o acento tónico, reduzindo a vogal precedente a shva audível (Kelley XII.30.4[3])."
-          },
-          {
-            "index": 4,
-            "text": "בַיַּבָּשָׁה",
-            "transliteration": "Vayabashah",
-            "lemma": "יַבָּשָׁה",
+            "text": "בְמִצְרַיִם",
+            "transliteration": "Vemitzrayim",
+            "lemma": "מִצְרַיִם",
             "composite": true,
-            "syntax_role": "Adjunto adverbial locativo ('em terra seca').",
+            "syntax_role": "Adjunto adverbial de lugar ('no Egito').",
             "parts": [
               {
-                "segment": "בַ",
-                "transliteration": "Va",
-                "type": "Preposição inseparável com artigo absorvido",
-                "meaning": "na (em + a)",
-                "phonetics": "A preposição בְּ assimila o artigo הַ e perde o dagesh lene por suceder som vocálico pleno."
+                "segment": "בְ",
+                "transliteration": "Ve",
+                "type": "Preposição inseparável",
+                "meaning": "em",
+                "phonetics": "Sem dagesh lene por seguir a vogal final de אֵלֶיךָ (Kelley I.1.9)."
               },
               {
-                "segment": "יַּבָּשָׁה",
-                "transliteration": "Yabbashah",
-                "type": "Substantivo",
-                "inflection": "feminino singular absoluto",
-                "meaning": "terra seca",
-                "phonetics": "Dagesh forte característico da determinação no yod e reduplicação regular no bet."
+                "segment": "מִצְרַיִם",
+                "transliteration": "Mitzrayim",
+                "type": "Nome Próprio",
+                "meaning": "Egito"
               }
             ]
           }
@@ -10792,89 +10775,81 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_14_04",
         "favorite": false,
-        "hebrew": "סֵפֶר נָתַן לִי חִלְקִיָּה הַכֹּהֵן",
-        "transliteration": "sefer natan li chilkiyah ha-kohen",
+        "hebrew": "הִבְדַּלְתִּי אֶתְכֶם מִן־הָעַמִּים",
+        "transliteration": "hivdalti etchem min-ha'ammim",
         "translations": [
-          "o sacerdote Hilquias me deu um livro",
-          "um livro me deu Hilquias o sacerdote"
+          "separei-vos dos povos",
+          "eu vos separei dos povos"
         ],
         "type": "Frase",
-        "syntax_type": "Oração Verbal com Objeto Direto Anteposto Enfático",
-        "notes": "Ordem enfática: Objeto Direto + Verbo + Objeto Indireto + Sujeito + Aposto (Kelley XII.32.2).",
+        "syntax_type": "Oração Verbal (Perfeito Hif'il)",
+        "notes": "Kelley, Lição XIV, exercício 6.1 (p. 158), Lv 20.24. Perfeito Hif'il de [בדל] (vocabulário XIV).",
         "tokens": [
           {
             "index": 1,
-            "text": "סֵפֶר",
-            "transliteration": "Sefer",
-            "lemma": "סֵפֶר",
+            "text": "הִבְדַּלְתִּי",
+            "transliteration": "Hivdalti",
+            "lemma": "הִבְדִּיל",
             "composite": false,
-            "word_class": "Substantivo segolado",
-            "syntax_role": "Objeto direto indeterminado anteposto ('um livro')."
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo do predicado. 1ª pessoa comum do singular do perfeito Hif'il ('separei').",
+            "notes": "Perfeito Hif'il: prefixo הִ com hireq e shva mudo sob o 1º radical (o dalet seguinte leva dagesh lene). Diante de aformativo consonantal a vogal temática é patah (הִבְדַּלְתִּי; 3ms הִבְדִּיל) — Kelley XIV.37."
           },
           {
             "index": 2,
-            "text": "נָתַן",
-            "transliteration": "Natan",
-            "lemma": "נָתַן",
-            "composite": false,
-            "word_class": "Verbo",
-            "syntax_role": "Núcleo do predicado verbal. 3ª pessoa masculino singular do perfeito Qal ('deu').",
-            "notes": "Verbo da classe Pe Nun (Kelley XXVIII.73)."
-          },
-          {
-            "index": 3,
-            "text": "לִי",
-            "transliteration": "Li",
-            "lemma": "לְ",
+            "text": "אֶתְכֶם",
+            "transliteration": "Etchem",
+            "lemma": "אֵת",
             "composite": true,
-            "syntax_role": "Objeto indireto preposicionado ('a mim').",
+            "syntax_role": "Objeto direto pronominal ('vos').",
             "parts": [
               {
-                "segment": "לִ",
-                "transliteration": "L'",
-                "type": "Preposição inseparável",
-                "meaning": "a / para",
-                "phonetics": "Preposição לְ com hireq diante de sufixo pronominal de 1ª pessoa comum singular."
+                "segment": "אֶתְ",
+                "transliteration": "Et",
+                "type": "Partícula indicadora de objeto direto",
+                "meaning": "objeto direto",
+                "phonetics": "Com os sufixos pesados -כֶם/-הֶן a partícula usa a base אֶת-; com os demais, אֹת- (Kelley XI.27)."
               },
               {
-                "segment": "י",
-                "transliteration": "I",
+                "segment": "כֶם",
+                "transliteration": "Chem",
                 "type": "Sufixo pronominal",
-                "inflection": "1ª pessoa comum do singular",
-                "meaning": "mim"
+                "meaning": "vos",
+                "inflection": "2ª pessoa masculino plural"
               }
             ]
           },
           {
-            "index": 4,
-            "text": "חִלְקִיָּה",
-            "transliteration": "Chilkiyah",
-            "lemma": "חִלְקִיָּה",
+            "index": 3,
+            "text": "מִן־",
+            "transliteration": "Min-",
+            "lemma": "מִן",
             "composite": false,
-            "word_class": "Nome Próprio",
-            "syntax_role": "Sujeito da oração verbal ('Hilquias')."
+            "word_class": "Preposição",
+            "syntax_role": "Introduz o termo de separação ('de'). Forma plena com maqqef diante do artigo (Kelley VI.15.3[1])."
           },
           {
-            "index": 5,
-            "text": "הַכֹּהֵן",
-            "transliteration": "Hakohen",
-            "lemma": "כֹּהֵן",
+            "index": 4,
+            "text": "הָעַמִּים",
+            "transliteration": "Ha'ammim",
+            "lemma": "עַם",
             "composite": true,
-            "syntax_role": "Aposto explicativo especificando o sujeito.",
+            "syntax_role": "Termo regido pela preposição ('os povos').",
             "parts": [
               {
-                "segment": "הַ",
+                "segment": "הָ",
                 "transliteration": "Ha",
                 "type": "Artigo definido",
-                "meaning": "o",
-                "phonetics": "Patah com dagesh forte regular no kaf (כ)."
+                "meaning": "os",
+                "phonetics": "Qamats compensatório diante da gutural ayin (Kelley V.14.3[2]b)."
               },
               {
-                "segment": "כֹּהֵן",
-                "transliteration": "Cohen",
+                "segment": "עַמִּים",
+                "transliteration": "Ammim",
                 "type": "Substantivo",
-                "inflection": "masculino singular absoluto",
-                "meaning": "sacerdote"
+                "meaning": "povos",
+                "inflection": "masculino plural absoluto",
+                "phonetics": "Raiz geminada (עמם): a consoante dupla reaparece com dagesh forte no plural."
               }
             ]
           }
@@ -11158,7 +11133,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_15",
-    "title": "Lição XV - Verbos: Imperfeito Qal 2026",
+    "title": "Lição XV - Verbos: Imperfeito Qal",
     "items": [
       {
         "hebrew": "אַיִל",
@@ -11330,7 +11305,7 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_15_01",
         "favorite": false,
-        "hebrew": "פֶּן־נִשְׂרֹף אוֹתָךְ וְאֶת־בֵּית אָבִיךָ בָּאֵשׁ",
+        "hebrew": "פֶּן־נִשְׂרֹף אוֹתָךְ וְאֶת־בֵּית אָבִיךְ בָּאֵשׁ",
         "transliteration": "pen-nisrof otach ve-et-beit avich ba-esh",
         "translations": [
           "para que não queimemos a ti e à casa de teu pai com fogo"
@@ -11417,11 +11392,11 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 6,
-            "text": "אָבִיךָ",
-            "transliteration": "Avicha",
+            "text": "אָבִיךְ",
+            "transliteration": "Avich",
             "lemma": "אָב",
             "composite": true,
-            "syntax_role": "Termo regido genitivo com sufixo possessivo ('teu pai').",
+            "syntax_role": "Termo regido genitivo com sufixo possessivo ('teu pai', referindo-se à mulher de Sansão).",
             "parts": [
               {
                 "segment": "אָבִי",
@@ -11432,10 +11407,10 @@ window.GAMIDA_DEFAULT_DATA = {
                 "phonetics": "Forma construta irregular diante de sufixos pronominais."
               },
               {
-                "segment": "ךָ",
-                "transliteration": "Cha",
+                "segment": "ךְ",
+                "transliteration": "Ch",
                 "type": "Sufixo pronominal",
-                "inflection": "2ª pessoa masculino singular",
+                "inflection": "2ª pessoa feminino singular",
                 "meaning": "teu"
               }
             ]
@@ -11560,8 +11535,8 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_15_03",
         "favorite": false,
-        "hebrew": "יוֹמָם וָלַיְלָה תִּכְבַּד עָלַי יָדְךָ",
-        "transliteration": "yomam va-laylah tichbad alai yadcha",
+        "hebrew": "יוֹמָם וָלַיְלָה תִּכְבַּד עָלַי יָדֶךָ",
+        "transliteration": "yomam va-laylah tichbad alai yadecha",
         "translations": [
           "dia e noite a tua mão pesava sobre mim"
         ],
@@ -11638,8 +11613,8 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 5,
-            "text": "יָדְךָ",
-            "transliteration": "Yadcha",
+            "text": "יָדֶךָ",
+            "transliteration": "Yadecha",
             "lemma": "יָד",
             "composite": true,
             "syntax_role": "Sujeito da oração verbal (substantivo inerentemente feminino).",
@@ -11652,11 +11627,12 @@ window.GAMIDA_DEFAULT_DATA = {
                 "meaning": "mão de"
               },
               {
-                "segment": "ְךָ",
-                "transliteration": "Cha",
+                "segment": "ֶךָ",
+                "transliteration": "Echa",
                 "type": "Sufixo pronominal",
                 "inflection": "2ª pessoa masculino singular",
-                "meaning": "tua"
+                "meaning": "tua",
+                "phonetics": "Forma pausal (fim do versículo): sufixo -ֶךָ em vez de -ְךָ."
               }
             ]
           }
@@ -11666,7 +11642,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "id": "sent_15_04",
         "favorite": false,
         "hebrew": "בְּיָד חֲזָקָה אֶמְלוֹךְ עֲלֵיכֶם",
-        "transliteration": "be-yad chazakah emloch aleihem",
+        "transliteration": "be-yad chazakah emloch aleichem",
         "translations": [
           "com mão forte reinarei sobre vós"
         ],
@@ -11720,7 +11696,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 4,
             "text": "עֲלֵיכֶם",
-            "transliteration": "Aleihem",
+            "transliteration": "Aleichem",
             "lemma": "עַל",
             "composite": true,
             "syntax_role": "Complemento preposicional regido pelo verbo ('sobre vós').",
@@ -11746,8 +11722,8 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_15_05",
         "favorite": false,
-        "hebrew": "יִזְכֹּר עֲוֹנָם וְיִפְקֹד חַטָּאתָם",
-        "transliteration": "yizcor avonam ve-yifkod chattatam",
+        "hebrew": "יִזְכֹּר עֲוֹנָם וְיִפְקֹד חַטֹּאתָם",
+        "transliteration": "yizcor avonam ve-yifkod chattotam",
         "translations": [
           "lembrará a sua iniquidade e punirá os seus pecados"
         ],
@@ -11814,18 +11790,18 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 4,
-            "text": "חַטָּאתָם",
-            "transliteration": "Chattatam",
+            "text": "חַטֹּאתָם",
+            "transliteration": "Chattotam",
             "lemma": "חַטָּאת",
             "composite": true,
             "syntax_role": "Objeto direto da segunda oração com sufixo possessivo ('os seus pecados').",
             "parts": [
               {
-                "segment": "חַטָּאת",
+                "segment": "חַטֹּאת",
                 "transliteration": "Chattat",
                 "type": "Substantivo",
-                "inflection": "feminino singular construto",
-                "meaning": "pecado de"
+                "inflection": "feminino plural (base com sufixo)",
+                "meaning": "pecados de"
               },
               {
                 "segment": "ָם",
@@ -11906,7 +11882,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_16",
-    "title": "Lição XVI - Verbos: Imperfeitos dos Demais Troncos 2026",
+    "title": "Lição XVI - Verbos: Imperfeitos dos Demais Troncos",
     "items": [
       {
         "hebrew": "בֶּטֶן",
@@ -11918,13 +11894,13 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo (f)"
       },
       {
-        "hebrew": "בָּרַךְ",
-        "transliteration": "barach",
+        "hebrew": "בֵּרַךְ",
+        "transliteration": "berach",
         "translations": [
-          "abençoar",
-          "ele abençoou"
+          "ele abençoou",
+          "abençoar"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Pi'el) — Kelley: [ברך]"
       },
       {
         "hebrew": "גָּאַל",
@@ -11954,13 +11930,14 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo (f)"
       },
       {
-        "hebrew": "לָחַם",
-        "transliteration": "lacham",
+        "hebrew": "נִלְחַם",
+        "transliteration": "nilcham",
         "translations": [
+          "ele lutou",
           "lutar",
-          "ele lutou"
+          "guerrear"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Nif'al) — Kelley: [לחם]"
       },
       {
         "hebrew": "לָמַד",
@@ -12000,13 +11977,13 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "סָתַר",
-        "transliteration": "satar",
+        "hebrew": "הִסְתִּיר",
+        "transliteration": "histir",
         "translations": [
-          "esconder",
-          "ele escondeu"
+          "ele escondeu",
+          "esconder"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [סתר]"
       },
       {
         "hebrew": "עָוֹן",
@@ -12345,7 +12322,7 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_16_04",
         "favorite": false,
-        "hebrew": "וַיְלַמְדוּ סֵפֶר תּוֹרַת יְהוָה בְּכָל־עָרֵי יְהוּדָה",
+        "hebrew": "וַיְלַמְּדוּ סֵפֶר תּוֹרַת יְהוָה בְּכָל־עָרֵי יְהוּדָה",
         "transliteration": "va-yelamdu sefer torat adonai be-chol-arei yehudah",
         "translations": [
           "e ensinaram o livro da lei do SENHOR em todas as cidades de Judá"
@@ -12356,11 +12333,11 @@ window.GAMIDA_DEFAULT_DATA = {
         "tokens": [
           {
             "index": 1,
-            "text": "וַיְלַמְדוּ",
+            "text": "וַיְלַמְּדוּ",
             "transliteration": "Vayelamdu",
             "lemma": "לָמַד",
             "composite": true,
-            "syntax_role": "Núcleo verbal no perfeito narrativo Pi'el ('e ensinaram').",
+            "syntax_role": "Núcleo verbal: imperfeito Pi'el com vav consecutivo ('e ensinaram').",
             "parts": [
               {
                 "segment": "וַ",
@@ -12370,7 +12347,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "phonetics": "Vav com patah sem dagesh no yod seguinte por este carregar um shva simples (Kelley XVI.43.2)."
               },
               {
-                "segment": "יְלַמְדוּ",
+                "segment": "יְלַמְּדוּ",
                 "transliteration": "Yelamdu",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino plural do imperfeito Pi'el",
@@ -12463,7 +12440,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa no Tronco Hitpa'el",
-        "notes": "O tronco Hitpa'el expressa ação habitual, durativa ou comunhão contínua ('perambulou' / 'andou em comunhão', Kelley XIV.36.4).",
+        "notes": "O Hitpa'el tem valor reflexivo/iterativo (Kelley XIV.36); com הָלַךְ, 'andar continuamente', 'conviver'.",
         "tokens": [
           {
             "index": 1,
@@ -12539,7 +12516,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_17",
-    "title": "Lição XVII - Verbos: Sufixos Pronominais no Perfeito 2026",
+    "title": "Lição XVII - Verbos: Sufixos Pronominais no Perfeito",
     "items": [
       {
         "hebrew": "בָּטַח",
@@ -12625,7 +12602,9 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "ser pesado",
           "ser honrado",
-          "ele foi pesado"
+          "ele foi pesado",
+          "ele honrou (Pi'el)",
+          "ele glorificou (Pi'el)"
         ],
         "type": "Verbo"
       },
@@ -12640,14 +12619,14 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo (f)"
       },
       {
-        "hebrew": "כָּפַר",
-        "transliteration": "kafar",
+        "hebrew": "כִּפֶּר",
+        "transliteration": "kipper",
         "translations": [
-          "expiar",
-          "encobrir",
-          "ele expiou"
+          "ele encobriu",
+          "ele expiou",
+          "expiar"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Pi'el) — Kelley: [כפר]"
       },
       {
         "hebrew": "לָבַשׁ",
@@ -12685,7 +12664,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "aproximar-se",
           "chegar perto",
-          "ele se aproximou"
+          "ele se aproximou",
+          "ele ofereceu (Hif'il)"
         ],
         "type": "Verbo"
       },
@@ -12709,7 +12689,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "hebrew": "שָׁכֵן",
+        "hebrew": "שָׁכַן",
         "transliteration": "shachan",
         "translations": [
           "habitar",
@@ -13095,7 +13075,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do perfeito Qal",
                 "meaning": "ele tomou / tirou",
-                "phonetics": "A primeira vogal qamats volatiliza-se em shva audível com o recuo do acento tônico provocado pelo sufixo."
+                "phonetics": "Com o sufixo, o acento avança para o fim da palavra e o qamats da primeira sílaba (agora pré-pretônica) reduz-se a shva."
               },
               {
                 "segment": "נִי",
@@ -13263,7 +13243,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_18",
-    "title": "Lição XVIII - Verbos: O Imperativo e Proibições 2026",
+    "title": "Lição XVIII - Verbos: O Imperativo e Proibições",
     "items": [
       {
         "hebrew": "יוֹמָם",
@@ -13306,32 +13286,33 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "יָשַׁע",
-        "transliteration": "yasha",
+        "hebrew": "הוֹשִׁיעַ",
+        "transliteration": "hoshia",
         "translations": [
+          "ele salvou",
+          "ele redimiu",
           "salvar",
-          "libertar",
-          "ele salvou"
+          "libertar"
+        ],
+        "type": "Verbo (Hif'il) — Kelley: [ישע]"
+      },
+      {
+        "hebrew": "מוּת",
+        "transliteration": "mut",
+        "translations": [
+          "morrer"
         ],
         "type": "Verbo"
       },
       {
-        "hebrew": "מָוֶת",
-        "transliteration": "mavet",
+        "hebrew": "הִצִּיל",
+        "transliteration": "hitsil",
         "translations": [
-          "morte"
+          "ele socorreu",
+          "ele salvou",
+          "socorrer"
         ],
-        "type": "Substantivo"
-      },
-      {
-        "hebrew": "נָצַל",
-        "transliteration": "natal",
-        "translations": [
-          "socorrer",
-          "salvar",
-          "ele socorreu"
-        ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [נצל]"
       },
       {
         "hebrew": "סָפַר",
@@ -13362,14 +13343,14 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "פָּלַל",
-        "transliteration": "palal",
+        "hebrew": "הִתְפַּלֵּל",
+        "transliteration": "hitpalel",
         "translations": [
+          "ele orou",
           "orar",
-          "interceder",
-          "ele orou"
+          "interceder"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hitpa'el) — Kelley: [פלל]"
       },
       {
         "hebrew": "פָּרָה",
@@ -13381,14 +13362,14 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "צָוָה",
-        "transliteration": "tzavah",
+        "hebrew": "צִוָּה",
+        "transliteration": "tsivah",
         "translations": [
+          "ele ordenou",
           "ordenar",
-          "mandar",
-          "ele ordenou"
+          "mandar"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Pi'el) — Kelley: [צוה]"
       },
       {
         "hebrew": "רָבָה",
@@ -13419,23 +13400,23 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "שָׁבַע",
-        "transliteration": "shava",
+        "hebrew": "נִשְׁבַּע",
+        "transliteration": "nishba",
         "translations": [
-          "jurar",
-          "ele jurou"
+          "ele jurou",
+          "jurar"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Nif'al) — Kelley: [שבע]"
       },
       {
-        "hebrew": "שָׁלַךְ",
-        "transliteration": "shalach",
+        "hebrew": "הִשְׁלִיךְ",
+        "transliteration": "hishlich",
         "translations": [
-          "lançar",
-          "jogar",
-          "ele lançou"
+          "ele lançou",
+          "ele jogou",
+          "lançar"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [שלך]"
       }
     ],
     "sentences": [
@@ -13527,7 +13508,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "id": "sent_18_02",
         "favorite": false,
         "hebrew": "בַּקֵּשׁ שָׁלוֹם וְרָדְפֵהוּ",
-        "transliteration": "bakkesh shalom ve-radfehu",
+        "transliteration": "bakkesh shalom ve-rodfehu",
         "translations": [
           "procura a paz e segue-a",
           "busca a paz e segue-a"
@@ -13557,7 +13538,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 3,
             "text": "וְרָדְפֵהוּ",
-            "transliteration": "Veradfehu",
+            "transliteration": "Verodfehu",
             "lemma": "רָדַף",
             "composite": true,
             "syntax_role": "Segundo núcleo imperativo coordenado com sufixo acusativo ('e segue-a / persegue-a').",
@@ -13571,11 +13552,11 @@ window.GAMIDA_DEFAULT_DATA = {
               },
               {
                 "segment": "רָדְפֵ",
-                "transliteration": "Radfe",
+                "transliteration": "Rodfe",
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino singular do imperativo Qal",
                 "meaning": "segue / persegue",
-                "phonetics": "Vogal temática adaptada em șere devido à ligação do sufixo pronominal pesado."
+                "phonetics": "Imperativo רְדֹף + sufixo: a base passa a רָדְפ- com qamats-hatuf (ro-); o sere é vogal de ligação antes de הוּ."
               },
               {
                 "segment": "הוּ",
@@ -13644,7 +13625,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "id": "sent_18_04",
         "favorite": false,
         "hebrew": "שְׁמַע יִשְׂרָאֵל יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד",
-        "transliteration": "shama yisrael adonai eloheinu adonai echad",
+        "transliteration": "shema yisrael adonai eloheinu adonai echad",
         "translations": [
           "ouve, Israel, o SENHOR nosso Deus é o único SENHOR"
         ],
@@ -13654,7 +13635,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 1,
             "text": "שְׁמַע",
-            "transliteration": "Shama",
+            "transliteration": "Shema",
             "lemma": "שָׁמַע",
             "composite": false,
             "word_class": "Verbo",
@@ -13833,7 +13814,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_19",
-    "title": "Lição XIX - Verbos: O Infinitivo Construto e Absoluto 2026",
+    "title": "Lição XIX - Verbos: O Infinitivo Construto e Absoluto",
     "items": [
       {
         "hebrew": "אָבַד",
@@ -13961,13 +13942,13 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "מָאַן",
-        "transliteration": "ma'an",
+        "hebrew": "מֵאֵן",
+        "transliteration": "me'en",
         "translations": [
-          "recusar",
-          "ele recusou"
+          "ele recusou",
+          "recusar"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Pi'el) — Kelley: [מאן]"
       },
       {
         "hebrew": "מָאַס",
@@ -13989,14 +13970,14 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "נָגַד",
-        "transliteration": "nagad",
+        "hebrew": "הִגִּיד",
+        "transliteration": "higgid",
         "translations": [
-          "declarar",
-          "contar",
-          "ele declarou"
+          "ele contou",
+          "ele declarou",
+          "declarar"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [נגד]"
       },
       {
         "hebrew": "נָטָה",
@@ -14009,14 +13990,14 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "נָכָה",
-        "transliteration": "nachah",
+        "hebrew": "הִכָּה",
+        "transliteration": "hikkah",
         "translations": [
-          "golpear",
-          "matar",
-          "ele golpeou"
+          "ele golpeou",
+          "ele matou",
+          "golpear"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [נכה]"
       },
       {
         "hebrew": "רוּם",
@@ -14162,7 +14143,7 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_19_02",
         "favorite": false,
-        "hebrew": "לָחֶם לֶאֱכֹל וּבֶגֶד לִלְבֹּשׁ",
+        "hebrew": "לֶחֶם לֶאֱכֹל וּבֶגֶד לִלְבֹּשׁ",
         "transliteration": "lechem le-echol u-veged lilbosh",
         "translations": [
           "pão para comer e roupa para vestir"
@@ -14173,13 +14154,12 @@ window.GAMIDA_DEFAULT_DATA = {
         "tokens": [
           {
             "index": 1,
-            "text": "לָחֶם",
+            "text": "לֶחֶם",
             "transliteration": "Lechem",
             "lemma": "לֶחֶם",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Primeiro núcleo nominal indeterminado ('pão').",
-            "notes": "Apresenta qamats na primeira sílaba por estar em pausa menor (Kelley IV.8.3)."
+            "syntax_role": "Primeiro núcleo nominal indeterminado ('pão')."
           },
           {
             "index": 2,
@@ -14585,17 +14565,18 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_20",
-    "title": "Lição XX - Verbos: Introdução aos Particípios 2026",
+    "title": "Lição XX - Verbos: Introdução aos Particípios",
     "items": [
       {
-        "hebrew": "אָמַן",
-        "transliteration": "aman",
+        "hebrew": "הֶאֱמִין",
+        "transliteration": "he'emin",
         "translations": [
-          "ser fiel",
+          "ele creu",
+          "ele teve fé",
           "crer",
-          "ele creu"
+          "ele foi fiel (Nif'al נֶאֱמַן)"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il; Nif'al 'foi fiel') — Kelley: [אמן]"
       },
       {
         "hebrew": "אָרַר",
@@ -14607,7 +14588,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "גֹּאֵל",
+        "hebrew": "גּוֹאֵל",
         "transliteration": "go'el",
         "translations": [
           "redentor"
@@ -14707,6 +14688,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "סוֹפֵר",
         "transliteration": "sofer",
         "translations": [
+          "escrivão",
           "escriba"
         ],
         "type": "Substantivo"
@@ -14715,9 +14697,10 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "פָּדָה",
         "transliteration": "padah",
         "translations": [
-          "remiu",
-          "resgatar",
-          "ele remiu"
+          "ele remiu",
+          "ele resgatou",
+          "remir",
+          "resgatar"
         ],
         "type": "Verbo"
       },
@@ -14788,9 +14771,9 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "שָׁקָה",
         "transliteration": "shaqah",
         "translations": [
-          "dar de beber",
-          "regar",
-          "ele deu de beber"
+          "ele bebeu",
+          "ele deu de beber (Hif'il)",
+          "regar (Hif'il)"
         ],
         "type": "Verbo"
       },
@@ -14824,7 +14807,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Verbo (particípio ativo)",
             "syntax_role": "Particípio ativo Qal no estado construto singular atuando como sujeito substantivado ('derramador de' / 'quem derramar').",
-            "notes": "Padrão característico com holem no primeiro radical e segol/tsere no segundo (Kelley XX.59)."
+            "notes": "Particípio ativo Qal: holem após o 1º radical e sere após o 2º (קֹטֵל; Kelley XX.59)."
           },
           {
             "index": 2,
@@ -15155,7 +15138,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Verbo",
             "syntax_role": "Núcleo do predicado verbal volitivo. 2ª pessoa masculino plural do imperativo Qal ('ouvi').",
-            "notes": "Redução da vogal temática a shva audível sob a gutural ayin com a adição do aformativo vocálico -u."
+            "notes": "A vogal temática cai diante do aformativo -וּ; o shva sob o 1º radical vira hireq (שִׁמְ-עוּ) e o mem fica com shva mudo."
           },
           {
             "index": 2,
@@ -15208,7 +15191,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Verbo (particípio ativo)",
             "syntax_role": "Segundo vocativo aposto em construto plural. Particípio ativo Pi'el ('os que buscais').",
-            "notes": "Prefixo mem com shva simples e dagesh forte no segundo radical característicos dos particípios dos troncos derivados (Kelley XX.59)."
+            "notes": "Particípio Pi'el: prefixo מְ e patah sob o 1º radical. O dagesh forte do 2º radical (qof) é omitido por estar com shva (מְבַקְשֵׁי; cf. מְבַקֵּשׁ)."
           },
           {
             "index": 6,
@@ -15225,14 +15208,14 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_21",
-    "title": "Lição XXI - Verbos: Conjunção Vav e Relação de Coordenação 2026",
+    "title": "Lição XXI - Verbos: Conjunção Vav e Relação de Coordenação",
     "items": [
       {
         "hebrew": "בּוֹשׁ",
         "transliteration": "bosh",
         "translations": [
-          "ele ficou envergonhado",
-          "envergonhar-se"
+          "envergonhar-se",
+          "ficar envergonhado"
         ],
         "type": "Verbo"
       },
@@ -15343,7 +15326,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Substantivo"
       },
       {
-        "hebrew": "זְרוֹעַ",
+        "hebrew": "זְרֹעַ",
         "transliteration": "zeroa",
         "translations": [
           "braço",
@@ -15355,6 +15338,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "מוֹעֵד",
         "transliteration": "mo'ed",
         "translations": [
+          "tempo marcado",
+          "lugar combinado",
           "tempo determinado",
           "reunião"
         ],
@@ -15375,7 +15360,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "olho",
           "fonte"
         ],
-        "type": "Substantivo (m/f)"
+        "type": "Substantivo (f)"
       },
       {
         "hebrew": "שֶׁקֶר",
@@ -15392,7 +15377,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "id": "sent_21_01",
         "favorite": false,
         "hebrew": "שְׁמַע יִשְׂרָאֵל יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד",
-        "transliteration": "shama yisrael adonai eloheinu adonai echad",
+        "transliteration": "shema yisrael adonai eloheinu adonai echad",
         "translations": [
           "ouve, israel, o senhor nosso deus é o único senhor"
         ],
@@ -15402,7 +15387,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 1,
             "text": "שְׁמַע",
-            "transliteration": "Shama",
+            "transliteration": "Shema",
             "lemma": "שָׁמַע",
             "composite": false,
             "word_class": "Verbo",
@@ -15639,7 +15624,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Termo regido genitivo com sufixo possessivo ('tua alma').",
             "parts": [
               {
-                "segment": "נַפְש",
+                "segment": "נַפְשׁ",
                 "transliteration": "Nafesh",
                 "type": "Substantivo segolado",
                 "inflection": "feminino singular construto",
@@ -15918,7 +15903,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_22",
-    "title": "Lição XXII - Verbos Fracos: Pe Gutural 2026",
+    "title": "Lição XXII - Verbos Fracos: Pe Gutural",
     "items": [
       {
         "hebrew": "אָחַז",
@@ -15970,7 +15955,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "ele renovou"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Pi'el) — Kelley: [חדשׁ]"
       },
       {
         "hebrew": "חָפֵץ",
@@ -16045,6 +16030,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "חֹק",
         "transliteration": "chok",
         "translations": [
+          "parte",
           "estatuto",
           "lei",
           "decreto"
@@ -16081,8 +16067,8 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_22_01",
         "favorite": false,
-        "hebrew": "וַיִּהָפְכוּ כָּל־הַמַּיִם אֲשֶׁר בַּיְאֹר לְדָם",
-        "transliteration": "va-yihafechu kol-ha-mayim asher ba-ye'or le-dam",
+        "hebrew": "וַיֵּהָפְכוּ כָּל־הַמַּיִם אֲשֶׁר בַּיְאֹר לְדָם",
+        "transliteration": "va-yehafechu kol-ha-mayim asher ba-ye'or le-dam",
         "translations": [
           "e todas as águas que estavam no rio se converteram em sangue"
         ],
@@ -16092,8 +16078,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "tokens": [
           {
             "index": 1,
-            "text": "וַיִּהָפְכוּ",
-            "transliteration": "Vayihafechu",
+            "text": "וַיֵּהָפְכוּ",
+            "transliteration": "Vayehafechu",
             "lemma": "הָפַךְ",
             "composite": true,
             "syntax_role": "Núcleo verbal narrativo passivo. 3ª pessoa masculino plural do imperfeito Nif'al ('e se converteram' / 'e foram transformados').",
@@ -16106,12 +16092,12 @@ window.GAMIDA_DEFAULT_DATA = {
                 "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
-                "segment": "יִּהָפְכוּ",
-                "transliteration": "Yihafechu",
+                "segment": "יֵּהָפְכוּ",
+                "transliteration": "Yehafechu",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino plural do imperfeito Nif'al",
                 "meaning": "eles foram transformados",
-                "phonetics": "O primeiro radical he (ה) é gutural; com a recusa do dagesh forte, a vogal seguinte é qamats (Kelley XXII.66)."
+                "phonetics": "Imperfeito Nif'al de Pe Gutural: o ה rejeita o dagesh forte e o hireq do preformativo alonga-se para sere (יֵהָפֵךְ; Kelley XXII.66). O dagesh no yod vem do vav consecutivo."
               }
             ]
           },
@@ -16349,7 +16335,7 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_22_03",
         "favorite": false,
-        "hebrew": "וַיְחַזֵּק יְהוָה אֶת־לֵב פַּרְעֹה וְלֹא שָׁמַע אֲלֵיהֶם",
+        "hebrew": "וַיְחַזֵּק יְהוָה אֶת־לֵב פַּרְעֹה וְלֹא שָׁמַע אֲלֵהֶם",
         "transliteration": "va-yechazzek adonai et-lev par'oh ve-lo shama aleihem",
         "translations": [
           "e o senhor endureceu o coração do faraó, e ele não os ouviu"
@@ -16454,14 +16440,14 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 8,
-            "text": "אֲלֵיהֶם",
+            "text": "אֲלֵהֶם",
             "transliteration": "Aleihem",
             "lemma": "אֶל",
             "composite": true,
             "syntax_role": "Complemento preposicional regido pelo verbo ('a eles').",
             "parts": [
               {
-                "segment": "אֲלֵי",
+                "segment": "אֲלֵ",
                 "transliteration": "Alei",
                 "type": "Preposição",
                 "meaning": "a / em direção a",
@@ -16643,7 +16629,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_23",
-    "title": "Lição XXIII - Verbos Fracos: Pe Alef 2026",
+    "title": "Lição XXIII - Verbos Fracos: Pe Alef",
     "items": [
       {
         "hebrew": "אָבָה",
@@ -16670,7 +16656,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "ele escutou",
           "deu ouvidos"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [אזן]"
       },
       {
         "hebrew": "אָמֵץ",
@@ -16929,7 +16915,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito Qal",
                 "meaning": "ele disse",
-                "phonetics": "Forma apocopada clássica com holem sob o preformativo e segol temático na raiz Pe Alef (Kelley XVI.43.3)."
+                "phonetics": "Pe Alef: o alef quiesce e o preformativo leva holem (יֹאמַר; Kelley XXIII.67). Com vav consecutivo o acento recua e a vogal final se torna segol (וַיֹּאמֶר)."
               }
             ]
           },
@@ -17086,7 +17072,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "id": "sent_23_03",
         "favorite": false,
         "hebrew": "כָּל־זָכָר בַּכֹּהֲנִים יֹאכְלֶנּוּ בְּמָקוֹם קָדוֹשׁ יֵאָכֵל",
-        "transliteration": "kol-zachar ba-kohanim yochlennu be-makom kadosh yieachel",
+        "transliteration": "kol-zachar ba-kohanim yochlennu be-makom kadosh ye'achel",
         "translations": [
           "todo macho entre os sacerdotes comerá dele; em lugar santo se comerá"
         ],
@@ -17197,7 +17183,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 7,
             "text": "יֵאָכֵל",
-            "transliteration": "Yieachel",
+            "transliteration": "Ye'achel",
             "lemma": "אָכַל",
             "composite": false,
             "word_class": "Verbo",
@@ -17450,7 +17436,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "id": "sent_23_05",
         "favorite": false,
         "hebrew": "לָמָּה יֹאמְרוּ הַגּוֹיִם אַיֵּה אֱלֹהֵיהֶם",
-        "transliteration": "lamah yomru ha-goyim ayei eloheihem",
+        "transliteration": "lamah yomru ha-goyim ayeh eloheihem",
         "translations": [
           "por que diriam as nações: onde está o seu deus?"
         ],
@@ -17503,7 +17489,7 @@ window.GAMIDA_DEFAULT_DATA = {
           {
             "index": 4,
             "text": "אַיֵּה",
-            "transliteration": "Ayei",
+            "transliteration": "Ayeh",
             "lemma": "אַיֵּה",
             "composite": false,
             "word_class": "Advérbio Interrogativo de lugar",
@@ -17539,7 +17525,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "kelley_24",
-    "title": "Lição XXIV - Verbos Fracos: Ayin Gutural 2026",
+    "title": "Lição XXIV - Verbos Fracos: Ayin Gutural",
     "items": [
       {
         "hebrew": "בָּחַן",
@@ -17582,7 +17568,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "translations": [
           "ele se apressou"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Pi'el) — Kelley: [מהר]"
       },
       {
         "hebrew": "נָחַל",
@@ -17598,9 +17584,10 @@ window.GAMIDA_DEFAULT_DATA = {
         "transliteration": "nicham",
         "translations": [
           "ele se arrependeu",
-          "consolou"
+          "ele teve pena",
+          "ele teve compaixão"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Nif'al) — Kelley: [נחם]"
       },
       {
         "hebrew": "צָחַק",
@@ -17632,8 +17619,10 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "שָׁחַט",
         "transliteration": "shachat",
         "translations": [
+          "ele matou",
           "ele abateu",
-          "sacrificou"
+          "ele carneou",
+          "ele assassinou"
         ],
         "type": "Verbo"
       },
@@ -17784,7 +17773,7 @@ window.GAMIDA_DEFAULT_DATA = {
         ],
         "type": "Frase",
         "syntax_type": "Bênção Sacerdotal Paratática com Jussivo Pi'el de Ayin Gutural",
-        "notes": "No tronco Pi'el do verbo בָּרַךְ, a consoante mediana resh (tratada como gutural) recusa o dagesh forte, sofrendo compensação vocálica com șere no preformativo (Kelley XIV.36.2 e XXIV.69).",
+        "notes": "No Pi'el de בָּרַךְ o resh rejeita o dagesh forte; o patah sob o 1º radical alonga-se para qamats (יְבָרֵךְ; no perfeito o hireq vira sere: בֵּרַךְ) — Kelley V.13.1 e XXIV.69.",
         "tokens": [
           {
             "index": 1,
@@ -17800,7 +17789,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito/jussivo Pi'el",
                 "meaning": "ele abençoe",
-                "phonetics": "Șere alongado compensatório no bet da raiz decorrente da recusa de reduplicação pelo resh gutural (Kelley XIV.36.2)."
+                "phonetics": "Qamats compensatório sob o bet (patah → qamats), porque o resh rejeita o dagesh forte do Pi'el (Kelley V.13.1)."
               },
               {
                 "segment": "ךָ",
@@ -17895,7 +17884,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Verbo",
             "syntax_role": "Primeiro núcleo verbal. 3ª pessoa masculino singular do perfeito Pi'el ('abençoou').",
-            "notes": "Alongamento compensatório do patah para șere sob o bet da raiz diante da gutural resh que não aceita dagesh forte (Kelley XIV.36.2)."
+            "notes": "Perfeito Pi'el: o hireq do 1º radical alonga-se para sere (בֵּרַךְ por *בִּרֵּךְ) porque o resh rejeita o dagesh forte (Kelley V.13.1)."
           },
           {
             "index": 3,
@@ -18229,11 +18218,11 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "licao_25",
-    "title": "Lição XXV - Verbos Fracos: Lamed Gutural 2026",
+    "title": "Lição XXV - Verbos Fracos: Lamed Gutural",
     "items": [
       {
         "hebrew": "בָּלַע",
-        "transliteration": "balah",
+        "transliteration": "bala'",
         "translations": [
           "ele engoliu",
           "consumiu"
@@ -18260,7 +18249,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "hebrew": "זָרַע",
-        "transliteration": "zarah",
+        "transliteration": "zara'",
         "translations": [
           "ele semeou"
         ],
@@ -18268,7 +18257,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "hebrew": "כָּרַע",
-        "transliteration": "karah",
+        "transliteration": "kara'",
         "translations": [
           "ele se ajoelhou",
           "curvou-se"
@@ -18309,6 +18298,15 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
+        "hebrew": "קָרַע",
+        "transliteration": "kara'",
+        "translations": [
+          "ele rasgou",
+          "rasgar"
+        ],
+        "type": "Verbo"
+      },
+      {
         "hebrew": "רָצַח",
         "transliteration": "ratzach",
         "translations": [
@@ -18319,7 +18317,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "hebrew": "שָׂבַע",
-        "transliteration": "savah",
+        "transliteration": "sava'",
         "translations": [
           "ele estava satisfeito",
           "saciado"
@@ -18374,7 +18372,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "gerações",
           "história"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f pl)"
       }
     ],
     "sentences": [
@@ -18720,7 +18718,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino plural do imperfeito Qal",
                 "meaning": "eles tocaram",
-                "phonetics": "Shva audível sob a gutural ayin decorrente do aformativo plural (Kelley XXV.70)."
+                "phonetics": "Diante do aformativo -וּ a vogal temática cai: shva audível sob o qof (יִתְ-קְ-עוּ); o ayin leva o šureq."
               }
             ]
           },
@@ -18930,7 +18928,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "lemma": "עָשָׂה",
             "composite": false,
             "word_class": "Verbo",
-            "syntax_role": "Núcleo da oração relativa sindética elíptica ('que fez').",
+            "syntax_role": "Núcleo da oração relativa assindética (sem אֲשֶׁר) ('que fez').",
             "notes": "Verbo fraco Pe Gutural e Lamed He no perfeito Qal 3ms (Kelley XXVII.72)."
           },
           {
@@ -18986,7 +18984,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Complemento preposicional regido com sufixo ('nele').",
             "parts": [
               {
-                "segment": "בּ",
+                "segment": "ב",
                 "transliteration": "B",
                 "type": "Preposição inseparável",
                 "meaning": "em"
@@ -19006,15 +19004,16 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "licao_26",
-    "title": "Lição XXVI - Verbos Fracos: Lamed Alef 2026",
+    "title": "Lição XXVI - Verbos Fracos: Lamed Alef",
     "items": [
       {
-        "hebrew": "חָבָא",
-        "transliteration": "chava",
+        "hebrew": "הֶחְבִּיא",
+        "transliteration": "hechbi",
         "translations": [
-          "ele escondeu"
+          "ele escondeu",
+          "esconder"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [חבא]"
       },
       {
         "hebrew": "טָמֵא",
@@ -19026,12 +19025,13 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "נָבָא",
-        "transliteration": "nava",
+        "hebrew": "נִבָּא",
+        "transliteration": "nibba",
         "translations": [
-          "ele profetizou"
+          "ele profetizou",
+          "profetizar"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Nif'al) — Kelley: [נבא]"
       },
       {
         "hebrew": "צָמֵא",
@@ -19045,6 +19045,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "קָבַץ",
         "transliteration": "kavatz",
         "translations": [
+          "ele colecionou",
+          "ele juntou",
           "ele reuniu",
           "ajuntou"
         ],
@@ -19060,13 +19062,14 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "שָׁחַת",
-        "transliteration": "shachat",
+        "hebrew": "שִׁחֵת",
+        "transliteration": "shichet",
         "translations": [
           "ele destruiu",
-          "corrompeu"
+          "ele corrompeu",
+          "destruir"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Pi'el) — Kelley: [שחת]"
       },
       {
         "hebrew": "שָׁלֵם",
@@ -19114,12 +19117,22 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Numeral"
       },
       {
-        "hebrew": "צֶדֶק / צְדָקָה",
-        "transliteration": "tzedek / tzedakah",
+        "hebrew": "צֶדֶק",
+        "transliteration": "tsedek",
         "translations": [
-          "justiça"
+          "justiça",
+          "retidão"
         ],
         "type": "Substantivo"
+      },
+      {
+        "hebrew": "צְדָקָה",
+        "transliteration": "tsedakah",
+        "translations": [
+          "justiça",
+          "retidão"
+        ],
+        "type": "Substantivo (f)"
       },
       {
         "hebrew": "שֶׁבַע / שִׁבְעָה",
@@ -19280,7 +19293,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Verbo",
             "syntax_role": "Núcleo do predicado verbal passivo. 3ª pessoa masculino singular do imperfeito Nif'al ('será chamada').",
-            "notes": "Assimilação do nun do Nif'al no qof com dagesh forte; o alef quiescente final condiciona a terminação em șere no imperfeito Nif'al (Kelley XXVI.71)."
+            "notes": "Nif'al: o nun do prefixo assimila-se no qof (dagesh forte). O sere final é a vogal normal do imperfeito Nif'al (יִקָּטֵל), não efeito do alef."
           },
           {
             "index": 6,
@@ -19684,7 +19697,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "licao_27",
-    "title": "Lição XXVII - Verbos Fracos: Lamed He 2026",
+    "title": "Lição XXVII - Verbos Fracos: Lamed He",
     "items": [
       {
         "hebrew": "בָּכָה",
@@ -19749,7 +19762,7 @@ window.GAMIDA_DEFAULT_DATA = {
       },
       {
         "hebrew": "כָּסָה",
-        "transliteration": "kissah",
+        "transliteration": "kasah",
         "translations": [
           "ele cobriu",
           "escondeu"
@@ -19783,13 +19796,14 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "שָׁחָה",
-        "transliteration": "shachah",
+        "hebrew": "הִשְׁתַּחֲוָה",
+        "transliteration": "hishtachavah",
         "translations": [
           "ele se prostrou",
-          "adorou"
+          "ele reverenciou",
+          "ele adorou"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hitpa'el) — Kelley: [שחה]"
       },
       {
         "hebrew": "אַמָּה",
@@ -20403,16 +20417,16 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "licao_28",
-    "title": "Lição XXVIII - Verbos Fracos: Pe Nun 2026",
+    "title": "Lição XXVIII - Verbos Fracos: Pe Nun",
     "items": [
       {
-        "hebrew": "נָבַט",
-        "transliteration": "navat",
+        "hebrew": "הִבִּיט",
+        "transliteration": "hibbit",
         "translations": [
           "ele olhou",
-          "fitou os olhos"
+          "ele fitou os olhos"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [נבט]"
       },
       {
         "hebrew": "נָגַף",
@@ -20442,13 +20456,14 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "נָהַל",
-        "transliteration": "nahal",
+        "hebrew": "נִהֵל",
+        "transliteration": "nihel",
         "translations": [
           "ele guiou",
-          "conduziu"
+          "ele conduziu",
+          "ele refrescou"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Pi'el) — Kelley: [נהל]"
       },
       {
         "hebrew": "נָזָה",
@@ -20477,13 +20492,14 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "נָסָה",
-        "transliteration": "nasah",
+        "hebrew": "נִסָּה",
+        "transliteration": "nissah",
         "translations": [
-          "ele provou",
-          "testou"
+          "ele testou",
+          "ele tentou",
+          "ele provou"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Pi'el) — Kelley: [נסה]"
       },
       {
         "hebrew": "נָסַע",
@@ -20495,32 +20511,33 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "נָצַב",
-        "transliteration": "natzav",
+        "hebrew": "נִצַּב",
+        "transliteration": "nitsav",
         "translations": [
+          "ele se posicionou",
           "ele se colocou",
-          "posicionou"
+          "ele colocou (Hif'il)",
+          "ele estabeleceu (Hif'il)"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Nif'al; Hif'il 'colocou') — Kelley: [נצב]"
       },
       {
         "hebrew": "נָצַר",
         "transliteration": "natzar",
         "translations": [
-          "ele guardou",
-          "vigilou"
+          "ele vigiou",
+          "ele guardou"
         ],
         "type": "Verbo"
       },
       {
-        "hebrew": "נָקָה",
-        "transliteration": "nakah",
+        "hebrew": "נִקָּה",
+        "transliteration": "nikkah",
         "translations": [
-          "ele foi",
-          "tornou-se limpo",
-          "inocente"
+          "ele foi limpo",
+          "ele foi inocente"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Nif'al) — Kelley: [נקה]"
       },
       {
         "hebrew": "נָקַם",
@@ -20531,13 +20548,13 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo"
       },
       {
-        "hebrew": "נָשַׂג",
-        "transliteration": "nasag",
+        "hebrew": "הִשִּׂיג",
+        "transliteration": "hissig",
         "translations": [
           "ele alcançou",
-          "atingiu"
+          "ele conseguiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [נשג]"
       },
       {
         "hebrew": "נָתַץ",
@@ -20893,7 +20910,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "type": "Verbo (particípio passivo)",
                 "inflection": "masculino singular do particípio Nif'al",
                 "meaning": "elevado / exaltado",
-                "phonetics": "Verbo Pe Nun no Nif'al: nun da raiz retido e alef final quiescente após qamats (Kelley XXVIII.73)."
+                "phonetics": "O נ inicial é o prefixo do Nif'al; o nun da raiz (נשׂא) assimila-se no sin com dagesh forte (Kelley XXVIII.73). O alef final quiesce após qamats."
               }
             ]
           }
@@ -21073,14 +21090,14 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "licao_29",
-    "title": "Lição XXIX - Verbos Fracos: Ayin Vav / Ayin Yod 2026",
+    "title": "Lição XXIX - Verbos Fracos: Ayin Vav / Ayin Yod",
     "items": [
       {
         "hebrew": "גּוּר",
         "transliteration": "gur",
         "translations": [
-          "ele morou",
-          "viveu como forasteiro"
+          "ser forasteiro",
+          "morar como forasteiro"
         ],
         "type": "Verbo"
       },
@@ -21088,7 +21105,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "גִּיל",
         "transliteration": "gil",
         "translations": [
-          "ele se regozijou"
+          "regozijar-se"
         ],
         "type": "Verbo"
       },
@@ -21096,7 +21113,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "דִּין",
         "transliteration": "din",
         "translations": [
-          "ele julgou"
+          "julgar"
         ],
         "type": "Verbo"
       },
@@ -21122,7 +21139,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "מוּל",
         "transliteration": "mul",
         "translations": [
-          "ele circundou"
+          "circuncidar"
         ],
         "type": "Verbo"
       },
@@ -21130,7 +21147,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "נוּחַ",
         "transliteration": "nuach",
         "translations": [
-          "ele descansou"
+          "descansar"
         ],
         "type": "Verbo"
       },
@@ -21138,7 +21155,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "נוּס",
         "transliteration": "nus",
         "translations": [
-          "ele fugiu"
+          "fugir"
         ],
         "type": "Verbo"
       },
@@ -21174,7 +21191,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "רוּץ",
         "transliteration": "rutz",
         "translations": [
-          "ele correu"
+          "correr"
         ],
         "type": "Verbo"
       },
@@ -21191,7 +21208,7 @@ window.GAMIDA_DEFAULT_DATA = {
         "hebrew": "שִׁיר",
         "transliteration": "shir",
         "translations": [
-          "ele cantou"
+          "cantar"
         ],
         "type": "Verbo"
       },
@@ -21275,7 +21292,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Me",
                 "type": "Preposição (variante de מִן)",
                 "meaning": "de",
-                "phonetics": "Preposição מִן com nun assimilado e alongamento compensatório para tsere perante a gutural alef (Kelley VI.15.2)."
+                "phonetics": "מִן diante da gutural alef: o nun não se assimila e o hireq alonga-se para sere (Kelley VI.15.3[3])."
               },
               {
                 "segment": "אֵת־",
@@ -21436,8 +21453,8 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_29_02",
         "favorite": false,
-        "hebrew": "וַיִּרֶד יְהוָה לִרְאֹת אֶת־הָעִיר וְאֶת־הַמִּגְדָּל אֲשֶׁר בָּנוּ בְּנֵי הָאָדָם",
-        "transliteration": "va-yired adonai lir'ot et-ha-ir ve-et-ha-migdal asher banu benei ha-adam",
+        "hebrew": "וַיֵּרֶד יְהוָה לִרְאֹת אֶת־הָעִיר וְאֶת־הַמִּגְדָּל אֲשֶׁר בָּנוּ בְּנֵי הָאָדָם",
+        "transliteration": "va-yered adonai lir'ot et-ha-ir ve-et-ha-migdal asher banu benei ha-adam",
         "translations": [
           "e o senhor desceu para ver a cidade e a torre que os filhos dos homens edificavam"
         ],
@@ -21446,8 +21463,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "tokens": [
           {
             "index": 1,
-            "text": "וַיִּרֶד",
-            "transliteration": "Vayired",
+            "text": "וַיֵּרֶד",
+            "transliteration": "Vayered",
             "lemma": "יָרַד",
             "composite": true,
             "syntax_role": "Núcleo do predicado verbal narrativo ('e desceu').",
@@ -21460,12 +21477,12 @@ window.GAMIDA_DEFAULT_DATA = {
                 "phonetics": "Vav com patah e dagesh forte no yod (Kelley XVI.43.2)."
               },
               {
-                "segment": "יִּרֶד",
-                "transliteration": "Yired",
+                "segment": "יֵּרֶד",
+                "transliteration": "Yered",
                 "type": "Verbo",
-                "inflection": "3ª pessoa masculino singular do imperfeito apocopado Qal",
+                "inflection": "3ª pessoa masculino singular do imperfeito Qal com vav consecutivo",
                 "meaning": "ele desceu",
-                "phonetics": "Verbo Pe Yod com queda do yod no imperfeito e terminação com segol perante vav consecutivo (Kelley XXX.75)."
+                "phonetics": "Pe Yod (originalmente Pe Vav): o 1º radical cai no imperfeito Qal e o preformativo leva sere (יֵרֵד). Com vav consecutivo o acento recua e o sere final vira segol (Kelley XXX.75)."
               }
             ]
           },
@@ -21751,18 +21768,18 @@ window.GAMIDA_DEFAULT_DATA = {
         "id": "sent_29_04",
         "favorite": false,
         "hebrew": "וַיָּקָם מֶלֶךְ־חָדָשׁ עַל־מִצְרָיִם אֲשֶׁר לֹא־יָדַע אֶת־יוֹסֵף",
-        "transliteration": "va-yakam melech-chadash al-mitzvayim asher lo-yada et-yosef",
+        "transliteration": "va-yakom melech-chadash al-mitzrayim asher lo-yada et-yosef",
         "translations": [
           "e levantou-se um novo rei sobre o egito, que não conhecia a josé"
         ],
         "type": "Frase",
         "syntax_type": "Oração Narrativa com Verbo Oco (Ayin Vav) e Oração Relativa Negativa",
-        "notes": "No verbo oco קוּם, a consoante vav desaparece e o imperfeito narrativo com vav consecutivo assume a forma apocopada וַיָּקָם com qamats-hatuf / patah breve (Kelley XXIX.74).",
+        "notes": "No verbo oco קוּם, o imperfeito Qal é יָקוּם; com vav consecutivo o acento recua e a vogal final se abrevia: וַיָּקָם (vayyāqom, com qamats-hatuf) — Kelley XXIX.74.",
         "tokens": [
           {
             "index": 1,
             "text": "וַיָּקָם",
-            "transliteration": "Vayakam",
+            "transliteration": "Vayakom",
             "lemma": "קוּם",
             "composite": true,
             "syntax_role": "Núcleo do predicado verbal narrativo ('e levantou-se').",
@@ -21776,7 +21793,7 @@ window.GAMIDA_DEFAULT_DATA = {
               },
               {
                 "segment": "יָּקָם",
-                "transliteration": "Yakam",
+                "transliteration": "Yakom",
                 "type": "Verbo",
                 "inflection": "3ª pessoa masculino singular do imperfeito apocopado Qal",
                 "meaning": "ele levantou-se / ergueu-se",
@@ -22011,7 +22028,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "licao_30",
-    "title": "Lição XXX - Verbos Fracos: Pe Vav / Pe Yod 2026",
+    "title": "Lição XXX - Verbos Fracos: Pe Vav / Pe Yod",
     "items": [
       {
         "hebrew": "יָבֵשׁ",
@@ -22039,7 +22056,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "confessou",
           "agradeceu"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [ידה]"
       },
       {
         "hebrew": "יָטַב",
@@ -22057,7 +22074,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "ele repreendeu",
           "corrigiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [יכח]"
       },
       {
         "hebrew": "יָנַק",
@@ -22101,7 +22118,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "ele se posicionou",
           "ficou firme"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hitpa'el) — Kelley: [יצב]"
       },
       {
         "hebrew": "יָצַק",
@@ -22138,13 +22155,14 @@ window.GAMIDA_DEFAULT_DATA = {
           "ele sobrou",
           "foi deixado como resto"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Nif'al) — Kelley: [יתר]"
       },
       {
-        "hebrew": "קִטֵּר",
-        "transliteration": "kitter",
+        "hebrew": "קָטַר",
+        "transliteration": "katar",
         "translations": [
-          "ele queimou incenso"
+          "ele queimou incenso",
+          "ele ofereceu incenso"
         ],
         "type": "Verbo"
       },
@@ -22155,7 +22173,7 @@ window.GAMIDA_DEFAULT_DATA = {
           "ele ministrou",
           "serviu"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Pi'el) — Kelley: [שרת]"
       },
       {
         "hebrew": "סָגַר",
@@ -22172,21 +22190,21 @@ window.GAMIDA_DEFAULT_DATA = {
           "ele madrugou",
           "levantou cedo"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hif'il) — Kelley: [שכם]"
       }
     ],
     "sentences": [
       {
         "id": "sent_30_01",
         "favorite": false,
-        "hebrew": "פְּנוּ־אֵלַי וְהִנָּשְׁעוּ כָּל־אַפְסֵי־אֶרֶץ כִּי אֲנִי־אֵל וְאֵין עוֹד",
-        "transliteration": "penu-elai ve-hinnasheu kol-afsei-aretz ki ani-el ve-ein od",
+        "hebrew": "פְּנוּ־אֵלַי וְהִוָּשְׁעוּ כָּל־אַפְסֵי־אָרֶץ כִּי אֲנִי־אֵל וְאֵין עוֹד",
+        "transliteration": "penu-elai ve-hivvash'u kol-afsei-aretz ki ani-el ve-ein od",
         "translations": [
           "olhai para mim e sereis salvos, vós, todos os limites da terra; porque eu sou deus, e não há outro"
         ],
         "type": "Frase",
         "syntax_type": "Período Exortativo e Monoteísta com Verbos Pe Vav/Yod e Lamed He",
-        "notes": "O verbo יָשַׁע no tronco Nif'al reflexivo/passivo assume o prefixo com dagesh forte por assimilação do radical original (Kelley XXX.75).",
+        "notes": "No Nif'al dos verbos Pe Vav/Yod o vav original reaparece como consoante: imperativo הִוָּשְׁעוּ, perfeito נוֹשַׁע (Kelley XXX.75).",
         "tokens": [
           {
             "index": 1,
@@ -22223,8 +22241,8 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 3,
-            "text": "וְהִנָּשְׁעוּ",
-            "transliteration": "Vehinnash'u",
+            "text": "וְהִוָּשְׁעוּ",
+            "transliteration": "Vehivvash'u",
             "lemma": "יָשַׁע",
             "composite": true,
             "syntax_role": "Segundo predicado verbal coordenado imperativo com valor passivo/promissório ('e sede salvos').",
@@ -22237,12 +22255,12 @@ window.GAMIDA_DEFAULT_DATA = {
                 "phonetics": "Vav com shva simples."
               },
               {
-                "segment": "הִנָּשְׁעוּ",
-                "transliteration": "Hinnash'u",
+                "segment": "הִוָּשְׁעוּ",
+                "transliteration": "Hivvash'u",
                 "type": "Verbo",
                 "inflection": "2ª pessoa masculino plural do imperativo Nif'al",
                 "meaning": "sede salvos",
-                "phonetics": "Prefixo do imperativo Nif'al com assimilação do primeiro radical vav/yod com dagesh forte no nun/shin (Kelley XXX.75)."
+                "phonetics": "Imperativo Nif'al de ישׁע (originalmente Pe Vav): o vav original reaparece como consoante, duplicada pelo nun assimilado do Nif'al (הִוָּשַׁע; Kelley XXX.75)."
               }
             ]
           },
@@ -22268,12 +22286,13 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 6,
-            "text": "אֶרֶץ",
+            "text": "אָרֶץ",
             "transliteration": "Eretz",
             "lemma": "אֶרֶץ",
             "composite": false,
             "word_class": "Substantivo segolado",
-            "syntax_role": "Termo regido genitivo final ('terra')."
+            "syntax_role": "Termo regido genitivo final ('terra').",
+            "notes": "Forma pausal (atnah) de אֶרֶץ."
           },
           {
             "index": 7,
@@ -22472,8 +22491,8 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_30_03",
         "favorite": false,
-        "hebrew": "בֹּאוּ שְׁעָרָיו בְּתוֹדָה חֲצֵרֹתָיו בִּתְהִלָּה הוֹדוּ־לוֹ בָּרֲכוּ שְׁמוֹ",
-        "transliteration": "bo'u she'arav be-todah chatzerotav bi-tehillah hodu-lo barachu shemo",
+        "hebrew": "בֹּאוּ שְׁעָרָיו בְּתוֹדָה חֲצֵרֹתָיו בִּתְהִלָּה הוֹדוּ־לוֹ בָּרְכוּ שְׁמוֹ",
+        "transliteration": "bo'u she'arav be-todah chatzerotav bi-tehillah hodu-lo barechu shemo",
         "translations": [
           "entrai pelas suas portas com ação de graças e nos seus átrios com louvor; dai-lhe graças e bendizei o seu nome"
         ],
@@ -22499,12 +22518,12 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Objeto direto locativo com sufixo possessivo ('suas portas').",
             "parts": [
               {
-                "segment": "שַׁעֲרֵ",
-                "transliteration": "Sha'are",
+                "segment": "שְׁעָר",
+                "transliteration": "She'ar",
                 "type": "Substantivo segolado",
-                "inflection": "masculino plural construto",
+                "inflection": "masculino plural (base com sufixo leve)",
                 "meaning": "portas de",
-                "phonetics": "Plural construto com hatef-patah sob o ayin gutural (Kelley X.25.4 e XXIV.69)."
+                "phonetics": "Plural de שַׁעַר (segolado) com sufixo: base שְׁעָר-, como no plural absoluto שְׁעָרִים (Kelley X.25)."
               },
               {
                 "segment": "ָיו",
@@ -22547,10 +22566,10 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Segundo objeto locativo elíptico com sufixo possessivo ('seus átrios').",
             "parts": [
               {
-                "segment": "חַצְרוֹת",
-                "transliteration": "Chatzrot",
+                "segment": "חֲצֵרֹת",
+                "transliteration": "Chatzerot",
                 "type": "Substantivo",
-                "inflection": "feminino plural construto",
+                "inflection": "plural em -ot (base com sufixo) de חָצֵר",
                 "meaning": "átrios de"
               },
               {
@@ -22621,13 +22640,13 @@ window.GAMIDA_DEFAULT_DATA = {
           },
           {
             "index": 8,
-            "text": "בָּרֲכוּ",
-            "transliteration": "Barachu",
+            "text": "בָּרְכוּ",
+            "transliteration": "Barechu",
             "lemma": "בָּרַךְ",
             "composite": false,
             "word_class": "Verbo",
             "syntax_role": "Quarto núcleo verbal volitivo coordenado. 2ª pessoa masculino plural do imperativo Pi'el ('bendizei').",
-            "notes": "Radical mediano resh com hatef-patah em virtude da recusa de reduplicação no Pi'el (Kelley XIV.36.2 e XXIV.69)."
+            "notes": "Imperativo Pi'el: o resh rejeita o dagesh forte e o patah do 1º radical alonga-se para qamats (בָּרְכוּ); o resh leva shva (Kelley V.13.1 e XXIV.69)."
           },
           {
             "index": 9,
@@ -22943,7 +22962,7 @@ window.GAMIDA_DEFAULT_DATA = {
   },
   {
     "id": "licao_31",
-    "title": "Lição XXXI - Verbos Fracos: Ayin Duplo 2026",
+    "title": "Lição XXXI - Verbos Fracos: Ayin Duplo",
     "items": [
       {
         "hebrew": "בָּזַז",
@@ -22977,18 +22996,19 @@ window.GAMIDA_DEFAULT_DATA = {
         "transliteration": "hithallel",
         "translations": [
           "ele se gloriou",
-          "louvou"
+          "ele louvou (Pi'el)"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Hitpa'el; Pi'el הִלֵּל 'louvou') — Kelley: [הלל]"
       },
       {
         "hebrew": "נִחַל",
         "transliteration": "nichal",
         "translations": [
           "ele foi profanado",
-          "profanou"
+          "ele profanou (Hif'il)",
+          "ele começou (Hif'il)"
         ],
-        "type": "Verbo"
+        "type": "Verbo (Nif'al; Hif'il הֵחֵל) — Kelley: [חלל]"
       },
       {
         "hebrew": "חָנַן",
@@ -23319,7 +23339,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "composite": false,
             "word_class": "Substantivo",
             "syntax_role": "Termo regente no construto singular ('folha de'). Unido por maqqef.",
-            "notes": "Substantivo da classe Lamed He com terminação segol-he no construto singular (Kelley X.26.4 e XXVII.72)."
+            "notes": "Substantivo terminado em -ֶה: absoluto עָלֶה (segol-he), construto עֲלֵה (sere-he) (Kelley X.26)."
           },
           {
             "index": 8,
@@ -23375,23 +23395,24 @@ window.GAMIDA_DEFAULT_DATA = {
       {
         "id": "sent_31_03",
         "favorite": false,
-        "hebrew": "בָּרֲכִי נַפְשִׁי אֶת־יְהוָה הַלְלוּ־יָהּ",
-        "transliteration": "barachi nafshi et-adonai hallelu-yah",
+        "hebrew": "בָּרְכִי נַפְשִׁי אֶת־יְהוָה הַלְלוּ־יָהּ",
+        "transliteration": "barechi nafshi et-adonai hallelu-yah",
         "translations": [
-          "bendigam ao senhor, ó minha alma! louvai ao senhor"
+          "bendize ao SENHOR, ó minha alma! Louvai ao SENHOR!",
+          "bendize, ó minha alma, ao SENHOR! Aleluia!"
         ],
         "type": "Frase",
         "syntax_type": "Solilóquio Volitivo Litúrgico com Imperativo Pi'el",
         "tokens": [
           {
             "index": 1,
-            "text": "בָּרֲכִי",
-            "transliteration": "Barachi",
+            "text": "בָּרְכִי",
+            "transliteration": "Barechi",
             "lemma": "בָּרַךְ",
             "composite": false,
             "word_class": "Verbo",
             "syntax_role": "Núcleo verbal volitivo. 2ª pessoa feminino singular do imperativo Pi'el ('bendize / louva').",
-            "notes": "Hatef-patah sob o resh gutural no tronco Pi'el com concordância no feminino singular com נֶפֶשׁ (Kelley XVIII.50 e XXIV.69)."
+            "notes": "Imperativo Pi'el 2fs (concorda com נֶפֶשׁ): qamats compensatório sob o bet e shva sob o resh (Kelley XVIII.50; V.13.1)."
           },
           {
             "index": 2,
@@ -23402,7 +23423,7 @@ window.GAMIDA_DEFAULT_DATA = {
             "syntax_role": "Vocativo direto reflexivo com sufixo possessivo ('ó minha alma').",
             "parts": [
               {
-                "segment": "נַפְש",
+                "segment": "נַפְשׁ",
                 "transliteration": "Nafesh",
                 "type": "Substantivo segolado",
                 "inflection": "feminino singular construto",
@@ -23715,7 +23736,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "transliteration": "Me",
                 "type": "Preposição inseparável (variante de מִן)",
                 "meaning": "de / desde",
-                "phonetics": "Șere perante o artigo הַ para evitar choque consonantal (Kelley VI.15.3[3])."
+                "phonetics": "מִן diante do artigo: Kelley registra como forma normal a plena מִן־הַ (VI.15.3[1]); aqui o nun não se escreve e o hireq alonga-se para sere diante do ה (gutural), como em VI.15.3[3]."
               },
               {
                 "segment": "הַ",
@@ -23752,7 +23773,7 @@ window.GAMIDA_DEFAULT_DATA = {
                 "segment": "תֹּאכַל",
                 "transliteration": "Tochal",
                 "type": "Verbo",
-                "inflection": "3ª pessoa feminino singular do imperfeito apocopado Qal",
+                "inflection": "3ª pessoa feminino singular do imperfeito Qal com vav consecutivo",
                 "meaning": "ela consumiu / devorou",
                 "phonetics": "Verbo Pe Alef com alef quiescente e holem sob o preformativo (Kelley XXIII.67)."
               }
