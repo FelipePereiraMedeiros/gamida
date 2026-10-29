@@ -291,10 +291,13 @@
     if (!sentence) {
       return typeof AppState !== "undefined" && AppState.language === "greek";
     }
-    if (sentence.id && (String(sentence.id).startsWith("sent_0") || String(sentence.id).startsWith("bergmann"))) {
+    const txt = sentence.term || sentence.hebrew || sentence.greek || "";
+    if (sentence.hebrew || /[\u0590-\u05FF]/.test(txt)) {
+      return false;
+    }
+    if (sentence.greek || (sentence.id && String(sentence.id).startsWith("bergmann"))) {
       return true;
     }
-    const txt = sentence.term || sentence.hebrew || sentence.greek || "";
     if (/[\u0370-\u03FF\u1F00-\u1FFF]/.test(txt)) {
       return true;
     }
@@ -311,16 +314,18 @@
    */
   function findSentenceInDatabase(sentence) {
     if (!sentence) return null;
+    const isGrk = isGreekSentence(sentence);
+    const langPrefix = isGrk ? "grk:" : "heb:";
     const sId = sentence.id;
     const sText = (sentence.hebrew || sentence.greek || sentence.term || "").trim();
     const sNorm = normalizeHebrewForSearch(sText);
     const sGNorm = normalizeGreekForSearch(sText);
 
-    // Consulta O(1) no índice em cache
-    if (sId && _sentenceDbCache.has("id:" + sId)) return _sentenceDbCache.get("id:" + sId);
-    if (sText && _sentenceDbCache.has("text:" + sText)) return _sentenceDbCache.get("text:" + sText);
-    if (sNorm && _sentenceDbCache.has("norm:" + sNorm)) return _sentenceDbCache.get("norm:" + sNorm);
-    if (sGNorm && _sentenceDbCache.has("gnorm:" + sGNorm)) return _sentenceDbCache.get("gnorm:" + sGNorm);
+    // Consulta O(1) no índice em cache escopado por idioma
+    if (sId && _sentenceDbCache.has(langPrefix + "id:" + sId)) return _sentenceDbCache.get(langPrefix + "id:" + sId);
+    if (sText && _sentenceDbCache.has(langPrefix + "text:" + sText)) return _sentenceDbCache.get(langPrefix + "text:" + sText);
+    if (!isGrk && sNorm && _sentenceDbCache.has(langPrefix + "norm:" + sNorm)) return _sentenceDbCache.get(langPrefix + "norm:" + sNorm);
+    if (isGrk && sGNorm && _sentenceDbCache.has(langPrefix + "gnorm:" + sGNorm)) return _sentenceDbCache.get(langPrefix + "gnorm:" + sGNorm);
 
     const pools = [];
 
@@ -372,27 +377,32 @@
         for (const s of (ch.sentences || [])) {
           if (!Array.isArray(s.tokens) || s.tokens.length === 0) continue;
 
-          // Indexa para consultas futuras O(1)
-          if (s.id) _sentenceDbCache.set("id:" + s.id, s);
+          const sIsGrk = isGreekSentence(s);
+          const sPrefix = sIsGrk ? "grk:" : "heb:";
+
+          // Indexa para consultas futuras O(1) escopado por idioma
+          if (s.id) _sentenceDbCache.set(sPrefix + "id:" + s.id, s);
           const t1 = (s.hebrew || "").trim();
           const t2 = (s.term || "").trim();
           const t3 = (s.greek || "").trim();
-          if (t1) _sentenceDbCache.set("text:" + t1, s);
-          if (t2) _sentenceDbCache.set("text:" + t2, s);
-          if (t3) _sentenceDbCache.set("text:" + t3, s);
+          if (t1) _sentenceDbCache.set(sPrefix + "text:" + t1, s);
+          if (t2) _sentenceDbCache.set(sPrefix + "text:" + t2, s);
+          if (t3) _sentenceDbCache.set(sPrefix + "text:" + t3, s);
           const n1 = normalizeHebrewForSearch(t1);
           const n2 = normalizeHebrewForSearch(t2);
-          if (n1) _sentenceDbCache.set("norm:" + n1, s);
-          if (n2) _sentenceDbCache.set("norm:" + n2, s);
+          if (n1) _sentenceDbCache.set(sPrefix + "norm:" + n1, s);
+          if (n2) _sentenceDbCache.set(sPrefix + "norm:" + n2, s);
           const g1 = normalizeGreekForSearch(t1 || t3);
           const g2 = normalizeGreekForSearch(t2);
-          if (g1) _sentenceDbCache.set("gnorm:" + g1, s);
-          if (g2) _sentenceDbCache.set("gnorm:" + g2, s);
+          if (g1) _sentenceDbCache.set(sPrefix + "gnorm:" + g1, s);
+          if (g2) _sentenceDbCache.set(sPrefix + "gnorm:" + g2, s);
+
+          if (sIsGrk !== isGrk) continue;
 
           if (sId && s.id === sId) return s;
           if (sText && (t1 === sText || t2 === sText || t3 === sText)) return s;
-          if (sNorm && (n1 === sNorm || n2 === sNorm)) return s;
-          if (sGNorm && (g1 === sGNorm || g2 === sGNorm)) return s;
+          if (!isGrk && sNorm && (n1 === sNorm || n2 === sNorm)) return s;
+          if (isGrk && sGNorm && (g1 === sGNorm || g2 === sGNorm)) return s;
         }
       }
     }
@@ -495,7 +505,7 @@
           type: token.word_class || "Vocábulo",
           meaning: token.lemma ? `Raiz / Lexema: ${token.lemma}` : "",
           inflection: token.inflection || "",
-          phonetics: token.phonetics || ""
+          phonetics: token.phonetics || token.notes || ""
         };
         list.push({
           index: globalIdx++,

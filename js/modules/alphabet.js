@@ -14,27 +14,27 @@ const resetStats = (typeof window !== "undefined" && window.resetStats) || _stat
 
 const AlphabetGameEngine = {
   hebrewAlphabet: [
-    { order: 1, glyph: "א", name: "Alef", sound: "Mudo / Oclusiva glotal", translit: "alef", value: 1 },
-    { order: 2, glyph: "ב", name: "Bet", sound: "B (com dagesh) / V (sem)", translit: "bet", value: 2, begadkefat: true, dagesh: "בּ" },
+    { order: 1, glyph: "א", name: "Alef", sound: "Mudo / Oclusiva glotal", translit: "alef", value: 1, guttural: true },
+    { order: 2, glyph: "ב", name: "Bet", sound: "B (com dagesh) / V (sem dagesh)", translit: "bet", value: 2, begadkefat: true, dagesh: "בּ" },
     { order: 3, glyph: "ג", name: "Gimel", sound: "G (duro como em gato)", translit: "gimel", value: 3, begadkefat: true, dagesh: "גּ" },
     { order: 4, glyph: "ד", name: "Dalet", sound: "D (como em dado)", translit: "dalet", value: 4, begadkefat: true, dagesh: "דּ" },
-    { order: 5, glyph: "ה", name: "He", sound: "H (aspirado)", translit: "he", value: 5, guttural: true },
+    { order: 5, glyph: "ה", name: "He", sound: "H (aspirado como em house)", translit: "he", value: 5, guttural: true },
     { order: 6, glyph: "ו", name: "Vav", sound: "V (como em vida)", translit: "vav", value: 6 },
     { order: 7, glyph: "ז", name: "Zayin", sound: "Z (como em zebra)", translit: "zayin", value: 7 },
-    { order: 8, glyph: "ח", name: "Het", sound: "Kh (gutural áspero)", translit: "het", value: 8, guttural: true },
+    { order: 8, glyph: "ח", name: "Het", sound: "Kh (gutural áspero como ch em Bach)", translit: "het", value: 8, guttural: true },
     { order: 9, glyph: "ט", name: "Tet", sound: "T (enfático)", translit: "tet", value: 9 },
-    { order: 10, glyph: "י", name: "Yod", sound: "Y / I (semivogal)", translit: "yod", value: 10 },
-    { order: 11, glyph: "כ", name: "Kaf", sound: "K (com dagesh) / Kh (sem)", translit: "kaf", value: 20, begadkefat: true, dagesh: "כּ", sofit: "ך" },
+    { order: 10, glyph: "י", name: "Yod", sound: "Y (semivogal como em iogurte)", translit: "yod", value: 10 },
+    { order: 11, glyph: "כ", name: "Kaf", sound: "K (com dagesh) / Kh (sem dagesh)", translit: "kaf", value: 20, begadkefat: true, dagesh: "כּ", sofit: "ך" },
     { order: 12, glyph: "ל", name: "Lamed", sound: "L (como em luz)", translit: "lamed", value: 30 },
     { order: 13, glyph: "מ", name: "Mem", sound: "M (como em mar)", translit: "mem", value: 40, sofit: "ם" },
     { order: 14, glyph: "נ", name: "Nun", sound: "N (como em navio)", translit: "nun", value: 50, sofit: "ן" },
     { order: 15, glyph: "ס", name: "Samekh", sound: "S (como em sol)", translit: "samekh", value: 60 },
-    { order: 16, glyph: "ע", name: "Ayin", sound: "Gutural profunda", translit: "ayin", value: 70, guttural: true },
-    { order: 17, glyph: "פ", name: "Pe", sound: "P (com dagesh) / F (sem)", translit: "pe", value: 80, begadkefat: true, dagesh: "פּ", sofit: "ף" },
-    { order: 18, glyph: "צ", name: "Tsade", sound: "Ts (como em pizza)", translit: "tsade", value: 90, sofit: "ץ" },
+    { order: 16, glyph: "ע", name: "Ayin", sound: "Gutural profunda (muda em português)", translit: "ayin", value: 70, guttural: true },
+    { order: 17, glyph: "פ", name: "Pe", sound: "P (com dagesh) / F (sem dagesh)", translit: "pe", value: 80, begadkefat: true, dagesh: "פּ", sofit: "ף" },
+    { order: 18, glyph: "צ", name: "Tsade", sound: "Ts (como em pizza ou tsunami)", translit: "tsade", value: 90, sofit: "ץ" },
     { order: 19, glyph: "ק", name: "Qof", sound: "Q / K (como em quase)", translit: "qof", value: 100 },
     { order: 20, glyph: "ר", name: "Resh", sound: "R (suave como em caro)", translit: "resh", value: 200 },
-    { order: 21, glyph: "ש", name: "Shin / Sin", sound: "Sh / S", translit: "shin/sin", value: 300 },
+    { order: 21, glyph: "ש", name: "Shin / Sin", sound: "Sh (ponto à direita: שׁ) / S (ponto à esquerda: שׂ)", translit: "shin/sin", value: 300 },
     { order: 22, glyph: "ת", name: "Tav", sound: "T (como em terra)", translit: "tav", value: 400, begadkefat: true, dagesh: "תּ" }
   ],
 
@@ -100,7 +100,29 @@ const AlphabetGameEngine = {
 
   getCurrentList(lang) {
     const l = lang || (AppState && AppState.language);
-    if (l === "hebrew") return this.hebrewAlphabet;
+    if (l === "hebrew") {
+      if (AppState && AppState.chapters && AppState.chapters.length > 0) {
+        const ch1 = AppState.chapters.find((c) => c && c.id === "kelley_01");
+        if (ch1 && Array.isArray(ch1.items) && ch1.items.length === 22) {
+          return ch1.items.map((it, idx) => {
+            const fb = this.hebrewAlphabet[idx] || {};
+            return {
+              order: it.order || fb.order,
+              glyph: it.hebrew || it.term || fb.glyph,
+              name: it.name || fb.name || "",
+              sound: it.sound || fb.sound || "",
+              translit: it.transliteration || fb.translit || "",
+              value: it.value !== undefined ? it.value : fb.value,
+              guttural: !!(it.guttural || fb.guttural),
+              begadkefat: !!(it.begadkefat || fb.begadkefat),
+              dagesh: it.dagesh || fb.dagesh,
+              sofit: it.sofit || fb.sofit,
+            };
+          });
+        }
+      }
+      return this.hebrewAlphabet;
+    }
     if (AppState && AppState.chapters && AppState.chapters.length > 0) {
       const ch1 = AppState.chapters.find((c) => c && c.id === "bergmann_01");
       if (ch1 && Array.isArray(ch1.items) && ch1.items.length === 24) {

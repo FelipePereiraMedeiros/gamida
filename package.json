@@ -1,6 +1,6 @@
 {
   "name": "gamida",
-  "version": "2.7.4",
+  "version": "2.7.5",
   "description": "Treinador Autônomo de Idiomas Bíblicos (Hebraico & Grego Koiné)",
   "main": "js/app.js",
   "scripts": {
