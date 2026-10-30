@@ -213,6 +213,73 @@ suite.test('Interceptador de teclado trata tecla Enter para envio e avanço cont
   assert.includes(appJs, 'if (AppState.isPracticeAnswered)', 'Enter após resposta deve verificar isPracticeAnswered');
 });
 
+suite.test('Seleção de capítulos específicos e ordenação (Menor ➔ Maior e Maior ➔ Menor) em Hebraico e Grego', () => {
+  const { greekData } = loadSourceFiles();
+  const {
+    getSelectedChapters,
+    setSelectedChapters,
+    toggleChapterSelection,
+    setChapterOrder,
+  } = require('../js/modules/state.js');
+
+  // 1. Teste em Hebraico: selecionar capítulos específicos (ex: Lição 3, Lição 5 e Lição 8)
+  AppState.language = 'hebrew';
+  AppState.chapters = hebrewData;
+  setChapterOrder('asc', AppState);
+  setSelectedChapters(['kelley_03', 'kelley_05', 'kelley_08'], AppState);
+
+  const hebAsc = getSelectedChapters(AppState);
+  assert.equal(hebAsc.length, 3, 'Deve retornar exatamente os 3 capítulos selecionados em hebraico');
+  assert.deepEqual(
+    hebAsc.map((c) => c.id),
+    ['kelley_03', 'kelley_05', 'kelley_08'],
+    'Ordem crescente (asc) deve ir do capítulo menor ao maior',
+  );
+
+  // Inverter para Maior ➔ Menor (desc)
+  setChapterOrder('desc', AppState);
+  const hebDesc = getSelectedChapters(AppState);
+  assert.deepEqual(
+    hebDesc.map((c) => c.id),
+    ['kelley_08', 'kelley_05', 'kelley_03'],
+    'Ordem decrescente (desc) deve ir do capítulo maior ao menor',
+  );
+
+  // Alternar capítulo específico via toggleChapterSelection
+  toggleChapterSelection('kelley_05', AppState);
+  const hebAfterToggle = getSelectedChapters(AppState);
+  assert.deepEqual(
+    hebAfterToggle.map((c) => c.id),
+    ['kelley_08', 'kelley_03'],
+    'toggleChapterSelection deve remover kelley_05 mantendo ordem desc',
+  );
+
+  // 2. Teste em Grego: selecionar capítulos específicos (ex: Cap 2, Cap 6 e Cap 13)
+  AppState.language = 'greek';
+  AppState.chapters = greekData;
+  setChapterOrder('asc', AppState);
+  setSelectedChapters(['bergmann_02', 'bergmann_06', 'bergmann_13'], AppState);
+
+  const grkAsc = getSelectedChapters(AppState);
+  assert.deepEqual(
+    grkAsc.map((c) => c.id),
+    ['bergmann_02', 'bergmann_06', 'bergmann_13'],
+    'Ordem crescente no Grego deve ir do capítulo menor ao maior',
+  );
+
+  setChapterOrder('desc', AppState);
+  const grkDesc = getSelectedChapters(AppState);
+  assert.deepEqual(
+    grkDesc.map((c) => c.id),
+    ['bergmann_13', 'bergmann_06', 'bergmann_02'],
+    'Ordem decrescente no Grego deve ir do capítulo maior ao menor',
+  );
+
+  // Reset para estado padrão limpo
+  setChapterOrder('asc', AppState);
+  AppState.selectedChapterIds = [];
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

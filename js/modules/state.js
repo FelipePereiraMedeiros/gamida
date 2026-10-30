@@ -49,6 +49,8 @@ const AppState = (typeof window !== "undefined" && window.AppState) || {
   practiceCategory: "all",
   isVocabCumulative: false,
   vocabCategory: "all",
+  selectedChapterIds: [],
+  chapterOrder: "asc", // 'asc' (Menor ➔ Maior) ou 'desc' (Maior ➔ Menor)
 };
 
 const SimConfig = {
@@ -275,30 +277,202 @@ function matchItemCategory(item, categoryId) {
 }
 
 /**
- * Extrai as categorias disponíveis para a prática com base no escopo (normal ou acumulativo)
+ * Retorna a lista de capítulos selecionados para prática ou dicionário,
+ * respeitando a seleção específica (selectedChapterIds) e a ordenação ('asc' ou 'desc').
+ * @param {Object} [state]
+ * @param {Object} [options]
+ * @returns {Array<Object>}
+ */
+function getSelectedChapters(state = AppState, options = {}) {
+  if (!state) return [];
+  const chapters = Array.isArray(state.chapters) ? state.chapters : [];
+  const forVocab = !!options.forVocab;
+  const order = options.order || state.chapterOrder || "asc";
+
+  let result = [];
+  const isCumulFlag = forVocab ? !!state.isVocabCumulative : !!state.isPracticeCumulative;
+  const hasCustomSelection =
+    Array.isArray(state.selectedChapterIds) &&
+    state.selectedChapterIds.length > 0 &&
+    (!state._syncedChapterId || !state.currentChapter || state._syncedChapterId === state.currentChapter.id) &&
+    (forVocab
+      ? (state._syncedVocabCumulative === undefined || state._syncedVocabCumulative === isCumulFlag)
+      : (state._syncedCumulative === undefined || state._syncedCumulative === isCumulFlag));
+
+  if (hasCustomSelection && chapters.length > 0) {
+    const selectedSet = new Set(state.selectedChapterIds);
+    result = chapters.filter((c) => c && selectedSet.has(c.id));
+    if (result.length > 1) {
+      result = result.filter((c) => !isAlphabetChapter(c));
+    }
+  }
+
+  if (result.length === 0) {
+    const activeChapterId = state.currentChapter?.id;
+    const activeIdx = chapters.findIndex((c) => c && c.id === activeChapterId);
+
+    if (isCumulFlag && chapters.length > 0) {
+      let cumulativeChapters = chapters.slice(
+        0,
+        activeIdx >= 0 ? activeIdx + 1 : chapters.length,
+      );
+      if (activeIdx > 0) {
+        cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+      }
+      result = cumulativeChapters;
+    } else if (state.currentChapter) {
+      result = [state.currentChapter];
+    } else if (chapters.length > 0) {
+      result = [chapters[0]];
+    }
+  }
+
+  if (order === "desc" && result.length > 1) {
+    result = [...result].reverse();
+  }
+
+  return result;
+}
+
+/**
+ * Define explicitamente os IDs de capítulos selecionados para prática e persiste no localStorage
+ * @param {Array<string>} chapterIds
+ * @param {Object} [state]
+ * @returns {Array<Object>}
+ */
+function setSelectedChapters(chapterIds, state = AppState) {
+  if (!state) return [];
+  const chapters = Array.isArray(state.chapters) ? state.chapters : [];
+  const validIds = Array.isArray(chapterIds)
+    ? chapterIds.filter((id) => chapters.some((c) => c && c.id === id))
+    : [];
+
+  let finalIds = [...new Set(validIds)];
+  if (finalIds.length > 1) {
+    const nonAlpha = finalIds.filter((id) => {
+      const ch = chapters.find((c) => c && c.id === id);
+      return ch && !isAlphabetChapter(ch);
+    });
+    if (nonAlpha.length > 0) {
+      finalIds = nonAlpha;
+    }
+  }
+
+  if (finalIds.length === 0) {
+    if (state.currentChapter && state.currentChapter.id) {
+      finalIds = [state.currentChapter.id];
+    } else if (chapters[0] && chapters[0].id) {
+      finalIds = [chapters[0].id];
+    }
+  }
+
+  // Ordena os IDs na ordem canônica dos capítulos
+  const canonicalOrderIds = chapters
+    .filter((c) => c && finalIds.includes(c.id))
+    .map((c) => c.id);
+
+  state.selectedChapterIds = canonicalOrderIds;
+
+  // Atualiza currentChapter para o último capítulo selecionado na ordem canônica
+  if (canonicalOrderIds.length > 0) {
+    const primaryId = canonicalOrderIds[canonicalOrderIds.length - 1];
+    const found = chapters.find((c) => c && c.id === primaryId);
+    if (found) {
+      state.currentChapter = found;
+      state.activeChapterId = found.id;
+    }
+  }
+
+  state._syncedChapterId = state.currentChapter?.id || null;
+  state._syncedCumulative = !!state.isPracticeCumulative;
+  state._syncedVocabCumulative = !!state.isVocabCumulative;
+
+  if (typeof localStorage !== "undefined" && state.language) {
+    try {
+      localStorage.setItem(
+        `gamida_selectedChaps_${state.language}`,
+        JSON.stringify(state.selectedChapterIds),
+      );
+      if (state.currentChapter?.id) {
+        localStorage.setItem(`gamida_lastChap_${state.language}`, state.currentChapter.id);
+      }
+    } catch (err) {
+      console.warn("Aviso ao salvar seleção de capítulos no localStorage:", err);
+    }
+  }
+
+  return getSelectedChapters(state);
+}
+
+/**
+ * Alterna (marca/desmarca) um capítulo específico na seleção de prática
+ * @param {string} chapterId
+ * @param {Object} [state]
+ * @returns {Array<Object>}
+ */
+function toggleChapterSelection(chapterId, state = AppState) {
+  if (!state || !chapterId) return getSelectedChapters(state);
+  const chapters = Array.isArray(state.chapters) ? state.chapters : [];
+  const targetChap = chapters.find((c) => c && c.id === chapterId);
+  if (!targetChap) return getSelectedChapters(state);
+
+  // Se clicou no capítulo do Alfabeto (Lição 1), seleciona exclusivamente ele
+  if (isAlphabetChapter(targetChap)) {
+    state.isPracticeCumulative = false;
+    state.isVocabCumulative = false;
+    return setSelectedChapters([chapterId], state);
+  }
+
+  const currentSelected = getSelectedChapters(state).map((c) => c.id);
+  let nextIds = currentSelected.filter((id) => {
+    const ch = chapters.find((c) => c && c.id === id);
+    return ch && !isAlphabetChapter(ch);
+  });
+
+  if (nextIds.includes(chapterId)) {
+    if (nextIds.length > 1) {
+      nextIds = nextIds.filter((id) => id !== chapterId);
+    }
+  } else {
+    nextIds.push(chapterId);
+  }
+
+  state.isPracticeCumulative = nextIds.length > 1;
+  state.isVocabCumulative = nextIds.length > 1;
+  return setSelectedChapters(nextIds, state);
+}
+
+/**
+ * Define a direção de ordenação dos capítulos ('asc': Menor ➔ Maior, 'desc': Maior ➔ Menor)
+ * @param {'asc'|'desc'} order
+ * @param {Object} [state]
+ * @returns {'asc'|'desc'}
+ */
+function setChapterOrder(order, state = AppState) {
+  if (!state) return "asc";
+  const normalized = order === "desc" ? "desc" : "asc";
+  state.chapterOrder = normalized;
+  if (typeof localStorage !== "undefined" && state.language) {
+    try {
+      localStorage.setItem(`gamida_chapterOrder_${state.language}`, normalized);
+    } catch (err) {
+      console.warn("Aviso ao salvar ordenação de capítulos no localStorage:", err);
+    }
+  }
+  return normalized;
+}
+
+/**
+ * Extrai as categorias disponíveis para a prática com base nos capítulos selecionados
  * @param {Object} [state]
  * @returns {{ total: number, categories: Array<{ id: string, label: string, count: number }> }}
  */
 function getAvailablePracticeCategories(state = AppState) {
   let pool = [];
-  const activeChapterId = state.currentChapter?.id;
-  const chapters = state.chapters || [];
-  const activeIdx = chapters.findIndex((c) => c.id === activeChapterId);
-
-  if (state.isPracticeCumulative) {
-    let cumulativeChapters = chapters.slice(
-      0,
-      activeIdx >= 0 ? activeIdx + 1 : chapters.length,
-    );
-    if (activeIdx > 0) {
-      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
-    }
-    cumulativeChapters.forEach((chap) => {
-      (chap.items || []).forEach((item) => pool.push(item));
-    });
-  } else {
-    pool = [...(state.currentChapter?.items || [])];
-  }
+  const selectedChapters = getSelectedChapters(state, { forVocab: false });
+  selectedChapters.forEach((chap) => {
+    (chap?.items || []).forEach((item) => pool.push(item));
+  });
 
   // Deduplica itens por termo único
   pool = Array.from(new Map(pool.map((item) => [getTerm(item), item])).values());
@@ -315,7 +489,7 @@ function getAvailablePracticeCategories(state = AppState) {
 }
 
 /**
- * Extrai as categorias disponíveis para o dicionário com base no escopo (normal ou acumulativo)
+ * Extrai as categorias disponíveis para o dicionário com base nos capítulos selecionados
  * Retorna contagem de palavras, frases, favoritos e categorias gramaticais de palavras
  * @param {Object} [state]
  * @returns {{ totalItems: number, totalWords: number, totalSentences: number, totalFavorites: number, categories: Array<{ id: string, label: string, count: number }> }}
@@ -323,26 +497,12 @@ function getAvailablePracticeCategories(state = AppState) {
 function getAvailableVocabCategories(state = AppState) {
   let wordsPool = [];
   let sentencesPool = [];
-  const activeChapterId = state.currentChapter?.id;
-  const chapters = state.chapters || [];
-  const activeIdx = chapters.findIndex((c) => c.id === activeChapterId);
+  const selectedChapters = getSelectedChapters(state, { forVocab: true });
 
-  if (state.isVocabCumulative) {
-    let cumulativeChapters = chapters.slice(
-      0,
-      activeIdx >= 0 ? activeIdx + 1 : chapters.length,
-    );
-    if (activeIdx > 0) {
-      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
-    }
-    cumulativeChapters.forEach((chap) => {
-      (chap.items || []).forEach((item) => wordsPool.push(item));
-      (chap.sentences || []).forEach((s) => sentencesPool.push(s));
-    });
-  } else {
-    wordsPool = [...(state.currentChapter?.items || [])];
-    sentencesPool = [...(state.currentChapter?.sentences || [])];
-  }
+  selectedChapters.forEach((chap) => {
+    (chap?.items || []).forEach((item) => wordsPool.push(item));
+    (chap?.sentences || []).forEach((s) => sentencesPool.push(s));
+  });
 
   // Deduplica palavras por termo único
   wordsPool = Array.from(new Map(wordsPool.map((item) => [getTerm(item), item])).values());
@@ -376,6 +536,10 @@ if (typeof window !== "undefined") {
   window.SimConfig = SimConfig;
   window.WORD_CATEGORIES = WORD_CATEGORIES;
   window.matchItemCategory = matchItemCategory;
+  window.getSelectedChapters = getSelectedChapters;
+  window.setSelectedChapters = setSelectedChapters;
+  window.toggleChapterSelection = toggleChapterSelection;
+  window.setChapterOrder = setChapterOrder;
   window.getAvailablePracticeCategories = getAvailablePracticeCategories;
   window.getAvailableVocabCategories = getAvailableVocabCategories;
   window.getTerm = getTerm;
@@ -396,6 +560,10 @@ if (typeof window !== "undefined") {
     SimConfig,
     WORD_CATEGORIES,
     matchItemCategory,
+    getSelectedChapters,
+    setSelectedChapters,
+    toggleChapterSelection,
+    setChapterOrder,
     getAvailablePracticeCategories,
     getAvailableVocabCategories,
     getTerm,
@@ -419,6 +587,10 @@ if (typeof module !== "undefined" && module.exports) {
     SimConfig,
     WORD_CATEGORIES,
     matchItemCategory,
+    getSelectedChapters,
+    setSelectedChapters,
+    toggleChapterSelection,
+    setChapterOrder,
     getAvailablePracticeCategories,
     getAvailableVocabCategories,
     getTerm,

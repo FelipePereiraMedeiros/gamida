@@ -3088,6 +3088,34 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "title": "Terminações de Gênero e Número nos Substantivos (סוּס)",
+        "type": "table",
+        "headers": [
+          "Número",
+          "Masculino",
+          "Feminino"
+        ],
+        "rows": [
+          [
+            "Singular",
+            "סוּס",
+            "סוּסָה"
+          ],
+          [
+            "Plural",
+            "סוּסִים",
+            "סוּסוֹת"
+          ],
+          [
+            "Dual",
+            "סוּסַיִם",
+            "סוּסָתַיִם"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -5134,6 +5162,75 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "title": "Pronomes Pessoais Independentes (Page Kelley § 9)",
+        "type": "table",
+        "headers": [
+          "Pessoa / Gênero",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª Comum",
+            "אֲנִי / אָנֹכִי",
+            "אֲנַחְנוּ"
+          ],
+          [
+            "2ª Masculino",
+            "אַתָּה",
+            "אַתֶּם"
+          ],
+          [
+            "2ª Feminino",
+            "אַתְּ",
+            "אַתֶּן / אַתֵּנָה"
+          ],
+          [
+            "3ª Masculino",
+            "הוּא",
+            "הֵם / הֵמָּה"
+          ],
+          [
+            "3ª Feminino",
+            "הִיא",
+            "הֵן / הֵנָּה"
+          ]
+        ]
+      },
+      {
+        "title": "Pronomes Demonstrativos (Este / Aquele)",
+        "type": "table",
+        "headers": [
+          "Gênero / Número",
+          "Próximo (Este)",
+          "Distante (Aquele)"
+        ],
+        "rows": [
+          [
+            "Masc. Singular",
+            "זֶה",
+            "הוּא"
+          ],
+          [
+            "Fem. Singular",
+            "זֹאת",
+            "הִיא"
+          ],
+          [
+            "Masc. Plural",
+            "אֵלֶּה",
+            "הֵם / הֵמָּה"
+          ],
+          [
+            "Fem. Plural",
+            "אֵלֶּה",
+            "הֵן / הֵנָּה"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -5991,6 +6088,39 @@
             "word_class": "Pronome pessoal independente",
             "syntax_role": "Sujeito posposto da oração nominal (3ª pessoa masculino plural: 'eles são')."
           }
+        ]
+      }
+    ],
+    "paradigms": [
+      {
+        "title": "Estado Absoluto vs. Estado Construto (סוּס)",
+        "type": "table",
+        "headers": [
+          "Forma",
+          "Estado Absoluto",
+          "Estado Construto"
+        ],
+        "rows": [
+          [
+            "Masc. Singular",
+            "סוּס",
+            "סוּס־"
+          ],
+          [
+            "Fem. Singular",
+            "סוּסָה",
+            "סוּסַת"
+          ],
+          [
+            "Masc. Plural",
+            "סוּסִים",
+            "סוּסֵי"
+          ],
+          [
+            "Fem. Plural",
+            "סוּסוֹת",
+            "סוּסוֹת"
+          ]
         ]
       }
     ]
@@ -7890,6 +8020,59 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "title": "Sufixos Pronominais na Preposição לְ e no Substantivo סוּס",
+        "type": "table",
+        "headers": [
+          "Pessoa",
+          "Com Preposição (לְ)",
+          "No Substantivo Sing. (סוּס)"
+        ],
+        "rows": [
+          [
+            "1cs (meu / a mim)",
+            "לִי",
+            "סוּסִי"
+          ],
+          [
+            "2ms (teu / a ti)",
+            "לְךָ",
+            "סוּסְךָ"
+          ],
+          [
+            "2fs (teu / a ti)",
+            "לָךְ",
+            "סוּסֵךְ"
+          ],
+          [
+            "3ms (seu / a ele)",
+            "לוֹ",
+            "סוּסוֹ"
+          ],
+          [
+            "3fs (dela / a ela)",
+            "לָהּ",
+            "סוּסָהּ"
+          ],
+          [
+            "1cp (nosso / a nós)",
+            "לָנוּ",
+            "סוּסֵנוּ"
+          ],
+          [
+            "2mp (vosso / a vós)",
+            "לָכֶם",
+            "סוּסְכֶם"
+          ],
+          [
+            "3mp (deles / a eles)",
+            "לָהֶם",
+            "סוּסָם"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -9249,6 +9432,44 @@
               }
             ]
           }
+        ]
+      }
+    ],
+    "paradigms": [
+      {
+        "title": "Verbo Forte no Perfeito Qal (שָׁמַר — guardar)",
+        "type": "table",
+        "headers": [
+          "Pessoa / Gênero",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "3ª Masculino",
+            "שָׁמַר",
+            "שָׁמְרוּ"
+          ],
+          [
+            "3ª Feminino",
+            "שָׁמְרָה",
+            "שָׁמְרוּ"
+          ],
+          [
+            "2ª Masculino",
+            "שָׁמַרְתָּ",
+            "שְׁמַרְתֶּם"
+          ],
+          [
+            "2ª Feminino",
+            "שָׁמַרְתְּ",
+            "שְׁמַרְתֶּן"
+          ],
+          [
+            "1ª Comum",
+            "שָׁמַרְתִּי",
+            "שָׁמַרְנוּ"
+          ]
         ]
       }
     ]
@@ -11123,6 +11344,54 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "title": "Diagnóstico dos 7 Troncos Verbais (Binyanim) no Perfeito 3ms (קָטַל)",
+        "type": "table",
+        "headers": [
+          "Tronco (Binyan)",
+          "Forma 3ms no Perfeito",
+          "Valor Semântico Predominante"
+        ],
+        "rows": [
+          [
+            "Qal",
+            "קָטַל",
+            "Ação Simples Ativa"
+          ],
+          [
+            "Nif'al",
+            "נִקְטַל",
+            "Ação Simples Passiva / Reflexiva"
+          ],
+          [
+            "Pi'el",
+            "קִטֵּל",
+            "Ação Intensiva Ativa"
+          ],
+          [
+            "Pu'al",
+            "קֻטַּל",
+            "Ação Intensiva Passiva"
+          ],
+          [
+            "Hithpa'el",
+            "הִתְקַטֵּל",
+            "Ação Intensiva Reflexiva"
+          ],
+          [
+            "Hif'il",
+            "הִקְטִיל",
+            "Ação Causativa Ativa"
+          ],
+          [
+            "Hof'al",
+            "הָקְטַל",
+            "Ação Causativa Passiva"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -11872,6 +12141,44 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "title": "Verbo Forte no Imperfeito Qal (שָׁמַר — guardar)",
+        "type": "table",
+        "headers": [
+          "Pessoa / Gênero",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "3ª Masculino",
+            "יִשְׁמֹר",
+            "יִשְׁמְרוּ"
+          ],
+          [
+            "3ª Feminino",
+            "תִּשְׁמֹר",
+            "תִּשְׁמֹרְנָה"
+          ],
+          [
+            "2ª Masculino",
+            "תִּשְׁמֹר",
+            "תִּשְׁמְרוּ"
+          ],
+          [
+            "2ª Feminino",
+            "תִּשְׁמְרִי",
+            "תִּשְׁמֹרְנָה"
+          ],
+          [
+            "1ª Comum",
+            "אֶשְׁמֹר",
+            "נִשְׁמֹר"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -12504,6 +12811,54 @@
               }
             ]
           }
+        ]
+      }
+    ],
+    "paradigms": [
+      {
+        "title": "Diagnóstico dos 7 Troncos Verbais (Binyanim) no Imperfeito 3ms (קָטַל)",
+        "type": "table",
+        "headers": [
+          "Tronco (Binyan)",
+          "Forma 3ms no Imperfeito",
+          "Característica Diagnóstica"
+        ],
+        "rows": [
+          [
+            "Qal",
+            "יִקְטֹל",
+            "Hireq sob o prefixo + Holem temático"
+          ],
+          [
+            "Nif'al",
+            "יִקָּטֵל",
+            "Daguesh Forte na 1ª radical + Qamets + Tsere"
+          ],
+          [
+            "Pi'el",
+            "יְקַטֵּל",
+            "Sheva sob o prefixo + Daguesh Forte na 2ª radical"
+          ],
+          [
+            "Pu'al",
+            "יְקֻטַּל",
+            "Sheva sob o prefixo + Qibbuts + Daguesh na 2ª radical"
+          ],
+          [
+            "Hithpa'el",
+            "יִתְקַטֵּל",
+            "Prefixo יִתְ + Daguesh Forte na 2ª radical"
+          ],
+          [
+            "Hif'il",
+            "יַקְטִיל",
+            "Patah sob o prefixo + Hireq-Yod temático"
+          ],
+          [
+            "Hof'al",
+            "יָקְטַל",
+            "Qamets Hatuf sob o prefixo + Patah"
+          ]
         ]
       }
     ]
@@ -13802,6 +14157,29 @@
               }
             ]
           }
+        ]
+      }
+    ],
+    "paradigms": [
+      {
+        "title": "Imperativo Qal do Verbo Forte (שָׁמַר)",
+        "type": "table",
+        "headers": [
+          "Gênero",
+          "2ª Pessoa Singular",
+          "2ª Pessoa Plural"
+        ],
+        "rows": [
+          [
+            "Masculino",
+            "שְׁמֹר",
+            "שִׁמְרוּ"
+          ],
+          [
+            "Feminino",
+            "שִׁמְרִי",
+            "שְׁמֹרְנָה"
+          ]
         ]
       }
     ]
@@ -15196,6 +15574,39 @@
             "word_class": "Nome Divino",
             "syntax_role": "Termo regido genitivo do segundo particípio ('o SENHOR')."
           }
+        ]
+      }
+    ],
+    "paradigms": [
+      {
+        "title": "Particípio Qal Ativo e Passivo (שָׁמַר)",
+        "type": "table",
+        "headers": [
+          "Gênero / Número",
+          "Particípio Ativo (Qotel)",
+          "Particípio Passivo (Qatul)"
+        ],
+        "rows": [
+          [
+            "Masc. Singular",
+            "שֹׁמֵר",
+            "שָׁמוּר"
+          ],
+          [
+            "Fem. Singular",
+            "שֹׁמֶרֶת / שֹׁמְרָה",
+            "שְׁמוּרָה"
+          ],
+          [
+            "Masc. Plural",
+            "שֹׁמְרִים",
+            "שְׁמוּרִים"
+          ],
+          [
+            "Fem. Plural",
+            "שֹׁמְרוֹת",
+            "שְׁמוּרוֹת"
+          ]
         ]
       }
     ]

@@ -66,12 +66,13 @@ function getEditDistance(a, b) {
 
 /**
  * Avalia a resposta do usuário contra a lista de traduções aceitas
- * Suporta correspondência exata, inversão de palavras, parênteses opcionais e detecção de typos.
+ * Suporta correspondência exata, inversão de palavras (em termos curtos), parênteses opcionais e detecção de typos.
  * @param {string} userAnswer
  * @param {Array<string>} acceptedList
+ * @param {Object} [options]
  * @returns {{status: 'correct'|'typo'|'incorrect', expected: string}}
  */
-function evaluateAnswer(userAnswer, acceptedList) {
+function evaluateAnswer(userAnswer, acceptedList, options = {}) {
   const safeList = Array.isArray(acceptedList) ? acceptedList : [];
   const cleanUser = (userAnswer || "").replace(/\(.*?\)/g, "");
   const normUser = normalizeText(cleanUser);
@@ -81,6 +82,7 @@ function evaluateAnswer(userAnswer, acceptedList) {
 
   let bestMatch = { status: "incorrect", expected: allAccepted };
 
+  const userWords = normUser.split(" ").filter((w) => w.length > 0);
   const sortWords = (str) =>
     str
       .split(" ")
@@ -88,6 +90,8 @@ function evaluateAnswer(userAnswer, acceptedList) {
       .sort()
       .join(" ");
   const userSortedWords = sortWords(normUser);
+  const allowWordInversion =
+    !(options && options.isSentence) && userWords.length <= 3;
 
   const hasQuestionMark = (str) => String(str || "").includes("?");
   const hasExclamation = (str) => String(str || "").includes("!");
@@ -108,8 +112,9 @@ function evaluateAnswer(userAnswer, acceptedList) {
     const isExactMatch =
       normUser === normAcceptedFull || normUser === normAcceptedStripped;
     const isInvertedMatch =
-      userSortedWords === sortWords(normAcceptedFull) ||
-      userSortedWords === sortWords(normAcceptedStripped);
+      allowWordInversion &&
+      (userSortedWords === sortWords(normAcceptedFull) ||
+        userSortedWords === sortWords(normAcceptedStripped));
 
     if (isExactMatch || isInvertedMatch) {
       const isPunctuationCorrect =

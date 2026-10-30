@@ -7,7 +7,7 @@
 const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 
 const suite = new TestSuite('Módulo 7: Paradigmas Gramaticais & Esquemas');
-const { appJs, greekData } = loadSourceFiles();
+const { appJs, greekData, hebrewData } = loadSourceFiles();
 const {
   getStaticParadigmTableHTML,
   getStaticDiagramHTML,
@@ -423,6 +423,19 @@ suite.test('resetParadigmBoard oculta cabeçalho, limpa deck e esvazia action co
   // Limpa globais para não afetar outros testes
   delete global.document;
   delete global.window;
+});
+
+suite.test('Capítulos de Hebraico contêm estruturas de paradigmas de Page Kelley', () => {
+  const hebWithParadigms = hebrewData.filter(c => c.paradigms && c.paradigms.length > 0);
+  assert.isGreaterThan(hebWithParadigms.length, 0, 'Deve haver capítulos de hebraico com paradigmas interativos');
+  hebWithParadigms.forEach(chap => {
+    chap.paradigms.forEach(p => {
+      assert.isTrue(typeof p.title === 'string' && p.title.trim().length > 0, 'Paradigma hebraico deve ter título');
+      assert.equal(p.type, 'table', 'Paradigma hebraico deve ser do tipo table');
+      assert.isArray(p.headers, 'Tabela hebraica deve ter headers');
+      assert.isArray(p.rows, 'Tabela hebraica deve ter rows');
+    });
+  });
 });
 
 module.exports = suite;

@@ -127,8 +127,24 @@ function startAnki() {
     AppState.currentChapter = AppState.chapters.find((c) => c.id === activeChapterId) || null;
   }
 
-  AppState.chapters.forEach((chap) => {
-    const isCurrent = chap.id === activeChapterId;
+  const getSelFn =
+    (typeof window !== "undefined" && typeof window.getSelectedChapters === "function" && window.getSelectedChapters) ||
+    (_stateModule && typeof _stateModule.getSelectedChapters === "function" && _stateModule.getSelectedChapters) ||
+    null;
+  const selectedChaps =
+    getSelFn && Array.isArray(AppState.selectedChapterIds) && AppState.selectedChapterIds.length > 1
+      ? getSelFn(AppState)
+      : (AppState.currentChapter ? [AppState.currentChapter] : []);
+  const selectedIdsSet = new Set(selectedChaps.map((c) => c && c.id).filter(Boolean));
+  if (activeChapterId && selectedIdsSet.size === 0) selectedIdsSet.add(activeChapterId);
+
+  const orderedChapters =
+    AppState.chapterOrder === "desc" && AppState.chapters.length > 1
+      ? [...AppState.chapters].reverse()
+      : AppState.chapters;
+
+  orderedChapters.forEach((chap) => {
+    const isSelected = selectedIdsSet.has(chap.id);
     const processItem = (it, kind) => {
       const entry = {
         ...it,
@@ -140,7 +156,7 @@ function startAnki() {
       const rawTerm = getTerm(it);
       const record = AppState.srs[key] || AppState.srs[rawTerm];
       if (record && record.nextReview <= now) dueCards.push(entry);
-      else if (!record && isCurrent) newCards.push(entry);
+      else if (!record && isSelected) newCards.push(entry);
     };
     (chap.items || []).forEach((i) => processItem(i, "word"));
     (chap.sentences || []).forEach((s) => processItem(s, "sentence"));
@@ -236,8 +252,33 @@ function renderAnkiCard() {
     easyEl.textContent = easyInt + (easyInt === 1 ? " dia" : " dias");
   }
 
+  const isSentenceCard =
+    ankiCurrentCard.kind === "sentence" ||
+    ankiCurrentCard.type === "Frase" ||
+    ankiCurrentCard.type === "Expressão" ||
+    (Array.isArray(ankiCurrentCard.tokens) && ankiCurrentCard.tokens.length > 0);
+  const canAnalyzeCard =
+    (AppState.language === "hebrew" || AppState.language === "greek") && isSentenceCard;
+  safeToggle("btn-anki-analyze", canAnalyzeCard);
+
   safeToggle("anki-back", false);
   safeToggle("anki-reveal-container", true);
+}
+
+/**
+ * Abre a análise morfológica da frase atual em exibição no Anki
+ */
+function openCurrentAnkiSentenceAnalysis() {
+  if (!ankiCurrentCard) return;
+  if (typeof window !== "undefined" && typeof window.openSentenceAnalysisModal === "function") {
+    window.openSentenceAnalysisModal(ankiCurrentCard);
+  } else if (
+    typeof window !== "undefined" &&
+    window.SentenceAnalysisModule &&
+    typeof window.SentenceAnalysisModule.openSentenceAnalysisModal === "function"
+  ) {
+    window.SentenceAnalysisModule.openSentenceAnalysisModal(ankiCurrentCard);
+  }
 }
 
 /**
@@ -319,6 +360,7 @@ if (typeof window !== "undefined") {
   window.revealAnki = revealAnki;
   window.answerAnki = answerAnki;
   window.finishAnki = finishAnki;
+  window.openCurrentAnkiSentenceAnalysis = openCurrentAnkiSentenceAnalysis;
   window.SRSModule = {
     getSRSKey,
     loadSRS,
@@ -329,6 +371,7 @@ if (typeof window !== "undefined") {
     revealAnki,
     answerAnki,
     finishAnki,
+    openCurrentAnkiSentenceAnalysis,
     getAnkiQueue: () => ankiQueue,
     getAnkiCurrentCard: () => ankiCurrentCard,
     getAnkiStats: () => ankiStats,
@@ -345,6 +388,7 @@ if (typeof module !== "undefined" && module.exports) {
     revealAnki,
     answerAnki,
     finishAnki,
+    openCurrentAnkiSentenceAnalysis,
     getAnkiQueue: () => ankiQueue,
     getAnkiCurrentCard: () => ankiCurrentCard,
     getAnkiStats: () => ankiStats,

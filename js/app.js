@@ -30,6 +30,8 @@ var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppSt
   practiceCategory: "all",
   isVocabCumulative: false,
   vocabCategory: "all",
+  selectedChapterIds: [],
+  chapterOrder: "asc",
 };
 
 var WORD_CATEGORIES = (typeof window !== "undefined" && window.WORD_CATEGORIES)
@@ -85,6 +87,7 @@ function getTerm(item) {
 
 function ensureDOM() {
   if (!DOM.qCategory) DOM.qCategory = document.getElementById("question-category");
+  if (!DOM.qChapterBadge) DOM.qChapterBadge = document.getElementById("question-chapter-badge");
   if (!DOM.qProgress) DOM.qProgress = document.getElementById("question-progress");
   if (!DOM.hebPrompt) DOM.hebPrompt = document.getElementById("hebrew-prompt");
   if (!DOM.hintText) DOM.hintText = document.getElementById("hint-text");
@@ -167,33 +170,22 @@ function hasUniqueChapterIds(chapters) {
 }
 
 function saveChaptersToStorage() {
-  if (typeof localStorage === "undefined" && typeof DataLoader === "undefined") return;
-  try {
-    if (typeof DataLoader !== "undefined" && typeof DataLoader.saveChapters === "function") {
-      DataLoader.saveChapters(AppState.language, AppState.chapters);
-    } else if (typeof localStorage !== "undefined") {
-      localStorage.setItem(
-        `gamida_${AppState.language}_chapters`,
-        JSON.stringify(AppState.chapters),
-      );
-      localStorage.setItem(
-        `gamida_data_version_${AppState.language}`,
-        APP_VERSION,
-      );
-    }
-  } catch (err) {
-    console.warn("Aviso ao salvar capítulos no storage:", err);
+  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.saveChaptersToStorage === "function") {
+    return window.StateModule.saveChaptersToStorage();
+  }
+  if (typeof DataLoader !== "undefined" && typeof DataLoader.saveChapters === "function") {
+    return DataLoader.saveChapters(AppState.language, AppState.chapters);
   }
 }
 
 function buildDistractorCache() {
-  let w = [],
-    s = [];
-  AppState.chapters.forEach((c) => {
+  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.buildDistractorCache === "function") {
+    return window.StateModule.buildDistractorCache();
+  }
+  let w = [], s = [];
+  (AppState.chapters || []).forEach((c) => {
     (c.items || []).forEach((i) => w.push(...(i.translations || [])));
-    (c.sentences || []).forEach((st) =>
-      s.push(...(st.translations || [])),
-    );
+    (c.sentences || []).forEach((st) => s.push(...(st.translations || [])));
   });
   AppState.distractorCache.words = [...new Set(w)];
   AppState.distractorCache.sentences = [...new Set(s)];
@@ -242,137 +234,118 @@ function switchTab(tabName) {
   }
 }
 
-// === FASE 3: SETUP DO SELETOR GLOBAL (DROPDOWN PREMIUM) ===
+// === FASE 3: SETUP DO SELETOR GLOBAL & MULTI-CAPÍTULOS ===
+function getSelectedChapters(state = AppState, options = {}) {
+  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.getSelectedChapters === "function") {
+    return window.StateModule.getSelectedChapters(state, options);
+  }
+  const chapters = Array.isArray(state?.chapters) ? state.chapters : [];
+  const order = options.order || state?.chapterOrder || "asc";
+  let result = [];
+  if (Array.isArray(state?.selectedChapterIds) && state.selectedChapterIds.length > 0) {
+    const selSet = new Set(state.selectedChapterIds);
+    result = chapters.filter((c) => c && selSet.has(c.id));
+    if (result.length > 1) result = result.filter((c) => !isAlphabetChapter(c));
+  }
+  if (result.length === 0) {
+    result = state?.currentChapter ? [state.currentChapter] : (chapters[0] ? [chapters[0]] : []);
+  }
+  return order === "desc" && result.length > 1 ? [...result].reverse() : result;
+}
+
+function setSelectedChapters(chapterIds, state = AppState) {
+  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.setSelectedChapters === "function") {
+    return window.StateModule.setSelectedChapters(chapterIds, state);
+  }
+  state.selectedChapterIds = Array.isArray(chapterIds) ? [...chapterIds] : [];
+  return getSelectedChapters(state);
+}
+
+function toggleChapterSelection(chapterId, state = AppState) {
+  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.toggleChapterSelection === "function") {
+    return window.StateModule.toggleChapterSelection(chapterId, state);
+  }
+  return getSelectedChapters(state);
+}
+
+function setChapterOrder(order, state = AppState) {
+  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.setChapterOrder === "function") {
+    return window.StateModule.setChapterOrder(order, state);
+  }
+  state.chapterOrder = order === "desc" ? "desc" : "asc";
+  return state.chapterOrder;
+}
+
 function setupGlobalChapterDropdown() {
-  const list = document.getElementById("chapter-dropdown-list");
-  const btnText = document.getElementById("chapter-dropdown-text");
-  if (!list || !btnText) return;
-
-  list.innerHTML = "";
-
-  // Constrói a lista bonita (ul/li)
-  AppState.chapters.forEach((chap) => {
-    const li = document.createElement("li");
-    const isAlpha = isAlphabetChapter(chap);
-    li.className = isAlpha
-      ? "px-4 py-3.5 text-sm text-brand-300 font-semibold bg-indigo-950/20 hover:bg-slate-800 hover:text-white cursor-pointer transition border-l-4 border-indigo-500 hover:border-brand-400 flex items-center justify-between"
-      : "px-4 py-3.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white hover:font-bold cursor-pointer transition border-l-4 border-transparent hover:border-brand-500";
-
-    if (isAlpha) {
-      li.innerHTML = `<span>${escapeHTML(chap.title)}</span><span class="text-[10px] bg-indigo-500/30 text-indigo-200 border border-indigo-400/40 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">🔤 Alfabeto</span>`;
-    } else {
-      li.textContent = chap.title;
-    }
-
-    // O que acontece quando clica numa opção
-    li.onclick = () => {
-      toggleDropdown(true); // Força fechar
-      changeGlobalChapter(chap.id);
-      if (window.innerWidth < 768 && typeof toggleMobileMenu === "function") {
-        toggleMobileMenu(false); // Retrai o menu no mobile para focar na lição
-      }
-    };
-    list.appendChild(li);
-  });
-
-  // Recupera a memória de idioma
-  const savedChap = localStorage.getItem(
-    `gamida_lastChap_${AppState.language}`,
-  );
-  const activeChap =
-    AppState.chapters.find((c) => c.id === savedChap) ||
-    AppState.chapters[0];
-
-  if (activeChap) {
-    changeGlobalChapter(activeChap.id);
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.setupGlobalChapterDropdown === "function") {
+    return window.UIModule.setupGlobalChapterDropdown();
   }
 }
 
-// Função auxiliar para abrir/fechar a lista
 function toggleDropdown(forceClose = false) {
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.toggleDropdown === "function") {
+    return window.UIModule.toggleDropdown(forceClose);
+  }
   const list = document.getElementById("chapter-dropdown-list");
   if (!list) return;
-  if (forceClose) {
-    list.classList.add("hidden");
-  } else {
-    list.classList.toggle("hidden");
+  if (forceClose) list.classList.add("hidden");
+  else list.classList.toggle("hidden");
+}
+
+function togglePracticeChapterPicker(eventOrForceClose = false) {
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.togglePracticeChapterPicker === "function") {
+    return window.UIModule.togglePracticeChapterPicker(eventOrForceClose);
   }
 }
 
-// Evento para fechar o dropdown se o usuário clicar fora dele
-document.addEventListener("click", (e) => {
-  const dropdown = document.getElementById("custom-chapter-selector");
-  if (dropdown && !dropdown.contains(e.target)) {
-    toggleDropdown(true);
-  }
-});
-
-// === FASE 3: O COMANDO CENTRAL ===
 function changeGlobalChapter(chapterId) {
-  if (!chapterId) return;
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.changeGlobalChapter === "function") {
+    return window.UIModule.changeGlobalChapter(chapterId);
+  }
+}
 
-  const found = AppState.chapters.find((c) => c.id === chapterId);
-  if (found) {
-    AppState.currentChapter = found;
-    AppState.activeChapterId = found.id;
+function togglePracticeChapter(chapterId) {
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.togglePracticeChapter === "function") {
+    return window.UIModule.togglePracticeChapter(chapterId);
+  }
+  toggleChapterSelection(chapterId, AppState);
+  resetStats();
+  buildPracticeQueue();
+  renderCurrentQuestion();
+}
 
-    // Atualiza o texto do botão
-    const btnText = document.getElementById("chapter-dropdown-text");
-    if (btnText) {
-      btnText.textContent = found.title;
-      btnText.title = found.title;
-    }
+function selectAllPracticeChapters() {
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.selectAllPracticeChapters === "function") {
+    return window.UIModule.selectAllPracticeChapters();
+  }
+  const vocabIds = (AppState.chapters || []).filter((c) => c && !isAlphabetChapter(c)).map((c) => c.id);
+  setSelectedChapters(vocabIds, AppState);
+  resetStats();
+  buildPracticeQueue();
+  renderCurrentQuestion();
+}
 
-    // Salva a preferência
-    if (typeof localStorage !== "undefined") {
-      try {
-        localStorage.setItem(
-          `gamida_lastChap_${AppState.language}`,
-          found.id,
-        );
-      } catch (err) {
-        console.warn("Aviso ao salvar último capítulo no localStorage:", err);
-      }
-    }
+function setPracticeChapterOrder(order) {
+  setChapterOrder(order, AppState);
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.renderChapterSelectorLists === "function") {
+    window.UIModule.renderChapterSelectorLists();
+  }
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.updatePracticeOrderUI === "function") {
+    window.UIModule.updatePracticeOrderUI();
+  }
+  AppState.currentQuestionIndex = 0;
+  AppState.isNewRoundPending = false;
+  resetStats();
+  buildPracticeQueue();
+  renderCurrentQuestion();
+  lastRenderedVocabChapter = null;
+  if (typeof renderVocabTable === "function") renderVocabTable();
+  return AppState.chapterOrder;
+}
 
-    // Interrompe sessões que pertencem ao capítulo anterior.
-    if (typeof resetToDashboard === "function") {
-      try {
-        resetToDashboard();
-      } catch (e) {
-        console.warn("Aviso ao resetar sessões anteriores:", e);
-      }
-    }
-
-    // 1. Atualiza Praticar
-    AppState.currentQuestionIndex = 0;
-    AppState.currentQuestion = null;
-    if (typeof resetStats === "function") resetStats();
-    if (typeof updatePracticeChapterView === "function") updatePracticeChapterView();
-    if (typeof updatePracticeCategoryFilterUI === "function") updatePracticeCategoryFilterUI();
-    if (typeof buildPracticeQueue === "function") buildPracticeQueue();
-    if (typeof renderCurrentQuestion === "function") renderCurrentQuestion();
-
-    // 2. Atualiza Dicionário
-    lastRenderedVocabChapter = null;
-    if (typeof renderVocabTable === "function") renderVocabTable();
-
-    // 3. Atualiza Paradigmas
-    if (typeof updateParadigmsVisibility === "function") updateParadigmsVisibility();
-    const parSelect = document.getElementById("paradigm-select");
-    if (parSelect) {
-      parSelect.innerHTML =
-        '<option value="">Selecione o Esquema / Tabela...</option>';
-      if (found.paradigms && found.paradigms.length > 0) {
-        found.paradigms.forEach((par, idx) => {
-          const opt = document.createElement("option");
-          opt.value = idx;
-          opt.textContent = par.title;
-          parSelect.appendChild(opt);
-        });
-      }
-    }
-    if (typeof resetParadigmBoard === "function") resetParadigmBoard();
+function updatePracticeOrderUI() {
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.updatePracticeOrderUI === "function") {
+    return window.UIModule.updatePracticeOrderUI();
   }
 }
 
@@ -434,9 +407,9 @@ function getEditDistance(a, b) {
   return matrix[b.length][a.length];
 }
 
-function evaluateAnswer(userAnswer, acceptedList) {
+function evaluateAnswer(userAnswer, acceptedList, options = {}) {
   if (typeof window !== "undefined" && window.EvaluationModule && typeof window.EvaluationModule.evaluateAnswer === "function") {
-    return window.EvaluationModule.evaluateAnswer(userAnswer, acceptedList);
+    return window.EvaluationModule.evaluateAnswer(userAnswer, acceptedList, options);
   }
   return { status: "incorrect", expected: Array.isArray(acceptedList) ? acceptedList.join(" / ") : "" };
 }
@@ -590,6 +563,20 @@ function setPracticeCategory(catId) {
 
 function setPracticeCumulative(isCumulative) {
   AppState.isPracticeCumulative = !!isCumulative;
+  const chapters = AppState.chapters || [];
+  if (chapters.length > 0 && AppState.currentChapter) {
+    const activeIdx = chapters.findIndex((c) => c && c.id === AppState.currentChapter.id);
+    if (isCumulative) {
+      let cumul = chapters.slice(0, activeIdx >= 0 ? activeIdx + 1 : chapters.length);
+      if (activeIdx > 0) cumul = cumul.filter((c) => !isAlphabetChapter(c));
+      setSelectedChapters(cumul.map((c) => c.id), AppState);
+    } else {
+      setSelectedChapters([AppState.currentChapter.id], AppState);
+    }
+    if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.renderChapterSelectorLists === "function") {
+      window.UIModule.renderChapterSelectorLists();
+    }
+  }
   updatePracticeScopeUI();
   updatePracticeCategoryFilterUI();
   AppState.currentQuestionIndex = 0;
@@ -603,80 +590,106 @@ function updatePracticeScopeUI() {
   if (typeof document === "undefined") return;
   const btnSingle = document.getElementById("scope-single");
   const btnCumulative = document.getElementById("scope-cumulative");
+  const btnAll = document.getElementById("scope-all");
   if (!btnSingle || !btnCumulative) return;
 
-  if (AppState.isPracticeCumulative) {
-    btnCumulative.className = "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1";
-    btnSingle.className = "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200";
+  const selectedChaps = getSelectedChapters(AppState, { forVocab: false });
+  const totalVocabChaps = Array.isArray(AppState.chapters)
+    ? AppState.chapters.filter((c) => c && !isAlphabetChapter(c)).length
+    : 0;
+  const isAll = totalVocabChaps > 1 && selectedChaps.length === totalVocabChaps;
+  const isCumulative = AppState.isPracticeCumulative || selectedChaps.length > 1;
+
+  const activeCls = "px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer";
+  const inactiveCls = "px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer";
+
+  if (isAll && btnAll) {
+    btnAll.className = activeCls;
+    btnCumulative.className = inactiveCls;
+    btnSingle.className = inactiveCls;
+  } else if (isCumulative) {
+    btnCumulative.className = activeCls;
+    btnSingle.className = inactiveCls;
+    if (btnAll) btnAll.className = inactiveCls;
   } else {
-    btnSingle.className = "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white";
-    btnCumulative.className = "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1";
+    btnSingle.className = activeCls;
+    btnCumulative.className = inactiveCls;
+    if (btnAll) btnAll.className = inactiveCls;
   }
 }
 
 function buildPracticeQueue() {
-  if (!AppState.currentChapter) {
+  const selectedChapters = getSelectedChapters(AppState, {
+    forVocab: false,
+    order: AppState.chapterOrder || "asc",
+  });
+
+  if (!selectedChapters || selectedChapters.length === 0) {
     practiceQueue = [];
     return;
   }
 
-  let baseList = [];
-  const activeChapterId = AppState.currentChapter.id;
-  const activeIdx = AppState.chapters.findIndex((c) => c.id === activeChapterId);
+  const orderedQueue = [];
+  const seenTerms = new Set();
 
-  if (AppState.isPracticeCumulative) {
-    let cumulativeChapters = AppState.chapters.slice(
-      0,
-      activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
-    );
-    if (activeIdx > 0) {
-      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
-    }
+  selectedChapters.forEach((chap) => {
+    if (!chap) return;
+    let chapItems = [];
 
     if (AppState.exerciseMode === "favorites") {
-      cumulativeChapters.forEach((chap) => {
-        (chap.items || []).filter((i) => !!i.favorite).forEach((i) => baseList.push(i));
-        (chap.sentences || []).filter((s) => !!s.favorite).forEach((s) => baseList.push(s));
-      });
+      const favWords = (chap.items || []).filter((i) => !!i.favorite);
+      const favSentences = (chap.sentences || []).filter((s) => !!s.favorite);
+      chapItems = [...favWords, ...favSentences];
     } else if (AppState.exerciseMode === "sentences") {
-      cumulativeChapters.forEach((chap) => {
-        (chap.sentences || []).forEach((s) => baseList.push(s));
-      });
-      if (baseList.length === 0) {
-        cumulativeChapters.forEach((chap) => {
-          (chap.items || []).forEach((i) => baseList.push(i));
-        });
+      chapItems = (chap.sentences || []).length > 0 ? [...chap.sentences] : [];
+    } else {
+      chapItems = [...(chap.items || [])];
+    }
+
+    // Filtro por tipo de palavra (quando em Digitação e categoria diferente de 'all')
+    if (AppState.exerciseMode === "typing" && AppState.practiceCategory && AppState.practiceCategory !== "all") {
+      chapItems = chapItems.filter((item) => matchItemCategory(item, AppState.practiceCategory));
+    }
+
+    // Deduplica preservando o agrupamento e a ordem dos capítulos selecionados
+    const uniqueChapItems = [];
+    chapItems.forEach((item) => {
+      const t = getTerm(item);
+      if (!t || !seenTerms.has(t)) {
+        if (t) seenTerms.add(t);
+        try {
+          Object.defineProperty(item, "_chapterId", { value: chap.id, writable: true, configurable: true, enumerable: false });
+          Object.defineProperty(item, "_chapterTitle", { value: chap.title, writable: true, configurable: true, enumerable: false });
+        } catch (_) {}
+        uniqueChapItems.push(item);
       }
-    } else {
-      cumulativeChapters.forEach((chap) => {
-        (chap.items || []).forEach((i) => baseList.push(i));
+    });
+
+    // Embaralha dentro de cada capítulo para manter dinamismo sem quebrar a ordem dos capítulos (Menor ➔ Maior ou Maior ➔ Menor)
+    orderedQueue.push(...shuffleArray(uniqueChapItems));
+  });
+
+  // Fallback para vocabulário caso o modo frases esteja ativo em capítulos sem frases
+  if (orderedQueue.length === 0 && AppState.exerciseMode === "sentences") {
+    selectedChapters.forEach((chap) => {
+      if (!chap) return;
+      const fallbackItems = [];
+      (chap.items || []).forEach((item) => {
+        const t = getTerm(item);
+        if (!t || !seenTerms.has(t)) {
+          if (t) seenTerms.add(t);
+          try {
+            Object.defineProperty(item, "_chapterId", { value: chap.id, writable: true, configurable: true, enumerable: false });
+            Object.defineProperty(item, "_chapterTitle", { value: chap.title, writable: true, configurable: true, enumerable: false });
+          } catch (_) {}
+          fallbackItems.push(item);
+        }
       });
-    }
-
-    // Deduplica itens por termo
-    baseList = Array.from(new Map(baseList.map((item) => [getTerm(item), item])).values());
-  } else {
-    if (AppState.exerciseMode === "favorites") {
-      const favWords = (AppState.currentChapter.items || []).filter((i) => !!i.favorite);
-      const favSentences = (AppState.currentChapter.sentences || []).filter((s) => !!s.favorite);
-      baseList = [...favWords, ...favSentences];
-      baseList = Array.from(new Map(baseList.map((item) => [getTerm(item), item])).values());
-    } else if (AppState.exerciseMode === "sentences") {
-      baseList = AppState.currentChapter.sentences?.length
-        ? AppState.currentChapter.sentences
-        : AppState.currentChapter.items || [];
-    } else {
-      baseList = AppState.currentChapter.items || [];
-    }
+      orderedQueue.push(...shuffleArray(fallbackItems));
+    });
   }
 
-  // Filtro por tipo de palavra (quando em Digitação e categoria diferente de 'all')
-  if (AppState.exerciseMode === "typing" && AppState.practiceCategory && AppState.practiceCategory !== "all") {
-    baseList = baseList.filter((item) => matchItemCategory(item, AppState.practiceCategory));
-  }
-
-  // Embaralha a lista e salva na fila de prática
-  practiceQueue = shuffleArray(baseList);
+  practiceQueue = orderedQueue;
 }
 
 function resetPracticeActionButtons() {
@@ -828,6 +841,16 @@ function renderCurrentQuestion() {
     const catLabel = AppState.currentQuestion.type || "Geral";
     DOM.qCategory.textContent = AppState.exerciseMode === "favorites" ? `${catLabel} ⭐` : catLabel;
   }
+  const qChapterBadge = DOM.qChapterBadge || (typeof document !== "undefined" ? document.getElementById("question-chapter-badge") : null);
+  if (qChapterBadge) {
+    const chapTitle = AppState.currentQuestion._chapterTitle || AppState.currentChapter?.title || "";
+    if (chapTitle) {
+      qChapterBadge.textContent = `📖 ${chapTitle}`;
+      qChapterBadge.classList.remove("hidden");
+    } else {
+      qChapterBadge.classList.add("hidden");
+    }
+  }
   if (DOM.qProgress) {
     const modeSuffix = AppState.exerciseMode === "favorites" ? " (Favoritas)" : "";
     DOM.qProgress.textContent = `Item ${AppState.currentQuestionIndex + 1} de ${practiceQueue.length}${modeSuffix}`;
@@ -974,9 +997,15 @@ function checkPracticeAnswer(userAnswer) {
     AppState.isNewRoundPending = false;
   }
 
+  const isSentenceQuestion =
+    AppState.exerciseMode === "sentences" ||
+    AppState.currentQuestion?.type === "Frase" ||
+    AppState.currentQuestion?.type === "Expressão" ||
+    (Array.isArray(AppState.currentQuestion?.tokens) && AppState.currentQuestion.tokens.length > 0);
   const evalResult = evaluateAnswer(
     userAnswer,
     AppState.currentQuestion.translations,
+    { isSentence: isSentenceQuestion },
   );
   AppState.totalAnswered++;
 
@@ -1188,6 +1217,9 @@ async function toggleLanguage(targetLang = null) {
 }
 
 function updateParadigmsVisibility() {
+  if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.updateParadigmsVisibility === "function") {
+    return window.ParadigmsModule.updateParadigmsVisibility();
+  }
   const btnParadigms = document.getElementById("nav-btn-paradigms");
   if (!btnParadigms) return;
 
@@ -1196,67 +1228,20 @@ function updateParadigmsVisibility() {
     Array.isArray(AppState.currentChapter.paradigms) &&
     AppState.currentChapter.paradigms.length > 0;
 
-  if (AppState.language === "hebrew" || !hasParadigms) {
-    btnParadigms.style.display = "none"; // Força o bloqueio visual quando não há paradigmas ou em hebraico
-
+  if (!hasParadigms) {
+    btnParadigms.style.display = "none";
     if (AppState.currentTab === "paradigms") {
       switchTab("practice");
     }
   } else {
-    btnParadigms.style.display = ""; // Devolve ao controle do CSS (Tailwind)
+    btnParadigms.style.display = "";
   }
   setTimeout(updateTabsScrollIndicators, 50);
 }
 
 function applyLanguageUI() {
-  const logo = document.getElementById("app-logo-btn");
-  const subtitle = document.getElementById("app-subtitle");
-
-  const textElements = [
-    DOM.hebPrompt,
-    document.getElementById("alphabet-target-glyph"),
-    document.getElementById("assess-hebrew"),
-    document.getElementById("anki-hebrew"),
-    document.getElementById("survival-hebrew"),
-    document.getElementById("surv-last-heb"),
-  ];
-
-  const footnoteEl = document.getElementById("app-grammar-footnote");
-
-  if (AppState.language === "hebrew") {
-    logo.textContent = "א";
-    logo.className =
-      "w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300";
-    subtitle.textContent = "Treinador de Hebraico Autônomo";
-
-    if (footnoteEl) {
-      footnoteEl.innerHTML =
-        'Este sistema é uma ferramenta complementar de estudo e prática que segue a <strong class="text-white font-semibold">"Gramática do Hebraico Bíblico"</strong> de <strong class="text-white font-semibold">Page H. Kelley</strong> (Editora Sinodal)';
-    }
-
-    textElements.forEach((el) => {
-      if (el) {
-        el.classList.remove("greek-text");
-        el.classList.add("hebrew-text");
-      }
-    });
-  } else {
-    logo.textContent = "α";
-    logo.className =
-      "w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 to-amber-500 flex items-center justify-center shadow-lg shadow-rose-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300";
-    subtitle.textContent = "Treinador de Grego Autônomo";
-
-    if (footnoteEl) {
-      footnoteEl.innerHTML =
-        'Este sistema é uma ferramenta complementar de estudo e prática que segue a gramática <strong class="text-white font-semibold">"Introdução ao Grego Bíblico"</strong> do autor <strong class="text-white font-semibold">Johannes Bergmann</strong> da editora <strong class="text-white font-semibold">Thomas Nelson</strong>.';
-    }
-
-    textElements.forEach((el) => {
-      if (el) {
-        el.classList.remove("hebrew-text");
-        el.classList.add("greek-text");
-      }
-    });
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.applyLanguageUI === "function") {
+    return window.UIModule.applyLanguageUI();
   }
 }
 
@@ -1266,15 +1251,19 @@ async function resetDefaultChapters() {
     return;
   }
   try {
-    if (typeof DataLoader.clearCache === "function") {
-      DataLoader.clearCache(AppState.language);
+    if (typeof DataLoader.resetChapters === "function") {
+      await DataLoader.resetChapters(AppState.language);
+    } else if (DataLoader.storage && typeof DataLoader.storage.removeItem === "function") {
+      await DataLoader.storage.removeItem(`gamida_${AppState.language}_chapters`);
+      await DataLoader.storage.removeItem(`gamida_data_version_${AppState.language}`);
+      await DataLoader.storage.removeItem(`gamida_lastChap_${AppState.language}`);
+      await DataLoader.storage.removeItem(`gamida_selectedChaps_${AppState.language}`);
+      await DataLoader.storage.removeItem(`gamida_chapOrder_${AppState.language}`);
     }
-    localStorage.removeItem(`gamida_${AppState.language}_chapters`);
-    localStorage.removeItem(`gamida_data_version_${AppState.language}`);
-    localStorage.removeItem(`gamida_lastChap_${AppState.language}`);
     const defaults = await DataLoader.fetchDefaultChapters(AppState.language);
     AppState.chapters = JSON.parse(JSON.stringify(defaults));
-    saveChaptersToStorage();
+    AppState.selectedChapterIds = [];
+    await DataLoader.saveChapters(AppState.language, AppState.chapters);
     buildDistractorCache();
     setupGlobalChapterDropdown();
     switchTab("practice");
@@ -1643,6 +1632,13 @@ function finishAnki() {
   return null;
 }
 
+function openCurrentAnkiSentenceAnalysis() {
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.openCurrentAnkiSentenceAnalysis === "function") {
+    return window.SRSModule.openCurrentAnkiSentenceAnalysis();
+  }
+  return null;
+}
+
 /* ================= FASE 3: LÓGICA DE SOBREVIVÊNCIA (MORTE SÚBITA) ================= */
 // Lógica do Modo Sobrevivência delegada para js/modules/survival.js (SurvivalModule)
 let survLives = 3;
@@ -1982,6 +1978,15 @@ if (typeof window !== "undefined") {
     });
   }
   window.changeGlobalChapter = changeGlobalChapter;
+  window.togglePracticeChapter = togglePracticeChapter;
+  window.selectAllPracticeChapters = selectAllPracticeChapters;
+  window.setPracticeChapterOrder = setPracticeChapterOrder;
+  window.updatePracticeOrderUI = updatePracticeOrderUI;
+  window.togglePracticeChapterPicker = togglePracticeChapterPicker;
+  window.getSelectedChapters = getSelectedChapters;
+  window.setSelectedChapters = setSelectedChapters;
+  window.toggleChapterSelection = toggleChapterSelection;
+  window.setChapterOrder = setChapterOrder;
   window.buildPracticeQueue = buildPracticeQueue;
   window.renderCurrentQuestion = renderCurrentQuestion;
   window.setPracticeCumulative = setPracticeCumulative;
@@ -2013,6 +2018,16 @@ if (typeof window !== "undefined") {
 
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
+    changeGlobalChapter,
+    togglePracticeChapter,
+    selectAllPracticeChapters,
+    setPracticeChapterOrder,
+    updatePracticeOrderUI,
+    togglePracticeChapterPicker,
+    getSelectedChapters,
+    setSelectedChapters,
+    toggleChapterSelection,
+    setChapterOrder,
     setPracticeCumulative,
     setPracticeCategory,
     getAvailablePracticeCategories,

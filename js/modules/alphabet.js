@@ -534,7 +534,13 @@ function nextAlphabetChallenge() {
 
 function updatePracticeChapterView() {
   if (typeof document === "undefined") return;
-  const isAlpha = isAlphabetChapter(AppState.currentChapter);
+  const getSelFn = (typeof window !== "undefined" && typeof window.getSelectedChapters === "function")
+    ? window.getSelectedChapters
+    : (_stateModule && typeof _stateModule.getSelectedChapters === "function" ? _stateModule.getSelectedChapters : null);
+  const selectedChaps = getSelFn
+    ? getSelFn(AppState)
+    : (AppState.currentChapter ? [AppState.currentChapter] : []);
+  const isAlpha = selectedChaps.length <= 1 && isAlphabetChapter(AppState.currentChapter);
   const stdControls = document.getElementById("standard-mode-controls");
   const alphaControls = document.getElementById("alphabet-mode-controls");
   const stdPanel = document.getElementById("standard-practice-panel");
@@ -542,9 +548,10 @@ function updatePracticeChapterView() {
   const btnSentences = document.getElementById("mode-sentences");
 
   const hasSentences =
-    AppState.currentChapter &&
-    Array.isArray(AppState.currentChapter.sentences) &&
-    AppState.currentChapter.sentences.length > 0;
+    selectedChaps.some((c) => c && Array.isArray(c.sentences) && c.sentences.length > 0) ||
+    (AppState.currentChapter &&
+      Array.isArray(AppState.currentChapter.sentences) &&
+      AppState.currentChapter.sentences.length > 0);
 
   if (btnSentences) {
     if (!hasSentences) {

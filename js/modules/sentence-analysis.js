@@ -873,22 +873,22 @@
     }
   }
 
-  function syncHebrewMorphemeDOMHighlights() {
+  function syncModalDOMHighlights(modalState) {
     const container = document.getElementById("sentence-morphemes-container");
     const ribbon = document.getElementById("sentence-morphemes-ribbon");
     const pinBadge = document.getElementById("analysis-pinned-indicator");
 
     if (pinBadge) {
-      if (HebrewModalState.pinnedIndex !== null) {
+      if (modalState.pinnedIndex !== null) {
         pinBadge.classList.remove("hidden");
       } else {
         pinBadge.classList.add("hidden");
       }
     }
 
-    const currentTargetIndex = HebrewModalState.pinnedIndex !== null
-      ? HebrewModalState.pinnedIndex
-      : HebrewModalState.activeIndex;
+    const currentTargetIndex = modalState.pinnedIndex !== null
+      ? modalState.pinnedIndex
+      : modalState.activeIndex;
 
     if (container) {
       const morphemeEls = container.querySelectorAll(".morpheme");
@@ -897,14 +897,14 @@
         const pIdx = parseInt(el.getAttribute("data-part-idx"), 10);
 
         const isActive = currentTargetIndex !== null &&
-          HebrewModalState.flatMorphemes[currentTargetIndex] &&
-          HebrewModalState.flatMorphemes[currentTargetIndex].tokenIdx === tIdx &&
-          HebrewModalState.flatMorphemes[currentTargetIndex].partIdx === pIdx;
+          modalState.flatMorphemes[currentTargetIndex] &&
+          modalState.flatMorphemes[currentTargetIndex].tokenIdx === tIdx &&
+          modalState.flatMorphemes[currentTargetIndex].partIdx === pIdx;
 
-        const isPinned = HebrewModalState.pinnedIndex !== null &&
-          HebrewModalState.flatMorphemes[HebrewModalState.pinnedIndex] &&
-          HebrewModalState.flatMorphemes[HebrewModalState.pinnedIndex].tokenIdx === tIdx &&
-          HebrewModalState.flatMorphemes[HebrewModalState.pinnedIndex].partIdx === pIdx;
+        const isPinned = modalState.pinnedIndex !== null &&
+          modalState.flatMorphemes[modalState.pinnedIndex] &&
+          modalState.flatMorphemes[modalState.pinnedIndex].tokenIdx === tIdx &&
+          modalState.flatMorphemes[modalState.pinnedIndex].partIdx === pIdx;
 
         if (isActive) el.classList.add("is-active");
         else el.classList.remove("is-active");
@@ -932,7 +932,7 @@
 
         const idx = parseInt(rawIdx, 10);
         const isActive = currentTargetIndex === idx;
-        const isPinned = HebrewModalState.pinnedIndex === idx;
+        const isPinned = modalState.pinnedIndex === idx;
 
         if (isActive || isPinned) {
           chip.classList.add("is-active");
@@ -942,6 +942,10 @@
         }
       });
     }
+  }
+
+  function syncHebrewMorphemeDOMHighlights() {
+    syncModalDOMHighlights(HebrewModalState);
   }
 
   function setActiveHebrewMorphemeIndex(idx, pin = false) {
@@ -2085,74 +2089,7 @@
   }
 
   function syncGreekMorphemeDOMHighlights() {
-    const container = document.getElementById("sentence-morphemes-container");
-    const ribbon = document.getElementById("sentence-morphemes-ribbon");
-    const pinBadge = document.getElementById("analysis-pinned-indicator");
-
-    if (pinBadge) {
-      if (GreekModalState.pinnedIndex !== null) {
-        pinBadge.classList.remove("hidden");
-      } else {
-        pinBadge.classList.add("hidden");
-      }
-    }
-
-    const currentTargetIndex = GreekModalState.pinnedIndex !== null
-      ? GreekModalState.pinnedIndex
-      : GreekModalState.activeIndex;
-
-    if (container) {
-      const morphemeEls = container.querySelectorAll(".morpheme");
-      morphemeEls.forEach((el) => {
-        const tIdx = parseInt(el.getAttribute("data-token-idx"), 10);
-        const pIdx = parseInt(el.getAttribute("data-part-idx"), 10);
-
-        const isActive = currentTargetIndex !== null &&
-          GreekModalState.flatMorphemes[currentTargetIndex] &&
-          GreekModalState.flatMorphemes[currentTargetIndex].tokenIdx === tIdx &&
-          GreekModalState.flatMorphemes[currentTargetIndex].partIdx === pIdx;
-
-        const isPinned = GreekModalState.pinnedIndex !== null &&
-          GreekModalState.flatMorphemes[GreekModalState.pinnedIndex] &&
-          GreekModalState.flatMorphemes[GreekModalState.pinnedIndex].tokenIdx === tIdx &&
-          GreekModalState.flatMorphemes[GreekModalState.pinnedIndex].partIdx === pIdx;
-
-        if (isActive) el.classList.add("is-active");
-        else el.classList.remove("is-active");
-
-        if (isPinned) el.classList.add("is-pinned");
-        else el.classList.remove("is-pinned");
-      });
-    }
-
-    if (ribbon) {
-      const chips = ribbon.querySelectorAll(".morpheme-chip");
-      chips.forEach((chip) => {
-        const rawIdx = chip.getAttribute("data-morpheme-idx");
-        if (rawIdx === "global") {
-          const isGlobalActive = currentTargetIndex === null;
-          if (isGlobalActive) {
-            chip.classList.add("is-active", "border-indigo-400", "bg-indigo-950/60");
-            chip.classList.remove("border-slate-800", "bg-slate-900/60");
-          } else {
-            chip.classList.remove("is-active", "border-indigo-400", "bg-indigo-950/60");
-            chip.classList.add("border-slate-800", "bg-slate-900/60");
-          }
-          return;
-        }
-
-        const idx = parseInt(rawIdx, 10);
-        const isActive = currentTargetIndex === idx;
-        const isPinned = GreekModalState.pinnedIndex === idx;
-
-        if (isActive || isPinned) {
-          chip.classList.add("is-active");
-          if (isPinned) chip.classList.add("ring-2", "ring-amber-400");
-        } else {
-          chip.classList.remove("is-active", "ring-2", "ring-amber-400");
-        }
-      });
-    }
+    syncModalDOMHighlights(GreekModalState);
   }
 
   function setActiveGreekMorphemeIndex(idx, pin = false) {

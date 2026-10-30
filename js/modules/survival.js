@@ -99,15 +99,28 @@ function startSurvival() {
   if (!AppState.currentChapter && activeChapterId && Array.isArray(AppState.chapters)) {
     AppState.currentChapter = AppState.chapters.find((c) => c.id === activeChapterId) || null;
   }
-  const activeIdx = AppState.chapters.findIndex(
-    (c) => c.id === activeChapterId,
-  );
-  let cumulativeChapters = AppState.chapters.slice(
-    0,
-    activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
-  );
-  if (activeIdx > 0) {
-    cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+  const getSelFn =
+    (typeof window !== "undefined" && typeof window.getSelectedChapters === "function" && window.getSelectedChapters) ||
+    (_stateModule && typeof _stateModule.getSelectedChapters === "function" && _stateModule.getSelectedChapters) ||
+    null;
+  let cumulativeChapters = [];
+  if (getSelFn && Array.isArray(AppState.selectedChapterIds) && AppState.selectedChapterIds.length > 1) {
+    cumulativeChapters = getSelFn(AppState);
+  }
+  if (cumulativeChapters.length === 0) {
+    const activeIdx = AppState.chapters.findIndex(
+      (c) => c.id === activeChapterId,
+    );
+    cumulativeChapters = AppState.chapters.slice(
+      0,
+      activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
+    );
+    if (activeIdx > 0) {
+      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+    }
+    if (AppState.chapterOrder === "desc" && cumulativeChapters.length > 1) {
+      cumulativeChapters = [...cumulativeChapters].reverse();
+    }
   }
 
   let allWords = [];
@@ -162,15 +175,25 @@ function updateSurvivalUI() {
  */
 function nextSurvivalQuestion() {
   if (survQueue.length === 0) {
-    const activeIdx = AppState.chapters.findIndex(
-      (c) => c.id === AppState.currentChapter?.id,
-    );
-    let cumulativeChapters = AppState.chapters.slice(
-      0,
-      activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
-    );
-    if (activeIdx > 0) {
-      cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+    const getSelFn =
+      (typeof window !== "undefined" && typeof window.getSelectedChapters === "function" && window.getSelectedChapters) ||
+      (_stateModule && typeof _stateModule.getSelectedChapters === "function" && _stateModule.getSelectedChapters) ||
+      null;
+    let cumulativeChapters = [];
+    if (getSelFn && Array.isArray(AppState.selectedChapterIds) && AppState.selectedChapterIds.length > 1) {
+      cumulativeChapters = getSelFn(AppState);
+    }
+    if (cumulativeChapters.length === 0) {
+      const activeIdx = AppState.chapters.findIndex(
+        (c) => c.id === AppState.currentChapter?.id,
+      );
+      cumulativeChapters = AppState.chapters.slice(
+        0,
+        activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
+      );
+      if (activeIdx > 0) {
+        cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+      }
     }
     let refill = [];
     cumulativeChapters.forEach((chap) =>
