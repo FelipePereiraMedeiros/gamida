@@ -213,6 +213,74 @@ suite.test('renderVocabTable anexa atributo data-search pré-calculado e filterV
   AppState.language = prevLang;
 });
 
+suite.test('renderVocabTable exibe o atalho de análise morfológica (btn-vocab-analyze) para frases em Grego e Hebraico', () => {
+  const { AppState, setSelectedChapters } = require('../js/modules/state.js');
+  const { setVocabCategory } = require('../js/modules/ui.js');
+
+  const prevDoc = global.document;
+  const prevLang = AppState.language;
+  const prevChapters = AppState.chapters;
+  const prevChapter = AppState.currentChapter;
+
+  const rowsCreated = [];
+  const tbody = {
+    children: [],
+    innerHTML: '',
+    appendChild(child) { this.children.push(child); },
+  };
+
+  global.document = {
+    getElementById: (id) => (id === 'vocab-table-body' ? tbody : null),
+    createElement: (tag) => {
+      const el = {
+        tagName: tag,
+        className: '',
+        innerHTML: '',
+        attributes: {},
+        style: {},
+        setAttribute(k, v) { this.attributes[k] = v; },
+        getAttribute(k) { return this.attributes[k] || null; },
+        querySelector: () => ({ onclick: null }),
+        appendChild() {},
+      };
+      if (tag === 'tr') rowsCreated.push(el);
+      return el;
+    },
+    querySelectorAll: () => rowsCreated,
+  };
+
+  // Testar atalho de análise para frase em Grego
+  AppState.language = 'greek';
+  AppState.currentChapter = {
+    id: 'bergmann_02',
+    title: 'Capítulo 2',
+    items: [],
+    sentences: [
+      {
+        id: 'sent_02_01',
+        term: 'Ἐν ἀρχῇ ἦν ὁ λόγος.',
+        transliteration: 'En archē ēn ho logos.',
+        translations: ['No princípio era o Verbo.'],
+        type: 'Frase',
+        tokens: [{ text: 'Ἐν', word_class: 'Preposição' }],
+      },
+    ],
+  };
+  AppState.chapters = [AppState.currentChapter];
+  setSelectedChapters(['bergmann_02'], AppState);
+  setVocabCategory('all');
+
+  assert.isTrue(rowsCreated.length > 0, 'Deve renderizar linha de frase grega no dicionário');
+  assert.includes(rowsCreated[0].innerHTML, 'btn-vocab-analyze', 'Frase em Grego no dicionário deve exibir botão de análise morfológica (.btn-vocab-analyze)');
+  assert.includes(rowsCreated[0].innerHTML, 'Johannes Bergmann', 'Tooltip do botão no Grego deve referenciar Johannes Bergmann');
+
+  global.document = prevDoc;
+  AppState.language = prevLang;
+  AppState.chapters = prevChapters;
+  AppState.currentChapter = prevChapter;
+  AppState.selectedChapterIds = [];
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

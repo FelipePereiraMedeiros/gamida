@@ -282,6 +282,24 @@ const DataLoader = {
   },
 
   /**
+   * Remove completamente os capítulos e preferências de escopo do idioma no IndexedDB e localStorage
+   * @param {'hebrew'|'greek'} language
+   */
+  async resetChapters(language) {
+    this.clearCache(language);
+    const keys = [
+      `gamida_${language}_chapters`,
+      `gamida_data_version_${language}`,
+      `gamida_lastChap_${language}`,
+      `gamida_selectedChaps_${language}`,
+      `gamida_chapOrder_${language}`,
+    ];
+    for (const k of keys) {
+      await this.storage.removeItem(k);
+    }
+  },
+
+  /**
    * Carrega os capítulos para a aplicação:
    * 1. Verifica se existem no storage unificado (IndexedDB/localStorage), se a versão confere e se o alfabeto está presente.
    * 2. Se não existir, for inválido ou estiver desatualizado, busca do padrão (fetch/bundle).

@@ -20,17 +20,58 @@ let selectedChip = null;
 /**
  * Controla a visibilidade da aba de paradigmas na barra de navegação
  */
+/**
+ * Obtém a lista consolidada de paradigmas dos capítulos selecionados ou do capítulo ativo
+ * @returns {Array<Object>}
+ */
+function getActiveParadigmsList() {
+  const getSelFn =
+    (typeof window !== "undefined" && typeof window.getSelectedChapters === "function" && window.getSelectedChapters) ||
+    (_stateModule && typeof _stateModule.getSelectedChapters === "function" && _stateModule.getSelectedChapters) ||
+    null;
+  const selectedChaps = getSelFn
+    ? getSelFn(AppState)
+    : (AppState.currentChapter ? [AppState.currentChapter] : []);
+  const allParadigms = [];
+  const seenChaps = new Set();
+
+  if (Array.isArray(AppState.selectedChapterIds) && AppState.selectedChapterIds.length > 1) {
+    selectedChaps.forEach((ch) => {
+      if (ch && !seenChaps.has(ch.id) && Array.isArray(ch.paradigms)) {
+        seenChaps.add(ch.id);
+        ch.paradigms.forEach((p) => allParadigms.push(p));
+      }
+    });
+  }
+
+  if (
+    allParadigms.length === 0 &&
+    AppState.currentChapter &&
+    Array.isArray(AppState.currentChapter.paradigms)
+  ) {
+    return AppState.currentChapter.paradigms;
+  }
+
+  if (allParadigms.length === 0) {
+    selectedChaps.forEach((ch) => {
+      if (ch && !seenChaps.has(ch.id) && Array.isArray(ch.paradigms)) {
+        seenChaps.add(ch.id);
+        ch.paradigms.forEach((p) => allParadigms.push(p));
+      }
+    });
+  }
+
+  return allParadigms;
+}
+
 function updateParadigmsVisibility() {
   if (typeof document === "undefined") return;
   const btnParadigms = document.getElementById("nav-btn-paradigms");
   if (!btnParadigms) return;
 
-  const hasParadigms =
-    AppState.currentChapter &&
-    Array.isArray(AppState.currentChapter.paradigms) &&
-    AppState.currentChapter.paradigms.length > 0;
+  const hasParadigms = getActiveParadigmsList().length > 0;
 
-  if (AppState.language === "hebrew" || !hasParadigms) {
+  if (!hasParadigms) {
     btnParadigms.style.display = "none";
     if (AppState.currentTab === "paradigms" && typeof window !== "undefined" && typeof window.switchTab === "function") {
       window.switchTab("practice");
@@ -49,16 +90,16 @@ function updateParadigmsVisibility() {
  */
 function renderParadigmSkeleton() {
   if (typeof document === "undefined") return;
-  const chap = AppState.currentChapter;
+  const paradigmsList = getActiveParadigmsList();
   const parSelect = document.getElementById("paradigm-select");
   const parIdx = parSelect ? parSelect.value : "";
 
-  if (!chap || !Array.isArray(chap.paradigms) || parIdx === "" || !chap.paradigms[parIdx]) {
+  if (!paradigmsList.length || parIdx === "" || !paradigmsList[parIdx]) {
     resetParadigmBoard();
     return;
   }
 
-  activeParadigm = chap.paradigms[parIdx];
+  activeParadigm = paradigmsList[parIdx];
 
   const header = document.getElementById("paradigm-header");
   if (header) header.classList.remove("hidden");
@@ -436,10 +477,7 @@ function resetParadigmBoard() {
   }
   if (!board) return;
 
-  const hasParadigms =
-    AppState.currentChapter &&
-    Array.isArray(AppState.currentChapter.paradigms) &&
-    AppState.currentChapter.paradigms.length > 0;
+  const hasParadigms = getActiveParadigmsList().length > 0;
 
   board.innerHTML = `
      <div class="w-16 h-16 bg-brand-500/10 text-brand-400 rounded-2xl flex items-center justify-center text-3xl mb-2">🧩</div>
@@ -781,7 +819,9 @@ if (typeof window !== "undefined") {
   window.onChipClick = onChipClick;
   window.clearChipSelection = clearChipSelection;
   window.onZoneClick = onZoneClick;
+  window.getActiveParadigmsList = getActiveParadigmsList;
   window.ParadigmsModule = {
+    getActiveParadigmsList,
     updateParadigmsVisibility,
     renderParadigmSkeleton,
     renderTableView,
@@ -803,6 +843,7 @@ if (typeof window !== "undefined") {
 }
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
+    getActiveParadigmsList,
     updateParadigmsVisibility,
     renderParadigmSkeleton,
     renderTableView,

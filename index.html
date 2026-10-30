@@ -111,7 +111,7 @@
           <div class="hidden md:block relative w-full md:flex-1 md:min-w-0 md:max-w-lg md:mx-4 lg:mx-6 order-3 md:order-2 z-50 mobile-collapsible-target" id="custom-chapter-selector">
              <button type="button" onclick="toggleDropdown()" class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group min-w-0">
                  <div class="flex items-center gap-2 sm:gap-3 overflow-hidden min-w-0 flex-1">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider shrink-0">Módulo:</span>
+                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider shrink-0">Capítulos:</span>
                     <span id="chapter-dropdown-text" class="text-brand-400 font-bold text-xs sm:text-sm truncate text-left group-hover:text-brand-300 min-w-0 block">Carregando...</span>
                  </div>
                  <span class="text-slate-500 text-xs ml-2 sm:ml-3 shrink-0">▼</span>
@@ -315,31 +315,123 @@
                 </div>
               </div>
 
-              <!-- 2. Abrangência (Normal vs Acumulativo) -->
-              <div id="practice-scope-container">
+              <!-- 2. Seleção de Capítulos Específicos (Multi-Seleção & Atalhos) -->
+              <div id="practice-scope-container" class="relative">
                 <label class="block text-xs font-medium text-slate-400 mb-1"
-                  >Abrangência:</label
+                  >Capítulos para Praticar:</label
+                >
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <div class="relative" id="practice-chapter-picker-wrapper">
+                    <button
+                      type="button"
+                      id="btn-practice-chapter-picker"
+                      onclick="togglePracticeChapterPicker(event)"
+                      class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-950 border border-slate-700 hover:border-brand-500 text-brand-300 hover:text-white transition flex items-center gap-2 cursor-pointer shadow-inner"
+                      title="Selecionar capítulos específicos para praticar"
+                    >
+                      <span>📑</span>
+                      <span id="practice-chapters-btn-text" class="max-w-[160px] sm:max-w-[200px] truncate">Selecionar Capítulos</span>
+                      <span class="text-[10px] text-slate-500">▼</span>
+                    </button>
+                    <div
+                      id="practice-chapters-dropdown-menu"
+                      class="hidden absolute left-0 top-full mt-2 w-80 sm:w-96 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl z-50 overflow-hidden"
+                    >
+                      <div class="p-3 bg-slate-950/90 border-b border-slate-800 flex flex-col gap-2">
+                        <div class="flex items-center justify-between">
+                          <span class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Escolher Capítulos</span>
+                          <span id="practice-picker-count-badge" class="text-[10px] px-2 py-0.5 rounded-full bg-brand-600/30 text-brand-300 border border-brand-500/40 font-mono">1 selecionado</span>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                          <button
+                            type="button"
+                            onclick="selectAllPracticeChapters()"
+                            class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-brand-600 text-[11px] text-slate-200 hover:text-white font-medium transition cursor-pointer"
+                          >
+                            ☑️ Todos (Vocab.)
+                          </button>
+                          <button
+                            type="button"
+                            onclick="setPracticeCumulative(true)"
+                            class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-brand-600 text-[11px] text-slate-200 hover:text-white font-medium transition cursor-pointer"
+                          >
+                            📚 Até o Atual
+                          </button>
+                          <button
+                            type="button"
+                            onclick="setPracticeCumulative(false)"
+                            class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-brand-600 text-[11px] text-slate-200 hover:text-white font-medium transition cursor-pointer"
+                          >
+                            🎯 Apenas Atual
+                          </button>
+                        </div>
+                      </div>
+                      <ul
+                        id="practice-chapters-checklist"
+                        class="max-h-64 overflow-y-auto divide-y divide-slate-800/60"
+                      ></ul>
+                    </div>
+                  </div>
+
+                  <div
+                    class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
+                  >
+                    <button
+                      type="button"
+                      id="scope-single"
+                      onclick="setPracticeCumulative(false)"
+                      class="px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer"
+                      title="Praticar apenas 1 capítulo (o capítulo principal ativo)"
+                    >
+                      Único
+                    </button>
+                    <button
+                      type="button"
+                      id="scope-cumulative"
+                      onclick="setPracticeCumulative(true)"
+                      class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
+                      title="Praticar do início até o capítulo principal ativo"
+                    >
+                      <span>📚</span> Acumular
+                    </button>
+                    <button
+                      type="button"
+                      id="scope-all"
+                      onclick="selectAllPracticeChapters()"
+                      class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
+                      title="Praticar todos os capítulos de vocabulário"
+                    >
+                      <span>☑️</span> Todos
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Ordenação da Prática dos Capítulos (Menor ➔ Maior vs Maior ➔ Menor) -->
+              <div id="practice-order-container">
+                <label class="block text-xs font-medium text-slate-400 mb-1"
+                  >Ordem dos Capítulos:</label
                 >
                 <div
                   class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
                 >
                   <button
                     type="button"
-                    id="scope-single"
-                    onclick="setPracticeCumulative(false)"
-                    class="px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white"
-                    title="Praticar apenas a lição atual"
+                    id="order-asc"
+                    onclick="setPracticeChapterOrder('asc')"
+                    class="px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer"
+                    title="Praticar do capítulo menor para o maior (ordem crescente: 1 ➔ N)"
                   >
-                    Capítulo Atual
+                    <span>⬆️</span> Menor ➔ Maior
                   </button>
                   <button
                     type="button"
-                    id="scope-cumulative"
-                    onclick="setPracticeCumulative(true)"
-                    class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1"
-                    title="Praticar esta lição e todas as anteriores acumuladas"
+                    id="order-desc"
+                    onclick="setPracticeChapterOrder('desc')"
+                    class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
+                    title="Praticar do capítulo maior para o menor (ordem decrescente: N ➔ 1)"
                   >
-                    <span>📚</span> Acumulativo
+                    <span>⬇️</span> Maior ➔ Menor
                   </button>
                 </div>
               </div>
@@ -503,12 +595,16 @@
           <div
             class="flex items-center justify-between text-xs text-slate-400 mb-4"
           >
-            <div class="flex items-center gap-2">
+            <div class="flex flex-wrap items-center gap-2">
               <span
                 id="question-category"
                 class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 font-medium"
                 >Vocabulário</span
               >
+              <span
+                id="question-chapter-badge"
+                class="hidden px-2.5 py-1 rounded-full bg-indigo-950/60 border border-indigo-700/50 text-indigo-300 font-medium text-[11px] max-w-[240px] sm:max-w-xs truncate"
+              ></span>
               <button
                 type="button"
                 id="btn-practice-fav"
@@ -1082,6 +1178,17 @@
                     id="anki-translation"
                     class="text-xl md:text-2xl font-bold text-emerald-400"
                   ></div>
+                  <div class="mt-3 flex justify-center">
+                    <button
+                      type="button"
+                      id="btn-anki-analyze"
+                      onclick="openCurrentAnkiSentenceAnalysis()"
+                      class="hidden px-3 py-1.5 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/60 border border-indigo-500/40 text-xs text-indigo-300 hover:text-white transition cursor-pointer font-mono inline-flex items-center gap-1.5 shadow-sm"
+                      title="Abrir Análise Morfológica da Frase"
+                    >
+                      <span>🔬</span> Analisar Morfemas
+                    </button>
+                  </div>
                 </div>
                 <div class="pt-6 space-y-3">
                   <p
@@ -1451,10 +1558,10 @@
 
           <!-- Controles de Filtro e Abrangência do Dicionário -->
           <div class="flex flex-wrap items-center gap-3">
-            <!-- 1. Abrangência (Capítulo Atual vs Acumulativo) -->
+            <!-- 1. Abrangência (Único, Acumular, Todos / Selecionados) -->
             <div id="vocab-scope-container" class="flex flex-col">
               <label class="block text-[11px] font-medium text-slate-400 mb-1"
-                >Abrangência:</label
+                >Capítulos no Dicionário:</label
               >
               <div
                 class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
@@ -1463,19 +1570,57 @@
                   type="button"
                   id="vocab-scope-single"
                   onclick="setVocabCumulative(false)"
-                  class="px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white"
-                  title="Exibir apenas a lição atual"
+                  class="px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer"
+                  title="Exibir apenas a lição principal ativa"
                 >
-                  Capítulo Atual
+                  Único
                 </button>
                 <button
                   type="button"
                   id="vocab-scope-cumulative"
                   onclick="setVocabCumulative(true)"
-                  class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1"
-                  title="Exibir esta lição e todas as anteriores acumuladas"
+                  class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
+                  title="Exibir do início até a lição ativa (ou capítulos selecionados)"
                 >
-                  <span>📚</span> Acumulativo
+                  <span>📚</span> Acumular
+                </button>
+                <button
+                  type="button"
+                  id="vocab-scope-all"
+                  onclick="selectAllPracticeChapters()"
+                  class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
+                  title="Exibir todos os capítulos de vocabulário"
+                >
+                  <span>☑️</span> Todos
+                </button>
+              </div>
+            </div>
+
+            <!-- 1b. Ordem dos Capítulos no Dicionário -->
+            <div id="vocab-order-container" class="flex flex-col">
+              <label class="block text-[11px] font-medium text-slate-400 mb-1"
+                >Ordem dos Capítulos:</label
+              >
+              <div
+                class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
+              >
+                <button
+                  type="button"
+                  id="vocab-order-asc"
+                  onclick="setPracticeChapterOrder('asc')"
+                  class="px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer"
+                  title="Ordenar capítulos do menor para o maior"
+                >
+                  <span>⬆️</span> Menor ➔ Maior
+                </button>
+                <button
+                  type="button"
+                  id="vocab-order-desc"
+                  onclick="setPracticeChapterOrder('desc')"
+                  class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
+                  title="Ordenar capítulos do maior para o menor"
+                >
+                  <span>⬇️</span> Maior ➔ Menor
                 </button>
               </div>
             </div>

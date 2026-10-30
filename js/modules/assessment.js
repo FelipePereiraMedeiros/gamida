@@ -63,35 +63,55 @@ function resetToDashboard() {
 /**
  * Abre o modal de configuração de parâmetros do simulado
  */
+function resolveAssessmentChapters() {
+  const getSelFn =
+    (typeof window !== "undefined" && typeof window.getSelectedChapters === "function" && window.getSelectedChapters) ||
+    (_stateModule && typeof _stateModule.getSelectedChapters === "function" && _stateModule.getSelectedChapters) ||
+    null;
+  if (getSelFn && Array.isArray(AppState.selectedChapterIds) && AppState.selectedChapterIds.length > 1) {
+    const sel = getSelFn(AppState);
+    if (sel.length > 0) return { chapters: sel, isCustomSelection: true };
+  }
+  const activeChapterId = AppState.currentChapter?.id || AppState.activeChapterId;
+  const activeIdx = (AppState.chapters || []).findIndex((c) => c.id === activeChapterId);
+  let cumulativeChapters = (AppState.chapters || []).slice(
+    0,
+    activeIdx >= 0 ? activeIdx + 1 : (AppState.chapters || []).length,
+  );
+  if (activeIdx > 0) {
+    cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+  }
+  if (AppState.chapterOrder === "desc" && cumulativeChapters.length > 1) {
+    cumulativeChapters = [...cumulativeChapters].reverse();
+  }
+  return { chapters: cumulativeChapters, isCustomSelection: false, activeIdx };
+}
+
 function openSimuladoConfig() {
   if (typeof document === "undefined") return;
   const activeChapterId = AppState.currentChapter?.id || AppState.activeChapterId;
-  if (!activeChapterId) {
+  if (!activeChapterId && (!Array.isArray(AppState.selectedChapterIds) || AppState.selectedChapterIds.length === 0)) {
     safeAlert("Nenhum capítulo ativo para gerar o simulado.");
     return;
   }
   if (!AppState.currentChapter && activeChapterId && Array.isArray(AppState.chapters)) {
     AppState.currentChapter = AppState.chapters.find((c) => c.id === activeChapterId) || null;
   }
-  const activeIdx = AppState.chapters.findIndex(
-    (c) => c.id === activeChapterId,
-  );
-  let cumulativeChapters = AppState.chapters.slice(
-    0,
-    activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
-  );
-  if (activeIdx > 0) {
-    cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
-  }
+  const { chapters: cumulativeChapters, isCustomSelection, activeIdx } = resolveAssessmentChapters();
   const cumulativeCount =
-    activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length;
-  const isAlphaActive = activeIdx === 0 || isAlphabetChapter(AppState.currentChapter);
+    activeIdx !== undefined && activeIdx >= 0 ? activeIdx + 1 : (AppState.chapters || []).length;
+  const isAlphaActive = !isCustomSelection && (activeIdx === 0 || isAlphabetChapter(AppState.currentChapter));
 
   const scopeInfo = document.getElementById("sim-scope-info");
   if (scopeInfo) {
-    scopeInfo.textContent = isAlphaActive
-      ? `Questões da Lição 1 (${AppState.currentChapter?.title || ""}).`
-      : `Questões acumuladas (sem alfabeto) até a Lição ${cumulativeCount} (${AppState.currentChapter?.title || ""}).`;
+    if (isCustomSelection) {
+      const orderTag = AppState.chapterOrder === "desc" ? "Maior ➔ Menor" : "Menor ➔ Maior";
+      scopeInfo.textContent = `Questões dos ${cumulativeChapters.length} capítulos selecionados (${orderTag}).`;
+    } else {
+      scopeInfo.textContent = isAlphaActive
+        ? `Questões da Lição 1 (${AppState.currentChapter?.title || ""}).`
+        : `Questões acumuladas (sem alfabeto) até a Lição ${cumulativeCount} (${AppState.currentChapter?.title || ""}).`;
+    }
   }
 
   const hasSentences = cumulativeChapters.some((c) => (c.sentences || []).length > 0);
@@ -146,23 +166,14 @@ function setSimConfig(type, value) {
  */
 function startSimulado() {
   const activeChapterId = AppState.currentChapter?.id || AppState.activeChapterId;
-  if (!activeChapterId) {
+  if (!activeChapterId && (!Array.isArray(AppState.selectedChapterIds) || AppState.selectedChapterIds.length === 0)) {
     safeAlert("Não há capítulos disponíveis para gerar o simulado.");
     return;
   }
   if (!AppState.currentChapter && activeChapterId && Array.isArray(AppState.chapters)) {
     AppState.currentChapter = AppState.chapters.find((c) => c.id === activeChapterId) || null;
   }
-  const activeIdx = AppState.chapters.findIndex(
-    (c) => c.id === activeChapterId,
-  );
-  let cumulativeChapters = AppState.chapters.slice(
-    0,
-    activeIdx >= 0 ? activeIdx + 1 : AppState.chapters.length,
-  );
-  if (activeIdx > 0) {
-    cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
-  }
+  const { chapters: cumulativeChapters } = resolveAssessmentChapters();
 
   let currentChapWords = [], otherChapWords = [];
   let currentChapSentences = [], otherChapSentences = [];
@@ -500,7 +511,9 @@ function finishAssessment() {
     return {
       question: q,
       userAnswer: userVal,
-      evalResult: evaluateAnswer(rawVal, q.translations),
+      evalResult: evaluateAnswer(rawVal, q.translations, {
+        isSentence: q.kind === "sentence" || q.type === "Frase" || q.type === "Expressão",
+      }),
     };
   });
 
@@ -600,12 +613,23 @@ function finishAssessment() {
         userTextCol = "text-amber-400";
       }
 
+      const isSentence =
+        ans.question.kind === "sentence" ||
+        ans.question.type === "Frase" ||
+        ans.question.type === "Expressão" ||
+        (Array.isArray(ans.question.tokens) && ans.question.tokens.length > 0);
+      const canAnalyze =
+        (AppState.language === "hebrew" || AppState.language === "greek") && isSentence;
+
       const box = document.createElement("div");
       box.className = `p-4 rounded-2xl border ${boxColors} space-y-2 text-xs`;
       box.innerHTML = `
-              <div class="flex items-center justify-between">
+              <div class="flex items-center justify-between gap-2">
                 <span class="font-mono text-slate-400 font-semibold">Questão ${idx + 1} (${ans.question.kind === "word" ? "Palavra" : "Frase"})</span>
-                ${badgeTag}
+                <div class="flex items-center gap-2">
+                  ${canAnalyze ? `<button type="button" class="btn-assess-analyze px-2.5 py-0.5 rounded-full bg-indigo-600/30 hover:bg-indigo-600/60 border border-indigo-500/40 text-[10px] text-indigo-300 hover:text-white transition cursor-pointer font-mono inline-flex items-center gap-1" title="Analisar Morfemas"><span>🔬</span> Análise</button>` : ""}
+                  ${badgeTag}
+                </div>
               </div>
               <div class="${textClass} text-2xl text-white font-bold py-1">${escapeHTML(getTerm(ans.question))}</div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1 border-t border-slate-800/60">
@@ -618,6 +642,23 @@ function finishAssessment() {
                   <span class="text-emerald-400 font-medium">${escapeHTML(ans.evalResult.expected || ans.question.translations.join(" / "))}</span>
                 </div>
               </div>`;
+      if (canAnalyze && typeof box.querySelector === "function") {
+        const btnAnalyze = box.querySelector(".btn-assess-analyze");
+        if (btnAnalyze) {
+          btnAnalyze.onclick = (e) => {
+            if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+            if (typeof window !== "undefined" && typeof window.openSentenceAnalysisModal === "function") {
+              window.openSentenceAnalysisModal(ans.question);
+            } else if (
+              typeof window !== "undefined" &&
+              window.SentenceAnalysisModule &&
+              typeof window.SentenceAnalysisModule.openSentenceAnalysisModal === "function"
+            ) {
+              window.SentenceAnalysisModule.openSentenceAnalysisModal(ans.question);
+            }
+          };
+        }
+      }
       correctionList.appendChild(box);
     });
   }

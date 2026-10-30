@@ -55,6 +55,13 @@ suite.test('evaluateAnswer detecta inversão de palavras como aceitável com avi
   assert.equal(res.status, 'typo');
 });
 
+suite.test('evaluateAnswer rejeita inversão sintática em frases completas (> 3 palavras ou isSentence)', () => {
+  const resLong = evaluateAnswer('o rei viu o homem', ['o homem viu o rei']);
+  assert.equal(resLong.status, 'incorrect');
+  const resOpt = evaluateAnswer('Deus ama', ['ama Deus'], { isSentence: true });
+  assert.equal(resOpt.status, 'incorrect');
+});
+
 suite.test('evaluateAnswer tolera pequenos erros de digitação (1 caractere)', () => {
   const res = evaluateAnswer('palvra', ['palavra']);
   assert.equal(res.status, 'typo');
