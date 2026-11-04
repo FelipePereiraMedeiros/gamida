@@ -17,7 +17,7 @@ const greekData = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 
 
 suite.test('Todo verbete traz lema, aoristo, radical, infinitivo e tradução', () => {
   const verbs = SecondAorist.getSecondAoristVerbs();
-  assert.isGreaterThan(verbs.length, 15, 'A tabela deve ter os principais verbos de 2º aoristo');
+  assert.equal(verbs.length, 18, 'A tabela segue os 18 verbos do vocabulário da Lição 11');
   verbs.forEach((v) => {
     ['lemma', 'aorist', 'stem', 'infinitive', 'lemmaTranslit', 'aoristTranslit', 'infinitiveTranslit'].forEach((k) => {
       assert.isTrue(typeof v[k] === 'string' && v[k].length > 0, `${v.lemma}: campo ${k} vazio`);
@@ -35,8 +35,11 @@ suite.test('Radicais coincidem com os cadastrados no vocabulário grego', () => 
     const m = String(i.type || '').match(/2º Aoristo: ([^)]+)\)/);
     if (m) vocab[i.term] = m[1].trim();
   }));
-  SecondAorist.getSecondAoristVerbs().forEach((v) => {
-    if (vocab[v.lemma]) assert.equal(v.stem, vocab[v.lemma], `${v.lemma}: radical divergente do vocabulário`);
+  const verbs = SecondAorist.getSecondAoristVerbs();
+  assert.deepEqual(verbs.map((v) => v.lemma).sort(), Object.keys(vocab).sort(), 'A tabela deve conter exatamente os verbos de 2º aoristo do vocabulário');
+  verbs.forEach((v) => {
+    assert.equal(v.stem, vocab[v.lemma], `${v.lemma}: radical divergente do vocabulário`);
+    assert.isGreaterThan(v.frequency, 0, `${v.lemma}: sem número de ocorrências`);
   });
 });
 
