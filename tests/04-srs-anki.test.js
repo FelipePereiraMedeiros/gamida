@@ -230,7 +230,7 @@ suite.test('startAnki, revealAnki e finishAnki operam no DOM com tolerância def
   if (oldAlert === undefined) delete global.alert; else global.alert = oldAlert;
 });
 
-suite.test('Modo Erros reúne erros de todos os capítulos e limpa ao lembrar', () => {
+suite.test('Modo Erros reúne erros de todos os capítulos e só sai da lista pelo Remover', () => {
   const srsModule = require('../js/modules/srs.js');
   const a = { id: 'a', title: 'A', items: [{ term: 'um', translations: ['1'] }, { term: 'dois', translations: ['2'] }] };
   const b = { id: 'b', title: 'B', items: [{ term: 'tres', translations: ['3'] }] };
@@ -249,7 +249,12 @@ suite.test('Modo Erros reúne erros de todos os capítulos e limpa ao lembrar', 
   srsModule.answerAnki('hard');
   assert.equal(srsModule.getErrorCards().length, 1, 'Errei mantém o termo pendente');
   srsModule.answerAnki('good');
-  assert.equal(srsModule.getErrorCards().length, 0, 'Lembrei limpa o erro pendente');
+  assert.equal(srsModule.getErrorCards().length, 1, 'Lembrar na revisão não tira o termo da lista de erros');
+  srsModule.answerAnki('easy');
+  assert.equal(srsModule.getErrorCards().length, 1, 'Fácil na revisão também mantém o erro');
+
+  assert.isTrue(srsModule.removeFromErrorList(b.items[0]), 'Remover tira o termo da lista');
+  assert.equal(srsModule.getErrorCards().length, 0);
 
   srsModule.recordSRSError('tres');
   assert.equal(srsModule.getErrorCards().length, 1, 'Novo erro volta a ficar pendente');
@@ -309,6 +314,39 @@ suite.test('Modo Erros da prática usa a lista, tem botão exclusivo e nenhuma r
   assert.includes(appJs, '.filter(isItemInErrorList)', 'Fila do modo Erros deve vir da lista');
   assert.includes(appJs, 'AppState.exerciseMode !== "errors" || practiceQueue.length === 0', 'Botão de remover é exclusivo do modo Erros');
   assert.isFalse(appJs.includes('pendingError'), 'A prática não pode alterar a lista ao avaliar respostas');
+});
+
+suite.test('Trocar de capítulo preserva os erros e só filtra o que aparece no modo Erros', () => {
+  const srsModule = require('../js/modules/srs.js');
+  const { setSelectedChapters, getSelectedChapters } = require('../js/modules/state.js');
+  const a = { id: 'a', title: 'A', items: [{ term: 'alfa', translations: ['1'] }, { term: 'beta', translations: ['2'] }] };
+  const b = { id: 'b', title: 'B', items: [{ term: 'gama', translations: ['3'] }] };
+  AppState.chapters = [a, b];
+  AppState.srs = {};
+  AppState.isPracticeCumulative = false;
+  const visibleErrors = () => getSelectedChapters(AppState)
+    .flatMap((c) => c.items)
+    .filter(srsModule.isItemInErrorList)
+    .map((i) => i.term);
+  const goTo = (chap) => {
+    AppState.currentChapter = chap;
+    AppState.activeChapterId = chap.id;
+    setSelectedChapters([chap.id], AppState);
+  };
+
+  goTo(a);
+  srsModule.recordSRSError('alfa');
+  goTo(b);
+  srsModule.recordSRSError('gama');
+  assert.deepEqual(visibleErrors(), ['gama'], 'No capítulo B aparecem só os erros de B');
+
+  goTo(a);
+  assert.deepEqual(visibleErrors(), ['alfa'], 'Voltar ao capítulo A mostra o erro de A de novo');
+  assert.equal(srsModule.getErrorCards().length, 2, 'Nenhum erro é apagado pela troca de capítulo');
+
+  setSelectedChapters(['a', 'b'], AppState);
+  assert.deepEqual(visibleErrors().sort(), ['alfa', 'gama'], 'Com os dois capítulos selecionados, aparecem todos');
+  AppState.srs = {};
 });
 
 suite.test('Domínio: 3 acertos seguidos dominam o termo e um erro zera a contagem', () => {

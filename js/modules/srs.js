@@ -459,13 +459,12 @@ function answerAnki(grade) {
     ankiQueue.push(ankiCurrentCard);
     ankiTotalCards++;
   } else if (grade === "good") {
-    record.pendingError = false;
+    // A lista de erros só é limpa pelo botão "Remover" do Praticar
     record.interval =
       record.interval === 0 ? 1 : Math.round(record.interval * record.ef);
     record.nextReview =
       Date.now() + record.interval * 24 * 60 * 60 * 1000;
   } else if (grade === "easy") {
-    record.pendingError = false;
     record.ef += 0.15;
     record.interval =
       record.interval === 0

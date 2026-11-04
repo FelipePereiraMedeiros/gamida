@@ -142,6 +142,10 @@ function reshuffle(terms, previous) {
     for (let i = 0; i < 5 && next.map(getTerm).join("|") === prevOrder; i++) {
       next = shuffleArray([...terms]);
     }
+    // Garante uma ordem diferente mesmo se o sorteio repetir a anterior
+    if (next.map(getTerm).join("|") === prevOrder) {
+      [next[0], next[1]] = [next[1], next[0]];
+    }
   }
   return next;
 }
