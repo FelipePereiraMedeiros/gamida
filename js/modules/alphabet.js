@@ -539,6 +539,8 @@ function updatePracticeChapterView() {
     ? getSelFn(AppState)
     : (AppState.currentChapter ? [AppState.currentChapter] : []);
   const isAlpha = selectedChaps.length <= 1 && isAlphabetChapter(AppState.currentChapter);
+  // Pontos fazem parte do jogo do alfabeto; na prática regular a medida é a rodada
+  if (document.body && document.body.classList) document.body.classList.toggle("is-alphabet-practice", isAlpha);
   const stdControls = document.getElementById("standard-mode-controls");
   const alphaControls = document.getElementById("alphabet-mode-controls");
   const stdPanel = document.getElementById("standard-practice-panel");

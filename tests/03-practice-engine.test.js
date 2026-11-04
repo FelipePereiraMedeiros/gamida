@@ -57,7 +57,7 @@ suite.test('Modo de exercício de favoritas (favorites) é suportado no app.js',
 
 suite.test('Pontuação e streak são calculados corretamente conforme o modo', () => {
   // Frases dão 20 pontos, palavras dão 10 pontos
-  assert.includes(appJs, 'AppState.score += AppState.exerciseMode === "sentences" ? 20 : 10;');
+  assert.isFalse(appJs.includes('AppState.score +='), 'A prática regular não usa pontos');
   assert.includes(appJs, 'AppState.streak++;');
 });
 
@@ -279,6 +279,42 @@ suite.test('Caixa de selecionar todos existe na lista com estado parcial e estil
   assert.includes(uiJs, 'allBox.indeterminate = markedCount > 0 && !allMarked', 'Estado parcial ausente');
   assert.includes(css, '.chapter-option__box:indeterminate', 'Estilo do estado parcial ausente');
   assert.equal(css.includes('accent-color'), false, 'Caixas devem usar o estilo próprio do tema');
+});
+
+suite.test('Resumo da rodada conta acertos e erros e compara rodadas do mesmo tamanho', () => {
+  const { getRoundSummary, startNewRound } = require('../js/modules/state.js');
+  const miss = { hebrew: 'בַּיִת', translations: ['casa'] };
+  const state = { totalAnswered: 4, correctCount: 3, roundMisses: [miss], previousRound: null };
+
+  const first = getRoundSummary(state);
+  assert.equal(first.wrong, 1, 'Erros são as respostas sem acerto');
+  assert.equal(first.accuracy, 75, 'Precisão vale para a rodada');
+  assert.equal(first.delta, null, 'A primeira rodada não tem comparação');
+  assert.deepEqual(first.misses, [miss], 'Resumo lista os termos errados');
+
+  startNewRound(state);
+  assert.equal(state.totalAnswered, 0, 'Nova rodada zera as respostas');
+  assert.equal(state.correctCount, 0, 'Nova rodada zera os acertos');
+  assert.equal(state.roundMisses.length, 0, 'Nova rodada limpa os erros');
+
+  state.totalAnswered = 4;
+  state.correctCount = 4;
+  assert.equal(getRoundSummary(state).delta, 1, 'Compara com a rodada anterior');
+
+  state.totalAnswered = 5;
+  assert.equal(getRoundSummary(state).delta, null, 'Rodadas de tamanhos diferentes não se comparam');
+});
+
+suite.test('Fim da lista mostra o resumo em vez de recomeçar sem avisar', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
+  assert.includes(html, 'id="round-summary"', 'Resumo da rodada ausente');
+  assert.includes(html, 'id="round-tally"', 'Contagem da rodada ausente');
+  assert.includes(html, 'onclick="restartPracticeRound()"', 'Botão de praticar de novo ausente');
+  assert.includes(html, 'id="btn-round-errors"', 'Botão de praticar os erros ausente');
+  const start = appJs.indexOf('if (AppState.currentQuestionIndex >= practiceQueue.length)');
+  assert.isTrue(start > 0 && appJs.slice(start, start + 200).includes('showRoundSummary();'), 'Fim da lista deve abrir o resumo');
 });
 
 module.exports = suite;

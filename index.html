@@ -70,7 +70,7 @@
           },
         },
       };
-      window.APP_VERSION = "2.12.1";
+      window.APP_VERSION = "2.13.0";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
@@ -138,7 +138,7 @@
             <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--streak" aria-hidden="true"><use href="#i-flame"></use></svg><span class="app-stat__label">Sequência</span></dt>
             <dd id="stat-streak">0</dd>
           </div>
-          <div class="app-stat" title="Pontuação">
+          <div class="app-stat app-stat--score" title="Pontuação">
             <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--score" aria-hidden="true"><use href="#i-star"></use></svg><span class="app-stat__label">Pontos</span></dt>
             <dd id="stat-score">0</dd>
           </div>
@@ -476,6 +476,7 @@
         >
           <div class="exercise-progress" aria-hidden="true">
             <div id="practice-progress-fill" class="exercise-progress__fill"></div>
+            <div id="practice-progress-wrong" class="exercise-progress__fill exercise-progress__fill--wrong"></div>
           </div>
 
           <div class="exercise-meta">
@@ -485,6 +486,10 @@
             </div>
             <div class="exercise-meta__side">
               <span id="question-progress" class="meta-count">Item 1 de 10</span>
+              <span id="round-tally" class="round-tally hidden" role="img">
+                <span class="round-tally__correct"><span aria-hidden="true">✓</span> <span id="round-tally-correct">0</span> <span id="round-tally-correct-word" class="round-tally__word">acertos</span></span>
+                <span class="round-tally__wrong"><span aria-hidden="true">✗</span> <span id="round-tally-wrong">0</span> <span id="round-tally-wrong-word" class="round-tally__word">erros</span></span>
+              </span>
               <button
                 type="button"
                 id="btn-practice-remove-error"
@@ -586,6 +591,20 @@
               </button>
             </div>
           </div>
+
+          <section id="round-summary" class="round-summary hidden" aria-live="polite" aria-label="Resumo da rodada">
+            <p class="round-summary__eyebrow">Rodada concluída</p>
+            <p class="round-summary__score"><strong id="round-summary-correct">0</strong> de <span id="round-summary-total">0</span> acertos</p>
+            <p id="round-summary-note" class="round-summary__note"></p>
+            <div id="round-summary-misses" class="round-summary__misses hidden">
+              <h3 class="round-summary__heading">Para revisar</h3>
+              <ul id="round-summary-list" class="round-summary__list"></ul>
+            </div>
+            <div class="round-summary__actions">
+              <button type="button" id="btn-round-restart" onclick="restartPracticeRound()" class="answer-btn">Praticar de novo</button>
+              <button type="button" id="btn-round-errors" onclick="setExerciseMode('errors')" class="btn-secondary hidden">Praticar só os erros</button>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -1494,7 +1513,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.12.1</span>
+        <span id="footer-version-tag">v2.13.0</span>
       </p>
     </footer>
 

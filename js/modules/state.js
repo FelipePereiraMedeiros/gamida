@@ -7,7 +7,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.12.1";
+  "2.13.0";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
@@ -39,6 +39,8 @@ const AppState = (typeof window !== "undefined" && window.AppState) || {
   streak: 0,
   totalAnswered: 0,
   correctCount: 0,
+  roundMisses: [],
+  previousRound: null,
   isPracticeAnswered: false,
   distractorCache: { words: [], sentences: [] },
   srs: {},
@@ -206,6 +208,36 @@ function buildDistractorCache() {
 }
 
 /**
+ * Resume a rodada atual; a comparação só existe entre rodadas do mesmo tamanho
+ * @param {Object} [state]
+ * @returns {{ total: number, correct: number, wrong: number, accuracy: number, delta: number|null, misses: Array<Object> }}
+ */
+function getRoundSummary(state = AppState) {
+  const total = state.totalAnswered || 0;
+  const correct = state.correctCount || 0;
+  const previous = state.previousRound;
+  return {
+    total,
+    correct,
+    wrong: total - correct,
+    accuracy: total > 0 ? Math.round((correct / total) * 100) : 0,
+    delta: previous && previous.total === total ? correct - previous.correct : null,
+    misses: [...(state.roundMisses || [])],
+  };
+}
+
+/**
+ * Guarda o resultado da rodada para comparação e zera os contadores de rodada
+ * @param {Object} [state]
+ */
+function startNewRound(state = AppState) {
+  state.previousRound = { total: state.totalAnswered || 0, correct: state.correctCount || 0 };
+  state.totalAnswered = 0;
+  state.correctCount = 0;
+  state.roundMisses = [];
+}
+
+/**
  * Zera as estatísticas da sessão atual
  */
 function resetStats() {
@@ -213,6 +245,8 @@ function resetStats() {
   AppState.streak = 0;
   AppState.totalAnswered = 0;
   AppState.correctCount = 0;
+  AppState.roundMisses = [];
+  AppState.previousRound = null;
   AppState.isPracticeAnswered = false;
   updateStatsUI();
 
@@ -573,6 +607,8 @@ if (typeof window !== "undefined") {
   window.saveChaptersToStorage = saveChaptersToStorage;
   window.buildDistractorCache = buildDistractorCache;
   window.resetStats = resetStats;
+  window.getRoundSummary = getRoundSummary;
+  window.startNewRound = startNewRound;
   window.updateStatsUI = updateStatsUI;
   window.StateModule = {
     APP_VERSION,
@@ -598,6 +634,8 @@ if (typeof window !== "undefined") {
     saveChaptersToStorage,
     buildDistractorCache,
     resetStats,
+    getRoundSummary,
+    startNewRound,
     updateStatsUI,
   };
 }
@@ -626,6 +664,8 @@ if (typeof module !== "undefined" && module.exports) {
     saveChaptersToStorage,
     buildDistractorCache,
     resetStats,
+    getRoundSummary,
+    startNewRound,
     updateStatsUI,
   };
 }

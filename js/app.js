@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.12.1";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.13.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -22,6 +22,8 @@ var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppSt
   streak: 0,
   totalAnswered: 0,
   correctCount: 0,
+  roundMisses: [],
+  previousRound: null,
   distractorCache: { words: [], sentences: [] },
   srs: {},
   survivalHighScore: 0,
@@ -776,10 +778,98 @@ function updatePracticeActionButtonToNext() {
   }
 }
 
-function updatePracticeProgressBar(current, total) {
+/** Barra e contagem da rodada: verde para acertos, vermelho para erros */
+function updateRoundProgress() {
   if (typeof document === "undefined") return;
-  const fill = document.getElementById("practice-progress-fill");
-  if (fill) fill.style.width = total > 0 ? `${Math.round((current / total) * 100)}%` : "0%";
+  const total = practiceQueue.length;
+  const correct = AppState.correctCount || 0;
+  const wrong = (AppState.totalAnswered || 0) - correct;
+  const percent = (value) => (total > 0 ? `${Math.min(100, (value / total) * 100)}%` : "0%");
+
+  const correctFill = document.getElementById("practice-progress-fill");
+  const wrongFill = document.getElementById("practice-progress-wrong");
+  if (correctFill) correctFill.style.width = percent(correct);
+  if (wrongFill) wrongFill.style.width = percent(wrong);
+
+  const tally = document.getElementById("round-tally");
+  const correctEl = document.getElementById("round-tally-correct");
+  const wrongEl = document.getElementById("round-tally-wrong");
+  if (tally) {
+    tally.classList.toggle("hidden", total === 0);
+    tally.setAttribute("aria-label", `${correct} ${correct === 1 ? "acerto" : "acertos"} e ${wrong} ${wrong === 1 ? "erro" : "erros"} nesta rodada`);
+  }
+  if (correctEl) correctEl.textContent = correct;
+  if (wrongEl) wrongEl.textContent = wrong;
+  const correctWord = document.getElementById("round-tally-correct-word");
+  const wrongWord = document.getElementById("round-tally-wrong-word");
+  if (correctWord) correctWord.textContent = correct === 1 ? "acerto" : "acertos";
+  if (wrongWord) wrongWord.textContent = wrong === 1 ? "erro" : "erros";
+}
+
+function hideRoundSummary() {
+  if (typeof document === "undefined") return;
+  const panel = document.getElementById("standard-practice-panel");
+  const summary = document.getElementById("round-summary");
+  if (panel) panel.classList.remove("is-summary");
+  if (summary) summary.classList.add("hidden");
+}
+
+function roundComparisonText(delta) {
+  if (delta === null) return "";
+  if (delta === 0) return "mesmo resultado da rodada anterior";
+  const amount = Math.abs(delta);
+  return `${amount} ${amount === 1 ? "acerto" : "acertos"} a ${delta > 0 ? "mais" : "menos"} que a rodada anterior`;
+}
+
+function showRoundSummary() {
+  if (typeof document === "undefined") return;
+  const summary = window.StateModule.getRoundSummary(AppState);
+  const panel = document.getElementById("standard-practice-panel");
+  const section = document.getElementById("round-summary");
+  if (!panel || !section) return;
+
+  AppState.currentQuestion = null;
+  document.getElementById("round-summary-correct").textContent = summary.correct;
+  document.getElementById("round-summary-total").textContent = summary.total;
+  document.getElementById("round-summary-note").textContent = [
+    summary.wrong === 0 ? "Nenhum erro nesta rodada" : `${summary.accuracy}% de precisão`,
+    roundComparisonText(summary.delta),
+  ].filter(Boolean).join(" · ");
+
+  const list = document.getElementById("round-summary-list");
+  list.innerHTML = "";
+  summary.misses.forEach((item) => {
+    const li = document.createElement("li");
+    const term = document.createElement("span");
+    term.className = `round-summary__term ${AppState.language === "greek" ? "greek-text" : "hebrew-text"}`;
+    term.dir = "auto";
+    term.textContent = getTerm(item);
+    const meaning = document.createElement("span");
+    meaning.className = "round-summary__meaning";
+    meaning.textContent = (item.translations || []).join(", ");
+    li.append(term, meaning);
+    list.appendChild(li);
+  });
+  document.getElementById("round-summary-misses").classList.toggle("hidden", summary.misses.length === 0);
+  document.getElementById("btn-round-errors").classList.toggle(
+    "hidden",
+    summary.misses.length === 0 || AppState.exerciseMode === "errors",
+  );
+
+  panel.classList.add("is-summary");
+  section.classList.remove("hidden");
+  setTimeout(() => {
+    const restart = document.getElementById("btn-round-restart");
+    if (restart && !section.classList.contains("hidden")) restart.focus();
+  }, 100);
+}
+
+function restartPracticeRound() {
+  window.StateModule.startNewRound(AppState);
+  AppState.currentQuestionIndex = 0;
+  reshufflePracticeQueue();
+  renderCurrentQuestion();
+  updateStatsUI();
 }
 
 function updateRemoveErrorButton() {
@@ -792,11 +882,12 @@ function renderCurrentQuestion() {
   ensureDOM();
   resetPracticeActionButtons();
   updateRemoveErrorButton();
+  hideRoundSummary();
   if (DOM.hebPrompt) DOM.hebPrompt.classList.remove("is-long", "is-message");
 
   if (practiceQueue.length === 0) {
     AppState.currentQuestion = null;
-    updatePracticeProgressBar(0, 0);
+    updateRoundProgress();
     if (DOM.hebPrompt) DOM.hebPrompt.classList.add("is-message");
     if (DOM.btnPracticeFav) {
       DOM.btnPracticeFav.classList.add("hidden");
@@ -874,7 +965,10 @@ function renderCurrentQuestion() {
   }
 
   if (AppState.currentQuestionIndex >= practiceQueue.length) {
-    // Rodada completa: recomeça em nova ordem e as métricas seguem acumulando na sessão
+    if (AppState.totalAnswered > 0) {
+      showRoundSummary();
+      return;
+    }
     AppState.currentQuestionIndex = 0;
     reshufflePracticeQueue();
   }
@@ -914,10 +1008,9 @@ function renderCurrentQuestion() {
     }
   }
   if (DOM.qProgress) {
-    const modeSuffix = { favorites: " (Favoritas)", errors: " (Erros)" }[AppState.exerciseMode] || "";
-    DOM.qProgress.textContent = `Item ${AppState.currentQuestionIndex + 1} de ${practiceQueue.length}${modeSuffix}`;
+    DOM.qProgress.textContent = `Item ${AppState.currentQuestionIndex + 1} de ${practiceQueue.length}`;
   }
-  updatePracticeProgressBar(AppState.currentQuestionIndex + 1, practiceQueue.length);
+  updateRoundProgress();
   if (DOM.hebPrompt) {
     const promptText = getTerm(AppState.currentQuestion);
     DOM.hebPrompt.textContent = promptText;
@@ -1099,10 +1192,6 @@ function checkPracticeAnswer(userAnswer) {
 
   if (evalResult.status === "correct") {
     AppState.correctCount++;
-    AppState.score += AppState.exerciseMode === "sentences" ? 20 : 10;
-    if (isMixedPracticeMode() && (AppState.currentQuestion?.type === "Frase" || AppState.currentQuestion?.type === "Expressão" || (AppState.currentQuestion?.tokens && AppState.currentQuestion.tokens.length > 0))) {
-      AppState.score += 10;
-    }
     AppState.streak++;
     DOM.banner.classList.add(
       "bg-emerald-950/80",
@@ -1114,10 +1203,6 @@ function checkPracticeAnswer(userAnswer) {
     detail.textContent = `Tradução esperada: "${AppState.currentQuestion.translations.join('" / "')}"`;
   } else if (evalResult.status === "typo") {
     AppState.correctCount++; // Pontua como acerto
-    AppState.score += AppState.exerciseMode === "sentences" ? 20 : 10;
-    if (isMixedPracticeMode() && (AppState.currentQuestion?.type === "Frase" || AppState.currentQuestion?.type === "Expressão" || (AppState.currentQuestion?.tokens && AppState.currentQuestion.tokens.length > 0))) {
-      AppState.score += 10;
-    }
     AppState.streak++;
     DOM.banner.classList.add("bg-amber-950/80", "border-amber-500/50");
     icon.textContent = "⚠️";
@@ -1126,6 +1211,7 @@ function checkPracticeAnswer(userAnswer) {
     detail.textContent = `Sua resposta foi aceita, mas o ideal é: "${evalResult.expected}". (Você digitou: "${userAnswer}")`;
   } else {
     AppState.streak = 0;
+    AppState.roundMisses.push(AppState.currentQuestion);
     recordSRSError(getTerm(AppState.currentQuestion)); // Manda pro Anki
     DOM.banner.classList.add("bg-rose-950/80", "border-rose-500/50");
     icon.textContent = "❌";
@@ -1136,6 +1222,7 @@ function checkPracticeAnswer(userAnswer) {
   }
 
   showAssimilationTip(AppState.currentQuestion);
+  updateRoundProgress();
 
   DOM.inputs.typing.disabled = true;
   DOM.inputs.sentences.disabled = true;
@@ -1224,6 +1311,8 @@ function resetStats() {
   AppState.streak = 0;
   AppState.totalAnswered = 0;
   AppState.correctCount = 0;
+  AppState.roundMisses = [];
+  AppState.previousRound = null;
   AppState.isPracticeAnswered = false;
   updateStatsUI();
 
@@ -2332,6 +2421,7 @@ if (typeof window !== "undefined") {
   window.toggleItemFavorite = toggleItemFavorite;
   window.toggleCurrentPracticeFavorite = toggleCurrentPracticeFavorite;
   window.removeCurrentPracticeError = removeCurrentPracticeError;
+  window.restartPracticeRound = restartPracticeRound;
   window.WORD_CATEGORIES = WORD_CATEGORIES;
   window.matchItemCategory = matchItemCategory;
   window.openCurrentPracticeSentenceAnalysis = openCurrentPracticeSentenceAnalysis;
@@ -2376,6 +2466,7 @@ if (typeof module !== "undefined" && module.exports) {
     toggleItemFavorite,
     toggleCurrentPracticeFavorite,
     removeCurrentPracticeError,
+    restartPracticeRound,
     WORD_CATEGORIES,
     matchItemCategory,
     openCurrentPracticeSentenceAnalysis,

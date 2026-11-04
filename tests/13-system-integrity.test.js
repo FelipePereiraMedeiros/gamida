@@ -747,7 +747,7 @@ suite.test('Versão Canônica Única: DataLoader e módulos compartilham a mesma
 
   assert.isTrue(typeof DataLoader.VERSION === 'string' && DataLoader.VERSION.length > 0, 'DataLoader.VERSION deve ser string válida');
   assert.equal(DataLoader.VERSION, APP_VERSION, 'DataLoader.VERSION e StateModule.APP_VERSION devem ser idênticos');
-  assert.equal(DataLoader.VERSION, '2.12.1', 'Versão atual deve ser 2.12.1');
+  assert.equal(DataLoader.VERSION, '2.13.0', 'Versão atual deve ser 2.13.0');
 });
 
 module.exports = suite;
