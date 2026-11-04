@@ -1993,7 +1993,7 @@
               <span class="flex items-center gap-1.5">
                 <span>3️⃣</span> Passo 3: Vocabulário (Lema) & Tradução Contextual
               </span>
-              ${step3Lemma ? `<span class="greek-text text-sm font-bold text-brand-300" dir="ltr">Lema: ${escapeHTML(step3Lemma)}</span>` : ""}
+              ${step3Lemma ? `<span class="greek-text text-sm font-bold text-brand-300 normal-case tracking-normal" dir="ltr">Lema: ${escapeHTML(step3Lemma)}</span>` : ""}
             </div>
             <div class="text-xs md:text-sm text-slate-200 leading-relaxed">
               <div>

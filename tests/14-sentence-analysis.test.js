@@ -582,6 +582,24 @@ suite.test('Capítulo 13 e Frases Gregas não geram genericamente "partícula" n
   });
 });
 
+suite.test('Lema grego aparece em minúsculas, como no vocabulário', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const { greekData, rootDir } = require('./test-utils').loadSourceFiles();
+  const source = fs.readFileSync(path.join(rootDir, 'js', 'modules', 'sentence-analysis.js'), 'utf8');
+  assert.includes(source, 'normal-case tracking-normal" dir="ltr">Lema: ', 'O título em caixa alta não pode alcançar o lema');
+
+  const properName = /pr[óo]prio|gent[íi]lico|cristol[óo]gico/i;
+  const allowed = new Set(['Ἰσραηλίτης']);
+  greekData.flatMap((c) => c.sentences || []).flatMap((s) => s.tokens || []).forEach((token) => {
+    if (!token.lemma || token.lemma === token.lemma.toLowerCase()) return;
+    assert.isTrue(
+      properName.test(token.word_class || '') || allowed.has(token.lemma),
+      `Lema comum com maiúscula: ${token.lemma}`,
+    );
+  });
+});
+
 module.exports = suite;
 
 
