@@ -514,6 +514,11 @@ function _activateOnEnterOrSpace(e) {
  */
 function confirmLeaveActiveSession() {
   if (typeof document === "undefined" || typeof window === "undefined") return true;
+  if (window.MasteryPathModule && typeof window.MasteryPathModule.isMasteryPathActive === "function" &&
+      window.MasteryPathModule.isMasteryPathActive()) {
+    if (typeof window.confirm !== "function") return true;
+    return window.confirm("Sair do Caminho do domínio agora? A tentativa deste capítulo será perdida.");
+  }
   const active = document.getElementById("assessment-active");
   if (!active || active.classList.contains("hidden")) return true;
   if (typeof window.confirm !== "function") return true;

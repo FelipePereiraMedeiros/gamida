@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.15.2";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.16.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -231,6 +231,9 @@ function switchTab(tabName) {
   });
   if (typeof window !== "undefined" && typeof window.scrollTo === "function") window.scrollTo(0, 0);
   if (tabName === "vocab" && typeof renderVocabTable === "function") renderVocabTable();
+  if (tabName === "assessment" && typeof window !== "undefined" && window.MasteryPathModule) {
+    window.MasteryPathModule.updatePathDashboardStat();
+  }
   if (tabName === "practice" && typeof updatePracticeChapterView === "function") updatePracticeChapterView();
   if (tabName === "paradigms") {
     if (typeof updateParadigmsVisibility === "function") updateParadigmsVisibility();
