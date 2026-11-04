@@ -822,6 +822,34 @@
   // ESTADO & CONTROLADORES DE INTERFACE DE HEBRAICO (PAGE KELLEY)
   // ==========================================================================
 
+  let _lastFocusedElementBeforeModal = null;
+
+  function trapSentenceAnalysisModalFocus(e) {
+    if (e.key !== "Tab" || typeof document === "undefined") return;
+    const modal = document.getElementById("sentence-analysis-modal");
+    if (!modal) return;
+    const focusableSelectors = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const focusableElements = Array.prototype.filter.call(
+      modal.querySelectorAll(focusableSelectors),
+      (el) => !el.disabled && el.offsetParent !== null
+    );
+    if (focusableElements.length === 0) return;
+    const firstEl = focusableElements[0];
+    const lastEl = focusableElements[focusableElements.length - 1];
+
+    if (e.shiftKey) {
+      if (document.activeElement === firstEl || !modal.contains(document.activeElement)) {
+        e.preventDefault();
+        lastEl.focus();
+      }
+    } else {
+      if (document.activeElement === lastEl || !modal.contains(document.activeElement)) {
+        e.preventDefault();
+        firstEl.focus();
+      }
+    }
+  }
+
   const HebrewModalState = {
     isOpen: false,
     currentSentence: null,
@@ -989,7 +1017,10 @@
   function handleHebrewModalKeyDown(e) {
     if (!HebrewModalState.isOpen) return;
 
-    if (e.key === "Escape") {
+    if (e.key === "Tab") {
+      trapSentenceAnalysisModalFocus(e);
+      return;
+    } else if (e.key === "Escape") {
       e.preventDefault();
       if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
       if (typeof e.stopPropagation === "function") e.stopPropagation();
@@ -1132,6 +1163,10 @@
   function openHebrewSentenceAnalysisModal(sentence) {
     if (!sentence || typeof document === "undefined") return;
 
+    if (typeof document !== "undefined" && document.activeElement) {
+      _lastFocusedElementBeforeModal = document.activeElement;
+    }
+
     HebrewModalState.isOpen = true;
     HebrewModalState.currentSentence = sentence;
     HebrewModalState.flatMorphemes = buildHebrewFlatMorphemesList(sentence);
@@ -1214,6 +1249,10 @@
     if (typeof document !== "undefined" && typeof document.addEventListener === "function") {
       document.addEventListener("keydown", handleHebrewModalKeyDown);
     }
+    const closeBtnHebrew = document.getElementById("btn-close-analysis-modal");
+    if (closeBtnHebrew && typeof closeBtnHebrew.focus === "function") {
+      try { closeBtnHebrew.focus(); } catch (_) {}
+    }
   }
 
   function closeHebrewSentenceAnalysisModal() {
@@ -1230,6 +1269,10 @@
     }
     if (typeof document !== "undefined" && typeof document.removeEventListener === "function") {
       document.removeEventListener("keydown", handleHebrewModalKeyDown);
+    }
+    if (_lastFocusedElementBeforeModal && typeof _lastFocusedElementBeforeModal.focus === "function") {
+      try { _lastFocusedElementBeforeModal.focus(); } catch (_) {}
+      _lastFocusedElementBeforeModal = null;
     }
   }
 
@@ -2134,7 +2177,10 @@
   function handleGreekModalKeyDown(e) {
     if (!GreekModalState.isOpen) return;
 
-    if (e.key === "Escape") {
+    if (e.key === "Tab") {
+      trapSentenceAnalysisModalFocus(e);
+      return;
+    } else if (e.key === "Escape") {
       e.preventDefault();
       if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
       if (typeof e.stopPropagation === "function") e.stopPropagation();
@@ -2277,6 +2323,10 @@
   function openGreekSentenceAnalysisModal(sentence) {
     if (!sentence || typeof document === "undefined") return;
 
+    if (typeof document !== "undefined" && document.activeElement) {
+      _lastFocusedElementBeforeModal = document.activeElement;
+    }
+
     GreekModalState.isOpen = true;
     GreekModalState.currentSentence = sentence;
     GreekModalState.flatMorphemes = buildGreekFlatMorphemesList(sentence);
@@ -2358,6 +2408,10 @@
     if (typeof document !== "undefined" && typeof document.addEventListener === "function") {
       document.addEventListener("keydown", handleGreekModalKeyDown);
     }
+    const closeBtnGreek = document.getElementById("btn-close-analysis-modal");
+    if (closeBtnGreek && typeof closeBtnGreek.focus === "function") {
+      try { closeBtnGreek.focus(); } catch (_) {}
+    }
   }
 
   function closeGreekSentenceAnalysisModal() {
@@ -2374,6 +2428,10 @@
     }
     if (typeof document !== "undefined" && typeof document.removeEventListener === "function") {
       document.removeEventListener("keydown", handleGreekModalKeyDown);
+    }
+    if (_lastFocusedElementBeforeModal && typeof _lastFocusedElementBeforeModal.focus === "function") {
+      try { _lastFocusedElementBeforeModal.focus(); } catch (_) {}
+      _lastFocusedElementBeforeModal = null;
     }
 
     const container = document.getElementById("sentence-morphemes-container");

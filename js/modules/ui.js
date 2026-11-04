@@ -391,6 +391,9 @@ function renderChapterSelectorLists() {
       const wordsCount = (chap.items || []).length;
       const sentsCount = (chap.sentences || []).length;
 
+      li.setAttribute("role", "option");
+      li.setAttribute("aria-selected", isChecked ? "true" : "false");
+      li.setAttribute("tabindex", "0");
       if (isAlpha) {
         li.className = `px-4 py-3 text-sm font-semibold cursor-pointer transition border-l-4 flex items-center justify-between ${isChecked ? "text-white bg-indigo-900/40 border-brand-400" : "text-brand-300 bg-indigo-950/20 hover:bg-slate-800 hover:text-white border-indigo-500"}`;
         li.innerHTML = `<span>${escapeFn(chap.title)}</span><span class="text-[10px] bg-indigo-500/30 text-indigo-200 border border-indigo-400/40 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider shrink-0">🔤 Alfabeto</span>`;
@@ -445,6 +448,9 @@ function renderChapterSelectorLists() {
       const sentsCount = (chap.sentences || []).length;
 
       const li = document.createElement("li");
+      li.setAttribute("role", "option");
+      li.setAttribute("aria-selected", isChecked ? "true" : "false");
+      li.setAttribute("tabindex", "0");
       li.className = `px-3.5 py-2.5 text-xs cursor-pointer transition border-l-4 flex items-center justify-between gap-2 ${isChecked ? "bg-brand-950/40 text-white font-semibold border-brand-500" : "text-slate-300 hover:bg-slate-800/70 hover:text-white border-transparent"}`;
       li.innerHTML = `
         <div class="flex items-center gap-2.5 min-w-0 flex-1">
@@ -522,11 +528,16 @@ function setupGlobalChapterDropdown() {
 
 function toggleDropdown(forceClose = false) {
   const list = document.getElementById("chapter-dropdown-list");
+  const btn = document.querySelector("#custom-chapter-selector > button");
   if (!list) return;
   if (forceClose) {
     list.classList.add("hidden");
   } else {
     list.classList.toggle("hidden");
+  }
+  if (btn) {
+    const isExpanded = !list.classList.contains("hidden");
+    btn.setAttribute("aria-expanded", String(isExpanded));
   }
 }
 
@@ -536,11 +547,16 @@ function togglePracticeChapterPicker(eventOrForceClose = false) {
   }
   const forceClose = typeof eventOrForceClose === "boolean" ? eventOrForceClose : false;
   const menu = document.getElementById("practice-chapters-dropdown-menu");
+  const btn = document.getElementById("btn-practice-chapter-picker");
   if (!menu) return;
   if (forceClose) {
     menu.classList.add("hidden");
   } else {
     menu.classList.toggle("hidden");
+  }
+  if (btn) {
+    const isExpanded = !menu.classList.contains("hidden");
+    btn.setAttribute("aria-expanded", String(isExpanded));
   }
 }
 

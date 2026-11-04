@@ -1300,6 +1300,194 @@ function exportChaptersJSON() {
   }, 100);
 }
 
+
+/* ================= EDITOR VISUAL & GERENCIADOR DE CAPÍTULOS ================= */
+
+function loadCurrentChapterIntoEditor() {
+  const inputEl = document.getElementById("json-input");
+  const statusEl = document.getElementById("json-status");
+  if (!inputEl) return;
+
+  if (!AppState.currentChapter) {
+    if (statusEl) {
+      statusEl.textContent = "⚠️ Nenhum capítulo selecionado atualmente.";
+      statusEl.className = "text-xs font-mono text-amber-400";
+    }
+    return;
+  }
+
+  // Clona o capítulo atual omitindo propriedades internas transitórias
+  const chapData = JSON.parse(JSON.stringify(AppState.currentChapter));
+  delete chapData._userModified;
+
+  inputEl.value = JSON.stringify(chapData, null, 2);
+  validateChapterJSONInput();
+
+  if (statusEl) {
+    statusEl.textContent = `📝 Capítulo "${chapData.title || chapData.id}" carregado!`;
+    statusEl.className = "text-xs font-mono text-brand-400";
+  }
+}
+
+function validateChapterJSONInput() {
+  const inputEl = document.getElementById("json-input");
+  const statusEl = document.getElementById("json-status");
+  const feedbackEl = document.getElementById("json-schema-feedback");
+  if (!inputEl) return;
+
+  const raw = inputEl.value.trim();
+  if (!raw) {
+    if (statusEl) {
+      statusEl.textContent = "Pronto";
+      statusEl.className = "text-xs font-mono text-slate-500";
+    }
+    if (feedbackEl) {
+      feedbackEl.classList.add("hidden");
+      feedbackEl.innerHTML = "";
+    }
+    return;
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+
+    // 1. Caso seja backup completo estruturado
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed) && Array.isArray(parsed.chapters)) {
+      if (statusEl) {
+        statusEl.textContent = "Backup Estruturado";
+        statusEl.className = "text-xs font-mono text-indigo-400";
+      }
+      if (feedbackEl) {
+        feedbackEl.className = "px-3.5 py-2.5 rounded-xl border text-xs font-mono flex items-center justify-between gap-2 bg-indigo-950/40 border-indigo-700/50 text-indigo-300";
+        feedbackEl.innerHTML = `
+          <span>📦 <strong>Backup Completo</strong> (${parsed.chapters.length} capítulos)</span>
+          <span class="text-[11px] text-indigo-400 font-sans">Idioma: ${escapeHTML(parsed.language || "Todos")}</span>
+        `;
+      }
+      return;
+    }
+
+    // 2. Caso seja array de capítulos
+    if (Array.isArray(parsed)) {
+      if (parsed.length === 0) {
+        throw new Error("O array JSON de capítulos está vazio.");
+      }
+      const invalidIdx = parsed.findIndex((c) => !isValidChapter(c));
+      if (invalidIdx >= 0) {
+        throw new Error(`Capítulo na posição [${invalidIdx}] possui schema incompleto ou inválido.`);
+      }
+      if (statusEl) {
+        statusEl.textContent = `${parsed.length} capítulos válidos`;
+        statusEl.className = "text-xs font-mono text-emerald-400";
+      }
+      if (feedbackEl) {
+        feedbackEl.className = "px-3.5 py-2.5 rounded-xl border text-xs font-mono flex items-center justify-between gap-2 bg-emerald-950/40 border-emerald-700/50 text-emerald-300";
+        feedbackEl.innerHTML = `
+          <span>✅ <strong>Coleção Válida</strong> (${parsed.length} capítulos)</span>
+          <span class="text-[11px] text-emerald-400 font-sans">IDs únicos confirmados</span>
+        `;
+      }
+      return;
+    }
+
+    // 3. Caso seja um único capítulo
+    if (parsed && typeof parsed === "object") {
+      if (!parsed.id || typeof parsed.id !== "string" || !parsed.id.trim()) {
+        throw new Error("Campo obrigatório 'id' ausente ou vazio.");
+      }
+      if (!parsed.title || typeof parsed.title !== "string" || !parsed.title.trim()) {
+        throw new Error("Campo obrigatório 'title' ausente ou vazio.");
+      }
+      const items = Array.isArray(parsed.items) ? parsed.items : (Array.isArray(parsed.vocabulary) ? parsed.vocabulary : null);
+      if (!items && !Array.isArray(parsed.sentences)) {
+        throw new Error("O capítulo precisa conter a coleção 'items' (ou 'vocabulary') ou 'sentences'.");
+      }
+      if (items && items.length > 0) {
+        const itemInvalid = items.find((it) => {
+          const t = it && (it.hebrew || it.greek || it.term);
+          return !t || !Array.isArray(it.translations) || it.translations.length === 0;
+        });
+        if (itemInvalid) {
+          throw new Error("Um ou mais vocábulos não possuem termo principal ou traduções válidas.");
+        }
+      }
+
+      const totalItems = (items || []).length;
+      const totalSents = (parsed.sentences || []).length;
+
+      if (statusEl) {
+        statusEl.textContent = "Schema Válido";
+        statusEl.className = "text-xs font-mono text-emerald-400";
+      }
+      if (feedbackEl) {
+        feedbackEl.className = "px-3.5 py-2.5 rounded-xl border text-xs font-mono flex items-center justify-between gap-2 bg-emerald-950/40 border-emerald-700/50 text-emerald-300";
+        feedbackEl.innerHTML = `
+          <span>✅ <strong>${escapeHTML(parsed.title)}</strong> (<code>${escapeHTML(parsed.id)}</code>)</span>
+          <span class="text-[11px] text-emerald-400 font-sans">${totalItems} vocábulo(s) • ${totalSents} frase(s)</span>
+        `;
+      }
+      return;
+    }
+
+    throw new Error("O formato JSON deve ser um objeto de capítulo, array de capítulos ou backup estruturado.");
+  } catch (err) {
+    if (statusEl) {
+      statusEl.textContent = "Schema Inválido";
+      statusEl.className = "text-xs font-mono text-rose-400";
+    }
+    if (feedbackEl) {
+      feedbackEl.className = "px-3.5 py-2.5 rounded-xl border text-xs font-mono flex items-center justify-between gap-2 bg-rose-950/40 border-rose-700/50 text-rose-300";
+      feedbackEl.innerHTML = `
+        <span>⚠️ <strong>Atenção:</strong></span>
+        <span class="text-[11px] text-rose-300 font-sans truncate">${escapeHTML(err.message)}</span>
+      `;
+    }
+  }
+}
+
+async function deleteCurrentCustomChapter() {
+  if (!AppState.currentChapter) {
+    alert("Nenhum capítulo selecionado para exclusão.");
+    return;
+  }
+  if (!AppState.chapters || AppState.chapters.length <= 1) {
+    alert("Não é possível excluir o único capítulo restante da coleção.");
+    return;
+  }
+
+  const target = AppState.currentChapter;
+  const isConfirmed = confirm(
+    `Deseja realmente excluir o capítulo:\n"${target.title}" (ID: ${target.id})?\nEsta ação removerá o capítulo desta sessão local.`
+  );
+  if (!isConfirmed) return;
+
+  AppState.chapters = AppState.chapters.filter((c) => c.id !== target.id);
+  if (Array.isArray(AppState.selectedChapterIds)) {
+    AppState.selectedChapterIds = AppState.selectedChapterIds.filter((id) => id !== target.id);
+  }
+
+  saveChaptersToStorage();
+  buildDistractorCache();
+  setupGlobalChapterDropdown();
+
+  if (AppState.chapters.length > 0) {
+    changeGlobalChapter(AppState.chapters[0].id);
+  }
+
+  const inputEl = document.getElementById("json-input");
+  if (inputEl) inputEl.value = "";
+  const statusEl = document.getElementById("json-status");
+  if (statusEl) {
+    statusEl.textContent = `Capítulo "${target.title}" excluído`;
+    statusEl.className = "text-xs font-mono text-amber-400";
+  }
+  const feedbackEl = document.getElementById("json-schema-feedback");
+  if (feedbackEl) {
+    feedbackEl.classList.add("hidden");
+    feedbackEl.innerHTML = "";
+  }
+}
+
 function saveChapterFromJSON() {
   const jsonText = document.getElementById("json-input").value.trim();
   const statusEl = document.getElementById("json-status");
@@ -2008,6 +2196,10 @@ if (typeof window !== "undefined") {
   window.openCurrentPracticeSentenceAnalysis = openCurrentPracticeSentenceAnalysis;
   window.resetPracticeActionButtons = resetPracticeActionButtons;
   window.updatePracticeActionButtonToNext = updatePracticeActionButtonToNext;
+  window.loadCurrentChapterIntoEditor = loadCurrentChapterIntoEditor;
+  window.validateChapterJSONInput = validateChapterJSONInput;
+  window.deleteCurrentCustomChapter = deleteCurrentCustomChapter;
+  window.saveChapterFromJSON = saveChapterFromJSON;
   if (typeof openSentenceAnalysisModal !== "undefined") {
     window.openSentenceAnalysisModal = openSentenceAnalysisModal;
   }
@@ -2047,6 +2239,10 @@ if (typeof module !== "undefined" && module.exports) {
     openCurrentPracticeSentenceAnalysis,
     resetPracticeActionButtons,
     updatePracticeActionButtonToNext,
+    loadCurrentChapterIntoEditor,
+    validateChapterJSONInput,
+    deleteCurrentCustomChapter,
+    saveChapterFromJSON,
   };
 }
 

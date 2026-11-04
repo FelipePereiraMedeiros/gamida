@@ -109,7 +109,7 @@
 
           <!-- Seletor global de capítulos (no mobile retrai; no desktop fica no centro da linha superior) -->
           <div class="hidden md:block relative w-full md:flex-1 md:min-w-0 md:max-w-lg md:mx-4 lg:mx-6 order-3 md:order-2 z-50 mobile-collapsible-target" id="custom-chapter-selector">
-             <button type="button" onclick="toggleDropdown()" class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group min-w-0">
+             <button type="button" onclick="toggleDropdown()" aria-haspopup="listbox" aria-expanded="false" aria-controls="chapter-dropdown-list" class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group min-w-0 cursor-pointer">
                  <div class="flex items-center gap-2 sm:gap-3 overflow-hidden min-w-0 flex-1">
                     <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider shrink-0">Capítulos:</span>
                     <span id="chapter-dropdown-text" class="text-brand-400 font-bold text-xs sm:text-sm truncate text-left group-hover:text-brand-300 min-w-0 block">Carregando...</span>
@@ -118,7 +118,7 @@
              </button>
              
              <!-- Opções inseridas dinamicamente pelo JavaScript -->
-             <ul id="chapter-dropdown-list" class="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden hidden max-h-[60vh] overflow-y-auto divide-y divide-slate-800/60 z-50">
+             <ul id="chapter-dropdown-list" role="listbox" aria-label="Lista de Capítulos" class="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden hidden max-h-[60vh] overflow-y-auto divide-y divide-slate-800/60 z-50">
              </ul>
           </div>
         </div>
@@ -326,6 +326,9 @@
                       type="button"
                       id="btn-practice-chapter-picker"
                       onclick="togglePracticeChapterPicker(event)"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      aria-controls="practice-chapters-dropdown-menu"
                       class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-950 border border-slate-700 hover:border-brand-500 text-brand-300 hover:text-white transition flex items-center gap-2 cursor-pointer shadow-inner"
                       title="Selecionar capítulos específicos para praticar"
                     >
@@ -368,6 +371,8 @@
                       </div>
                       <ul
                         id="practice-chapters-checklist"
+                        role="listbox"
+                        aria-label="Lista de Capítulos para Prática"
                         class="max-h-64 overflow-y-auto divide-y divide-slate-800/60"
                       ></ul>
                     </div>
@@ -1709,17 +1714,35 @@
             <div class="pt-2 flex flex-col gap-2">
               <button
                 type="button"
+                id="btn-load-current-chapter"
+                onclick="loadCurrentChapterIntoEditor()"
+                class="w-full py-2 bg-brand-700/80 hover:bg-brand-600 text-white font-medium text-xs rounded-xl transition border border-brand-500/40 cursor-pointer flex items-center justify-center gap-2 shadow-sm"
+                title="Carrega os dados JSON do capítulo atualmente selecionado no editor"
+              >
+                <span>📝</span> Carregar Atual no Editor
+              </button>
+              <button
+                type="button"
                 onclick="resetDefaultChapters()"
-                class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700"
+                class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700 cursor-pointer"
               >
                 🔄 Restaurar Padrões
               </button>
               <button
                 type="button"
                 onclick="exportChaptersJSON()"
-                class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700"
+                class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700 cursor-pointer"
               >
                 📥 Exportar Backup
+              </button>
+              <button
+                type="button"
+                id="btn-delete-custom-chapter"
+                onclick="deleteCurrentCustomChapter()"
+                class="w-full py-2 bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 hover:text-white font-medium text-xs rounded-xl transition border border-rose-800/40 cursor-pointer flex items-center justify-center gap-2"
+                title="Exclui o capítulo customizado atualmente selecionado"
+              >
+                <span>🗑️</span> Excluir Capítulo Atual
               </button>
             </div>
           </div>
@@ -1732,12 +1755,20 @@
                 >Pronto</span
               >
             </div>
+            <!-- Feedback visual de validação do schema em tempo real -->
+            <div
+              id="json-schema-feedback"
+              class="hidden px-3.5 py-2.5 rounded-xl border text-xs font-mono flex items-center justify-between gap-2"
+            >
+              <!-- Preenchido dinamicamente via validateChapterJSONInput -->
+            </div>
             <textarea
               id="json-input"
               aria-label="Editor de código JSON de capítulos"
               rows="14"
+              oninput="validateChapterJSONInput()"
               class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 resize-y"
-              placeholder="Cole o JSON do novo capítulo aqui..."
+              placeholder="Cole o JSON do novo capítulo aqui ou clique em 'Carregar Atual no Editor'..."
             ></textarea>
             <div class="flex justify-end gap-3">
               <button
