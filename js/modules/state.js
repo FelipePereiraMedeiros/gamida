@@ -7,7 +7,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.9.2";
+  "2.11.0";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
@@ -50,7 +50,7 @@ const AppState = (typeof window !== "undefined" && window.AppState) || {
   isVocabCumulative: false,
   vocabCategory: "all",
   selectedChapterIds: [],
-  chapterOrder: "asc", // 'asc' (Menor ➔ Maior) ou 'desc' (Maior ➔ Menor)
+  chapterOrder: "asc", // 'asc' (Primeira ➔ Última) ou 'desc' (Última ➔ Primeira)
 };
 
 const SimConfig = {
@@ -444,7 +444,28 @@ function toggleChapterSelection(chapterId, state = AppState) {
 }
 
 /**
- * Define a direção de ordenação dos capítulos ('asc': Menor ➔ Maior, 'desc': Maior ➔ Menor)
+ * Marca todos os capítulos de vocabulário ou, se já estiverem todos marcados,
+ * desmarca-os mantendo o primeiro, pois a sessão precisa de ao menos um capítulo
+ * @param {Object} [state]
+ * @returns {Array<Object>}
+ */
+function toggleAllChapterSelection(state = AppState) {
+  if (!state) return [];
+  const chapters = Array.isArray(state.chapters) ? state.chapters : [];
+  const vocabIds = chapters.filter((c) => c && !isAlphabetChapter(c)).map((c) => c.id);
+  if (vocabIds.length === 0) return getSelectedChapters(state);
+
+  const selectedIds = new Set(getSelectedChapters(state).map((c) => c.id));
+  const allSelected = vocabIds.every((id) => selectedIds.has(id));
+  const nextIds = allSelected ? [vocabIds[0]] : vocabIds;
+
+  state.isPracticeCumulative = nextIds.length > 1;
+  state.isVocabCumulative = nextIds.length > 1;
+  return setSelectedChapters(nextIds, state);
+}
+
+/**
+ * Define a direção de ordenação dos capítulos ('asc': Primeira ➔ Última, 'desc': Última ➔ Primeira)
  * @param {'asc'|'desc'} order
  * @param {Object} [state]
  * @returns {'asc'|'desc'}
@@ -540,6 +561,7 @@ if (typeof window !== "undefined") {
   window.getSelectedChapters = getSelectedChapters;
   window.setSelectedChapters = setSelectedChapters;
   window.toggleChapterSelection = toggleChapterSelection;
+  window.toggleAllChapterSelection = toggleAllChapterSelection;
   window.setChapterOrder = setChapterOrder;
   window.getAvailablePracticeCategories = getAvailablePracticeCategories;
   window.getAvailableVocabCategories = getAvailableVocabCategories;
@@ -564,6 +586,7 @@ if (typeof window !== "undefined") {
     getSelectedChapters,
     setSelectedChapters,
     toggleChapterSelection,
+    toggleAllChapterSelection,
     setChapterOrder,
     getAvailablePracticeCategories,
     getAvailableVocabCategories,
@@ -591,6 +614,7 @@ if (typeof module !== "undefined" && module.exports) {
     getSelectedChapters,
     setSelectedChapters,
     toggleChapterSelection,
+    toggleAllChapterSelection,
     setChapterOrder,
     getAvailablePracticeCategories,
     getAvailableVocabCategories,

@@ -230,6 +230,53 @@ suite.test('startAnki, revealAnki e finishAnki operam no DOM com tolerância def
   if (oldAlert === undefined) delete global.alert; else global.alert = oldAlert;
 });
 
+suite.test('Modo Erros reúne erros de todos os capítulos e limpa ao lembrar', () => {
+  const srsModule = require('../js/modules/srs.js');
+  const a = { id: 'a', title: 'A', items: [{ term: 'um', translations: ['1'] }, { term: 'dois', translations: ['2'] }] };
+  const b = { id: 'b', title: 'B', items: [{ term: 'tres', translations: ['3'] }] };
+  AppState.chapters = [a, b];
+  AppState.currentChapter = a;
+  AppState.activeChapterId = 'a';
+  AppState.selectedChapterIds = ['a'];
+  AppState.srs = {};
+
+  srsModule.recordSRSError('tres');
+  assert.deepEqual(srsModule.getErrorCards().map((c) => c.term), ['tres'], 'Erro de outro capítulo deve aparecer');
+
+  srsModule.startAnki('errors');
+  assert.deepEqual(srsModule.getAnkiQueue().map((c) => c.term), ['tres']);
+
+  srsModule.answerAnki('hard');
+  assert.equal(srsModule.getErrorCards().length, 1, 'Errei mantém o termo pendente');
+  srsModule.answerAnki('good');
+  assert.equal(srsModule.getErrorCards().length, 0, 'Lembrei limpa o erro pendente');
+
+  srsModule.recordSRSError('tres');
+  assert.equal(srsModule.getErrorCards().length, 1, 'Novo erro volta a ficar pendente');
+});
+
+suite.test('Modo Normal usa apenas os capítulos ativos', () => {
+  const srsModule = require('../js/modules/srs.js');
+  const a = { id: 'a', title: 'A', items: [{ term: 'um', translations: ['1'] }] };
+  const b = { id: 'b', title: 'B', items: [{ term: 'tres', translations: ['3'] }] };
+  AppState.chapters = [a, b];
+  AppState.currentChapter = a;
+  AppState.activeChapterId = 'a';
+  AppState.selectedChapterIds = ['a'];
+  AppState.srs = { tres: { interval: 0, ef: 2.5, nextReview: 0, fails: 1 } };
+
+  srsModule.startAnki('normal');
+  assert.deepEqual(srsModule.getAnkiQueue().map((c) => c.term), ['um']);
+});
+
+suite.test('Registro antigo com falhas conta como erro pendente', () => {
+  const { isPendingError } = require('../js/modules/srs.js');
+  assert.isTrue(isPendingError({ fails: 2 }));
+  assert.isFalse(isPendingError({ fails: 2, pendingError: false }));
+  assert.isFalse(isPendingError({ fails: 0 }));
+  assert.isFalse(isPendingError(undefined));
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

@@ -291,7 +291,7 @@ ul#chapter-dropdown-list {
   border-radius: var(--radius-md);
   background: var(--surface-0);
   border: 1px solid var(--line);
-  overflow: hidden;
+  overflow: clip; /* recorta os cantos sem impedir o item fixo de acompanhar a rolagem */
 }
 
 .chapter-option {
@@ -971,3 +971,103 @@ ul#chapter-dropdown-list {
   font-weight: 400;
   line-height: 1.45;
 }
+
+/* Lista de capítulos: caixa soma à sessão, nome estuda só aquele capítulo */
+.chapter-option {
+  justify-content: flex-start;
+  gap: 0;
+  padding: 0;
+  cursor: default;
+}
+.chapter-option__toggle {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  width: 2.75rem;
+  cursor: pointer;
+}
+.chapter-option__box {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1.5px solid var(--text-placeholder);
+  border-radius: 0.375rem;
+  background: var(--surface-0) center / 0.875rem no-repeat;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.chapter-option__toggle:hover .chapter-option__box,
+.chapter-option__all:hover .chapter-option__box { border-color: rgb(var(--brand-400)); }
+.chapter-option__box:checked,
+.chapter-option__box:indeterminate {
+  border-color: rgb(var(--brand-400));
+  background-color: rgb(var(--brand-600));
+}
+.chapter-option__box:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.25 3.25L13 4.75'/%3E%3C/svg%3E");
+}
+.chapter-option__box:indeterminate {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M3.5 8h9'/%3E%3C/svg%3E");
+}
+.chapter-option__box:focus-visible { outline: 2px solid rgb(var(--brand-400)); outline-offset: 2px; }
+@media (forced-colors: active) {
+  .chapter-option__box { appearance: auto; -webkit-appearance: auto; }
+}
+
+/* Selecionar todos: fica visível enquanto a lista rola */
+.chapter-option--all {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--surface-1);
+  border-bottom-color: var(--line);
+}
+@media (max-width: 1023.98px) {
+  /* Compensa o respiro do painel para nada passar por cima da linha fixa */
+  .chapter-option--all { top: -0.75rem; }
+}
+.chapter-option__all {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 3rem;
+  cursor: pointer;
+}
+.chapter-option__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 0.5rem 0.75rem 0.5rem 0;
+}
+.chapter-option__main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 3rem;
+  justify-content: center;
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.chapter-option__main:focus-visible { outline: 2px solid rgb(var(--brand-400)); outline-offset: -2px; }
+
+/* Cartão com mais de uma ação */
+.mode-card--static { cursor: default; }
+.mode-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.mode-card__actions > button { flex: 1 1 7rem; justify-content: center; }
+.mode-card__actions > button:disabled { opacity: 0.5; cursor: not-allowed; }

@@ -14,6 +14,7 @@ let ankiQueue = [];
 let ankiCurrentCard = null;
 let ankiStats = { hard: 0, good: 0, easy: 0 };
 let ankiTotalCards = 0;
+let ankiMode = "normal";
 
 /**
  * Carrega os registros de SRS e pontuação máxima do localStorage
@@ -92,8 +93,41 @@ function recordSRSError(termStr) {
     };
   }
   AppState.srs[key].fails = (AppState.srs[key].fails || 0) + 1;
+  AppState.srs[key].pendingError = true;
   AppState.srs[key].nextReview = Date.now();
   saveSRS();
+  refreshReviewBadge();
+}
+
+function refreshReviewBadge() {
+  if (typeof window !== "undefined" && typeof window.updateReviewDueBadge === "function") {
+    window.updateReviewDueBadge();
+  }
+}
+
+/** Registros antigos não têm pendingError: quem já errou conta como pendente até revisar */
+function isPendingError(record) {
+  return !!record && (record.fails || 0) > 0 && record.pendingError !== false;
+}
+
+/**
+ * Reúne os termos errados de todos os capítulos do idioma, ainda não revisados com sucesso
+ * @returns {Array<Object>}
+ */
+function getErrorCards() {
+  const cards = new Map();
+  (AppState.chapters || []).forEach((chap) => {
+    const collect = (item, kind) => {
+      const key = getSRSKey(item);
+      if (!key || cards.has(key)) return;
+      if (isPendingError(AppState.srs[key] || AppState.srs[getTerm(item)])) {
+        cards.set(key, { ...item, chapterId: chap.id, chapterTitle: chap.title, kind });
+      }
+    };
+    (chap.items || []).forEach((item) => collect(item, "word"));
+    (chap.sentences || []).forEach((item) => collect(item, "sentence"));
+  });
+  return Array.from(cards.values());
 }
 
 const safeToggle = (typeof window !== "undefined" && window.safeToggle) || _stateModule.safeToggle || function safeToggle(id, isVisible) {
@@ -110,10 +144,36 @@ const safeAlert = (typeof window !== "undefined" && window.safeAlert) || _stateM
   else console.warn("[Gamida Alert]:", msg);
 };
 
+function openAnkiSession(queue) {
+  ankiQueue = queue;
+  ankiTotalCards = ankiQueue.length;
+  ankiStats = { hard: 0, good: 0, easy: 0 };
+
+  if (typeof document !== "undefined") {
+    safeToggle("assess-dashboard", false);
+    safeToggle("anki-active", true);
+  }
+
+  renderAnkiCard();
+}
+
 /**
- * Inicia a sessão de revisão de Flashcards (Anki)
+ * Inicia a revisão de Flashcards (Anki)
+ * @param {'normal'|'errors'} [mode] normal: capítulos ativos; errors: termos errados pendentes
  */
-function startAnki() {
+function startAnki(mode = "normal") {
+  ankiMode = mode === "errors" ? "errors" : "normal";
+
+  if (ankiMode === "errors") {
+    const errors = shuffleArray(getErrorCards());
+    if (errors.length === 0) {
+      safeAlert("🎉 Nenhum erro pendente. Continue praticando!");
+      return;
+    }
+    openAnkiSession(errors);
+    return;
+  }
+
   const now = Date.now();
   let dueCards = [];
   let newCards = [];
@@ -143,8 +203,7 @@ function startAnki() {
       ? [...AppState.chapters].reverse()
       : AppState.chapters;
 
-  orderedChapters.forEach((chap) => {
-    const isSelected = selectedIdsSet.has(chap.id);
+  orderedChapters.filter((chap) => selectedIdsSet.has(chap.id)).forEach((chap) => {
     const processItem = (it, kind) => {
       const entry = {
         ...it,
@@ -156,7 +215,7 @@ function startAnki() {
       const rawTerm = getTerm(it);
       const record = AppState.srs[key] || AppState.srs[rawTerm];
       if (record && record.nextReview <= now) dueCards.push(entry);
-      else if (!record && isSelected) newCards.push(entry);
+      else if (!record) newCards.push(entry);
     };
     (chap.items || []).forEach((i) => processItem(i, "word"));
     (chap.sentences || []).forEach((s) => processItem(s, "sentence"));
@@ -172,24 +231,16 @@ function startAnki() {
   dueCards = shuffleArray(dueCards);
   newCards = shuffleArray(newCards);
 
-  ankiQueue = [...dueCards.slice(0, 20), ...newCards.slice(0, 10)];
+  const queue = [...dueCards.slice(0, 20), ...newCards.slice(0, 10)];
 
-  if (ankiQueue.length === 0) {
+  if (queue.length === 0) {
     safeAlert(
-      "🎉 Você não tem revisões pendentes nem palavras novas neste capítulo no momento. Excelente trabalho!",
+      "🎉 Você não tem revisões pendentes nem palavras novas nos capítulos ativos. Excelente trabalho!",
     );
     return;
   }
 
-  ankiTotalCards = ankiQueue.length;
-  ankiStats = { hard: 0, good: 0, easy: 0 };
-
-  if (typeof document !== "undefined") {
-    safeToggle("assess-dashboard", false);
-    safeToggle("anki-active", true);
-  }
-
-  renderAnkiCard();
+  openAnkiSession(queue);
 }
 
 /**
@@ -206,7 +257,8 @@ function renderAnkiCard() {
   if (typeof document === "undefined") return;
   const counter = document.getElementById("anki-counter");
   if (counter) {
-    counter.textContent = `Cartão ${ankiTotalCards - ankiQueue.length + 1} de ${ankiTotalCards}`;
+    const prefix = ankiMode === "errors" ? "Erros · " : "";
+    counter.textContent = `${prefix}Cartão ${ankiTotalCards - ankiQueue.length + 1} de ${ankiTotalCards}`;
   }
   const typeTag = document.getElementById("anki-type-tag");
   if (typeTag) {
@@ -310,14 +362,18 @@ function answerAnki(grade) {
     record.interval = 0;
     record.ef = Math.max(1.3, record.ef - 0.2);
     record.nextReview = Date.now() + 60 * 1000;
+    record.fails = (record.fails || 0) + 1;
+    record.pendingError = true;
     ankiQueue.push(ankiCurrentCard);
     ankiTotalCards++;
   } else if (grade === "good") {
+    record.pendingError = false;
     record.interval =
       record.interval === 0 ? 1 : Math.round(record.interval * record.ef);
     record.nextReview =
       Date.now() + record.interval * 24 * 60 * 60 * 1000;
   } else if (grade === "easy") {
+    record.pendingError = false;
     record.ef += 0.15;
     record.interval =
       record.interval === 0
@@ -329,6 +385,7 @@ function answerAnki(grade) {
 
   AppState.srs[cardKey] = record;
   saveSRS();
+  refreshReviewBadge();
 
   ankiQueue.shift();
   renderAnkiCard();
@@ -355,6 +412,7 @@ if (typeof window !== "undefined") {
   window.loadSRS = loadSRS;
   window.saveSRS = saveSRS;
   window.recordSRSError = recordSRSError;
+  window.getErrorCards = getErrorCards;
   window.startAnki = startAnki;
   window.renderAnkiCard = renderAnkiCard;
   window.revealAnki = revealAnki;
@@ -366,6 +424,8 @@ if (typeof window !== "undefined") {
     loadSRS,
     saveSRS,
     recordSRSError,
+    getErrorCards,
+    isPendingError,
     startAnki,
     renderAnkiCard,
     revealAnki,
@@ -383,6 +443,8 @@ if (typeof module !== "undefined" && module.exports) {
     loadSRS,
     saveSRS,
     recordSRSError,
+    getErrorCards,
+    isPendingError,
     startAnki,
     renderAnkiCard,
     revealAnki,

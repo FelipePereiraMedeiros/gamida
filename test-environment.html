@@ -282,6 +282,15 @@
         });
       }
 
+      function versionAtLeast(version, minimum) {
+        const parts = (v) => String(v).split(".").map(Number);
+        const [a, b] = [parts(version), parts(minimum)];
+        for (let i = 0; i < 3; i++) {
+          if ((a[i] || 0) !== (b[i] || 0)) return (a[i] || 0) > (b[i] || 0);
+        }
+        return true;
+      }
+
       async function runAllBrowserTests() {
         const iframe = document.getElementById("app-iframe");
         const list = document.getElementById("test-results-list");
@@ -546,7 +555,7 @@
                 name: "Versão do sistema incrementada para v2.6.8 ou superior",
                 fn: () => {
                   const ver = iframeWin.APP_VERSION || (iframeWin.DataLoader && iframeWin.DataLoader.VERSION);
-                  return !!ver && (ver === "2.6.8" || ver === "2.7.1" || ver === "2.7.2" || ver === "2.7.3" || ver === "2.7.4" || ver === "2.7.5" || ver >= "2.6.8");
+                  return !!ver && versionAtLeast(ver, "2.6.8");
                 },
               },
             ],
@@ -764,7 +773,7 @@
                   const v1 = iframeWin.APP_VERSION;
                   const v2 = iframeWin.DataLoader && iframeWin.DataLoader.VERSION;
                   const v3 = iframeWin.StateModule && iframeWin.StateModule.APP_VERSION;
-                  return !!v1 && v1 === v2 && v1 === v3 && v1 >= "2.7.5";
+                  return !!v1 && v1 === v2 && v1 === v3 && versionAtLeast(v1, "2.7.5");
                 },
               },
               {

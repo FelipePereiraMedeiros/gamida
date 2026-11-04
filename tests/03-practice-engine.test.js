@@ -213,7 +213,7 @@ suite.test('Interceptador de teclado trata tecla Enter para envio e avanço cont
   assert.includes(appJs, 'if (AppState.isPracticeAnswered)', 'Enter após resposta deve verificar isPracticeAnswered');
 });
 
-suite.test('Seleção de capítulos específicos e ordenação (Menor ➔ Maior e Maior ➔ Menor) em Hebraico e Grego', () => {
+suite.test('Seleção de capítulos específicos e ordenação (Primeira ➔ Última e Última ➔ Primeira) em Hebraico e Grego', () => {
   const { greekData } = loadSourceFiles();
   const {
     getSelectedChapters,
@@ -236,7 +236,7 @@ suite.test('Seleção de capítulos específicos e ordenação (Menor ➔ Maior 
     'Ordem crescente (asc) deve ir do capítulo menor ao maior',
   );
 
-  // Inverter para Maior ➔ Menor (desc)
+  // Inverter para Última ➔ Primeira (desc)
   setChapterOrder('desc', AppState);
   const hebDesc = getSelectedChapters(AppState);
   assert.deepEqual(
@@ -278,6 +278,51 @@ suite.test('Seleção de capítulos específicos e ordenação (Menor ➔ Maior 
   // Reset para estado padrão limpo
   setChapterOrder('asc', AppState);
   AppState.selectedChapterIds = [];
+});
+
+suite.test('A lista é embaralhada de novo ao recomeçar uma rodada', () => {
+  assert.includes(appJs, 'function reshufflePracticeQueue', 'reshufflePracticeQueue ausente');
+  const start = appJs.indexOf('AppState.isNewRoundPending = true;');
+  assert.isTrue(start > 0 && appJs.slice(start, start + 80).includes('reshufflePracticeQueue();'), 'Nova rodada deve embaralhar a fila');
+});
+
+suite.test('Selecionar todos marca os capítulos de vocabulário e desmarcar mantém o primeiro', () => {
+  const { getSelectedChapters, setSelectedChapters, toggleAllChapterSelection } = require('../js/modules/state.js');
+  AppState.language = 'hebrew';
+  AppState.chapters = hebrewData;
+  const vocabIds = hebrewData.filter((c) => c.id !== 'kelley_01').map((c) => c.id);
+
+  setSelectedChapters(['kelley_03', 'kelley_05'], AppState);
+  toggleAllChapterSelection(AppState);
+  assert.deepEqual(
+    getSelectedChapters(AppState, { order: 'asc' }).map((c) => c.id),
+    vocabIds,
+    'Seleção parcial deve passar a todos os capítulos, sem o alfabeto',
+  );
+  assert.equal(AppState.isPracticeCumulative, true, 'Todos os capítulos formam sessão combinada');
+
+  toggleAllChapterSelection(AppState);
+  assert.deepEqual(
+    getSelectedChapters(AppState).map((c) => c.id),
+    [vocabIds[0]],
+    'Desmarcar todos deve manter somente o primeiro capítulo',
+  );
+  assert.equal(AppState.isPracticeCumulative, false, 'Um capítulo não forma sessão combinada');
+
+  setSelectedChapters(['kelley_01'], AppState);
+  toggleAllChapterSelection(AppState);
+  assert.equal(getSelectedChapters(AppState).length, vocabIds.length, 'A partir do alfabeto deve marcar todos');
+});
+
+suite.test('Caixa de selecionar todos existe na lista com estado parcial e estilo próprio', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const uiJs = fs.readFileSync(path.join(__dirname, '../js/modules/ui.js'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../css/interface.css'), 'utf8');
+  assert.includes(uiJs, 'id="chapter-select-all"', 'Caixa de selecionar todos ausente');
+  assert.includes(uiJs, 'allBox.indeterminate = markedCount > 0 && !allMarked', 'Estado parcial ausente');
+  assert.includes(css, '.chapter-option__box:indeterminate', 'Estilo do estado parcial ausente');
+  assert.equal(css.includes('accent-color'), false, 'Caixas devem usar o estilo próprio do tema');
 });
 
 module.exports = suite;

@@ -70,7 +70,7 @@
           },
         },
       };
-      window.APP_VERSION = "2.9.2";
+      window.APP_VERSION = "2.11.0";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
@@ -165,7 +165,7 @@
           <button
             type="button"
             onclick="toggleDropdown()"
-            aria-haspopup="listbox"
+            aria-haspopup="true"
             aria-expanded="false"
             aria-controls="chapter-dropdown-list"
             class="chapter-select__btn"
@@ -177,7 +177,7 @@
             <svg class="icon icon--sm chapter-select__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
           </button>
           <!-- Opções inseridas dinamicamente pelo JavaScript -->
-          <ul id="chapter-dropdown-list" role="listbox" aria-label="Lista de Capítulos" class="chapter-select__list hidden"></ul>
+          <ul id="chapter-dropdown-list" aria-label="Lista de Capítulos" class="chapter-select__list hidden"></ul>
         </div>
 
         <!-- Apoio ao projeto: fica fora do fluxo de estudo, sem animação disputando atenção -->
@@ -228,7 +228,7 @@
           </button>
           <button type="button" id="nav-btn-assessment" onclick="switchTab('assessment')" class="nav-item">
             <svg class="icon" aria-hidden="true"><use href="#i-assess"></use></svg><span>Avaliar</span>
-            <span id="nav-review-badge" class="nav-item__badge hidden" title="Cartões prontos para revisão"></span>
+            <span id="nav-review-badge" class="nav-item__badge hidden" title="Palavras erradas para revisar"></span>
           </button>
           <button type="button" id="nav-btn-paradigms" onclick="switchTab('paradigms')" class="nav-item">
             <svg class="icon" aria-hidden="true"><use href="#i-table"></use></svg><span>Paradigmas</span>
@@ -347,10 +347,10 @@
 
               <!-- Ordenação da Prática dos Capítulos -->
               <div id="practice-order-container">
-                <span class="field-label">Ordem dos capítulos</span>
+                <span class="field-label">Ordem das lições</span>
                 <div class="seg" role="group" aria-label="Ordem dos capítulos">
-                  <button type="button" id="order-asc" onclick="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Do capítulo menor para o maior (1 ➔ N)">Menor ➔ Maior</button>
-                  <button type="button" id="order-desc" onclick="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Do capítulo maior para o menor (N ➔ 1)">Maior ➔ Menor</button>
+                  <button type="button" id="order-asc" onclick="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Começa pela primeira lição selecionada">Primeira ➔ Última</button>
+                  <button type="button" id="order-desc" onclick="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Começa pela última lição selecionada">Última ➔ Primeira</button>
                 </div>
               </div>
 
@@ -585,13 +585,16 @@
 
           <div class="mode-grid">
             <!-- Modo: revisão espaçada -->
-            <button type="button" onclick="startAnki()" class="mode-card mode-card--review">
+            <div class="mode-card mode-card--review mode-card--static">
               <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg></span>
               <span class="mode-card__title">Revisão Inteligente</span>
               <span id="review-due-card" class="mode-card__stat hidden"></span>
-              <span class="mode-card__text">Flashcards guiados pelos seus erros, com repetição espaçada e sem digitação.</span>
-              <span class="mode-card__cta">Iniciar revisão ➔</span>
-            </button>
+              <span class="mode-card__text">Flashcards com repetição espaçada. Normal usa os capítulos ativos; Erros reúne o que você errou.</span>
+              <span class="mode-card__actions">
+                <button type="button" onclick="startAnki('normal')" class="answer-btn">Normal</button>
+                <button type="button" id="btn-review-errors" onclick="startAnki('errors')" class="btn-secondary" disabled>Erros <span id="review-errors-count"></span></button>
+              </span>
+            </div>
 
             <!-- Modo: simulado personalizado -->
             <button type="button" onclick="openSimuladoConfig()" class="mode-card mode-card--exam">
@@ -1354,8 +1357,8 @@
           <div id="vocab-order-container">
             <span class="field-label">Ordem</span>
             <div class="seg" role="group" aria-label="Ordem dos capítulos">
-              <button type="button" id="vocab-order-asc" onclick="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Ordenar capítulos do menor para o maior">Menor ➔ Maior</button>
-              <button type="button" id="vocab-order-desc" onclick="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Ordenar capítulos do maior para o menor">Maior ➔ Menor</button>
+              <button type="button" id="vocab-order-asc" onclick="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Lista a partir da primeira lição">Primeira ➔ Última</button>
+              <button type="button" id="vocab-order-desc" onclick="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Lista a partir da última lição">Última ➔ Primeira</button>
             </div>
           </div>
 
@@ -1476,7 +1479,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.9.2</span>
+        <span id="footer-version-tag">v2.11.0</span>
       </p>
     </footer>
 

@@ -274,6 +274,13 @@ function _resolveToggleChapterSelection(chapterId, state = AppState) {
   return [];
 }
 
+function _resolveToggleAllChapters(state = AppState) {
+  if (typeof toggleAllChapterSelection === "function") return toggleAllChapterSelection(state);
+  if (typeof window !== "undefined" && typeof window.toggleAllChapterSelection === "function") return window.toggleAllChapterSelection(state);
+  if (_stateModule && typeof _stateModule.toggleAllChapterSelection === "function") return _stateModule.toggleAllChapterSelection(state);
+  return [];
+}
+
 function _resolveSetChapterOrder(order, state = AppState) {
   if (typeof setChapterOrder === "function") return setChapterOrder(order, state);
   if (typeof window !== "undefined" && typeof window.setChapterOrder === "function") return window.setChapterOrder(order, state);
@@ -300,7 +307,7 @@ function renderChapterSelectorLists() {
   const selectedChapters = _resolveGetSelectedChapters(AppState, { order: "asc" });
   const selectedIds = new Set(selectedChapters.map((c) => c && c.id));
   const currentOrder = AppState.chapterOrder || "asc";
-  const orderLabel = currentOrder === "desc" ? "Maior ➔ Menor" : "Menor ➔ Maior";
+  const orderLabel = currentOrder === "desc" ? "Última ➔ Primeira" : "Primeira ➔ Última";
 
   // Atualiza textos de resumo nos botões
   if (btnText) {
@@ -344,11 +351,48 @@ function renderChapterSelectorLists() {
   if (list) {
     list.innerHTML = "";
 
-    if (selectedChapters.length > 1) {
-      const noteLi = document.createElement("li");
-      noteLi.className = "chapter-list-note";
-      noteLi.textContent = `${selectedChapters.length} capítulos combinados. Escolha um abaixo para estudar só ele.`;
-      list.appendChild(noteLi);
+    const noteLi = document.createElement("li");
+    noteLi.className = "chapter-list-note";
+    noteLi.textContent = selectedChapters.length > 1
+      ? `${selectedChapters.length} capítulos combinados. Marque as caixas para ajustar ou toque em um nome para estudar só ele.`
+      : "Marque as caixas para combinar capítulos ou toque em um nome para estudar só ele.";
+    list.appendChild(noteLi);
+
+    const vocabChapters = (AppState.chapters || []).filter((c) => c && !checkIsAlpha(c));
+    if (vocabChapters.length > 1) {
+      const markedCount = vocabChapters.filter((c) => selectedIds.has(c.id)).length;
+      const allMarked = markedCount === vocabChapters.length;
+      const allLi = document.createElement("li");
+      allLi.className = "chapter-option chapter-option--all";
+      allLi.innerHTML = `
+        <label class="chapter-option__all">
+          <span class="chapter-option__toggle">
+            <input type="checkbox" id="chapter-select-all" class="chapter-option__box"${allMarked ? " checked" : ""} />
+          </span>
+          <span class="chapter-option__text">
+            <span class="chapter-option__title">${allMarked ? "Desmarcar todos" : "Selecionar todos"}</span>
+            <span class="chapter-option__meta">${allMarked
+              ? "O primeiro capítulo continua marcado"
+              : `${markedCount} de ${vocabChapters.length} marcados`}</span>
+          </span>
+        </label>
+      `;
+      allLi.onclick = (e) => e.stopPropagation();
+
+      const allBox = allLi.querySelector("#chapter-select-all");
+      if (allBox) {
+        allBox.indeterminate = markedCount > 0 && !allMarked;
+        allBox.onchange = () => {
+          if (!confirmLeaveActiveSession()) {
+            renderChapterSelectorLists();
+            return;
+          }
+          toggleAllPracticeChapters();
+          const again = document.getElementById("chapter-select-all");
+          if (again) again.focus();
+        };
+      }
+      list.appendChild(allLi);
     }
 
     (AppState.chapters || []).forEach((chap) => {
@@ -361,27 +405,46 @@ function renderChapterSelectorLists() {
         ? "Jogos do alfabeto"
         : `${wordsCount} vocábulos${sentsCount > 0 ? ` • ${sentsCount} frases` : ""}`;
 
-      li.setAttribute("role", "option");
-      li.setAttribute("aria-selected", isChecked ? "true" : "false");
-      li.setAttribute("tabindex", "0");
       li.className = `chapter-option${isChecked ? " is-selected" : ""}`;
+      // O alfabeto tem jogos próprios e não se combina com outros capítulos
+      const toggleHtml = isAlpha
+        ? '<span class="chapter-option__toggle" aria-hidden="true"></span>'
+        : `<label class="chapter-option__toggle">
+            <input type="checkbox" class="chapter-option__box" data-chapter-id="${escapeFn(chap.id)}" aria-label="Incluir ${escapeFn(chap.title)} na sessão"${isChecked ? " checked" : ""} />
+          </label>`;
       li.innerHTML = `
-        <div class="min-w-0">
-          <div class="chapter-option__title">${escapeFn(chap.title)}</div>
-          <div class="chapter-option__meta">${metaText}</div>
-        </div>
-        ${isChecked ? '<span class="chapter-option__check" aria-hidden="true">✓</span>' : ""}
+        ${toggleHtml}
+        <button type="button" class="chapter-option__main">
+          <span class="chapter-option__title">${escapeFn(chap.title)}</span>
+          <span class="chapter-option__meta">${metaText}</span>
+        </button>
       `;
-      li.onclick = (e) => {
-        e.stopPropagation();
-        if (!confirmLeaveActiveSession()) return;
-        toggleDropdown(true);
-        changeGlobalChapter(chap.id);
-        if (typeof window !== "undefined" && window.innerWidth < 1024 && typeof toggleMobileMenu === "function") {
-          toggleMobileMenu(false);
-        }
-      };
-      li.onkeydown = _activateOnEnterOrSpace;
+      li.onclick = (e) => e.stopPropagation();
+
+      const box = li.querySelector(".chapter-option__box");
+      if (box) {
+        box.onchange = () => {
+          if (!confirmLeaveActiveSession()) {
+            box.checked = !box.checked;
+            return;
+          }
+          togglePracticeChapter(chap.id);
+          const again = list.querySelector(`.chapter-option__box[data-chapter-id="${chap.id}"]`);
+          if (again) again.focus();
+        };
+      }
+
+      const mainBtn = li.querySelector(".chapter-option__main");
+      if (mainBtn) {
+        mainBtn.onclick = () => {
+          if (!confirmLeaveActiveSession()) return;
+          toggleDropdown(true);
+          changeGlobalChapter(chap.id);
+          if (typeof window !== "undefined" && window.innerWidth < 1024 && typeof toggleMobileMenu === "function") {
+            toggleMobileMenu(false);
+          }
+        };
+      }
 
       list.appendChild(li);
     });
@@ -472,7 +535,7 @@ function updatePracticeOptionsSummary() {
 
   const count = _resolveGetSelectedChapters(AppState, { order: "asc" }).length;
   const parts = [count > 1 ? `${count} capítulos` : "1 capítulo"];
-  if (count > 1) parts.push(AppState.chapterOrder === "desc" ? "Maior ➔ Menor" : "Menor ➔ Maior");
+  if (count > 1) parts.push(AppState.chapterOrder === "desc" ? "Última ➔ Primeira" : "Primeira ➔ Última");
 
   const select = document.getElementById("practice-category-select");
   if (AppState.exerciseMode === "typing" && AppState.practiceCategory && AppState.practiceCategory !== "all" && select && select.selectedOptions && select.selectedOptions[0]) {
@@ -481,40 +544,34 @@ function updatePracticeOptionsSummary() {
   summary.textContent = parts.join(" · ");
 }
 
-/* ================= CARTÕES PRONTOS PARA REVISÃO ================= */
-function countDueReviewCards() {
-  if (typeof AppState === "undefined" || !AppState.srs) return 0;
-  const termFn = typeof getTerm === "function" ? getTerm : (i) => i.term || i.hebrew || "";
-  const now = Date.now();
-  const seen = new Set();
-  let due = 0;
-  _resolveGetSelectedChapters(AppState).forEach((chap) => {
-    if (!chap) return;
-    [...(chap.items || []), ...(chap.sentences || [])].forEach((item) => {
-      const key = String(termFn(item) || "").trim().normalize("NFC");
-      if (!key || seen.has(key)) return;
-      seen.add(key);
-      const record = AppState.srs[key];
-      if (record && (record.nextReview || 0) <= now) due++;
-    });
-  });
-  return due;
+/* ================= ERROS PENDENTES DE REVISÃO ================= */
+function countPendingErrors() {
+  if (typeof window !== "undefined" && typeof window.getErrorCards === "function") {
+    return window.getErrorCards().length;
+  }
+  return 0;
 }
 
 function updateReviewDueBadge() {
   if (typeof document === "undefined") return;
-  const due = countDueReviewCards();
+  const errors = countPendingErrors();
+  const label = errors === 1 ? "1 palavra errada para revisar" : `${errors} palavras erradas para revisar`;
   const badge = document.getElementById("nav-review-badge");
   const cardStat = document.getElementById("review-due-card");
+  const errorsBtn = document.getElementById("btn-review-errors");
+  const errorsCount = document.getElementById("review-errors-count");
   if (badge) {
-    badge.textContent = due > 99 ? "99+" : String(due);
-    badge.classList.toggle("hidden", due === 0);
-    badge.setAttribute("aria-label", `${due} para revisar`);
+    badge.textContent = errors > 99 ? "99+" : String(errors);
+    badge.classList.toggle("hidden", errors === 0);
+    badge.setAttribute("aria-label", label);
+    badge.title = `${label}. Abra Avaliar e use a Revisão de Erros para limpar.`;
   }
   if (cardStat) {
-    cardStat.textContent = due === 1 ? "1 cartão para revisar" : `${due} cartões para revisar`;
-    cardStat.classList.toggle("hidden", due === 0);
+    cardStat.textContent = `${label}. Marque “Lembrei” ou “Fácil” para limpar o aviso.`;
+    cardStat.classList.toggle("hidden", errors === 0);
   }
+  if (errorsBtn) errorsBtn.disabled = errors === 0;
+  if (errorsCount) errorsCount.textContent = errors > 0 ? `(${errors})` : "";
 }
 
 function setupGlobalChapterDropdown() {
@@ -702,6 +759,12 @@ function selectAllPracticeChapters() {
   AppState.isPracticeCumulative = true;
   AppState.isVocabCumulative = true;
   _resolveSetSelectedChapters(targetIds, AppState);
+  refreshAfterChapterSelectionChange();
+}
+
+function toggleAllPracticeChapters() {
+  if (typeof AppState === "undefined") return;
+  _resolveToggleAllChapters(AppState);
   refreshAfterChapterSelectionChange();
 }
 
@@ -1295,6 +1358,7 @@ if (typeof window !== "undefined") {
   window.changeGlobalChapter = changeGlobalChapter;
   window.togglePracticeChapter = togglePracticeChapter;
   window.selectAllPracticeChapters = selectAllPracticeChapters;
+  window.toggleAllPracticeChapters = toggleAllPracticeChapters;
   window.setPracticeChapterOrder = setPracticeChapterOrder;
   window.updatePracticeOrderUI = updatePracticeOrderUI;
   window.lastRenderedVocabChapter = lastRenderedVocabChapter;
@@ -1327,6 +1391,7 @@ if (typeof window !== "undefined") {
     changeGlobalChapter,
     togglePracticeChapter,
     selectAllPracticeChapters,
+    toggleAllPracticeChapters,
     setPracticeChapterOrder,
     updatePracticeOrderUI,
     lastRenderedVocabChapter,
@@ -1341,7 +1406,7 @@ if (typeof window !== "undefined") {
     toggleLanguage,
     togglePracticeOptions,
     updatePracticeOptionsSummary,
-    countDueReviewCards,
+    countPendingErrors,
     updateReviewDueBadge,
     confirmLeaveActiveSession,
   };
@@ -1364,6 +1429,7 @@ if (typeof module !== "undefined" && module.exports) {
     changeGlobalChapter,
     togglePracticeChapter,
     selectAllPracticeChapters,
+    toggleAllPracticeChapters,
     setPracticeChapterOrder,
     updatePracticeOrderUI,
     lastRenderedVocabChapter,
@@ -1378,7 +1444,7 @@ if (typeof module !== "undefined" && module.exports) {
     toggleLanguage,
     togglePracticeOptions,
     updatePracticeOptionsSummary,
-    countDueReviewCards,
+    countPendingErrors,
     updateReviewDueBadge,
     confirmLeaveActiveSession,
   };

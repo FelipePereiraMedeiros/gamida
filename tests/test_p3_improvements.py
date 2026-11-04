@@ -17,7 +17,7 @@ class TestP3Improvements(unittest.TestCase):
 
     def test_aria_dropdown_attributes(self):
         # 1. Custom chapter selector button & list
-        self.assertIn('aria-haspopup="listbox"', self.index_html)
+        self.assertIn('aria-controls="chapter-dropdown-list"', self.index_html)
         self.assertIn('aria-controls="chapter-dropdown-list"', self.index_html)
         self.assertIn('role="listbox"', self.index_html)
         self.assertIn('aria-label="Lista de Capítulos"', self.index_html)

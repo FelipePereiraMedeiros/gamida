@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.9.2";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.11.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -281,6 +281,15 @@ function setChapterOrder(order, state = AppState) {
   }
   state.chapterOrder = order === "desc" ? "desc" : "asc";
   return state.chapterOrder;
+}
+
+// Não tira o foco de quem está marcando capítulos: no celular isso abriria o teclado
+function focusAnswerInput(input) {
+  setTimeout(() => {
+    const active = document.activeElement;
+    if (active && active.closest && active.closest("#chapter-dropdown-list")) return;
+    input.focus();
+  }, 100);
 }
 
 function setupGlobalChapterDropdown() {
@@ -669,7 +678,7 @@ function buildPracticeQueue() {
       }
     });
 
-    // Embaralha dentro de cada capítulo para manter dinamismo sem quebrar a ordem dos capítulos (Menor ➔ Maior ou Maior ➔ Menor)
+    // Embaralha dentro de cada capítulo para manter dinamismo sem quebrar a ordem dos capítulos (Primeira ➔ Última ou Última ➔ Primeira)
     orderedQueue.push(...shuffleArray(uniqueChapItems));
   });
 
@@ -694,6 +703,15 @@ function buildPracticeQueue() {
   }
 
   practiceQueue = orderedQueue;
+}
+
+/** Nova rodada em nova ordem, sem repetir de imediato o último item da rodada anterior */
+function reshufflePracticeQueue() {
+  const lastTerm = getTerm(practiceQueue[practiceQueue.length - 1]);
+  buildPracticeQueue();
+  if (practiceQueue.length > 1 && getTerm(practiceQueue[0]) === lastTerm) {
+    [practiceQueue[0], practiceQueue[1]] = [practiceQueue[1], practiceQueue[0]];
+  }
 }
 
 function resetPracticeActionButtons() {
@@ -826,6 +844,7 @@ function renderCurrentQuestion() {
     // O ciclo completou uma rodada e voltou para a primeira palavra.
     // Mantém os dados da rodada anterior até que o aluno responda novamente.
     AppState.isNewRoundPending = true;
+    reshufflePracticeQueue();
   }
 
   AppState.currentQuestion = practiceQueue[AppState.currentQuestionIndex];
@@ -907,7 +926,7 @@ function renderCurrentQuestion() {
       DOM.inputs.typing.value = "";
       DOM.inputs.typing.disabled = false;
       if (typeof DOM.inputs.typing.focus === "function") {
-        setTimeout(() => DOM.inputs.typing.focus(), 100);
+        focusAnswerInput(DOM.inputs.typing);
       }
     }
     if (DOM.interfaces && DOM.interfaces.typing) {
@@ -923,7 +942,7 @@ function renderCurrentQuestion() {
       DOM.inputs.sentences.value = "";
       DOM.inputs.sentences.disabled = false;
       if (typeof DOM.inputs.sentences.focus === "function") {
-        setTimeout(() => DOM.inputs.sentences.focus(), 100);
+        focusAnswerInput(DOM.inputs.sentences);
       }
     }
     if (DOM.interfaces && DOM.interfaces.sentences) {
@@ -935,7 +954,7 @@ function renderCurrentQuestion() {
         DOM.inputs.sentences.value = "";
         DOM.inputs.sentences.disabled = false;
         if (typeof DOM.inputs.sentences.focus === "function") {
-          setTimeout(() => DOM.inputs.sentences.focus(), 100);
+          focusAnswerInput(DOM.inputs.sentences);
         }
       }
       if (DOM.interfaces && DOM.interfaces.sentences) {
@@ -946,7 +965,7 @@ function renderCurrentQuestion() {
         DOM.inputs.typing.value = "";
         DOM.inputs.typing.disabled = false;
         if (typeof DOM.inputs.typing.focus === "function") {
-          setTimeout(() => DOM.inputs.typing.focus(), 100);
+          focusAnswerInput(DOM.inputs.typing);
         }
       }
       if (DOM.interfaces && DOM.interfaces.typing) {
@@ -1823,9 +1842,9 @@ let ankiCurrentCard = null;
 let ankiStats = { hard: 0, good: 0, easy: 0 };
 let ankiTotalCards = 0;
 
-function startAnki() {
+function startAnki(mode) {
   if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.startAnki === "function") {
-    return window.SRSModule.startAnki();
+    return window.SRSModule.startAnki(mode);
   }
   return null;
 }

@@ -105,7 +105,7 @@ function openSimuladoConfig() {
   const scopeInfo = document.getElementById("sim-scope-info");
   if (scopeInfo) {
     if (isCustomSelection) {
-      const orderTag = AppState.chapterOrder === "desc" ? "Maior ➔ Menor" : "Menor ➔ Maior";
+      const orderTag = AppState.chapterOrder === "desc" ? "Última ➔ Primeira" : "Primeira ➔ Última";
       scopeInfo.textContent = `Questões dos ${cumulativeChapters.length} capítulos selecionados (${orderTag}).`;
     } else {
       scopeInfo.textContent = isAlphaActive
