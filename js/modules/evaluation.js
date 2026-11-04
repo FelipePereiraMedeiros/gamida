@@ -72,7 +72,7 @@ function getEditDistance(a, b) {
  * @param {Object} [options]
  * @returns {{status: 'correct'|'typo'|'incorrect', expected: string}}
  */
-function evaluateAnswer(userAnswer, acceptedList, options = {}) {
+function evaluateSingleAnswer(userAnswer, acceptedList, options = {}) {
   const safeList = Array.isArray(acceptedList) ? acceptedList : [];
   const cleanUser = (userAnswer || "").replace(/\(.*?\)/g, "");
   const normUser = normalizeText(cleanUser);
@@ -148,6 +148,45 @@ function evaluateAnswer(userAnswer, acceptedList, options = {}) {
   }
 
   return bestMatch;
+}
+
+/**
+ * Avalia a resposta do usuário contra a lista de traduções aceitas.
+ * Primeiro avalia a resposta inteira (preserva traduções cadastradas que contêm vírgula,
+ * como "Senhor, a quem iremos?"). Se falhar e o aluno tiver informado múltiplas traduções
+ * separadas por vírgula, ponto-e-vírgula ou barra (ex.: "casa, lar"), cada parte é avaliada
+ * individualmente: a resposta só é aceita se TODAS as partes forem traduções válidas.
+ * @param {string} userAnswer
+ * @param {Array<string>} acceptedList
+ * @param {Object} [options]
+ * @returns {{status: 'correct'|'typo'|'incorrect', expected: string}}
+ */
+function evaluateAnswer(userAnswer, acceptedList, options = {}) {
+  const fullResult = evaluateSingleAnswer(userAnswer, acceptedList, options);
+  if (fullResult.status === "correct") return fullResult;
+
+  const parts = String(userAnswer || "")
+    .split(/[,;\/]/)
+    .map((p) => p.trim())
+    .filter((p) => normalizeText(p.replace(/\(.*?\)/g, "")).length > 0);
+  if (parts.length < 2) return fullResult;
+
+  const partResults = parts.map((p) =>
+    evaluateSingleAnswer(p, acceptedList, options),
+  );
+  if (partResults.some((r) => r.status === "incorrect")) return fullResult;
+
+  const status = partResults.every((r) => r.status === "correct")
+    ? "correct"
+    : "typo";
+  // Um acerto pleno por partes prevalece sobre um "typo" da resposta inteira
+  if (status === "typo" && fullResult.status === "typo") return fullResult;
+
+  const expected = partResults
+    .map((r) => r.expected)
+    .filter((e, idx, arr) => arr.indexOf(e) === idx)
+    .join(" / ");
+  return { status, expected };
 }
 
 // Suporte universal (Browser Global / Node CommonJS)

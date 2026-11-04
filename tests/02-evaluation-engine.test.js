@@ -82,6 +82,26 @@ suite.test('escapeHTML sanitiza caracteres especiais contra DOM XSS', () => {
   assert.equal(escapeHTML(undefined), '');
 });
 
+suite.test('evaluateAnswer aceita múltiplas traduções separadas por vírgula', () => {
+  assert.equal(evaluateAnswer('rei, o rei', ['rei', 'o rei']).status, 'correct');
+  assert.equal(evaluateAnswer('graca; favor', ['graça', 'favor']).status, 'correct');
+  assert.equal(evaluateAnswer('graça/favor', ['graça', 'favor']).status, 'correct');
+  assert.equal(evaluateAnswer('rei,', ['rei']).status, 'correct');
+});
+
+suite.test('evaluateAnswer rejeita lista com alguma tradução inválida', () => {
+  assert.equal(evaluateAnswer('rei, cachorro', ['rei', 'o rei']).status, 'incorrect');
+});
+
+suite.test('evaluateAnswer sinaliza typo quando uma das partes tem erro de digitação', () => {
+  assert.equal(evaluateAnswer('palvra, verbo', ['palavra', 'verbo']).status, 'typo');
+});
+
+suite.test('evaluateAnswer preserva traduções cadastradas que contêm vírgula', () => {
+  assert.equal(evaluateAnswer('Senhor, a quem iremos?', ['Senhor, a quem iremos?']).status, 'correct');
+  assert.equal(evaluateAnswer('moises, servo do senhor', ['moisés, servo do senhor']).status, 'correct');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();
