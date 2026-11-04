@@ -1440,7 +1440,8 @@
         "translations": [
           "não"
         ],
-        "type": "Partícula (negação)"
+        "type": "Partícula",
+        "notes": "Partícula de negação."
       },
       {
         "hebrew": "לַיְלָה",
@@ -14948,7 +14949,8 @@
           "crer",
           "ele foi fiel (Nif'al נֶאֱמַן)"
         ],
-        "type": "Verbo (Hif'il; Nif'al 'foi fiel') — Kelley: [אמן]"
+        "type": "Verbo (Hif'il) — Kelley: [אמן]",
+        "notes": "Nif'al: “foi fiel”."
       },
       {
         "hebrew": "אָרַר",
@@ -20924,7 +20926,8 @@
           "ele colocou (Hif'il)",
           "ele estabeleceu (Hif'il)"
         ],
-        "type": "Verbo (Nif'al; Hif'il 'colocou') — Kelley: [נצב]"
+        "type": "Verbo (Nif'al) — Kelley: [נצב]",
+        "notes": "Hif'il: “colocou”."
       },
       {
         "hebrew": "נָצַר",
@@ -23403,7 +23406,8 @@
           "ele se gloriou",
           "ele louvou (Pi'el)"
         ],
-        "type": "Verbo (Hitpa'el; Pi'el הִלֵּל 'louvou') — Kelley: [הלל]"
+        "type": "Verbo (Hitpa'el) — Kelley: [הלל]",
+        "notes": "Pi'el: הִלֵּל, “louvou”."
       },
       {
         "hebrew": "נִחַל",
@@ -23413,7 +23417,8 @@
           "ele profanou (Hif'il)",
           "ele começou (Hif'il)"
         ],
-        "type": "Verbo (Nif'al; Hif'il הֵחֵל) — Kelley: [חלל]"
+        "type": "Verbo (Nif'al) — Kelley: [חלל]",
+        "notes": "Hif'il: הֵחֵל."
       },
       {
         "hebrew": "חָנַן",

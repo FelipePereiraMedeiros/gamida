@@ -8,7 +8,7 @@
 
 const DataLoader = {
   get VERSION() {
-    return (typeof window !== "undefined" && window.APP_VERSION) || "2.9.0";
+    return (typeof window !== "undefined" && window.APP_VERSION) || "2.9.1";
   },
   cache: {},
 
@@ -300,6 +300,22 @@ const DataLoader = {
   },
 
   /**
+   * Favoritar marca o capítulo como editado pelo usuário. Por isso a classificação
+   * gramatical dos itens padrão é atualizada mesmo em capítulos preservados.
+   */
+  syncItemClassification(storedChap, defChap) {
+    const keyOf = (item) => item && (item.hebrew || item.term);
+    const defaultsByTerm = new Map((defChap.items || []).map((item) => [keyOf(item), item]));
+    (storedChap.items || []).forEach((item) => {
+      const defItem = defaultsByTerm.get(keyOf(item));
+      if (!defItem) return;
+      item.type = defItem.type;
+      if (defItem.notes) item.notes = defItem.notes;
+    });
+    return storedChap;
+  },
+
+  /**
    * Carrega os capítulos para a aplicação:
    * 1. Verifica se existem no storage unificado (IndexedDB/localStorage), se a versão confere e se o alfabeto está presente.
    * 2. Se não existir, for inválido ou estiver desatualizado, busca do padrão (fetch/bundle).
@@ -362,7 +378,7 @@ const DataLoader = {
           const storedChap = storedMap.get(defChap.id);
           if (storedChap && (storedChap._userModified === true || storedChap._custom === true)) {
             console.info(`Migração de versão: preservada customização do usuário no capítulo padrão ${defChap.id}.`);
-            return storedChap;
+            return this.syncItemClassification(storedChap, defChap);
           }
           return defChap;
         });

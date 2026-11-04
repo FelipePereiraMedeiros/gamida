@@ -961,3 +961,13 @@ ul#chapter-dropdown-list {
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+
+/* Nota gramatical do verbete no dicionário */
+.vocab-note {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.45;
+}

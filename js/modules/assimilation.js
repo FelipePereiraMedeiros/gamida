@@ -688,9 +688,9 @@ function getAssimilationTip(item, language) {
     rule = lang === "greek" ? greekRule(term, head, type) : hebrewRule(head, type);
   }
 
-  const text = [hook, rule].filter(Boolean).join(" ") || pronunciationTip(item, lang);
+  const text = [hook, rule, item.notes].filter(Boolean).join(" ") || pronunciationTip(item, lang);
   if (!text) return null;
-  return { kind: hook ? "memoria" : rule ? "gramatica" : "pronuncia", text };
+  return { kind: hook ? "memoria" : rule || item.notes ? "gramatica" : "pronuncia", text };
 }
 
 const AssimilationModule = { getAssimilationTip, getHeadword, HOOKS };

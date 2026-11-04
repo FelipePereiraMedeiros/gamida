@@ -929,7 +929,7 @@ function toggleItemFavorite(item) {
           const translitText = item.transliteration || "-";
           const typeText = item.type || "Geral";
           let translationsText = Array.isArray(item.translations) ? item.translations.join(" / ") : item.translations || "";
-          r.setAttribute("data-search", normFn(`${targetTerm} ${translitText} ${translationsText} ${typeText} ${item.favorite ? "favorito favorita estrela star" : ""}`));
+          r.setAttribute("data-search", normFn(`${targetTerm} ${translitText} ${translationsText} ${typeText} ${Array.isArray(item.tokens) ? "" : item.notes || ""} ${item.favorite ? "favorito favorita estrela star" : ""}`));
         }
       });
     }
@@ -1039,7 +1039,7 @@ function renderVocabTable() {
         : item.translations || "Tradução ausente";
 
       // Cache de busca no atributo data-search para evitar layout thrashing ao digitar
-      const searchHaystack = normFn(`${termText} ${translitText} ${translationsText} ${typeText} ${isFavorite ? "favorito favorita estrela star" : ""}`);
+      const searchHaystack = normFn(`${termText} ${translitText} ${translationsText} ${typeText} ${isSentence ? "" : item.notes || ""} ${isFavorite ? "favorito favorita estrela star" : ""}`);
       tr.setAttribute("data-search", searchHaystack);
 
       const textClass = AppState.language === "hebrew"
@@ -1049,7 +1049,7 @@ function renderVocabTable() {
       tr.innerHTML = `
         <td class="vocab-cell-term px-5 py-3 ${textClass} font-bold text-white">${escapeFn(termText)}</td>
         <td class="vocab-cell-translit px-5 py-3 font-mono text-xs text-amber-400">${escapeFn(translitText)}</td>
-        <td class="vocab-cell-trans px-5 py-3 font-medium text-slate-200">${escapeFn(translationsText)}</td>
+        <td class="vocab-cell-trans px-5 py-3 font-medium text-slate-200">${escapeFn(translationsText)}${!isSentence && item.notes ? `<span class="vocab-note">${escapeFn(item.notes)}</span>` : ""}</td>
         <td class="vocab-cell-type px-5 py-3">
           <div class="flex items-center gap-2">
             <span class="px-2.5 py-1 rounded-full ${isSentence ? "bg-indigo-900/60 border-indigo-700 text-indigo-300" : "bg-slate-800 border-slate-700 text-slate-400"} border text-[10px] font-mono">

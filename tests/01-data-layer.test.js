@@ -139,6 +139,43 @@ suite.test('DataLoader.loadChapters preserva capítulos customizados e editados 
   }
 });
 
+suite.test('O tipo do item nunca revela a tradução', () => {
+  const { hebrewData, greekData, rootDir } = loadSourceFiles();
+  const plain = (text) => String(text).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const wordsOf = (text) => plain(text).split(/[^\p{L}]+/u).filter(Boolean);
+  const semanticType = /negaç|negativ|afirmaç|condicional|inferencial|temporal/i;
+
+  [...hebrewData, ...greekData].forEach((chapter) => {
+    chapter.items.forEach((item) => {
+      const label = `${chapter.id}: ${item.hebrew || item.term}`;
+      assert.isFalse(/c\/ (gen|dat|ac)|≈|["“]|\w'\s|\s'\w/.test(item.type), `Tipo com glosa em ${label}: ${item.type}`);
+      assert.isFalse(semanticType.test(item.type), `Tipo com subclasse de sentido em ${label}: ${item.type}`);
+      const typeWords = new Set(wordsOf(item.type));
+      item.translations.forEach((translation) => {
+        const words = wordsOf(translation);
+        assert.isFalse(
+          words.length > 0 && words.every((word) => typeWords.has(word)),
+          `Tipo contém a tradução em ${label}: ${translation}`,
+        );
+      });
+    });
+  });
+
+  const bundle = require('fs').readFileSync(require('path').join(rootDir, 'data', 'data-bundle.js'), 'utf8');
+  assert.isFalse(bundle.includes('"type": "Preposição — '), 'data-bundle.js desatualizado');
+});
+
+suite.test('Capítulo preservado recebe a classificação nova sem perder o favorito', () => {
+  const loader = require('../js/data-loader.js');
+  const stored = { items: [{ term: 'ἀντί', type: 'Preposição — c/ gen.: em lugar de', favorite: true, translations: ['editada'] }] };
+  const defaults = { items: [{ term: 'ἀντί', type: 'Preposição', notes: 'c/ gen.: em lugar de', translations: ['padrão'] }] };
+  const [item] = loader.syncItemClassification(stored, defaults).items;
+  assert.equal(item.type, 'Preposição');
+  assert.equal(item.notes, 'c/ gen.: em lugar de');
+  assert.isTrue(item.favorite);
+  assert.equal(item.translations[0], 'editada');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

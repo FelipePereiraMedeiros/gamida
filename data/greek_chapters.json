@@ -1843,7 +1843,8 @@
         "translations": [
           "se"
         ],
-        "type": "Partícula Condicional"
+        "type": "Partícula",
+        "notes": "Partícula condicional."
       },
       {
         "term": "ἀλλά (ἀλλ᾽)",
@@ -9328,7 +9329,8 @@
           "cada",
           "outra vez"
         ],
-        "type": "Preposição — c/ ac.: para cima; acima, sobre; cada; como prefixo: para cima; outra vez"
+        "type": "Preposição",
+        "notes": "c/ ac.: para cima; acima, sobre; cada; como prefixo: para cima; outra vez"
       },
       {
         "term": "ἀντί (ἀνθ᾽)",
@@ -9341,7 +9343,8 @@
           "em oposição a",
           "contra"
         ],
-        "type": "Preposição — c/ gen.: em lugar de, em vez de; em troca de; por; como prefixo: em oposição a, contra"
+        "type": "Preposição",
+        "notes": "c/ gen.: em lugar de, em vez de; em troca de; por; como prefixo: em oposição a, contra"
       },
       {
         "term": "ἀπό (ἀπ᾽, ἀφ᾿)",
@@ -9351,7 +9354,8 @@
           "desde",
           "da parte de"
         ],
-        "type": "Preposição — c/ gen. abl.: de; desde; da parte de"
+        "type": "Preposição",
+        "notes": "c/ gen. abl.: de; desde; da parte de"
       },
       {
         "term": "διά (δι')",
@@ -9363,7 +9367,8 @@
           "por causa de",
           "porque"
         ],
-        "type": "Preposição — c/ gen.: por; por meio de; através de; c/ ac.: por causa de; διὰ (τό) + inf. ≈ por causa de, porque"
+        "type": "Preposição",
+        "notes": "c/ gen.: por; por meio de; através de; c/ ac.: por causa de; διὰ (τό) + inf. ≈ por causa de, porque"
       },
       {
         "term": "εἰς",
@@ -9377,7 +9382,8 @@
           "para que",
           "de maneira que"
         ],
-        "type": "Preposição — c/ ac.: para, a; para dentro; em; até; εἰς (τό) + inf. ≈ para, para que; de maneira que"
+        "type": "Preposição",
+        "notes": "c/ ac.: para, a; para dentro; em; até; εἰς (τό) + inf. ≈ para, para que; de maneira que"
       },
       {
         "term": "ἐκ (ἐξ)",
@@ -9388,7 +9394,8 @@
           "a partir de",
           "por"
         ],
-        "type": "Preposição — c/ gen. abl.: de; fora de; a partir de; por"
+        "type": "Preposição",
+        "notes": "c/ gen. abl.: de; fora de; a partir de; por"
       },
       {
         "term": "ἐν",
@@ -9404,7 +9411,8 @@
           "quando",
           "depois de"
         ],
-        "type": "Preposição — c/ dat. loc.: em, dentro de, no meio de; entre; com, por; ἐν (τῷ) + inf. ≈ enquanto, quando, ao + inf."
+        "type": "Preposição",
+        "notes": "c/ dat. loc.: em, dentro de, no meio de; entre; com, por; ἐν (τῷ) + inf. ≈ enquanto, quando, ao + inf."
       },
       {
         "term": "ἐπί (ἐπ᾽, ἐφ᾽)",
@@ -9418,7 +9426,8 @@
           "durante",
           "para"
         ],
-        "type": "Preposição — c/ gen., dat. loc., ac.: sobre, em, em cima de; acima; no tempo de, durante; para"
+        "type": "Preposição",
+        "notes": "c/ gen., dat. loc., ac.: sobre, em, em cima de; acima; no tempo de, durante; para"
       },
       {
         "term": "κατά (κατ', καθ΄)",
@@ -9431,7 +9440,8 @@
           "segundo",
           "conforme"
         ],
-        "type": "Preposição — c/ gen.: sobre; por; c/ gen. abl.: para baixo; contra; por; c/ ac.: segundo, conforme; por"
+        "type": "Preposição",
+        "notes": "c/ gen.: sobre; por; c/ gen. abl.: para baixo; contra; por; c/ ac.: segundo, conforme; por"
       },
       {
         "term": "μετά (μετ΄, μεθ')",
@@ -9443,7 +9453,8 @@
           "depois de",
           "após"
         ],
-        "type": "Preposição — c/ gen.: com, junto a; entre; c/ ac.: depois de, após; μετὰ τό + inf. ≈ depois de"
+        "type": "Preposição",
+        "notes": "c/ gen.: com, junto a; entre; c/ ac.: depois de, após; μετὰ τό + inf. ≈ depois de"
       },
       {
         "term": "παρά (παρ΄)",
@@ -9458,7 +9469,8 @@
           "ao longo de",
           "em comparação com"
         ],
-        "type": "Preposição — c/ gen. abl.: de, da parte de; c/ dat. loc.: perto de, junto de, ao lado de; c/ ac.: junto a, perto de, ao longo de; c/ comp.: em comparação com"
+        "type": "Preposição",
+        "notes": "c/ gen. abl.: de, da parte de; c/ dat. loc.: perto de, junto de, ao lado de; c/ ac.: junto a, perto de, ao longo de; c/ comp.: em comparação com"
       },
       {
         "term": "περί",
@@ -9470,7 +9482,8 @@
           "ao redor de",
           "em volta de"
         ],
-        "type": "Preposição — c/ gen.: concernente a, acerca de, sobre; c/ ac.: ao redor de, em volta de"
+        "type": "Preposição",
+        "notes": "c/ gen.: concernente a, acerca de, sobre; c/ ac.: ao redor de, em volta de"
       },
       {
         "term": "πρό",
@@ -9481,7 +9494,8 @@
           "antes de",
           "antes"
         ],
-        "type": "Preposição — c/ gen. abl.: diante de, na frente de (posicional); antes de (temporal); πρὸ (τοῦ) + inf. ≈ antes de"
+        "type": "Preposição",
+        "notes": "c/ gen. abl.: diante de, na frente de (posicional); antes de (temporal); πρὸ (τοῦ) + inf. ≈ antes de"
       },
       {
         "term": "πρός",
@@ -9496,7 +9510,8 @@
           "assim que",
           "de modo que"
         ],
-        "type": "Preposição — c/ gen.: (necessário) para; c/ dat. loc.: perto de, junto a; c/ ac.: para; em direção a; com; πρὸς (τό) + inf. ≈ para, a fim de"
+        "type": "Preposição",
+        "notes": "c/ gen.: (necessário) para; c/ dat. loc.: perto de, junto a; c/ ac.: para; em direção a; com; πρὸς (τό) + inf. ≈ para, a fim de"
       },
       {
         "term": "σύν",
@@ -9504,7 +9519,8 @@
         "translations": [
           "com (expressa companhia, associação)"
         ],
-        "type": "Preposição — c/ dat. instr.: com (companhia, associação)"
+        "type": "Preposição",
+        "notes": "c/ dat. instr.: com (companhia, associação)"
       },
       {
         "term": "ὑπέρ",
@@ -9517,7 +9533,8 @@
           "acima de",
           "além de"
         ],
-        "type": "Preposição — c/ gen. abl.: por; em lugar de; em favor de; c/ ac.: sobre, acima de, além de"
+        "type": "Preposição",
+        "notes": "c/ gen. abl.: por; em lugar de; em favor de; c/ ac.: sobre, acima de, além de"
       },
       {
         "term": "ὑπό (ὑπ᾽, ὑφ᾽)",
@@ -9529,7 +9546,8 @@
           "debaixo de",
           "abaixo de"
         ],
-        "type": "Preposição — c/ gen. abl.: por, por meio de; c/ ac.: sob, debaixo de; abaixo de"
+        "type": "Preposição",
+        "notes": "c/ gen. abl.: por, por meio de; c/ ac.: sob, debaixo de; abaixo de"
       },
       {
         "term": "δύναμαι",
@@ -30315,7 +30333,8 @@
           "portanto",
           "então"
         ],
-        "type": "Partícula Inferencial"
+        "type": "Partícula",
+        "notes": "Partícula inferencial."
       },
       {
         "term": "ἐπιστρέφω",
@@ -30385,7 +30404,8 @@
           "sempre que",
           "quando"
         ],
-        "type": "Partícula Temporal"
+        "type": "Partícula",
+        "notes": "Partícula temporal."
       },
       {
         "term": "ὅτε",
@@ -30394,7 +30414,8 @@
           "quando",
           "enquanto"
         ],
-        "type": "Partícula Temporal"
+        "type": "Partícula",
+        "notes": "Partícula temporal."
       },
       {
         "term": "οὐαί",
@@ -32035,7 +32056,8 @@
           "e não",
           "nem sequer"
         ],
-        "type": "Partícula Negativa"
+        "type": "Partícula",
+        "notes": "Partícula negativa."
       },
       {
         "term": "οὗ",
@@ -32063,7 +32085,8 @@
         "translations": [
           "não (forma enfática)"
         ],
-        "type": "Advérbio de Negação"
+        "type": "Advérbio",
+        "notes": "Advérbio de negação."
       },
       {
         "term": "ποῦ",
@@ -32089,7 +32112,8 @@
         "translations": [
           "sim"
         ],
-        "type": "Advérbio de Afirmação"
+        "type": "Advérbio",
+        "notes": "Advérbio de afirmação."
       }
     ],
     "sentences": [
