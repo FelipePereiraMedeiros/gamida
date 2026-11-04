@@ -1182,3 +1182,8 @@ body.is-alphabet-practice .app-stat--mastery { display: none; }
   gap: 0.5rem;
   margin-top: 0.75rem;
 }
+
+/* Conteúdo exclusivo do grego (ex.: radicais do 2º aoristo) */
+:root:not([data-lang="greek"]) .greek-only { display: none !important; }
+.aorist-sub { display: block; margin-top: 0.125rem; font-size: 0.75rem; color: var(--text-soft); }
+.aorist-stem { color: rgb(var(--brand-500)); }

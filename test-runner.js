@@ -26,6 +26,7 @@ const modules = [
   { id: 13, name: 'Integridade Geral do Sistema (E2E & Contrato DOM)', file: './tests/13-system-integrity.test.js' },
   { id: 14, name: 'Análise Morfossintática Granular (Page Kelley)', file: './tests/14-sentence-analysis.test.js' },
   { id: 15, name: 'Dicas de Assimilação', file: './tests/15-assimilation.test.js' },
+  { id: 16, name: 'Radicais do 2º Aoristo', file: './tests/16-second-aorist.test.js' },
 ];
 
 async function run() {

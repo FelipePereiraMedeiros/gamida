@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.14.2";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.15.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -367,17 +367,19 @@ function updatePracticeOrderUI() {
 }
 
 function setExerciseMode(mode) {
+  if (mode === "aorist2" && AppState.language !== "greek") mode = "typing";
   AppState.exerciseMode = mode;
-  ["typing", "choice", "sentences", "favorites", "errors"].forEach((m) => {
+  ["typing", "choice", "sentences", "aorist2", "favorites", "errors"].forEach((m) => {
     const btn = document.getElementById(`mode-${m}`);
     if (btn) {
-      btn.className = m === mode ? "seg-btn is-active" : "seg-btn";
+      btn.classList.toggle("is-active", m === mode);
       btn.setAttribute("aria-pressed", m === mode ? "true" : "false");
     }
   });
   AppState.currentQuestionIndex = 0;
   resetStats();
   updatePracticeCategoryFilterUI();
+  updatePracticeChapterView();
   buildPracticeQueue();
   renderCurrentQuestion();
   if (typeof window !== "undefined" && typeof window.updatePracticeOptionsSummary === "function") {
@@ -634,7 +636,17 @@ function isMixedPracticeMode() {
   return AppState.exerciseMode === "favorites" || AppState.exerciseMode === "errors";
 }
 
+/** Sessão do 2º aoristo: fila própria, independente dos capítulos selecionados */
+function isSecondAoristMode() {
+  return AppState.exerciseMode === "aorist2";
+}
+
 function buildPracticeQueue() {
+  if (isSecondAoristMode()) {
+    const mod = typeof window !== "undefined" ? window.SecondAoristModule : null;
+    practiceQueue = mod ? shuffleArray(mod.buildSecondAoristQuestions()) : [];
+    return;
+  }
   const selectedChapters = getSelectedChapters(AppState, {
     forVocab: false,
     order: AppState.chapterOrder || "asc",
@@ -854,7 +866,7 @@ function showRoundSummary() {
   document.getElementById("round-summary-misses").classList.toggle("hidden", summary.misses.length === 0);
   document.getElementById("btn-round-errors").classList.toggle(
     "hidden",
-    summary.misses.length === 0 || AppState.exerciseMode === "errors",
+    summary.misses.length === 0 || AppState.exerciseMode === "errors" || isSecondAoristMode(),
   );
 
   panel.classList.add("is-summary");
@@ -978,7 +990,9 @@ function renderCurrentQuestion() {
 
   const isQuestionFavorite = !!AppState.currentQuestion?.favorite;
   const btnPracticeFav = DOM.btnPracticeFav || (typeof document !== "undefined" ? document.getElementById("btn-practice-fav") : null);
-  if (btnPracticeFav) {
+  if (btnPracticeFav && isSecondAoristMode()) {
+    btnPracticeFav.classList.add("hidden");
+  } else if (btnPracticeFav) {
     btnPracticeFav.classList.remove("hidden");
     btnPracticeFav.innerHTML = isQuestionFavorite ? "⭐" : "☆";
     btnPracticeFav.className = `fav-btn${isQuestionFavorite ? " is-on" : ""}`;
@@ -1047,7 +1061,7 @@ function renderCurrentQuestion() {
     });
   }
 
-  if (AppState.exerciseMode === "typing") {
+  if (AppState.exerciseMode === "typing" || isSecondAoristMode()) {
     if (DOM.inputs && DOM.inputs.typing) {
       DOM.inputs.typing.value = "";
       DOM.inputs.typing.disabled = false;
@@ -1225,7 +1239,8 @@ function checkPracticeAnswer(userAnswer) {
   } else {
     AppState.streak = 0;
     AppState.roundMisses.push(AppState.currentQuestion);
-    recordSRSError(getTerm(AppState.currentQuestion)); // Manda pro Anki
+    // Os radicais do 2º aoristo não pertencem a um capítulo: ficam fora da lista de erros/Anki
+    if (!isSecondAoristMode()) recordSRSError(getTerm(AppState.currentQuestion)); // Manda pro Anki
     DOM.banner.classList.add("bg-rose-950/80", "border-rose-500/50");
     icon.textContent = "❌";
     title.textContent = "Incorreto";
@@ -1234,7 +1249,13 @@ function checkPracticeAnswer(userAnswer) {
     detail.textContent = `Traduções aceitas: "${evalResult.expected}" (Você respondeu: "${userAnswer || "em branco"}")`;
   }
 
-  showAssimilationTip(AppState.currentQuestion);
+  if (isSecondAoristMode()) {
+    const mod = typeof window !== "undefined" ? window.SecondAoristModule : null;
+    const summary = mod ? mod.describeSecondAorist(AppState.currentQuestion) : "";
+    if (summary) detail.textContent += ` — ${summary}`;
+  } else {
+    showAssimilationTip(AppState.currentQuestion);
+  }
   updateRoundProgress();
 
   DOM.inputs.typing.disabled = true;
@@ -1396,6 +1417,45 @@ function recordSRSError(termStr) {
   return null;
 }
 
+/** Ajusta o modo e os botões sem reconstruir a fila (usado na troca de idioma) */
+function setExerciseModeButtons(mode) {
+  AppState.exerciseMode = mode;
+  if (typeof document === "undefined") return;
+  ["typing", "choice", "sentences", "aorist2", "favorites", "errors"].forEach((m) => {
+    const btn = document.getElementById(`mode-${m}`);
+    if (btn) {
+      btn.classList.toggle("is-active", m === mode);
+      btn.setAttribute("aria-pressed", m === mode ? "true" : "false");
+    }
+  });
+}
+
+/* ================= 2º AORISTO: TABELA NO DICIONÁRIO ================= */
+function toggleSecondAoristTable(forceOpen) {
+  if (typeof document === "undefined") return;
+  const panel = document.getElementById("second-aorist-panel");
+  const btn = document.getElementById("btn-second-aorist-table");
+  if (!panel) return;
+  const open = typeof forceOpen === "boolean" ? forceOpen : panel.classList.contains("hidden");
+  if (open) renderSecondAoristTable();
+  panel.classList.toggle("hidden", !open);
+  if (btn) btn.setAttribute("aria-expanded", open ? "true" : "false");
+  if (open && typeof panel.scrollIntoView === "function") panel.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function renderSecondAoristTable() {
+  if (typeof document === "undefined") return;
+  const body = document.getElementById("second-aorist-table-body");
+  const mod = typeof window !== "undefined" ? window.SecondAoristModule : null;
+  if (body && mod) body.innerHTML = mod.renderSecondAoristTableHTML();
+}
+
+function startSecondAoristPractice() {
+  if (AppState.language !== "greek") return;
+  switchTab("practice");
+  setExerciseMode("aorist2");
+}
+
 /* ================= LANGUAGE SWITCH ENGINE ================= */
 async function toggleLanguage(targetLang = null) {
   if (typeof window !== "undefined" && typeof window.confirmLeaveActiveSession === "function" && !window.confirmLeaveActiveSession()) {
@@ -1419,6 +1479,7 @@ async function toggleLanguage(targetLang = null) {
   resetStats();
   AppState.practiceCategory = "all";
   AppState.isPracticeCumulative = false;
+  if (AppState.language !== "greek" && isSecondAoristMode()) setExerciseModeButtons("typing");
   lastRenderedVocabChapter = null;
   applyLanguageUI();
   await loadChapters();
@@ -2436,6 +2497,8 @@ if (typeof window !== "undefined") {
   window.toggleChapterSelection = toggleChapterSelection;
   window.setChapterOrder = setChapterOrder;
   window.buildPracticeQueue = buildPracticeQueue;
+  window.toggleSecondAoristTable = toggleSecondAoristTable;
+  window.startSecondAoristPractice = startSecondAoristPractice;
   window.renderCurrentQuestion = renderCurrentQuestion;
   window.setPracticeCumulative = setPracticeCumulative;
   window.setPracticeCategory = setPracticeCategory;
