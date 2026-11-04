@@ -363,7 +363,7 @@ function renderDiagramView(paradigm, container) {
   btnContainer.classList.remove("hidden");
   btnContainer.innerHTML = `
     <button type="button" onclick="checkParadigmAnswers()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
-      Verificar Esquema ➔
+      Verificar grafo ➔
     </button>
     <div id="paradigm-feedback" class="hidden mt-4 text-sm font-bold"></div>
   `;
@@ -484,8 +484,8 @@ function resetParadigmBoard() {
      <h3 class="text-xl font-bold text-white">Laboratório Estrutural</h3>
      <p class="text-sm text-slate-400 max-w-md mx-auto">
        ${hasParadigms
-      ? "Neste modo você treina o reconhecimento visual das terminações e regras. Selecione um paradigma acima para iniciar."
-      : "Nenhuma estrutura ou paradigma disponível para este módulo ainda."
+      ? "Neste modo você treina o reconhecimento visual das terminações e regras. Selecione uma tabela ou grafo acima para iniciar."
+      : "Nenhuma tabela ou grafo disponível para este módulo ainda."
     }
      </p>
   `;

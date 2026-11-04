@@ -70,7 +70,7 @@
           },
         },
       };
-      window.APP_VERSION = "2.14.0";
+      window.APP_VERSION = "2.14.1";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
@@ -242,7 +242,7 @@
             <span id="nav-review-badge" class="nav-item__badge hidden" title="Palavras erradas para revisar"></span>
           </button>
           <button type="button" id="nav-btn-paradigms" onclick="switchTab('paradigms')" class="nav-item">
-            <svg class="icon" aria-hidden="true"><use href="#i-table"></use></svg><span>Paradigmas</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-table"></use></svg><span>Tabelas<span class="nav-item__extra"> e Grafos</span></span>
           </button>
           <button type="button" id="nav-btn-vocab" onclick="switchTab('vocab')" class="nav-item">
             <svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg><span>Dicionário</span>
@@ -1299,22 +1299,22 @@
       <!-- Aba 3: paradigmas e estruturas -->
       <section id="tab-paradigms" class="hidden space-y-4 flex-1 flex-col">
         <div class="page-head">
-          <h2 class="page-head__title">Paradigmas</h2>
-          <p class="page-head__text">Monte as tabelas e esquemas para fixar terminações e regras.</p>
+          <h2 class="page-head__title">Tabelas e Grafos</h2>
+          <p class="page-head__text">Monte as tabelas e grafos para fixar terminações e regras.</p>
         </div>
         <div
           class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4"
         >
           <div class="flex-1 min-w-[240px]">
             <label class="block text-xs font-medium text-slate-400 mb-1"
-              >Escolha o Esquema / Tabela:</label
+              >Escolha a tabela ou grafo:</label
             >
             <select
               id="paradigm-select"
               onchange="renderParadigmSkeleton()"
               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
-              <option value="">Selecione uma lição com paradigmas...</option>
+              <option value="">Selecione uma lição com tabelas ou grafos...</option>
             </select>
           </div>
         </div>
@@ -1347,7 +1347,7 @@
             <h3 class="text-xl font-bold text-white">Laboratório Estrutural</h3>
             <p class="text-sm text-slate-400 max-w-md mx-auto">
               Neste modo você treina o reconhecimento visual das terminações e
-              regras. Selecione um paradigma acima para iniciar.
+              regras. Selecione uma tabela ou grafo acima para iniciar.
             </p>
           </div>
 
@@ -1522,7 +1522,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.14.0</span>
+        <span id="footer-version-tag">v2.14.1</span>
       </p>
     </footer>
 

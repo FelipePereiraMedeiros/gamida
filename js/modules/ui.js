@@ -732,7 +732,7 @@ function refreshAfterChapterSelectionChange() {
   if (typeof updateParadigmsVisibility === "function") updateParadigmsVisibility();
   const parSelect = document.getElementById("paradigm-select");
   if (parSelect && AppState.currentChapter) {
-    parSelect.innerHTML = '<option value="">Selecione o Esquema / Tabela...</option>';
+    parSelect.innerHTML = '<option value="">Selecione a tabela ou grafo...</option>';
     const selectedChaps = _resolveGetSelectedChapters(AppState);
     let allParadigms = [];
     selectedChaps.forEach((ch) => {

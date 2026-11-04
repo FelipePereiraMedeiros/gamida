@@ -333,7 +333,7 @@ suite.test('renderDiagramView renderiza com sucesso paradigma do tipo diagram (e
 
   // Valida ação
   const actionContainer = elementsById['paradigm-action-container'];
-  assert.isTrue(actionContainer.innerHTML.includes('Verificar Esquema'), 'Deve renderizar botão Verificar Esquema');
+  assert.isTrue(actionContainer.innerHTML.includes('Verificar grafo'), 'Deve renderizar botão Verificar grafo');
 
   // Valida deck
   const deck = elementsById['paradigm-deck'];
@@ -436,6 +436,12 @@ suite.test('Capítulos de Hebraico contêm estruturas de paradigmas de Page Kell
       assert.isArray(p.rows, 'Tabela hebraica deve ter rows');
     });
   });
+});
+
+suite.test('A aba usa o nome Tabelas e Grafos nos textos visíveis', () => {
+  const html = require('fs').readFileSync(require('path').join(__dirname, '../index.html'), 'utf8');
+  assert.includes(html, '<h2 class="page-head__title">Tabelas e Grafos</h2>', 'Título da aba ausente');
+  assert.isFalse(html.includes('<span>Paradigmas</span>'), 'Navegação não deve usar o nome antigo');
 });
 
 module.exports = suite;

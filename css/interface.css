@@ -957,6 +957,11 @@ ul#chapter-dropdown-list {
   .vocab-table tr.vocab-empty, .vocab-table tr.vocab-empty > td { display: block; }
 }
 
+/* No celular a navegação usa o nome curto */
+@media (max-width: 1023.98px) {
+  .nav-item__extra { display: none; }
+}
+
 /* O baralho de paradigmas precisa ficar acima da navegação inferior */
 @media (max-width: 1023px) {
   #paradigm-deck { bottom: calc(var(--bottom-nav-h) + 0.5rem + env(safe-area-inset-bottom, 0px)); }
