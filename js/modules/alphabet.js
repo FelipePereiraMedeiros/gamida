@@ -520,7 +520,6 @@ function setAlphabetSubmode(submode) {
     }
   });
 
-  AppState.isNewRoundPending = false;
   if (typeof resetStats === "function") {
     resetStats();
   }

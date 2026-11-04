@@ -107,12 +107,11 @@ suite.test('Filtro por categoria selecionada refina itens do vocabulário', () =
   assert.isTrue(matchItemCategory(verbItem, 'all'), 'Deve aceitar qualquer item quando categoria é "all"');
 });
 
-suite.test('resetStats zera todas as métricas da sessão e limpa isNewRoundPending', () => {
+suite.test('resetStats zera todas as métricas da sessão', () => {
   AppState.score = 50;
   AppState.streak = 5;
   AppState.totalAnswered = 8;
   AppState.correctCount = 5;
-  AppState.isNewRoundPending = true;
 
   resetStats();
 
@@ -120,7 +119,6 @@ suite.test('resetStats zera todas as métricas da sessão e limpa isNewRoundPend
   assert.equal(AppState.streak, 0, 'Streak deve ser 0');
   assert.equal(AppState.totalAnswered, 0, 'totalAnswered deve ser 0');
   assert.equal(AppState.correctCount, 0, 'correctCount deve ser 0');
-  assert.equal(AppState.isNewRoundPending, false, 'isNewRoundPending deve ser false após resetStats');
 });
 
 suite.test('Funções contextuais de modo, categoria, acumulativo e alfabeto disparam resetStats no app.js', () => {
@@ -142,54 +140,12 @@ suite.test('Funções contextuais de modo, categoria, acumulativo e alfabeto dis
   assert.isTrue(!!setAlphaMatch && setAlphaMatch[1].includes('resetStats()'), 'setAlphabetSubmode deve invocar resetStats()');
 });
 
-suite.test('Ciclo da fila de prática arma isNewRoundPending preservando dados da rodada anterior', () => {
-  // Simula término de uma rodada de 3 itens
-  const queue = [{ term: 'a' }, { term: 'b' }, { term: 'c' }];
-  AppState.score = 30;
-  AppState.streak = 3;
-  AppState.totalAnswered = 3;
-  AppState.correctCount = 3;
-  AppState.currentQuestionIndex = 3; // Índice avançou além do tamanho da fila (queue.length = 3)
-
-  // Lógica do renderCurrentQuestion ao detectar fim de ciclo:
-  if (AppState.currentQuestionIndex >= queue.length) {
-    AppState.currentQuestionIndex = 0;
-    AppState.isNewRoundPending = true;
-  }
-
-  // Volta ao item 1 mas os dados da rodada anterior PERMANECEM preservados
-  assert.equal(AppState.currentQuestionIndex, 0, 'Deve retornar ao índice 0 da fila');
-  assert.isTrue(AppState.isNewRoundPending, 'Deve armar isNewRoundPending como true');
-  assert.equal(AppState.score, 30, 'Score da rodada anterior deve ser preservado antes de responder');
-  assert.equal(AppState.streak, 3, 'Streak da rodada anterior deve ser preservado antes de responder');
-  assert.equal(AppState.totalAnswered, 3, 'Total respondido deve ser preservado antes de responder');
-});
-
-suite.test('Primeira resposta do novo ciclo executa resetStats antes de pontuar o primeiro item', () => {
-  assert.includes(appJs, 'if (AppState.isNewRoundPending)', 'checkPracticeAnswer deve verificar isNewRoundPending');
-
-  // Simula execução do checkPracticeAnswer com isNewRoundPending = true
-  AppState.isNewRoundPending = true;
-  AppState.score = 30;
-  AppState.streak = 3;
-  AppState.totalAnswered = 3;
-  AppState.correctCount = 3;
-
-  if (AppState.isNewRoundPending) {
-    resetStats();
-    AppState.isNewRoundPending = false;
-  }
-  // Agora computa a primeira resposta (ex: acerto)
-  AppState.totalAnswered++;
-  AppState.correctCount++;
-  AppState.score += 10;
-  AppState.streak++;
-
-  assert.isFalse(AppState.isNewRoundPending, 'isNewRoundPending deve ser false');
-  assert.equal(AppState.totalAnswered, 1, 'Primeira resposta do novo ciclo inicia totalAnswered em 1');
-  assert.equal(AppState.correctCount, 1, 'Acerto da primeira resposta inicia correctCount em 1');
-  assert.equal(AppState.score, 10, 'Pontuação deve refletir apenas o novo ciclo');
-  assert.equal(AppState.streak, 1, 'Sequência deve refletir apenas o novo ciclo');
+suite.test('Métricas seguem acumulando quando a lista recomeça', () => {
+  const start = appJs.indexOf('function checkPracticeAnswer(');
+  const end = appJs.indexOf('function nextQuestion(');
+  assert.isTrue(start > 0 && end > start, 'checkPracticeAnswer não encontrado');
+  assert.isFalse(appJs.slice(start, end).includes('resetStats('), 'Responder não pode zerar as métricas da sessão');
+  assert.isFalse(appJs.includes('isNewRoundPending'), 'Nova rodada não deve agendar reinício das métricas');
 });
 
 suite.test('AppState possui flag isPracticeAnswered e resetStats a reinicia para false', () => {
@@ -282,8 +238,8 @@ suite.test('Seleção de capítulos específicos e ordenação (Primeira ➔ Úl
 
 suite.test('A lista é embaralhada de novo ao recomeçar uma rodada', () => {
   assert.includes(appJs, 'function reshufflePracticeQueue', 'reshufflePracticeQueue ausente');
-  const start = appJs.indexOf('AppState.isNewRoundPending = true;');
-  assert.isTrue(start > 0 && appJs.slice(start, start + 80).includes('reshufflePracticeQueue();'), 'Nova rodada deve embaralhar a fila');
+  const start = appJs.indexOf('if (AppState.currentQuestionIndex >= practiceQueue.length)');
+  assert.isTrue(start > 0 && appJs.slice(start, start + 220).includes('reshufflePracticeQueue();'), 'Nova rodada deve embaralhar a fila');
 });
 
 suite.test('Selecionar todos marca os capítulos de vocabulário e desmarcar mantém o primeiro', () => {

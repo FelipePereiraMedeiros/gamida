@@ -797,7 +797,6 @@ function setPracticeChapterOrder(order) {
   renderChapterSelectorLists();
   updatePracticeOrderUI();
   AppState.currentQuestionIndex = 0;
-  AppState.isNewRoundPending = false;
   if (typeof resetStats === "function") resetStats();
   if (typeof buildPracticeQueue === "function") buildPracticeQueue();
   if (typeof renderCurrentQuestion === "function") renderCurrentQuestion();

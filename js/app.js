@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.12.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.12.1";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -22,7 +22,6 @@ var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppSt
   streak: 0,
   totalAnswered: 0,
   correctCount: 0,
-  isNewRoundPending: false,
   distractorCache: { words: [], sentences: [] },
   srs: {},
   survivalHighScore: 0,
@@ -350,7 +349,6 @@ function setPracticeChapterOrder(order) {
     window.UIModule.updatePracticeOrderUI();
   }
   AppState.currentQuestionIndex = 0;
-  AppState.isNewRoundPending = false;
   resetStats();
   buildPracticeQueue();
   renderCurrentQuestion();
@@ -375,7 +373,6 @@ function setExerciseMode(mode) {
     }
   });
   AppState.currentQuestionIndex = 0;
-  AppState.isNewRoundPending = false;
   resetStats();
   updatePracticeCategoryFilterUI();
   buildPracticeQueue();
@@ -572,7 +569,6 @@ function updatePracticeCategoryFilterUI() {
 function setPracticeCategory(catId) {
   AppState.practiceCategory = catId || "all";
   AppState.currentQuestionIndex = 0;
-  AppState.isNewRoundPending = false;
   resetStats();
   buildPracticeQueue();
   renderCurrentQuestion();
@@ -600,7 +596,6 @@ function setPracticeCumulative(isCumulative) {
   updatePracticeScopeUI();
   updatePracticeCategoryFilterUI();
   AppState.currentQuestionIndex = 0;
-  AppState.isNewRoundPending = false;
   resetStats();
   buildPracticeQueue();
   renderCurrentQuestion();
@@ -879,10 +874,8 @@ function renderCurrentQuestion() {
   }
 
   if (AppState.currentQuestionIndex >= practiceQueue.length) {
+    // Rodada completa: recomeça em nova ordem e as métricas seguem acumulando na sessão
     AppState.currentQuestionIndex = 0;
-    // O ciclo completou uma rodada e voltou para a primeira palavra.
-    // Mantém os dados da rodada anterior até que o aluno responda novamente.
-    AppState.isNewRoundPending = true;
     reshufflePracticeQueue();
   }
 
@@ -1078,12 +1071,6 @@ function showAssimilationTip(question) {
 }
 
 function checkPracticeAnswer(userAnswer) {
-  // Se o ciclo havia voltado para o início, reseta a análise no momento da primeira resposta da nova rodada
-  if (AppState.isNewRoundPending) {
-    resetStats();
-    AppState.isNewRoundPending = false;
-  }
-
   const isSentenceQuestion =
     AppState.exerciseMode === "sentences" ||
     AppState.currentQuestion?.type === "Frase" ||
@@ -1237,7 +1224,6 @@ function resetStats() {
   AppState.streak = 0;
   AppState.totalAnswered = 0;
   AppState.correctCount = 0;
-  AppState.isNewRoundPending = false;
   AppState.isPracticeAnswered = false;
   updateStatsUI();
 
