@@ -17,3 +17,8 @@ ehthumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
