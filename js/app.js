@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.7.6";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.9.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -193,6 +193,16 @@ function buildDistractorCache() {
 
 /* ================= UI NAVIGATION ================= */
 function switchTab(tabName) {
+  // Protege um simulado em andamento contra um toque acidental na navegação
+  if (
+    tabName !== "assessment" &&
+    typeof window !== "undefined" &&
+    typeof window.confirmLeaveActiveSession === "function" &&
+    !window.confirmLeaveActiveSession()
+  ) {
+    return;
+  }
+
   AppState.currentTab = tabName;
 
   if (tabName !== "assessment") {
@@ -212,15 +222,12 @@ function switchTab(tabName) {
 
     if (section) section.classList.toggle("hidden", t !== tabName);
     if (btn) {
-      if (t === tabName) {
-        btn.className =
-          "px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-md transition hover:bg-brand-500 whitespace-nowrap shrink-0";
-      } else {
-        btn.className =
-          "px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap shrink-0";
-      }
+      btn.classList.toggle("is-active", t === tabName);
+      if (t === tabName) btn.setAttribute("aria-current", "page");
+      else btn.removeAttribute("aria-current");
     }
   });
+  if (typeof window !== "undefined" && typeof window.scrollTo === "function") window.scrollTo(0, 0);
   if (tabName === "vocab" && typeof renderVocabTable === "function") renderVocabTable();
   if (tabName === "practice" && typeof updatePracticeChapterView === "function") updatePracticeChapterView();
   if (tabName === "paradigms") {
@@ -229,7 +236,7 @@ function switchTab(tabName) {
   }
 
   // No mobile, retrai o menu para foco total na lição
-  if (typeof window !== "undefined" && window.innerWidth < 768 && typeof toggleMobileMenu === "function") {
+  if (typeof window !== "undefined" && window.innerWidth < 1024 && typeof toggleMobileMenu === "function") {
     toggleMobileMenu(false);
   }
 }
@@ -354,10 +361,8 @@ function setExerciseMode(mode) {
   ["typing", "choice", "sentences", "favorites"].forEach((m) => {
     const btn = document.getElementById(`mode-${m}`);
     if (btn) {
-      btn.className =
-        m === mode
-          ? "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1"
-          : "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1";
+      btn.className = m === mode ? "seg-btn is-active" : "seg-btn";
+      btn.setAttribute("aria-pressed", m === mode ? "true" : "false");
     }
   });
   AppState.currentQuestionIndex = 0;
@@ -366,6 +371,9 @@ function setExerciseMode(mode) {
   updatePracticeCategoryFilterUI();
   buildPracticeQueue();
   renderCurrentQuestion();
+  if (typeof window !== "undefined" && typeof window.updatePracticeOptionsSummary === "function") {
+    window.updatePracticeOptionsSummary();
+  }
 }
 
 /* ================= UTILS & EVALUATION ================= */
@@ -559,6 +567,9 @@ function setPracticeCategory(catId) {
   resetStats();
   buildPracticeQueue();
   renderCurrentQuestion();
+  if (typeof window !== "undefined" && typeof window.updatePracticeOptionsSummary === "function") {
+    window.updatePracticeOptionsSummary();
+  }
 }
 
 function setPracticeCumulative(isCumulative) {
@@ -600,22 +611,15 @@ function updatePracticeScopeUI() {
   const isAll = totalVocabChaps > 1 && selectedChaps.length === totalVocabChaps;
   const isCumulative = AppState.isPracticeCumulative || selectedChaps.length > 1;
 
-  const activeCls = "px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer";
-  const inactiveCls = "px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer";
-
-  if (isAll && btnAll) {
-    btnAll.className = activeCls;
-    btnCumulative.className = inactiveCls;
-    btnSingle.className = inactiveCls;
-  } else if (isCumulative) {
-    btnCumulative.className = activeCls;
-    btnSingle.className = inactiveCls;
-    if (btnAll) btnAll.className = inactiveCls;
-  } else {
-    btnSingle.className = activeCls;
-    btnCumulative.className = inactiveCls;
-    if (btnAll) btnAll.className = inactiveCls;
-  }
+  const setActive = (btn, isActive) => {
+    if (!btn) return;
+    btn.className = isActive ? "seg-btn is-active" : "seg-btn";
+    btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+  };
+  const showAll = !!(isAll && btnAll);
+  setActive(btnAll, showAll);
+  setActive(btnCumulative, !showAll && isCumulative);
+  setActive(btnSingle, !showAll && !isCumulative);
 }
 
 function buildPracticeQueue() {
@@ -699,16 +703,14 @@ function resetPracticeActionButtons() {
   const btnTyping = DOM.btnSubmitTyping || (typeof document !== "undefined" ? document.getElementById("btn-submit-typing") : null);
   if (btnTyping) {
     btnTyping.innerHTML = 'Verificar ➔';
-    btnTyping.className =
-      "absolute right-2 top-2 bottom-2 px-6 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer";
+    btnTyping.className = "answer-btn";
     btnTyping.disabled = false;
   }
 
   const btnSentence = DOM.btnSubmitSentence || (typeof document !== "undefined" ? document.getElementById("btn-submit-sentence") : null);
   if (btnSentence) {
-    btnSentence.innerHTML = 'Verificar Tradução ➔';
-    btnSentence.className =
-      "px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer";
+    btnSentence.innerHTML = 'Verificar tradução ➔';
+    btnSentence.className = "answer-btn";
     btnSentence.disabled = false;
   }
 
@@ -727,14 +729,13 @@ function updatePracticeActionButtonToNext() {
   const isChoiceActive = DOM.interfaces?.choice && !DOM.interfaces.choice.classList.contains("hidden");
   const btnNext = DOM.btnNext || (typeof document !== "undefined" ? document.getElementById("btn-next") : null);
 
-  const nextLabelHtml = `Próxima Questão ➔ <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] bg-white/20 text-white rounded font-mono font-medium ml-1">↵ Enter</kbd>`;
+  const nextLabelHtml = `<span>Próxima<span class="hidden sm:inline"> questão</span> ➔</span> <kbd class="hidden md:inline-flex items-center px-1.5 py-0.5 text-[11px] bg-white/20 text-white rounded font-mono font-medium ml-1">Enter</kbd>`;
 
   if (isTypingActive) {
     const btnTyping = DOM.btnSubmitTyping || (typeof document !== "undefined" ? document.getElementById("btn-submit-typing") : null);
     if (btnTyping) {
       btnTyping.innerHTML = nextLabelHtml;
-      btnTyping.className =
-        "absolute right-2 top-2 bottom-2 px-6 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02] active:scale-95 animate-pulse-once";
+      btnTyping.className = "answer-btn animate-pulse-once";
       btnTyping.disabled = false;
     }
     if (btnNext) btnNext.classList.add("hidden");
@@ -742,32 +743,39 @@ function updatePracticeActionButtonToNext() {
     const btnSentence = DOM.btnSubmitSentence || (typeof document !== "undefined" ? document.getElementById("btn-submit-sentence") : null);
     if (btnSentence) {
       btnSentence.innerHTML = nextLabelHtml;
-      btnSentence.className =
-        "px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02] active:scale-95 animate-pulse-once";
+      btnSentence.className = "answer-btn animate-pulse-once";
       btnSentence.disabled = false;
     }
     if (btnNext) btnNext.classList.add("hidden");
   } else if (isChoiceActive) {
     if (btnNext) {
       btnNext.innerHTML = nextLabelHtml;
-      btnNext.className =
-        "w-full md:w-auto px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs rounded-xl transition shadow-md cursor-pointer flex items-center justify-center gap-1.5";
+      btnNext.className = "answer-btn flex-1 md:flex-none";
       btnNext.classList.remove("hidden");
     }
   }
 }
 
+function updatePracticeProgressBar(current, total) {
+  if (typeof document === "undefined") return;
+  const fill = document.getElementById("practice-progress-fill");
+  if (fill) fill.style.width = total > 0 ? `${Math.round((current / total) * 100)}%` : "0%";
+}
+
 function renderCurrentQuestion() {
   ensureDOM();
   resetPracticeActionButtons();
+  if (DOM.hebPrompt) DOM.hebPrompt.classList.remove("is-long", "is-message");
 
   if (practiceQueue.length === 0) {
     AppState.currentQuestion = null;
+    updatePracticeProgressBar(0, 0);
+    if (DOM.hebPrompt) DOM.hebPrompt.classList.add("is-message");
     if (DOM.btnPracticeFav) {
       DOM.btnPracticeFav.classList.add("hidden");
     }
     if (AppState.exerciseMode === "favorites") {
-      if (DOM.hebPrompt) DOM.hebPrompt.textContent = "⭐ Nenhuma favorita";
+      if (DOM.hebPrompt) DOM.hebPrompt.textContent = "Nenhuma favorita ainda";
       if (DOM.qCategory) DOM.qCategory.textContent = "Modo Favoritas";
       if (DOM.qProgress) DOM.qProgress.textContent = "0 de 0 itens";
       if (DOM.hintText) {
@@ -778,9 +786,9 @@ function renderCurrentQuestion() {
           <button
             type="button"
             onclick="switchTab('vocab')"
-            class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs rounded-xl shadow-lg transition inline-flex items-center gap-1.5 cursor-pointer"
+            class="answer-btn font-sans"
           >
-            <span>📖</span> Ir para o Dicionário & Favoritar Itens
+            Ir para o Dicionário e favoritar itens
           </button>
         `;
         DOM.hintText.classList.remove("hidden");
@@ -827,7 +835,7 @@ function renderCurrentQuestion() {
   if (btnPracticeFav) {
     btnPracticeFav.classList.remove("hidden");
     btnPracticeFav.innerHTML = isQuestionFavorite ? "⭐" : "☆";
-    btnPracticeFav.className = `p-1 rounded-lg hover:scale-125 transition cursor-pointer text-sm ${isQuestionFavorite ? "text-amber-400 hover:text-amber-300" : "text-slate-500 hover:text-amber-400"}`;
+    btnPracticeFav.className = `fav-btn${isQuestionFavorite ? " is-on" : ""}`;
     btnPracticeFav.title = isQuestionFavorite ? "Remover dos favoritos" : "Marcar como favorito";
   }
 
@@ -844,8 +852,11 @@ function renderCurrentQuestion() {
   const qChapterBadge = DOM.qChapterBadge || (typeof document !== "undefined" ? document.getElementById("question-chapter-badge") : null);
   if (qChapterBadge) {
     const chapTitle = AppState.currentQuestion._chapterTitle || AppState.currentChapter?.title || "";
-    if (chapTitle) {
-      qChapterBadge.textContent = `📖 ${chapTitle}`;
+    // Com um único capítulo o contexto já está no painel; o selo só informa em sessões combinadas
+    const isCombinedSession = (AppState.selectedChapterIds || []).length > 1;
+    if (chapTitle && isCombinedSession) {
+      qChapterBadge.textContent = chapTitle;
+      qChapterBadge.title = chapTitle;
       qChapterBadge.classList.remove("hidden");
     } else {
       qChapterBadge.classList.add("hidden");
@@ -855,10 +866,16 @@ function renderCurrentQuestion() {
     const modeSuffix = AppState.exerciseMode === "favorites" ? " (Favoritas)" : "";
     DOM.qProgress.textContent = `Item ${AppState.currentQuestionIndex + 1} de ${practiceQueue.length}${modeSuffix}`;
   }
-  if (DOM.hebPrompt) DOM.hebPrompt.textContent = getTerm(AppState.currentQuestion);
+  updatePracticeProgressBar(AppState.currentQuestionIndex + 1, practiceQueue.length);
+  if (DOM.hebPrompt) {
+    const promptText = getTerm(AppState.currentQuestion);
+    DOM.hebPrompt.textContent = promptText;
+    // Frases longas usam corpo menor para caber sem rolagem e sem quebrar a leitura
+    if (String(promptText).length > 22) DOM.hebPrompt.classList.add("is-long");
+  }
 
   if (DOM.hintText) {
-    DOM.hintText.textContent = `Transliteração: [ ${AppState.currentQuestion.transliteration || "N/A"} ]`;
+    DOM.hintText.textContent = AppState.currentQuestion.transliteration || "Sem transliteração para este item";
     DOM.hintText.classList.add("hidden");
   }
   if (DOM.btnHint) DOM.btnHint.classList.remove("hidden");
@@ -956,10 +973,11 @@ function renderChoiceInterface() {
   distractorPool = shuffleArray(distractorPool).slice(0, 3);
 
   const options = shuffleArray([correctAnswer, ...distractorPool]);
-  options.forEach((opt) => {
+  options.forEach((opt, idx) => {
     const btn = document.createElement("button");
-    btn.className =
-      "w-full text-left p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-brand-500 font-medium text-sm text-slate-200 transition active:scale-[0.99] cursor-pointer";
+    btn.type = "button";
+    btn.className = "choice-btn hover:border-brand-500 active:scale-[0.99]";
+    btn.setAttribute("data-key", String(idx + 1));
     btn.textContent = opt;
     btn.onclick = () => {
       if (AppState.isPracticeAnswered) {
@@ -988,6 +1006,17 @@ function submitSentenceAnswer(e) {
     return;
   }
   checkPracticeAnswer(DOM.inputs.sentences.value);
+}
+
+function showAssimilationTip(question) {
+  const tipEl = document.getElementById("feedback-tip");
+  const tipText = document.getElementById("feedback-tip-text");
+  if (!tipEl || !tipText) return;
+  const tip = typeof window !== "undefined" && window.AssimilationModule
+    ? window.AssimilationModule.getAssimilationTip(question, AppState.language)
+    : null;
+  tipText.textContent = tip ? tip.text : "";
+  tipEl.classList.toggle("hidden", !tip);
 }
 
 function checkPracticeAnswer(userAnswer) {
@@ -1061,6 +1090,8 @@ function checkPracticeAnswer(userAnswer) {
     detail.textContent = `Traduções aceitas: "${evalResult.expected}" (Você respondeu: "${userAnswer || "em branco"}")`;
   }
 
+  showAssimilationTip(AppState.currentQuestion);
+
   DOM.inputs.typing.disabled = true;
   DOM.inputs.sentences.disabled = true;
 
@@ -1130,7 +1161,7 @@ function toggleCurrentPracticeFavorite() {
   const btn = document.getElementById("btn-practice-fav");
   if (btn) {
     btn.innerHTML = isFav ? "⭐" : "☆";
-    btn.className = `p-1 rounded-lg hover:scale-125 transition cursor-pointer text-sm ${isFav ? "text-amber-400 hover:text-amber-300" : "text-slate-500 hover:text-amber-400"}`;
+    btn.className = `fav-btn${isFav ? " is-on" : ""}`;
     btn.title = isFav ? "Remover dos favoritos" : "Marcar como favorito";
   }
 }
@@ -1157,11 +1188,14 @@ function resetStats() {
 function updateStatsUI() {
   document.getElementById("stat-streak").textContent = AppState.streak;
   document.getElementById("stat-score").textContent = AppState.score;
-  const accuracy =
+  // Sem respostas ainda não há precisão a mostrar: "100%" sugeriria um resultado que não existe
+  document.getElementById("stat-accuracy").textContent =
     AppState.totalAnswered > 0
-      ? Math.round((AppState.correctCount / AppState.totalAnswered) * 100)
-      : 100;
-  document.getElementById("stat-accuracy").textContent = `${accuracy}%`;
+      ? `${Math.round((AppState.correctCount / AppState.totalAnswered) * 100)}%`
+      : "—";
+  if (typeof window !== "undefined" && typeof window.updateReviewDueBadge === "function") {
+    window.updateReviewDueBadge();
+  }
 }
 
 /* ================= SISTEMA DE MEMORIZAÇÃO (SRS) ================= */
@@ -1189,6 +1223,10 @@ function recordSRSError(termStr) {
 
 /* ================= LANGUAGE SWITCH ENGINE ================= */
 async function toggleLanguage(targetLang = null) {
+  if (typeof window !== "undefined" && typeof window.confirmLeaveActiveSession === "function" && !window.confirmLeaveActiveSession()) {
+    return;
+  }
+
   if (targetLang === "hebrew" || targetLang === "greek") {
     AppState.language = targetLang;
   } else {
@@ -1905,13 +1943,49 @@ if (typeof document !== "undefined") {
       return;
     }
 
+    const typingTarget = document.activeElement;
+    const isTypingField =
+      typingTarget &&
+      (typingTarget.tagName === "INPUT" || typingTarget.tagName === "TEXTAREA" || typingTarget.tagName === "SELECT");
+
+    // Revisão: Espaço revela o cartão; 1, 2 e 3 classificam a lembrança
+    const ankiActive = document.getElementById("anki-active");
+    if (ankiActive && !ankiActive.classList.contains("hidden") && !isTypingField) {
+      const ankiBack = document.getElementById("anki-back");
+      const isRevealed = ankiBack && !ankiBack.classList.contains("hidden");
+      if (!isRevealed && (e.key === " " || e.key === "Enter")) {
+        e.preventDefault();
+        revealAnki();
+      } else if (isRevealed && ["1", "2", "3"].includes(e.key)) {
+        e.preventDefault();
+        answerAnki({ 1: "hard", 2: "good", 3: "easy" }[e.key]);
+      }
+      return;
+    }
+
     // 2. Modo de Prática Padrão
     const tabPractice = document.getElementById("tab-practice");
     const stdPanel = document.getElementById("standard-practice-panel");
     const isPracticeVisible = tabPractice && !tabPractice.classList.contains("hidden");
     const isStdPanelVisible = stdPanel && !stdPanel.classList.contains("hidden");
 
+    // Múltipla escolha: teclas 1 a 4 respondem sem o mouse
+    if (isPracticeVisible && isStdPanelVisible && !isTypingField && !AppState.isPracticeAnswered && /^[1-4]$/.test(e.key)) {
+      const choicePanel = DOM.interfaces && DOM.interfaces.choice;
+      if (choicePanel && !choicePanel.classList.contains("hidden")) {
+        const option = choicePanel.querySelector(`[data-key="${e.key}"]`);
+        if (option) {
+          e.preventDefault();
+          option.click();
+        }
+      }
+      return;
+    }
+
     if (isPracticeVisible && isStdPanelVisible && e.key === "Enter") {
+      // Enter em um botão de ação do feedback aciona o botão, não a próxima questão
+      if (document.activeElement && document.activeElement.id === "btn-feedback-analysis") return;
+
       // Se a resposta já foi verificada, QUALQUER tecla Enter avança imediatamente para a próxima questão
       if (AppState.isPracticeAnswered) {
         e.preventDefault();

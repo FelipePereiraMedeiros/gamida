@@ -14,6 +14,8 @@ const SentenceAnalysisModule = require('../js/modules/sentence-analysis.js');
 const {
   CATEGORY_MAP,
   getMorphemeCategory,
+  isGreekSentence,
+  parseGreekStepDetails,
   tokenEndsWithMaqqef,
   buildFlatMorphemesList,
   renderSentenceMorphemesHTML,
@@ -488,7 +490,8 @@ suite.test('Categoria Pronome e Orientação LTR no Grego (§ Bergmann)', () => 
   assert.equal(getMorphemeCategory('Pronome pessoal', true), 'pronoun', 'Deve mapear pronome pessoal para pronoun no Grego');
   assert.equal(getMorphemeCategory('Pronome relativo', true), 'pronoun', 'Deve mapear pronome relativo para pronoun no Grego');
 
-  // No hebraico, pronomes isolados caem em particle por padrão histórico da gramática de Kelley
+  // Kelley (§§23-24) trata os pronomes como classe própria; aqui é só o agrupamento de cor
+  // da interface, que reúne pronomes e partículas em "Partícula / Pronome"
   assert.equal(getMorphemeCategory('Pronome pessoal', false), 'particle', 'No Hebraico pronomes isolados caem em particle');
 
   // Metadados do Pronome no CATEGORY_MAP
@@ -556,10 +559,10 @@ suite.test('Capítulo 13 e Frases Gregas não geram genericamente "partícula" n
 
     // Verificar que NENHUM elemento é genericamente "Vocábulo" ou "Segmento X"
     flatList.forEach((m, mIdx) => {
-      assert.isTrue(m.word_class !== 'Vocábulo', `Morfema ${mIdx + 1} da sent ${sIdx + 1} não pode ser 'Vocábulo'`);
-      assert.isTrue(!m.syntax_role.includes('Segmento '), `Morfema ${mIdx + 1} da sent ${sIdx + 1} não pode ter 'Segmento X'`);
-      assert.isTrue(m.category !== 'particle' || m.word_class.toLowerCase().includes('partícula') || m.word_class.toLowerCase().includes('conjunção'),
-        `Morfema ${m.text} não deve cair em particle genericamente`);
+      assert.isTrue(m.token.word_class !== 'Vocábulo', `Morfema ${mIdx + 1} da sent ${sIdx + 1} não pode ser 'Vocábulo'`);
+      assert.isTrue(!m.token.syntax_role.includes('Segmento '), `Morfema ${mIdx + 1} da sent ${sIdx + 1} não pode ter 'Segmento X'`);
+      assert.isTrue(m.category !== 'particle' || m.token.word_class.toLowerCase().includes('partícula') || m.token.word_class.toLowerCase().includes('conjunção'),
+        `Morfema ${m.token.text} não deve cair em particle genericamente`);
     });
   });
 
@@ -575,7 +578,7 @@ suite.test('Capítulo 13 e Frases Gregas não geram genericamente "partícula" n
   assert.isTrue(fallbackFlat[3].category === 'preposition', 'παρὰ deve ser inferido como preposição');
   // Nenhum deve ser chamado "Segmento 1", "Segmento 2"...
   fallbackFlat.forEach((m, idx) => {
-    assert.isTrue(!m.syntax_role.includes('Segmento '), `Fallback do token ${idx + 1} não deve ter 'Segmento X'`);
+    assert.isTrue(!m.token.syntax_role.includes('Segmento '), `Fallback do token ${idx + 1} não deve ter 'Segmento X'`);
   });
 });
 

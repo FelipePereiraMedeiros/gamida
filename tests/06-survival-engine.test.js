@@ -205,7 +205,7 @@ suite.test('Rastreamento da pontuação máxima da partida e persistência do re
   AppState.chapters = [AppState.currentChapter];
   AppState.survivalHighScore = 0;
 
-  const { SurvivalModule } = require('../js/modules/survival.js');
+  const SurvivalModule = require('../js/modules/survival.js');
 
   startSurvival();
 
@@ -230,8 +230,8 @@ suite.test('Rastreamento da pontuação máxima da partida e persistência do re
 
   finishSurvival(false);
 
-  assert.equal(elementsById['surv-res-streak'].textContent, '1', 'Sequência alcançada deve registrar o melhor streak da partida');
-  assert.equal(elementsById['surv-res-high'].textContent, '1', 'Recorde máximo deve persistir o melhor streak');
+  assert.equal(String(elementsById['surv-res-streak'].textContent), '1', 'Sequência alcançada deve registrar o melhor streak da partida');
+  assert.equal(String(elementsById['surv-res-high'].textContent), '1', 'Recorde máximo deve persistir o melhor streak');
   assert.equal(AppState.survivalHighScore, 1);
 
   if (oldDoc === undefined) delete global.document; else global.document = oldDoc;

@@ -25,6 +25,7 @@ const modules = [
   { id: 12, name: 'Motor Gamificado do Alfabeto', file: './tests/12-alphabet-engine.test.js' },
   { id: 13, name: 'Integridade Geral do Sistema (E2E & Contrato DOM)', file: './tests/13-system-integrity.test.js' },
   { id: 14, name: 'Análise Morfossintática Granular (Page Kelley)', file: './tests/14-sentence-analysis.test.js' },
+  { id: 15, name: 'Dicas de Assimilação', file: './tests/15-assimilation.test.js' },
 ];
 
 async function run() {

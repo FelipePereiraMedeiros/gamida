@@ -230,7 +230,9 @@
     // Partículas, pronomes, numerais
     return "particle";
   }
-  const getMorphemeCategory = getHebrewMorphemeCategory;
+  function getMorphemeCategory(typeStr, isGreek = false) {
+    return isGreek ? getGreekMorphemeCategory(typeStr) : getHebrewMorphemeCategory(typeStr);
+  }
 
   function getGreekMorphemeCategory(typeStr) {
     if (!typeStr) return "particle";
@@ -2613,7 +2615,7 @@
 
   const ModuleExports = {
     // Categorias & Mapas
-    CATEGORY_MAP: HEBREW_CATEGORY_MAP,
+    CATEGORY_MAP: { ...HEBREW_CATEGORY_MAP, pronoun: GREEK_CATEGORY_MAP.pronoun },
     HEBREW_CATEGORY_MAP,
     GREEK_CATEGORY_MAP,
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" class="h-full bg-slate-950 text-slate-100">
+<html lang="pt-BR" data-lang="hebrew" class="bg-slate-950 text-slate-100">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +9,14 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>"
     />
+    <script>
+      // Aplica o idioma salvo antes da primeira pintura, evitando flash de cor
+      try {
+        if (localStorage.getItem("gamida_language") === "greek") {
+          document.documentElement.setAttribute("data-lang", "greek");
+        }
+      } catch (_) {}
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,6 +29,9 @@
     <link rel="preload" href="fonts/SBL_Hbrw.ttf" as="font" type="font/ttf" crossorigin />
 
     <script>
+      // Tema: "slate" é a tinta quente da interface e "brand" é o destaque do idioma ativo.
+      // As cores vêm de variáveis CSS, então todas as classes (inclusive as geradas no JS) acompanham.
+      const brandShade = (n) => `rgb(var(--brand-${n}) / <alpha-value>)`;
       tailwind.config = {
         theme: {
           extend: {
@@ -29,298 +40,272 @@
               hebrew: ['"SBL Hebrew"', '"Ezra SIL"', '"Noto Sans Hebrew"', '"David"', "serif"],
             },
             colors: {
+              slate: {
+                50: "#f8f6f1",
+                100: "#f0ede6",
+                200: "#e0dcd2",
+                300: "#c9c4b8",
+                400: "#aca79b",
+                500: "#8d887d",
+                600: "#5e5a52",
+                700: "#413e38",
+                800: "#2d2b27",
+                900: "#201e1b",
+                950: "#151412",
+              },
               brand: {
-                50: "#f0f7ff",
-                100: "#e0effe",
-                500: "#3b82f6",
-                600: "#2563eb",
-                700: "#1d4ed8",
-                900: "#1e3a8a",
+                50: brandShade(50),
+                100: brandShade(100),
+                200: brandShade(200),
+                300: brandShade(300),
+                400: brandShade(400),
+                500: brandShade(500),
+                600: brandShade(600),
+                700: brandShade(700),
+                800: brandShade(800),
+                900: brandShade(900),
+                950: brandShade(950),
               },
             },
           },
         },
       };
-      window.APP_VERSION = "2.7.6";
+      window.APP_VERSION = "2.9.0";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
     <link rel="stylesheet" href="css/offline-theme.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/interface.css" />
   </head>
   <body
-    class="h-full flex flex-col font-sans antialiased bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white"
+    class="app-shell font-sans antialiased bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white"
   >
-    <!-- Cabeçalho fixo: identidade, seleção de capítulo e navegação -->
-    <header
-      id="main-app-header"
-      class="border-b border-slate-800 bg-slate-900/95 backdrop-blur sticky top-0 z-30 px-4 pt-2.5 pb-2 transition-all duration-300 shadow-lg"
-    >
-      <div class="max-w-5xl mx-auto flex flex-col space-y-3">
-        <!-- Linha superior: logo, seletor de capítulo (desktop) e estatísticas -->
-        <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-3 relative">
-          <!-- Identidade da aplicação -->
-          <div class="flex items-center space-x-2.5 shrink-0">
-            <div
-              id="app-logo-btn"
-              onclick="toggleLanguage()"
-              title="Clique para trocar o idioma"
-              class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-xl sm:text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300"
-            >
-              א
-            </div>
-            <div>
-              <h1
-                class="font-bold text-base sm:text-lg leading-tight tracking-wide text-white flex items-center gap-1.5"
-              >
-                Gamida
-                <span
-                  id="app-version-display"
-                  class="text-[10px] sm:text-xs px-1.5 py-0.5 rounded bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono"
-                ></span>
-              </h1>
-              <p id="app-subtitle" class="text-[10px] sm:text-xs text-slate-400">
-                Treinador de Hebraico Autônomo
-              </p>
-            </div>
-          </div>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+    <!-- Biblioteca de ícones (traço único, herda a cor do texto) -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none" aria-hidden="true">
+      <symbol id="i-practice" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+      <symbol id="i-assess" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+      <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></symbol>
+      <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></symbol>
+      <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5Z"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01Z"/></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 13h.01M18 13h.01M9 13h6"/></symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><path d="m3 6 2 2 4-4M3 16l2 2 4-4M13 6h8M13 12h8M13 18h8"/></symbol>
+      <symbol id="i-lines" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+      <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    </svg>
 
-          <!-- Indicadores de desempenho da sessão (no mobile fica na linha superior à direita; no desktop na ponta direita) -->
-          <div
-            class="flex items-center gap-2.5 sm:gap-4 bg-slate-950/60 border border-slate-800 px-3 py-1.5 rounded-full text-xs font-medium shrink-0 order-2 md:order-3"
-          >
-            <div class="flex items-center gap-1" title="Sequência de Acertos">
-              <span class="text-amber-400 text-xs sm:text-sm">🔥</span
-              ><span id="stat-streak" class="text-slate-200 font-bold">0</span>
-            </div>
-            <div class="h-3 w-px bg-slate-800"></div>
-            <div class="flex items-center gap-1" title="Pontuação">
-              <span class="text-emerald-400 text-xs sm:text-sm">⭐</span
-              ><span id="stat-score" class="text-slate-200 font-bold">0</span>
-            </div>
-            <div class="h-3 w-px bg-slate-800"></div>
-            <div class="flex items-center gap-1" title="Precisão">
-              <span class="text-blue-400 text-xs sm:text-sm">🎯</span
-              ><span id="stat-accuracy" class="text-slate-200 font-bold"
-                >100%</span
-              >
-            </div>
-          </div>
-
-          <!-- Seletor global de capítulos (no mobile retrai; no desktop fica no centro da linha superior) -->
-          <div class="hidden md:block relative w-full md:flex-1 md:min-w-0 md:max-w-lg md:mx-4 lg:mx-6 order-3 md:order-2 z-50 mobile-collapsible-target" id="custom-chapter-selector">
-             <button type="button" onclick="toggleDropdown()" aria-haspopup="listbox" aria-expanded="false" aria-controls="chapter-dropdown-list" class="w-full bg-slate-950 border border-slate-700 hover:border-brand-500 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-inner flex items-center justify-between transition-all group min-w-0 cursor-pointer">
-                 <div class="flex items-center gap-2 sm:gap-3 overflow-hidden min-w-0 flex-1">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider shrink-0">Capítulos:</span>
-                    <span id="chapter-dropdown-text" class="text-brand-400 font-bold text-xs sm:text-sm truncate text-left group-hover:text-brand-300 min-w-0 block">Carregando...</span>
-                 </div>
-                 <span class="text-slate-500 text-xs ml-2 sm:ml-3 shrink-0">▼</span>
-             </button>
-             
-             <!-- Opções inseridas dinamicamente pelo JavaScript -->
-             <ul id="chapter-dropdown-list" role="listbox" aria-label="Lista de Capítulos" class="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden hidden max-h-[60vh] overflow-y-auto divide-y divide-slate-800/60 z-50">
-             </ul>
+    <!-- Painel do aluno: barra lateral no desktop; barra superior + navegação inferior no mobile/tablet -->
+    <header id="main-app-header" class="app-header">
+      <div class="app-header__bar">
+        <!-- Identidade da aplicação -->
+        <div class="app-brand">
+          <div id="app-logo-btn" class="app-brand__mark" aria-hidden="true">א</div>
+          <div class="app-brand__text">
+            <h1 class="app-brand__name">
+              Gamida
+              <span id="app-version-display" class="app-brand__version"></span>
+            </h1>
+            <p id="app-subtitle" class="app-brand__subtitle">Treinador de Hebraico</p>
           </div>
         </div>
 
-        <!-- Navegação principal por abas e Botão Pague-me um café (no mobile retrai; no desktop sempre visível) -->
-        <div
-          id="navbar-tabs-row"
-          class="hidden md:flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 pt-2.5 border-t border-slate-800/80 mobile-collapsible-target"
+        <!-- Mobile/tablet: o que está sendo estudado, sempre à vista; abre idioma e capítulos -->
+        <button
+          type="button"
+          id="mobile-menu-toggle-btn"
+          onclick="toggleMobileMenu()"
+          class="study-toggle inline-flex items-center leading-none"
+          aria-expanded="false"
+          aria-controls="study-context"
+          title="Trocar capítulo ou idioma"
         >
-          <!-- Wrapper do Carrossel de Abas com Indicadores de Scroll -->
-          <div class="relative flex-1 min-w-0 max-w-full group/nav-scroll">
-            <!-- Botão e Sombra de Scroll para a Esquerda -->
-            <button
-              type="button"
-              id="tabs-scroll-left-btn"
-              onclick="scrollTabs('left')"
-              class="hidden absolute left-0 top-1/2 -translate-y-1/2 z-20 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-slate-800/95 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white shadow-md items-center justify-center transition-all duration-200 cursor-pointer active:scale-90"
-              aria-label="Rolar abas para a esquerda"
-            >
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
-              </svg>
-            </button>
-            <div
-              id="tabs-fade-left"
-              class="hidden absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent pointer-events-none z-10"
-            ></div>
+          <span id="mobile-menu-toggle-label" class="study-toggle__label">Carregando...</span>
+          <svg id="mobile-menu-toggle-icon" class="icon icon--sm study-toggle__icon" aria-hidden="true"><use href="#i-chevron"></use></svg>
+        </button>
 
-            <!-- Contêiner rolável das abas -->
-            <div
-              id="navbar-tabs-container"
-              onscroll="updateTabsScrollIndicators()"
-              class="flex items-center space-x-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none min-w-0 scroll-smooth px-0.5"
-            >
-              <button
-                type="button"
-                id="nav-btn-practice"
-                onclick="switchTab('practice')"
-                class="px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-md transition hover:bg-brand-500 whitespace-nowrap shrink-0"
-              >
-                🎮 Praticar
-              </button>
-              <button
-                type="button"
-                id="nav-btn-assessment"
-                onclick="switchTab('assessment')"
-                class="px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap shrink-0"
-              >
-                📝 Avaliação
-              </button>
-              <button
-                type="button"
-                id="nav-btn-paradigms"
-                onclick="switchTab('paradigms')"
-                class="px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap shrink-0"
-              >
-                📊 Paradigmas
-              </button>
-              <button
-                type="button"
-                id="nav-btn-vocab"
-                onclick="switchTab('vocab')"
-                class="px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap shrink-0"
-              >
-                📖 Dicionário
-              </button>
-              <button
-                type="button"
-                id="nav-btn-manage"
-                onclick="switchTab('manage')"
-                class="px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white transition whitespace-nowrap shrink-0"
-              >
-                ⚙️ Capítulos
-              </button>
-            </div>
-
-            <!-- Botão e Sombra de Scroll para a Direita com Indicador Animado -->
-            <div
-              id="tabs-fade-right"
-              class="hidden absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-slate-900 via-slate-900/90 to-transparent pointer-events-none z-10"
-            ></div>
-            <button
-              type="button"
-              id="tabs-scroll-right-btn"
-              onclick="scrollTabs('right')"
-              class="hidden absolute right-0 top-1/2 -translate-y-1/2 z-20 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-slate-800/95 hover:bg-slate-700 border border-slate-700 text-brand-400 hover:text-brand-300 shadow-md items-center justify-center transition-all duration-200 cursor-pointer active:scale-90 animate-subtle-bounce-x"
-              aria-label="Rolar abas para a direita"
-              title="Mais opções à direita"
-            >
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </button>
+        <!-- Desempenho da sessão -->
+        <dl class="app-stats" aria-label="Desempenho nesta sessão">
+          <div class="app-stat" title="Sequência de acertos">
+            <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--streak" aria-hidden="true"><use href="#i-flame"></use></svg><span class="app-stat__label">Sequência</span></dt>
+            <dd id="stat-streak">0</dd>
           </div>
-
-          <!-- Botão de Ação: Pague-me um café! -->
-          <button
-            type="button"
-            id="btn-coffee"
-            onclick="copyPixCoffee(this)"
-            title="Apoie o desenvolvedor com um café via Pix! Clique para copiar a chave."
-            class="w-full sm:w-auto px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:via-orange-400 hover:to-amber-500 text-white shadow-md shadow-amber-500/20 hover:shadow-lg hover:shadow-amber-500/30 border border-amber-400/30 transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-center sm:justify-start gap-2.5 cursor-pointer coffee-btn-glow shrink-0"
-          >
-            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center shrink-0 text-amber-100 shadow-sm">
-              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-                <line x1="6" y1="1" x2="6" y2="4"></line>
-                <line x1="10" y1="1" x2="10" y2="4"></line>
-                <line x1="14" y1="1" x2="14" y2="4"></line>
-              </svg>
-            </div>
-            <div class="flex flex-col text-left leading-tight min-w-0">
-              <div class="flex items-center gap-1.5">
-                <span class="font-bold text-xs text-white tracking-wide">Pague-me um café!</span>
-                <span class="text-[9px] bg-amber-400/25 text-amber-100 border border-amber-300/30 px-1.5 py-0.2 rounded font-semibold uppercase tracking-wider">Pix</span>
-              </div>
-              <span class="text-[10px] text-amber-100/80 font-normal">Apoie o desenvolvedor</span>
-            </div>
-          </button>
-        </div>
-
-        <!-- Puxador/Indicador do Menu no Mobile -->
-        <div class="flex md:hidden justify-center pt-0.5 pb-0.5">
-          <button
-            type="button"
-            id="mobile-menu-toggle-btn"
-            onclick="toggleMobileMenu()"
-            class="group inline-flex items-center justify-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-800/90 hover:bg-slate-800 border border-slate-700/80 text-[11px] font-medium text-slate-300 hover:text-white shadow-sm transition-all duration-200 active:scale-95 cursor-pointer animate-pull-indicator leading-none select-none"
-            aria-expanded="false"
-            title="Puxe para baixo para revelar o menu"
-          >
-            <span id="mobile-menu-toggle-label" class="text-[10px] font-bold text-slate-400 group-hover:text-slate-200 uppercase tracking-wider leading-none">Menu</span>
-            <svg id="mobile-menu-toggle-icon" class="w-3.5 h-3.5 text-brand-400 transition-transform duration-300 transform group-hover:translate-y-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-        </div>
+          <div class="app-stat" title="Pontuação">
+            <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--score" aria-hidden="true"><use href="#i-star"></use></svg><span class="app-stat__label">Pontos</span></dt>
+            <dd id="stat-score">0</dd>
+          </div>
+          <div class="app-stat app-stat--accuracy" title="Precisão">
+            <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--accuracy" aria-hidden="true"><use href="#i-target"></use></svg><span class="app-stat__label">Precisão</span></dt>
+            <dd id="stat-accuracy">—</dd>
+          </div>
+        </dl>
       </div>
+
+      <!-- Contexto de estudo: idioma, capítulo e apoio -->
+      <div id="study-context" class="study-context mobile-collapsible-target hidden">
+        <button
+          type="button"
+          id="app-language-switch"
+          onclick="toggleLanguage()"
+          class="lang-switch"
+          aria-label="Idioma atual: Hebraico. Trocar para Grego"
+          title="Trocar o idioma de estudo"
+        >
+          <span class="lang-switch__opt" data-lang-opt="hebrew"><span class="lang-switch__glyph">א</span> Hebraico</span>
+          <span class="lang-switch__opt" data-lang-opt="greek"><span class="lang-switch__glyph">α</span> Grego</span>
+        </button>
+
+        <div id="custom-chapter-selector" class="chapter-select">
+          <button
+            type="button"
+            onclick="toggleDropdown()"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-controls="chapter-dropdown-list"
+            class="chapter-select__btn"
+          >
+            <span class="chapter-select__text">
+              <span class="chapter-select__eyebrow">Estudando</span>
+              <span id="chapter-dropdown-text" class="chapter-select__title">Carregando...</span>
+            </span>
+            <svg class="icon icon--sm chapter-select__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </button>
+          <!-- Opções inseridas dinamicamente pelo JavaScript -->
+          <ul id="chapter-dropdown-list" role="listbox" aria-label="Lista de Capítulos" class="chapter-select__list hidden"></ul>
+        </div>
+
+        <!-- Apoio ao projeto: fica fora do fluxo de estudo, sem animação disputando atenção -->
+        <button
+          type="button"
+          id="btn-coffee"
+          onclick="copyPixCoffee(this)"
+          title="Apoie o desenvolvedor com um café via Pix! Clique para copiar a chave."
+          class="w-full px-3 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:via-orange-400 hover:to-amber-500 text-slate-950 border border-amber-400/30 transition-all duration-300 flex items-center gap-2.5 cursor-pointer"
+        >
+          <div class="w-7 h-7 rounded-lg bg-black/10 flex items-center justify-center shrink-0 text-slate-950">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+              <line x1="6" y1="1" x2="6" y2="4"></line>
+              <line x1="10" y1="1" x2="10" y2="4"></line>
+              <line x1="14" y1="1" x2="14" y2="4"></line>
+            </svg>
+          </div>
+          <div class="flex flex-col text-left leading-tight min-w-0">
+            <div class="flex items-center gap-1.5">
+              <span class="font-bold text-xs tracking-wide">Pague-me um café!</span>
+              <span class="text-[10px] bg-black/10 px-1.5 rounded font-semibold uppercase tracking-wider">Pix</span>
+            </div>
+            <span class="text-[11px] font-medium">Apoie o desenvolvedor</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Navegação principal: lateral no desktop; barra fixa inferior no mobile/tablet -->
+      <nav id="navbar-tabs-row" class="app-nav" aria-label="Seções do Gamida">
+        <button
+          type="button"
+          id="tabs-scroll-left-btn"
+          onclick="scrollTabs('left')"
+          class="app-nav__scroll app-nav__scroll--left hidden"
+          aria-label="Rolar abas para a esquerda"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <div id="tabs-fade-left" class="app-nav__fade app-nav__fade--left hidden"></div>
+
+        <div id="navbar-tabs-container" onscroll="updateTabsScrollIndicators()" class="app-nav__list scrollbar-none">
+          <button type="button" id="nav-btn-practice" onclick="switchTab('practice')" class="nav-item is-active" aria-current="page">
+            <svg class="icon" aria-hidden="true"><use href="#i-practice"></use></svg><span>Praticar</span>
+          </button>
+          <button type="button" id="nav-btn-assessment" onclick="switchTab('assessment')" class="nav-item">
+            <svg class="icon" aria-hidden="true"><use href="#i-assess"></use></svg><span>Avaliar</span>
+            <span id="nav-review-badge" class="nav-item__badge hidden" title="Cartões prontos para revisão"></span>
+          </button>
+          <button type="button" id="nav-btn-paradigms" onclick="switchTab('paradigms')" class="nav-item">
+            <svg class="icon" aria-hidden="true"><use href="#i-table"></use></svg><span>Paradigmas</span>
+          </button>
+          <button type="button" id="nav-btn-vocab" onclick="switchTab('vocab')" class="nav-item">
+            <svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg><span>Dicionário</span>
+          </button>
+          <button type="button" id="nav-btn-manage" onclick="switchTab('manage')" class="nav-item">
+            <svg class="icon" aria-hidden="true"><use href="#i-sliders"></use></svg><span>Gerenciar</span>
+          </button>
+        </div>
+
+        <div id="tabs-fade-right" class="app-nav__fade app-nav__fade--right hidden"></div>
+        <button
+          type="button"
+          id="tabs-scroll-right-btn"
+          onclick="scrollTabs('right')"
+          class="app-nav__scroll app-nav__scroll--right hidden animate-subtle-bounce-x"
+          aria-label="Rolar abas para a direita"
+          title="Mais opções à direita"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </nav>
     </header>
 
-    <main class="flex-1 max-w-5xl w-full mx-auto p-4 md:p-6 flex flex-col">
+    <!-- Fundo que fecha o painel de contexto no mobile -->
+    <div id="study-backdrop" class="study-backdrop" onclick="toggleMobileMenu(false)"></div>
+
+    <main id="main-content" tabindex="-1" class="app-main flex-1 w-full flex flex-col">
       <!-- Aba 1: prática -->
-      <section id="tab-practice" class="flex-1 flex flex-col space-y-6">
-        <!-- Barra de Controle do Exercício / Alfabeto -->
-        <div
-          id="practice-control-bar"
-          class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4"
-        >
+      <section id="tab-practice" class="flex-1 flex flex-col gap-4">
+        <!-- Barra da sessão: modo sempre à vista; o restante fica em "Opções" -->
+        <div id="practice-control-bar" class="session-bar">
           <!-- Controles Padrão (Capítulos 2+) -->
-          <div id="standard-mode-controls" class="w-full flex flex-wrap items-center justify-between gap-4">
-            <div class="flex flex-wrap items-center gap-4">
-              <!-- 1. Modo de Exercício -->
-              <div>
-                <label class="block text-xs font-medium text-slate-400 mb-1"
-                  >Modo de Exercício:</label
-                >
-                <div
-                  class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
-                >
-                  <button
-                    type="button"
-                    id="mode-typing"
-                    onclick="setExerciseMode('typing')"
-                    class="px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white"
-                  >
-                    ⌨️ Digitação
-                  </button>
-                  <button
-                    type="button"
-                    id="mode-choice"
-                    onclick="setExerciseMode('choice')"
-                    class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200"
-                  >
-                    ✅ Múltipla Escolha
-                  </button>
-                  <button
-                    type="button"
-                    id="mode-sentences"
-                    onclick="setExerciseMode('sentences')"
-                    class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200"
-                  >
-                    📜 Frases
-                  </button>
-                  <button
-                    type="button"
-                    id="mode-favorites"
-                    onclick="setExerciseMode('favorites')"
-                    class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1"
-                    title="Praticar apenas frases e palavras marcadas como favoritas"
-                  >
-                    <span>⭐</span> Favoritas
-                  </button>
-                </div>
+          <div id="standard-mode-controls" class="session-bar__body">
+            <div class="session-bar__row">
+              <div class="seg seg--modes" role="group" aria-label="Modo de exercício">
+                <button type="button" id="mode-typing" onclick="setExerciseMode('typing')" class="seg-btn is-active" aria-pressed="true" title="Digite a tradução">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="#i-keyboard"></use></svg><span>Digitação</span>
+                </button>
+                <button type="button" id="mode-choice" onclick="setExerciseMode('choice')" class="seg-btn" aria-pressed="false" title="Múltipla escolha">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="#i-list"></use></svg><span>Escolha</span>
+                </button>
+                <button type="button" id="mode-sentences" onclick="setExerciseMode('sentences')" class="seg-btn" aria-pressed="false" title="Traduza frases completas">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="#i-lines"></use></svg><span>Frases</span>
+                </button>
+                <button type="button" id="mode-favorites" onclick="setExerciseMode('favorites')" class="seg-btn" aria-pressed="false" title="Praticar apenas frases e palavras marcadas como favoritas">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="#i-star"></use></svg><span>Favoritas</span>
+                </button>
               </div>
 
-              <!-- 2. Seleção de Capítulos Específicos (Multi-Seleção & Atalhos) -->
+              <button
+                type="button"
+                id="btn-practice-options"
+                onclick="togglePracticeOptions()"
+                class="options-toggle"
+                aria-expanded="false"
+                aria-controls="practice-options-panel"
+              >
+                <svg class="icon icon--sm" aria-hidden="true"><use href="#i-sliders"></use></svg>
+                <span class="options-toggle__text">
+                  <span class="options-toggle__label">Opções</span>
+                  <span id="practice-options-summary" class="options-toggle__summary"></span>
+                </span>
+                <svg class="icon icon--sm options-toggle__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+              </button>
+            </div>
+
+            <!-- Ajustes da sessão (recolhidos por padrão) -->
+            <div id="practice-options-panel" class="options-panel hidden">
+              <!-- Seleção de Capítulos Específicos (Multi-Seleção & Atalhos) -->
               <div id="practice-scope-container" class="relative">
-                <label class="block text-xs font-medium text-slate-400 mb-1"
-                  >Capítulos para Praticar:</label
-                >
-                <div class="flex flex-wrap items-center gap-1.5">
+                <span class="field-label">Capítulos desta sessão</span>
+                <div class="flex flex-wrap items-center gap-2">
                   <div class="relative" id="practice-chapter-picker-wrapper">
                     <button
                       type="button"
@@ -329,45 +314,19 @@
                       aria-haspopup="true"
                       aria-expanded="false"
                       aria-controls="practice-chapters-dropdown-menu"
-                      class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-950 border border-slate-700 hover:border-brand-500 text-brand-300 hover:text-white transition flex items-center gap-2 cursor-pointer shadow-inner"
-                      title="Selecionar capítulos específicos para praticar"
+                      class="control-btn"
+                      title="Combinar vários capítulos nesta sessão"
                     >
-                      <span>📑</span>
-                      <span id="practice-chapters-btn-text" class="max-w-[160px] sm:max-w-[200px] truncate">Selecionar Capítulos</span>
-                      <span class="text-[10px] text-slate-500">▼</span>
+                      <span id="practice-chapters-btn-text" class="max-w-[160px] sm:max-w-[220px] truncate">Selecionar Capítulos</span>
+                      <svg class="icon icon--xs" aria-hidden="true"><use href="#i-chevron"></use></svg>
                     </button>
                     <div
                       id="practice-chapters-dropdown-menu"
-                      class="hidden absolute left-0 top-full mt-2 w-80 sm:w-96 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl z-50 overflow-hidden"
+                      class="hidden absolute left-0 top-full mt-2 w-[min(24rem,calc(100vw-3rem))] bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl z-40 overflow-hidden"
                     >
-                      <div class="p-3 bg-slate-950/90 border-b border-slate-800 flex flex-col gap-2">
-                        <div class="flex items-center justify-between">
-                          <span class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Escolher Capítulos</span>
-                          <span id="practice-picker-count-badge" class="text-[10px] px-2 py-0.5 rounded-full bg-brand-600/30 text-brand-300 border border-brand-500/40 font-mono">1 selecionado</span>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5">
-                          <button
-                            type="button"
-                            onclick="selectAllPracticeChapters()"
-                            class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-brand-600 text-[11px] text-slate-200 hover:text-white font-medium transition cursor-pointer"
-                          >
-                            ☑️ Todos (Vocab.)
-                          </button>
-                          <button
-                            type="button"
-                            onclick="setPracticeCumulative(true)"
-                            class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-brand-600 text-[11px] text-slate-200 hover:text-white font-medium transition cursor-pointer"
-                          >
-                            📚 Até o Atual
-                          </button>
-                          <button
-                            type="button"
-                            onclick="setPracticeCumulative(false)"
-                            class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-brand-600 text-[11px] text-slate-200 hover:text-white font-medium transition cursor-pointer"
-                          >
-                            🎯 Apenas Atual
-                          </button>
-                        </div>
+                      <div class="px-3.5 py-2.5 bg-slate-950/90 border-b border-slate-800 flex items-center justify-between gap-2">
+                        <span class="text-xs font-semibold text-slate-300">Marque um ou mais capítulos</span>
+                        <span id="practice-picker-count-badge" class="text-xs px-2 py-0.5 rounded-full bg-brand-600/30 text-brand-300 border border-brand-500/40">1 selecionado</span>
                       </div>
                       <ul
                         id="practice-chapters-checklist"
@@ -378,81 +337,27 @@
                     </div>
                   </div>
 
-                  <div
-                    class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
-                  >
-                    <button
-                      type="button"
-                      id="scope-single"
-                      onclick="setPracticeCumulative(false)"
-                      class="px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer"
-                      title="Praticar apenas 1 capítulo (o capítulo principal ativo)"
-                    >
-                      Único
-                    </button>
-                    <button
-                      type="button"
-                      id="scope-cumulative"
-                      onclick="setPracticeCumulative(true)"
-                      class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
-                      title="Praticar do início até o capítulo principal ativo"
-                    >
-                      <span>📚</span> Acumular
-                    </button>
-                    <button
-                      type="button"
-                      id="scope-all"
-                      onclick="selectAllPracticeChapters()"
-                      class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
-                      title="Praticar todos os capítulos de vocabulário"
-                    >
-                      <span>☑️</span> Todos
-                    </button>
+                  <div class="seg" role="group" aria-label="Abrangência dos capítulos">
+                    <button type="button" id="scope-single" onclick="setPracticeCumulative(false)" class="seg-btn is-active" aria-pressed="true" title="Praticar apenas o capítulo atual">Só o atual</button>
+                    <button type="button" id="scope-cumulative" onclick="setPracticeCumulative(true)" class="seg-btn" aria-pressed="false" title="Praticar do início até o capítulo atual">Até o atual</button>
+                    <button type="button" id="scope-all" onclick="selectAllPracticeChapters()" class="seg-btn" aria-pressed="false" title="Praticar todos os capítulos de vocabulário">Todos</button>
                   </div>
                 </div>
               </div>
 
-              <!-- 3. Ordenação da Prática dos Capítulos (Menor ➔ Maior vs Maior ➔ Menor) -->
+              <!-- Ordenação da Prática dos Capítulos -->
               <div id="practice-order-container">
-                <label class="block text-xs font-medium text-slate-400 mb-1"
-                  >Ordem dos Capítulos:</label
-                >
-                <div
-                  class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
-                >
-                  <button
-                    type="button"
-                    id="order-asc"
-                    onclick="setPracticeChapterOrder('asc')"
-                    class="px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer"
-                    title="Praticar do capítulo menor para o maior (ordem crescente: 1 ➔ N)"
-                  >
-                    <span>⬆️</span> Menor ➔ Maior
-                  </button>
-                  <button
-                    type="button"
-                    id="order-desc"
-                    onclick="setPracticeChapterOrder('desc')"
-                    class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
-                    title="Praticar do capítulo maior para o menor (ordem decrescente: N ➔ 1)"
-                  >
-                    <span>⬇️</span> Maior ➔ Menor
-                  </button>
+                <span class="field-label">Ordem dos capítulos</span>
+                <div class="seg" role="group" aria-label="Ordem dos capítulos">
+                  <button type="button" id="order-asc" onclick="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Do capítulo menor para o maior (1 ➔ N)">Menor ➔ Maior</button>
+                  <button type="button" id="order-desc" onclick="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Do capítulo maior para o menor (N ➔ 1)">Maior ➔ Menor</button>
                 </div>
               </div>
-            </div>
 
-            <!-- 3. Filtro Dinâmico por Tipo de Palavra (Digitação) -->
-            <div id="practice-category-container" class="flex flex-col">
-              <label for="practice-category-select" class="block text-xs font-medium text-slate-400 mb-1"
-                >Tipo de Palavra:</label
-              >
-              <div class="relative">
-                <select
-                  id="practice-category-select"
-                  onchange="setPracticeCategory(this.value)"
-                  class="bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl px-3 py-1.5 text-xs text-slate-200 font-medium focus:outline-none transition cursor-pointer"
-                >
+              <!-- Filtro Dinâmico por Tipo de Palavra (Digitação) -->
+              <div id="practice-category-container">
+                <label for="practice-category-select" class="field-label">Tipo de palavra</label>
+                <select id="practice-category-select" onchange="setPracticeCategory(this.value)" class="control-select">
                   <option value="all">Todas as palavras</option>
                 </select>
               </div>
@@ -460,45 +365,12 @@
           </div>
 
           <!-- Controles Gamificados do Alfabeto (Capítulo 1) -->
-          <div id="alphabet-mode-controls" class="hidden w-full flex flex-wrap items-center justify-between gap-3">
-            <div class="flex items-center gap-2">
-              <span class="px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold flex items-center gap-1.5 shadow-sm">
-                <span>🔤</span> Estação do Alfabeto
-              </span>
-            </div>
-            <div class="flex flex-wrap bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs gap-1">
-              <button
-                type="button"
-                id="alpha-mode-order"
-                onclick="setAlphabetSubmode('order')"
-                class="px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1.5"
-              >
-                <span>🎯</span> Ordem Alfabética
-              </button>
-              <button
-                type="button"
-                id="alpha-mode-impostors"
-                onclick="setAlphabetSubmode('impostors')"
-                class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5"
-              >
-                <span>⚖️</span> Letras Parecidas
-              </button>
-              <button
-                type="button"
-                id="alpha-mode-shapes"
-                onclick="setAlphabetSubmode('shapes')"
-                class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5"
-              >
-                <span>🔄</span> Formas & Sofit
-              </button>
-              <button
-                type="button"
-                id="alpha-mode-classic"
-                onclick="setAlphabetSubmode('classic')"
-                class="px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5"
-              >
-                <span>🔤</span> Treino Livre
-              </button>
+          <div id="alphabet-mode-controls" class="hidden session-bar__body">
+            <div class="seg seg--modes" role="group" aria-label="Jogo do alfabeto">
+              <button type="button" id="alpha-mode-order" onclick="setAlphabetSubmode('order')" class="seg-btn is-active" aria-pressed="true">Ordem</button>
+              <button type="button" id="alpha-mode-impostors" onclick="setAlphabetSubmode('impostors')" class="seg-btn" aria-pressed="false" title="Letras parecidas">Parecidas</button>
+              <button type="button" id="alpha-mode-shapes" onclick="setAlphabetSubmode('shapes')" class="seg-btn" aria-pressed="false" title="Formas e sofit">Formas</button>
+              <button type="button" id="alpha-mode-classic" onclick="setAlphabetSubmode('classic')" class="seg-btn" aria-pressed="false" title="Treino livre">Treino livre</button>
             </div>
           </div>
         </div>
@@ -506,7 +378,7 @@
         <!-- PAINEL GAMIFICADO DO ALFABETO -->
         <div
           id="alphabet-game-panel"
-          class="hidden flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden min-h-[400px]"
+          class="hidden exercise-card flex-1 flex flex-col justify-between relative overflow-hidden min-h-[380px]"
         >
           <!-- Cabeçalho do Jogo do Alfabeto -->
           <div class="flex items-center justify-between text-xs text-slate-400 mb-4 pb-3 border-b border-slate-800/80">
@@ -595,157 +467,106 @@
         <!-- PAINEL DE PRÁTICA PADRÃO (Vocabulário / Frases / Treino Livre) -->
         <div
           id="standard-practice-panel"
-          class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden min-h-[360px]"
+          class="exercise-card flex-1 flex flex-col"
         >
-          <div
-            class="flex items-center justify-between text-xs text-slate-400 mb-4"
-          >
-            <div class="flex flex-wrap items-center gap-2">
-              <span
-                id="question-category"
-                class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 font-medium"
-                >Vocabulário</span
-              >
-              <span
-                id="question-chapter-badge"
-                class="hidden px-2.5 py-1 rounded-full bg-indigo-950/60 border border-indigo-700/50 text-indigo-300 font-medium text-[11px] max-w-[240px] sm:max-w-xs truncate"
-              ></span>
+          <div class="exercise-progress" aria-hidden="true">
+            <div id="practice-progress-fill" class="exercise-progress__fill"></div>
+          </div>
+
+          <div class="exercise-meta">
+            <div class="exercise-meta__tags">
+              <span id="question-category" class="meta-pill">Vocabulário</span>
+              <span id="question-chapter-badge" class="hidden meta-chapter"></span>
+            </div>
+            <div class="exercise-meta__side">
+              <span id="question-progress" class="meta-count">Item 1 de 10</span>
               <button
                 type="button"
                 id="btn-practice-fav"
                 onclick="toggleCurrentPracticeFavorite()"
-                class="p-1 rounded-lg text-slate-500 hover:text-amber-400 hover:scale-125 transition cursor-pointer text-sm"
+                class="fav-btn"
                 title="Marcar / desmarcar como favorito"
                 aria-label="Favoritar"
               >
                 ☆
               </button>
             </div>
-            <span id="question-progress" class="font-mono">Item 1 de 10</span>
           </div>
 
-          <div class="my-auto py-6 text-center space-y-4">
-            <div
-              id="hebrew-prompt"
-              class="hebrew-text text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-wide leading-relaxed drop-shadow-md"
-            >
-              שָׁלוֹם
-            </div>
-            <div id="hint-container" class="min-h-[24px] flex flex-wrap items-center justify-center gap-3">
-              <button
-                type="button"
-                id="btn-show-hint"
-                onclick="toggleHint()"
-                class="text-xs text-slate-500 hover:text-brand-400 underline transition"
-              >
-                💡 Mostrar Transliteração / Dica
+          <div class="exercise-prompt">
+            <div id="hebrew-prompt" class="exercise-prompt__text hebrew-text">שָׁלוֹם</div>
+            <div id="hint-container" class="exercise-prompt__tools">
+              <button type="button" id="btn-show-hint" onclick="toggleHint()" class="link-btn">
+                Mostrar transliteração
               </button>
-              <button
-                type="button"
-                id="btn-practice-analysis"
-                onclick="openCurrentPracticeSentenceAnalysis()"
-                class="hidden text-xs text-indigo-400 hover:text-indigo-300 underline transition cursor-pointer"
-              >
-                🔬 Analisar Morfemas
+              <button type="button" id="btn-practice-analysis" onclick="openCurrentPracticeSentenceAnalysis()" class="hidden link-btn">
+                Analisar morfemas
               </button>
-              <p
-                id="hint-text"
-                class="w-full text-sm font-mono text-amber-400/90 hidden"
-              ></p>
+              <p id="hint-text" class="w-full text-sm font-mono text-amber-400/90 hidden"></p>
             </div>
           </div>
 
-          <div class="space-y-4">
-            <form
-              id="interface-typing"
-              onsubmit="submitAnswer(event)"
-              class="space-y-3 hidden"
-            >
-              <div class="relative">
+          <div class="exercise-answer">
+            <form id="interface-typing" onsubmit="submitAnswer(event)" class="hidden">
+              <div class="answer-row">
                 <input
                   type="text"
                   id="input-answer"
                   aria-label="Digite a tradução em português"
-                  placeholder="Digite a tradução em português..."
+                  placeholder="Sua tradução..."
                   autocomplete="off"
-                  class="w-full bg-slate-950 border-2 border-slate-800 focus:border-brand-500 rounded-2xl px-5 py-4 text-base md:text-lg text-slate-100 placeholder-slate-600 focus:outline-none transition shadow-inner"
+                  autocapitalize="off"
+                  spellcheck="false"
+                  class="answer-input"
                 />
-                <button
-                  type="submit"
-                  id="btn-submit-typing"
-                  class="absolute right-2 top-2 bottom-2 px-6 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer"
-                >
-                  Verificar ➔
-                </button>
+                <button type="submit" id="btn-submit-typing" class="answer-btn">Verificar ➔</button>
               </div>
             </form>
 
-            <div
-              id="interface-choice"
-              class="grid grid-cols-1 md:grid-cols-2 gap-3 hidden"
-            ></div>
+            <div id="interface-choice" class="choice-grid hidden"></div>
 
-            <form
-              id="interface-sentences"
-              onsubmit="submitSentenceAnswer(event)"
-              class="space-y-3 hidden"
-            >
-              <div class="flex flex-col space-y-2">
-                <label
-                  for="input-sentence"
-                  class="text-xs text-slate-400 font-medium"
-                  >Traduza o texto acima para o português:</label
-                >
-                <textarea
-                  id="input-sentence"
-                  rows="2"
-                  placeholder="Digite a tradução completa em português..."
-                  class="w-full bg-slate-950 border-2 border-slate-800 focus:border-brand-500 rounded-2xl p-4 text-base text-slate-100 placeholder-slate-600 focus:outline-none transition resize-none"
-                ></textarea>
-                <div class="flex justify-end">
-                  <button
-                    type="submit"
-                    id="btn-submit-sentence"
-                    class="px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg flex items-center justify-center gap-1.5 cursor-pointer"
-                  >
-                    Verificar Tradução ➔
-                  </button>
-                </div>
+            <form id="interface-sentences" onsubmit="submitSentenceAnswer(event)" class="hidden">
+              <label for="input-sentence" class="field-label">Traduza o texto acima para o português</label>
+              <textarea
+                id="input-sentence"
+                rows="2"
+                placeholder="Digite a tradução completa em português..."
+                autocapitalize="off"
+                spellcheck="false"
+                class="answer-input answer-input--area"
+              ></textarea>
+              <div class="flex justify-end mt-3">
+                <button type="submit" id="btn-submit-sentence" class="answer-btn">Verificar tradução ➔</button>
               </div>
             </form>
           </div>
 
           <div
             id="feedback-banner"
-            class="hidden mt-6 p-4 rounded-2xl border flex flex-col md:flex-row items-center justify-between gap-4 transition-all"
+            role="status"
+            class="hidden mt-4 p-4 rounded-2xl border flex flex-col md:flex-row md:items-center justify-between gap-3 transition-all"
           >
-            <div class="flex items-start gap-3">
-              <div id="feedback-icon" class="text-2xl mt-0.5">✅</div>
-              <div>
-                <h4 id="feedback-title" class="font-bold text-sm">
-                  Resposta Correta!
-                </h4>
-                <p
-                  id="feedback-detail"
-                  class="text-xs text-slate-300 mt-0.5"
-                ></p>
+            <div class="flex items-start gap-3 min-w-0">
+              <div id="feedback-icon" class="text-xl mt-0.5" aria-hidden="true">✅</div>
+              <div class="min-w-0">
+                <h4 id="feedback-title" class="font-bold text-sm">Resposta Correta!</h4>
+                <p id="feedback-detail" class="text-sm text-slate-300 mt-0.5 break-words"></p>
+                <p id="feedback-tip" class="feedback-tip hidden">
+                  <span class="feedback-tip__label">Para fixar</span>
+                  <span id="feedback-tip-text"></span>
+                </p>
               </div>
             </div>
-            <div class="flex items-center gap-2 w-full md:w-auto">
+            <div class="flex flex-wrap items-center gap-2 w-full md:w-auto shrink-0">
               <button
                 type="button"
                 id="btn-feedback-analysis"
                 onclick="openCurrentPracticeSentenceAnalysis()"
-                class="hidden w-full md:w-auto px-4 py-2.5 bg-indigo-600/80 hover:bg-indigo-600 text-white font-bold text-xs rounded-xl transition shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+                class="hidden btn-secondary flex-1 md:flex-none"
               >
-                🔬 Análise Morfossintática
+                Análise morfossintática
               </button>
-              <button
-                type="button"
-                id="btn-next"
-                onclick="nextQuestion()"
-                class="hidden w-full md:w-auto px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs rounded-xl transition shadow-md cursor-pointer flex items-center justify-center gap-1.5"
-              >
+              <button type="button" id="btn-next" onclick="nextQuestion()" class="hidden answer-btn flex-1 md:flex-none">
                 Próxima Questão ➔
               </button>
             </div>
@@ -754,96 +575,40 @@
       </section>
 
       <!-- Aba 2: avaliação e modos de estudo -->
-      <section id="tab-assessment" class="hidden space-y-6 flex-1 flex-col">
+      <section id="tab-assessment" class="hidden space-y-4 flex-1 flex-col">
         <!-- Painel inicial de avaliação -->
-        <div
-          id="assess-dashboard"
-          class="space-y-6 flex-1 flex flex-col justify-center py-8"
-        >
-          <div class="text-center space-y-2 mb-4">
-            <h2 class="text-3xl font-bold text-white">Central de Avaliações</h2>
-            <p class="text-sm text-slate-400">
-              Escolha o formato de teste ideal para o seu momento de estudo.
-            </p>
+        <div id="assess-dashboard" class="space-y-5 flex-1 flex flex-col">
+          <div class="page-head">
+            <h2 class="page-head__title">Avaliar</h2>
+            <p class="page-head__text">Escolha o formato ideal para o seu momento de estudo.</p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Modo: simulado personalizado -->
-            <div
-              onclick="openSimuladoConfig()"
-              class="bg-slate-900 border border-slate-700 hover:border-brand-500 rounded-3xl p-6 flex flex-col text-center transition cursor-pointer shadow-xl group"
-            >
-              <div
-                class="w-16 h-16 bg-brand-500/10 text-brand-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform"
-              >
-                📝
-              </div>
-              <h3 class="text-lg font-bold text-white mb-2">
-                Simulado Personalizado
-              </h3>
-              <p class="text-xs text-slate-400 flex-1 mb-6">
-                Configure o tamanho da prova, limite de tempo e foco. Teste
-                escrito padrão.
-              </p>
-              <button
-                type="button"
-                class="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs rounded-xl transition"
-              >
-                Configurar e Iniciar
-              </button>
-            </div>
-
+          <div class="mode-grid">
             <!-- Modo: revisão espaçada -->
-            <div
-              onclick="startAnki()"
-              class="bg-slate-900 border border-slate-700 hover:border-emerald-500 rounded-3xl p-6 flex flex-col text-center transition cursor-pointer shadow-xl group"
-            >
-              <div
-                class="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform"
-              >
-                🧠
-              </div>
-              <h3 class="text-lg font-bold text-white mb-2">
-                Revisão Inteligente
-              </h3>
-              <p class="text-xs text-slate-400 flex-1 mb-6">
-                Flashcards baseados nos seus maiores erros. Método de repetição
-                espaçada sem digitação.
-              </p>
-              <button
-                type="button"
-                class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs rounded-xl transition"
-              >
-                Iniciar Revisão
-              </button>
-            </div>
+            <button type="button" onclick="startAnki()" class="mode-card mode-card--review">
+              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg></span>
+              <span class="mode-card__title">Revisão Inteligente</span>
+              <span id="review-due-card" class="mode-card__stat hidden"></span>
+              <span class="mode-card__text">Flashcards guiados pelos seus erros, com repetição espaçada e sem digitação.</span>
+              <span class="mode-card__cta">Iniciar revisão ➔</span>
+            </button>
+
+            <!-- Modo: simulado personalizado -->
+            <button type="button" onclick="openSimuladoConfig()" class="mode-card mode-card--exam">
+              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-assess"></use></svg></span>
+              <span class="mode-card__title">Simulado Personalizado</span>
+              <span class="mode-card__text">Defina tamanho, tempo e foco da prova. Ao final, veja o diagnóstico por capítulo.</span>
+              <span class="mode-card__cta">Configurar e iniciar ➔</span>
+            </button>
 
             <!-- Modo: morte súbita -->
-            <div
-              onclick="startSurvival()"
-              class="bg-slate-900 border border-slate-700 hover:border-rose-500 rounded-3xl p-6 flex flex-col text-center transition cursor-pointer shadow-xl group"
-            >
-              <div
-                class="w-16 h-16 bg-rose-500/10 text-rose-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform"
-              >
-                ❤️
-              </div>
-              <h3 class="text-lg font-bold text-white mb-2">Morte Súbita</h3>
-              <p class="text-xs text-slate-400 flex-1 mb-4">
-                Teste sua agilidade de digitação. 3 corações de vida. Quantas
-                palavras você traduz em sequência?
-              </p>
-              <div class="mb-4 inline-flex items-center justify-center gap-1.5 text-xs text-rose-300 font-semibold bg-rose-950/40 border border-rose-800/40 py-1.5 px-3 rounded-xl mx-auto">
-                <span>👑 Recorde:</span>
-                <span id="surv-card-high" class="font-bold text-white">0</span>
-              </div>
-              <button
-                type="button"
-                class="w-full py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs rounded-xl transition"
-              >
-                Jogar Agora
-              </button>
-            </div>
+            <button type="button" onclick="startSurvival()" class="mode-card mode-card--survival">
+              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></span>
+              <span class="mode-card__title">Morte Súbita</span>
+              <span class="mode-card__stat">Recorde: <span id="surv-card-high">0</span></span>
+              <span class="mode-card__text">Três vidas. Quantas palavras você traduz em sequência?</span>
+              <span class="mode-card__cta">Jogar agora ➔</span>
+            </button>
           </div>
         </div>
 
@@ -863,6 +628,7 @@
               type="button"
               onclick="closeSimuladoConfig()"
               class="text-slate-400 hover:text-white text-2xl font-light"
+              aria-label="Fechar configuração do simulado"
             >
               &times;
             </button>
@@ -1208,7 +974,7 @@
                       class="py-3 md:py-4 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/50 text-rose-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"
                     >
                       <span class="text-xl">🔴</span
-                      ><span class="text-xs">Errei</span
+                      ><span class="text-xs">Errei <span class="hidden md:inline text-slate-400">(1)</span></span
                       ><span
                         id="anki-next-hard"
                         class="text-[10px] text-rose-500/70 font-mono mt-1"
@@ -1221,7 +987,7 @@
                       class="py-3 md:py-4 bg-amber-950/40 hover:bg-amber-900/60 border border-amber-800/50 text-amber-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"
                     >
                       <span class="text-xl">🟡</span
-                      ><span class="text-xs">Lembrei</span
+                      ><span class="text-xs">Lembrei <span class="hidden md:inline text-slate-400">(2)</span></span
                       ><span
                         id="anki-next-good"
                         class="text-[10px] text-amber-500/70 font-mono mt-1"
@@ -1234,7 +1000,7 @@
                       class="py-3 md:py-4 bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-800/50 text-emerald-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"
                     >
                       <span class="text-xl">🟢</span
-                      ><span class="text-xs">Fácil</span
+                      ><span class="text-xs">Fácil <span class="hidden md:inline text-slate-400">(3)</span></span
                       ><span
                         id="anki-next-easy"
                         class="text-[10px] text-emerald-500/70 font-mono mt-1"
@@ -1254,7 +1020,8 @@
                 onclick="revealAnki()"
                 class="w-full py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm rounded-xl transition shadow-md flex items-center justify-center gap-2"
               >
-                Mostrar Tradução 👁️
+                Mostrar tradução
+                <kbd class="hidden md:inline-flex px-1.5 py-0.5 text-[11px] bg-white/10 rounded font-mono font-medium">Espaço</kbd>
               </button>
             </div>
           </div>
@@ -1287,7 +1054,7 @@
                 >
                   0
                 </div>
-                <div class="text-[10px] text-slate-500 uppercase font-semibold">
+                <div class="text-xs text-slate-400 font-medium">
                   Erros
                 </div>
               </div>
@@ -1300,7 +1067,7 @@
                 >
                   0
                 </div>
-                <div class="text-[10px] text-slate-500 uppercase font-semibold">
+                <div class="text-xs text-slate-400 font-medium">
                   Lembrados
                 </div>
               </div>
@@ -1313,7 +1080,7 @@
                 >
                   0
                 </div>
-                <div class="text-[10px] text-slate-500 uppercase font-semibold">
+                <div class="text-xs text-slate-400 font-medium">
                   Fáceis
                 </div>
               </div>
@@ -1484,7 +1251,11 @@
       </section>
 
       <!-- Aba 3: paradigmas e estruturas -->
-      <section id="tab-paradigms" class="hidden space-y-6 flex-1 flex-col">
+      <section id="tab-paradigms" class="hidden space-y-4 flex-1 flex-col">
+        <div class="page-head">
+          <h2 class="page-head__title">Paradigmas</h2>
+          <p class="page-head__text">Monte as tabelas e esquemas para fixar terminações e regras.</p>
+        </div>
         <div
           class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4"
         >
@@ -1548,212 +1319,129 @@
         </div>
       </section>
       <!-- Aba 4: dicionário de vocabulário e frases -->
-      <section id="tab-vocab" class="hidden space-y-6">
-        <div
-          class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4"
-        >
-          <div>
-            <h2 class="text-xl font-bold text-white flex items-center gap-2">
-              <span>📖</span> Dicionário & Banco de Frases
-            </h2>
-            <p class="text-xs text-slate-400 mt-1">
-              Consulte e filtre o vocabulário e expressões das lições.
-            </p>
+      <section id="tab-vocab" class="hidden space-y-4">
+        <div class="page-head">
+          <h2 class="page-head__title">Dicionário & Banco de Frases</h2>
+          <p class="page-head__text">Consulte o vocabulário e as expressões das lições selecionadas.</p>
+        </div>
+
+        <!-- Busca em primeiro lugar: é a ação mais frequente do dicionário -->
+        <div class="search-field">
+          <svg class="icon search-field__icon" aria-hidden="true"><use href="#i-search"></use></svg>
+          <label for="vocab-search" class="sr-only">Buscar no dicionário</label>
+          <input
+            type="search"
+            id="vocab-search"
+            oninput="filterVocabTable()"
+            placeholder="Buscar termo ou tradução..."
+            autocomplete="off"
+            class="search-field__input"
+          />
+          <span id="vocab-result-count" class="search-field__count" aria-live="polite"></span>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filter-row">
+          <div id="vocab-scope-container">
+            <span class="field-label">Capítulos</span>
+            <div class="seg" role="group" aria-label="Capítulos no dicionário">
+              <button type="button" id="vocab-scope-single" onclick="setVocabCumulative(false)" class="seg-btn is-active" aria-pressed="true" title="Exibir apenas o capítulo atual">Só o atual</button>
+              <button type="button" id="vocab-scope-cumulative" onclick="setVocabCumulative(true)" class="seg-btn" aria-pressed="false" title="Exibir do início até o capítulo atual">Até o atual</button>
+              <button type="button" id="vocab-scope-all" onclick="selectAllPracticeChapters()" class="seg-btn" aria-pressed="false" title="Exibir todos os capítulos de vocabulário">Todos</button>
+            </div>
           </div>
 
-          <!-- Controles de Filtro e Abrangência do Dicionário -->
-          <div class="flex flex-wrap items-center gap-3">
-            <!-- 1. Abrangência (Único, Acumular, Todos / Selecionados) -->
-            <div id="vocab-scope-container" class="flex flex-col">
-              <label class="block text-[11px] font-medium text-slate-400 mb-1"
-                >Capítulos no Dicionário:</label
-              >
-              <div
-                class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
-              >
-                <button
-                  type="button"
-                  id="vocab-scope-single"
-                  onclick="setVocabCumulative(false)"
-                  class="px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer"
-                  title="Exibir apenas a lição principal ativa"
-                >
-                  Único
-                </button>
-                <button
-                  type="button"
-                  id="vocab-scope-cumulative"
-                  onclick="setVocabCumulative(true)"
-                  class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
-                  title="Exibir do início até a lição ativa (ou capítulos selecionados)"
-                >
-                  <span>📚</span> Acumular
-                </button>
-                <button
-                  type="button"
-                  id="vocab-scope-all"
-                  onclick="selectAllPracticeChapters()"
-                  class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
-                  title="Exibir todos os capítulos de vocabulário"
-                >
-                  <span>☑️</span> Todos
-                </button>
-              </div>
+          <div id="vocab-order-container">
+            <span class="field-label">Ordem</span>
+            <div class="seg" role="group" aria-label="Ordem dos capítulos">
+              <button type="button" id="vocab-order-asc" onclick="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Ordenar capítulos do menor para o maior">Menor ➔ Maior</button>
+              <button type="button" id="vocab-order-desc" onclick="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Ordenar capítulos do maior para o menor">Maior ➔ Menor</button>
             </div>
+          </div>
 
-            <!-- 1b. Ordem dos Capítulos no Dicionário -->
-            <div id="vocab-order-container" class="flex flex-col">
-              <label class="block text-[11px] font-medium text-slate-400 mb-1"
-                >Ordem dos Capítulos:</label
-              >
-              <div
-                class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs"
-              >
-                <button
-                  type="button"
-                  id="vocab-order-asc"
-                  onclick="setPracticeChapterOrder('asc')"
-                  class="px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer"
-                  title="Ordenar capítulos do menor para o maior"
-                >
-                  <span>⬆️</span> Menor ➔ Maior
-                </button>
-                <button
-                  type="button"
-                  id="vocab-order-desc"
-                  onclick="setPracticeChapterOrder('desc')"
-                  class="px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
-                  title="Ordenar capítulos do maior para o menor"
-                >
-                  <span>⬇️</span> Maior ➔ Menor
-                </button>
-              </div>
-            </div>
-
-            <!-- 2. Filtro por Tipo / Categoria (Tudo, Palavras, Frases, Classes) -->
-            <div id="vocab-category-container" class="flex flex-col">
-              <label for="vocab-category-select" class="block text-[11px] font-medium text-slate-400 mb-1"
-                >Filtrar Conteúdo:</label
-              >
-              <div class="relative">
-                <select
-                  id="vocab-category-select"
-                  onchange="setVocabCategory(this.value)"
-                  class="bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl px-3 py-1.5 text-xs text-slate-200 font-medium focus:outline-none transition cursor-pointer min-w-[180px]"
-                >
-                  <option value="all">Todos os itens</option>
-                  <option value="favorites">⭐ Apenas Favoritos</option>
-                  <option value="words">Apenas Palavras</option>
-                  <option value="sentences">Apenas Frases / Expressões</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- 3. Campo de busca textual -->
-            <div class="flex flex-col w-full sm:w-auto">
-              <label for="vocab-search" class="block text-[11px] font-medium text-slate-400 mb-1"
-                >Busca Rápida:</label
-              >
-              <input
-                type="text"
-                id="vocab-search"
-                oninput="filterVocabTable()"
-                placeholder="🔍 Buscar termo, tradução..."
-                class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 w-full sm:w-60"
-              />
-            </div>
+          <div id="vocab-category-container" class="filter-row__grow">
+            <label for="vocab-category-select" class="field-label">Conteúdo</label>
+            <select id="vocab-category-select" onchange="setVocabCategory(this.value)" class="control-select w-full">
+              <option value="all">Todos os itens</option>
+              <option value="favorites">⭐ Apenas Favoritos</option>
+              <option value="words">Apenas Palavras</option>
+              <option value="sentences">Apenas Frases / Expressões</option>
+            </select>
           </div>
         </div>
-        <div
-          class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl"
-        >
+
+        <div class="table-card">
           <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm">
-              <thead
-                class="bg-slate-950 border-b border-slate-800 text-slate-400 text-xs uppercase font-medium"
-              >
+            <table id="vocab-table" class="vocab-table w-full text-left text-sm">
+              <thead class="bg-slate-950 border-b border-slate-800 text-slate-400 text-xs font-medium">
                 <tr>
-                  <th class="px-6 py-3.5">Termo</th>
-                  <th class="px-6 py-3.5">Transliteração</th>
-                  <th class="px-6 py-3.5">Tradução (PT-BR)</th>
-                  <th class="px-6 py-3.5">Tipo</th>
-                  <th class="px-4 py-3.5 text-center w-20">⭐ Favorito</th>
+                  <th scope="col" class="px-5 py-3">Termo</th>
+                  <th scope="col" class="px-5 py-3">Transliteração</th>
+                  <th scope="col" class="px-5 py-3">Tradução</th>
+                  <th scope="col" class="px-5 py-3">Tipo</th>
+                  <th scope="col" class="px-3 py-3 text-center w-16"><span class="sr-only">Favorito</span></th>
                 </tr>
               </thead>
-              <tbody
-                id="vocab-table-body"
-                class="divide-y divide-slate-800/60 text-slate-200"
-              >
+              <tbody id="vocab-table-body" class="divide-y divide-slate-800/60 text-slate-200">
                 <!-- Linhas inseridas dinamicamente pelo JavaScript -->
               </tbody>
             </table>
           </div>
+          <p id="vocab-empty-search" class="hidden px-6 py-10 text-center text-sm text-slate-400">
+            Nada encontrado para essa busca. Tente outro termo ou amplie os capítulos para “Todos”.
+          </p>
         </div>
       </section>
 
       <!-- Aba 5: gerenciamento de capítulos -->
-      <section id="tab-manage" class="hidden space-y-6">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-          <h2 class="text-xl font-bold text-white">Gerenciador de Capítulos</h2>
-          <p class="text-xs text-slate-400 mt-1">
-            Adicione ou edite os capítulos do seu livro em formato JSON.
-          </p>
+      <section id="tab-manage" class="hidden space-y-4">
+        <div class="page-head">
+          <h2 class="page-head__title">Gerenciar conteúdo</h2>
+          <p class="page-head__text">Adicione ou edite capítulos em JSON e faça backup do seu material.</p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div
-            class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4"
-          >
-            <h3
-              class="font-bold text-sm text-brand-400 flex items-center gap-2"
-            >
-              <span>💡</span> Como importar?
-            </h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Você pode colar novos vocabulários no formato JSON estruturado.
-            </p>
-            <div class="pt-2 flex flex-col gap-2">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-5">
+            <div class="space-y-2">
+              <h3 class="font-semibold text-sm text-white">Editar</h3>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Carregue o capítulo atual no editor ou cole um novo capítulo em JSON.
+              </p>
               <button
                 type="button"
                 id="btn-load-current-chapter"
                 onclick="loadCurrentChapterIntoEditor()"
-                class="w-full py-2 bg-brand-700/80 hover:bg-brand-600 text-white font-medium text-xs rounded-xl transition border border-brand-500/40 cursor-pointer flex items-center justify-center gap-2 shadow-sm"
+                class="btn-secondary w-full"
                 title="Carrega os dados JSON do capítulo atualmente selecionado no editor"
               >
-                <span>📝</span> Carregar Atual no Editor
+                Carregar atual no editor
               </button>
-              <button
-                type="button"
-                onclick="resetDefaultChapters()"
-                class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700 cursor-pointer"
-              >
-                🔄 Restaurar Padrões
+            </div>
+            <div class="space-y-2 pt-4 border-t border-slate-800">
+              <h3 class="font-semibold text-sm text-white">Backup</h3>
+              <button type="button" onclick="exportChaptersJSON()" class="btn-secondary w-full">
+                Exportar backup
               </button>
-              <button
-                type="button"
-                onclick="exportChaptersJSON()"
-                class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-xl transition border border-slate-700 cursor-pointer"
-              >
-                📥 Exportar Backup
+            </div>
+            <div class="space-y-2 pt-4 border-t border-slate-800">
+              <h3 class="font-semibold text-sm text-rose-300">Ações irreversíveis</h3>
+              <button type="button" onclick="resetDefaultChapters()" class="btn-danger w-full">
+                Restaurar padrões
               </button>
               <button
                 type="button"
                 id="btn-delete-custom-chapter"
                 onclick="deleteCurrentCustomChapter()"
-                class="w-full py-2 bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 hover:text-white font-medium text-xs rounded-xl transition border border-rose-800/40 cursor-pointer flex items-center justify-center gap-2"
+                class="btn-danger w-full"
                 title="Exclui o capítulo customizado atualmente selecionado"
               >
-                <span>🗑️</span> Excluir Capítulo Atual
+                Excluir capítulo atual
               </button>
             </div>
           </div>
-          <div
-            class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col space-y-4"
-          >
+          <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col space-y-3">
             <div class="flex items-center justify-between">
-              <h3 class="font-bold text-sm text-white">Editor JSON</h3>
-              <span id="json-status" class="text-xs font-mono text-slate-500"
-                >Pronto</span
-              >
+              <h3 class="font-semibold text-sm text-white">Editor JSON</h3>
+              <span id="json-status" class="text-xs font-mono text-slate-500">Pronto</span>
             </div>
             <!-- Feedback visual de validação do schema em tempo real -->
             <div
@@ -1768,16 +1456,10 @@
               rows="14"
               oninput="validateChapterJSONInput()"
               class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 resize-y"
-              placeholder="Cole o JSON do novo capítulo aqui ou clique em 'Carregar Atual no Editor'..."
+              placeholder="Cole o JSON do novo capítulo aqui ou clique em 'Carregar atual no editor'..."
             ></textarea>
-            <div class="flex justify-end gap-3">
-              <button
-                type="button"
-                onclick="saveChapterFromJSON()"
-                class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition shadow-lg"
-              >
-                💾 Salvar Capítulo
-              </button>
+            <div class="flex justify-end">
+              <button type="button" onclick="saveChapterFromJSON()" class="answer-btn">Salvar capítulo</button>
             </div>
           </div>
         </div>
@@ -1785,32 +1467,17 @@
     </main>
 
     <!-- Rodapé Pedagógico e Informações de Referência -->
-    <footer
-      id="main-app-footer"
-      class="border-t border-slate-800/80 bg-slate-900/60 backdrop-blur-sm text-slate-400 py-6 px-4 mt-12 transition-all duration-300"
-    >
-      <div class="max-w-4xl mx-auto flex flex-col items-center justify-center text-center space-y-3">
-        <div class="flex items-center justify-center gap-2 text-brand-400">
-          <span class="text-base">📖</span>
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-300">Nota Pedagógica & Referência Bibliográfica</span>
-        </div>
-        <p
-          id="app-grammar-footnote"
-          class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed"
-        >
-          Este sistema é uma ferramenta complementar de estudo e prática que segue a gramática 
-          <strong class="text-white font-semibold">"Introdução ao Grego Bíblico"</strong> 
-          do autor <strong class="text-white font-semibold">Johannes Bergmann</strong> da editora 
-          <strong class="text-white font-semibold">Thomas Nelson</strong>.
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-3 pt-1 text-[11px] text-slate-500 font-mono">
-          <span>Gamida Biblical Language Trainer</span>
-          <span>•</span>
-          <span id="footer-version-tag" class="px-2 py-0.5 rounded-full bg-slate-800/80 border border-slate-700/60 text-brand-400 font-bold">v2.7.6</span>
-          <span>•</span>
-          <span>Hebraico & Grego Bíblico</span>
-        </div>
-      </div>
+    <footer id="main-app-footer" class="app-footer">
+      <p id="app-grammar-footnote" class="app-footer__note">
+        Este sistema é uma ferramenta complementar de estudo e prática que segue a gramática
+        <strong class="text-slate-200 font-semibold">"Introdução ao Grego Bíblico"</strong>
+        do autor <strong class="text-slate-200 font-semibold">Johannes Bergmann</strong> da editora
+        <strong class="text-slate-200 font-semibold">Thomas Nelson</strong>.
+      </p>
+      <p class="app-footer__meta">
+        Gamida Biblical Language Trainer ·
+        <span id="footer-version-tag">v2.9.0</span>
+      </p>
     </footer>
 
     <!-- Modal de Análise Morfossintática de Frases Hebraicas (Page Kelley) -->
@@ -1942,6 +1609,7 @@
     <script src="js/modules/assessment.js"></script>
     <script src="js/modules/paradigms.js"></script>
     <script src="js/modules/sentence-analysis.js"></script>
+    <script src="js/modules/assimilation.js"></script>
     <script src="js/modules/ui.js"></script>
     <script src="js/app.js"></script>
   </body>

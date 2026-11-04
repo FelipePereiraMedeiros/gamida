@@ -10,26 +10,17 @@
 
 :root {
   /* Slate Color Palette */
-  --slate-50: #f8fafc;
-  --slate-100: #f1f5f9;
-  --slate-200: #e2e8f0;
-  --slate-300: #cbd5e1;
-  --slate-400: #94a3b8;
-  --slate-500: #64748b;
-  --slate-600: #475569;
-  --slate-700: #334155;
-  --slate-800: #1e293b;
-  --slate-900: #0f172a;
-  --slate-950: #020617;
-
-  /* Brand Colors */
-  --brand-50: #eff6ff;
-  --brand-100: #dbeafe;
-  --brand-400: #60a5fa;
-  --brand-500: #3b82f6;
-  --brand-600: #2563eb;
-  --brand-700: #1d4ed8;
-  --brand-900: #1e3a8a;
+  --slate-50: #f8f6f1;
+  --slate-100: #f0ede6;
+  --slate-200: #e0dcd2;
+  --slate-300: #c9c4b8;
+  --slate-400: #aca79b;
+  --slate-500: #8d887d;
+  --slate-600: #5e5a52;
+  --slate-700: #413e38;
+  --slate-800: #2d2b27;
+  --slate-900: #201e1b;
+  --slate-950: #151412;
 
   /* Semantic Feedback Colors */
   --emerald-500: #10b981;
@@ -90,7 +81,7 @@ button, a, input, select, textarea {
 
 /* Feedback de foco acessível */
 input:focus, select:focus, textarea:focus, button:focus-visible {
-  outline: 2px solid var(--brand-500);
+  outline: 2px solid rgb(var(--brand-400));
   outline-offset: 2px;
 }
 
@@ -116,6 +107,6 @@ input:focus, select:focus, textarea:focus, button:focus-visible {
 
 /* Destaque selecionável */
 ::selection {
-  background-color: var(--brand-500);
+  background-color: rgb(var(--brand-500));
   color: #ffffff;
 }

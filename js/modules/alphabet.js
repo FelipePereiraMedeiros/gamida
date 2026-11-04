@@ -512,12 +512,11 @@ function setAlphabetSubmode(submode) {
     const btn = document.getElementById(`alpha-mode-${m}`);
     if (btn) {
       if (m === submode) {
-        btn.className =
-          "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1.5 shadow-sm";
+        btn.className = "seg-btn is-active";
       } else {
-        btn.className =
-          "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5";
+        btn.className = "seg-btn";
       }
+      btn.setAttribute("aria-pressed", m === submode ? "true" : "false");
     }
   });
 
@@ -561,10 +560,8 @@ function updatePracticeChapterView() {
         ["typing", "choice", "sentences"].forEach((m) => {
           const btn = document.getElementById(`mode-${m}`);
           if (btn) {
-            btn.className =
-              m === "typing"
-                ? "px-3 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white"
-                : "px-3 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200";
+            btn.className = m === "typing" ? "seg-btn is-active" : "seg-btn";
+            btn.setAttribute("aria-pressed", m === "typing" ? "true" : "false");
           }
         });
       }

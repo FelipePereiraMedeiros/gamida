@@ -74,6 +74,11 @@ const assert = {
       throw new Error(msg || `Esperava estrutura ${e}, mas obteve ${a}`);
     }
   },
+  isDefined(val, msg = 'Esperava valor definido') {
+    if (val === undefined) {
+      throw new Error(msg);
+    }
+  },
   includes(container, item, msg = '') {
     if (!container || !container.includes(item)) {
       throw new Error(msg || `Esperava que o conteúdo incluísse: ${item}`);
@@ -121,11 +126,12 @@ function loadSourceFiles() {
   const html = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
   const css = fs.readFileSync(path.join(rootDir, 'css', 'styles.css'), 'utf8');
   const appJs = fs.readFileSync(path.join(rootDir, 'js', 'app.js'), 'utf8');
+  const uiJs = fs.readFileSync(path.join(rootDir, 'js', 'modules', 'ui.js'), 'utf8');
   const dataLoaderJs = fs.readFileSync(path.join(rootDir, 'js', 'data-loader.js'), 'utf8');
   const hebrewData = JSON.parse(fs.readFileSync(path.join(rootDir, 'data', 'hebrew_chapters.json'), 'utf8'));
   const greekData = JSON.parse(fs.readFileSync(path.join(rootDir, 'data', 'greek_chapters.json'), 'utf8'));
 
-  return { html, css, appJs, dataLoaderJs, hebrewData, greekData, rootDir };
+  return { html, css, appJs, uiJs, dataLoaderJs, hebrewData, greekData, rootDir };
 }
 
 // Carregador dos módulos de produção

@@ -7,7 +7,7 @@
 const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 
 const suite = new TestSuite('Módulo 9: Troca de Idioma & Adaptação de UI');
-const { appJs, html } = loadSourceFiles();
+const { appJs, uiJs, html } = loadSourceFiles();
 const { AppState } = require('../js/modules/state.js');
 
 suite.test('Botão de logo no HTML permite alternar idioma no clique', () => {
@@ -25,10 +25,10 @@ suite.test('toggleLanguage alterna entre "hebrew" e "greek" e atualiza estado', 
 });
 
 suite.test('applyLanguageUI altera glifos, títulos e classes tipográficas', () => {
-  assert.includes(appJs, 'logo.textContent = "א";', 'Glifo de hebraico ausente');
-  assert.includes(appJs, 'logo.textContent = "α";', 'Glifo de grego ausente');
-  assert.includes(appJs, 'hebrew-text', 'Classe hebrew-text ausente');
-  assert.includes(appJs, 'greek-text', 'Classe greek-text ausente');
+  assert.includes(uiJs, 'logo.textContent = "א";', 'Glifo de hebraico ausente');
+  assert.includes(uiJs, 'logo.textContent = "α";', 'Glifo de grego ausente');
+  assert.includes(uiJs, 'hebrew-text', 'Classe hebrew-text ausente');
+  assert.includes(uiJs, 'greek-text', 'Classe greek-text ausente');
 });
 
 suite.test('Persistência da preferência de idioma no localStorage', () => {

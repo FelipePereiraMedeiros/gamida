@@ -39,8 +39,6 @@ function toggleMobileMenu(forceState) {
   }
 
   const targets = document.querySelectorAll(".mobile-collapsible-target");
-  const toggleIcon = document.getElementById("mobile-menu-toggle-icon");
-  const toggleLabel = document.getElementById("mobile-menu-toggle-label");
   const toggleBtn = document.getElementById("mobile-menu-toggle-btn");
 
   targets.forEach((el) => {
@@ -53,28 +51,15 @@ function toggleMobileMenu(forceState) {
     }
   });
 
-  if (toggleIcon) {
-    if (isMobileMenuExpanded) {
-      toggleIcon.classList.add("rotate-180");
-    } else {
-      toggleIcon.classList.remove("rotate-180");
-    }
-  }
-
-  if (toggleLabel) {
-    toggleLabel.textContent = isMobileMenuExpanded ? "Recolher" : "Menu";
+  if (document.body && document.body.classList) {
+    document.body.classList.toggle("study-panel-open", isMobileMenuExpanded);
   }
 
   if (toggleBtn) {
     toggleBtn.setAttribute("aria-expanded", isMobileMenuExpanded ? "true" : "false");
     toggleBtn.title = isMobileMenuExpanded
-      ? "Clique para recolher o menu e focar na lição"
-      : "Puxe para baixo para revelar o menu";
-    if (isMobileMenuExpanded) {
-      toggleBtn.classList.remove("animate-pull-indicator");
-    } else {
-      toggleBtn.classList.add("animate-pull-indicator");
-    }
+      ? "Fechar e voltar à lição"
+      : "Trocar capítulo ou idioma";
   }
 
   if (isMobileMenuExpanded) {
@@ -204,7 +189,7 @@ function copyPixCoffee(btn) {
   }
 
   // Animação de pop/pulso
-  button.classList.remove("animate-copied-pop", "coffee-btn-glow");
+  button.classList.remove("animate-copied-pop");
   void button.offsetWidth; // Força reflow para reiniciar animação
   button.classList.add("animate-copied-pop");
 
@@ -218,7 +203,7 @@ function copyPixCoffee(btn) {
           <div class="flex flex-col text-left leading-tight min-w-0">
             <div class="flex items-center gap-1.5 flex-wrap">
               <span class="text-[10px] text-emerald-200 uppercase font-semibold tracking-wider">Pix:</span>
-              <span class="font-bold text-xs text-white font-mono tracking-wide select-all">9e6c4330-9897-4f94-b4b4-e5a81dafe219</span>
+              <span class="font-bold text-[11px] text-white font-mono select-all break-all">9e6c4330-9897-4f94-b4b4-e5a81dafe219</span>
               <span class="text-[9px] bg-emerald-400/30 text-emerald-100 border border-emerald-300/50 px-1.5 py-0.2 rounded font-bold uppercase tracking-wider shrink-0">Copiado!</span>
             </div>
             <div class="text-[10px] text-emerald-100/90 font-medium truncate flex items-center gap-1.5 mt-0.5">
@@ -230,7 +215,7 @@ function copyPixCoffee(btn) {
         `;
 
   button.className =
-    "w-full sm:w-auto px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 hover:from-emerald-500 hover:to-teal-500 text-white shadow-lg shadow-emerald-600/30 border border-emerald-400/40 transition-all duration-300 flex items-center justify-center sm:justify-start gap-2.5 cursor-pointer animate-copied-pop shrink-0";
+    "w-full px-3 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-800 hover:from-emerald-600 hover:to-teal-600 text-white border border-emerald-400/40 transition-all duration-300 flex items-center gap-2.5 cursor-pointer animate-copied-pop";
   button.title = "Chave PIX copiada para a área de transferência! Clique novamente para recopiar.";
 
   // Restaura o botão após 8 segundos
@@ -244,8 +229,8 @@ function resetCoffeeButton(button) {
   if (!button) return;
 
   button.innerHTML = `
-          <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center shrink-0 text-amber-100 shadow-sm">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div class="w-7 h-7 rounded-lg bg-black/10 flex items-center justify-center shrink-0 text-slate-950">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
               <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
               <line x1="6" y1="1" x2="6" y2="4"></line>
@@ -255,15 +240,15 @@ function resetCoffeeButton(button) {
           </div>
           <div class="flex flex-col text-left leading-tight min-w-0">
             <div class="flex items-center gap-1.5">
-              <span class="font-bold text-xs text-white tracking-wide">Pague-me um café!</span>
-              <span class="text-[9px] bg-amber-400/25 text-amber-100 border border-amber-300/30 px-1.5 py-0.2 rounded font-semibold uppercase tracking-wider">Pix</span>
+              <span class="font-bold text-xs tracking-wide">Pague-me um café!</span>
+              <span class="text-[10px] bg-black/10 px-1.5 rounded font-semibold uppercase tracking-wider">Pix</span>
             </div>
-            <span class="text-[10px] text-amber-100/80 font-normal">Apoie o desenvolvedor</span>
+            <span class="text-[11px] font-medium">Apoie o desenvolvedor</span>
           </div>
         `;
 
   button.className =
-    "w-full sm:w-auto px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:via-orange-400 hover:to-amber-500 text-white shadow-md shadow-amber-500/20 hover:shadow-lg hover:shadow-amber-500/30 border border-amber-400/30 transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-center sm:justify-start gap-2.5 cursor-pointer coffee-btn-glow shrink-0";
+    "w-full px-3 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:via-orange-400 hover:to-amber-500 text-slate-950 border border-amber-400/30 transition-all duration-300 flex items-center gap-2.5 cursor-pointer";
   button.title = "Apoie o desenvolvedor com um café via Pix! Clique para copiar a chave.";
 }
 
@@ -332,6 +317,13 @@ function renderChapterSelectorLists() {
     }
   }
 
+  const mobileLabel = document.getElementById("mobile-menu-toggle-label");
+  if (mobileLabel) {
+    mobileLabel.textContent = selectedChapters.length > 1
+      ? `${selectedChapters.length} capítulos`
+      : (selectedChapters[0] || AppState.currentChapter || {}).title || "Escolher capítulo";
+  }
+
   if (practiceBtnText) {
     if (selectedChapters.length === 1 && selectedChapters[0]) {
       practiceBtnText.textContent = selectedChapters[0].title;
@@ -352,37 +344,12 @@ function renderChapterSelectorLists() {
   if (list) {
     list.innerHTML = "";
 
-    // Cabeçalho fixo de ações rápidas e ordenação dentro do dropdown global
-    const headerLi = document.createElement("li");
-    headerLi.className = "sticky top-0 z-10 bg-slate-950/95 backdrop-blur px-3.5 py-2.5 border-b border-slate-800 flex flex-col gap-2";
-    headerLi.innerHTML = `
-      <div class="flex items-center justify-between gap-2">
-        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Seleção de Capítulos (${selectedChapters.length})</span>
-        <div class="flex items-center gap-1">
-          <button type="button" class="btn-dd-order-asc px-2 py-0.5 rounded text-[10px] font-bold transition cursor-pointer ${currentOrder === "asc" ? "bg-brand-600 text-white" : "bg-slate-800 text-slate-400 hover:text-white"}" title="Praticar do capítulo menor ao maior">⬆️ Menor➔Maior</button>
-          <button type="button" class="btn-dd-order-desc px-2 py-0.5 rounded text-[10px] font-bold transition cursor-pointer ${currentOrder === "desc" ? "bg-brand-600 text-white" : "bg-slate-800 text-slate-400 hover:text-white"}" title="Praticar do capítulo maior ao menor">⬇️ Maior➔Menor</button>
-        </div>
-      </div>
-      <div class="flex flex-wrap items-center gap-1.5">
-        <button type="button" class="btn-dd-select-all px-2 py-1 rounded-lg bg-slate-800 hover:bg-brand-600 text-[11px] text-slate-200 hover:text-white font-medium transition cursor-pointer">☑️ Todos (Vocab.)</button>
-        <button type="button" class="btn-dd-select-cumul px-2 py-1 rounded-lg bg-slate-800 hover:bg-brand-600 text-[11px] text-slate-200 hover:text-white font-medium transition cursor-pointer">📚 Até o Atual</button>
-        <button type="button" class="btn-dd-select-single px-2 py-1 rounded-lg bg-slate-800 hover:bg-brand-600 text-[11px] text-slate-200 hover:text-white font-medium transition cursor-pointer">🎯 Apenas Atual</button>
-      </div>
-    `;
-    headerLi.onclick = (e) => e.stopPropagation();
-
-    const btnOrdAsc = headerLi.querySelector(".btn-dd-order-asc");
-    if (btnOrdAsc) btnOrdAsc.onclick = (e) => { e.stopPropagation(); setPracticeChapterOrder("asc"); };
-    const btnOrdDesc = headerLi.querySelector(".btn-dd-order-desc");
-    if (btnOrdDesc) btnOrdDesc.onclick = (e) => { e.stopPropagation(); setPracticeChapterOrder("desc"); };
-    const btnSelAll = headerLi.querySelector(".btn-dd-select-all");
-    if (btnSelAll) btnSelAll.onclick = (e) => { e.stopPropagation(); selectAllPracticeChapters(); };
-    const btnSelCumul = headerLi.querySelector(".btn-dd-select-cumul");
-    if (btnSelCumul) btnSelCumul.onclick = (e) => { e.stopPropagation(); if (typeof window !== "undefined" && typeof window.setPracticeCumulative === "function") window.setPracticeCumulative(true); };
-    const btnSelSingle = headerLi.querySelector(".btn-dd-select-single");
-    if (btnSelSingle) btnSelSingle.onclick = (e) => { e.stopPropagation(); if (typeof window !== "undefined" && typeof window.setPracticeCumulative === "function") window.setPracticeCumulative(false); };
-
-    list.appendChild(headerLi);
+    if (selectedChapters.length > 1) {
+      const noteLi = document.createElement("li");
+      noteLi.className = "chapter-list-note";
+      noteLi.textContent = `${selectedChapters.length} capítulos combinados. Escolha um abaixo para estudar só ele.`;
+      list.appendChild(noteLi);
+    }
 
     (AppState.chapters || []).forEach((chap) => {
       const li = document.createElement("li");
@@ -390,48 +357,31 @@ function renderChapterSelectorLists() {
       const isChecked = selectedIds.has(chap.id);
       const wordsCount = (chap.items || []).length;
       const sentsCount = (chap.sentences || []).length;
+      const metaText = isAlpha
+        ? "Jogos do alfabeto"
+        : `${wordsCount} vocábulos${sentsCount > 0 ? ` • ${sentsCount} frases` : ""}`;
 
       li.setAttribute("role", "option");
       li.setAttribute("aria-selected", isChecked ? "true" : "false");
       li.setAttribute("tabindex", "0");
-      if (isAlpha) {
-        li.className = `px-4 py-3 text-sm font-semibold cursor-pointer transition border-l-4 flex items-center justify-between ${isChecked ? "text-white bg-indigo-900/40 border-brand-400" : "text-brand-300 bg-indigo-950/20 hover:bg-slate-800 hover:text-white border-indigo-500"}`;
-        li.innerHTML = `<span>${escapeFn(chap.title)}</span><span class="text-[10px] bg-indigo-500/30 text-indigo-200 border border-indigo-400/40 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider shrink-0">🔤 Alfabeto</span>`;
-        li.onclick = () => {
-          toggleDropdown(true);
-          changeGlobalChapter(chap.id);
-          if (typeof window !== "undefined" && window.innerWidth < 768 && typeof toggleMobileMenu === "function") {
-            toggleMobileMenu(false);
-          }
-        };
-      } else {
-        li.className = `px-3.5 py-2.5 text-xs sm:text-sm cursor-pointer transition border-l-4 flex items-center justify-between gap-2 ${isChecked ? "bg-brand-950/40 text-white font-semibold border-brand-500" : "text-slate-300 hover:bg-slate-800/70 hover:text-white border-transparent"}`;
-        li.innerHTML = `
-          <div class="flex items-center gap-2.5 min-w-0 flex-1">
-            <span class="w-4 h-4 rounded flex items-center justify-center border text-[11px] shrink-0 transition ${isChecked ? "bg-brand-600 border-brand-400 text-white font-bold" : "bg-slate-950 border-slate-700 text-transparent"}">✓</span>
-            <div class="truncate">
-              <div class="truncate">${escapeFn(chap.title)}</div>
-              <div class="text-[10px] text-slate-500 font-normal">${wordsCount} vocábulos${sentsCount > 0 ? ` • ${sentsCount} frases` : ""}</div>
-            </div>
-          </div>
-          <button type="button" class="btn-only-chap shrink-0 px-2 py-1 rounded-lg bg-slate-800/80 hover:bg-brand-600 text-[10px] text-slate-300 hover:text-white font-medium transition" title="Praticar somente este capítulo">Único</button>
-        `;
-        const onlyBtn = li.querySelector(".btn-only-chap");
-        if (onlyBtn) {
-          onlyBtn.onclick = (e) => {
-            e.stopPropagation();
-            toggleDropdown(true);
-            changeGlobalChapter(chap.id);
-            if (typeof window !== "undefined" && window.innerWidth < 768 && typeof toggleMobileMenu === "function") {
-              toggleMobileMenu(false);
-            }
-          };
+      li.className = `chapter-option${isChecked ? " is-selected" : ""}`;
+      li.innerHTML = `
+        <div class="min-w-0">
+          <div class="chapter-option__title">${escapeFn(chap.title)}</div>
+          <div class="chapter-option__meta">${metaText}</div>
+        </div>
+        ${isChecked ? '<span class="chapter-option__check" aria-hidden="true">✓</span>' : ""}
+      `;
+      li.onclick = (e) => {
+        e.stopPropagation();
+        if (!confirmLeaveActiveSession()) return;
+        toggleDropdown(true);
+        changeGlobalChapter(chap.id);
+        if (typeof window !== "undefined" && window.innerWidth < 1024 && typeof toggleMobileMenu === "function") {
+          toggleMobileMenu(false);
         }
-        li.onclick = (e) => {
-          e.stopPropagation();
-          togglePracticeChapter(chap.id);
-        };
-      }
+      };
+      li.onkeydown = _activateOnEnterOrSpace;
 
       list.appendChild(li);
     });
@@ -460,7 +410,7 @@ function renderChapterSelectorLists() {
             <div class="text-[10px] text-slate-500 font-normal">${wordsCount} vocábulos${sentsCount > 0 ? ` • ${sentsCount} frases` : ""}</div>
           </div>
         </div>
-        <button type="button" class="btn-picker-only shrink-0 px-2 py-1 rounded-lg bg-slate-800/80 hover:bg-brand-600 text-[10px] text-slate-300 hover:text-white font-medium transition" title="Selecionar somente este capítulo">Único</button>
+        <button type="button" class="btn-picker-only shrink-0 px-2 py-1 rounded-lg bg-slate-800/80 hover:bg-brand-600 text-[10px] text-slate-300 hover:text-white font-medium transition" title="Selecionar somente este capítulo">Só este</button>
       `;
       const onlyBtn = li.querySelector(".btn-picker-only");
       if (onlyBtn) {
@@ -474,11 +424,97 @@ function renderChapterSelectorLists() {
         e.stopPropagation();
         togglePracticeChapter(chap.id);
       };
+      li.onkeydown = _activateOnEnterOrSpace;
       pickerChecklist.appendChild(li);
     });
   }
 
   updatePracticeOrderUI();
+  updatePracticeOptionsSummary();
+  updateReviewDueBadge();
+}
+
+function _activateOnEnterOrSpace(e) {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    e.stopPropagation();
+    e.currentTarget.click();
+  }
+}
+
+/**
+ * Pede confirmação antes de sair de um simulado em andamento, cujas respostas seriam perdidas.
+ * @returns {boolean} true quando é seguro prosseguir
+ */
+function confirmLeaveActiveSession() {
+  if (typeof document === "undefined" || typeof window === "undefined") return true;
+  const active = document.getElementById("assessment-active");
+  if (!active || active.classList.contains("hidden")) return true;
+  if (typeof window.confirm !== "function") return true;
+  return window.confirm("Sair do simulado agora? As respostas desta prova serão perdidas.");
+}
+
+/* ================= OPÇÕES DA SESSÃO DE PRÁTICA ================= */
+function togglePracticeOptions(forceState) {
+  if (typeof document === "undefined") return;
+  const panel = document.getElementById("practice-options-panel");
+  const btn = document.getElementById("btn-practice-options");
+  if (!panel) return;
+  const shouldOpen = typeof forceState === "boolean" ? forceState : panel.classList.contains("hidden");
+  panel.classList.toggle("hidden", !shouldOpen);
+  if (btn) btn.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+}
+
+function updatePracticeOptionsSummary() {
+  if (typeof document === "undefined" || typeof AppState === "undefined") return;
+  const summary = document.getElementById("practice-options-summary");
+  if (!summary) return;
+
+  const count = _resolveGetSelectedChapters(AppState, { order: "asc" }).length;
+  const parts = [count > 1 ? `${count} capítulos` : "1 capítulo"];
+  if (count > 1) parts.push(AppState.chapterOrder === "desc" ? "Maior ➔ Menor" : "Menor ➔ Maior");
+
+  const select = document.getElementById("practice-category-select");
+  if (AppState.exerciseMode === "typing" && AppState.practiceCategory && AppState.practiceCategory !== "all" && select && select.selectedOptions && select.selectedOptions[0]) {
+    parts.push(select.selectedOptions[0].textContent.replace(/\s*\(\d+\)\s*$/, ""));
+  }
+  summary.textContent = parts.join(" · ");
+}
+
+/* ================= CARTÕES PRONTOS PARA REVISÃO ================= */
+function countDueReviewCards() {
+  if (typeof AppState === "undefined" || !AppState.srs) return 0;
+  const termFn = typeof getTerm === "function" ? getTerm : (i) => i.term || i.hebrew || "";
+  const now = Date.now();
+  const seen = new Set();
+  let due = 0;
+  _resolveGetSelectedChapters(AppState).forEach((chap) => {
+    if (!chap) return;
+    [...(chap.items || []), ...(chap.sentences || [])].forEach((item) => {
+      const key = String(termFn(item) || "").trim().normalize("NFC");
+      if (!key || seen.has(key)) return;
+      seen.add(key);
+      const record = AppState.srs[key];
+      if (record && (record.nextReview || 0) <= now) due++;
+    });
+  });
+  return due;
+}
+
+function updateReviewDueBadge() {
+  if (typeof document === "undefined") return;
+  const due = countDueReviewCards();
+  const badge = document.getElementById("nav-review-badge");
+  const cardStat = document.getElementById("review-due-card");
+  if (badge) {
+    badge.textContent = due > 99 ? "99+" : String(due);
+    badge.classList.toggle("hidden", due === 0);
+    badge.setAttribute("aria-label", `${due} para revisar`);
+  }
+  if (cardStat) {
+    cardStat.textContent = due === 1 ? "1 cartão para revisar" : `${due} cartões para revisar`;
+    cardStat.classList.toggle("hidden", due === 0);
+  }
 }
 
 function setupGlobalChapterDropdown() {
@@ -561,6 +597,13 @@ function togglePracticeChapterPicker(eventOrForceClose = false) {
 }
 
 if (typeof document !== "undefined") {
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    toggleDropdown(true);
+    togglePracticeChapterPicker(true);
+    if (isMobileMenuExpanded) toggleMobileMenu(false);
+  });
+
   document.addEventListener("click", (e) => {
     const dropdown = document.getElementById("custom-chapter-selector");
     if (dropdown && !dropdown.contains(e.target)) {
@@ -662,6 +705,12 @@ function selectAllPracticeChapters() {
   refreshAfterChapterSelectionChange();
 }
 
+function _setSegmentActive(btn, isActive) {
+  if (!btn) return;
+  btn.className = isActive ? "seg-btn is-active" : "seg-btn";
+  if (typeof btn.setAttribute === "function") btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+}
+
 function updatePracticeOrderUI() {
   if (typeof document === "undefined" || typeof AppState === "undefined") return;
   const isDesc = AppState.chapterOrder === "desc";
@@ -673,13 +722,8 @@ function updatePracticeOrderUI() {
     const btnAsc = document.getElementById(ascId);
     const btnDesc = document.getElementById(descId);
     if (btnAsc && btnDesc) {
-      if (isDesc) {
-        btnDesc.className = "px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer";
-        btnAsc.className = "px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer";
-      } else {
-        btnAsc.className = "px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer";
-        btnDesc.className = "px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer";
-      }
+      _setSegmentActive(btnDesc, isDesc);
+      _setSegmentActive(btnAsc, !isDesc);
     }
   });
 }
@@ -749,22 +793,10 @@ function updateVocabScopeUI() {
   const isAll = totalVocabChaps > 1 && selectedChaps.length === totalVocabChaps;
   const isCumulative = typeof AppState !== "undefined" && (AppState.isVocabCumulative || selectedChaps.length > 1);
 
-  const activeCls = "px-2.5 py-1.5 rounded-lg font-medium transition bg-brand-600 text-white flex items-center gap-1 cursor-pointer";
-  const inactiveCls = "px-2.5 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer";
-
-  if (isAll && btnAll) {
-    btnAll.className = activeCls;
-    btnCumulative.className = inactiveCls;
-    btnSingle.className = inactiveCls;
-  } else if (isCumulative) {
-    btnCumulative.className = activeCls;
-    btnSingle.className = inactiveCls;
-    if (btnAll) btnAll.className = inactiveCls;
-  } else {
-    btnSingle.className = activeCls;
-    btnCumulative.className = inactiveCls;
-    if (btnAll) btnAll.className = inactiveCls;
-  }
+  const showAll = !!(isAll && btnAll);
+  _setSegmentActive(btnAll, showAll);
+  _setSegmentActive(btnCumulative, !showAll && isCumulative);
+  _setSegmentActive(btnSingle, !showAll && !isCumulative);
 }
 
 function updateVocabCategoryFilterUI() {
@@ -890,7 +922,7 @@ function toggleItemFavorite(item) {
           if (btn) {
             const isFav = !!item.favorite;
             btn.innerHTML = isFav ? "⭐" : "☆";
-            btn.className = `btn-vocab-favorite p-2 rounded-xl text-lg transition duration-150 hover:scale-125 focus:outline-none cursor-pointer ${isFav ? "text-amber-400 hover:text-amber-300" : "text-slate-600 hover:text-amber-400"}`;
+            btn.className = `btn-vocab-favorite fav-btn${isFav ? " is-on" : ""}`;
             btn.title = isFav ? "Remover dos favoritos" : "Marcar como favorito";
           }
           const normFn = typeof normalizeText === "function" ? normalizeText : (s) => String(s || "").toLowerCase().trim();
@@ -984,8 +1016,9 @@ function renderVocabTable() {
     const emptyMsg = categoryFilter === "favorites"
       ? "Nenhum item marcado como favorito ainda. Clique no ícone de estrela (☆) para favoritar palavras e frases!"
       : "Nenhum item encontrado para os filtros selecionados.";
+    trEmpty.className = "vocab-empty";
     trEmpty.innerHTML = `
-      <td colspan="5" class="px-6 py-8 text-center text-slate-500 text-xs italic">
+      <td colspan="5" class="px-6 py-10 text-center text-slate-400 text-sm">
         ${emptyMsg}
       </td>
     `;
@@ -993,7 +1026,7 @@ function renderVocabTable() {
   } else {
     displayList.forEach((item) => {
       const tr = document.createElement("tr");
-      tr.className = "hover:bg-slate-800/40 transition";
+      tr.className = "vocab-row hover:bg-slate-800/40 transition";
 
       const isSentence = item.type === "Frase" || item.type === "Expressão" || (Array.isArray(item.tokens) && item.tokens.length > 0);
       const canAnalyze = (AppState.language === "hebrew" || AppState.language === "greek") && ((item.tokens && item.tokens.length > 0) || isSentence);
@@ -1014,10 +1047,10 @@ function renderVocabTable() {
         : "greek-text text-lg md:text-xl";
 
       tr.innerHTML = `
-        <td class="px-6 py-4 ${textClass} font-bold text-white">${escapeFn(termText)}</td>
-        <td class="px-6 py-4 font-mono text-xs text-amber-400">${escapeFn(translitText)}</td>
-        <td class="px-6 py-4 font-medium text-slate-200">${escapeFn(translationsText)}</td>
-        <td class="px-6 py-4">
+        <td class="vocab-cell-term px-5 py-3 ${textClass} font-bold text-white">${escapeFn(termText)}</td>
+        <td class="vocab-cell-translit px-5 py-3 font-mono text-xs text-amber-400">${escapeFn(translitText)}</td>
+        <td class="vocab-cell-trans px-5 py-3 font-medium text-slate-200">${escapeFn(translationsText)}</td>
+        <td class="vocab-cell-type px-5 py-3">
           <div class="flex items-center gap-2">
             <span class="px-2.5 py-1 rounded-full ${isSentence ? "bg-indigo-900/60 border-indigo-700 text-indigo-300" : "bg-slate-800 border-slate-700 text-slate-400"} border text-[10px] font-mono">
               ${escapeFn(typeText)}
@@ -1028,15 +1061,15 @@ function renderVocabTable() {
                 class="btn-vocab-analyze px-2.5 py-1 rounded-full bg-indigo-600/30 hover:bg-indigo-600/60 border border-indigo-500/40 text-[10px] text-indigo-300 hover:text-white transition cursor-pointer font-mono inline-flex items-center gap-1 shadow-sm"
                 title="${AppState.language === "greek" ? "Abrir Análise Morfológica em 4 Passos (Johannes Bergmann)" : "Abrir Análise Morfossintática Granular (Page Kelley)"}"
               >
-                <span>🔬</span> Análise
+                Análise
               </button>
             ` : ""}
           </div>
         </td>
-        <td class="px-4 py-4 text-center">
+        <td class="vocab-cell-fav px-3 py-3 text-center">
           <button
             type="button"
-            class="btn-vocab-favorite p-2 rounded-xl text-lg transition duration-150 hover:scale-125 focus:outline-none cursor-pointer ${isFavorite ? "text-amber-400 hover:text-amber-300" : "text-slate-600 hover:text-amber-400"}"
+            class="btn-vocab-favorite fav-btn${isFavorite ? " is-on" : ""}"
             title="${isFavorite ? "Remover dos favoritos" : "Marcar como favorito"}"
             aria-label="${isFavorite ? "Desfavoritar" : "Favoritar"}"
           >
@@ -1083,11 +1116,11 @@ function renderVocabTable() {
     if (paradigmsToRender.length > 0) {
       paradigmsToRender.forEach((paradigm) => {
         const trParadigm = document.createElement("tr");
-        trParadigm.className = "bg-slate-900/10";
+        trParadigm.className = "paradigm-row bg-slate-900/10";
         trParadigm.setAttribute("data-search", normFn(paradigm.title || paradigm.name || "paradigma"));
 
         const tdParadigm = document.createElement("td");
-        tdParadigm.colSpan = 4;
+        tdParadigm.colSpan = 5;
         tdParadigm.className = "p-2 md:p-6 border-t border-slate-800/80";
 
         if (paradigm.type === "table" && typeof getStaticParadigmTableHTML === "function") {
@@ -1129,14 +1162,20 @@ function filterVocabTable(immediate = false) {
     const query = normFn(searchInput.value);
 
     const rows = document.querySelectorAll("#vocab-table-body tr");
+    let visibleItems = 0;
     rows.forEach((tr) => {
       const cached = tr.getAttribute("data-search");
-      if (cached !== null) {
-        tr.style.display = (!query || cached.includes(query)) ? "" : "none";
-      } else {
-        tr.style.display = (!query || normFn(tr.textContent).includes(query)) ? "" : "none";
-      }
+      const isMatch = cached !== null
+        ? (!query || cached.includes(query))
+        : (!query || normFn(tr.textContent).includes(query));
+      tr.style.display = isMatch ? "" : "none";
+      if (isMatch && tr.classList && tr.classList.contains("vocab-row")) visibleItems++;
     });
+
+    const countEl = document.getElementById("vocab-result-count");
+    if (countEl) countEl.textContent = visibleItems === 1 ? "1 item" : `${visibleItems} itens`;
+    const emptyEl = document.getElementById("vocab-empty-search");
+    if (emptyEl) emptyEl.classList.toggle("hidden", !(query && visibleItems === 0));
   };
 
   if (shouldDebounce) {
@@ -1156,6 +1195,19 @@ function applyLanguageUI() {
   const logo = document.getElementById("app-logo-btn");
   const subtitle = document.getElementById("app-subtitle");
   const footnoteEl = document.getElementById("app-grammar-footnote");
+  const langSwitch = document.getElementById("app-language-switch");
+
+  if (document.documentElement && typeof document.documentElement.setAttribute === "function") {
+    document.documentElement.setAttribute("data-lang", AppState.language);
+  }
+  if (langSwitch) {
+    langSwitch.setAttribute(
+      "aria-label",
+      AppState.language === "hebrew"
+        ? "Idioma atual: Hebraico. Trocar para Grego"
+        : "Idioma atual: Grego. Trocar para Hebraico",
+    );
+  }
 
   const textElements = [
     document.getElementById("hebrew-prompt"),
@@ -1169,14 +1221,12 @@ function applyLanguageUI() {
   if (AppState.language === "hebrew") {
     if (logo) {
       logo.textContent = "א";
-      logo.className =
-        "w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300";
     }
-    if (subtitle) subtitle.textContent = "Treinador de Hebraico Autônomo";
+    if (subtitle) subtitle.textContent = "Treinador de Hebraico";
 
     if (footnoteEl) {
       footnoteEl.innerHTML =
-        'Este sistema é uma ferramenta complementar de estudo e prática que segue a <strong class="text-white font-semibold">"Gramática do Hebraico Bíblico"</strong> de <strong class="text-white font-semibold">Page H. Kelley</strong> (Editora Sinodal)';
+        'Este sistema é uma ferramenta complementar de estudo e prática que segue a <strong class="text-slate-200 font-semibold">"Gramática do Hebraico Bíblico"</strong> de <strong class="text-slate-200 font-semibold">Page H. Kelley</strong> (Editora Sinodal)';
     }
 
     textElements.forEach((el) => {
@@ -1188,14 +1238,12 @@ function applyLanguageUI() {
   } else {
     if (logo) {
       logo.textContent = "α";
-      logo.className =
-        "w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-rose-500 flex items-center justify-center shadow-lg shadow-amber-500/20 text-2xl font-bold text-white cursor-pointer hover:scale-105 transition-transform duration-300";
     }
-    if (subtitle) subtitle.textContent = "Treinador de Grego Koiné Autônomo";
+    if (subtitle) subtitle.textContent = "Treinador de Grego Koiné";
 
     if (footnoteEl) {
       footnoteEl.innerHTML =
-        'Este sistema é uma ferramenta complementar de estudo e prática que segue a <strong class="text-white font-semibold">"Gramática do Grego do Novo Testamento"</strong> de <strong class="text-white font-semibold">Johannes Bergmann</strong> (Editora Thomas Nelson Brasil)';
+        'Este sistema é uma ferramenta complementar de estudo e prática que segue a <strong class="text-slate-200 font-semibold">"Gramática do Grego do Novo Testamento"</strong> de <strong class="text-slate-200 font-semibold">Johannes Bergmann</strong> (Editora Thomas Nelson Brasil)';
     }
 
     textElements.forEach((el) => {
@@ -1259,6 +1307,10 @@ if (typeof window !== "undefined") {
   window.toggleItemFavorite = toggleItemFavorite;
   window.applyLanguageUI = applyLanguageUI;
   window.toggleLanguage = toggleLanguage;
+  window.togglePracticeOptions = togglePracticeOptions;
+  window.updatePracticeOptionsSummary = updatePracticeOptionsSummary;
+  window.updateReviewDueBadge = updateReviewDueBadge;
+  window.confirmLeaveActiveSession = confirmLeaveActiveSession;
   window.UIModule = {
     isMobileMenuExpanded,
     toggleMobileMenu,
@@ -1287,6 +1339,11 @@ if (typeof window !== "undefined") {
     toggleItemFavorite,
     applyLanguageUI,
     toggleLanguage,
+    togglePracticeOptions,
+    updatePracticeOptionsSummary,
+    countDueReviewCards,
+    updateReviewDueBadge,
+    confirmLeaveActiveSession,
   };
 }
 
@@ -1319,6 +1376,11 @@ if (typeof module !== "undefined" && module.exports) {
     toggleItemFavorite,
     applyLanguageUI,
     toggleLanguage,
+    togglePracticeOptions,
+    updatePracticeOptionsSummary,
+    countDueReviewCards,
+    updateReviewDueBadge,
+    confirmLeaveActiveSession,
   };
 }
 })();

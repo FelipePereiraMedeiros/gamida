@@ -7,7 +7,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.7.6";
+  "2.9.0";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
@@ -215,6 +215,7 @@ function resetStats() {
   AppState.totalAnswered = 0;
   AppState.correctCount = 0;
   AppState.isNewRoundPending = false;
+  AppState.isPracticeAnswered = false;
   updateStatsUI();
 
   if (typeof document !== "undefined") {

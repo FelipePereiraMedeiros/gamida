@@ -383,9 +383,16 @@
                   if (typeof iframeWin.updatePracticeActionButtonToNext === "function") {
                     iframeWin.updatePracticeActionButtonToNext();
                   }
-                  const wasTransformed = iframeWin.AppState.isPracticeAnswered === true && btnTyping && btnTyping.textContent.includes("Próxima Questão");
+                  const wasTransformed = iframeWin.AppState.isPracticeAnswered === true && btnTyping && btnTyping.textContent.toLowerCase().includes("próxima questão");
                   iframeWin.resetPracticeActionButtons();
                   return wasReset && wasTransformed;
+                },
+              },
+              {
+                name: "Dica de assimilação disponível na resposta da prática",
+                fn: () => {
+                  const tip = iframeWin.AssimilationModule?.getAssimilationTip(iframeWin.AppState.currentQuestion, iframeWin.AppState.language);
+                  return !!iframeDoc.getElementById("feedback-tip") && !!tip && tip.text.length > 0;
                 },
               },
             ],
@@ -550,7 +557,7 @@
             tests: [
               {
                 name: "Alvos retráteis (.mobile-collapsible-target) no DOM",
-                fn: () => iframeDoc.querySelectorAll(".mobile-collapsible-target").length >= 2,
+                fn: () => iframeDoc.querySelectorAll(".mobile-collapsible-target").length >= 1,
               },
               {
                 name: "Puxador de menu mobile com alinhamento óptico",
@@ -775,7 +782,7 @@
               {
                 name: "Sanitização XSS: escapeHTML codifica tags nocivas e aspas",
                 fn: () => {
-                  const xss = '<script>alert("xss")</script><img src=x onerror=1>';
+                  const xss = '<script>alert("xss")<\/script><img src=x onerror=1>';
                   const escaped = iframeWin.escapeHTML(xss);
                   return !escaped.includes("<script>") && !escaped.includes("<img") && escaped.includes("&lt;script&gt;");
                 },
