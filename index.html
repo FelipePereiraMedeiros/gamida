@@ -70,7 +70,7 @@
           },
         },
       };
-      window.APP_VERSION = "2.15.1";
+      window.APP_VERSION = "2.14.2";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
@@ -288,9 +288,6 @@
                 </button>
                 <button type="button" id="mode-sentences" onclick="setExerciseMode('sentences')" class="seg-btn" aria-pressed="false" title="Traduza frases completas">
                   <svg class="icon icon--sm" aria-hidden="true"><use href="#i-lines"></use></svg><span>Frases</span>
-                </button>
-                <button type="button" id="mode-aorist2" onclick="setExerciseMode('aorist2')" class="seg-btn greek-only" aria-pressed="false" title="Praticar os radicais do 2º aoristo">
-                  <svg class="icon icon--sm" aria-hidden="true"><use href="#i-table"></use></svg><span>2º Aoristo</span>
                 </button>
                 <button type="button" id="mode-favorites" onclick="setExerciseMode('favorites')" class="seg-btn" aria-pressed="false" title="Praticar apenas frases e palavras marcadas como favoritas">
                   <svg class="icon icon--sm" aria-hidden="true"><use href="#i-star"></use></svg><span>Favoritas</span>
@@ -1374,50 +1371,6 @@
           <p class="page-head__text">Consulte o vocabulário e as expressões das lições selecionadas.</p>
         </div>
 
-        <!-- Atalho: tabela de estudo dos radicais do 2º aoristo (somente grego) -->
-        <div class="greek-only flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            id="btn-second-aorist-table"
-            onclick="toggleSecondAoristTable()"
-            class="btn-secondary gap-2"
-            aria-expanded="false"
-            aria-controls="second-aorist-panel"
-          >
-            <svg class="icon icon--sm" aria-hidden="true"><use href="#i-table"></use></svg>
-            <span>Radicais do 2º aoristo</span>
-          </button>
-          <button type="button" onclick="startSecondAoristPractice()" class="btn-secondary gap-2">
-            <svg class="icon icon--sm" aria-hidden="true"><use href="#i-practice"></use></svg>
-            <span>Praticar radicais</span>
-          </button>
-        </div>
-
-        <div id="second-aorist-panel" class="greek-only hidden table-card">
-          <div class="px-5 py-4 border-b border-slate-800">
-            <h3 class="text-sm font-bold text-white">Radicais do 2º aoristo</h3>
-            <p class="text-xs text-slate-400 mt-1">
-              Verbos cujo aoristo usa um radical diferente do presente (vocabulário da Lição 11 de Bergmann). O aumento (ἐ-) aparece só no indicativo;
-              o infinitivo do aoristo usa o radical puro.
-            </p>
-          </div>
-          <div class="overflow-x-auto">
-            <table id="second-aorist-table" class="vocab-table w-full text-left text-sm">
-              <thead class="bg-slate-950 border-b border-slate-800 text-slate-400 text-xs font-medium">
-                <tr>
-                  <th scope="col" class="px-5 py-3">Presente (lema)</th>
-                  <th scope="col" class="px-5 py-3">2º aoristo</th>
-                  <th scope="col" class="px-5 py-3">Radical</th>
-                  <th scope="col" class="px-5 py-3">Infinitivo aoristo</th>
-                  <th scope="col" class="px-5 py-3">Tradução</th>
-                  <th scope="col" class="px-5 py-3 text-right" title="Ocorrências no Novo Testamento">Ocorr. NT</th>
-                </tr>
-              </thead>
-              <tbody id="second-aorist-table-body" class="divide-y divide-slate-800/60 text-slate-200"></tbody>
-            </table>
-          </div>
-        </div>
-
         <!-- Busca em primeiro lugar: é a ação mais frequente do dicionário -->
         <div class="search-field">
           <svg class="icon search-field__icon" aria-hidden="true"><use href="#i-search"></use></svg>
@@ -1569,7 +1522,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.15.1</span>
+        <span id="footer-version-tag">v2.14.2</span>
       </p>
     </footer>
 
@@ -1703,7 +1656,6 @@
     <script src="js/modules/paradigms.js"></script>
     <script src="js/modules/sentence-analysis.js"></script>
     <script src="js/modules/assimilation.js"></script>
-    <script src="js/modules/second-aorist.js"></script>
     <script src="js/modules/ui.js"></script>
     <script src="js/app.js"></script>
   </body>

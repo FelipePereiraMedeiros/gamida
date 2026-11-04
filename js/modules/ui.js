@@ -536,11 +536,6 @@ function updatePracticeOptionsSummary() {
   const summary = document.getElementById("practice-options-summary");
   if (!summary) return;
 
-  if (AppState.exerciseMode === "aorist2") {
-    const mod = typeof window !== "undefined" ? window.SecondAoristModule : null;
-    summary.textContent = mod ? `${mod.SECOND_AORIST_VERBS.length} verbos · todos os capítulos` : "";
-    return;
-  }
   const count = _resolveGetSelectedChapters(AppState, { order: "asc" }).length;
   const parts = [count > 1 ? `${count} capítulos` : "1 capítulo"];
   if (count > 1) parts.push(AppState.chapterOrder === "desc" ? "Última ➔ Primeira" : "Primeira ➔ Última");
