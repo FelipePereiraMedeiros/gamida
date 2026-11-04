@@ -7,7 +7,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.13.0";
+  "2.14.0";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
@@ -44,6 +44,7 @@ const AppState = (typeof window !== "undefined" && window.AppState) || {
   isPracticeAnswered: false,
   distractorCache: { words: [], sentences: [] },
   srs: {},
+  mastery: {},
   survivalHighScore: 0,
   currentTab: "practice",
   isPracticeCumulative: false,

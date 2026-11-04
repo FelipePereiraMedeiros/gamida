@@ -417,6 +417,7 @@ function renderChapterSelectorLists() {
         <button type="button" class="chapter-option__main">
           <span class="chapter-option__title">${escapeFn(chap.title)}</span>
           <span class="chapter-option__meta">${metaText}</span>
+          ${isAlpha ? "" : `<span class="chapter-option__mastery" data-mastery-chapter="${escapeFn(chap.id)}">${masteryLabel(chap)}</span>`}
         </button>
       `;
       li.onclick = (e) => e.stopPropagation();
@@ -449,6 +450,8 @@ function renderChapterSelectorLists() {
       list.appendChild(li);
     });
   }
+
+  updateMasteryStats();
 
   // 2. Renderiza checklist do seletor na barra de prática (#practice-chapters-checklist)
   if (pickerChecklist) {
@@ -552,8 +555,31 @@ function countPendingErrors() {
   return 0;
 }
 
+function masteryLabel(chapter) {
+  if (typeof window === "undefined" || typeof window.getMasterySummary !== "function") return "";
+  const { mastered, total } = window.getMasterySummary([chapter]);
+  return mastered > 0 ? `${mastered} de ${total} dominados` : "";
+}
+
+/** Atualiza o domínio na barra lateral e na lista de capítulos */
+function updateMasteryStats() {
+  if (typeof document === "undefined" || typeof window === "undefined" || typeof window.getMasterySummary !== "function") return;
+  const { mastered, total, review } = window.getMasterySummary(_resolveGetSelectedChapters(AppState, { order: "asc" }));
+  const masteredEl = document.getElementById("stat-mastered");
+  const reviewEl = document.getElementById("stat-review");
+  if (masteredEl) masteredEl.textContent = `${mastered}/${total}`;
+  if (reviewEl) reviewEl.textContent = review;
+
+  if (typeof document.querySelectorAll !== "function") return;
+  document.querySelectorAll("[data-mastery-chapter]").forEach((el) => {
+    const chapter = (AppState.chapters || []).find((c) => c && c.id === el.dataset.masteryChapter);
+    if (chapter) el.textContent = masteryLabel(chapter);
+  });
+}
+
 function updateReviewDueBadge() {
   if (typeof document === "undefined") return;
+  updateMasteryStats();
   const errors = countPendingErrors();
   const label = errors === 1 ? "1 palavra errada para revisar" : `${errors} palavras erradas para revisar`;
   const badge = document.getElementById("nav-review-badge");

@@ -185,6 +185,8 @@ body.app-shell {
 .app-stat__icon--streak { color: #fbbf24; }
 .app-stat__icon--score { color: #34d399; }
 .app-stat__icon--accuracy { color: rgb(var(--brand-300)); }
+.app-stat__icon--mastered { color: #34d399; }
+.app-stat__icon--review { color: #fda4af; }
 
 /* Painel de idioma e capítulos */
 .study-context {
@@ -423,7 +425,7 @@ ul#chapter-dropdown-list {
 }
 
 @media (max-width: 359px) {
-  .app-stat--accuracy { display: none; }
+  body.is-alphabet-practice .app-stat--accuracy { display: none; }
 }
 
 /* ---------- Desktop: barra lateral persistente ---------- */
@@ -1086,6 +1088,8 @@ ul#chapter-dropdown-list {
   text-align: left;
   cursor: pointer;
 }
+.chapter-option__mastery { font-size: 0.75rem; color: #34d399; }
+.chapter-option__mastery:empty { display: none; }
 .chapter-option__main:focus-visible { outline: 2px solid rgb(var(--brand-400)); outline-offset: -2px; }
 
 /* Cartão com mais de uma ação */
@@ -1118,9 +1122,10 @@ ul#chapter-dropdown-list {
   .round-tally__word { display: none; }
 }
 
-/* Pontos só aparecem no jogo do alfabeto */
-.app-stat--score { display: none; }
-body.is-alphabet-practice .app-stat--score { display: flex; }
+/* Sequência, Pontos e Precisão pertencem ao jogo do alfabeto; a prática regular mostra o domínio */
+.app-stat--game { display: none; }
+body.is-alphabet-practice .app-stat--game { display: flex; }
+body.is-alphabet-practice .app-stat--mastery { display: none; }
 
 /* Resumo ao fim da rodada: toma o lugar do exercício */
 .exercise-card.is-summary .exercise-meta,

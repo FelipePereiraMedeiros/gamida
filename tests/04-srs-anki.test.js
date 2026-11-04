@@ -311,6 +311,51 @@ suite.test('Modo Erros da prática usa a lista, tem botão exclusivo e nenhuma r
   assert.isFalse(appJs.includes('pendingError'), 'A prática não pode alterar a lista ao avaliar respostas');
 });
 
+suite.test('Domínio: 3 acertos seguidos dominam o termo e um erro zera a contagem', () => {
+  const { recordMasteryHit, isItemMastered, getMasterySummary } = require('../js/modules/srs.js');
+  const item = { hebrew: 'מֶלֶךְ', translations: ['rei'] };
+  const key = getSRSKey(item);
+  AppState.mastery = {};
+  delete AppState.srs[key];
+
+  assert.isFalse(recordMasteryHit(item), 'Primeiro acerto não domina');
+  assert.isFalse(recordMasteryHit(item), 'Segundo acerto não domina');
+  assert.isFalse(isItemMastered(item), 'Dois acertos ainda não dominam');
+  assert.isTrue(recordMasteryHit(item), 'Terceiro acerto seguido domina');
+  assert.isTrue(isItemMastered(item), 'Termo fica dominado');
+  assert.isFalse(recordMasteryHit(item), 'Acertos seguintes não anunciam de novo');
+  assert.isFalse(key in AppState.srs, 'Acertar não cria registro de SRS, que tiraria o termo dos cartões novos');
+
+  recordSRSError(item);
+  assert.isFalse(isItemMastered(item), 'Um erro tira o domínio');
+  assert.isFalse(recordMasteryHit(item), 'A contagem recomeça depois do erro');
+  delete AppState.srs[key];
+  AppState.mastery = {};
+});
+
+suite.test('Resumo de domínio conta cada termo uma vez entre capítulos', () => {
+  const { recordMasteryHit, getMasterySummary } = require('../js/modules/srs.js');
+  const a = { hebrew: 'סוּס', translations: ['cavalo'] };
+  const b = { hebrew: 'כֶּלֶב', translations: ['cão'] };
+  const c = { hebrew: 'בֹּקֶר', translations: ['manhã'] };
+  AppState.mastery = {};
+  [1, 2, 3].forEach(() => recordMasteryHit(a));
+  recordSRSError(b);
+
+  const summary = getMasterySummary([{ items: [a, b] }, { items: [a], sentences: [c] }]);
+  assert.equal(summary.total, 3, 'Termo repetido conta uma vez');
+  assert.equal(summary.mastered, 1, 'Conta os dominados');
+  assert.equal(summary.review, 1, 'Conta a lista de erros');
+  delete AppState.srs[getSRSKey(b)];
+  AppState.mastery = {};
+});
+
+suite.test('Escolha não conta para o domínio, e o backup inclui o progresso', () => {
+  assert.includes(appJs, 'AppState.exerciseMode !== "choice" && recordMasteryHit', 'Escolha não pode somar domínio');
+  assert.includes(appJs, 'mastery: AppState.mastery', 'Backup deve exportar o domínio');
+  assert.includes(appJs, 'parsed.mastery', 'Backup deve importar o domínio');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

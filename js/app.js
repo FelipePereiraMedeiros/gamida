@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.13.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.14.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -26,6 +26,7 @@ var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppSt
   previousRound: null,
   distractorCache: { words: [], sentences: [] },
   srs: {},
+  mastery: {},
   survivalHighScore: 0,
   isPracticeCumulative: false,
   practiceCategory: "all",
@@ -1163,6 +1164,17 @@ function showAssimilationTip(question) {
   tipEl.classList.toggle("hidden", !tip);
 }
 
+/** Reconhecer entre opções é mais fácil que lembrar: Escolha não conta para o domínio */
+function registerMasteryHit() {
+  return AppState.exerciseMode !== "choice" && recordMasteryHit(AppState.currentQuestion);
+}
+
+function correctAnswerTitle(justMastered) {
+  if (justMastered) return "Termo dominado!";
+  if (AppState.streak > 0 && AppState.streak % 5 === 0) return `${AppState.streak} seguidas!`;
+  return "Excelente! Tradução Correta!";
+}
+
 function checkPracticeAnswer(userAnswer) {
   const isSentenceQuestion =
     AppState.exerciseMode === "sentences" ||
@@ -1198,12 +1210,13 @@ function checkPracticeAnswer(userAnswer) {
       "border-emerald-500/50",
     );
     icon.textContent = "✅";
-    title.textContent = "Excelente! Tradução Correta!";
+    title.textContent = correctAnswerTitle(registerMasteryHit());
     title.className = "font-bold text-sm text-emerald-400";
     detail.textContent = `Tradução esperada: "${AppState.currentQuestion.translations.join('" / "')}"`;
   } else if (evalResult.status === "typo") {
     AppState.correctCount++; // Pontua como acerto
     AppState.streak++;
+    registerMasteryHit();
     DOM.banner.classList.add("bg-amber-950/80", "border-amber-500/50");
     icon.textContent = "⚠️";
     title.textContent = "Atenção: Erro de Digitação ou Pontuação?";
@@ -1369,6 +1382,13 @@ function removeFromErrorList(item) {
   return false;
 }
 
+function recordMasteryHit(item) {
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.recordMasteryHit === "function") {
+    return window.SRSModule.recordMasteryHit(item);
+  }
+  return false;
+}
+
 function recordSRSError(termStr) {
   if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.recordSRSError === "function") {
     return window.SRSModule.recordSRSError(termStr);
@@ -1473,6 +1493,7 @@ function exportChaptersJSON() {
     exportedAt: new Date().toISOString(),
     chapters: AppState.chapters,
     srs: AppState.srs,
+    mastery: AppState.mastery,
     survivalHighScore: AppState.survivalHighScore,
   };
   const jsonStr = JSON.stringify(backupData, null, 2);
@@ -1702,6 +1723,16 @@ function saveChapterFromJSON() {
       if (parsed.srs && typeof parsed.srs === "object") {
         AppState.srs = { ...AppState.srs, ...parsed.srs };
         saveSRS();
+      }
+      if (parsed.mastery && typeof parsed.mastery === "object") {
+        AppState.mastery = { ...AppState.mastery, ...parsed.mastery };
+        if (typeof localStorage !== "undefined") {
+          try {
+            localStorage.setItem(`gamida_${AppState.language}_mastery`, JSON.stringify(AppState.mastery));
+          } catch (storageErr) {
+            console.warn("Aviso ao salvar domínio no localStorage:", storageErr);
+          }
+        }
       }
       if (typeof parsed.survivalHighScore === "number" && parsed.survivalHighScore > AppState.survivalHighScore) {
         AppState.survivalHighScore = parsed.survivalHighScore;

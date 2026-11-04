@@ -16,6 +16,9 @@ let ankiStats = { hard: 0, good: 0, easy: 0 };
 let ankiTotalCards = 0;
 let ankiMode = "normal";
 
+// Acertos seguidos em Digitação ou Frases para um termo ser considerado dominado
+const MASTERY_GOAL = 3;
+
 /**
  * Carrega os registros de SRS e pontuação máxima do localStorage
  */
@@ -37,6 +40,14 @@ function loadSRS() {
     }
   } else {
     AppState.srs = {};
+  }
+
+  AppState.mastery = {};
+  try {
+    const parsedMastery = JSON.parse(localStorage.getItem(`gamida_${AppState.language}_mastery`) || "{}");
+    if (parsedMastery && typeof parsedMastery === "object") AppState.mastery = parsedMastery;
+  } catch (e) {
+    AppState.mastery = {};
   }
 
   const high = localStorage.getItem(`gamida_${AppState.language}_survival_high`);
@@ -62,6 +73,18 @@ function saveSRS() {
     );
   } catch (err) {
     console.warn("Aviso ao salvar SRS no localStorage (cota excedida ou storage inacessível):", err);
+  }
+}
+
+/**
+ * Salva o domínio à parte do SRS: um registro de SRS tiraria o termo dos cartões novos da revisão
+ */
+function saveMastery() {
+  if (typeof localStorage === "undefined") return;
+  try {
+    localStorage.setItem(`gamida_${AppState.language}_mastery`, JSON.stringify(AppState.mastery));
+  } catch (err) {
+    console.warn("Aviso ao salvar domínio no localStorage:", err);
   }
 }
 
@@ -96,7 +119,55 @@ function recordSRSError(termStr) {
   AppState.srs[key].pendingError = true;
   AppState.srs[key].nextReview = Date.now();
   saveSRS();
+  clearMastery(key);
   refreshReviewBadge();
+}
+
+/**
+ * Soma um acerto que conta para o domínio do termo
+ * @param {Object} item
+ * @returns {boolean} true se o termo acabou de ser dominado
+ */
+function recordMasteryHit(item) {
+  const key = getSRSKey(item);
+  if (!key) return false;
+  const before = AppState.mastery[key] || 0;
+  AppState.mastery[key] = Math.min(before + 1, MASTERY_GOAL);
+  saveMastery();
+  refreshReviewBadge();
+  return before < MASTERY_GOAL && AppState.mastery[key] === MASTERY_GOAL;
+}
+
+function clearMastery(key) {
+  if (!AppState.mastery[key]) return;
+  delete AppState.mastery[key];
+  saveMastery();
+}
+
+function isItemMastered(item) {
+  return (AppState.mastery[getSRSKey(item)] || 0) >= MASTERY_GOAL;
+}
+
+/**
+ * Conta termos dominados e na lista de erros, sem repetir termos entre capítulos
+ * @param {Array<Object>} chapters
+ * @returns {{ total: number, mastered: number, review: number }}
+ */
+function getMasterySummary(chapters) {
+  const terms = new Map();
+  (chapters || []).forEach((chap) => {
+    if (!chap) return;
+    [...(chap.items || []), ...(chap.sentences || [])].forEach((item) => {
+      const key = getSRSKey(item);
+      if (key && !terms.has(key)) terms.set(key, item);
+    });
+  });
+  const items = Array.from(terms.values());
+  return {
+    total: items.length,
+    mastered: items.filter(isItemMastered).length,
+    review: items.filter(isItemInErrorList).length,
+  };
 }
 
 function refreshReviewBadge() {
@@ -384,6 +455,7 @@ function answerAnki(grade) {
     record.nextReview = Date.now() + 60 * 1000;
     record.fails = (record.fails || 0) + 1;
     record.pendingError = true;
+    clearMastery(cardKey);
     ankiQueue.push(ankiCurrentCard);
     ankiTotalCards++;
   } else if (grade === "good") {
@@ -433,6 +505,7 @@ if (typeof window !== "undefined") {
   window.saveSRS = saveSRS;
   window.recordSRSError = recordSRSError;
   window.getErrorCards = getErrorCards;
+  window.getMasterySummary = getMasterySummary;
   window.startAnki = startAnki;
   window.renderAnkiCard = renderAnkiCard;
   window.revealAnki = revealAnki;
@@ -445,6 +518,9 @@ if (typeof window !== "undefined") {
     saveSRS,
     recordSRSError,
     getErrorCards,
+    recordMasteryHit,
+    isItemMastered,
+    getMasterySummary,
     isItemInErrorList,
     removeFromErrorList,
     isPendingError,
@@ -466,6 +542,9 @@ if (typeof module !== "undefined" && module.exports) {
     saveSRS,
     recordSRSError,
     getErrorCards,
+    recordMasteryHit,
+    isItemMastered,
+    getMasterySummary,
     isItemInErrorList,
     removeFromErrorList,
     isPendingError,
