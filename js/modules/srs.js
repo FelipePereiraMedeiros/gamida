@@ -110,6 +110,26 @@ function isPendingError(record) {
   return !!record && (record.fails || 0) > 0 && record.pendingError !== false;
 }
 
+/** Indica se o termo está na lista de erros */
+function isItemInErrorList(item) {
+  const key = getSRSKey(item);
+  return !!key && isPendingError(AppState.srs[key] || AppState.srs[getTerm(item)]);
+}
+
+/**
+ * Tira o termo da lista de erros sem apagar o histórico de falhas
+ * @param {Object} item
+ * @returns {boolean} true se o termo estava na lista
+ */
+function removeFromErrorList(item) {
+  if (!isItemInErrorList(item)) return false;
+  const key = getSRSKey(item);
+  (AppState.srs[key] || AppState.srs[getTerm(item)]).pendingError = false;
+  saveSRS();
+  refreshReviewBadge();
+  return true;
+}
+
 /**
  * Reúne os termos errados de todos os capítulos do idioma, ainda não revisados com sucesso
  * @returns {Array<Object>}
@@ -425,6 +445,8 @@ if (typeof window !== "undefined") {
     saveSRS,
     recordSRSError,
     getErrorCards,
+    isItemInErrorList,
+    removeFromErrorList,
     isPendingError,
     startAnki,
     renderAnkiCard,
@@ -444,6 +466,8 @@ if (typeof module !== "undefined" && module.exports) {
     saveSRS,
     recordSRSError,
     getErrorCards,
+    isItemInErrorList,
+    removeFromErrorList,
     isPendingError,
     startAnki,
     renderAnkiCard,

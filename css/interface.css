@@ -738,6 +738,32 @@ ul#chapter-dropdown-list {
 .fav-btn.is-on { color: #fbbf24; }
 .fav-btn.hidden { display: none; }
 
+/* Exclusivo do modo Erros: acertar não tira o termo da lista, este botão sim */
+.remove-error-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 2.25rem;
+  padding: 0 0.625rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.remove-error-btn:hover { border-color: #fb7185; color: #fda4af; }
+.remove-error-btn:focus-visible { outline: 2px solid rgb(var(--brand-400)); outline-offset: 2px; }
+.remove-error-btn.hidden { display: none; }
+
+@media (max-width: 479px) {
+  /* Sem espaço para tudo na mesma linha, as ações descem em vez de sobrepor o tipo */
+  .exercise-meta { flex-wrap: wrap; gap: 0.25rem 0.75rem; }
+  .exercise-meta__side { margin-left: auto; }
+}
+
 .exercise-prompt {
   flex: 1 1 auto;
   display: flex;

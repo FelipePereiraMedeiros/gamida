@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.11.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.12.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -367,7 +367,7 @@ function updatePracticeOrderUI() {
 
 function setExerciseMode(mode) {
   AppState.exerciseMode = mode;
-  ["typing", "choice", "sentences", "favorites"].forEach((m) => {
+  ["typing", "choice", "sentences", "favorites", "errors"].forEach((m) => {
     const btn = document.getElementById(`mode-${m}`);
     if (btn) {
       btn.className = m === mode ? "seg-btn is-active" : "seg-btn";
@@ -631,6 +631,11 @@ function updatePracticeScopeUI() {
   setActive(btnSingle, !showAll && !isCumulative);
 }
 
+/** Favoritas e Erros misturam palavras e frases na mesma fila */
+function isMixedPracticeMode() {
+  return AppState.exerciseMode === "favorites" || AppState.exerciseMode === "errors";
+}
+
 function buildPracticeQueue() {
   const selectedChapters = getSelectedChapters(AppState, {
     forVocab: false,
@@ -653,6 +658,8 @@ function buildPracticeQueue() {
       const favWords = (chap.items || []).filter((i) => !!i.favorite);
       const favSentences = (chap.sentences || []).filter((s) => !!s.favorite);
       chapItems = [...favWords, ...favSentences];
+    } else if (AppState.exerciseMode === "errors") {
+      chapItems = [...(chap.items || []), ...(chap.sentences || [])].filter(isItemInErrorList);
     } else if (AppState.exerciseMode === "sentences") {
       chapItems = (chap.sentences || []).length > 0 ? [...chap.sentences] : [];
     } else {
@@ -780,9 +787,16 @@ function updatePracticeProgressBar(current, total) {
   if (fill) fill.style.width = total > 0 ? `${Math.round((current / total) * 100)}%` : "0%";
 }
 
+function updateRemoveErrorButton() {
+  if (typeof document === "undefined") return;
+  const btn = document.getElementById("btn-practice-remove-error");
+  if (btn) btn.classList.toggle("hidden", AppState.exerciseMode !== "errors" || practiceQueue.length === 0);
+}
+
 function renderCurrentQuestion() {
   ensureDOM();
   resetPracticeActionButtons();
+  updateRemoveErrorButton();
   if (DOM.hebPrompt) DOM.hebPrompt.classList.remove("is-long", "is-message");
 
   if (practiceQueue.length === 0) {
@@ -792,6 +806,31 @@ function renderCurrentQuestion() {
     if (DOM.btnPracticeFav) {
       DOM.btnPracticeFav.classList.add("hidden");
     }
+    if (AppState.exerciseMode === "errors") {
+      const elsewhere = typeof window !== "undefined" && typeof window.getErrorCards === "function"
+        ? window.getErrorCards().length
+        : 0;
+      if (DOM.hebPrompt) DOM.hebPrompt.textContent = "Nenhum erro por aqui";
+      if (DOM.qCategory) DOM.qCategory.textContent = "Modo Erros";
+      if (DOM.qProgress) DOM.qProgress.textContent = "0 de 0 itens";
+      if (DOM.hintText) {
+        const scope = AppState.isPracticeCumulative ? "nos capítulos marcados" : "neste capítulo";
+        DOM.hintText.textContent = elsewhere > 0
+          ? `Não há termos errados ${scope}, mas outros capítulos têm ${elsewhere === 1 ? "1 termo" : `${elsewhere} termos`} na lista.`
+          : `Os termos que você errar ${scope} aparecem aqui para praticar quantas vezes quiser.`;
+        DOM.hintText.classList.remove("hidden");
+      }
+      if (DOM.btnHint) DOM.btnHint.classList.add("hidden");
+      if (DOM.banner) DOM.banner.classList.add("hidden");
+      if (DOM.btnPracticeAnalysis) DOM.btnPracticeAnalysis.classList.add("hidden");
+      if (DOM.interfaces) {
+        Object.values(DOM.interfaces).forEach((i) => {
+          if (i) i.classList.add("hidden");
+        });
+      }
+      return;
+    }
+
     if (AppState.exerciseMode === "favorites") {
       if (DOM.hebPrompt) DOM.hebPrompt.textContent = "Nenhuma favorita ainda";
       if (DOM.qCategory) DOM.qCategory.textContent = "Modo Favoritas";
@@ -882,7 +921,7 @@ function renderCurrentQuestion() {
     }
   }
   if (DOM.qProgress) {
-    const modeSuffix = AppState.exerciseMode === "favorites" ? " (Favoritas)" : "";
+    const modeSuffix = { favorites: " (Favoritas)", errors: " (Erros)" }[AppState.exerciseMode] || "";
     DOM.qProgress.textContent = `Item ${AppState.currentQuestionIndex + 1} de ${practiceQueue.length}${modeSuffix}`;
   }
   updatePracticeProgressBar(AppState.currentQuestionIndex + 1, practiceQueue.length);
@@ -948,7 +987,7 @@ function renderCurrentQuestion() {
     if (DOM.interfaces && DOM.interfaces.sentences) {
       DOM.interfaces.sentences.classList.remove("hidden");
     }
-  } else if (AppState.exerciseMode === "favorites") {
+  } else if (isMixedPracticeMode()) {
     if (isSentenceQuestion) {
       if (DOM.inputs && DOM.inputs.sentences) {
         DOM.inputs.sentences.value = "";
@@ -1074,7 +1113,7 @@ function checkPracticeAnswer(userAnswer) {
   if (evalResult.status === "correct") {
     AppState.correctCount++;
     AppState.score += AppState.exerciseMode === "sentences" ? 20 : 10;
-    if (AppState.exerciseMode === "favorites" && (AppState.currentQuestion?.type === "Frase" || AppState.currentQuestion?.type === "Expressão" || (AppState.currentQuestion?.tokens && AppState.currentQuestion.tokens.length > 0))) {
+    if (isMixedPracticeMode() && (AppState.currentQuestion?.type === "Frase" || AppState.currentQuestion?.type === "Expressão" || (AppState.currentQuestion?.tokens && AppState.currentQuestion.tokens.length > 0))) {
       AppState.score += 10;
     }
     AppState.streak++;
@@ -1089,7 +1128,7 @@ function checkPracticeAnswer(userAnswer) {
   } else if (evalResult.status === "typo") {
     AppState.correctCount++; // Pontua como acerto
     AppState.score += AppState.exerciseMode === "sentences" ? 20 : 10;
-    if (AppState.exerciseMode === "favorites" && (AppState.currentQuestion?.type === "Frase" || AppState.currentQuestion?.type === "Expressão" || (AppState.currentQuestion?.tokens && AppState.currentQuestion.tokens.length > 0))) {
+    if (isMixedPracticeMode() && (AppState.currentQuestion?.type === "Frase" || AppState.currentQuestion?.type === "Expressão" || (AppState.currentQuestion?.tokens && AppState.currentQuestion.tokens.length > 0))) {
       AppState.score += 10;
     }
     AppState.streak++;
@@ -1185,6 +1224,14 @@ function toggleCurrentPracticeFavorite() {
   }
 }
 
+/** Tira o termo atual da lista de erros e segue para o próximo */
+function removeCurrentPracticeError() {
+  if (!AppState.currentQuestion || AppState.exerciseMode !== "errors") return;
+  removeFromErrorList(AppState.currentQuestion);
+  practiceQueue.splice(AppState.currentQuestionIndex, 1);
+  renderCurrentQuestion();
+}
+
 function resetStats() {
   AppState.score = 0;
   AppState.streak = 0;
@@ -1231,6 +1278,20 @@ function saveSRS() {
     return window.SRSModule.saveSRS();
   }
   return null;
+}
+
+function isItemInErrorList(item) {
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.isItemInErrorList === "function") {
+    return window.SRSModule.isItemInErrorList(item);
+  }
+  return false;
+}
+
+function removeFromErrorList(item) {
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.removeFromErrorList === "function") {
+    return window.SRSModule.removeFromErrorList(item);
+  }
+  return false;
 }
 
 function recordSRSError(termStr) {
@@ -2284,6 +2345,7 @@ if (typeof window !== "undefined") {
   window.filterVocabTable = filterVocabTable;
   window.toggleItemFavorite = toggleItemFavorite;
   window.toggleCurrentPracticeFavorite = toggleCurrentPracticeFavorite;
+  window.removeCurrentPracticeError = removeCurrentPracticeError;
   window.WORD_CATEGORIES = WORD_CATEGORIES;
   window.matchItemCategory = matchItemCategory;
   window.openCurrentPracticeSentenceAnalysis = openCurrentPracticeSentenceAnalysis;
@@ -2327,6 +2389,7 @@ if (typeof module !== "undefined" && module.exports) {
     filterVocabTable,
     toggleItemFavorite,
     toggleCurrentPracticeFavorite,
+    removeCurrentPracticeError,
     WORD_CATEGORIES,
     matchItemCategory,
     openCurrentPracticeSentenceAnalysis,

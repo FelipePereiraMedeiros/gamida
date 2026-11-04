@@ -70,7 +70,7 @@
           },
         },
       };
-      window.APP_VERSION = "2.11.0";
+      window.APP_VERSION = "2.12.0";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
@@ -98,6 +98,8 @@
       <symbol id="i-lines" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
       <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
       <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"/></symbol>
+      <symbol id="i-error" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
       <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
     </svg>
 
@@ -280,6 +282,9 @@
                 </button>
                 <button type="button" id="mode-favorites" onclick="setExerciseMode('favorites')" class="seg-btn" aria-pressed="false" title="Praticar apenas frases e palavras marcadas como favoritas">
                   <svg class="icon icon--sm" aria-hidden="true"><use href="#i-star"></use></svg><span>Favoritas</span>
+                </button>
+                <button type="button" id="mode-errors" onclick="setExerciseMode('errors')" class="seg-btn" aria-pressed="false" title="Praticar os termos que você errou">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="#i-error"></use></svg><span>Erros</span>
                 </button>
               </div>
 
@@ -480,6 +485,16 @@
             </div>
             <div class="exercise-meta__side">
               <span id="question-progress" class="meta-count">Item 1 de 10</span>
+              <button
+                type="button"
+                id="btn-practice-remove-error"
+                onclick="removeCurrentPracticeError()"
+                class="remove-error-btn hidden"
+                title="Remover este termo da lista de erros"
+                aria-label="Remover este termo da lista de erros"
+              >
+                <svg class="icon icon--sm" aria-hidden="true"><use href="#i-close"></use></svg><span>Remover</span>
+              </button>
               <button
                 type="button"
                 id="btn-practice-fav"
@@ -1479,7 +1494,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.11.0</span>
+        <span id="footer-version-tag">v2.12.0</span>
       </p>
     </footer>
 

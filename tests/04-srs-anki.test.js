@@ -277,6 +277,40 @@ suite.test('Registro antigo com falhas conta como erro pendente', () => {
   assert.isFalse(isPendingError(undefined));
 });
 
+suite.test('Lista de erros: acertar na prática mantém o termo e remover tira sem apagar o histórico', () => {
+  const { isItemInErrorList, removeFromErrorList } = require('../js/modules/srs.js');
+  const item = { hebrew: 'בַּיִת', translations: ['casa'] };
+  const key = getSRSKey(item);
+  delete AppState.srs[key];
+
+  assert.isFalse(isItemInErrorList(item), 'Termo sem erro não está na lista');
+  assert.isFalse(removeFromErrorList(item), 'Remover termo fora da lista não tem efeito');
+
+  recordSRSError(item);
+  assert.isTrue(isItemInErrorList(item), 'Errar coloca o termo na lista');
+  const fails = AppState.srs[key].fails;
+
+  assert.isTrue(removeFromErrorList(item), 'Remover confirma a saída da lista');
+  assert.isFalse(isItemInErrorList(item), 'Termo removido sai da lista');
+  assert.equal(AppState.srs[key].fails, fails, 'O histórico de falhas é preservado');
+
+  recordSRSError(item);
+  assert.isTrue(isItemInErrorList(item), 'Errar de novo devolve o termo à lista');
+  delete AppState.srs[key];
+});
+
+suite.test('Modo Erros da prática usa a lista, tem botão exclusivo e nenhuma resposta remove o termo', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
+  assert.includes(html, 'id="mode-errors"', 'Botão do modo Erros ausente');
+  assert.includes(html, 'id="btn-practice-remove-error"', 'Botão de remover ausente');
+  assert.includes(html, 'class="remove-error-btn hidden"', 'Botão de remover deve iniciar oculto');
+  assert.includes(appJs, '.filter(isItemInErrorList)', 'Fila do modo Erros deve vir da lista');
+  assert.includes(appJs, 'AppState.exerciseMode !== "errors" || practiceQueue.length === 0', 'Botão de remover é exclusivo do modo Erros');
+  assert.isFalse(appJs.includes('pendingError'), 'A prática não pode alterar a lista ao avaliar respostas');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();
