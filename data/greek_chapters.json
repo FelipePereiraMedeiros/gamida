@@ -16928,6 +16928,107 @@
       },
       {
         "type": "table",
+        "title": "Verbos do 2º Aoristo: radical e tradução",
+        "headers": [
+          "Verbo",
+          "Radical do 2º aoristo",
+          "Tradução"
+        ],
+        "rows": [
+          [
+            "ἄγω",
+            "ἀγαγ-",
+            "conduzir, guiar; ir"
+          ],
+          [
+            "ἁμαρτάνω",
+            "ἁμαρτ-",
+            "errar o alvo, pecar"
+          ],
+          [
+            "ἀποθνῄσκω",
+            "θαν-",
+            "morrer"
+          ],
+          [
+            "ἀπόλλυμι",
+            "ἀπολ-",
+            "destruir; perecer"
+          ],
+          [
+            "ἀποστέλλω",
+            "σταλ-",
+            "enviar"
+          ],
+          [
+            "βάλλω",
+            "βαλ-",
+            "jogar; lançar"
+          ],
+          [
+            "γίνομαι",
+            "γεν-",
+            "ser; vir a ser, tornar-se; acontecer"
+          ],
+          [
+            "ἐγείρω",
+            "ἐγερ-",
+            "levantar, erguer; despertar, acordar; ressuscitar"
+          ],
+          [
+            "ἔρχομαι",
+            "ἐλθ-",
+            "ir; vir"
+          ],
+          [
+            "ἐσθίω",
+            "φαγ-",
+            "comer"
+          ],
+          [
+            "εὑρίσκω",
+            "εὑρ-",
+            "achar, encontrar"
+          ],
+          [
+            "ἔχω",
+            "σχ-",
+            "ter, segurar, possuir; estar"
+          ],
+          [
+            "λαμβάνω",
+            "λαβ-",
+            "tomar, receber"
+          ],
+          [
+            "λέγω",
+            "εἰπ-",
+            "dizer, falar"
+          ],
+          [
+            "ὁράω",
+            "ἰδ-",
+            "ver; perceber; contemplar"
+          ],
+          [
+            "πάσχω",
+            "παθ-",
+            "sofrer, padecer"
+          ],
+          [
+            "πίνω",
+            "πι-",
+            "beber"
+          ],
+          [
+            "πίπτω",
+            "πεσ-",
+            "cair"
+          ]
+        ]
+      },
+      {
+        "type": "table",
         "title": "2º Aoristo do Indicativo Ativo (βάλλω)",
         "headers": [
           "Pessoa",

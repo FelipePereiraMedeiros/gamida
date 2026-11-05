@@ -213,6 +213,48 @@ suite.test('renderVocabTable anexa atributo data-search pré-calculado e filterV
   AppState.language = prevLang;
 });
 
+suite.test('renderVocabTable destaca o radical do 2º aoristo só nos verbos que o têm', () => {
+  const { AppState, setSelectedChapters } = require('../js/modules/state.js');
+  const { setVocabCategory } = require('../js/modules/ui.js');
+  const prev = { doc: global.document, win: global.window, lang: AppState.language, chapters: AppState.chapters, chapter: AppState.currentChapter };
+  const rows = [];
+  const tbody = { children: [], innerHTML: '', appendChild(child) { this.children.push(child); } };
+
+  global.window = { AssimilationModule: require('../js/modules/assimilation.js') };
+  global.document = {
+    getElementById: (id) => (id === 'vocab-table-body' ? tbody : null),
+    createElement: (tag) => {
+      const el = { tagName: tag, className: '', innerHTML: '', attributes: {}, style: {}, setAttribute(k, v) { this.attributes[k] = v; }, getAttribute(k) { return this.attributes[k] || null; }, querySelector: () => ({ onclick: null }), appendChild() {} };
+      if (tag === 'tr') rows.push(el);
+      return el;
+    },
+    querySelectorAll: () => rows,
+  };
+
+  AppState.language = 'greek';
+  AppState.currentChapter = {
+    id: 'mock_aorist',
+    items: [
+      { term: 'βάλλω', transliteration: 'ballō', translations: ['jogar'], type: 'Verbo (2º Aoristo: βαλ-)' },
+      { term: 'καρπός', transliteration: 'karpos', translations: ['fruto'], type: 'Substantivo' },
+    ],
+    sentences: [],
+  };
+  AppState.chapters = [AppState.currentChapter];
+  setSelectedChapters(['mock_aorist'], AppState);
+  setVocabCategory('all');
+
+  const rowOf = (term) => rows.find((r) => r.innerHTML.includes(term)).innerHTML;
+  assert.includes(rowOf('βάλλω'), 'Radical do 2º aoristo: <span class="stem-value greek-text">βαλ-</span>');
+  assert.isFalse(rowOf('καρπός').includes('Radical do 2º aoristo'), 'Substantivo não tem radical');
+
+  global.document = prev.doc;
+  if (prev.win === undefined) delete global.window; else global.window = prev.win;
+  AppState.language = prev.lang;
+  AppState.chapters = prev.chapters;
+  AppState.currentChapter = prev.chapter;
+});
+
 suite.test('renderVocabTable exibe o atalho de análise morfológica (btn-vocab-analyze) para frases em Grego e Hebraico', () => {
   const { AppState, setSelectedChapters } = require('../js/modules/state.js');
   const { setVocabCategory } = require('../js/modules/ui.js');

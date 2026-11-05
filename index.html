@@ -70,7 +70,7 @@
           },
         },
       };
-      window.APP_VERSION = "2.18.0";
+      window.APP_VERSION = "2.19.0";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
@@ -524,6 +524,9 @@
 
           <div class="exercise-prompt">
             <div id="hebrew-prompt" class="exercise-prompt__text hebrew-text">שָׁלוֹם</div>
+            <p id="question-stem" class="exercise-prompt__stem hidden">
+              Radical do 2º aoristo: <span id="question-stem-value" class="stem-value greek-text"></span>
+            </p>
             <div id="hint-container" class="exercise-prompt__tools">
               <button type="button" id="btn-show-hint" onclick="toggleHint()" class="link-btn">
                 Mostrar transliteração
@@ -1617,7 +1620,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.18.0</span>
+        <span id="footer-version-tag">v2.19.0</span>
       </p>
     </footer>
 

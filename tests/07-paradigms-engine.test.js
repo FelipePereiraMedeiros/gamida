@@ -452,8 +452,8 @@ suite.test('A seleção traz as tabelas principais e mantém as demais só na Co
     const all = data.flatMap(c => c.paradigms || []);
     return { total: all.length, exercise: all.filter(isExerciseParadigm).length };
   };
-  assert.equal(count(greekData).exercise, 51, 'Grego: tabelas principais no seletor');
-  assert.equal(count(greekData).total, 93, 'Grego: todas as tabelas seguem disponíveis na Consulta');
+  assert.equal(count(greekData).exercise, 52, 'Grego: tabelas principais no seletor');
+  assert.equal(count(greekData).total, 94, 'Grego: todas as tabelas seguem disponíveis na Consulta');
   assert.equal(count(hebrewData).exercise, 31, 'Hebraico: tabelas principais no seletor');
   [...greekData, ...hebrewData].forEach(chap => {
     if (chap.paradigms && chap.paradigms.length) {
@@ -524,6 +524,17 @@ suite.test('Grego usa os resumos do livro e corrige o optativo e ἵημι', () 
   const mi = all.find(p => p.title === 'Radicais Reduplicados dos Verbos em -μι');
   assert.equal(mi.rows.find(r => r[0] === 'ἵημι')[2], 'ἥ- / ἕ-');
   assert.equal(all.find(p => p.title === 'Artigo Definido').rows.length, 8, 'Singular e plural num quadro só');
+});
+
+suite.test('Rótulo de linha em grego não vira maiúsculas, que apagariam os acentos', () => {
+  const html = getStaticParadigmTableHTML({
+    type: 'table',
+    title: 'Rótulos',
+    headers: ['Verbo', 'Radical'],
+    rows: [['ἄγω', 'ἀγαγ-'], ['Pessoa', 'x']],
+  });
+  assert.includes(html, 'greek-text text-base">ἄγω<', 'Verbo grego deve manter a caixa original');
+  assert.includes(html, 'uppercase tracking-wider">Pessoa<', 'Rótulo em português mantém as maiúsculas');
 });
 
 module.exports = suite;

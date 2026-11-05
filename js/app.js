@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.18.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.19.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -882,11 +882,25 @@ function updateRemoveErrorButton() {
   if (btn) btn.classList.toggle("hidden", AppState.exerciseMode !== "errors" || practiceQueue.length === 0);
 }
 
+/** Mostra o radical do 2º aoristo junto da pergunta para ajudar a gravá-lo */
+function renderQuestionStem(question) {
+  if (typeof document === "undefined") return;
+  const stemEl = document.getElementById("question-stem");
+  const stemValue = document.getElementById("question-stem-value");
+  if (!stemEl || !stemValue) return;
+  const stem = question && typeof window !== "undefined" && window.AssimilationModule
+    ? window.AssimilationModule.getSecondAoristStem(question.type)
+    : null;
+  stemValue.textContent = stem || "";
+  stemEl.classList.toggle("hidden", !stem);
+}
+
 function renderCurrentQuestion() {
   ensureDOM();
   resetPracticeActionButtons();
   updateRemoveErrorButton();
   hideRoundSummary();
+  renderQuestionStem(null);
   if (DOM.hebPrompt) DOM.hebPrompt.classList.remove("is-long", "is-message");
 
   if (practiceQueue.length === 0) {
@@ -1021,6 +1035,7 @@ function renderCurrentQuestion() {
     // Frases longas usam corpo menor para caber sem rolagem e sem quebrar a leitura
     if (String(promptText).length > 22) DOM.hebPrompt.classList.add("is-long");
   }
+  renderQuestionStem(AppState.currentQuestion);
 
   if (DOM.hintText) {
     DOM.hintText.textContent = AppState.currentQuestion.transliteration || "Sem transliteração para este item";

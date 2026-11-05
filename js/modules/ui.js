@@ -1129,6 +1129,9 @@ function renderVocabTable() {
       const translitText = item.transliteration || "-";
       const typeText = item.type || "Geral";
       const isFavorite = !!item.favorite;
+      const aoristStem = typeof window !== "undefined" && window.AssimilationModule
+        ? window.AssimilationModule.getSecondAoristStem(item.type)
+        : null;
       let translationsText = Array.isArray(item.translations)
         ? item.translations.join(" / ")
         : item.translations || "Tradução ausente";
@@ -1144,7 +1147,7 @@ function renderVocabTable() {
       tr.innerHTML = `
         <td class="vocab-cell-term px-5 py-3 ${textClass} font-bold text-white">${escapeFn(termText)}</td>
         <td class="vocab-cell-translit px-5 py-3 font-mono text-xs text-amber-400">${escapeFn(translitText)}</td>
-        <td class="vocab-cell-trans px-5 py-3 font-medium text-slate-200">${escapeFn(translationsText)}${!isSentence && item.notes ? `<span class="vocab-note">${escapeFn(item.notes)}</span>` : ""}</td>
+        <td class="vocab-cell-trans px-5 py-3 font-medium text-slate-200">${escapeFn(translationsText)}${!isSentence && item.notes ? `<span class="vocab-note">${escapeFn(item.notes)}</span>` : ""}${aoristStem ? `<span class="vocab-note">Radical do 2º aoristo: <span class="stem-value greek-text">${escapeFn(aoristStem)}</span></span>` : ""}</td>
         <td class="vocab-cell-type px-5 py-3">
           <div class="flex items-center gap-2">
             <span class="px-2.5 py-1 rounded-full ${isSentence ? "bg-indigo-900/60 border-indigo-700 text-indigo-300" : "bg-slate-800 border-slate-700 text-slate-400"} border text-[10px] font-mono">

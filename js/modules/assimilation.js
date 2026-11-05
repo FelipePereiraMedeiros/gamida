@@ -569,9 +569,15 @@ function hebrewRule(term, type) {
   return "";
 }
 
+/** Radical do 2º aoristo gravado no tipo do verbo, ou null quando o termo não tem um */
+function getSecondAoristStem(type) {
+  const aorist = String(type || "").match(/2º Aoristo: ([^)]+)\)/);
+  return aorist ? aorist[1] : null;
+}
+
 function greekVerbRule(head, type) {
-  const aorist = type.match(/2º Aoristo: ([^)]+)\)/);
-  if (aorist) return `2º aoristo: radical ${aorist[1]}, diferente do presente (Bergmann §11.2).`;
+  const stem = getSecondAoristStem(type);
+  if (stem) return `2º aoristo: radical ${stem}, diferente do presente (Bergmann §11.2).`;
   const plain = stripMarks(head);
   if (plain.endsWith("μι")) return "Verbo em -μι: um grupo pequeno, mas de uso muito frequente (Bergmann §20.4).";
   if (plain.endsWith("μαι")) return "Depoente: forma média ou passiva com sentido ativo (Bergmann §10.4).";
@@ -693,7 +699,7 @@ function getAssimilationTip(item, language) {
   return { kind: hook ? "memoria" : rule || item.notes ? "gramatica" : "pronuncia", text };
 }
 
-const AssimilationModule = { getAssimilationTip, getHeadword, HOOKS };
+const AssimilationModule = { getAssimilationTip, getHeadword, getSecondAoristStem, HOOKS };
 
 if (typeof window !== "undefined") {
   window.AssimilationModule = AssimilationModule;

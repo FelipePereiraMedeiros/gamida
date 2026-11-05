@@ -108,6 +108,31 @@ suite.test('A dica está ligada à resposta da prática', () => {
   assert.includes(appJs, 'showAssimilationTip(AppState.currentQuestion);', 'checkPracticeAnswer não exibe a dica');
 });
 
+suite.test('Os 18 verbos da Lição 11 têm radical e a tabela repete vocabulário e tradução', () => {
+  const { getSecondAoristStem } = require('../js/modules/assimilation.js');
+  const chapters = JSON.parse(require('fs').readFileSync(require('path').join(__dirname, '..', 'data', 'greek_chapters.json'), 'utf8'));
+  const chapter = chapters.find((c) => c.id === 'bergmann_11');
+  const verbs = chapter.items.filter((item) => getSecondAoristStem(item.type));
+  const table = chapter.paradigms.find((p) => p.title === 'Verbos do 2º Aoristo: radical e tradução');
+
+  assert.equal(verbs.length, 18, 'Verbos com radical na Lição 11');
+  assert.equal(getSecondAoristStem('Substantivo'), null);
+  assert.equal(getSecondAoristStem(undefined), null);
+  assert.equal(table.rows.length, verbs.length, 'Uma linha por verbo');
+  verbs.forEach((verb, index) => {
+    const [term, stem, translation] = table.rows[index];
+    assert.equal(term, verb.term, 'Mesma ordem do vocabulário');
+    assert.equal(stem, getSecondAoristStem(verb.type), `Radical de ${verb.term}`);
+    verb.translations.forEach((word) => assert.includes(translation, word, `Tradução de ${verb.term}`));
+  });
+});
+
+suite.test('A pergunta da prática mostra o radical do 2º aoristo', () => {
+  assert.includes(html, 'id="question-stem"', 'Elemento do radical ausente');
+  assert.includes(appJs, 'renderQuestionStem(AppState.currentQuestion);', 'A pergunta não mostra o radical');
+  assert.includes(appJs, 'renderQuestionStem(null);', 'O radical da pergunta anterior não é limpo');
+});
+
 module.exports = suite;
 
 if (require.main === module) {

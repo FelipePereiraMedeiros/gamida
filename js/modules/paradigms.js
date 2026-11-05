@@ -31,6 +31,13 @@ function isExerciseParadigm(paradigm) {
  * @param {string} cellText
  * @returns {boolean}
  */
+/** Maiúsculas apagam os acentos do grego, por isso só os rótulos em português as usam */
+function rowLabelClass(text) {
+  return /^[Ͱ-Ͽἀ-῿]/.test(text)
+    ? "greek-text text-base"
+    : "text-[11px] uppercase tracking-wider";
+}
+
 function isBlankCell(cellText) {
   const text = String(cellText === undefined || cellText === null ? "" : cellText).trim();
   return text === "" || text === "—";
@@ -185,7 +192,7 @@ function renderTableView(paradigm, container) {
       td.className = "p-2.5 text-center align-middle";
 
       if (cellIdx === 0) {
-        td.innerHTML = `<span class="font-bold text-slate-300 text-[11px] uppercase tracking-wider">${escapeHTML(cellText)}</span>`;
+        td.innerHTML = `<span class="font-bold text-slate-300 ${rowLabelClass(cellText)}">${escapeHTML(cellText)}</span>`;
       } else if (isBlankCell(cellText)) {
         td.innerHTML = `<span class="text-slate-600 text-sm">${escapeHTML(cellText)}</span>`;
       } else {
@@ -635,7 +642,7 @@ function getStaticParadigmTableHTML(paradigm) {
     html += `<tr class="hover:bg-slate-800/40 transition">`;
     row.forEach((cellText, cellIdx) => {
       if (cellIdx === 0) {
-        html += `<td class="p-3 text-center align-middle bg-slate-950/40 w-24 border-r border-slate-800/60"><span class="font-bold text-slate-400 text-[11px] uppercase tracking-wider">${escapeHTML(cellText)}</span></td>`;
+        html += `<td class="p-3 text-center align-middle bg-slate-950/40 w-24 border-r border-slate-800/60"><span class="font-bold text-slate-400 ${rowLabelClass(cellText)}">${escapeHTML(cellText)}</span></td>`;
       } else {
         html += `<td class="p-3 text-center align-middle ${textClass} text-lg font-bold text-slate-100">${escapeHTML(cellText)}</td>`;
       }

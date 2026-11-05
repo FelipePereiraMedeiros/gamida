@@ -792,6 +792,9 @@ ul#chapter-dropdown-list {
 #path-prompt.is-long { font-size: clamp(1.625rem, 3.6vw, 2.5rem); line-height: 1.9; }
 #hebrew-prompt.is-message { font-family: var(--font-sans); direction: ltr; font-size: 1.25rem; font-weight: 600; }
 
+.exercise-prompt__stem { color: var(--text-soft); font-size: 0.9375rem; }
+.stem-value { color: var(--text-strong); font-size: 1.125em; font-weight: 700; }
+
 .exercise-prompt__tools { min-height: 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.25rem 1rem; }
 
 .answer-row { display: flex; gap: 0.5rem; }

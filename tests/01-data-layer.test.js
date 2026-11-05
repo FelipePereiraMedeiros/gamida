@@ -176,6 +176,16 @@ suite.test('Capítulo preservado recebe a classificação nova sem perder o favo
   assert.equal(item.translations[0], 'editada');
 });
 
+suite.test('Capítulo preservado ganha as tabelas novas sem perder as próprias', () => {
+  const loader = require('../js/data-loader.js');
+  const stored = { items: [], paradigms: [{ title: 'Própria', rows: [['editada']] }] };
+  const defaults = { items: [], paradigms: [{ title: 'Própria', rows: [['padrão']] }, { title: 'Nova', rows: [] }] };
+  const { paradigms } = loader.syncItemClassification(stored, defaults);
+  assert.equal(paradigms.length, 2);
+  assert.equal(paradigms[0].rows[0][0], 'editada');
+  assert.equal(paradigms[1].title, 'Nova');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();
