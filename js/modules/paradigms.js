@@ -31,11 +31,15 @@ function isExerciseParadigm(paradigm) {
  * @param {string} cellText
  * @returns {boolean}
  */
-/** Maiúsculas apagam os acentos do grego, por isso só os rótulos em português as usam */
+/** Maiúsculas apagam os acentos do grego, por isso só texto sem grego as usa */
+function uppercaseClass(text) {
+  return /[\u0370-\u03FF\u1F00-\u1FFF]/.test(text) ? "" : "uppercase";
+}
+
 function rowLabelClass(text) {
-  return /^[Ͱ-Ͽἀ-῿]/.test(text)
+  return /^[\u0370-\u03FF\u1F00-\u1FFF]/.test(text)
     ? "greek-text text-base"
-    : "text-[11px] uppercase tracking-wider";
+    : `text-[11px] ${uppercaseClass(text)} tracking-wider`;
 }
 
 function isBlankCell(cellText) {
@@ -171,7 +175,7 @@ function renderTableView(paradigm, container) {
   (paradigm.headers || []).forEach((h) => {
     const th = document.createElement("th");
     th.className =
-      "px-4 py-3 text-brand-400 font-bold text-xs uppercase tracking-wider text-center";
+      `px-4 py-3 text-brand-400 font-bold text-xs ${uppercaseClass(h)} tracking-wider text-center`;
     th.textContent = h;
     trHead.appendChild(th);
   });
@@ -284,7 +288,7 @@ function renderDiagramView(paradigm, container) {
   if (paradigm.concept) {
     const conceptTitle = document.createElement("h4");
     conceptTitle.className =
-      "text-brand-400 font-bold text-sm uppercase tracking-widest mb-6";
+      `text-brand-400 font-bold text-sm ${uppercaseClass(paradigm.concept)} tracking-widest mb-6`;
     conceptTitle.textContent = paradigm.concept;
     wrapper.appendChild(conceptTitle);
   }
@@ -550,7 +554,7 @@ function getStaticDiagramHTML(paradigm) {
 
   let html = `
     <div class="w-full max-w-4xl mx-auto flex flex-col items-center my-6 p-6 bg-slate-900 border border-slate-800 rounded-3xl">
-      <h4 class="text-slate-300 font-bold text-sm uppercase tracking-widest mb-6">${paradigm.title}</h4>
+      <h4 class="text-slate-300 font-bold text-sm ${uppercaseClass(paradigm.title)} tracking-widest mb-6">${paradigm.title}</h4>
       <div class="relative w-full pb-[75%] md:pb-[60%] bg-slate-950 rounded-2xl shadow-inner border border-slate-800/80 overflow-hidden">
         <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -621,7 +625,7 @@ function getStaticParadigmTableHTML(paradigm) {
     AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
   let html = `
     <div class="w-full max-w-4xl mx-auto flex flex-col items-center my-6 p-6 bg-slate-900 border border-slate-800 rounded-3xl shadow-lg">
-      <h4 class="text-slate-300 font-bold text-sm uppercase tracking-widest mb-6 text-center">${escapeHTML(paradigm.title)}</h4>
+      <h4 class="text-slate-300 font-bold text-sm ${uppercaseClass(paradigm.title)} tracking-widest mb-6 text-center">${escapeHTML(paradigm.title)}</h4>
       <div class="w-full overflow-x-auto rounded-xl border border-slate-700/50">
         <table class="w-full text-left border-collapse min-w-[400px]">
           <thead>
@@ -629,7 +633,7 @@ function getStaticParadigmTableHTML(paradigm) {
   `;
 
   (paradigm.headers || []).forEach((h) => {
-    html += `<th class="px-4 py-4 border-b border-slate-700 text-brand-400 text-xs font-bold uppercase tracking-wider text-center">${escapeHTML(h)}</th>`;
+    html += `<th class="px-4 py-4 border-b border-slate-700 text-brand-400 text-xs font-bold ${uppercaseClass(h)} tracking-wider text-center">${escapeHTML(h)}</th>`;
   });
 
   html += `

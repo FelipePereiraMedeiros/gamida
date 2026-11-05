@@ -537,6 +537,20 @@ suite.test('Rótulo de linha em grego não vira maiúsculas, que apagariam os ac
   assert.includes(html, 'uppercase tracking-wider">Pessoa<', 'Rótulo em português mantém as maiúsculas');
 });
 
+suite.test('Título, cabeçalho e rótulo com grego nunca recebem maiúsculas', () => {
+  const html = getStaticParadigmTableHTML({
+    type: 'table',
+    title: 'Indicativo (βάλλω)',
+    headers: ['Ativo (ἔχω)', 'Forma'],
+    rows: [['Fut. (R + σ)', 'x']],
+  });
+  ['Indicativo (βάλλω)', 'Ativo (ἔχω)', 'Fut. (R + σ)'].forEach((text) => {
+    const tagStart = html.lastIndexOf('<', html.indexOf(text));
+    assert.isFalse(html.slice(tagStart, html.indexOf(text)).includes('uppercase'), `${text} em maiúsculas`);
+  });
+  assert.includes(html, 'uppercase tracking-wider text-center">Forma<', 'Cabeçalho em português mantém as maiúsculas');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();
