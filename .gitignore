@@ -22,3 +22,7 @@ ehthumbs.db
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Arquivos locais (configuração do preview e vídeo de apresentação)
+.claude/launch.json
+apresentacao/gamida-2.9.2-novidades.mp4
