@@ -67,6 +67,20 @@ function saveCompleted(language, completed) {
 }
 
 /**
+ * Une os capítulos concluídos de um backup aos deste dispositivo, sem perder nenhum lado
+ * @returns {number} quantos capítulos foram acrescentados
+ */
+function mergeCompleted(language, incoming) {
+  const completed = loadCompleted(language);
+  const ids = Array.isArray(incoming) ? incoming : [];
+  const added = ids.filter(
+    (id, idx) => typeof id === "string" && id && !completed.includes(id) && ids.indexOf(id) === idx,
+  );
+  if (added.length > 0) saveCompleted(language, [...completed, ...added]);
+  return added.length;
+}
+
+/**
  * Situação de cada capítulo no caminho.
  * O primeiro está sempre liberado; os demais, quando o anterior foi concluído.
  * @returns {Array<{chapter, status: 'done'|'open'|'locked', termCount}>}
@@ -411,6 +425,7 @@ const api = {
   getPathStatus,
   loadCompleted,
   saveCompleted,
+  mergeCompleted,
   createSession,
   answerSession,
   advanceSession,

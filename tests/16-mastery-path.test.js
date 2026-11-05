@@ -103,6 +103,31 @@ suite.test('Concluir salva o progresso por idioma e devolve o próximo capítulo
   });
 });
 
+suite.test('Backup une o progresso dos dois dispositivos, sem perder nenhum lado', () => {
+  withStorage(() => {
+    Path.saveCompleted('greek', ['c1', 'c3']);
+    assert.equal(Path.mergeCompleted('greek', ['c2', 'c3', 'c2']), 1, 'Só o capítulo novo conta');
+    assert.deepEqual(Path.loadCompleted('greek'), ['c1', 'c3', 'c2']);
+    assert.equal(Path.mergeCompleted('greek', ['c1']), 0, 'Backup antigo não remove nada');
+    assert.deepEqual(Path.loadCompleted('greek'), ['c1', 'c3', 'c2']);
+    assert.deepEqual(Path.loadCompleted('hebrew'), [], 'O progresso é separado por idioma');
+  });
+});
+
+suite.test('Backup ignora dados inválidos do Caminho', () => {
+  withStorage(() => {
+    Path.saveCompleted('greek', ['c1']);
+    assert.equal(Path.mergeCompleted('greek', [null, 7, '', { id: 'c2' }]), 0);
+    assert.equal(Path.mergeCompleted('greek', 'c2'), 0, 'Backups sem lista são ignorados');
+    assert.deepEqual(Path.loadCompleted('greek'), ['c1']);
+  });
+});
+
+suite.test('Exportar e importar backup incluem o Caminho do domínio', () => {
+  assert.includes(appJs, 'masteryPath: pathModule ? pathModule.loadCompleted(AppState.language) : []');
+  assert.includes(appJs, 'pathModule.mergeCompleted(AppState.language, parsed.masteryPath)');
+});
+
 suite.test('Avaliar tem o cartão e as telas do Caminho do domínio', () => {
   ['onclick="openMasteryPath()"', 'id="path-overview"', 'id="path-chapter-list"', 'id="path-active"',
     'id="path-input"', 'id="path-feedback"', 'id="path-complete"', 'js/modules/mastery-path.js']

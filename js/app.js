@@ -8,7 +8,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.17.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.18.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -1490,6 +1490,7 @@ async function resetDefaultChapters() {
 }
 
 function exportChaptersJSON() {
+  const pathModule = typeof window !== "undefined" ? window.MasteryPathModule : null;
   const backupData = {
     version: APP_VERSION,
     language: AppState.language,
@@ -1497,6 +1498,7 @@ function exportChaptersJSON() {
     chapters: AppState.chapters,
     srs: AppState.srs,
     mastery: AppState.mastery,
+    masteryPath: pathModule ? pathModule.loadCompleted(AppState.language) : [],
     survivalHighScore: AppState.survivalHighScore,
   };
   const jsonStr = JSON.stringify(backupData, null, 2);
@@ -1708,6 +1710,7 @@ async function deleteCurrentCustomChapter() {
 function saveChapterFromJSON() {
   const jsonText = document.getElementById("json-input").value.trim();
   const statusEl = document.getElementById("json-status");
+  const getPathNote = (added) => (added > 0 ? ` Caminho do domínio: +${added} capítulo(s).` : "");
   if (!jsonText) {
     statusEl.textContent = "⚠️ O campo JSON está vazio.";
     statusEl.className = "text-xs font-mono text-amber-400";
@@ -1715,6 +1718,7 @@ function saveChapterFromJSON() {
   }
   try {
     let parsed = JSON.parse(jsonText);
+    let pathChaptersAdded = 0;
 
     // Suporte para backup completo estruturado: { chapters: [...], srs: {...}, survivalHighScore: N, language: "hebrew"|"greek" }
     if (parsed && typeof parsed === "object" && !Array.isArray(parsed) && Array.isArray(parsed.chapters)) {
@@ -1747,7 +1751,22 @@ function saveChapterFromJSON() {
           }
         }
       }
-      parsed = parsed.chapters;
+      const pathModule = typeof window !== "undefined" ? window.MasteryPathModule : null;
+      if (pathModule && Array.isArray(parsed.masteryPath)) {
+        pathChaptersAdded = pathModule.mergeCompleted(AppState.language, parsed.masteryPath);
+        pathModule.updatePathDashboardStat();
+      }
+      // Capítulos padrão não editados seguem a versão atual do app; importá-los os congelaria
+      const knownIds = new Set(AppState.chapters.map((c) => c && c.id));
+      parsed = parsed.chapters.filter(
+        (c) => !c || c._userModified === true || c._custom === true || !knownIds.has(c.id),
+      );
+      if (parsed.length === 0) {
+        if (AppState.currentChapter) changeGlobalChapter(AppState.currentChapter.id);
+        statusEl.textContent = `✅ Progresso importado. Os capítulos padrão seguem atualizados.${getPathNote(pathChaptersAdded)}`;
+        statusEl.className = "text-xs font-mono text-emerald-400";
+        return;
+      }
     }
 
     // Suporte para importação de backup completo com múltiplos capítulos
@@ -1789,7 +1808,7 @@ function saveChapterFromJSON() {
       setupGlobalChapterDropdown();
       changeGlobalChapter(parsed[0].id);
 
-      statusEl.textContent = `✅ ${parsed.length} capítulo(s) importado(s) com sucesso!`;
+      statusEl.textContent = `✅ ${parsed.length} capítulo(s) importado(s) com sucesso!${getPathNote(pathChaptersAdded)}`;
       statusEl.className = "text-xs font-mono text-emerald-400";
       return;
     }

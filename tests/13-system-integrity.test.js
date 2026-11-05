@@ -593,6 +593,64 @@ suite.test('Validação de Idioma na Importação: Rejeita backups e capítulos 
   if (oldDoc === undefined) delete global.document; else global.document = oldDoc;
 });
 
+function importBackup(backup, chapters) {
+  const elementsById = {
+    'json-input': { value: JSON.stringify(backup) },
+    'json-status': { textContent: '', className: '' },
+  };
+  const oldDoc = global.document;
+  global.document = { getElementById: (id) => elementsById[id] || null };
+  const vm = require('vm');
+  const sandbox = {
+    window: undefined,
+    document: global.document,
+    localStorage: { setItem() {}, getItem() { return null; } },
+    AppState: { language: 'hebrew', chapters, currentChapter: chapters[0], srs: {}, survivalHighScore: 0 },
+    isValidChapter: () => true,
+    hasUniqueChapterIds: () => true,
+    saveSRS: () => {},
+    saveChaptersToStorage: () => {},
+    buildDistractorCache: () => {},
+    setupGlobalChapterDropdown: () => {},
+    changeGlobalChapter: () => {},
+    console,
+  };
+  vm.createContext(sandbox);
+  vm.runInContext(appJs.match(/function saveChapterFromJSON\(\)\s*\{[\s\S]*?\n\}/)[0], sandbox);
+  vm.runInContext('saveChapterFromJSON();', sandbox);
+  if (oldDoc === undefined) delete global.document; else global.document = oldDoc;
+  return { state: sandbox.AppState, status: elementsById['json-status'].textContent };
+}
+
+suite.test('Backup não congela capítulos padrão nem traz tabelas antigas', () => {
+  const current = () => [{ id: 'kelley_03', title: 'Versão atual', items: [] }];
+  const backup = { language: 'hebrew', chapters: [{ id: 'kelley_03', title: 'Versão antiga', items: [] }] };
+  const { state, status } = importBackup(backup, current());
+
+  assert.equal(state.chapters[0].title, 'Versão atual', 'Capítulo padrão deve seguir a versão do app');
+  assert.isTrue(state.chapters[0]._userModified !== true, 'Capítulo padrão não pode ser congelado');
+  assert.includes(status, 'Progresso importado', 'Backup sem edições não é erro');
+});
+
+suite.test('Backup restaura capítulos editados e criados pelo usuário', () => {
+  const current = () => [{ id: 'kelley_03', title: 'Versão atual', items: [] }, { id: 'kelley_05', title: 'Padrão', items: [] }];
+  const backup = {
+    language: 'hebrew',
+    chapters: [
+      { id: 'kelley_03', title: 'Editado', items: [], _userModified: true },
+      { id: 'kelley_05', title: 'Antigo', items: [] },
+      { id: 'meu_capitulo', title: 'Criado', items: [] },
+    ],
+  };
+  const { state, status } = importBackup(backup, current());
+  const byId = (id) => state.chapters.find(c => c.id === id);
+
+  assert.equal(byId('kelley_03').title, 'Editado', 'Edição do usuário deve ser restaurada');
+  assert.equal(byId('kelley_05').title, 'Padrão', 'Capítulo não editado segue o app');
+  assert.equal(byId('meu_capitulo').title, 'Criado', 'Capítulo do usuário deve ser restaurado');
+  assert.includes(status, '2 capítulo(s) importado(s)');
+});
+
 // --------------------------------------------------------------------------
 // TESTE 12: Tolerância à Cota de Armazenamento (QuotaExceededError)
 // --------------------------------------------------------------------------
@@ -747,7 +805,7 @@ suite.test('Versão Canônica Única: DataLoader e módulos compartilham a mesma
 
   assert.isTrue(typeof DataLoader.VERSION === 'string' && DataLoader.VERSION.length > 0, 'DataLoader.VERSION deve ser string válida');
   assert.equal(DataLoader.VERSION, APP_VERSION, 'DataLoader.VERSION e StateModule.APP_VERSION devem ser idênticos');
-  assert.equal(DataLoader.VERSION, '2.17.0', 'Versão atual deve ser 2.17.0');
+  assert.equal(DataLoader.VERSION, '2.18.0', 'Versão atual deve ser 2.18.0');
 });
 
 module.exports = suite;
