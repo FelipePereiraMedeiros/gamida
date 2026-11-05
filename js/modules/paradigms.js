@@ -18,6 +18,25 @@ let draggedElement = null;
 let selectedChip = null;
 
 /**
+ * Tabelas com level "consulta" aparecem só na Consulta, fora do seletor do exercício
+ * @param {Object} paradigm
+ * @returns {boolean}
+ */
+function isExerciseParadigm(paradigm) {
+  return !!paradigm && paradigm.level !== "consulta";
+}
+
+/**
+ * Célula sem resposta: vazia ou "—" (forma que não existe naquele tronco ou pessoa)
+ * @param {string} cellText
+ * @returns {boolean}
+ */
+function isBlankCell(cellText) {
+  const text = String(cellText === undefined || cellText === null ? "" : cellText).trim();
+  return text === "" || text === "—";
+}
+
+/**
  * Controla a visibilidade da aba de paradigmas na barra de navegação
  */
 /**
@@ -39,7 +58,7 @@ function getActiveParadigmsList() {
     selectedChaps.forEach((ch) => {
       if (ch && !seenChaps.has(ch.id) && Array.isArray(ch.paradigms)) {
         seenChaps.add(ch.id);
-        ch.paradigms.forEach((p) => allParadigms.push(p));
+        ch.paradigms.filter(isExerciseParadigm).forEach((p) => allParadigms.push(p));
       }
     });
   }
@@ -49,14 +68,14 @@ function getActiveParadigmsList() {
     AppState.currentChapter &&
     Array.isArray(AppState.currentChapter.paradigms)
   ) {
-    return AppState.currentChapter.paradigms;
+    return AppState.currentChapter.paradigms.filter(isExerciseParadigm);
   }
 
   if (allParadigms.length === 0) {
     selectedChaps.forEach((ch) => {
       if (ch && !seenChaps.has(ch.id) && Array.isArray(ch.paradigms)) {
         seenChaps.add(ch.id);
-        ch.paradigms.forEach((p) => allParadigms.push(p));
+        ch.paradigms.filter(isExerciseParadigm).forEach((p) => allParadigms.push(p));
       }
     });
   }
@@ -167,6 +186,8 @@ function renderTableView(paradigm, container) {
 
       if (cellIdx === 0) {
         td.innerHTML = `<span class="font-bold text-slate-300 text-[11px] uppercase tracking-wider">${escapeHTML(cellText)}</span>`;
+      } else if (isBlankCell(cellText)) {
+        td.innerHTML = `<span class="text-slate-600 text-sm">${escapeHTML(cellText)}</span>`;
       } else {
         allAnswers.push(cellText);
         td.innerHTML = `
@@ -186,7 +207,11 @@ function renderTableView(paradigm, container) {
     tbody.appendChild(tr);
   });
   table.appendChild(tbody);
-  container.appendChild(table);
+
+  const tableScroll = document.createElement("div");
+  tableScroll.className = "w-full overflow-x-auto";
+  tableScroll.appendChild(table);
+  container.appendChild(tableScroll);
 
   let btnContainer = document.getElementById("paradigm-action-container");
   if (!btnContainer) {
@@ -822,6 +847,8 @@ if (typeof window !== "undefined") {
   window.getActiveParadigmsList = getActiveParadigmsList;
   window.ParadigmsModule = {
     getActiveParadigmsList,
+    isExerciseParadigm,
+    isBlankCell,
     updateParadigmsVisibility,
     renderParadigmSkeleton,
     renderTableView,
@@ -844,6 +871,8 @@ if (typeof window !== "undefined") {
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     getActiveParadigmsList,
+    isExerciseParadigm,
+    isBlankCell,
     updateParadigmsVisibility,
     renderParadigmSkeleton,
     renderTableView,

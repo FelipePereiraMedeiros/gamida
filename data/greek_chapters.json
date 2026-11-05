@@ -1596,6 +1596,48 @@
       },
       {
         "type": "table",
+        "title": "Resumo: Presente do Indicativo e Infinitivo",
+        "headers": [
+          "Identificação",
+          "1ª Sg.",
+          "2ª Sg.",
+          "3ª Sg.",
+          "1ª Pl.",
+          "2ª Pl.",
+          "3ª Pl."
+        ],
+        "rows": [
+          [
+            "Pres. Ind. A.",
+            "-ω",
+            "-εις",
+            "-ει",
+            "-ομεν",
+            "-ετε",
+            "-ουσι(ν)"
+          ],
+          [
+            "Pres. Ind. M./P.",
+            "-ομαι",
+            "-ῃ",
+            "-εται",
+            "-όμεθα",
+            "-εσθε",
+            "-ονται"
+          ],
+          [
+            "Inf. Pres. (A. | M./P.)",
+            "-ειν",
+            "-εσθαι",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "type": "table",
         "title": "Presente do Indicativo Ativo (λέγω)",
         "headers": [
           "Pessoa",
@@ -1618,7 +1660,8 @@
             "λέγει",
             "λέγουσι(ν)"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -1644,7 +1687,8 @@
             "λύεται",
             "λύονται"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -1670,7 +1714,8 @@
             "λύεται",
             "λύονται"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -1692,7 +1737,8 @@
             "εἰμί",
             "εἶναι"
           ]
-        ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -2528,58 +2574,6 @@
       },
       {
         "type": "table",
-        "title": "Presente do Subjuntivo Ativo (λέγω)",
-        "headers": [
-          "Pessoa",
-          "Singular",
-          "Plural"
-        ],
-        "rows": [
-          [
-            "1ª",
-            "λέγω",
-            "λέγωμεν"
-          ],
-          [
-            "2ª",
-            "λέγῃς",
-            "λέγητε"
-          ],
-          [
-            "3ª",
-            "λέγῃ",
-            "λέγωσι(ν)"
-          ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Presente do Subjuntivo Médio e Passivo (λύω)",
-        "headers": [
-          "Pessoa",
-          "Singular",
-          "Plural"
-        ],
-        "rows": [
-          [
-            "1ª",
-            "λύωμαι",
-            "λυώμεθα"
-          ],
-          [
-            "2ª",
-            "λύῃ",
-            "λύησθε"
-          ],
-          [
-            "3ª",
-            "λύηται",
-            "λύωνται"
-          ]
-        ]
-      },
-      {
-        "type": "table",
         "title": "Terminações: Presente do Indicativo × Presente do Subjuntivo",
         "headers": [
           "Pessoa",
@@ -2632,6 +2626,60 @@
             "-ωνται"
           ]
         ]
+      },
+      {
+        "type": "table",
+        "title": "Presente do Subjuntivo Ativo (λέγω)",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "λέγω",
+            "λέγωμεν"
+          ],
+          [
+            "2ª",
+            "λέγῃς",
+            "λέγητε"
+          ],
+          [
+            "3ª",
+            "λέγῃ",
+            "λέγωσι(ν)"
+          ]
+        ],
+        "level": "consulta"
+      },
+      {
+        "type": "table",
+        "title": "Presente do Subjuntivo Médio e Passivo (λύω)",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "λύωμαι",
+            "λυώμεθα"
+          ],
+          [
+            "2ª",
+            "λύῃ",
+            "λύησθε"
+          ],
+          [
+            "3ª",
+            "λύηται",
+            "λύωνται"
+          ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -3992,6 +4040,66 @@
       },
       {
         "type": "table",
+        "title": "Resumo: Futuro",
+        "headers": [
+          "Identificação",
+          "1ª Sg.",
+          "2ª Sg.",
+          "3ª Sg.",
+          "1ª Pl.",
+          "2ª Pl.",
+          "3ª Pl."
+        ],
+        "rows": [
+          [
+            "Fut. Ind. A. (R + σ)",
+            "-ω",
+            "-εις",
+            "-ει",
+            "-ομεν",
+            "-ετε",
+            "-ουσι(ν)"
+          ],
+          [
+            "Fut. Ind. M. (R + σ)",
+            "-ομαι",
+            "-ῃ",
+            "-εται",
+            "-όμεθα",
+            "-εσθε",
+            "-ονται"
+          ],
+          [
+            "Fut. Ind. P. (R + θησ)",
+            "-ομαι",
+            "-ῃ",
+            "-εται",
+            "-όμεθα",
+            "-εσθε",
+            "-ονται"
+          ],
+          [
+            "Inf. Fut. A. | M. (R + σ)",
+            "-ειν",
+            "-εσθαι",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Inf. Fut. P. (R + θήσ)",
+            "-εσθαι",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "type": "table",
         "title": "Futuro do Indicativo Ativo",
         "headers": [
           "Pessoa",
@@ -4014,7 +4122,8 @@
             "λύσει",
             "λύσουσι(ν)"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -4040,7 +4149,8 @@
             "λύσεται",
             "λύσονται"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -4066,7 +4176,8 @@
             "λυθήσεται",
             "λυθήσονται"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -4092,7 +4203,8 @@
             "εἰμί",
             "ἔσεσθαι"
           ]
-        ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -5216,70 +5328,58 @@
     "paradigms": [
       {
         "type": "table",
-        "title": "Artigo Definido (Singular)",
+        "title": "Artigo Definido",
         "headers": [
-          "Caso",
+          "Caso / Número",
           "Masculino",
           "Feminino",
           "Neutro"
         ],
         "rows": [
           [
-            "Nom.",
+            "Nom. Sg.",
             "ὁ",
             "ἡ",
             "τό"
           ],
           [
-            "Gen.",
+            "Gen. Sg.",
             "τοῦ",
             "τῆς",
             "τοῦ"
           ],
           [
-            "Dat.",
+            "Dat. Sg.",
             "τῷ",
             "τῇ",
             "τῷ"
           ],
           [
-            "Acus.",
+            "Acus. Sg.",
             "τόν",
             "τήν",
             "τό"
-          ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Artigo Definido (Plural)",
-        "headers": [
-          "Caso",
-          "Masculino",
-          "Feminino",
-          "Neutro"
-        ],
-        "rows": [
+          ],
           [
-            "Nom.",
+            "Nom. Pl.",
             "οἱ",
             "αἱ",
             "τά"
           ],
           [
-            "Gen.",
+            "Gen. Pl.",
             "τῶν",
             "τῶν",
             "τῶν"
           ],
           [
-            "Dat.",
+            "Dat. Pl.",
             "τοῖς",
             "ταῖς",
             "τοῖς"
           ],
           [
-            "Acus.",
+            "Acus. Pl.",
             "τούς",
             "τάς",
             "τά"
@@ -5324,42 +5424,6 @@
       },
       {
         "type": "table",
-        "title": "2ª Declinação: Feminino (ὁδός)",
-        "headers": [
-          "Caso",
-          "Singular",
-          "Plural"
-        ],
-        "rows": [
-          [
-            "Nom.",
-            "ὁδός",
-            "ὁδοί"
-          ],
-          [
-            "Gen.",
-            "ὁδοῦ",
-            "ὁδῶν"
-          ],
-          [
-            "Dat.",
-            "ὁδῷ",
-            "ὁδοῖς"
-          ],
-          [
-            "Acus.",
-            "ὁδόν",
-            "ὁδούς"
-          ],
-          [
-            "Voc.",
-            "ὁδέ",
-            "ὁδοί"
-          ]
-        ]
-      },
-      {
-        "type": "table",
         "title": "2ª Declinação: Neutro (ἔργον)",
         "headers": [
           "Caso",
@@ -5393,6 +5457,91 @@
             "ἔργα"
           ]
         ]
+      },
+      {
+        "type": "table",
+        "title": "Resumo: 2ª Declinação",
+        "headers": [
+          "Caso",
+          "M./F. Sg.",
+          "Neutro Sg.",
+          "M./F. Pl.",
+          "Neutro Pl."
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "-ος",
+            "-ον",
+            "-οι",
+            "-α"
+          ],
+          [
+            "Gen.",
+            "-ου",
+            "-ου",
+            "-ων",
+            "-ων"
+          ],
+          [
+            "Dat.",
+            "-ῳ",
+            "-ῳ",
+            "-οις",
+            "-οις"
+          ],
+          [
+            "Acus.",
+            "-ον",
+            "-ον",
+            "-ους",
+            "-α"
+          ],
+          [
+            "Voc.",
+            "-ε",
+            "-ον",
+            "-οι",
+            "-α"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "2ª Declinação: Feminino (ὁδός)",
+        "headers": [
+          "Caso",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "ὁδός",
+            "ὁδοί"
+          ],
+          [
+            "Gen.",
+            "ὁδοῦ",
+            "ὁδῶν"
+          ],
+          [
+            "Dat.",
+            "ὁδῷ",
+            "ὁδοῖς"
+          ],
+          [
+            "Acus.",
+            "ὁδόν",
+            "ὁδούς"
+          ],
+          [
+            "Voc.",
+            "ὁδέ",
+            "ὁδοί"
+          ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -6878,6 +7027,66 @@
     "paradigms": [
       {
         "type": "table",
+        "title": "Resumo: 1ª Declinação",
+        "headers": [
+          "Caso",
+          "F. -α (após ε, ι, ρ)",
+          "F. -α (demais)",
+          "F. -η",
+          "M. -ας",
+          "M. -ης",
+          "Plural (todos)"
+        ],
+        "rows": [
+          [
+            "Nom.",
+            "-α",
+            "-α",
+            "-η",
+            "-ας",
+            "-ης",
+            "-αι"
+          ],
+          [
+            "Gen.",
+            "-ας",
+            "-ης",
+            "-ης",
+            "-ου",
+            "-ου",
+            "-ῶν"
+          ],
+          [
+            "Dat.",
+            "-ᾳ",
+            "-ῃ",
+            "-ῃ",
+            "-ᾳ",
+            "-ῃ",
+            "-αις"
+          ],
+          [
+            "Acus.",
+            "-αν",
+            "-αν",
+            "-ην",
+            "-αν",
+            "-ην",
+            "-ας"
+          ],
+          [
+            "Voc.",
+            "-α",
+            "-α",
+            "-η",
+            "-α",
+            "-α",
+            "-αι"
+          ]
+        ]
+      },
+      {
+        "type": "table",
         "title": "1ª Declinação: Fem. -α após ε, ι, ρ (σοφία)",
         "headers": [
           "Caso",
@@ -6910,7 +7119,8 @@
             "σοφία",
             "σοφίαι"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -6946,7 +7156,8 @@
             "γλῶσσα",
             "γλῶσσαι"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -6982,7 +7193,8 @@
             "ἀγάπη",
             "ἀγάπαι"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -7018,7 +7230,8 @@
             "νεανία",
             "νεανίαι"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -7054,7 +7267,8 @@
             "προφῆτα",
             "προφῆται"
           ]
-        ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -9200,82 +9414,70 @@
     "paradigms": [
       {
         "type": "table",
-        "title": "Terminações: Adjetivos da 1ª e 2ª Declinação (Singular)",
+        "title": "Terminações: Adjetivos da 1ª e 2ª Declinação",
         "headers": [
-          "Caso",
+          "Caso / Número",
           "Masculino",
           "Feminino",
           "Neutro"
         ],
         "rows": [
           [
-            "Nom.",
+            "Nom. Sg.",
             "-ος",
             "-α / -η",
             "-ον"
           ],
           [
-            "Gen.",
+            "Gen. Sg.",
             "-ου",
             "-ας / -ης",
             "-ου"
           ],
           [
-            "Dat.",
+            "Dat. Sg.",
             "-ῳ",
             "-ᾳ / -ῃ",
             "-ῳ"
           ],
           [
-            "Acus.",
+            "Acus. Sg.",
             "-ον",
             "-αν / -ην",
             "-ον"
           ],
           [
-            "Voc.",
+            "Voc. Sg.",
             "-ε",
             "-α / -η",
             "-ον"
-          ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Terminações: Adjetivos da 1ª e 2ª Declinação (Plural)",
-        "headers": [
-          "Caso",
-          "Masculino",
-          "Feminino",
-          "Neutro"
-        ],
-        "rows": [
+          ],
           [
-            "Nom.",
+            "Nom. Pl.",
             "-οι",
             "-αι",
             "-α"
           ],
           [
-            "Gen.",
+            "Gen. Pl.",
             "-ων",
             "-ων",
             "-ων"
           ],
           [
-            "Dat.",
+            "Dat. Pl.",
             "-οις",
             "-αις",
             "-οις"
           ],
           [
-            "Acus.",
+            "Acus. Pl.",
             "-ους",
             "-ας",
             "-α"
           ],
           [
-            "Voc.",
+            "Voc. Pl.",
             "-οι",
             "-αι",
             "-α"
@@ -9311,7 +9513,8 @@
             "ὑψηλότερος",
             "ὕψιστος"
           ]
-        ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -12684,70 +12887,58 @@
       },
       {
         "type": "table",
-        "title": "Pronome Pessoal: 3ª Pessoa Singular (αὐτός)",
+        "title": "Pronome Pessoal: 3ª Pessoa (αὐτός)",
         "headers": [
-          "Caso",
+          "Caso / Número",
           "Masculino",
           "Feminino",
           "Neutro"
         ],
         "rows": [
           [
-            "Nom.",
+            "Nom. Sg.",
             "αὐτός",
             "αὐτή",
             "αὐτό"
           ],
           [
-            "Gen.",
+            "Gen. Sg.",
             "αὐτοῦ",
             "αὐτῆς",
             "αὐτοῦ"
           ],
           [
-            "Dat.",
+            "Dat. Sg.",
             "αὐτῷ",
             "αὐτῇ",
             "αὐτῷ"
           ],
           [
-            "Acus.",
+            "Acus. Sg.",
             "αὐτόν",
             "αὐτήν",
             "αὐτό"
-          ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Pronome Pessoal: 3ª Pessoa Plural (αὐτοί)",
-        "headers": [
-          "Caso",
-          "Masculino",
-          "Feminino",
-          "Neutro"
-        ],
-        "rows": [
+          ],
           [
-            "Nom.",
+            "Nom. Pl.",
             "αὐτοί",
             "αὐταί",
             "αὐτά"
           ],
           [
-            "Gen.",
+            "Gen. Pl.",
             "αὐτῶν",
             "αὐτῶν",
             "αὐτῶν"
           ],
           [
-            "Dat.",
+            "Dat. Pl.",
             "αὐτοῖς",
             "αὐταῖς",
             "αὐτοῖς"
           ],
           [
-            "Acus.",
+            "Acus. Pl.",
             "αὐτούς",
             "αὐτάς",
             "αὐτά"
@@ -12756,70 +12947,58 @@
       },
       {
         "type": "table",
-        "title": "Pronome Demonstrativo: Singular (οὗτος)",
+        "title": "Pronome Demonstrativo (οὗτος)",
         "headers": [
-          "Caso",
+          "Caso / Número",
           "Masculino",
           "Feminino",
           "Neutro"
         ],
         "rows": [
           [
-            "Nom.",
+            "Nom. Sg.",
             "οὗτος",
             "αὕτη",
             "τοῦτο"
           ],
           [
-            "Gen.",
+            "Gen. Sg.",
             "τούτου",
             "ταύτης",
             "τούτου"
           ],
           [
-            "Dat.",
+            "Dat. Sg.",
             "τούτῳ",
             "ταύτῃ",
             "τούτῳ"
           ],
           [
-            "Acus.",
+            "Acus. Sg.",
             "τοῦτον",
             "ταύτην",
             "τοῦτο"
-          ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Pronome Demonstrativo: Plural (οὗτοι)",
-        "headers": [
-          "Caso",
-          "Masculino",
-          "Feminino",
-          "Neutro"
-        ],
-        "rows": [
+          ],
           [
-            "Nom.",
+            "Nom. Pl.",
             "οὗτοι",
             "αὗται",
             "ταῦτα"
           ],
           [
-            "Gen.",
+            "Gen. Pl.",
             "τούτων",
             "τούτων",
             "τούτων"
           ],
           [
-            "Dat.",
+            "Dat. Pl.",
             "τούτοις",
             "ταύταις",
             "τούτοις"
           ],
           [
-            "Acus.",
+            "Acus. Pl.",
             "τούτους",
             "ταύτας",
             "ταῦτα"
@@ -12828,70 +13007,58 @@
       },
       {
         "type": "table",
-        "title": "Pronome Relativo: Singular (ὅς)",
+        "title": "Pronome Relativo (ὅς)",
         "headers": [
-          "Caso",
+          "Caso / Número",
           "Masculino",
           "Feminino",
           "Neutro"
         ],
         "rows": [
           [
-            "Nom.",
+            "Nom. Sg.",
             "ὅς",
             "ἥ",
             "ὅ"
           ],
           [
-            "Gen.",
+            "Gen. Sg.",
             "οὗ",
             "ἧς",
             "οὗ"
           ],
           [
-            "Dat.",
+            "Dat. Sg.",
             "ᾧ",
             "ᾗ",
             "ᾧ"
           ],
           [
-            "Acus.",
+            "Acus. Sg.",
             "ὅν",
             "ἥν",
             "ὅ"
-          ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Pronome Relativo: Plural (οἵ)",
-        "headers": [
-          "Caso",
-          "Masculino",
-          "Feminino",
-          "Neutro"
-        ],
-        "rows": [
+          ],
           [
-            "Nom.",
+            "Nom. Pl.",
             "οἵ",
             "αἵ",
             "ἅ"
           ],
           [
-            "Gen.",
+            "Gen. Pl.",
             "ὧν",
             "ὧν",
             "ὧν"
           ],
           [
-            "Dat.",
+            "Dat. Pl.",
             "οἷς",
             "αἷς",
             "οἷς"
           ],
           [
-            "Acus.",
+            "Acus. Pl.",
             "οὕς",
             "ἅς",
             "ἅ"
@@ -15178,6 +15345,65 @@
     "paradigms": [
       {
         "type": "table",
+        "title": "Imperfeito do Indicativo de εἰμί",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "ἤμην",
+            "ἦμεν"
+          ],
+          [
+            "2ª",
+            "ἦς",
+            "ἦτε"
+          ],
+          [
+            "3ª",
+            "ἦν",
+            "ἦσαν"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Resumo: Imperfeito do Indicativo",
+        "headers": [
+          "Identificação",
+          "1ª Sg.",
+          "2ª Sg.",
+          "3ª Sg.",
+          "1ª Pl.",
+          "2ª Pl.",
+          "3ª Pl."
+        ],
+        "rows": [
+          [
+            "Impf. Ind. A. (ε + R)",
+            "-ον",
+            "-ες",
+            "-ε(ν)",
+            "-ομεν",
+            "-ετε",
+            "-ον"
+          ],
+          [
+            "Impf. Ind. M./P. (ε + R)",
+            "-όμην",
+            "-ου",
+            "-ετο",
+            "-όμεθα",
+            "-εσθε",
+            "-οντο"
+          ]
+        ]
+      },
+      {
+        "type": "table",
         "title": "Imperfeito do Indicativo Ativo (βλέπω)",
         "headers": [
           "Pessoa",
@@ -15200,7 +15426,8 @@
             "ἔβλεπε(ν)",
             "ἔβλεπον"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -15226,33 +15453,8 @@
             "ἐβλέπετο",
             "ἐβλέποντο"
           ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Imperfeito do Indicativo de εἰμί",
-        "headers": [
-          "Pessoa",
-          "Singular",
-          "Plural"
         ],
-        "rows": [
-          [
-            "1ª",
-            "ἤμην",
-            "ἦμεν"
-          ],
-          [
-            "2ª",
-            "ἦς",
-            "ἦτε"
-          ],
-          [
-            "3ª",
-            "ἦν",
-            "ἦσαν"
-          ]
-        ]
+        "level": "consulta"
       }
     ]
   },
@@ -16648,6 +16850,84 @@
     "paradigms": [
       {
         "type": "table",
+        "title": "Resumo: 2º Aoristo (Я = radical modificado)",
+        "headers": [
+          "Identificação",
+          "1ª Sg.",
+          "2ª Sg.",
+          "3ª Sg.",
+          "1ª Pl.",
+          "2ª Pl.",
+          "3ª Pl."
+        ],
+        "rows": [
+          [
+            "Ind. A. (ε + Я)",
+            "-ον",
+            "-ες",
+            "-ε(ν)",
+            "-ομεν",
+            "-ετε",
+            "-ον"
+          ],
+          [
+            "Ind. M. (ε + Я)",
+            "-όμην",
+            "-ου",
+            "-ετο",
+            "-όμεθα",
+            "-εσθε",
+            "-οντο"
+          ],
+          [
+            "Ind. P. (ε + Я + η)",
+            "-ν",
+            "-ς",
+            "-–",
+            "-μεν",
+            "-τε",
+            "-σαν"
+          ],
+          [
+            "Inf. A. | M. (Я)",
+            "-εῖν",
+            "-έσθαι",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Inf. P. (Я + ῆ)",
+            "-ναι",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Subj. A. (Я [ω/η])",
+            "-ω",
+            "-ῃς",
+            "-ῃ",
+            "-ωμεν",
+            "-ητε",
+            "-ωσι(ν)"
+          ],
+          [
+            "Subj. M. (Я [ω/η])",
+            "-ωμαι",
+            "-ῃ",
+            "-ηται",
+            "-ώμεθα",
+            "-ησθε",
+            "-ωνται"
+          ]
+        ]
+      },
+      {
+        "type": "table",
         "title": "2º Aoristo do Indicativo Ativo (βάλλω)",
         "headers": [
           "Pessoa",
@@ -16670,7 +16950,8 @@
             "ἔβαλε(ν)",
             "ἔβαλον"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -16696,7 +16977,8 @@
             "ἐβάλετο",
             "ἐβάλοντο"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -16722,7 +17004,8 @@
             "ἀπεστάλη",
             "ἀπεστάλησαν"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -16748,7 +17031,8 @@
             "βάλῃ",
             "βάλωσι(ν)"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -16774,7 +17058,8 @@
             "βάληται",
             "βάλωνται"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -16800,7 +17085,8 @@
             "ἀποσταλῆναι",
             "ser enviado"
           ]
-        ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -18040,6 +18326,93 @@
     "paradigms": [
       {
         "type": "table",
+        "title": "Resumo: 1º Aoristo",
+        "headers": [
+          "Identificação",
+          "1ª Sg.",
+          "2ª Sg.",
+          "3ª Sg.",
+          "1ª Pl.",
+          "2ª Pl.",
+          "3ª Pl."
+        ],
+        "rows": [
+          [
+            "Ind. A. (ε + R + σ[α])",
+            "-α",
+            "-ας",
+            "-ε(ν)",
+            "-αμεν",
+            "-ατε",
+            "-αν"
+          ],
+          [
+            "Ind. M. (ε + R + σ[α])",
+            "-άμην",
+            "-ω",
+            "-ατο",
+            "-άμεθα",
+            "-ασθε",
+            "-αντο"
+          ],
+          [
+            "Ind. P. (ε + R + θη)",
+            "-ν",
+            "-ς",
+            "-–",
+            "-μεν",
+            "-τε",
+            "-σαν"
+          ],
+          [
+            "Subj. A. (R + σ [ω/η])",
+            "-ω",
+            "-ῃς",
+            "-ῃ",
+            "-ωμεν",
+            "-ητε",
+            "-ωσι(ν)"
+          ],
+          [
+            "Subj. M. (R + σ [ω/η])",
+            "-ωμαι",
+            "-ῃ",
+            "-ηται",
+            "-ώμεθα",
+            "-ησθε",
+            "-ωνται"
+          ],
+          [
+            "Subj. P. (R + θ [ω/η])",
+            "-ῶ",
+            "-ῇς",
+            "-ῇ",
+            "-ῶμεν",
+            "-ῆτε",
+            "-ῶσι(ν)"
+          ],
+          [
+            "Inf. A. | M. (R + σα)",
+            "-ι",
+            "-σθαι",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Inf. P. (R + θη)",
+            "-ναι",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "type": "table",
         "title": "1º Aoristo do Indicativo Ativo (λύω)",
         "headers": [
           "Pessoa",
@@ -18062,7 +18435,8 @@
             "ἔλυσε(ν)",
             "ἔλυσαν"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -18088,7 +18462,8 @@
             "ἐλύσατο",
             "ἐλύσαντο"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -18114,7 +18489,8 @@
             "ἐλύθη",
             "ἐλύθησαν"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -18140,7 +18516,8 @@
             "λύσῃ",
             "λύσωσι(ν)"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -18166,7 +18543,8 @@
             "λύσηται",
             "λύσωνται"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -18192,7 +18570,8 @@
             "λυθῇ",
             "λυθῶσι(ν)"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -18218,7 +18597,8 @@
             "λυθῆναι",
             "ser desatado"
           ]
-        ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -19683,70 +20063,58 @@
       },
       {
         "type": "table",
-        "title": "Flexão do Adjetivo πᾶς, πᾶσα, πᾶν (Singular)",
+        "title": "Flexão do Adjetivo πᾶς, πᾶσα, πᾶν",
         "headers": [
-          "Caso",
+          "Caso / Número",
           "Masculino",
           "Feminino",
           "Neutro"
         ],
         "rows": [
           [
-            "Nominativo",
+            "Nom. Sg.",
             "πᾶς",
             "πᾶσα",
             "πᾶν"
           ],
           [
-            "Genitivo",
+            "Gen. Sg.",
             "παντός",
             "πάσης",
             "παντός"
           ],
           [
-            "Dativo",
+            "Dat. Sg.",
             "παντί",
             "πάσῃ",
             "παντί"
           ],
           [
-            "Acusativo",
+            "Acus. Sg.",
             "πάντα",
             "πᾶσαν",
             "πᾶν"
-          ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Flexão do Adjetivo πᾶς, πᾶσα, πᾶν (Plural)",
-        "headers": [
-          "Caso",
-          "Masculino",
-          "Feminino",
-          "Neutro"
-        ],
-        "rows": [
+          ],
           [
-            "Nominativo",
+            "Nom. Pl.",
             "πάντες",
             "πᾶσαι",
             "πάντα"
           ],
           [
-            "Genitivo",
+            "Gen. Pl.",
             "πάντων",
             "πασῶν",
             "πάντων"
           ],
           [
-            "Dativo",
+            "Dat. Pl.",
             "πᾶσι(ν)",
             "πάσαις",
             "πᾶσι(ν)"
           ],
           [
-            "Acusativo",
+            "Acus. Pl.",
             "πάντας",
             "πάσας",
             "πάντα"
@@ -21092,70 +21460,58 @@
     "paradigms": [
       {
         "type": "table",
-        "title": "Particípio Presente Ativo (λύω - Singular)",
+        "title": "Particípio Presente Ativo (λύω)",
         "headers": [
-          "Caso",
+          "Caso / Número",
           "Masculino",
           "Feminino",
           "Neutro"
         ],
         "rows": [
           [
-            "Nominativo",
+            "Nom. Sg.",
             "λύων",
             "λύουσα",
             "λῦον"
           ],
           [
-            "Genitivo",
+            "Gen. Sg.",
             "λύοντος",
             "λυούσης",
             "λύοντος"
           ],
           [
-            "Dativo",
+            "Dat. Sg.",
             "λύοντι",
             "λυούσῃ",
             "λύοντι"
           ],
           [
-            "Acusativo",
+            "Acus. Sg.",
             "λύοντα",
             "λύουσαν",
             "λῦον"
-          ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Particípio Presente Ativo (λύω - Plural)",
-        "headers": [
-          "Caso",
-          "Masculino",
-          "Feminino",
-          "Neutro"
-        ],
-        "rows": [
+          ],
           [
-            "Nominativo",
+            "Nom. Pl.",
             "λύοντες",
             "λύουσαι",
             "λύοντα"
           ],
           [
-            "Genitivo",
+            "Gen. Pl.",
             "λυόντων",
             "λυουσῶν",
             "λυόντων"
           ],
           [
-            "Dativo",
+            "Dat. Pl.",
             "λύουσι(ν)",
             "λυούσαις",
             "λύουσι(ν)"
           ],
           [
-            "Acusativo",
+            "Acus. Pl.",
             "λύοντας",
             "λυούσας",
             "λύοντα"
@@ -21164,70 +21520,58 @@
       },
       {
         "type": "table",
-        "title": "Particípio Presente Médio e Passivo (λύω - Singular)",
+        "title": "Particípio Presente Médio e Passivo (λύω)",
         "headers": [
-          "Caso",
+          "Caso / Número",
           "Masculino",
           "Feminino",
           "Neutro"
         ],
         "rows": [
           [
-            "Nominativo",
+            "Nom. Sg.",
             "λυόμενος",
             "λυομένη",
             "λυόμενον"
           ],
           [
-            "Genitivo",
+            "Gen. Sg.",
             "λυομένου",
             "λυομένης",
             "λυομένου"
           ],
           [
-            "Dativo",
+            "Dat. Sg.",
             "λυομένῳ",
             "λυομένῃ",
             "λυομένῳ"
           ],
           [
-            "Acusativo",
+            "Acus. Sg.",
             "λυόμενον",
             "λυομένην",
             "λυόμενον"
-          ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Particípio Presente Médio e Passivo (λύω - Plural)",
-        "headers": [
-          "Caso",
-          "Masculino",
-          "Feminino",
-          "Neutro"
-        ],
-        "rows": [
+          ],
           [
-            "Nominativo",
+            "Nom. Pl.",
             "λυόμενοι",
             "λυόμεναι",
             "λυόμενα"
           ],
           [
-            "Genitivo",
+            "Gen. Pl.",
             "λυομένων",
             "λυομένων",
             "λυομένων"
           ],
           [
-            "Dativo",
+            "Dat. Pl.",
             "λυομένοις",
             "λυομέναις",
             "λυομένοις"
           ],
           [
-            "Acusativo",
+            "Acus. Pl.",
             "λυομένους",
             "λυομένας",
             "λυόμενα"
@@ -21291,6 +21635,54 @@
             "ὄντας",
             "οὔσας",
             "ὄντα"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Resumo: Particípio Presente e Futuro",
+        "headers": [
+          "Identificação",
+          "Masculino",
+          "Feminino",
+          "Neutro",
+          "Declinação (m. | f. | n.)"
+        ],
+        "rows": [
+          [
+            "Pres. A. (R)",
+            "ο ντ",
+            "ο υσ",
+            "ο ντ",
+            "3ª | 1ª | 3ª"
+          ],
+          [
+            "Pres. M./P. (R)",
+            "ο μεν",
+            "ο μεν",
+            "ο μεν",
+            "2ª | 1ª | 2ª"
+          ],
+          [
+            "Fut. A. (R)",
+            "σ ο ντ",
+            "σ ο υσ",
+            "σ ο ντ",
+            "3ª | 1ª | 3ª"
+          ],
+          [
+            "Fut. M. (R)",
+            "σ ο μεν",
+            "σ ο μεν",
+            "σ ο μεν",
+            "2ª | 1ª | 2ª"
+          ],
+          [
+            "Fut. P. (R)",
+            "θη σ ο μεν",
+            "θη σ ο μεν",
+            "θη σ ο μεν",
+            "2ª | 1ª | 2ª"
           ]
         ]
       }
@@ -22836,66 +23228,6 @@
       },
       {
         "type": "table",
-        "title": "Particípio 1.º Aoristo Médio (λύω)",
-        "headers": [
-          "Caso / Número",
-          "Masculino",
-          "Feminino",
-          "Neutro"
-        ],
-        "rows": [
-          [
-            "Nom. Sg.",
-            "λυσάμενος",
-            "λυσαμένη",
-            "λυσάμενον"
-          ],
-          [
-            "Gen. Sg.",
-            "λυσαμένου",
-            "λυσαμένης",
-            "λυσαμένου"
-          ],
-          [
-            "Dat. Sg.",
-            "λυσαμένῳ",
-            "λυσαμένῃ",
-            "λυσαμένῳ"
-          ],
-          [
-            "Ac. Sg.",
-            "λυσάμενον",
-            "λυσαμένην",
-            "λυσάμενον"
-          ],
-          [
-            "Nom. Pl.",
-            "λυσάμενοι",
-            "λυσάμεναι",
-            "λυσάμενα"
-          ],
-          [
-            "Gen. Pl.",
-            "λυσαμένων",
-            "λυσαμένων",
-            "λυσαμένων"
-          ],
-          [
-            "Dat. Pl.",
-            "λυσαμένοις",
-            "λυσαμέναις",
-            "λυσαμένοις"
-          ],
-          [
-            "Ac. Pl.",
-            "λυσαμένους",
-            "λυσαμένας",
-            "λυσάμενα"
-          ]
-        ]
-      },
-      {
-        "type": "table",
         "title": "Particípio 1.º Aoristo Passivo (λύω)",
         "headers": [
           "Caso / Número",
@@ -22953,6 +23285,122 @@
             "λυθέντα"
           ]
         ]
+      },
+      {
+        "type": "table",
+        "title": "Resumo: Particípio Aoristo",
+        "headers": [
+          "Identificação",
+          "Masculino",
+          "Feminino",
+          "Neutro",
+          "Declinação (m. | f. | n.)"
+        ],
+        "rows": [
+          [
+            "1º Aor. A. (R)",
+            "σα ντ",
+            "σα σ",
+            "σα ντ",
+            "3ª | 1ª | 3ª"
+          ],
+          [
+            "1º Aor. M. (R)",
+            "σα μεν",
+            "σα μεν",
+            "σα μεν",
+            "2ª | 1ª | 2ª"
+          ],
+          [
+            "1º Aor. P. (R)",
+            "θε ντ",
+            "θε ισ",
+            "θε ντ",
+            "3ª | 1ª | 3ª"
+          ],
+          [
+            "2º Aor. A. (Я)",
+            "ο ντ",
+            "ο υσ",
+            "ο ντ",
+            "3ª | 1ª | 3ª"
+          ],
+          [
+            "2º Aor. M. (Я)",
+            "ο μεν",
+            "ο μεν",
+            "ο μεν",
+            "2ª | 1ª | 2ª"
+          ],
+          [
+            "2º Aor. P. (Я)",
+            "ε ντ",
+            "ε ισ",
+            "ε ντ",
+            "3ª | 1ª | 3ª"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Particípio 1.º Aoristo Médio (λύω)",
+        "headers": [
+          "Caso / Número",
+          "Masculino",
+          "Feminino",
+          "Neutro"
+        ],
+        "rows": [
+          [
+            "Nom. Sg.",
+            "λυσάμενος",
+            "λυσαμένη",
+            "λυσάμενον"
+          ],
+          [
+            "Gen. Sg.",
+            "λυσαμένου",
+            "λυσαμένης",
+            "λυσαμένου"
+          ],
+          [
+            "Dat. Sg.",
+            "λυσαμένῳ",
+            "λυσαμένῃ",
+            "λυσαμένῳ"
+          ],
+          [
+            "Ac. Sg.",
+            "λυσάμενον",
+            "λυσαμένην",
+            "λυσάμενον"
+          ],
+          [
+            "Nom. Pl.",
+            "λυσάμενοι",
+            "λυσάμεναι",
+            "λυσάμενα"
+          ],
+          [
+            "Gen. Pl.",
+            "λυσαμένων",
+            "λυσαμένων",
+            "λυσαμένων"
+          ],
+          [
+            "Dat. Pl.",
+            "λυσαμένοις",
+            "λυσαμέναις",
+            "λυσαμένοις"
+          ],
+          [
+            "Ac. Pl.",
+            "λυσαμένους",
+            "λυσαμένας",
+            "λυσάμενα"
+          ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -25308,6 +25756,108 @@
       },
       {
         "type": "table",
+        "title": "Resumo: Perfeito (RεR = radical reduplicado)",
+        "headers": [
+          "Identificação",
+          "1ª Sg.",
+          "2ª Sg.",
+          "3ª Sg.",
+          "1ª Pl.",
+          "2ª Pl.",
+          "3ª Pl."
+        ],
+        "rows": [
+          [
+            "Ind. A. (RεR + κ[α])",
+            "-α",
+            "-ας",
+            "-ε(ν)",
+            "-αμεν",
+            "-ατε",
+            "-ασι(ν) / -αν"
+          ],
+          [
+            "Ind. M./P. (RεR)",
+            "-μαι",
+            "-σαι",
+            "-ται",
+            "-μεθα",
+            "-σθε",
+            "-νται"
+          ],
+          [
+            "Inf. A. (RεR + κ)",
+            "-έναι",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Inf. M./P. (RεR)",
+            "-σθαι",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Part. A. (m. | f. | n.)",
+            "κ οτ",
+            "κ υι",
+            "κ οτ",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Part. M./P.",
+            "μεν",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Resumo: Mais-que-perfeito",
+        "headers": [
+          "Identificação",
+          "1ª Sg.",
+          "2ª Sg.",
+          "3ª Sg.",
+          "1ª Pl.",
+          "2ª Pl.",
+          "3ª Pl."
+        ],
+        "rows": [
+          [
+            "MqPf. Ind. A. ((ε) RεR + κ)",
+            "-ειν",
+            "-εις",
+            "-ει",
+            "-ειμεν",
+            "-ειτε",
+            "-εισαν"
+          ],
+          [
+            "MqPf. Ind. M./P. ((ε) RεR)",
+            "-μην",
+            "-σο",
+            "-το",
+            "-μεθα",
+            "-σθε",
+            "-ντο"
+          ]
+        ]
+      },
+      {
+        "type": "table",
         "title": "Perfeito do Indicativo Médio e Passivo (λύω)",
         "headers": [
           "Pessoa",
@@ -25330,7 +25880,8 @@
             "λέλυται",
             "λέλυνται"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -25366,7 +25917,8 @@
             "λελυμένης",
             "λελυμένου"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -25407,7 +25959,8 @@
             "(ἐ)πεπιστεύκεισαν",
             "(ἐ)λέλυντο"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -25428,7 +25981,8 @@
             "λελύσθαι",
             "ter-se desatado / ter sido desatado"
           ]
-        ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -26745,6 +27299,174 @@
     "paradigms": [
       {
         "type": "table",
+        "title": "Resumo: Imperativo",
+        "headers": [
+          "Identificação",
+          "2ª Sg.",
+          "3ª Sg.",
+          "2ª Pl.",
+          "3ª Pl."
+        ],
+        "rows": [
+          [
+            "Pres. A. (R + ε)",
+            "-–",
+            "-τω",
+            "-τε",
+            "-τωσαν"
+          ],
+          [
+            "Pres. M./P. (R + ε)",
+            "-ου",
+            "-σθω",
+            "-σθε",
+            "-σθωσαν"
+          ],
+          [
+            "1º Aor. A. (R + σα)",
+            "-σον",
+            "-τω",
+            "-τε",
+            "-τωσαν"
+          ],
+          [
+            "1º Aor. M. (R + σα)",
+            "-σαι",
+            "-σθω",
+            "-σθε",
+            "-σθωσαν"
+          ],
+          [
+            "1º Aor. P. (R + θη)",
+            "-τι",
+            "-τω",
+            "-τε",
+            "-τωσαν"
+          ],
+          [
+            "2º Aor. A. (Я + ε)",
+            "-–",
+            "-τω",
+            "-τε",
+            "-τωσαν"
+          ],
+          [
+            "2º Aor. M. (Я + ε)",
+            "-ου",
+            "-σθω",
+            "-σθε",
+            "-σθωσαν"
+          ],
+          [
+            "2º Aor. P. (Я + η)",
+            "-θι",
+            "-τω",
+            "-τε",
+            "-τωσαν"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Imperativo de εἰμί",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "2ª",
+            "ἴσθι (sê tu)",
+            "ἔστε (sede vós)"
+          ],
+          [
+            "3ª",
+            "ἔστω (seja ele)",
+            "ἔστωσαν (sejam eles)"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Resumo: Modo Optativo",
+        "headers": [
+          "Identificação",
+          "1ª Sg.",
+          "2ª Sg.",
+          "3ª Sg.",
+          "1ª Pl.",
+          "2ª Pl.",
+          "3ª Pl."
+        ],
+        "rows": [
+          [
+            "Pres. A. (R + οι)",
+            "-μι",
+            "-ς",
+            "-–",
+            "-μεν",
+            "-τε",
+            "-εν"
+          ],
+          [
+            "Pres. M./P. (R + οι)",
+            "-μην",
+            "-ο",
+            "-το",
+            "-μεθα",
+            "-σθε",
+            "-ντο"
+          ],
+          [
+            "1º Aor. A. (R + σ αι)",
+            "-μι",
+            "-ς",
+            "-–",
+            "-μεν",
+            "-τε",
+            "-εν"
+          ],
+          [
+            "1º Aor. M. (R + σ αι)",
+            "-μην",
+            "-ο",
+            "-το",
+            "-μεθα",
+            "-σθε",
+            "-ντο"
+          ],
+          [
+            "1º Aor. P. (R + θε ίη)",
+            "-ν",
+            "-ς",
+            "-–",
+            "-μεν",
+            "-τε",
+            "-σαν"
+          ],
+          [
+            "2º Aor. A. (Я + οι)",
+            "-μι",
+            "-ς",
+            "-–",
+            "-μεν",
+            "-τε",
+            "-εν"
+          ],
+          [
+            "2º Aor. M. (Я + οι)",
+            "-μην",
+            "-ο",
+            "-το",
+            "-μεθα",
+            "-σθε",
+            "-ντο"
+          ]
+        ]
+      },
+      {
+        "type": "table",
         "title": "Presente do Imperativo (ἔχω / λύω)",
         "headers": [
           "Pessoa",
@@ -26768,7 +27490,8 @@
             "λυέσθω",
             "λυέσθωσαν"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -26801,7 +27524,8 @@
             "λυθήτω",
             "λυθήτωσαν"
           ]
-        ]
+        ],
+        "level": "consulta"
       },
       {
         "type": "table",
@@ -26834,79 +27558,8 @@
             "γραφήτω",
             "γραφήτωσαν"
           ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Imperativo de εἰμί",
-        "headers": [
-          "Pessoa",
-          "Singular",
-          "Plural"
         ],
-        "rows": [
-          [
-            "2ª",
-            "ἴσθι (sê tu)",
-            "ἔστε (sede vós)"
-          ],
-          [
-            "3ª",
-            "ἔστω (seja ele)",
-            "ἔστωσαν (sejam eles)"
-          ]
-        ]
-      },
-      {
-        "type": "table",
-        "title": "Terminações do Modo Optativo",
-        "headers": [
-          "Tempo / Voz",
-          "1ª Sg.",
-          "2ª Sg.",
-          "3ª Sg.",
-          "1ª Pl.",
-          "2ª Pl.",
-          "3ª Pl."
-        ],
-        "rows": [
-          [
-            "Pres. Ativo",
-            "-οιμι",
-            "-οις",
-            "-οι",
-            "-οιμεν",
-            "-οιτε",
-            "-οιεν"
-          ],
-          [
-            "Pres. Méd./Pass.",
-            "-οίμην",
-            "-οιο",
-            "-οιτο",
-            "-οίμεθα",
-            "-οισθε",
-            "-οιντο"
-          ],
-          [
-            "1º Aor. Ativo",
-            "-σαιμι",
-            "-σαις",
-            "-σαι",
-            "-σαιμεν",
-            "-σαιτε",
-            "-σαιεν"
-          ],
-          [
-            "1º Aor. Passivo",
-            "-θείην",
-            "-θείης",
-            "-θείη",
-            "-θεῖμεν",
-            "-θεῖτε",
-            "-θεῖεν"
-          ]
-        ]
+        "level": "consulta"
       }
     ]
   },
@@ -30219,7 +30872,7 @@
           [
             "ἵημι",
             "enviar, soltar",
-            "ἡ- / ἑ-",
+            "ἥ- / ἕ-",
             "ἱη- / ἱε-"
           ],
           [
@@ -30235,6 +30888,154 @@
             "ἱστη- / ἱστα-"
           ]
         ]
+      },
+      {
+        "type": "table",
+        "title": "Resumo: Verbos em -μι (Indicativo, Infinitivo e Particípio)",
+        "headers": [
+          "Identificação",
+          "1ª Sg.",
+          "2ª Sg.",
+          "3ª Sg.",
+          "1ª Pl.",
+          "2ª Pl.",
+          "3ª Pl."
+        ],
+        "rows": [
+          [
+            "Pres. Ind. A. (RιR)",
+            "-μι",
+            "-ς",
+            "-σι(ν)",
+            "-μεν",
+            "-τε",
+            "-ασι(ν)"
+          ],
+          [
+            "Pres. Ind. M./P. (RιR)",
+            "-μαι",
+            "-σαι",
+            "-ται",
+            "-μεθα",
+            "-σθε",
+            "-νται"
+          ],
+          [
+            "Impf. Ind. A. (ε + RιR)",
+            "-ν",
+            "-ς",
+            "-–",
+            "-μεν",
+            "-τε",
+            "-σαν"
+          ],
+          [
+            "Impf. Ind. M./P. (ε + RιR)",
+            "-μην",
+            "-σο",
+            "-το",
+            "-μεθα",
+            "-σθε",
+            "-ντο"
+          ],
+          [
+            "Inf. Pres. (A. | M./P.)",
+            "-ναι",
+            "-σθαι",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Part. Pres. A. (m. | f. | n.)",
+            "ντ",
+            "υσ",
+            "ντ",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Part. Pres. M./P.",
+            "μεν",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Resumo: Verbos em -μι (Subjuntivo, Imperativo e Optativo)",
+        "headers": [
+          "Identificação",
+          "1ª Sg.",
+          "2ª Sg.",
+          "3ª Sg.",
+          "1ª Pl.",
+          "2ª Pl.",
+          "3ª Pl."
+        ],
+        "rows": [
+          [
+            "Pres. Subj. A. (RιR [ω/η])",
+            "-–",
+            "-ς",
+            "-–",
+            "-μεν",
+            "-τε",
+            "-σι(ν)"
+          ],
+          [
+            "Pres. Subj. M./P. (RιR [ω/η])",
+            "-μαι",
+            "-[ῳ/ῃ]",
+            "-ται",
+            "-μεθα",
+            "-σθε",
+            "-νται"
+          ],
+          [
+            "Pres. Imp. A. (RιR)",
+            "",
+            "-–",
+            "-τω",
+            "",
+            "-τε",
+            "-τωσαν"
+          ],
+          [
+            "Pres. Imp. M./P. (RιR)",
+            "",
+            "-σο",
+            "-σθω",
+            "",
+            "-σθε",
+            "-σθωσαν"
+          ],
+          [
+            "Pres. Opt. A. (RιR + ίη)",
+            "-ν",
+            "-ς",
+            "-–",
+            "-μεν",
+            "-τε",
+            "-εν"
+          ],
+          [
+            "Pres. Opt. M./P. (RιR + ι)",
+            "-μην",
+            "-ο",
+            "-το",
+            "-μεθα",
+            "-σθε",
+            "-ντο"
+          ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -31889,9 +32690,10 @@
             "12",
             "δώδεκα",
             "δωδέκατος, -η, -ον",
-            "δωδεκάκις"
+            "—"
           ]
-        ]
+        ],
+        "level": "consulta"
       }
     ]
   },
@@ -33817,8 +34619,8 @@
           ],
           [
             "Adversativas",
-            "ἀλλά, δέ, πλήν",
-            "mas, porém, todavia, exceto"
+            "ἀλλά, δέ",
+            "mas, porém, todavia"
           ],
           [
             "Causais",

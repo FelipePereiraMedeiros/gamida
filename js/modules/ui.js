@@ -739,14 +739,16 @@ function refreshAfterChapterSelectionChange() {
   if (parSelect && AppState.currentChapter) {
     parSelect.innerHTML = '<option value="">Selecione a tabela ou grafo...</option>';
     const selectedChaps = _resolveGetSelectedChapters(AppState);
+    // Tabelas de consulta ficam fora do seletor; a mesma regra vale em getActiveParadigmsList
+    const isExercise = (p) => p && p.level !== "consulta";
     let allParadigms = [];
     selectedChaps.forEach((ch) => {
       if (ch && Array.isArray(ch.paradigms)) {
-        ch.paradigms.forEach((p) => allParadigms.push(p));
+        ch.paradigms.filter(isExercise).forEach((p) => allParadigms.push(p));
       }
     });
     if (allParadigms.length === 0 && AppState.currentChapter.paradigms) {
-      allParadigms = AppState.currentChapter.paradigms;
+      allParadigms = AppState.currentChapter.paradigms.filter(isExercise);
     }
     allParadigms.forEach((par, idx) => {
       const opt = document.createElement("option");

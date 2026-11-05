@@ -21,6 +21,9 @@ const {
   onDropToDeck,
   onChipClick,
   onZoneClick,
+  isExerciseParadigm,
+  isBlankCell,
+  getActiveParadigmsList,
 } = require('../js/modules/paradigms.js');
 const { AppState } = require('../js/modules/state.js');
 
@@ -442,6 +445,85 @@ suite.test('A aba usa o nome Tabelas e Grafos nos textos visíveis', () => {
   const html = require('fs').readFileSync(require('path').join(__dirname, '../index.html'), 'utf8');
   assert.includes(html, '<h2 class="page-head__title">Tabelas e Grafos</h2>', 'Título da aba ausente');
   assert.isFalse(html.includes('<span>Paradigmas</span>'), 'Navegação não deve usar o nome antigo');
+});
+
+suite.test('A seleção traz as tabelas principais e mantém as demais só na Consulta', () => {
+  const count = (data) => {
+    const all = data.flatMap(c => c.paradigms || []);
+    return { total: all.length, exercise: all.filter(isExerciseParadigm).length };
+  };
+  assert.equal(count(greekData).exercise, 51, 'Grego: tabelas principais no seletor');
+  assert.equal(count(greekData).total, 93, 'Grego: todas as tabelas seguem disponíveis na Consulta');
+  assert.equal(count(hebrewData).exercise, 31, 'Hebraico: tabelas principais no seletor');
+  [...greekData, ...hebrewData].forEach(chap => {
+    if (chap.paradigms && chap.paradigms.length) {
+      assert.isGreaterThan(chap.paradigms.filter(isExerciseParadigm).length, 0, `${chap.id} ficou sem tabela no exercício`);
+    }
+    (chap.paradigms || []).filter(p => p.type === 'table').forEach(p => {
+      p.rows.forEach(r => assert.equal(r.length, p.headers.length, `${p.title}: linha fora do cabeçalho`));
+    });
+  });
+});
+
+suite.test('O seletor e o tabuleiro ignoram as tabelas de consulta', () => {
+  const principal = { type: 'table', title: 'Principal', headers: ['a', 'b'], rows: [['x', 'y']] };
+  const extra = { ...principal, title: 'Extra', level: 'consulta' };
+  const previous = { chapter: AppState.currentChapter, ids: AppState.selectedChapterIds };
+  AppState.selectedChapterIds = [];
+  AppState.currentChapter = { id: 'teste', paradigms: [extra, principal] };
+  assert.deepEqual(getActiveParadigmsList().map(p => p.title), ['Principal']);
+  AppState.currentChapter = previous.chapter;
+  AppState.selectedChapterIds = previous.ids;
+
+  const ui = require('fs').readFileSync(require('path').join(__dirname, '../js/modules/ui.js'), 'utf8');
+  assert.includes(ui, 'ch.paradigms.filter(isExercise)', 'O seletor deve usar a mesma regra do tabuleiro');
+});
+
+suite.test('Células vazias ou com travessão não geram zona nem ficha', () => {
+  const { doc, elementsById } = createMockDOM();
+  global.document = doc;
+  global.window = { AppState, shuffleArray: arr => [...arr], ParadigmsModule: require('../js/modules/paradigms.js') };
+  AppState.language = 'hebrew';
+
+  const board = elementsById['paradigm-board'];
+  renderTableView({
+    type: 'table', title: 'Com lacunas', headers: ['Forma', 'Qal', "Pu'al", "Hof'al"],
+    rows: [['Imper. 2ms', 'מְשֹׁל', '—', '']],
+  }, board);
+
+  assert.equal(board.querySelectorAll('.drop-zone').length, 1, 'Só a célula preenchida vira zona');
+  assert.equal(elementsById['paradigm-deck'].children.length, 1, 'Só a célula preenchida vira ficha');
+  assert.isTrue(isBlankCell(' — ') && isBlankCell('') && !isBlankCell('-–'), 'Terminação zero (-–) é resposta');
+  delete global.document;
+  delete global.window;
+});
+
+suite.test('Hebraico traz os quadros centrais do livro', () => {
+  const titles = hebrewData.flatMap(c => c.paradigms || []);
+  const find = (text) => titles.find(p => p.title.includes(text));
+
+  ['Sufixos em Substantivo Singular', 'Sufixos em Substantivo Plural'].forEach(t => {
+    assert.equal(find(t).rows.length, 10, `${t}: as 10 pessoas, incluindo 2fp e 3fp`);
+  });
+  assert.isTrue(!!find('Sinopse do Verbo Forte (מָשַׁל): Formas Finitas'), 'Sinopse do verbo forte ausente');
+  assert.equal(find('Classes de Verbos Fracos').rows.length, 10, 'O livro agrupa os fracos em 10 classes');
+  ['kelley_22', 'kelley_23', 'kelley_24', 'licao_25', 'licao_26', 'licao_27', 'licao_28', 'licao_29', 'licao_30', 'licao_31']
+    .forEach(id => {
+      const chap = hebrewData.find(c => c.id === id);
+      assert.isGreaterThan((chap.paradigms || []).length, 0, `${id} sem tabela de verbo fraco`);
+    });
+});
+
+suite.test('Grego usa os resumos do livro e corrige o optativo e ἵημι', () => {
+  const all = greekData.flatMap(c => c.paradigms || []);
+  const optativo = all.find(p => p.title === 'Resumo: Modo Optativo');
+  assert.equal(optativo.rows.length, 7, 'O quadro do livro tem 7 linhas');
+  assert.deepEqual(optativo.rows[4].slice(1), ['-ν', '-ς', '-–', '-μεν', '-τε', '-σαν'], '1º aoristo passivo');
+  assert.isTrue(!all.some(p => p.title === 'Terminações do Modo Optativo'), 'A tabela antiga divergia do livro');
+
+  const mi = all.find(p => p.title === 'Radicais Reduplicados dos Verbos em -μι');
+  assert.equal(mi.rows.find(r => r[0] === 'ἵημι')[2], 'ἥ- / ἕ-');
+  assert.equal(all.find(p => p.title === 'Artigo Definido').rows.length, 8, 'Singular e plural num quadro só');
 });
 
 module.exports = suite;

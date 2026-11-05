@@ -3092,7 +3092,7 @@
     ],
     "paradigms": [
       {
-        "title": "Terminações de Gênero e Número nos Substantivos (סוּס)",
+        "title": "Terminações de Gênero e Número nos Substantivos",
         "type": "table",
         "headers": [
           "Número",
@@ -3111,9 +3111,9 @@
             "סוּסוֹת"
           ],
           [
-            "Dual",
-            "סוּסַיִם",
-            "סוּסָתַיִם"
+            "Dual (ex.: olhos, pés)",
+            "—",
+            "עֵינַיִם / רַגְלַיִם"
           ]
         ]
       }
@@ -5166,7 +5166,7 @@
     ],
     "paradigms": [
       {
-        "title": "Pronomes Pessoais Independentes (Page Kelley § 9)",
+        "title": "Pronomes Pessoais Independentes (§23)",
         "type": "table",
         "headers": [
           "Pessoa / Gênero",
@@ -5177,7 +5177,7 @@
           [
             "1ª Comum",
             "אֲנִי / אָנֹכִי",
-            "אֲנַחְנוּ"
+            "אֲנַחְנוּ / נַחְנוּ / אָנוּ"
           ],
           [
             "2ª Masculino",
@@ -6105,7 +6105,7 @@
           [
             "Masc. Singular",
             "סוּס",
-            "סוּס־"
+            "סוּס"
           ],
           [
             "Fem. Singular",
@@ -8024,53 +8024,160 @@
     ],
     "paradigms": [
       {
-        "title": "Sufixos Pronominais na Preposição לְ e no Substantivo סוּס",
         "type": "table",
+        "title": "Sufixos Pronominais na Preposição לְ (§27.1)",
         "headers": [
           "Pessoa",
-          "Com Preposição (לְ)",
-          "No Substantivo Sing. (סוּס)"
+          "Singular",
+          "Plural"
         ],
         "rows": [
           [
-            "1cs (meu / a mim)",
+            "1ª c.",
             "לִי",
-            "סוּסִי"
+            "לָנוּ"
           ],
           [
-            "2ms (teu / a ti)",
+            "2ª m.",
             "לְךָ",
-            "סוּסְךָ"
+            "לָכֶם"
           ],
           [
-            "2fs (teu / a ti)",
+            "2ª f.",
             "לָךְ",
-            "סוּסֵךְ"
+            "לָכֶן"
           ],
           [
-            "3ms (seu / a ele)",
+            "3ª m.",
             "לוֹ",
-            "סוּסוֹ"
+            "לָהֶם"
           ],
           [
-            "3fs (dela / a ela)",
+            "3ª f.",
             "לָהּ",
-            "סוּסָהּ"
+            "לָהֶן"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Sufixos em Substantivo Singular (§28.1)",
+        "headers": [
+          "Pessoa",
+          "Sufixo",
+          "Exemplo (קוֹל)"
+        ],
+        "rows": [
+          [
+            "1ª c. sg.",
+            "◌ִי",
+            "קוֹלִי"
           ],
           [
-            "1cp (nosso / a nós)",
-            "לָנוּ",
-            "סוּסֵנוּ"
+            "2ª m. sg.",
+            "◌ְךָ",
+            "קוֹלְךָ"
           ],
           [
-            "2mp (vosso / a vós)",
-            "לָכֶם",
-            "סוּסְכֶם"
+            "2ª f. sg.",
+            "◌ֵךְ",
+            "קוֹלֵךְ"
           ],
           [
-            "3mp (deles / a eles)",
-            "לָהֶם",
-            "סוּסָם"
+            "3ª m. sg.",
+            "וֹ",
+            "קוֹלוֹ"
+          ],
+          [
+            "3ª f. sg.",
+            "◌ָהּ",
+            "קוֹלָהּ"
+          ],
+          [
+            "1ª c. pl.",
+            "◌ֵנוּ",
+            "קוֹלֵנוּ"
+          ],
+          [
+            "2ª m. pl.",
+            "◌ְכֶם",
+            "קוֹלְכֶם"
+          ],
+          [
+            "2ª f. pl.",
+            "◌ְכֶן",
+            "קוֹלְכֶן"
+          ],
+          [
+            "3ª m. pl.",
+            "◌ָם",
+            "קוֹלָם"
+          ],
+          [
+            "3ª f. pl.",
+            "◌ָן",
+            "קוֹלָן"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Sufixos em Substantivo Plural (§28.2)",
+        "headers": [
+          "Pessoa",
+          "Sufixo",
+          "Exemplo (אֱלֹהִים)"
+        ],
+        "rows": [
+          [
+            "1ª c. sg.",
+            "◌ַי",
+            "אֱלֹהַי"
+          ],
+          [
+            "2ª m. sg.",
+            "◌ֶיךָ",
+            "אֱלֹהֶיךָ"
+          ],
+          [
+            "2ª f. sg.",
+            "◌ַיִךְ",
+            "אֱלֹהַיִךְ"
+          ],
+          [
+            "3ª m. sg.",
+            "◌ָיו",
+            "אֱלֹהָיו"
+          ],
+          [
+            "3ª f. sg.",
+            "◌ֶיהָ",
+            "אֱלֹהֶיהָ"
+          ],
+          [
+            "1ª c. pl.",
+            "◌ֵינוּ",
+            "אֱלֹהֵינוּ"
+          ],
+          [
+            "2ª m. pl.",
+            "◌ֵיכֶם",
+            "אֱלֹהֵיכֶם"
+          ],
+          [
+            "2ª f. pl.",
+            "◌ֵיכֶן",
+            "אֱלֹהֵיכֶן"
+          ],
+          [
+            "3ª m. pl.",
+            "◌ֵיהֶם",
+            "אֱלֹהֵיהֶם"
+          ],
+          [
+            "3ª f. pl.",
+            "◌ֵיהֶן",
+            "אֱלֹהֵיהֶן"
           ]
         ]
       }
@@ -9472,6 +9579,103 @@
             "שָׁמַרְנוּ"
           ]
         ]
+      },
+      {
+        "type": "table",
+        "title": "Aformativos do Perfeito (§30.2)",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "3ª m.",
+            "(nenhum)",
+            "וּ"
+          ],
+          [
+            "3ª f.",
+            "◌ָה",
+            "וּ"
+          ],
+          [
+            "2ª m.",
+            "◌ְתָּ",
+            "◌ְתֶּם"
+          ],
+          [
+            "2ª f.",
+            "◌ְתְּ",
+            "◌ְתֶּן"
+          ],
+          [
+            "1ª c.",
+            "◌ְתִּי",
+            "◌ְנוּ"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Classes de Verbos Fracos (§29.6)",
+        "headers": [
+          "Sistema tradicional",
+          "Verbo-modelo",
+          "Designação numérica"
+        ],
+        "rows": [
+          [
+            "Pe Gutural",
+            "עָמַד",
+            "I – Gutural"
+          ],
+          [
+            "Ayin Gutural",
+            "שָׁאַל",
+            "II – Gutural"
+          ],
+          [
+            "Lamed Gutural",
+            "שָׁלַח",
+            "III – Gutural"
+          ],
+          [
+            "Pe Alef",
+            "אָכַל",
+            "I – Alef"
+          ],
+          [
+            "Lamed Alef",
+            "מָצָא",
+            "III – Alef"
+          ],
+          [
+            "Lamed He",
+            "בָּנָה",
+            "III – He"
+          ],
+          [
+            "Pe Nun",
+            "נָפַל",
+            "I – Nun"
+          ],
+          [
+            "Ayin Vav / Ayin Yod",
+            "שׁוּב / שִׂים",
+            "II – Vav / II – Yod"
+          ],
+          [
+            "Pe Vav / Pe Yod",
+            "יָשַׁב",
+            "I – Vav / I – Yod"
+          ],
+          [
+            "Ayin Duplo",
+            "סָבַב",
+            "Verbos Geminados"
+          ]
+        ]
       }
     ]
   },
@@ -10609,6 +10813,91 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Numerais de 1 a 10 (§35.1)",
+        "headers": [
+          "Número",
+          "Cardinal M.",
+          "Cardinal F.",
+          "Ordinal M.",
+          "Ordinal F."
+        ],
+        "rows": [
+          [
+            "1",
+            "אֶחָד",
+            "אַחַת",
+            "רִאשׁוֹן",
+            "רִאשׁוֹנָה"
+          ],
+          [
+            "2",
+            "שְׁנַיִם",
+            "שְׁתַּיִם",
+            "שֵׁנִי",
+            "שֵׁנִית"
+          ],
+          [
+            "3",
+            "שָׁלוֹשׁ",
+            "שְׁלֹשָׁה",
+            "שְׁלִישִׁי",
+            "שְׁלִישִׁית"
+          ],
+          [
+            "4",
+            "אַרְבַּע",
+            "אַרְבָּעָה",
+            "רְבִיעִי",
+            "רְבִיעִית"
+          ],
+          [
+            "5",
+            "חָמֵשׁ",
+            "חֲמִשָּׁה",
+            "חֲמִישִׁי",
+            "חֲמִישִׁית"
+          ],
+          [
+            "6",
+            "שֵׁשׁ",
+            "שִׁשָּׁה",
+            "שִׁשִּׁי",
+            "שִׁשִּׁית"
+          ],
+          [
+            "7",
+            "שֶׁבַע",
+            "שִׁבְעָה",
+            "שְׁבִיעִי",
+            "שְׁבִיעִית"
+          ],
+          [
+            "8",
+            "שְׁמֹנֶה",
+            "שְׁמֹנָה",
+            "שְׁמִינִי",
+            "שְׁמִינִית"
+          ],
+          [
+            "9",
+            "תֵּשַׁע",
+            "תִּשְׁעָה",
+            "תְּשִׁיעִי",
+            "תְּשִׁיעִית"
+          ],
+          [
+            "10",
+            "עֶשֶׂר",
+            "עֲשָׂרָה",
+            "עֲשִׂירִי",
+            "עֲשִׂירִית"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -11377,7 +11666,7 @@
             "Ação Intensiva Passiva"
           ],
           [
-            "Hithpa'el",
+            "Hitpa'el",
             "הִתְקַטֵּל",
             "Ação Intensiva Reflexiva"
           ],
@@ -12179,6 +12468,67 @@
             "נִשְׁמֹר"
           ]
         ]
+      },
+      {
+        "type": "table",
+        "title": "Preformativos e Aformativos do Imperfeito (§39.2)",
+        "headers": [
+          "Pessoa",
+          "Preformativo",
+          "Aformativo"
+        ],
+        "rows": [
+          [
+            "3ª m. sg.",
+            "יִ",
+            "—"
+          ],
+          [
+            "3ª f. sg.",
+            "תִּ",
+            "—"
+          ],
+          [
+            "2ª m. sg.",
+            "תִּ",
+            "—"
+          ],
+          [
+            "2ª f. sg.",
+            "תִּ",
+            "◌ִי"
+          ],
+          [
+            "1ª c. sg.",
+            "אֶ",
+            "—"
+          ],
+          [
+            "3ª m. pl.",
+            "יִ",
+            "וּ"
+          ],
+          [
+            "3ª f. pl.",
+            "תִּ",
+            "נָה"
+          ],
+          [
+            "2ª m. pl.",
+            "תִּ",
+            "וּ"
+          ],
+          [
+            "2ª f. pl.",
+            "תִּ",
+            "נָה"
+          ],
+          [
+            "1ª c. pl.",
+            "נִ",
+            "—"
+          ]
+        ]
       }
     ]
   },
@@ -12846,7 +13196,7 @@
             "Sheva sob o prefixo + Qibbuts + Daguesh na 2ª radical"
           ],
           [
-            "Hithpa'el",
+            "Hitpa'el",
             "יִתְקַטֵּל",
             "Prefixo יִתְ + Daguesh Forte na 2ª radical"
           ],
@@ -13587,6 +13937,44 @@
               }
             ]
           }
+        ]
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Sufixos Pronominais Verbais (§47.1)",
+        "headers": [
+          "Pessoa",
+          "Singular",
+          "Plural"
+        ],
+        "rows": [
+          [
+            "1ª c.",
+            "נִי",
+            "נוּ"
+          ],
+          [
+            "2ª m.",
+            "ךָ",
+            "כֶם"
+          ],
+          [
+            "2ª f.",
+            "ךְ",
+            "כֶן"
+          ],
+          [
+            "3ª m.",
+            "הוּ / ו",
+            "ם"
+          ],
+          [
+            "3ª f.",
+            "הָ",
+            "ן"
+          ]
         ]
       }
     ]
@@ -15610,6 +15998,128 @@
             "שְׁמוּרוֹת"
           ]
         ]
+      },
+      {
+        "type": "table",
+        "title": "Sinopse do Verbo Forte (מָשַׁל): Formas Finitas e Infinitivos (§61)",
+        "headers": [
+          "Forma",
+          "Qal",
+          "Nif'al",
+          "Pi'el",
+          "Pu'al",
+          "Hitpa'el",
+          "Hif'il",
+          "Hof'al"
+        ],
+        "rows": [
+          [
+            "Perf. 3ms",
+            "מָשַׁל",
+            "נִמְשַׁל",
+            "מִשֵּׁל",
+            "מֻשַּׁל",
+            "הִתְמַשֵּׁל",
+            "הִמְשִׁיל",
+            "הָמְשַׁל"
+          ],
+          [
+            "Imperf. 3ms",
+            "יִמְשֹׁל",
+            "יִמָּשֵׁל",
+            "יְמַשֵּׁל",
+            "יְמֻשַּׁל",
+            "יִתְמַשֵּׁל",
+            "יַמְשִׁיל",
+            "יָמְשַׁל"
+          ],
+          [
+            "Imper. 2ms",
+            "מְשֹׁל",
+            "הִמָּשֵׁל",
+            "מַשֵּׁל",
+            "—",
+            "הִתְמַשֵּׁל",
+            "הַמְשֵׁל",
+            "—"
+          ],
+          [
+            "Inf. Cs.",
+            "מְשֹׁל",
+            "הִמָּשֵׁל",
+            "מַשֵּׁל",
+            "(מֻשַּׁל)",
+            "הִתְמַשֵּׁל",
+            "הַמְשִׁיל",
+            "(הָמְשַׁל)"
+          ],
+          [
+            "Inf. Abs.",
+            "מָשׁוֹל",
+            "הִמָּשֹׁל, נִמְשֹׁל",
+            "מַשֹּׁל, מַשֵּׁל",
+            "מֻשֹּׁל",
+            "הִתְמַשֵּׁל",
+            "הַמְשֵׁל",
+            "הָמְשֵׁל"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Sinopse do Verbo Forte (מָשַׁל): Particípios (§61)",
+        "headers": [
+          "Forma",
+          "Qal",
+          "Nif'al",
+          "Pi'el",
+          "Pu'al",
+          "Hitpa'el",
+          "Hif'il",
+          "Hof'al"
+        ],
+        "rows": [
+          [
+            "Part. At. M.",
+            "מֹשֵׁל",
+            "—",
+            "מְמַשֵּׁל",
+            "—",
+            "מִתְמַשֵּׁל",
+            "מַמְשִׁיל",
+            "—"
+          ],
+          [
+            "Part. At. F.",
+            "מֹשְׁלָה, מֹשֶׁלֶת",
+            "—",
+            "מְמַשֶּׁלֶת",
+            "—",
+            "מִתְמַשֶּׁלֶת",
+            "מַמְשִׁילָה",
+            "—"
+          ],
+          [
+            "Part. Pass. M.",
+            "מָשׁוּל",
+            "נִמְשָׁל",
+            "—",
+            "מְמֻשָּׁל",
+            "—",
+            "—",
+            "מָמְשָׁל"
+          ],
+          [
+            "Part. Pass. F.",
+            "מְשׁוּלָה",
+            "נִמְשֶׁלֶת",
+            "—",
+            "מְמֻשָּׁלָה",
+            "—",
+            "—",
+            "מָמְשֶׁלֶת"
+          ]
+        ]
       }
     ]
   },
@@ -17032,6 +17542,38 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Verbo Pe Gutural: 3ms (Tabela 2)",
+        "headers": [
+          "Forma",
+          "Qal (trans.)",
+          "Qal (intrans.)",
+          "Nif'al",
+          "Hif'il",
+          "Hof'al"
+        ],
+        "rows": [
+          [
+            "Perfeito 3ms",
+            "עָמַד",
+            "חָזַק",
+            "נֶעֱמַד",
+            "הֶעֱמִיד",
+            "הָעֳמַד"
+          ],
+          [
+            "Imperfeito 3ms",
+            "יַעֲמֹד",
+            "יֶחֱזַק",
+            "יֵעָמֵד",
+            "יַעֲמִיד",
+            "יָעֳמַד"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -17928,6 +18470,32 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Verbo Pe Alef: 3ms (Tabela 3)",
+        "headers": [
+          "Forma",
+          "Qal (comer)",
+          "Qal (dizer)",
+          "Com vav (dizer)"
+        ],
+        "rows": [
+          [
+            "Perfeito 3ms",
+            "אָכַל",
+            "אָמַר",
+            "—"
+          ],
+          [
+            "Imperfeito 3ms",
+            "יֹאכַל",
+            "יֹאמַר",
+            "וַיֹּאמֶר"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -18619,6 +19187,44 @@
             "word_class": "Substantivo",
             "syntax_role": "Termo regido pela preposição עַד ('eternidade / sempre')."
           }
+        ]
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Verbo Ayin Gutural: 3ms (Tabela 4)",
+        "headers": [
+          "Forma",
+          "Qal",
+          "Nif'al",
+          "Pi'el",
+          "Pu'al",
+          "Hitpa'el",
+          "Hif'il",
+          "Hof'al"
+        ],
+        "rows": [
+          [
+            "Perfeito 3ms",
+            "גָּאַל",
+            "נִגְאַל",
+            "בֵּרַךְ",
+            "בֹּרַךְ",
+            "הִתְבָּרֵךְ",
+            "הִגְאִיל",
+            "הָגְאַל"
+          ],
+          [
+            "Imperfeito 3ms",
+            "יִגְאַל",
+            "יִגָּאֵל",
+            "יְבָרֵךְ",
+            "יְבֹרַךְ",
+            "יִתְבָּרֵךְ",
+            "יַגְאִיל",
+            "יָגְאַל"
+          ]
         ]
       }
     ]
@@ -19407,6 +20013,44 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Verbo Lamed Gutural: 3ms (Tabela 5)",
+        "headers": [
+          "Forma",
+          "Qal",
+          "Nif'al",
+          "Pi'el",
+          "Pu'al",
+          "Hitpa'el",
+          "Hif'il",
+          "Hof'al"
+        ],
+        "rows": [
+          [
+            "Perfeito 3ms",
+            "שָׁלַח",
+            "נִשְׁלַח",
+            "שִׁלַּח",
+            "שֻׁלַּח",
+            "הִשְׁתַּלַּח",
+            "הִשְׁלִיחַ",
+            "הָשְׁלַח"
+          ],
+          [
+            "Imperfeito 3ms",
+            "יִשְׁלַח",
+            "יִשָּׁלַח",
+            "יְשַׁלַּח",
+            "יְשֻׁלַּח",
+            "יִשְׁתַּלַּח",
+            "יַשְׁלִיחַ",
+            "יָשְׁלַח"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -20098,6 +20742,44 @@
               }
             ]
           }
+        ]
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Verbo Lamed Alef: 3ms (Tabela 6)",
+        "headers": [
+          "Forma",
+          "Qal",
+          "Nif'al",
+          "Pi'el",
+          "Pu'al",
+          "Hitpa'el",
+          "Hif'il",
+          "Hof'al"
+        ],
+        "rows": [
+          [
+            "Perfeito 3ms",
+            "מָצָא",
+            "נִמְצָא",
+            "מִצֵּא",
+            "מֻצָּא",
+            "הִתְמַצֵּא",
+            "הִמְצִיא",
+            "הֻמְצָא"
+          ],
+          [
+            "Imperfeito 3ms",
+            "יִמְצָא",
+            "יִמָּצֵא",
+            "יְמַצֵּא",
+            "יְמֻצָּא",
+            "יִתְמַצֵּא",
+            "יַמְצִיא",
+            "יֻמְצָא"
+          ]
         ]
       }
     ]
@@ -20820,6 +21502,110 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Verbo Lamed He: 3ms (Tabela 7)",
+        "headers": [
+          "Forma",
+          "Qal",
+          "Nif'al",
+          "Pi'el",
+          "Pu'al",
+          "Hitpa'el",
+          "Hif'il",
+          "Hof'al"
+        ],
+        "rows": [
+          [
+            "Perfeito 3ms",
+            "גָּלָה",
+            "נִגְלָה",
+            "גִּלָּה",
+            "גֻּלָּה",
+            "הִתְגַּלָּה",
+            "הִגְלָה",
+            "הָגְלָה"
+          ],
+          [
+            "Imperfeito 3ms",
+            "יִגְלֶה",
+            "יִגָּלֶה",
+            "יְגַלֶּה",
+            "יְגֻלֶּה",
+            "יִתְגַּלֶּה",
+            "יַגְלֶה",
+            "יָגְלֶה"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Apócope nos Verbos Lamed He (§72.8)",
+        "headers": [
+          "Verbo (Qal 3ms)",
+          "Imperfeito",
+          "Com וַ",
+          "Jussivo"
+        ],
+        "rows": [
+          [
+            "construir",
+            "יִבְנֶה",
+            "וַיִּבֶן",
+            "יִבֶן"
+          ],
+          [
+            "revelar",
+            "יִגְלֶה",
+            "וַיִּגֶל",
+            "יִגֶל"
+          ],
+          [
+            "virar",
+            "יִפְנֶה",
+            "וַיִּפֶן",
+            "יִפֶן"
+          ],
+          [
+            "beber",
+            "יִשְׁתֶּה",
+            "וַיֵּשְׁתְּ",
+            "יֵשְׁתְּ"
+          ],
+          [
+            "ser",
+            "יִהְיֶה",
+            "וַיְהִי",
+            "יְהִי"
+          ],
+          [
+            "viver",
+            "יִחְיֶה",
+            "וַיְחִי",
+            "יְחִי"
+          ],
+          [
+            "ver",
+            "יִרְאֶה",
+            "וַיַּרְא",
+            "יֵרֶא"
+          ],
+          [
+            "subir",
+            "יַעֲלֶה",
+            "וַיַּעַל",
+            "יַעַל"
+          ],
+          [
+            "fazer",
+            "יַעֲשֶׂה",
+            "וַיַּעַשׂ",
+            "יַעַשׂ"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -21492,6 +22278,44 @@
             "syntax_role": "Predicativo do sujeito. Particípio passivo masculino singular do tronco Pu'al ('bendito').",
             "notes": "Holem compensatório decorrente da recusa de reduplicação pela líquida resh tratada como gutural (Kelley XIV.36.3)."
           }
+        ]
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Verbo Pe Nun: 3ms (Tabela 8)",
+        "headers": [
+          "Forma",
+          "Qal (cair)",
+          "Qal (aproximar-se)",
+          "Qal (dar)",
+          "Qal (tomar)",
+          "Nif'al",
+          "Hif'il",
+          "Hof'al"
+        ],
+        "rows": [
+          [
+            "Perfeito 3ms",
+            "נָפַל",
+            "נָגַשׁ",
+            "נָתַן",
+            "לָקַח",
+            "נִגַּשׁ",
+            "הִגִּישׁ",
+            "הֻגַּשׁ"
+          ],
+          [
+            "Imperfeito 3ms",
+            "יִפֹּל",
+            "יִגַּשׁ",
+            "יִתֵּן",
+            "יִקַּח",
+            "יִנָּגֵשׁ",
+            "יַגִּישׁ",
+            "יֻגַּשׁ"
+          ]
         ]
       }
     ]
@@ -22432,6 +23256,38 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Verbo Ayin Vav / Ayin Yod: 3ms, Qal (Tabela 9)",
+        "headers": [
+          "Forma",
+          "קוּם",
+          "שִׂים",
+          "בּוֹא",
+          "בּוֹשׁ",
+          "מוּת"
+        ],
+        "rows": [
+          [
+            "Perfeito 3ms",
+            "קָם",
+            "שָׂם",
+            "בָּא",
+            "בּוֹשׁ",
+            "מֵת"
+          ],
+          [
+            "Imperfeito 3ms",
+            "יָקוּם",
+            "יָשִׂים",
+            "יָבוֹא",
+            "יֵבוֹשׁ",
+            "יָמוּת"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -23366,6 +24222,44 @@
           }
         ]
       }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Verbo Pe Vav / Pe Yod: 3ms (Tabela 10)",
+        "headers": [
+          "Forma",
+          "Qal (sentar)",
+          "Qal (temer)",
+          "Nif'al",
+          "Hif'il",
+          "Hof'al",
+          "Qal (ser bom)",
+          "Hif'il (ser bom)"
+        ],
+        "rows": [
+          [
+            "Perfeito 3ms",
+            "יָשַׁב",
+            "יָרֵא",
+            "נוֹשַׁב",
+            "הוֹשִׁיב",
+            "הוּשַׁב",
+            "יָטַב",
+            "הֵיטִיב"
+          ],
+          [
+            "Imperfeito 3ms",
+            "יֵשֵׁב",
+            "יִירָא",
+            "יִוָּשֵׁב",
+            "יוֹשִׁיב",
+            "יוּשַׁב",
+            "יִיטַב",
+            "יֵיטִיב"
+          ]
+        ]
+      }
     ]
   },
   {
@@ -24213,6 +25107,44 @@
               }
             ]
           }
+        ]
+      }
+    ],
+    "paradigms": [
+      {
+        "type": "table",
+        "title": "Verbo Ayin Duplo: 3ms (Tabela 11)",
+        "headers": [
+          "Forma",
+          "Qal",
+          "Nif'al",
+          "Polel",
+          "Polal",
+          "Hitpolel",
+          "Hif'il",
+          "Hof'al"
+        ],
+        "rows": [
+          [
+            "Perfeito 3ms",
+            "סַב",
+            "נָסַב",
+            "סוֹבֵב",
+            "סוֹבַב",
+            "הִסְתּוֹבֵב",
+            "הֵסֵב",
+            "הוּסַב"
+          ],
+          [
+            "Imperfeito 3ms",
+            "יָסֹב / יִסֹּב",
+            "יִסַּב",
+            "יְסוֹבֵב",
+            "יְסוֹבַב",
+            "יִסְתּוֹבֵב",
+            "יָסֵב",
+            "יוּסַב"
+          ]
         ]
       }
     ]
