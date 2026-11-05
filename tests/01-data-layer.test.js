@@ -186,6 +186,16 @@ suite.test('Capítulo preservado ganha as tabelas novas sem perder as próprias'
   assert.equal(paradigms[1].title, 'Nova');
 });
 
+suite.test('Capítulo preservado ganha as frases novas sem perder as próprias', () => {
+  const loader = require('../js/data-loader.js');
+  const stored = { items: [], sentences: [{ id: 's1', favorite: true }] };
+  const defaults = { items: [], sentences: [{ id: 's1', favorite: false }, { id: 's2', favorite: false }] };
+  const { sentences } = loader.syncItemClassification(stored, defaults);
+  assert.equal(sentences.length, 2);
+  assert.isTrue(sentences[0].favorite);
+  assert.equal(sentences[1].id, 's2');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

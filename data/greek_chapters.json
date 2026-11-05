@@ -361,7 +361,373 @@
         "sound": "o em alô"
       }
     ],
-    "sentences": []
+    "sentences": [
+      {
+        "id": "sent_01_01",
+        "term": "Πάντα ἰσχύω ἐν τῷ ἐνδυναμοῦντί με, Χριστῷ.",
+        "transliteration": "Panta ischyō en tō endynamounti me, Christō.",
+        "translations": [
+          "Tudo posso naquele que me fortalece, Cristo.",
+          "Tudo posso em Aquele que me capacita, Cristo."
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Verbal com Particípio Substantivado (§ 1)",
+        "notes": "Fp 4.13. Exercício de leitura da lição 1, comentado em “Aplicando o texto à vida...”: ἐνδυναμοῦντι é particípio presente de ἐνδυναμόω e indica uma capacitação contínua.",
+        "favorite": false,
+        "tokens": [
+          {
+            "index": 1,
+            "text": "Πάντα",
+            "transliteration": "Panta",
+            "lemma": "πᾶς",
+            "composite": false,
+            "word_class": "Adjetivo substantivado",
+            "syntax_role": "Objeto direto anteposto e enfático (acusativo neutro plural: 'tudo')",
+            "inflection": "Acusativo neutro plural",
+            "context_meaning": "tudo"
+          },
+          {
+            "index": 2,
+            "text": "ἰσχύω",
+            "transliteration": "ischyō",
+            "lemma": "ἰσχύω",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo verbal. Presente do indicativo ativo, 1ª pessoa singular ('posso')",
+            "inflection": "Presente do indicativo ativo, 1ª pessoa singular",
+            "context_meaning": "posso"
+          },
+          {
+            "index": 3,
+            "text": "ἐν",
+            "transliteration": "en",
+            "lemma": "ἐν",
+            "composite": false,
+            "word_class": "Preposição (rege dativo)",
+            "syntax_role": "Introduz a esfera em que a capacidade se realiza ('em')",
+            "inflection": "Preposição invariável",
+            "context_meaning": "em"
+          },
+          {
+            "index": 4,
+            "text": "τῷ",
+            "transliteration": "tō",
+            "lemma": "ὁ",
+            "composite": false,
+            "word_class": "Artigo definido",
+            "syntax_role": "Substantiva o particípio (dativo masculino singular: 'aquele')",
+            "inflection": "Dativo masculino singular",
+            "context_meaning": "aquele"
+          },
+          {
+            "index": 5,
+            "text": "ἐνδυναμοῦντί",
+            "transliteration": "endynamounti",
+            "lemma": "ἐνδυναμόω",
+            "composite": false,
+            "word_class": "Verbo (Particípio substantivado)",
+            "syntax_role": "Termo regido por ἐν. Particípio presente ativo (dativo masculino singular: 'que fortalece')",
+            "inflection": "Particípio presente ativo, dativo masculino singular",
+            "context_meaning": "que fortalece",
+            "notes": "O acento adicional na última sílaba vem da enclítica με."
+          },
+          {
+            "index": 6,
+            "text": "με,",
+            "transliteration": "me",
+            "lemma": "ἐγώ",
+            "composite": false,
+            "word_class": "Pronome pessoal enclítico",
+            "syntax_role": "Objeto direto do particípio (acusativo de 1ª pessoa singular: 'me')",
+            "inflection": "Acusativo 1ª pessoa singular",
+            "context_meaning": "me"
+          },
+          {
+            "index": 7,
+            "text": "Χριστῷ.",
+            "transliteration": "Christō",
+            "lemma": "Χριστός",
+            "composite": false,
+            "word_class": "Substantivo próprio",
+            "syntax_role": "Aposto de τῷ ἐνδυναμοῦντι (dativo masculino singular: 'Cristo')",
+            "inflection": "Dativo masculino singular",
+            "context_meaning": "Cristo"
+          }
+        ]
+      },
+      {
+        "id": "sent_01_02",
+        "term": "Χαίρετε ἐν Κυρίῳ πάντοτε· πάλιν ἐρῶ, χαίρετε.",
+        "transliteration": "Chairete en Kyriō pantote; palin erō, chairete.",
+        "translations": [
+          "Alegrem-se no Senhor sempre; outra vez direi: alegrem-se.",
+          "Alegrem-se sempre no Senhor; novamente direi: alegrem-se."
+        ],
+        "type": "Frase",
+        "syntax_type": "Exortação no Imperativo Presente Repetida (§ 1)",
+        "notes": "Fp 4.4. Exercício de leitura da lição 1. O imperativo presente será estudado na lição 18.",
+        "favorite": false,
+        "tokens": [
+          {
+            "index": 1,
+            "text": "Χαίρετε",
+            "transliteration": "Chairete",
+            "lemma": "χαίρω",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo da exortação. Presente do imperativo ativo, 2ª pessoa plural ('alegrem-se')",
+            "inflection": "Presente do imperativo ativo, 2ª pessoa plural",
+            "context_meaning": "alegrem-se"
+          },
+          {
+            "index": 2,
+            "text": "ἐν",
+            "transliteration": "en",
+            "lemma": "ἐν",
+            "composite": false,
+            "word_class": "Preposição (rege dativo)",
+            "syntax_role": "Introduz a esfera da alegria ('em')",
+            "inflection": "Preposição invariável",
+            "context_meaning": "em"
+          },
+          {
+            "index": 3,
+            "text": "Κυρίῳ",
+            "transliteration": "Kyriō",
+            "lemma": "κύριος",
+            "composite": false,
+            "word_class": "Substantivo (2ª declinação)",
+            "syntax_role": "Termo regido por ἐν (dativo masculino singular: 'Senhor')",
+            "inflection": "Dativo masculino singular",
+            "context_meaning": "Senhor"
+          },
+          {
+            "index": 4,
+            "text": "πάντοτε·",
+            "transliteration": "pantote",
+            "lemma": "πάντοτε",
+            "composite": false,
+            "word_class": "Advérbio de tempo",
+            "syntax_role": "Adjunto adverbial de tempo ('sempre')",
+            "inflection": "Advérbio invariável",
+            "context_meaning": "sempre"
+          },
+          {
+            "index": 5,
+            "text": "πάλιν",
+            "transliteration": "palin",
+            "lemma": "πάλιν",
+            "composite": false,
+            "word_class": "Advérbio de tempo",
+            "syntax_role": "Adjunto adverbial de repetição ('outra vez')",
+            "inflection": "Advérbio invariável",
+            "context_meaning": "outra vez"
+          },
+          {
+            "index": 6,
+            "text": "ἐρῶ,",
+            "transliteration": "erō",
+            "lemma": "λέγω",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo da oração intercalada. Futuro do indicativo ativo, 1ª pessoa singular ('direi')",
+            "inflection": "Futuro do indicativo ativo, 1ª pessoa singular",
+            "context_meaning": "direi"
+          },
+          {
+            "index": 7,
+            "text": "χαίρετε.",
+            "transliteration": "chairete",
+            "lemma": "χαίρω",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Repetição enfática da exortação. Presente do imperativo ativo, 2ª pessoa plural ('alegrem-se')",
+            "inflection": "Presente do imperativo ativo, 2ª pessoa plural",
+            "context_meaning": "alegrem-se"
+          }
+        ]
+      },
+      {
+        "id": "sent_01_03",
+        "term": "Ζητεῖτε πρῶτον τὴν βασιλείαν τοῦ Θεοῦ καὶ τὴν δικαιοσύνην αὐτοῦ, καὶ ταῦτα πάντα προστεθήσεται ὑμῖν.",
+        "transliteration": "Zēteite prōton tēn basileian tou Theou kai tēn dikaiosynēn autou, kai tauta panta prostethēsetai hymin.",
+        "translations": [
+          "Busquem primeiro o reino de Deus e a sua justiça, e todas estas coisas serão acrescentadas a vocês.",
+          "Busquem primeiro o reino de Deus e a sua justiça, e todas estas coisas lhes serão acrescentadas."
+        ],
+        "type": "Frase",
+        "syntax_type": "Exortação no Imperativo com Promessa no Futuro Passivo (§ 1)",
+        "notes": "Mt 6.33. Exercício de leitura da lição 1. O sujeito neutro plural ταῦτα πάντα concorda com o verbo no singular.",
+        "favorite": false,
+        "tokens": [
+          {
+            "index": 1,
+            "text": "Ζητεῖτε",
+            "transliteration": "Zēteite",
+            "lemma": "ζητέω",
+            "composite": false,
+            "word_class": "Verbo contraído em -έω",
+            "syntax_role": "Núcleo da exortação. Presente do imperativo ativo, 2ª pessoa plural ('busquem')",
+            "inflection": "Presente do imperativo ativo, 2ª pessoa plural",
+            "context_meaning": "busquem"
+          },
+          {
+            "index": 2,
+            "text": "πρῶτον",
+            "transliteration": "prōton",
+            "lemma": "πρῶτος",
+            "composite": false,
+            "word_class": "Advérbio",
+            "syntax_role": "Adjunto adverbial de prioridade ('primeiro')",
+            "inflection": "Acusativo neutro singular com valor adverbial",
+            "context_meaning": "primeiro"
+          },
+          {
+            "index": 3,
+            "text": "τὴν",
+            "transliteration": "tēn",
+            "lemma": "ὁ",
+            "composite": false,
+            "word_class": "Artigo definido",
+            "syntax_role": "Determinante de βασιλείαν (acusativo feminino singular: 'o')",
+            "inflection": "Acusativo feminino singular",
+            "context_meaning": "o"
+          },
+          {
+            "index": 4,
+            "text": "βασιλείαν",
+            "transliteration": "basileian",
+            "lemma": "βασιλεία",
+            "composite": false,
+            "word_class": "Substantivo (1ª declinação)",
+            "syntax_role": "Objeto direto (acusativo feminino singular: 'reino')",
+            "inflection": "Acusativo feminino singular",
+            "context_meaning": "reino"
+          },
+          {
+            "index": 5,
+            "text": "τοῦ",
+            "transliteration": "tou",
+            "lemma": "ὁ",
+            "composite": false,
+            "word_class": "Artigo definido",
+            "syntax_role": "Determinante de Θεοῦ (genitivo masculino singular: 'de')",
+            "inflection": "Genitivo masculino singular",
+            "context_meaning": "de"
+          },
+          {
+            "index": 6,
+            "text": "Θεοῦ",
+            "transliteration": "Theou",
+            "lemma": "θεός",
+            "composite": false,
+            "word_class": "Substantivo (2ª declinação)",
+            "syntax_role": "Adjunto adnominal de posse (genitivo masculino singular: 'Deus')",
+            "inflection": "Genitivo masculino singular",
+            "context_meaning": "Deus"
+          },
+          {
+            "index": 7,
+            "text": "καὶ",
+            "transliteration": "kai",
+            "lemma": "καί",
+            "composite": false,
+            "word_class": "Conjunção coordenativa copulativa",
+            "syntax_role": "Coordena os dois objetos diretos ('e')",
+            "inflection": "Conjunção invariável",
+            "context_meaning": "e"
+          },
+          {
+            "index": 8,
+            "text": "τὴν",
+            "transliteration": "tēn",
+            "lemma": "ὁ",
+            "composite": false,
+            "word_class": "Artigo definido",
+            "syntax_role": "Determinante de δικαιοσύνην (acusativo feminino singular: 'a')",
+            "inflection": "Acusativo feminino singular",
+            "context_meaning": "a"
+          },
+          {
+            "index": 9,
+            "text": "δικαιοσύνην",
+            "transliteration": "dikaiosynēn",
+            "lemma": "δικαιοσύνη",
+            "composite": false,
+            "word_class": "Substantivo (1ª declinação)",
+            "syntax_role": "Segundo objeto direto (acusativo feminino singular: 'justiça')",
+            "inflection": "Acusativo feminino singular",
+            "context_meaning": "justiça"
+          },
+          {
+            "index": 10,
+            "text": "αὐτοῦ,",
+            "transliteration": "autou",
+            "lemma": "αὐτός",
+            "composite": false,
+            "word_class": "Pronome pessoal",
+            "syntax_role": "Genitivo de posse (genitivo masculino singular: 'dele / sua')",
+            "inflection": "Genitivo masculino singular",
+            "context_meaning": "sua"
+          },
+          {
+            "index": 11,
+            "text": "καὶ",
+            "transliteration": "kai",
+            "lemma": "καί",
+            "composite": false,
+            "word_class": "Conjunção coordenativa copulativa",
+            "syntax_role": "Liga a exortação à promessa ('e')",
+            "inflection": "Conjunção invariável",
+            "context_meaning": "e"
+          },
+          {
+            "index": 12,
+            "text": "ταῦτα",
+            "transliteration": "tauta",
+            "lemma": "οὗτος",
+            "composite": false,
+            "word_class": "Pronome demonstrativo",
+            "syntax_role": "Sujeito da promessa (nominativo neutro plural: 'estas coisas')",
+            "inflection": "Nominativo neutro plural",
+            "context_meaning": "estas coisas"
+          },
+          {
+            "index": 13,
+            "text": "πάντα",
+            "transliteration": "panta",
+            "lemma": "πᾶς",
+            "composite": false,
+            "word_class": "Adjetivo",
+            "syntax_role": "Concorda com ταῦτα (nominativo neutro plural: 'todas')",
+            "inflection": "Nominativo neutro plural",
+            "context_meaning": "todas"
+          },
+          {
+            "index": 14,
+            "text": "προστεθήσεται",
+            "transliteration": "prostethēsetai",
+            "lemma": "προστίθημι",
+            "composite": false,
+            "word_class": "Verbo em -μι",
+            "syntax_role": "Núcleo da promessa. Futuro do indicativo passivo, 3ª pessoa singular ('será acrescentado')",
+            "inflection": "Futuro do indicativo passivo, 3ª pessoa singular",
+            "context_meaning": "serão acrescentadas"
+          },
+          {
+            "index": 15,
+            "text": "ὑμῖν.",
+            "transliteration": "hymin",
+            "lemma": "σύ",
+            "composite": false,
+            "word_class": "Pronome pessoal",
+            "syntax_role": "Objeto indireto (dativo de 2ª pessoa plural: 'a vocês')",
+            "inflection": "Dativo 2ª pessoa plural",
+            "context_meaning": "a vocês"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "bergmann_02",
@@ -6285,6 +6651,564 @@
         ]
       },
       {
+        "id": "sent_06_20",
+        "term": "Ἐν τούτῳ γνώσονται πάντες ὅτι ἐμοὶ μαθηταί ἐστε, ἐὰν ἀγάπην ἔχητε ἐν ἀλλήλοις.",
+        "transliteration": "En toutō gnōsontai pantes hoti emoi mathētai este, ean agapēn echēte en allēlois.",
+        "translations": [
+          "Nisto todos conhecerão que vocês são meus discípulos, se tiverem amor uns aos outros.",
+          "Nisto conhecerão todos que meus discípulos são, se amor tiverem uns pelos outros."
+        ],
+        "type": "Frase",
+        "syntax_type": "Período com Oração Integrante e Condicional (§ 6)",
+        "notes": "Jo 13.35. μαθηταί é substantivo masculino da 1ª declinação. O acento agudo final vem da enclítica ἐστε.",
+        "favorite": false,
+        "tokens": [
+          {
+            "index": 1,
+            "text": "Ἐν",
+            "transliteration": "En",
+            "lemma": "ἐν",
+            "composite": false,
+            "word_class": "Preposição (rege dativo)",
+            "syntax_role": "Introduz o meio pelo qual se reconhece ('em')",
+            "inflection": "Preposição invariável",
+            "context_meaning": "em"
+          },
+          {
+            "index": 2,
+            "text": "τούτῳ",
+            "transliteration": "toutō",
+            "lemma": "οὗτος",
+            "composite": false,
+            "word_class": "Pronome demonstrativo",
+            "syntax_role": "Termo regido por ἐν (dativo neutro singular: 'isto')",
+            "inflection": "Dativo neutro singular",
+            "context_meaning": "isto"
+          },
+          {
+            "index": 3,
+            "text": "γνώσονται",
+            "transliteration": "gnōsontai",
+            "lemma": "γινώσκω",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo da oração principal. Futuro do indicativo médio com sentido ativo, 3ª pessoa plural ('conhecerão')",
+            "inflection": "Futuro do indicativo médio, 3ª pessoa plural",
+            "context_meaning": "conhecerão"
+          },
+          {
+            "index": 4,
+            "text": "πάντες",
+            "transliteration": "pantes",
+            "lemma": "πᾶς",
+            "composite": false,
+            "word_class": "Adjetivo substantivado",
+            "syntax_role": "Sujeito da oração principal (nominativo masculino plural: 'todos')",
+            "inflection": "Nominativo masculino plural",
+            "context_meaning": "todos"
+          },
+          {
+            "index": 5,
+            "text": "ὅτι",
+            "transliteration": "hoti",
+            "lemma": "ὅτι",
+            "composite": false,
+            "word_class": "Conjunção integrante",
+            "syntax_role": "Introduz a oração objetiva ('que')",
+            "inflection": "Conjunção invariável",
+            "context_meaning": "que"
+          },
+          {
+            "index": 6,
+            "text": "ἐμοὶ",
+            "transliteration": "emoi",
+            "lemma": "ἐμός",
+            "composite": false,
+            "word_class": "Pronome possessivo",
+            "syntax_role": "Concorda com μαθηταί (nominativo masculino plural: 'meus')",
+            "inflection": "Nominativo masculino plural",
+            "context_meaning": "meus"
+          },
+          {
+            "index": 7,
+            "text": "μαθηταί",
+            "transliteration": "mathētai",
+            "lemma": "μαθητής",
+            "composite": false,
+            "word_class": "Substantivo (1ª declinação)",
+            "syntax_role": "Predicativo do sujeito (nominativo masculino plural: 'discípulos')",
+            "inflection": "Nominativo masculino plural",
+            "context_meaning": "discípulos"
+          },
+          {
+            "index": 8,
+            "text": "ἐστε,",
+            "transliteration": "este",
+            "lemma": "εἰμί",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Verbo de ligação enclítico. Presente do indicativo ativo, 2ª pessoa plural ('são')",
+            "inflection": "Presente do indicativo ativo, 2ª pessoa plural",
+            "context_meaning": "são"
+          },
+          {
+            "index": 9,
+            "text": "ἐὰν",
+            "transliteration": "ean",
+            "lemma": "ἐάν",
+            "composite": false,
+            "word_class": "Conjunção condicional",
+            "syntax_role": "Introduz a condição com subjuntivo ('se')",
+            "inflection": "Conjunção invariável",
+            "context_meaning": "se"
+          },
+          {
+            "index": 10,
+            "text": "ἀγάπην",
+            "transliteration": "agapēn",
+            "lemma": "ἀγάπη",
+            "composite": false,
+            "word_class": "Substantivo (1ª declinação)",
+            "syntax_role": "Objeto direto anteposto (acusativo feminino singular: 'amor')",
+            "inflection": "Acusativo feminino singular",
+            "context_meaning": "amor"
+          },
+          {
+            "index": 11,
+            "text": "ἔχητε",
+            "transliteration": "echēte",
+            "lemma": "ἔχω",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo da condicional. Presente do subjuntivo ativo, 2ª pessoa plural ('tiverem')",
+            "inflection": "Presente do subjuntivo ativo, 2ª pessoa plural",
+            "context_meaning": "tiverem"
+          },
+          {
+            "index": 12,
+            "text": "ἐν",
+            "transliteration": "en",
+            "lemma": "ἐν",
+            "composite": false,
+            "word_class": "Preposição (rege dativo)",
+            "syntax_role": "Introduz a esfera do amor mútuo ('entre')",
+            "inflection": "Preposição invariável",
+            "context_meaning": "entre"
+          },
+          {
+            "index": 13,
+            "text": "ἀλλήλοις.",
+            "transliteration": "allēlois",
+            "lemma": "ἀλλήλων",
+            "composite": false,
+            "word_class": "Pronome recíproco",
+            "syntax_role": "Termo regido por ἐν (dativo masculino plural: 'uns aos outros')",
+            "inflection": "Dativo masculino plural",
+            "context_meaning": "uns aos outros"
+          }
+        ]
+      },
+      {
+        "id": "sent_06_21",
+        "term": "Ἐν τῇ οἰκίᾳ τοῦ πατρός μου μοναὶ πολλαί εἰσιν·",
+        "transliteration": "En tē oikia tou patros mou monai pollai eisin;",
+        "translations": [
+          "Na casa de meu Pai há muitas moradas;",
+          "Na casa do meu Pai muitas moradas há;"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Existencial com εἰμί (§ 6)",
+        "notes": "Jo 14.2. οἰκίᾳ e μοναὶ são substantivos femininos da 1ª declinação.",
+        "favorite": false,
+        "tokens": [
+          {
+            "index": 1,
+            "text": "Ἐν",
+            "transliteration": "En",
+            "lemma": "ἐν",
+            "composite": false,
+            "word_class": "Preposição (rege dativo)",
+            "syntax_role": "Introduz o adjunto de lugar ('em')",
+            "inflection": "Preposição invariável",
+            "context_meaning": "em"
+          },
+          {
+            "index": 2,
+            "text": "τῇ",
+            "transliteration": "tē",
+            "lemma": "ὁ",
+            "composite": false,
+            "word_class": "Artigo definido",
+            "syntax_role": "Determinante de οἰκίᾳ (dativo feminino singular: 'a')",
+            "inflection": "Dativo feminino singular",
+            "context_meaning": "a"
+          },
+          {
+            "index": 3,
+            "text": "οἰκίᾳ",
+            "transliteration": "oikia",
+            "lemma": "οἰκία",
+            "composite": false,
+            "word_class": "Substantivo (1ª declinação)",
+            "syntax_role": "Termo regido por ἐν (dativo feminino singular: 'casa')",
+            "inflection": "Dativo feminino singular",
+            "context_meaning": "casa"
+          },
+          {
+            "index": 4,
+            "text": "τοῦ",
+            "transliteration": "tou",
+            "lemma": "ὁ",
+            "composite": false,
+            "word_class": "Artigo definido",
+            "syntax_role": "Determinante de πατρός (genitivo masculino singular: 'de')",
+            "inflection": "Genitivo masculino singular",
+            "context_meaning": "de"
+          },
+          {
+            "index": 5,
+            "text": "πατρός",
+            "transliteration": "patros",
+            "lemma": "πατήρ",
+            "composite": false,
+            "word_class": "Substantivo (3ª declinação)",
+            "syntax_role": "Adjunto adnominal de posse (genitivo masculino singular: 'Pai')",
+            "inflection": "Genitivo masculino singular",
+            "context_meaning": "Pai"
+          },
+          {
+            "index": 6,
+            "text": "μου",
+            "transliteration": "mou",
+            "lemma": "ἐγώ",
+            "composite": false,
+            "word_class": "Pronome pessoal enclítico",
+            "syntax_role": "Genitivo de posse (genitivo de 1ª pessoa singular: 'meu')",
+            "inflection": "Genitivo 1ª pessoa singular",
+            "context_meaning": "meu"
+          },
+          {
+            "index": 7,
+            "text": "μοναὶ",
+            "transliteration": "monai",
+            "lemma": "μονή",
+            "composite": false,
+            "word_class": "Substantivo (1ª declinação)",
+            "syntax_role": "Sujeito (nominativo feminino plural: 'moradas')",
+            "inflection": "Nominativo feminino plural",
+            "context_meaning": "moradas"
+          },
+          {
+            "index": 8,
+            "text": "πολλαί",
+            "transliteration": "pollai",
+            "lemma": "πολύς",
+            "composite": false,
+            "word_class": "Adjetivo",
+            "syntax_role": "Concorda com μοναὶ (nominativo feminino plural: 'muitas')",
+            "inflection": "Nominativo feminino plural",
+            "context_meaning": "muitas"
+          },
+          {
+            "index": 9,
+            "text": "εἰσιν·",
+            "transliteration": "eisin",
+            "lemma": "εἰμί",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Verbo existencial enclítico. Presente do indicativo ativo, 3ª pessoa plural ('há')",
+            "inflection": "Presente do indicativo ativo, 3ª pessoa plural",
+            "context_meaning": "há"
+          }
+        ]
+      },
+      {
+        "id": "sent_06_22",
+        "term": "Καὶ ὅπου ἐγὼ ὑπάγω οἴδατε, καὶ τὴν ὁδὸν οἴδατε.",
+        "transliteration": "Kai hopou egō hypagō oidate, kai tēn hodon oidate.",
+        "translations": [
+          "E aonde eu vou vocês sabem, e o caminho conhecem.",
+          "E vocês sabem aonde eu vou, e conhecem o caminho."
+        ],
+        "type": "Frase",
+        "syntax_type": "Orações Coordenadas com Objeto Anteposto (§ 6)",
+        "notes": "Jo 14.4. ὁδός é feminino, embora siga a 2ª declinação. οἴδατε é perfeito com sentido de presente.",
+        "favorite": false,
+        "tokens": [
+          {
+            "index": 1,
+            "text": "Καὶ",
+            "transliteration": "Kai",
+            "lemma": "καί",
+            "composite": false,
+            "word_class": "Conjunção coordenativa copulativa",
+            "syntax_role": "Liga a afirmação ao contexto anterior ('e')",
+            "inflection": "Conjunção invariável",
+            "context_meaning": "e"
+          },
+          {
+            "index": 2,
+            "text": "ὅπου",
+            "transliteration": "hopou",
+            "lemma": "ὅπου",
+            "composite": false,
+            "word_class": "Advérbio relativo de lugar",
+            "syntax_role": "Introduz a oração objetiva de lugar ('aonde')",
+            "inflection": "Advérbio invariável",
+            "context_meaning": "aonde"
+          },
+          {
+            "index": 3,
+            "text": "ἐγὼ",
+            "transliteration": "egō",
+            "lemma": "ἐγώ",
+            "composite": false,
+            "word_class": "Pronome pessoal enfático",
+            "syntax_role": "Sujeito enfático (nominativo de 1ª pessoa singular: 'eu')",
+            "inflection": "Nominativo 1ª pessoa singular",
+            "context_meaning": "eu"
+          },
+          {
+            "index": 4,
+            "text": "ὑπάγω",
+            "transliteration": "hypagō",
+            "lemma": "ὑπάγω",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo da oração de lugar. Presente do indicativo ativo, 1ª pessoa singular ('vou')",
+            "inflection": "Presente do indicativo ativo, 1ª pessoa singular",
+            "context_meaning": "vou"
+          },
+          {
+            "index": 5,
+            "text": "οἴδατε,",
+            "transliteration": "oidate",
+            "lemma": "οἶδα",
+            "composite": false,
+            "word_class": "Verbo (perfeito com sentido de presente)",
+            "syntax_role": "Núcleo da oração principal. Perfeito do indicativo ativo, 2ª pessoa plural ('sabem')",
+            "inflection": "Perfeito do indicativo ativo, 2ª pessoa plural",
+            "context_meaning": "sabem"
+          },
+          {
+            "index": 6,
+            "text": "καὶ",
+            "transliteration": "kai",
+            "lemma": "καί",
+            "composite": false,
+            "word_class": "Conjunção coordenativa copulativa",
+            "syntax_role": "Coordena as duas orações ('e')",
+            "inflection": "Conjunção invariável",
+            "context_meaning": "e"
+          },
+          {
+            "index": 7,
+            "text": "τὴν",
+            "transliteration": "tēn",
+            "lemma": "ὁ",
+            "composite": false,
+            "word_class": "Artigo definido",
+            "syntax_role": "Determinante de ὁδὸν (acusativo feminino singular: 'o')",
+            "inflection": "Acusativo feminino singular",
+            "context_meaning": "o"
+          },
+          {
+            "index": 8,
+            "text": "ὁδὸν",
+            "transliteration": "hodon",
+            "lemma": "ὁδός",
+            "composite": false,
+            "word_class": "Substantivo (2ª declinação)",
+            "syntax_role": "Objeto direto anteposto (acusativo feminino singular: 'caminho')",
+            "inflection": "Acusativo feminino singular",
+            "context_meaning": "caminho"
+          },
+          {
+            "index": 9,
+            "text": "οἴδατε.",
+            "transliteration": "oidate",
+            "lemma": "οἶδα",
+            "composite": false,
+            "word_class": "Verbo (perfeito com sentido de presente)",
+            "syntax_role": "Núcleo da 2ª oração. Perfeito do indicativo ativo, 2ª pessoa plural ('conhecem')",
+            "inflection": "Perfeito do indicativo ativo, 2ª pessoa plural",
+            "context_meaning": "conhecem"
+          }
+        ]
+      },
+      {
+        "id": "sent_06_23",
+        "term": "Λέγει αὐτῷ Θωμᾶς, Κύριε, οὐκ οἴδαμεν ποῦ ὑπάγεις·",
+        "transliteration": "Legei autō Thōmas, Kyrie, ouk oidamen pou hypageis;",
+        "translations": [
+          "Diz a ele Tomé: Senhor, não sabemos aonde vais;",
+          "Tomé lhe diz: Senhor, não sabemos aonde você vai;"
+        ],
+        "type": "Frase",
+        "syntax_type": "Discurso Direto com Interrogativa Indireta (§ 6)",
+        "notes": "Jo 14.5. Θωμᾶς é nome próprio masculino da 1ª declinação. A frase continua em πῶς δυνάμεθα τὴν ὁδὸν εἰδέναι;",
+        "favorite": false,
+        "tokens": [
+          {
+            "index": 1,
+            "text": "Λέγει",
+            "transliteration": "Legei",
+            "lemma": "λέγω",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo da oração introdutória. Presente do indicativo ativo, 3ª pessoa singular ('diz')",
+            "inflection": "Presente do indicativo ativo, 3ª pessoa singular",
+            "context_meaning": "diz"
+          },
+          {
+            "index": 2,
+            "text": "αὐτῷ",
+            "transliteration": "autō",
+            "lemma": "αὐτός",
+            "composite": false,
+            "word_class": "Pronome pessoal",
+            "syntax_role": "Objeto indireto (dativo masculino singular: 'a ele')",
+            "inflection": "Dativo masculino singular",
+            "context_meaning": "a ele"
+          },
+          {
+            "index": 3,
+            "text": "Θωμᾶς,",
+            "transliteration": "Thōmas",
+            "lemma": "Θωμᾶς",
+            "composite": false,
+            "word_class": "Nome Próprio",
+            "syntax_role": "Sujeito da oração introdutória (nominativo masculino singular: 'Tomé')",
+            "inflection": "Nominativo masculino singular",
+            "context_meaning": "Tomé"
+          },
+          {
+            "index": 4,
+            "text": "Κύριε,",
+            "transliteration": "Kyrie",
+            "lemma": "κύριος",
+            "composite": false,
+            "word_class": "Substantivo (2ª declinação)",
+            "syntax_role": "Vocativo de invocação direta (vocativo masculino singular: 'Senhor')",
+            "inflection": "Vocativo masculino singular",
+            "context_meaning": "Senhor"
+          },
+          {
+            "index": 5,
+            "text": "οὐκ",
+            "transliteration": "ouk",
+            "lemma": "οὐ",
+            "composite": false,
+            "word_class": "Advérbio de negação",
+            "syntax_role": "Nega o verbo diante de vogal ('não')",
+            "inflection": "Advérbio de negação invariável",
+            "context_meaning": "não"
+          },
+          {
+            "index": 6,
+            "text": "οἴδαμεν",
+            "transliteration": "oidamen",
+            "lemma": "οἶδα",
+            "composite": false,
+            "word_class": "Verbo (perfeito com sentido de presente)",
+            "syntax_role": "Núcleo do discurso direto. Perfeito do indicativo ativo, 1ª pessoa plural ('sabemos')",
+            "inflection": "Perfeito do indicativo ativo, 1ª pessoa plural",
+            "context_meaning": "sabemos"
+          },
+          {
+            "index": 7,
+            "text": "ποῦ",
+            "transliteration": "pou",
+            "lemma": "ποῦ",
+            "composite": false,
+            "word_class": "Advérbio interrogativo",
+            "syntax_role": "Introduz a interrogativa indireta de lugar ('aonde')",
+            "inflection": "Advérbio invariável",
+            "context_meaning": "aonde"
+          },
+          {
+            "index": 8,
+            "text": "ὑπάγεις·",
+            "transliteration": "hypageis",
+            "lemma": "ὑπάγω",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo da interrogativa indireta. Presente do indicativo ativo, 2ª pessoa singular ('vais')",
+            "inflection": "Presente do indicativo ativo, 2ª pessoa singular",
+            "context_meaning": "vais"
+          }
+        ]
+      },
+      {
+        "id": "sent_06_14",
+        "term": "πῶς δυνάμεθα τὴν ὁδὸν εἰδέναι;",
+        "transliteration": "pōs dynametha tēn hodon eidenai?",
+        "translations": [
+          "como podemos saber o caminho?"
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Interrogativa Direta com Infinitivo Complementar (§ 6)",
+        "notes": "Jo 14.5. Tomé pergunta com ὁδός (acusativo feminino singular da 2ª declinação).",
+        "favorite": false,
+        "tokens": [
+          {
+            "index": 1,
+            "text": "πῶς",
+            "transliteration": "pōs",
+            "lemma": "πῶς",
+            "composite": false,
+            "word_class": "Advérbio interrogativo",
+            "syntax_role": "Modificador adverbial interrogativo de modo ('como')",
+            "inflection": "Advérbio invariável",
+            "context_meaning": "como"
+          },
+          {
+            "index": 2,
+            "text": "δυνάμεθα",
+            "transliteration": "dynametha",
+            "lemma": "δύναμαι",
+            "composite": false,
+            "word_class": "Verbo depoente",
+            "syntax_role": "Núcleo modal da oração. Presente do indicativo médio/depoente, 1ª pessoa plural ('podemos')",
+            "inflection": "Presente do indicativo médio, 1ª pessoa plural",
+            "context_meaning": "podemos"
+          },
+          {
+            "index": 3,
+            "text": "τὴν",
+            "transliteration": "tēn",
+            "lemma": "ὁ",
+            "composite": false,
+            "word_class": "Artigo definido",
+            "syntax_role": "Determinante de ὁδόν (acusativo feminino singular: 'o')",
+            "inflection": "Acusativo feminino singular",
+            "context_meaning": "o"
+          },
+          {
+            "index": 4,
+            "text": "ὁδὸν",
+            "transliteration": "hodon",
+            "lemma": "ὁδός",
+            "composite": false,
+            "word_class": "Substantivo (2ª declinação feminina)",
+            "syntax_role": "Objeto direto do infinitivo εἰδέναι (acusativo feminino singular: 'caminho')",
+            "inflection": "Acusativo feminino singular",
+            "context_meaning": "caminho"
+          },
+          {
+            "index": 5,
+            "text": "εἰδέναι;",
+            "transliteration": "eidenai",
+            "lemma": "οἶδα",
+            "composite": false,
+            "word_class": "Verbo (Infinitivo)",
+            "syntax_role": "Infinitivo perfeito ativo com sentido de presente completando δυνάμεθα ('saber / conhecer')",
+            "inflection": "Infinitivo perfeito ativo",
+            "context_meaning": "saber"
+          }
+        ]
+      },
+      {
         "id": "sent_06_13",
         "term": "Λέγει αὐτῷ ὁ Ἰησοῦς, Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή·",
         "transliteration": "Legei autō ho Iēsous, Egō eimi hē hodos kai hē alētheia kai hē zōē:",
@@ -6449,75 +7373,6 @@
             "syntax_role": "3º predicativo do sujeito (nominativo feminino singular: 'vida')",
             "inflection": "Nominativo feminino singular",
             "context_meaning": "vida"
-          }
-        ]
-      },
-      {
-        "id": "sent_06_14",
-        "term": "πῶς δυνάμεθα τὴν ὁδὸν εἰδέναι;",
-        "transliteration": "pōs dynametha tēn hodon eidenai?",
-        "translations": [
-          "como podemos saber o caminho?"
-        ],
-        "type": "Frase",
-        "syntax_type": "Oração Interrogativa Direta com Infinitivo Complementar (§ 6)",
-        "notes": "Jo 14.5. Tomé pergunta com ὁδός (acusativo feminino singular da 2ª declinação).",
-        "favorite": false,
-        "tokens": [
-          {
-            "index": 1,
-            "text": "πῶς",
-            "transliteration": "pōs",
-            "lemma": "πῶς",
-            "composite": false,
-            "word_class": "Advérbio interrogativo",
-            "syntax_role": "Modificador adverbial interrogativo de modo ('como')",
-            "inflection": "Advérbio invariável",
-            "context_meaning": "como"
-          },
-          {
-            "index": 2,
-            "text": "δυνάμεθα",
-            "transliteration": "dynametha",
-            "lemma": "δύναμαι",
-            "composite": false,
-            "word_class": "Verbo depoente",
-            "syntax_role": "Núcleo modal da oração. Presente do indicativo médio/depoente, 1ª pessoa plural ('podemos')",
-            "inflection": "Presente do indicativo médio, 1ª pessoa plural",
-            "context_meaning": "podemos"
-          },
-          {
-            "index": 3,
-            "text": "τὴν",
-            "transliteration": "tēn",
-            "lemma": "ὁ",
-            "composite": false,
-            "word_class": "Artigo definido",
-            "syntax_role": "Determinante de ὁδόν (acusativo feminino singular: 'o')",
-            "inflection": "Acusativo feminino singular",
-            "context_meaning": "o"
-          },
-          {
-            "index": 4,
-            "text": "ὁδὸν",
-            "transliteration": "hodon",
-            "lemma": "ὁδός",
-            "composite": false,
-            "word_class": "Substantivo (2ª declinação feminina)",
-            "syntax_role": "Objeto direto do infinitivo εἰδέναι (acusativo feminino singular: 'caminho')",
-            "inflection": "Acusativo feminino singular",
-            "context_meaning": "caminho"
-          },
-          {
-            "index": 5,
-            "text": "εἰδέναι;",
-            "transliteration": "eidenai",
-            "lemma": "οἶδα",
-            "composite": false,
-            "word_class": "Verbo (Infinitivo)",
-            "syntax_role": "Infinitivo perfeito ativo com sentido de presente completando δυνάμεθα ('saber / conhecer')",
-            "inflection": "Infinitivo perfeito ativo",
-            "context_meaning": "saber"
           }
         ]
       },
@@ -9174,10 +10029,11 @@
       },
       {
         "id": "sent_07_18",
-        "term": "ὁ υἱὸς τοῦ Θεοῦ... δέδωκεν ἡμῖν διάνοιαν ἵνα γινώσκωμεν τὸν ἀληθινόν...",
-        "transliteration": "ho huios tou Theou... dedōken hēmin dianoian hina ginōskōmen ton alēthinon...",
+        "term": "ὁ υἱὸς τοῦ Θεοῦ... δέδωκεν ἡμῖν διάνοιαν ἵνα γινώσκωμεν τὸν ἀληθινόν καὶ ἐσμὲν ἐν τῷ ἀληθινῷ, ἐν Ἰησοῦ Χριστῷ.",
+        "transliteration": "ho huios tou Theou... dedōken hēmin dianoian hina ginōskōmen ton alēthinon kai esmen en tō alēthinō, en Iēsou Christō.",
         "translations": [
-          "o filho de Deus... nos deu entendimento para que conheçamos o verdadeiro..."
+          "o filho de Deus... nos deu entendimento para que conheçamos o verdadeiro; e estamos no verdadeiro, em Jesus Cristo.",
+          "o filho de Deus... deu a nós discernimento para que conheçamos o verdadeiro; e estamos no verdadeiro, em Jesus Cristo."
         ],
         "type": "Frase",
         "syntax_type": "Período com Oração Final e Adjetivo Substantivado (§ 7)",
@@ -9296,7 +10152,7 @@
           },
           {
             "index": 11,
-            "text": "ἀληθινόν...",
+            "text": "ἀληθινόν",
             "transliteration": "alēthinon",
             "lemma": "ἀληθινός",
             "composite": false,
@@ -9305,6 +10161,94 @@
             "inflection": "Acusativo masculino singular",
             "context_meaning": "verdadeiro",
             "notes": "Substantivação do adjetivo (Bergmann § 7.3.3)"
+          },
+          {
+            "index": 12,
+            "text": "καὶ",
+            "transliteration": "kai",
+            "lemma": "καί",
+            "composite": false,
+            "word_class": "Conjunção coordenativa copulativa",
+            "syntax_role": "Liga a afirmação seguinte ('e')",
+            "inflection": "Conjunção invariável",
+            "context_meaning": "e"
+          },
+          {
+            "index": 13,
+            "text": "ἐσμὲν",
+            "transliteration": "esmen",
+            "lemma": "εἰμί",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Verbo de estado. Presente do indicativo ativo, 1ª pessoa plural ('estamos')",
+            "inflection": "Presente do indicativo ativo, 1ª pessoa plural",
+            "context_meaning": "estamos"
+          },
+          {
+            "index": 14,
+            "text": "ἐν",
+            "transliteration": "en",
+            "lemma": "ἐν",
+            "composite": false,
+            "word_class": "Preposição (rege dativo)",
+            "syntax_role": "Introduz a esfera de união ('em')",
+            "inflection": "Preposição invariável",
+            "context_meaning": "em"
+          },
+          {
+            "index": 15,
+            "text": "τῷ",
+            "transliteration": "tō",
+            "lemma": "ὁ",
+            "composite": false,
+            "word_class": "Artigo definido",
+            "syntax_role": "Substantiva o adjetivo (dativo masculino singular: 'o')",
+            "inflection": "Dativo masculino singular",
+            "context_meaning": "o"
+          },
+          {
+            "index": 16,
+            "text": "ἀληθινῷ,",
+            "transliteration": "alēthinō",
+            "lemma": "ἀληθινός",
+            "composite": false,
+            "word_class": "Adjetivo substantivado",
+            "syntax_role": "Termo regido por ἐν (dativo masculino singular: 'verdadeiro')",
+            "inflection": "Dativo masculino singular",
+            "context_meaning": "verdadeiro"
+          },
+          {
+            "index": 17,
+            "text": "ἐν",
+            "transliteration": "en",
+            "lemma": "ἐν",
+            "composite": false,
+            "word_class": "Preposição (rege dativo)",
+            "syntax_role": "Retoma e especifica a esfera de união ('em')",
+            "inflection": "Preposição invariável",
+            "context_meaning": "em"
+          },
+          {
+            "index": 18,
+            "text": "Ἰησοῦ",
+            "transliteration": "Iēsou",
+            "lemma": "Ἰησοῦς",
+            "composite": false,
+            "word_class": "Nome Próprio",
+            "syntax_role": "Termo regido por ἐν (dativo masculino singular: 'Jesus')",
+            "inflection": "Dativo masculino singular",
+            "context_meaning": "Jesus"
+          },
+          {
+            "index": 19,
+            "text": "Χριστῷ.",
+            "transliteration": "Christō",
+            "lemma": "Χριστός",
+            "composite": false,
+            "word_class": "Substantivo próprio",
+            "syntax_role": "Aposto de Ἰησοῦ (dativo masculino singular: 'Cristo')",
+            "inflection": "Dativo masculino singular",
+            "context_meaning": "Cristo"
           }
         ]
       },
@@ -9905,10 +10849,11 @@
       },
       {
         "id": "sent_08_02",
-        "term": "Ἐκ Ναζαρέτ δύναταί τι ἀγαθὸν εἶναι;",
-        "transliteration": "Ek Nazaret dynatai ti agathon einai?",
+        "term": "εἶπεν Ναθαναήλ, Ἐκ Ναζαρὲτ δύναταί τι ἀγαθὸν εἶναι;",
+        "transliteration": "eipen Nathanaēl, Ek Nazaret dynatai ti agathon einai?",
         "translations": [
-          "De Nazaré pode sair algo bom?"
+          "Disse Natanael: De Nazaré pode sair algo bom?",
+          "Disse Natanael: De Nazaré pode algo bom ser?"
         ],
         "type": "Frase",
         "syntax_type": "Oração Interrogativa Direta Modal com Preposição ἐκ (§ 8)",
@@ -9917,6 +10862,28 @@
         "tokens": [
           {
             "index": 1,
+            "text": "εἶπεν",
+            "transliteration": "eipen",
+            "lemma": "λέγω",
+            "composite": false,
+            "word_class": "Verbo (2º Aoristo)",
+            "syntax_role": "Núcleo da oração introdutória. 2º aoristo do indicativo ativo, 3ª pessoa singular ('disse')",
+            "inflection": "2º aoristo do indicativo ativo, 3ª pessoa singular",
+            "context_meaning": "disse"
+          },
+          {
+            "index": 2,
+            "text": "Ναθαναήλ,",
+            "transliteration": "Nathanaēl",
+            "lemma": "Ναθαναήλ",
+            "composite": false,
+            "word_class": "Nome Próprio (indeclinável)",
+            "syntax_role": "Sujeito da oração introdutória (nominativo masculino singular: 'Natanael')",
+            "inflection": "Indeclinável",
+            "context_meaning": "Natanael"
+          },
+          {
+            "index": 3,
             "text": "Ἐκ",
             "transliteration": "Ek",
             "lemma": "ἐκ",
@@ -9928,8 +10895,8 @@
             "notes": "Preposição ἐκ com genitivo (Bergmann § 8.1)"
           },
           {
-            "index": 2,
-            "text": "Ναζαρέτ",
+            "index": 4,
+            "text": "Ναζαρὲτ",
             "transliteration": "Nazaret",
             "lemma": "Ναζαρέτ",
             "composite": false,
@@ -9939,7 +10906,7 @@
             "context_meaning": "Nazaré"
           },
           {
-            "index": 3,
+            "index": 5,
             "text": "δύναταί",
             "transliteration": "dynatai",
             "lemma": "δύναμαι",
@@ -9950,7 +10917,7 @@
             "context_meaning": "pode"
           },
           {
-            "index": 4,
+            "index": 6,
             "text": "τι",
             "transliteration": "ti",
             "lemma": "τις",
@@ -9961,7 +10928,7 @@
             "context_meaning": "algo"
           },
           {
-            "index": 5,
+            "index": 7,
             "text": "ἀγαθὸν",
             "transliteration": "agathon",
             "lemma": "ἀγαθός",
@@ -9972,7 +10939,7 @@
             "context_meaning": "bom"
           },
           {
-            "index": 6,
+            "index": 8,
             "text": "εἶναι;",
             "transliteration": "einai",
             "lemma": "εἰμί",
@@ -30655,7 +31622,8 @@
         "term": "Τεκνία μου, μὴ ἀγαπῶμεν λόγῳ μηδὲ τῇ γλώσσῃ, ἀλλ᾽ ἐν ἔργῳ καὶ ἀληθείᾳ.",
         "transliteration": "Teknia mou, mē agapōmen logō mēde tē glōssē, all’ en ergō kai alētheia.",
         "translations": [
-          "Filhinhos, não amemos de palavra, nem da boca para fora, mas em ação e de verdade."
+          "Filhinhos, não amemos de palavra, nem da boca para fora, mas em ação e de verdade.",
+          "Filhos meus, não amemos de palavra, nem da boca para fora, mas em ação e de verdade."
         ],
         "type": "Frase",
         "syntax_type": "Exortação carinhosa com vocativo e subjuntivo exortativo de verbo contraído acompanhado de dativos instrumentais contrastantes",
@@ -33481,6 +34449,109 @@
         ]
       },
       {
+        "id": "sent_22_09",
+        "term": "Ἐάν τις ἀγαπᾷ με, τὸν λόγον μου τηρήσει…",
+        "transliteration": "Ean tis agapa me, ton logon mou tērēsei…",
+        "translations": [
+          "Se alguém me ama, guardará a minha palavra...",
+          "Se alguém me amar, guardará a minha palavra..."
+        ],
+        "type": "Frase",
+        "syntax_type": "Oração Condicional de 3ª Classe (§ 22)",
+        "notes": "Jo 14.23. ἐάν com subjuntivo forma a condicional de 3ª classe, e a apódose vem no futuro. Em verbos em -άω, ἀγαπᾷ tem a mesma forma no indicativo e no subjuntivo.",
+        "favorite": false,
+        "tokens": [
+          {
+            "index": 1,
+            "text": "Ἐάν",
+            "transliteration": "Ean",
+            "lemma": "ἐάν",
+            "composite": false,
+            "word_class": "Conjunção condicional",
+            "syntax_role": "Introduz a condição de 3ª classe ('se')",
+            "inflection": "Conjunção invariável",
+            "context_meaning": "se"
+          },
+          {
+            "index": 2,
+            "text": "τις",
+            "transliteration": "tis",
+            "lemma": "τις",
+            "composite": false,
+            "word_class": "Pronome indefinido enclítico",
+            "syntax_role": "Sujeito da condicional (nominativo masculino singular: 'alguém')",
+            "inflection": "Nominativo masculino singular",
+            "context_meaning": "alguém"
+          },
+          {
+            "index": 3,
+            "text": "ἀγαπᾷ",
+            "transliteration": "agapa",
+            "lemma": "ἀγαπάω",
+            "composite": false,
+            "word_class": "Verbo contraído",
+            "syntax_role": "Núcleo da prótase. Presente do subjuntivo ativo, 3ª pessoa singular ('ama')",
+            "inflection": "Presente do subjuntivo ativo, 3ª pessoa singular",
+            "context_meaning": "ama"
+          },
+          {
+            "index": 4,
+            "text": "με,",
+            "transliteration": "me",
+            "lemma": "ἐγώ",
+            "composite": false,
+            "word_class": "Pronome pessoal enclítico",
+            "syntax_role": "Objeto direto (acusativo de 1ª pessoa singular: 'me')",
+            "inflection": "Acusativo 1ª pessoa singular",
+            "context_meaning": "me"
+          },
+          {
+            "index": 5,
+            "text": "τὸν",
+            "transliteration": "ton",
+            "lemma": "ὁ",
+            "composite": false,
+            "word_class": "Artigo definido",
+            "syntax_role": "Determinante de λόγον (acusativo masculino singular: 'a')",
+            "inflection": "Acusativo masculino singular",
+            "context_meaning": "a"
+          },
+          {
+            "index": 6,
+            "text": "λόγον",
+            "transliteration": "logon",
+            "lemma": "λόγος",
+            "composite": false,
+            "word_class": "Substantivo (2ª declinação)",
+            "syntax_role": "Objeto direto anteposto (acusativo masculino singular: 'palavra')",
+            "inflection": "Acusativo masculino singular",
+            "context_meaning": "palavra"
+          },
+          {
+            "index": 7,
+            "text": "μου",
+            "transliteration": "mou",
+            "lemma": "ἐγώ",
+            "composite": false,
+            "word_class": "Pronome pessoal enclítico",
+            "syntax_role": "Genitivo de posse (genitivo de 1ª pessoa singular: 'minha')",
+            "inflection": "Genitivo 1ª pessoa singular",
+            "context_meaning": "minha"
+          },
+          {
+            "index": 8,
+            "text": "τηρήσει…",
+            "transliteration": "tērēsei",
+            "lemma": "τηρέω",
+            "composite": false,
+            "word_class": "Verbo contraído em -έω",
+            "syntax_role": "Núcleo da apódose. Futuro do indicativo ativo, 3ª pessoa singular ('guardará')",
+            "inflection": "Futuro do indicativo ativo, 3ª pessoa singular",
+            "context_meaning": "guardará"
+          }
+        ]
+      },
+      {
         "id": "sent_22_04",
         "favorite": false,
         "term": "Ἐὰν μείνητε ἐν ἐμοί, καὶ τὰ ῥήματά μου ἐν ὑμῖν μείνῃ, ὃ ἐὰν θέλητε αἰτήσεσθε, καὶ γενήσεται ὑμῖν.",
@@ -34358,6 +35429,130 @@
             "syntax_role": "Futuro passivo indicativo, 2ª singular ('serás salvo')",
             "inflection": "Futuro passivo indicativo, 2ª pessoa do singular",
             "context_meaning": "serás salvo"
+          }
+        ]
+      },
+      {
+        "id": "sent_22_10",
+        "term": "καρδίᾳ γὰρ πιστεύεται εἰς δικαιοσύνην, στόματι δὲ ὁμολογεῖται εἰς σωτηρίαν.",
+        "transliteration": "kardia gar pisteuetai eis dikaiosynēn, stomati de homologeitai eis sōtērian.",
+        "translations": [
+          "porque com o coração se crê para justiça, mas com a boca se confessa para salvação."
+        ],
+        "type": "Frase",
+        "syntax_type": "Orações Paralelas com Dativo de Instrumento (§ 22)",
+        "notes": "Rm 10.10. Forma as partes B’ e A’ do quiasmo comentado em “Aplicando o texto à vida...” da lição 22.",
+        "favorite": false,
+        "tokens": [
+          {
+            "index": 1,
+            "text": "καρδίᾳ",
+            "transliteration": "kardia",
+            "lemma": "καρδία",
+            "composite": false,
+            "word_class": "Substantivo (1ª declinação)",
+            "syntax_role": "Dativo instrumental anteposto (dativo feminino singular: 'com o coração')",
+            "inflection": "Dativo feminino singular",
+            "context_meaning": "com o coração"
+          },
+          {
+            "index": 2,
+            "text": "γὰρ",
+            "transliteration": "gar",
+            "lemma": "γάρ",
+            "composite": false,
+            "word_class": "Conjunção causal pospositiva",
+            "syntax_role": "Conectivo explicativo ('porque')",
+            "inflection": "Conjunção invariável",
+            "context_meaning": "porque"
+          },
+          {
+            "index": 3,
+            "text": "πιστεύεται",
+            "transliteration": "pisteuetai",
+            "lemma": "πιστεύω",
+            "composite": false,
+            "word_class": "Verbo",
+            "syntax_role": "Núcleo impessoal. Presente do indicativo passivo, 3ª pessoa singular ('se crê')",
+            "inflection": "Presente do indicativo passivo, 3ª pessoa singular",
+            "context_meaning": "se crê"
+          },
+          {
+            "index": 4,
+            "text": "εἰς",
+            "transliteration": "eis",
+            "lemma": "εἰς",
+            "composite": false,
+            "word_class": "Preposição (rege acusativo)",
+            "syntax_role": "Indica finalidade ou resultado ('para')",
+            "inflection": "Preposição invariável",
+            "context_meaning": "para"
+          },
+          {
+            "index": 5,
+            "text": "δικαιοσύνην,",
+            "transliteration": "dikaiosynēn",
+            "lemma": "δικαιοσύνη",
+            "composite": false,
+            "word_class": "Substantivo (1ª declinação)",
+            "syntax_role": "Termo regido por εἰς (acusativo feminino singular: 'justiça')",
+            "inflection": "Acusativo feminino singular",
+            "context_meaning": "justiça"
+          },
+          {
+            "index": 6,
+            "text": "στόματι",
+            "transliteration": "stomati",
+            "lemma": "στόμα",
+            "composite": false,
+            "word_class": "Substantivo (3ª declinação neutra)",
+            "syntax_role": "Dativo instrumental anteposto (dativo neutro singular: 'com a boca')",
+            "inflection": "Dativo neutro singular",
+            "context_meaning": "com a boca"
+          },
+          {
+            "index": 7,
+            "text": "δὲ",
+            "transliteration": "de",
+            "lemma": "δέ",
+            "composite": false,
+            "word_class": "Conjunção coordenativa adversativa pospositiva",
+            "syntax_role": "Estabelece o paralelo com a oração anterior ('mas')",
+            "inflection": "Conjunção invariável",
+            "context_meaning": "mas"
+          },
+          {
+            "index": 8,
+            "text": "ὁμολογεῖται",
+            "transliteration": "homologeitai",
+            "lemma": "ὁμολογέω",
+            "composite": false,
+            "word_class": "Verbo contraído em -έω",
+            "syntax_role": "Núcleo impessoal. Presente do indicativo passivo, 3ª pessoa singular ('se confessa')",
+            "inflection": "Presente do indicativo passivo, 3ª pessoa singular",
+            "context_meaning": "se confessa"
+          },
+          {
+            "index": 9,
+            "text": "εἰς",
+            "transliteration": "eis",
+            "lemma": "εἰς",
+            "composite": false,
+            "word_class": "Preposição (rege acusativo)",
+            "syntax_role": "Indica finalidade ou resultado ('para')",
+            "inflection": "Preposição invariável",
+            "context_meaning": "para"
+          },
+          {
+            "index": 10,
+            "text": "σωτηρίαν.",
+            "transliteration": "sōtērian",
+            "lemma": "σωτηρία",
+            "composite": false,
+            "word_class": "Substantivo (1ª declinação)",
+            "syntax_role": "Termo regido por εἰς (acusativo feminino singular: 'salvação')",
+            "inflection": "Acusativo feminino singular",
+            "context_meaning": "salvação"
           }
         ]
       },

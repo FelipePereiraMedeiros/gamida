@@ -600,6 +600,35 @@ suite.test('Lema grego aparece em minúsculas, como no vocabulário', () => {
   });
 });
 
+suite.test('Frases dos exercícios do Bergmann estão completas e com tokens fiéis ao texto', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const greekData = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/greek_chapters.json'), 'utf8'));
+  const termsOf = (id) => greekData.find((c) => c.id === id).sentences.map((s) => s.term);
+  const expected = {
+    bergmann_01: ['Πάντα ἰσχύω', 'Χαίρετε ἐν Κυρίῳ', 'Ζητεῖτε πρῶτον'],
+    bergmann_06: ['Ἐν τούτῳ γνώσονται', 'Ἐν τῇ οἰκίᾳ', 'Καὶ ὅπου ἐγὼ', 'Λέγει αὐτῷ Θωμᾶς'],
+    bergmann_07: ['ὁ υἱὸς τοῦ Θεοῦ... δέδωκεν'],
+    bergmann_08: ['εἶπεν Ναθαναήλ, Ἐκ Ναζαρὲτ'],
+    bergmann_22: ['Ἐάν τις ἀγαπᾷ με,', 'καρδίᾳ γὰρ πιστεύεται'],
+  };
+  Object.entries(expected).forEach(([id, starts]) => {
+    starts.forEach((start) => {
+      assert.isTrue(termsOf(id).some((term) => term.startsWith(start)), `${id} sem a frase ${start}`);
+    });
+  });
+  assert.isTrue(termsOf('bergmann_07').some((term) => term.endsWith('ἐν Ἰησοῦ Χριστῷ.')), '1Jo 5.20 incompleto');
+
+  const clean = (text) => text.replace(/\s+/g, ' ').trim();
+  ['bergmann_01', 'bergmann_06', 'bergmann_07', 'bergmann_08', 'bergmann_22'].forEach((id) => {
+    greekData.find((c) => c.id === id).sentences.forEach((sentence) => {
+      const joined = clean(sentence.tokens.map((t) => t.text).join(' '));
+      assert.equal(joined, clean(sentence.term), `Tokens divergem do texto em ${sentence.id}`);
+      sentence.tokens.forEach((token, index) => assert.equal(token.index, index + 1, `Índice em ${sentence.id}`));
+    });
+  });
+});
+
 module.exports = suite;
 
 

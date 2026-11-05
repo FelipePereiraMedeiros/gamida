@@ -8,7 +8,7 @@
 
 const DataLoader = {
   get VERSION() {
-    return (typeof window !== "undefined" && window.APP_VERSION) || "2.19.1";
+    return (typeof window !== "undefined" && window.APP_VERSION) || "2.20.0";
   },
   cache: {},
 
@@ -302,7 +302,7 @@ const DataLoader = {
   /**
    * Favoritar marca o capítulo como editado pelo usuário. Por isso a classificação
    * gramatical dos itens padrão é atualizada mesmo em capítulos preservados, e
-   * as tabelas novas do capítulo padrão são acrescentadas sem tocar nas existentes.
+   * as tabelas e frases novas do capítulo padrão são acrescentadas sem tocar nas existentes.
    */
   syncItemClassification(storedChap, defChap) {
     const keyOf = (item) => item && (item.hebrew || item.term);
@@ -318,6 +318,11 @@ const DataLoader = {
     const newParadigms = (defChap.paradigms || []).filter((p) => !storedTitles.has(titleOf(p)));
     if (newParadigms.length > 0) {
       storedChap.paradigms = [...(storedChap.paradigms || []), ...newParadigms];
+    }
+    const storedSentenceIds = new Set((storedChap.sentences || []).map((s) => s && s.id));
+    const newSentences = (defChap.sentences || []).filter((s) => !storedSentenceIds.has(s.id));
+    if (newSentences.length > 0) {
+      storedChap.sentences = [...(storedChap.sentences || []), ...newSentences];
     }
     return storedChap;
   },
