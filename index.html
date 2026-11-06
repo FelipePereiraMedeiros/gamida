@@ -70,7 +70,7 @@
           },
         },
       };
-      window.APP_VERSION = "2.22.0";
+      window.APP_VERSION = "2.22.1";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
@@ -668,10 +668,10 @@
               <span class="mode-card__cta">Seguir o caminho ➔</span>
             </button>
 
-            <!-- Modo: análise morfológica (só no grego) -->
+            <!-- Modo: Mago da Morfologia, análise morfológica (só no grego) -->
             <button type="button" id="morph-mode-card" onclick="openMorphDrill()" class="mode-card mode-card--morph hidden">
               <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg></span>
-              <span class="mode-card__title">Análise Morfológica</span>
+              <span class="mode-card__title">Mago da Morfologia</span>
               <span class="mode-card__text">Marque nas caixas a classe, o caso, o gênero, o número, a pessoa, o tempo, o modo e a voz de cada palavra das frases das lições.</span>
               <span class="mode-card__cta">Escolher lições ➔</span>
             </button>
@@ -1401,14 +1401,14 @@
           </div>
         </div>
 
-        <!-- Análise morfológica: configuração -->
+        <!-- Mago da Morfologia: configuração -->
         <div id="morph-config" class="hidden morph-panel">
           <div class="morph-panel__head">
             <div>
-              <h3 class="morph-panel__title">Análise Morfológica</h3>
+              <h3 class="morph-panel__title">Mago da Morfologia</h3>
               <p id="morph-scope-info" class="morph-panel__text"></p>
             </div>
-            <button type="button" onclick="quitMorphDrill()" class="link-btn" aria-label="Fechar a análise morfológica">Voltar</button>
+            <button type="button" onclick="quitMorphDrill()" class="link-btn" aria-label="Fechar o Mago da Morfologia">Voltar</button>
           </div>
           <p class="morph-panel__label">Lições</p>
           <div id="morph-chapter-list" class="morph-chapters"></div>
@@ -1426,7 +1426,7 @@
           <button type="button" onclick="startMorphDrill()" class="answer-btn morph-start">Começar</button>
         </div>
 
-        <!-- Análise morfológica: questão -->
+        <!-- Mago da Morfologia: questão -->
         <div id="morph-active" class="hidden morph-panel">
           <div class="morph-panel__head">
             <span class="morph-progress"><span id="morph-progress"></span> · <span id="morph-score" class="morph-progress__ok"></span></span>
@@ -1438,7 +1438,7 @@
           </div>
         </div>
 
-        <!-- Análise morfológica: resultado -->
+        <!-- Mago da Morfologia: resultado -->
         <div id="morph-results" class="hidden morph-panel">
           <div id="morph-results-body" class="round-summary"></div>
         </div>
@@ -1670,7 +1670,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.22.0</span>
+        <span id="footer-version-tag">v2.22.1</span>
       </p>
     </footer>
 

@@ -1,6 +1,6 @@
 /**
  * ==========================================================================
- * Gamida - Exercício de Análise Morfológica (Grego)
+ * Gamida - Mago da Morfologia: análise morfológica com caixas de seleção (Grego)
  * ==========================================================================
  * Cada questão mostra uma palavra dentro da frase de uma lição de Bergmann.
  * O aluno marca nas caixas de seleção a classe gramatical e as categorias
@@ -396,7 +396,7 @@
   function openMorphDrill() {
     if (typeof document === "undefined") return;
     if (!isGreek()) {
-      alert("A análise morfológica está disponível para o grego. Troque o idioma no topo da tela.");
+      alert("O Mago da Morfologia está disponível para o grego. Troque o idioma no topo da tela.");
       return;
     }
     loadPrefs();
@@ -690,7 +690,7 @@
     }).join("");
 
     box.innerHTML = `
-      <p class="round-summary__eyebrow">Análise morfológica</p>
+      <p class="round-summary__eyebrow">Mago da Morfologia</p>
       <p class="round-summary__score"><strong>${sum.percent}%</strong> das categorias</p>
       <p class="round-summary__note">${sum.wordsCorrect} de ${sum.words} palavras com análise completa correta.</p>
       <ul class="morph-stats">${rows}</ul>

@@ -1,13 +1,13 @@
 /**
  * ==========================================================================
- * Módulo 17: Exercício de Análise Morfológica com Caixas de Seleção (Grego)
+ * Módulo 17: Mago da Morfologia, análise morfológica com caixas de seleção (Grego)
  * ==========================================================================
  */
 
 const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 const M = require('../js/modules/morph-drill.js');
 
-const suite = new TestSuite('Módulo 17: Análise Morfológica com Caixas de Seleção');
+const suite = new TestSuite('Módulo 17: Mago da Morfologia');
 const { html, greekData } = loadSourceFiles();
 
 const tok = (word_class, inflection, syntax_role = '') => ({ text: 'x', word_class, inflection, syntax_role });
@@ -123,6 +123,14 @@ suite.test('Interface: cartão, telas e script registrados no index.html', () =>
     assert.includes(html, `id="${id}"`, `Falta #${id}`);
   });
   assert.includes(html, 'js/modules/morph-drill.js');
+});
+
+suite.test('O modo se chama Mago da Morfologia no cartão, na configuração e no resultado', () => {
+  assert.includes(html, '<span class="mode-card__title">Mago da Morfologia</span>');
+  assert.includes(html, '<h3 class="morph-panel__title">Mago da Morfologia</h3>');
+  const src = require('fs').readFileSync(require('path').join(__dirname, '..', 'js', 'modules', 'morph-drill.js'), 'utf8');
+  assert.includes(src, '<p class="round-summary__eyebrow">Mago da Morfologia</p>');
+  assert.isFalse(/mode-card__title">Análise Morfológica/.test(html), 'Nome antigo ainda no cartão');
 });
 
 module.exports = suite;

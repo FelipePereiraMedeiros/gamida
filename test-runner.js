@@ -27,7 +27,7 @@ const modules = [
   { id: 14, name: 'Análise Morfossintática Granular (Page Kelley)', file: './tests/14-sentence-analysis.test.js' },
   { id: 15, name: 'Dicas de Assimilação', file: './tests/15-assimilation.test.js' },
   { id: 16, name: 'Caminho do Domínio', file: './tests/16-mastery-path.test.js' },
-  { id: 17, name: 'Análise Morfológica com Caixas de Seleção', file: './tests/17-morph-drill.test.js' },
+  { id: 17, name: 'Mago da Morfologia', file: './tests/17-morph-drill.test.js' },
 ];
 
 async function run() {
