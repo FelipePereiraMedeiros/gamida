@@ -58,6 +58,9 @@ function resetToDashboard() {
   if (typeof window !== "undefined" && window.MasteryPathModule && typeof window.MasteryPathModule.resetMasteryPathView === "function") {
     window.MasteryPathModule.resetMasteryPathView();
   }
+  safeToggle("morph-config", false);
+  safeToggle("morph-active", false);
+  safeToggle("morph-results", false);
   if (typeof window !== "undefined" && window.SurvivalModule && typeof window.SurvivalModule.updateSurvivalDashboardRecord === "function") {
     window.SurvivalModule.updateSurvivalDashboardRecord();
   }

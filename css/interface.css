@@ -1260,3 +1260,152 @@ body.is-alphabet-practice .app-stat--mastery { display: none; }
 .path-feedback__detail { margin: 0.125rem 0 0; font-size: 0.875rem; color: var(--text); overflow-wrap: anywhere; }
 .path-complete { min-height: 18rem; }
 .path-complete__title { margin: 0; font-size: 1.5rem; font-weight: 700; color: var(--text-strong); }
+
+/* Análise morfológica com caixas de seleção (grego) */
+.mode-card--morph { --accent: 167 139 250; }
+.mode-card.hidden { display: none; }
+/* Com o quinto cartão (grego), a grade larga passa a 3 colunas: 3 + 2 */
+@media (min-width: 1280px) {
+  .mode-grid:has(.mode-card--morph:not(.hidden)) { grid-template-columns: repeat(3, 1fr); }
+}
+.morph-panel, .morph-panel * { box-sizing: border-box; }
+.morph-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.125rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-1);
+  color: var(--text);
+}
+.morph-panel.hidden { display: none; }
+.morph-panel__head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.morph-panel__title { margin: 0; font-size: 1.125rem; font-weight: 700; color: var(--text-strong); }
+.morph-panel__text { margin: 0.125rem 0 0; font-size: 0.8125rem; color: var(--text-soft); }
+.morph-panel__label { margin: 0.25rem 0 -0.375rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-soft); }
+
+.morph-chapters {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-height: 18rem;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+@media (min-width: 640px) { .morph-chapters { grid-template-columns: 1fr 1fr; } }
+.morph-chap {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 2.75rem;
+  padding: 0.375rem 0.75rem;
+  border-bottom: 1px solid var(--surface-2);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.morph-chap > span { min-width: 0; }
+.morph-chap small { display: block; font-size: 0.75rem; color: var(--text-soft); }
+.morph-chap--all { grid-column: 1 / -1; font-weight: 600; background: var(--surface-1); position: sticky; top: 0; z-index: 1; }
+.morph-chap--toggle { border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.morph-chap .chapter-option__box { flex: none; }
+
+.morph-amounts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+.morph-amount {
+  min-height: 2.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+}
+.morph-amount:hover { border-color: rgb(var(--brand-500)); }
+.morph-amount.is-on { border-color: rgb(var(--brand-400)); background: rgb(var(--brand-600)); color: #fff; }
+.morph-start { align-self: flex-end; }
+
+.morph-progress { font-size: 0.8125rem; font-weight: 600; color: var(--text-soft); font-variant-numeric: tabular-nums; }
+.morph-progress__ok { color: #34d399; }
+.morph-chapter { margin: 0; font-size: 0.75rem; color: var(--text-soft); }
+.morph-sentence { margin: 0.25rem 0 0; font-size: 1.375rem; line-height: 1.7; color: var(--text); }
+.morph-target {
+  padding: 0 0.25rem;
+  border-radius: 0.375rem;
+  background: rgb(var(--brand-600) / 0.35);
+  box-shadow: inset 0 -2px 0 rgb(var(--brand-400));
+  color: var(--text-strong);
+}
+.morph-word { margin: 0.5rem 0 0.75rem; font-size: 0.9375rem; color: var(--text-soft); }
+.morph-word strong { font-size: 1.5rem; color: var(--text-strong); }
+
+.morph-groups { display: grid; grid-template-columns: 1fr; gap: 0.625rem; }
+@media (min-width: 640px) { .morph-groups { grid-template-columns: 1fr 1fr; } }
+.morph-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0.625rem 0.75rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-0);
+}
+.morph-group[data-morph-field="classe"] { grid-column: 1 / -1; }
+.morph-group__label { padding: 0 0.25rem; font-size: 0.8125rem; font-weight: 600; color: var(--text-strong); }
+.morph-group__hint { font-weight: 400; font-size: 0.6875rem; color: var(--text-placeholder); }
+.morph-group__opts { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.morph-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  min-height: 2.25rem;
+  padding: 0.25rem 0.625rem 0.25rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-1);
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+.morph-opt .chapter-option__box { width: 1.0625rem; height: 1.0625rem; }
+.morph-opt:hover { border-color: rgb(var(--brand-500)); }
+.morph-opt:has(input:checked) { border-color: rgb(var(--brand-400)); color: var(--text-strong); }
+.morph-opt:has(input:disabled) { cursor: default; }
+.morph-opt.is-expected { border-color: #34d399; background: rgba(52, 211, 153, 0.12); color: #a7f3d0; }
+.morph-opt.is-wrong { border-color: #fb7185; background: rgba(244, 63, 94, 0.12); color: #fecdd3; text-decoration: line-through; }
+.morph-group__feedback { margin: 0.375rem 0 0; font-size: 0.75rem; color: var(--text-soft); }
+.morph-group__feedback:empty { display: none; }
+.morph-group.is-ok { border-color: rgba(52, 211, 153, 0.5); }
+.morph-group.is-ok .morph-group__feedback { color: #34d399; }
+.morph-group.is-wrong { border-color: rgba(251, 113, 133, 0.6); }
+.morph-group.is-wrong .morph-group__feedback { color: #fda4af; }
+
+.morph-answer {
+  margin-top: 0.75rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid rgba(251, 113, 133, 0.45);
+  border-radius: var(--radius-md);
+  background: var(--surface-0);
+}
+.morph-answer.hidden { display: none; }
+.morph-answer.is-ok { border-color: rgba(52, 211, 153, 0.5); }
+.morph-answer__title { margin: 0 0 0.5rem; font-weight: 600; color: var(--text-strong); }
+.morph-answer__list { display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 0.75rem; margin: 0; font-size: 0.8125rem; }
+.morph-answer__list dt { color: var(--text-soft); }
+.morph-answer__list dd { margin: 0; color: var(--text); min-width: 0; overflow-wrap: anywhere; }
+.morph-answer__list dd.greek-text { font-size: 1.0625rem; }
+.morph-actions { display: flex; justify-content: flex-end; }
+
+.morph-stats { width: 100%; max-width: 30rem; margin: 0.5rem 0 0; padding: 0; list-style: none; }
+.morph-stats li {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr 3.5rem;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.25rem 0;
+  font-size: 0.8125rem;
+  text-align: left;
+}
+.morph-stats li > span:last-child { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-soft); }
+.morph-bar { height: 0.5rem; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.morph-bar > span { display: block; height: 100%; border-radius: inherit; background: rgb(var(--brand-500)); }

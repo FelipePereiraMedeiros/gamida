@@ -1298,6 +1298,9 @@ function applyLanguageUI() {
   if (document.documentElement && typeof document.documentElement.setAttribute === "function") {
     document.documentElement.setAttribute("data-lang", AppState.language);
   }
+  if (typeof window !== "undefined" && window.MorphDrillModule) {
+    window.MorphDrillModule.updateMorphCardVisibility();
+  }
   if (langSwitch) {
     langSwitch.setAttribute(
       "aria-label",

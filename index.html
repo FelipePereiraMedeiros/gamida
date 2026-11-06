@@ -70,7 +70,7 @@
           },
         },
       };
-      window.APP_VERSION = "2.21.0";
+      window.APP_VERSION = "2.22.0";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
@@ -666,6 +666,14 @@
               <span id="path-card-stat" class="mode-card__stat"></span>
               <span class="mode-card__text">Capítulo por capítulo: acerte todos os termos para liberar o próximo. Errou, o capítulo recomeça embaralhado.</span>
               <span class="mode-card__cta">Seguir o caminho ➔</span>
+            </button>
+
+            <!-- Modo: análise morfológica (só no grego) -->
+            <button type="button" id="morph-mode-card" onclick="openMorphDrill()" class="mode-card mode-card--morph hidden">
+              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg></span>
+              <span class="mode-card__title">Análise Morfológica</span>
+              <span class="mode-card__text">Marque nas caixas a classe, o caso, o gênero, o número, a pessoa, o tempo, o modo e a voz de cada palavra das frases das lições.</span>
+              <span class="mode-card__cta">Escolher lições ➔</span>
             </button>
           </div>
         </div>
@@ -1392,6 +1400,48 @@
             </button>
           </div>
         </div>
+
+        <!-- Análise morfológica: configuração -->
+        <div id="morph-config" class="hidden morph-panel">
+          <div class="morph-panel__head">
+            <div>
+              <h3 class="morph-panel__title">Análise Morfológica</h3>
+              <p id="morph-scope-info" class="morph-panel__text"></p>
+            </div>
+            <button type="button" onclick="quitMorphDrill()" class="link-btn" aria-label="Fechar a análise morfológica">Voltar</button>
+          </div>
+          <p class="morph-panel__label">Lições</p>
+          <div id="morph-chapter-list" class="morph-chapters"></div>
+          <p class="morph-panel__label">Quantidade de palavras</p>
+          <div class="morph-amounts">
+            <button type="button" class="morph-amount" data-morph-amount="10" onclick="setMorphAmount('10')">10</button>
+            <button type="button" class="morph-amount" data-morph-amount="15" onclick="setMorphAmount('15')">15</button>
+            <button type="button" class="morph-amount" data-morph-amount="30" onclick="setMorphAmount('30')">30</button>
+            <button type="button" class="morph-amount" data-morph-amount="max" onclick="setMorphAmount('max')">Todas</button>
+          </div>
+          <label class="morph-chap morph-chap--toggle">
+            <input type="checkbox" id="morph-include-invariable" class="chapter-option__box" onchange="toggleMorphInvariable(this.checked)" />
+            <span>Incluir palavras invariáveis <small>preposições, conjunções, advérbios e partículas</small></span>
+          </label>
+          <button type="button" onclick="startMorphDrill()" class="answer-btn morph-start">Começar</button>
+        </div>
+
+        <!-- Análise morfológica: questão -->
+        <div id="morph-active" class="hidden morph-panel">
+          <div class="morph-panel__head">
+            <span class="morph-progress"><span id="morph-progress"></span> · <span id="morph-score" class="morph-progress__ok"></span></span>
+            <button type="button" onclick="quitMorphDrill()" class="link-btn">Encerrar</button>
+          </div>
+          <div id="morph-question"></div>
+          <div class="morph-actions">
+            <button type="button" id="morph-action" class="answer-btn">Verificar</button>
+          </div>
+        </div>
+
+        <!-- Análise morfológica: resultado -->
+        <div id="morph-results" class="hidden morph-panel">
+          <div id="morph-results-body" class="round-summary"></div>
+        </div>
       </section>
 
       <!-- Aba 3: paradigmas e estruturas -->
@@ -1620,7 +1670,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.21.0</span>
+        <span id="footer-version-tag">v2.22.0</span>
       </p>
     </footer>
 
@@ -1755,6 +1805,7 @@
     <script src="js/modules/sentence-analysis.js"></script>
     <script src="js/modules/assimilation.js"></script>
     <script src="js/modules/mastery-path.js"></script>
+    <script src="js/modules/morph-drill.js"></script>
     <script src="js/modules/ui.js"></script>
     <script src="js/app.js"></script>
   </body>
