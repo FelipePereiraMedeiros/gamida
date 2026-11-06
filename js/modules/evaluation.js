@@ -65,6 +65,18 @@ function getEditDistance(a, b) {
 }
 
 /**
+ * Indica se a lista de traduções descreve uma partícula sem tradução direta
+ * (ex.: μέν, ἄν), cujas "traduções" são apenas descrições gramaticais
+ * como "partícula usada correlativamente".
+ * @param {Array<string>} acceptedList
+ * @returns {boolean}
+ */
+function isUntranslatableParticle(acceptedList) {
+  if (!Array.isArray(acceptedList) || acceptedList.length === 0) return false;
+  return acceptedList.some((acc) => /^particula\b/.test(normalizeText(acc)));
+}
+
+/**
  * Avalia a resposta do usuário contra a lista de traduções aceitas
  * Suporta correspondência exata, inversão de palavras (em termos curtos), parênteses opcionais e detecção de typos.
  * @param {string} userAnswer
@@ -78,7 +90,13 @@ function evaluateSingleAnswer(userAnswer, acceptedList, options = {}) {
   const normUser = normalizeText(cleanUser);
 
   const allAccepted = safeList.join(" / ");
-  if (!normUser) return { status: "incorrect", expected: allAccepted };
+  if (!normUser) {
+    // Partículas sem tradução direta (μέν, ἄν...) aceitam resposta vazia como correta
+    const allowEmpty =
+      (options && options.allowEmpty === true) ||
+      isUntranslatableParticle(safeList);
+    return { status: allowEmpty ? "correct" : "incorrect", expected: allAccepted };
+  }
 
   let bestMatch = { status: "incorrect", expected: allAccepted };
 
@@ -195,9 +213,10 @@ if (typeof window !== "undefined") {
   window.normalizeText = normalizeText;
   window.getEditDistance = getEditDistance;
   window.evaluateAnswer = evaluateAnswer;
-  window.EvaluationModule = { escapeHTML, normalizeText, getEditDistance, evaluateAnswer };
+  window.isUntranslatableParticle = isUntranslatableParticle;
+  window.EvaluationModule = { escapeHTML, normalizeText, getEditDistance, isUntranslatableParticle, evaluateAnswer };
 }
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { escapeHTML, normalizeText, getEditDistance, evaluateAnswer };
+  module.exports = { escapeHTML, normalizeText, getEditDistance, isUntranslatableParticle, evaluateAnswer };
 }
 })();

@@ -75,6 +75,19 @@ suite.test('evaluateAnswer lida com entradas nulas ou indefinidas defensivamente
   assert.equal(resUndef.status, 'incorrect');
 });
 
+suite.test('Partículas sem tradução direta (μέν, ἄν) aceitam resposta vazia', () => {
+  assert.equal(evaluateAnswer('', ['partícula usada correlativamente']).status, 'correct');
+  assert.equal(evaluateAnswer('   ', ['partícula que denota condição ou eventualidade']).status, 'correct');
+  assert.equal(evaluateAnswer('', ['partícula usada correlativamente'], { isSentence: false }).status, 'correct');
+  // Termos com tradução real continuam exigindo resposta
+  assert.equal(evaluateAnswer('', ['se']).status, 'incorrect');
+  assert.equal(evaluateAnswer('', ['mas', 'porém']).status, 'incorrect');
+  // Opção explícita
+  assert.equal(evaluateAnswer('', ['qualquer'], { allowEmpty: true }).status, 'correct');
+  // Resposta errada não vazia continua incorreta
+  assert.equal(evaluateAnswer('casa', ['partícula usada correlativamente']).status, 'incorrect');
+});
+
 suite.test('escapeHTML sanitiza caracteres especiais contra DOM XSS', () => {
   assert.equal(escapeHTML('<script>alert(1)</script>'), '&lt;script&gt;alert(1)&lt;/script&gt;');
   assert.equal(escapeHTML('O "rei" & a \'rainha\''), 'O &quot;rei&quot; &amp; a &#039;rainha&#039;');
