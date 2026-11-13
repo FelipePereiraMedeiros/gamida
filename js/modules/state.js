@@ -8,7 +8,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.22.4";
+  "2.25.3";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
@@ -207,6 +207,80 @@ function buildDistractorCache() {
   });
   AppState.distractorCache.words = [...new Set(w)];
   AppState.distractorCache.sentences = [...new Set(s)];
+}
+
+/** Compara traduções sem acento, pontuação nem observações entre parênteses */
+function normalizeGloss(str) {
+  return String(str || "")
+    .replace(/\(.*?\)/g, "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\p{L}\p{N} ]/gu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isSentenceItem(item) {
+  return !!item && (item.type === "Frase" || item.type === "Expressão" ||
+    (Array.isArray(item.tokens) && item.tokens.length > 0));
+}
+
+/**
+ * Monta as alternativas da múltipla escolha.
+ * Os distratores vêm de outros termos, de preferência da mesma classe gramatical,
+ * e nunca compartilham um significado com a resposta: assim só há uma alternativa certa
+ * e a classe da palavra deixa de entregar a resposta.
+ * @param {Object} question
+ * @param {Array<Object>} chapters
+ * @param {{direction?: 'forward'|'reverse', count?: number}} [opts]
+ *   forward: mostra o termo original, escolhe a tradução; reverse: mostra a tradução, escolhe o termo
+ * @returns {Array<{text: string, isCorrect: boolean, term: string, translations: Array<string>}>}
+ */
+function buildChoiceOptions(question, chapters, opts = {}) {
+  if (!question) return [];
+  const isReverse = opts.direction === "reverse";
+  const count = Number.isFinite(opts.count) ? opts.count : 3;
+  const ownTerm = getTerm(question);
+  const ownTranslations = Array.isArray(question.translations) ? question.translations : [];
+  const ownGlosses = new Set(ownTranslations.map(normalizeGloss));
+  const wantsSentences = isSentenceItem(question);
+  const category = WORD_CATEGORIES.find((c) => c.match.test(question.type || ""));
+  const safeChapters = Array.isArray(chapters) ? chapters : [];
+  // Letras só concorrem com letras; o vocabulário não recebe letras como alternativa
+  const isLetterQuestion = safeChapters.some(
+    (chap) => isAlphabetChapter(chap) && (chap.items || []).some((it) => getTerm(it) === ownTerm),
+  );
+
+  const optionOf = (item, isCorrect) => ({
+    text: isReverse ? getTerm(item) : (item.translations || [])[0],
+    isCorrect,
+    term: getTerm(item),
+    translations: [...(item.translations || [])],
+  });
+
+  const seenTexts = new Set([normalizeGloss(isReverse ? ownTerm : ownTranslations[0]) || ownTerm]);
+  const sameClass = [];
+  const otherClass = [];
+  safeChapters.forEach((chap) => {
+    if (!chap) return;
+    const pool = wantsSentences ? chap.sentences : chap.items;
+    if (!wantsSentences && isAlphabetChapter(chap) !== isLetterQuestion) return;
+    (pool || []).forEach((item) => {
+      const term = getTerm(item);
+      const translations = Array.isArray(item.translations) ? item.translations : [];
+      if (!term || term === ownTerm || translations.length === 0) return;
+      if (translations.some((t) => ownGlosses.has(normalizeGloss(t)))) return;
+      const option = optionOf(item, false);
+      const textKey = normalizeGloss(option.text) || option.text;
+      if (!option.text || seenTexts.has(textKey)) return;
+      seenTexts.add(textKey);
+      (category && category.match.test(item.type || "") ? sameClass : otherClass).push(option);
+    });
+  });
+
+  const distractors = [...shuffleArray(sameClass), ...shuffleArray(otherClass)].slice(0, count);
+  return shuffleArray([optionOf(question, true), ...distractors]);
 }
 
 /**
@@ -608,6 +682,7 @@ if (typeof window !== "undefined") {
   window.safeAlert = safeAlert;
   window.saveChaptersToStorage = saveChaptersToStorage;
   window.buildDistractorCache = buildDistractorCache;
+  window.buildChoiceOptions = buildChoiceOptions;
   window.resetStats = resetStats;
   window.getRoundSummary = getRoundSummary;
   window.startNewRound = startNewRound;
@@ -635,6 +710,7 @@ if (typeof window !== "undefined") {
     safeAlert,
     saveChaptersToStorage,
     buildDistractorCache,
+    buildChoiceOptions,
     resetStats,
     getRoundSummary,
     startNewRound,
@@ -665,6 +741,7 @@ if (typeof module !== "undefined" && module.exports) {
     safeAlert,
     saveChaptersToStorage,
     buildDistractorCache,
+    buildChoiceOptions,
     resetStats,
     getRoundSummary,
     startNewRound,

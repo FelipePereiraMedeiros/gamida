@@ -395,6 +395,48 @@ suite.test('Escolha não conta para o domínio, e o backup inclui o progresso', 
   assert.includes(appJs, 'parsed.mastery', 'Backup deve importar o domínio');
 });
 
+suite.test('Revisões vencidas reúnem todos os capítulos, sem cartões novos nem futuros', () => {
+  const { getDueCards } = require('../js/modules/srs.js');
+  const now = 1_000_000_000;
+  const savedChapters = AppState.chapters;
+  const savedSrs = AppState.srs;
+  AppState.chapters = [
+    { id: 'a', title: 'A', items: [{ hebrew: 'אָב', translations: ['pai'] }, { hebrew: 'אֵם', translations: ['mãe'] }], sentences: [] },
+    { id: 'b', title: 'B', items: [{ hebrew: 'בֵּן', translations: ['filho'] }, { hebrew: 'אָב', translations: ['pai'] }], sentences: [{ hebrew: 'אָב וּבֵן', translations: ['pai e filho'] }] },
+  ];
+  AppState.srs = {
+    [getSRSKey('אָב')]: { interval: 1, ef: 2.5, nextReview: now - 1 },
+    [getSRSKey('בֵּן')]: { interval: 4, ef: 2.5, nextReview: now + 1 },
+    [getSRSKey('אָב וּבֵן')]: { interval: 1, ef: 2.5, nextReview: now },
+  };
+  const due = getDueCards(now);
+  assert.deepEqual(due.map((c) => c.hebrew), ['אָב', 'אָב וּבֵן'], 'Só o que venceu, sem repetir o termo');
+  assert.equal(due[0].chapterId, 'a');
+  assert.equal(due[1].kind, 'sentence');
+  AppState.chapters = savedChapters;
+  AppState.srs = savedSrs;
+});
+
+suite.test('Desfazer um erro devolve o termo ao estado anterior', () => {
+  const { snapshotRetention, restoreRetention, recordMasteryHit, isItemInErrorList } = require('../js/modules/srs.js');
+  const item = { hebrew: 'מֶלֶךְ', translations: ['rei'] };
+  const key = getSRSKey(item);
+  delete AppState.srs[key];
+  delete AppState.mastery[key];
+  recordMasteryHit(item);
+  recordMasteryHit(item);
+
+  const snapshot = snapshotRetention(item);
+  recordSRSError(item);
+  assert.isTrue(isItemInErrorList(item));
+  assert.equal(AppState.mastery[key] || 0, 0, 'Errar zera o domínio');
+
+  restoreRetention(snapshot);
+  assert.isFalse(isItemInErrorList(item), 'O erro desfeito sai da lista');
+  assert.equal(AppState.srs[key], undefined, 'Sem registro anterior, nada fica no SRS');
+  assert.equal(AppState.mastery[key], 2, 'O domínio volta ao que era');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

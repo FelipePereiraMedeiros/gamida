@@ -9,7 +9,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.22.4";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.25.3";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -129,11 +129,14 @@ async function initApp() {
 
   ensureDOM();
 
+  loadChoiceDirection();
   applyLanguageUI();
   await loadChapters();
   loadSRS();
   buildDistractorCache();
   setupGlobalChapterDropdown();
+  updateChoiceDirectionUI();
+  if (typeof window !== "undefined" && window.ActivityModule) window.ActivityModule.updateActivityUI();
   updateStatsUI();
   updateParadigmsVisibility();
   updateTabsScrollIndicators();
@@ -382,6 +385,7 @@ function setExerciseMode(mode) {
   AppState.currentQuestionIndex = 0;
   resetStats();
   updatePracticeCategoryFilterUI();
+  updateChoiceDirectionUI();
   buildPracticeQueue();
   renderCurrentQuestion();
   if (typeof window !== "undefined" && typeof window.updatePracticeOptionsSummary === "function") {
@@ -726,6 +730,8 @@ function reshufflePracticeQueue() {
 function resetPracticeActionButtons() {
   ensureDOM();
   AppState.isPracticeAnswered = false;
+  lastPracticeMiss = null;
+  setOverrideButtonVisible(false);
 
   const btnTyping = DOM.btnSubmitTyping || (typeof document !== "undefined" ? document.getElementById("btn-submit-typing") : null);
   if (btnTyping) {
@@ -902,7 +908,7 @@ function renderCurrentQuestion() {
   updateRemoveErrorButton();
   hideRoundSummary();
   renderQuestionStem(null);
-  if (DOM.hebPrompt) DOM.hebPrompt.classList.remove("is-long", "is-message");
+  if (DOM.hebPrompt) DOM.hebPrompt.classList.remove("is-long", "is-message", "is-gloss");
 
   if (practiceQueue.length === 0) {
     AppState.currentQuestion = null;
@@ -1030,19 +1036,26 @@ function renderCurrentQuestion() {
     DOM.qProgress.textContent = `Item ${AppState.currentQuestionIndex + 1} de ${practiceQueue.length}`;
   }
   updateRoundProgress();
+  const showsGloss = isReverseChoice();
   if (DOM.hebPrompt) {
-    const promptText = getTerm(AppState.currentQuestion);
+    // Na escolha inversa a pergunta é a tradução e as alternativas são os termos originais
+    const promptText = showsGloss
+      ? AppState.currentQuestion.translations.join(" / ")
+      : getTerm(AppState.currentQuestion);
     DOM.hebPrompt.textContent = promptText;
+    DOM.hebPrompt.classList.toggle("is-gloss", showsGloss);
     // Frases longas usam corpo menor para caber sem rolagem e sem quebrar a leitura
     if (String(promptText).length > 22) DOM.hebPrompt.classList.add("is-long");
   }
-  renderQuestionStem(AppState.currentQuestion);
+  // O radical entregaria a resposta quando as alternativas são os termos originais
+  if (!showsGloss) renderQuestionStem(AppState.currentQuestion);
 
   if (DOM.hintText) {
     DOM.hintText.textContent = AppState.currentQuestion.transliteration || "Sem transliteração para este item";
     DOM.hintText.classList.add("hidden");
   }
-  if (DOM.btnHint) DOM.btnHint.classList.remove("hidden");
+  // A transliteração entregaria a resposta quando as alternativas são os termos originais
+  if (DOM.btnHint) DOM.btnHint.classList.toggle("hidden", showsGloss);
   if (DOM.banner) DOM.banner.classList.add("hidden");
 
   const isSentenceWithAnalysis = AppState.currentQuestion &&
@@ -1125,30 +1138,81 @@ function toggleHint() {
   DOM.btnHint.classList.toggle("hidden");
 }
 
+/** Direção da múltipla escolha: "forward" (original ➔ português) ou "reverse" (português ➔ original) */
+function getChoiceDirection() {
+  return AppState.choiceDirection === "reverse" ? "reverse" : "forward";
+}
+
+function isReverseChoice() {
+  return AppState.exerciseMode === "choice" && getChoiceDirection() === "reverse";
+}
+
+function loadChoiceDirection() {
+  try {
+    AppState.choiceDirection =
+      typeof localStorage !== "undefined" && localStorage.getItem("gamida_choiceDirection") === "reverse"
+        ? "reverse"
+        : "forward";
+  } catch (_) {
+    AppState.choiceDirection = "forward";
+  }
+}
+
+function setChoiceDirection(direction) {
+  AppState.choiceDirection = direction === "reverse" ? "reverse" : "forward";
+  try {
+    if (typeof localStorage !== "undefined") localStorage.setItem("gamida_choiceDirection", AppState.choiceDirection);
+  } catch (_) {}
+  updateChoiceDirectionUI();
+  if (AppState.exerciseMode === "choice") {
+    AppState.currentQuestionIndex = 0;
+    resetStats();
+    buildPracticeQueue();
+    renderCurrentQuestion();
+  }
+  if (typeof window !== "undefined" && typeof window.updatePracticeOptionsSummary === "function") {
+    window.updatePracticeOptionsSummary();
+  }
+}
+
+function updateChoiceDirectionUI() {
+  if (typeof document === "undefined") return;
+  const container = document.getElementById("practice-direction-container");
+  if (container) container.classList.toggle("hidden", AppState.exerciseMode !== "choice");
+  const original = AppState.language === "greek" ? "Grego" : "Hebraico";
+  const direction = getChoiceDirection();
+  [["forward", `${original} ➔ Português`], ["reverse", `Português ➔ ${original}`]].forEach(([dir, label]) => {
+    const btn = document.getElementById(`direction-${dir}`);
+    if (!btn) return;
+    btn.textContent = label;
+    btn.className = dir === direction ? "seg-btn is-active" : "seg-btn";
+    btn.setAttribute("aria-pressed", dir === direction ? "true" : "false");
+  });
+}
+
 function renderChoiceInterface() {
   DOM.interfaces.choice.innerHTML = "";
-  const correctAnswer = AppState.currentQuestion.translations[0];
+  const isReverse = isReverseChoice();
+  const build = typeof window !== "undefined" && window.StateModule && window.StateModule.buildChoiceOptions;
+  const options = typeof build === "function"
+    ? build(AppState.currentQuestion, AppState.chapters, { direction: getChoiceDirection() })
+    : [];
+  const termClass = AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
 
-  let pool =
-    AppState.exerciseMode === "sentences"
-      ? AppState.distractorCache.sentences
-      : AppState.distractorCache.words;
-  let distractorPool = pool.filter((o) => o !== correctAnswer);
-  distractorPool = shuffleArray(distractorPool).slice(0, 3);
-
-  const options = shuffleArray([correctAnswer, ...distractorPool]);
   options.forEach((opt, idx) => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "choice-btn hover:border-brand-500 active:scale-[0.99]";
+    btn.className = `choice-btn hover:border-brand-500 active:scale-[0.99]${isReverse ? ` choice-btn--term ${termClass}` : ""}`;
     btn.setAttribute("data-key", String(idx + 1));
-    btn.textContent = opt;
+    if (opt.isCorrect) btn.dataset.correct = "1";
+    btn.textContent = opt.text;
     btn.onclick = () => {
       if (AppState.isPracticeAnswered) {
         nextQuestion();
         return;
       }
-      checkPracticeAnswer(opt);
+      btn.dataset.picked = "1";
+      checkPracticeAnswer(opt.text, opt);
     };
     DOM.interfaces.choice.appendChild(btn);
   });
@@ -1194,17 +1258,109 @@ function correctAnswerTitle(justMastered) {
   return "Excelente! Tradução Correta!";
 }
 
-function checkPracticeAnswer(userAnswer) {
+/** Erro mais recente da prática, guardado para poder ser desfeito pelo aluno */
+let lastPracticeMiss = null;
+
+/**
+ * Mostra, nas frases, o que bateu, o que sobrou e o que faltou em relação à tradução mais próxima
+ * @param {string|null} userAnswer null esconde a comparação
+ * @param {Array<string>} [acceptedList]
+ */
+function renderSentenceDiff(userAnswer, acceptedList) {
+  if (typeof document === "undefined") return;
+  const box = document.getElementById("feedback-diff");
+  const userEl = document.getElementById("feedback-diff-user");
+  const expectedEl = document.getElementById("feedback-diff-expected");
+  if (!box || !userEl || !expectedEl) return;
+  const compare = typeof window !== "undefined" && window.EvaluationModule && window.EvaluationModule.compareSentenceWords;
+  const diff = userAnswer != null && typeof compare === "function" ? compare(userAnswer, acceptedList) : null;
+  const banner = document.getElementById("feedback-banner");
+  if (banner) banner.classList.toggle("is-stacked", !!diff);
+  if (!diff) {
+    box.classList.add("hidden");
+    return;
+  }
+  const paint = (el, words, missClass) => {
+    el.textContent = "";
+    words.forEach((w) => {
+      const span = document.createElement("span");
+      span.className = `feedback-diff__word ${w.matched ? "is-match" : missClass}`;
+      span.textContent = w.text;
+      el.appendChild(span);
+    });
+  };
+  paint(userEl, diff.userWords, "is-extra");
+  paint(expectedEl, diff.expectedWords, "is-missing");
+  box.classList.remove("hidden");
+}
+
+function setOverrideButtonVisible(isVisible) {
+  if (typeof document === "undefined") return;
+  const btn = document.getElementById("btn-feedback-override");
+  if (btn) btn.classList.toggle("hidden", !isVisible);
+}
+
+/**
+ * O aluno declara que a tradução dele equivale à esperada: o erro é desfeito e vira acerto.
+ * Só vale para frases, onde há mais de uma tradução fiel possível.
+ */
+function overrideCurrentPracticeMiss() {
+  const miss = lastPracticeMiss;
+  if (!miss || miss.question !== AppState.currentQuestion || !AppState.isPracticeAnswered) return;
+  lastPracticeMiss = null;
+
+  if (typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.restoreRetention === "function") {
+    window.SRSModule.restoreRetention(miss.retention);
+  }
+  const missIdx = AppState.roundMisses.lastIndexOf(miss.question);
+  if (missIdx !== -1) AppState.roundMisses.splice(missIdx, 1);
+  AppState.correctCount++;
+  AppState.streak = miss.streak + 1;
+  registerMasteryHit();
+
+  const icon = document.getElementById("feedback-icon");
+  const title = document.getElementById("feedback-title");
+  DOM.banner.classList.remove("bg-rose-950/80", "border-rose-500/50");
+  DOM.banner.classList.add("bg-emerald-950/80", "border-emerald-500/50");
+  if (icon) icon.textContent = "✅";
+  if (title) {
+    title.textContent = "Contada como acerto";
+    title.className = "font-bold text-sm text-emerald-400";
+  }
+  setOverrideButtonVisible(false);
+  updateRemoveErrorButton();
+  updateRoundProgress();
+  updateStatsUI();
+}
+
+/**
+ * @param {string} userAnswer
+ * @param {{isCorrect: boolean, term: string, translations: Array<string>}} [pickedOption] alternativa clicada na múltipla escolha
+ */
+function checkPracticeAnswer(userAnswer, pickedOption) {
+  if (typeof window !== "undefined" && typeof window.recordActivity === "function") window.recordActivity();
+  lastPracticeMiss = null;
+  setOverrideButtonVisible(false);
+  renderSentenceDiff(null);
   const isSentenceQuestion =
     AppState.exerciseMode === "sentences" ||
     AppState.currentQuestion?.type === "Frase" ||
     AppState.currentQuestion?.type === "Expressão" ||
     (Array.isArray(AppState.currentQuestion?.tokens) && AppState.currentQuestion.tokens.length > 0);
-  const evalResult = evaluateAnswer(
-    userAnswer,
-    AppState.currentQuestion.translations,
-    { isSentence: isSentenceQuestion },
-  );
+  const isReverse = !!pickedOption && isReverseChoice();
+  const questionTerm = getTerm(AppState.currentQuestion);
+  const shownTranslations = typeof window !== "undefined" && window.EvaluationModule && typeof window.EvaluationModule.getDisplayTranslations === "function"
+    ? window.EvaluationModule.getDisplayTranslations(AppState.currentQuestion.translations)
+    : AppState.currentQuestion.translations;
+  const allTranslations = shownTranslations.join('" / "');
+  // Na múltipla escolha o acerto é da alternativa, não do texto: vale para as duas direções
+  const evalResult = pickedOption
+    ? { status: pickedOption.isCorrect ? "correct" : "incorrect", expected: isReverse ? questionTerm : shownTranslations.join(" / ") }
+    : evaluateAnswer(
+      userAnswer,
+      AppState.currentQuestion.translations,
+      { isSentence: isSentenceQuestion },
+    );
   AppState.totalAnswered++;
 
   const icon = document.getElementById("feedback-icon");
@@ -1231,7 +1387,9 @@ function checkPracticeAnswer(userAnswer) {
     icon.textContent = "✅";
     title.textContent = correctAnswerTitle(registerMasteryHit());
     title.className = "font-bold text-sm text-emerald-400";
-    detail.textContent = `Tradução esperada: "${AppState.currentQuestion.translations.join('" / "')}"`;
+    detail.textContent = isReverse
+      ? `${questionTerm} significa "${allTranslations}".`
+      : `Tradução esperada: "${allTranslations}"`;
   } else if (evalResult.status === "typo") {
     AppState.correctCount++; // Pontua como acerto
     AppState.streak++;
@@ -1242,6 +1400,17 @@ function checkPracticeAnswer(userAnswer) {
     title.className = "font-bold text-sm text-amber-400";
     detail.textContent = `Sua resposta foi aceita, mas o ideal é: "${evalResult.expected}". (Você digitou: "${userAnswer}")`;
   } else {
+    const canOverride = isSentenceQuestion && String(userAnswer || "").trim().length > 0 && AppState.exerciseMode !== "choice";
+    if (canOverride) {
+      lastPracticeMiss = {
+        question: AppState.currentQuestion,
+        streak: AppState.streak,
+        retention: typeof window !== "undefined" && window.SRSModule && typeof window.SRSModule.snapshotRetention === "function"
+          ? window.SRSModule.snapshotRetention(AppState.currentQuestion)
+          : null,
+      };
+      setOverrideButtonVisible(true);
+    }
     AppState.streak = 0;
     AppState.roundMisses.push(AppState.currentQuestion);
     recordSRSError(getTerm(AppState.currentQuestion)); // Manda pro Anki
@@ -1251,6 +1420,21 @@ function checkPracticeAnswer(userAnswer) {
     title.className = "font-bold text-sm text-rose-400";
     // Agora mostra TODAS as traduções possíveis!
     detail.textContent = `Traduções aceitas: "${evalResult.expected}" (Você respondeu: "${userAnswer || "em branco"}")`;
+    if (pickedOption) {
+      // Dizer o que a alternativa escolhida significa ensina mais do que só apontar a certa
+      const pickedGloss = (pickedOption.translations || []).join('" / "');
+      detail.textContent = isReverse
+        ? `A resposta é ${questionTerm}. Você escolheu ${pickedOption.term}, que significa "${pickedGloss}".`
+        : `Traduções aceitas: "${allTranslations}". Você escolheu "${userAnswer}", que traduz ${pickedOption.term}.`;
+    }
+    if (canOverride) {
+      // A comparação palavra a palavra já mostra as duas versões; o texto só orienta a leitura
+      renderSentenceDiff(userAnswer, AppState.currentQuestion.translations);
+      const altCount = AppState.currentQuestion.translations.length - 1;
+      detail.textContent = altCount > 0
+        ? `Compare com a tradução mais próxima (há mais ${altCount === 1 ? "1 aceita" : `${altCount} aceitas`}). Se a sua diz o mesmo com outras palavras, conte como acerto.`
+        : "Compare com a tradução esperada. Se a sua diz o mesmo com outras palavras, conte como acerto.";
+    }
   }
 
   showAssimilationTip(AppState.currentQuestion);
@@ -1265,13 +1449,9 @@ function checkPracticeAnswer(userAnswer) {
     choiceButtons.forEach((b) => {
       b.disabled = true;
       b.classList.remove("hover:border-brand-500", "active:scale-[0.99]");
-      if (
-        b.textContent === evalResult.expected ||
-        (AppState.currentQuestion?.translations &&
-          AppState.currentQuestion.translations.includes(b.textContent))
-      ) {
+      if (b.dataset.correct === "1") {
         b.classList.add("border-emerald-500", "bg-emerald-950/40", "text-emerald-200");
-      } else if (b.textContent === userAnswer && evalResult.status !== "correct") {
+      } else if (b.dataset.picked === "1") {
         b.classList.add("border-rose-500", "bg-rose-950/40", "text-rose-200");
       } else {
         b.classList.add("opacity-50");
@@ -1444,6 +1624,7 @@ async function toggleLanguage(targetLang = null) {
   loadSRS();
   buildDistractorCache();
   setupGlobalChapterDropdown();
+  updateChoiceDirectionUI();
   updateParadigmsVisibility();
   switchTab("practice");
 }
@@ -1516,6 +1697,8 @@ function exportChaptersJSON() {
     mastery: AppState.mastery,
     masteryPath: pathModule ? pathModule.loadCompleted(AppState.language) : [],
     survivalHighScore: AppState.survivalHighScore,
+    activity: typeof window !== "undefined" && window.ActivityModule ? window.ActivityModule.exportActivity() : {},
+    dailyGoal: typeof window !== "undefined" && window.ActivityModule ? window.ActivityModule.getDailyGoal() : undefined,
   };
   const jsonStr = JSON.stringify(backupData, null, 2);
   const blob = new Blob([jsonStr], { type: "application/json;charset=utf-8" });
@@ -1766,6 +1949,12 @@ function saveChapterFromJSON() {
             console.warn("Aviso ao salvar recorde de sobrevivência no localStorage:", storageErr);
           }
         }
+      }
+      if (parsed.activity && typeof window !== "undefined" && window.ActivityModule) {
+        window.ActivityModule.mergeActivity(parsed.activity);
+      }
+      if (parsed.dailyGoal !== undefined && typeof window !== "undefined" && window.ActivityModule) {
+        window.ActivityModule.adoptDailyGoal(parsed.dailyGoal);
       }
       const pathModule = typeof window !== "undefined" ? window.MasteryPathModule : null;
       if (pathModule && Array.isArray(parsed.masteryPath)) {

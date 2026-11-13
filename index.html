@@ -7,7 +7,7 @@
     <meta name="author" content="Felipe Pereira Medeiros" />
     <meta name="copyright" content="© 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário." />
     <title>Gamida - Treinador de Idiomas Bíblicos</title>
-    <!-- Identidade visual e bibliotecas externas -->
+    <!-- Identidade visual -->
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>"
@@ -20,66 +20,22 @@
         }
       } catch (_) {}
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fontes da interface, servidas do próprio projeto (sem depender de internet) -->
+    <link rel="stylesheet" href="css/fonts.css" />
     <!-- Pré-carregamento de fontes bíblicas locais -->
     <link rel="preload" href="fonts/SBL_Hbrw.ttf" as="font" type="font/ttf" crossorigin />
 
     <script>
-      // Tema: "slate" é a tinta quente da interface e "brand" é o destaque do idioma ativo.
-      // As cores vêm de variáveis CSS, então todas as classes (inclusive as geradas no JS) acompanham.
-      const brandShade = (n) => `rgb(var(--brand-${n}) / <alpha-value>)`;
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Rubik", "sans-serif"],
-              hebrew: ['"SBL Hebrew"', '"Ezra SIL"', '"Noto Sans Hebrew"', '"David"', "serif"],
-            },
-            colors: {
-              slate: {
-                50: "#f8f6f1",
-                100: "#f0ede6",
-                200: "#e0dcd2",
-                300: "#c9c4b8",
-                400: "#aca79b",
-                500: "#8d887d",
-                600: "#5e5a52",
-                700: "#413e38",
-                800: "#2d2b27",
-                900: "#201e1b",
-                950: "#151412",
-              },
-              brand: {
-                50: brandShade(50),
-                100: brandShade(100),
-                200: brandShade(200),
-                300: brandShade(300),
-                400: brandShade(400),
-                500: brandShade(500),
-                600: brandShade(600),
-                700: brandShade(700),
-                800: brandShade(800),
-                900: brandShade(900),
-                950: brandShade(950),
-              },
-            },
-          },
-        },
-      };
-      window.APP_VERSION = "2.22.4";
+      window.APP_VERSION = "2.25.3";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
     <link rel="stylesheet" href="css/offline-theme.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/interface.css" />
+    <!-- Tailwind compilado e versionado (npm run build:css): funciona sem internet.
+         Vem por último, como o CDN fazia, para os utilitários prevalecerem sobre os estilos próprios. -->
+    <link rel="stylesheet" href="css/tailwind.css" />
   </head>
   <body
     class="app-shell font-sans antialiased bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white"
@@ -145,6 +101,18 @@
           <div class="app-stat app-stat--mastery" title="Termos errados nos capítulos marcados, disponíveis no modo Erros">
             <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--review" aria-hidden="true"><use href="#i-error"></use></svg><span class="app-stat__label">Para revisar</span></dt>
             <dd id="stat-review">0</dd>
+          </div>
+          <div
+            id="stat-days-box"
+            class="app-stat app-stat--days"
+            title="Dias seguidos de estudo"
+            role="button"
+            tabindex="0"
+            onclick="openDailyGoalSettings()"
+            onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openDailyGoalSettings(); }"
+          >
+            <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--streak" aria-hidden="true"><use href="#i-flame"></use></svg><span class="app-stat__label">Dias seguidos</span></dt>
+            <dd id="stat-days">0</dd>
           </div>
           <div class="app-stat app-stat--game" title="Sequência de acertos">
             <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--streak" aria-hidden="true"><use href="#i-flame"></use></svg><span class="app-stat__label">Sequência</span></dt>
@@ -371,6 +339,15 @@
                 </div>
               </div>
 
+              <!-- Direção da múltipla escolha (Escolha) -->
+              <div id="practice-direction-container" class="hidden">
+                <span class="field-label">Direção da escolha</span>
+                <div class="seg" role="group" aria-label="Direção da múltipla escolha">
+                  <button type="button" id="direction-forward" onclick="setChoiceDirection('forward')" class="seg-btn is-active" aria-pressed="true" title="Veja o termo original e escolha a tradução">Original ➔ Português</button>
+                  <button type="button" id="direction-reverse" onclick="setChoiceDirection('reverse')" class="seg-btn" aria-pressed="false" title="Veja a tradução e escolha o termo original">Português ➔ Original</button>
+                </div>
+              </div>
+
               <!-- Filtro Dinâmico por Tipo de Palavra (Digitação) -->
               <div id="practice-category-container">
                 <label for="practice-category-select" class="field-label">Tipo de palavra</label>
@@ -586,6 +563,16 @@
               <div class="min-w-0">
                 <h4 id="feedback-title" class="font-bold text-sm">Resposta Correta!</h4>
                 <p id="feedback-detail" class="text-sm text-slate-300 mt-0.5 break-words"></p>
+                <div id="feedback-diff" class="feedback-diff hidden">
+                  <p class="feedback-diff__row">
+                    <span class="feedback-diff__label">Sua resposta</span>
+                    <span id="feedback-diff-user" class="feedback-diff__words"></span>
+                  </p>
+                  <p class="feedback-diff__row">
+                    <span class="feedback-diff__label">Esperado</span>
+                    <span id="feedback-diff-expected" class="feedback-diff__words"></span>
+                  </p>
+                </div>
                 <p id="feedback-tip" class="feedback-tip hidden">
                   <span class="feedback-tip__label">Para fixar</span>
                   <span id="feedback-tip-text"></span>
@@ -600,6 +587,15 @@
                 class="hidden btn-secondary flex-1 md:flex-none"
               >
                 Análise morfossintática
+              </button>
+              <button
+                type="button"
+                id="btn-feedback-override"
+                onclick="overrideCurrentPracticeMiss()"
+                class="hidden btn-secondary flex-1 md:flex-none"
+                title="Use quando sua tradução diz o mesmo com outras palavras"
+              >
+                Minha tradução está certa
               </button>
               <button type="button" id="btn-next" onclick="nextQuestion()" class="hidden answer-btn flex-1 md:flex-none">
                 Próxima Questão ➔
@@ -638,9 +634,10 @@
               <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg></span>
               <span class="mode-card__title">Revisão Inteligente</span>
               <span id="review-due-card" class="mode-card__stat hidden"></span>
-              <span class="mode-card__text">Flashcards com repetição espaçada. Normal usa os capítulos ativos; Erros reúne o que você errou.</span>
+              <span class="mode-card__text">Flashcards com repetição espaçada. Normal usa os capítulos ativos; Vencidas traz o que está na hora de rever, de qualquer capítulo; Erros reúne o que você errou.</span>
               <span class="mode-card__actions">
                 <button type="button" onclick="startAnki('normal')" class="answer-btn">Normal</button>
+                <button type="button" id="btn-review-due" onclick="startAnki('due')" class="btn-secondary" disabled title="Revisões vencidas de todos os capítulos">Vencidas <span id="review-due-count"></span></button>
                 <button type="button" id="btn-review-errors" onclick="startAnki('errors')" class="btn-secondary" disabled>Erros <span id="review-errors-count"></span></button>
               </span>
             </div>
@@ -1598,7 +1595,42 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-5">
-            <div class="space-y-2">
+            <form class="space-y-2" onsubmit="saveDailyGoalFromInput(event)">
+              <h3 class="font-semibold text-sm text-white">Meta de estudo</h3>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Quantas respostas por dia você quer dar, somando todos os exercícios e os dois idiomas.
+              </p>
+              <div
+                id="goal-progress-bar"
+                class="goal-progress"
+                role="progressbar"
+                aria-label="Progresso da meta de hoje"
+                aria-valuemin="0"
+                aria-valuenow="0"
+                aria-valuemax="20"
+              >
+                <div id="goal-progress-fill" class="goal-progress__fill"></div>
+              </div>
+              <p id="goal-progress-text" class="text-xs text-slate-400 leading-relaxed"></p>
+              <div class="flex items-end gap-2">
+                <div class="flex-1 min-w-0">
+                  <label for="daily-goal-input" class="field-label">Respostas por dia</label>
+                  <input
+                    type="number"
+                    id="daily-goal-input"
+                    class="control-select w-full"
+                    min="1"
+                    max="500"
+                    step="1"
+                    inputmode="numeric"
+                    value="20"
+                  />
+                </div>
+                <button type="submit" class="btn-secondary">Salvar meta</button>
+              </div>
+              <p id="daily-goal-status" class="text-xs text-emerald-400 min-h-[1rem]" role="status"></p>
+            </form>
+            <div class="space-y-2 pt-4 border-t border-slate-800">
               <h3 class="font-semibold text-sm text-white">Editar</h3>
               <p class="text-sm text-slate-400 leading-relaxed">
                 Carregue o capítulo atual no editor ou cole um novo capítulo em JSON.
@@ -1673,7 +1705,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.22.4</span>
+        <span id="footer-version-tag">v2.25.3</span>
       </p>
       <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
     </footer>
@@ -1810,6 +1842,7 @@
     <script src="js/modules/assimilation.js"></script>
     <script src="js/modules/mastery-path.js"></script>
     <script src="js/modules/morph-drill.js"></script>
+    <script src="js/modules/activity.js"></script>
     <script src="js/modules/ui.js"></script>
     <script src="js/app.js"></script>
   </body>

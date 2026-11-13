@@ -326,6 +326,7 @@ function submitMasteryPathAnswer(e) {
     continueMasteryPath();
     return;
   }
+  if (typeof window !== "undefined" && typeof window.recordActivity === "function") window.recordActivity();
   const input = el("path-input");
   const userAnswer = input ? input.value : "";
   const item = session.queue[session.index];

@@ -11,7 +11,7 @@ const suite = new TestSuite('Módulo 3: Motor de Prática & Modos de Exercício'
 const { appJs, hebrewData } = loadSourceFiles();
 
 // Funções puras e estado importados do módulo de produção
-const { shuffleArray, buildDistractorCache, AppState, resetStats } = require('../js/modules/state.js');
+const { shuffleArray, buildDistractorCache, buildChoiceOptions, getTerm, isAlphabetChapter, AppState, resetStats } = require('../js/modules/state.js');
 
 suite.test('shuffleArray embaralha mantendo todos os elementos', () => {
   const original = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -316,6 +316,50 @@ suite.test('Fim da lista mostra o resumo em vez de recomeçar sem avisar', () =>
   assert.includes(html, 'id="btn-round-errors"', 'Botão de praticar os erros ausente');
   const start = appJs.indexOf('if (AppState.currentQuestionIndex >= practiceQueue.length)');
   assert.isTrue(start > 0 && appJs.slice(start, start + 200).includes('showRoundSummary();'), 'Fim da lista deve abrir o resumo');
+});
+
+suite.test('Múltipla escolha tem uma única alternativa certa, nas duas direções', () => {
+  hebrewData.forEach((chap) => {
+    (chap.items || []).forEach((item) => {
+      ['forward', 'reverse'].forEach((direction) => {
+        const options = buildChoiceOptions(item, hebrewData, { direction });
+        assert.equal(options.length, 4, `4 alternativas para ${getTerm(item)} (${direction})`);
+        assert.equal(options.filter((o) => o.isCorrect).length, 1, 'Só uma alternativa correta');
+        assert.equal(new Set(options.map((o) => o.text)).size, 4, 'Alternativas não se repetem');
+        const correct = options.find((o) => o.isCorrect);
+        assert.equal(correct.text, direction === 'reverse' ? getTerm(item) : item.translations[0]);
+        // Nenhum distrator pode ser também uma tradução válida da pergunta
+        options.filter((o) => !o.isCorrect).forEach((o) => {
+          assert.isTrue(!o.translations.some((t) => item.translations.includes(t)), `Distrator ambíguo em ${getTerm(item)}`);
+        });
+      });
+    });
+  });
+});
+
+suite.test('Distratores preferem a mesma classe gramatical e não misturam letras com vocabulário', () => {
+  const vocabChapter = hebrewData.find((c) => !isAlphabetChapter(c) && (c.items || []).some((i) => i.type === 'Verbo'));
+  const verb = vocabChapter.items.find((i) => i.type === 'Verbo');
+  const letters = new Set(hebrewData.filter(isAlphabetChapter).flatMap((c) => c.items.map(getTerm)));
+  for (let round = 0; round < 10; round++) {
+    const distractors = buildChoiceOptions(verb, hebrewData).filter((o) => !o.isCorrect);
+    distractors.forEach((o) => {
+      // Homógrafos: o mesmo termo pode existir como verbo e como substantivo em capítulos diferentes
+      const sources = hebrewData.flatMap((c) => c.items || []).filter((i) => getTerm(i) === o.term);
+      assert.isTrue(sources.some((i) => /verbo/i.test(i.type)), `Distrator de verbo deve ser verbo: ${o.term}`);
+      assert.isTrue(!letters.has(o.term), 'Letra não pode ser distrator de vocabulário');
+    });
+  }
+  const letter = hebrewData.find(isAlphabetChapter).items[0];
+  buildChoiceOptions(letter, hebrewData, { direction: 'reverse' }).forEach((o) => {
+    assert.isTrue(letters.has(o.term), 'Letras só concorrem com letras');
+  });
+});
+
+suite.test('Escolha inversa e retorno das frases estão ligados à interface', () => {
+  assert.includes(appJs, 'function setChoiceDirection', 'setChoiceDirection não encontrada');
+  assert.includes(appJs, 'function overrideCurrentPracticeMiss', 'overrideCurrentPracticeMiss não encontrada');
+  assert.includes(appJs, 'function renderSentenceDiff', 'renderSentenceDiff não encontrada');
 });
 
 module.exports = suite;

@@ -589,6 +589,7 @@
       alert("Marque pelo menos a classe gramatical.");
       return;
     }
+    if (typeof window !== "undefined" && typeof window.recordActivity === "function") window.recordActivity();
     const result = checkAnswer(q.expected, answers);
     session.answered = true;
     session.results.push({ question: q, answers, ...result });

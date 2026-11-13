@@ -66,6 +66,151 @@ function getEditDistance(a, b) {
 }
 
 /**
+ * Traduções para exibir: omite a grafia sem acento ("ceu") quando a acentuada ("céu")
+ * também está cadastrada. As duas continuam aceitas na correção.
+ * @param {Array<string>} acceptedList
+ * @returns {Array<string>}
+ */
+function getDisplayTranslations(acceptedList) {
+  const list = (Array.isArray(acceptedList) ? acceptedList : []).filter((t) => typeof t === "string");
+  const stripAccents = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const shown = list.filter((t, idx) => {
+    const bare = stripAccents(t);
+    const isBare = bare === t.normalize("NFD");
+    const hasAccentedTwin = list.some((other) => other !== t && stripAccents(other).toLowerCase() === bare.toLowerCase() && stripAccents(other) !== other.normalize("NFD"));
+    const isRepeat = list.findIndex((other) => other.toLowerCase() === t.toLowerCase()) !== idx;
+    return !isRepeat && !(isBare && hasAccentedTwin);
+  });
+  return shown.length > 0 ? shown : list;
+}
+
+/** Pronomes-sujeito que o português dispensa ("ele guardou" = "guardou") */
+const SUBJECT_PRONOUN_RE = /^(ele|ela|eles|elas|eu|tu|nos|vos) (?=\S)/;
+/** Preposições de regência que fecham uma glosa ("fora de", "estar prestes a") */
+const TRAILING_PREPOSITION_RE = /(?<=\S) (de|a|em|com|para|por|sobre)$/;
+
+/**
+ * Uniformiza a posição do pronome "se": "se ajoelhou" e "ajoelhou-se" viram a mesma forma.
+ * Espera texto já normalizado (sem hífen, por isso "ajoelhou-se" chega como "ajoelhouse").
+ * @param {string} norm
+ * @returns {string}
+ */
+function unifyReflexive(norm) {
+  return norm.replace(/^((?:ele|ela|eles|elas|eu|tu|nos|vos) )?se (\S+)/, "$1$2se");
+}
+
+/**
+ * Formas reduzidas igualmente corretas de uma tradução cadastrada: sem o pronome-sujeito
+ * inicial e/ou sem a preposição de regência final. Só a tradução cadastrada é reduzida,
+ * nunca a resposta do aluno, para "ela guardou" não passar por "ele guardou".
+ * @param {string} normAccepted tradução já normalizada
+ * @returns {Array<string>}
+ */
+function getLooseForms(normAccepted) {
+  const base = unifyReflexive(normAccepted);
+  const forms = new Set([base]);
+  const noPronoun = unifyReflexive(normAccepted.replace(SUBJECT_PRONOUN_RE, ""));
+  forms.add(noPronoun);
+  [base, noPronoun].forEach((f) => forms.add(f.replace(TRAILING_PREPOSITION_RE, "")));
+  forms.delete("");
+  return Array.from(forms);
+}
+
+/** Troca de gênero (menino/menina) não é erro de digitação: muda o sentido */
+function isGenderSwapPair(a, b) {
+  const strip = (w) => w.replace(/s$/, "");
+  const x = strip(a);
+  const y = strip(b);
+  if ((x === "ele" && y === "ela") || (x === "ela" && y === "ele")) return true;
+  const lastX = x.slice(-1);
+  const lastY = y.slice(-1);
+  return x.slice(0, -1) === y.slice(0, -1) &&
+    ((lastX === "o" && lastY === "a") || (lastX === "a" && lastY === "o"));
+}
+
+/**
+ * Em frases, tolera até dois deslizes de digitação em palavras longas distintas.
+ * A distância da frase inteira só cobre um deslize, pouco para uma oração completa.
+ * @param {string} normUser
+ * @param {string} normAccepted
+ * @returns {boolean}
+ */
+function isSentenceTypoMatch(normUser, normAccepted) {
+  const userWords = normUser.split(" ");
+  const accWords = normAccepted.split(" ");
+  if (accWords.length < 3 || userWords.length !== accWords.length) return false;
+  let slips = 0;
+  for (let i = 0; i < accWords.length; i++) {
+    if (userWords[i] === accWords[i]) continue;
+    if (accWords[i].length < 5) return false;
+    if (getEditDistance(userWords[i], accWords[i]) > 1) return false;
+    if (isGenderSwapPair(userWords[i], accWords[i])) return false;
+    slips++;
+    if (slips > 2) return false;
+  }
+  return slips > 0;
+}
+
+/**
+ * Compara, palavra a palavra, a resposta com a tradução aceita mais próxima.
+ * Serve ao retorno das frases: mostra o que bateu, o que faltou e o que sobrou.
+ * @param {string} userAnswer
+ * @param {Array<string>} acceptedList
+ * @returns {{expected: string, expectedWords: Array<{text: string, matched: boolean}>, userWords: Array<{text: string, matched: boolean}>, ratio: number}|null}
+ */
+function compareSentenceWords(userAnswer, acceptedList) {
+  const safeList = (Array.isArray(acceptedList) ? acceptedList : []).filter((a) => typeof a === "string" && a.trim());
+  const splitRaw = (str) => String(str || "").split(/\s+/).filter((w) => normalizeText(w).length > 0);
+  const userRaw = splitRaw(userAnswer);
+  if (safeList.length === 0 || userRaw.length === 0) return null;
+  const userNorm = userRaw.map(normalizeText);
+
+  let best = null;
+  safeList.forEach((accepted) => {
+    const accRaw = splitRaw(accepted);
+    const accNorm = accRaw.map(normalizeText);
+    // Maior subsequência comum: respeita a ordem das palavras
+    const rows = accNorm.length + 1;
+    const cols = userNorm.length + 1;
+    const lcs = Array.from({ length: rows }, () => new Array(cols).fill(0));
+    for (let i = 1; i < rows; i++) {
+      for (let j = 1; j < cols; j++) {
+        lcs[i][j] = accNorm[i - 1] === userNorm[j - 1]
+          ? lcs[i - 1][j - 1] + 1
+          : Math.max(lcs[i - 1][j], lcs[i][j - 1]);
+      }
+    }
+    const accMatched = new Array(accNorm.length).fill(false);
+    const userMatched = new Array(userNorm.length).fill(false);
+    let i = accNorm.length;
+    let j = userNorm.length;
+    while (i > 0 && j > 0) {
+      if (accNorm[i - 1] === userNorm[j - 1]) {
+        accMatched[i - 1] = true;
+        userMatched[j - 1] = true;
+        i--;
+        j--;
+      } else if (lcs[i - 1][j] >= lcs[i][j - 1]) {
+        i--;
+      } else {
+        j--;
+      }
+    }
+    const common = lcs[accNorm.length][userNorm.length];
+    const ratio = (2 * common) / (accNorm.length + userNorm.length);
+    if (!best || ratio > best.ratio) {
+      best = {
+        expected: accepted,
+        expectedWords: accRaw.map((text, idx) => ({ text, matched: accMatched[idx] })),
+        userWords: userRaw.map((text, idx) => ({ text, matched: userMatched[idx] })),
+        ratio,
+      };
+    }
+  });
+  return best;
+}
+
+/**
  * Indica se a lista de traduções descreve uma partícula sem tradução direta
  * (ex.: μέν, ἄν), cujas "traduções" são apenas descrições gramaticais
  * como "partícula usada correlativamente".
@@ -90,7 +235,7 @@ function evaluateSingleAnswer(userAnswer, acceptedList, options = {}) {
   const cleanUser = (userAnswer || "").replace(/\(.*?\)/g, "");
   const normUser = normalizeText(cleanUser);
 
-  const allAccepted = safeList.join(" / ");
+  const allAccepted = getDisplayTranslations(safeList).join(" / ");
   if (!normUser) {
     // Partículas sem tradução direta (μέν, ἄν...) aceitam resposta vazia como correta
     const allowEmpty =
@@ -101,6 +246,7 @@ function evaluateSingleAnswer(userAnswer, acceptedList, options = {}) {
 
   let bestMatch = { status: "incorrect", expected: allAccepted };
 
+  const looseUser = unifyReflexive(normUser);
   const userWords = normUser.split(" ").filter((w) => w.length > 0);
   const sortWords = (str) =>
     str
@@ -150,19 +296,44 @@ function evaluateSingleAnswer(userAnswer, acceptedList, options = {}) {
       }
     }
 
+    // Pronome-sujeito e preposição de regência são opcionais; "se" vale antes ou depois do verbo
+    const isLooseMatch =
+      getLooseForms(normAcceptedFull).includes(looseUser) ||
+      getLooseForms(normAcceptedStripped).includes(looseUser);
+    if (isLooseMatch) {
+      const isPunctuationCorrect =
+        hasQuestionMark(userAnswer) === hasQuestionMark(rawAccepted) &&
+        hasExclamation(userAnswer) === hasExclamation(rawAccepted);
+      if (isPunctuationCorrect) {
+        return { status: "correct", expected: accentedVersion };
+      }
+      if (bestMatch.status === "incorrect") {
+        bestMatch = { status: "typo", expected: accentedVersion };
+      }
+      continue;
+    }
+
     if (
       normAcceptedStripped.length > 4 &&
       getEditDistance(normUser, normAcceptedStripped) <= 1
     ) {
-      const lastCharUser = normUser.slice(-1);
-      const lastCharAcc = normAcceptedStripped.slice(-1);
+      // O deslize pode estar em qualquer palavra: "ela guardou" não é erro de digitação de "ele guardou"
+      const accWordList = normAcceptedStripped.split(" ");
       const isGenderSwap =
-        (lastCharAcc === "o" && lastCharUser === "a") ||
-        (lastCharAcc === "a" && lastCharUser === "o");
+        isGenderSwapPair(normUser, normAcceptedStripped) ||
+        (userWords.length === accWordList.length &&
+          userWords.some((w, idx) => w !== accWordList[idx] && isGenderSwapPair(w, accWordList[idx])));
 
       if (!isGenderSwap && bestMatch.status === "incorrect") {
         bestMatch = { status: "typo", expected: accentedVersion };
       }
+    } else if (
+      options && options.isSentence &&
+      bestMatch.status === "incorrect" &&
+      (isSentenceTypoMatch(normUser, normAcceptedStripped) ||
+        isSentenceTypoMatch(normUser, normAcceptedFull))
+    ) {
+      bestMatch = { status: "typo", expected: accentedVersion };
     }
   }
 
@@ -215,9 +386,10 @@ if (typeof window !== "undefined") {
   window.getEditDistance = getEditDistance;
   window.evaluateAnswer = evaluateAnswer;
   window.isUntranslatableParticle = isUntranslatableParticle;
-  window.EvaluationModule = { escapeHTML, normalizeText, getEditDistance, isUntranslatableParticle, evaluateAnswer };
+  window.compareSentenceWords = compareSentenceWords;
+  window.EvaluationModule = { escapeHTML, normalizeText, getEditDistance, isUntranslatableParticle, compareSentenceWords, getDisplayTranslations, evaluateAnswer };
 }
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { escapeHTML, normalizeText, getEditDistance, isUntranslatableParticle, evaluateAnswer };
+  module.exports = { escapeHTML, normalizeText, getEditDistance, isUntranslatableParticle, compareSentenceWords, getDisplayTranslations, evaluateAnswer };
 }
 })();

@@ -29,6 +29,8 @@ const modules = [
   { id: 15, name: 'Dicas de Assimilação', file: './tests/15-assimilation.test.js' },
   { id: 16, name: 'Caminho do Domínio', file: './tests/16-mastery-path.test.js' },
   { id: 17, name: 'Mago da Morfologia', file: './tests/17-morph-drill.test.js' },
+  { id: 18, name: 'Constância de Estudo', file: './tests/18-activity.test.js' },
+  { id: 19, name: 'Funcionamento sem Internet', file: './tests/19-offline-assets.test.js' },
 ];
 
 async function run() {

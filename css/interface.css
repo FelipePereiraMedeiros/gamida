@@ -791,6 +791,13 @@ ul#chapter-dropdown-list {
 }
 #hebrew-prompt.is-long,
 #path-prompt.is-long { font-size: clamp(1.625rem, 3.6vw, 2.5rem); line-height: 1.9; }
+#hebrew-prompt.is-gloss {
+  font-family: var(--font-sans);
+  direction: ltr;
+  font-size: clamp(1.5rem, 3.4vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
 #hebrew-prompt.is-message { font-family: var(--font-sans); direction: ltr; font-size: 1.25rem; font-weight: 600; }
 
 .exercise-prompt__stem { color: var(--text-soft); font-size: 0.9375rem; }
@@ -853,6 +860,16 @@ ul#chapter-dropdown-list {
   font-weight: 500;
   text-align: left;
   cursor: pointer;
+}
+/* Alternativas no idioma original (escolha inversa) */
+.choice-btn--term {
+  min-height: 4rem;
+  font-size: 1.625rem;
+  line-height: 1.5;
+}
+.choice-btn--term.hebrew-text {
+  padding: 0.625rem 2.75rem 0.625rem 0.875rem;
+  text-align: right;
 }
 .choice-btn::before {
   content: attr(data-key);
@@ -986,6 +1003,67 @@ ul#chapter-dropdown-list {
   }
 }
 
+/* Comparação palavra a palavra na resposta das frases */
+#feedback-banner.is-stacked {
+  flex-direction: column;
+  align-items: stretch;
+}
+#feedback-banner.is-stacked > div:last-child {
+  justify-content: flex-end;
+}
+.feedback-diff {
+  margin-top: 0.5rem;
+  display: grid;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.feedback-diff.hidden { display: none; }
+.feedback-diff__row {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+.feedback-diff__label {
+  color: var(--text-muted, #aca79b);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.feedback-diff__words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.125rem 0.3125rem;
+  min-width: 0;
+}
+.feedback-diff__word {
+  border-radius: 0.25rem;
+  padding: 0 0.1875rem;
+  overflow-wrap: anywhere;
+}
+.feedback-diff__word.is-match {
+  color: #6ee7b7;
+}
+.feedback-diff__word.is-extra {
+  color: #fda4af;
+  background: rgb(244 63 94 / 0.16);
+  text-decoration: line-through;
+  text-decoration-color: rgb(253 164 175 / 0.6);
+}
+.feedback-diff__word.is-missing {
+  color: #fcd34d;
+  background: rgb(245 158 11 / 0.16);
+  font-weight: 600;
+}
+@media (max-width: 480px) {
+  .feedback-diff__row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
 /* Dica de assimilação na resposta da prática */
 .feedback-tip {
   margin-top: 0.625rem;
@@ -1115,7 +1193,7 @@ ul#chapter-dropdown-list {
   width: 100%;
   margin-top: 0.5rem;
 }
-.mode-card__actions > button { flex: 1 1 7rem; justify-content: center; }
+.mode-card__actions > button { flex: 1 1 7rem; justify-content: center; gap: 0.25rem; }
 .mode-card__actions > button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* Contagem da rodada ao lado do exercício */
@@ -1137,6 +1215,29 @@ ul#chapter-dropdown-list {
 }
 
 /* Sequência, Pontos e Precisão pertencem ao jogo do alfabeto; a prática regular mostra o domínio */
+/* Barra da meta diária em Gerenciar */
+.goal-progress {
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.goal-progress__fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: rgb(var(--brand-500));
+  transition: width 0.3s ease;
+}
+.goal-progress.is-goal-met .goal-progress__fill { background: #fbbf24; }
+.app-stat--days { cursor: pointer; border-radius: var(--radius-sm); }
+.app-stat--days:focus-visible { outline: 2px solid rgb(var(--brand-400)); outline-offset: 2px; }
+
+/* Constância: apagada sem estudo hoje, acesa com a meta do dia cumprida */
+.app-stat--days.is-at-risk dd { color: var(--text-soft); }
+.app-stat--days.is-goal-met dd { color: #fbbf24; }
+.app-stat--days.is-goal-met .app-stat__icon { color: #fbbf24; }
+body.is-alphabet-practice .app-stat--days { display: none; }
 .app-stat--game { display: none; }
 body.is-alphabet-practice .app-stat--game { display: flex; }
 body.is-alphabet-practice .app-stat--mastery { display: none; }

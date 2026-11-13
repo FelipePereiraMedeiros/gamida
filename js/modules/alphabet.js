@@ -430,6 +430,7 @@ const AlphabetGameEngine = {
   checkAnswer(selectedIndex) {
     if (this.answered || !this.currentChallenge) return;
     this.answered = true;
+    if (typeof window !== "undefined" && typeof window.recordActivity === "function") window.recordActivity();
 
     const opt = this.currentChallenge.options[selectedIndex];
     const isCorrect = opt && opt.isCorrect;

@@ -234,6 +234,7 @@ function submitSurvivalAnswer() {
   const input = document.getElementById("survival-input");
   if (!input || input.disabled || !survCurrent) return;
 
+  if (typeof window !== "undefined" && typeof window.recordActivity === "function") window.recordActivity();
   const evalResult = evaluateAnswer(
     input.value,
     survCurrent.translations,

@@ -171,6 +171,35 @@ function getMasterySummary(chapters) {
   };
 }
 
+/**
+ * Fotografa o estado de retenção de um termo (SRS e domínio) antes de registrar um erro
+ * @param {Object|string} item
+ * @returns {{key: string, record: Object|null, mastery: number}}
+ */
+function snapshotRetention(item) {
+  const key = getSRSKey(item);
+  return {
+    key,
+    record: key && AppState.srs[key] ? { ...AppState.srs[key] } : null,
+    mastery: (key && AppState.mastery[key]) || 0,
+  };
+}
+
+/**
+ * Desfaz um erro registrado, devolvendo o termo ao estado fotografado
+ * @param {{key: string, record: Object|null, mastery: number}} snapshot
+ */
+function restoreRetention(snapshot) {
+  if (!snapshot || !snapshot.key) return;
+  if (snapshot.record) AppState.srs[snapshot.key] = { ...snapshot.record };
+  else delete AppState.srs[snapshot.key];
+  if (snapshot.mastery) AppState.mastery[snapshot.key] = snapshot.mastery;
+  else delete AppState.mastery[snapshot.key];
+  saveSRS();
+  saveMastery();
+  refreshReviewBadge();
+}
+
 function refreshReviewBadge() {
   if (typeof window !== "undefined" && typeof window.updateReviewDueBadge === "function") {
     window.updateReviewDueBadge();
@@ -222,6 +251,33 @@ function getErrorCards() {
   return Array.from(cards.values());
 }
 
+/**
+ * Reúne os cartões já estudados cuja revisão venceu, em todos os capítulos do idioma.
+ * A repetição espaçada só funciona se o vencido aparecer mesmo com outro capítulo ativo.
+ * @param {number} [now]
+ * @returns {Array<Object>}
+ */
+function getDueCards(now = Date.now()) {
+  const cards = new Map();
+  (AppState.chapters || []).forEach((chap) => {
+    if (!chap) return;
+    const collect = (item, kind) => {
+      const key = getSRSKey(item);
+      if (!key || cards.has(key)) return;
+      const record = AppState.srs[key] || AppState.srs[getTerm(item)];
+      if (record && (record.nextReview || 0) <= now) {
+        cards.set(key, { ...item, chapterId: chap.id, chapterTitle: chap.title, kind });
+      }
+    };
+    (chap.items || []).forEach((item) => collect(item, "word"));
+    (chap.sentences || []).forEach((item) => collect(item, "sentence"));
+  });
+  return Array.from(cards.values());
+}
+
+// Cartões por sessão de revisões vencidas: o restante fica para a sessão seguinte
+const DUE_SESSION_LIMIT = 30;
+
 const safeToggle = (typeof window !== "undefined" && window.safeToggle) || _stateModule.safeToggle || function safeToggle(id, isVisible) {
   if (typeof document === "undefined") return null;
   const el = document.getElementById(id);
@@ -251,10 +307,10 @@ function openAnkiSession(queue) {
 
 /**
  * Inicia a revisão de Flashcards (Anki)
- * @param {'normal'|'errors'} [mode] normal: capítulos ativos; errors: termos errados pendentes
+ * @param {'normal'|'due'|'errors'} [mode] normal: capítulos ativos; due: revisões vencidas de todos os capítulos; errors: termos errados pendentes
  */
 function startAnki(mode = "normal") {
-  ankiMode = mode === "errors" ? "errors" : "normal";
+  ankiMode = mode === "errors" || mode === "due" ? mode : "normal";
 
   if (ankiMode === "errors") {
     const errors = shuffleArray(getErrorCards());
@@ -263,6 +319,16 @@ function startAnki(mode = "normal") {
       return;
     }
     openAnkiSession(errors);
+    return;
+  }
+
+  if (ankiMode === "due") {
+    const due = shuffleArray(getDueCards());
+    if (due.length === 0) {
+      safeAlert("🎉 Nenhuma revisão vencida. Volte mais tarde ou estude cartões novos no modo Normal.");
+      return;
+    }
+    openAnkiSession(due.slice(0, DUE_SESSION_LIMIT));
     return;
   }
 
@@ -349,7 +415,7 @@ function renderAnkiCard() {
   if (typeof document === "undefined") return;
   const counter = document.getElementById("anki-counter");
   if (counter) {
-    const prefix = ankiMode === "errors" ? "Erros · " : "";
+    const prefix = ankiMode === "errors" ? "Erros · " : ankiMode === "due" ? "Vencidas · " : "";
     counter.textContent = `${prefix}Cartão ${ankiTotalCards - ankiQueue.length + 1} de ${ankiTotalCards}`;
   }
   const typeTag = document.getElementById("anki-type-tag");
@@ -440,6 +506,7 @@ function revealAnki() {
  */
 function answerAnki(grade) {
   if (!ankiCurrentCard) return;
+  if (typeof window !== "undefined" && typeof window.recordActivity === "function") window.recordActivity();
   ankiStats[grade]++;
   const cardKey = getSRSKey(ankiCurrentCard);
   const rawTerm = getTerm(ankiCurrentCard);
@@ -505,6 +572,7 @@ if (typeof window !== "undefined") {
   window.saveSRS = saveSRS;
   window.recordSRSError = recordSRSError;
   window.getErrorCards = getErrorCards;
+  window.getDueCards = getDueCards;
   window.getMasterySummary = getMasterySummary;
   window.startAnki = startAnki;
   window.renderAnkiCard = renderAnkiCard;
@@ -518,11 +586,14 @@ if (typeof window !== "undefined") {
     saveSRS,
     recordSRSError,
     getErrorCards,
+    getDueCards,
     recordMasteryHit,
     isItemMastered,
     getMasterySummary,
     isItemInErrorList,
     removeFromErrorList,
+    snapshotRetention,
+    restoreRetention,
     isPendingError,
     startAnki,
     renderAnkiCard,
@@ -542,11 +613,14 @@ if (typeof module !== "undefined" && module.exports) {
     saveSRS,
     recordSRSError,
     getErrorCards,
+    getDueCards,
     recordMasteryHit,
     isItemMastered,
     getMasterySummary,
     isItemInErrorList,
     removeFromErrorList,
+    snapshotRetention,
+    restoreRetention,
     isPendingError,
     startAnki,
     renderAnkiCard,

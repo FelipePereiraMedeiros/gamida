@@ -15,6 +15,8 @@ const {
   getEditDistance,
   evaluateAnswer,
   escapeHTML,
+  compareSentenceWords,
+  getDisplayTranslations,
 } = require('../js/modules/evaluation.js');
 
 // Testes Unitários do Módulo 2
@@ -87,6 +89,64 @@ suite.test('Partículas sem tradução direta (μέν, ἄν) aceitam resposta v
   assert.equal(evaluateAnswer('', ['qualquer'], { allowEmpty: true }).status, 'correct');
   // Resposta errada não vazia continua incorreta
   assert.equal(evaluateAnswer('casa', ['partícula usada correlativamente']).status, 'incorrect');
+});
+
+suite.test('Pronome-sujeito inicial é opcional, mas não pode ser trocado', () => {
+  assert.equal(evaluateAnswer('circundou', ['ele circundou']).status, 'correct');
+  assert.equal(evaluateAnswer('ele circundou', ['ele circundou']).status, 'correct');
+  assert.equal(evaluateAnswer('estava cheio', ['estar cheio', 'ele estava cheio']).status, 'correct');
+  // Trocar o pronome muda a pessoa/gênero: não é acerto nem erro de digitação
+  assert.equal(evaluateAnswer('ela circundou', ['ele circundou']).status, 'incorrect');
+  assert.equal(evaluateAnswer('guardaram', ['ele guardou']).status, 'incorrect');
+  // O pronome sozinho continua sendo uma tradução normal
+  assert.equal(evaluateAnswer('ele', ['ele']).status, 'correct');
+});
+
+suite.test('Pronome "se" vale antes ou depois do verbo', () => {
+  assert.equal(evaluateAnswer('ajoelhou-se', ['ele se ajoelhou']).status, 'correct');
+  assert.equal(evaluateAnswer('se ajoelhou', ['ele se ajoelhou']).status, 'correct');
+  assert.equal(evaluateAnswer('ele ajoelhou-se', ['ele se ajoelhou']).status, 'correct');
+  assert.equal(evaluateAnswer('se curvou', ['curvou-se']).status, 'correct');
+});
+
+suite.test('Preposição de regência no fim da glosa é opcional', () => {
+  assert.equal(evaluateAnswer('fora', ['fora de']).status, 'correct');
+  assert.equal(evaluateAnswer('estar prestes', ['estar prestes a']).status, 'correct');
+  assert.equal(evaluateAnswer('apoderar-se', ['apoderar-se de', 'segurar']).status, 'correct');
+  // Só a preposição final cai: o artigo ou preposição inicial pode mudar o sentido
+  assert.equal(evaluateAnswer('saber', ['a saber']).status, 'incorrect');
+  assert.equal(evaluateAnswer('de', ['de']).status, 'correct');
+});
+
+suite.test('Frases toleram até dois deslizes em palavras longas, nunca troca de gênero', () => {
+  const accepted = ['pois davi descansou com seus antepassados'];
+  assert.equal(evaluateAnswer('pois davi descançou com seus antepasados', accepted, { isSentence: true }).status, 'typo');
+  assert.equal(evaluateAnswer('pois davi descançou com seos antepasados', accepted, { isSentence: true }).status, 'incorrect');
+  assert.equal(evaluateAnswer('o menina bom', ['o menino bom'], { isSentence: true }).status, 'incorrect');
+  assert.equal(evaluateAnswer('ela guardou a lei', ['ele guardou a lei'], { isSentence: true }).status, 'incorrect');
+});
+
+suite.test('compareSentenceWords aponta o que bateu, sobrou e faltou', () => {
+  const diff = compareSentenceWords('Jesus disse a eles: eu sou pão da vida', [
+    'No princípio era o Verbo',
+    'Disse-lhes Jesus: Eu sou o pão da vida.',
+  ]);
+  assert.equal(diff.expected, 'Disse-lhes Jesus: Eu sou o pão da vida.', 'Deve escolher a tradução mais próxima');
+  const missing = diff.expectedWords.filter((w) => !w.matched).map((w) => w.text);
+  assert.deepEqual(missing, ['Disse-lhes', 'o']);
+  const extra = diff.userWords.filter((w) => !w.matched).map((w) => w.text);
+  assert.deepEqual(extra, ['disse', 'a', 'eles:']);
+  assert.equal(compareSentenceWords('', ['algo']), null);
+  assert.equal(compareSentenceWords('algo', []), null);
+});
+
+suite.test('getDisplayTranslations omite a grafia sem acento quando há a acentuada', () => {
+  assert.deepEqual(getDisplayTranslations(['ceu', 'céu', 'céus']), ['céu', 'céus']);
+  assert.deepEqual(getDisplayTranslations(['pai', 'ancestral']), ['pai', 'ancestral']);
+  assert.deepEqual(getDisplayTranslations(['e']), ['e']);
+  // A grafia sem acento continua aceita na correção
+  assert.equal(evaluateAnswer('ceu', ['ceu', 'céu']).status, 'correct');
+  assert.equal(evaluateAnswer('errado', ['ceu', 'céu']).expected, 'céu');
 });
 
 suite.test('escapeHTML sanitiza caracteres especiais contra DOM XSS', () => {

@@ -550,6 +550,9 @@ function updatePracticeOptionsSummary() {
   if (AppState.exerciseMode === "typing" && AppState.practiceCategory && AppState.practiceCategory !== "all" && select && select.selectedOptions && select.selectedOptions[0]) {
     parts.push(select.selectedOptions[0].textContent.replace(/\s*\(\d+\)\s*$/, ""));
   }
+  if (AppState.exerciseMode === "choice" && AppState.choiceDirection === "reverse") {
+    parts.push(`Português ➔ ${AppState.language === "greek" ? "Grego" : "Hebraico"}`);
+  }
   summary.textContent = parts.join(" · ");
 }
 
@@ -602,6 +605,11 @@ function updateReviewDueBadge() {
     cardStat.textContent = `${label}. Marque “Lembrei” ou “Fácil” para limpar o aviso.`;
     cardStat.classList.toggle("hidden", errors === 0);
   }
+  const due = typeof window !== "undefined" && typeof window.getDueCards === "function" ? window.getDueCards().length : 0;
+  const dueBtn = document.getElementById("btn-review-due");
+  const dueCount = document.getElementById("review-due-count");
+  if (dueBtn) dueBtn.disabled = due === 0;
+  if (dueCount) dueCount.textContent = due > 0 ? `(${due})` : "";
   if (errorsBtn) errorsBtn.disabled = errors === 0;
   if (errorsCount) errorsCount.textContent = errors > 0 ? `(${errors})` : "";
 }

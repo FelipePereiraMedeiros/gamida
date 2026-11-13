@@ -62,6 +62,10 @@ function resetToDashboard() {
   safeToggle("morph-config", false);
   safeToggle("morph-active", false);
   safeToggle("morph-results", false);
+  // As revisões vencem com o passar do tempo: a contagem é refeita a cada volta ao painel
+  if (typeof window !== "undefined" && typeof window.updateReviewDueBadge === "function") {
+    window.updateReviewDueBadge();
+  }
   if (typeof window !== "undefined" && window.SurvivalModule && typeof window.SurvivalModule.updateSurvivalDashboardRecord === "function") {
     window.SurvivalModule.updateSurvivalDashboardRecord();
   }
@@ -486,8 +490,12 @@ function updateTrackerPillState(idx) {
  */
 function confirmFinishAssessmentPrompt() {
   saveCurrentInputDraft();
+  // Partícula sem tradução direta é respondida em branco: não conta como questão esquecida
+  const acceptsBlank = (q) =>
+    typeof window !== "undefined" && typeof window.isUntranslatableParticle === "function" &&
+    window.isUntranslatableParticle(q && q.translations);
   const unanswered = assessQuestions.filter(
-    (_, idx) => !assessAnswersMap[idx] || !assessAnswersMap[idx].trim(),
+    (q, idx) => (!assessAnswersMap[idx] || !assessAnswersMap[idx].trim()) && !acceptsBlank(q),
   ).length;
   if (
     confirm(
@@ -511,6 +519,11 @@ function finishAssessment() {
   }
   safeToggle("assessment-active", false);
   safeToggle("assessment-results", true);
+
+  const answeredCount = assessQuestions.filter((_, idx) => (assessAnswersMap[idx] || "").trim()).length;
+  if (answeredCount > 0 && typeof window !== "undefined" && typeof window.recordActivity === "function") {
+    window.recordActivity(answeredCount);
+  }
 
   const evaluated = assessQuestions.map((q, idx) => {
     const rawVal = (assessAnswersMap[idx] || "").trim();
