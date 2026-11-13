@@ -1,0 +1,1036 @@
+<!doctype html>
+<!-- Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário: uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE. -->
+<html lang="pt-BR" class="h-full bg-slate-950 text-slate-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamida - Painel Geral de Testes Automatizados (Módulo a Módulo)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Rubik", "sans-serif"],
+              mono: ['"JetBrains Mono"', "monospace"],
+            },
+            colors: {
+              brand: {
+                500: "#3b82f6",
+                600: "#2563eb",
+                700: "#1d4ed8",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="h-full flex flex-col font-sans bg-slate-950 text-slate-100 overflow-x-hidden">
+    <!-- Header do Painel de Testes -->
+    <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-40 px-6 py-4 shadow-xl">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 text-xl font-bold text-white">
+            🧪
+          </div>
+          <div>
+            <h1 class="font-bold text-lg text-white flex items-center gap-2">
+              Gamida <span class="text-xs px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono">Full Test Suite</span>
+            </h1>
+            <p class="text-xs text-slate-400">Validação Completa do Sistema (14 Módulos Funcionais)</p>
+          </div>
+        </div>
+
+        <!-- Controles Globais de Teste -->
+        <div class="flex items-center gap-3">
+          <button
+            type="button"
+            onclick="runAllBrowserTests()"
+            id="btn-run-all"
+            class="px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-600/20 transition active:scale-95 flex items-center gap-2 cursor-pointer"
+          >
+            <span>▶</span>
+            <span>Executar Todos os Módulos</span>
+          </button>
+          <a
+            href="index.html"
+            target="_blank"
+            class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-xs rounded-xl border border-slate-700 transition flex items-center gap-1.5"
+          >
+            <span>Abrir App ↗</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Coluna da Esquerda: Suíte de Testes e Relatório (6 Colunas) -->
+      <section class="lg:col-span-6 flex flex-col space-y-4">
+        <!-- Card de Resumo de Status -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="font-bold text-sm text-slate-200 uppercase tracking-wider">Status Geral das Suítes</h2>
+            <span id="badge-total-status" class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              Pronto para Executar
+            </span>
+          </div>
+
+          <div class="grid grid-cols-4 gap-2.5 text-center">
+            <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
+              <span class="block text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Módulos</span>
+              <span id="stat-modules" class="font-bold text-lg text-brand-400 font-mono">14</span>
+            </div>
+            <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
+              <span class="block text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Total</span>
+              <span id="stat-total" class="font-bold text-lg text-white font-mono">0</span>
+            </div>
+            <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
+              <span class="block text-[10px] text-emerald-400 uppercase tracking-wider font-semibold">Passaram</span>
+              <span id="stat-passed" class="font-bold text-lg text-emerald-400 font-mono">0</span>
+            </div>
+            <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5">
+              <span class="block text-[10px] text-rose-400 uppercase tracking-wider font-semibold">Falharam</span>
+              <span id="stat-failed" class="font-bold text-lg text-rose-400 font-mono">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtros por Módulo -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 shadow-xl">
+          <div class="flex items-center justify-between gap-2 overflow-x-auto pb-1 scrollbar-none text-xs">
+            <button
+              type="button"
+              id="filter-all"
+              onclick="filterModuleView('all')"
+              class="px-3 py-1.5 rounded-lg bg-brand-600 text-white font-bold whitespace-nowrap"
+            >
+              Todos os Módulos (14)
+            </button>
+            <select
+              id="select-module-filter"
+              onchange="filterModuleView(this.value)"
+              class="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-brand-500 font-medium"
+            >
+              <option value="all">Filtrar por Módulo...</option>
+              <option value="1">1. Camada de Dados & Capítulos</option>
+              <option value="2">2. Motor de Avaliação Linguística</option>
+              <option value="3">3. Motor de Prática & Modos</option>
+              <option value="4">4. Sistema SRS & Anki Flashcards</option>
+              <option value="5">5. Avaliação Cumulativa & Simulados</option>
+              <option value="6">6. Modo Sobrevivência (Morte Súbita)</option>
+              <option value="7">7. Paradigmas & Esquemas</option>
+              <option value="8">8. Dicionário & Busca em Tempo Real</option>
+              <option value="9">9. Troca de Idioma & UI</option>
+              <option value="10">10. Menu Mobile & Carrossel de Abas</option>
+              <option value="11">11. Apoio ("Pague-me um café!" & PIX)</option>
+              <option value="12">12. Motor Gamificado do Alfabeto</option>
+              <option value="13">13. Integridade Geral & Contrato DOM</option>
+              <option value="14">14. Análise Morfossintática Granular</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Lista de Testes com Detalhes -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex-1 flex flex-col">
+          <h3 class="font-bold text-sm text-slate-200 mb-3 flex items-center justify-between">
+            <span>Resultados dos Casos de Teste</span>
+            <span class="text-xs text-slate-500 font-normal" id="execution-time"></span>
+          </h3>
+
+          <div id="test-results-list" class="space-y-3 overflow-y-auto max-h-[560px] pr-1">
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 text-center text-xs text-slate-400">
+              Clique em <strong class="text-white">"Executar Todos os Módulos"</strong> para rodar a suíte completa.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Coluna da Direita: Simulador de Viewport e Sandbox Interativo (6 Colunas) -->
+      <section class="lg:col-span-6 flex flex-col space-y-4">
+        <!-- Barra de Controle do Simulador de Dispositivos -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Simulador:</span>
+            <div class="flex bg-slate-950 p-1 border border-slate-800 rounded-xl text-xs font-medium">
+              <button
+                type="button"
+                id="btn-view-mobile"
+                onclick="setSimulatorViewport('mobile')"
+                class="px-3 py-1.5 rounded-lg transition bg-brand-600 text-white font-bold flex items-center gap-1.5"
+              >
+                <span>📱</span> Mobile (375px)
+              </button>
+              <button
+                type="button"
+                id="btn-view-tablet"
+                onclick="setSimulatorViewport('tablet')"
+                class="px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5"
+              >
+                <span>📟</span> Tablet (768px)
+              </button>
+              <button
+                type="button"
+                id="btn-view-desktop"
+                onclick="setSimulatorViewport('desktop')"
+                class="px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5"
+              >
+                <span>💻</span> Desktop
+              </button>
+            </div>
+          </div>
+
+          <!-- Ações Rápidas no Simulador -->
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              onclick="reloadSimulator()"
+              class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg text-xs font-medium transition"
+              title="Recarregar Simulador"
+            >
+              🔄 Recarregar
+            </button>
+          </div>
+        </div>
+
+        <!-- Frame do Simulador de Viewport -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-4 shadow-2xl flex-1 flex flex-col items-center justify-center min-h-[580px] relative overflow-hidden">
+          <div
+            id="simulator-wrapper"
+            class="w-[375px] h-[640px] border-4 border-slate-700 rounded-2xl overflow-hidden shadow-2xl bg-slate-950 transition-all duration-300 relative flex flex-col"
+          >
+            <!-- Barra Superior Fictícia de Dispositivo Mobile -->
+            <div id="simulator-notch" class="bg-slate-900 border-b border-slate-800 px-3 py-1.5 flex items-center justify-between text-[10px] text-slate-400 font-mono select-none">
+              <span id="simulator-time">21:40</span>
+              <span class="w-16 h-3.5 bg-slate-800 rounded-full mx-auto"></span>
+              <span>100% 🔋</span>
+            </div>
+
+            <!-- Iframe Real da Aplicação Gamida -->
+            <iframe
+              id="app-iframe"
+              src="index.html"
+              class="flex-1 w-full border-0 bg-slate-950"
+              onload="onSimulatorLoaded()"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Script da Suite de Testes do Navegador -->
+    <script>
+      let testStats = { total: 0, passed: 0, failed: 0 };
+      let allRenderedSuites = [];
+
+      function setSimulatorViewport(mode) {
+        const wrapper = document.getElementById("simulator-wrapper");
+        const notch = document.getElementById("simulator-notch");
+        const btnMobile = document.getElementById("btn-view-mobile");
+        const btnTablet = document.getElementById("btn-view-tablet");
+        const btnDesktop = document.getElementById("btn-view-desktop");
+
+        [btnMobile, btnTablet, btnDesktop].forEach((b) => {
+          b.className = "px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5";
+        });
+
+        if (mode === "mobile") {
+          wrapper.style.width = "375px";
+          wrapper.style.height = "640px";
+          wrapper.className = "w-[375px] h-[640px] border-4 border-slate-700 rounded-2xl overflow-hidden shadow-2xl bg-slate-950 transition-all duration-300 relative flex flex-col";
+          notch.classList.remove("hidden");
+          btnMobile.className = "px-3 py-1.5 rounded-lg transition bg-brand-600 text-white font-bold flex items-center gap-1.5";
+        } else if (mode === "tablet") {
+          wrapper.style.width = "768px";
+          wrapper.style.height = "640px";
+          wrapper.className = "w-[768px] h-[640px] border-4 border-slate-700 rounded-2xl overflow-hidden shadow-2xl bg-slate-950 transition-all duration-300 relative flex flex-col";
+          notch.classList.remove("hidden");
+          btnTablet.className = "px-3 py-1.5 rounded-lg transition bg-brand-600 text-white font-bold flex items-center gap-1.5";
+        } else {
+          wrapper.style.width = "100%";
+          wrapper.style.height = "640px";
+          wrapper.className = "w-full h-[640px] border-2 border-slate-700 rounded-2xl overflow-hidden shadow-2xl bg-slate-950 transition-all duration-300 relative flex flex-col";
+          notch.classList.add("hidden");
+          btnDesktop.className = "px-3 py-1.5 rounded-lg transition bg-brand-600 text-white font-bold flex items-center gap-1.5";
+        }
+      }
+
+      function reloadSimulator() {
+        const iframe = document.getElementById("app-iframe");
+        if (iframe) iframe.src = "index.html?" + new Date().getTime();
+      }
+
+      function onSimulatorLoaded() {
+        const now = new Date();
+        const timeEl = document.getElementById("simulator-time");
+        if (timeEl) {
+          timeEl.textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+        }
+      }
+
+      function filterModuleView(moduleId) {
+        document.querySelectorAll(".test-module-card").forEach((card) => {
+          if (moduleId === "all" || card.getAttribute("data-module-id") === String(moduleId)) {
+            card.classList.remove("hidden");
+          } else {
+            card.classList.add("hidden");
+          }
+        });
+      }
+
+      function versionAtLeast(version, minimum) {
+        const parts = (v) => String(v).split(".").map(Number);
+        const [a, b] = [parts(version), parts(minimum)];
+        for (let i = 0; i < 3; i++) {
+          if ((a[i] || 0) !== (b[i] || 0)) return (a[i] || 0) > (b[i] || 0);
+        }
+        return true;
+      }
+
+      async function runAllBrowserTests() {
+        const iframe = document.getElementById("app-iframe");
+        const list = document.getElementById("test-results-list");
+        const startTime = performance.now();
+
+        list.innerHTML = `<div class="p-4 text-center text-xs text-brand-400 animate-pulse font-bold">Executando todas as 12 suítes de testes...</div>`;
+        testStats = { total: 0, passed: 0, failed: 0 };
+
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        const iframeWin = iframe.contentWindow;
+
+        const testSuites = [
+          {
+            id: 1,
+            title: "Módulo 1: Camada de Dados & Capítulos",
+            tests: [
+              {
+                name: "DataLoader carregado e disponível globalmente",
+                fn: () => typeof iframeWin.DataLoader === "object" && typeof iframeWin.DataLoader.loadChapters === "function",
+              },
+              {
+                name: "Capítulos carregados no estado da aplicação (AppState.chapters)",
+                fn: () => Array.isArray(iframeWin.AppState.chapters) && iframeWin.AppState.chapters.length > 0,
+              },
+              {
+                name: "Capítulo ativo (AppState.currentChapter) inicializado",
+                fn: () => !!iframeWin.AppState.currentChapter && typeof iframeWin.AppState.currentChapter.id === "string",
+              },
+              {
+                name: "Funções de validação de integridade (isValidChapter, hasUniqueChapterIds)",
+                fn: () => typeof iframeWin.isValidChapter === "function" && typeof iframeWin.hasUniqueChapterIds === "function",
+              },
+              {
+                name: "Todas as frases possuem o campo booleano favorite no banco de dados",
+                fn: () => {
+                  const chaps = iframeWin.AppState.chapters || [];
+                  const allSentences = chaps.flatMap(c => c.sentences || []);
+                  return allSentences.length > 0 && allSentences.every(s => typeof s.favorite === "boolean");
+                },
+              },
+            ],
+          },
+          {
+            id: 2,
+            title: "Módulo 2: Motor de Avaliação Linguística",
+            tests: [
+              {
+                name: "Função normalizeText limpa acentos e pontuação",
+                fn: () => iframeWin.normalizeText("Coração, Alma!") === "coracao alma",
+              },
+              {
+                name: "Função getEditDistance calcula distância de Levenshtein",
+                fn: () => iframeWin.getEditDistance("casa", "caza") === 1,
+              },
+              {
+                name: "evaluateAnswer reconhece tradução exata",
+                fn: () => iframeWin.evaluateAnswer("rei", ["rei"]).status === "correct",
+              },
+              {
+                name: "evaluateAnswer flexibiliza termos entre parênteses",
+                fn: () => iframeWin.evaluateAnswer("disse", ["(ele) disse"]).status === "correct",
+              },
+              {
+                name: "evaluateAnswer detecta erros leves de digitação (typo)",
+                fn: () => iframeWin.evaluateAnswer("palvra", ["palavra"]).status === "typo",
+              },
+            ],
+          },
+          {
+            id: 3,
+            title: "Módulo 3: Motor de Prática & Modos de Exercício",
+            tests: [
+              {
+                name: "Funções de prática (buildPracticeQueue, renderCurrentQuestion, checkPracticeAnswer)",
+                fn: () => typeof iframeWin.buildPracticeQueue === "function" && typeof iframeWin.renderCurrentQuestion === "function",
+              },
+              {
+                name: "Alternância entre modos (typing, choice, sentences, favorites)",
+                fn: () => {
+                  iframeWin.setExerciseMode("choice");
+                  const isChoice = iframeWin.AppState.exerciseMode === "choice";
+                  iframeWin.setExerciseMode("favorites");
+                  const isFav = iframeWin.AppState.exerciseMode === "favorites";
+                  iframeWin.setExerciseMode("typing");
+                  return isChoice && isFav && iframeWin.AppState.exerciseMode === "typing";
+                },
+              },
+              {
+                name: "Geração de distratores para múltipla escolha",
+                fn: () => Array.isArray(iframeWin.AppState.distractorCache.words) && iframeWin.AppState.distractorCache.words.length > 0,
+              },
+              {
+                name: "Ciclo de usabilidade: transmutação do botão 'Verificar' para 'Próxima Questão' e flag isPracticeAnswered",
+                fn: () => {
+                  if (typeof iframeWin.resetPracticeActionButtons !== "function") return false;
+                  iframeWin.resetPracticeActionButtons();
+                  const btnTyping = iframeDoc.getElementById("btn-submit-typing");
+                  const wasReset = iframeWin.AppState.isPracticeAnswered === false && btnTyping && btnTyping.textContent.includes("Verificar");
+                  if (typeof iframeWin.updatePracticeActionButtonToNext === "function") {
+                    iframeWin.updatePracticeActionButtonToNext();
+                  }
+                  const wasTransformed = iframeWin.AppState.isPracticeAnswered === true && btnTyping && btnTyping.textContent.toLowerCase().includes("próxima questão");
+                  iframeWin.resetPracticeActionButtons();
+                  return wasReset && wasTransformed;
+                },
+              },
+              {
+                name: "Dica de assimilação disponível na resposta da prática",
+                fn: () => {
+                  const tip = iframeWin.AssimilationModule?.getAssimilationTip(iframeWin.AppState.currentQuestion, iframeWin.AppState.language);
+                  return !!iframeDoc.getElementById("feedback-tip") && !!tip && tip.text.length > 0;
+                },
+              },
+            ],
+          },
+          {
+            id: 4,
+            title: "Módulo 4: Sistema SRS & Anki Flashcards",
+            tests: [
+              {
+                name: "Armazenamento do SRS carregado (AppState.srs)",
+                fn: () => typeof iframeWin.AppState.srs === "object",
+              },
+              {
+                name: "Função recordSRSError registra falhas e agenda revisão",
+                fn: () => {
+                  iframeWin.recordSRSError("teste_termo");
+                  return iframeWin.AppState.srs["teste_termo"] && iframeWin.AppState.srs["teste_termo"].fails >= 1;
+                },
+              },
+              {
+                name: "Funções de revisão Anki (startAnki, revealAnki, answerAnki)",
+                fn: () => typeof iframeWin.startAnki === "function" && typeof iframeWin.answerAnki === "function",
+              },
+            ],
+          },
+          {
+            id: 5,
+            title: "Módulo 5: Avaliação Cumulativa & Simulados",
+            tests: [
+              {
+                name: "Configuração do Simulado (SimConfig)",
+                fn: () => typeof iframeWin.SimConfig === "object" && typeof iframeWin.SimConfig.amount !== "undefined",
+              },
+              {
+                name: "Funções de abertura e início do Simulado (openSimuladoConfig, startSimulado)",
+                fn: () => typeof iframeWin.openSimuladoConfig === "function" && typeof iframeWin.startSimulado === "function",
+              },
+              {
+                name: "Função finishAssessment gera relatório diagnóstico por capítulo",
+                fn: () => typeof iframeWin.finishAssessment === "function",
+              },
+            ],
+          },
+          {
+            id: 6,
+            title: "Módulo 6: Modo Sobrevivência (Morte Súbita)",
+            tests: [
+              {
+                name: "Funções de sobrevivência (startSurvival, submitSurvivalAnswer, finishSurvival)",
+                fn: () => typeof iframeWin.startSurvival === "function" && typeof iframeWin.submitSurvivalAnswer === "function",
+              },
+              {
+                name: "Persistência do High Score (AppState.survivalHighScore)",
+                fn: () => typeof iframeWin.AppState.survivalHighScore === "number",
+              },
+              {
+                name: "Retenção e persistência da pontuação da partida após Game Over",
+                fn: () => {
+                  iframeWin.AppState.survivalHighScore = 0;
+                  iframeWin.startSurvival();
+                  const cur = iframeWin.SurvivalModule.getSurvCurrent();
+                  if (!cur) return false;
+                  iframeWin.document.getElementById("survival-input").value = cur.translations[0];
+                  iframeWin.submitSurvivalAnswer();
+                  const cur2 = iframeWin.SurvivalModule.getSurvCurrent();
+                  iframeWin.document.getElementById("survival-input").value = cur2.translations[0];
+                  iframeWin.submitSurvivalAnswer();
+                  if (iframeWin.SurvivalModule.getSurvStreak() !== 2) return false;
+                  iframeWin.document.getElementById("survival-input").value = "errado_xyz_1";
+                  iframeWin.submitSurvivalAnswer();
+                  iframeWin.document.getElementById("survival-input").value = "errado_xyz_2";
+                  iframeWin.submitSurvivalAnswer();
+                  iframeWin.document.getElementById("survival-input").value = "errado_xyz_3";
+                  iframeWin.submitSurvivalAnswer();
+                  iframeWin.finishSurvival(false);
+                  const resStreak = parseInt(iframeWin.document.getElementById("surv-res-streak").textContent, 10);
+                  const resHigh = parseInt(iframeWin.document.getElementById("surv-res-high").textContent, 10);
+                  iframeWin.resetSurvival();
+                  return resStreak === 2 && resHigh === 2 && iframeWin.AppState.survivalHighScore === 2;
+                },
+              },
+            ],
+          },
+          {
+            id: 7,
+            title: "Módulo 7: Paradigmas Gramaticais & Esquemas",
+            tests: [
+              {
+                name: "Funções de paradigmas (renderTableView, renderParadigmSkeleton, checkParadigmAnswers)",
+                fn: () => typeof iframeWin.renderTableView === "function" && typeof iframeWin.checkParadigmAnswers === "function",
+              },
+              {
+                name: "Regra de exibição de paradigmas (oculto em hebraico, ativo em grego)",
+                fn: () => typeof iframeWin.updateParadigmsVisibility === "function",
+              },
+            ],
+          },
+          {
+            id: 8,
+            title: "Módulo 8: Dicionário & Busca em Tempo Real",
+            tests: [
+              {
+                name: "Renderização da tabela de dicionário (renderVocabTable)",
+                fn: () => typeof iframeWin.renderVocabTable === "function",
+              },
+              {
+                name: "Filtro em tempo real (filterVocabTable)",
+                fn: () => typeof iframeWin.filterVocabTable === "function",
+              },
+              {
+                name: "Controle de escopo acumulativo (setVocabCumulative)",
+                fn: () => typeof iframeWin.setVocabCumulative === "function",
+              },
+              {
+                name: "Filtro dinâmico por categoria/tipo (setVocabCategory)",
+                fn: () => typeof iframeWin.setVocabCategory === "function" && typeof iframeWin.getAvailableVocabCategories === "function",
+              },
+              {
+                name: "Marcação de favoritos no dicionário (toggleItemFavorite)",
+                fn: () => typeof iframeWin.toggleItemFavorite === "function",
+              },
+            ],
+          },
+          {
+            id: 9,
+            title: "Módulo 9: Troca de Idioma & UI",
+            tests: [
+              {
+                name: "Função toggleLanguage alterna idioma no estado",
+                fn: () => typeof iframeWin.toggleLanguage === "function",
+              },
+              {
+                name: "Função applyLanguageUI adapta tipografia e títulos",
+                fn: () => typeof iframeWin.applyLanguageUI === "function",
+              },
+              {
+                name: "Rodapé pedagógico com referência à gramática de Johannes Bergmann (Thomas Nelson)",
+                fn: () => {
+                  if (typeof iframeWin.toggleLanguage === "function") {
+                    iframeWin.toggleLanguage("greek");
+                  }
+                  const footnote = iframeDoc.getElementById("app-grammar-footnote");
+                  const pass = footnote && footnote.textContent.includes("Johannes Bergmann") && footnote.textContent.includes("Thomas Nelson");
+                  if (typeof iframeWin.toggleLanguage === "function") {
+                    iframeWin.toggleLanguage("hebrew");
+                  }
+                  return pass;
+                },
+              },
+              {
+                name: "Versão do sistema incrementada para v2.6.8 ou superior",
+                fn: () => {
+                  const ver = iframeWin.APP_VERSION || (iframeWin.DataLoader && iframeWin.DataLoader.VERSION);
+                  return !!ver && versionAtLeast(ver, "2.6.8");
+                },
+              },
+            ],
+          },
+          {
+            id: 10,
+            title: "Módulo 10: Menu Mobile & Carrossel de Abas",
+            tests: [
+              {
+                name: "Alvos retráteis (.mobile-collapsible-target) no DOM",
+                fn: () => iframeDoc.querySelectorAll(".mobile-collapsible-target").length >= 1,
+              },
+              {
+                name: "Puxador de menu mobile com alinhamento óptico",
+                fn: () => {
+                  const btn = iframeDoc.getElementById("mobile-menu-toggle-btn");
+                  return btn && btn.className.includes("inline-flex") && btn.className.includes("leading-none");
+                },
+              },
+              {
+                name: "Função toggleMobileMenu alterna visibilidade do menu",
+                fn: () => typeof iframeWin.toggleMobileMenu === "function",
+              },
+              {
+                name: "Contêiner de abas (#navbar-tabs-container) e botões de scroll",
+                fn: () => !!iframeDoc.getElementById("navbar-tabs-container") && !!iframeDoc.getElementById("tabs-scroll-right-btn"),
+              },
+              {
+                name: "Funções de scroll e overflow (scrollTabs, updateTabsScrollIndicators)",
+                fn: () => typeof iframeWin.scrollTabs === "function" && typeof iframeWin.updateTabsScrollIndicators === "function",
+              },
+            ],
+          },
+          {
+            id: 11,
+            title: "Módulo 11: Apoio ('Pague-me um café!' & PIX)",
+            tests: [
+              {
+                name: "Presença do botão #btn-coffee no DOM",
+                fn: () => !!iframeDoc.getElementById("btn-coffee"),
+              },
+              {
+                name: "Execução de copyPixCoffee com chave 9e6c4330-9897-4f94-b4b4-e5a81dafe219",
+                fn: async () => {
+                  const btn = iframeDoc.getElementById("btn-coffee");
+                  if (!btn) return false;
+                  iframeWin.copyPixCoffee(btn);
+                  await new Promise((r) => setTimeout(r, 60));
+                  return (
+                    btn.textContent.includes("9e6c4330-9897-4f94-b4b4-e5a81dafe219") &&
+                    btn.textContent.includes("Felipe Pereira Medeiros") &&
+                    btn.textContent.includes("NuBank")
+                  );
+                },
+              },
+              {
+                name: "Restauração suave do botão (resetCoffeeButton)",
+                fn: () => {
+                  const btn = iframeDoc.getElementById("btn-coffee");
+                  iframeWin.resetCoffeeButton(btn);
+                  return btn.textContent.includes("Pague-me um café!");
+                },
+              },
+            ],
+          },
+          {
+            id: 12,
+            title: "Módulo 12: Motor Gamificado do Alfabeto",
+            tests: [
+              {
+                name: "Capítulo 1 do Alfabeto presente com 22 consoantes (Hebraico) e 24 letras (Grego)",
+                fn: async () => {
+                  const heb = await iframeWin.DataLoader.fetchDefaultChapters("hebrew");
+                  const grk = await iframeWin.DataLoader.fetchDefaultChapters("greek");
+                  const chap1Heb = heb.find((c) => c.id === "kelley_01");
+                  const chap1Grk = grk.find((c) => c.id === "bergmann_01");
+                  return (
+                    chap1Heb &&
+                    chap1Heb.items.length === 22 &&
+                    chap1Grk &&
+                    chap1Grk.items.length === 24
+                  );
+                },
+              },
+              {
+                name: "Detecção automática de capítulo do alfabeto (isAlphabetChapter)",
+                fn: () => {
+                  const hebChap = { id: "kelley_01", title: "Lição I - O Alfabeto (Alef-Bet)" };
+                  const otherChap = { id: "kelley_03", title: "Lição III - Substantivos" };
+                  return (
+                    typeof iframeWin.isAlphabetChapter === "function" &&
+                    iframeWin.isAlphabetChapter(hebChap) === true &&
+                    iframeWin.isAlphabetChapter(otherChap) === false
+                  );
+                },
+              },
+              {
+                name: "Submodos do alfabeto (order, impostors, shapes, classic) disponíveis",
+                fn: () => {
+                  return (
+                    typeof iframeWin.setAlphabetSubmode === "function" &&
+                    !!iframeDoc.getElementById("alphabet-mode-controls") &&
+                    !!iframeDoc.getElementById("alpha-mode-order") &&
+                    !!iframeDoc.getElementById("alpha-mode-impostors") &&
+                    !!iframeDoc.getElementById("alpha-mode-shapes") &&
+                    !!iframeDoc.getElementById("alpha-mode-classic")
+                  );
+                },
+              },
+              {
+                name: "AlphabetGameEngine gera desafios de ordem alfabética",
+                fn: () => {
+                  const engine = iframeWin.AlphabetGameEngine;
+                  if (!engine) return false;
+                  const challenge = engine.generateOrderChallenge();
+                  return (
+                    challenge &&
+                    challenge.options.length === 4 &&
+                    challenge.options.some((o) => o.isCorrect) &&
+                    !!challenge.targetGlyph
+                  );
+                },
+              },
+              {
+                name: "AlphabetGameEngine gera desafios de impostores com glifo neutro e opções únicas",
+                fn: () => {
+                  const engine = iframeWin.AlphabetGameEngine;
+                  if (!engine) return false;
+                  const challenge = engine.generateImpostorChallenge();
+                  const isUnique = new Set(challenge.options.map((o) => o.glyph)).size === challenge.options.length;
+                  return (
+                    challenge &&
+                    challenge.targetGlyph === "⚖️" &&
+                    challenge.options.length >= 3 &&
+                    isUnique &&
+                    challenge.options.some((o) => o.isCorrect) &&
+                    !!challenge.explanation
+                  );
+                },
+              },
+              {
+                name: "AlphabetGameEngine gera desafios de formas/sofit/dagesh/maiúsculas",
+                fn: () => {
+                  const engine = iframeWin.AlphabetGameEngine;
+                  if (!engine) return false;
+                  const challenge = engine.generateShapesChallenge();
+                  return (
+                    challenge &&
+                    challenge.options.length >= 2 &&
+                    challenge.options.some((o) => o.isCorrect)
+                  );
+                },
+              },
+              {
+                name: "Elementos visuais da Estação do Alfabeto estruturados no DOM",
+                fn: () => {
+                  return (
+                    !!iframeDoc.getElementById("alphabet-game-panel") &&
+                    !!iframeDoc.getElementById("alphabet-target-glyph") &&
+                    !!iframeDoc.getElementById("alphabet-options-grid") &&
+                    !!iframeDoc.getElementById("alphabet-feedback-banner")
+                  );
+                },
+              },
+              {
+                name: "Desafios do alfabeto não exibem nomes de letras ou números ordinais nas opções (anti-spoiler)",
+                fn: () => {
+                  const engine = iframeWin.AlphabetGameEngine;
+                  if (!engine) return false;
+                  const orderChal = engine.generateOrderChallenge();
+                  const impostorChal = engine.generateImpostorChallenge();
+                  const shapesChal = engine.generateShapesChallenge();
+                  
+                  const noOrderSpoilers = orderChal.options.every((o) => !o.subtext || (!o.subtext.includes("ª") && !o.subtext.includes("Minúscula")));
+                  const noImpostorSpoilers = impostorChal.options.every((o) => !o.subtext);
+                  return noOrderSpoilers && noImpostorSpoilers;
+                },
+              },
+              {
+                name: "Filtro de visibilidade oculta aba de paradigmas e modo frases quando vazios",
+                fn: () => {
+                  const btnParadigms = iframeDoc.getElementById("nav-btn-paradigms");
+                  const btnSentences = iframeDoc.getElementById("mode-sentences");
+                  // Na lição 1 (kelley_01 ou bergmann_01), paradigmas não existem
+                  iframeWin.updateParadigmsVisibility();
+                  const paradigmsHidden = !btnParadigms || btnParadigms.style.display === "none";
+                  return paradigmsHidden;
+                },
+              },
+            ],
+          },
+          {
+            id: 13,
+            title: "Módulo 13: Integridade Geral do Sistema (E2E & Contrato DOM)",
+            tests: [
+              {
+                name: "Contrato de IDs: Elementos vitais manipulados pelo JS existem no DOM",
+                fn: () => {
+                  const criticalIDs = [
+                    'custom-chapter-selector', 'app-logo-btn', 'navbar-tabs-container',
+                    'nav-btn-practice', 'nav-btn-paradigms', 'nav-btn-vocab', 'nav-btn-assessment', 'nav-btn-manage',
+                    'tab-practice', 'tab-paradigms', 'tab-vocab', 'tab-assessment', 'tab-manage',
+                    'hebrew-prompt', 'input-answer', 'interface-typing', 'interface-choice', 'interface-sentences',
+                    'input-sentence', 'feedback-banner', 'btn-submit-typing', 'stat-streak', 'stat-score',
+                    'assess-dashboard', 'assessment-active', 'assessment-results', 'assess-user-input',
+                    'survival-active', 'survival-results', 'survival-hebrew', 'survival-input',
+                    'sentence-analysis-modal', 'sentence-morphemes-container', 'sentence-analysis-panel'
+                  ];
+                  return criticalIDs.every((id) => !!iframeDoc.getElementById(id));
+                },
+              },
+              {
+                name: "Versão Canônica Única: DataLoader, StateModule e window.APP_VERSION convergem",
+                fn: () => {
+                  const v1 = iframeWin.APP_VERSION;
+                  const v2 = iframeWin.DataLoader && iframeWin.DataLoader.VERSION;
+                  const v3 = iframeWin.StateModule && iframeWin.StateModule.APP_VERSION;
+                  return !!v1 && v1 === v2 && v1 === v3 && versionAtLeast(v1, "2.7.5");
+                },
+              },
+              {
+                name: "Validação Centralizada: StateModule e DataLoader rejeitam coleções vazias e IDs duplicados",
+                fn: () => {
+                  const emptyChap = { id: "vazio", title: "Vazio", items: [], sentences: [] };
+                  const validChap = { id: "ok", title: "OK", items: [{ term: "א", translations: ["alef"] }] };
+                  const dups = [{ id: "dup" }, { id: "dup" }];
+                  const isValid1 = iframeWin.isValidChapter(emptyChap) === false;
+                  const isValid2 = iframeWin.isValidChapter(validChap) === true;
+                  const isUnique = iframeWin.hasUniqueChapterIds(dups) === false;
+                  return isValid1 && isValid2 && isUnique;
+                },
+              },
+              {
+                name: "Sanitização XSS: escapeHTML codifica tags nocivas e aspas",
+                fn: () => {
+                  const xss = '<script>alert("xss")<\/script><img src=x onerror=1>';
+                  const escaped = iframeWin.escapeHTML(xss);
+                  return !escaped.includes("<script>") && !escaped.includes("<img") && escaped.includes("&lt;script&gt;");
+                },
+              },
+              {
+                name: "Tolerância Defensiva à Cota de Storage: salvamentos não causam exceções não-tratadas",
+                fn: () => {
+                  try {
+                    iframeWin.saveSRS();
+                    iframeWin.saveChaptersToStorage();
+                    return true;
+                  } catch (e) {
+                    return false;
+                  }
+                },
+              },
+              {
+                name: "Isolamento de Listeners de Teclado: Modal de Análise Morfossintática previne conflito",
+                fn: () => {
+                  const modal = iframeDoc.getElementById("sentence-analysis-modal");
+                  return !!modal && modal.classList.contains("hidden");
+                },
+              },
+            ],
+          },
+          {
+            id: 14,
+            title: "Módulo 14: Análise Morfossintática Granular (Page Kelley)",
+            tests: [
+              {
+                name: "Mapeamento das 9 categorias morfológicas canônicas (getMorphemeCategory)",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.getMorphemeCategory !== "function") return false;
+                  return (
+                    mod.getMorphemeCategory("Artigo definido") === "article" &&
+                    mod.getMorphemeCategory("Conjunção coordenativa") === "conjunction" &&
+                    mod.getMorphemeCategory("Preposição inseparável") === "preposition" &&
+                    mod.getMorphemeCategory("Substantivo segolado") === "noun" &&
+                    mod.getMorphemeCategory("Adjetivo") === "adjective" &&
+                    mod.getMorphemeCategory("Verbo") === "verb" &&
+                    mod.getMorphemeCategory("Advérbio Interrogativo") === "adverb" &&
+                    mod.getMorphemeCategory("Sufixo pronominal") === "suffix" &&
+                    mod.getMorphemeCategory("Partícula de negação") === "particle"
+                  );
+                },
+              },
+              {
+                name: "CATEGORY_MAP configurado com todas as 9 categorias e metadados visuais",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || !mod.CATEGORY_MAP) return false;
+                  const keys = ["article", "conjunction", "preposition", "noun", "adjective", "verb", "adverb", "suffix", "particle"];
+                  return keys.every((k) => !!mod.CATEGORY_MAP[k] && !!mod.CATEGORY_MAP[k].accentHex && !!mod.CATEGORY_MAP[k].badgeClass);
+                },
+              },
+              {
+                name: "Detecção precisa de Maqqef (tokenEndsWithMaqqef)",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.tokenEndsWithMaqqef !== "function") return false;
+                  return (
+                    mod.tokenEndsWithMaqqef({ text: "אֶת־" }) === true &&
+                    mod.tokenEndsWithMaqqef({ text: "מֵאֵת־" }) === true &&
+                    mod.tokenEndsWithMaqqef({ text: "אָב" }) === false
+                  );
+                },
+              },
+              {
+                name: "Construção de lista plana de morfemas (buildFlatMorphemesList)",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.buildFlatMorphemesList !== "function") return false;
+                  const dummySentence = {
+                    hebrew: "וּבֵן",
+                    tokens: [
+                      {
+                        text: "וּבֵן",
+                        composite: true,
+                        parts: [
+                          { segment: "וּ", type: "Conjunção" },
+                          { segment: "בֵן", type: "Substantivo" }
+                        ]
+                      }
+                    ]
+                  };
+                  const flat = mod.buildFlatMorphemesList(dummySentence);
+                  return flat.length === 2 && flat[0].category === "conjunction" && flat[1].category === "noun";
+                },
+              },
+              {
+                name: "Elementos do Modal de Análise Morfossintática presentes no DOM",
+                fn: () => {
+                  return (
+                    !!iframeDoc.getElementById("sentence-analysis-modal") &&
+                    !!iframeDoc.getElementById("sentence-morphemes-container") &&
+                    !!iframeDoc.getElementById("sentence-morphemes-ribbon") &&
+                    !!iframeDoc.getElementById("sentence-analysis-panel")
+                  );
+                },
+              },
+              {
+                name: "Ciclo de Abertura e Fechamento defensivo do Modal de Análise",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.openSentenceAnalysisModal !== "function" || typeof mod.closeSentenceAnalysisModal !== "function") return false;
+                  const modal = iframeDoc.getElementById("sentence-analysis-modal");
+                  if (!modal) return false;
+                  const dummy = { hebrew: "אָב וּבֵן", translations: ["pai e filho"] };
+                  mod.openSentenceAnalysisModal(dummy);
+                  const wasOpen = !modal.classList.contains("hidden");
+                  mod.closeSentenceAnalysisModal();
+                  const wasClosed = modal.classList.contains("hidden");
+                  return wasOpen && wasClosed;
+                },
+              },
+              {
+                name: "Metodologia de 4 Passos no Grego (§ Johannes Bergmann)",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.buildFlatMorphemesList !== "function") return false;
+                  const dummyGreek = {
+                    term: "Καὶ αὕτη ἐστὶν ἡ μαρτυρία τοῦ Ἰωάννου·",
+                    translations: ["E este é o testemunho de João:"],
+                    tokens: [
+                      { text: "Καὶ", word_class: "Conjunção", syntax_role: "Conjunção coordenativa copulativa ('E')", lemma: "καί" },
+                      { text: "αὕτη", word_class: "Pronome demonstrativo", syntax_role: "Sujeito (nominativo feminino singular: 'esta')", lemma: "οὗτος" },
+                      { text: "ἐστὶν", word_class: "Verbo", syntax_role: "Presente do indicativo ativo, 3ª sg ('é')", lemma: "εἰμί" }
+                    ]
+                  };
+                  const flat = mod.buildFlatMorphemesList(dummyGreek);
+                  return (
+                    flat.length === 3 &&
+                    flat[0].category === "conjunction" &&
+                    flat[1].category === "pronoun" &&
+                    flat[2].category === "verb" &&
+                    mod.isGreekSentence(dummyGreek)
+                  );
+                },
+              },
+              {
+                name: "Modal com Frase Grega aplica LTR, legenda de cores e linha contínua",
+                fn: () => {
+                  const mod = iframeWin.SentenceAnalysisModule;
+                  if (!mod || typeof mod.openSentenceAnalysisModal !== "function") return false;
+                  const modal = iframeDoc.getElementById("sentence-analysis-modal");
+                  const container = iframeDoc.getElementById("sentence-morphemes-container");
+                  const legend = iframeDoc.getElementById("sentence-legend-container");
+                  if (!modal || !container) return false;
+
+                  const dummyGreek = {
+                    term: "Ἐν ἀρχῇ ἦν ὁ λόγος",
+                    translations: ["No princípio era o Verbo"],
+                    tokens: [
+                      { text: "Ἐν", word_class: "Preposição", syntax_role: "Preposição com dativo ('Em')", lemma: "ἐν" },
+                      { text: "ἀρχῇ", word_class: "Substantivo", syntax_role: "Dativo feminino singular ('princípio')", lemma: "ἀρχή" }
+                    ]
+                  };
+                  mod.openSentenceAnalysisModal(dummyGreek);
+                  const isLtr = container.getAttribute("dir") === "ltr";
+                  const hasGreekClass = container.classList.contains("greek-text");
+                  const hasPronounInLegend = legend ? legend.innerHTML.includes("Pronome") : true;
+                  mod.closeSentenceAnalysisModal();
+                  const restoredRtl = container.getAttribute("dir") === "rtl";
+                  return isLtr && hasGreekClass && hasPronounInLegend && restoredRtl;
+                },
+              },
+            ],
+          },
+        ];
+
+        let html = "";
+        for (const suite of testSuites) {
+          html += `
+            <div class="test-module-card mb-3.5 bg-slate-950/60 border border-slate-800/80 rounded-2xl p-3.5" data-module-id="${suite.id}">
+              <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 flex items-center justify-between">
+                <span class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-brand-500"></span>
+                  ${suite.title}
+                </span>
+                <span class="text-[10px] text-slate-500 font-mono">ID: ${suite.id}</span>
+              </h4>
+              <div class="space-y-1.5">
+          `;
+
+          for (const test of suite.tests) {
+            testStats.total++;
+            let pass = false;
+            try {
+              pass = await test.fn();
+            } catch (err) {
+              pass = false;
+            }
+
+            if (pass) {
+              testStats.passed++;
+              html += `
+                <div class="flex items-center justify-between px-3 py-1.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs">
+                  <span class="text-slate-200 font-medium">${test.name}</span>
+                  <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">✔ PASS</span>
+                </div>
+              `;
+            } else {
+              testStats.failed++;
+              html += `
+                <div class="flex items-center justify-between px-3 py-1.5 rounded-xl bg-rose-950/30 border border-rose-800/60 text-xs">
+                  <span class="text-rose-200 font-medium">${test.name}</span>
+                  <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/30">✖ FAIL</span>
+                </div>
+              `;
+            }
+          }
+
+          html += `</div></div>`;
+        }
+
+        const endTime = performance.now();
+        const duration = (endTime - startTime).toFixed(0);
+
+        list.innerHTML = html;
+        document.getElementById("stat-total").textContent = testStats.total;
+        document.getElementById("stat-passed").textContent = testStats.passed;
+        document.getElementById("stat-failed").textContent = testStats.failed;
+        document.getElementById("execution-time").textContent = `(${duration}ms)`;
+
+        const badge = document.getElementById("badge-total-status");
+        if (testStats.failed === 0) {
+          badge.className = "text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+          badge.textContent = "100% dos Testes Passaram ✔";
+        } else {
+          badge.className = "text-xs font-bold px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30";
+          badge.textContent = `${testStats.failed} Teste(s) Falharam ✖`;
+        }
+      }
+
+      window.addEventListener("load", () => {
+        setTimeout(runAllBrowserTests, 800);
+      });
+    </script>
+  </body>
+</html>

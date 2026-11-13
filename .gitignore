@@ -1,0 +1,28 @@
+# Dependências e compilações temporárias
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Logs e arquivos de diagnóstico
+*.log
+
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos locais (configuração do preview e vídeo de apresentação)
+.claude/launch.json
+apresentacao/gamida-2.9.2-novidades.mp4

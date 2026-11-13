@@ -1,0 +1,1816 @@
+<!doctype html>
+<!-- Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário: uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE. -->
+<html lang="pt-BR" data-lang="hebrew" class="bg-slate-950 text-slate-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Felipe Pereira Medeiros" />
+    <meta name="copyright" content="© 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário." />
+    <title>Gamida - Treinador de Idiomas Bíblicos</title>
+    <!-- Identidade visual e bibliotecas externas -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>"
+    />
+    <script>
+      // Aplica o idioma salvo antes da primeira pintura, evitando flash de cor
+      try {
+        if (localStorage.getItem("gamida_language") === "greek") {
+          document.documentElement.setAttribute("data-lang", "greek");
+        }
+      } catch (_) {}
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Pré-carregamento de fontes bíblicas locais -->
+    <link rel="preload" href="fonts/SBL_Hbrw.ttf" as="font" type="font/ttf" crossorigin />
+
+    <script>
+      // Tema: "slate" é a tinta quente da interface e "brand" é o destaque do idioma ativo.
+      // As cores vêm de variáveis CSS, então todas as classes (inclusive as geradas no JS) acompanham.
+      const brandShade = (n) => `rgb(var(--brand-${n}) / <alpha-value>)`;
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Rubik", "sans-serif"],
+              hebrew: ['"SBL Hebrew"', '"Ezra SIL"', '"Noto Sans Hebrew"', '"David"', "serif"],
+            },
+            colors: {
+              slate: {
+                50: "#f8f6f1",
+                100: "#f0ede6",
+                200: "#e0dcd2",
+                300: "#c9c4b8",
+                400: "#aca79b",
+                500: "#8d887d",
+                600: "#5e5a52",
+                700: "#413e38",
+                800: "#2d2b27",
+                900: "#201e1b",
+                950: "#151412",
+              },
+              brand: {
+                50: brandShade(50),
+                100: brandShade(100),
+                200: brandShade(200),
+                300: brandShade(300),
+                400: brandShade(400),
+                500: brandShade(500),
+                600: brandShade(600),
+                700: brandShade(700),
+                800: brandShade(800),
+                900: brandShade(900),
+                950: brandShade(950),
+              },
+            },
+          },
+        },
+      };
+      window.APP_VERSION = "2.22.4";
+    </script>
+
+    <!-- Estilos personalizados e resiliência offline -->
+    <link rel="stylesheet" href="css/offline-theme.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/interface.css" />
+  </head>
+  <body
+    class="app-shell font-sans antialiased bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white"
+  >
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+    <!-- Biblioteca de ícones (traço único, herda a cor do texto) -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none" aria-hidden="true">
+      <symbol id="i-practice" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+      <symbol id="i-assess" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+      <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></symbol>
+      <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></symbol>
+      <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5Z"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01Z"/></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 13h.01M18 13h.01M9 13h6"/></symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><path d="m3 6 2 2 4-4M3 16l2 2 4-4M13 6h8M13 12h8M13 18h8"/></symbol>
+      <symbol id="i-lines" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+      <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"/></symbol>
+      <symbol id="i-error" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    </svg>
+
+    <!-- Painel do aluno: barra lateral no desktop; barra superior + navegação inferior no mobile/tablet -->
+    <header id="main-app-header" class="app-header">
+      <div class="app-header__bar">
+        <!-- Identidade da aplicação -->
+        <div class="app-brand">
+          <div id="app-logo-btn" class="app-brand__mark" aria-hidden="true">א</div>
+          <div class="app-brand__text">
+            <h1 class="app-brand__name">
+              Gamida
+              <span id="app-version-display" class="app-brand__version"></span>
+            </h1>
+            <p id="app-subtitle" class="app-brand__subtitle">Treinador de Hebraico</p>
+          </div>
+        </div>
+
+        <!-- Mobile/tablet: o que está sendo estudado, sempre à vista; abre idioma e capítulos -->
+        <button
+          type="button"
+          id="mobile-menu-toggle-btn"
+          onclick="toggleMobileMenu()"
+          class="study-toggle inline-flex items-center leading-none"
+          aria-expanded="false"
+          aria-controls="study-context"
+          title="Trocar capítulo ou idioma"
+        >
+          <span id="mobile-menu-toggle-label" class="study-toggle__label">Carregando...</span>
+          <svg id="mobile-menu-toggle-icon" class="icon icon--sm study-toggle__icon" aria-hidden="true"><use href="#i-chevron"></use></svg>
+        </button>
+
+        <!-- Desempenho da sessão -->
+        <dl class="app-stats" aria-label="Progresso nos capítulos marcados">
+          <div class="app-stat app-stat--mastery" title="Termos dominados nos capítulos marcados: 3 acertos seguidos em Digitação ou Frases">
+            <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--mastered" aria-hidden="true"><use href="#i-check"></use></svg><span class="app-stat__label">Dominados</span></dt>
+            <dd id="stat-mastered">0/0</dd>
+          </div>
+          <div class="app-stat app-stat--mastery" title="Termos errados nos capítulos marcados, disponíveis no modo Erros">
+            <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--review" aria-hidden="true"><use href="#i-error"></use></svg><span class="app-stat__label">Para revisar</span></dt>
+            <dd id="stat-review">0</dd>
+          </div>
+          <div class="app-stat app-stat--game" title="Sequência de acertos">
+            <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--streak" aria-hidden="true"><use href="#i-flame"></use></svg><span class="app-stat__label">Sequência</span></dt>
+            <dd id="stat-streak">0</dd>
+          </div>
+          <div class="app-stat app-stat--game" title="Pontuação">
+            <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--score" aria-hidden="true"><use href="#i-star"></use></svg><span class="app-stat__label">Pontos</span></dt>
+            <dd id="stat-score">0</dd>
+          </div>
+          <div class="app-stat app-stat--game app-stat--accuracy" title="Precisão">
+            <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--accuracy" aria-hidden="true"><use href="#i-target"></use></svg><span class="app-stat__label">Precisão</span></dt>
+            <dd id="stat-accuracy">—</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Contexto de estudo: idioma, capítulo e apoio -->
+      <div id="study-context" class="study-context mobile-collapsible-target hidden">
+        <button
+          type="button"
+          id="app-language-switch"
+          onclick="toggleLanguage()"
+          class="lang-switch"
+          aria-label="Idioma atual: Hebraico. Trocar para Grego"
+          title="Trocar o idioma de estudo"
+        >
+          <span class="lang-switch__opt" data-lang-opt="hebrew"><span class="lang-switch__glyph">א</span> Hebraico</span>
+          <span class="lang-switch__opt" data-lang-opt="greek"><span class="lang-switch__glyph">α</span> Grego</span>
+        </button>
+
+        <div id="custom-chapter-selector" class="chapter-select">
+          <button
+            type="button"
+            onclick="toggleDropdown()"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="chapter-dropdown-list"
+            class="chapter-select__btn"
+          >
+            <span class="chapter-select__text">
+              <span class="chapter-select__eyebrow">Estudando</span>
+              <span id="chapter-dropdown-text" class="chapter-select__title">Carregando...</span>
+            </span>
+            <svg class="icon icon--sm chapter-select__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </button>
+          <!-- Opções inseridas dinamicamente pelo JavaScript -->
+          <ul id="chapter-dropdown-list" aria-label="Lista de Capítulos" class="chapter-select__list hidden"></ul>
+        </div>
+
+        <!-- Apoio ao projeto: fica fora do fluxo de estudo, sem animação disputando atenção -->
+        <button
+          type="button"
+          id="btn-coffee"
+          onclick="copyPixCoffee(this)"
+          title="Apoie o desenvolvedor com um café via Pix! Clique para copiar a chave."
+          class="w-full px-3 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:via-orange-400 hover:to-amber-500 text-slate-950 border border-amber-400/30 transition-all duration-300 flex items-center gap-2.5 cursor-pointer"
+        >
+          <div class="w-7 h-7 rounded-lg bg-black/10 flex items-center justify-center shrink-0 text-slate-950">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+              <line x1="6" y1="1" x2="6" y2="4"></line>
+              <line x1="10" y1="1" x2="10" y2="4"></line>
+              <line x1="14" y1="1" x2="14" y2="4"></line>
+            </svg>
+          </div>
+          <div class="flex flex-col text-left leading-tight min-w-0">
+            <div class="flex items-center gap-1.5">
+              <span class="font-bold text-xs tracking-wide">Pague-me um café!</span>
+              <span class="text-[10px] bg-black/10 px-1.5 rounded font-semibold uppercase tracking-wider">Pix</span>
+            </div>
+            <span class="text-[11px] font-medium">Apoie o desenvolvedor</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Navegação principal: lateral no desktop; barra fixa inferior no mobile/tablet -->
+      <nav id="navbar-tabs-row" class="app-nav" aria-label="Seções do Gamida">
+        <button
+          type="button"
+          id="tabs-scroll-left-btn"
+          onclick="scrollTabs('left')"
+          class="app-nav__scroll app-nav__scroll--left hidden"
+          aria-label="Rolar abas para a esquerda"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <div id="tabs-fade-left" class="app-nav__fade app-nav__fade--left hidden"></div>
+
+        <div id="navbar-tabs-container" onscroll="updateTabsScrollIndicators()" class="app-nav__list scrollbar-none">
+          <button type="button" id="nav-btn-practice" onclick="switchTab('practice')" class="nav-item is-active" aria-current="page">
+            <svg class="icon" aria-hidden="true"><use href="#i-practice"></use></svg><span>Praticar</span>
+          </button>
+          <button type="button" id="nav-btn-assessment" onclick="switchTab('assessment')" class="nav-item">
+            <svg class="icon" aria-hidden="true"><use href="#i-assess"></use></svg><span>Avaliar</span>
+            <span id="nav-review-badge" class="nav-item__badge hidden" title="Palavras erradas para revisar"></span>
+          </button>
+          <button type="button" id="nav-btn-paradigms" onclick="switchTab('paradigms')" class="nav-item">
+            <svg class="icon" aria-hidden="true"><use href="#i-table"></use></svg><span>Tabelas<span class="nav-item__extra"> e Grafos</span></span>
+          </button>
+          <button type="button" id="nav-btn-vocab" onclick="switchTab('vocab')" class="nav-item">
+            <svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg><span>Dicionário</span>
+          </button>
+          <button type="button" id="nav-btn-manage" onclick="switchTab('manage')" class="nav-item">
+            <svg class="icon" aria-hidden="true"><use href="#i-sliders"></use></svg><span>Gerenciar</span>
+          </button>
+        </div>
+
+        <div id="tabs-fade-right" class="app-nav__fade app-nav__fade--right hidden"></div>
+        <button
+          type="button"
+          id="tabs-scroll-right-btn"
+          onclick="scrollTabs('right')"
+          class="app-nav__scroll app-nav__scroll--right hidden animate-subtle-bounce-x"
+          aria-label="Rolar abas para a direita"
+          title="Mais opções à direita"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Fundo que fecha o painel de contexto no mobile -->
+    <div id="study-backdrop" class="study-backdrop" onclick="toggleMobileMenu(false)"></div>
+
+    <main id="main-content" tabindex="-1" class="app-main flex-1 w-full flex flex-col">
+      <!-- Aba 1: prática -->
+      <section id="tab-practice" class="flex-1 flex flex-col gap-4">
+        <!-- Barra da sessão: modo sempre à vista; o restante fica em "Opções" -->
+        <div id="practice-control-bar" class="session-bar">
+          <!-- Controles Padrão (Capítulos 2+) -->
+          <div id="standard-mode-controls" class="session-bar__body">
+            <div class="session-bar__row">
+              <div class="seg seg--modes" role="group" aria-label="Modo de exercício">
+                <button type="button" id="mode-typing" onclick="setExerciseMode('typing')" class="seg-btn is-active" aria-pressed="true" title="Digite a tradução">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="#i-keyboard"></use></svg><span>Digitação</span>
+                </button>
+                <button type="button" id="mode-choice" onclick="setExerciseMode('choice')" class="seg-btn" aria-pressed="false" title="Múltipla escolha">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="#i-list"></use></svg><span>Escolha</span>
+                </button>
+                <button type="button" id="mode-sentences" onclick="setExerciseMode('sentences')" class="seg-btn" aria-pressed="false" title="Traduza frases completas">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="#i-lines"></use></svg><span>Frases</span>
+                </button>
+                <button type="button" id="mode-favorites" onclick="setExerciseMode('favorites')" class="seg-btn" aria-pressed="false" title="Praticar apenas frases e palavras marcadas como favoritas">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="#i-star"></use></svg><span>Favoritas</span>
+                </button>
+                <button type="button" id="mode-errors" onclick="setExerciseMode('errors')" class="seg-btn" aria-pressed="false" title="Praticar os termos que você errou">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="#i-error"></use></svg><span>Erros</span>
+                </button>
+              </div>
+
+              <button
+                type="button"
+                id="btn-practice-options"
+                onclick="togglePracticeOptions()"
+                class="options-toggle"
+                aria-expanded="false"
+                aria-controls="practice-options-panel"
+              >
+                <svg class="icon icon--sm" aria-hidden="true"><use href="#i-sliders"></use></svg>
+                <span class="options-toggle__text">
+                  <span class="options-toggle__label">Opções</span>
+                  <span id="practice-options-summary" class="options-toggle__summary"></span>
+                </span>
+                <svg class="icon icon--sm options-toggle__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+              </button>
+            </div>
+
+            <!-- Ajustes da sessão (recolhidos por padrão) -->
+            <div id="practice-options-panel" class="options-panel hidden">
+              <!-- Seleção de Capítulos Específicos (Multi-Seleção & Atalhos) -->
+              <div id="practice-scope-container" class="relative">
+                <span class="field-label">Capítulos desta sessão</span>
+                <div class="flex flex-wrap items-center gap-2">
+                  <div class="relative" id="practice-chapter-picker-wrapper">
+                    <button
+                      type="button"
+                      id="btn-practice-chapter-picker"
+                      onclick="togglePracticeChapterPicker(event)"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      aria-controls="practice-chapters-dropdown-menu"
+                      class="control-btn"
+                      title="Combinar vários capítulos nesta sessão"
+                    >
+                      <span id="practice-chapters-btn-text" class="max-w-[160px] sm:max-w-[220px] truncate">Selecionar Capítulos</span>
+                      <svg class="icon icon--xs" aria-hidden="true"><use href="#i-chevron"></use></svg>
+                    </button>
+                    <div
+                      id="practice-chapters-dropdown-menu"
+                      class="hidden absolute left-0 top-full mt-2 w-[min(24rem,calc(100vw-3rem))] bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl z-40 overflow-hidden"
+                    >
+                      <div class="px-3.5 py-2.5 bg-slate-950/90 border-b border-slate-800 flex items-center justify-between gap-2">
+                        <span class="text-xs font-semibold text-slate-300">Marque um ou mais capítulos</span>
+                        <span id="practice-picker-count-badge" class="text-xs px-2 py-0.5 rounded-full bg-brand-600/30 text-brand-300 border border-brand-500/40">1 selecionado</span>
+                      </div>
+                      <ul
+                        id="practice-chapters-checklist"
+                        role="listbox"
+                        aria-label="Lista de Capítulos para Prática"
+                        class="max-h-64 overflow-y-auto divide-y divide-slate-800/60"
+                      ></ul>
+                    </div>
+                  </div>
+
+                  <div class="seg" role="group" aria-label="Abrangência dos capítulos">
+                    <button type="button" id="scope-single" onclick="setPracticeCumulative(false)" class="seg-btn is-active" aria-pressed="true" title="Praticar apenas o capítulo atual">Só o atual</button>
+                    <button type="button" id="scope-cumulative" onclick="setPracticeCumulative(true)" class="seg-btn" aria-pressed="false" title="Praticar do início até o capítulo atual">Até o atual</button>
+                    <button type="button" id="scope-all" onclick="selectAllPracticeChapters()" class="seg-btn" aria-pressed="false" title="Praticar todos os capítulos de vocabulário">Todos</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ordenação da Prática dos Capítulos -->
+              <div id="practice-order-container">
+                <span class="field-label">Ordem das lições</span>
+                <div class="seg" role="group" aria-label="Ordem dos capítulos">
+                  <button type="button" id="order-asc" onclick="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Começa pela primeira lição selecionada">Primeira ➔ Última</button>
+                  <button type="button" id="order-desc" onclick="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Começa pela última lição selecionada">Última ➔ Primeira</button>
+                </div>
+              </div>
+
+              <!-- Filtro Dinâmico por Tipo de Palavra (Digitação) -->
+              <div id="practice-category-container">
+                <label for="practice-category-select" class="field-label">Tipo de palavra</label>
+                <select id="practice-category-select" onchange="setPracticeCategory(this.value)" class="control-select">
+                  <option value="all">Todas as palavras</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controles Gamificados do Alfabeto (Capítulo 1) -->
+          <div id="alphabet-mode-controls" class="hidden session-bar__body">
+            <div class="seg seg--modes" role="group" aria-label="Jogo do alfabeto">
+              <button type="button" id="alpha-mode-order" onclick="setAlphabetSubmode('order')" class="seg-btn is-active" aria-pressed="true">Ordem</button>
+              <button type="button" id="alpha-mode-impostors" onclick="setAlphabetSubmode('impostors')" class="seg-btn" aria-pressed="false" title="Letras parecidas">Parecidas</button>
+              <button type="button" id="alpha-mode-shapes" onclick="setAlphabetSubmode('shapes')" class="seg-btn" aria-pressed="false" title="Formas e sofit">Formas</button>
+              <button type="button" id="alpha-mode-classic" onclick="setAlphabetSubmode('classic')" class="seg-btn" aria-pressed="false" title="Treino livre">Treino livre</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAINEL GAMIFICADO DO ALFABETO -->
+        <div
+          id="alphabet-game-panel"
+          class="hidden exercise-card flex-1 flex flex-col justify-between relative overflow-hidden min-h-[380px]"
+        >
+          <!-- Cabeçalho do Jogo do Alfabeto -->
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-4 pb-3 border-b border-slate-800/80">
+            <div class="flex items-center gap-2">
+              <span
+                id="alphabet-game-badge"
+                class="px-3 py-1 rounded-full bg-brand-900/50 text-brand-300 border border-brand-700/50 font-bold"
+                >🎯 Ordem Alfabética</span
+              >
+              <span
+                id="alphabet-combo-badge"
+                class="hidden px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold animate-combo-pop"
+                >🔥 Combo x2</span
+              >
+            </div>
+            <div class="flex items-center gap-3">
+              <span id="alphabet-score-indicator" class="font-mono text-emerald-400 font-semibold text-xs">⭐ Pontos: 0</span>
+              <span id="alphabet-progress-indicator" class="font-mono text-slate-400">Rodada 1/10</span>
+            </div>
+          </div>
+
+          <!-- Arena de Desafio do Alfabeto -->
+          <div class="my-auto py-4 text-center space-y-4">
+            <div
+              id="alphabet-instruction"
+              class="text-sm md:text-base font-semibold text-slate-300 max-w-lg mx-auto"
+            >
+              Quem vem DEPOIS desta letra na ordem alfabética?
+            </div>
+
+            <!-- Glifo em Destaque -->
+            <div class="relative inline-block py-2">
+              <div
+                id="alphabet-target-glyph"
+                class="hebrew-text text-5xl md:text-7xl font-bold text-white tracking-wide leading-relaxed drop-shadow-lg transition-transform animate-letter-glow select-none"
+              >
+                מ
+              </div>
+              <div
+                id="alphabet-target-subtext"
+                class="text-xs md:text-sm font-mono text-brand-300 mt-1 font-medium"
+              >
+                Mem (13ª Letra • Som: M)
+              </div>
+            </div>
+          </div>
+
+          <!-- Grade de Opções Gamificadas -->
+          <div class="space-y-4 mt-2">
+            <div
+              id="alphabet-options-grid"
+              class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-2xl mx-auto w-full"
+            >
+              <!-- Preenchido dinamicamente via JavaScript -->
+            </div>
+          </div>
+
+          <!-- Banner de Feedback do Alfabeto -->
+          <div
+            id="alphabet-feedback-banner"
+            class="hidden mt-6 p-4 rounded-2xl border flex flex-col md:flex-row items-center justify-between gap-4 transition-all"
+          >
+            <div class="flex items-start gap-3">
+              <div id="alphabet-feedback-icon" class="text-2xl mt-0.5">✅</div>
+              <div>
+                <h4 id="alphabet-feedback-title" class="font-bold text-sm">
+                  Correto!
+                </h4>
+                <p
+                  id="alphabet-feedback-detail"
+                  class="text-xs text-slate-300 mt-0.5"
+                ></p>
+              </div>
+            </div>
+            <button
+              type="button"
+              id="btn-alphabet-next"
+              onclick="nextAlphabetChallenge()"
+              class="w-full md:w-auto px-6 py-2.5 bg-slate-100 text-slate-900 font-bold text-xs rounded-xl hover:bg-white transition shadow-md"
+            >
+              Próximo Desafio ➔
+            </button>
+          </div>
+        </div>
+
+        <!-- PAINEL DE PRÁTICA PADRÃO (Vocabulário / Frases / Treino Livre) -->
+        <div
+          id="standard-practice-panel"
+          class="exercise-card flex-1 flex flex-col"
+        >
+          <div class="exercise-progress" aria-hidden="true">
+            <div id="practice-progress-fill" class="exercise-progress__fill"></div>
+            <div id="practice-progress-wrong" class="exercise-progress__fill exercise-progress__fill--wrong"></div>
+          </div>
+
+          <div class="exercise-meta">
+            <div class="exercise-meta__tags">
+              <span id="question-category" class="meta-pill">Vocabulário</span>
+              <span id="question-chapter-badge" class="hidden meta-chapter"></span>
+            </div>
+            <div class="exercise-meta__side">
+              <span id="question-progress" class="meta-count">Item 1 de 10</span>
+              <span id="round-tally" class="round-tally hidden" role="img">
+                <span class="round-tally__correct"><span aria-hidden="true">✓</span> <span id="round-tally-correct">0</span> <span id="round-tally-correct-word" class="round-tally__word">acertos</span></span>
+                <span class="round-tally__wrong"><span aria-hidden="true">✗</span> <span id="round-tally-wrong">0</span> <span id="round-tally-wrong-word" class="round-tally__word">erros</span></span>
+              </span>
+              <button
+                type="button"
+                id="btn-practice-remove-error"
+                onclick="removeCurrentPracticeError()"
+                class="remove-error-btn hidden"
+                title="Remover este termo da lista de erros"
+                aria-label="Remover este termo da lista de erros"
+              >
+                <svg class="icon icon--sm" aria-hidden="true"><use href="#i-close"></use></svg><span>Remover</span>
+              </button>
+              <button
+                type="button"
+                id="btn-practice-fav"
+                onclick="toggleCurrentPracticeFavorite()"
+                class="fav-btn"
+                title="Marcar / desmarcar como favorito"
+                aria-label="Favoritar"
+              >
+                ☆
+              </button>
+            </div>
+          </div>
+
+          <div class="exercise-prompt">
+            <div id="hebrew-prompt" class="exercise-prompt__text hebrew-text">שָׁלוֹם</div>
+            <p id="question-stem" class="exercise-prompt__stem hidden">
+              Radical do 2º aoristo: <span id="question-stem-value" class="stem-value greek-text"></span>
+            </p>
+            <div id="hint-container" class="exercise-prompt__tools">
+              <button type="button" id="btn-show-hint" onclick="toggleHint()" class="link-btn">
+                Mostrar transliteração
+              </button>
+              <button type="button" id="btn-practice-analysis" onclick="openCurrentPracticeSentenceAnalysis()" class="hidden link-btn">
+                Analisar morfemas
+              </button>
+              <p id="hint-text" class="w-full text-sm font-mono text-amber-400/90 hidden"></p>
+            </div>
+          </div>
+
+          <div class="exercise-answer">
+            <form id="interface-typing" onsubmit="submitAnswer(event)" class="hidden">
+              <div class="answer-row">
+                <input
+                  type="text"
+                  id="input-answer"
+                  aria-label="Digite a tradução em português"
+                  placeholder="Sua tradução..."
+                  autocomplete="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                  class="answer-input"
+                />
+                <button type="submit" id="btn-submit-typing" class="answer-btn">Verificar ➔</button>
+              </div>
+            </form>
+
+            <div id="interface-choice" class="choice-grid hidden"></div>
+
+            <form id="interface-sentences" onsubmit="submitSentenceAnswer(event)" class="hidden">
+              <label for="input-sentence" class="field-label">Traduza o texto acima para o português</label>
+              <textarea
+                id="input-sentence"
+                rows="2"
+                placeholder="Digite a tradução completa em português..."
+                autocapitalize="off"
+                spellcheck="false"
+                class="answer-input answer-input--area"
+              ></textarea>
+              <div class="flex justify-end mt-3">
+                <button type="submit" id="btn-submit-sentence" class="answer-btn">Verificar tradução ➔</button>
+              </div>
+            </form>
+          </div>
+
+          <div
+            id="feedback-banner"
+            role="status"
+            class="hidden mt-4 p-4 rounded-2xl border flex flex-col md:flex-row md:items-center justify-between gap-3 transition-all"
+          >
+            <div class="flex items-start gap-3 min-w-0">
+              <div id="feedback-icon" class="text-xl mt-0.5" aria-hidden="true">✅</div>
+              <div class="min-w-0">
+                <h4 id="feedback-title" class="font-bold text-sm">Resposta Correta!</h4>
+                <p id="feedback-detail" class="text-sm text-slate-300 mt-0.5 break-words"></p>
+                <p id="feedback-tip" class="feedback-tip hidden">
+                  <span class="feedback-tip__label">Para fixar</span>
+                  <span id="feedback-tip-text"></span>
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 w-full md:w-auto shrink-0">
+              <button
+                type="button"
+                id="btn-feedback-analysis"
+                onclick="openCurrentPracticeSentenceAnalysis()"
+                class="hidden btn-secondary flex-1 md:flex-none"
+              >
+                Análise morfossintática
+              </button>
+              <button type="button" id="btn-next" onclick="nextQuestion()" class="hidden answer-btn flex-1 md:flex-none">
+                Próxima Questão ➔
+              </button>
+            </div>
+          </div>
+
+          <section id="round-summary" class="round-summary hidden" aria-live="polite" aria-label="Resumo da rodada">
+            <p class="round-summary__eyebrow">Rodada concluída</p>
+            <p class="round-summary__score"><strong id="round-summary-correct">0</strong> de <span id="round-summary-total">0</span> acertos</p>
+            <p id="round-summary-note" class="round-summary__note"></p>
+            <div id="round-summary-misses" class="round-summary__misses hidden">
+              <h3 class="round-summary__heading">Para revisar</h3>
+              <ul id="round-summary-list" class="round-summary__list"></ul>
+            </div>
+            <div class="round-summary__actions">
+              <button type="button" id="btn-round-restart" onclick="restartPracticeRound()" class="answer-btn">Praticar de novo</button>
+              <button type="button" id="btn-round-errors" onclick="setExerciseMode('errors')" class="btn-secondary hidden">Praticar só os erros</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- Aba 2: avaliação e modos de estudo -->
+      <section id="tab-assessment" class="hidden space-y-4 flex-1 flex-col">
+        <!-- Painel inicial de avaliação -->
+        <div id="assess-dashboard" class="space-y-5 flex-1 flex flex-col">
+          <div class="page-head">
+            <h2 class="page-head__title">Avaliar</h2>
+            <p class="page-head__text">Escolha o formato ideal para o seu momento de estudo.</p>
+          </div>
+
+          <div class="mode-grid">
+            <!-- Modo: revisão espaçada -->
+            <div class="mode-card mode-card--review mode-card--static">
+              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg></span>
+              <span class="mode-card__title">Revisão Inteligente</span>
+              <span id="review-due-card" class="mode-card__stat hidden"></span>
+              <span class="mode-card__text">Flashcards com repetição espaçada. Normal usa os capítulos ativos; Erros reúne o que você errou.</span>
+              <span class="mode-card__actions">
+                <button type="button" onclick="startAnki('normal')" class="answer-btn">Normal</button>
+                <button type="button" id="btn-review-errors" onclick="startAnki('errors')" class="btn-secondary" disabled>Erros <span id="review-errors-count"></span></button>
+              </span>
+            </div>
+
+            <!-- Modo: simulado personalizado -->
+            <button type="button" onclick="openSimuladoConfig()" class="mode-card mode-card--exam">
+              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-assess"></use></svg></span>
+              <span class="mode-card__title">Simulado Personalizado</span>
+              <span class="mode-card__text">Defina tamanho, tempo e foco da prova. Ao final, veja o diagnóstico por capítulo.</span>
+              <span class="mode-card__cta">Configurar e iniciar ➔</span>
+            </button>
+
+            <!-- Modo: morte súbita -->
+            <button type="button" onclick="startSurvival()" class="mode-card mode-card--survival">
+              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></span>
+              <span class="mode-card__title">Morte Súbita</span>
+              <span class="mode-card__stat">Recorde: <span id="surv-card-high">0</span></span>
+              <span class="mode-card__text">Três vidas. Quantas palavras você traduz em sequência?</span>
+              <span class="mode-card__cta">Jogar agora ➔</span>
+            </button>
+
+            <!-- Modo: caminho do domínio -->
+            <button type="button" onclick="openMasteryPath()" class="mode-card mode-card--path">
+              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-target"></use></svg></span>
+              <span class="mode-card__title">Caminho do domínio</span>
+              <span id="path-card-stat" class="mode-card__stat"></span>
+              <span class="mode-card__text">Capítulo por capítulo: acerte todos os termos para liberar o próximo. Errou, o capítulo recomeça embaralhado.</span>
+              <span class="mode-card__cta">Seguir o caminho ➔</span>
+            </button>
+
+            <!-- Modo: Mago da Morfologia, análise morfológica (só no grego) -->
+            <button type="button" id="morph-mode-card" onclick="openMorphDrill()" class="mode-card mode-card--morph hidden">
+              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg></span>
+              <span class="mode-card__title">Mago da Morfologia</span>
+              <span class="mode-card__text">Marque nas caixas a classe, o caso, o gênero, o número, a pessoa, o tempo, o modo e a voz de cada palavra das frases das lições.</span>
+              <span class="mode-card__cta">Escolher lições ➔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Caminho do domínio: mapa dos capítulos -->
+        <div id="path-overview" class="hidden space-y-4">
+          <div class="page-head path-head">
+            <div>
+              <h2 class="page-head__title">Caminho do domínio</h2>
+              <p class="page-head__text">
+                Acerte todos os termos de um capítulo numa mesma tentativa para liberar o próximo.
+                <span id="path-overview-summary" class="path-head__summary"></span>
+              </p>
+            </div>
+            <button type="button" onclick="resetToDashboard()" class="btn-secondary">Voltar</button>
+          </div>
+          <ol id="path-chapter-list" class="path-list"></ol>
+        </div>
+
+        <!-- Caminho do domínio: capítulo em andamento -->
+        <div id="path-active" class="hidden flex-1 flex flex-col gap-4">
+          <div class="exercise-card flex-1 flex flex-col">
+            <div class="exercise-progress" aria-hidden="true">
+              <div id="path-progress-fill" class="exercise-progress__fill"></div>
+            </div>
+            <div class="exercise-meta">
+              <div class="exercise-meta__tags">
+                <span id="path-chapter-title" class="meta-pill"></span>
+                <span id="path-attempt" class="meta-chapter"></span>
+              </div>
+              <div class="exercise-meta__side">
+                <span id="path-progress" class="meta-count"></span>
+                <button type="button" onclick="exitMasteryPathChapter()" class="link-btn">Sair</button>
+              </div>
+            </div>
+
+            <p id="path-restart-note" class="path-restart-note hidden" role="status"></p>
+
+            <div class="exercise-prompt">
+              <div id="path-prompt" class="exercise-prompt__text hebrew-text"></div>
+              <div class="exercise-prompt__tools">
+                <button type="button" id="path-btn-hint" onclick="togglePathHint()" class="link-btn">Mostrar transliteração</button>
+                <p id="path-hint" class="w-full text-sm font-mono text-amber-400/90 hidden"></p>
+              </div>
+            </div>
+
+            <div class="exercise-answer">
+              <form id="path-form" onsubmit="submitMasteryPathAnswer(event)">
+                <div class="answer-row">
+                  <input
+                    type="text"
+                    id="path-input"
+                    aria-label="Digite a tradução em português"
+                    placeholder="Sua tradução..."
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    class="answer-input"
+                  />
+                  <button type="submit" id="path-btn-submit" class="answer-btn">Verificar ➔</button>
+                </div>
+              </form>
+            </div>
+
+            <div id="path-feedback" role="status" class="path-feedback hidden">
+              <div class="path-feedback__body">
+                <span id="path-feedback-icon" class="text-xl" aria-hidden="true"></span>
+                <div class="min-w-0">
+                  <h4 id="path-feedback-title" class="path-feedback__title"></h4>
+                  <p id="path-feedback-detail" class="path-feedback__detail"></p>
+                </div>
+              </div>
+              <button type="button" id="path-btn-next" onclick="continueMasteryPath()" class="answer-btn">Próximo termo ➔</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Caminho do domínio: capítulo concluído -->
+        <div id="path-complete" class="hidden">
+          <section class="round-summary path-complete" aria-live="polite">
+            <p class="round-summary__eyebrow">Capítulo concluído</p>
+            <h2 id="path-complete-title" class="path-complete__title"></h2>
+            <p id="path-complete-note" class="round-summary__note"></p>
+            <div class="round-summary__actions">
+              <button type="button" id="path-btn-next-chapter" class="answer-btn hidden">Próximo capítulo ➔</button>
+              <button type="button" onclick="openMasteryPath()" class="btn-secondary">Ver o caminho</button>
+            </div>
+          </section>
+        </div>
+
+        <!-- Configuração do simulado -->
+        <div
+          id="assess-config"
+          class="hidden bg-slate-900 border border-slate-800 rounded-3xl p-8 max-w-xl mx-auto w-full shadow-2xl mt-4"
+        >
+          <div
+            class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800"
+          >
+            <div>
+              <h3 class="text-xl font-bold text-white">Configurar Simulado</h3>
+              <p id="sim-scope-info" class="text-xs text-slate-400 mt-1"></p>
+            </div>
+            <button
+              type="button"
+              onclick="closeSimuladoConfig()"
+              class="text-slate-400 hover:text-white text-2xl font-light"
+              aria-label="Fechar configuração do simulado"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="space-y-6">
+            <div>
+              <label
+                class="block text-xs font-semibold text-slate-400 mb-2 uppercase"
+                >Quantidade de Questões</label
+              >
+              <div class="grid grid-cols-4 gap-2 text-sm">
+                <button
+                  type="button"
+                  onclick="setSimConfig('amount', 10)"
+                  id="cfg-amount-10"
+                  class="cfg-btn cfg-amount bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
+                >
+                  10
+                </button>
+                <button
+                  type="button"
+                  onclick="setSimConfig('amount', 25)"
+                  id="cfg-amount-25"
+                  class="cfg-btn cfg-amount bg-brand-600 text-white font-bold py-2 rounded-xl"
+                >
+                  25
+                </button>
+                <button
+                  type="button"
+                  onclick="setSimConfig('amount', 50)"
+                  id="cfg-amount-50"
+                  class="cfg-btn cfg-amount bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
+                >
+                  50
+                </button>
+                <button
+                  type="button"
+                  onclick="setSimConfig('amount', 'max')"
+                  id="cfg-amount-max"
+                  class="cfg-btn cfg-amount bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
+                >
+                  Máx
+                </button>
+              </div>
+            </div>
+            <div>
+              <label
+                class="block text-xs font-semibold text-slate-400 mb-2 uppercase"
+                >Limite de Tempo</label
+              >
+              <div class="grid grid-cols-4 gap-2 text-sm">
+                <button
+                  type="button"
+                  onclick="setSimConfig('time', 0)"
+                  id="cfg-time-0"
+                  class="cfg-btn cfg-time bg-brand-600 text-white font-bold py-2 rounded-xl"
+                >
+                  Livre
+                </button>
+                <button
+                  type="button"
+                  onclick="setSimConfig('time', 15)"
+                  id="cfg-time-15"
+                  class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
+                >
+                  15m
+                </button>
+                <button
+                  type="button"
+                  onclick="setSimConfig('time', 30)"
+                  id="cfg-time-30"
+                  class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
+                >
+                  30m
+                </button>
+                <button
+                  type="button"
+                  onclick="setSimConfig('time', 60)"
+                  id="cfg-time-60"
+                  class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
+                >
+                  60m
+                </button>
+              </div>
+            </div>
+            <div>
+              <label
+                class="block text-xs font-semibold text-slate-400 mb-2 uppercase"
+                >Foco do Simulado</label
+              >
+              <div class="grid grid-cols-3 gap-2 text-sm">
+                <button
+                  type="button"
+                  onclick="setSimConfig('focus', 'mixed')"
+                  id="cfg-focus-mixed"
+                  class="cfg-btn cfg-focus bg-brand-600 text-white font-bold py-2 rounded-xl"
+                >
+                  Misto
+                </button>
+                <button
+                  type="button"
+                  onclick="setSimConfig('focus', 'words')"
+                  id="cfg-focus-words"
+                  class="cfg-btn cfg-focus bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
+                >
+                  Palavras
+                </button>
+                <button
+                  type="button"
+                  onclick="setSimConfig('focus', 'sentences')"
+                  id="cfg-focus-sentences"
+                  class="cfg-btn cfg-focus bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
+                >
+                  Frases
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="pt-8">
+            <button
+              type="button"
+              onclick="startSimulado()"
+              class="w-full py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg"
+            >
+              Gerar Prova e Iniciar ➔
+            </button>
+          </div>
+        </div>
+
+        <!-- Execução do simulado -->
+        <div
+          id="assessment-active"
+          class="hidden space-y-4 flex-1 flex flex-col"
+        >
+          <div
+            class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-between"
+          >
+            <div class="flex items-center space-x-3">
+              <span
+                id="assessment-counter"
+                class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-300"
+                >Questão 1</span
+              >
+              <span
+                id="assessment-type-tag"
+                class="text-xs font-medium text-brand-400"
+                >Palavra</span
+              >
+            </div>
+            <div
+              class="flex items-center space-x-2 text-slate-200 font-mono font-semibold text-sm bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800"
+            >
+              <span id="assessment-timer-icon">⏳</span>
+              <span id="assessment-timer">00:00</span>
+            </div>
+          </div>
+          <div
+            class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-2xl relative space-y-6"
+          >
+            <div class="my-auto py-4 text-center space-y-4">
+              <div
+                id="assess-hebrew"
+                class="hebrew-text text-4xl md:text-6xl font-bold text-white tracking-wide"
+              ></div>
+              <div class="max-w-md mx-auto space-y-3 pt-2">
+                <label
+                  for="assess-user-input"
+                  class="block text-xs font-semibold text-slate-400 text-left"
+                  >Tradução em português:</label
+                >
+                <input
+                  type="text"
+                  id="assess-user-input"
+                  aria-label="Tradução em português"
+                  oninput="saveCurrentInputDraft()"
+                  autocomplete="off"
+                  class="w-full bg-slate-950 border-2 border-slate-800 focus:border-brand-500 rounded-2xl px-5 py-3.5 text-base text-slate-100 placeholder-slate-600 focus:outline-none transition text-center shadow-inner"
+                />
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-800/80">
+              <div
+                class="text-[11px] text-slate-500 font-medium mb-2 text-center"
+              >
+                Navegação Rápida:
+              </div>
+              <div
+                id="assessment-tracker"
+                class="flex flex-wrap justify-center gap-1.5 max-h-24 overflow-y-auto p-1"
+              ></div>
+            </div>
+            <div
+              class="flex justify-between items-center pt-4 border-t border-slate-800"
+            >
+              <button
+                type="button"
+                onclick="navigateAssessment(-1)"
+                id="assess-btn-prev"
+                class="text-xs font-medium text-slate-400 hover:text-slate-100 px-4 py-2 transition"
+              >
+                ← Anterior
+              </button>
+              <div id="assess-action-container"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resultado do simulado -->
+        <div id="assessment-results" class="hidden space-y-6 pb-12">
+          <div
+            class="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-4 shadow-2xl"
+          >
+            <div
+              class="w-16 h-16 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold shadow-inner"
+            >
+              🏆
+            </div>
+            <h2 class="text-2xl font-bold text-white">Avaliação Concluída!</h2>
+            <div class="flex justify-center gap-8 py-2">
+              <div>
+                <div class="text-xs text-slate-500 uppercase font-semibold">
+                  Nota Final
+                </div>
+                <div id="res-grade" class="text-3xl font-bold text-brand-400">
+                  0%
+                </div>
+              </div>
+              <div>
+                <div class="text-xs text-slate-500 uppercase font-semibold">
+                  Acertos
+                </div>
+                <div id="res-correct" class="text-3xl font-bold text-slate-200">
+                  0 / 0
+                </div>
+              </div>
+              <div>
+                <div class="text-xs text-slate-500 uppercase font-semibold">
+                  Tempo
+                </div>
+                <div id="res-time" class="text-3xl font-bold text-slate-200">
+                  00:00
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-4 shadow-xl"
+          >
+            <h3 class="font-bold text-white text-base flex items-center gap-2">
+              <span>📊</span> Foco de Revisão (Por Capítulo)
+            </h3>
+            <div id="diagnostic-list" class="space-y-3 pt-2"></div>
+          </div>
+          <div
+            class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-4 shadow-xl"
+          >
+            <h3 class="font-bold text-white text-base flex items-center gap-2">
+              <span>🔍</span> Correção Detalhada
+            </h3>
+            <div id="correction-list" class="space-y-3 pt-2"></div>
+          </div>
+          <div class="text-center pt-4">
+            <button
+              type="button"
+              onclick="resetToDashboard()"
+              class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md"
+            >
+              Voltar à Central
+            </button>
+          </div>
+        </div>
+
+        <!-- Execução da revisão espaçada -->
+        <div id="anki-active" class="hidden space-y-4 flex-1 flex flex-col">
+          <div
+            class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-between"
+          >
+            <div class="flex items-center space-x-3">
+              <span
+                id="anki-counter"
+                class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-300"
+                >Cartão 1</span
+              >
+              <span
+                id="anki-type-tag"
+                class="text-xs font-medium text-emerald-400"
+                >Revisão</span
+              >
+            </div>
+            <button
+              type="button"
+              onclick="resetToDashboard()"
+              class="text-xs text-slate-500 hover:text-rose-400 font-medium transition"
+            >
+              ✖ Encerrar Sessão
+            </button>
+          </div>
+          <div
+            class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col shadow-2xl relative"
+          >
+            <div
+              class="my-auto py-8 text-center flex-1 flex flex-col justify-center"
+            >
+              <div
+                id="anki-hebrew"
+                class="hebrew-text text-5xl md:text-7xl font-bold text-white tracking-wide drop-shadow-md pb-6"
+              ></div>
+              <div
+                id="anki-back"
+                class="hidden space-y-6 pt-6 border-t border-slate-800 transition-opacity"
+              >
+                <div>
+                  <div
+                    id="anki-translit"
+                    class="text-sm font-mono text-amber-400 mb-2"
+                  ></div>
+                  <div
+                    id="anki-translation"
+                    class="text-xl md:text-2xl font-bold text-emerald-400"
+                  ></div>
+                  <div class="mt-3 flex justify-center">
+                    <button
+                      type="button"
+                      id="btn-anki-analyze"
+                      onclick="openCurrentAnkiSentenceAnalysis()"
+                      class="hidden px-3 py-1.5 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/60 border border-indigo-500/40 text-xs text-indigo-300 hover:text-white transition cursor-pointer font-mono inline-flex items-center gap-1.5 shadow-sm"
+                      title="Abrir Análise Morfológica da Frase"
+                    >
+                      <span>🔬</span> Analisar Morfemas
+                    </button>
+                  </div>
+                </div>
+                <div class="pt-6 space-y-3">
+                  <p
+                    class="text-[11px] text-slate-500 uppercase font-semibold tracking-wider"
+                  >
+                    Como foi sua lembrança?
+                  </p>
+                  <div class="grid grid-cols-3 gap-3 max-w-lg mx-auto">
+                    <button
+                      type="button"
+                      onclick="answerAnki('hard')"
+                      class="py-3 md:py-4 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/50 text-rose-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"
+                    >
+                      <span class="text-xl">🔴</span
+                      ><span class="text-xs">Errei <span class="hidden md:inline text-slate-400">(1)</span></span
+                      ><span
+                        id="anki-next-hard"
+                        class="text-[10px] text-rose-500/70 font-mono mt-1"
+                        >&lt; 1 min</span
+                      >
+                    </button>
+                    <button
+                      type="button"
+                      onclick="answerAnki('good')"
+                      class="py-3 md:py-4 bg-amber-950/40 hover:bg-amber-900/60 border border-amber-800/50 text-amber-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"
+                    >
+                      <span class="text-xl">🟡</span
+                      ><span class="text-xs">Lembrei <span class="hidden md:inline text-slate-400">(2)</span></span
+                      ><span
+                        id="anki-next-good"
+                        class="text-[10px] text-amber-500/70 font-mono mt-1"
+                        >1 dia</span
+                      >
+                    </button>
+                    <button
+                      type="button"
+                      onclick="answerAnki('easy')"
+                      class="py-3 md:py-4 bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-800/50 text-emerald-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"
+                    >
+                      <span class="text-xl">🟢</span
+                      ><span class="text-xs">Fácil <span class="hidden md:inline text-slate-400">(3)</span></span
+                      ><span
+                        id="anki-next-easy"
+                        class="text-[10px] text-emerald-500/70 font-mono mt-1"
+                        >4 dias</span
+                      >
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              id="anki-reveal-container"
+              class="pt-6 border-t border-slate-800"
+            >
+              <button
+                type="button"
+                onclick="revealAnki()"
+                class="w-full py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm rounded-xl transition shadow-md flex items-center justify-center gap-2"
+              >
+                Mostrar tradução
+                <kbd class="hidden md:inline-flex px-1.5 py-0.5 text-[11px] bg-white/10 rounded font-mono font-medium">Espaço</kbd>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resultado da revisão espaçada -->
+        <div id="anki-results" class="hidden space-y-6 pb-12">
+          <div
+            class="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-6 shadow-2xl"
+          >
+            <div
+              class="w-16 h-16 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold shadow-inner"
+            >
+              🎉
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold text-white">Revisão Concluída!</h2>
+              <p class="text-slate-400 text-sm mt-2">
+                Você revisou seus flashcards e fortaleceu sua memória de longo
+                prazo.
+              </p>
+            </div>
+            <div class="flex justify-center gap-6 py-4 max-w-md mx-auto">
+              <div
+                class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4"
+              >
+                <div
+                  class="text-rose-400 text-2xl font-bold mb-1"
+                  id="anki-res-hard"
+                >
+                  0
+                </div>
+                <div class="text-xs text-slate-400 font-medium">
+                  Erros
+                </div>
+              </div>
+              <div
+                class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4"
+              >
+                <div
+                  class="text-amber-400 text-2xl font-bold mb-1"
+                  id="anki-res-good"
+                >
+                  0
+                </div>
+                <div class="text-xs text-slate-400 font-medium">
+                  Lembrados
+                </div>
+              </div>
+              <div
+                class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-4"
+              >
+                <div
+                  class="text-emerald-400 text-2xl font-bold mb-1"
+                  id="anki-res-easy"
+                >
+                  0
+                </div>
+                <div class="text-xs text-slate-400 font-medium">
+                  Fáceis
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              onclick="resetToDashboard()"
+              class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md"
+            >
+              Voltar à Central
+            </button>
+          </div>
+        </div>
+
+        <!-- Modo de sobrevivência: morte súbita -->
+        <div id="survival-active" class="hidden space-y-4 flex-1 flex flex-col">
+          <div
+            class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-between"
+          >
+            <div class="flex items-center space-x-3">
+              <span
+                class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-300"
+                >Sequência:
+                <span id="survival-streak" class="text-white font-bold"
+                  >0</span
+                ></span
+              >
+              <span
+                class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800/80 text-amber-300/90 hidden sm:inline-flex items-center gap-1"
+                >👑 Recorde:
+                <span id="survival-top-high" class="font-bold text-amber-200"
+                  >0</span
+                ></span
+              >
+            </div>
+            <div
+              id="survival-hearts"
+              class="flex items-center space-x-1 text-xl"
+            >
+              ❤️ ❤️ ❤️
+            </div>
+            <button
+              type="button"
+              onclick="finishSurvival(true)"
+              class="text-xs text-slate-500 hover:text-rose-400 font-medium transition"
+            >
+              ✖ Desistir
+            </button>
+          </div>
+
+          <div
+            class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-2xl relative space-y-6 overflow-hidden"
+          >
+            <div
+              id="survival-flash"
+              class="absolute inset-0 z-0 opacity-0 transition-opacity duration-300 pointer-events-none"
+            ></div>
+
+            <div class="my-auto py-4 text-center space-y-4 relative z-10">
+              <div
+                id="survival-hebrew"
+                class="hebrew-text text-5xl md:text-7xl font-bold text-white tracking-wide"
+              ></div>
+              <div class="max-w-md mx-auto space-y-3 pt-6">
+                <input
+                  type="text"
+                  id="survival-input"
+                  aria-label="Digite rápido a tradução"
+                  autocomplete="off"
+                  placeholder="Digite rápido a tradução..."
+                  class="w-full bg-slate-950 border-2 border-slate-800 focus:border-rose-500 rounded-2xl px-5 py-4 text-lg text-slate-100 placeholder-slate-600 focus:outline-none transition text-center shadow-inner"
+                />
+              </div>
+            </div>
+
+            <div
+              class="pt-4 border-t border-slate-800/80 relative z-10 flex justify-center"
+            >
+              <button
+                type="button"
+                onclick="submitSurvivalAnswer()"
+                class="px-10 py-4 bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-rose-600/30"
+              >
+                Responder ➔
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="survival-results" class="hidden space-y-6 pb-12">
+          <div
+            class="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-6 shadow-2xl"
+          >
+            <div
+              class="w-16 h-16 bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold shadow-inner"
+            >
+              💀
+            </div>
+            <div>
+              <h2 class="text-3xl font-bold text-white">Fim de Jogo!</h2>
+              <p class="text-slate-400 text-sm mt-2">
+                Suas vidas acabaram. Vamos ver como você se saiu.
+              </p>
+            </div>
+
+            <div class="flex justify-center gap-6 py-4 max-w-md mx-auto">
+              <div
+                class="flex-1 bg-slate-950 border border-slate-800 rounded-2xl p-6"
+              >
+                <div
+                  class="text-[10px] text-slate-500 uppercase font-semibold mb-1"
+                >
+                  Sequência Alcançada
+                </div>
+                <div class="text-white text-4xl font-bold" id="surv-res-streak">
+                  0
+                </div>
+              </div>
+              <div
+                class="flex-1 bg-slate-950 border border-brand-800 rounded-2xl p-6 relative overflow-hidden"
+              >
+                <div class="absolute -right-2 -top-2 text-4xl opacity-10">
+                  👑
+                </div>
+                <div
+                  class="text-[10px] text-brand-400 uppercase font-semibold mb-1"
+                >
+                  Recorde Máximo
+                </div>
+                <div
+                  class="text-brand-400 text-4xl font-bold"
+                  id="surv-res-high"
+                >
+                  0
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="surv-correction-box"
+              class="bg-slate-950 border border-slate-800 rounded-2xl p-4 text-left max-w-md mx-auto hidden"
+            >
+              <p class="text-xs text-rose-400 font-bold mb-2">
+                Você errou por último nesta palavra:
+              </p>
+              <div
+                class="hebrew-text text-2xl text-white font-bold mb-1"
+                id="surv-last-heb"
+              ></div>
+              <div class="text-xs text-slate-400">
+                Resposta correta:
+                <span
+                  class="text-emerald-400 font-bold"
+                  id="surv-last-cor"
+                ></span>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onclick="resetToDashboard()"
+              class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md"
+            >
+              Voltar à Central
+            </button>
+          </div>
+        </div>
+
+        <!-- Mago da Morfologia: configuração -->
+        <div id="morph-config" class="hidden morph-panel">
+          <div class="morph-panel__head">
+            <div>
+              <h3 class="morph-panel__title">Mago da Morfologia</h3>
+              <p id="morph-scope-info" class="morph-panel__text"></p>
+            </div>
+            <button type="button" onclick="quitMorphDrill()" class="link-btn" aria-label="Fechar o Mago da Morfologia">Voltar</button>
+          </div>
+          <p class="morph-panel__label">Lições</p>
+          <div id="morph-chapter-list" class="morph-chapters"></div>
+          <p class="morph-panel__label">Quantidade de palavras</p>
+          <div class="morph-amounts">
+            <button type="button" class="morph-amount" data-morph-amount="10" onclick="setMorphAmount('10')">10</button>
+            <button type="button" class="morph-amount" data-morph-amount="15" onclick="setMorphAmount('15')">15</button>
+            <button type="button" class="morph-amount" data-morph-amount="30" onclick="setMorphAmount('30')">30</button>
+            <button type="button" class="morph-amount" data-morph-amount="max" onclick="setMorphAmount('max')">Todas</button>
+          </div>
+          <label class="morph-chap morph-chap--toggle">
+            <input type="checkbox" id="morph-include-invariable" class="chapter-option__box" onchange="toggleMorphInvariable(this.checked)" />
+            <span>Incluir palavras invariáveis <small>preposições, conjunções, advérbios e partículas</small></span>
+          </label>
+          <button type="button" onclick="startMorphDrill()" class="answer-btn morph-start">Começar</button>
+        </div>
+
+        <!-- Mago da Morfologia: questão -->
+        <div id="morph-active" class="hidden morph-panel">
+          <div class="morph-panel__head">
+            <span class="morph-progress"><span id="morph-progress"></span> · <span id="morph-score" class="morph-progress__ok"></span></span>
+            <button type="button" onclick="quitMorphDrill()" class="link-btn">Encerrar</button>
+          </div>
+          <div id="morph-question"></div>
+          <div class="morph-actions">
+            <button type="button" id="morph-action" class="answer-btn">Verificar</button>
+          </div>
+        </div>
+
+        <!-- Mago da Morfologia: resultado -->
+        <div id="morph-results" class="hidden morph-panel">
+          <div id="morph-results-body" class="round-summary"></div>
+        </div>
+      </section>
+
+      <!-- Aba 3: paradigmas e estruturas -->
+      <section id="tab-paradigms" class="hidden space-y-4 flex-1 flex-col">
+        <div class="page-head">
+          <h2 class="page-head__title">Tabelas e Grafos</h2>
+          <p class="page-head__text">Monte as tabelas e grafos para fixar terminações e regras.</p>
+        </div>
+        <div
+          class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4"
+        >
+          <div class="flex-1 min-w-[240px]">
+            <label class="block text-xs font-medium text-slate-400 mb-1"
+              >Escolha a tabela ou grafo:</label
+            >
+            <select
+              id="paradigm-select"
+              onchange="renderParadigmSkeleton()"
+              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+            >
+              <option value="">Selecione uma lição com tabelas ou grafos...</option>
+            </select>
+          </div>
+        </div>
+
+        <div
+          class="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 flex flex-col shadow-2xl relative min-h-[450px]"
+        >
+          <!-- Cabeçalho do paradigma selecionado -->
+          <div
+            id="paradigm-header"
+            class="hidden mb-6 pb-4 border-b border-slate-800 text-center"
+          >
+            <h3 id="paradigm-title" class="text-xl font-bold text-white"></h3>
+            <p class="text-xs text-slate-400 mt-1">
+              Arraste as fichas e solte nos espaços vazios para completar a
+              estrutura.
+            </p>
+          </div>
+
+          <!-- Área central: tabela ou diagrama do paradigma -->
+          <div
+            id="paradigm-board"
+            class="flex-1 flex flex-col items-center justify-center text-center space-y-6 overflow-x-auto"
+          >
+            <div
+              class="w-16 h-16 bg-brand-500/10 text-brand-400 rounded-2xl flex items-center justify-center text-3xl mb-2"
+            >
+              🧩
+            </div>
+            <h3 class="text-xl font-bold text-white">Laboratório Estrutural</h3>
+            <p class="text-sm text-slate-400 max-w-md mx-auto">
+              Neste modo você treina o reconhecimento visual das terminações e
+              regras. Selecione uma tabela ou grafo acima para iniciar.
+            </p>
+          </div>
+
+          <!-- Área de ação e verificação do paradigma -->
+          <div
+            id="paradigm-action-container"
+            class="hidden mt-6 text-center w-full flex flex-col items-center justify-center"
+          ></div>
+
+          <!-- Área inferior: fichas para arrastar e soltar -->
+          <div
+            id="paradigm-deck"
+            class="hidden sticky bottom-4 z-20 mt-8 p-4 bg-slate-900/95 backdrop-blur-md border border-slate-700 shadow-[0_-15px_30px_-5px_rgba(0,0,0,0.5)] rounded-2xl flex flex-wrap items-center justify-center gap-2.5 max-h-48 overflow-y-auto"
+          ></div>
+        </div>
+      </section>
+      <!-- Aba 4: dicionário de vocabulário e frases -->
+      <section id="tab-vocab" class="hidden space-y-4">
+        <div class="page-head">
+          <h2 class="page-head__title">Dicionário & Banco de Frases</h2>
+          <p class="page-head__text">Consulte o vocabulário e as expressões das lições selecionadas.</p>
+        </div>
+
+        <!-- Busca em primeiro lugar: é a ação mais frequente do dicionário -->
+        <div class="search-field">
+          <svg class="icon search-field__icon" aria-hidden="true"><use href="#i-search"></use></svg>
+          <label for="vocab-search" class="sr-only">Buscar no dicionário</label>
+          <input
+            type="search"
+            id="vocab-search"
+            oninput="filterVocabTable()"
+            placeholder="Buscar termo ou tradução..."
+            autocomplete="off"
+            class="search-field__input"
+          />
+          <span id="vocab-result-count" class="search-field__count" aria-live="polite"></span>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filter-row">
+          <div id="vocab-scope-container">
+            <span class="field-label">Capítulos</span>
+            <div class="seg" role="group" aria-label="Capítulos no dicionário">
+              <button type="button" id="vocab-scope-single" onclick="setVocabCumulative(false)" class="seg-btn is-active" aria-pressed="true" title="Exibir apenas o capítulo atual">Só o atual</button>
+              <button type="button" id="vocab-scope-cumulative" onclick="setVocabCumulative(true)" class="seg-btn" aria-pressed="false" title="Exibir do início até o capítulo atual">Até o atual</button>
+              <button type="button" id="vocab-scope-all" onclick="selectAllPracticeChapters()" class="seg-btn" aria-pressed="false" title="Exibir todos os capítulos de vocabulário">Todos</button>
+            </div>
+          </div>
+
+          <div id="vocab-order-container">
+            <span class="field-label">Ordem</span>
+            <div class="seg" role="group" aria-label="Ordem dos capítulos">
+              <button type="button" id="vocab-order-asc" onclick="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Lista a partir da primeira lição">Primeira ➔ Última</button>
+              <button type="button" id="vocab-order-desc" onclick="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Lista a partir da última lição">Última ➔ Primeira</button>
+            </div>
+          </div>
+
+          <div id="vocab-category-container" class="filter-row__grow">
+            <label for="vocab-category-select" class="field-label">Conteúdo</label>
+            <select id="vocab-category-select" onchange="setVocabCategory(this.value)" class="control-select w-full">
+              <option value="all">Todos os itens</option>
+              <option value="favorites">⭐ Apenas Favoritos</option>
+              <option value="words">Apenas Palavras</option>
+              <option value="sentences">Apenas Frases / Expressões</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="overflow-x-auto">
+            <table id="vocab-table" class="vocab-table w-full text-left text-sm">
+              <thead class="bg-slate-950 border-b border-slate-800 text-slate-400 text-xs font-medium">
+                <tr>
+                  <th scope="col" class="px-5 py-3">Termo</th>
+                  <th scope="col" class="px-5 py-3">Transliteração</th>
+                  <th scope="col" class="px-5 py-3">Tradução</th>
+                  <th scope="col" class="px-5 py-3">Tipo</th>
+                  <th scope="col" class="px-3 py-3 text-center w-16"><span class="sr-only">Favorito</span></th>
+                </tr>
+              </thead>
+              <tbody id="vocab-table-body" class="divide-y divide-slate-800/60 text-slate-200">
+                <!-- Linhas inseridas dinamicamente pelo JavaScript -->
+              </tbody>
+            </table>
+          </div>
+          <p id="vocab-empty-search" class="hidden px-6 py-10 text-center text-sm text-slate-400">
+            Nada encontrado para essa busca. Tente outro termo ou amplie os capítulos para “Todos”.
+          </p>
+        </div>
+      </section>
+
+      <!-- Aba 5: gerenciamento de capítulos -->
+      <section id="tab-manage" class="hidden space-y-4">
+        <div class="page-head">
+          <h2 class="page-head__title">Gerenciar conteúdo</h2>
+          <p class="page-head__text">Adicione ou edite capítulos em JSON e faça backup do seu material.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-5">
+            <div class="space-y-2">
+              <h3 class="font-semibold text-sm text-white">Editar</h3>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Carregue o capítulo atual no editor ou cole um novo capítulo em JSON.
+              </p>
+              <button
+                type="button"
+                id="btn-load-current-chapter"
+                onclick="loadCurrentChapterIntoEditor()"
+                class="btn-secondary w-full"
+                title="Carrega os dados JSON do capítulo atualmente selecionado no editor"
+              >
+                Carregar atual no editor
+              </button>
+            </div>
+            <div class="space-y-2 pt-4 border-t border-slate-800">
+              <h3 class="font-semibold text-sm text-white">Backup</h3>
+              <button type="button" onclick="exportChaptersJSON()" class="btn-secondary w-full">
+                Exportar backup
+              </button>
+            </div>
+            <div class="space-y-2 pt-4 border-t border-slate-800">
+              <h3 class="font-semibold text-sm text-rose-300">Ações irreversíveis</h3>
+              <button type="button" onclick="resetDefaultChapters()" class="btn-danger w-full">
+                Restaurar padrões
+              </button>
+              <button
+                type="button"
+                id="btn-delete-custom-chapter"
+                onclick="deleteCurrentCustomChapter()"
+                class="btn-danger w-full"
+                title="Exclui o capítulo customizado atualmente selecionado"
+              >
+                Excluir capítulo atual
+              </button>
+            </div>
+          </div>
+          <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold text-sm text-white">Editor JSON</h3>
+              <span id="json-status" class="text-xs font-mono text-slate-500">Pronto</span>
+            </div>
+            <!-- Feedback visual de validação do schema em tempo real -->
+            <div
+              id="json-schema-feedback"
+              class="hidden px-3.5 py-2.5 rounded-xl border text-xs font-mono flex items-center justify-between gap-2"
+            >
+              <!-- Preenchido dinamicamente via validateChapterJSONInput -->
+            </div>
+            <textarea
+              id="json-input"
+              aria-label="Editor de código JSON de capítulos"
+              rows="14"
+              oninput="validateChapterJSONInput()"
+              class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 resize-y"
+              placeholder="Cole o JSON do novo capítulo aqui ou clique em 'Carregar atual no editor'..."
+            ></textarea>
+            <div class="flex justify-end">
+              <button type="button" onclick="saveChapterFromJSON()" class="answer-btn">Salvar capítulo</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Rodapé Pedagógico e Informações de Referência -->
+    <footer id="main-app-footer" class="app-footer">
+      <p id="app-grammar-footnote" class="app-footer__note">
+        Este sistema é uma ferramenta complementar de estudo e prática que segue a gramática
+        <strong class="text-slate-200 font-semibold">"Introdução ao Grego Bíblico"</strong>
+        do autor <strong class="text-slate-200 font-semibold">Johannes Bergmann</strong> da editora
+        <strong class="text-slate-200 font-semibold">Thomas Nelson</strong>.
+      </p>
+      <p class="app-footer__meta">
+        Gamida Biblical Language Trainer ·
+        <span id="footer-version-tag">v2.22.4</span>
+      </p>
+      <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Modal de Análise Morfossintática de Frases Hebraicas (Page Kelley) -->
+    <div
+      id="sentence-analysis-modal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-slate-950/85 backdrop-blur-md transition-opacity duration-200"
+      aria-modal="true"
+      role="dialog"
+      aria-labelledby="analysis-modal-title"
+    >
+      <div
+        id="sentence-analysis-card"
+        class="w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] animate-in fade-in zoom-in-95 duration-150"
+      >
+        <!-- Cabeçalho do Modal -->
+        <div class="px-6 py-4 border-b border-slate-800/80 bg-slate-900/90 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">🔬</span>
+            <div>
+              <h3 id="analysis-modal-title" class="font-bold text-base md:text-lg text-white">
+                Análise Morfossintática de Frases Hebraicas
+              </h3>
+              <p class="text-xs text-slate-400 font-medium">
+                Dissecação granular de partículas, raízes e morfemas (Gramática de Page Kelley)
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            id="btn-close-analysis-modal"
+            onclick="closeSentenceAnalysisModal()"
+            class="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition cursor-pointer"
+            title="Fechar Modal (Esc)"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Conteúdo Rolável do Modal -->
+        <div class="p-4 sm:p-6 md:p-8 space-y-6 overflow-y-auto flex-1">
+          <!-- Frase Hebraica em Evidência -->
+          <div class="bg-slate-950/90 border border-slate-800 rounded-2xl p-6 md:p-8 text-center relative overflow-hidden shadow-inner">
+            <div class="text-[11px] font-mono uppercase tracking-wider text-slate-500 mb-3 flex items-center justify-center gap-2">
+              <span>Frase em Evidência</span>
+              <span>•</span>
+              <span id="analysis-pinned-indicator" class="text-amber-400 hidden">📌 Morfema Fixado</span>
+            </div>
+            
+            <div
+              id="sentence-morphemes-container"
+              class="hebrew-sentence-container hebrew-text text-white py-2"
+              dir="rtl"
+            >
+              <!-- Tokens e morfemas inseridos dinamicamente -->
+            </div>
+
+            <!-- Barra Interativa de Fragmentos Anatômicos (Morphemes Ribbon) -->
+            <div
+              id="sentence-morphemes-ribbon"
+              class="mt-4 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-center gap-1.5"
+            >
+              <!-- Chips com cada morfema atômico inseridos dinamicamente -->
+            </div>
+
+            <!-- Legenda Rápida de Cores por Categoria Morfológica -->
+            <div id="sentence-legend-container" class="mt-4 pt-4 border-t border-slate-800/60 flex flex-wrap items-center justify-center gap-2 text-[11px]">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Artigo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Conjunção
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Preposição
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Substantivo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Adjetivo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>Verbo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span>Advérbio
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span>Sufixo Pronominal
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Partícula / Pronome
+              </span>
+            </div>
+          </div>
+
+          <!-- Painel Dinâmico de Análise -->
+          <div
+            id="sentence-analysis-panel"
+            class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-5 md:p-6 min-h-[220px] flex flex-col justify-center transition-all"
+          >
+            <!-- Conteúdo dinâmico (Visão Global ou Dissecação Anatômica) -->
+          </div>
+        </div>
+
+        <!-- Rodapé com Dicas e Atalhos -->
+        <div class="px-6 py-3 border-t border-slate-800/80 bg-slate-900/60 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
+          <div class="flex items-center gap-2">
+            <span>💡</span>
+            <span>Passe o mouse ou toque para dissecar • Clique para fixar/desafixar</span>
+          </div>
+          <div class="font-mono text-[11px] text-slate-500 flex items-center gap-3">
+            <span>⌨️ Setas ◀ / ▶ navegam</span>
+            <span>•</span>
+            <span>Esc fecha</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Módulos e Scripts da Aplicação -->
+    <script src="data/data-bundle.js"></script>
+    <script src="js/data-loader.js"></script>
+    <script src="js/modules/evaluation.js"></script>
+    <script src="js/modules/state.js"></script>
+    <script src="js/modules/alphabet.js"></script>
+    <script src="js/modules/srs.js"></script>
+    <script src="js/modules/survival.js"></script>
+    <script src="js/modules/assessment.js"></script>
+    <script src="js/modules/paradigms.js"></script>
+    <script src="js/modules/sentence-analysis.js"></script>
+    <script src="js/modules/assimilation.js"></script>
+    <script src="js/modules/mastery-path.js"></script>
+    <script src="js/modules/morph-drill.js"></script>
+    <script src="js/modules/ui.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

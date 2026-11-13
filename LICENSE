@@ -1,0 +1,226 @@
+LICENÇA DE SOFTWARE PROPRIETÁRIO — GAMIDA
+Versão 1.1 da licença — novembro de 2026
+
+Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados.
+
+ESTE NÃO É UM SOFTWARE LIVRE NEM DE CÓDIGO ABERTO. O fato de o código-fonte
+estar visível em um repositório público não concede a ninguém o direito de
+copiá-lo, modificá-lo, redistribuí-lo ou explorá-lo.
+
+Ao acessar, copiar, instalar ou usar o Software, você declara ter lido e
+aceito esta licença. Se não concordar com ela, não use o Software.
+
+
+1. DEFINIÇÕES
+
+1.1. "Titular": Felipe Pereira Medeiros, autor e único titular dos direitos
+     sobre o Software.
+
+1.2. "Software": o Gamida, em qualquer versão, no todo ou em parte,
+     incluindo:
+     a) código-fonte e código-objeto;
+     b) interface, layout, identidade visual, ícones e nome;
+     c) o Conteúdo, definido abaixo;
+     d) documentação, testes e scripts de apoio.
+
+1.3. "Conteúdo": os textos, dicas de estudo, explicações, análises
+     morfológicas e sintáticas, traduções, a seleção e a organização do
+     vocabulário e das frases, e a estrutura dos exercícios e das lições
+     que acompanham o Software, inclusive na forma de arquivos de dados.
+
+1.4. "Você": qualquer pessoa física ou jurídica que acesse ou use o
+     Software.
+
+
+2. TITULARIDADE E PROTEÇÃO LEGAL
+
+2.1. O Software é obra intelectual protegida pela Lei nº 9.609/1998 (Lei do
+     Software), pela Lei nº 9.610/1998 (Lei de Direitos Autorais) e pelos
+     tratados internacionais de que o Brasil é parte, entre eles a Convenção
+     de Berna e o Acordo TRIPS.
+
+2.2. O Conteúdo é protegido também como compilação e base de dados, pela
+     seleção, organização e disposição de seus elementos (art. 7º, XIII, da
+     Lei nº 9.610/1998).
+
+2.3. A proteção independe de registro (art. 2º, § 3º, da Lei nº 9.609/1998).
+
+2.4. O Software é licenciado, não vendido. Todos os direitos não concedidos
+     expressamente nesta licença ficam reservados ao Titular. Nenhuma
+     licença decorre de silêncio, tolerância, costume ou interpretação
+     extensiva.
+
+
+3. USO PERMITIDO
+
+3.1. Você pode, gratuitamente e sem autorização prévia:
+     a) usar o Software, tal como disponibilizado pelo Titular, para estudo
+        pessoal e não comercial de idiomas bíblicos;
+     b) manter no seu aparelho as cópias temporárias ou em cache que o
+        navegador cria para esse uso;
+     c) exportar e guardar os seus próprios dados de progresso;
+     d) visualizar o código-fonte no repositório oficial.
+
+3.2. Repositório público. Se o Software estiver em um repositório público,
+     os Termos de Serviço da plataforma podem permitir que outros usuários o
+     visualizem e criem cópias ("forks") dentro da própria plataforma. Essa
+     permissão vem da plataforma, limita-se ao que ela exige e não dá
+     direito de usar, executar fora dela, modificar, publicar, hospedar ou
+     distribuir o Software.
+
+
+4. USO PROIBIDO
+
+Sem autorização prévia e por escrito do Titular, é proibido, no todo ou em
+parte, por qualquer meio:
+
+     a) copiar, reproduzir, distribuir, publicar, espelhar, hospedar ou
+        disponibilizar o Software a terceiros;
+     b) modificar, adaptar, traduzir, portar ou criar obras derivadas;
+     c) vender, alugar, sublicenciar, ceder, oferecer como serviço ou
+        explorar o Software comercialmente, de forma direta ou indireta,
+        inclusive com publicidade, assinatura ou cobrança de acesso;
+     d) usar o Software em cursos, escolas, igrejas, seminários ou outras
+        instituições como material ou plataforma de ensino oferecida a
+        terceiros;
+     e) incorporar o Software, seu código ou seu Conteúdo a outro produto,
+        site, aplicativo, curso, apostila ou publicação;
+     f) extrair ou reutilizar o Conteúdo de forma sistemática, inclusive por
+        raspagem de dados ("scraping") ou cópia dos arquivos de dados;
+     g) usar o Software, seu código ou seu Conteúdo para treinar, ajustar,
+        avaliar ou alimentar sistemas de inteligência artificial ou de
+        aprendizado de máquina;
+     h) desenvolver, com base no Software, produto ou serviço concorrente;
+     i) descompilar ou fazer engenharia reversa, salvo nos limites em que a
+        lei o permita de forma inafastável;
+     j) remover, ocultar ou alterar avisos de autoria, de direitos autorais
+        ou esta licença;
+     k) usar o nome "Gamida", a identidade visual do Software ou o nome do
+        Titular de modo a sugerir autoria, vínculo ou endosso;
+     l) apresentar o Software, ou parte dele, como obra própria.
+
+
+5. LICENCIAMENTO COMERCIAL E INSTITUCIONAL
+
+Usos não previstos na cláusula 3, inclusive os comerciais e os
+institucionais, dependem de licença específica, concedida por escrito pelo
+Titular nas condições que ele definir. Os pedidos devem ser feitos pelo
+contato indicado na cláusula 14.
+
+
+6. DIREITOS MORAIS
+
+O Titular conserva o direito de reivindicar a autoria do Software e de se
+opor a alterações não autorizadas que o prejudiquem (art. 2º, § 1º, da Lei
+nº 9.609/1998). Toda menção ao Software deve identificar o Titular como
+autor.
+
+
+7. COMPONENTES DE TERCEIROS
+
+7.1. Esta licença não alcança os componentes de terceiros distribuídos com
+     o Software, que seguem regidos pelas respectivas licenças:
+     a) as fontes tipográficas em "fonts/" (SBL Hebrew, Ezra SIL, Rubik,
+        Noto Sans Hebrew e Gentium Plus);
+     b) as regras de estilo geradas pelo Tailwind CSS (Licença MIT).
+
+7.2. As gramáticas citadas como referência de estudo pertencem aos
+     respectivos autores e editoras; a citação não indica vínculo nem
+     endosso. Os textos bíblicos nos idiomas originais são de domínio
+     público.
+
+
+8. VERSÕES ANTERIORES
+
+Versões do Software publicadas pelo Titular sob outra licença continuam
+regidas, apenas quanto àquelas versões, pela licença sob a qual foram
+publicadas. Esta licença se aplica a esta versão e a todas as posteriores,
+e nenhuma licença anterior se estende a elas.
+
+
+9. CONTRIBUIÇÕES
+
+Sugestões, correções ou trechos de código enviados ao Titular poderão ser
+usados, alterados e licenciados por ele livremente, sem remuneração e sem
+que disso decorra qualquer direito do remetente sobre o Software. Quem
+envia a contribuição declara ter o direito de fazê-lo.
+
+
+10. AUSÊNCIA DE GARANTIA E LIMITAÇÃO DE RESPONSABILIDADE
+
+O Software é fornecido gratuitamente e "no estado em que se encontra", sem
+garantia de qualquer espécie, expressa ou implícita, inclusive de
+funcionamento ininterrupto, de exatidão do Conteúdo ou de adequação a um
+fim específico. Na máxima extensão permitida pela lei, o Titular não
+responde por danos decorrentes do uso ou da impossibilidade de uso do
+Software, inclusive perda de dados de progresso.
+
+
+11. VIOLAÇÃO E SANÇÕES
+
+11.1. O descumprimento de qualquer cláusula encerra de imediato e de pleno
+      direito a permissão de uso. Quem a descumprir deve cessar o uso e
+      destruir todas as cópias em seu poder.
+
+11.2. A violação sujeita o infrator, sem prejuízo de outras medidas:
+      a) a ação de abstenção de prática do ato, com pena pecuniária diária
+         em caso de descumprimento, e a medidas liminares de busca e
+         apreensão (arts. 13 e 14 da Lei nº 9.609/1998);
+      b) à indenização por perdas e danos, materiais e morais, e às sanções
+         civis dos arts. 102 a 104 da Lei nº 9.610/1998;
+      c) às sanções penais do art. 12 da Lei nº 9.609/1998 e do art. 184 do
+         Código Penal.
+
+11.3. O Titular poderá ainda pedir a remoção do conteúdo infrator às
+      plataformas em que ele estiver hospedado.
+
+
+12. DISPOSIÇÕES GERAIS
+
+12.1. A tolerância do Titular com qualquer descumprimento não importa
+      renúncia, novação ou alteração desta licença.
+
+12.2. Se uma cláusula for considerada inválida, as demais permanecem em
+      vigor, e a cláusula inválida será aplicada na maior medida que a lei
+      permitir.
+
+12.3. O Titular pode alterar esta licença em versões futuras do Software. A
+      versão da licença que acompanha cada versão do Software é a que a
+      rege.
+
+12.4. Esta licença é o acordo integral sobre o uso do Software e só pode
+      ser ampliada por documento escrito e assinado pelo Titular.
+
+
+13. LEI APLICÁVEL E FORO
+
+Esta licença é regida pelas leis da República Federativa do Brasil. Fica
+eleito o foro da comarca do domicílio do Titular para resolver qualquer
+questão dela decorrente, ressalvados os casos em que a lei imponha outro
+foro de forma inafastável.
+
+
+14. CONTATO
+
+Pedidos de autorização e de licenciamento devem ser dirigidos ao Titular
+pelo repositório oficial:
+https://github.com/FelipePereiraMedeiros/gamida
+
+
+------------------------------------------------------------------------
+ENGLISH NOTICE (courtesy summary — the Portuguese text above prevails)
+
+Gamida is proprietary software. Copyright (c) 2026 Felipe Pereira Medeiros.
+All rights reserved. This is NOT free or open-source software. The source
+code being publicly visible grants no license to it.
+
+You may use the software, as made available by the copyright holder, for
+personal, non-commercial study, and you may view the source code in the
+official repository. Without the copyright holder's prior written
+permission you may not copy, modify, redistribute, host, sell, sublicense,
+use it commercially or institutionally, incorporate it into other products,
+extract its content, or use it to train or evaluate artificial-intelligence
+systems. Earlier versions released under a different license remain under
+that license for those versions only. The software is provided "as is",
+without warranty of any kind. Brazilian law governs this license.
+------------------------------------------------------------------------

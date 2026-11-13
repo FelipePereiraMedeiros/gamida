@@ -1,0 +1,674 @@
+/*! Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário: uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE. */
+/**
+ * ==========================================================================
+ * Gamida - Gerenciamento Centralizado de Estado da Aplicação
+ * ==========================================================================
+ */
+
+(function () {
+const APP_VERSION =
+  (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
+  "2.22.4";
+
+/**
+ * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
+ * @param {string} str
+ * @returns {string}
+ */
+function escapeHTML(str) {
+  if (str === null || str === undefined) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+const AppState = (typeof window !== "undefined" && window.AppState) || {
+  language:
+    typeof localStorage !== "undefined"
+      ? localStorage.getItem("gamida_language") || "hebrew"
+      : "hebrew", // 'hebrew' ou 'greek'
+  chapters: [],
+  currentChapter: null,
+  currentQuestionIndex: 0,
+  currentQuestion: null,
+  exerciseMode: "typing", // 'typing', 'choice', 'sentences'
+  alphabetSubmode: "order", // 'order', 'impostors', 'shapes', 'classic'
+  score: 0,
+  streak: 0,
+  totalAnswered: 0,
+  correctCount: 0,
+  roundMisses: [],
+  previousRound: null,
+  isPracticeAnswered: false,
+  distractorCache: { words: [], sentences: [] },
+  srs: {},
+  mastery: {},
+  survivalHighScore: 0,
+  currentTab: "practice",
+  isPracticeCumulative: false,
+  practiceCategory: "all",
+  isVocabCumulative: false,
+  vocabCategory: "all",
+  selectedChapterIds: [],
+  chapterOrder: "asc", // 'asc' (Primeira ➔ Última) ou 'desc' (Última ➔ Primeira)
+};
+
+const SimConfig = {
+  amount: 25,
+  time: 0,
+  focus: "mixed", // 'mixed', 'words', 'sentences'
+};
+
+/**
+ * Extrai o termo ou glifo de um item linguístico (suporta hebraico e grego)
+ * @param {Object} item
+ * @returns {string}
+ */
+function getTerm(item) {
+  if (!item) return "";
+  return item.term || item.hebrew || "";
+}
+
+/**
+ * Valida a integridade estrutural de um capítulo
+ * @param {Object} chapter
+ * @returns {boolean}
+ */
+function isValidChapter(chapter) {
+  if (!chapter || typeof chapter !== "object") return false;
+  if (typeof chapter.id !== "string" || !chapter.id.trim()) return false;
+  if (typeof chapter.title !== "string" || !chapter.title.trim()) return false;
+  const collections = [chapter.items, chapter.sentences].filter(Array.isArray);
+  if (collections.length === 0) return false;
+  const allItems = collections.flat();
+  if (allItems.length === 0) return false; // Impede capítulos vazios sem vocabulário
+  return allItems.every((item) => {
+    const term = item && getTerm(item);
+    return (
+      item &&
+      typeof term === "string" &&
+      term.trim() &&
+      Array.isArray(item.translations) &&
+      item.translations.length > 0 &&
+      item.translations.every((translation) => typeof translation === "string")
+    );
+  });
+}
+
+/**
+ * Valida se todos os capítulos de uma lista possuem IDs únicos
+ * @param {Array} chapters
+ * @returns {boolean}
+ */
+function hasUniqueChapterIds(chapters) {
+  if (!Array.isArray(chapters)) return false;
+  const ids = chapters.map((chapter) => chapter && chapter.id);
+  return ids.every((id, index) => id && ids.indexOf(id) === index);
+}
+
+/**
+ * Verifica se um capítulo corresponde à Lição do Alfabeto
+ * @param {Object|string} chapter
+ * @returns {boolean}
+ */
+function isAlphabetChapter(chapter) {
+  if (!chapter) return false;
+  if (typeof chapter === "string") {
+    return chapter === "kelley_01" || chapter === "bergmann_01";
+  }
+  return (
+    chapter.id === "kelley_01" ||
+    chapter.id === "bergmann_01" ||
+    (typeof chapter.title === "string" && chapter.title.toLowerCase().includes("alfabeto"))
+  );
+}
+
+/**
+ * Embaralha um array de forma estatisticamente uniforme via algoritmo Fisher-Yates
+ * @param {Array} arr
+ * @returns {Array} Novo array embaralhado
+ */
+function shuffleArray(arr) {
+  if (!Array.isArray(arr)) return [];
+  const newArr = [...arr];
+  for (let i = newArr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+  }
+  return newArr;
+}
+
+/**
+ * Alterna a visibilidade de um elemento do DOM de forma defensiva
+ * @param {string} id
+ * @param {boolean} isVisible
+ * @returns {HTMLElement|null}
+ */
+function safeToggle(id, isVisible) {
+  if (typeof document === "undefined") return null;
+  const el = document.getElementById(id);
+  if (!el) return null;
+  if (isVisible) {
+    el.classList.remove("hidden");
+  } else {
+    el.classList.add("hidden");
+  }
+  return el;
+}
+
+/**
+ * Exibe alertas no navegador ou log de aviso defensivo
+ * @param {string} msg
+ */
+function safeAlert(msg) {
+  if (typeof window !== "undefined" && typeof window.alert === "function") {
+    window.alert(msg);
+  } else if (typeof alert === "function") {
+    alert(msg);
+  } else {
+    console.warn("[Gamida Alert]:", msg);
+  }
+}
+
+/**
+ * Salva a coleção de capítulos do idioma atual no localStorage
+ */
+function saveChaptersToStorage() {
+  if (typeof localStorage === "undefined" && typeof DataLoader === "undefined") return;
+  try {
+    if (typeof DataLoader !== "undefined" && typeof DataLoader.saveChapters === "function") {
+      DataLoader.saveChapters(AppState.language, AppState.chapters);
+    } else if (typeof localStorage !== "undefined") {
+      localStorage.setItem(
+        `gamida_${AppState.language}_chapters`,
+        JSON.stringify(AppState.chapters),
+      );
+      localStorage.setItem(
+        `gamida_data_version_${AppState.language}`,
+        APP_VERSION,
+      );
+    }
+  } catch (err) {
+    console.warn("Aviso ao salvar capítulos no storage:", err);
+  }
+}
+
+/**
+ * Constrói o cache de distratores para as questões de múltipla escolha
+ */
+function buildDistractorCache() {
+  let w = [], s = [];
+  AppState.chapters.forEach((c) => {
+    (c.items || []).forEach((i) => w.push(...(i.translations || [])));
+    (c.sentences || []).forEach((st) => s.push(...(st.translations || [])));
+  });
+  AppState.distractorCache.words = [...new Set(w)];
+  AppState.distractorCache.sentences = [...new Set(s)];
+}
+
+/**
+ * Resume a rodada atual; a comparação só existe entre rodadas do mesmo tamanho
+ * @param {Object} [state]
+ * @returns {{ total: number, correct: number, wrong: number, accuracy: number, delta: number|null, misses: Array<Object> }}
+ */
+function getRoundSummary(state = AppState) {
+  const total = state.totalAnswered || 0;
+  const correct = state.correctCount || 0;
+  const previous = state.previousRound;
+  return {
+    total,
+    correct,
+    wrong: total - correct,
+    accuracy: total > 0 ? Math.round((correct / total) * 100) : 0,
+    delta: previous && previous.total === total ? correct - previous.correct : null,
+    misses: [...(state.roundMisses || [])],
+  };
+}
+
+/**
+ * Guarda o resultado da rodada para comparação e zera os contadores de rodada
+ * @param {Object} [state]
+ */
+function startNewRound(state = AppState) {
+  state.previousRound = { total: state.totalAnswered || 0, correct: state.correctCount || 0 };
+  state.totalAnswered = 0;
+  state.correctCount = 0;
+  state.roundMisses = [];
+}
+
+/**
+ * Zera as estatísticas da sessão atual
+ */
+function resetStats() {
+  AppState.score = 0;
+  AppState.streak = 0;
+  AppState.totalAnswered = 0;
+  AppState.correctCount = 0;
+  AppState.roundMisses = [];
+  AppState.previousRound = null;
+  AppState.isPracticeAnswered = false;
+  updateStatsUI();
+
+  if (typeof document !== "undefined") {
+    const alphaScore = document.getElementById("alphabet-score-indicator");
+    const alphaProgress = document.getElementById("alphabet-progress-indicator");
+    const alphaCombo = document.getElementById("alphabet-combo-badge");
+    if (alphaScore) alphaScore.textContent = "⭐ Pontos: 0";
+    if (alphaProgress) alphaProgress.textContent = "Streak: 0";
+    if (alphaCombo) alphaCombo.classList.add("hidden");
+  }
+}
+
+/**
+ * Atualiza os indicadores de pontuação, sequência e precisão na barra superior
+ */
+function updateStatsUI() {
+  if (typeof document === "undefined") return;
+  const streakEl = document.getElementById("stat-streak");
+  const scoreEl = document.getElementById("stat-score");
+  const accEl = document.getElementById("stat-accuracy");
+
+  if (streakEl) streakEl.textContent = AppState.streak;
+  if (scoreEl) scoreEl.textContent = AppState.score;
+  if (accEl) {
+    const acc =
+      AppState.totalAnswered > 0
+        ? Math.round((AppState.correctCount / AppState.totalAnswered) * 100)
+        : 100;
+    accEl.textContent = `${acc}%`;
+  }
+}
+
+const WORD_CATEGORIES = [
+  { id: "substantivo", label: "Substantivos", match: /substantivo/i },
+  { id: "verbo", label: "Verbos", match: /verbo/i },
+  { id: "adjetivo", label: "Adjetivos", match: /adjetivo/i },
+  { id: "preposicao", label: "Preposições", match: /preposi[cç][aã]o/i },
+  { id: "pronome", label: "Pronomes", match: /pronome/i },
+  { id: "adverbio", label: "Advérbios", match: /adv[eé]rbio/i },
+  { id: "conjuncao", label: "Conjunções", match: /conjun[cç][aã]o/i },
+  { id: "artigo", label: "Artigos", match: /artigo/i },
+  { id: "particula", label: "Partículas", match: /part[ií]cula/i },
+  { id: "numeral", label: "Numerais", match: /numeral/i },
+  { id: "nome_proprio", label: "Nomes Próprios", match: /nome pr[oó]prio|nome divino/i },
+  { id: "interjeicao", label: "Interjeições", match: /interjei[cç][aã]o/i },
+];
+
+/**
+ * Verifica se um item de vocabulário pertence à categoria gramatical especificada
+ * @param {Object} item
+ * @param {string} categoryId
+ * @returns {boolean}
+ */
+function matchItemCategory(item, categoryId) {
+  if (!categoryId || categoryId === "all") return true;
+  if (categoryId === "favorites") return !!item?.favorite;
+  const cat = WORD_CATEGORIES.find((c) => c.id === categoryId);
+  if (!cat) return true;
+  return cat.match.test(item?.type || "");
+}
+
+/**
+ * Retorna a lista de capítulos selecionados para prática ou dicionário,
+ * respeitando a seleção específica (selectedChapterIds) e a ordenação ('asc' ou 'desc').
+ * @param {Object} [state]
+ * @param {Object} [options]
+ * @returns {Array<Object>}
+ */
+function getSelectedChapters(state = AppState, options = {}) {
+  if (!state) return [];
+  const chapters = Array.isArray(state.chapters) ? state.chapters : [];
+  const forVocab = !!options.forVocab;
+  const order = options.order || state.chapterOrder || "asc";
+
+  let result = [];
+  const isCumulFlag = forVocab ? !!state.isVocabCumulative : !!state.isPracticeCumulative;
+  const hasCustomSelection =
+    Array.isArray(state.selectedChapterIds) &&
+    state.selectedChapterIds.length > 0 &&
+    (!state._syncedChapterId || !state.currentChapter || state._syncedChapterId === state.currentChapter.id) &&
+    (forVocab
+      ? (state._syncedVocabCumulative === undefined || state._syncedVocabCumulative === isCumulFlag)
+      : (state._syncedCumulative === undefined || state._syncedCumulative === isCumulFlag));
+
+  if (hasCustomSelection && chapters.length > 0) {
+    const selectedSet = new Set(state.selectedChapterIds);
+    result = chapters.filter((c) => c && selectedSet.has(c.id));
+    if (result.length > 1) {
+      result = result.filter((c) => !isAlphabetChapter(c));
+    }
+  }
+
+  if (result.length === 0) {
+    const activeChapterId = state.currentChapter?.id;
+    const activeIdx = chapters.findIndex((c) => c && c.id === activeChapterId);
+
+    if (isCumulFlag && chapters.length > 0) {
+      let cumulativeChapters = chapters.slice(
+        0,
+        activeIdx >= 0 ? activeIdx + 1 : chapters.length,
+      );
+      if (activeIdx > 0) {
+        cumulativeChapters = cumulativeChapters.filter((c) => !isAlphabetChapter(c));
+      }
+      result = cumulativeChapters;
+    } else if (state.currentChapter) {
+      result = [state.currentChapter];
+    } else if (chapters.length > 0) {
+      result = [chapters[0]];
+    }
+  }
+
+  if (order === "desc" && result.length > 1) {
+    result = [...result].reverse();
+  }
+
+  return result;
+}
+
+/**
+ * Define explicitamente os IDs de capítulos selecionados para prática e persiste no localStorage
+ * @param {Array<string>} chapterIds
+ * @param {Object} [state]
+ * @returns {Array<Object>}
+ */
+function setSelectedChapters(chapterIds, state = AppState) {
+  if (!state) return [];
+  const chapters = Array.isArray(state.chapters) ? state.chapters : [];
+  const validIds = Array.isArray(chapterIds)
+    ? chapterIds.filter((id) => chapters.some((c) => c && c.id === id))
+    : [];
+
+  let finalIds = [...new Set(validIds)];
+  if (finalIds.length > 1) {
+    const nonAlpha = finalIds.filter((id) => {
+      const ch = chapters.find((c) => c && c.id === id);
+      return ch && !isAlphabetChapter(ch);
+    });
+    if (nonAlpha.length > 0) {
+      finalIds = nonAlpha;
+    }
+  }
+
+  if (finalIds.length === 0) {
+    if (state.currentChapter && state.currentChapter.id) {
+      finalIds = [state.currentChapter.id];
+    } else if (chapters[0] && chapters[0].id) {
+      finalIds = [chapters[0].id];
+    }
+  }
+
+  // Ordena os IDs na ordem canônica dos capítulos
+  const canonicalOrderIds = chapters
+    .filter((c) => c && finalIds.includes(c.id))
+    .map((c) => c.id);
+
+  state.selectedChapterIds = canonicalOrderIds;
+
+  // Atualiza currentChapter para o último capítulo selecionado na ordem canônica
+  if (canonicalOrderIds.length > 0) {
+    const primaryId = canonicalOrderIds[canonicalOrderIds.length - 1];
+    const found = chapters.find((c) => c && c.id === primaryId);
+    if (found) {
+      state.currentChapter = found;
+      state.activeChapterId = found.id;
+    }
+  }
+
+  state._syncedChapterId = state.currentChapter?.id || null;
+  state._syncedCumulative = !!state.isPracticeCumulative;
+  state._syncedVocabCumulative = !!state.isVocabCumulative;
+
+  if (typeof localStorage !== "undefined" && state.language) {
+    try {
+      localStorage.setItem(
+        `gamida_selectedChaps_${state.language}`,
+        JSON.stringify(state.selectedChapterIds),
+      );
+      if (state.currentChapter?.id) {
+        localStorage.setItem(`gamida_lastChap_${state.language}`, state.currentChapter.id);
+      }
+    } catch (err) {
+      console.warn("Aviso ao salvar seleção de capítulos no localStorage:", err);
+    }
+  }
+
+  return getSelectedChapters(state);
+}
+
+/**
+ * Alterna (marca/desmarca) um capítulo específico na seleção de prática
+ * @param {string} chapterId
+ * @param {Object} [state]
+ * @returns {Array<Object>}
+ */
+function toggleChapterSelection(chapterId, state = AppState) {
+  if (!state || !chapterId) return getSelectedChapters(state);
+  const chapters = Array.isArray(state.chapters) ? state.chapters : [];
+  const targetChap = chapters.find((c) => c && c.id === chapterId);
+  if (!targetChap) return getSelectedChapters(state);
+
+  // Se clicou no capítulo do Alfabeto (Lição 1), seleciona exclusivamente ele
+  if (isAlphabetChapter(targetChap)) {
+    state.isPracticeCumulative = false;
+    state.isVocabCumulative = false;
+    return setSelectedChapters([chapterId], state);
+  }
+
+  const currentSelected = getSelectedChapters(state).map((c) => c.id);
+  let nextIds = currentSelected.filter((id) => {
+    const ch = chapters.find((c) => c && c.id === id);
+    return ch && !isAlphabetChapter(ch);
+  });
+
+  if (nextIds.includes(chapterId)) {
+    if (nextIds.length > 1) {
+      nextIds = nextIds.filter((id) => id !== chapterId);
+    }
+  } else {
+    nextIds.push(chapterId);
+  }
+
+  state.isPracticeCumulative = nextIds.length > 1;
+  state.isVocabCumulative = nextIds.length > 1;
+  return setSelectedChapters(nextIds, state);
+}
+
+/**
+ * Marca todos os capítulos de vocabulário ou, se já estiverem todos marcados,
+ * desmarca-os mantendo o primeiro, pois a sessão precisa de ao menos um capítulo
+ * @param {Object} [state]
+ * @returns {Array<Object>}
+ */
+function toggleAllChapterSelection(state = AppState) {
+  if (!state) return [];
+  const chapters = Array.isArray(state.chapters) ? state.chapters : [];
+  const vocabIds = chapters.filter((c) => c && !isAlphabetChapter(c)).map((c) => c.id);
+  if (vocabIds.length === 0) return getSelectedChapters(state);
+
+  const selectedIds = new Set(getSelectedChapters(state).map((c) => c.id));
+  const allSelected = vocabIds.every((id) => selectedIds.has(id));
+  const nextIds = allSelected ? [vocabIds[0]] : vocabIds;
+
+  state.isPracticeCumulative = nextIds.length > 1;
+  state.isVocabCumulative = nextIds.length > 1;
+  return setSelectedChapters(nextIds, state);
+}
+
+/**
+ * Define a direção de ordenação dos capítulos ('asc': Primeira ➔ Última, 'desc': Última ➔ Primeira)
+ * @param {'asc'|'desc'} order
+ * @param {Object} [state]
+ * @returns {'asc'|'desc'}
+ */
+function setChapterOrder(order, state = AppState) {
+  if (!state) return "asc";
+  const normalized = order === "desc" ? "desc" : "asc";
+  state.chapterOrder = normalized;
+  if (typeof localStorage !== "undefined" && state.language) {
+    try {
+      localStorage.setItem(`gamida_chapterOrder_${state.language}`, normalized);
+    } catch (err) {
+      console.warn("Aviso ao salvar ordenação de capítulos no localStorage:", err);
+    }
+  }
+  return normalized;
+}
+
+/**
+ * Extrai as categorias disponíveis para a prática com base nos capítulos selecionados
+ * @param {Object} [state]
+ * @returns {{ total: number, categories: Array<{ id: string, label: string, count: number }> }}
+ */
+function getAvailablePracticeCategories(state = AppState) {
+  let pool = [];
+  const selectedChapters = getSelectedChapters(state, { forVocab: false });
+  selectedChapters.forEach((chap) => {
+    (chap?.items || []).forEach((item) => pool.push(item));
+  });
+
+  // Deduplica itens por termo único
+  pool = Array.from(new Map(pool.map((item) => [getTerm(item), item])).values());
+
+  const available = [];
+  WORD_CATEGORIES.forEach((cat) => {
+    const count = pool.filter((item) => cat.match.test(item?.type || "")).length;
+    if (count > 0) {
+      available.push({ ...cat, count });
+    }
+  });
+
+  return { total: pool.length, categories: available };
+}
+
+/**
+ * Extrai as categorias disponíveis para o dicionário com base nos capítulos selecionados
+ * Retorna contagem de palavras, frases, favoritos e categorias gramaticais de palavras
+ * @param {Object} [state]
+ * @returns {{ totalItems: number, totalWords: number, totalSentences: number, totalFavorites: number, categories: Array<{ id: string, label: string, count: number }> }}
+ */
+function getAvailableVocabCategories(state = AppState) {
+  let wordsPool = [];
+  let sentencesPool = [];
+  const selectedChapters = getSelectedChapters(state, { forVocab: true });
+
+  selectedChapters.forEach((chap) => {
+    (chap?.items || []).forEach((item) => wordsPool.push(item));
+    (chap?.sentences || []).forEach((s) => sentencesPool.push(s));
+  });
+
+  // Deduplica palavras por termo único
+  wordsPool = Array.from(new Map(wordsPool.map((item) => [getTerm(item), item])).values());
+  // Deduplica frases por termo único
+  sentencesPool = Array.from(new Map(sentencesPool.map((item) => [getTerm(item), item])).values());
+
+  const categories = [];
+  WORD_CATEGORIES.forEach((cat) => {
+    const count = wordsPool.filter((item) => cat.match.test(item?.type || "")).length;
+    if (count > 0) {
+      categories.push({ ...cat, count });
+    }
+  });
+
+  const totalFavorites = [...wordsPool, ...sentencesPool].filter((item) => !!item?.favorite).length;
+
+  return {
+    totalItems: wordsPool.length + sentencesPool.length,
+    totalWords: wordsPool.length,
+    totalSentences: sentencesPool.length,
+    totalFavorites,
+    categories,
+  };
+}
+
+// Suporte universal (Browser Global / Node CommonJS)
+if (typeof window !== "undefined") {
+  window.APP_VERSION = APP_VERSION;
+  window.escapeHTML = escapeHTML;
+  window.AppState = AppState;
+  window.SimConfig = SimConfig;
+  window.WORD_CATEGORIES = WORD_CATEGORIES;
+  window.matchItemCategory = matchItemCategory;
+  window.getSelectedChapters = getSelectedChapters;
+  window.setSelectedChapters = setSelectedChapters;
+  window.toggleChapterSelection = toggleChapterSelection;
+  window.toggleAllChapterSelection = toggleAllChapterSelection;
+  window.setChapterOrder = setChapterOrder;
+  window.getAvailablePracticeCategories = getAvailablePracticeCategories;
+  window.getAvailableVocabCategories = getAvailableVocabCategories;
+  window.getTerm = getTerm;
+  window.isValidChapter = isValidChapter;
+  window.hasUniqueChapterIds = hasUniqueChapterIds;
+  window.isAlphabetChapter = isAlphabetChapter;
+  window.shuffleArray = shuffleArray;
+  window.safeToggle = safeToggle;
+  window.safeAlert = safeAlert;
+  window.saveChaptersToStorage = saveChaptersToStorage;
+  window.buildDistractorCache = buildDistractorCache;
+  window.resetStats = resetStats;
+  window.getRoundSummary = getRoundSummary;
+  window.startNewRound = startNewRound;
+  window.updateStatsUI = updateStatsUI;
+  window.StateModule = {
+    APP_VERSION,
+    escapeHTML,
+    AppState,
+    SimConfig,
+    WORD_CATEGORIES,
+    matchItemCategory,
+    getSelectedChapters,
+    setSelectedChapters,
+    toggleChapterSelection,
+    toggleAllChapterSelection,
+    setChapterOrder,
+    getAvailablePracticeCategories,
+    getAvailableVocabCategories,
+    getTerm,
+    isValidChapter,
+    hasUniqueChapterIds,
+    isAlphabetChapter,
+    shuffleArray,
+    safeToggle,
+    safeAlert,
+    saveChaptersToStorage,
+    buildDistractorCache,
+    resetStats,
+    getRoundSummary,
+    startNewRound,
+    updateStatsUI,
+  };
+}
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = {
+    APP_VERSION,
+    escapeHTML,
+    AppState,
+    SimConfig,
+    WORD_CATEGORIES,
+    matchItemCategory,
+    getSelectedChapters,
+    setSelectedChapters,
+    toggleChapterSelection,
+    toggleAllChapterSelection,
+    setChapterOrder,
+    getAvailablePracticeCategories,
+    getAvailableVocabCategories,
+    getTerm,
+    isValidChapter,
+    hasUniqueChapterIds,
+    isAlphabetChapter,
+    shuffleArray,
+    safeToggle,
+    safeAlert,
+    saveChaptersToStorage,
+    buildDistractorCache,
+    resetStats,
+    getRoundSummary,
+    startNewRound,
+    updateStatsUI,
+  };
+}
+})();

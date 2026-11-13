@@ -1,0 +1,562 @@
+/*! Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário: uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE. */
+/**
+ * ==========================================================================
+ * Gamida - Sistema de Repetição Espaçada (SRS) & Anki Flashcards
+ * ==========================================================================
+ */
+
+(function () {
+const _stateModule = (typeof require !== "undefined") ? require("./state.js") : (typeof window !== "undefined" ? window : {});
+const AppState = (typeof window !== "undefined" && window.AppState) || _stateModule.AppState;
+const getTerm = (typeof window !== "undefined" && window.getTerm) || _stateModule.getTerm;
+const shuffleArray = (typeof window !== "undefined" && window.shuffleArray) || _stateModule.shuffleArray;
+
+let ankiQueue = [];
+let ankiCurrentCard = null;
+let ankiStats = { hard: 0, good: 0, easy: 0 };
+let ankiTotalCards = 0;
+let ankiMode = "normal";
+
+// Acertos seguidos em Digitação ou Frases para um termo ser considerado dominado
+const MASTERY_GOAL = 3;
+
+/**
+ * Carrega os registros de SRS e pontuação máxima do localStorage
+ */
+function loadSRS() {
+  if (typeof localStorage === "undefined") return;
+  const stored = localStorage.getItem(`gamida_${AppState.language}_srs`);
+  if (stored) {
+    try {
+      const parsed = JSON.parse(stored);
+      AppState.srs = {};
+      if (parsed && typeof parsed === "object") {
+        for (const [k, v] of Object.entries(parsed)) {
+          const normKey = (k || "").trim().normalize("NFC");
+          AppState.srs[normKey] = v;
+        }
+      }
+    } catch (e) {
+      AppState.srs = {};
+    }
+  } else {
+    AppState.srs = {};
+  }
+
+  AppState.mastery = {};
+  try {
+    const parsedMastery = JSON.parse(localStorage.getItem(`gamida_${AppState.language}_mastery`) || "{}");
+    if (parsedMastery && typeof parsedMastery === "object") AppState.mastery = parsedMastery;
+  } catch (e) {
+    AppState.mastery = {};
+  }
+
+  const high = localStorage.getItem(`gamida_${AppState.language}_survival_high`);
+  const parsedHigh = high ? parseInt(high, 10) : 0;
+  AppState.survivalHighScore = Number.isFinite(parsedHigh) ? parsedHigh : 0;
+  if (typeof document !== "undefined") {
+    const cardHigh = document.getElementById("surv-card-high");
+    if (cardHigh) cardHigh.textContent = AppState.survivalHighScore || 0;
+    const topHigh = document.getElementById("survival-top-high");
+    if (topHigh) topHigh.textContent = AppState.survivalHighScore || 0;
+  }
+}
+
+/**
+ * Salva os registros de SRS no localStorage
+ */
+function saveSRS() {
+  if (typeof localStorage === "undefined") return;
+  try {
+    localStorage.setItem(
+      `gamida_${AppState.language}_srs`,
+      JSON.stringify(AppState.srs),
+    );
+  } catch (err) {
+    console.warn("Aviso ao salvar SRS no localStorage (cota excedida ou storage inacessível):", err);
+  }
+}
+
+/**
+ * Salva o domínio à parte do SRS: um registro de SRS tiraria o termo dos cartões novos da revisão
+ */
+function saveMastery() {
+  if (typeof localStorage === "undefined") return;
+  try {
+    localStorage.setItem(`gamida_${AppState.language}_mastery`, JSON.stringify(AppState.mastery));
+  } catch (err) {
+    console.warn("Aviso ao salvar domínio no localStorage:", err);
+  }
+}
+
+/**
+ * Retorna a chave estável normalizada (Unicode NFC) para indexação no SRS
+ * @param {string|Object} termOrItem
+ * @returns {string}
+ */
+function getSRSKey(termOrItem) {
+  if (!termOrItem) return "";
+  const raw = typeof termOrItem === "string" ? termOrItem : getTerm(termOrItem);
+  return (raw || "").trim().normalize("NFC");
+}
+
+/**
+ * Registra uma falha de retenção no termo e agenda revisão prioritária
+ * @param {string|Object} termStr
+ */
+function recordSRSError(termStr) {
+  if (!termStr) return;
+  const key = getSRSKey(termStr);
+  if (!key) return;
+  if (!AppState.srs[key]) {
+    AppState.srs[key] = {
+      interval: 0,
+      ef: 2.5,
+      nextReview: 0,
+      fails: 0,
+    };
+  }
+  AppState.srs[key].fails = (AppState.srs[key].fails || 0) + 1;
+  AppState.srs[key].pendingError = true;
+  AppState.srs[key].nextReview = Date.now();
+  saveSRS();
+  clearMastery(key);
+  refreshReviewBadge();
+}
+
+/**
+ * Soma um acerto que conta para o domínio do termo
+ * @param {Object} item
+ * @returns {boolean} true se o termo acabou de ser dominado
+ */
+function recordMasteryHit(item) {
+  const key = getSRSKey(item);
+  if (!key) return false;
+  const before = AppState.mastery[key] || 0;
+  AppState.mastery[key] = Math.min(before + 1, MASTERY_GOAL);
+  saveMastery();
+  refreshReviewBadge();
+  return before < MASTERY_GOAL && AppState.mastery[key] === MASTERY_GOAL;
+}
+
+function clearMastery(key) {
+  if (!AppState.mastery[key]) return;
+  delete AppState.mastery[key];
+  saveMastery();
+}
+
+function isItemMastered(item) {
+  return (AppState.mastery[getSRSKey(item)] || 0) >= MASTERY_GOAL;
+}
+
+/**
+ * Conta termos dominados e na lista de erros, sem repetir termos entre capítulos
+ * @param {Array<Object>} chapters
+ * @returns {{ total: number, mastered: number, review: number }}
+ */
+function getMasterySummary(chapters) {
+  const terms = new Map();
+  (chapters || []).forEach((chap) => {
+    if (!chap) return;
+    [...(chap.items || []), ...(chap.sentences || [])].forEach((item) => {
+      const key = getSRSKey(item);
+      if (key && !terms.has(key)) terms.set(key, item);
+    });
+  });
+  const items = Array.from(terms.values());
+  return {
+    total: items.length,
+    mastered: items.filter(isItemMastered).length,
+    review: items.filter(isItemInErrorList).length,
+  };
+}
+
+function refreshReviewBadge() {
+  if (typeof window !== "undefined" && typeof window.updateReviewDueBadge === "function") {
+    window.updateReviewDueBadge();
+  }
+}
+
+/** Registros antigos não têm pendingError: quem já errou conta como pendente até revisar */
+function isPendingError(record) {
+  return !!record && (record.fails || 0) > 0 && record.pendingError !== false;
+}
+
+/** Indica se o termo está na lista de erros */
+function isItemInErrorList(item) {
+  const key = getSRSKey(item);
+  return !!key && isPendingError(AppState.srs[key] || AppState.srs[getTerm(item)]);
+}
+
+/**
+ * Tira o termo da lista de erros sem apagar o histórico de falhas
+ * @param {Object} item
+ * @returns {boolean} true se o termo estava na lista
+ */
+function removeFromErrorList(item) {
+  if (!isItemInErrorList(item)) return false;
+  const key = getSRSKey(item);
+  (AppState.srs[key] || AppState.srs[getTerm(item)]).pendingError = false;
+  saveSRS();
+  refreshReviewBadge();
+  return true;
+}
+
+/**
+ * Reúne os termos errados de todos os capítulos do idioma, ainda não revisados com sucesso
+ * @returns {Array<Object>}
+ */
+function getErrorCards() {
+  const cards = new Map();
+  (AppState.chapters || []).forEach((chap) => {
+    const collect = (item, kind) => {
+      const key = getSRSKey(item);
+      if (!key || cards.has(key)) return;
+      if (isPendingError(AppState.srs[key] || AppState.srs[getTerm(item)])) {
+        cards.set(key, { ...item, chapterId: chap.id, chapterTitle: chap.title, kind });
+      }
+    };
+    (chap.items || []).forEach((item) => collect(item, "word"));
+    (chap.sentences || []).forEach((item) => collect(item, "sentence"));
+  });
+  return Array.from(cards.values());
+}
+
+const safeToggle = (typeof window !== "undefined" && window.safeToggle) || _stateModule.safeToggle || function safeToggle(id, isVisible) {
+  if (typeof document === "undefined") return null;
+  const el = document.getElementById(id);
+  if (!el) return null;
+  if (isVisible) el.classList.remove("hidden"); else el.classList.add("hidden");
+  return el;
+};
+
+const safeAlert = (typeof window !== "undefined" && window.safeAlert) || _stateModule.safeAlert || function safeAlert(msg) {
+  if (typeof window !== "undefined" && typeof window.alert === "function") window.alert(msg);
+  else if (typeof alert === "function") alert(msg);
+  else console.warn("[Gamida Alert]:", msg);
+};
+
+function openAnkiSession(queue) {
+  ankiQueue = queue;
+  ankiTotalCards = ankiQueue.length;
+  ankiStats = { hard: 0, good: 0, easy: 0 };
+
+  if (typeof document !== "undefined") {
+    safeToggle("assess-dashboard", false);
+    safeToggle("anki-active", true);
+  }
+
+  renderAnkiCard();
+}
+
+/**
+ * Inicia a revisão de Flashcards (Anki)
+ * @param {'normal'|'errors'} [mode] normal: capítulos ativos; errors: termos errados pendentes
+ */
+function startAnki(mode = "normal") {
+  ankiMode = mode === "errors" ? "errors" : "normal";
+
+  if (ankiMode === "errors") {
+    const errors = shuffleArray(getErrorCards());
+    if (errors.length === 0) {
+      safeAlert("🎉 Nenhum erro pendente. Continue praticando!");
+      return;
+    }
+    openAnkiSession(errors);
+    return;
+  }
+
+  const now = Date.now();
+  let dueCards = [];
+  let newCards = [];
+
+  const activeChapterId = AppState.currentChapter?.id || AppState.activeChapterId;
+  if (!activeChapterId) {
+    safeAlert("Não há capítulos disponíveis para iniciar a revisão.");
+    return;
+  }
+  if (!AppState.currentChapter && activeChapterId && Array.isArray(AppState.chapters)) {
+    AppState.currentChapter = AppState.chapters.find((c) => c.id === activeChapterId) || null;
+  }
+
+  const getSelFn =
+    (typeof window !== "undefined" && typeof window.getSelectedChapters === "function" && window.getSelectedChapters) ||
+    (_stateModule && typeof _stateModule.getSelectedChapters === "function" && _stateModule.getSelectedChapters) ||
+    null;
+  const selectedChaps =
+    getSelFn && Array.isArray(AppState.selectedChapterIds) && AppState.selectedChapterIds.length > 1
+      ? getSelFn(AppState)
+      : (AppState.currentChapter ? [AppState.currentChapter] : []);
+  const selectedIdsSet = new Set(selectedChaps.map((c) => c && c.id).filter(Boolean));
+  if (activeChapterId && selectedIdsSet.size === 0) selectedIdsSet.add(activeChapterId);
+
+  const orderedChapters =
+    AppState.chapterOrder === "desc" && AppState.chapters.length > 1
+      ? [...AppState.chapters].reverse()
+      : AppState.chapters;
+
+  orderedChapters.filter((chap) => selectedIdsSet.has(chap.id)).forEach((chap) => {
+    const processItem = (it, kind) => {
+      const entry = {
+        ...it,
+        chapterId: chap.id,
+        chapterTitle: chap.title,
+        kind,
+      };
+      const key = getSRSKey(it);
+      const rawTerm = getTerm(it);
+      const record = AppState.srs[key] || AppState.srs[rawTerm];
+      if (record && record.nextReview <= now) dueCards.push(entry);
+      else if (!record) newCards.push(entry);
+    };
+    (chap.items || []).forEach((i) => processItem(i, "word"));
+    (chap.sentences || []).forEach((s) => processItem(s, "sentence"));
+  });
+
+  dueCards = Array.from(
+    new Map(dueCards.map((w) => [getSRSKey(w), w])).values(),
+  );
+  newCards = Array.from(
+    new Map(newCards.map((w) => [getSRSKey(w), w])).values(),
+  );
+
+  dueCards = shuffleArray(dueCards);
+  newCards = shuffleArray(newCards);
+
+  const queue = [...dueCards.slice(0, 20), ...newCards.slice(0, 10)];
+
+  if (queue.length === 0) {
+    safeAlert(
+      "🎉 Você não tem revisões pendentes nem palavras novas nos capítulos ativos. Excelente trabalho!",
+    );
+    return;
+  }
+
+  openAnkiSession(queue);
+}
+
+/**
+ * Renderiza o cartão da fila atual
+ */
+function renderAnkiCard() {
+  if (ankiQueue.length === 0) {
+    finishAnki();
+    return;
+  }
+
+  ankiCurrentCard = ankiQueue[0];
+
+  if (typeof document === "undefined") return;
+  const counter = document.getElementById("anki-counter");
+  if (counter) {
+    const prefix = ankiMode === "errors" ? "Erros · " : "";
+    counter.textContent = `${prefix}Cartão ${ankiTotalCards - ankiQueue.length + 1} de ${ankiTotalCards}`;
+  }
+  const typeTag = document.getElementById("anki-type-tag");
+  if (typeTag) {
+    typeTag.textContent = ankiCurrentCard.kind === "word" ? "Palavra" : "Frase";
+  }
+
+  const heb = document.getElementById("anki-hebrew");
+  if (heb) {
+    heb.textContent = getTerm(ankiCurrentCard);
+    heb.className = `${AppState.language === "hebrew" ? "hebrew-text" : "greek-text"} text-5xl md:text-7xl font-bold text-white tracking-wide drop-shadow-md pb-6`;
+  }
+  const translit = document.getElementById("anki-translit");
+  if (translit) {
+    translit.textContent = ankiCurrentCard.transliteration
+      ? `(${ankiCurrentCard.transliteration})`
+      : "";
+  }
+  const translation = document.getElementById("anki-translation");
+  if (translation) {
+    translation.textContent = ankiCurrentCard.translations.join(" / ");
+  }
+
+  const cardKey = getSRSKey(ankiCurrentCard);
+  const rawTerm = getTerm(ankiCurrentCard);
+  const record = AppState.srs[cardKey] || AppState.srs[rawTerm] || {
+    interval: 0,
+    ef: 2.5,
+    nextReview: 0,
+  };
+  const goodInt =
+    record.interval === 0 ? 1 : Math.round(record.interval * record.ef);
+  const easyInt =
+    record.interval === 0
+      ? 4
+      : Math.round(record.interval * (record.ef + 0.15) * 1.3);
+
+  const goodEl = document.getElementById("anki-next-good");
+  if (goodEl) {
+    goodEl.textContent = goodInt + (goodInt === 1 ? " dia" : " dias");
+  }
+  const easyEl = document.getElementById("anki-next-easy");
+  if (easyEl) {
+    easyEl.textContent = easyInt + (easyInt === 1 ? " dia" : " dias");
+  }
+
+  const isSentenceCard =
+    ankiCurrentCard.kind === "sentence" ||
+    ankiCurrentCard.type === "Frase" ||
+    ankiCurrentCard.type === "Expressão" ||
+    (Array.isArray(ankiCurrentCard.tokens) && ankiCurrentCard.tokens.length > 0);
+  const canAnalyzeCard =
+    (AppState.language === "hebrew" || AppState.language === "greek") && isSentenceCard;
+  safeToggle("btn-anki-analyze", canAnalyzeCard);
+
+  safeToggle("anki-back", false);
+  safeToggle("anki-reveal-container", true);
+}
+
+/**
+ * Abre a análise morfológica da frase atual em exibição no Anki
+ */
+function openCurrentAnkiSentenceAnalysis() {
+  if (!ankiCurrentCard) return;
+  if (typeof window !== "undefined" && typeof window.openSentenceAnalysisModal === "function") {
+    window.openSentenceAnalysisModal(ankiCurrentCard);
+  } else if (
+    typeof window !== "undefined" &&
+    window.SentenceAnalysisModule &&
+    typeof window.SentenceAnalysisModule.openSentenceAnalysisModal === "function"
+  ) {
+    window.SentenceAnalysisModule.openSentenceAnalysisModal(ankiCurrentCard);
+  }
+}
+
+/**
+ * Revela a resposta do cartão atual
+ */
+function revealAnki() {
+  if (typeof document === "undefined") return;
+  safeToggle("anki-reveal-container", false);
+  safeToggle("anki-back", true);
+}
+
+/**
+ * Registra a avaliação do usuário sobre o cartão e recalcula o agendamento
+ * @param {'hard'|'good'|'easy'} grade
+ */
+function answerAnki(grade) {
+  if (!ankiCurrentCard) return;
+  ankiStats[grade]++;
+  const cardKey = getSRSKey(ankiCurrentCard);
+  const rawTerm = getTerm(ankiCurrentCard);
+  const record = AppState.srs[cardKey] || AppState.srs[rawTerm] || {
+    interval: 0,
+    ef: 2.5,
+    nextReview: 0,
+    fails: 0,
+  };
+
+  if (grade === "hard") {
+    record.interval = 0;
+    record.ef = Math.max(1.3, record.ef - 0.2);
+    record.nextReview = Date.now() + 60 * 1000;
+    record.fails = (record.fails || 0) + 1;
+    record.pendingError = true;
+    clearMastery(cardKey);
+    ankiQueue.push(ankiCurrentCard);
+    ankiTotalCards++;
+  } else if (grade === "good") {
+    // A lista de erros só é limpa pelo botão "Remover" do Praticar
+    record.interval =
+      record.interval === 0 ? 1 : Math.round(record.interval * record.ef);
+    record.nextReview =
+      Date.now() + record.interval * 24 * 60 * 60 * 1000;
+  } else if (grade === "easy") {
+    record.ef += 0.15;
+    record.interval =
+      record.interval === 0
+        ? 4
+        : Math.round(record.interval * record.ef * 1.3);
+    record.nextReview =
+      Date.now() + record.interval * 24 * 60 * 60 * 1000;
+  }
+
+  AppState.srs[cardKey] = record;
+  saveSRS();
+  refreshReviewBadge();
+
+  ankiQueue.shift();
+  renderAnkiCard();
+}
+
+/**
+ * Finaliza a sessão de flashcards e exibe o resumo de acertos
+ */
+function finishAnki() {
+  if (typeof document === "undefined") return;
+  safeToggle("anki-active", false);
+  safeToggle("anki-results", true);
+  const hard = document.getElementById("anki-res-hard");
+  if (hard) hard.textContent = ankiStats.hard;
+  const good = document.getElementById("anki-res-good");
+  if (good) good.textContent = ankiStats.good;
+  const easy = document.getElementById("anki-res-easy");
+  if (easy) easy.textContent = ankiStats.easy;
+}
+
+// Suporte universal (Browser Global / Node CommonJS)
+if (typeof window !== "undefined") {
+  window.getSRSKey = getSRSKey;
+  window.loadSRS = loadSRS;
+  window.saveSRS = saveSRS;
+  window.recordSRSError = recordSRSError;
+  window.getErrorCards = getErrorCards;
+  window.getMasterySummary = getMasterySummary;
+  window.startAnki = startAnki;
+  window.renderAnkiCard = renderAnkiCard;
+  window.revealAnki = revealAnki;
+  window.answerAnki = answerAnki;
+  window.finishAnki = finishAnki;
+  window.openCurrentAnkiSentenceAnalysis = openCurrentAnkiSentenceAnalysis;
+  window.SRSModule = {
+    getSRSKey,
+    loadSRS,
+    saveSRS,
+    recordSRSError,
+    getErrorCards,
+    recordMasteryHit,
+    isItemMastered,
+    getMasterySummary,
+    isItemInErrorList,
+    removeFromErrorList,
+    isPendingError,
+    startAnki,
+    renderAnkiCard,
+    revealAnki,
+    answerAnki,
+    finishAnki,
+    openCurrentAnkiSentenceAnalysis,
+    getAnkiQueue: () => ankiQueue,
+    getAnkiCurrentCard: () => ankiCurrentCard,
+    getAnkiStats: () => ankiStats,
+  };
+}
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = {
+    getSRSKey,
+    loadSRS,
+    saveSRS,
+    recordSRSError,
+    getErrorCards,
+    recordMasteryHit,
+    isItemMastered,
+    getMasterySummary,
+    isItemInErrorList,
+    removeFromErrorList,
+    isPendingError,
+    startAnki,
+    renderAnkiCard,
+    revealAnki,
+    answerAnki,
+    finishAnki,
+    openCurrentAnkiSentenceAnalysis,
+    getAnkiQueue: () => ankiQueue,
+    getAnkiCurrentCard: () => ankiCurrentCard,
+    getAnkiStats: () => ankiStats,
+  };
+}
+})();
