@@ -193,7 +193,7 @@ const HEBREW = {
     scroll: {
       t: "Os 7 troncos verbais",
       rows: [
-        ["Qal", "שָׁמַר", "simples"], ["Nifal", "נִשְׁמַר", "נִ antes = passivo"], ["Piel", "דִּבֵּר", "i + dagesh no meio"],
+        ["Qal", "שָׁמַר", "simples"], ["Nifal", "נִשְׁמַר", "נִ antes = passivo"], ["Piel", "דִּבֶּר", "i + dagesh no meio"],
         ["Pual", "בֻּקַּשׁ", "u + dagesh = passivo do Piel"], ["Hitpael", "הִתְהַלֵּךְ", "הִתְ = reflexivo"],
         ["Hifil", "הִבְדִּיל", "הִ + י = causativo"], ["Hofal", "הָמְלַךְ", "הָ (ho) = passivo do Hifil"],
       ],

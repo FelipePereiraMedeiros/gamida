@@ -228,23 +228,110 @@ const chip = (() => {
   };
 })();
 
-/* ---------- Música orquestral (Crônicas do Escriba): mapa, batalha e chefe ---------- */
+/* ---------- Trilha das Crônicas do Escriba ----------
+ * Um pequeno sequenciador: cada tema é uma progressão de acordes, uma melodia
+ * escrita em graus da escala, um dedilhado, um baixo e uma percussão.
+ * A escala muda com o idioma: no hebraico, o modo frígio dominante (Ahavá Rabá,
+ * o som das melodias de sinagoga); no grego, o modo dórico dos antigos.
+ * Como a melodia é escrita em graus, o mesmo tema soa "hebraico" ou "grego".
+ */
 const epic = (() => {
   let out = null;
   let wet = null;
   let timer = null;
-  let theme = "map";
-  let beat = 0;
+  let theme = null;
+  let themeName = "";
+  let flavor = "hebrew";
+  let step = 0;
   let nextTime = 0;
   let playing = false;
-  // ré menor: i–III–VII–i (mapa); i–VI–iv–V (batalha); i–bII–VI–V (chefe)
-  const PROGRESSION = {
-    map: [[50, "m"], [53, "M"], [48, "M"], [50, "m"]],
-    battle: [[50, "m"], [46, "M"], [43, "m"], [45, "M"]],
-    boss: [[50, "m"], [51, "M"], [46, "M"], [45, "M"]],
+
+  const MODES = {
+    hebrew: [0, 1, 4, 5, 7, 8, 10], // frígio dominante
+    greek: [0, 2, 3, 5, 7, 9, 10], // dórico
   };
-  const BPM = { map: 58, battle: 80, boss: 98 };
-  const CHOIR = { battle: [74, 72, 70, 73], boss: [74, 75, 74, 73] };
+  const STEPS_PER_BAR = 8; // colcheias
+
+  /* Notação da melodia, uma colcheia por símbolo: número = grau da escala
+   * (7 = oitava acima, -1 = um grau abaixo da tônica), "-" = segura a nota, "." = pausa.
+   * Percussão: k = tímpano, t = tof (pandeiro de moldura), h = chocalho, "." = silêncio.
+   * Baixo: x = fundamental, f = quinta, "." = silêncio. */
+  const THEMES = {
+    // Abertura: chamado de trompa sobre um tapete grave
+    prologue: {
+      bpm: 70, root: 50, chords: [0, 5, 3, 4], lead: "horn", pad: true,
+      melody: ["0 - - - - - 4 -", "7 - - - 5 - - -", "3 - - 5 7 - - -", "8 - 6 - 4 - - -"],
+      bass: "x.......", drums: ["k.......", "........", "k.......", "....k.kk"],
+    },
+    // Mapa: caminhada calma, lira dedilhada e flauta
+    map: {
+      bpm: 80, root: 50, chords: [0, 5, 6, 0], lead: "flute", arp: [0, 1, 2, 1, 0, 1, 2, 1], bell: true,
+      melody: ["4 - - - 2 - 0 -", "5 - - - 7 - - -", "6 - - 5 3 - - -", "2 - 1 - 0 - - ."],
+      bass: "x...f...", drums: ["t...t.t.", "t...t...", "t...t.t.", "t...t..."],
+    },
+    // Pergaminho: só a lira, para ler em paz
+    scroll: {
+      bpm: 66, root: 50, chords: [0, 3, 5, 4], arp: [0, 1, 2, 3, 2, 1, 2, 1], pad: true, bell: true,
+      melody: [], bass: "x.......", drums: [],
+    },
+    // Campos, jardins e tendas: dança de roda
+    field: {
+      bpm: 116, root: 50, chords: [0, 3, 6, 0], lead: "flute", arp: [0, 2, 1, 2, 0, 2, 1, 2],
+      melody: ["4 - 2 4 5 4 2 0", "3 - 5 7 5 3 5 -", "6 - 5 6 8 6 5 3", "4 2 1 2 0 - . ."],
+      bass: "x..x..f.", drums: ["k.t.k.tt", "k.t.k.t.", "k.t.k.tt", "k.ttk.t."],
+    },
+    // Deserto, pirâmides e zigurates: caravana, melodia sinuosa de palheta
+    desert: {
+      bpm: 100, root: 48, chords: [0, 1, 0, 6], lead: "reed", arp: [0, 2, 0, 1, 0, 2, 0, 1],
+      melody: ["0 - - 1 2 1 0 -", "1 - 3 2 1 - 0 1", "2 - 4 - 5 4 2 1", "-1 - 0 1 0 - . ."],
+      bass: "x..x.x..", drums: ["k..tk.t.", "k..tk.th", "k..tk.t.", "k.htk.tt"],
+    },
+    // Mar, rio e fontes: ondas de dedilhado
+    water: {
+      bpm: 120, root: 52, chords: [0, 5, 3, 4], lead: "flute", arp: [0, 1, 2, 3, 2, 1, 2, 3],
+      melody: ["0 2 4 7 4 2 4 -", "5 7 9 7 5 - 4 5", "3 5 7 5 3 - 2 3", "4 - 6 4 1 - 0 -"],
+      bass: "x...x.f.", drums: ["k.h.t.h.", "k.h.t.hh", "k.h.t.h.", "k.h.t.tt"],
+    },
+    // Montes e o Sinai: tímpanos e trompas, passo pesado
+    mount: {
+      bpm: 92, root: 45, chords: [0, 0, 5, 4], lead: "horn", pad: true,
+      melody: ["0 - - - 4 - - -", "7 - - 6 4 - - -", "5 - - - 7 - 9 -", "8 - 6 - 4 - - ."],
+      bass: "x...x...", drums: ["k...k.k.", "k...k...", "k...k.k.", "k..kk.kk"],
+    },
+    // Cidades, muralhas e templos: marcha com fanfarra
+    city: {
+      bpm: 126, root: 50, chords: [0, 6, 5, 4], lead: "horn", arp: [0, 2, 1, 2, 0, 2, 1, 2],
+      melody: ["0 0 4 - 7 - 4 -", "6 6 8 - 10 - 8 -", "5 5 7 - 9 7 5 -", "4 - 6 8 7 - . ."],
+      bass: "x.x.f.x.", drums: ["k.tkk.t.", "k.tkk.tt", "k.tkk.t.", "k.tktktt"],
+    },
+    // Guardião: ostinato no baixo, melodia urgente
+    boss: {
+      bpm: 138, root: 50, chords: [0, 1, 0, 4], lead: "reed", pad: true,
+      melody: ["7 . 7 8 7 . 4 5", "8 . 8 9 8 . 5 6", "7 6 5 4 5 6 7 -", "8 - 6 - 4 2 1 0"],
+      bass: "xxfxxxfx", drums: ["k.tktktt", "k.tktkt.", "k.tktktt", "kktktktt"],
+    },
+    // Último guardião: o tema do guardião mais rápido, um tom acima e dobrado em oitava
+    final: {
+      bpm: 152, root: 52, chords: [0, 1, 0, 4], lead: "reed", pad: true, double: true,
+      melody: ["7 . 7 8 7 . 4 5", "8 . 8 9 8 . 5 6", "7 6 5 4 5 6 7 -", "8 - 6 - 4 2 1 0"],
+      bass: "xxfxxxfx", drums: ["kktktktt", "k.tktktt", "kktktktt", "kkkktttt"],
+    },
+  };
+  // Cenário de cada capítulo → tema de batalha
+  const SCENE_THEME = {
+    garden: "field", hills: "field", tents: "field",
+    dunes: "desert", pyramids: "desert", ziggurat: "desert",
+    sea: "water", spring: "water", well: "water",
+    mountain: "mount", sinai: "mount", pillar: "mount",
+    walls: "city", tower: "city", temple: "city", tabernacle: "city",
+  };
+  // Toques curtos, fora do laço: graus da escala e duração em colcheias
+  const STINGS = {
+    victory: { bpm: 132, lead: "horn", notes: [[0, 1], [2, 1], [4, 1], [7, 2], [4, 1], [7, 4]], roll: true },
+    relic: { bpm: 150, lead: "pluck", notes: [[0, 1], [2, 1], [4, 1], [7, 1], [9, 1], [11, 1], [14, 3]], bell: true },
+    defeat: { bpm: 80, lead: "horn", notes: [[4, 2], [3, 2], [1, 2], [0, 5]], low: true },
+    chapter: { bpm: 110, lead: "flute", notes: [[4, 1], [5, 1], [7, 2], [9, 1], [7, 3]] },
+  };
 
   function setup() {
     if (!init()) return false;
@@ -253,7 +340,7 @@ const epic = (() => {
     out.gain.value = 0.9;
     out.connect(master);
     // Reverberação: resposta ao impulso feita de ruído que decai
-    const length = ac.sampleRate * 3.2;
+    const length = ac.sampleRate * 2.6;
     const impulse = ac.createBuffer(2, length, ac.sampleRate);
     for (let ch = 0; ch < 2; ch++) {
       const data = impulse.getChannelData(ch);
@@ -262,21 +349,31 @@ const epic = (() => {
     const reverb = ac.createConvolver();
     reverb.buffer = impulse;
     wet = ac.createGain();
-    wet.gain.value = 0.55;
+    wet.gain.value = 0.4;
     wet.connect(reverb);
     reverb.connect(out);
     return true;
   }
-  function voice(freq, t, dur, { type = "sawtooth", vol = 0.04, att = 0.6, rel = 1.2, cut = 1100, det = 7, vib = 0 } = {}) {
+
+  /** Nota (MIDI) de um grau da escala do idioma, a partir da tônica do tema */
+  function degreeToMidi(root, degree) {
+    const mode = MODES[flavor] || MODES.hebrew;
+    const octave = Math.floor(degree / 7);
+    return root + mode[((degree % 7) + 7) % 7] + 12 * octave;
+  }
+
+  /** Voz sustentada: dois osciladores levemente desafinados, filtro e envelope */
+  function voice(freq, t, dur, { type = "sawtooth", vol = 0.04, att = 0.05, rel = 0.12, cut = 1400, det = 5, vib = 0, dry = 1 } = {}) {
     const gain = ac.createGain();
     const lowpass = ac.createBiquadFilter();
     lowpass.type = "lowpass";
     lowpass.frequency.value = cut;
     lowpass.Q.value = 0.7;
+    const hold = Math.max(att + 0.01, dur - rel);
     gain.gain.setValueAtTime(0, t);
     gain.gain.linearRampToValueAtTime(vol, t + att);
-    gain.gain.setValueAtTime(vol, t + Math.max(att, dur - rel));
-    gain.gain.linearRampToValueAtTime(0, t + dur);
+    gain.gain.setValueAtTime(vol, t + hold);
+    gain.gain.linearRampToValueAtTime(0, t + hold + rel);
     [-det, det].forEach((detune) => {
       const osc = ac.createOscillator();
       osc.type = type;
@@ -285,115 +382,230 @@ const epic = (() => {
       if (vib) {
         const lfo = ac.createOscillator();
         const lfoGain = ac.createGain();
-        lfo.frequency.value = 5;
+        lfo.frequency.value = 5.5;
         lfoGain.gain.value = vib;
         lfo.connect(lfoGain);
         lfoGain.connect(osc.frequency);
-        lfo.start(t);
-        lfo.stop(t + dur + 0.1);
+        lfo.start(t + Math.min(0.15, dur / 2));
+        lfo.stop(t + hold + rel + 0.05);
       }
       osc.connect(lowpass);
       osc.start(t);
-      osc.stop(t + dur + 0.1);
+      osc.stop(t + hold + rel + 0.05);
     });
+    lowpass.connect(gain);
+    if (dry) gain.connect(out);
+    gain.connect(wet);
+  }
+
+  // Timbres da melodia: flauta, palheta (como um aulo ou uma zurna) e trompa (como um shofar)
+  const LEADS = {
+    flute: (freq, t, dur) => voice(freq, t, dur, { type: "triangle", vol: 0.13, att: 0.04, rel: 0.1, cut: 3200, det: 3, vib: 5 }),
+    reed: (freq, t, dur) => voice(freq, t, dur, { type: "square", vol: 0.065, att: 0.02, rel: 0.08, cut: 1900, det: 6, vib: 6 }),
+    horn: (freq, t, dur) => voice(freq, t, dur, { type: "sawtooth", vol: 0.09, att: 0.07, rel: 0.18, cut: 1100, det: 7, vib: 3 }),
+    pluck: (freq, t) => pluck(freq, t, 0.3),
+  };
+
+  /** Corda dedilhada (lira, harpa): ataque seco e queda rápida */
+  function pluck(freq, t, vol = 0.09) {
+    const osc = ac.createOscillator();
+    const gain = ac.createGain();
+    const lowpass = ac.createBiquadFilter();
+    osc.type = "triangle";
+    osc.frequency.value = freq;
+    lowpass.type = "lowpass";
+    lowpass.frequency.setValueAtTime(3600, t);
+    lowpass.frequency.exponentialRampToValueAtTime(700, t + 0.5);
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(vol, t + 0.006);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.7);
+    osc.connect(lowpass);
     lowpass.connect(gain);
     gain.connect(out);
     gain.connect(wet);
+    osc.start(t);
+    osc.stop(t + 0.75);
   }
+
   function timpani(t, vol) {
     const osc = ac.createOscillator();
     const gain = ac.createGain();
-    osc.frequency.setValueAtTime(92, t);
-    osc.frequency.exponentialRampToValueAtTime(48, t + 0.5);
+    osc.frequency.setValueAtTime(96, t);
+    osc.frequency.exponentialRampToValueAtTime(50, t + 0.35);
     gain.gain.setValueAtTime(vol, t);
-    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.9);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
     osc.connect(gain);
     gain.connect(out);
     gain.connect(wet);
     osc.start(t);
-    osc.stop(t + 1);
-    const length = (ac.sampleRate * 0.25) | 0;
-    const buffer = ac.createBuffer(1, length, ac.sampleRate);
-    const data = buffer.getChannelData(0);
-    for (let i = 0; i < length; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 3);
+    osc.stop(t + 0.65);
+  }
+
+  let noiseBuffer = null;
+  /** Ruído filtrado: com filtro grave é o tof (pandeiro de moldura); agudo, o chocalho */
+  function noiseHit(t, vol, freq, dur, type) {
+    if (!noiseBuffer) {
+      const length = (ac.sampleRate * 0.3) | 0;
+      noiseBuffer = ac.createBuffer(1, length, ac.sampleRate);
+      const data = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < length; i++) data[i] = Math.random() * 2 - 1;
+    }
     const src = ac.createBufferSource();
     const filter = ac.createBiquadFilter();
-    const noiseGain = ac.createGain();
-    src.buffer = buffer;
-    filter.type = "lowpass";
-    filter.frequency.value = 260;
-    noiseGain.gain.value = vol * 0.8;
+    const gain = ac.createGain();
+    src.buffer = noiseBuffer;
+    filter.type = type;
+    filter.frequency.value = freq;
+    filter.Q.value = 1.2;
+    gain.gain.setValueAtTime(vol, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + dur);
     src.connect(filter);
-    filter.connect(noiseGain);
-    noiseGain.connect(out);
+    filter.connect(gain);
+    gain.connect(out);
     src.start(t);
+    src.stop(t + dur + 0.02);
   }
+  const tof = (t, vol) => noiseHit(t, vol, 520, 0.14, "bandpass");
+  const shaker = (t, vol) => noiseHit(t, vol, 6500, 0.05, "highpass");
+
   function bell(freq, t) {
     const osc = ac.createOscillator();
     const gain = ac.createGain();
-    osc.type = "triangle";
+    osc.type = "sine";
     osc.frequency.value = freq;
-    gain.gain.setValueAtTime(0.06, t);
-    gain.gain.exponentialRampToValueAtTime(0.001, t + 2.5);
+    gain.gain.setValueAtTime(0.05, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 2.2);
     osc.connect(gain);
     gain.connect(wet);
     gain.connect(out);
     osc.start(t);
-    osc.stop(t + 2.6);
+    osc.stop(t + 2.3);
   }
-  const chord = (root, quality) => [root - 12, root, root + (quality === "m" ? 3 : 4), root + 7, root + 12];
+
+  /** Lê a melodia de um compasso: [{step, degree, length}] */
+  function parseBar(bar) {
+    const tokens = String(bar || "").trim().split(/\s+/).filter(Boolean);
+    const notes = [];
+    tokens.forEach((token, index) => {
+      if (token === "-" || token === ".") return;
+      let length = 1;
+      while (tokens[index + length] === "-") length++;
+      notes.push({ step: index, degree: Number(token), length });
+    });
+    return notes;
+  }
+  const parsedCache = new Map();
+  function melodyBar(name, barIndex) {
+    const key = `${name}:${barIndex}`;
+    if (!parsedCache.has(key)) parsedCache.set(key, parseBar(THEMES[name].melody[barIndex]));
+    return parsedCache.get(key);
+  }
 
   function schedule() {
-    if (!playing || !ac) return;
-    const beatDur = 60 / BPM[theme];
-    while (nextTime < ac.currentTime + 0.25) {
-      const bar = (beat >> 2) % 4;
-      const b = beat % 4;
-      const [root, quality] = PROGRESSION[theme][bar];
+    if (!playing || !ac || !theme) return;
+    const stepDur = 60 / theme.bpm / 2;
+    while (nextTime < ac.currentTime + 0.2) {
+      const bar = Math.floor(step / STEPS_PER_BAR) % theme.chords.length;
+      const s = step % STEPS_PER_BAR;
+      const chordRoot = theme.chords[bar];
+      const t = nextTime;
       if (prefs.music && !prefs.muted) {
-        if (b === 0) {
-          chord(root, quality).forEach((m) =>
-            voice(hz(m), nextTime, beatDur * 4 + 0.3, {
-              vol: theme === "map" ? 0.028 : 0.032,
-              att: theme === "map" ? 1.2 : 0.5,
-              cut: theme === "boss" ? 1500 : 1000,
-            }));
-          if (theme !== "map") voice(hz(CHOIR[theme][bar]), nextTime, beatDur * 4, { type: "triangle", vol: 0.05, att: 0.7, cut: 2400, det: 4, vib: 4 });
-          if (theme === "boss") [root, root + 7, root + 12].forEach((m) => voice(hz(m), nextTime, 0.45, { vol: 0.05, att: 0.02, rel: 0.3, cut: 2600 }));
-          if (theme === "map") bell(hz(root + 24 + (bar % 2 ? 7 : 0)), nextTime + beatDur * 2);
+        // Tapete de acordes, uma vez por compasso
+        if (theme.pad && s === 0) {
+          [0, 2, 4].forEach((third) =>
+            voice(hz(degreeToMidi(theme.root - 12, chordRoot + third)), t, stepDur * STEPS_PER_BAR + 0.2, { vol: 0.022, att: 0.5, rel: 0.6, cut: 900, det: 8 }));
         }
-        if (theme !== "map") {
-          const pattern = theme === "boss" ? [0, 0, 12, 0, 7, 0, 12, 7] : [0, 0, 7, 0];
-          const steps = pattern.length / 4;
-          for (let k = 0; k < steps; k++) {
-            const m = root - 24 + pattern[(b * steps + k) % pattern.length];
-            voice(hz(m), nextTime + (k * beatDur) / steps, (beatDur / steps) * 0.9, { vol: 0.07, att: 0.01, rel: 0.12, cut: 700, det: 3 });
-          }
-          if (b === 0 || (theme === "boss" && b === 2)) timpani(nextTime, theme === "boss" ? 0.6 : 0.45);
-          if (theme === "boss" && bar === 3 && b === 3) for (let k = 1; k < 4; k++) timpani(nextTime + (k * beatDur) / 4, 0.25 + k * 0.08);
+        // Dedilhado sobre as notas do acorde
+        if (theme.arp) {
+          const tone = theme.arp[s];
+          pluck(hz(degreeToMidi(theme.root, chordRoot + tone * 2)), t, 0.06);
         }
+        // Melodia
+        if (theme.melody.length) {
+          melodyBar(themeName, bar % theme.melody.length).filter((n) => n.step === s).forEach((n) => {
+            const freq = hz(degreeToMidi(theme.root + 12, n.degree));
+            LEADS[theme.lead](freq, t, stepDur * n.length * 0.96);
+            if (theme.double) LEADS.flute(freq * 2, t, stepDur * n.length * 0.9);
+          });
+        }
+        // Baixo
+        const bassMark = theme.bass[s];
+        if (bassMark === "x" || bassMark === "f") {
+          const degree = chordRoot + (bassMark === "f" ? 4 : 0);
+          voice(hz(degreeToMidi(theme.root - 24, degree)), t, stepDur * 0.9, { type: "triangle", vol: 0.16, att: 0.01, rel: 0.08, cut: 600, det: 2, dry: 1 });
+        }
+        // Percussão
+        const drumBar = theme.drums.length ? theme.drums[bar % theme.drums.length] : "";
+        const hit = drumBar[s];
+        if (hit === "k") timpani(t, 0.38);
+        else if (hit === "t") tof(t, 0.32);
+        else if (hit === "h") shaker(t, 0.12);
+        if (theme.bell && s === 4 && bar % 2 === 1) bell(hz(degreeToMidi(theme.root + 24, chordRoot + 4)), t);
       }
-      nextTime += beatDur;
-      beat++;
+      nextTime += stepDur;
+      step++;
     }
   }
+
   return {
-    /** @param {'map'|'battle'|'boss'} name */
+    SCENE_THEME,
+    themeNames: () => Object.keys(THEMES),
+    /** O idioma define a escala: 'hebrew' ou 'greek' */
+    setFlavor(language) {
+      flavor = language === "greek" ? "greek" : "hebrew";
+    },
+    /** Tema de batalha para o cenário de um capítulo */
+    themeForScene(scene) {
+      return SCENE_THEME[scene] || "field";
+    },
+    /** @param {string} name tema em laço; nomes antigos ('battle') continuam valendo */
     play(name) {
+      const wanted = THEMES[name] ? name : name === "battle" ? "field" : "map";
       if (!setup()) return;
-      if (playing && name === theme) return;
-      theme = PROGRESSION[name] ? name : "map";
-      beat = 0;
-      nextTime = ac.currentTime + 0.1;
+      if (playing && wanted === themeName) return;
+      themeName = wanted;
+      theme = THEMES[wanted];
+      step = 0;
+      nextTime = ac.currentTime + 0.12;
       if (!playing) {
         playing = true;
-        timer = setInterval(schedule, 50);
+        timer = setInterval(schedule, 40);
       }
     },
     stop() {
       playing = false;
+      themeName = "";
       clearInterval(timer);
       timer = null;
+    },
+    current: () => (playing ? themeName : ""),
+    /** Toque curto por cima (ou no lugar) da música: vitória, relíquia, derrota, capítulo */
+    sting(name) {
+      const sting = STINGS[name];
+      if (!sting || !setup() || prefs.muted) return;
+      const stepDur = 60 / sting.bpm / 2;
+      let t = ac.currentTime + 0.05;
+      sting.notes.forEach(([degree, length]) => {
+        const midi = degreeToMidi(sting.low ? 50 : 62, degree);
+        LEADS[sting.lead](hz(midi), t, stepDur * length * 0.95);
+        if (sting.lead !== "pluck") pluck(hz(midi), t, 0.05);
+        t += stepDur * length;
+      });
+      if (sting.roll) [0, 1, 2, 3].forEach((k) => timpani(ac.currentTime + 0.05 + k * stepDur * 0.5, 0.25 + k * 0.08));
+      if (sting.bell) bell(hz(degreeToMidi(86, 0)), t - stepDur * 2);
+    },
+    /** Só para os testes: valida a escrita de todos os temas */
+    describe() {
+      return Object.entries(THEMES).map(([name, def]) => ({
+        name,
+        bars: def.chords.length,
+        melodyBars: def.melody.map((bar) => String(bar).trim().split(/\s+/).length),
+        degrees: def.melody.flatMap((bar) => parseBar(bar).map((n) => n.degree)),
+        bassSteps: def.bass.length,
+        drumSteps: def.drums.map((bar) => bar.length),
+        arpSteps: def.arp ? def.arp.length : 0,
+        lead: def.lead || null,
+      }));
     },
   };
 })();
@@ -403,6 +615,8 @@ const GameAudio = {
   sfx,
   chip,
   epic,
+  /** Nó de saída, para medir o nível do som nos testes */
+  getOutputNode: () => master,
   isMuted: () => prefs.muted,
   isMusicOn: () => prefs.music,
   toggleMute() {

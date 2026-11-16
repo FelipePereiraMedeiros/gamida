@@ -16,6 +16,7 @@ const _req = (path) => (typeof require !== "undefined" ? require(path) : null);
 const _stateModule = _req("./state.js") || (typeof window !== "undefined" ? window : {});
 const _evalModule = _req("./evaluation.js") || (typeof window !== "undefined" ? window.EvaluationModule : {}) || {};
 const Campaign = (typeof window !== "undefined" && window.ScribeCampaign) || _req("./scribe-campaign.js");
+const Lore = (typeof window !== "undefined" && window.ScribeLore) || _req("./scribe-lore.js");
 
 const AppState = (typeof window !== "undefined" && window.AppState) || _stateModule.AppState;
 const getTerm = (typeof window !== "undefined" && window.getTerm) || _stateModule.getTerm;
@@ -353,7 +354,7 @@ function bossSentences(index, campaign) {
 
 /* ============================ Progresso ============================ */
 
-const FRESH = () => ({ cls: null, done: {}, lvl: 1, xp: 0, potions: 3, scrolls: 2, relics: [], stats: {} });
+const FRESH = () => ({ cls: null, done: {}, lvl: 1, xp: 0, potions: 3, scrolls: 2, relics: [], stats: {}, seenIntro: false, seenEnding: false });
 const storageKey = (language) => `gamida_${language || AppState.language}_scribe`;
 let S = FRESH();
 
@@ -368,6 +369,9 @@ function sanitizeProgress(raw) {
   if (Number.isFinite(raw.scrolls) && raw.scrolls >= 0) state.scrolls = Math.floor(raw.scrolls);
   if (Array.isArray(raw.relics)) state.relics = raw.relics.filter((id) => RELICS.some((r) => r.id === id));
   if (raw.stats && typeof raw.stats === "object") state.stats = raw.stats;
+  // Quem já tinha herói antes de a história existir não precisa rever o prólogo à força
+  state.seenIntro = !!raw.seenIntro || (!!state.cls && raw.seenIntro === undefined);
+  state.seenEnding = !!raw.seenEnding;
   return state;
 }
 
@@ -423,6 +427,11 @@ const audio = () => (typeof window !== "undefined" ? window.GameAudio : null);
 const gfx = () => (typeof window !== "undefined" ? window.ScribeGraphics : null);
 const sfx = (name, arg) => { const a = audio(); if (a && a.sfx[name]) a.sfx[name](arg); };
 const music = (theme) => { const a = audio(); if (!a) return; if (theme) a.epic.play(theme); else a.epic.stop(); };
+const sting = (name) => { const a = audio(); if (a) a.epic.sting(name); };
+/** Tema de batalha do capítulo: cada cenário tem o seu; o último capítulo tem tema próprio */
+const battleTheme = () => { const a = audio(); return a && B ? a.epic.themeForScene(B.meta.scene) : "field"; };
+const bossTheme = () => (B && B.index === B.total - 1 && B.total > 1 ? "final" : "boss");
+const loreOf = (index) => Lore.forChapter(AppState.language, campaign[index].chapter.id);
 const reduceMotion = () =>
   typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -553,13 +562,14 @@ function animateAvatars(ids) {
 
 function chooseClass() {
   B = null;
-  music(null);
+  music("prologue");
   setScreen(`<div class="sc-card">
     <h3 class="sc-h">Escolha seu herói</h3>
     <p class="sc-story sc-story--left">As palavras do rolo viraram demônios e dragões. Escolha quem vai atrás delas. A classe muda vida, tempo de crítico, defesa e as relíquias bíblicas que você encontra.</p>
     <div class="sc-classes">${Object.entries(CLASSES).map(([key, cls]) => `<div class="sc-cls">
       <canvas id="sc-cv-${key}" width="200" height="200" aria-hidden="true"></canvas>
       <b>${esc(cls.name)}</b><p>${esc(cls.desc)}</p>
+      <p class="sc-cls__lore">${esc(Lore.CLASS_LORE[key] || "")}</p>
       <ul>${cls.perks.map((perk) => `<li>${esc(perk)}</li>`).join("")}</ul>
       <p class="sc-muted sc-small">Relíquias: ${RELICS.filter((r) => r.cls === key).map((r) => esc(r.name)).join(" · ")}</p>
       <button type="button" class="sc-btn" data-class="${key}">Escolher ${esc(cls.name)}</button>
@@ -579,6 +589,7 @@ function chooseClass() {
 }
 
 function showMap() {
+  if (!S.seenIntro) return showPrologue();
   if (!S.cls) return chooseClass();
   B = null;
   stopTimer();
@@ -590,7 +601,7 @@ function showMap() {
   setScreen(`<div class="sc-card">${heroPanel()}
     <p class="sc-story">${started
       ? "Escolha o próximo capítulo. Cada um traz um pergaminho de ensino, ondas de criaturas-palavra e um guardião de várias frases."
-      : `O rolo do mestre ${master} se rasgou. Cada palavra virou um demônio, e cada frase, um guardião. Percorra a terra de ${esc(campaign[0].meta.city)} a ${esc(campaign[total - 1].meta.city)} e restaure o rolo.`}</p>
+      : `O ${isHebrew() ? "rolo" : "códice"} do mestre ${master} está em branco. Cada palavra virou uma criatura, e cada frase, um guardião. Percorra o caminho de ${esc(campaign[0].meta.city)} a ${esc(campaign[total - 1].meta.city)} e traga-as de volta.`}</p>
     <div class="sc-chapters">${campaign.map(({ chapter, meta }, i) => {
       const relic = relicFor(S.cls, i, total);
       const done = !!S.done[chapter.id];
@@ -651,10 +662,11 @@ function showScroll(index, fromBook) {
   const { meta, chapter } = campaign[index];
   B = null;
   stopTimer();
-  music("map");
+  music("scroll");
   sfx("tick");
   setScreen(`<div class="sc-card">
-    <p class="sc-story">${esc(meta.story)}</p>
+    <div class="sc-arrival"><span class="sc-arrival__place">Capítulo ${index + 1} · ${esc(meta.city)} <span class="${termClass()}">${esc(meta.native)}</span></span>
+      <p>${rich(loreOf(index).lore)}</p></div>
     ${scrollHtml(meta.scroll)}
     <p class="sc-muted sc-small sc-center">${esc(chapter.title)}</p>
     <div class="sc-row">${fromBook
@@ -673,6 +685,10 @@ function showBook() {
   music("map");
   setScreen(`<div class="sc-card">
     <h3 class="sc-h">Grimório</h3>
+    <div class="sc-row sc-row--left">
+      <button type="button" class="sc-btn sc-btn--ghost" id="sc-open-chronicle">Ler a crônica (${doneCount(S)} de ${campaign.length} trechos)</button>
+      <button type="button" class="sc-btn sc-btn--ghost" id="sc-open-prologue">Rever o prólogo</button>
+    </div>
     <p class="sc-muted">Os pergaminhos dos capítulos que você já abriu.</p>
     <div class="sc-chapters">${campaign.map(({ meta, chapter }, i) => `<button type="button" class="sc-chap" data-chapter="${i}" ${isUnlocked(i) ? "" : "disabled"}>
       <span class="sc-chap__n ${termClass()}">${esc(meta.native.split(/[־\s]/)[0])}</span>
@@ -684,6 +700,80 @@ function showBook() {
     btn.onclick = () => showScroll(Number(btn.dataset.chapter), true);
   });
   on("#sc-back", showMap);
+  on("#sc-open-chronicle", showChronicle);
+  on("#sc-open-prologue", () => showPrologue(true));
+}
+
+/* ---------- História: prólogo, crônica e final ---------- */
+
+function storyHtml(paragraphs) {
+  return (paragraphs || []).map((text) => `<p>${rich(text)}</p>`).join("");
+}
+
+/** Abertura da aventura: de onde veio a névoa e o que o aprendiz tem de fazer */
+function showPrologue(fromBook) {
+  const prologue = Lore.PROLOGUE[AppState.language] || Lore.PROLOGUE.hebrew;
+  B = null;
+  stopTimer();
+  music("prologue");
+  setScreen(`<div class="sc-card">
+    <span class="sc-eyebrow">Prólogo</span>
+    <h3 class="sc-h sc-h--big">${esc(prologue.title)}</h3>
+    <div class="sc-tale">${storyHtml(prologue.paragraphs)}</div>
+    <div class="sc-row"><button type="button" class="sc-btn" id="sc-begin">${fromBook ? "Voltar ao grimório" : "Pegar a pena"}</button></div>
+  </div>`);
+  on("#sc-begin", () => {
+    const a = audio();
+    if (a) a.init();
+    if (fromBook) return showBook();
+    S.seenIntro = true;
+    save();
+    return showMap();
+  });
+}
+
+/** A crônica: os trechos que já voltaram ao rolo, na ordem do caminho */
+function showChronicle() {
+  B = null;
+  stopTimer();
+  music("scroll");
+  const prologue = Lore.PROLOGUE[AppState.language] || Lore.PROLOGUE.hebrew;
+  const relics = S.relics.map((id) => RELICS.find((r) => r.id === id)).filter(Boolean);
+  const entries = campaign.map(({ chapter, meta }, i) => {
+    if (!S.done[chapter.id]) return `<li class="sc-chronicle__lost">Capítulo ${i + 1} · página ainda em branco</li>`;
+    const lore = loreOf(i);
+    return `<li><b>Capítulo ${i + 1} · ${esc(meta.city)} <span class="${termClass()}">${esc(meta.native)}</span></b>
+      <p>${rich(lore.lore)}</p><p class="sc-chronicle__quote">${rich(lore.epilogue)}</p></li>`;
+  }).join("");
+  setScreen(`<div class="sc-card">
+    <h3 class="sc-h">A crônica do escriba</h3>
+    <p class="sc-muted">O que já voltou ao ${isHebrew() ? "rolo" : "códice"}. ${esc(prologue.villain)} <span class="${termClass()}">${esc(prologue.villainNative)}</span> ainda guarda o resto.</p>
+    <ol class="sc-chronicle">${entries}</ol>
+    ${relics.length ? `<h4 class="sc-h">Relíquias</h4><ul class="sc-relic-lore">${relics.map((r) => `<li><b>${esc(r.name)}</b> <span class="sc-muted">${esc(r.ref)}</span><br>${esc(Lore.RELIC_LORE[r.id] || r.desc)}</li>`).join("")}</ul>` : ""}
+    ${S.seenEnding ? `<div class="sc-row"><button type="button" class="sc-btn sc-btn--ghost" id="sc-reread-ending">Rever o final</button></div>` : ""}
+    <div class="sc-row"><button type="button" class="sc-btn sc-btn--ghost" id="sc-back">Grimório</button></div>
+  </div>`);
+  on("#sc-back", showBook);
+  on("#sc-reread-ending", showEnding);
+}
+
+/** Final: o rolo volta cheio para a casa do mestre */
+function showEnding() {
+  const ending = Lore.ENDING[AppState.language] || Lore.ENDING.hebrew;
+  B = null;
+  stopTimer();
+  music("prologue");
+  sting("victory");
+  S.seenEnding = true;
+  save();
+  setScreen(`<div class="sc-card">
+    <span class="sc-eyebrow">Epílogo</span>
+    <h3 class="sc-h sc-h--big">${esc(ending.title)}</h3>
+    <div class="sc-tale">${storyHtml(ending.paragraphs)}</div>
+    <p class="sc-muted sc-center">Todos os capítulos continuam abertos para você repetir quando quiser.</p>
+    <div class="sc-row"><button type="button" class="sc-btn" id="sc-map">Mapa</button></div>
+  </div>`);
+  on("#sc-map", showMap);
 }
 
 /* ============================ Batalha ============================ */
@@ -700,7 +790,8 @@ function startChapter(index) {
   A = { parts: [], floats: [], lunge: {}, monFlash: 0, heroFlash: 0, shake: 0, deathT: 0 };
   const g = gfx();
   if (g) g.resetEmbers();
-  music("battle");
+  music(battleTheme());
+  sting("chapter");
   nextMonster();
 }
 
@@ -943,7 +1034,7 @@ function hurt(damage) {
 function defeat() {
   if (!B) return;
   music(null);
-  sfx("over");
+  sting("defeat");
   stopTimer();
   cancelAnimationFrame(frameId);
   const index = B.index;
@@ -1054,11 +1145,12 @@ function bossIntro() {
   B.mon = { word: null, term: "", label: "", hp: total, max: total, seed: B.index * 7 + 5, dead: false };
   const g = gfx();
   if (g) g.resetEmbers();
-  music("boss");
+  music(bossTheme());
   const intro = B.rush
     ? `${esc(B.meta.boss)} desperta! Ele lança <b>${B.rush.length} palavras</b> de uma vez. Aponte o termo certo para cada significado.`
     : `${esc(B.meta.boss)} desperta! Ele guarda <b>${B.sents.length} ${B.sents.length === 1 ? "frase" : "frases"}</b>. Decifre as palavras, responda o golpe de gramática e monte cada tradução.`;
-  renderBattle(`<div class="sc-prompt"><div class="sc-q sc-q--strong">${intro}</div></div>
+  renderBattle(`<p class="sc-taunt"><b>${esc(B.meta.boss)}:</b> ${rich(loreOf(B.index).taunt)}</p>
+    <div class="sc-prompt"><div class="sc-q sc-q--strong">${intro}</div></div>
     <div class="sc-scroll sc-scroll--tip"><b>Dica do mestre:</b> ${rich(B.meta.scroll.tip)}</div>
     <div class="sc-row"><button type="button" class="sc-btn" id="sc-fight">Lutar</button></div>`);
   sfx("level");
@@ -1090,7 +1182,8 @@ function bossTurn() {
   updateBars();
   if (B.phase === "build") return bossBuild();
   const strike = B.s.strikes[B.wi];
-  const word = `<span class="sc-ask ${termClass()}">${esc(strike.text)}</span>`;
+  // Na pergunta a palavra aparece sem a pontuação que a acompanha na frase
+  const word = `<span class="sc-ask ${termClass()}">${esc(strike.text.replace(/[,.;:·!?]+$/, ""))}</span>`;
   let label;
   if (B.q) {
     B.opts = B.q.options;
@@ -1271,7 +1364,7 @@ function bossDown() {
   updateBars();
   A.deathT = performance.now() / 1000 + 0.8;
   music(null);
-  sfx("fanfare");
+  sting("victory");
   const index = B.index;
   const total = B.total;
   const sentences = B.sents.map((s) => s.sentence);
@@ -1285,6 +1378,7 @@ function bossDown() {
     S.relics.push(relic.id);
     newRelic = relic;
   }
+  const finishedAll = campaign.every((c) => S.done[c.chapter.id]);
   save();
   setTimeout(() => {
     if (!isOpen()) return;
@@ -1295,18 +1389,22 @@ function bossDown() {
     setScreen(`<div class="sc-card sc-card--center">
       <span class="sc-muted">${esc(campaign[index].meta.boss)} derrotado</span>
       <div class="sc-big">Capítulo ${index + 1} completo</div>
-      ${newRelic ? `<div class="sc-relicdrop"><span class="sc-muted">Relíquia encontrada</span><b>${esc(newRelic.name)}</b><span>${esc(newRelic.ref)} · ${esc(newRelic.desc)}</span></div>` : ""}
+      <blockquote class="sc-fragment"><span class="sc-fragment__label">Trecho devolvido ao ${isHebrew() ? "rolo" : "códice"}</span>${rich(loreOf(index).epilogue)}</blockquote>
+      ${newRelic ? `<div class="sc-relicdrop"><span class="sc-muted">Relíquia encontrada</span><b>${esc(newRelic.name)}</b><span>${esc(newRelic.ref)} · ${esc(newRelic.desc)}</span><em>${esc(Lore.RELIC_LORE[newRelic.id] || "")}</em></div>` : ""}
       <p class="sc-muted">+${xp} XP · +1 óleo de cura</p>
       ${sentences.length ? `<details class="sc-review"><summary>Rever as ${sentences.length} frases do guardião</summary>
         <div class="sc-revlist">${sentences.map((s) => `<div><span class="sc-revlist__term ${termClass()}" dir="${isHebrew() ? "rtl" : "ltr"}">${esc(getTerm(s))}</span>
           <span>“${esc(preferredGloss(s.translations))}”</span></div>`).join("")}</div></details>` : ""}
-      <div class="sc-row">${next
-        ? `<button type="button" class="sc-btn" id="sc-next">Seguir para ${esc(next.meta.city)}</button>`
-        : `<span class="sc-muted">Você restaurou o rolo inteiro.</span>`}
+      <div class="sc-row">${finishedAll && !S.seenEnding
+        ? `<button type="button" class="sc-btn" id="sc-ending">Voltar ao mestre</button>`
+        : next
+          ? `<button type="button" class="sc-btn" id="sc-next">Seguir para ${esc(next.meta.city)}</button>`
+          : ""}
         <button type="button" class="sc-btn sc-btn--ghost" id="sc-again">Refazer capítulo</button>
         <button type="button" class="sc-btn sc-btn--ghost" id="sc-map">Mapa</button></div>
     </div>`);
-    if (newRelic) sfx("fanfare");
+    if (newRelic) setTimeout(() => sting("relic"), 1500);
+    on("#sc-ending", showEnding);
     on("#sc-next", () => showScroll(index + 1));
     on("#sc-again", () => startChapter(index));
     on("#sc-map", showMap);
@@ -1538,7 +1636,10 @@ function openScribeChronicles() {
   setupListeners();
   refreshAudioLabels();
   const a = audio();
-  if (a) a.chip.stop();
+  if (a) {
+    a.chip.stop();
+    a.epic.setFlavor(AppState.language);
+  }
   if (!campaign.length) {
     setScreen(`<div class="sc-card sc-card--center"><p class="sc-story">Ainda não há lições com vocabulário suficiente para a aventura.</p></div>`);
     return;

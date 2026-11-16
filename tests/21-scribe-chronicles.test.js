@@ -11,6 +11,8 @@ const suite = new TestSuite('Módulo 21: Crônicas do Escriba');
 const { html, appJs, hebrewData, greekData } = loadSourceFiles();
 const Scribe = require('../js/modules/scribe-chronicles.js');
 const Campaign = require('../js/modules/scribe-campaign.js');
+const Lore = require('../js/modules/scribe-lore.js');
+const GameAudio = require('../js/modules/game-audio.js');
 const { AppState, getTerm } = require('../js/modules/state.js');
 
 const LANGS = [['hebrew', hebrewData, Campaign.HEBREW], ['greek', greekData, Campaign.GREEK]];
@@ -196,13 +198,69 @@ suite.test('Progresso corrompido é saneado e o backup só traz avanço', () => 
   assert.deepEqual(Scribe.sanitizeProgress(null).done, {});
 });
 
+suite.test('Toda lição tem a sua parte da história, nos dois idiomas', () => {
+  [['hebrew', hebrewData, Lore.HEBREW], ['greek', greekData, Lore.GREEK]].forEach(([language, chapters, table]) => {
+    chapters.forEach((chapter) => {
+      const lore = Lore.forChapter(language, chapter.id);
+      assert.equal(lore, table[chapter.id], `Lição sem história própria: ${chapter.title}`);
+      ['lore', 'taunt', 'epilogue'].forEach((field) => {
+        assert.isTrue(typeof lore[field] === 'string' && lore[field].length > 20, `${chapter.id} sem ${field}`);
+      });
+      assert.isTrue(/^“.*”$/.test(lore.taunt), `A fala do guardião de ${chapter.id} vem entre aspas`);
+    });
+    assert.deepEqual(Object.keys(table).filter((id) => !chapters.some((c) => c.id === id)), [], 'História sem lição');
+    assert.isTrue(Lore.PROLOGUE[language].paragraphs.length >= 3, 'Prólogo curto demais');
+    assert.isTrue(Lore.ENDING[language].paragraphs.length >= 2, 'Final curto demais');
+    assert.isTrue(!!Lore.PROLOGUE[language].villain && !!Lore.PROLOGUE[language].villainNative);
+  });
+  assert.equal(Lore.forChapter('hebrew', 'capitulo_do_aluno'), Lore.GENERIC, 'Capítulo criado pelo aluno usa a história genérica');
+});
+
+suite.test('Cada classe e cada relíquia tem a sua história', () => {
+  Object.keys(Campaign.CLASSES).forEach((cls) => assert.isTrue(!!Lore.CLASS_LORE[cls], `Classe sem história: ${cls}`));
+  Campaign.RELICS.forEach((relic) => assert.isTrue(!!Lore.RELIC_LORE[relic.id], `Relíquia sem história: ${relic.name}`));
+  assert.equal(Object.keys(Lore.RELIC_LORE).length, Campaign.RELICS.length);
+});
+
+suite.test('Trilha: todo tema está bem escrito e todo cenário tem música de batalha', () => {
+  const themes = GameAudio.epic.describe();
+  const names = themes.map((t) => t.name);
+  ['prologue', 'map', 'scroll', 'field', 'desert', 'water', 'mount', 'city', 'boss', 'final'].forEach((name) => {
+    assert.isTrue(names.includes(name), `Tema ausente: ${name}`);
+  });
+  themes.forEach((theme) => {
+    assert.equal(theme.bars, 4, `${theme.name}: quatro compassos`);
+    assert.isTrue(theme.melodyBars.every((steps) => steps === 8), `${theme.name}: melodia com 8 colcheias por compasso`);
+    assert.isTrue(theme.melodyBars.length === 0 || theme.melodyBars.length === 4, `${theme.name}: melodia de 4 compassos ou nenhuma`);
+    assert.equal(theme.bassSteps, 8, `${theme.name}: baixo com 8 colcheias`);
+    assert.isTrue(theme.drumSteps.every((steps) => steps === 8), `${theme.name}: percussão com 8 colcheias`);
+    assert.isTrue(theme.arpSteps === 0 || theme.arpSteps === 8, `${theme.name}: dedilhado com 8 colcheias`);
+    assert.isTrue(theme.degrees.every((d) => Number.isInteger(d) && d >= -7 && d <= 14), `${theme.name}: graus fora da tessitura`);
+    assert.isTrue(theme.melodyBars.length === 0 || ['flute', 'reed', 'horn'].includes(theme.lead), `${theme.name}: timbre da melodia`);
+  });
+  Campaign.SCENES.forEach((scene) => {
+    assert.isTrue(names.includes(GameAudio.epic.themeForScene(scene)), `Cenário sem música: ${scene}`);
+    assert.isTrue(!!GameAudio.epic.SCENE_THEME[scene], `Cenário sem tema próprio: ${scene}`);
+  });
+  const battleThemes = new Set(Campaign.SCENES.map((scene) => GameAudio.epic.themeForScene(scene)));
+  assert.equal(battleThemes.size, 5, 'Cinco ambientes de batalha: campo, deserto, água, monte e cidade');
+});
+
+suite.test('Quem já jogava não revê o prólogo à força; quem começa agora, sim', () => {
+  assert.equal(Scribe.sanitizeProgress({ cls: 'mago', lvl: 3 }).seenIntro, true, 'Progresso antigo, com herói escolhido');
+  assert.equal(Scribe.sanitizeProgress({}).seenIntro, false, 'Aventura nova');
+  assert.equal(Scribe.sanitizeProgress({ cls: 'mago', seenIntro: false }).seenIntro, false);
+  assert.equal(Scribe.sanitizeProgress({ seenEnding: true }).seenEnding, true);
+});
+
 suite.test('Crônicas do Escriba está ligada à tela de Avaliar e ao backup', () => {
   assert.includes(html, 'onclick="openScribeChronicles()"', 'Cartão do modo ausente');
   assert.includes(html, 'id="scribe-view"', 'Tela do jogo ausente');
-  ['scribe-campaign.js', 'scribe-graphics.js', 'scribe-chronicles.js'].forEach((file) => {
+  ['scribe-campaign.js', 'scribe-lore.js', 'scribe-graphics.js', 'scribe-chronicles.js'].forEach((file) => {
     assert.includes(html, `js/modules/${file}`, `${file} não carregado`);
   });
   assert.isTrue(html.indexOf('scribe-campaign.js') < html.indexOf('scribe-chronicles.js'), 'A campanha carrega antes do motor');
+  assert.isTrue(html.indexOf('scribe-lore.js') < html.indexOf('scribe-chronicles.js'), 'A história carrega antes do motor');
   assert.includes(appJs, 'ScribeModule.loadProgress(AppState.language)', 'Backup não leva o progresso da aventura');
   assert.includes(appJs, 'mergeProgress(AppState.language, parsed.scribe)', 'Backup não restaura a aventura');
 });
