@@ -11,7 +11,7 @@ const suite = new TestSuite('Módulo 3: Motor de Prática & Modos de Exercício'
 const { appJs, hebrewData } = loadSourceFiles();
 
 // Funções puras e estado importados do módulo de produção
-const { shuffleArray, buildDistractorCache, buildChoiceOptions, getTerm, isAlphabetChapter, AppState, resetStats } = require('../js/modules/state.js');
+const { shuffleArray, buildDistractorCache, buildChoiceOptions, preferredGloss, getTerm, isAlphabetChapter, AppState, resetStats } = require('../js/modules/state.js');
 
 suite.test('shuffleArray embaralha mantendo todos os elementos', () => {
   const original = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -327,7 +327,8 @@ suite.test('Múltipla escolha tem uma única alternativa certa, nas duas direç�
         assert.equal(options.filter((o) => o.isCorrect).length, 1, 'Só uma alternativa correta');
         assert.equal(new Set(options.map((o) => o.text)).size, 4, 'Alternativas não se repetem');
         const correct = options.find((o) => o.isCorrect);
-        assert.equal(correct.text, direction === 'reverse' ? getTerm(item) : item.translations[0]);
+        assert.equal(correct.text, direction === 'reverse' ? getTerm(item) : preferredGloss(item.translations));
+        assert.isTrue(direction === 'reverse' || item.translations.includes(correct.text), 'A alternativa certa é uma tradução cadastrada');
         // Nenhum distrator pode ser também uma tradução válida da pergunta
         options.filter((o) => !o.isCorrect).forEach((o) => {
           assert.isTrue(!o.translations.some((t) => item.translations.includes(t)), `Distrator ambíguo em ${getTerm(item)}`);
@@ -354,6 +355,14 @@ suite.test('Distratores preferem a mesma classe gramatical e não misturam letra
   buildChoiceOptions(letter, hebrewData, { direction: 'reverse' }).forEach((o) => {
     assert.isTrue(letters.has(o.term), 'Letras só concorrem com letras');
   });
+});
+
+suite.test('Alternativa mostra a grafia acentuada quando o cadastro traz as duas', () => {
+  assert.equal(preferredGloss(['nao', 'não']), 'não');
+  assert.equal(preferredGloss(['para que nao', 'para que não', 'a fim de que não']), 'para que não');
+  assert.equal(preferredGloss(['céu', 'ceu']), 'céu');
+  assert.equal(preferredGloss(['pai', 'ancestral']), 'pai');
+  assert.equal(preferredGloss([]), '');
 });
 
 suite.test('Escolha inversa e retorno das frases estão ligados à interface', () => {

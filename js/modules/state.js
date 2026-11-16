@@ -8,7 +8,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.25.3";
+  "2.26.0";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
@@ -221,6 +221,20 @@ function normalizeGloss(str) {
     .trim();
 }
 
+/**
+ * Tradução para exibir numa alternativa: a primeira cadastrada, trocada pela grafia
+ * acentuada quando o cadastro traz as duas ("nao" e "não")
+ * @param {Array<string>} translations
+ * @returns {string}
+ */
+function preferredGloss(translations) {
+  const list = Array.isArray(translations) ? translations.filter((t) => typeof t === "string") : [];
+  const first = list[0] || "";
+  const strip = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  if (strip(first) !== first.normalize("NFD")) return first;
+  return list.find((t) => t !== first && strip(t).toLowerCase() === first.toLowerCase()) || first;
+}
+
 function isSentenceItem(item) {
   return !!item && (item.type === "Frase" || item.type === "Expressão" ||
     (Array.isArray(item.tokens) && item.tokens.length > 0));
@@ -253,7 +267,7 @@ function buildChoiceOptions(question, chapters, opts = {}) {
   );
 
   const optionOf = (item, isCorrect) => ({
-    text: isReverse ? getTerm(item) : (item.translations || [])[0],
+    text: isReverse ? getTerm(item) : preferredGloss(item.translations),
     isCorrect,
     term: getTerm(item),
     translations: [...(item.translations || [])],
@@ -683,6 +697,7 @@ if (typeof window !== "undefined") {
   window.saveChaptersToStorage = saveChaptersToStorage;
   window.buildDistractorCache = buildDistractorCache;
   window.buildChoiceOptions = buildChoiceOptions;
+  window.preferredGloss = preferredGloss;
   window.resetStats = resetStats;
   window.getRoundSummary = getRoundSummary;
   window.startNewRound = startNewRound;
@@ -711,6 +726,7 @@ if (typeof window !== "undefined") {
     saveChaptersToStorage,
     buildDistractorCache,
     buildChoiceOptions,
+    preferredGloss,
     resetStats,
     getRoundSummary,
     startNewRound,
@@ -742,6 +758,7 @@ if (typeof module !== "undefined" && module.exports) {
     saveChaptersToStorage,
     buildDistractorCache,
     buildChoiceOptions,
+    preferredGloss,
     resetStats,
     getRoundSummary,
     startNewRound,

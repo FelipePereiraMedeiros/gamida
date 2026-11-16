@@ -26,13 +26,14 @@
     <link rel="preload" href="fonts/SBL_Hbrw.ttf" as="font" type="font/ttf" crossorigin />
 
     <script>
-      window.APP_VERSION = "2.25.3";
+      window.APP_VERSION = "2.26.0";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
     <link rel="stylesheet" href="css/offline-theme.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/interface.css" />
+    <link rel="stylesheet" href="css/games.css" />
     <!-- Tailwind compilado e versionado (npm run build:css): funciona sem internet.
          Vem por último, como o CDN fazia, para os utilitários prevalecerem sobre os estilos próprios. -->
     <link rel="stylesheet" href="css/tailwind.css" />
@@ -53,6 +54,8 @@
       <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
       <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
       <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 13h.01M18 13h.01M9 13h6"/></symbol>
+      <symbol id="i-stones" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="8" width="8" height="5" rx="1.5"/><path d="M7 11v3M17 16v2M2 21h20M2 21v-3h4v3M10 21v-3h4v3M18 21v-3h4v3"/></symbol>
+      <symbol id="i-scroll" viewBox="0 0 24 24"><path d="M8 21h10a3 3 0 0 0 3-3v-1H11v1a3 3 0 0 1-6 0V6a3 3 0 0 0-3-3h12a3 3 0 0 1 3 3v11M9 8h5M9 12h5"/></symbol>
       <symbol id="i-list" viewBox="0 0 24 24"><path d="m3 6 2 2 4-4M3 16l2 2 4-4M13 6h8M13 12h8M13 18h8"/></symbol>
       <symbol id="i-lines" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
       <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
@@ -675,7 +678,95 @@
               <span class="mode-card__text">Marque nas caixas a classe, o caso, o gênero, o número, a pessoa, o tempo, o modo e a voz de cada palavra das frases das lições.</span>
               <span class="mode-card__cta">Escolher lições ➔</span>
             </button>
+
+            <!-- Modo: Chuva de Pedras -->
+            <button type="button" onclick="openStoneRain()" class="mode-card mode-card--stones">
+              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-stones"></use></svg></span>
+              <span class="mode-card__title">Chuva de Pedras</span>
+              <span class="mode-card__stat">Recorde: <span id="stones-card-best">0</span></span>
+              <span class="mode-card__text">Pedras com palavras caem sobre a muralha. Toque no significado antes que acertem o muro. Vocabulário de todas as lições.</span>
+              <span class="mode-card__cta">Defender a muralha ➔</span>
+            </button>
+
+            <!-- Modo: Crônicas do Escriba -->
+            <button type="button" onclick="openScribeChronicles()" class="mode-card mode-card--scribe">
+              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-scroll"></use></svg></span>
+              <span class="mode-card__title">Crônicas do Escriba</span>
+              <span id="scribe-card-stat" class="mode-card__stat"></span>
+              <span class="mode-card__text">Uma aventura por todas as lições: pergaminhos de gramática, criaturas-palavra e um guardião de frases em cada capítulo.</span>
+              <span class="mode-card__cta">Abrir o rolo ➔</span>
+            </button>
           </div>
+        </div>
+
+        <!-- Chuva de Pedras: arcade de vocabulário -->
+        <div id="stone-rain-view" class="hidden sr-wrap">
+          <div class="sr-top">
+            <h3 class="sr-title">Chuva de Pedras <span id="sr-title-orig" class="hebrew-text">אֲבָנִים</span></h3>
+            <div class="sr-hud">
+              <span aria-live="polite">Pontos <b id="sr-score">0</b></span>
+              <span class="sr-hud__combo">Combo <b id="sr-combo">×1</b></span>
+              <span>Fase <b id="sr-level">1</b></span>
+              <span class="sr-lives" id="sr-lives" role="img" aria-label="5 de 5 vidas">♥♥♥♥♥</span>
+            </div>
+            <div class="sr-tools">
+              <button type="button" class="sr-ghost sr-ghost--small" data-game-audio="music" onclick="gameAudioToggleMusic()">Música: ligada</button>
+              <button type="button" class="sr-ghost sr-ghost--small" data-game-audio="mute" onclick="gameAudioToggleMute()">Som: ligado</button>
+              <button type="button" class="sr-ghost sr-ghost--small" onclick="stoneRainPause()">Pausar</button>
+              <button type="button" class="sr-ghost sr-ghost--small" onclick="resetToDashboard()">Sair</button>
+            </div>
+          </div>
+
+          <div class="sr-stage" id="sr-stage">
+            <canvas id="sr-canvas" aria-label="Pedras com palavras caindo sobre a muralha"></canvas>
+            <div class="sr-overlay" id="sr-menu">
+              <h3 class="sr-overlay__title">Defenda a muralha</h3>
+              <p class="sr-overlay__text">
+                Pedras com palavras caem sobre Jerusalém. A pedra com contorno dourado é o alvo: toque no significado dela
+                antes que acerte o muro. Errar ou deixar cair custa uma vida. Acertos seguidos multiplicam os pontos.
+              </p>
+              <div class="sr-chips" id="sr-chapter-chips" role="group" aria-label="Lições da partida"></div>
+              <div class="sr-chips">
+                <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('all')">Todas</button>
+                <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('upto')">Até a lição atual</button>
+                <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('none')">Nenhuma</button>
+              </div>
+              <div class="sr-chips">
+                <button type="button" class="sr-chip" id="sr-only-errors" aria-pressed="false" onclick="stoneRainToggle('errors')">★ Só as que errei</button>
+                <button type="button" class="sr-chip" id="sr-reverse" aria-pressed="false" onclick="stoneRainToggle('reverse')">Pedras em português</button>
+              </div>
+              <p class="sr-overlay__text sr-overlay__text--small" id="sr-pool-info"></p>
+              <button type="button" class="sr-play" id="sr-play" onclick="stoneRainPlay()">Jogar</button>
+              <p class="sr-overlay__text sr-overlay__text--small">
+                Recorde: <b id="sr-best">0</b> · Teclas 1–4 também respondem · Espaço pausa · M liga e desliga todo o som
+              </p>
+            </div>
+            <div class="sr-overlay hidden" id="sr-pause">
+              <h3 class="sr-overlay__title">Pausado</h3>
+              <div class="sr-row">
+                <button type="button" class="sr-play" onclick="stoneRainResume()">Continuar</button>
+                <button type="button" class="sr-ghost" onclick="stoneRainMenu()">Voltar ao menu</button>
+              </div>
+            </div>
+            <div class="sr-overlay hidden" id="sr-over"></div>
+          </div>
+
+          <div class="sr-answers" id="sr-answers"></div>
+          <p class="sr-foot" id="sr-foot"></p>
+        </div>
+
+        <!-- Crônicas do Escriba: RPG de vocabulário, gramática e frases -->
+        <div id="scribe-view" class="hidden sc-wrap">
+          <div class="sc-top">
+            <h3 class="sc-title">Crônicas do Escriba <span id="sc-title-orig" class="hebrew-text">סֹפֵר</span></h3>
+            <div class="sc-tools">
+              <button type="button" class="sc-mini" onclick="scribeShowBook()">Grimório</button>
+              <button type="button" class="sc-mini" data-game-audio="music" onclick="gameAudioToggleMusic()">Música: ligada</button>
+              <button type="button" class="sc-mini" data-game-audio="mute" onclick="gameAudioToggleMute()">Som: ligado</button>
+              <button type="button" class="sc-mini" onclick="resetToDashboard()">Sair</button>
+            </div>
+          </div>
+          <section id="sc-screen" aria-live="polite"></section>
         </div>
 
         <!-- Caminho do domínio: mapa dos capítulos -->
@@ -1705,7 +1796,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.25.3</span>
+        <span id="footer-version-tag">v2.26.0</span>
       </p>
       <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
     </footer>
@@ -1843,6 +1934,11 @@
     <script src="js/modules/mastery-path.js"></script>
     <script src="js/modules/morph-drill.js"></script>
     <script src="js/modules/activity.js"></script>
+    <script src="js/modules/game-audio.js"></script>
+    <script src="js/modules/stone-rain.js"></script>
+    <script src="js/modules/scribe-campaign.js"></script>
+    <script src="js/modules/scribe-graphics.js"></script>
+    <script src="js/modules/scribe-chronicles.js"></script>
     <script src="js/modules/ui.js"></script>
     <script src="js/app.js"></script>
   </body>

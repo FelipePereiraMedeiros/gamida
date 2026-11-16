@@ -31,6 +31,8 @@ const modules = [
   { id: 17, name: 'Mago da Morfologia', file: './tests/17-morph-drill.test.js' },
   { id: 18, name: 'Constância de Estudo', file: './tests/18-activity.test.js' },
   { id: 19, name: 'Funcionamento sem Internet', file: './tests/19-offline-assets.test.js' },
+  { id: 20, name: 'Chuva de Pedras', file: './tests/20-stone-rain.test.js' },
+  { id: 21, name: 'Crônicas do Escriba', file: './tests/21-scribe-chronicles.test.js' },
 ];
 
 async function run() {

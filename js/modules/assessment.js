@@ -62,6 +62,14 @@ function resetToDashboard() {
   safeToggle("morph-config", false);
   safeToggle("morph-active", false);
   safeToggle("morph-results", false);
+  // Jogos: sair da tela encerra a partida e a música
+  if (typeof window !== "undefined") {
+    if (window.StoneRainModule) window.StoneRainModule.closeStoneRain();
+    if (window.ScribeModule) window.ScribeModule.closeScribeChronicles();
+    const stonesBest = document.getElementById("stones-card-best");
+    if (stonesBest && window.StoneRainModule) stonesBest.textContent = window.StoneRainModule.getBest();
+    if (window.ScribeModule) window.ScribeModule.updateScribeCardStat();
+  }
   // As revisões vencem com o passar do tempo: a contagem é refeita a cada volta ao painel
   if (typeof window !== "undefined" && typeof window.updateReviewDueBadge === "function") {
     window.updateReviewDueBadge();

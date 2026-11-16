@@ -1,0 +1,213 @@
+/*! Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário: uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE. */
+/**
+ * ==========================================================================
+ * Módulo 21: Crônicas do Escriba (RPG de vocabulário, gramática e frases)
+ * ==========================================================================
+ */
+
+const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
+
+const suite = new TestSuite('Módulo 21: Crônicas do Escriba');
+const { html, appJs, hebrewData, greekData } = loadSourceFiles();
+const Scribe = require('../js/modules/scribe-chronicles.js');
+const Campaign = require('../js/modules/scribe-campaign.js');
+const { AppState, getTerm } = require('../js/modules/state.js');
+
+const LANGS = [['hebrew', hebrewData, Campaign.HEBREW], ['greek', greekData, Campaign.GREEK]];
+
+suite.test('A campanha tem um capítulo próprio para cada lição, nos dois idiomas', () => {
+  LANGS.forEach(([language, chapters, table]) => {
+    const campaign = Scribe.buildCampaign(chapters, language);
+    assert.equal(campaign.length, chapters.length, `Toda lição de ${language} vira capítulo`);
+    campaign.forEach(({ chapter, meta, index }) => {
+      assert.equal(meta, table[chapter.id], `Lição sem capítulo próprio: ${chapter.title}`);
+      ['city', 'native', 'boss', 'story'].forEach((field) => assert.isTrue(!!meta[field], `${chapter.id} sem ${field}`));
+      assert.isTrue(Campaign.SCENES.includes(meta.scene), `Cenário desconhecido em ${chapter.id}`);
+      assert.isTrue(!!meta.scroll.t && !!meta.scroll.tip, `Pergaminho incompleto em ${chapter.id}`);
+      assert.isTrue((meta.scroll.p || []).length + (meta.scroll.rows || []).length > 0, `Pergaminho vazio em ${chapter.id}`);
+      assert.equal(index, campaign.findIndex((c) => c.chapter === chapter));
+    });
+    assert.equal(new Set(campaign.map((c) => c.meta.city)).size, campaign.length, 'Cada capítulo tem a sua cidade');
+    assert.deepEqual(Object.keys(table).filter((id) => !chapters.some((c) => c.id === id)), [], 'Capítulo de campanha sem lição');
+  });
+});
+
+suite.test('Os nomes das cidades estão no alfabeto do idioma', () => {
+  Object.values(Campaign.HEBREW).forEach((meta) => assert.isTrue(/^[֐-׿\s־]+$/.test(meta.native), `Nome não hebraico: ${meta.native}`));
+  Object.values(Campaign.GREEK).forEach((meta) => assert.isTrue(/^[Ͱ-Ͽἀ-῿]+$/.test(meta.native), `Nome não grego: ${meta.native}`));
+});
+
+suite.test('Capítulo criado pelo aluno também entra na aventura', () => {
+  const custom = { id: 'meu_capitulo', title: 'Lição 40 - Vocabulário extra', items: hebrewData[2].items.slice(0, 6), sentences: [] };
+  const campaign = Scribe.buildCampaign([...hebrewData, custom], 'hebrew');
+  const last = campaign[campaign.length - 1];
+  assert.equal(last.chapter, custom);
+  assert.equal(last.meta.city, 'Vocabulário extra');
+  assert.isTrue(!!last.meta.scroll.t && !!last.meta.boss);
+  const tiny = { id: 'curto', title: 'Curto', items: hebrewData[2].items.slice(0, 2) };
+  assert.equal(Scribe.buildCampaign([tiny], 'hebrew').length, 0, 'Capítulo com menos de 4 palavras fica de fora');
+});
+
+suite.test('Relíquias: quatro por classe, espalhadas pela campanha, a última no fim', () => {
+  [29, 22, 11, 4].forEach((total) => {
+    const indexes = Scribe.relicIndexes(total);
+    assert.equal(new Set(indexes).size, 4, `Quatro capítulos distintos em campanha de ${total}`);
+    assert.equal(indexes[3], total - 1, 'A última relíquia vem com o último capítulo');
+    assert.isTrue(indexes.every((i, k) => k === 0 || i > indexes[k - 1]), 'Em ordem crescente');
+  });
+  Object.keys(Campaign.CLASSES).forEach((cls) => {
+    const found = Array.from({ length: 29 }, (_, i) => Scribe.relicFor(cls, i, 29)).filter(Boolean);
+    assert.equal(found.length, 4);
+    assert.isTrue(found.every((r) => r.cls === cls));
+  });
+});
+
+suite.test('Atributos do herói somam classe, nível e relíquias, com teto', () => {
+  const knight = Scribe.heroStats({ cls: 'cavaleiro', lvl: 3, relics: [] });
+  assert.equal(knight.hp, 112 + 15 * 3);
+  assert.equal(knight.armor, 0.25);
+  const armored = Scribe.heroStats({ cls: 'cavaleiro', lvl: 1, relics: ['escudo_abraao', 'espada_golias'] });
+  assert.equal(armored.hp, 112 + 15 + 40);
+  assert.equal(armored.armor, 0.4);
+  const rogue = Scribe.heroStats({ cls: 'assassino', lvl: 1, relics: ['punhal_eude', 'manto_elias', 'cordao_raabe'] });
+  assert.isTrue(Math.abs(rogue.dodge - 0.4) < 1e-9);
+  assert.equal(rogue.revive, 1);
+  assert.equal(rogue.hints, 1);
+  assert.equal(Scribe.xpNeeded(4), 240);
+});
+
+suite.test('O dano cresce do primeiro ao último capítulo, em qualquer campanha', () => {
+  [29, 22, 5].forEach((total) => {
+    assert.equal(Scribe.monsterDamage(0, total), 10);
+    assert.equal(Scribe.monsterDamage(total - 1, total), 30);
+    assert.equal(Scribe.bossDamage(0, total), 16);
+    assert.equal(Scribe.bossDamage(total - 1, total), 36);
+  });
+  assert.equal(Scribe.monsterDamage(0, 1), 10, 'Campanha de um capítulo não divide por zero');
+});
+
+suite.test('Criaturas: palavras da lição, as erradas primeiro, e duas de lições anteriores', () => {
+  const chapter = hebrewData[5];
+  const previous = hebrewData.slice(0, 5);
+  const missed = chapter.items.slice(-2).map(getTerm);
+  const stats = Object.fromEntries(missed.map((term) => [term, { r: 0, x: 2 }]));
+  for (let round = 0; round < 5; round++) {
+    const waves = Scribe.buildWaves(chapter, previous, stats);
+    const all = waves.flat();
+    assert.equal(all.length, 10, 'Oito novas e duas antigas');
+    assert.equal(all.filter((w) => w.old).length, 2);
+    assert.equal(new Set(all.map((w) => getTerm(w.item))).size, 10, 'Sem palavra repetida');
+    const fresh = all.filter((w) => !w.old).map((w) => getTerm(w.item));
+    missed.forEach((term) => assert.isTrue(fresh.includes(term), 'Palavra errada antes volta'));
+    all.filter((w) => !w.old).forEach((w) => assert.isTrue(chapter.items.includes(w.item)));
+  }
+  assert.equal(Scribe.buildWaves(hebrewData[0], [], {}).flat().filter((w) => w.old).length, 0, 'O primeiro capítulo não tem palavras antigas');
+});
+
+suite.test('Todo guardião tem frases jogáveis, com alternativas e montagem corretas', () => {
+  LANGS.forEach(([language, chapters]) => {
+    AppState.chapters = chapters;
+    AppState.language = language;
+    const campaign = Scribe.buildCampaign(chapters, language);
+    const vocab = Scribe.buildVocabIndex(chapters);
+    campaign.forEach(({ chapter }, index) => {
+      const sentences = Scribe.bossSentences(index, campaign);
+      const hasAny = campaign.slice(0, index + 1).some((c) => (c.chapter.sentences || []).length > 0);
+      assert.equal(sentences.length > 0, hasAny, `Guardião de ${chapter.id}`);
+      assert.isTrue(sentences.length <= Scribe.bossSentenceCount(index, campaign.length));
+      assert.equal(new Set(sentences).size, sentences.length, 'Sem frase repetida');
+      const glossPool = (chapter.sentences || []).flatMap((s) => (s.tokens || []).map((t) => t.context_meaning).filter(Boolean));
+      sentences.forEach((sentence) => {
+        const strikes = Scribe.sentenceStrikes(sentence, vocab, chapter);
+        assert.isTrue(strikes.length >= 1 && strikes.length <= 3, `Golpes de palavra em ${getTerm(sentence)}`);
+        strikes.forEach((strike) => {
+          const options = Scribe.strikeOptions(strike, glossPool, chapters);
+          assert.equal(options.length, 4);
+          assert.equal(new Set(options).size, 4, 'Alternativas distintas');
+          assert.isTrue(options.includes(strike.answer), 'A resposta está entre as alternativas');
+        });
+        const { chunks, bank, target } = Scribe.buildSentenceBank(sentence, chapter.sentences);
+        assert.isTrue(chunks.length >= 1 && chunks.length <= 7, 'De 1 a 7 pedaços para montar');
+        assert.equal(chunks.join(' '), target.trim().split(/\s+/).join(' '), 'Os pedaços refazem a tradução');
+        chunks.forEach((chunk) => assert.isTrue(bank.some((b) => b.text === chunk), 'Todo pedaço certo está no banco'));
+        assert.isTrue(Scribe.isBuildCorrect(chunks, chunks));
+        if (chunks.length > 1) assert.isTrue(!Scribe.isBuildCorrect([...chunks].reverse(), chunks), 'Ordem trocada não vale');
+        assert.isTrue(!Scribe.isBuildCorrect(chunks.slice(1), chunks), 'Pedaço faltando não vale');
+      });
+    });
+  });
+});
+
+suite.test('O último guardião é mais longo que os outros', () => {
+  assert.equal(Scribe.bossSentenceCount(3, 29), 5);
+  assert.equal(Scribe.bossSentenceCount(28, 29), 8);
+  const campaign = Scribe.buildCampaign(hebrewData, 'hebrew');
+  assert.equal(Scribe.bossSentences(campaign.length - 1, campaign).length, 8, 'Completa com frases de lições anteriores');
+});
+
+suite.test('Golpe de gramática lê tronco, pessoa, tempo e caso da análise', () => {
+  const piel = { word_class: 'Verbo', syntax_role: "Núcleo do predicado. 1ª pessoa comum do plural do perfeito Pi'el ('falamos')." };
+  assert.equal(Scribe.hebrewStem(piel), 'Piel');
+  assert.equal(Scribe.verbPerson(piel), 'nós');
+  assert.equal(Scribe.hebrewStem({ word_class: 'Verbo', syntax_role: "3ª pessoa masculino singular do perfeito Hif'il." }), 'Hifil');
+  assert.equal(Scribe.hebrewStem({ word_class: 'Verbo', syntax_role: 'Imperfeito Hitpael, 3ms.' }), 'Hitpael');
+  assert.equal(Scribe.hebrewStem({ word_class: 'Verbo', syntax_role: 'Perfeito Qal.' }), 'Qal');
+  assert.equal(Scribe.verbPerson({ syntax_role: '3ª pessoa feminino singular do perfeito Qal' }), 'ela');
+  assert.equal(Scribe.verbPerson({ syntax_role: '3ª pessoa comum do plural' }), 'eles');
+  assert.equal(Scribe.verbPerson({ syntax_role: 'Sujeito da oração' }), null);
+
+  const present = { word_class: 'Verbo', inflection: 'Presente do indicativo ativo, 3ª pessoa singular' };
+  assert.equal(Scribe.greekTense(present), 'Presente');
+  assert.equal(Scribe.verbPerson(present), 'ele');
+  assert.equal(Scribe.greekTense({ inflection: 'Imperfeito do indicativo ativo' }), 'Imperfeito');
+  assert.equal(Scribe.greekTense({ inflection: 'Mais-que-perfeito ativo' }), 'Mais-que-perfeito');
+  assert.equal(Scribe.greekCase({ inflection: 'Acusativo masculino singular' }), 'Acusativo');
+
+  const question = Scribe.grammarQuestion(piel, 'hebrew');
+  assert.isTrue(['tronco', 'pessoa'].includes(question.kind));
+  assert.equal(question.options.length, 4);
+  assert.isTrue(question.options.includes(question.answer));
+  assert.equal(Scribe.grammarQuestion(piel, 'hebrew', () => false), null, 'Antes da lição que ensina, não pergunta');
+  assert.equal(Scribe.grammarQuestion({ word_class: 'Substantivo', syntax_role: 'Sujeito' }, 'hebrew'), null);
+  const noun = Scribe.grammarQuestion({ word_class: 'Substantivo', inflection: 'Genitivo feminino singular' }, 'greek');
+  assert.equal(noun.kind, 'caso');
+  assert.equal(noun.answer, 'Genitivo');
+});
+
+suite.test('Frases longas são montadas em grupos de palavras', () => {
+  assert.deepEqual(Scribe.chunkTranslation('ele é justo e reto'), ['ele', 'é', 'justo', 'e', 'reto']);
+  const long = 'Comendo eles, tendo tomado Jesus o pão e tendo agradecido, partiu e dando aos discípulos, disse: Tomem, comam; isto é o meu corpo.';
+  const chunks = Scribe.chunkTranslation(long);
+  assert.isTrue(chunks.length <= 7);
+  assert.equal(chunks.join(' '), long);
+  assert.deepEqual(Scribe.chunkTranslation(''), []);
+  assert.isTrue(Scribe.isBuildCorrect(['Ele É', 'justo'], ['ele é', 'justo.']), 'Caixa e pontuação não contam');
+});
+
+suite.test('Progresso corrompido é saneado e o backup só traz avanço', () => {
+  const clean = Scribe.sanitizeProgress({ cls: 'dragão', done: { kelley_03: true, kelley_05: 0 }, lvl: -3, xp: 'x', potions: 2.9, relics: ['urim', 'falsa'], stats: null });
+  assert.equal(clean.cls, null);
+  assert.deepEqual(clean.done, { kelley_03: true });
+  assert.equal(clean.lvl, 1);
+  assert.equal(clean.xp, 0);
+  assert.equal(clean.potions, 2);
+  assert.deepEqual(clean.relics, ['urim']);
+  assert.deepEqual(clean.stats, {});
+  assert.deepEqual(Scribe.sanitizeProgress(null).done, {});
+});
+
+suite.test('Crônicas do Escriba está ligada à tela de Avaliar e ao backup', () => {
+  assert.includes(html, 'onclick="openScribeChronicles()"', 'Cartão do modo ausente');
+  assert.includes(html, 'id="scribe-view"', 'Tela do jogo ausente');
+  ['scribe-campaign.js', 'scribe-graphics.js', 'scribe-chronicles.js'].forEach((file) => {
+    assert.includes(html, `js/modules/${file}`, `${file} não carregado`);
+  });
+  assert.isTrue(html.indexOf('scribe-campaign.js') < html.indexOf('scribe-chronicles.js'), 'A campanha carrega antes do motor');
+  assert.includes(appJs, 'ScribeModule.loadProgress(AppState.language)', 'Backup não leva o progresso da aventura');
+  assert.includes(appJs, 'mergeProgress(AppState.language, parsed.scribe)', 'Backup não restaura a aventura');
+});
+
+module.exports = suite;
+if (require.main === module) {
+  suite.run();
+}

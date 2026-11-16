@@ -9,7 +9,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.25.3";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.26.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -237,6 +237,11 @@ function switchTab(tabName) {
   if (tabName === "vocab" && typeof renderVocabTable === "function") renderVocabTable();
   if (tabName === "assessment" && typeof window !== "undefined" && window.MasteryPathModule) {
     window.MasteryPathModule.updatePathDashboardStat();
+  }
+  if (tabName === "assessment" && typeof window !== "undefined") {
+    const stonesBest = document.getElementById("stones-card-best");
+    if (stonesBest && window.StoneRainModule) stonesBest.textContent = window.StoneRainModule.getBest();
+    if (window.ScribeModule) window.ScribeModule.updateScribeCardStat();
   }
   if (tabName === "practice" && typeof updatePracticeChapterView === "function") updatePracticeChapterView();
   if (tabName === "paradigms") {
@@ -1699,6 +1704,7 @@ function exportChaptersJSON() {
     survivalHighScore: AppState.survivalHighScore,
     activity: typeof window !== "undefined" && window.ActivityModule ? window.ActivityModule.exportActivity() : {},
     dailyGoal: typeof window !== "undefined" && window.ActivityModule ? window.ActivityModule.getDailyGoal() : undefined,
+    scribe: typeof window !== "undefined" && window.ScribeModule ? window.ScribeModule.loadProgress(AppState.language) : undefined,
   };
   const jsonStr = JSON.stringify(backupData, null, 2);
   const blob = new Blob([jsonStr], { type: "application/json;charset=utf-8" });
@@ -1952,6 +1958,10 @@ function saveChapterFromJSON() {
       }
       if (parsed.activity && typeof window !== "undefined" && window.ActivityModule) {
         window.ActivityModule.mergeActivity(parsed.activity);
+      }
+      if (parsed.scribe && typeof window !== "undefined" && window.ScribeModule) {
+        window.ScribeModule.mergeProgress(AppState.language, parsed.scribe);
+        window.ScribeModule.updateScribeCardStat();
       }
       if (parsed.dailyGoal !== undefined && typeof window !== "undefined" && window.ActivityModule) {
         window.ActivityModule.adoptDailyGoal(parsed.dailyGoal);

@@ -1366,9 +1366,11 @@ body.is-alphabet-practice .app-stat--mastery { display: none; }
 /* Análise morfológica com caixas de seleção (grego) */
 .mode-card--morph { --accent: 167 139 250; }
 .mode-card.hidden { display: none; }
-/* Com o quinto cartão (grego), a grade larga passa a 3 colunas: 3 + 2 */
+.mode-card--stones { --accent: 242 177 52; }
+.mode-card--scribe { --accent: 226 122 74; }
+/* Seis cartões (sete no grego): a grade larga fica em 3 colunas */
 @media (min-width: 1280px) {
-  .mode-grid:has(.mode-card--morph:not(.hidden)) { grid-template-columns: repeat(3, 1fr); }
+  .mode-grid { grid-template-columns: repeat(3, 1fr); }
 }
 .morph-panel, .morph-panel * { box-sizing: border-box; }
 .morph-panel {
