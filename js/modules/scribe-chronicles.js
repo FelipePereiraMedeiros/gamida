@@ -24,6 +24,8 @@ const shuffleArray = (typeof window !== "undefined" && window.shuffleArray) || _
 const buildChoiceOptions = (typeof window !== "undefined" && window.buildChoiceOptions) || _stateModule.buildChoiceOptions;
 const preferredGloss = (typeof window !== "undefined" && window.preferredGloss) || _stateModule.preferredGloss;
 const normalizeText = (typeof window !== "undefined" && window.normalizeText) || _evalModule.normalizeText;
+const evaluateAnswer = (typeof window !== "undefined" && window.evaluateAnswer) || _evalModule.evaluateAnswer;
+const compareSentenceWords = (typeof window !== "undefined" && window.compareSentenceWords) || _evalModule.compareSentenceWords;
 
 const { CLASSES, RELICS, RELIC_MILESTONES, getChapterMeta } = Campaign;
 
@@ -40,6 +42,11 @@ const RUSH_WORDS = 6;
 // Golpes de palavra por frase e pedaços na montagem da tradução
 const STRIKES_PER_SENTENCE = 3;
 const MAX_CHUNKS = 7;
+
+// Digitar leva mais tempo do que tocar: a janela do golpe crítico é maior
+const TYPING_CRIT_FACTOR = 1.8;
+// A escolha entre tocar e digitar vale para os dois jogos
+const TYPING_KEY = "gamida_game_typing";
 
 const STEMS = ["Qal", "Nifal", "Piel", "Pual", "Hitpael", "Hifil", "Hofal"];
 const PERSONS = ["eu", "tu", "ele", "ela", "nós", "vós", "eles", "elas"];
@@ -296,6 +303,16 @@ function strikeOptions(strike, glossPool, chapters) {
     shuffleArray((chapters || []).flatMap(wordsOf)).forEach((item) => consider(preferredGloss(item.translations)));
   }
   return shuffleArray([strike.answer, ...wrong]);
+}
+
+/**
+ * Traduções aceitas num golpe de palavra digitado: o sentido na frase e os do verbete
+ * @param {{answer: string, item: Object|null}} strike
+ * @returns {Array<string>}
+ */
+function strikeAccepted(strike) {
+  const list = [strike.answer, ...((strike.item && strike.item.translations) || [])];
+  return list.filter((text, index) => text && list.indexOf(text) === index);
 }
 
 /** Divide a tradução em pedaços para montar: palavra a palavra, ou em grupos nas frases longas */
@@ -897,6 +914,72 @@ function startTimer(seconds) {
   tick();
 }
 
+/* ---------- Tocar ou digitar ---------- */
+
+function isTypingPreferred() {
+  try {
+    return typeof localStorage !== "undefined" && localStorage.getItem(TYPING_KEY) === "1";
+  } catch (_) {
+    return false;
+  }
+}
+
+/** A pergunta atual é digitada? A dica troca uma pergunta digitada por alternativas (B.choiceOnce) */
+const typedNow = () => isTypingPreferred() && !!B && !B.choiceOnce;
+
+function refreshInputModeButton() {
+  const btn = typeof document !== "undefined" ? document.getElementById("sc-input-mode") : null;
+  if (!btn) return;
+  btn.textContent = isTypingPreferred() ? "Resposta: digitar" : "Resposta: tocar";
+  btn.setAttribute("aria-pressed", String(isTypingPreferred()));
+}
+
+/** Redesenha a pergunta em curso, depois de trocar o modo de resposta ou de usar uma dica */
+function rerenderQuestion() {
+  if (!B || B.lock || !$("#sc-cmd")) return;
+  if (!B.boss) askMob();
+  else if (B.rush) rushTurn();
+  else bossTurn();
+}
+
+function toggleTyping() {
+  try {
+    if (typeof localStorage !== "undefined") localStorage.setItem(TYPING_KEY, isTypingPreferred() ? "0" : "1");
+  } catch (_) {}
+  refreshInputModeButton();
+  if (B) B.choiceOnce = false;
+  rerenderQuestion();
+}
+
+function typedForm(placeholder, { area = false } = {}) {
+  const field = area
+    ? `<textarea id="sc-typed-input" class="sc-typed__input sc-typed__input--area" rows="2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${esc(placeholder)}" aria-label="${esc(placeholder)}"></textarea>`
+    : `<input type="text" id="sc-typed-input" class="sc-typed__input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${esc(placeholder)}" aria-label="${esc(placeholder)}">`;
+  return `<form class="sc-typed" id="sc-typed">${field}<button type="submit" class="sc-btn">${area ? "Desferir golpe" : "Golpear"}</button></form>`;
+}
+
+function bindTyped(handler) {
+  const form = $("#sc-typed");
+  const input = $("#sc-typed-input");
+  if (!form || !input) return;
+  const submit = () => {
+    const value = input.value.trim();
+    if (value && B && !B.lock) handler(value, input);
+  };
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    submit();
+  };
+  // Na caixa de frase, Enter envia e Shift+Enter quebra a linha
+  input.onkeydown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey && input.tagName === "TEXTAREA") {
+      e.preventDefault();
+      submit();
+    }
+  };
+  try { input.focus({ preventScroll: true }); } catch (_) { input.focus(); }
+}
+
 function optionButtons(options, { asTerm = false } = {}) {
   return `<div class="sc-opts">${options.map((text, k) => `<button type="button" class="sc-opt${asTerm ? ` sc-opt--term ${termClass()}` : ""}" data-k="${k}">
     <span class="sc-opt__k">${k + 1}</span><span>${esc(text)}</span></button>`).join("")}</div>`;
@@ -918,48 +1001,72 @@ function askMob() {
   B.opts = buildChoiceOptions(word.item, AppState.chapters, { direction: B.dir });
   const cmd = $("#sc-cmd");
   if (!cmd) return;
+  // Só o primeiro golpe pode ser digitado: no golpe final a resposta é o termo original
+  const typed = first && typedNow();
   cmd.innerHTML = `<div class="sc-prompt">${first
     ? `<div class="sc-q">Ataque: o que significa?</div><div class="sc-prompt__term ${termClass()}">${esc(B.mon.term)}</div>`
     : `<div class="sc-q">Golpe final: qual é a palavra para</div><div class="sc-prompt__pt">${esc(word.item.translations.join(" / "))}</div>`}</div>
     <div class="sc-timer" id="sc-timer" title="Responda antes da barra acabar para um golpe crítico"><i></i></div>
-    ${optionButtons(B.opts.map((o) => o.text), { asTerm: !first })}`;
-  bindOptions(answerMob);
-  startTimer(P().crit);
+    ${typed ? typedForm("Digite a tradução…") : optionButtons(B.opts.map((o) => o.text), { asTerm: !first })}`;
+  if (typed) bindTyped(answerMobTyped);
+  else bindOptions(answerMob);
+  startTimer(P().crit * (typed ? TYPING_CRIT_FACTOR : 1));
 }
 
 function answerMob(k) {
   if (!B || B.lock || !B.opts[k]) return;
-  const { word, term } = B.mon;
   const option = B.opts[k];
   const buttons = document.querySelectorAll("#sc-screen .sc-opt");
-  const gloss = esc(word.item.translations.join(" / "));
   if (option.isCorrect) {
-    B.lock = true;
     buttons[k].classList.add("is-ok");
-    const crit = (performance.now() - B.t0) / 1000 < B.crit;
-    B.mon.hp = Math.max(0, B.mon.hp - (crit ? 2 : 1));
-    stat(term, true);
-    recordAnswer(term, true);
-    fxHitMonster(crit ? 24 : 12, crit);
-    sfx("hit", crit ? 4 : 1);
-    updateBars();
-    log(`${crit ? "Golpe crítico!" : "Acertou!"} ${orig(term)} = ${gloss}`, "ok");
-    setTimeout(() => {
-      if (!B || !B.mon) return;
-      if (B.mon.hp <= 0) killMob(crit);
-      else askMob();
-    }, crit ? 750 : 600);
+    mobHit();
   } else {
     buttons[k].classList.add("is-bad");
     buttons[k].disabled = true;
-    stat(term, false);
-    recordAnswer(term, false);
     const wrongGloss = esc((option.translations || []).join(" / "));
-    log(B.dir === "forward"
+    mobMiss(B.dir === "forward"
       ? `Errou! “${esc(option.text)}” é ${orig(option.term)}. A criatura contra-ataca.`
-      : `Errou! ${orig(option.term)} é “${wrongGloss}”. A criatura contra-ataca.`, "bad");
-    hurt(monsterDamage(B.index, B.total));
+      : `Errou! ${orig(option.term)} é “${wrongGloss}”. A criatura contra-ataca.`);
   }
+}
+
+function answerMobTyped(value, input) {
+  const { word, term } = B.mon;
+  if (evaluateAnswer(value, word.item.translations).status !== "incorrect") {
+    input.disabled = true;
+    mobHit();
+    return;
+  }
+  // Depois do erro a resposta aparece: digitá-la é o que fixa
+  input.value = "";
+  mobMiss(`Errou! Não é “${esc(value)}”. ${orig(term)} = ${esc(word.item.translations.join(" / "))}. Digite para continuar.`);
+}
+
+function mobHit() {
+  const { word, term } = B.mon;
+  B.lock = true;
+  B.choiceOnce = false;
+  const crit = (performance.now() - B.t0) / 1000 < B.crit;
+  B.mon.hp = Math.max(0, B.mon.hp - (crit ? 2 : 1));
+  stat(term, true);
+  recordAnswer(term, true);
+  fxHitMonster(crit ? 24 : 12, crit);
+  sfx("hit", crit ? 4 : 1);
+  updateBars();
+  log(`${crit ? "Golpe crítico!" : "Acertou!"} ${orig(term)} = ${esc(word.item.translations.join(" / "))}`, "ok");
+  setTimeout(() => {
+    if (!B || !B.mon) return;
+    if (B.mon.hp <= 0) killMob(crit);
+    else askMob();
+  }, crit ? 750 : 600);
+}
+
+function mobMiss(message) {
+  const { term } = B.mon;
+  stat(term, false);
+  recordAnswer(term, false);
+  log(message, "bad");
+  hurt(monsterDamage(B.index, B.total));
 }
 
 function killMob(crit) {
@@ -1069,9 +1176,25 @@ function usePotion() {
 
 /** A dica apaga duas alternativas erradas */
 function useHint() {
-  if (!B || B.lock) return;
+  if (!B || B.lock || (B.free <= 0 && S.scrolls <= 0)) return;
+  const spend = (message) => {
+    if (B.free > 0) B.free--;
+    else S.scrolls--;
+    save();
+    const hintBtn = $("#sc-hint");
+    if (hintBtn) hintBtn.textContent = hintLabel();
+    sfx("tick");
+    log(message, "ok");
+  };
+  // Pergunta digitada: a dica a troca por alternativas (ou pelos pedaços, na frase)
+  if ($("#sc-typed")) {
+    B.choiceOnce = true;
+    rerenderQuestion();
+    spend(B.phase === "build" && B.boss ? "A dica trouxe os pedaços da tradução." : "A dica trocou a pergunta por alternativas.");
+    return;
+  }
   const buttons = Array.from(document.querySelectorAll("#sc-screen .sc-opt"));
-  if (!buttons.length || (B.free <= 0 && S.scrolls <= 0)) return;
+  if (!buttons.length) return;
   let removed = 0;
   buttons.forEach((btn, k) => {
     const option = B.opts[k];
@@ -1083,13 +1206,7 @@ function useHint() {
     }
   });
   if (!removed) return;
-  if (B.free > 0) B.free--;
-  else S.scrolls--;
-  save();
-  const hintBtn = $("#sc-hint");
-  if (hintBtn) hintBtn.textContent = hintLabel();
-  sfx("tick");
-  log("A dica apagou duas respostas erradas.", "ok");
+  spend("A dica apagou duas respostas erradas.");
 }
 
 /* ---------- Guardião: as frases da lição ---------- */
@@ -1199,47 +1316,71 @@ function bossTurn() {
         ? `${word} vem de ${orig(strike.lemma)}. O que significa?`
         : `O que significa ${word}?`;
   }
-  cmd.innerHTML = `${bossLine()}<div class="sc-prompt"><div class="sc-q sc-q--strong">${label}</div></div>${optionButtons(B.opts)}`;
-  bindOptions(bossAnswer);
+  // O golpe de gramática é sempre por alternativas; o de palavra pode ser digitado
+  const typed = !B.q && typedNow();
+  cmd.innerHTML = `${bossLine()}<div class="sc-prompt"><div class="sc-q sc-q--strong">${label}</div></div>${typed ? typedForm("Digite o significado…") : optionButtons(B.opts)}`;
+  if (typed) bindTyped(bossAnswerTyped);
+  else bindOptions(bossAnswer);
 }
 
 function bossAnswer(k) {
   if (!B || B.lock || B.opts[k] === undefined) return;
-  const strike = B.s.strikes[B.wi];
   const buttons = document.querySelectorAll("#sc-screen .sc-opt");
-  const vocabTerm = strike.item ? getTerm(strike.item) : null;
   if (B.opts[k] === B.ans) {
-    B.lock = true;
     buttons[k].classList.add("is-ok");
-    sfx("hit", 2);
-    if (!B.q) {
-      recordAnswer(vocabTerm, true);
-      B.mon.hp--;
-      fxHitMonster(15, false);
-      updateBars();
-      if (strike.grammar) {
-        B.q = strike.grammar;
-        log(`Certo: ${esc(strike.answer)}. Golpe extra de gramática!`, "ok");
-        setTimeout(bossTurn, 650);
-        return;
-      }
-    } else {
-      recordAnswer(null, true);
-      fxHitMonster(8, true);
-      log(`Certo: ${esc(B.q.answer)}.`, "ok");
-      gainXP(4);
-    }
-    B.q = null;
-    B.wi++;
-    if (B.wi >= B.s.strikes.length) B.phase = "build";
-    setTimeout(bossTurn, 650);
+    bossStrikeHit();
   } else {
     buttons[k].classList.add("is-bad");
     buttons[k].disabled = true;
-    recordAnswer(B.q ? null : vocabTerm, false);
-    log(`${esc(B.meta.boss)} revida! Olhe o começo e o fim da palavra.`, "bad");
-    hurt(bossDamage(B.index, B.total));
+    bossStrikeMiss(`${esc(B.meta.boss)} revida! Olhe o começo e o fim da palavra.`);
   }
+}
+
+function bossAnswerTyped(value, input) {
+  const strike = B.s.strikes[B.wi];
+  if (evaluateAnswer(value, strikeAccepted(strike)).status !== "incorrect") {
+    input.disabled = true;
+    bossStrikeHit();
+    return;
+  }
+  input.value = "";
+  bossStrikeMiss(`${esc(B.meta.boss)} revida! Não é “${esc(value)}”: é “${esc(strike.answer)}”. Digite para continuar.`);
+}
+
+function bossStrikeHit() {
+  const strike = B.s.strikes[B.wi];
+  const vocabTerm = strike.item ? getTerm(strike.item) : null;
+  B.lock = true;
+  B.choiceOnce = false;
+  sfx("hit", 2);
+  if (!B.q) {
+    recordAnswer(vocabTerm, true);
+    B.mon.hp--;
+    fxHitMonster(15, false);
+    updateBars();
+    if (strike.grammar) {
+      B.q = strike.grammar;
+      log(`Certo: ${esc(strike.answer)}. Golpe extra de gramática!`, "ok");
+      setTimeout(bossTurn, 650);
+      return;
+    }
+  } else {
+    recordAnswer(null, true);
+    fxHitMonster(8, true);
+    log(`Certo: ${esc(B.q.answer)}.`, "ok");
+    gainXP(4);
+  }
+  B.q = null;
+  B.wi++;
+  if (B.wi >= B.s.strikes.length) B.phase = "build";
+  setTimeout(bossTurn, 650);
+}
+
+function bossStrikeMiss(message) {
+  const strike = B.s.strikes[B.wi];
+  recordAnswer(B.q || !strike.item ? null : getTerm(strike.item), false);
+  log(message, "bad");
+  hurt(bossDamage(B.index, B.total));
 }
 
 function bossBuild() {
@@ -1247,7 +1388,8 @@ function bossBuild() {
   if (!cmd || !B) return;
   B.opts = [];
   B.built = B.built || [];
-  const { bank, chunks, sentence } = B.s;
+  if (typedNow()) return bossBuildTyped(cmd);
+  const { bank, chunks } = B.s;
   cmd.innerHTML = `${bossLine()}
     <div class="sc-prompt"><div class="sc-q sc-q--strong">Golpe da frase: monte a tradução</div></div>
     <div class="sc-build" id="sc-build">${B.built.length
@@ -1280,41 +1422,77 @@ function bossBuild() {
   on("#sc-strike", () => {
     if (B.lock) return;
     const got = B.built.map((b) => b.text);
-    recordAnswer(null, isBuildCorrect(got, chunks));
     if (isBuildCorrect(got, chunks)) {
-      B.lock = true;
-      B.mon.hp--;
-      updateBars();
-      fxHitMonster(30, true);
-      sfx("level");
-      log(`Frase vencida: “${esc(preferredGloss(sentence.translations))}”`, "ok");
-      setTimeout(() => {
-        if (!B) return;
-        B.si++;
-        B.built = [];
-        if (B.si >= B.sents.length) return bossDown();
-        B.s = B.sents[B.si];
-        B.wi = 0;
-        B.q = null;
-        B.phase = B.s.strikes.length ? "word" : "build";
-        bossTurn();
-      }, 1100);
-    } else {
-      const box = $("#sc-build");
-      if (box) {
-        box.classList.add("is-bad", "sc-shake");
-        setTimeout(() => box.classList.remove("sc-shake"), 300);
-      }
-      const firstBad = got.findIndex((text, i) => normalizeText(text) !== normalizeText(chunks[i] || ""));
-      document.querySelectorAll("#sc-build .sc-chip").forEach((chip, i) => {
-        if (i === firstBad) chip.classList.add("is-wrong");
-      });
-      log(got.length < chunks.length && firstBad === -1
-        ? "Falta pedaço: toda palavra da frase precisa aparecer."
-        : "A ordem ou um pedaço não bate. O destacado é o primeiro problema.", "bad");
-      hurt(bossDamage(B.index, B.total));
+      sentenceHit();
+      return;
     }
+    const box = $("#sc-build");
+    if (box) {
+      box.classList.add("is-bad", "sc-shake");
+      setTimeout(() => box.classList.remove("sc-shake"), 300);
+    }
+    const firstBad = got.findIndex((text, i) => normalizeText(text) !== normalizeText(chunks[i] || ""));
+    document.querySelectorAll("#sc-build .sc-chip").forEach((chip, i) => {
+      if (i === firstBad) chip.classList.add("is-wrong");
+    });
+    sentenceMiss(got.length < chunks.length && firstBad === -1
+      ? "Falta pedaço: toda palavra da frase precisa aparecer."
+      : "A ordem ou um pedaço não bate. O destacado é o primeiro problema.");
   });
+}
+
+/** Golpe da frase digitado: o aluno escreve a tradução inteira */
+function bossBuildTyped(cmd) {
+  const { sentence } = B.s;
+  cmd.innerHTML = `${bossLine()}
+    <div class="sc-prompt"><div class="sc-q sc-q--strong">Golpe da frase: digite a tradução</div></div>
+    ${typedForm("Tradução da frase…", { area: true })}
+    <div class="sc-row"><button type="button" class="sc-btn sc-btn--ghost" id="sc-use-chips">Montar com pedaços</button></div>`;
+  on("#sc-use-chips", () => {
+    B.choiceOnce = true;
+    bossBuild();
+  });
+  bindTyped((value, input) => {
+    if (evaluateAnswer(value, sentence.translations, { isSentence: true }).status !== "incorrect") {
+      input.disabled = true;
+      sentenceHit();
+      return;
+    }
+    // Sem entregar a resposta: diz quanto da tradução já bate
+    const diff = compareSentenceWords(value, sentence.translations);
+    const matched = diff ? diff.expectedWords.filter((w) => w.matched).length : 0;
+    const total = diff ? diff.expectedWords.length : 0;
+    sentenceMiss(`Ainda não: ${matched} de ${total} palavras batem com a tradução esperada. Corrija ou monte com pedaços.`);
+  });
+}
+
+function sentenceHit() {
+  const { sentence } = B.s;
+  recordAnswer(null, true);
+  B.lock = true;
+  B.choiceOnce = false;
+  B.mon.hp--;
+  updateBars();
+  fxHitMonster(30, true);
+  sfx("level");
+  log(`Frase vencida: “${esc(preferredGloss(sentence.translations))}”`, "ok");
+  setTimeout(() => {
+    if (!B) return;
+    B.si++;
+    B.built = [];
+    if (B.si >= B.sents.length) return bossDown();
+    B.s = B.sents[B.si];
+    B.wi = 0;
+    B.q = null;
+    B.phase = B.s.strikes.length ? "word" : "build";
+    bossTurn();
+  }, 1100);
+}
+
+function sentenceMiss(message) {
+  recordAnswer(null, false);
+  log(message, "bad");
+  hurt(bossDamage(B.index, B.total));
 }
 
 /** Guardião sem frases (alfabeto): rajada de palavras no sentido inverso */
@@ -1515,7 +1693,7 @@ function drawArena(canvas) {
   c.setTransform(dpr, 0, 0, dpr, 0, 0);
   // Placa com a palavra sobre a criatura
   if (B.mon && !B.boss && !B.mon.dead && B.mon.label) {
-    c.font = isHebrew() ? '700 22px "SBL Hebrew", "Noto Sans Hebrew", serif' : '700 19px "Gentium Plus", serif';
+    c.font = isHebrew() ? '700 22px "SBL Hebrew", "Ezra SIL", "Noto Sans Hebrew", "David", serif' : '700 19px "Gentium Plus", "SBL Greek", "Galatia SIL", "Palatino Linotype", serif';
     c.direction = isHebrew() ? "rtl" : "ltr";
     c.textAlign = "center";
     const tw = Math.min(W * 0.5, Math.ceil(c.measureText(B.mon.label).width / PX) * PX + 18);
@@ -1595,6 +1773,8 @@ function setupListeners() {
   listenersReady = true;
   document.addEventListener("keydown", (e) => {
     if (!isOpen() || e.defaultPrevented) return;
+    // Digitando, as teclas são texto e não atalhos
+    if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
     if (/^[1-4]$/.test(e.key)) {
       const btn = document.querySelectorAll("#sc-screen .sc-opt")[Number(e.key) - 1];
       if (btn && !btn.disabled) {
@@ -1635,6 +1815,7 @@ function openScribeChronicles() {
   }
   setupListeners();
   refreshAudioLabels();
+  refreshInputModeButton();
   const a = audio();
   if (a) {
     a.chip.stop();
@@ -1695,6 +1876,7 @@ const ScribeModule = {
   grammarQuestion,
   sentenceStrikes,
   strikeOptions,
+  strikeAccepted,
   chunkTranslation,
   buildSentenceBank,
   isBuildCorrect,
@@ -1712,6 +1894,7 @@ if (typeof window !== "undefined") {
   window.ScribeModule = ScribeModule;
   window.openScribeChronicles = openScribeChronicles;
   window.scribeShowBook = showBook;
+  window.scribeToggleTyping = toggleTyping;
 }
 if (typeof module !== "undefined" && module.exports) {
   module.exports = ScribeModule;

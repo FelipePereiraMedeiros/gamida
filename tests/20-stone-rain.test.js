@@ -8,7 +8,7 @@
 const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 
 const suite = new TestSuite('Módulo 20: Chuva de Pedras');
-const { html, hebrewData, greekData } = loadSourceFiles();
+const { html, hebrewData, greekData, rootDir } = loadSourceFiles();
 const {
   buildDeck, chapterShortLabel, headTerm, fallTime, maxStones, hitScore, comboAfterHit, levelAfterHit, MIN_DECK, LIVES,
 } = require('../js/modules/stone-rain.js');
@@ -71,12 +71,47 @@ suite.test('Pontuação: multiplicador, bônus por rapidez e fases', () => {
   assert.equal(MIN_DECK, 4);
 });
 
+suite.test('Digitando, as pedras caem mais devagar e em menor número', () => {
+  [1, 4, 8, 20].forEach((level) => {
+    assert.isTrue(fallTime(level, true) > fallTime(level), `Fase ${level}: mais tempo para digitar`);
+    assert.isTrue(maxStones(level, true) <= maxStones(level), `Fase ${level}: não mais pedras que tocando`);
+  });
+  assert.equal(fallTime(1, true), 16);
+  assert.equal(fallTime(60, true), 6.5, 'Nunca menos de 6,5 s para digitar');
+  assert.equal(maxStones(60, true), 3, 'No máximo três pedras quando se digita');
+  assert.equal(fallTime(3, false), fallTime(3), 'Sem o segundo argumento vale o modo de tocar');
+});
+
+suite.test('Hebraico e grego dos jogos usam as fontes do restante do sistema', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const games = fs.readFileSync(path.join(rootDir, 'css', 'games.css'), 'utf8');
+  const system = fs.readFileSync(path.join(rootDir, 'css', 'styles.css'), 'utf8');
+  const stackOf = (css, selector) => {
+    const start = css.indexOf(selector);
+    const match = start === -1 ? null : css.slice(start).match(/font-family:\s*([^;]+);/);
+    return match ? match[1].replace(/\s+/g, ' ').trim() : null;
+  };
+  const hebrew = stackOf(system, '.hebrew-text,');
+  const greek = stackOf(system, '.greek-text {');
+  assert.isTrue(!!hebrew && !!greek, 'Fontes do sistema não encontradas em styles.css');
+  assert.equal(stackOf(games, '.sc-wrap .hebrew-text {'), hebrew, 'Hebraico dos jogos com outra fonte');
+  assert.equal(stackOf(games, '.sc-wrap .greek-text {'), greek, 'Grego dos jogos com outra fonte');
+  // O desenho no canvas não passa pelo CSS: os módulos precisam citar as mesmas famílias
+  ['stone-rain.js', 'scribe-chronicles.js'].forEach((file) => {
+    const source = fs.readFileSync(path.join(rootDir, 'js', 'modules', file), 'utf8');
+    assert.includes(source, hebrew, `${file}: canvas com outra fonte de hebraico`);
+    assert.includes(source, greek, `${file}: canvas com outra fonte de grego`);
+  });
+});
+
 suite.test('Chuva de Pedras está ligada à tela de Avaliar', () => {
   assert.includes(html, 'onclick="openStoneRain()"', 'Cartão do modo ausente');
   assert.includes(html, 'id="stone-rain-view"', 'Tela do jogo ausente');
   assert.includes(html, 'id="sr-canvas"', 'Canvas ausente');
   assert.includes(html, 'js/modules/stone-rain.js', 'Módulo não carregado');
   assert.includes(html, 'js/modules/game-audio.js', 'Som dos jogos não carregado');
+  assert.includes(html, "stoneRainToggle('typing')", 'Opção de digitar a resposta ausente');
 });
 
 module.exports = suite;

@@ -15,6 +15,8 @@ const getTerm = (typeof window !== "undefined" && window.getTerm) || _stateModul
 const shuffleArray = (typeof window !== "undefined" && window.shuffleArray) || _stateModule.shuffleArray;
 const buildChoiceOptions = (typeof window !== "undefined" && window.buildChoiceOptions) || _stateModule.buildChoiceOptions;
 const preferredGloss = (typeof window !== "undefined" && window.preferredGloss) || _stateModule.preferredGloss;
+const _evalModule = (typeof require !== "undefined") ? require("./evaluation.js") : {};
+const evaluateAnswer = (typeof window !== "undefined" && window.evaluateAnswer) || _evalModule.evaluateAnswer;
 
 const LIVES = 5;
 const WALL_HEIGHT = 46;
@@ -75,12 +77,15 @@ function buildDeck(chapters, opts = {}, isError) {
 }
 
 /** Segundos que uma pedra leva do topo ao muro: cai mais rápido a cada fase */
-function fallTime(level) {
+function fallTime(level, typing = false) {
+  // Digitar leva mais tempo do que tocar: a pedra cai mais devagar
+  if (typing) return Math.max(6.5, 16 - (level - 1) * 0.9);
   return Math.max(3.6, 9.5 - (level - 1) * 0.65);
 }
 
 /** Pedras simultâneas na tela: uma no começo, até quatro */
-function maxStones(level) {
+function maxStones(level, typing = false) {
+  if (typing) return Math.min(3, 1 + Math.floor((level - 1) / 3));
   return Math.min(4, 1 + Math.floor((level - 1) / 2));
 }
 
@@ -128,6 +133,26 @@ function savePrefs() {
   } catch (_) {}
 }
 
+// A escolha entre tocar e digitar vale para os dois jogos
+const TYPING_KEY = "gamida_game_typing";
+
+function isTypingPreferred() {
+  try {
+    return typeof localStorage !== "undefined" && localStorage.getItem(TYPING_KEY) === "1";
+  } catch (_) {
+    return false;
+  }
+}
+
+function setTypingPreferred(on) {
+  try {
+    if (typeof localStorage !== "undefined") localStorage.setItem(TYPING_KEY, on ? "1" : "0");
+  } catch (_) {}
+}
+
+/** Só dá para digitar a tradução em português: com as pedras em português a resposta é o termo original */
+const typingActive = () => isTypingPreferred() && !prefs.reverse;
+
 /** Capítulos com vocabulário suficiente para entrar no jogo */
 function playableChapters() {
   return (AppState.chapters || []).filter((c) => c && (c.items || []).length > 0);
@@ -156,9 +181,10 @@ function currentDeck() {
 const el = (id) => (typeof document !== "undefined" ? document.getElementById(id) : null);
 const audio = () => (typeof window !== "undefined" ? window.GameAudio : null);
 const isHebrew = () => AppState.language === "hebrew";
+// As mesmas famílias de fonte que o restante do sistema usa para hebraico e grego
 const termFont = (px) => (isHebrew()
-  ? `700 ${px}px "SBL Hebrew", "Ezra SIL", "Noto Sans Hebrew", serif`
-  : `700 ${Math.round(px * 0.87)}px "Gentium Plus", "Times New Roman", serif`);
+  ? `700 ${px}px "SBL Hebrew", "Ezra SIL", "Noto Sans Hebrew", "David", serif`
+  : `700 ${Math.round(px * 0.87)}px "Gentium Plus", "SBL Greek", "Galatia SIL", "Palatino Linotype", serif`);
 const reduceMotion = () =>
   typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -235,6 +261,14 @@ function renderMenu() {
     reverseBtn.setAttribute("aria-pressed", String(prefs.reverse));
     reverseBtn.textContent = "Pedras em português";
   }
+  const typingBtn = el("sr-typing");
+  if (typingBtn) typingBtn.setAttribute("aria-pressed", String(typingActive()));
+  const keysHelp = el("sr-keys-help");
+  if (keysHelp) {
+    keysHelp.textContent = typingActive()
+      ? "Enter responde · Esc pausa · as pedras caem mais devagar"
+      : "Teclas 1–4 também respondem · Espaço pausa · M liga e desliga todo o som";
+  }
 
   const count = currentDeck().length;
   const info = el("sr-pool-info");
@@ -265,8 +299,17 @@ function selectChapters(mode) {
 }
 
 function toggleOption(name) {
-  if (name === "errors") prefs.onlyErrors = !prefs.onlyErrors;
-  else prefs.reverse = !prefs.reverse;
+  if (name === "errors") {
+    prefs.onlyErrors = !prefs.onlyErrors;
+  } else if (name === "typing") {
+    // Digitar e pedras em português não combinam: ligar um desliga o outro
+    const on = !typingActive();
+    setTypingPreferred(on);
+    if (on) prefs.reverse = false;
+  } else {
+    prefs.reverse = !prefs.reverse;
+    if (prefs.reverse) setTypingPreferred(false);
+  }
   savePrefs();
   renderMenu();
 }
@@ -311,10 +354,13 @@ function newGame(deck) {
     score: 0, combo: 1, hits: 0, level: 1, lives: LIVES,
     missed: new Map(), spawnTimer: 0, target: null, options: [],
     shake: 0, running: true, paused: false, clock: 0, recent: [],
+    typing: typingActive(),
   };
   show("sr-menu", false);
   show("sr-over", false);
   show("sr-pause", false);
+  const answers = el("sr-answers");
+  if (answers) answers.textContent = "";
   setStageMode("play");
   resize();
   spawn();
@@ -355,7 +401,7 @@ function spawn() {
   }
   game.stones.push({
     word, label, x, y: -stoneHeight, w: stoneWidth, h: stoneHeight,
-    speed: (height - WALL_HEIGHT + stoneHeight) / fallTime(game.level),
+    speed: (height - WALL_HEIGHT + stoneHeight) / fallTime(game.level, game.typing),
     rotation: (Math.random() - 0.5) * 0.08,
   });
   retarget();
@@ -378,6 +424,7 @@ function retarget() {
 function renderAnswers(options) {
   const box = el("sr-answers");
   if (!box) return;
+  if (game && game.typing) return renderTypedAnswer(box, options.length > 0);
   box.textContent = "";
   const termClass = isHebrew() ? "hebrew-text" : "greek-text";
   (options.length ? options : [null, null, null, null]).forEach((option, index) => {
@@ -400,6 +447,69 @@ function renderAnswers(options) {
   });
 }
 
+/** Campo para digitar a tradução da pedra-alvo; é criado uma vez e só esvaziado a cada novo alvo */
+function renderTypedAnswer(box, hasTarget) {
+  let input = el("sr-typed-input");
+  if (!input) {
+    box.textContent = "";
+    const form = document.createElement("form");
+    form.className = "sr-typed";
+    form.id = "sr-typed";
+    input = document.createElement("input");
+    input.type = "text";
+    input.id = "sr-typed-input";
+    input.className = "sr-typed__input";
+    input.autocomplete = "off";
+    input.setAttribute("autocapitalize", "off");
+    input.spellcheck = false;
+    input.placeholder = "Tradução da pedra dourada…";
+    input.setAttribute("aria-label", "Tradução da pedra dourada");
+    const submit = document.createElement("button");
+    submit.type = "submit";
+    submit.className = "sr-play";
+    submit.textContent = "Responder";
+    form.append(input, submit);
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      submitTyped();
+    };
+    const feedback = document.createElement("p");
+    feedback.className = "sr-typed-feedback";
+    feedback.id = "sr-typed-feedback";
+    feedback.setAttribute("role", "status");
+    box.append(form, feedback);
+  }
+  input.value = "";
+  input.disabled = !hasTarget || (game && game.paused);
+  if (hasTarget && game && !game.paused && typeof input.focus === "function") {
+    try { input.focus({ preventScroll: true }); } catch (_) { input.focus(); }
+  }
+}
+
+function typedFeedback(word, ok) {
+  const node = el("sr-typed-feedback");
+  if (!node) return;
+  node.className = `sr-typed-feedback ${ok ? "is-ok" : "is-bad"}`;
+  node.textContent = "";
+  const term = document.createElement("span");
+  term.className = isHebrew() ? "hebrew-text" : "greek-text";
+  term.textContent = word.head;
+  node.append(term, ` = ${word.item.translations.join(" / ")}`);
+}
+
+function submitTyped() {
+  if (!game || !game.running || game.paused || !game.target) return;
+  const input = el("sr-typed-input");
+  const value = input ? input.value.trim() : "";
+  if (!value) return;
+  const target = game.target;
+  const result = evaluateAnswer(value, target.word.item.translations);
+  typedFeedback(target.word, result.status !== "incorrect");
+  if (result.status !== "incorrect") registerHit(target);
+  else registerMiss(target);
+  hud();
+}
+
 function flash(btn, ok, long) {
   if (!btn) return;
   btn.classList.add(ok ? "is-ok" : "is-bad");
@@ -418,40 +528,53 @@ function choose(index, btn) {
   const target = game.target;
   const option = game.options[index];
   if (!option) return;
-  const a = audio();
   if (option.isCorrect) {
-    game.hits++;
-    game.score += hitScore(game.combo, (height - WALL_HEIGHT - target.y) / height);
-    const combo = comboAfterHit(game.combo, game.hits);
-    if (combo > game.combo && a) a.sfx.combo();
-    game.combo = combo;
-    burst(target.x + target.w / 2, target.y + target.h / 2, "#f2b134", 22);
-    if (a) a.sfx.hit(game.combo);
-    recordAnswer(target.word, true);
-    game.stones = game.stones.filter((s) => s !== target);
-    game.target = null;
-    const level = levelAfterHit(game.level, game.hits);
-    if (level > game.level) {
-      game.level = level;
-      banner = { text: `Fase ${level}`, time: 1.4 };
-      if (a) {
-        a.sfx.level();
-        a.chip.setLevel(level);
-      }
-    }
     flash(btn, true);
-    retarget();
-    if (!game.stones.length) game.spawnTimer = Math.min(game.spawnTimer, 0.25);
+    registerHit(target);
   } else {
-    game.combo = 1;
-    if (a) a.sfx.wrong();
-    recordAnswer(target.word, false);
     flash(btn, false);
     const buttons = el("sr-answers").children;
     game.options.forEach((opt, i) => { if (opt.isCorrect) flash(buttons[i], true, true); });
-    loseLife(target.word);
+    registerMiss(target);
   }
   hud();
+}
+
+/** Pedra destruída: pontos, multiplicador, fase e próximo alvo */
+function registerHit(target) {
+  const a = audio();
+  game.hits++;
+  game.score += hitScore(game.combo, (height - WALL_HEIGHT - target.y) / height);
+  const combo = comboAfterHit(game.combo, game.hits);
+  if (combo > game.combo && a) a.sfx.combo();
+  game.combo = combo;
+  burst(target.x + target.w / 2, target.y + target.h / 2, "#f2b134", 22);
+  if (a) a.sfx.hit(game.combo);
+  recordAnswer(target.word, true);
+  game.stones = game.stones.filter((s) => s !== target);
+  game.target = null;
+  const level = levelAfterHit(game.level, game.hits);
+  if (level > game.level) {
+    game.level = level;
+    banner = { text: `Fase ${level}`, time: 1.4 };
+    if (a) {
+      a.sfx.level();
+      a.chip.setLevel(level);
+    }
+  }
+  retarget();
+  if (!game.stones.length) game.spawnTimer = Math.min(game.spawnTimer, 0.25);
+}
+
+/** Resposta errada: zera o multiplicador e custa uma vida; a pedra continua caindo */
+function registerMiss(target) {
+  const a = audio();
+  game.combo = 1;
+  if (a) a.sfx.wrong();
+  recordAnswer(target.word, false);
+  loseLife(target.word);
+  const input = el("sr-typed-input");
+  if (input && game && game.running) input.value = "";
 }
 
 function loseLife(word) {
@@ -486,8 +609,8 @@ function loop(now) {
 function update(dt) {
   game.clock += dt;
   game.spawnTimer -= dt;
-  const limit = maxStones(game.level);
-  const gap = Math.max(1.3, fallTime(game.level) / (limit + 0.6));
+  const limit = maxStones(game.level, game.typing);
+  const gap = Math.max(1.3, fallTime(game.level, game.typing) / (limit + 0.6));
   if (game.spawnTimer <= 0 && game.stones.length < limit) {
     spawn();
     game.spawnTimer = gap;
@@ -711,6 +834,8 @@ function toMenu() {
   show("sr-pause", false);
   show("sr-menu", true);
   setStageMode("menu");
+  const answers = el("sr-answers");
+  if (answers) answers.textContent = "";
   renderMenu();
   renderAnswers([]);
   hud();
@@ -724,6 +849,13 @@ function pause(on) {
   if (a) {
     if (on) a.chip.stop();
     else a.chip.start();
+  }
+  const input = el("sr-typed-input");
+  if (input) {
+    input.disabled = on || !game.target;
+    if (!on && game.target) {
+      try { input.focus({ preventScroll: true }); } catch (_) { input.focus(); }
+    }
   }
 }
 
@@ -758,6 +890,15 @@ function setupListeners() {
   document.addEventListener("keydown", (e) => {
     if (!isOpen() || e.defaultPrevented) return;
     const playing = game && game.running;
+    // Digitando, as teclas são texto: só Esc pausa (Enter envia pelo formulário)
+    const typingField = e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA");
+    if (typingField || (game && game.typing && playing)) {
+      if (e.key === "Escape" && playing) {
+        togglePause();
+        e.preventDefault();
+      }
+      return;
+    }
     if (/^[1-4]$/.test(e.key) && playing && !game.paused) {
       const btn = el("sr-answers").children[Number(e.key) - 1];
       choose(Number(e.key) - 1, btn);
@@ -825,6 +966,11 @@ const StoneRainModule = {
   openStoneRain,
   closeStoneRain,
   getBest: () => { loadPrefs(); return prefs.best; },
+  /** Estado da partida, para os testes de ponta a ponta */
+  getState: () => (game
+    ? { running: game.running, typing: game.typing, lives: game.lives, score: game.score, hits: game.hits,
+        target: game.target ? { term: game.target.word.term, translations: game.target.word.item.translations } : null }
+    : null),
 };
 
 // Suporte universal (Browser Global / Node CommonJS)

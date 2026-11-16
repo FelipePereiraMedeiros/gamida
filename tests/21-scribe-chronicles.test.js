@@ -176,6 +176,18 @@ suite.test('Golpe de gramática lê tronco, pessoa, tempo e caso da análise', (
   assert.equal(noun.answer, 'Genitivo');
 });
 
+suite.test('Resposta digitada aceita o sentido na frase e os do verbete', () => {
+  const { evaluateAnswer } = require('../js/modules/evaluation.js');
+  const strike = { answer: 'vê', item: { translations: ['ver', 'olhar', 'contemplar'] } };
+  assert.deepEqual(Scribe.strikeAccepted(strike), ['vê', 'ver', 'olhar', 'contemplar']);
+  assert.deepEqual(Scribe.strikeAccepted({ answer: 'João', item: null }), ['João']);
+  assert.deepEqual(Scribe.strikeAccepted({ answer: 'ver', item: { translations: ['ver', 'olhar'] } }), ['ver', 'olhar'], 'Sem repetir');
+  const accepted = Scribe.strikeAccepted(strike);
+  assert.equal(evaluateAnswer('ve', accepted).status, 'correct', 'Sem acento também vale');
+  assert.equal(evaluateAnswer('olhar', accepted).status, 'correct');
+  assert.equal(evaluateAnswer('ouvir', accepted).status, 'incorrect');
+});
+
 suite.test('Frases longas são montadas em grupos de palavras', () => {
   assert.deepEqual(Scribe.chunkTranslation('ele é justo e reto'), ['ele', 'é', 'justo', 'e', 'reto']);
   const long = 'Comendo eles, tendo tomado Jesus o pão e tendo agradecido, partiu e dando aos discípulos, disse: Tomem, comam; isto é o meu corpo.';
@@ -263,6 +275,7 @@ suite.test('Crônicas do Escriba está ligada à tela de Avaliar e ao backup', (
   assert.isTrue(html.indexOf('scribe-lore.js') < html.indexOf('scribe-chronicles.js'), 'A história carrega antes do motor');
   assert.includes(appJs, 'ScribeModule.loadProgress(AppState.language)', 'Backup não leva o progresso da aventura');
   assert.includes(appJs, 'mergeProgress(AppState.language, parsed.scribe)', 'Backup não restaura a aventura');
+  assert.includes(html, 'onclick="scribeToggleTyping()"', 'Opção de digitar a resposta ausente');
 });
 
 module.exports = suite;

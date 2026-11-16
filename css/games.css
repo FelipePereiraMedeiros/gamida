@@ -443,3 +443,38 @@
 .sc-chronicle__lost { color: var(--sc-muted); font-size: 0.82rem; opacity: 0.6; }
 .sc-relic-lore { display: flex; flex-direction: column; gap: 0.5rem; margin: 0; padding: 0; list-style: none; font-size: 0.88rem; line-height: 1.5; }
 .sc-relic-lore b { color: var(--sc-gold); }
+
+/* Hebraico e grego com as mesmas fontes do restante do sistema.
+   Os botões dos jogos herdam a fonte do painel; sem esta regra, uma alternativa
+   em hebraico ou grego dentro de um botão saía na fonte da interface. */
+.sr-wrap .hebrew-text,
+.sc-wrap .hebrew-text { font-family: "SBL Hebrew", "Ezra SIL", "Noto Sans Hebrew", "David", serif; }
+.sr-wrap .greek-text,
+.sc-wrap .greek-text { font-family: "Gentium Plus", "SBL Greek", "Galatia SIL", "Palatino Linotype", serif; }
+
+/* Resposta digitada */
+.sr-typed, .sc-typed { display: flex; gap: 0.5rem; grid-column: 1 / -1; }
+.sr-typed__input, .sc-typed__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--sr-btn-line, var(--sc-line));
+  border-radius: 0.75rem;
+  background: var(--sr-night, var(--sc-bg));
+  color: inherit;
+  font: inherit;
+  font-size: 1.0625rem;
+}
+.sc-typed__input { border-radius: 4px; }
+.sr-typed__input:focus, .sc-typed__input:focus { border-color: var(--sr-gold, var(--sc-gold)); outline: none; }
+.sr-typed__input:disabled, .sc-typed__input:disabled { opacity: 0.6; }
+.sc-typed__input--area { display: block; resize: none; line-height: 1.4; }
+.sr-typed-feedback { grid-column: 1 / -1; min-height: 1.4em; margin: 0; font-size: 0.9rem; font-weight: 600; text-align: center; }
+.sr-typed-feedback.is-ok { color: var(--sr-ok); }
+.sr-typed-feedback.is-bad { color: var(--sr-bad); }
+.sr-typed-feedback .hebrew-text, .sr-typed-feedback .greek-text { font-size: 1.15em; }
+.sc-mini[aria-pressed="true"] { border-color: var(--sc-gold); color: var(--sc-gold) !important; }
+@media (max-width: 480px) {
+  .sr-typed, .sc-typed { flex-wrap: wrap; }
+  .sr-typed > button, .sc-typed > button { flex: 1 1 100%; }
+}

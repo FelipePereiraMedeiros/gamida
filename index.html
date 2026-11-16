@@ -26,7 +26,7 @@
     <link rel="preload" href="fonts/SBL_Hbrw.ttf" as="font" type="font/ttf" crossorigin />
 
     <script>
-      window.APP_VERSION = "2.27.1";
+      window.APP_VERSION = "2.28.0";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
@@ -734,11 +734,12 @@
               <div class="sr-chips">
                 <button type="button" class="sr-chip" id="sr-only-errors" aria-pressed="false" onclick="stoneRainToggle('errors')">★ Só as que errei</button>
                 <button type="button" class="sr-chip" id="sr-reverse" aria-pressed="false" onclick="stoneRainToggle('reverse')">Pedras em português</button>
+                <button type="button" class="sr-chip" id="sr-typing" aria-pressed="false" onclick="stoneRainToggle('typing')" title="Digite a tradução em vez de tocar numa alternativa. As pedras caem mais devagar.">Digitar a resposta</button>
               </div>
               <p class="sr-overlay__text sr-overlay__text--small" id="sr-pool-info"></p>
               <button type="button" class="sr-play" id="sr-play" onclick="stoneRainPlay()">Jogar</button>
               <p class="sr-overlay__text sr-overlay__text--small">
-                Recorde: <b id="sr-best">0</b> · Teclas 1–4 também respondem · Espaço pausa · M liga e desliga todo o som
+                Recorde: <b id="sr-best">0</b> · <span id="sr-keys-help">Teclas 1–4 também respondem · Espaço pausa · M liga e desliga todo o som</span>
               </p>
             </div>
             <div class="sr-overlay hidden" id="sr-pause">
@@ -761,6 +762,7 @@
             <h3 class="sc-title">Crônicas do Escriba <span id="sc-title-orig" class="hebrew-text">סֹפֵר</span></h3>
             <div class="sc-tools">
               <button type="button" class="sc-mini" onclick="scribeShowBook()">Grimório</button>
+              <button type="button" class="sc-mini" id="sc-input-mode" aria-pressed="false" onclick="scribeToggleTyping()" title="Digite as traduções em vez de tocar numa alternativa">Resposta: tocar</button>
               <button type="button" class="sc-mini" data-game-audio="music" onclick="gameAudioToggleMusic()">Música: ligada</button>
               <button type="button" class="sc-mini" data-game-audio="mute" onclick="gameAudioToggleMute()">Som: ligado</button>
               <button type="button" class="sc-mini" onclick="resetToDashboard()">Sair</button>
@@ -1796,7 +1798,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.27.1</span>
+        <span id="footer-version-tag">v2.28.0</span>
       </p>
       <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
     </footer>
