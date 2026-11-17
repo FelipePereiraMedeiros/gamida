@@ -31,7 +31,7 @@ Arquivos com essa base: `js/modules/scribe-graphics.js` (extraído da versão or
 
 ### Felipe Pereira Medeiros (no Gamida)
 
-- **Integração ao Gamida:**
+- **Integração ao Gamida** (o motor em `scribe-chronicles.js`, as regras em `scribe-rules.js` e as utilidades comuns em `scribe-common.js`):
   - o motor de batalha ligado ao banco de dados das lições (Kelley e Bergmann);
   - as frases com análise palavra por palavra e o golpe de gramática;
   - a montagem e a digitação das traduções;

@@ -11,13 +11,7 @@
  */
 
 (function () {
-const RM =
-  typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-const rnd = (i) => {
-  const x = Math.sin(i * 127.1 + 311.7) * 43758.5453;
-  return x - Math.floor(x);
-};
+const { RM, rnd } = (typeof window !== "undefined" && window.ScribeCommon) || require("./scribe-common.js");
 
 /** Figuras humanas: o que muda é a roupa, o que vai na cabeça e o que vai na mão */
 const RULERS = {

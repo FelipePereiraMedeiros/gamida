@@ -14,13 +14,7 @@
  */
 
 (function () {
-const RM =
-  typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-const rnd = (i) => {
-  const x = Math.sin(i * 127.1 + 311.7) * 43758.5453;
-  return x - Math.floor(x);
-};
+const { RM, rnd } = (typeof window !== "undefined" && window.ScribeCommon) || require("./scribe-common.js");
 const gfx = () => (typeof window !== "undefined" ? window.ScribeGraphics : null);
 
 /* ---------------- golpe de cada classe ---------------- */

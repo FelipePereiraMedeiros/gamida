@@ -11,7 +11,7 @@
  * - Pedidos para outros sites (Google, na sincronização) não passam por aqui.
  */
 // <gerado por scripts/build-sw.js: não edite à mão>
-const VERSION = "2.41.0";
+const VERSION = "2.42.0";
 const PRECACHE = [
   "css/fonts.css",
   "css/games.css",
@@ -71,11 +71,13 @@ const PRECACHE = [
   "js/modules/scribe-bosses.js",
   "js/modules/scribe-campaign.js",
   "js/modules/scribe-chronicles.js",
+  "js/modules/scribe-common.js",
   "js/modules/scribe-fx.js",
   "js/modules/scribe-graphics.js",
   "js/modules/scribe-heroes.js",
   "js/modules/scribe-lore.js",
   "js/modules/scribe-map.js",
+  "js/modules/scribe-rules.js",
   "js/modules/sentence-analysis.js",
   "js/modules/srs.js",
   "js/modules/state.js",
@@ -83,6 +85,10 @@ const PRECACHE = [
   "js/modules/survival.js",
   "js/modules/today.js",
   "js/modules/ui.js",
+  "js/screens/consult.js",
+  "js/screens/manage.js",
+  "js/screens/practice.js",
+  "js/screens/review.js",
   "manifest.webmanifest"
 ];
 // </gerado>

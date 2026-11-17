@@ -126,7 +126,11 @@ function loadSourceFiles() {
   const rootDir = path.resolve(__dirname, '..');
   const html = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
   const css = fs.readFileSync(path.join(rootDir, 'css', 'styles.css'), 'utf8');
-  const appJs = fs.readFileSync(path.join(rootDir, 'js', 'app.js'), 'utf8');
+  // O app.js e as telas em js/screens/ formam um só script global: os testes leem tudo junto
+  const screensDir = path.join(rootDir, 'js', 'screens');
+  const appJs = [path.join(rootDir, 'js', 'app.js'), ...fs.readdirSync(screensDir).filter((f) => f.endsWith('.js')).sort().map((f) => path.join(screensDir, f))]
+    .map((f) => fs.readFileSync(f, 'utf8'))
+    .join('\n');
   const uiJs = fs.readFileSync(path.join(rootDir, 'js', 'modules', 'ui.js'), 'utf8');
   const dataLoaderJs = fs.readFileSync(path.join(rootDir, 'js', 'data-loader.js'), 'utf8');
   const hebrewData = JSON.parse(fs.readFileSync(path.join(rootDir, 'data', 'hebrew_chapters.json'), 'utf8'));

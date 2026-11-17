@@ -22,6 +22,8 @@ const COAUTHORED = [
   "js/modules/scribe-fx.js",
   "js/modules/scribe-map.js",
   "js/modules/scribe-chronicles.js",
+  "js/modules/scribe-rules.js",
+  "js/modules/scribe-common.js",
   "js/modules/scribe-campaign.js",
   "js/modules/scribe-lore.js",
 ];

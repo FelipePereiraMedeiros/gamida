@@ -9,8 +9,10 @@ class TestP3Improvements(unittest.TestCase):
     def setUp(self):
         with open("index.html", "r", encoding="utf-8") as f:
             self.index_html = f.read()
-        with open("js/app.js", "r", encoding="utf-8") as f:
-            self.app_js = f.read()
+        # O app.js e as telas em js/screens/ formam um só script global
+        import glob
+        parts = ["js/app.js"] + sorted(glob.glob("js/screens/*.js"))
+        self.app_js = "\n".join(open(p, "r", encoding="utf-8").read() for p in parts)
         with open("js/modules/ui.js", "r", encoding="utf-8") as f:
             self.ui_js = f.read()
         with open("js/modules/sentence-analysis.js", "r", encoding="utf-8") as f:

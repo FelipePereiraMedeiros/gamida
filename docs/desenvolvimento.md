@@ -110,3 +110,20 @@ As fichas dos capítulos (`scribe-campaign.js`) e a história (`scribe-lore.js`)
   - a arena das Crônicas descreve em texto quem luta contra quem, com a vida de cada um;
   - a Chuva de Pedras anuncia a pedra em foco (`#sr-target-text`);
   - os ícones decorativos têm `aria-hidden`.
+
+## Organização do código
+
+O app não usa módulos ES: cada arquivo é um `<script>` comum, na ordem do `index.html`.
+
+- **`js/app.js`:** estado, início, navegação (`switchTab`), utilidades, SRS, troca de idioma, alfabeto e o menu do celular.
+- **`js/screens/`:** uma tela por arquivo, carregados antes do `app.js`. As funções e variáveis são globais e conversam com as do `app.js`:
+  - `practice.js`: Estudar (o motor da prática e o atalho de Enter);
+  - `review.js`: Revisar e Jogar (simulado, flashcards, Morte Súbita);
+  - `consult.js`: Consultar (dicionário e tabelas);
+  - `manage.js`: Gerenciar conteúdo (restaurar, importar, exportar, editor de capítulos).
+- **Crônicas do Escriba:**
+  - `scribe-rules.js`: as regras sem tela (capítulos, ondas, dano, nível, perguntas do guardião, progresso salvo); é o que os testes de unidade exercitam;
+  - `scribe-chronicles.js`: o motor e as telas;
+  - `scribe-common.js`: o que os módulos de desenho repetiam (reduzir movimento, `rnd`, `esc`).
+
+Os testes que conferem o código-fonte leem o `app.js` junto com `js/screens/` (`tests/test-utils.js`). Arquivo novo em `js/` entra sozinho na lista do service worker ao rodar `node scripts/build-sw.js`.
