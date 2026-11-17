@@ -28,7 +28,7 @@ module.exports = [
         await page.reload();
         await page.waitForFunction(() => window.AppState && AppState.chapters && AppState.chapters.length > 20, null, { timeout: 15000 });
         assert.equal(await page.evaluate(() => AppState.language), language);
-        await page.evaluate(() => { switchTab("assessment"); openStoneRain(); });
+        await page.evaluate(() => { switchTab("play"); openStoneRain(); });
         assert.ok(await page.isVisible("#stone-rain-view"), `${language}: jogo não abriu sem internet`);
       }
       const fontsOk = await page.evaluate(async () => (await document.fonts.load('16px "SBL Hebrew"', "א")).length > 0);

@@ -208,20 +208,17 @@
 
         <div id="navbar-tabs-container" data-on-scroll="updateTabsScrollIndicators()" class="app-nav__list scrollbar-none">
           <button type="button" id="nav-btn-practice" data-on-click="switchTab('practice')" class="nav-item is-active" aria-current="page">
-            <svg class="icon" aria-hidden="true"><use href="#i-practice"></use></svg><span>Praticar</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-practice"></use></svg><span>Estudar</span>
           </button>
-          <button type="button" id="nav-btn-assessment" data-on-click="switchTab('assessment')" class="nav-item">
-            <svg class="icon" aria-hidden="true"><use href="#i-assess"></use></svg><span>Avaliar</span>
+          <button type="button" id="nav-btn-review" data-on-click="switchTab('review')" class="nav-item">
+            <svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg><span>Revisar</span>
             <span id="nav-review-badge" class="nav-item__badge hidden" title="Palavras erradas para revisar"></span>
           </button>
-          <button type="button" id="nav-btn-paradigms" data-on-click="switchTab('paradigms')" class="nav-item">
-            <svg class="icon" aria-hidden="true"><use href="#i-table"></use></svg><span>Tabelas<span class="nav-item__extra"> e Grafos</span></span>
+          <button type="button" id="nav-btn-play" data-on-click="switchTab('play')" class="nav-item">
+            <svg class="icon" aria-hidden="true"><use href="#i-scroll"></use></svg><span>Jogar</span>
           </button>
-          <button type="button" id="nav-btn-vocab" data-on-click="switchTab('vocab')" class="nav-item">
-            <svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg><span>Dicionário</span>
-          </button>
-          <button type="button" id="nav-btn-manage" data-on-click="switchTab('manage')" class="nav-item">
-            <svg class="icon" aria-hidden="true"><use href="#i-sliders"></use></svg><span>Gerenciar</span>
+          <button type="button" id="nav-btn-consult" data-on-click="switchTab('vocab')" class="nav-item">
+            <svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg><span>Consultar</span>
           </button>
           <button type="button" id="nav-btn-profile" data-on-click="switchTab('profile')" class="nav-item" title="Perfil">
             <span id="nav-profile-avatar" class="nav-profile-avatar" aria-hidden="true">?</span><span>Perfil</span>
@@ -631,13 +628,13 @@
         <!-- Painel inicial de avaliação -->
         <div id="assess-dashboard" class="space-y-5 flex-1 flex flex-col">
           <div class="page-head">
-            <h2 class="page-head__title">Avaliar</h2>
-            <p class="page-head__text">Escolha o formato ideal para o seu momento de estudo.</p>
+            <h2 id="assess-title" class="page-head__title">Revisar</h2>
+            <p id="assess-text" class="page-head__text">Fixe o que já estudou e meça o que já sabe.</p>
           </div>
 
-          <section class="mode-group" aria-labelledby="mode-group-review">
+          <section class="mode-group" data-hub="review" aria-labelledby="mode-group-review">
             <div class="mode-group__head">
-              <h3 id="mode-group-review" class="mode-group__title">Revisar</h3>
+              <h3 id="mode-group-review" class="mode-group__title">Revisão</h3>
               <p class="mode-group__text">Fixe o que já estudou: revisão espaçada, erros e o caminho capítulo por capítulo.</p>
             </div>
             <div class="mode-grid">
@@ -672,10 +669,10 @@
               </button>
             </div>
           </section>
-          <section class="mode-group" aria-labelledby="mode-group-test">
+          <section class="mode-group" data-hub="review" aria-labelledby="mode-group-test">
             <div class="mode-group__head">
-              <h3 id="mode-group-test" class="mode-group__title">Testar</h3>
-              <p class="mode-group__text">Meça o que já sabe, com tempo e sem ajuda.</p>
+              <h3 id="mode-group-test" class="mode-group__title">Prova</h3>
+              <p class="mode-group__text">Uma prova do seu jeito: tamanho, tempo e foco, com diagnóstico por capítulo.</p>
             </div>
             <div class="mode-grid">
               <!-- Modo: simulado personalizado -->
@@ -685,22 +682,10 @@
                 <span class="mode-card__text">Defina tamanho, tempo e foco da prova. Ao final, veja o diagnóstico por capítulo.</span>
                 <span class="mode-card__cta">Configurar e iniciar ➔</span>
               </button>
-
-              <!-- Modo: morte súbita -->
-              <button type="button" data-on-click="startSurvival()" class="mode-card mode-card--survival">
-                <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></span>
-                <span class="mode-card__title">Morte Súbita</span>
-                <span class="mode-card__stat">Recorde: <span id="surv-card-high">0</span></span>
-                <span class="mode-card__text">Três vidas. Quantas palavras você traduz em sequência?</span>
-                <span class="mode-card__cta">Jogar agora ➔</span>
-              </button>
             </div>
           </section>
-          <section class="mode-group" aria-labelledby="mode-group-play">
-            <div class="mode-group__head">
-              <h3 id="mode-group-play" class="mode-group__title">Jogar</h3>
-              <p class="mode-group__text">Revise jogando. As respostas digitadas certas também contam para o domínio das palavras.</p>
-            </div>
+          <section class="mode-group" data-hub="play" aria-labelledby="mode-group-play">
+            <h3 id="mode-group-play" class="sr-only">Jogos</h3>
             <div class="mode-grid">
               <!-- Modo: Chuva de Pedras -->
               <button type="button" data-on-click="openStoneRain()" class="mode-card mode-card--stones">
@@ -709,6 +694,15 @@
                 <span class="mode-card__stat">Recorde: <span id="stones-card-best">0</span></span>
                 <span class="mode-card__text">Pedras com palavras caem sobre a muralha. Toque no significado antes que acertem o muro. Cada fase é uma lição, e você escolhe de onde começar.</span>
                 <span class="mode-card__cta">Defender a muralha ➔</span>
+              </button>
+
+              <!-- Modo: morte súbita -->
+              <button type="button" data-on-click="startSurvival()" class="mode-card mode-card--survival">
+                <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></span>
+                <span class="mode-card__title">Morte Súbita</span>
+                <span class="mode-card__stat">Recorde: <span id="surv-card-high">0</span></span>
+                <span class="mode-card__text">Três vidas. Quantas palavras você traduz em sequência?</span>
+                <span class="mode-card__cta">Jogar agora ➔</span>
               </button>
 
               <!-- Modo: Crônicas do Escriba -->
@@ -743,6 +737,8 @@
 
           <div class="sr-stage" id="sr-stage">
             <canvas id="sr-canvas" aria-label="Pedras com palavras caindo sobre a muralha"></canvas>
+            <!-- Para leitores de tela: a pedra em foco, que no desenho só aparece como imagem -->
+            <p id="sr-target-text" class="sr-only" aria-live="assertive"></p>
             <div class="sr-overlay" id="sr-menu">
               <h3 class="sr-overlay__title">Defenda a muralha</h3>
               <p class="sr-overlay__text">
@@ -1569,6 +1565,18 @@
       </section>
 
       <!-- Aba 3: paradigmas e estruturas -->
+      <!-- Consultar: chave entre o Dicionário e as Tabelas (aparece nas duas abas) -->
+      <div id="consult-switch" class="consult-switch hidden">
+        <div class="seg" role="group" aria-label="O que consultar">
+          <button type="button" id="nav-btn-vocab" data-on-click="switchTab('vocab')" class="seg-btn">
+            <svg class="icon icon--sm" aria-hidden="true"><use href="#i-book"></use></svg><span>Dicionário</span>
+          </button>
+          <button type="button" id="nav-btn-paradigms" data-on-click="switchTab('paradigms')" class="seg-btn" title="Tabelas e grafos do capítulo atual">
+            <svg class="icon icon--sm" aria-hidden="true"><use href="#i-table"></use></svg><span>Tabelas e grafos</span>
+          </button>
+        </div>
+      </div>
+
       <section id="tab-paradigms" class="hidden space-y-4 flex-1 flex-col">
         <div class="page-head">
           <h2 class="page-head__title">Tabelas e Grafos</h2>
@@ -1718,52 +1726,53 @@
           <p class="page-head__text">Seu progresso em todos os modos, suas configurações e onde guardar tudo isso.</p>
         </div>
         <div id="profile-root" class="space-y-4"></div>
+        <form id="daily-goal-form" class="profile-card profile-goal" data-on-submit="saveDailyGoalFromInput(event)">
+          <h3 class="profile-card__title">Meta de estudo</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Quantas respostas por dia você quer dar, somando todos os exercícios e os dois idiomas.
+          </p>
+          <div
+            id="goal-progress-bar"
+            class="goal-progress"
+            role="progressbar"
+            aria-label="Progresso da meta de hoje"
+            aria-valuemin="0"
+            aria-valuenow="0"
+            aria-valuemax="20"
+          >
+            <div id="goal-progress-fill" class="goal-progress__fill"></div>
+          </div>
+          <p id="goal-progress-text" class="text-xs text-slate-400 leading-relaxed"></p>
+          <div class="flex items-end gap-2">
+            <div class="flex-1 min-w-0">
+              <label for="daily-goal-input" class="field-label">Respostas por dia</label>
+              <input
+                type="number"
+                id="daily-goal-input"
+                class="control-select w-full"
+                min="1"
+                max="500"
+                step="1"
+                inputmode="numeric"
+                value="20"
+              />
+            </div>
+            <button type="submit" class="btn-secondary">Salvar meta</button>
+          </div>
+          <p id="daily-goal-status" class="text-xs text-emerald-400 min-h-[1rem]" role="status"></p>
+        </form>
       </section>
 
       <!-- Aba 5: gerenciamento de capítulos -->
       <section id="tab-manage" class="hidden space-y-4">
+        <button type="button" class="back-link" data-on-click="switchTab('profile')">← Perfil</button>
         <div class="page-head">
           <h2 class="page-head__title">Gerenciar conteúdo</h2>
           <p class="page-head__text">Adicione ou edite capítulos em JSON e faça backup do seu material.</p>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-5">
-            <form class="space-y-2" data-on-submit="saveDailyGoalFromInput(event)">
-              <h3 class="font-semibold text-sm text-white">Meta de estudo</h3>
-              <p class="text-sm text-slate-400 leading-relaxed">
-                Quantas respostas por dia você quer dar, somando todos os exercícios e os dois idiomas.
-              </p>
-              <div
-                id="goal-progress-bar"
-                class="goal-progress"
-                role="progressbar"
-                aria-label="Progresso da meta de hoje"
-                aria-valuemin="0"
-                aria-valuenow="0"
-                aria-valuemax="20"
-              >
-                <div id="goal-progress-fill" class="goal-progress__fill"></div>
-              </div>
-              <p id="goal-progress-text" class="text-xs text-slate-400 leading-relaxed"></p>
-              <div class="flex items-end gap-2">
-                <div class="flex-1 min-w-0">
-                  <label for="daily-goal-input" class="field-label">Respostas por dia</label>
-                  <input
-                    type="number"
-                    id="daily-goal-input"
-                    class="control-select w-full"
-                    min="1"
-                    max="500"
-                    step="1"
-                    inputmode="numeric"
-                    value="20"
-                  />
-                </div>
-                <button type="submit" class="btn-secondary">Salvar meta</button>
-              </div>
-              <p id="daily-goal-status" class="text-xs text-emerald-400 min-h-[1rem]" role="status"></p>
-            </form>
-            <div class="space-y-2 pt-4 border-t border-slate-800">
+            <div class="space-y-2">
               <h3 class="font-semibold text-sm text-white">Editar</h3>
               <p class="text-sm text-slate-400 leading-relaxed">
                 Carregue o capítulo atual no editor ou cole um novo capítulo em JSON.
@@ -1838,7 +1847,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.40.0</span>
+        <span id="footer-version-tag">v2.41.0</span>
       </p>
       <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
     </footer>

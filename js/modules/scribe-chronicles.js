@@ -930,12 +930,18 @@ function showScroll(index, fromBook) {
       <p>${rich(meta.story)}</p>
       <p class="sc-muted sc-small"><b>Guardião:</b> ${esc(meta.boss)}${meta.bossRef ? ` (${esc(meta.bossRef)})` : ""}${meta.why ? ` · <b>Por que aqui:</b> ${rich(meta.why)}` : ""}</p>
       ${meta.liberty ? `<details class="sc-liberty"><summary>Nota de honestidade</summary><p>${rich(meta.liberty)}</p></details>` : ""}</div>
-    ${scrollHtml(meta.scroll)}
-    <p class="sc-muted sc-small sc-center">${esc(chapter.title)}</p>
-    <div class="sc-row">${fromBook
-      ? `<button type="button" class="sc-btn" id="sc-back">Voltar ao grimório</button>`
-      : `<button type="button" class="sc-btn" id="sc-go">Entrar em batalha</button><button type="button" class="sc-btn sc-btn--ghost" id="sc-back">Mapa</button>`}</div>
-    ${fromBook ? "" : fullHuntCard(chapter)}
+    ${fromBook ? "" : `<div class="sc-row sc-row--actions">
+      <button type="button" class="sc-btn" id="sc-go">Entrar em batalha</button>
+      <button type="button" class="sc-btn sc-btn--ghost" id="sc-full">Caçada completa · ${wordsOf(chapter).length} palavras${S.full[chapter.id] ? " ★" : ""}</button>
+      <button type="button" class="sc-btn sc-btn--ghost" id="sc-back">Mapa</button>
+    </div>
+    ${fullHuntNote()}`}
+    <details class="sc-scroll-wrap"${fromBook || !isNarrow() ? " open" : ""}>
+      <summary>Pergaminho · ${rich(meta.scroll.t)} <span class="sc-muted sc-small">(o que este capítulo ensina)</span></summary>
+      ${scrollHtml(meta.scroll)}
+      <p class="sc-muted sc-small sc-center">${esc(chapter.title)}</p>
+    </details>
+    ${fromBook ? `<div class="sc-row"><button type="button" class="sc-btn" id="sc-back">Voltar ao grimório</button></div>` : ""}
   </div>`);
   on("#sc-go", () => startChapter(index));
   on("#sc-full", () => startChapter(index, { full: true }));
@@ -943,19 +949,16 @@ function showScroll(index, fromBook) {
   chapterBannerLoop(index);
 }
 
-/** Convite para a caçada completa, com o versículo que dá o tom de cada rolo */
-function fullHuntCard(chapter) {
-  const total = wordsOf(chapter).length;
-  const done = !!S.full[chapter.id];
+/** Uma linha sobre a caçada completa, com o versículo que dá o tom de cada rolo */
+function fullHuntNote() {
   const flavor = isHebrew()
-    ? "Como no censo do deserto, “segundo o número dos nomes, cabeça por cabeça” (Nm 1.2): cada palavra do capítulo é contada."
-    : "Como a rede de Pedro, “cheia de grandes peixes, cento e cinquenta e três” (Jo 21.11): nenhuma palavra fica para trás.";
-  return `<div class="sc-fullhunt">
-    <div class="sc-fullhunt__text"><b>Caçada completa · ${total} palavras${done ? " · selo conquistado" : ""}</b>
-      <span>${esc(flavor)} Todo o vocabulário do capítulo aparece em ondas de ${FULL_WAVE}; as que escaparem voltam no fim. Há acampamento entre as ondas e o guardião espera no final.</span></div>
-    <button type="button" class="sc-btn sc-btn--ghost" id="sc-full">Caçar as ${total} palavras</button>
-  </div>`;
+    ? "“segundo o número dos nomes, cabeça por cabeça” (Nm 1.2)"
+    : "a rede “cheia de grandes peixes, cento e cinquenta e três” (Jo 21.11)";
+  return `<p class="sc-muted sc-small sc-fullnote"><b>Caçada completa:</b> todo o vocabulário do capítulo, em ondas de ${FULL_WAVE}; as palavras que escaparem voltam no fim, como ${flavor}.</p>`;
 }
+
+/** Tela estreita (celular): conteúdos longos começam recolhidos */
+const isNarrow = () => typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(max-width: 640px)").matches;
 
 /** Cenário animado do capítulo, com o nome no original */
 function chapterBannerLoop(index) {
@@ -1344,7 +1347,7 @@ function battleShell(inner) {
   const cls = clsInfo();
   const mon = B.mon;
   return `<div class="sc-card sc-card--battle">
-    <div class="sc-stage"><canvas id="sc-arena" aria-label="Arena de batalha"></canvas>
+    <div class="sc-stage"><canvas id="sc-arena" role="img" aria-label="${esc(arenaLabel())}"></canvas>
       <div class="sc-hudtop">
         <div class="sc-hudbox"><b>${esc(cls.name)} · nível ${S.lvl}</b>
           <div class="sc-bar sc-bar--hp"><i id="sc-hero-hp" style="width:${(B.hp / maxHP()) * 100}%"></i></div>
@@ -1398,6 +1401,17 @@ function checkRage() {
   log(`Fúria! ${esc(B.meta.boss)} agora bate 25% mais forte.`, "bad");
 }
 
+/** O que a arena mostra, em palavras (leitores de tela) */
+function arenaLabel() {
+  if (!B) return "Arena de batalha";
+  const hero = `${clsInfo().name}, ${Math.max(0, B.hp)} de ${maxHP()} de vida`;
+  if (!B.mon) return `Arena: ${hero}`;
+  const foe = B.boss
+    ? `${B.meta.boss}, ${bossProgressLabel().toLowerCase()}`
+    : `${monsterName()} com a palavra ${B.mon.label}, ${Math.max(0, B.mon.hp)} de ${B.mon.max} de vida`;
+  return `Arena: ${hero}, contra ${foe}`;
+}
+
 function updateBars() {
   const hero = $("#sc-hero-hp");
   const heroText = $("#sc-hero-hp-text");
@@ -1407,6 +1421,8 @@ function updateBars() {
   if (heroText) heroText.textContent = `${Math.max(0, B.hp)}/${maxHP()}`;
   if (mon && B.mon) mon.style.width = `${Math.max(0, (B.mon.hp / B.mon.max) * 100)}%`;
   if (info && B.boss) info.textContent = bossProgressLabel();
+  const arena = $("#sc-arena");
+  if (arena) arena.setAttribute("aria-label", arenaLabel());
   checkRage();
 }
 

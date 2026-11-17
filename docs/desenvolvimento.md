@@ -92,4 +92,21 @@ As fichas dos capítulos (`scribe-campaign.js`) e a história (`scribe-lore.js`)
 - **`js/modules/today.js`:** no topo da aba Praticar, um único próximo passo. A ordem é: revisar as palavras vencidas (ou, sem vencidas, as erradas), o próximo capítulo liberado do Caminho do domínio e o próximo capítulo das Crônicas. Os outros passos ficam em "Depois", junto com a meta do dia e os dias seguidos. "Ocultar hoje" esconde o painel até o dia seguinte. Ele é redesenhado ao abrir o app, ao voltar à aba Praticar e ao voltar à janela.
 - **Domínio:** continua sendo 3 acertos seguidos escrevendo a resposta. Agora o acerto digitado nos jogos (Chuva de Pedras e Crônicas, com "Resposta: digitar") também conta. Acerto por alternativa não conta, como na prática. Erro em qualquer modo manda a palavra para a lista de erros.
 - **Selo da caçada completa:** aparece no Caminho do domínio ("★ caçada completa nas Crônicas").
-- **Aba Avaliar** em três grupos: Revisar (Revisão Inteligente, Caminho do domínio, Mago da Morfologia), Testar (Simulado, Morte Súbita) e Jogar (Chuva de Pedras, Crônicas).
+
+## Navegação (onde fica cada coisa)
+
+| Item | Seção | O que tem |
+|---|---|---|
+| **Estudar** | `#tab-practice` | Painel "Hoje" e a prática (digitação, escolha, frases, favoritas, erros; alfabeto na Lição I) |
+| **Revisar** | `#tab-assessment`, lado `review` | Revisão (Revisão Inteligente, Caminho do domínio, Mago da Morfologia) e Prova (Simulado) |
+| **Jogar** | `#tab-assessment`, lado `play` | Chuva de Pedras, Morte Súbita e Crônicas do Escriba |
+| **Consultar** | `#tab-vocab` e `#tab-paradigms` | Dicionário e Tabelas e grafos, com a chave `#consult-switch` entre os dois (Tabelas fica apagado em capítulo sem tabelas) |
+| **Perfil** | `#tab-profile` e `#tab-manage` | Perfil, meta de estudo, perfis do aparelho, arquivo de perfil e "Gerenciar conteúdo" (editor de capítulos e backup, para quem precisa) |
+
+- **Revisar e Jogar** são os dois lados do mesmo painel: `switchTab("review")` e `switchTab("play")` mostram os grupos com o `data-hub` correspondente. `switchTab("assessment")` vale como Revisar.
+- **Critério para pôr algo novo:** pense no que o aluno quer fazer naquela hora (estudar, revisar, jogar, consultar). Ferramenta de bastidor fica no Perfil, fora da navegação principal.
+- **Celular:** a entrada de capítulo das Crônicas mostra os botões logo depois da história, com o pergaminho recolhido. No Perfil, os quadros de números e de configurações começam recolhidos.
+- **Leitores de tela:**
+  - a arena das Crônicas descreve em texto quem luta contra quem, com a vida de cada um;
+  - a Chuva de Pedras anuncia a pedra em foco (`#sr-target-text`);
+  - os ícones decorativos têm `aria-hidden`.

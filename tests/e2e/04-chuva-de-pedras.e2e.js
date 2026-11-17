@@ -12,7 +12,7 @@ module.exports = [
         const { context, page, errors } = await openApp({ browser, base }, { language, viewport });
         await page.evaluate(() => {
           changeGlobalChapter(AppState.chapters[4].id);
-          switchTab("assessment");
+          switchTab("play");
         });
         await page.click(".mode-card--stones");
         await page.click("#sr-play");

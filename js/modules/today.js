@@ -65,7 +65,7 @@ function readState() {
 
 function run(step) {
   const w = W();
-  if (typeof w.switchTab === "function") w.switchTab("assessment");
+  if (typeof w.switchTab === "function") w.switchTab(step.id === "scribe" ? "play" : "review");
   if (step.id === "due" || step.id === "errors") w.startAnki(step.id);
   else if (step.id === "path") {
     w.openMasteryPath();

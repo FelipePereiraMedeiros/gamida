@@ -102,13 +102,11 @@ function updateParadigmsVisibility() {
 
   const hasParadigms = getActiveParadigmsList().length > 0;
 
-  if (!hasParadigms) {
-    btnParadigms.style.display = "none";
-    if (AppState.currentTab === "paradigms" && typeof window !== "undefined" && typeof window.switchTab === "function") {
-      window.switchTab("practice");
-    }
-  } else {
-    btnParadigms.style.display = "";
+  // Dentro de Consultar o botão fica apagado, com o motivo, em vez de sumir
+  btnParadigms.disabled = !hasParadigms;
+  btnParadigms.title = hasParadigms ? "Tabelas e grafos do capítulo atual" : "Este capítulo não tem tabelas e grafos";
+  if (!hasParadigms && AppState.currentTab === "paradigms" && typeof window !== "undefined" && typeof window.switchTab === "function") {
+    window.switchTab("vocab");
   }
 
   if (typeof window !== "undefined" && typeof window.updateTabsScrollIndicators === "function") {

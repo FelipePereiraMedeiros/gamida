@@ -503,13 +503,16 @@ function statRow(label, value) {
   return `<div class="profile-stat"><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`;
 }
 
+/** No celular os quadros longos começam recolhidos; no computador, abertos */
+const foldOpen = () => (typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(max-width: 640px)").matches ? "" : " open");
+
 function languageCard(language) {
   const s = languageSummary(language);
   const title = language === "greek" ? "Grego" : "Hebraico";
   const glyph = language === "greek" ? "α" : "א";
   const hero = s.scribe.hero ? HERO[language][s.scribe.hero] : "sem herói";
-  return `<div class="profile-card">
-    <h3 class="profile-card__title"><span class="profile-card__glyph">${glyph}</span>${title}</h3>
+  return `<details class="profile-card profile-fold"${foldOpen()}>
+    <summary class="profile-card__title"><span class="profile-card__glyph">${glyph}</span>${title}<span class="profile-fold__hint">${s.mastered} dominadas · ${s.review} para revisar</span></summary>
     <dl class="profile-stats">
       ${statRow("Palavras estudadas", s.studied)}
       ${statRow("Dominadas", s.mastered)}
@@ -520,7 +523,7 @@ function languageCard(language) {
       ${statRow("Crônicas do Escriba", s.scribe.chapters ? `${s.scribe.chapters} capítulos · nível ${s.scribe.level} · ${hero}` : "não começou")}
       ${statRow("Relíquias", s.scribe.relics)}
     </dl>
-  </div>`;
+  </details>`;
 }
 
 function renderProfileTab() {
@@ -556,13 +559,14 @@ function renderProfileTab() {
           ${statRow("Hoje", `${act.today} de ${act.goal}`)}
         </dl>
       </div>
+      <div id="profile-goal-slot" class="profile-goal-slot"></div>
       ${languageCard("hebrew")}
       ${languageCard("greek")}
-      <div class="profile-card">
-        <h3 class="profile-card__title">Configurações deste perfil</h3>
+      <details class="profile-card profile-fold"${foldOpen()}>
+        <summary class="profile-card__title">Configurações deste perfil</summary>
         <dl class="profile-stats">${settingsSummary().map(([k, v]) => statRow(k, v)).join("")}</dl>
         <p class="profile-note">Ao trocar de perfil, cada um volta com o seu idioma, meta, preferências e progresso.</p>
-      </div>
+      </details>
     </div>
 
     <div class="profile-grid">
@@ -584,6 +588,11 @@ function renderProfileTab() {
         </form>
       </div>
       <div class="profile-card">
+        <h3 class="profile-card__title">Material de estudo</h3>
+        <p class="profile-note">Os capítulos do Gamida e os que você acrescentou: editar em JSON, restaurar os originais e exportar o material.</p>
+        <button type="button" class="btn-secondary" id="profile-manage">Gerenciar conteúdo</button>
+      </div>
+      <div class="profile-card">
         <h3 class="profile-card__title">Arquivo de perfil</h3>
         <p class="profile-note">Um arquivo .json com o progresso e as configurações deste perfil, sem o material de estudo. Serve para levar o perfil a outro aparelho e como cópia de segurança.</p>
         <p class="profile-note">Última cópia: ${lastBackup(active) ? esc(fmtDate(lastBackup(active))) : "nenhuma ainda"}.</p>
@@ -596,6 +605,10 @@ function renderProfileTab() {
         <p class="profile-note" id="profile-file-status" role="status"></p>
       </div>
     </div>`;
+  // A meta de estudo (formulário fixo da página) vai para perto do resumo de estudo
+  const goal = document.getElementById("daily-goal-form");
+  const slot = document.getElementById("profile-goal-slot");
+  if (goal && slot) slot.appendChild(goal);
   bindProfileTab();
   if (cloud && cloud.isEnabled()) cloud.bindCard();
 }
@@ -629,6 +642,8 @@ function bindProfileTab() {
   if (undo) undo.onclick = () => {
     if (confirm("Voltar este perfil a como estava antes da última substituição? O estado atual será perdido.")) restoreBackup();
   };
+  const manage = $("profile-manage");
+  if (manage) manage.onclick = () => window.switchTab("manage");
   const exp = $("profile-export");
   if (exp) exp.onclick = () => downloadProfileFile();
   const imp = $("profile-import");

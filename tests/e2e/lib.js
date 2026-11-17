@@ -85,7 +85,7 @@ function scribeSeed(language, fields = {}) {
 
 /** Abre as Crônicas do Escriba pela tela de Avaliar */
 async function openScribe(page) {
-  await page.evaluate(() => switchTab("assessment"));
+  await page.evaluate(() => switchTab("play"));
   await page.click(".mode-card--scribe");
   await page.waitForSelector("#sc-screen .sc-card");
 }

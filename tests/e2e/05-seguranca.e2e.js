@@ -38,10 +38,14 @@ module.exports = [
     name: "Clicar e escolher pela interface funciona com a política de segurança ligada",
     async fn({ browser, base, assert }) {
       const { context, page, errors } = await openApp({ browser, base }, { language: "greek" });
-      await page.click("#nav-btn-assessment");
+      await page.click("#nav-btn-review");
       assert.ok(await page.isVisible("#tab-assessment"), "o clique na aba não funcionou");
-      await page.click("#nav-btn-vocab");
+      assert.ok(await page.isVisible(".mode-card--path") && !(await page.isVisible(".mode-card--scribe")), "Revisar mostrou os jogos");
+      await page.click("#nav-btn-play");
+      assert.ok(await page.isVisible(".mode-card--scribe") && !(await page.isVisible(".mode-card--path")), "Jogar não mostrou só os jogos");
+      await page.click("#nav-btn-consult");
       assert.ok(await page.isVisible("#tab-vocab"));
+      assert.ok(await page.isVisible("#consult-switch"), "a chave Dicionário | Tabelas não apareceu");
       await page.fill("#vocab-search", "λόγ");
       await page.waitForTimeout(300);
       const rows = await page.evaluate(() => document.querySelectorAll("#tab-vocab tbody tr").length);
@@ -53,7 +57,7 @@ module.exports = [
         box.focus();
         box.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
       });
-      assert.ok(await page.isVisible("#tab-manage"), "Enter no atalho da meta diária não abriu a configuração");
+      assert.ok(await page.isVisible("#daily-goal-form"), "Enter no atalho da meta diária não abriu a configuração (no Perfil)");
       assert.deepEqual(errors, [], errors.join(" | "));
       await context.close();
     },
@@ -77,7 +81,7 @@ module.exports = [
           ch._custom = true;
           return JSON.stringify(ch);
         }, PAYLOAD);
-        await page.click("#nav-btn-manage");
+        await page.evaluate(() => switchTab("manage"));
         await page.fill("#json-input", json);
         await page.click('[data-on-click="saveChapterFromJSON()"]');
         await page.waitForFunction(() => AppState.chapters.some((c) => c.id === "capitulo_veneno"));

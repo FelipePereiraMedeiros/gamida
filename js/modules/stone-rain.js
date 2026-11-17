@@ -505,11 +505,26 @@ function retarget() {
     game.target = lowest;
     game.options = buildChoiceOptions(lowest.word.item, AppState.chapters, { direction: prefs.reverse ? "reverse" : "forward" });
     renderAnswers(game.options);
+    announceTarget(lowest);
   }
   if (!lowest) {
     game.target = null;
     renderAnswers([]);
+    announceTarget(null);
   }
+}
+
+/** Anuncia a pedra em foco para leitores de tela */
+function announceTarget(stone) {
+  const node = el("sr-target-text");
+  if (!node) return;
+  if (!stone) {
+    node.textContent = "";
+    return;
+  }
+  node.textContent = prefs.reverse
+    ? `Pedra: ${stone.word.item.translations.join(" / ")}. Qual é a palavra?`
+    : `Pedra: ${stone.word.term}. O que significa?`;
 }
 
 function renderAnswers(options) {

@@ -31,15 +31,23 @@ suite.test('O painel fica no topo da tela inicial e é atualizado ao voltar a el
   assert.isTrue(html.indexOf('id="today-panel"') < html.indexOf('id="practice-control-bar"'), 'Painel abaixo da prática');
   assert.includes(html, 'js/modules/today.js');
   const app = read('js/app.js');
-  assert.includes(app, 'tabName === "practice" && typeof window !== "undefined" && window.TodayModule');
+  assert.includes(app, 'section === "practice" && typeof window !== "undefined" && window.TodayModule');
 });
 
-suite.test('Aba Avaliar em três grupos: Revisar, Testar e Jogar', () => {
+suite.test('Navegação: Estudar, Revisar, Jogar, Consultar e Perfil; jogos fora da revisão', () => {
+  const nav = html.slice(html.indexOf('id="navbar-tabs-container"'), html.indexOf('</nav>'));
+  const labels = [...nav.matchAll(/<span>([^<]+)<\/span>\s*(?:<span id="nav-review-badge"[^>]*><\/span>\s*)?<\/button>/g)].map((m) => m[1]);
+  assert.deepEqual(labels, ['Estudar', 'Revisar', 'Jogar', 'Consultar', 'Perfil']);
   const dash = html.slice(html.indexOf('id="assess-dashboard"'), html.indexOf('<!-- Chuva de Pedras: arcade'));
-  const groups = [...dash.matchAll(/<h3 id="mode-group-(\w+)" class="mode-group__title">([^<]+)<\/h3>/g)].map((m) => m[2]);
-  assert.deepEqual(groups, ['Revisar', 'Testar', 'Jogar']);
-  const order = ['startAnki(', 'openMasteryPath()', 'openMorphDrill()', 'openSimuladoConfig()', 'startSurvival()', 'openStoneRain()', 'openScribeChronicles()'].map((a) => dash.indexOf(a));
-  assert.isTrue(order.every((v, i) => v > -1 && (i === 0 || v > order[i - 1])), 'Cartões fora do grupo esperado');
+  const hubOf = (action) => {
+    const at = dash.indexOf(action);
+    const sections = [...dash.matchAll(/<section class="mode-group" data-hub="(\w+)"/g)].filter((m) => m.index < at);
+    return sections.length ? sections[sections.length - 1][1] : null;
+  };
+  ['startAnki(', 'openMasteryPath()', 'openMorphDrill()', 'openSimuladoConfig()'].forEach((a) => assert.equal(hubOf(a), 'review', `${a} deveria estar em Revisar`));
+  ['openStoneRain()', 'openScribeChronicles()', 'startSurvival()'].forEach((a) => assert.equal(hubOf(a), 'play', `${a} deveria estar em Jogar`));
+  assert.isTrue(!/nav-btn-manage/.test(nav), 'Gerenciar conteúdo saiu da navegação (fica no Perfil)');
+  assert.isTrue(html.indexOf('id="daily-goal-form"') > html.indexOf('id="tab-profile"') && html.indexOf('id="daily-goal-form"') < html.indexOf('id="tab-manage"'), 'Meta de estudo no Perfil');
 });
 
 suite.test('Nos jogos, acerto digitado conta para o domínio; acerto por alternativa não', () => {

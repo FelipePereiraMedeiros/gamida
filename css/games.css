@@ -575,3 +575,9 @@
 .sc-credits { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; }
 .sc-credits__list { display: flex; flex-direction: column; gap: 0.4rem; margin: 0; padding-left: 1.1rem; list-style: disc; color: var(--sc-ink); font-size: 0.88rem; line-height: 1.5; }
 .sc-byline { margin: 0; }
+
+/* Entrada do capítulo: ações logo depois da história; pergaminho recolhível */
+.sc-row--actions { justify-content: flex-start; }
+.sc-fullnote { margin: 0; }
+.sc-scroll-wrap > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.5rem; min-height: 2.75rem; padding: 0.5rem 0; color: var(--sc-gold); font-weight: 700; cursor: pointer; }
+.sc-scroll-wrap[open] > summary { margin-bottom: 0.5rem; }

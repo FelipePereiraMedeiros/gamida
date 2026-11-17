@@ -9,7 +9,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.40.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.41.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -188,10 +188,46 @@ function buildDistractorCache() {
 }
 
 /* ================= UI NAVIGATION ================= */
+/**
+ * Navegação: Estudar (practice), Revisar (review), Jogar (play), Consultar
+ * (vocab e paradigms) e Perfil (profile e manage).
+ * Revisar e Jogar são os dois lados do mesmo painel (#tab-assessment): o lado
+ * escolhe quais grupos de modos aparecem. "assessment" vale como Revisar.
+ */
+const TAB_SECTIONS = ["practice", "assessment", "vocab", "manage", "paradigms", "profile"];
+const NAV_ITEMS = ["practice", "review", "play", "consult", "profile"];
+
+function navItemFor(section, hub) {
+  if (section === "assessment") return hub === "play" ? "play" : "review";
+  if (section === "vocab" || section === "paradigms") return "consult";
+  if (section === "manage") return "profile";
+  return section;
+}
+
+/** Mostra só os grupos de modos do lado escolhido (Revisar ou Jogar) */
+function applyAssessHub(hub) {
+  if (typeof document === "undefined") return;
+  document.querySelectorAll("#assess-dashboard [data-hub]").forEach((group) => {
+    group.classList.toggle("hidden", group.dataset.hub !== hub);
+  });
+  const title = document.getElementById("assess-title");
+  const text = document.getElementById("assess-text");
+  if (title) title.textContent = hub === "play" ? "Jogar" : "Revisar";
+  if (text) {
+    text.textContent = hub === "play"
+      ? "Revise jogando, com as palavras das lições. As respostas digitadas certas também contam para o domínio."
+      : "Fixe o que já estudou e meça o que já sabe.";
+  }
+}
+
 function switchTab(tabName) {
+  const section = tabName === "review" || tabName === "play" ? "assessment" : tabName;
+  const hub = tabName === "play" ? "play" : section === "assessment" ? "review" : AppState.assessHub;
+  const sameHub = section === "assessment" && AppState.currentTab === "assessment" && hub === AppState.assessHub;
   // Protege um simulado em andamento contra um toque acidental na navegação
   if (
-    tabName !== "assessment" &&
+    !sameHub &&
+    AppState.currentTab === "assessment" &&
     typeof window !== "undefined" &&
     typeof window.confirmLeaveActiveSession === "function" &&
     !window.confirmLeaveActiveSession()
@@ -199,44 +235,56 @@ function switchTab(tabName) {
     return;
   }
 
-  AppState.currentTab = tabName;
-
-  if (tabName !== "assessment") {
-    if (typeof resetToDashboard === "function") {
-      try {
-        resetToDashboard();
-      } catch (e) {
-        console.warn("Aviso ao resetar dashboard de avaliação:", e);
-      }
+  // Trocar de aba (ou de lado do painel) fecha o modo aberto e volta aos cartões
+  if (!sameHub && typeof resetToDashboard === "function") {
+    try {
+      resetToDashboard();
+    } catch (e) {
+      console.warn("Aviso ao resetar dashboard de avaliação:", e);
     }
   }
 
-  const tabs = ["practice", "assessment", "vocab", "manage", "paradigms", "profile"];
-  tabs.forEach((t) => {
-    const section = document.getElementById(`tab-${t}`);
-    const btn = document.getElementById(`nav-btn-${t}`);
+  AppState.currentTab = section;
+  if (section === "assessment") {
+    AppState.assessHub = hub;
+    applyAssessHub(hub);
+  }
 
-    if (section) section.classList.toggle("hidden", t !== tabName);
-    if (btn) {
-      btn.classList.toggle("is-active", t === tabName);
-      if (t === tabName) btn.setAttribute("aria-current", "page");
-      else btn.removeAttribute("aria-current");
-    }
+  TAB_SECTIONS.forEach((t) => {
+    const el = document.getElementById(`tab-${t}`);
+    if (el) el.classList.toggle("hidden", t !== section);
+  });
+  const active = navItemFor(section, hub);
+  NAV_ITEMS.forEach((item) => {
+    const btn = document.getElementById(`nav-btn-${item}`);
+    if (!btn) return;
+    btn.classList.toggle("is-active", item === active);
+    if (item === active) btn.setAttribute("aria-current", "page");
+    else btn.removeAttribute("aria-current");
+  });
+  // Chave Dicionário | Tabelas, só dentro de Consultar
+  const consult = document.getElementById("consult-switch");
+  if (consult) consult.classList.toggle("hidden", active !== "consult");
+  ["vocab", "paradigms"].forEach((t) => {
+    const btn = document.getElementById(`nav-btn-${t}`);
+    if (!btn) return;
+    btn.classList.toggle("is-active", t === section);
+    btn.setAttribute("aria-pressed", String(t === section));
   });
   if (typeof window !== "undefined" && typeof window.scrollTo === "function") window.scrollTo(0, 0);
-  if (tabName === "vocab" && typeof renderVocabTable === "function") renderVocabTable();
-  if (tabName === "practice" && typeof window !== "undefined" && window.TodayModule) window.TodayModule.render();
-  if (tabName === "profile" && typeof window !== "undefined" && window.ProfilesModule) window.ProfilesModule.renderProfileTab();
-  if (tabName === "assessment" && typeof window !== "undefined" && window.MasteryPathModule) {
+  if (section === "vocab" && typeof renderVocabTable === "function") renderVocabTable();
+  if (section === "practice" && typeof window !== "undefined" && window.TodayModule) window.TodayModule.render();
+  if (section === "profile" && typeof window !== "undefined" && window.ProfilesModule) window.ProfilesModule.renderProfileTab();
+  if (section === "assessment" && typeof window !== "undefined" && window.MasteryPathModule) {
     window.MasteryPathModule.updatePathDashboardStat();
   }
-  if (tabName === "assessment" && typeof window !== "undefined") {
+  if (section === "assessment" && typeof window !== "undefined") {
     const stonesBest = document.getElementById("stones-card-best");
     if (stonesBest && window.StoneRainModule) stonesBest.textContent = window.StoneRainModule.getBest();
     if (window.ScribeModule) window.ScribeModule.updateScribeCardStat();
   }
-  if (tabName === "practice" && typeof updatePracticeChapterView === "function") updatePracticeChapterView();
-  if (tabName === "paradigms") {
+  if (section === "practice" && typeof updatePracticeChapterView === "function") updatePracticeChapterView();
+  if (section === "paradigms") {
     if (typeof updateParadigmsVisibility === "function") updateParadigmsVisibility();
     if (typeof renderParadigmSkeleton === "function") renderParadigmSkeleton();
   }
@@ -1626,6 +1674,12 @@ async function toggleLanguage(targetLang = null) {
   switchTab("practice");
 }
 
+/** Tabelas e grafos ficam apagados (com o motivo) quando o capítulo não tem tabelas */
+function setParadigmsAvailable(btn, available) {
+  btn.disabled = !available;
+  btn.title = available ? "Tabelas e grafos do capítulo atual" : "Este capítulo não tem tabelas e grafos";
+}
+
 function updateParadigmsVisibility() {
   if (typeof window !== "undefined" && window.ParadigmsModule && typeof window.ParadigmsModule.updateParadigmsVisibility === "function") {
     return window.ParadigmsModule.updateParadigmsVisibility();
@@ -1638,14 +1692,8 @@ function updateParadigmsVisibility() {
     Array.isArray(AppState.currentChapter.paradigms) &&
     AppState.currentChapter.paradigms.length > 0;
 
-  if (!hasParadigms) {
-    btnParadigms.style.display = "none";
-    if (AppState.currentTab === "paradigms") {
-      switchTab("practice");
-    }
-  } else {
-    btnParadigms.style.display = "";
-  }
+  setParadigmsAvailable(btnParadigms, hasParadigms);
+  if (!hasParadigms && AppState.currentTab === "paradigms") switchTab("vocab");
   setTimeout(updateTabsScrollIndicators, 50);
 }
 

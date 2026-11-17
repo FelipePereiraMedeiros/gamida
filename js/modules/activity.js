@@ -251,7 +251,7 @@ function saveDailyGoalFromInput(e) {
 /** Leva o aluno ao ajuste da meta a partir do indicador "Dias seguidos" */
 function openDailyGoalSettings() {
   if (typeof window === "undefined" || typeof document === "undefined") return;
-  if (typeof window.switchTab === "function") window.switchTab("manage");
+  if (typeof window.switchTab === "function") window.switchTab("profile");
   const inputEl = document.getElementById("daily-goal-input");
   if (!inputEl) return;
   if (typeof inputEl.scrollIntoView === "function") inputEl.scrollIntoView({ block: "center" });
