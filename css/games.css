@@ -559,3 +559,14 @@
 @keyframes sc-banner { 0% { opacity: 0; letter-spacing: 0; } 15% { opacity: 1; } 75% { opacity: 1; } 100% { opacity: 0; } }
 .sc-wipe { position: fixed; inset: 0; z-index: 80; background: #0b0612; pointer-events: none; animation: sc-wipe 0.42s ease-out forwards; }
 @keyframes sc-wipe { from { opacity: 1; } to { opacity: 0; } }
+
+/* Caçada completa: todo o vocabulário do capítulo */
+.sc-fullhunt { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; padding: 0.75rem 0.875rem; border: 1px dashed var(--sc-gold); border-radius: 4px; background: var(--sc-panel-2); }
+.sc-fullhunt__text { display: flex; flex: 1; flex-direction: column; gap: 0.25rem; min-width: 14rem; }
+.sc-fullhunt__text b { color: var(--sc-gold); }
+.sc-fullhunt__text span { color: var(--sc-muted); font-size: 0.82rem; line-height: 1.5; }
+.sc-fullresult { display: flex; flex-direction: column; gap: 0.2rem; padding: 0.5rem 0.875rem; border: 1px solid var(--sc-line); border-radius: 4px; }
+.sc-fullresult.is-done { border-color: var(--sc-gold); }
+.sc-fullresult b { color: var(--sc-gold); }
+.sc-fullresult span { color: var(--sc-muted); font-size: 0.85rem; }
+.sc-seal { margin-left: 0.35rem; color: var(--sc-gold); font-style: normal; }

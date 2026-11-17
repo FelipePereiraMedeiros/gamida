@@ -166,6 +166,23 @@ function buildWaves(chapter, previousChapters, stats) {
   return [queue.slice(0, 4), queue.slice(4, 7), queue.slice(7)].filter((wave) => wave.length);
 }
 
+/** Palavras por onda na caçada completa */
+const FULL_WAVE = 6;
+
+/**
+ * Caçada completa: todas as palavras do capítulo viram criaturas, em ondas de seis.
+ * As que o aluno já errou vêm primeiro, para não ficarem para o fim cansado.
+ * @returns {Array<Array<{item: Object, old: boolean}>>}
+ */
+function buildFullWaves(chapter, stats) {
+  const pool = shuffleArray(wordsOf(chapter));
+  const missed = (item) => ((stats || {})[getTerm(item)] || {}).x > 0;
+  const queue = [...pool.filter(missed), ...pool.filter((item) => !missed(item))].map((item) => ({ item, old: false }));
+  const waves = [];
+  for (let i = 0; i < queue.length; i += FULL_WAVE) waves.push(queue.slice(i, i + FULL_WAVE));
+  return waves;
+}
+
 /** Índice do vocabulário inteiro do idioma, pela forma de dicionário */
 function buildVocabIndex(chapters) {
   const index = new Map();
@@ -380,7 +397,7 @@ function bossSentences(index, campaign) {
 
 const FRESH = () => ({
   cls: null, done: {}, lvl: 1, xp: 0, potions: 3, scrolls: 2, relics: [], stats: {},
-  seenIntro: false, seenEnding: false, story: {}, seen: {}, kills: {},
+  seenIntro: false, seenEnding: false, story: {}, seen: {}, kills: {}, full: {},
 });
 const storageKey = (language) => `gamida_${language || AppState.language}_scribe`;
 let S = FRESH();
@@ -402,6 +419,8 @@ function sanitizeProgress(raw) {
   // Prólogos e finais de cada livro já lidos ("p2", "e1"...)
   if (raw.story && typeof raw.story === "object") Object.keys(raw.story).forEach((k) => { if (/^[pe]\d+$/.test(k) && raw.story[k]) state.story[k] = true; });
   if (state.seenIntro) state.story.p1 = true;
+  // Capítulos com o vocabulário inteiro recolhido na caçada completa
+  if (raw.full && typeof raw.full === "object") Object.keys(raw.full).forEach((id) => { if (raw.full[id]) state.full[id] = true; });
   // Bestiário: criaturas vistas e vencidas
   ["seen", "kills"].forEach((field) => {
     if (raw[field] && typeof raw[field] === "object") {
@@ -697,7 +716,7 @@ function showMap() {
         <span class="sc-chap__n ${termClass()}">${esc(meta.native.split(/[־\s]/)[0])}</span>
         <span class="sc-chap__body"><b>Capítulo ${i + 1} · ${esc(meta.city)}</b>
           <span>${lesson ? `${esc(lesson)} · ` : ""}${rich(meta.scroll.t)} · guardião: ${esc(meta.boss)}${relic ? ` · relíquia: ${esc(relic.name)}` : ""}</span></span>
-        <em>${done ? "vencido" : i === current ? "próximo" : "aberto"}</em>
+        <em>${done ? "vencido" : i === current ? "próximo" : "aberto"}${S.full[chapter.id] ? `<i class="sc-seal" title="Caçada completa: todo o vocabulário recolhido">★</i>` : ""}</em>
       </button>`;
     }).join("")}</div>`}
     <div class="sc-row">
@@ -819,7 +838,7 @@ function mapInfo(current) {
   box.innerHTML = `<span class="sc-chapinfo__n ${termClass()}">${esc(meta.native)}</span>
     <div class="sc-chapinfo__body"><b>Capítulo ${index + 1} · ${esc(meta.city)}${S.done[chapter.id] ? " · vencido" : index === current ? " · próximo" : ""}</b>
       <span>${lesson ? `${esc(lesson)} · ` : ""}${rich(meta.scroll.t)}</span>
-      <span>Guardião: ${esc(meta.boss)}${meta.bossRef ? ` (${esc(meta.bossRef)})` : ""}${relic ? ` · relíquia: ${esc(relic.name)}` : ""}</span></div>
+      <span>Guardião: ${esc(meta.boss)}${meta.bossRef ? ` (${esc(meta.bossRef)})` : ""}${relic ? ` · relíquia: ${esc(relic.name)}` : ""}${S.full[chapter.id] ? " · ★ vocabulário completo" : ""}</span></div>
     <button type="button" class="sc-btn" id="sc-map-enter">${S.done[chapter.id] ? "Refazer" : "Entrar"}</button>`;
   document.querySelectorAll("#sc-screen .sc-node").forEach((n) => n.classList.toggle("is-sel", n.dataset.node === mapSel.id));
   on("#sc-map-enter", () => {
@@ -895,10 +914,26 @@ function showScroll(index, fromBook) {
     <div class="sc-row">${fromBook
       ? `<button type="button" class="sc-btn" id="sc-back">Voltar ao grimório</button>`
       : `<button type="button" class="sc-btn" id="sc-go">Entrar em batalha</button><button type="button" class="sc-btn sc-btn--ghost" id="sc-back">Mapa</button>`}</div>
+    ${fromBook ? "" : fullHuntCard(chapter)}
   </div>`);
   on("#sc-go", () => startChapter(index));
+  on("#sc-full", () => startChapter(index, { full: true }));
   on("#sc-back", fromBook ? showBook : showMap);
   chapterBannerLoop(index);
+}
+
+/** Convite para a caçada completa, com o versículo que dá o tom de cada rolo */
+function fullHuntCard(chapter) {
+  const total = wordsOf(chapter).length;
+  const done = !!S.full[chapter.id];
+  const flavor = isHebrew()
+    ? "Como no censo do deserto, “segundo o número dos nomes, cabeça por cabeça” (Nm 1.2): cada palavra do capítulo é contada."
+    : "Como a rede de Pedro, “cheia de grandes peixes, cento e cinquenta e três” (Jo 21.11): nenhuma palavra fica para trás.";
+  return `<div class="sc-fullhunt">
+    <div class="sc-fullhunt__text"><b>Caçada completa · ${total} palavras${done ? " · selo conquistado" : ""}</b>
+      <span>${esc(flavor)} Todo o vocabulário do capítulo aparece em ondas de ${FULL_WAVE}; as que escaparem voltam no fim. Há acampamento entre as ondas e o guardião espera no final.</span></div>
+    <button type="button" class="sc-btn sc-btn--ghost" id="sc-full">Caçar as ${total} palavras</button>
+  </div>`;
 }
 
 /** Cenário animado do capítulo, com o nome no original */
@@ -1143,15 +1178,18 @@ function freshArena() {
   return { parts: [], floats: [], lunge: {}, monFlash: 0, heroFlash: 0, shake: 0, deathT: 0, pose: null, proj: [], eatk: null, flash: 0, lvl: 0, heal: 0, letters: [] };
 }
 
-function startChapter(index) {
+function startChapter(index, { full = false } = {}) {
   transition();
   const { chapter, meta } = campaign[index];
   const stats = P();
+  const waves = full ? buildFullWaves(chapter, S.stats) : buildWaves(chapter, campaign.slice(0, index).map((c) => c.chapter), S.stats);
   B = {
     index, chapter, meta, total: campaign.length,
-    waves: buildWaves(chapter, campaign.slice(0, index).map((c) => c.chapter), S.stats),
+    waves,
     wave: 0, mi: 0, hp: stats.hp, boss: false, mon: null, lock: false, q: null,
     free: stats.hints, ward: stats.ward, revive: stats.revive,
+    // Caçada completa: palavras recolhidas, as que escaparam e se já voltaram
+    full, fullTotal: full ? waves.reduce((n, w) => n + w.length, 0) : 0, caught: new Set(), escaped: [], rematch: false,
   };
   A = freshArena();
   const g = gfx();
@@ -1167,15 +1205,39 @@ function nextMonster() {
   if (B.mi >= currentWave().length) {
     B.wave++;
     B.mi = 0;
+    if (B.wave >= B.waves.length && B.full && B.escaped.length && !B.rematch) {
+      // As que escaparam voltam uma vez, todas juntas
+      B.rematch = true;
+      B.waves.push(B.escaped.splice(0));
+    }
     if (B.wave >= B.waves.length) return B.dungeon ? dungeonDone() : bossIntro();
     sfx("combo");
+    if (B.full) camp();
   }
   const word = currentWave()[B.mi];
   B.mon = makeMonster(word);
   renderBattle();
   askMob();
-  if (B.mi === 0 && B.wave > 0) log(`Onda ${B.wave + 1} de ${B.waves.length}!`, "ok");
+  if (B.mi === 0 && B.wave > 0) {
+    if (B.full && B.rematch && B.wave === B.waves.length - 1) log(currentWave().length === 1 ? "A palavra que escapou voltou! É a última chance de recolhê-la." : `As ${currentWave().length} palavras que escaparam voltaram! É a última chance de recolhê-las.`, "bad");
+    else if (B.full) log(`Onda ${B.wave + 1} de ${B.waves.length}. ${B.campMsg || ""}`, "ok");
+    else log(`Onda ${B.wave + 1} de ${B.waves.length}!`, "ok");
+  }
 }
+
+/** Acampamento entre as ondas da caçada completa: recupera um pouco de vida */
+function camp() {
+  const healed = Math.min(Math.round(maxHP() * 0.15), maxHP() - B.hp);
+  B.campMsg = "";
+  if (healed > 0) {
+    B.hp += healed;
+    B.campMsg = `Acampamento: +${healed} de vida.`;
+    if (A) A.heal = performance.now() / 1000;
+  }
+}
+
+/** Placar da caçada completa */
+const fullLabel = () => `Recolhidas ${B.caught.size}/${B.fullTotal}`;
 
 /**
  * Criatura de uma palavra. A figura vem das criaturas da região (ficha do capítulo).
@@ -1192,7 +1254,7 @@ function makeMonster(word, rand = Math.random()) {
   const entry = S.stats[term] || {};
   const weak = entry.x > 0 && (entry.s || 0) < 3;
   const firstWave = !B.dungeon && B.index === 0 && B.wave === 0;
-  if ((weak || word.old) && rand < 0.55) {
+  if ((weak || word.old) && rand < 0.55 && !B.full) {
     mon.type = "elite";
     mon.hp = mon.max = 3;
   } else if (rand > 0.84 && !firstWave) {
@@ -1231,7 +1293,7 @@ function battleShell(inner) {
           <span id="sc-hero-hp-text">${B.hp}/${maxHP()}</span></div>
         <div class="sc-hudbox sc-hudbox--right"><b>${esc(monsterName())}</b>
           <div class="sc-bar ${B.boss ? "sc-bar--boss" : "sc-bar--hp"}"><i id="sc-mon-hp" style="width:${mon ? (mon.hp / mon.max) * 100 : 0}%"></i></div>
-          <span id="sc-mon-info">${B.boss ? bossProgressLabel() : `Onda ${B.wave + 1}/${B.waves.length} · ${B.mi + 1}/${currentWave().length}`}</span></div>
+          <span id="sc-mon-info">${B.boss ? bossProgressLabel() : B.full ? `Onda ${B.wave + 1}/${B.waves.length} · ${fullLabel()}` : `Onda ${B.wave + 1}/${B.waves.length} · ${B.mi + 1}/${currentWave().length}`}</span></div>
       </div>
     </div>
     ${inner}
@@ -1468,7 +1530,8 @@ function fleeMob() {
   recordAnswer(mon.term, false);
   save();
   sfx("wall");
-  log(`A criatura veloz fugiu com a palavra: ${orig(mon.term)} = ${esc(mon.word.item.translations.join(" / "))}. Ela foi para a Masmorra.`, "bad");
+  if (B.full && !B.rematch) B.escaped.push(mon.word);
+  log(`A criatura veloz fugiu com a palavra: ${orig(mon.term)} = ${esc(mon.word.item.translations.join(" / "))}. ${B.full && !B.rematch ? "Ela volta no fim da caçada." : "Ela foi para a Masmorra."}`, "bad");
   setTimeout(() => {
     if (!B) return;
     B.mi++;
@@ -1527,6 +1590,7 @@ function mobHit() {
 
 function mobMiss(message) {
   const { term } = B.mon;
+  B.mon.missed = true;
   stat(term, false);
   recordAnswer(term, false);
   log(message, "bad");
@@ -1545,6 +1609,19 @@ function killMob(crit) {
   B.mon.dead = true;
   A.deathT = performance.now() / 1000 + 0.6;
   sfx("combo");
+  let fullNote = "";
+  if (B.full) {
+    // Errou antes de vencer: a palavra conta como vista, mas volta no fim para ser recolhida sem erro
+    if (B.mon.missed && !B.rematch) {
+      B.escaped.push(B.mon.word);
+      fullNote = " Ela volta no fim para ser recolhida sem erro.";
+    } else if (B.mon.missed) {
+      fullNote = " Errada de novo: ela fica para a Masmorra.";
+    } else {
+      B.caught.add(B.mon.term);
+      fullNote = ` ${fullLabel()}.`;
+    }
+  }
   const bonus = B.mon.type === "elite" ? 8 : B.mon.type === "fast" ? 5 : 0;
   const xp = gainXP(12 + (B.mon.word.old ? 4 : 0) + (crit ? stats.critXP : 0) + bonus);
   S.kills[B.mon.sp] = (S.kills[B.mon.sp] || 0) + 1;
@@ -1576,7 +1653,7 @@ function killMob(crit) {
     }
     save();
   }
-  log(`Criatura vencida: ${orig(B.mon.term)} = ${esc(B.mon.word.item.translations.join(" / "))} · +${xp} XP.${drop}`, "ok");
+  log(`Criatura vencida: ${orig(B.mon.term)} = ${esc(B.mon.word.item.translations.join(" / "))} · +${xp} XP.${drop}${fullNote}`, "ok");
   setTimeout(() => {
     if (!B) return;
     B.mi++;
@@ -1630,6 +1707,7 @@ function defeat() {
   cancelAnimationFrame(frameId);
   const index = B.index;
   const dungeon = !!B.dungeon;
+  const full = !!B.full;
   B = null;
   if (dungeon) {
     setScreen(`<div class="sc-card sc-card--center">
@@ -1651,7 +1729,7 @@ function defeat() {
       <button type="button" class="sc-btn sc-btn--ghost" id="sc-map">Mapa</button>
     </div>
   </div>`);
-  on("#sc-retry", () => startChapter(index));
+  on("#sc-retry", () => startChapter(index, { full }));
   on("#sc-reread", () => showScroll(index));
   on("#sc-map", showMap);
 }
@@ -2068,7 +2146,11 @@ function bossDown() {
   const chapterId = B.chapter.id;
   S.done[chapterId] = true;
   S.potions++;
-  const xp = gainXP(60 + Math.max(sentences.length, 1) * 6);
+  const full = B.full ? { caught: B.caught.size, total: B.fullTotal } : null;
+  const fullDone = !!full && full.caught >= full.total;
+  const firstSeal = fullDone && !S.full[chapterId];
+  if (fullDone) S.full[chapterId] = true;
+  const xp = gainXP(60 + Math.max(sentences.length, 1) * 6 + (full ? full.caught * 2 : 0) + (firstSeal ? 40 : 0));
   const relic = relicFor(S.cls, chapterId);
   let newRelic = null;
   if (relic && !S.relics.includes(relic.id)) {
@@ -2090,6 +2172,8 @@ function bossDown() {
       <div class="sc-big">Capítulo ${index + 1} completo</div>
       <blockquote class="sc-fragment"><span class="sc-fragment__label">Trecho devolvido ao ${isHebrew() ? "rolo" : "códice"}</span>${rich(loreOf(index).epilogue)}</blockquote>
       ${newRelic ? `<div class="sc-relicdrop"><span class="sc-muted">Relíquia encontrada</span><b>${esc(newRelic.name)}</b><span>${esc(newRelic.ref)} · ${esc(newRelic.desc)}</span><em>${esc(Lore.RELIC_LORE[newRelic.id] || "")}</em></div>` : ""}
+      ${full ? `<div class="sc-fullresult${fullDone ? " is-done" : ""}"><b>${fullDone ? "Selo da caçada completa" : "Caçada completa"}</b>
+        <span>${full.caught} de ${full.total} palavras recolhidas${fullDone ? (firstSeal ? " · selo novo no mapa" : "") : ". As que ficaram foram para a Masmorra; tente de novo para ganhar o selo."}</span></div>` : ""}
       <p class="sc-muted">+${xp} XP · +1 óleo de cura</p>
       ${sentences.length ? `<details class="sc-review"><summary>Rever as ${sentences.length} frases do guardião</summary>
         <div class="sc-revlist">${sentences.map((s) => `<div><span class="sc-revlist__term ${termClass()}" dir="${isHebrew() ? "rtl" : "ltr"}">${esc(getTerm(s))}</span>
@@ -2106,7 +2190,7 @@ function bossDown() {
     on("#sc-ending", () => showEnding(book));
     on("#sc-next", () => showScroll(index + 1));
     void total;
-    on("#sc-again", () => startChapter(index));
+    on("#sc-again", () => startChapter(index, { full: !!full }));
     on("#sc-map", showMap);
   }, 1100);
 }
@@ -2584,6 +2668,8 @@ const ScribeModule = {
   heroStats,
   xpNeeded,
   buildWaves,
+  buildFullWaves,
+  FULL_WAVE,
   buildVocabIndex,
   hebrewStem,
   verbPerson,

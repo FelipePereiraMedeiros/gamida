@@ -369,6 +369,24 @@ suite.test('Animações da versão nova: golpe de cada classe, letras da palavra
   ['heroStrike(', 'fx.drawProj(', 'fx.drawEnemyFX(', 'fx.drawLetters(', 'storyScenes(', 'chapterBannerLoop(', 'announce("Você caiu"'].forEach((hook) => assert.includes(src, hook, `Animação não ligada: ${hook}`));
 });
 
+suite.test('Caçada completa: todas as palavras do capítulo viram criaturas, as erradas primeiro', () => {
+  LANGS.forEach(([language, chapters]) => chapters.forEach((chapter) => {
+    const words = Scribe.buildCampaign([chapter], language).length ? chapter : null;
+    if (!words) return;
+    const stats = {};
+    const all = (chapter.items || []).map(getTerm).filter(Boolean);
+    if (all[3]) stats[all[3]] = { r: 0, x: 2, s: 0 };
+    const waves = Scribe.buildFullWaves(chapter, stats);
+    const terms = waves.flat().map((w) => getTerm(w.item));
+    assert.equal(new Set(terms).size, terms.length, `${chapter.id}: palavra repetida`);
+    const expected = new Set((chapter.items || []).filter((i) => getTerm(i) && (i.translations || []).length).map(getTerm));
+    assert.equal(terms.length, expected.size, `${chapter.id}: faltou palavra na caçada`);
+    assert.isTrue(waves.every((w) => w.length >= 1 && w.length <= Scribe.FULL_WAVE), 'Ondas de até seis');
+    if (all[3] && expected.has(all[3])) assert.equal(terms[0], all[3], 'A palavra errada vem primeiro');
+  }));
+  assert.deepEqual(Scribe.sanitizeProgress({ full: { kelley_03: true, x: 0 } }).full, { kelley_03: true }, 'Selo guardado no progresso');
+});
+
 suite.test('Crônicas do Escriba está ligada à tela de Avaliar e ao backup', () => {
   assert.includes(html, 'onclick="openScribeChronicles()"', 'Cartão do modo ausente');
   assert.includes(html, 'id="scribe-view"', 'Tela do jogo ausente');
