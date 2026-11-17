@@ -509,3 +509,4 @@
 .sr-hud__phase { color: var(--sr-gold); font-size: 0.8rem; white-space: nowrap; }
 /* Crônicas: capítulo aberto para revisão, fora da ordem da história */
 .sc-chap.is-free em { color: var(--sc-muted); }
+.sc-timer.is-late i { background: #e43b44; }

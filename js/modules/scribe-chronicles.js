@@ -1032,20 +1032,52 @@ function stopTimer() {
   timerId = 0;
 }
 
-/** Barra do golpe crítico: responder antes de ela acabar dobra o dano */
-function startTimer(seconds) {
+/**
+ * Barra de tempo da pergunta. Nas criaturas, responder antes de ela acabar é
+ * golpe crítico. Em criaturas e guardiões, quando ela acaba o inimigo ataca
+ * (dano e animação) e a barra recomeça, sem crítico, até a resposta vir.
+ * @param {number} seconds duração da barra
+ * @param {{crit?: boolean}} [opts] crit: a primeira barra vale golpe crítico
+ */
+function startTimer(seconds, { crit = true } = {}) {
   B.t0 = performance.now();
-  B.crit = seconds;
+  B.crit = crit ? seconds : 0;
+  B.qid = (B.qid || 0) + 1;
+  const qid = B.qid;
   stopTimer();
   const tick = () => {
+    if (!B || B.qid !== qid || !isOpen()) return;
     const bar = $("#sc-timer i");
-    if (!bar || !B) return;
     const left = 1 - (performance.now() - B.t0) / 1000 / seconds;
-    bar.style.width = `${Math.max(0, left * 100)}%`;
-    if (left > 0) timerId = requestAnimationFrame(tick);
+    if (bar) {
+      bar.style.width = `${Math.max(0, left * 100)}%`;
+      bar.parentElement.classList.toggle("is-late", B.crit === 0);
+    }
+    if (left > 0) {
+      timerId = requestAnimationFrame(tick);
+      return;
+    }
+    // Resposta sendo conferida, criatura fugindo ou herói caído: a próxima pergunta traz barra nova
+    if (B.lock || !B.mon || B.mon.dead || B.hp <= 0) return;
+    timeAttack();
+    if (!B || B.qid !== qid || B.lock || B.hp <= 0) return;
+    B.t0 = performance.now();
+    B.crit = 0;
+    timerId = requestAnimationFrame(tick);
   };
   tick();
 }
+
+/** O tempo acabou: o inimigo ataca */
+function timeAttack() {
+  const damage = B.boss ? bossDamage(B.index, B.total, B.meta) : B.dungeon ? B.dmg : monsterDamage(B.index, B.total);
+  log(`O tempo acabou: ${esc(B.boss ? B.meta.boss : monsterName().toLowerCase())} atacou! Responda para revidar.`, "bad");
+  hurt(damage);
+}
+
+/** Tempo das perguntas do guardião (um pouco mais que o das criaturas) */
+const bossWindow = (typed) => P().crit * 1.6 * (typed ? TYPING_CRIT_FACTOR : 1);
+const TIMER_BAR = `<div class="sc-timer" id="sc-timer" title="Responda antes da barra acabar ou o inimigo ataca"><i></i></div>`;
 
 /* ---------- Tocar ou digitar ---------- */
 
@@ -1141,7 +1173,7 @@ function askMob() {
   cmd.innerHTML = `<div class="sc-prompt">${first
     ? `<div class="sc-q">Ataque: o que significa?</div><div class="sc-prompt__term ${termClass()}">${esc(B.mon.term)}</div>`
     : `<div class="sc-q">Golpe final: qual é a palavra para</div><div class="sc-prompt__pt">${esc(word.item.translations.join(" / "))}</div>`}</div>
-    <div class="sc-timer" id="sc-timer" title="Responda antes da barra acabar para um golpe crítico"><i></i></div>
+    <div class="sc-timer" id="sc-timer" title="Responda antes da barra acabar: golpe crítico. Se ela acabar, a criatura ataca"><i></i></div>
     ${typed ? typedForm("Digite a tradução…") : optionButtons(B.opts.map((o) => o.text), { asTerm: !first })}`;
   if (typed) bindTyped(answerMobTyped);
   else bindOptions(answerMob);
@@ -1512,9 +1544,10 @@ function bossTurn() {
   }
   // O golpe de gramática é sempre por alternativas; o de palavra pode ser digitado
   const typed = !B.q && typedNow();
-  cmd.innerHTML = `${bossLine()}<div class="sc-prompt"><div class="sc-q sc-q--strong">${label}</div></div>${typed ? typedForm("Digite o significado…") : optionButtons(B.opts)}`;
+  cmd.innerHTML = `${bossLine()}<div class="sc-prompt"><div class="sc-q sc-q--strong">${label}</div></div>${TIMER_BAR}${typed ? typedForm("Digite o significado…") : optionButtons(B.opts)}`;
   if (typed) bindTyped(bossAnswerTyped);
   else bindOptions(bossAnswer);
+  startTimer(bossWindow(typed), { crit: false });
 }
 
 function bossAnswer(k) {
@@ -1582,10 +1615,17 @@ function bossBuild() {
   if (!cmd || !B) return;
   B.opts = [];
   B.built = B.built || [];
-  if (typedNow()) return bossBuildTyped(cmd);
+  const fresh = B.buildClock !== B.si;
+  if (fresh) B.buildClock = B.si;
+  if (typedNow()) {
+    bossBuildTyped(cmd);
+    if (fresh) startTimer(buildWindow(true), { crit: false });
+    return;
+  }
   const { bank, chunks } = B.s;
   cmd.innerHTML = `${bossLine()}
     <div class="sc-prompt"><div class="sc-q sc-q--strong">Golpe da frase: monte a tradução</div></div>
+    ${TIMER_BAR}
     <div class="sc-build" id="sc-build">${B.built.length
       ? B.built.map((b, i) => `<button type="button" class="sc-chip is-placed" data-i="${i}">${esc(b.text)}</button>`).join("")
       : `<span class="sc-build__hint">Toque nos pedaços na ordem do português</span>`}</div>
@@ -1633,6 +1673,13 @@ function bossBuild() {
       ? "Falta pedaço: toda palavra da frase precisa aparecer."
       : "A ordem ou um pedaço não bate. O destacado é o primeiro problema.");
   });
+  if (fresh) startTimer(buildWindow(false), { crit: false });
+}
+
+/** Tempo para montar a frase: cresce com o número de pedaços */
+function buildWindow(typed) {
+  const pieces = (B.s && B.s.chunks ? B.s.chunks.length : 4);
+  return Math.max(18, pieces * 4.5) * (typed ? 1.5 : 1);
 }
 
 /** Golpe da frase digitado: o aluno escreve a tradução inteira */
@@ -1640,6 +1687,7 @@ function bossBuildTyped(cmd) {
   const { sentence } = B.s;
   cmd.innerHTML = `${bossLine()}
     <div class="sc-prompt"><div class="sc-q sc-q--strong">Golpe da frase: digite a tradução</div></div>
+    ${TIMER_BAR}
     ${typedForm("Tradução da frase…", { area: true })}
     <div class="sc-row"><button type="button" class="sc-btn sc-btn--ghost" id="sc-use-chips">Montar com pedaços</button></div>`;
   on("#sc-use-chips", () => {
@@ -1676,6 +1724,7 @@ function sentenceHit() {
     B.built = [];
     if (B.si >= B.sents.length) return bossDown();
     B.s = B.sents[B.si];
+    B.buildClock = -1;
     B.wi = 0;
     B.q = null;
     B.phase = B.s.strikes.length ? "word" : "build";
@@ -1698,7 +1747,8 @@ function rushTurn() {
   const item = B.rush[B.ri];
   B.opts = buildChoiceOptions(item, AppState.chapters, { direction: "reverse" });
   cmd.innerHTML = `<div class="sc-prompt"><div class="sc-q">Rajada do guardião: qual é a palavra para</div>
-    <div class="sc-prompt__pt">${esc(item.translations.join(" / "))}</div></div>${optionButtons(B.opts.map((o) => o.text), { asTerm: true })}`;
+    <div class="sc-prompt__pt">${esc(item.translations.join(" / "))}</div></div>${TIMER_BAR}${optionButtons(B.opts.map((o) => o.text), { asTerm: true })}`;
+  startTimer(bossWindow(false), { crit: false });
   bindOptions((k) => {
     if (!B || B.lock || !B.opts[k]) return;
     const buttons = document.querySelectorAll("#sc-screen .sc-opt");

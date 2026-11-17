@@ -316,6 +316,14 @@ suite.test('Todos os capítulos ficam abertos para revisão, na ordem das liçõ
   });
 });
 
+suite.test('Tempo esgotado: criaturas e guardiões atacam, em todas as perguntas', () => {
+  const src = require('fs').readFileSync(require('path').join(__dirname, '..', 'js/modules/scribe-chronicles.js'), 'utf8');
+  const body = (name) => src.slice(src.indexOf(`function ${name}(`), src.indexOf('\n}\n', src.indexOf(`function ${name}(`)));
+  assert.includes(body('startTimer'), 'timeAttack()', 'Fim da barra não ataca');
+  assert.includes(body('timeAttack'), 'hurt(', 'Ataque do tempo sem dano');
+  ['askMob', 'bossTurn', 'bossBuild', 'rushTurn'].forEach((fn) => assert.includes(body(fn), 'startTimer(', `${fn} sem barra de tempo`));
+});
+
 suite.test('Crônicas do Escriba está ligada à tela de Avaliar e ao backup', () => {
   assert.includes(html, 'onclick="openScribeChronicles()"', 'Cartão do modo ausente');
   assert.includes(html, 'id="scribe-view"', 'Tela do jogo ausente');
