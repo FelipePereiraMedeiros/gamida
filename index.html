@@ -26,7 +26,7 @@
     <link rel="preload" href="fonts/SBL_Hbrw.ttf" as="font" type="font/ttf" crossorigin />
 
     <script>
-      window.APP_VERSION = "2.28.0";
+      window.APP_VERSION = "2.29.0";
     </script>
 
     <!-- Estilos personalizados e resiliência offline -->
@@ -684,7 +684,7 @@
               <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-stones"></use></svg></span>
               <span class="mode-card__title">Chuva de Pedras</span>
               <span class="mode-card__stat">Recorde: <span id="stones-card-best">0</span></span>
-              <span class="mode-card__text">Pedras com palavras caem sobre a muralha. Toque no significado antes que acertem o muro. Vocabulário de todas as lições.</span>
+              <span class="mode-card__text">Pedras com palavras caem sobre a muralha. Toque no significado antes que acertem o muro. Cada fase é uma lição, e você escolhe de onde começar.</span>
               <span class="mode-card__cta">Defender a muralha ➔</span>
             </button>
 
@@ -706,7 +706,7 @@
             <div class="sr-hud">
               <span aria-live="polite">Pontos <b id="sr-score">0</b></span>
               <span class="sr-hud__combo">Combo <b id="sr-combo">×1</b></span>
-              <span>Fase <b id="sr-level">1</b></span>
+              <span>Fase <b id="sr-level">–</b> <span id="sr-phase-name" class="sr-hud__phase"></span></span>
               <span class="sr-lives" id="sr-lives" role="img" aria-label="5 de 5 vidas">♥♥♥♥♥</span>
             </div>
             <div class="sr-tools">
@@ -724,11 +724,18 @@
               <p class="sr-overlay__text">
                 Pedras com palavras caem sobre Jerusalém. A pedra com contorno dourado é o alvo: toque no significado dela
                 antes que acerte o muro. Errar ou deixar cair custa uma vida. Acertos seguidos multiplicam os pontos.
+                Cada fase é uma lição, na ordem do livro: destrua todas as palavras dela para passar à seguinte.
               </p>
-              <div class="sr-chips" id="sr-chapter-chips" role="group" aria-label="Lições da partida"></div>
+              <label class="sr-start">
+                <span>Começar na fase</span>
+                <select id="sr-start" class="sr-start__select" onchange="stoneRainStartAt(this.value)" aria-label="Lição em que a partida começa"></select>
+              </label>
+              <div class="sr-chips" id="sr-chapter-chips" role="group" aria-label="Fases da partida (uma por lição)"></div>
               <div class="sr-chips">
                 <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('all')">Todas</button>
                 <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('upto')">Até a lição atual</button>
+                <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('from')">Da atual em diante</button>
+                <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('only')">Só a atual</button>
                 <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('none')">Nenhuma</button>
               </div>
               <div class="sr-chips">
@@ -1798,7 +1805,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.28.0</span>
+        <span id="footer-version-tag">v2.29.0</span>
       </p>
       <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
     </footer>

@@ -481,9 +481,10 @@ function on(selector, handler) {
   if (node) node.onclick = handler;
 }
 
-function isUnlocked(index) {
-  if (index <= 0) return true;
-  return !!S.done[campaign[index].chapter.id] || !!S.done[campaign[index - 1].chapter.id];
+function isUnlocked() {
+  // Todos os capítulos ficam abertos: a revisão pode começar em qualquer ponto.
+  // A ordem da história continua indicada pelo capítulo "próximo".
+  return true;
 }
 
 const P = () => heroStats(S);
@@ -612,23 +613,24 @@ function showMap() {
   stopTimer();
   music("map");
   const total = campaign.length;
-  const current = campaign.findIndex((c, i) => isUnlocked(i) && !S.done[c.chapter.id]);
+  // Próximo capítulo da história: o primeiro ainda não vencido
+  const current = campaign.findIndex((c) => !S.done[c.chapter.id]);
   const master = isHebrew() ? "Kelley" : "Bergmann";
   const started = doneCount(S) > 0;
   setScreen(`<div class="sc-card">${heroPanel()}
     <p class="sc-story">${started
-      ? "Escolha o próximo capítulo. Cada um traz um pergaminho de ensino, ondas de criaturas-palavra e um guardião de várias frases."
-      : `O ${isHebrew() ? "rolo" : "códice"} do mestre ${master} está em branco. Cada palavra virou uma criatura, e cada frase, um guardião. Percorra o caminho de ${esc(campaign[0].meta.city)} a ${esc(campaign[total - 1].meta.city)} e traga-as de volta.`}</p>
+      ? "Siga a história pelo capítulo destacado ou escolha qualquer outro para revisar: todos estão abertos. Cada um traz um pergaminho de ensino, ondas de criaturas-palavra e um guardião de várias frases."
+      : `O ${isHebrew() ? "rolo" : "códice"} do mestre ${master} está em branco. Cada palavra virou uma criatura, e cada frase, um guardião. Percorra o caminho de ${esc(campaign[0].meta.city)} a ${esc(campaign[total - 1].meta.city)} e traga-as de volta. Os capítulos seguem as lições, e você pode começar por qualquer um.`}</p>
     <div class="sc-chapters">${campaign.map(({ chapter, meta }, i) => {
       const relic = relicFor(S.cls, i, total);
       const done = !!S.done[chapter.id];
       const open = isUnlocked(i);
       const lesson = lessonLabel(chapter);
-      return `<button type="button" class="sc-chap${done ? " is-done" : ""}${i === current ? " is-current" : ""}" data-chapter="${i}" ${open ? "" : "disabled"}>
+      return `<button type="button" class="sc-chap${done ? " is-done" : ""}${i === current ? " is-current" : ""}${!done && i !== current ? " is-free" : ""}" data-chapter="${i}" ${open ? "" : "disabled"}>
         <span class="sc-chap__n ${termClass()}">${esc(meta.native.split(/[־\s]/)[0])}</span>
         <span class="sc-chap__body"><b>Capítulo ${i + 1} · ${esc(meta.city)}</b>
           <span>${lesson ? `${esc(lesson)} · ` : ""}${rich(meta.scroll.t)}${relic ? ` · relíquia: ${esc(relic.name)}` : ""}</span></span>
-        <em>${done ? "vencido" : open ? "aberto" : "bloqueado"}</em>
+        <em>${done ? "vencido" : i === current ? "próximo" : "aberto"}</em>
       </button>`;
     }).join("")}</div>
     <div class="sc-row" id="sc-map-actions">

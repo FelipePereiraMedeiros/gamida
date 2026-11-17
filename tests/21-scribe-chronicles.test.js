@@ -265,6 +265,20 @@ suite.test('Quem já jogava não revê o prólogo à força; quem começa agora,
   assert.equal(Scribe.sanitizeProgress({ seenEnding: true }).seenEnding, true);
 });
 
+suite.test('Todos os capítulos ficam abertos para revisão, na ordem das lições', () => {
+  const source = require('fs').readFileSync(require('path').join(__dirname, '..', 'js', 'modules', 'scribe-chronicles.js'), 'utf8');
+  const start = source.indexOf('function isUnlocked(');
+  assert.isTrue(start > 0 && source.slice(start, start + 320).includes('return true;'), 'Nenhum capítulo pode ficar bloqueado');
+  [['hebrew', hebrewData], ['greek', greekData]].forEach(([language, chapters]) => {
+    const campaign = Scribe.buildCampaign(chapters, language);
+    assert.deepEqual(campaign.map((c) => c.chapter.id), chapters.map((c) => c.id), 'Capítulos na ordem das lições');
+    campaign.forEach(({ chapter }, index) => {
+      const waves = Scribe.buildWaves(chapter, campaign.slice(0, index).map((c) => c.chapter), {});
+      waves.flat().filter((w) => !w.old).forEach((w) => assert.isTrue(chapter.items.includes(w.item), 'Criaturas novas são da própria lição'));
+    });
+  });
+});
+
 suite.test('Crônicas do Escriba está ligada à tela de Avaliar e ao backup', () => {
   assert.includes(html, 'onclick="openScribeChronicles()"', 'Cartão do modo ausente');
   assert.includes(html, 'id="scribe-view"', 'Tela do jogo ausente');

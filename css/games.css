@@ -478,3 +478,20 @@
   .sr-typed, .sc-typed { flex-wrap: wrap; }
   .sr-typed > button, .sc-typed > button { flex: 1 1 100%; }
 }
+
+/* Chuva de Pedras: ponto de partida e lição da fase */
+.sr-start { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem; color: var(--sr-muted); font-size: 0.85rem; }
+.sr-start__select {
+  max-width: min(22rem, 100%);
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--sr-btn-line);
+  border-radius: 0.5rem;
+  background: var(--sr-btn);
+  color: var(--sr-ink);
+  font: inherit;
+  font-size: 0.85rem;
+}
+.sr-start__select:focus-visible { outline: 3px solid var(--sr-gold); outline-offset: 2px; }
+.sr-hud__phase { color: var(--sr-gold); font-size: 0.8rem; white-space: nowrap; }
+/* Crônicas: capítulo aberto para revisão, fora da ordem da história */
+.sc-chap.is-free em { color: var(--sc-muted); }

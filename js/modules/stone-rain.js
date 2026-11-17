@@ -23,10 +23,8 @@ const WALL_HEIGHT = 46;
 // Acertos seguidos para o multiplicador subir, e teto do multiplicador
 const COMBO_EVERY = 3;
 const COMBO_MAX = 5;
-// Acertos para passar de fase
-const HITS_PER_LEVEL = 8;
-// Mínimo de palavras para haver 4 alternativas distintas
-const MIN_DECK = 4;
+// Uma partida precisa de pelo menos uma palavra; as alternativas erradas vêm do vocabulário inteiro
+const MIN_DECK = 1;
 
 /* ============================ Regras puras ============================ */
 
@@ -76,7 +74,62 @@ function buildDeck(chapters, opts = {}, isError) {
   return deck;
 }
 
-/** Segundos que uma pedra leva do topo ao muro: cai mais rápido a cada fase */
+/**
+ * Fases da partida: uma por lição escolhida, na ordem do material.
+ * A fase só termina quando todas as palavras da lição forem destruídas.
+ * @param {Array<Object>} chapters
+ * @param {{chapterIds?: Array<string>, onlyErrors?: boolean}} [opts]
+ * @param {(item: Object) => boolean} [isError]
+ * @returns {Array<{chapterId: string, label: string, title: string, words: Array<Object>}>}
+ */
+function buildPhases(chapters, opts = {}, isError) {
+  const wanted = Array.isArray(opts.chapterIds) ? new Set(opts.chapterIds) : null;
+  const phases = [];
+  let nextId = 0;
+  (Array.isArray(chapters) ? chapters : []).forEach((chapter) => {
+    if (!chapter || (wanted && !wanted.has(chapter.id))) return;
+    // A fase traz o vocabulário inteiro da lição, inclusive o que já apareceu em lições anteriores
+    const seen = new Set();
+    const words = [];
+    (chapter.items || []).forEach((item) => {
+      const term = getTerm(item);
+      const pt = Array.isArray(item.translations) ? preferredGloss(item.translations) : "";
+      if (!term || !pt || seen.has(term)) return;
+      if (opts.onlyErrors && !(typeof isError === "function" && isError(item))) return;
+      seen.add(term);
+      words.push({ id: nextId++, item, term, head: headTerm(term), pt, chapterId: chapter.id, chapterLabel: chapterShortLabel(chapter) });
+    });
+    if (words.length) phases.push({ chapterId: chapter.id, label: chapterShortLabel(chapter), title: chapter.title || "", words });
+  });
+  return phases;
+}
+
+/** Nome da fase para a tela: "Lição XIV" quando a lição é numerada, ou o próprio rótulo */
+function phaseName(phase) {
+  const label = String((phase && phase.label) || "");
+  return /^([IVXLCDM]+|\d+)$/.test(label) ? `Lição ${label}` : label;
+}
+
+/** Lições de um ponto de partida até o fim do material: revisar a partir de qualquer fase */
+function chaptersFrom(chapters, startId) {
+  const list = (Array.isArray(chapters) ? chapters : []).filter(Boolean);
+  const index = list.findIndex((c) => c.id === startId);
+  return list.slice(index >= 0 ? index : 0).map((c) => c.id);
+}
+
+/** Lições do começo até um ponto: o que já foi estudado */
+function chaptersUpTo(chapters, endId) {
+  const list = (Array.isArray(chapters) ? chapters : []).filter(Boolean);
+  const index = list.findIndex((c) => c.id === endId);
+  return list.slice(0, index >= 0 ? index + 1 : list.length).map((c) => c.id);
+}
+
+/** Velocidade da partida: sobe a cada fase concluída, comece ela na lição que for */
+function speedLevel(phasesCleared) {
+  return Math.max(0, phasesCleared) + 1;
+}
+
+/** Segundos que uma pedra leva do topo ao muro: cai mais rápido a cada fase concluída */
 function fallTime(level, typing = false) {
   // Digitar leva mais tempo do que tocar: a pedra cai mais devagar
   if (typing) return Math.max(6.5, 16 - (level - 1) * 0.9);
@@ -103,8 +156,9 @@ function comboAfterHit(combo, totalHits) {
   return totalHits % COMBO_EVERY === 0 && combo < COMBO_MAX ? combo + 1 : combo;
 }
 
-function levelAfterHit(level, totalHits) {
-  return totalHits % HITS_PER_LEVEL === 0 ? level + 1 : level;
+function phaseAfterClear(phaseIndex, totalPhases) {
+  // Depois da última fase a partida recomeça da primeira, mais rápida
+  return totalPhases > 0 ? (phaseIndex + 1) % totalPhases : 0;
 }
 
 /* ============================ Preferências ============================ */
@@ -159,12 +213,12 @@ function playableChapters() {
 }
 
 function selectedChapterIds() {
-  const valid = new Set(playableChapters().map((c) => c.id));
+  const playable = playableChapters();
+  const valid = new Set(playable.map((c) => c.id));
   if (Array.isArray(prefs.chapterIds)) return prefs.chapterIds.filter((id) => valid.has(id));
-  // Primeira vez: começa pelos capítulos que o aluno está estudando
-  const current = (AppState.selectedChapterIds || []).filter((id) => valid.has(id));
-  if (current.length > 0) return current;
-  return AppState.currentChapter && valid.has(AppState.currentChapter.id) ? [AppState.currentChapter.id] : [];
+  // Primeira vez: do começo até a lição que o aluno está estudando
+  const current = AppState.currentChapter && valid.has(AppState.currentChapter.id) ? AppState.currentChapter.id : null;
+  return current ? chaptersUpTo(playable, current) : playable.map((c) => c.id);
 }
 
 const isErrorItem = (item) =>
@@ -172,8 +226,8 @@ const isErrorItem = (item) =>
     ? window.SRSModule.isItemInErrorList(item)
     : false;
 
-function currentDeck() {
-  return buildDeck(AppState.chapters, { chapterIds: selectedChapterIds(), onlyErrors: prefs.onlyErrors }, isErrorItem);
+function currentPhases() {
+  return buildPhases(AppState.chapters, { chapterIds: selectedChapterIds(), onlyErrors: prefs.onlyErrors }, isErrorItem);
 }
 
 /* ============================ Interface ============================ */
@@ -270,14 +324,29 @@ function renderMenu() {
       : "Teclas 1–4 também respondem · Espaço pausa · M liga e desliga todo o som";
   }
 
-  const count = currentDeck().length;
+  // Ponto de partida: a primeira lição marcada
+  const startSelect = el("sr-start");
+  if (startSelect) {
+    startSelect.textContent = "";
+    playableChapters().forEach((chapter) => {
+      const option = document.createElement("option");
+      option.value = chapter.id;
+      option.textContent = chapter.title;
+      startSelect.appendChild(option);
+    });
+    const first = playableChapters().find((c) => selected.has(c.id));
+    if (first) startSelect.value = first.id;
+  }
+
+  const phases = currentPhases();
+  const count = phases.reduce((sum, phase) => sum + phase.words.length, 0);
   const info = el("sr-pool-info");
   if (info) {
     info.textContent = count >= MIN_DECK
-      ? `${count} palavras nesta partida`
+      ? `${phases.length === 1 ? "1 fase" : `${phases.length} fases`} · ${count === 1 ? "1 palavra" : `${count} palavras`}, uma lição por fase, na ordem do livro. Começa em: ${phaseName(phases[0])}.`
       : prefs.onlyErrors
-        ? "Há menos de 4 palavras erradas nessas lições. Desmarque “Só as que errei” ou escolha mais lições."
-        : "Escolha lições com pelo menos 4 palavras.";
+        ? "Não há palavras erradas nessas lições. Desmarque “Só as que errei” ou escolha outras lições."
+        : "Escolha pelo menos uma lição.";
   }
   const play = el("sr-play");
   if (play) play.disabled = count < MIN_DECK;
@@ -285,15 +354,14 @@ function renderMenu() {
   if (best) best.textContent = String(prefs.best);
 }
 
-function selectChapters(mode) {
+function selectChapters(mode, chapterId) {
   const all = playableChapters();
+  const current = AppState.currentChapter ? AppState.currentChapter.id : null;
   if (mode === "all") prefs.chapterIds = all.map((c) => c.id);
   else if (mode === "none") prefs.chapterIds = [];
-  else {
-    // Até o capítulo que o aluno está estudando
-    const index = all.findIndex((c) => AppState.currentChapter && c.id === AppState.currentChapter.id);
-    prefs.chapterIds = all.slice(0, index >= 0 ? index + 1 : all.length).map((c) => c.id);
-  }
+  else if (mode === "from") prefs.chapterIds = chaptersFrom(all, chapterId || current);
+  else if (mode === "only") prefs.chapterIds = all.some((c) => c.id === current) ? [current] : [];
+  else prefs.chapterIds = chaptersUpTo(all, current);
   savePrefs();
   renderMenu();
 }
@@ -333,13 +401,19 @@ function hud() {
   const set = (id, text) => { const node = el(id); if (node) node.textContent = text; };
   set("sr-score", String(game ? game.score : 0));
   set("sr-combo", `×${game ? game.combo : 1}`);
-  set("sr-level", String(game ? game.level : 1));
+  set("sr-level", game ? `${game.phaseIndex + 1}/${game.phases.length}` : "–");
+  const phase = game ? game.phases[game.phaseIndex] : null;
+  set("sr-phase-name", phase ? `${phaseName(phase)} · ${game.remaining.size === 1 ? "falta 1" : `faltam ${game.remaining.size}`}` : "");
+  const phaseEl = el("sr-phase-name");
+  if (phaseEl) phaseEl.title = phase ? phase.title : "";
   set("sr-lives", "♥".repeat(lives) + "♡".repeat(LIVES - lives));
   const livesEl = el("sr-lives");
   if (livesEl) livesEl.setAttribute("aria-label", `${lives} de ${LIVES} vidas`);
 }
 
-function newGame(deck) {
+function newGame(customPhases) {
+  const phases = customPhases || currentPhases();
+  if (!phases.length) return;
   const a = audio();
   if (a) {
     a.init();
@@ -349,11 +423,12 @@ function newGame(deck) {
     a.chip.start();
   }
   game = {
-    deck: deck || currentDeck(),
+    phases, phaseIndex: 0, cleared: 0, laps: 0,
+    remaining: new Set(phases[0].words.map((w) => w.id)),
     stones: [], particles: [],
-    score: 0, combo: 1, hits: 0, level: 1, lives: LIVES,
+    score: 0, combo: 1, hits: 0, level: speedLevel(0), lives: LIVES,
     missed: new Map(), spawnTimer: 0, target: null, options: [],
-    shake: 0, running: true, paused: false, clock: 0, recent: [],
+    shake: 0, running: true, paused: false, clock: 0,
     typing: typingActive(),
   };
   show("sr-menu", false);
@@ -363,6 +438,7 @@ function newGame(deck) {
   if (answers) answers.textContent = "";
   setStageMode("play");
   resize();
+  banner = { text: `Fase 1 · ${phaseName(phases[0])}`, time: 1.6 };
   spawn();
   hud();
   lastFrame = performance.now();
@@ -372,22 +448,37 @@ function newGame(deck) {
 
 /** Sorteia a próxima palavra: evita repetir as recentes e volta mais vezes às erradas */
 function pickWord() {
-  const deck = game.deck;
-  const avoid = new Set([...game.stones.map((s) => s.word.id), ...game.recent]);
-  let candidates = deck.filter((w) => !avoid.has(w.id));
-  if (!candidates.length) candidates = deck.filter((w) => !game.stones.some((s) => s.word.id === w.id));
-  if (!candidates.length) candidates = deck;
-  const missed = candidates.filter((w) => game.missed.has(w.id));
-  const word = missed.length && Math.random() < 0.35
+  // Só entram palavras da lição da fase que ainda não foram destruídas e não estão na tela
+  const onScreen = new Set(game.stones.map((s) => s.word.id));
+  const candidates = game.phases[game.phaseIndex].words.filter((w) => game.remaining.has(w.id) && !onScreen.has(w.id));
+  if (!candidates.length) return null;
+  // As que o aluno errou nesta partida voltam mais vezes
+  const missed = candidates.filter((w) => game.missed.has(w.term));
+  return missed.length && Math.random() < 0.35
     ? missed[(Math.random() * missed.length) | 0]
     : candidates[(Math.random() * candidates.length) | 0];
-  game.recent.push(word.id);
-  if (game.recent.length > Math.min(12, Math.max(0, deck.length - 4))) game.recent.shift();
-  return word;
+}
+
+/** Passa para a lição seguinte; depois da última, recomeça da primeira com as pedras mais rápidas */
+function advancePhase() {
+  const a = audio();
+  game.cleared++;
+  const next = phaseAfterClear(game.phaseIndex, game.phases.length);
+  if (next <= game.phaseIndex) game.laps++;
+  game.phaseIndex = next;
+  game.level = speedLevel(game.cleared);
+  const phase = game.phases[next];
+  game.remaining = new Set(phase.words.map((w) => w.id));
+  banner = { text: `${next === 0 && game.laps > 0 ? "Nova volta · " : ""}Fase ${next + 1} · ${phaseName(phase)}`, time: 1.8 };
+  if (a) {
+    a.sfx.level();
+    a.chip.setLevel(game.level);
+  }
 }
 
 function spawn() {
   const word = pickWord();
+  if (!word) return;
   const label = prefs.reverse ? word.pt : word.head;
   ctx.font = prefs.reverse ? "500 16px Rubik, sans-serif" : termFont(30);
   const textWidth = ctx.measureText(label).width;
@@ -553,15 +644,8 @@ function registerHit(target) {
   recordAnswer(target.word, true);
   game.stones = game.stones.filter((s) => s !== target);
   game.target = null;
-  const level = levelAfterHit(game.level, game.hits);
-  if (level > game.level) {
-    game.level = level;
-    banner = { text: `Fase ${level}`, time: 1.4 };
-    if (a) {
-      a.sfx.level();
-      a.chip.setLevel(level);
-    }
-  }
+  game.remaining.delete(target.word.id);
+  if (game.remaining.size === 0) advancePhase();
   retarget();
   if (!game.stones.length) game.spawnTimer = Math.min(game.spawnTimer, 0.25);
 }
@@ -580,7 +664,7 @@ function registerMiss(target) {
 function loseLife(word) {
   game.lives--;
   game.shake = reduceMotion() ? 0 : 0.35;
-  game.missed.set(word.id, word);
+  game.missed.set(word.term, word);
   hud();
   if (game.lives <= 0) gameOver();
 }
@@ -787,7 +871,7 @@ function gameOver() {
   };
   add("h3", "sr-overlay__title", "A muralha caiu");
   add("div", "sr-big", String(game.score));
-  add("p", "sr-overlay__text", `${isRecord ? "Novo recorde. " : ""}Fase ${game.level} · ${game.hits} ${game.hits === 1 ? "pedra destruída" : "pedras destruídas"} · recorde ${prefs.best}`);
+  add("p", "sr-overlay__text", `${isRecord ? "Novo recorde. " : ""}Fase ${game.phaseIndex + 1} de ${game.phases.length} (${phaseName(game.phases[game.phaseIndex])})${game.laps > 0 ? `, ${game.laps + 1}ª volta` : ""} · ${game.hits} ${game.hits === 1 ? "pedra destruída" : "pedras destruídas"} · recorde ${prefs.best}`);
   if (missed.length) {
     add("p", "sr-overlay__text", "Revise estas antes da próxima partida (já estão na sua lista de erros):");
     const table = add("table", "sr-missed");
@@ -817,7 +901,9 @@ function gameOver() {
     row.appendChild(btn);
   };
   const canReplayMissed = missed.length >= MIN_DECK;
-  if (canReplayMissed) button("Jogar só com as erradas", true, () => newGame(missed.map((w, id) => ({ ...w, id }))));
+  if (canReplayMissed) {
+    button("Jogar só com as erradas", true, () => newGame([{ chapterId: "erradas", label: "Erradas", title: "Palavras erradas na última partida", words: missed.map((w, id) => ({ ...w, id })) }]));
+  }
   button("Jogar de novo", !canReplayMissed, () => newGame());
   button("Menu", false, toMenu);
   show("sr-over", true);
@@ -962,13 +1048,20 @@ const StoneRainModule = {
   maxStones,
   hitScore,
   comboAfterHit,
-  levelAfterHit,
+  buildPhases,
+  chaptersFrom,
+  chaptersUpTo,
+  speedLevel,
+  phaseAfterClear,
+  phaseName,
   openStoneRain,
   closeStoneRain,
   getBest: () => { loadPrefs(); return prefs.best; },
   /** Estado da partida, para os testes de ponta a ponta */
   getState: () => (game
     ? { running: game.running, typing: game.typing, lives: game.lives, score: game.score, hits: game.hits,
+        phase: game.phaseIndex + 1, phases: game.phases.length, phaseLabel: game.phases[game.phaseIndex].label,
+        remaining: game.remaining.size, level: game.level, laps: game.laps,
         target: game.target ? { term: game.target.word.term, translations: game.target.word.item.translations } : null }
     : null),
 };
@@ -979,6 +1072,7 @@ if (typeof window !== "undefined") {
   window.openStoneRain = openStoneRain;
   window.stoneRainPlay = () => newGame();
   window.stoneRainSelect = selectChapters;
+  window.stoneRainStartAt = (chapterId) => selectChapters("from", chapterId);
   window.stoneRainToggle = toggleOption;
   window.stoneRainPause = togglePause;
   window.stoneRainResume = () => pause(false);

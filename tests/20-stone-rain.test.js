@@ -10,7 +10,8 @@ const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 const suite = new TestSuite('Módulo 20: Chuva de Pedras');
 const { html, hebrewData, greekData, rootDir } = loadSourceFiles();
 const {
-  buildDeck, chapterShortLabel, headTerm, fallTime, maxStones, hitScore, comboAfterHit, levelAfterHit, MIN_DECK, LIVES,
+  buildDeck, buildPhases, chaptersFrom, chaptersUpTo, speedLevel, phaseAfterClear,
+  chapterShortLabel, headTerm, fallTime, maxStones, hitScore, comboAfterHit, MIN_DECK, LIVES,
 } = require('../js/modules/stone-rain.js');
 const { getTerm } = require('../js/modules/state.js');
 
@@ -65,10 +66,58 @@ suite.test('Pontuação: multiplicador, bônus por rapidez e fases', () => {
   assert.equal(comboAfterHit(1, 2), 1);
   assert.equal(comboAfterHit(1, 3), 2, 'Três acertos seguidos sobem o multiplicador');
   assert.equal(comboAfterHit(5, 15), 5, 'O multiplicador para em ×5');
-  assert.equal(levelAfterHit(1, 7), 1);
-  assert.equal(levelAfterHit(1, 8), 2, 'Oito acertos passam de fase');
   assert.equal(LIVES, 5);
-  assert.equal(MIN_DECK, 4);
+  assert.equal(MIN_DECK, 1);
+});
+
+suite.test('Cada fase é uma lição, na ordem do material, com o vocabulário inteiro dela', () => {
+  [hebrewData, greekData].forEach((chapters) => {
+    const phases = buildPhases(chapters);
+    assert.deepEqual(phases.map((p) => p.chapterId), chapters.map((c) => c.id), 'Uma fase por lição, na ordem do livro');
+    phases.forEach((phase, index) => {
+      const lesson = chapters[index];
+      const terms = new Set((lesson.items || []).map(getTerm));
+      assert.equal(phase.words.length, terms.size, `Fase ${phase.label} com o vocabulário completo da lição`);
+      assert.isTrue(phase.words.every((w) => w.chapterId === lesson.id && terms.has(w.term)), 'Só palavras da própria lição');
+      assert.equal(phase.label, chapterShortLabel(lesson));
+      assert.equal(phase.title, lesson.title);
+    });
+    const ids = phases.flatMap((p) => p.words.map((w) => w.id));
+    assert.equal(new Set(ids).size, ids.length, 'Identificadores únicos em toda a partida');
+  });
+});
+
+suite.test('A partida pode começar em qualquer lição e segue a ordem do livro', () => {
+  const start = hebrewData[9];
+  const from = chaptersFrom(hebrewData, start.id);
+  assert.equal(from[0], start.id);
+  assert.equal(from.length, hebrewData.length - 9);
+  assert.deepEqual(buildPhases(hebrewData, { chapterIds: from }).map((p) => p.chapterId), hebrewData.slice(9).map((c) => c.id));
+
+  const upTo = chaptersUpTo(hebrewData, start.id);
+  assert.equal(upTo.length, 10);
+  assert.equal(upTo[upTo.length - 1], start.id);
+
+  // Lições marcadas fora de ordem são jogadas na ordem do livro
+  const picked = [hebrewData[12].id, hebrewData[3].id, hebrewData[7].id];
+  assert.deepEqual(buildPhases(hebrewData, { chapterIds: picked }).map((p) => p.chapterId), [hebrewData[3].id, hebrewData[7].id, hebrewData[12].id]);
+  assert.deepEqual(chaptersFrom(hebrewData, 'nao_existe'), hebrewData.map((c) => c.id), 'Ponto de partida desconhecido começa do início');
+  assert.equal(buildPhases(hebrewData, { chapterIds: [] }).length, 0);
+});
+
+suite.test('Fase sem palavras erradas fica de fora quando o filtro está ligado', () => {
+  const wrong = new Set([getTerm(hebrewData[2].items[0]), getTerm(hebrewData[5].items[1])]);
+  const phases = buildPhases(hebrewData, { onlyErrors: true }, (item) => wrong.has(getTerm(item)));
+  assert.deepEqual(phases.map((p) => p.chapterId), [hebrewData[2].id, hebrewData[5].id]);
+  assert.isTrue(phases.every((p) => p.words.length === 1));
+});
+
+suite.test('A velocidade sobe por fase concluída, e a última fase volta à primeira', () => {
+  assert.equal(speedLevel(0), 1, 'Começar na lição XX não começa rápido');
+  assert.equal(speedLevel(4), 5);
+  assert.equal(phaseAfterClear(0, 3), 1);
+  assert.equal(phaseAfterClear(2, 3), 0, 'Depois da última, nova volta');
+  assert.equal(phaseAfterClear(0, 1), 0);
 });
 
 suite.test('Digitando, as pedras caem mais devagar e em menor número', () => {
@@ -112,6 +161,8 @@ suite.test('Chuva de Pedras está ligada à tela de Avaliar', () => {
   assert.includes(html, 'js/modules/stone-rain.js', 'Módulo não carregado');
   assert.includes(html, 'js/modules/game-audio.js', 'Som dos jogos não carregado');
   assert.includes(html, "stoneRainToggle('typing')", 'Opção de digitar a resposta ausente');
+  assert.includes(html, 'id="sr-start"', 'Escolha da fase inicial ausente');
+  assert.includes(html, 'onchange="stoneRainStartAt(this.value)"', 'Escolha da fase inicial não ligada');
 });
 
 module.exports = suite;
