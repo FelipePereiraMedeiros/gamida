@@ -11,8 +11,9 @@
  * - Pedidos para outros sites (Google, na sincronização) não passam por aqui.
  */
 // <gerado por scripts/build-sw.js: não edite à mão>
-const VERSION = "2.44.0";
+const VERSION = "2.45.0";
 const PRECACHE = [
+  "css/cronicas-pixel.css",
   "css/fonts.css",
   "css/games.css",
   "css/interface.css",
@@ -43,6 +44,8 @@ const PRECACHE = [
   "fonts/web/noto-sans-hebrew-hebrew-3f0e2f.woff2",
   "fonts/web/noto-sans-hebrew-latin-3da170.woff2",
   "fonts/web/noto-sans-hebrew-latin-ext-636e00.woff2",
+  "fonts/web/pixelify-sans-latin-400.woff2",
+  "fonts/web/pixelify-sans-latin-700.woff2",
   "fonts/web/rubik-hebrew-366f48.woff2",
   "fonts/web/rubik-latin-0ae40d.woff2",
   "fonts/web/rubik-latin-ext-20c4b0.woff2",

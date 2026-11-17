@@ -49,8 +49,13 @@ Arquivos com essa base: `js/modules/scribe-graphics.js` (extraído da versão or
   - a caçada completa com o vocabulário inteiro do capítulo e o selo;
   - o bestiário ilustrado;
   - a opção de ver os capítulos no mapa;
-  - a batalha em destaque, com os menus recolhidos e a arena maior.
+  - a batalha em destaque, com os menus recolhidos e a arena maior;
+  - a interface em pixel: letras pixeladas, molduras, botões, barras de vida e ícones desenhados na paleta do jogo (`css/cronicas-pixel.css`, `scripts/molduras-cronicas.js`).
 - **Música e efeitos sonoros sintetizados** (`game-audio.js`).
+
+## Fontes
+
+As letras em pixel das Crônicas usam a Pixelify Sans (The Pixelify Sans Project Authors), sob a SIL Open Font License 1.1. Ver `fonts/web/README.md`.
 
 ## Referências
 

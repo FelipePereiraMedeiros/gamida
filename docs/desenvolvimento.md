@@ -64,6 +64,12 @@ Estes arquivos partiram da versão original, mas são mantidos à mão e não s�
 - **`scribe-map.js`:** o mapa do Livro I veio do original; os mapas do Livro II e do Segundo Rolo são do Gamida.
 - **`scribe-fx.js`:** as animações originais, com os golpes do grego acrescentados.
 
+**Interface em pixel** (`css/cronicas-pixel.css`, carregado depois de `games.css`):
+
+- letras em pixel (Pixelify Sans, em `fonts/web/`) em tudo das Crônicas, menos o hebraico e o grego e o ensino do pergaminho (gramática e tabelas), que ficam na letra da interface para leitura longa;
+- molduras em pixel por `border-image` (`--scf-panel`, `--scf-raised`, `--scf-gold`...), geradas por `node scripts/molduras-cronicas.js`. Para mudar uma cor de moldura, edite a tabela `FRAMES` do script e rode-o;
+- ícones em pixel do HUD e dos itens (`pixelIcon` em `scribe-common.js`), com o contorno escuro acrescentado sozinho.
+
 As fichas dos capítulos (`scribe-campaign.js`) e a história (`scribe-lore.js`) também são mantidas à mão.
 
 ## Avisos de direitos autorais

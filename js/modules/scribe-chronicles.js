@@ -126,7 +126,7 @@ function mergeProgress(language, incoming) {
 /* ============================ Interface ============================ */
 
 const $ = (selector) => (typeof document !== "undefined" ? document.querySelector(selector) : null);
-const { esc } = Common;
+const { esc, pixelIcon } = Common;
 const isHebrew = () => AppState.language === "hebrew";
 const termClass = () => (isHebrew() ? "hebrew-text" : "greek-text");
 const audio = () => (typeof window !== "undefined" ? window.GameAudio : null);
@@ -675,7 +675,7 @@ function chapterBannerLoop(index) {
     label: `Capítulo ${index + 1} · ${meta.city}`,
     rtl: isHebrew(),
     fontNative: ORIG_FONT().replace(/\d+px/, "26px"),
-    fontLabel: "700 15px Rubik, sans-serif",
+    fontLabel: '700 16px "Pixelify Sans", Rubik, sans-serif',
   };
   const step = () => {
     const canvas = typeof document !== "undefined" ? document.getElementById("sc-chbanner") : null;
@@ -859,7 +859,7 @@ function showCredits() {
         "Guardiões com figura própria do Livro II e do grego",
         "Mapas do Livro II e do Segundo Rolo",
         "Golpes do grego: a rede, o pilo e a carta",
-        "Caçada completa, bestiário ilustrado, mapa dos capítulos, batalha em tela cheia, música e efeitos sonoros",
+        "Caçada completa, bestiário ilustrado, mapa dos capítulos, batalha em tela cheia, interface em pixel, música e efeitos sonoros",
       ])}</section>
     </div>
     <p class="sc-muted sc-small">Referências de estudo: Page H. Kelley, Gramática do Hebraico Bíblico; Johannes Bergmann, Gramática do Grego do Novo Testamento. A citação não indica vínculo nem endosso.</p>
@@ -1051,10 +1051,12 @@ function battleShell(inner) {
   return `<div class="sc-card sc-card--battle">
     <div class="sc-stage"><canvas id="sc-arena" role="img" aria-label="${esc(arenaLabel())}"></canvas>
       <div class="sc-hudtop">
-        <div class="sc-hudbox"><b>${esc(cls.name)} · nível ${S.lvl}</b>
+        <div class="sc-hudbox">
+          <div class="sc-hudbox__name">${pixelIcon("heart")}<b>${esc(cls.name)}</b></div>
           <div class="sc-bar sc-bar--hp"><i id="sc-hero-hp" style="width:${(B.hp / maxHP()) * 100}%"></i></div>
-          <span id="sc-hero-hp-text">${B.hp}/${maxHP()}</span></div>
-        <div class="sc-hudbox sc-hudbox--right"><b>${esc(monsterName())}</b>
+          <div class="sc-hudbox__row"><span id="sc-hero-hp-text" class="sc-hudbox__num">${B.hp}/${maxHP()}</span><span class="sc-lvl" title="Nível ${S.lvl}">Nv ${S.lvl}</span></div></div>
+        <div class="sc-hudbox sc-hudbox--right${B.boss ? " sc-hudbox--boss" : ""}">
+          <div class="sc-hudbox__name"><b>${esc(monsterName())}</b>${pixelIcon(B.boss ? "crown" : "skull")}</div>
           <div class="sc-bar ${B.boss ? "sc-bar--boss" : "sc-bar--hp"}"><i id="sc-mon-hp" style="width:${mon ? (mon.hp / mon.max) * 100 : 0}%"></i></div>
           <span id="sc-mon-info">${B.boss ? bossProgressLabel() : B.full ? `Onda ${B.wave + 1}/${B.waves.length} · ${fullLabel()}` : `Onda ${B.wave + 1}/${B.waves.length} · ${B.mi + 1}/${currentWave().length}`}</span></div>
       </div>
@@ -1062,9 +1064,9 @@ function battleShell(inner) {
     ${inner}
     <div class="sc-log" id="sc-log" role="status"></div>
     <div class="sc-items">
-      <button type="button" class="sc-item" id="sc-potion">Óleo de cura (${S.potions})</button>
-      <button type="button" class="sc-item" id="sc-hint">${hintLabel()}</button>
-      <button type="button" class="sc-item" id="sc-flee">Fugir para o mapa</button>
+      <button type="button" class="sc-item" id="sc-potion">${pixelIcon("potion")}<span id="sc-potion-label">Óleo de cura (${S.potions})</span></button>
+      <button type="button" class="sc-item" id="sc-hint">${pixelIcon("scroll")}<span id="sc-hint-label">${hintLabel()}</span></button>
+      <button type="button" class="sc-item" id="sc-flee">${pixelIcon("flee")}<span>Fugir para o mapa</span></button>
     </div>
   </div>`;
 }
@@ -1525,7 +1527,7 @@ function usePotion() {
   sfx("tick");
   save();
   updateBars();
-  const btn = $("#sc-potion");
+  const btn = $("#sc-potion-label");
   if (btn) btn.textContent = `Óleo de cura (${S.potions})`;
   log(`Óleo de cura: +${healed} de vida.`, "ok");
 }
@@ -1537,7 +1539,7 @@ function useHint() {
     if (B.free > 0) B.free--;
     else S.scrolls--;
     save();
-    const hintBtn = $("#sc-hint");
+    const hintBtn = $("#sc-hint-label");
     if (hintBtn) hintBtn.textContent = hintLabel();
     sfx("tick");
     log(message, "ok");
@@ -2264,7 +2266,7 @@ function drawArena(canvas) {
     const k = t - f.t0;
     if (k > 1) return;
     c.globalAlpha = 1 - k;
-    c.font = "800 15px Rubik, sans-serif";
+    c.font = '700 16px "Pixelify Sans", Rubik, sans-serif';
     c.textAlign = "center";
     const y = Math.round((f.y - 30 * k) / PX) * PX;
     c.fillStyle = "#181425";

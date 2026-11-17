@@ -68,6 +68,14 @@ module.exports = [
       await page.click("#sc-flee");
       await page.waitForTimeout(300);
       assert.ok((await visibleBox(page, "#main-app-header")).onScreen, "a barra lateral não voltou no mapa");
+      assert.ok(!(await page.isVisible("#sc-menu-btn")), "o botão Menus apareceu fora da batalha");
+      // Letras em pixel carregadas do próprio Gamida
+      const font = await page.evaluate(async () => {
+        await document.fonts.ready;
+        return { family: getComputedStyle(document.querySelector("#sc-screen .sc-btn, #sc-screen button")).fontFamily, loaded: document.fonts.check('700 16px "Pixelify Sans"') };
+      });
+      assert.match(font.family, /Pixelify Sans/);
+      assert.ok(font.loaded, "a fonte em pixel não carregou");
       assert.deepEqual(errors, [], errors.join(" | "));
       await context.close();
     },
