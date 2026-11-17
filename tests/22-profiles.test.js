@@ -102,6 +102,21 @@ suite.test('Configuração gravada ao abrir o app não conta como progresso; sub
   assert.equal(st.getItem('gamida_daily_goal'), null);
 });
 
+suite.test('Lembrete de cópia: só com progresso, depois de 14 dias sem cópia, e respeita o "lembrar depois"', () => {
+  const DAY = 24 * 60 * 60 * 1000;
+  const { st } = setup({ gamida_language: 'greek' });
+  const p = Profiles.getActiveProfile();
+  const later = Date.now() + 20 * DAY;
+  assert.isTrue(!Profiles.needsBackupReminder(p, later), 'Sem progresso não há o que guardar');
+  st.setItem('gamida_greek_scribe', '{"lvl":2}');
+  assert.isTrue(Profiles.needsBackupReminder(Profiles.getActiveProfile(), later), 'Perfil antigo sem cópia');
+  assert.isTrue(!Profiles.needsBackupReminder(Profiles.getActiveProfile(), Date.now() + 3 * DAY), 'Perfil novo ainda não');
+  Profiles.updateProfile(p.id, { backupAt: Date.now() + 10 * DAY });
+  assert.isTrue(!Profiles.needsBackupReminder(Profiles.getActiveProfile(), later), 'Cópia recente');
+  Profiles.updateProfile(p.id, { backupAt: 0, remindAfter: later + DAY });
+  assert.isTrue(!Profiles.needsBackupReminder(Profiles.getActiveProfile(), later), 'Pediu para lembrar depois');
+});
+
 suite.test('Resumo do perfil junta os modos dos dois idiomas', () => {
   setup({
     gamida_hebrew_srs: JSON.stringify({ a: { fails: 1, pendingError: true }, b: {} }),

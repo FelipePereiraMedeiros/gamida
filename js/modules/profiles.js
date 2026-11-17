@@ -90,6 +90,8 @@ function sanitizeProfile(p, index) {
       ? { sub: p.google.sub, email: String(p.google.email || ""), name: String(p.google.name || "") }
       : null,
     driveFileId: typeof p.driveFileId === "string" ? p.driveFileId : null,
+    backupAt: Number.isFinite(p.backupAt) ? p.backupAt : 0,
+    remindAfter: Number.isFinite(p.remindAfter) ? p.remindAfter : 0,
   };
 }
 
@@ -583,7 +585,8 @@ function renderProfileTab() {
       </div>
       <div class="profile-card">
         <h3 class="profile-card__title">Arquivo de perfil</h3>
-        <p class="profile-note">Um arquivo .json com o progresso e as configurações deste perfil, sem o material de estudo. Serve para levar o perfil a outro aparelho.</p>
+        <p class="profile-note">Um arquivo .json com o progresso e as configurações deste perfil, sem o material de estudo. Serve para levar o perfil a outro aparelho e como cópia de segurança.</p>
+        <p class="profile-note">Última cópia: ${lastBackup(active) ? esc(fmtDate(lastBackup(active))) : "nenhuma ainda"}.</p>
         <div class="flex flex-wrap gap-2">
           <button type="button" class="btn-secondary" id="profile-export">Baixar arquivo</button>
           <label class="btn-secondary cursor-pointer">Carregar arquivo<input type="file" id="profile-import" accept="application/json,.json" class="hidden" /></label>
@@ -667,6 +670,62 @@ function downloadProfileFile() {
     a.remove();
     URL.revokeObjectURL(url);
   }, 100);
+  updateProfile(profile.id, { backupAt: now() });
+  const bar = document.getElementById("gamida-backup-reminder");
+  if (bar) bar.remove();
+}
+
+/* ---------------- lembrete de cópia do progresso ---------------- */
+
+const DAY = 24 * 60 * 60 * 1000;
+const REMIND_AFTER_DAYS = 14;
+
+/** Última cópia do perfil: arquivo baixado ou envio à nuvem */
+function lastBackup(profile = getActiveProfile()) {
+  return Math.max(profile.backupAt || 0, profile.syncedAt || 0);
+}
+
+/**
+ * Deve lembrar o aluno de guardar uma cópia? Só quando há progresso de verdade,
+ * a última cópia (ou a criação do perfil) tem mais de 14 dias e o aluno não
+ * pediu para lembrar depois.
+ */
+function needsBackupReminder(profile = getActiveProfile(), at = now()) {
+  if (!hasProgress()) return false;
+  if ((profile.remindAfter || 0) > at) return false;
+  const since = lastBackup(profile) || profile.createdAt || at;
+  return at - since > REMIND_AFTER_DAYS * DAY;
+}
+
+function showBackupReminder() {
+  if (typeof document === "undefined" || document.getElementById("gamida-backup-reminder")) return;
+  const profile = getActiveProfile();
+  if (!needsBackupReminder(profile)) return;
+  const last = lastBackup(profile);
+  const days = Math.floor((now() - (last || profile.createdAt)) / DAY);
+  const bar = document.createElement("div");
+  bar.id = "gamida-backup-reminder";
+  bar.className = "other-tab-warning";
+  bar.setAttribute("role", "status");
+  const text = document.createElement("span");
+  text.textContent = last
+    ? `Faz ${days} dias que você não guarda uma cópia do seu progresso. Se os dados do navegador forem apagados, ele se perde.`
+    : "Seu progresso está só neste navegador. Guarde uma cópia: se os dados do navegador forem apagados, ele se perde.";
+  const save = document.createElement("button");
+  save.type = "button";
+  save.className = "btn-secondary";
+  save.textContent = "Baixar cópia";
+  save.addEventListener("click", () => downloadProfileFile());
+  const later = document.createElement("button");
+  later.type = "button";
+  later.className = "btn-secondary";
+  later.textContent = "Lembrar em 7 dias";
+  later.addEventListener("click", () => {
+    updateProfile(profile.id, { remindAfter: now() + 7 * DAY });
+    bar.remove();
+  });
+  bar.append(text, save, later);
+  document.body.appendChild(bar);
 }
 
 /** Atualiza o botão de perfil da navegação (iniciais e cor) */
@@ -710,6 +769,9 @@ const ProfilesModule = {
   flushChangeMark,
   renderProfileTab,
   updateProfileBadge,
+  needsBackupReminder,
+  showBackupReminder,
+  lastBackup,
   downloadProfileFile,
   _setEnvironment,
 };
@@ -721,6 +783,8 @@ if (typeof window !== "undefined") {
   // Marca mudanças desde o começo, antes dos outros módulos gravarem
   installChangeTracking();
   loadRegistry();
+  // Lembrete de cópia, alguns segundos depois de abrir (sem disputar a atenção da primeira tela)
+  window.addEventListener("load", () => setTimeout(showBackupReminder, 4000));
 }
 if (typeof module !== "undefined" && module.exports) {
   module.exports = ProfilesModule;

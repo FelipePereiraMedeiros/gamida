@@ -48,6 +48,9 @@ if (fs.existsSync(lockPath)) {
   console.log(`package-lock.json: -> ${next}`);
 }
 
+// O service worker troca de cache a cada versão (o app atualiza nos aparelhos)
+require("./build-sw.js").build();
+
 // O CSS compilado acompanha cada versão: classes novas entram sem passo manual
 const css = require("./build-css.js");
 if (css.isTailwindInstalled()) {

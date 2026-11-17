@@ -512,6 +512,25 @@ let A = null; // animação da arena
 let frameId = 0;
 let timerId = 0;
 
+/**
+ * Próximo quadro das telas animadas, no máximo 30 por segundo: arte em pixel
+ * não precisa de 60, e o celular trabalha (e esquenta) pela metade.
+ * Com "reduzir movimento" no sistema, 10 por segundo.
+ */
+let lastFrame = 0;
+function nextFrame(draw) {
+  const interval = reduceMotion() ? 100 : 1000 / 30;
+  const tick = (now) => {
+    if (now - lastFrame < interval - 2) {
+      frameId = requestAnimationFrame(tick);
+      return;
+    }
+    lastFrame = now;
+    draw();
+  };
+  return requestAnimationFrame(tick);
+}
+
 function isOpen() {
   const view = typeof document !== "undefined" ? document.getElementById("scribe-view") : null;
   return !!view && !view.classList.contains("hidden");
@@ -640,7 +659,7 @@ function animateAvatars(ids) {
   const step = () => {
     if (!isOpen() || !ids.some(([id]) => document.getElementById(id))) return;
     ids.forEach(([id, cls]) => paintAvatar(id, cls));
-    frameId = requestAnimationFrame(step);
+    frameId = nextFrame(step);
   };
   step();
 }
@@ -880,7 +899,7 @@ function bindMap(current) {
       selId: mapSel.id,
       hero: g ? (ctx, x, gy, scale, t) => drawHeroFor(g, ctx, x, gy, scale, t, false, S.cls, true) : null,
     });
-    frameId = requestAnimationFrame(step);
+    frameId = nextFrame(step);
   };
   step();
 }
@@ -955,7 +974,7 @@ function chapterBannerLoop(index) {
     const canvas = typeof document !== "undefined" ? document.getElementById("sc-chbanner") : null;
     if (!canvas || !isOpen()) return;
     fx.renderChapterBanner(canvas, opts);
-    frameId = requestAnimationFrame(step);
+    frameId = nextFrame(step);
   };
   step();
 }
@@ -1074,7 +1093,7 @@ function storyScenes({ part, book, eyebrow, title, paragraphs, finalHtml, bindFi
     }
     const canvas = document.getElementById("sc-cut");
     if (canvas && fx) fx.renderSlide(canvas, slides[Math.min(i, slides.length - 1)], performance.now() / 1000 - T0, env);
-    frameId = requestAnimationFrame(step);
+    frameId = nextFrame(step);
   };
   go(0);
   step();
@@ -1421,6 +1440,8 @@ function startTimer(seconds, { crit = true } = {}) {
     }
     // Resposta sendo conferida, criatura fugindo ou herói caído: a próxima pergunta traz barra nova
     if (B.lock || !B.mon || B.mon.dead || B.hp <= 0) return;
+    // A criatura veloz não ataca quando o tempo acaba: ela foge com a palavra (armFlee)
+    if (!B.boss && B.mon.type === "fast") return;
     timeAttack();
     if (!B || B.qid !== qid || B.lock || B.hp <= 0) return;
     B.t0 = performance.now();
@@ -2406,7 +2427,7 @@ function arenaLoop() {
     const canvas = typeof document !== "undefined" ? document.getElementById("sc-arena") : null;
     if (!canvas || !B || !isOpen()) return;
     drawArena(canvas);
-    frameId = requestAnimationFrame(step);
+    frameId = nextFrame(step);
   };
   step();
 }

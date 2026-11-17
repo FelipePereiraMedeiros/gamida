@@ -21,6 +21,7 @@ const TYPES = {
   ".woff2": "font/woff2",
   ".png": "image/png",
   ".svg": "image/svg+xml",
+  ".webmanifest": "application/manifest+json",
 };
 
 /** Servidor estático do repositório numa porta livre */
@@ -45,7 +46,9 @@ function startServer() {
  * @param {Object} opts { language, viewport, storage (objeto chave → valor), routes (fn(route, url) → true se tratou) }
  */
 async function openApp(env, opts = {}) {
-  const context = await env.browser.newContext({ viewport: opts.viewport || { width: 1280, height: 900 }, deviceScaleFactor: 1 });
+  // O service worker fica desligado aqui (ele atenderia os pedidos antes do bloqueio de internet);
+  // o teste de uso sem internet (06-offline) liga o dele.
+  const context = await env.browser.newContext({ viewport: opts.viewport || { width: 1280, height: 900 }, deviceScaleFactor: 1, serviceWorkers: "block" });
   const errors = [];
   await context.route("**/*", async (route) => {
     const url = new URL(route.request().url());

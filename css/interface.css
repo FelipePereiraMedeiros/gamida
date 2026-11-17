@@ -1597,3 +1597,4 @@ body.is-alphabet-practice .app-stat--mastery { display: none; }
 /* Aviso de Gamida aberto em duas abas */
 .other-tab-warning { position: fixed; left: 50%; bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); z-index: 150; display: flex; flex-wrap: wrap; align-items: center; gap: 0.625rem; width: min(36rem, calc(100% - 2rem)); padding: 0.75rem 1rem; transform: translateX(-50%); border: 1px solid #f59e0b; border-radius: 0.75rem; background: var(--surface-1); color: var(--text); font-size: 0.85rem; line-height: 1.45; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45); }
 .other-tab-warning span { flex: 1; min-width: 12rem; }
+.other-tab-warning ~ .other-tab-warning { bottom: calc(10.5rem + env(safe-area-inset-bottom, 0px)); }

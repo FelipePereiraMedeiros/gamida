@@ -49,6 +49,25 @@ suite.test('Fontes da interface existem no projeto', () => {
   });
 });
 
+suite.test('Aplicativo instalável: manifesto, ícones e service worker em dia com a versão', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const root = path.join(__dirname, '..');
+  const sw = require('../scripts/build-sw.js');
+  assert.isTrue(sw.isUpToDate(), 'sw.js desatualizado: rode node scripts/build-sw.js (o bump-version.js já faz isso)');
+  const list = sw.precacheList();
+  list.forEach((file) => assert.isTrue(fs.existsSync(path.join(root, file)), `Arquivo guardado no aparelho não existe: ${file}`));
+  ['index.html', 'js/app.js', 'js/modules/pwa.js', 'data/hebrew_chapters.json', 'data/greek_chapters.json', 'css/tailwind.css', 'fonts/SBL_Hbrw.ttf'].forEach((f) => assert.includes(list, f, `${f} não fica guardado para uso sem internet`));
+  assert.isTrue(!list.includes('data/data-bundle.js'), 'O pacote de dados não precisa ficar guardado');
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.webmanifest'), 'utf8'));
+  assert.equal(manifest.short_name, 'Gamida');
+  assert.equal(manifest.display, 'standalone');
+  manifest.icons.forEach((icon) => assert.isTrue(fs.existsSync(path.join(root, icon.src)), `Ícone ausente: ${icon.src}`));
+  assert.includes(html, '<link rel="manifest" href="manifest.webmanifest" />');
+  assert.includes(html, 'js/modules/pwa.js');
+  assert.isTrue(!html.includes('data/data-bundle.js'), 'O pacote de dados só deve carregar sob demanda (file://)');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

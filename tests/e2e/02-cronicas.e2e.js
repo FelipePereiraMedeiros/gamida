@@ -59,7 +59,8 @@ module.exports = [
       await page.click("#sc-go");
       await page.waitForSelector("#sc-hero-hp-text");
       const before = await page.evaluate(() => window.__scribeBattle().hp);
-      await page.waitForFunction((hp) => window.__scribeBattle() && window.__scribeBattle().hp < hp, before, { timeout: 12000 });
+      // Se a primeira criatura for veloz, ela foge sem atacar e o ataque vem na seguinte
+      await page.waitForFunction((hp) => window.__scribeBattle() && window.__scribeBattle().hp < hp, before, { timeout: 30000 });
       assert.match(await page.textContent("#sc-log"), /tempo acabou/i);
       assert.deepEqual(errors, [], errors.join(" | "));
       await context.close();

@@ -42,7 +42,7 @@ const COMMENT_STYLES = {
 // Gerados por ferramenta de terceiros ou sem sintaxe de comentário
 const SKIPPED = new Set(["css/tailwind.css", "css/tailwind.input.css"]);
 const SOURCE_DIRS = ["js", "css", "scripts", "tests"];
-const ROOT_FILES = ["index.html", "test-environment.html", "test-runner.js", "serve.ps1", "tailwind.config.js", "data/data-bundle.js"];
+const ROOT_FILES = ["index.html", "sw.js", "test-environment.html", "test-runner.js", "serve.ps1", "tailwind.config.js", "data/data-bundle.js"];
 
 function listSourceFiles() {
   const files = [];

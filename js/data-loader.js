@@ -9,7 +9,7 @@
 
 const DataLoader = {
   get VERSION() {
-    return (typeof window !== "undefined" && window.APP_VERSION) || "2.38.1";
+    return (typeof window !== "undefined" && window.APP_VERSION) || "2.39.0";
   },
   cache: {},
 
@@ -109,6 +109,24 @@ const DataLoader = {
   },
 
   /**
+   * Carrega data/data-bundle.js sob demanda (abertura direta do disco, file://)
+   * @returns {Promise<void>}
+   */
+  loadBundle() {
+    if (typeof window === "undefined" || typeof document === "undefined" || window.GAMIDA_DEFAULT_DATA) return Promise.resolve();
+    if (!this._bundlePromise) {
+      this._bundlePromise = new Promise((resolve) => {
+        const script = document.createElement("script");
+        script.src = "data/data-bundle.js";
+        script.onload = () => resolve();
+        script.onerror = () => resolve();
+        document.head.appendChild(script);
+      });
+    }
+    return this._bundlePromise;
+  },
+
+  /**
    * Busca os capítulos padrão correspondentes ao idioma ('hebrew' ou 'greek').
    * Suporta fetch HTTP com fallback resiliente para bundle offline / file:// protocol.
    * @param {'hebrew'|'greek'} language 
@@ -136,7 +154,10 @@ const DataLoader = {
       console.warn(`Fetch HTTP não disponível para ${language} (possível execução via file://). Usando data-bundle fallback.`);
     }
 
-    // 2. Fallback offline / file:// via window.GAMIDA_DEFAULT_DATA
+    // 2. Fallback offline / file:// via window.GAMIDA_DEFAULT_DATA.
+    // O pacote (1,5 MB) só é baixado aqui, quando o fetch falhou: num servidor
+    // normal ele nunca é carregado, e a página fica mais leve.
+    await this.loadBundle();
     if (
       typeof window !== "undefined" &&
       window.GAMIDA_DEFAULT_DATA &&

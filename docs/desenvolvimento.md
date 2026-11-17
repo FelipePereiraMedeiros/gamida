@@ -27,6 +27,7 @@ Para rodar só um arquivo, passe parte do nome: `npm run e2e -- cronicas`.
 - **Crônicas do Escriba:** um capítulo inteiro no hebraico e no grego (criaturas, guardião, frases, progresso), o mapa de cada livro, o ataque quando o tempo acaba e a caçada completa com a palavra errada voltando no fim.
 - **Perfis:** cada perfil com o próprio progresso. A sincronização com o Google desligada por padrão e, no modo de teste, com o Google simulado: subir o perfil, outro aparelho receber e perguntar qual versão manter.
 - **Chuva de Pedras:** jogar, pausar, terminar e mandar os erros para a revisão.
+- **Uso sem internet:** depois da primeira visita o app abre e funciona sem conexão nos dois idiomas (fontes incluídas); aberto direto do disco (file://), usa o pacote de dados; num servidor normal, o pacote de 1,5 MB não é baixado.
 - **Segurança:** todas as ações da página apontam para funções existentes e funcionam com a CSP ligada. Um capítulo importado com HTML malicioso em todo texto passa por todas as telas (prática, correção, análise da frase, dicionário, tabelas, simulado, trilha, morfologia, Chuva de Pedras, Crônicas, perfil) sem injetar nada. O perfil percebe mudanças sem interceptar o armazenamento, e uma segunda aba aberta é avisada.
 
 Qualquer pedido para fora do servidor local conta como falha: o Gamida não pode depender de servidores externos.
@@ -74,3 +75,13 @@ As fichas dos capítulos (`scribe-campaign.js`) e a história (`scribe-lore.js`)
 - **Escape único:** todo texto vindo de dado entra no HTML por `escapeHTML` (`js/modules/html.js`). As outras cópias foram removidas, e o teste de segurança acusa se alguma voltar.
 - **Script inicial** (idioma antes da primeira pintura e `APP_VERSION`): `js/boot.js`.
 - **Perfis:** as mudanças são percebidas comparando as chaves do perfil a cada 1,5 s, sem mexer em `Storage.prototype`. Com o Gamida aberto em duas abas, aparece um aviso; se a outra aba gravar progresso, o aviso oferece recarregar.
+
+## Aplicativo instalável e sem internet
+
+- **`manifest.webmanifest`:** nome, cores e ícones. Os ícones (`icons/`) são gerados por `node scripts/build-icons.js`, que precisa do Playwright.
+- **`sw.js`:** o service worker. Na primeira visita ele guarda no aparelho a página, os estilos, os scripts, as fontes, os ícones e os dados dos capítulos (cerca de 70 arquivos); depois disso, tudo é servido do aparelho. Cada versão do Gamida tem o próprio cache. Quando uma versão nova termina de baixar, o app mostra "Versão nova do Gamida pronta" com o botão Atualizar.
+- **A lista de arquivos e a versão do cache** são geradas por `node scripts/build-sw.js`, que o `bump-version.js` já roda. O teste "Funcionamento sem Internet" acusa se o `sw.js` ficar desatualizado.
+- **`js/modules/pwa.js`:** registra o service worker e mostra o aviso de atualização.
+- **Pacote de dados:** `data/data-bundle.js` só é carregado quando o app é aberto direto do disco, onde a busca dos arquivos JSON falha.
+- **Quadros por segundo:** as telas animadas das Crônicas desenham no máximo 30 quadros por segundo (10 com "reduzir movimento"), para poupar a bateria do celular.
+- **Lembrete de cópia:** com progresso e mais de 14 dias sem cópia (arquivo baixado ou nuvem), o app lembra de baixar o arquivo de perfil. O aluno pode adiar por 7 dias.

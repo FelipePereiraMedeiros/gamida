@@ -83,6 +83,23 @@ module.exports = [
     },
   },
   {
+    name: "Lembrete de cópia: aparece depois de 14 dias sem cópia e some ao baixar o arquivo",
+    async fn({ browser, base, assert }) {
+      const old = Date.now() - 30 * 24 * 60 * 60 * 1000;
+      const registry = { version: 1, active: "p_antigo", profiles: [{ id: "p_antigo", name: "Ana", createdAt: old, updatedAt: old }] };
+      const { context, page, errors } = await openApp({ browser, base }, {
+        storage: { gamida_profiles: JSON.stringify(registry), gamida_hebrew_scribe: JSON.stringify({ cls: "mago", lvl: 3, done: { kelley_03: true } }) },
+      });
+      await page.waitForSelector("#gamida-backup-reminder", { timeout: 8000 });
+      const [download] = await Promise.all([page.waitForEvent("download"), page.click("#gamida-backup-reminder button")]);
+      assert.match(download.suggestedFilename(), /^gamida-perfil-ana\.json$/);
+      await page.waitForSelector("#gamida-backup-reminder", { state: "detached" });
+      assert.ok(await page.evaluate(() => ProfilesModule.getActiveProfile().backupAt > 0), "a data da cópia não foi guardada");
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await context.close();
+    },
+  },
+  {
     name: "Sincronização com o Google desligada: sem cartão, sem botão e sem pedidos",
     async fn({ browser, base, assert }) {
       const { context, page, errors } = await openApp({ browser, base }, { storage: { gamida_google_client_id: "123-abc.apps.googleusercontent.com" } });
