@@ -273,3 +273,31 @@ body.sc-focus.sc-chrome-open .sc-top {
   .sc-hudbox { min-width: 0; }
   .sc-hudbox__name b { font-size: 0.8125rem; }
 }
+
+/* Pausa: cobre a batalha inteira, inclusive a pergunta */
+.sc-card--battle { position: relative; }
+.sc-pause {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  /* Opaco: a palavra da criatura não aparece por trás */
+  background: #181425;
+}
+.sc-pause[hidden] { display: none; }
+.sc-pause__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 22rem;
+  padding: 1rem;
+  border: 8px solid transparent;
+  border-image: var(--scf-focus) 4 fill / 8px stretch;
+  text-align: center;
+}
+.sc-pause__box .sc-h { font-size: 1.6rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.sc-pause .sc-btn { display: inline-flex; align-items: center; gap: 0.5rem; }

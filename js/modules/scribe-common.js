@@ -7,7 +7,7 @@
  * o pedido de "reduzir movimento" do sistema, o acaso fixo dos desenhos
  * (rnd: o mesmo número para a mesma semente, para a arte não tremer) e o
  * escape de texto para HTML. Também os ícones em pixel da interface do jogo
- * (coração, caveira, coroa, óleo, pergaminho, fuga), desenhados aqui mesmo.
+ * (coração, caveira, coroa, óleo, pergaminho, fuga, pausa), desenhados aqui mesmo.
  */
 
 (function () {
@@ -36,6 +36,8 @@ const ICONS = {
   potion: ["..BBB..", "...L...", "..LRL..", ".LRRRL.", "LRWRRRL", "LRRRRRL", "LDRRRDL", ".LLLLL."],
   scroll: ["SPPPPPS", ".PKKKP.", ".PPPPP.", ".PKKPP.", ".PPPPP.", ".PKKKP.", "SPPPPPS"],
   flee: ["...w...", "..ww...", ".wwwwww", "wwwwwww", ".wwwwww", "..ww...", "...w..."],
+  pause: ["ww.ww", "ww.ww", "ww.ww", "ww.ww", "ww.ww", "ww.ww"],
+  play: ["w....", "www..", "wwwww", "www..", "w...."],
   star: ["...Y...", "..YYY..", "YYYYYYY", ".YYYYY.", ".YY.YY.", "Y.....Y"],
 };
 

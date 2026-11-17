@@ -1064,9 +1064,20 @@ function battleShell(inner) {
     ${inner}
     <div class="sc-log" id="sc-log" role="status"></div>
     <div class="sc-items">
+      <button type="button" class="sc-item" id="sc-pause-btn" aria-keyshortcuts="P Escape" title="Pausar (P ou Esc)">${pixelIcon("pause")}<span>Pausar</span></button>
       <button type="button" class="sc-item" id="sc-potion">${pixelIcon("potion")}<span id="sc-potion-label">Óleo de cura (${S.potions})</span></button>
       <button type="button" class="sc-item" id="sc-hint">${pixelIcon("scroll")}<span id="sc-hint-label">${hintLabel()}</span></button>
       <button type="button" class="sc-item" id="sc-flee">${pixelIcon("flee")}<span>Fugir para o mapa</span></button>
+    </div>
+    <div class="sc-pause" id="sc-pause" role="dialog" aria-modal="true" aria-labelledby="sc-pause-title"${B.paused ? "" : " hidden"}>
+      <div class="sc-pause__box">
+        <h3 class="sc-h" id="sc-pause-title">Pausado</h3>
+        <p class="sc-muted">O tempo parou. A pergunta volta quando você continuar.</p>
+        <div class="sc-row">
+          <button type="button" class="sc-btn" id="sc-resume">${pixelIcon("play")} Continuar</button>
+          <button type="button" class="sc-btn sc-btn--ghost" id="sc-pause-flee">Voltar ao mapa</button>
+        </div>
+      </div>
     </div>
   </div>`;
 }
@@ -1083,6 +1094,68 @@ function renderBattle(inner) {
     if (B) clearTimeout(B.fleeT);
     showMap();
   });
+  on("#sc-pause-btn", () => pauseBattle(true));
+  on("#sc-resume", () => pauseBattle(false));
+  on("#sc-pause-flee", () => {
+    if (B) clearTimeout(B.fleeT);
+    if (B) B.paused = false;
+    showMap();
+  });
+  applyPauseUI();
+}
+
+/* ---------- Pausa ---------- */
+/**
+ * Pausa a batalha: o tempo da pergunta e a fuga da criatura veloz param, a
+ * arena congela e a pergunta fica coberta (sem espiar a resposta com o tempo
+ * parado). A música para e volta ao continuar. Sair da aba ou bloquear o
+ * celular no meio da batalha também pausa.
+ */
+function pauseBattle(on) {
+  if (!B || !isOpen() || !document.querySelector(".sc-card--battle")) return;
+  if (!!B.paused === on) return;
+  const now = performance.now();
+  if (on) {
+    B.paused = true;
+    B.pauseAt = now;
+    if (B.fleeAt) {
+      clearTimeout(B.fleeT);
+      B.fleeLeft = Math.max(0, B.fleeAt - now);
+    }
+    const a = audio();
+    B.pausedTheme = a && a.epic.current ? a.epic.current() : "";
+    music(null);
+  } else {
+    B.paused = false;
+    // O tempo da pergunta recomeça de onde parou (ou do início, se ela chegou durante a pausa)
+    if (B.t0) B.t0 += now - Math.max(B.pauseAt, B.t0);
+    if (B.fleeFn && B.fleeLeft !== undefined) {
+      B.fleeAt = now + B.fleeLeft;
+      B.fleeT = setTimeout(B.fleeFn, B.fleeLeft);
+      B.fleeLeft = undefined;
+    }
+    if (B.pausedTheme) music(B.pausedTheme);
+  }
+  sfx("tick");
+  applyPauseUI();
+}
+
+function applyPauseUI() {
+  const card = document.querySelector(".sc-card--battle");
+  const overlay = $("#sc-pause");
+  if (!card || !overlay || !B) return;
+  const paused = !!B.paused;
+  overlay.hidden = !paused;
+  [...card.children].forEach((child) => {
+    if (child !== overlay) child.inert = paused;
+  });
+  if (paused) {
+    const resume = $("#sc-resume");
+    if (resume) resume.focus();
+  } else {
+    const btn = $("#sc-pause-btn");
+    if (btn && document.activeElement === document.body) btn.focus();
+  }
 }
 
 function log(html, tone) {
@@ -1151,6 +1224,10 @@ function startTimer(seconds, { crit = true } = {}) {
   stopTimer();
   const tick = () => {
     if (!B || B.qid !== qid || !isOpen()) return;
+    if (B.paused) {
+      timerId = requestAnimationFrame(tick);
+      return;
+    }
     const bar = $("#sc-timer i");
     const left = 1 - (performance.now() - B.t0) / 1000 / seconds;
     if (bar) {
@@ -1291,14 +1368,24 @@ function askMob() {
 /** A criatura veloz foge com a palavra se a resposta demorar (5 s tocando, 10 s digitando) */
 function armFlee(typed) {
   clearTimeout(B.fleeT);
+  B.fleeAt = 0;
+  B.fleeFn = null;
+  B.fleeLeft = undefined;
   const mon = B.mon;
   if (mon.type !== "fast") return;
   mon.qn = (mon.qn || 0) + 1;
   const qn = mon.qn;
   const seconds = typed ? 10 : 5;
-  B.fleeT = setTimeout(() => {
-    if (B && B.mon === mon && mon.qn === qn && !B.lock && !mon.dead) fleeMob();
-  }, seconds * 1000);
+  B.fleeFn = () => {
+    if (B && B.mon === mon && mon.qn === qn && !B.lock && !mon.dead && !B.paused) fleeMob();
+  };
+  if (B.paused) {
+    // Chegou durante a pausa: o prazo só começa a correr ao continuar
+    B.fleeLeft = seconds * 1000;
+  } else {
+    B.fleeAt = performance.now() + seconds * 1000;
+    B.fleeT = setTimeout(B.fleeFn, seconds * 1000);
+  }
   if (mon.max - mon.hp === 0) log(`Criatura veloz! Ela foge em ${seconds} s se você demorar.`, "bad");
 }
 
@@ -2154,7 +2241,7 @@ function arenaLoop() {
   const step = () => {
     const canvas = typeof document !== "undefined" ? document.getElementById("sc-arena") : null;
     if (!canvas || !B || !isOpen()) return;
-    drawArena(canvas);
+    if (!B.paused) drawArena(canvas);
     frameId = nextFrame(step);
   };
   step();
@@ -2357,10 +2444,22 @@ function setupListeners() {
   document.addEventListener("pointermove", onPointerMove, { passive: true });
   const menuBtn = document.getElementById("sc-menu-btn");
   if (menuBtn) menuBtn.addEventListener("click", toggleChrome);
+  // Sair da aba ou bloquear o celular no meio da batalha pausa o jogo
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && isOpen()) pauseBattle(true);
+  });
   document.addEventListener("keydown", (e) => {
     if (!isOpen() || e.defaultPrevented) return;
+    const typing = e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA");
+    // Pausa: Esc sempre; P fora da digitação
+    if (B && document.querySelector(".sc-card--battle") && (e.key === "Escape" || (!typing && (e.key === "p" || e.key === "P")))) {
+      pauseBattle(!B.paused);
+      e.preventDefault();
+      return;
+    }
     // Digitando, as teclas são texto e não atalhos
-    if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
+    if (typing) return;
+    if (B && B.paused) return;
     if (/^[1-4]$/.test(e.key)) {
       const btn = document.querySelectorAll("#sc-screen .sc-opt")[Number(e.key) - 1];
       if (btn && !btn.disabled) {
