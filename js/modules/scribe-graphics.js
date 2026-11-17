@@ -2940,6 +2940,7 @@ const ScribeGraphics = {
   drawMobSprite,
   rageAura,
   fgFX,
+  bolt,
   flame,
   quantize,
   buf,

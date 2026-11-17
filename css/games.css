@@ -538,3 +538,24 @@
   .sc-chapinfo { grid-template-columns: 1fr auto; }
   .sc-chapinfo__n { display: none; }
 }
+
+/* Animações da versão nova: cenário do capítulo, cenas da história, letreiros e transição */
+#sc-chbanner { display: block; width: 100%; height: 150px; }
+#sc-cut { display: block; width: 100%; height: 240px; }
+@media (max-width: 640px) {
+  #sc-chbanner { height: 120px; }
+  #sc-cut { height: 200px; }
+}
+.sc-tale--scene { min-height: 6.5em; max-width: none; }
+.sc-tale--scene p:first-child::first-letter { float: none; margin: 0; color: inherit; font-size: inherit; font-weight: inherit; line-height: inherit; }
+.sc-row--between { justify-content: space-between; }
+.sc-bannerfx { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; pointer-events: none; animation: sc-banner 2.4s ease forwards; }
+.sc-bannerfx > div { display: flex; flex-direction: column; gap: 4px; width: 100%; padding: 18px 10px; background: linear-gradient(90deg, transparent, rgba(11, 6, 18, 0.92) 20%, rgba(11, 6, 18, 0.92) 80%, transparent); text-align: center; }
+.sc-bannerfx b { color: #f1e9d8; font-size: clamp(1.6rem, 8vw, 3rem); font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+.sc-bannerfx span { color: #c0cbdc; font-size: 0.9rem; letter-spacing: 0.1em; }
+.sc-bannerfx.is-lose b { color: #a22633; }
+.sc-bannerfx.is-win b { color: #feae34; }
+.sc-bannerfx.is-boss b { color: #e43b44; }
+@keyframes sc-banner { 0% { opacity: 0; letter-spacing: 0; } 15% { opacity: 1; } 75% { opacity: 1; } 100% { opacity: 0; } }
+.sc-wipe { position: fixed; inset: 0; z-index: 80; background: #0b0612; pointer-events: none; animation: sc-wipe 0.42s ease-out forwards; }
+@keyframes sc-wipe { from { opacity: 1; } to { opacity: 0; } }

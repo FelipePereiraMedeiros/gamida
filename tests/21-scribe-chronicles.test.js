@@ -345,10 +345,28 @@ suite.test('Mapa desenhado: todo capítulo tem lugar no mapa do seu livro, longe
   assert.includes(html, 'js/modules/scribe-map.js', 'Mapa não carregado');
 });
 
+suite.test('Animações da versão nova: golpe de cada classe, letras da palavra e cenas de cada livro', () => {
+  const FX = require('../js/modules/scribe-fx.js');
+  Object.keys(Campaign.CLASSES).forEach((cls) => assert.isTrue(!!FX.ATTACK_TIME[FX.CLASS_ATTACK[cls]], `${cls} sem golpe`));
+  assert.deepEqual(FX.lettersOf('הַשָּׁמַיִם'), ['ה', 'ש', 'מ', 'י', 'ם'], 'Letras hebraicas sem sinais');
+  assert.deepEqual(FX.lettersOf('λόγος, -ου, ὁ'), ['λ', 'ο', 'γ', 'ο', 'ς', 'ο', 'υ', 'ο'], 'Letras gregas sem acentos');
+  const pose = FX.heroPose({ k: 'atk', t0: 0, d: 0.3 }, 0.15);
+  assert.isTrue(pose.rot > 0 && pose.dx > 0, 'Pose de ataque inclina o herói para a frente');
+  LANGS.forEach(([language]) => Campaign.BOOKS[language].forEach((book) => {
+    const lore = Lore.forBook(language, book.id);
+    ['prologue', 'ending'].forEach((part) => {
+      const slides = FX.slidesFor(language, book.id, part);
+      assert.equal(slides.length, lore[part].paragraphs.length, `${language} ${book.short} ${part}: um quadro por parágrafo`);
+    });
+  }));
+  const src = require('fs').readFileSync(require('path').join(__dirname, '..', 'js/modules/scribe-chronicles.js'), 'utf8');
+  ['heroStrike(', 'fx.drawProj(', 'fx.drawEnemyFX(', 'fx.drawLetters(', 'storyScenes(', 'chapterBannerLoop(', 'announce("Você caiu"'].forEach((hook) => assert.includes(src, hook, `Animação não ligada: ${hook}`));
+});
+
 suite.test('Crônicas do Escriba está ligada à tela de Avaliar e ao backup', () => {
   assert.includes(html, 'onclick="openScribeChronicles()"', 'Cartão do modo ausente');
   assert.includes(html, 'id="scribe-view"', 'Tela do jogo ausente');
-  ['scribe-campaign.js', 'scribe-lore.js', 'scribe-graphics.js', 'scribe-heroes.js', 'scribe-bosses.js', 'scribe-chronicles.js'].forEach((file) => {
+  ['scribe-campaign.js', 'scribe-lore.js', 'scribe-graphics.js', 'scribe-heroes.js', 'scribe-bosses.js', 'scribe-map.js', 'scribe-fx.js', 'scribe-chronicles.js'].forEach((file) => {
     assert.includes(html, `js/modules/${file}`, `${file} não carregado`);
   });
   assert.isTrue(html.indexOf('scribe-campaign.js') < html.indexOf('scribe-chronicles.js'), 'A campanha carrega antes do motor');

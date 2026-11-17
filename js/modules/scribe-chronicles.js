@@ -463,6 +463,13 @@ const isHebrew = () => AppState.language === "hebrew";
 const termClass = () => (isHebrew() ? "hebrew-text" : "greek-text");
 const audio = () => (typeof window !== "undefined" ? window.GameAudio : null);
 const gfx = () => (typeof window !== "undefined" ? window.ScribeGraphics : null);
+const fxApi = () => (typeof window !== "undefined" ? window.ScribeFX : null);
+/** Escurece e clareia a tela ao trocar de cena (como na versão nova do jogo) */
+const transition = (color) => { const fx = fxApi(); if (fx) fx.wipe(color); };
+const announce = (text, kind, sub) => { const fx = fxApi(); if (fx) fx.banner(text, kind, sub); };
+const ORIG_FONT = () => (isHebrew()
+  ? '700 22px "SBL Hebrew", "Ezra SIL", "Noto Sans Hebrew", "David", serif'
+  : '700 20px "Gentium Plus", "SBL Greek", "Galatia SIL", "Palatino Linotype", serif');
 const sfx = (name, arg) => { const a = audio(); if (a && a.sfx[name]) a.sfx[name](arg); };
 const music = (theme) => { const a = audio(); if (!a) return; if (theme) a.epic.play(theme); else a.epic.stop(); };
 const sting = (name) => { const a = audio(); if (a) a.epic.sting(name); };
@@ -525,6 +532,12 @@ function gainXP(amount) {
     leveled = true;
   }
   if (leveled && B) {
+    if (A) {
+      const t = performance.now() / 1000;
+      const size = arenaSize();
+      A.lvl = t;
+      if (size) A.floats.push({ txt: `NÍVEL ${S.lvl}`, x: size.W * 0.18, y: 60, c: "#fee761", t0: t });
+    }
     B.hp = maxHP();
     sfx("level");
     log(`Nível ${S.lvl}! Vida restaurada.`, "ok");
@@ -649,6 +662,7 @@ function chooseClass() {
 }
 
 function showMap() {
+  transition();
   if (!S.seenIntro) return showPrologue(false, 1);
   if (!S.cls) return chooseClass();
   B = null;
@@ -869,7 +883,9 @@ function showScroll(index, fromBook) {
   stopTimer();
   music("scroll");
   sfx("tick");
+  transition();
   setScreen(`<div class="sc-card">
+    <div class="sc-stage sc-stage--banner"><canvas id="sc-chbanner" aria-label="Cenário de ${esc(meta.city)}"></canvas></div>
     <div class="sc-arrival"><span class="sc-arrival__place">Capítulo ${index + 1} · ${esc(meta.city)} <span class="${termClass()}">${esc(meta.native)}</span>${meta.ref ? ` <small class="sc-muted">${esc(meta.ref)}</small>` : ""}</span>
       <p>${rich(meta.story)}</p>
       <p class="sc-muted sc-small"><b>Guardião:</b> ${esc(meta.boss)}${meta.bossRef ? ` (${esc(meta.bossRef)})` : ""}${meta.why ? ` · <b>Por que aqui:</b> ${rich(meta.why)}` : ""}</p>
@@ -882,9 +898,35 @@ function showScroll(index, fromBook) {
   </div>`);
   on("#sc-go", () => startChapter(index));
   on("#sc-back", fromBook ? showBook : showMap);
+  chapterBannerLoop(index);
+}
+
+/** Cenário animado do capítulo, com o nome no original */
+function chapterBannerLoop(index) {
+  const fx = fxApi();
+  cancelAnimationFrame(frameId);
+  if (!fx) return;
+  const { meta } = campaign[index];
+  const opts = {
+    scene: meta.scene,
+    sky: index % 4 === 0 ? 1 : index,
+    native: meta.native,
+    label: `Capítulo ${index + 1} · ${meta.city}`,
+    rtl: isHebrew(),
+    fontNative: ORIG_FONT().replace(/\d+px/, "26px"),
+    fontLabel: "700 15px Rubik, sans-serif",
+  };
+  const step = () => {
+    const canvas = typeof document !== "undefined" ? document.getElementById("sc-chbanner") : null;
+    if (!canvas || !isOpen()) return;
+    fx.renderChapterBanner(canvas, opts);
+    frameId = requestAnimationFrame(step);
+  };
+  step();
 }
 
 function showBook() {
+  transition();
   if (!isOpen()) return;
   if (!S.cls) return chooseClass();
   B = null;
@@ -919,6 +961,88 @@ function storyHtml(paragraphs) {
   return (paragraphs || []).map((text) => `<p>${rich(text)}</p>`).join("");
 }
 
+/**
+ * História contada em quadros ilustrados: cada parágrafo ganha uma cena desenhada,
+ * com o texto aparecendo aos poucos. "Pular" leva ao último quadro.
+ */
+function storyScenes({ part, book, eyebrow, title, paragraphs, finalHtml, bindFinal }) {
+  const fx = fxApi();
+  const slides = fx ? fx.slidesFor(AppState.language, book, part) : [];
+  let i = 0;
+  let shown = 0;
+  let T0 = performance.now() / 1000;
+  const last = paragraphs.length - 1;
+  setScreen(`<div class="sc-card">
+    <span class="sc-eyebrow">${esc(eyebrow)}</span>
+    <h3 class="sc-h sc-h--big">${esc(title)}</h3>
+    ${fx ? `<div class="sc-stage sc-stage--story"><canvas id="sc-cut" aria-hidden="true"></canvas></div>` : ""}
+    <div class="sc-tale sc-tale--scene" id="sc-tale" aria-live="polite"></div>
+    <div class="sc-row sc-row--between"><span class="sc-muted sc-small" id="sc-cutn"></span><span class="sc-row" id="sc-cut-actions"></span></div>
+  </div>`);
+  const g = gfx();
+  const env = {
+    lang: AppState.language,
+    cls: S.cls || "mago",
+    font: ORIG_FONT(),
+    hero: (ctx, cls, x, gy, s, t, relics) => {
+      if (!g) return;
+      if (relics) g.setEnvironment({ relics: new Set(S.relics) });
+      drawHeroFor(g, ctx, x, gy, s, t, false, cls, relics && cls === S.cls);
+    },
+    boss: (ctx, kind, x, gy, sc, t) => {
+      if (g) drawBoss(g, ctx, kind, x, gy, sc, t, false, false, 400);
+    },
+  };
+  const actions = () => {
+    const box = $("#sc-cut-actions");
+    const counter = $("#sc-cutn");
+    if (counter) counter.textContent = `${eyebrow} · ${i + 1}/${paragraphs.length}`;
+    if (!box) return;
+    if (i >= last) {
+      box.innerHTML = finalHtml;
+      bindFinal();
+    } else {
+      box.innerHTML = `<button type="button" class="sc-btn sc-btn--ghost" id="sc-skip">Pular</button><button type="button" class="sc-btn" id="sc-next-slide">Continuar</button>`;
+      on("#sc-skip", () => go(last));
+      on("#sc-next-slide", next);
+    }
+  };
+  const go = (k) => {
+    i = Math.max(0, Math.min(last, k));
+    shown = reduceMotion() ? 1e9 : 0;
+    T0 = performance.now() / 1000;
+    sfx("tick");
+    actions();
+  };
+  function next() {
+    const a = audio();
+    if (a) a.init();
+    const full = paragraphs[i];
+    if (shown < full.length) {
+      shown = full.length;
+      return;
+    }
+    go(i + 1);
+  }
+  cancelAnimationFrame(frameId);
+  const step = () => {
+    const tale = $("#sc-tale");
+    if (!tale || !isOpen()) return;
+    const full = paragraphs[i];
+    if (shown < full.length) shown = Math.min(full.length, shown + 1.6);
+    const text = full.slice(0, Math.floor(shown));
+    if (tale.dataset.len !== String(text.length)) {
+      tale.dataset.len = String(text.length);
+      tale.innerHTML = `<p>${rich(text)}</p>`;
+    }
+    const canvas = document.getElementById("sc-cut");
+    if (canvas && fx) fx.renderSlide(canvas, slides[Math.min(i, slides.length - 1)], performance.now() / 1000 - T0, env);
+    frameId = requestAnimationFrame(step);
+  };
+  go(0);
+  step();
+}
+
 /** Abertura da aventura: de onde veio a névoa e o que o aprendiz tem de fazer */
 function showPrologue(fromBook, book = 1, then) {
   const entry = Lore.forBook(AppState.language, book) || {};
@@ -926,20 +1050,23 @@ function showPrologue(fromBook, book = 1, then) {
   B = null;
   stopTimer();
   music("prologue");
-  setScreen(`<div class="sc-card">
-    <span class="sc-eyebrow">${book > 1 ? "Novo livro" : "Prólogo"}</span>
-    <h3 class="sc-h sc-h--big">${esc(prologue.title)}</h3>
-    <div class="sc-tale">${storyHtml(prologue.paragraphs)}</div>
-    <div class="sc-row"><button type="button" class="sc-btn" id="sc-begin">${fromBook ? "Voltar ao grimório" : "Pegar a pena"}</button></div>
-  </div>`);
-  on("#sc-begin", () => {
-    const a = audio();
-    if (a) a.init();
-    if (fromBook) return showBook();
-    S.story[`p${book}`] = true;
-    if (book === 1) S.seenIntro = true;
-    save();
-    return then ? then() : showMap();
+  transition();
+  storyScenes({
+    part: "prologue",
+    book,
+    eyebrow: book > 1 ? "Novo livro" : "Prólogo",
+    title: prologue.title,
+    paragraphs: prologue.paragraphs,
+    finalHtml: `<button type="button" class="sc-btn" id="sc-begin">${fromBook ? "Voltar ao grimório" : "Pegar a pena"}</button>`,
+    bindFinal: () => on("#sc-begin", () => {
+      const a = audio();
+      if (a) a.init();
+      if (fromBook) return showBook();
+      S.story[`p${book}`] = true;
+      if (book === 1) S.seenIntro = true;
+      save();
+      return then ? then() : showMap();
+    }),
   });
 }
 
@@ -990,25 +1117,34 @@ function showEnding(book, fromChronicle) {
   stopTimer();
   music("prologue");
   sting("victory");
+  transition();
   S.story[`e${id}`] = true;
   if (id === last) S.seenEnding = true;
   save();
-  setScreen(`<div class="sc-card">
-    <span class="sc-eyebrow">${id === last ? "Epílogo" : "Fim do livro"}</span>
-    <h3 class="sc-h sc-h--big">${esc(ending.title)}</h3>
-    <div class="sc-tale">${storyHtml(ending.paragraphs)}</div>
-    <p class="sc-muted sc-center">Todos os capítulos continuam abertos para você repetir quando quiser.</p>
-    <div class="sc-row">${!fromChronicle && next && !S.story[`p${next.id}`]
-      ? `<button type="button" class="sc-btn" id="sc-next-book">Abrir o ${esc(next.short)}</button>`
-      : ""}<button type="button" class="sc-btn${!fromChronicle && next && !S.story[`p${next.id}`] ? " sc-btn--ghost" : ""}" id="sc-map">${fromChronicle ? "Crônica" : "Mapa"}</button></div>
-  </div>`);
-  on("#sc-next-book", () => showPrologue(false, next.id));
-  on("#sc-map", fromChronicle ? showChronicle : showMap);
+  const offerNext = !fromChronicle && next && !S.story[`p${next.id}`];
+  storyScenes({
+    part: "ending",
+    book: id,
+    eyebrow: id === last ? "Epílogo" : "Fim do livro",
+    title: ending.title,
+    paragraphs: ending.paragraphs,
+    finalHtml: `${offerNext ? `<button type="button" class="sc-btn" id="sc-next-book">Abrir o ${esc(next.short)}</button>` : ""}<button type="button" class="sc-btn${offerNext ? " sc-btn--ghost" : ""}" id="sc-map">${fromChronicle ? "Crônica" : "Mapa"}</button>`,
+    bindFinal: () => {
+      on("#sc-next-book", () => showPrologue(false, next.id));
+      on("#sc-map", fromChronicle ? showChronicle : showMap);
+    },
+  });
 }
 
 /* ============================ Batalha ============================ */
 
+/** Estado das animações da arena */
+function freshArena() {
+  return { parts: [], floats: [], lunge: {}, monFlash: 0, heroFlash: 0, shake: 0, deathT: 0, pose: null, proj: [], eatk: null, flash: 0, lvl: 0, heal: 0, letters: [] };
+}
+
 function startChapter(index) {
+  transition();
   const { chapter, meta } = campaign[index];
   const stats = P();
   B = {
@@ -1017,7 +1153,7 @@ function startChapter(index) {
     wave: 0, mi: 0, hp: stats.hp, boss: false, mon: null, lock: false, q: null,
     free: stats.hints, ward: stats.ward, revive: stats.revive,
   };
-  A = { parts: [], floats: [], lunge: {}, monFlash: 0, heroFlash: 0, shake: 0, deathT: 0 };
+  A = freshArena();
   const g = gfx();
   if (g) g.resetEmbers();
   music(battleTheme());
@@ -1133,7 +1269,11 @@ function checkRage() {
   if (!B || !B.boss || B.rage || !B.mon || B.mon.dead || B.mon.hp <= 0 || B.mon.hp > B.mon.max / 2) return;
   B.rage = true;
   const t = performance.now() / 1000;
-  if (A) A.shake = reduceMotion() ? 0 : t + 0.7;
+  if (A) {
+    A.shake = reduceMotion() ? 0 : t + 0.7;
+    A.flash = t + 0.3;
+  }
+  announce("Fúria", "boss", B.meta.boss);
   sfx("wall");
   log(`Fúria! ${esc(B.meta.boss)} agora bate 25% mais forte.`, "bad");
 }
@@ -1374,7 +1514,7 @@ function mobHit() {
   B.mon.hp = Math.max(0, B.mon.hp - (crit ? 2 : 1));
   stat(term, true);
   recordAnswer(term, true);
-  fxHitMonster(crit ? 24 : 12, crit);
+  heroStrike(crit ? 24 : 12, crit);
   sfx("hit", crit ? 4 : 1);
   updateBars();
   log(`${crit ? "Golpe crítico!" : "Acertou!"} ${orig(term)} = ${esc(word.item.translations.join(" / "))}`, "ok");
@@ -1395,6 +1535,13 @@ function mobMiss(message) {
 
 function killMob(crit) {
   const stats = P();
+  const fx = fxApi();
+  if (fx && A && !reduceMotion()) {
+    const t = performance.now() / 1000;
+    const letters = fx.lettersOf(B.mon.label || B.mon.term);
+    A.letters = A.letters.concat(letters.map((ch, i) => ({ ch, i, n: letters.length, t0: t + i * 0.07 })));
+    A.pose = { k: "win", t0: t + 0.15, d: 0.7 };
+  }
   B.mon.dead = true;
   A.deathT = performance.now() / 1000 + 0.6;
   sfx("combo");
@@ -1478,6 +1625,7 @@ function defeat() {
   if (!B) return;
   music(null);
   sting("defeat");
+  announce("Você caiu", "lose");
   stopTimer();
   cancelAnimationFrame(frameId);
   const index = B.index;
@@ -1511,6 +1659,7 @@ function defeat() {
 function usePotion() {
   if (!B || S.potions <= 0 || B.hp >= maxHP()) return;
   S.potions--;
+  if (A) A.heal = performance.now() / 1000;
   const healed = Math.min(45, maxHP() - B.hp);
   B.hp += healed;
   fxText(`+${healed}`, "#5fd394");
@@ -1620,6 +1769,8 @@ function bossIntro() {
     <div class="sc-scroll sc-scroll--tip"><b>Dica do mestre:</b> ${rich(B.meta.scroll.tip)}</div>
     <div class="sc-row"><button type="button" class="sc-btn" id="sc-fight">Lutar</button></div>`);
   sfx("level");
+  transition("#2a0508");
+  announce(B.meta.boss, "boss", B.meta.bossRef);
   on("#sc-fight", () => {
     renderBattle();
     if (B.rush) rushTurn();
@@ -1706,7 +1857,7 @@ function bossStrikeHit() {
   if (!B.q) {
     recordAnswer(vocabTerm, true);
     B.mon.hp--;
-    fxHitMonster(15, false);
+    heroStrike(15, false);
     updateBars();
     if (strike.grammar) {
       B.q = strike.grammar;
@@ -1716,7 +1867,7 @@ function bossStrikeHit() {
     }
   } else {
     recordAnswer(null, true);
-    fxHitMonster(8, true);
+    heroStrike(8, true);
     log(`Certo: ${esc(B.q.answer)}.`, "ok");
     gainXP(4);
   }
@@ -1838,7 +1989,7 @@ function sentenceHit() {
   B.choiceOnce = false;
   B.mon.hp--;
   updateBars();
-  fxHitMonster(30, true);
+  heroStrike(30, true);
   sfx("level");
   log(`Frase vencida: “${esc(preferredGloss(sentence.translations))}”`, "ok");
   setTimeout(() => {
@@ -1882,7 +2033,7 @@ function rushTurn() {
       recordAnswer(term, true);
       stat(term, true);
       B.mon.hp--;
-      fxHitMonster(15, false);
+      heroStrike(15, false);
       sfx("hit", 2);
       updateBars();
       log(`Certo: ${orig(term)} = ${esc(item.translations.join(" / "))}`, "ok");
@@ -1910,6 +2061,7 @@ function bossDown() {
   A.deathT = performance.now() / 1000 + 0.8;
   music(null);
   sting("victory");
+  announce("Guardião vencido", "win", B.meta.boss);
   const index = B.index;
   const total = B.total;
   const sentences = B.sents.map((s) => s.sentence);
@@ -1986,6 +2138,7 @@ function weakWords() {
 
 /** Masmorra: só as palavras fracas, sem guardião. Três acertos seguidos tiram a palavra de lá. */
 function startDungeon() {
+  transition("#0b0612");
   const words = shuffleArray(weakWords()).slice(0, DUNGEON_WORDS).map((item) => ({ item, old: false }));
   if (!words.length) return showMap();
   const stats = P();
@@ -1998,7 +2151,7 @@ function startDungeon() {
     waves, wave: 0, mi: 0, hp: stats.hp, boss: false, mon: null, lock: false, q: null,
     free: stats.hints, ward: stats.ward, revive: stats.revive, count: words.length,
   };
-  A = { parts: [], floats: [], lunge: {}, monFlash: 0, heroFlash: 0, shake: 0, deathT: 0 };
+  A = freshArena();
   const g = gfx();
   if (g) g.resetEmbers();
   music("boss");
@@ -2027,6 +2180,7 @@ function dungeonDone() {
 
 /** Bestiário: criaturas da região com versículo, e os guardiões já vencidos */
 function showBestiary() {
+  transition();
   B = null;
   stopTimer();
   music("scroll");
@@ -2098,6 +2252,7 @@ function paintThumb(id, draw) {
 
 /** Desempenho: acertos, erros e as palavras que mais custam */
 function showStats() {
+  transition();
   B = null;
   stopTimer();
   music("scroll");
@@ -2122,7 +2277,7 @@ function showStats() {
 
 /* ============================ Arena ============================ */
 
-const PX = 3;
+const PX = 2;
 
 function arenaLoop() {
   cancelAnimationFrame(frameId);
@@ -2167,7 +2322,13 @@ function drawArena(canvas) {
   const groundY = H * 0.86;
   const scale = Math.min(1.25, H / 210);
   const lunge = (who) => (A.lunge.who === who && A.lunge.t > t ? W * 0.13 * Math.sin(((A.lunge.t - t) / 0.28) * Math.PI) : 0);
-  drawHeroFor(g, sc, W * 0.18 + lunge("hero"), groundY, scale * 1.3, t, A.heroFlash > t, S.cls, true);
+  const fx = fxApi();
+  const pose = fx ? fx.heroPose(A.pose, t) : { rot: 0, dx: 0, dy: 0 };
+  sc.save();
+  sc.translate(W * 0.18 + lunge("hero") + pose.dx, groundY + pose.dy);
+  sc.rotate(pose.rot);
+  drawHeroFor(g, sc, 0, 0, fx ? fx.heroScale(W, scale) : scale * 1.3, t, A.heroFlash > t, S.cls, true);
+  sc.restore();
   let monsterX = 0;
   if (B.mon && (!B.mon.dead || A.deathT > t)) {
     const mon = B.mon;
@@ -2198,6 +2359,11 @@ function drawArena(canvas) {
     lc.fillRect(p.x + p.vx * k, p.y + p.vy * k + 60 * k * k, PX * 1.4, PX * 1.4);
   });
   lc.globalAlpha = 1;
+  if (fx) {
+    fx.drawProj(lc, A, W, H, groundY, scale, t);
+    fx.drawHeal(lc, A, W, H, groundY, scale, t);
+    fx.drawEnemyFX(lc, A, W, H, groundY, scale, t, monsterX, !!(B.boss && B.rage));
+  }
   lc.setTransform(1, 0, 0, 1, 0, 0);
   g.quantize(lc, lw, lh);
 
@@ -2239,6 +2405,7 @@ function drawArena(canvas) {
     c.fillText(f.txt, f.x, y);
   });
   c.globalAlpha = 1;
+  if (fx) fx.drawLetters(c, A, W, H, groundY, scale, t, ORIG_FONT());
   A.parts = A.parts.filter((p) => t - p.t0 < p.d);
   A.floats = A.floats.filter((f) => t - f.t0 < 1);
 }
@@ -2248,11 +2415,35 @@ function arenaSize() {
   return canvas ? { W: canvas.clientWidth, H: canvas.clientHeight } : null;
 }
 
+/**
+ * Golpe do herói: o projétil da classe sai do herói e o dano aparece quando ele
+ * chega (fogo do profeta e do pescador, luz do guerreiro e do centurião,
+ * relâmpago do juiz e do fazedor de tendas)
+ */
+function heroStrike(damage, crit) {
+  const fx = fxApi();
+  if (!fx || !A || reduceMotion() || !arenaSize()) return fxHitMonster(damage, crit);
+  const kind = fx.CLASS_ATTACK[S.cls] || "fogo";
+  const time = fx.ATTACK_TIME[kind];
+  const t = performance.now() / 1000;
+  A.proj.push({ k: kind, t0: t, d: time.d });
+  A.pose = { k: "cast", t0: t, d: 0.35 };
+  const mine = A;
+  setTimeout(() => {
+    if (A === mine) fxHitMonster(damage, crit);
+  }, time.hit);
+}
+
 function fxHitMonster(damage, crit) {
   const size = arenaSize();
   if (!size || !A) return;
   const t = performance.now() / 1000;
   A.lunge = { who: "hero", t: t + 0.28 };
+  A.pose = { k: "atk", t0: t, d: 0.3 };
+  if (crit && !reduceMotion()) {
+    A.flash = t + 0.09;
+    A.shake = t + 0.18;
+  }
   A.monFlash = t + 0.15;
   A.floats.push({ txt: `${crit ? "CRÍTICO −" : "−"}${damage}`, x: size.W * 0.72, y: size.H * 0.3, c: crit ? "#e2b04a" : "#fff", t0: t });
   if (reduceMotion()) return;
@@ -2268,6 +2459,9 @@ function fxHitHero(damage, dodged) {
   if (!size || !A) return;
   const t = performance.now() / 1000;
   A.lunge = { who: "mon", t: t + 0.4 };
+  A.pose = { k: dodged ? "dodge" : "hurt", t0: t, d: 0.4 };
+  // Quem ataca de longe (espectro, ídolo, serafim, gafanhoto, corvo e os guardiões) lança um orbe; os outros arranham
+  A.eatk = { t0: t, dodged, caster: !!B && (B.boss || (!!B.mon && ["wraith", "idol", "seraph", "locust", "raven"].includes(B.mon.sp))) };
   if (dodged) {
     A.floats.push({ txt: "ESQUIVOU", x: size.W * 0.18, y: size.H * 0.35, c: "#9fd8ff", t0: t });
     return;
