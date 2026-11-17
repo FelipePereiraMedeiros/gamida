@@ -188,6 +188,59 @@ function isOpen() {
 function setScreen(html) {
   const screen = $("#sc-screen");
   if (screen) screen.innerHTML = html;
+  // Fora da batalha, os menus do app voltam ao lugar
+  if (!String(html).includes("sc-card--battle")) setBattleFocus(false);
+}
+
+/* ---------- Batalha em destaque: menus recolhidos ---------- */
+/**
+ * Na batalha, o cabeçalho, a navegação, o rodapé e os botões das Crônicas
+ * recolhem e a arena cresce. O botão "Menus" (e, no computador, levar o mouse
+ * à borda esquerda ou ao topo da tela) traz tudo de volta por cima do jogo,
+ * sem empurrar a arena nem as alternativas.
+ */
+const EDGE = 24;
+let chromeCloseT = 0;
+let edgeOpened = false;
+
+function setBattleFocus(on) {
+  if (typeof document === "undefined" || !document.body) return;
+  const body = document.body;
+  if (on === body.classList.contains("sc-focus")) return;
+  body.classList.toggle("sc-focus", on);
+  if (!on) setChrome(false);
+}
+
+function setChrome(open, byEdge) {
+  if (typeof document === "undefined" || !document.body) return;
+  clearTimeout(chromeCloseT);
+  edgeOpened = !!(open && byEdge);
+  document.body.classList.toggle("sc-chrome-open", !!open);
+  const btn = document.getElementById("sc-menu-btn");
+  if (btn) {
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Recolher os menus" : "Mostrar os menus");
+  }
+}
+
+function toggleChrome() {
+  setChrome(!document.body.classList.contains("sc-chrome-open"));
+}
+
+/** Computador: o mouse na borda mostra os menus; ao voltar para o jogo, eles recolhem */
+function onPointerMove(e) {
+  if (e.pointerType !== "mouse" || !document.body.classList.contains("sc-focus")) return;
+  const open = document.body.classList.contains("sc-chrome-open");
+  if (!open && (e.clientX <= EDGE || e.clientY <= EDGE)) {
+    setChrome(true, true);
+    return;
+  }
+  if (open && edgeOpened) {
+    const header = document.getElementById("main-app-header");
+    const inMenus = (header && header.contains(e.target)) || e.target.closest(".sc-top, #sc-menu-btn");
+    clearTimeout(chromeCloseT);
+    if (!inMenus && e.clientX > EDGE && e.clientY > EDGE) chromeCloseT = setTimeout(() => setChrome(false), 700);
+  }
 }
 
 function on(selector, handler) {
@@ -806,7 +859,7 @@ function showCredits() {
         "Guardiões com figura própria do Livro II e do grego",
         "Mapas do Livro II e do Segundo Rolo",
         "Golpes do grego: a rede, o pilo e a carta",
-        "Caçada completa, bestiário ilustrado, mapa dos capítulos, música e efeitos sonoros",
+        "Caçada completa, bestiário ilustrado, mapa dos capítulos, batalha em tela cheia, música e efeitos sonoros",
       ])}</section>
     </div>
     <p class="sc-muted sc-small">Referências de estudo: Page H. Kelley, Gramática do Hebraico Bíblico; Johannes Bergmann, Gramática do Grego do Novo Testamento. A citação não indica vínculo nem endosso.</p>
@@ -1020,6 +1073,7 @@ const hintLabel = () => `Dica (${B && B.free > 0 ? `${B.free} grátis` : S.scrol
 
 function renderBattle(inner) {
   setScreen(battleShell(inner || `<div id="sc-cmd"></div>`));
+  setBattleFocus(true);
   arenaLoop();
   on("#sc-potion", usePotion);
   on("#sc-hint", useHint);
@@ -2111,7 +2165,7 @@ function drawArena(canvas) {
   const W = canvas.clientWidth;
   const H = canvas.clientHeight;
   if (!W || !H) return;
-  if (canvas.width !== Math.round(W * dpr)) {
+  if (canvas.width !== Math.round(W * dpr) || canvas.height !== Math.round(H * dpr)) {
     canvas.width = Math.round(W * dpr);
     canvas.height = Math.round(H * dpr);
   }
@@ -2298,6 +2352,9 @@ let listenersReady = false;
 function setupListeners() {
   if (listenersReady || typeof document === "undefined") return;
   listenersReady = true;
+  document.addEventListener("pointermove", onPointerMove, { passive: true });
+  const menuBtn = document.getElementById("sc-menu-btn");
+  if (menuBtn) menuBtn.addEventListener("click", toggleChrome);
   document.addEventListener("keydown", (e) => {
     if (!isOpen() || e.defaultPrevented) return;
     // Digitando, as teclas são texto e não atalhos
@@ -2366,6 +2423,7 @@ function closeScribeChronicles() {
   const view = document.getElementById("scribe-view");
   if (view) view.classList.add("hidden");
   setScreen("");
+  setBattleFocus(false);
 }
 
 function updateScribeCardStat() {

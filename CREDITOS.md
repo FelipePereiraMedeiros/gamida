@@ -48,7 +48,8 @@ Arquivos com essa base: `js/modules/scribe-graphics.js` (extraído da versão or
 - **Novos modos e recursos:**
   - a caçada completa com o vocabulário inteiro do capítulo e o selo;
   - o bestiário ilustrado;
-  - a opção de ver os capítulos no mapa.
+  - a opção de ver os capítulos no mapa;
+  - a batalha em destaque, com os menus recolhidos e a arena maior.
 - **Música e efeitos sonoros sintetizados** (`game-audio.js`).
 
 ## Referências

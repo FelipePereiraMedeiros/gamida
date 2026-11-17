@@ -107,6 +107,7 @@ As fichas dos capítulos (`scribe-campaign.js`) e a história (`scribe-lore.js`)
 
 - **Revisar e Jogar** são os dois lados do mesmo painel: `switchTab("review")` e `switchTab("play")` mostram os grupos com o `data-hub` correspondente. `switchTab("assessment")` vale como Revisar.
 - **Critério para pôr algo novo:** pense no que o aluno quer fazer naquela hora (estudar, revisar, jogar, consultar). Ferramenta de bastidor fica no Perfil, fora da navegação principal.
+- **Batalha das Crônicas em destaque:** na batalha (`body.sc-focus`), o cabeçalho, a navegação, o rodapé e os botões das Crônicas recolhem e a arena cresce. O botão "Menus" traz tudo de volta por cima do jogo (`body.sc-chrome-open`), sem mover a arena nem as alternativas; no computador, levar o mouse à borda esquerda ou ao topo também traz, e os menus recolhem ao voltar ao jogo. Fora da batalha (mapa, vitória, sair) tudo volta ao lugar.
 - **Celular:** a entrada de capítulo das Crônicas mostra os botões logo depois da história, com o pergaminho recolhido. No Perfil, os quadros de números e de configurações começam recolhidos.
 - **Leitores de tela:**
   - a arena das Crônicas descreve em texto quem luta contra quem, com a vida de cada um;

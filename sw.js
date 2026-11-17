@@ -11,7 +11,7 @@
  * - Pedidos para outros sites (Google, na sincronização) não passam por aqui.
  */
 // <gerado por scripts/build-sw.js: não edite à mão>
-const VERSION = "2.43.0";
+const VERSION = "2.44.0";
 const PRECACHE = [
   "css/fonts.css",
   "css/games.css",

@@ -581,3 +581,84 @@
 .sc-fullnote { margin: 0; }
 .sc-scroll-wrap > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.5rem; min-height: 2.75rem; padding: 0.5rem 0; color: var(--sc-gold); font-weight: 700; cursor: pointer; }
 .sc-scroll-wrap[open] > summary { margin-bottom: 0.5rem; }
+
+/* ---------- Batalha em destaque: menus recolhidos (body.sc-focus) ----------
+   Os menus voltam por cima do jogo (body.sc-chrome-open), sem empurrar a arena. */
+.sc-menu-btn { display: none; }
+body.sc-focus .sc-menu-btn {
+  position: fixed;
+  top: calc(0.5rem + env(safe-area-inset-top, 0px));
+  right: 0.5rem;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.75rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--sc-line);
+  border-radius: 999px;
+  background: rgba(24, 20, 37, 0.85);
+  color: var(--sc-gold);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+body.sc-focus .sc-menu-btn svg { width: 1.125rem; height: 1.125rem; }
+body.sc-focus.sc-chrome-open .sc-menu-btn { background: rgba(24, 20, 37, 0.95); }
+
+body.sc-focus .app-footer { display: none; }
+body.sc-focus .sc-top { display: none; }
+body.sc-focus.sc-chrome-open .sc-top {
+  position: fixed;
+  top: calc(3.75rem + env(safe-area-inset-top, 0px));
+  right: 0.5rem;
+  z-index: 55;
+  display: flex;
+  max-width: calc(100vw - 1rem);
+  padding: 0.5rem;
+  border: 1px solid var(--sc-line);
+  border-radius: 6px;
+  background: rgba(24, 20, 37, 0.95);
+}
+body.sc-focus.sc-chrome-open .sc-top .sc-title { display: none; }
+
+/* Arena maior com os menus recolhidos */
+body.sc-focus #sc-arena { height: clamp(230px, 44vh, 400px); }
+
+/* Celular e tablet: barra de cima sobe, navegação de baixo desce */
+@media (max-width: 1023px) {
+  body.sc-focus .app-header { position: fixed; top: 0; left: 0; right: 0; background: transparent; border: 0; }
+  body.sc-focus .app-header__bar {
+    background: var(--surface-1);
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-110%);
+    transition: transform 0.2s ease;
+  }
+  body.sc-focus .app-nav { transform: translateY(110%); transition: transform 0.2s ease; }
+  body.sc-focus.sc-chrome-open .app-header__bar,
+  body.sc-focus.sc-chrome-open .app-nav { transform: none; }
+  /* O botão Menus não cobre a barra de cima quando ela aparece */
+  body.sc-focus.sc-chrome-open .sc-menu-btn { top: auto; bottom: calc(var(--bottom-nav-h) + 0.5rem + env(safe-area-inset-bottom, 0px)); }
+  body.sc-focus.sc-chrome-open .sc-top { top: auto; bottom: calc(var(--bottom-nav-h) + 3.75rem + env(safe-area-inset-bottom, 0px)); }
+  body.sc-focus .app-main { padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* Computador: a barra lateral sai para a esquerda e volta por cima do jogo */
+@media (min-width: 1024px) {
+  body.app-shell.sc-focus { grid-template-columns: 0 minmax(0, 1fr); }
+  body.sc-focus .app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: var(--sidebar-w);
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+  body.sc-focus.sc-chrome-open .app-header { transform: none; box-shadow: 8px 0 24px rgba(0, 0, 0, 0.4); }
+  body.sc-focus #sc-arena { height: clamp(260px, 48vh, 460px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.sc-focus .app-header, body.sc-focus .app-header__bar, body.sc-focus .app-nav { transition: none; }
+}
