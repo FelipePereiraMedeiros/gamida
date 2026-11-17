@@ -6,6 +6,8 @@ Treinador de idiomas bíblicos (hebraico bíblico e grego koiné): prática de v
 
 Copyright © 2026 Felipe Pereira Medeiros.
 
+O jogo **Crônicas do Escriba** é obra em coautoria de **José Henrique Rosseto** e **Felipe Pereira Medeiros**. Quem criou cada parte está em [CREDITOS.md](CREDITOS.md).
+
 **Este não é um projeto de código aberto.** O código está visível aqui apenas para consulta. A visibilidade do repositório e a possibilidade de "fork" oferecida pelo GitHub **não** concedem licença de uso.
 
 | Você pode | Você não pode, sem autorização escrita do titular |

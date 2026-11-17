@@ -1,0 +1,64 @@
+# Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário: uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE.
+# Roda todos os testes a cada envio e a cada pull request.
+# Com a proteção de branch ligada no GitHub (Settings > Branches), um envio com teste
+# quebrado não chega à dev nem à main.
+name: Testes
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: testes-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unidade:
+    name: Unidade, Python e estilos
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: npm ci
+      - name: Testes de unidade
+        run: node test-runner.js all
+      - name: Testes Python
+        run: npm run test:py
+      - name: Tailwind compilado está em dia
+        run: |
+          npm run build:css
+          git diff --exit-code -- css/tailwind.css || (echo "css/tailwind.css desatualizado: rode npm run build:css e envie o arquivo." && exit 1)
+      - name: Aviso de direitos autorais em todo arquivo-fonte
+        run: |
+          node scripts/license-headers.js
+          git diff --exit-code || (echo "Arquivo sem aviso de direitos autorais: rode node scripts/license-headers.js." && exit 1)
+
+  navegador:
+    name: Testes de navegador
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: unidade
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Playwright e Chromium
+        run: |
+          npm install --no-save playwright@1.63.0
+          npx playwright install --with-deps chromium
+      - name: Testes de navegador
+        run: npm run e2e

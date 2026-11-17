@@ -1,4 +1,4 @@
-/*! Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário: uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE. */
+/*! Gamida, Crônicas do Escriba — Copyright (c) 2026 José Henrique Rosseto e Felipe Pereira Medeiros (coautores). Todos os direitos reservados. Uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE; autoria de cada parte em CREDITOS.md. */
 /**
  * ==========================================================================
  * Gamida - Crônicas do Escriba
@@ -724,6 +724,7 @@ function showMap() {
       <button type="button" class="sc-btn sc-btn--ghost" id="sc-bestiary">Bestiário</button>
       <button type="button" class="sc-btn sc-btn--ghost" id="sc-stats">Desempenho</button>
     </div>
+    <p class="sc-muted sc-small sc-center sc-byline">Crônicas do Escriba · José Henrique Rosseto e Felipe Pereira Medeiros</p>
     <div class="sc-row" id="sc-map-actions">
       <button type="button" class="sc-btn sc-btn--ghost" id="sc-change-class">Trocar de classe</button>
       <button type="button" class="sc-btn sc-btn--ghost" id="sc-reset">Recomeçar a aventura</button>
@@ -971,6 +972,7 @@ function showBook() {
     <h3 class="sc-h">Grimório</h3>
     <div class="sc-row sc-row--left">
       <button type="button" class="sc-btn sc-btn--ghost" id="sc-open-chronicle">Ler a crônica (${doneCount(S)} de ${campaign.length} trechos)</button>
+      <button type="button" class="sc-btn sc-btn--ghost" id="sc-open-credits">Créditos</button>
       ${booksOf(AppState.language).map((book) => `<button type="button" class="sc-btn sc-btn--ghost" data-prologue="${book.id}">Prólogo · ${esc(book.short)}</button>`).join("")}
     </div>
     <p class="sc-muted">Os pergaminhos dos capítulos que você já abriu.</p>
@@ -985,6 +987,7 @@ function showBook() {
   });
   on("#sc-back", showMap);
   on("#sc-open-chronicle", showChronicle);
+  on("#sc-open-credits", showCredits);
   document.querySelectorAll("#sc-screen [data-prologue]").forEach((btn) => {
     btn.onclick = () => showPrologue(true, Number(btn.dataset.prologue));
   });
@@ -1103,6 +1106,41 @@ function showPrologue(fromBook, book = 1, then) {
       return then ? then() : showMap();
     }),
   });
+}
+
+/** Créditos: as Crônicas do Escriba são obra em coautoria (CREDITOS.md) */
+function showCredits() {
+  B = null;
+  stopTimer();
+  music("scroll");
+  transition();
+  const list = (items) => `<ul class="sc-credits__list">${items.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`;
+  setScreen(`<div class="sc-card">
+    <h3 class="sc-h">Créditos</h3>
+    <p class="sc-story sc-story--left">As Crônicas do Escriba são obra em coautoria de <b>José Henrique Rosseto</b> e <b>Felipe Pereira Medeiros</b>.</p>
+    <div class="sc-credits">
+      <section><h4 class="sc-h">José Henrique Rosseto</h4>${list([
+        "Concepção do jogo: palavras que viram criaturas, frases que viram guardiões, heróis, relíquias e o Devorador do Esquecimento",
+        "Guia do Mestre do Rolo: os sete selos, o cânone da história, a ficha de capítulo, o roteiro do Livro I e os roteiros-base do Livro II e do Segundo Rolo",
+        "Arte em pixel da versão original: cenários, heróis do hebraico, criaturas, guardiões do Livro I e paleta",
+        "Mapa desenhado do Livro I",
+        "Animações da versão original: poses, golpes de fogo, luz e relâmpago, letreiros, transições e cenas da história",
+        "Elite e velozes, fúria do guardião, masmorra, bestiário e desempenho",
+      ])}</section>
+      <section><h4 class="sc-h">Felipe Pereira Medeiros</h4>${list([
+        "Integração ao Gamida: batalha ligada às lições de Kelley e Bergmann, golpe de gramática, montagem e digitação das traduções, tempo de resposta e progresso",
+        "Campanha completa no hebraico e no grego: fichas, pergaminhos, histórias, falas, epílogos, prólogos e finais",
+        "Heróis do Segundo Rolo (Pescador, Centurião e Fazedor de tendas) com as relíquias gregas",
+        "Guardiões com figura própria do Livro II e do grego",
+        "Mapas do Livro II e do Segundo Rolo",
+        "Golpes do grego: a rede, o pilo e a carta",
+        "Caçada completa, bestiário ilustrado, mapa dos capítulos, música e efeitos sonoros",
+      ])}</section>
+    </div>
+    <p class="sc-muted sc-small">Referências de estudo: Page H. Kelley, Gramática do Hebraico Bíblico; Johannes Bergmann, Gramática do Grego do Novo Testamento. A citação não indica vínculo nem endosso.</p>
+    <div class="sc-row"><button type="button" class="sc-btn sc-btn--ghost" id="sc-back">Grimório</button></div>
+  </div>`);
+  on("#sc-back", showBook);
 }
 
 /** A crônica: os trechos que já voltaram ao rolo, na ordem do caminho */
@@ -2694,6 +2732,8 @@ const ScribeModule = {
 // Suporte universal (Browser Global / Node CommonJS)
 if (typeof window !== "undefined") {
   window.ScribeModule = ScribeModule;
+  // Só nos testes de navegador (tests/e2e): leitura do estado da batalha para o robô jogar
+  if (window.__GAMIDA_TEST__) window.__scribeBattle = () => B;
   window.openScribeChronicles = openScribeChronicles;
   window.scribeShowBook = showBook;
   window.scribeToggleTyping = toggleTyping;

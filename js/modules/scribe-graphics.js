@@ -1,15 +1,17 @@
-/*! Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário: uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE. */
+/*! Gamida, Crônicas do Escriba — Copyright (c) 2026 José Henrique Rosseto e Felipe Pereira Medeiros (coautores). Todos os direitos reservados. Uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE; autoria de cada parte em CREDITOS.md. */
 /**
  * ==========================================================================
  * Gamida - Crônicas do Escriba: arte em pixel
  * ==========================================================================
- * Cenários, heróis, criaturas e guardiões desenhados em canvas, sem imagens
- * externas, vindos da versão nova do jogo (heróis com as relíquias no corpo,
- * criaturas por região, guardiões bíblicos com desenho próprio e neblina por cena).
- * O desenho é feito em baixa resolução e passa por uma paleta de 32 cores com
- * pontilhado e contorno, o que dá o aspecto de jogo de 8 bits.
+ * GERADO por scripts/cronicas/extrair-arte.js a partir da versão original do
+ * jogo, de José Henrique Rosseto (CREDITOS.md). Não edite à mão: rode o script.
  *
- * O motor informa, por setEnvironment, o que antes eram variáveis globais:
+ * Cenários, heróis, criaturas e guardiões desenhados em canvas, sem imagens
+ * externas (heróis com as relíquias no corpo, criaturas por região, guardiões
+ * bíblicos com desenho próprio e neblina por cena). O desenho é feito em baixa
+ * resolução e passa por uma paleta de 32 cores com pontilhado e contorno.
+ *
+ * O motor informa, por setEnvironment, o que no original eram variáveis globais:
  * as relíquias do herói (desenhadas no corpo) e se o céu deve ficar escuro
  * (guardião ou masmorra).
  */

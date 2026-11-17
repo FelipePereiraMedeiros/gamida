@@ -570,3 +570,8 @@
 .sc-fullresult b { color: var(--sc-gold); }
 .sc-fullresult span { color: var(--sc-muted); font-size: 0.85rem; }
 .sc-seal { margin-left: 0.35rem; color: var(--sc-gold); font-style: normal; }
+
+/* Créditos das Crônicas */
+.sc-credits { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; }
+.sc-credits__list { display: flex; flex-direction: column; gap: 0.4rem; margin: 0; padding-left: 1.1rem; list-style: disc; color: var(--sc-ink); font-size: 0.88rem; line-height: 1.5; }
+.sc-byline { margin: 0; }

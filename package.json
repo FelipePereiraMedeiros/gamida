@@ -1,6 +1,6 @@
 {
   "name": "gamida",
-  "version": "2.36.0",
+  "version": "2.37.0",
   "description": "Treinador Autônomo de Idiomas Bíblicos (Hebraico & Grego Koiné)",
   "main": "js/app.js",
   "scripts": {
@@ -10,7 +10,11 @@
     "test:unit": "node test-runner.js all",
     "test:browser": "echo Abra test-environment.html em seu navegador",
     "build:bundle": "node scripts/build-bundle.js",
-    "build:css": "node scripts/build-css.js"
+    "build:css": "node scripts/build-css.js",
+    "test:py": "node scripts/run-py-tests.js",
+    "e2e": "node tests/e2e/run.js",
+    "test:all": "node test-runner.js all && node scripts/run-py-tests.js && node tests/e2e/run.js",
+    "cronicas:arte": "node scripts/cronicas/extrair-arte.js"
   },
   "keywords": [
     "hebraico",
@@ -26,6 +30,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "private": true,
   "devDependencies": {
+    "prettier": "3.8.1",
     "tailwindcss": "^3.4.17"
   }
 }
