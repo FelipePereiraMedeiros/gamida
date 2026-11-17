@@ -443,6 +443,17 @@
 .sc-chronicle__lost { color: var(--sc-muted); font-size: 0.82rem; opacity: 0.6; }
 .sc-relic-lore { display: flex; flex-direction: column; gap: 0.5rem; margin: 0; padding: 0; list-style: none; font-size: 0.88rem; line-height: 1.5; }
 .sc-relic-lore b { color: var(--sc-gold); }
+.sc-chronicle__book, .sc-bookhead { list-style: none; margin: 0.6rem 0 0.1rem; color: var(--sc-gold); font-weight: 800; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.sc-chronicle .sc-chronicle__book { padding-left: 0; border-left: 0; }
+.sc-liberty { margin-top: 0.4rem; font-size: 0.82rem; color: var(--sc-muted); }
+.sc-liberty summary { cursor: pointer; }
+.sc-liberty p { margin: 0.35rem 0 0; }
+.sc-beasts { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: 0.5rem; margin: 0.5rem 0 1rem; }
+.sc-beast { display: flex; flex-direction: column; gap: 0.1rem; padding: 0.5rem 0.65rem; border: 1px solid var(--sc-line); border-radius: 0.6rem; font-size: 0.82rem; }
+.sc-beast b { color: var(--sc-gold); }
+.sc-beast span, .sc-beast em { color: var(--sc-muted); font-style: normal; }
+.sc-beast.is-unknown { opacity: 0.5; }
+.sc-stats--big { font-size: 0.95rem; margin: 0.5rem 0 1rem; }
 
 /* Hebraico e grego com as mesmas fontes do restante do sistema.
    Os botões dos jogos herdam a fonte do painel; sem esta regra, uma alternativa

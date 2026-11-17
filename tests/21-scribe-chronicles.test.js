@@ -36,7 +36,7 @@ suite.test('A campanha tem um capítulo próprio para cada lição, nos dois idi
 
 suite.test('Os nomes das cidades estão no alfabeto do idioma', () => {
   Object.values(Campaign.HEBREW).forEach((meta) => assert.isTrue(/^[֐-׿\s־]+$/.test(meta.native), `Nome não hebraico: ${meta.native}`));
-  Object.values(Campaign.GREEK).forEach((meta) => assert.isTrue(/^[Ͱ-Ͽἀ-῿]+$/.test(meta.native), `Nome não grego: ${meta.native}`));
+  Object.values(Campaign.GREEK).forEach((meta) => assert.isTrue(/^[Ͱ-Ͽἀ-῿\s]+$/.test(meta.native), `Nome não grego: ${meta.native}`));
 });
 
 suite.test('Capítulo criado pelo aluno também entra na aventura', () => {
@@ -50,18 +50,46 @@ suite.test('Capítulo criado pelo aluno também entra na aventura', () => {
   assert.equal(Scribe.buildCampaign([tiny], 'hebrew').length, 0, 'Capítulo com menos de 4 palavras fica de fora');
 });
 
-suite.test('Relíquias: quatro por classe, espalhadas pela campanha, a última no fim', () => {
-  [29, 22, 11, 4].forEach((total) => {
-    const indexes = Scribe.relicIndexes(total);
-    assert.equal(new Set(indexes).size, 4, `Quatro capítulos distintos em campanha de ${total}`);
-    assert.equal(indexes[3], total - 1, 'A última relíquia vem com o último capítulo');
-    assert.isTrue(indexes.every((i, k) => k === 0 || i > indexes[k - 1]), 'Em ordem crescente');
+suite.test('Relíquias: quatro por classe e por rolo, cada uma presa ao seu capítulo, com versículo', () => {
+  LANGS.forEach(([language, chapters, table]) => {
+    const relics = Scribe.relicsOf(language);
+    Object.keys(Campaign.CLASSES).forEach((cls) => {
+      const mine = relics.filter((r) => r.cls === cls);
+      assert.isTrue(mine.length >= 4, `${language}/${cls}: ${mine.length} relíquias`);
+      mine.forEach((r) => {
+        assert.isTrue(!!table[r.ch], `Relíquia ${r.id} em capítulo que não é do rolo`);
+        assert.isTrue(chapters.some((c) => c.id === r.ch), `Relíquia ${r.id} em capítulo sem lição`);
+        assert.isTrue(/\d/.test(r.ref) && !!r.desc, `Relíquia ${r.id} sem versículo ou efeito`);
+        assert.equal(Scribe.relicFor(cls, r.ch), r);
+      });
+    });
   });
-  Object.keys(Campaign.CLASSES).forEach((cls) => {
-    const found = Array.from({ length: 29 }, (_, i) => Scribe.relicFor(cls, i, 29)).filter(Boolean);
-    assert.equal(found.length, 4);
-    assert.isTrue(found.every((r) => r.cls === cls));
+  assert.equal(Scribe.relicFor('mago', 'capitulo_inexistente'), null);
+  assert.equal(new Set(Campaign.RELICS.map((r) => r.id)).size, Campaign.RELICS.length, 'Ids de relíquia únicos');
+});
+
+suite.test('Fichas do Guia do Mestre do Rolo: texto-base, guardião com versículo e desenho, criaturas', () => {
+  const kinds = new Set(require('../js/modules/scribe-graphics.js').BOSS_KINDS);
+  LANGS.forEach(([language, , table]) => {
+    const species = Campaign.SPECIES[language];
+    Object.entries(table).forEach(([id, meta]) => {
+      ['ref', 'bossRef', 'why', 'story'].forEach((field) => assert.isTrue(!!meta[field], `${id} sem ${field}`));
+      assert.isTrue(kinds.has(meta.bossKind), `${id}: guardião sem desenho (${meta.bossKind})`);
+      assert.equal(meta.creatures.length, 3, `${id}: três criaturas`);
+      meta.creatures.forEach((sp) => assert.isTrue(!!species[sp] && /\d/.test(species[sp][1]), `${id}: criatura ${sp} sem versículo`));
+      assert.isTrue(Campaign.BOOKS[language].some((b) => b.id === meta.book), `${id}: livro ${meta.book} inexistente`);
+    });
+    Campaign.BOOKS[language].forEach((book) => {
+      assert.equal(table[book.last].book, book.id, `Último capítulo do ${book.short} fora do livro`);
+      const lore = Lore.forBook(language, book.id);
+      assert.isTrue(lore.prologue.paragraphs.length >= 3 && lore.ending.paragraphs.length >= 2, `${book.short} sem prólogo ou final`);
+    });
   });
+  // Livro I: o caminho do Éden ao Sinai, com os guardiões do guia
+  const bookOne = Object.values(Campaign.HEBREW).filter((m) => m.book === 1).map((m) => m.boss).join(' | ');
+  ['Serpente', 'Nefilins', 'Ninrode', 'Golias', 'Leviatã', 'Beemote', 'Dragão'].forEach((boss) => assert.isTrue(bookOne.includes(boss), `Livro I sem ${boss}`));
+  assert.equal(Campaign.classInfo('greek', 'mago').name, 'Pescador');
+  assert.equal(Campaign.classInfo('hebrew', 'mago').hp[0], Campaign.CLASSES.mago.hp[0], 'O nome muda, as regras não');
 });
 
 suite.test('Atributos do herói somam classe, nível e relíquias, com teto', () => {
@@ -215,7 +243,7 @@ suite.test('Toda lição tem a sua parte da história, nos dois idiomas', () => 
     chapters.forEach((chapter) => {
       const lore = Lore.forChapter(language, chapter.id);
       assert.equal(lore, table[chapter.id], `Lição sem história própria: ${chapter.title}`);
-      ['lore', 'taunt', 'epilogue'].forEach((field) => {
+      ['taunt', 'epilogue'].forEach((field) => {
         assert.isTrue(typeof lore[field] === 'string' && lore[field].length > 20, `${chapter.id} sem ${field}`);
       });
       assert.isTrue(/^“.*”$/.test(lore.taunt), `A fala do guardião de ${chapter.id} vem entre aspas`);
@@ -223,13 +251,13 @@ suite.test('Toda lição tem a sua parte da história, nos dois idiomas', () => 
     assert.deepEqual(Object.keys(table).filter((id) => !chapters.some((c) => c.id === id)), [], 'História sem lição');
     assert.isTrue(Lore.PROLOGUE[language].paragraphs.length >= 3, 'Prólogo curto demais');
     assert.isTrue(Lore.ENDING[language].paragraphs.length >= 2, 'Final curto demais');
-    assert.isTrue(!!Lore.PROLOGUE[language].villain && !!Lore.PROLOGUE[language].villainNative);
+    assert.isTrue(!!Lore.VILLAIN.name && !!Lore.VILLAIN.native[language]);
   });
   assert.equal(Lore.forChapter('hebrew', 'capitulo_do_aluno'), Lore.GENERIC, 'Capítulo criado pelo aluno usa a história genérica');
 });
 
 suite.test('Cada classe e cada relíquia tem a sua história', () => {
-  Object.keys(Campaign.CLASSES).forEach((cls) => assert.isTrue(!!Lore.CLASS_LORE[cls], `Classe sem história: ${cls}`));
+  ['hebrew', 'greek'].forEach((language) => Object.keys(Campaign.CLASSES).forEach((cls) => assert.isTrue(!!Lore.CLASS_LORE[language][cls], `Classe sem história: ${language}/${cls}`)));
   Campaign.RELICS.forEach((relic) => assert.isTrue(!!Lore.RELIC_LORE[relic.id], `Relíquia sem história: ${relic.name}`));
   assert.equal(Object.keys(Lore.RELIC_LORE).length, Campaign.RELICS.length);
 });
@@ -263,6 +291,10 @@ suite.test('Quem já jogava não revê o prólogo à força; quem começa agora,
   assert.equal(Scribe.sanitizeProgress({}).seenIntro, false, 'Aventura nova');
   assert.equal(Scribe.sanitizeProgress({ cls: 'mago', seenIntro: false }).seenIntro, false);
   assert.equal(Scribe.sanitizeProgress({ seenEnding: true }).seenEnding, true);
+  const books = Scribe.sanitizeProgress({ cls: 'mago', story: { p2: true, e1: 1, x9: true }, seen: { imp: 2, raven: -1 }, kills: { imp: 'x' } });
+  assert.deepEqual(books.story, { p2: true, e1: true, p1: true }, 'Prólogos e finais lidos de cada livro');
+  assert.deepEqual(books.seen, { imp: 2 });
+  assert.deepEqual(books.kills, {});
 });
 
 suite.test('Todos os capítulos ficam abertos para revisão, na ordem das lições', () => {

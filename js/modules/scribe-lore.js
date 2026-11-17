@@ -3,349 +3,354 @@
  * ==========================================================================
  * Gamida - Crônicas do Escriba: a história
  * ==========================================================================
- * O enredo que costura a aventura. Um aprendiz de escriba vê o rolo do mestre
- * ser desfeito pelo Esquecimento, a névoa que apaga tudo o que não é repetido,
- * e sai pelo caminho das próprias histórias para trazer as palavras de volta.
+ * Segue a lore do Guia do Mestre do Rolo. Nas tendas de Hebrom, o mestre
+ * Kelley guardava o Rolo das Palavras. O Devorador do Esquecimento, um dragão
+ * que se alimenta de toda palavra que ninguém revisa, rasgou o rolo: cada
+ * palavra virou uma criatura e cada frase, um guardião. Só vence uma criatura
+ * quem diz o nome certo dela.
  *
- * Cada capítulo tem três textos:
- *   lore     - a chegada à cidade (lida antes do pergaminho);
+ * Cada livro tem prólogo e final. Cada capítulo tem:
  *   taunt    - o que o guardião diz ao despertar;
  *   epilogue - o trecho da crônica que volta ao rolo quando o guardião cai.
- * Os trechos vencidos ficam guardados no Grimório, formando a crônica inteira.
+ * A chegada ao lugar é a história do capítulo (campo "story" da campanha).
  */
 
 (function () {
+const VILLAIN = { name: "o Devorador do Esquecimento", native: { hebrew: "הַשִּׁכְחָה", greek: "λήθη" } };
+
+/* ================= Prólogos e finais, por livro ================= */
+const BOOKS = {
+  hebrew: {
+    1: {
+      prologue: {
+        title: "O Rolo das Palavras",
+        paragraphs: [
+          "Nas tendas de Hebrom, o mestre Kelley guardava o Rolo das Palavras: cada palavra hebraica que um escriba precisa para ler a Torá.",
+          "Numa noite sem lua veio o Devorador do Esquecimento. Ele se alimenta de toda palavra que não é revisada, e o rolo era o maior banquete que já tinha visto.",
+          "Ele rasgou o rolo com uma garra. As letras se espalharam pela terra, e cada palavra virou uma criatura: demônios, espectros, draconídeos. As frases inteiras viraram guardiões.",
+          "O mestre chamou três aprendizes: um profeta, um guerreiro de Israel e um juiz benjamita. A regra da caça é antiga: só quem diz o nome certo de uma criatura consegue vencê-la.",
+          "Primeiro é preciso juntar as letras caídas ao redor das tendas. Depois a trilha vai do Éden ao Sinai: em cada lugar um pergaminho ensina, as criaturas testam o vocabulário e um guardião exige frases inteiras.",
+        ],
+      },
+      ending: {
+        title: "O rolo inteiro",
+        paragraphs: [
+          "O grande dragão caiu no Sinai, e o Devorador do Esquecimento caiu com ele. Da boca dos dois saíram, uma a uma, as frases que tinham engolido.",
+          "Letra por letra, palavra por palavra, o rolo voltou a ser inteiro nas tendas de Hebrom.",
+          "O mestre Kelley abriu o rolo, leu em voz alta בְּרֵאשִׁית בָּרָא אֱלֹהִים e o entregou a você. “Agora você lê sozinho.”",
+        ],
+      },
+    },
+    2: {
+      prologue: {
+        title: "Livro II: do Jordão à Babilônia",
+        paragraphs: [
+          "O rolo restaurado no Sinai era só a Torá. O mestre mostra as margens em branco: faltam os Profetas e os Escritos.",
+          "O Grande Dragão caiu, mas o Devorador deixou crias pela terra prometida. Elas se escondem nos lugares onde Israel lutou para não esquecer.",
+          "O aprendiz agora é escriba e segue o povo, da travessia do Jordão até os rios da Babilônia. Lá um salmo pergunta o que a jornada inteira pergunta: “Se eu me esquecer de ti, ó Jerusalém…” (Sl 137.5).",
+        ],
+      },
+      ending: {
+        title: "As margens preenchidas",
+        paragraphs: [
+          "Junto aos rios da Babilônia a estátua cai, e as harpas descem dos salgueiros.",
+          "O escriba volta às tendas de Hebrom com as margens preenchidas: a Lei, os Profetas e os Escritos no mesmo rolo.",
+          "O mestre Kelley lê em voz alta: “Se eu me esquecer de ti, ó Jerusalém, esqueça-se a minha destra da sua destreza” (Sl 137.5). E fecha o rolo: “Esquecer é o que o Devorador quer. Revisar é como se vence.”",
+        ],
+      },
+    },
+  },
+  greek: {
+    1: {
+      prologue: {
+        title: "O Segundo Rolo",
+        paragraphs: [
+          "O escriba que restaurou o rolo hebraico recebe um segundo rolo, escrito em outra letra. O mestre deste rolo é Bergmann, o autor da gramática de grego da turma.",
+          "O Devorador do Esquecimento também passou por ele. As letras gregas se espalharam de Belém a Patmos: cada palavra virou uma criatura, e cada frase, um guardião.",
+          "Três aprendizes seguem a trilha: o Pescador, o Centurião e o Fazedor de tendas. A regra da caça continua a mesma: só vence uma criatura quem diz o nome certo dela.",
+          "A trilha começa em Belém e termina na ilha de Patmos, onde o grande dragão, a antiga serpente, guarda a última página.",
+        ],
+      },
+      ending: {
+        title: "O Segundo Rolo inteiro",
+        paragraphs: [
+          "Em Patmos a besta e o dragão caem, e não pela força do escriba: eles foram vencidos pelo sangue do Cordeiro e pela palavra do testemunho (Ap 12.11; 17.14). O escriba venceu as perguntas e leu o texto.",
+          "Letra por letra, as palavras gregas voltam ao Segundo Rolo.",
+          "O mestre Bergmann abre o rolo e lê em voz alta: Ἐν ἀρχῇ ἦν ὁ λόγος (Jo 1.1). Depois o entrega a você: “Agora você lê sozinho.”",
+        ],
+      },
+    },
+  },
+};
+
+/** Compatibilidade: prólogo e final do primeiro livro de cada idioma */
 const PROLOGUE = {
-  hebrew: {
-    title: "O rolo rasgado",
-    villain: "Shikhchá",
-    villainNative: "שִׁכְחָה",
-    paragraphs: [
-      "Você é aprendiz na casa do mestre Kelley, o último escriba que ainda copia o rolo inteiro à mão. Todas as noites ele repete a mesma frase antes de apagar a lâmpada: “O que não se repete, a névoa leva.”",
-      "Uma noite a lâmpada ficou acesa e ninguém repetiu nada. Pela janela entrou Shikhchá, o Esquecimento. Não tem rosto nem voz: é uma névoa que se deita sobre a escrita e a desfaz. Quando amanheceu, o rolo estava em branco.",
-      "As palavras não morreram. Ganharam pernas, asas e dentes, e fugiram cada uma para o lugar da história de onde tinha saído. As frases, que são mais fortes, viraram guardiões.",
-      "O mestre lhe entregou a pena, um frasco de óleo e o rolo vazio. “Vá atrás delas. Comece pelas letras, a leste do jardim, e só pare em Jerusalém. Cada palavra que você disser em voz alta volta a ser sua.”",
-    ],
-  },
-  greek: {
-    title: "O códice em branco",
-    villain: "Lete",
-    villainNative: "Λήθη",
-    paragraphs: [
-      "Você é aprendiz na oficina do mestre Bergmann, que guarda o último códice copiado inteiro à mão. Ele tem um costume: lê uma página em voz alta todas as manhãs. “Palavra lida é palavra que fica”, diz.",
-      "Numa manhã de viagem ninguém leu. Pela fresta da porta entrou Lete, o Esquecimento, o rio que os antigos diziam correr debaixo da terra. Aqui ele vem como névoa: passa sobre a tinta e a leva embora. Ao meio-dia o códice estava em branco.",
-      "As palavras fugiram, cada uma para a cidade onde foi dita pela primeira vez. Viraram criaturas. As frases inteiras, que não se deixam levar tão fácil, viraram guardiões.",
-      "O mestre lhe deu a pena, um frasco de óleo e o códice vazio. “Siga o caminho da própria história: de Belém até a ilha de Patmos. O que você ler em voz alta, a névoa não leva de novo.”",
-    ],
-  },
+  hebrew: { ...BOOKS.hebrew[1].prologue, villain: "o Devorador do Esquecimento", villainNative: VILLAIN.native.hebrew },
+  greek: { ...BOOKS.greek[1].prologue, villain: "o Devorador do Esquecimento", villainNative: VILLAIN.native.greek },
 };
+const ENDING = { hebrew: BOOKS.hebrew[2].ending, greek: BOOKS.greek[1].ending };
 
-const ENDING = {
-  hebrew: {
-    title: "O rolo restaurado",
-    paragraphs: [
-      "No pátio do templo a névoa se desfaz. Debaixo dela não havia monstro nenhum: só um rolo empoeirado, esquecido num canto, como aquele que o sacerdote achou nos dias do rei Josias.",
-      "Você volta à casa do mestre com o rolo cheio. Ele o desenrola devagar, lê a primeira linha e a última, e não diz nada por um tempo.",
-      "Depois lhe devolve a pena. “Não é meu, é seu. Shikhchá volta todas as noites. Agora é você quem acende a lâmpada e repete.”",
-    ],
-  },
-  greek: {
-    title: "O códice completo",
-    paragraphs: [
-      "Na ilha, o dragão se desfaz em névoa e a névoa em nada. Sobre a pedra fica uma única ordem, a mesma que João ouviu ali: “Escreve o que vês.”",
-      "Você atravessa o mar de volta com o códice cheio. O mestre Bergmann abre numa página qualquer e lê em voz alta, como todas as manhãs.",
-      "Depois empurra o códice para o seu lado da mesa. “Lete não desiste. Amanhã cedo, quem lê é você.”",
-    ],
-  },
-};
-
+/* ================= Classes ================= */
 const CLASS_LORE = {
-  mago: "Cresceu entre os que contavam as estrelas e descobriu que as letras também formam constelações. Não tem pressa: prefere entender a palavra antes de tocá-la.",
-  cavaleiro: "Foi guarda da porta da casa do mestre. Não é o mais rápido para ler, mas nunca largou uma página pela metade. Erra, apanha e continua de pé.",
-  assassino: "Era mensageiro: decorava recados inteiros porque não podia levá-los escritos. Lê depressa, bate primeiro e some antes do contra-ataque.",
+  hebrew: {
+    mago: "Aprendiz no modelo de Elias, o tesbita: manto de pelos, cinto de couro e os olhos no céu (2Rs 1.8). Prefere entender a palavra antes de tocá-la.",
+    cavaleiro: "Aprendiz no modelo dos valentes de Davi (2Sm 23.8). Não é o mais rápido para ler, mas nunca larga uma página pela metade.",
+    assassino: "Aprendiz no modelo de Eúde, o benjamita canhoto (Jz 3.15-16). Lê depressa, bate primeiro e some antes do contra-ataque.",
+  },
+  greek: {
+    mago: "Aprendiz no modelo de Pedro e André, pescadores do mar da Galileia (Mt 4.18). Sabe esperar a rede encher.",
+    cavaleiro: "Aprendiz no modelo de Cornélio, centurião da coorte italiana (At 10.1). Disciplina antes de tudo: não sai da fileira.",
+    assassino: "Aprendiz no modelo de Paulo, Áquila e Priscila, que faziam tendas (At 18.3). Trabalha com as mãos e viaja depressa.",
+  },
 };
+// Os testes e as telas antigas pedem CLASS_LORE[classe]: vale o texto do hebraico
+Object.keys(CLASS_LORE.hebrew).forEach((key) => { CLASS_LORE[key] = CLASS_LORE.hebrew[key]; });
 
+/* ================= Relíquias ================= */
 const RELIC_LORE = {
-  vara_arao: "Uma vara seca que floresceu numa noite. Lembra que o que parece morto na memória pode brotar de novo.",
-  cajado_moises: "Estendido sobre o mar, abriu caminho. Dá tempo para atravessar a palavra antes que as águas voltem.",
-  urim: "As pedras que o sacerdote consultava nas decisões difíceis. Perdoam a primeira dúvida.",
-  tabuas: "Escritas duas vezes: as primeiras se quebraram. O que se escreve de novo, vale mais.",
-  lanca_josue: "Josué a manteve estendida até a batalha terminar. Ensina a não baixar o braço no meio da frase.",
-  escudo_abraao: "“Eu sou o teu escudo”, foi dito a Abraão. Pesa pouco e apara muito.",
-  espada_golias: "Guardada atrás do éfode, embrulhada num pano. “Não há outra igual”, disse Davi ao recebê-la.",
-  trombeta_sinai: "Soou do monte cada vez mais forte. A cada criatura vencida, devolve o fôlego.",
-  funda_davi: "Cinco pedras lisas do ribeiro e uma só bastou. Premia o golpe certeiro.",
-  punhal_eude: "De dois gumes, escondido sob a roupa do juiz canhoto. Ninguém o vê chegar.",
-  cordao_raabe: "O fio vermelho na janela de Jericó, sinal de que aquela casa seria poupada. Uma vez por capítulo, poupa você.",
-  manto_elias: "Caiu do céu quando o profeta subiu, e Eliseu o apanhou. Quem o veste herda dois dons.",
+  vara_arao: "Uma vara seca que floresceu numa noite (Nm 17.8). O que parece morto na memória pode brotar de novo.",
+  cajado_moises: "Estendido sobre o mar, abriu caminho (Êx 14.16). Dá tempo para atravessar a palavra antes que as águas voltem.",
+  urim: "As pedras que o sacerdote levava no peitoral para as decisões difíceis (Êx 28.30). Perdoam a primeira dúvida.",
+  tabuas: "Escritas pelo dedo de Deus (Êx 31.18) e escritas de novo depois de quebradas. O que se escreve outra vez vale mais.",
+  lanca_josue: "Josué a manteve estendida até a batalha terminar (Js 8.18). Ensina a não baixar o braço no meio da frase.",
+  escudo_abraao: "“Eu sou o teu escudo”, foi dito a Abraão (Gn 15.1). Pesa pouco e apara muito.",
+  espada_golias: "Guardada atrás do éfode, embrulhada num pano. “Não há outra igual”, disse Davi ao recebê-la (1Sm 21.9).",
+  trombeta_sinai: "Soou do monte cada vez mais forte (Êx 19.16). A cada criatura vencida, devolve o fôlego.",
+  funda_davi: "Cinco pedras lisas do ribeiro, e uma bastou (1Sm 17.49). Premia o golpe certeiro.",
+  punhal_eude: "De dois gumes, escondido sob a roupa do juiz canhoto (Jz 3.16). Ninguém o vê chegar.",
+  cordao_raabe: "O fio vermelho na janela de Jericó, sinal de que aquela casa seria poupada (Js 2.18). Uma vez por capítulo, poupa você.",
+  manto_elias: "Com uma aguilhada de bois, Sangar feriu seiscentos filisteus (Jz 3.31). Uma ferramenta simples nas mãos certas.",
+  manto_profeta: "Caiu do céu quando Elias subiu, e Eliseu o apanhou junto ao Jordão (2Rs 2.13). Quem o veste herda a palavra.",
+  arco_jonatas: "“O arco de Jônatas nunca voltou atrás” (2Sm 1.22). Dá tempo para o golpe sair inteiro.",
+  queixada_sansao: "Uma queixada de jumento ainda fresca, achada no caminho (Jz 15.15). Dá força para aguentar mais.",
+  rede_direita: "“Lançai a rede para o lado direito do barco, e achareis” (Jo 21.6). Uma dica no lugar certo.",
+  barco_pedro: "O barco de onde se ensinava a multidão na praia (Lc 5.3). Firme o bastante para esperar a resposta.",
+  moeda_peixe: "Achada na boca do primeiro peixe que subiu (Mt 17.27). Paga a primeira dívida da batalha.",
+  livrinho: "Doce na boca e amargo no ventre (Ap 10.9-10). Quem come o livro aprende mais.",
+  espada_espirito: "“A espada do Espírito, que é a palavra de Deus” (Ef 6.17). A arma é o próprio texto.",
+  escudo_fe: "“O escudo da fé, com o qual podereis apagar todos os dardos inflamados” (Ef 6.16).",
+  capacete_salvacao: "“Tomai também o capacete da salvação” (Ef 6.17). Protege quem pensa.",
+  couraca_justica: "“Vestida a couraça da justiça” (Ef 6.14). A cada vitória, o fôlego volta.",
+  lencos_paulo: "Lenços e aventais levados do corpo de Paulo (At 19.12). Pequenos panos, grandes efeitos.",
+  cesto_damasco: "Desceram Paulo pelo muro num cesto, de noite (At 9.25). A melhor fuga é a que ninguém vê.",
+  capa_troade: "“Traze a capa que deixei em Trôade” (2Tm 4.13). Para o frio da prisão e para não desistir.",
+  pergaminhos: "“E os livros, especialmente os pergaminhos” (2Tm 4.13). O último pedido de quem sabia ler.",
 };
 
-/* ================= Hebraico ================= */
+/* ================= Hebraico: fala do guardião e trecho da crônica ================= */
 const HEBREW = {
   kelley_01: {
-    lore: "A leste do jardim, a névoa chegou primeiro às letras. Sem elas nenhuma palavra fica de pé, então Shikhchá as soltou no deserto, vinte e duas criaturas pequenas que mudam de forma quando chegam ao fim da linha.",
-    taunt: "“Você não sabe nem o meu nome. Como pretende ler o resto?”",
-    epilogue: "As vinte e duas letras voltam ao rolo e se alinham da direita para a esquerda. A página deixa de estar em branco: agora está pronta.",
+    taunt: "“Cortei o rolo de Jeremias coluna por coluna e o lancei no braseiro. Você nem conhece as letras que ele tinha.”",
+    epilogue: "“Toma outro rolo e escreve nele todas as palavras que estavam no primeiro” (Jr 36.28). As vinte e duas letras voltam ao rolo, da direita para a esquerda.",
   },
   kelley_03: {
-    lore: "No jardim, o primeiro homem deu nome a tudo o que tinha fôlego: foi a primeira lição de vocabulário do mundo. As criaturas daqui são esses nomes, pai, mãe, filho, povo, que se esconderam entre as árvores.",
-    taunt: "“Eu guardo a porta com uma espada que se revolve. Diga os nomes, um por um, ou volte.”",
-    epilogue: "“E o homem deu nome a todos os animais.” Os primeiros substantivos voltam ao rolo, cada um com a sua raiz de três letras.",
+    taunt: "“É assim que Deus disse? Duvide de cada palavra, e nenhuma ficará com você.”",
+    epilogue: "“E o homem deu nome a todos os animais” (Gn 2.20). Os primeiros substantivos voltam ao rolo, cada um com a sua raiz.",
   },
   kelley_05: {
-    lore: "As águas baixaram e a arca pousou nos montes de Ararate. Dali se vê tudo de novo pela primeira vez: a terra, o céu, a luz. As criaturas se escondem atrás de um pequeno ה e fingem ser coisas quaisquer.",
-    taunt: "“Um monte ou o monte? Enquanto você não souber a diferença, não passa.”",
-    epilogue: "“E a arca repousou sobre os montes de Ararate.” O artigo volta ao rolo, e cada coisa passa a ser aquela coisa.",
+    taunt: "“Fomos os valentes de antigamente, homens de renome. Quem ainda se lembra dos nossos nomes?”",
+    epilogue: "“E a arca repousou sobre os montes de Ararate” (Gn 8.4). O artigo volta ao rolo, e cada coisa passa a ser aquela coisa.",
   },
   kelley_06: {
-    lore: "Na planície de Sinear os homens disseram: “Edifiquemos uma cidade e uma torre.” Foi ali que as línguas se confundiram. As palavras pequenas, as que ligam uma coisa à outra, ainda rondam os tijolos.",
-    taunt: "“Em, para, como, de, com, sobre… Eu embaralhei todas. Desembaralhe.”",
-    epilogue: "A torre fica inacabada, mas as ligações voltam: em, para, de, com. As palavras do rolo já conseguem dar as mãos.",
+    taunt: "“Babel foi o princípio do meu reino. Aqui ninguém se entende: ligue as palavras, se puder.”",
+    epilogue: "“Por isso se chamou o seu nome Babel” (Gn 11.9). Preposições e conectivos voltam ao rolo, e as palavras conseguem dar as mãos.",
   },
   kelley_07: {
-    lore: "De Ur dos caldeus saiu um homem a quem foi dito: “Conta as estrelas, se as podes contar.” Aqui as palavras se multiplicam, aos pares e aos bandos, e mudam de terminação para confundir a contagem.",
-    taunt: "“Um cavalo, uma égua, cavalos, éguas, dois olhos. Quantos somos? Conte direito.”",
-    epilogue: "“Assim será a tua descendência.” Masculino e feminino, singular, plural e dual voltam ao rolo, cada um com a sua marca.",
+    taunt: "“Terá me serviu além do rio. Conte quantos somos: um, dois, muitos.”",
+    epilogue: "“Olha para os céus e conta as estrelas” (Gn 15.5). Masculino e feminino, singular, plural e dual voltam ao rolo.",
   },
   kelley_08: {
-    lore: "Junto ao poço de Harã, Jacó viu Raquel chegar com as ovelhas, e o texto para tudo para dizer como ela era. É a terra dos adjetivos: bom, mau, grande, sábio. Eles seguem o substantivo como a sombra segue o viajante.",
-    taunt: "“O rei bom ou o rei é bom? Pese bem. Eu só vendo a quem sabe a diferença.”",
-    epilogue: "A pedra da boca do poço é removida. Os adjetivos voltam ao rolo, cada um concordando com o seu substantivo.",
+    taunt: "“Raquel me escondeu na sela do camelo. Sou pequeno, mas cada adjetivo errado me faz crescer.”",
+    epilogue: "“E Jacó removeu a pedra da boca do poço” (Gn 29.10). Os adjetivos voltam ao rolo, cada um concordando com o seu substantivo.",
   },
   kelley_09: {
-    lore: "Em Siquém Josué reuniu as tribos e falou em primeira pessoa: “Eu e a minha casa serviremos ao SENHOR.” O povo respondeu: “Nós também.” As criaturas daqui apontam o dedo: eu, tu, este, aquele.",
-    taunt: "“Quem fala? Com quem? De quem? Responda, e eu julgo.”",
-    epilogue: "Uma grande pedra é erguida debaixo do carvalho, por testemunha. Os pronomes voltam ao rolo e cada frase ganha um dono.",
+    taunt: "“Fiz-me rei em Siquém sobre os meus irmãos. Eu, tu, ele: quem manda aqui?”",
+    epilogue: "“Eu e a minha casa serviremos ao SENHOR” (Js 24.15). Os pronomes voltam ao rolo, e cada frase ganha um dono.",
   },
   kelley_10: {
-    lore: "Jacó dormiu com uma pedra por travesseiro e viu uma escada que tocava o céu. Ao acordar chamou o lugar de Betel, “casa de Deus”: duas palavras presas uma à outra. É assim que as criaturas andam aqui, acorrentadas aos pares.",
-    taunt: "“Casa de Deus, porta do céu, filhos de Israel. Solte um elo errado e a corrente inteira cai sobre você.”",
-    epilogue: "“Este lugar não é outro senão a casa de Deus.” O construto volta ao rolo, e as palavras aprendem a pertencer umas às outras.",
+    taunt: "“Puseram-me em Betel: ‘Eis os teus deuses, ó Israel.’ Solte um elo da corrente e eu fico com a casa.”",
+    epilogue: "“Este lugar não é outro senão a casa de Deus” (Gn 28.17). O construto volta ao rolo, e as palavras aprendem a pertencer umas às outras.",
   },
   kelley_11: {
-    lore: "Em Hebrom, Abraão pesou quatrocentos siclos de prata por um campo e uma caverna: a primeira terra que foi dele. Nas tendas tudo tem dono, e o dono vem colado no fim da palavra.",
-    taunt: "“Meu campo, tua prata, a caverna dele. Diga de quem é cada coisa, forasteiro.”",
-    epilogue: "O campo e a caverna são confirmados como propriedade. Os sufixos voltam ao rolo: meu, teu, dele, nosso.",
+    taunt: "“Escolham um homem que desça a mim! A minha lança é como o eixo do tecelão. Diga de quem é cada coisa.”",
+    epilogue: "Uma pedra lisa do ribeiro bastou. Os sufixos voltam ao rolo: meu, teu, dele, nosso.",
   },
   kelley_12: {
-    lore: "No Egito as palavras deixaram de ser coisas e passaram a fazer coisas. O povo contava aos filhos o que tinha acontecido: ele ouviu, ele viu, ele lembrou. São ações já completas, e a terminação diz quem as fez.",
-    taunt: "“Eu não conheci José, e não conheço você. Diga quem fez, ou sirva.”",
-    epilogue: "“E Deus ouviu o gemido deles e se lembrou da sua aliança.” O perfeito volta ao rolo, e a história pode enfim ser contada.",
+    taunt: "“Moro nas águas e engulo o que já aconteceu. Diga quem fez, ou afunde.”",
+    epilogue: "“E Deus ouviu o gemido deles e se lembrou da sua aliança” (Êx 2.24). O perfeito volta ao rolo, e a história pode ser contada.",
   },
   kelley_13: {
-    lore: "Três dias depois do mar, o povo chegou a Mara e não pôde beber, porque as águas eram amargas. E murmuraram: “Que havemos de beber?” Desde então as criaturas daqui só falam perguntando.",
-    taunt: "“Quem? O quê? Onde? Por quê? Quantos? Responda às minhas e eu respondo à sua.”",
-    epilogue: "Um lenho é lançado nas águas e elas se tornam doces. As perguntas e os números voltam ao rolo.",
+    taunt: "“Bebo um rio inteiro e não me apresso. Quem? O quê? Quantos? Responda antes que eu beba a fonte.”",
+    epilogue: "“Lançou o lenho nas águas, e as águas se tornaram doces” (Êx 15.25). As perguntas e os números voltam ao rolo.",
   },
   kelley_14: {
-    lore: "Ao pé do Sinai há trovões, relâmpagos e som de trombeta. Aqui a mesma raiz ganha sete forças: age, sofre a ação, intensifica, faz fazer. O dragão que guarda o monte tem uma cabeça para cada tronco.",
-    taunt: "“Sete cabeças, sete troncos. Corte a errada e outra nasce no lugar.”",
-    epilogue: "“Todo o povo viu os trovões.” Os sete troncos voltam ao rolo, e uma só raiz passa a valer por sete.",
+    taunt: "“Sete cabeças, sete troncos. Sou o senhor do Devorador e vim levar o rolo de volta.”",
+    epilogue: "O Grande Dragão caiu, e o Devorador do Esquecimento caiu com ele. Da boca dos dois saíram as frases que tinham engolido, e os sete troncos voltam ao rolo.",
   },
   kelley_15: {
-    lore: "De Cades partiram doze homens para espiar a terra. Voltaram com um cacho de uvas e duas versões do futuro: “subiremos” e “não poderemos subir”. As criaturas daqui falam do que ainda não aconteceu.",
-    taunt: "“Vi gigantes naquela terra. Você subirá? Diga no tempo certo.”",
-    epilogue: "“Subamos e possuamos a terra, porque certamente prevaleceremos.” O imperfeito volta ao rolo, e a história ganha um amanhã.",
+    taunt: "“Vejo-o, mas não agora; contemplo-o, mas não de perto. Diga o que ainda vai acontecer, se souber.”",
+    epilogue: "“Uma estrela procederá de Jacó” (Nm 24.17). O imperfeito Qal volta às margens do rolo.",
   },
   kelley_16: {
-    lore: "Do alto de Moabe um vidente foi chamado para amaldiçoar e só conseguiu abençoar: “Vejo-o, mas não agora.” Daquelas colinas se enxerga longe, e cada tronco tem o seu jeito de dizer o que virá.",
-    taunt: "“Ele será guardado? Falará? Fará separar? Diga qual tronco, e eu lhe mostro o caminho.”",
-    epilogue: "“Uma estrela procederá de Jacó.” O futuro dos sete troncos volta ao rolo.",
+    taunt: "“Seis dias vocês rodaram e eu fiquei de pé. Diga como o verbo continua, ou continue rodando.”",
+    epilogue: "“O povo gritou, e o muro caiu” (Js 6.20). O imperfeito dos demais troncos volta ao rolo.",
   },
   kelley_17: {
-    lore: "Diante do Jordão em cheia, os sacerdotes ergueram a arca nos ombros e as águas pararam. Ninguém atravessa sozinho: o verbo também carrega o seu objeto colado às costas.",
-    taunt: "“Guardou-me, guardou-te, guardou-o. Quem leva quem? Erre, e o rio leva você.”",
-    epilogue: "O povo passa a pé enxuto. Os sufixos do verbo voltam ao rolo: uma palavra só diz quem fez e a quem.",
+    taunt: "“Expulsei vocês uma vez. Quem perturbou quem? Diga a quem o verbo se refere.”",
+    epilogue: "“Não temas, nem te espantes” (Js 8.1). Os sufixos no verbo voltam ao rolo.",
   },
   kelley_18: {
-    lore: "Sete dias em volta de Jericó, sem uma palavra. No sétimo veio a ordem: “Gritai!” Aqui tudo é mandado ou proibido, e as criaturas obedecem a quem sabe dar a ordem na forma certa.",
-    taunt: "“Marche! Toque! Cale-se! Não se aproxime! Eu só obedeço a ordens bem dadas.”",
-    epilogue: "“O povo gritou, e o muro caiu.” O imperativo e as proibições voltam ao rolo.",
+    taunt: "“Novecentos carros de ferro! Dê a ordem certa, ou o ribeiro leva você.”",
+    epilogue: "“O ribeiro de Quisom os arrastou” (Jz 5.21). O imperativo, as proibições e o coortativo voltam ao rolo.",
   },
   kelley_19: {
-    lore: "Em Gilgal, doze pedras tiradas do meio do rio foram postas de pé, “para que os vossos filhos perguntem”. É o lugar do lembrar. Aqui o verbo vira nome: o guardar, o passar, o atravessar.",
-    taunt: "“Para guardar, ao guardar, certamente guardar. Diga para que serve cada pedra.”",
-    epilogue: "“Estas pedras serão por memorial para sempre.” Os dois infinitivos voltam ao rolo.",
+    taunt: "“Caí uma vez e me levantaram. Para cair de novo, você precisa dizer para quê.”",
+    epilogue: "“Eis que Dagom estava caído com o rosto em terra diante da arca” (1Sm 5.3). Os infinitivos voltam ao rolo.",
   },
   kelley_20: {
-    lore: "Em Siló a lâmpada ainda não se apagara, e um menino dormia perto da arca. O serviço ali nunca para: sempre há alguém guardando, servindo, ouvindo. As criaturas são ações que não terminam.",
-    taunt: "“Estou guardando esta tenda desde antes de você nascer. Quem é o que guarda e quem é o guardado?”",
-    epilogue: "“Fala, porque o teu servo ouve.” Os particípios voltam ao rolo, e a ação passa a ter rosto.",
+    taunt: "“Gritamos desde a manhã até o meio-dia. Diga quem está fazendo o quê, ou grite conosco.”",
+    epilogue: "“O SENHOR é Deus! O SENHOR é Deus!” (1Rs 18.39). Os particípios voltam ao rolo.",
   },
   kelley_21: {
-    lore: "“E aconteceu, nos dias em que os juízes julgavam, que houve fome na terra.” Assim começa a história de Belém, e assim começam quase todas: e foi, e viu, e disse. As criaturas daqui andam em fila, presas por um pequeno ו.",
-    taunt: "“E veio, e colheu, e ajuntou. Solte um elo da história e ela para. Conte-a até o fim.”",
-    epilogue: "“E ela foi, e chegou, e apanhava espigas no campo.” O vav consecutivo volta ao rolo, e a narrativa volta a correr.",
+    taunt: "“Fui preparado para engolir, não para devolver. Conte a história em ordem e talvez eu a devolva.”",
+    epilogue: "“E o SENHOR falou ao peixe, e ele vomitou Jonas na terra” (Jn 2.10). O vav consecutivo volta ao rolo, e a história volta a correr.",
   },
   kelley_22: {
-    lore: "Em Gibeá, Saul se assenta debaixo de uma tamargueira com a lança na mão. As raízes daqui tropeçam logo no primeiro passo: a primeira letra é gutural e não aceita as vogais de sempre.",
-    taunt: "“A minha lança não erra a primeira letra. E a sua língua?”",
-    epilogue: "“E Saul ficou de pé no meio do povo.” Os verbos de primeira gutural voltam ao rolo.",
+    taunt: "“Subi, sitiei, e ninguém vem socorrer. O olho direito ou a palavra certa: escolha.”",
+    epilogue: "“Amanhã, quando o sol aquecer, tereis socorro” (1Sm 11.9). Os verbos de primeira gutural voltam ao rolo.",
   },
   kelley_23: {
-    lore: "Em Ramá mora o profeta, e todo o Israel vem ouvi-lo. Cada frase dele começa do mesmo jeito: “Assim disse.” O verbo dizer manda nesta montanha, com um א que se escreve e não se ouve.",
-    taunt: "“Eu disse, tu disseste, ele dirá. Você ouviu o א? Ninguém ouve. Mas ele está lá.”",
-    epilogue: "“E disse Samuel a todo o povo.” A forma verbal mais repetida de todo o rolo volta ao seu lugar.",
+    taunt: "“Escrevi cartas em nome do rei. Leia o que está escrito, se o א não fugir de você.”",
+    epilogue: "“Conforme a palavra do SENHOR” (2Rs 9.36). Os verbos de primeira א voltam ao rolo.",
   },
   kelley_24: {
-    lore: "No vale de Elá, dois exércitos se olham de um monte ao outro, e toda manhã um gigante desce para perguntar e desafiar. Aqui a gutural fica no meio da raiz e, como ele, não se dobra.",
-    taunt: "“Escolham um homem que desça a mim! Quarenta dias perguntei. Você tem resposta?”",
-    epilogue: "Uma pedra lisa do ribeiro basta. Os verbos de gutural no meio voltam ao rolo.",
+    taunt: "“A cidade clama e eu não respondo. Pergunte, peça, clame: cada verbo tem uma garganta no meio.”",
+    epilogue: "“Amanhã a esta hora uma medida de flor de farinha se venderá por um siclo” (2Rs 7.1). Os verbos de gutural no meio voltam ao rolo.",
   },
   licao_25: {
-    lore: "Na caverna de Adulão juntaram-se a Davi todos os que estavam em aperto. É um bom lugar para se esconder, e a gutural do fim da raiz faz o mesmo: fica no fundo e puxa um “a” para perto de si.",
-    taunt: "“Fui enviado, ouvi, fugi. Chegue ao fundo da palavra e me ache, se puder.”",
-    epilogue: "“E todo homem em aperto se ajuntou a ele.” Os verbos de terceira gutural voltam ao rolo.",
+    taunt: "“Ouvi que os reis subiram. Mando a resposta do alto do muro.”",
+    epilogue: "“E retiraram-se dele e voltaram para a sua terra” (2Rs 3.27). Os verbos de terceira gutural voltam ao rolo.",
   },
   licao_26: {
-    lore: "Nas rochas das cabras monteses, em En-Gedi, Davi achou o rei dormindo e não o tocou: cortou só a ponta do manto. O א do fim da raiz é como ele ali, presente e em silêncio.",
-    taunt: "“Você me achou? Leia o que está escrito, não o que se ouve.”",
-    epilogue: "“Eis que hoje os teus olhos viram.” Os verbos de terceira א voltam ao rolo.",
+    taunt: "“Tomei todas as cidades fortes de Judá. O que vocês têm para me pagar?”",
+    epilogue: "“Pequei; retira-te de mim” (2Rs 18.14). Os verbos de terceira א voltam ao rolo.",
   },
   licao_27: {
-    lore: "Davi tomou a fortaleza de Sião, habitou nela e edificou ao redor. Subir, ver, fazer, construir: os verbos que mais trabalham na língua terminam em ה e perdem essa letra quando têm pressa.",
-    taunt: "“E subiu, e viu, e fez. Para onde foi a última letra? Diga-me e as portas se abrem.”",
-    epilogue: "“E Davi edificou ao redor.” Os verbos de terceira ה voltam ao rolo: os mais usados de todos.",
+    taunt: "“Não vos engane Ezequias! Façam paz comigo, subam, vejam: eu sei os verbos de vocês.”",
+    epilogue: "“Defenderei esta cidade, para a livrar” (2Rs 19.34). Os verbos de terceira ה voltam ao rolo.",
   },
   licao_28: {
-    lore: "Em Gibeão, de noite, foi dito a Salomão: “Pede o que queres que eu te dê.” Ele pediu um coração que ouve. O verbo dar é o senhor deste lugar, e o seu נ some logo no começo.",
-    taunt: "“Dou, darás, dê. Onde está o נ? Quem pede certo, recebe.”",
-    epilogue: "“Eis que te dou um coração sábio.” Os verbos de primeira נ voltam ao rolo.",
+    taunt: "“Dou e tiro reis. Onde está o נ do seu verbo?”",
+    epilogue: "“E o povo da terra tomou Jeoacaz e o ungiu” (2Rs 23.30). Os verbos de primeira נ voltam ao rolo.",
   },
   licao_29: {
-    lore: "No Carmelo, um profeta sozinho diante de quatrocentos e cinquenta. O fogo desceu e consumiu o holocausto, a lenha, as pedras e até a água. Nas raízes daqui o fogo come a letra do meio.",
-    taunt: "“Levanta-te! Vem! Volta! Sobraram duas letras. Você reconhece a raiz pelas cinzas?”",
-    epilogue: "“Sobe, come e bebe, porque há ruído de abundante chuva.” Os verbos de letra do meio fraca voltam ao rolo.",
+    taunt: "“Vim, cerquei, levei. Diga a raiz de cada verbo, se ela ainda tiver três letras.”",
+    epilogue: "“E Joaquim mudou as vestes da sua prisão e comeu pão diante do rei todos os dias” (2Rs 25.29). Os verbos de letra do meio fraca voltam ao rolo.",
   },
   licao_30: {
-    lore: "Onri comprou um monte e nele edificou Samaria. Dali os reis de Israel se assentam, saem para a guerra e descem. Sentar, sair, descer, saber: todos começam com י, e o י não fica para ver o fim.",
-    taunt: "“Senta-te, sai, desce, sabe! Quatro ordens e nenhuma começa como devia. Entendeu?”",
-    epilogue: "“E chamou Samaria à cidade que edificou.” Os verbos de primeira י voltam ao rolo.",
+    taunt: "“Vim de Babilônia para queimar. Saia pelo caminho que quiser: as palavras ficam.”",
+    epilogue: "“As misericórdias do SENHOR são a causa de não sermos consumidos” (Lm 3.22). Os verbos de primeira י voltam ao rolo.",
   },
   licao_31: {
-    lore: "Jerusalém, enfim. No templo em reforma, a névoa é mais densa do que em qualquer outro lugar: é ali que Shikhchá guarda o que roubou. O último guardião dá voltas sobre si mesmo, como as raízes de letras dobradas, e sabe todas as lições que você aprendeu.",
-    taunt: "“Eu sou tudo o que você deixou de repetir. Rodeei esta cidade antes de você nascer. Mostre-me que se lembra.”",
-    epilogue: "“Achei o livro da Lei na casa do SENHOR.” O rolo estava ali o tempo todo, debaixo da poeira. As últimas raízes voltam ao lugar.",
+    taunt: "“Prostrem-se e esqueçam a canção de Sião. Quem se lembra de Jerusalém numa terra estranha?”",
+    epilogue: "“Se eu me esquecer de ti, ó Jerusalém, esqueça-se a minha destra da sua destreza” (Sl 137.5). As últimas raízes voltam ao rolo.",
   },
 };
 
 /* ================= Grego ================= */
 const GREEK = {
   bergmann_01: {
-    lore: "Nos campos de Belém, pastores vigiam o rebanho de noite. A névoa de Lete passou primeiro por aqui e soltou as letras pelo pasto: vinte e quatro criaturas, do alfa ao ômega, algumas com sopro, outras sem.",
-    taunt: "“Do alfa ao ômega, quantas somos? Quem não nos conhece não lê nada.”",
-    epilogue: "“Não temam: trago uma boa notícia.” As vinte e quatro letras voltam ao códice, com espíritos e acentos no lugar.",
+    taunt: "“Ide e informai-vos com cuidado. Eu também quero saber o que está escrito.”",
+    epilogue: "“E tu, Belém, terra de Judá” (Mt 2.6). As vinte e quatro letras voltam ao Segundo Rolo.",
   },
   bergmann_02: {
-    lore: "Em Nazaré o menino crescia e os dias eram todos parecidos: alguém ouve, alguém vê, alguém diz. É a terra do presente. Aqui o verbo mostra, só pela terminação, quem está agindo.",
-    taunt: "“Eu vejo, tu vês, ele vê. Quem está vigiando agora? Responda sem pronome.”",
-    epilogue: "“E o menino crescia e se fortalecia.” O presente volta ao códice, e as palavras começam a agir.",
+    taunt: "“Se és aprendiz, diz que estas pedras se tornem palavras.”",
+    epilogue: "“Não só de pão viverá o homem, mas de toda palavra que sai da boca de Deus” (Mt 4.4). O presente volta ao rolo.",
   },
   bergmann_03: {
-    lore: "À beira do Jordão um homem vestido de pelos de camelo anuncia o que está para vir. Tudo aqui é “para que” e “se”: fala-se do que pode ser, ainda não do que é.",
-    taunt: "“Para que você atravesse, é preciso que diga. Se errar, o rio decide.”",
-    epilogue: "“Para que todos cressem por meio dele.” O subjuntivo volta ao códice, e com ele a possibilidade.",
+    taunt: "“Que temos nós contigo? Para que vieste aqui?”",
+    epilogue: "“Ele ordena até aos espíritos imundos, e eles lhe obedecem” (Mc 1.27). O subjuntivo volta ao rolo.",
   },
   bergmann_04: {
-    lore: "Quarenta dias no deserto, e uma voz que só fala em condições e promessas: “Tudo isto te darei.” A resposta veio também no futuro: “Não só de pão viverá o homem.” As criaturas daqui escondem um σ antes da terminação.",
-    taunt: "“Tudo isto lhe darei, se você se prostrar. O que você fará?”",
-    epilogue: "“Ao Senhor teu Deus adorarás.” O futuro volta ao códice.",
+    taunt: "“O barco vai afundar. Vocês vão perecer. Quem vai acalmar o mar?”",
+    epilogue: "“Cala-te, aquieta-te. E o vento cessou” (Mc 4.39). O futuro volta ao rolo.",
   },
   bergmann_05: {
-    lore: "Em Caná há uma festa de casamento e seis talhas de pedra. O mestre-sala prova e chama o noivo. Numa festa cada um tem o seu lugar à mesa, e numa frase também: a terminação diz quem serve, quem recebe e de quem é o vinho.",
-    taunt: "“O servo, do servo, ao servo. Quem trouxe o vinho? Diga o caso e eu o deixo entrar.”",
-    epilogue: "“Tu guardaste o bom vinho até agora.” O artigo e a segunda declinação voltam ao códice.",
+    taunt: "“Legião é o meu nome, porque somos muitos. Diga o caso de cada um de nós.”",
+    epilogue: "“Vai para tua casa, para os teus, e anuncia-lhes” (Mc 5.19). O artigo e a segunda declinação voltam ao rolo.",
   },
   bergmann_06: {
-    lore: "Em Cafarnaum um centurião manda dizer: “Dize somente uma palavra.” Ele entende de ordens: diz a um “vai”, e ele vai. As palavras femininas daqui também obedecem, mas trocam de vogal conforme quem vem antes.",
-    taunt: "“Tenho soldados às minhas ordens. A glória, da glória, à glória: ponha-as em forma.”",
-    epilogue: "“Nem mesmo em Israel achei tamanha fé.” A primeira declinação volta ao códice.",
+    taunt: "“Muitas vezes o lancei no fogo e na água. Ele não fala, e você?”",
+    epilogue: "“Esta casta não sai senão por meio de oração” (Mc 9.29). A primeira declinação volta ao rolo.",
   },
   bergmann_07: {
-    lore: "Do barco, perto da praia, conta-se a história de um semeador. Uma parte da semente caiu em terra boa. À beira do mar da Galileia tudo ganha qualidade: boa, má, fiel, santo, pequeno.",
-    taunt: "“A terra boa ou a terra é boa? Lance a rede do lado certo.”",
-    epilogue: "“E deu fruto: cem, sessenta e trinta por um.” Os adjetivos voltam ao códice, cada um concordando com o seu nome.",
+    taunt: "“Quatro dias. Ninguém sai daqui.”",
+    epilogue: "“Lázaro, vem para fora!” (Jo 11.43). O último inimigo a ser destruído é a morte (1Co 15.26). Os adjetivos voltam ao rolo.",
   },
   bergmann_08: {
-    lore: "Ao meio-dia, junto ao poço de Jacó, uma mulher vem tirar água. A conversa é toda feita de palavras pequenas: de onde, para onde, em que monte, por meio de quem. Em Samaria as preposições decidem o sentido.",
-    taunt: "“Deste poço ou daquele monte? Em Jerusalém ou em espírito? Uma palavra pequena muda tudo.”",
-    epilogue: "“Em espírito e em verdade.” As preposições voltam ao códice, cada uma com o seu caso.",
+    taunt: "“Vós nada sabeis. Convém que um morra por todos.”",
+    epilogue: "“E não somente pela nação, mas para reunir em um só corpo os filhos de Deus” (Jo 11.52). As preposições voltam ao rolo.",
   },
   bergmann_09: {
-    lore: "Em Betânia há uma pedra sobre um túmulo e gente chorando. A frase que se ouve ali começa por um pronome que ninguém esperava: “Eu sou.” Eu, tu, ele, este, aquele: cada um é chamado pelo nome.",
-    taunt: "“Quem é este? De quem é a voz? A quem ela chama? Aponte, e eu rolo a pedra.”",
-    epilogue: "“Lázaro, vem para fora!” Os pronomes voltam ao códice.",
+    taunt: "“Aquele que eu beijar, esse é. Quem é quem nesta noite?”",
+    epilogue: "“Amigo, a que vieste?” (Mt 26.50). Os pronomes voltam ao rolo.",
   },
   bergmann_10: {
-    lore: "Na entrada de Jericó um homem rico e de pouca altura procurava ver quem passava, e não conseguia por causa da multidão. Correu adiante e subiu numa figueira. Aqui se conta o que ia acontecendo, sem pressa de terminar.",
-    taunt: "“Eu cobrava, eu contava, eu guardava. E você, o que vinha fazendo?”",
-    epilogue: "“Hoje veio a salvação a esta casa.” O imperfeito volta ao códice.",
+    taunt: "“Eu iludia, eles ouviam. Quanto custa a sua palavra?”",
+    epilogue: "“O teu dinheiro seja contigo para perdição” (At 8.20). O imperfeito e os verbos defectivos voltam ao rolo.",
   },
   bergmann_11: {
-    lore: "Em Jerusalém, no pátio do templo, os verbos mais antigos da língua contam o que aconteceu de uma vez: veio, viu, disse, tomou. Para isso trocam de rosto, e os escribas do lugar se orgulham de reconhecê-los.",
-    taunt: "“λέγω vira εἶπον. ὁράω vira εἶδον. Você decorou, ou vai adivinhar?”",
-    epilogue: "“E, tendo vindo, viu a cidade e chorou sobre ela.” O segundo aoristo volta ao códice.",
+    taunt: "“Prendi, guardei, vigiei. Como saiu daqui o meu preso?”",
+    epilogue: "“E a palavra de Deus crescia e se multiplicava” (At 12.24). O segundo aoristo volta ao rolo.",
   },
   bergmann_12: {
-    lore: "No horto das oliveiras, uma noite só. Vieram com lanternas, tochas e armas. O que aconteceu ali, aconteceu de uma vez, e a língua marca o fato com duas letras: σα.",
-    taunt: "“Vigiei, prendi, levei. Uma noite, um golpe. Mostre o seu.”",
-    epilogue: "“Não se faça a minha vontade, mas a tua.” O primeiro aoristo volta ao códice.",
+    taunt: "“Desviei o procônsul uma vez. Você vai crer no que lê?”",
+    epilogue: "“Então o procônsul creu, maravilhado da doutrina do Senhor” (At 13.12). O primeiro aoristo volta ao rolo.",
   },
   bergmann_13: {
-    lore: "No lugar chamado Caveira, a terra tremeu e as rochas se partiram. Um soldado que estava de frente viu tudo. As palavras daqui são como as rochas: só mostram o que têm por dentro quando se abrem no genitivo.",
-    taunt: "“Carne, da carne. Corpo, do corpo. Eu vi o que havia por dentro. E você?”",
-    epilogue: "“Verdadeiramente este era Filho de Deus.” A terceira declinação volta ao códice.",
+    taunt: "“Estes homens anunciam um caminho. Eu adivinho o seu: o genitivo vai traí-lo.”",
+    epilogue: "“E na mesma hora saiu” (At 16.18). A terceira declinação volta ao rolo.",
   },
   bergmann_14: {
-    lore: "Dois discípulos caminham para Emaús, conversando e discutindo, e um terceiro se põe a andar com eles. Duas ações ao mesmo tempo: é o que o particípio sabe fazer.",
-    taunt: "“Andando, falando, partindo o pão. O que eu fazia enquanto você olhava?”",
-    epilogue: "“Não ardia o nosso coração, quando ele nos falava pelo caminho?” O particípio presente volta ao códice.",
+    taunt: "“Somos de ouro, de prata e de pedra. Enquanto você olha, a cidade nos adora.”",
+    epilogue: "“Nele vivemos, e nos movemos, e existimos” (At 17.28). O particípio presente volta ao rolo.",
   },
   bergmann_15: {
-    lore: "Perto de Damasco, ao meio-dia, uma luz. Tendo caído por terra, ele ouviu uma voz; tendo-se levantado, não via nada. Uma coisa veio antes da outra, e a língua diz isso sem precisar de “depois”.",
-    taunt: "“Tendo perseguido, tendo prendido, tendo chegado até aqui. E você, tendo aprendido o quê?”",
-    epilogue: "“Levanta-te e entra na cidade.” O particípio aoristo e o genitivo absoluto voltam ao códice.",
+    taunt: "“Grande é a Ártemis dos efésios! Duas horas de grito, e ninguém ouviu o que você disse.”",
+    epilogue: "“Assim a palavra do Senhor crescia poderosamente e prevalecia” (At 19.20). O particípio aoristo e o genitivo absoluto voltam ao rolo.",
   },
   bergmann_16: {
-    lore: "Em Antioquia os discípulos ganharam um nome, e a cidade inteira perguntava: quem são estes? O que ensinam? Havia ali profetas e mestres. As criaturas do lugar perguntam, respondem “alguém” e falam umas das outras.",
-    taunt: "“Quem? Alguém. Quem? Ninguém. Um acento separa os dois. Você o ouve?”",
-    epilogue: "“Em Antioquia foram pela primeira vez chamados cristãos.” Interrogativos, indefinidos e reflexivos voltam ao códice.",
+    taunt: "“Quem é você? O que fez? Batam-lhe na boca!”",
+    epilogue: "“Tem bom ânimo; porque, como de mim testificaste em Jerusalém, assim importa que testifiques também em Roma” (At 23.11). Interrogativos, indefinidos e reflexivos voltam ao rolo.",
   },
   bergmann_17: {
-    lore: "À meia-noite, na prisão de Filipos, dois presos cantavam. Veio um terremoto: as portas se abriram, e abertas ficaram. O que foi feito continua valendo. É o tempo perfeito.",
-    taunt: "“As portas estão abertas, as correntes estão soltas. O que está escrito, você leu?”",
-    epilogue: "“Crê no Senhor Jesus e serás salvo.” O perfeito volta ao códice, e o que foi escrito permanece.",
+    taunt: "“Excelentíssimo governador! O que está feito está feito, e eu tenho os autos.”",
+    epilogue: "“Apelo para César” (At 25.11). O perfeito e o mais-que-perfeito voltam ao rolo.",
   },
   bergmann_18: {
-    lore: "Em Atenas há um altar “ao Deus desconhecido”, e no Areópago ninguém faz outra coisa senão dizer e ouvir novidades. Discute-se e ordena-se. As criaturas daqui falam em mandamentos e em desejos.",
-    taunt: "“Fale! Prove! Que jamais aconteça! Um bom orador conhece os modos.”",
-    epilogue: "“Agora ele ordena a todos, em todo lugar, que se arrependam.” O imperativo e o optativo voltam ao códice.",
+    taunt: "“Catorze noites sem sol nem estrelas. Mande no vento, se puder.”",
+    epilogue: "“E assim aconteceu que todos chegaram à terra a salvo” (At 27.44). O imperativo e o optativo voltam ao rolo.",
   },
   bergmann_19: {
-    lore: "Em Corinto correm no estádio, e todos correm, mas um só leva o prêmio. Ali o verbo vira nome: o correr, o lutar, o receber. Quem domina o infinitivo corre sem tropeçar.",
-    taunt: "“Correr, ter corrido, ser coroado. Eu discurso sobre tudo. Você alcança?”",
-    epilogue: "“Correi de tal modo que o alcanceis.” O infinitivo volta ao códice.",
+    taunt: "“Saí do fogo e mordi. Agora é só esperar… ou não?”",
+    epilogue: "“Ele, porém, sacudindo o réptil no fogo, não sofreu mal nenhum” (At 28.5). O infinitivo volta ao rolo.",
   },
   bergmann_20: {
-    lore: "Em Éfeso um ourives de prata junta os do ofício e a cidade inteira grita por duas horas. Nas oficinas os metais se fundem, e nos verbos daqui as vogais também: duas viram uma.",
-    taunt: "“Eu fundo prata; a língua funde vogais. ε mais ο dá o quê? Depressa!”",
-    epilogue: "“Assim a palavra do Senhor crescia e prevalecia.” Os verbos contraídos e os verbos em ‑μι voltam ao códice.",
+    taunt: "“O meu nome em hebraico é Abadom, e em grego, Apoliom. Conjugue-me, se tiver coragem.”",
+    epilogue: "“E foi-lhes dito que não fizessem dano à erva da terra” (Ap 9.4). Os verbos contraídos e os verbos em ‑μι voltam ao rolo.",
   },
   bergmann_21: {
-    lore: "Em Roma, um preso vive numa casa alugada com o soldado que o guarda, e recebe a todos. Na capital tudo é contado e apontado: o primeiro, o segundo, os doze, um só.",
-    taunt: "“Um prisioneiro, dois anos, uma corrente. Conte comigo e aponte com o artigo.”",
-    epilogue: "“Pregando com toda a ousadia, sem impedimento algum.” O artigo e os numerais voltam ao códice.",
+    taunt: "“Um, dois, três. Contamos os reis, e você conta as palavras?”",
+    epilogue: "“Eis que venho como ladrão. Bem-aventurado aquele que vigia” (Ap 16.15). O artigo e os numerais voltam ao rolo.",
   },
   bergmann_22: {
-    lore: "A ilha chamada Patmos. Aqui Lete juntou tudo o que roubou, e aqui o códice quase se fecha. O último guardião tem sete cabeças e fala só por condições: se… então. Conhece todas as lições por onde você passou.",
-    taunt: "“Se você se lembrasse, teria vencido. Se se lembrar agora, vencerá. Qual das duas?”",
-    epilogue: "“Escreve, pois, as coisas que viste.” A última página volta ao códice. Não ficou nenhuma em branco.",
+    taunt: "“Quem é semelhante à besta? Quem poderá batalhar contra ela?”",
+    epilogue: "Eles o venceram pelo sangue do Cordeiro e pela palavra do seu testemunho (Ap 12.11). A vitória é do Cordeiro; o escriba venceu as perguntas e leu o texto. As orações condicionais e as partículas voltam ao rolo.",
   },
 };
 
 const GENERIC = {
-  lore: "Uma página que não estava no rolo do mestre, acrescentada depois. A névoa não faz distinção: levou estas palavras também.",
-  taunt: "“Ninguém me deu nome. Isso não me faz mais fraco.”",
+  taunt: "“O Devorador me deixou aqui para guardar esta página. Diga as palavras dela, uma por uma.”",
   epilogue: "A página acrescentada volta ao rolo, costurada depois da última.",
 };
 
@@ -353,14 +358,25 @@ const GENERIC = {
  * Textos da história para um capítulo; capítulos criados pelo aluno recebem os genéricos
  * @param {string} language 'hebrew' ou 'greek'
  * @param {string} chapterId
- * @returns {{lore: string, taunt: string, epilogue: string}}
+ * @returns {{taunt: string, epilogue: string}}
  */
 function forChapter(language, chapterId) {
   const table = language === "greek" ? GREEK : HEBREW;
   return table[chapterId] || GENERIC;
 }
 
-const ScribeLore = { PROLOGUE, ENDING, CLASS_LORE, RELIC_LORE, HEBREW, GREEK, GENERIC, forChapter };
+/**
+ * Prólogo e final de um livro
+ * @param {string} language
+ * @param {number} book
+ * @returns {{prologue: {title: string, paragraphs: Array<string>}, ending: {title: string, paragraphs: Array<string>}}|null}
+ */
+function forBook(language, book) {
+  const table = BOOKS[language === "greek" ? "greek" : "hebrew"];
+  return table[book] || table[1] || null;
+}
+
+const ScribeLore = { VILLAIN, BOOKS, PROLOGUE, ENDING, CLASS_LORE, RELIC_LORE, HEBREW, GREEK, GENERIC, forChapter, forBook };
 
 // Suporte universal (Browser Global / Node CommonJS)
 if (typeof window !== "undefined") {

@@ -13,6 +13,13 @@
  */
 
 (function () {
+/*
+ * Fichas segundo o Guia do Mestre do Rolo: cada capítulo tem lugar (português e original),
+ * texto-base, guardião com versículo e desenho, três criaturas, o motivo de o lugar combinar
+ * com a lição, a história (com o guardião na última frase) e, quando houver, a liberdade que
+ * o jogo tomou (selo da honestidade). O conteúdo de cada lição vem dos dados do Gamida.
+ */
+
 /* ================= Classes e relíquias ================= */
 const CLASSES = {
   mago: {
@@ -35,29 +42,68 @@ const CLASSES = {
   },
 };
 
-// Cada classe encontra quatro relíquias ao longo da campanha (slot 0 a 3)
-const RELICS = [
-  { id: "vara_arao", cls: "mago", slot: 0, name: "Vara de Arão", ref: "Nm 17.8", desc: "+1 dica grátis por batalha", fx: { hints: 1 } },
-  { id: "cajado_moises", cls: "mago", slot: 1, name: "Cajado de Moisés", ref: "Êx 14.16", desc: "+2 s na janela de crítico", fx: { crit: 2 } },
-  { id: "urim", cls: "mago", slot: 2, name: "Urim e Tumim", ref: "Êx 28.30", desc: "O primeiro erro de cada batalha não causa dano", fx: { ward: 1 } },
-  { id: "tabuas", cls: "mago", slot: 3, name: "Tábuas da Lei", ref: "Êx 31.18", desc: "+25% de XP", fx: { xp: 0.25 } },
-  { id: "lanca_josue", cls: "cavaleiro", slot: 0, name: "Lança de Josué", ref: "Js 8.18", desc: "+1 s na janela de crítico", fx: { crit: 1 } },
-  { id: "escudo_abraao", cls: "cavaleiro", slot: 1, name: "Escudo de Abraão", ref: "Gn 15.1", desc: "−15% de dano recebido", fx: { armor: 0.15 } },
-  { id: "espada_golias", cls: "cavaleiro", slot: 2, name: "Espada de Golias", ref: "1Sm 21.9", desc: "+40 de vida máxima", fx: { hp: 40 } },
-  { id: "trombeta_sinai", cls: "cavaleiro", slot: 3, name: "Trombeta do Sinai", ref: "Êx 19.16", desc: "Cura 12 de vida a cada criatura vencida", fx: { regen: 12 } },
-  { id: "funda_davi", cls: "assassino", slot: 0, name: "Funda de Davi", ref: "1Sm 17.49", desc: "+6 XP extra por crítico", fx: { critXP: 6 } },
-  { id: "punhal_eude", cls: "assassino", slot: 1, name: "Punhal de Eúde", ref: "Jz 3.16", desc: "+10% de esquiva", fx: { dodge: 0.1 } },
-  { id: "cordao_raabe", cls: "assassino", slot: 2, name: "Cordão escarlate de Raabe", ref: "Js 2.18", desc: "Uma ressurreição por capítulo", fx: { revive: 1 } },
-  { id: "manto_elias", cls: "assassino", slot: 3, name: "Manto de Elias", ref: "2Rs 2.13", desc: "+10% de esquiva e +1 dica por batalha", fx: { dodge: 0.1, hints: 1 } },
-];
-// Em que ponto da campanha cada relíquia aparece (fração do caminho)
-const RELIC_MILESTONES = [0.2, 0.4, 0.7, 1];
+/** Nomes das classes por rolo: as regras são as mesmas, só o nome e o modelo bíblico mudam */
+const CLASS_NAMES = {"hebrew": {"mago": {"name": "Profeta", "desc": "Como Elias, de manto de pelos e cinto de couro (2Rs 1.8). Enxerga o que os outros não veem: mais tempo para críticos e uma revelação grátis por batalha.", "ref": "2Rs 1.8"}, "cavaleiro": {"name": "Guerreiro de Israel", "desc": "Um dos valentes de Davi (2Sm 23.8). Couraça, escudo e lança: aguenta mais erros e sofre menos dano.", "ref": "2Sm 23.8"}, "assassino": {"name": "Juiz benjamita", "desc": "Canhoto como Eúde, com o punhal na coxa direita (Jz 3.15-16), e certeiro como os fundeiros de Benjamim (Jz 20.16). Esquiva e ganha mais XP nos críticos.", "ref": "Jz 3.15-16"}}, "greek": {"mago": {"name": "Pescador", "desc": "Como Pedro e André, que lançavam a rede ao mar (Mt 4.18). Paciente com a palavra: mais tempo para críticos e uma revelação grátis por batalha.", "ref": "Mt 4.18"}, "cavaleiro": {"name": "Centurião", "desc": "Como Cornélio, centurião da coorte italiana (At 10.1). Couraça e disciplina: aguenta mais erros e sofre menos dano.", "ref": "At 10.1"}, "assassino": {"name": "Fazedor de tendas", "desc": "Como Paulo, Áquila e Priscila, que faziam tendas (At 18.3). Mãos rápidas e estradas longas: esquiva e ganha mais XP nos críticos.", "ref": "At 18.3"}}};
 
-/* ================= Hebraico: de Éden a Jerusalém ================= */
+/** Classe com o nome do rolo do idioma */
+function classInfo(language, key) {
+  const base = CLASSES[key] || CLASSES.cavaleiro;
+  const names = (CLASS_NAMES[language === "greek" ? "greek" : "hebrew"] || {})[key] || {};
+  return { ...base, ...names };
+}
+
+/** Uma relíquia por classe nos capítulos de relíquia, com versículo e efeito */
+const RELICS = [
+  { id: "vara_arao", cls: "mago", ch: "kelley_06", name: "Vara de Arão", ref: "Nm 17.8", desc: "+1 dica grátis por batalha", fx: {hints:  1} },
+  { id: "cajado_moises", cls: "mago", ch: "kelley_08", name: "Cajado de Moisés", ref: "Êx 14.16", desc: "+2 s na janela de crítico", fx: {crit:  2} },
+  { id: "urim", cls: "mago", ch: "kelley_11", name: "Urim e Tumim", ref: "Êx 28.30", desc: "O primeiro erro de cada batalha não causa dano", fx: {ward:  1} },
+  { id: "tabuas", cls: "mago", ch: "kelley_14", name: "Tábuas da Lei", ref: "Êx 31.18", desc: "+25% de XP", fx: {xp:  0.25} },
+  { id: "lanca_josue", cls: "cavaleiro", ch: "kelley_06", name: "Lança de Josué", ref: "Js 8.18", desc: "+1 s na janela de crítico", fx: {crit:  1} },
+  { id: "escudo_abraao", cls: "cavaleiro", ch: "kelley_08", name: "Escudo de Abraão", ref: "Gn 15.1", desc: "−15% de dano recebido", fx: {armor:  0.15} },
+  { id: "espada_golias", cls: "cavaleiro", ch: "kelley_11", name: "Espada de Golias", ref: "1Sm 21.9", desc: "+40 de vida máxima", fx: {hp:  40} },
+  { id: "trombeta_sinai", cls: "cavaleiro", ch: "kelley_14", name: "Trombeta do Sinai", ref: "Êx 19.16", desc: "Cura 12 de vida a cada criatura vencida", fx: {regen:  12} },
+  { id: "funda_davi", cls: "assassino", ch: "kelley_06", name: "Funda de Davi", ref: "1Sm 17.49", desc: "+6 XP extra por crítico", fx: {critXP:  6} },
+  { id: "punhal_eude", cls: "assassino", ch: "kelley_08", name: "Punhal de Eúde", ref: "Jz 3.16", desc: "+10% de esquiva", fx: {dodge:  0.1} },
+  { id: "cordao_raabe", cls: "assassino", ch: "kelley_11", name: "Cordão escarlate de Raabe", ref: "Js 2.18", desc: "Uma ressurreição por capítulo", fx: {revive:  1} },
+  { id: "manto_elias", cls: "assassino", ch: "kelley_14", name: "Aguilhada de Sangar", ref: "Jz 3.31", desc: "+10% de esquiva e +1 dica por batalha", fx: {dodge:  0.1,  hints:  1} },
+  { id: "manto_profeta", cls: "mago", ch: "kelley_20", name: "Manto de Elias", ref: "2Rs 2.13", desc: "+1 dica grátis por batalha", fx: {hints:  1} },
+  { id: "arco_jonatas", cls: "cavaleiro", ch: "kelley_20", name: "Arco de Jônatas", ref: "2Sm 1.22", desc: "+1 s na janela de crítico", fx: {crit:  1} },
+  { id: "queixada_sansao", cls: "assassino", ch: "kelley_20", name: "Queixada de Sansão", ref: "Jz 15.15", desc: "+30 de vida máxima", fx: {hp:  30} },
+  { id: "rede_direita", cls: "mago", ch: "bergmann_05", name: "Rede lançada à direita", ref: "Jo 21.6", desc: "+1 dica grátis por batalha", fx: {hints:  1} },
+  { id: "barco_pedro", cls: "mago", ch: "bergmann_09", name: "Barco de Pedro", ref: "Lc 5.3", desc: "+2 s na janela de crítico", fx: {crit:  2} },
+  { id: "moeda_peixe", cls: "mago", ch: "bergmann_16", name: "Moeda na boca do peixe", ref: "Mt 17.27", desc: "O primeiro erro de cada batalha não causa dano", fx: {ward:  1} },
+  { id: "livrinho", cls: "mago", ch: "bergmann_22", name: "O livrinho", ref: "Ap 10.9-10", desc: "+25% de XP", fx: {xp:  0.25} },
+  { id: "espada_espirito", cls: "cavaleiro", ch: "bergmann_05", name: "Espada do Espírito", ref: "Ef 6.17", desc: "+1 s na janela de crítico", fx: {crit:  1} },
+  { id: "escudo_fe", cls: "cavaleiro", ch: "bergmann_09", name: "Escudo da fé", ref: "Ef 6.16", desc: "−15% de dano recebido", fx: {armor:  0.15} },
+  { id: "capacete_salvacao", cls: "cavaleiro", ch: "bergmann_16", name: "Capacete da salvação", ref: "Ef 6.17", desc: "+40 de vida máxima", fx: {hp:  40} },
+  { id: "couraca_justica", cls: "cavaleiro", ch: "bergmann_22", name: "Couraça da justiça", ref: "Ef 6.14", desc: "Cura 12 de vida a cada criatura vencida", fx: {regen:  12} },
+  { id: "lencos_paulo", cls: "assassino", ch: "bergmann_05", name: "Lenços e aventais de Paulo", ref: "At 19.12", desc: "+6 XP extra por crítico", fx: {critXP:  6} },
+  { id: "cesto_damasco", cls: "assassino", ch: "bergmann_09", name: "Cesto de Damasco", ref: "At 9.25", desc: "+10% de esquiva", fx: {dodge:  0.1} },
+  { id: "capa_troade", cls: "assassino", ch: "bergmann_16", name: "Capa deixada em Trôade", ref: "2Tm 4.13", desc: "Uma ressurreição por capítulo", fx: {revive:  1} },
+  { id: "pergaminhos", cls: "assassino", ch: "bergmann_22", name: "Os pergaminhos", ref: "2Tm 4.13", desc: "+10% de esquiva e +1 dica por batalha", fx: {dodge:  0.1,  hints:  1} },
+];
+
+/** Livros da campanha: cada um tem prólogo e final próprios */
+const BOOKS = {"hebrew": [{"id": 1, "title": "Livro I: do Éden ao Sinai", "short": "Livro I", "last": "kelley_14"}, {"id": 2, "title": "Livro II: do Jordão à Babilônia", "short": "Livro II", "last": "licao_31"}], "greek": [{"id": 1, "title": "O Segundo Rolo: de Belém a Patmos", "short": "Segundo Rolo", "last": "bergmann_22"}]};
+
+/** Criaturas com versículo, por idioma (as figuras são as mesmas; o nome e o texto mudam) */
+const SPECIES = {"hebrew": {"imp": ["Demônio menor", "Lv 17.7"], "wraith": ["Espectro", "Is 14.9"], "dragon": ["Draconídeo", "Is 27.1"], "snake": ["Víbora", "Gn 3.14"], "raven": ["Corvo", "Gn 8.7"], "golem": ["Homem de tijolo", "Gn 11.3"], "idol": ["Ídolo de barro", "Is 44.9"], "jackal": ["Chacal", "Is 34.13"], "goat": ["Sátiro", "Is 13.21"], "frog": ["Rã da praga", "Êx 8.2"], "locust": ["Gafanhoto", "Êx 10.4"], "scorpion": ["Escorpião", "Dt 8.15"], "seraph": ["Serpente abrasadora", "Nm 21.6"], "skel": ["Ossos secos", "Ez 37.1"]}, "greek": {"imp": ["Demônio", "Lc 11.14"], "wraith": ["Espírito imundo", "Mc 1.23"], "dragon": ["Filhote do dragão", "Ap 12.4"], "snake": ["Víbora", "At 28.3"], "raven": ["Corvo", "Lc 12.24"], "golem": ["Homem de barro", "Rm 9.21"], "idol": ["Ídolo", "At 17.16"], "jackal": ["Lobo voraz", "Mt 7.15"], "goat": ["Bode", "Mt 25.33"], "frog": ["Espírito como rã", "Ap 16.13"], "locust": ["Gafanhoto do abismo", "Ap 9.3"], "scorpion": ["Escorpião", "Lc 10.19"], "seraph": ["Serpente", "Jo 3.14"], "skel": ["Ossos de mortos", "Mt 23.27"]}};
+
+/* ================= Hebraico: Livro I (do Éden ao Sinai) e Livro II (do Jordão à Babilônia) ================= */
 const HEBREW = {
   kelley_01: {
-    city: "Quedem", native: "קֶדֶם", scene: "dunes", boss: "Guardião das Letras",
-    story: "Antes das palavras vieram as letras. A leste do jardim, vinte e duas criaturas guardam a porta do rolo.",
+    city: "Tendas de Hebrom",
+    native: "חֶבְרוֹן",
+    scene: "tents",
+    book: 1,
+    ref: "Gn 13.18; Jr 36.1-32",
+    boss: "O rei Jeoaquim",
+    bossRef: "Jr 36.23",
+    bossKind: "abimeleque",
+    creatures: ["raven", "jackal", "imp"],
+    why: "Em Jeremias 36 um rolo é escrito letra por letra por Baruque, o escriba, e cortado pelo rei. Antes de reescrever o rolo é preciso conhecer as letras.",
+    story: "Nas tendas de Hebrom o Rolo das Palavras ainda está rasgado no chão, e as vinte e duas letras fugiram para fora da tenda. Antes de caçar palavras, o aprendiz precisa juntar as letras. Na sombra da tenda espera o rei Jeoaquim, que cortou um rolo com o canivete e o lançou ao fogo.",
+    liberty: "Jeoaquim queimou o rolo de Jeremias em Jerusalém (Jr 36.21-23). O jogo o põe como sombra nas tendas de Hebrom, onde o Rolo das Palavras foi rasgado, por ser o inimigo bíblico de um rolo escrito. A lição das letras é um prólogo: a rota do Primeiro Rolo continua sendo de 11 lugares, do Éden ao Sinai.",
     scroll: {
       t: "O alfabeto: 22 consoantes",
       p: [
@@ -69,8 +115,17 @@ const HEBREW = {
     },
   },
   kelley_03: {
-    city: "Éden", native: "עֵדֶן", scene: "garden", boss: "Guardião do Jardim",
-    story: "O rolo do mestre Kelley se rasgou e as palavras fugiram como criaturas. A primeira trilha começa no jardim.",
+    city: "Éden",
+    native: "עֵדֶן",
+    scene: "garden",
+    book: 1,
+    ref: "Gn 2–3",
+    boss: "A Serpente",
+    bossRef: "Gn 3.1",
+    bossKind: "serpent",
+    creatures: ["snake", "imp", "raven"],
+    why: "No jardim o homem deu nome a cada animal (Gn 2.19-20): a primeira lição de vocabulário.",
+    story: "A primeira folha do rolo caiu no jardim, perto do rio que se divide em quatro. Ali nasceram as criaturas mais simples, e a serpente observa do alto da árvore. Antes de lutar, aprenda o segredo de toda palavra hebraica: a raiz. A serpente, a mais astuta dos animais do campo, guarda o jardim.",
     scroll: {
       t: "Raízes: o esqueleto das palavras",
       p: ["Quase toda palavra hebraica nasce de uma raiz de 3 consoantes. As vogais (os pontinhos) e as letras extras dão o sentido exato."],
@@ -80,8 +135,18 @@ const HEBREW = {
     },
   },
   kelley_05: {
-    city: "Ararate", native: "אֲרָרָט", scene: "mountain", boss: "Sentinela do Monte",
-    story: "As criaturas subiram as encostas do Ararate. Lá em cima, o artigo esconde quem é quem.",
+    city: "Ararate",
+    native: "אֲרָרָט",
+    scene: "mountain",
+    book: 1,
+    ref: "Gn 6–9",
+    boss: "Os Nefilins",
+    bossRef: "Gn 6.4",
+    bossKind: "nefilim",
+    creatures: ["raven", "wraith", "jackal"],
+    why: "Depois do dilúvio tudo é visto de novo, e o artigo separa “um monte” de “o monte”.",
+    story: "As criaturas subiram o monte onde a arca pousou. A chuva não para, e no meio dela o artigo הַ se esconde no começo das palavras. Quem enxerga o artigo sabe quem é “o” e quem é “um”. Os nefilins andam pela terra antes do dilúvio.",
+    liberty: "Quem eram os nefilins é ponto em debate (Gn 6.4; Nm 13.33). O jogo os mostra como gigantes, como o relato dos espias os descreve, sem tomar posição sobre a origem deles.",
     scroll: {
       t: "O artigo הַ",
       p: ["O hebraico tem só o artigo definido: הַ + dagesh (pontinho) na letra seguinte. Não existe “um/uma”: sem artigo, traduza com “um”."],
@@ -91,8 +156,18 @@ const HEBREW = {
     },
   },
   kelley_06: {
-    city: "Babel", native: "בָּבֶל", scene: "tower", boss: "Arquiteto de Babel",
-    story: "Na torre de Babel as palavras se misturam. Preposições e conectivos ligam tudo.",
+    city: "Babel",
+    native: "בָּבֶל",
+    scene: "tower",
+    book: 1,
+    ref: "Gn 10.8-10; 11.1-9",
+    boss: "Ninrode, o caçador",
+    bossRef: "Gn 10.8-10",
+    bossKind: "ninrode",
+    creatures: ["golem", "imp", "wraith"],
+    why: "Em Babel as línguas se confundiram: as palavras pequenas, que ligam umas às outras, são as que faltam.",
+    story: "Na torre inacabada as línguas se confundiram, e os tijolos ainda caem. Aqui vivem as partículas pequenas, preposições e conectivos, que ligam uma palavra à outra. Sem elas nenhuma frase fica de pé. Ninrode, o valente caçador, ergue Babel.",
+    liberty: "O texto diz que Babel foi o princípio do reino de Ninrode (Gn 10.10), mas não diz que ele construiu a torre. O jogo o põe como guardião da torre.",
     scroll: {
       t: "Preposições e conectivos",
       p: [
@@ -104,8 +179,17 @@ const HEBREW = {
     },
   },
   kelley_07: {
-    city: "Ur", native: "אוּר", scene: "ziggurat", boss: "Sacerdote de Ur",
-    story: "Em Ur, as criaturas se multiplicaram: agora vêm em pares e bandos.",
+    city: "Ur",
+    native: "אוּר",
+    scene: "ziggurat",
+    book: 1,
+    ref: "Gn 11.27-31; Js 24.2",
+    boss: "Ídolo de Ur",
+    bossRef: "Js 24.2",
+    bossKind: "demon",
+    creatures: ["idol", "wraith", "scorpion"],
+    why: "De Ur saiu quem recebeu a promessa de uma descendência sem conta (Gn 15.5): é a terra do número e do gênero.",
+    story: "Em Ur dos caldeus, terra de Abrão, as criaturas se multiplicaram e agora andam em pares e bandos. Os altares do zigurate fumegam. Leia a terminação antes do resto: ים, ות e o dual. Terá serviu a outros deuses além do rio, e o ídolo ainda vigia o zigurate.",
     scroll: {
       t: "Gênero e número",
       rows: [["masculino plural", "־ִים", "סוּסִים"], ["feminino plural", "־וֹת", "סוּסוֹת"], ["dual (pares)", "־ַיִם", "עֵינַיִם"]],
@@ -114,8 +198,17 @@ const HEBREW = {
     },
   },
   kelley_08: {
-    city: "Harã", native: "חָרָן", scene: "well", boss: "Mercador de Harã",
-    story: "No poço de Harã as palavras ganharam adjetivos: grandes, maus, sábios.",
+    city: "Harã",
+    native: "חָרָן",
+    scene: "well",
+    book: 1,
+    ref: "Gn 24; 29; 31",
+    boss: "Terafim de Labão",
+    bossRef: "Gn 31.19",
+    bossKind: "demon2",
+    creatures: ["idol", "jackal", "raven"],
+    why: "Junto ao poço o texto para tudo para descrever quem chega: é a terra dos adjetivos.",
+    story: "No poço de Harã, onde o servo de Abraão encontrou Rebeca, as palavras ganharam adjetivos. Um camelo cruza o deserto atrás de água. O adjetivo copia o substantivo: gênero, número e até o artigo. Raquel roubou os terafins do pai; um deles acordou.",
     scroll: {
       t: "Adjetivos: atributivo × predicativo",
       p: [
@@ -126,8 +219,17 @@ const HEBREW = {
     },
   },
   kelley_09: {
-    city: "Siquém", native: "שְׁכֶם", scene: "hills", boss: "Juiz de Siquém",
-    story: "Em Siquém as criaturas falam em primeira pessoa e apontam: este, aquele, nós.",
+    city: "Siquém",
+    native: "שְׁכֶם",
+    scene: "hills",
+    book: 1,
+    ref: "Js 24; Jz 9",
+    boss: "Abimeleque",
+    bossRef: "Jz 9.1-6",
+    bossKind: "abimeleque",
+    creatures: ["jackal", "raven", "goat"],
+    why: "Em Siquém fala-se em primeira pessoa: “eu e a minha casa” (Js 24.15). É a terra dos pronomes.",
+    story: "Nos montes de Siquém o vento varre o capim e as ovelhas pastam. As criaturas daqui falam em primeira pessoa e apontam: eu, tu, este, aquele. Pronomes e demonstrativos são as armas deste lugar. Abimeleque matou os irmãos e se fez rei em Siquém.",
     scroll: {
       t: "Pronomes e demonstrativos",
       p: [
@@ -139,8 +241,17 @@ const HEBREW = {
     },
   },
   kelley_10: {
-    city: "Betel", native: "בֵּית־אֵל", scene: "pillar", boss: "Vigia da Escada",
-    story: "Em Betel as palavras se prendem umas às outras em correntes: o construto.",
+    city: "Betel",
+    native: "בֵּית־אֵל",
+    scene: "pillar",
+    book: 1,
+    ref: "Gn 28.10-22; 1Rs 12.28-29",
+    boss: "Bezerro de ouro",
+    bossRef: "1Rs 12.28-29",
+    bossKind: "calf",
+    creatures: ["goat", "wraith", "skel"],
+    why: "Betel, onde Jacó viu a escada, ensina o construto, porque as palavras se prendem como degraus (exemplo do próprio guia).",
+    story: "Em Betel, Jacó viu a escada com anjos subindo e descendo. As palavras aqui se prendem umas às outras como degraus: é o construto, “casa de”, “palavra de”. A primeira perde força; a última define a cadeia. Jeroboão pôs um bezerro de ouro em Betel.",
     scroll: {
       t: "Estado construto: “X de Y”",
       p: ["Duas palavras grudadas formam “X de Y”. A primeira muda de forma e nunca tem artigo; a última define a cadeia."],
@@ -149,8 +260,18 @@ const HEBREW = {
     },
   },
   kelley_11: {
-    city: "Hebrom", native: "חֶבְרוֹן", scene: "tents", boss: "Patriarca de Hebrom",
-    story: "Nas tendas de Hebrom tudo tem dono: meu, teu, dele, nosso.",
+    city: "Hebrom",
+    native: "חֶבְרוֹן",
+    scene: "tents",
+    book: 1,
+    ref: "Gn 23; Js 11.21-22; 1Sm 17",
+    boss: "Golias de Gate",
+    bossRef: "1Sm 17.4-7",
+    bossKind: "golias",
+    creatures: ["jackal", "skel", "goat"],
+    why: "Nas tendas tudo tem dono: Abraão compra o campo e a caverna (Gn 23). Os sufixos dizem de quem é cada coisa.",
+    story: "De volta às tendas de Hebrom, onde o rolo foi rasgado. Ao redor da fogueira tudo tem dono: os sufixos dizem meu, teu, dele, nosso. O Devorador deixou rastros na areia. Golias de Gate, de seis côvados e um palmo, desafia as fileiras de Israel.",
+    liberty: "Golias é de Gate; o jogo o põe em Hebrom por causa dos anaquins (Js 11.21-22).",
     scroll: {
       t: "Sufixos: os pronomes colados",
       rows: [
@@ -163,8 +284,18 @@ const HEBREW = {
     },
   },
   kelley_12: {
-    city: "Egito", native: "מִצְרַיִם", scene: "pyramids", boss: "Faraó das Raízes",
-    story: "No Egito as palavras começaram a agir: os verbos despertaram.",
+    city: "Egito",
+    native: "מִצְרַיִם",
+    scene: "pyramids",
+    book: 1,
+    ref: "Êx 1–2",
+    boss: "Leviatã",
+    bossRef: "Sl 74.13-14",
+    bossKind: "leviata",
+    creatures: ["frog", "locust", "snake"],
+    why: "No Egito a história começa a ser contada: o perfeito diz o que já aconteceu e quem fez.",
+    story: "No Egito as palavras começaram a agir: os verbos despertaram. O perfeito Qal conta o que já aconteceu, e a terminação revela quem fez. Uma tempestade de areia varre o Nilo. No mar ressurge Leviatã, cujas cabeças Deus esmagou.",
+    liberty: "Se Leviatã é um animal ou uma figura do caos é ponto em debate. O Salmo 74.13-14 o põe no mar da saída do Egito, e é assim que o jogo o usa.",
     scroll: {
       t: "O verbo: perfeito Qal",
       p: ["Perfeito = ação completa (passado). A desinência diz quem fez:"],
@@ -176,8 +307,18 @@ const HEBREW = {
     },
   },
   kelley_13: {
-    city: "Mara", native: "מָרָה", scene: "spring", boss: "Esfinge das Perguntas",
-    story: "Em Mara as águas eram amargas, e as criaturas só falam por perguntas.",
+    city: "Mara",
+    native: "מָרָה",
+    scene: "spring",
+    book: 1,
+    ref: "Êx 15.22-27",
+    boss: "Beemote",
+    bossRef: "Jó 40.15-24",
+    bossKind: "beemote",
+    creatures: ["scorpion", "snake", "jackal"],
+    why: "Em Mara o povo murmurou com uma pergunta: “Que havemos de beber?” (Êx 15.24).",
+    story: "Em Mara as águas eram amargas até que um lenho as adoçou. As criaturas daqui só falam por perguntas: הֲ, מִי, מָה. Responda certo e a água volta a ser doce. Beemote, que come capim como o boi, bebe o rio de Mara.",
+    liberty: "Beemote é de Jó 40, não de Mara. O jogo o põe junto às águas porque o texto diz que ele bebe um rio inteiro sem se apressar (Jó 40.23).",
     scroll: {
       t: "Perguntas e números",
       p: [
@@ -188,8 +329,18 @@ const HEBREW = {
     },
   },
   kelley_14: {
-    city: "Sinai", native: "סִינַי", scene: "sinai", boss: "Dragão dos Sete Troncos",
-    story: "No Sinai a raiz se transforma: a mesma palavra muda de força conforme o tronco.",
+    city: "Sinai",
+    native: "סִינַי",
+    scene: "sinai",
+    book: 1,
+    ref: "Êx 19–20; Ap 12.3, 9",
+    boss: "O Grande Dragão",
+    bossRef: "Ap 12.3, 9",
+    bossKind: "dragao",
+    creatures: ["seraph", "dragon", "skel"],
+    why: "No Sinai a mesma raiz muda de força conforme o tronco, e o dragão tem sete cabeças, uma por tronco.",
+    story: "No Sinai o monte fumega e treme, e o Devorador espera no cume. A mesma raiz muda de força conforme o tronco: Qal, Nifal, Piel, Pual, Hitpael, Hifil e Hofal. Vença aqui e o rolo volta inteiro. O grande dragão vermelho, a antiga serpente, espera no cume.",
+    liberty: "O grande dragão é do Apocalipse (Ap 12.3, 9). No jogo ele é o senhor do Devorador e espera no Sinai, fim da rota do Primeiro Rolo.",
     scroll: {
       t: "Os 7 troncos verbais",
       rows: [
@@ -201,8 +352,17 @@ const HEBREW = {
     },
   },
   kelley_15: {
-    city: "Cades", native: "קָדֵשׁ", scene: "dunes", boss: "Espia do Deserto",
-    story: "Em Cades o povo olha para a frente. As criaturas agora falam do que ainda vai acontecer.",
+    city: "Planícies de Moabe",
+    native: "עַרְבוֹת מוֹאָב",
+    scene: "hills",
+    book: 2,
+    ref: "Nm 22–24",
+    boss: "Balaão, o adivinho",
+    bossRef: "Nm 22.5-7",
+    bossKind: "ninrode",
+    creatures: ["jackal", "raven", "goat"],
+    why: "Os oráculos de Balaão falam do que ainda vai acontecer (“vê-lo-ei, mas não agora”, Nm 24.17): é o tempo do imperfeito.",
+    story: "O rolo da Torá está inteiro, mas as margens estão em branco. As crias do Devorador atravessaram o deserto até as planícies de Moabe, onde um adivinho foi contratado para amaldiçoar o povo. Balaão sobe ao monte para falar do que ainda vai acontecer.",
     scroll: {
       t: "Imperfeito Qal: os prefixos",
       p: ["Imperfeito = ação incompleta: futuro, costume ou desejo. Quem age aparece no prefixo (e às vezes no sufixo):"],
@@ -214,8 +374,18 @@ const HEBREW = {
     },
   },
   kelley_16: {
-    city: "Moabe", native: "מוֹאָב", scene: "hills", boss: "Vidente de Moabe",
-    story: "Das colinas de Moabe se vê a terra inteira. Cada tronco tem o seu jeito de falar do futuro.",
+    city: "Jericó",
+    native: "יְרִיחוֹ",
+    scene: "walls",
+    book: 2,
+    ref: "Js 6.1-20",
+    boss: "O Muro de Jericó",
+    bossRef: "Js 6.20",
+    bossKind: "demon",
+    creatures: ["golem", "raven", "jackal"],
+    why: "A muralha só cai no sétimo dia: a ação ainda não terminou (exemplo do guia). O imperfeito continua nos outros troncos.",
+    story: "Do outro lado do Jordão, Jericó está fechada e ninguém entra nem sai. O povo roda a cidade em silêncio, e as palavras se escondem atrás da muralha. O Muro de Jericó não abre para quem fala no tempo errado.",
+    liberty: "O muro não é um personagem no texto: ele cai quando o povo grita (Js 6.20). No jogo ele é um guardião de pedra.",
     scroll: {
       t: "Imperfeito nos demais troncos",
       rows: [
@@ -227,8 +397,17 @@ const HEBREW = {
     },
   },
   kelley_17: {
-    city: "Jordão", native: "יַרְדֵּן", scene: "sea", boss: "Barqueiro do Jordão",
-    story: "Na travessia do Jordão ninguém vai sozinho: o verbo carrega o seu objeto nas costas.",
+    city: "Ai",
+    native: "הָעַי",
+    scene: "hills",
+    book: 2,
+    ref: "Js 7–8",
+    boss: "O rei de Ai",
+    bossRef: "Js 8.14, 29",
+    bossKind: "abimeleque",
+    creatures: ["jackal", "skel", "raven"],
+    why: "“Por que nos perturbaste?” (עֲכַרְתָּנוּ, Js 7.25): o objeto vem colado ao verbo, como nos sufixos verbais.",
+    story: "Depois de Jericó, a pequena Ai expulsou o povo, e o vale de Acor guardou o motivo. A palavra de Josué ao culpado traz o objeto colado no verbo: “Por que nos perturbaste?” O rei de Ai espera atrás da cidade.",
     scroll: {
       t: "Sufixos pronominais no verbo",
       p: ["O objeto direto pode vir colado ao verbo. No perfeito Qal, 3ª pessoa:"],
@@ -241,8 +420,17 @@ const HEBREW = {
     },
   },
   kelley_18: {
-    city: "Jericó", native: "יְרִיחוֹ", scene: "walls", boss: "Arauto das Trombetas",
-    story: "Diante de Jericó só se ouvem ordens: marchem, toquem, gritem.",
+    city: "Ribeiro de Quisom",
+    native: "נַחַל קִישׁוֹן",
+    scene: "spring",
+    book: 2,
+    ref: "Jz 4–5",
+    boss: "Sísera e seus carros de ferro",
+    bossRef: "Jz 4.2-3",
+    bossKind: "golias",
+    creatures: ["jackal", "raven", "scorpion"],
+    why: "No cântico de Débora há ordens e decisões: “Levanta-te, Baraque” (Jz 5.12) e “Cantarei ao SENHOR” (Jz 5.3). É a lição do imperativo, das proibições e do coortativo.",
+    story: "Junto ao ribeiro de Quisom, novecentos carros de ferro oprimem o povo. Débora canta e manda: “Levanta-te, Baraque!” Sísera e seus carros de ferro esperam a ordem certa.",
     scroll: {
       t: "Imperativo e proibições",
       p: ["O imperativo é o imperfeito de 2ª pessoa sem o prefixo:"],
@@ -255,8 +443,18 @@ const HEBREW = {
     },
   },
   kelley_19: {
-    city: "Gilgal", native: "גִּלְגָּל", scene: "pillar", boss: "Guardião das Doze Pedras",
-    story: "Em Gilgal doze pedras lembram o que foi feito. Aqui o verbo vira nome.",
+    city: "Asdode",
+    native: "אַשְׁדּוֹד",
+    scene: "temple",
+    book: 2,
+    ref: "1Sm 5.1-12",
+    boss: "Dagom",
+    bossRef: "1Sm 5.2-4",
+    bossKind: "demon",
+    creatures: ["idol", "frog", "wraith"],
+    why: "Em Ecrom gritam que a arca veio “para me matar” (לַהֲמִיתֵנִי, 1Sm 5.10): o infinitivo construto com sufixo.",
+    story: "Os filisteus levaram a arca para Asdode e a puseram junto de Dagom. Pela manhã o ídolo estava caído com o rosto em terra, e as cidades gritavam que a arca viera para matá-las. Dagom se ergue outra vez.",
+    liberty: "O guia propõe Asdode para o vav consecutivo. Como a lição XIX é a dos infinitivos, o jogo trocou os temas entre Asdode, Carmelo e Nínive, usando os versículos que o próprio guia cita (o guia permite trocar a ordem).",
     scroll: {
       t: "Infinitivo construto e absoluto",
       p: [
@@ -267,8 +465,18 @@ const HEBREW = {
     },
   },
   kelley_20: {
-    city: "Siló", native: "שִׁלֹה", scene: "tabernacle", boss: "Sacerdote de Siló",
-    story: "No tabernáculo de Siló o serviço nunca para: há sempre alguém guardando, servindo, cantando.",
+    city: "Monte Carmelo",
+    native: "הַר הַכַּרְמֶל",
+    scene: "mountain",
+    book: 2,
+    ref: "1Rs 18.20-40",
+    boss: "Os profetas de Baal",
+    bossRef: "1Rs 18.19, 26",
+    bossKind: "demon2",
+    creatures: ["idol", "goat", "raven"],
+    why: "“Até quando coxeareis?” (פֹּסְחִים, 1Rs 18.21) é um particípio: o povo descrito pelo que está fazendo.",
+    story: "No monte Carmelo um profeta sozinho enfrenta quatrocentos e cinquenta. Elias pergunta ao povo: “Até quando coxeareis entre dois pensamentos?” Os profetas de Baal pulam em volta do altar, e ninguém responde.",
+    liberty: "O guia propõe o Carmelo para os infinitivos; o jogo o usou para os particípios porque o versículo que o guia cita, “até quando coxeareis”, traz um particípio.",
     scroll: {
       t: "Particípios",
       p: ["O particípio é um adjetivo verbal: descreve quem está fazendo (ativo) ou o que foi feito (passivo)."],
@@ -281,8 +489,18 @@ const HEBREW = {
     },
   },
   kelley_21: {
-    city: "Belém", native: "בֵּית־לֶחֶם", scene: "hills", boss: "Ceifeiro de Belém",
-    story: "Nos campos de Belém as histórias se contam em fila: e foi, e viu, e disse.",
+    city: "Nínive",
+    native: "נִינְוֵה",
+    scene: "sea",
+    book: 2,
+    ref: "Jn 1–3",
+    boss: "O grande peixe",
+    bossRef: "Jn 1.17",
+    bossKind: "leviata",
+    creatures: ["frog", "snake", "seraph"],
+    why: "Jonas 1.3 é uma cadeia de vav consecutivo: levantou-se, desceu, achou, pagou, desceu.",
+    story: "De Jope um profeta fugiu para longe de Nínive, e a história corre em cadeia: levantou-se, desceu, achou, pagou, embarcou. No meio do mar, o grande peixe espera de boca aberta.",
+    liberty: "O texto não chama o peixe de inimigo: Deus o preparou (Jn 1.17). No jogo ele é um guardião que engole palavras, e isso é liberdade do jogo (ressalva do guia).",
     scroll: {
       t: "O vav consecutivo",
       p: [
@@ -294,8 +512,17 @@ const HEBREW = {
     },
   },
   kelley_22: {
-    city: "Gibeá", native: "גִּבְעָה", scene: "tents", boss: "Lanceiro de Gibeá",
-    story: "Em Gibeá as raízes começam a tropeçar: a primeira letra é gutural e não aceita as regras de sempre.",
+    city: "Jabes-Gileade",
+    native: "יָבֵשׁ גִּלְעָד",
+    scene: "walls",
+    book: 2,
+    ref: "1Sm 11.1-11",
+    boss: "Naás, o amonita",
+    bossRef: "1Sm 11.1-2",
+    bossKind: "golias",
+    creatures: ["jackal", "raven", "skel"],
+    why: "“Naás subiu” (וַיַּעַל, 1Sm 11.1): a primeira letra da raiz é gutural.",
+    story: "Do outro lado do Jordão, Jabes-Gileade está cercada. Os verbos daqui começam com a garganta. Naás, o amonita, subiu contra a cidade e só aceita a paz se puder vazar o olho direito de cada homem.",
     scroll: {
       t: "Verbos fracos: Pe Gutural",
       p: ["A 1ª letra da raiz é א ה ח ע. A gutural não aceita shevá simples nem dagesh:"],
@@ -307,8 +534,17 @@ const HEBREW = {
     },
   },
   kelley_23: {
-    city: "Ramá", native: "רָמָה", scene: "mountain", boss: "Profeta de Ramá",
-    story: "Em Ramá mora o profeta: “assim disse”. O verbo dizer é o rei desta montanha.",
+    city: "Jezreel",
+    native: "יִזְרְעֶאל",
+    scene: "tents",
+    book: 2,
+    ref: "1Rs 21; 2Rs 9.30-37",
+    boss: "Jezabel",
+    bossRef: "2Rs 9.30-37",
+    bossKind: "abimeleque",
+    creatures: ["jackal", "raven", "idol"],
+    why: "“Os cães comerão a carne de Jezabel” (יֹאכְלוּ, 2Rs 9.36): o verbo comer é um dos Pe Alef de vogal o.",
+    story: "Em Jezreel a vinha de Nabote foi tomada por cartas escritas em nome do rei. A palavra contra quem as escreveu já foi dita: os cães comerão. Jezabel pinta os olhos e espera à janela.",
     scroll: {
       t: "Verbos fracos: Pe Alef",
       p: [
@@ -320,8 +556,17 @@ const HEBREW = {
     },
   },
   kelley_24: {
-    city: "Elá", native: "אֵלָה", scene: "hills", boss: "Gigante do Vale",
-    story: "No vale de Elá o gigante desafia: a gutural está no meio da raiz e não se dobra.",
+    city: "Samaria sitiada",
+    native: "שֹׁמְרוֹן",
+    scene: "walls",
+    book: 2,
+    ref: "2Rs 6.24–7.20",
+    boss: "Ben-Hadade, rei da Síria",
+    bossRef: "2Rs 6.24",
+    bossKind: "ninrode",
+    creatures: ["skel", "jackal", "raven"],
+    why: "“Uma mulher clamou a ele” (צָעֲקָה, 2Rs 6.26): a gutural no meio da raiz pede um shevá composto.",
+    story: "A fome apertou Samaria, e pelo muro passava o rei quando uma mulher clamou a ele. As guturais do meio da raiz não aceitam o dagesh. Ben-Hadade, rei da Síria, cerca a cidade.",
     scroll: {
       t: "Verbos fracos: Ayin Gutural",
       p: ["A 2ª letra da raiz é gutural (ou ר). Ela não aceita o dagesh do Piel, do Pual e do Hitpael:"],
@@ -334,8 +579,17 @@ const HEBREW = {
     },
   },
   licao_25: {
-    city: "Adulão", native: "עֲדֻלָּם", scene: "mountain", boss: "Fugitivo da Caverna",
-    story: "Na caverna de Adulão a gutural se esconde no fundo da raiz e puxa um “a” para perto de si.",
+    city: "Quir-Haresete",
+    native: "קִיר חֲרֶשֶׂת",
+    scene: "walls",
+    book: 2,
+    ref: "2Rs 3.4-27",
+    boss: "Mesa, rei de Moabe",
+    bossRef: "2Rs 3.4-5",
+    bossKind: "abimeleque",
+    creatures: ["goat", "jackal", "scorpion"],
+    why: "“Enviou” (וַיִּשְׁלַח, 2Rs 3.7) e “ouviram” (שָׁמְעוּ, 2Rs 3.21): a gutural fica no fim da raiz.",
+    story: "Os reis de Israel, Judá e Edom enviaram mensageiros e subiram pelo deserto. Todo Moabe ouviu e se ajuntou na fronteira. Nas muralhas de Quir-Haresete espera Mesa, rei de Moabe, que deixou de pagar o tributo.",
     scroll: {
       t: "Verbos fracos: Lamed Gutural",
       p: ["A 3ª letra da raiz é ח ou ע. A gutural quer um a antes dela:"],
@@ -347,8 +601,17 @@ const HEBREW = {
     },
   },
   licao_26: {
-    city: "En-Gedi", native: "עֵין גֶּדִי", scene: "spring", boss: "Caçador de En-Gedi",
-    story: "Nas fontes de En-Gedi o א final cala: está escrito, mas ninguém o ouve.",
+    city: "Laquis",
+    native: "לָכִישׁ",
+    scene: "walls",
+    book: 2,
+    ref: "2Rs 18.13-17",
+    boss: "Senaqueribe, rei da Assíria",
+    bossRef: "2Rs 18.13",
+    bossKind: "abimeleque",
+    creatures: ["scorpion", "jackal", "golem"],
+    why: "“Pequei” (חָטָאתִי, 2Rs 18.14): verbo de terceira א, que fica muda.",
+    story: "A Assíria subiu contra as cidades fortes de Judá. Ezequias mandou dizer a Laquis: “Pequei.” Senaqueribe, rei da Assíria, acampa diante da cidade e pede ouro e prata.",
     scroll: {
       t: "Verbos fracos: Lamed Alef",
       p: ["A 3ª letra da raiz é א. No fim da sílaba ele fica mudo e a vogal anterior alonga:"],
@@ -360,8 +623,17 @@ const HEBREW = {
     },
   },
   licao_27: {
-    city: "Sião", native: "צִיּוֹן", scene: "walls", boss: "Sentinela de Sião",
-    story: "Nos muros de Sião constrói-se e sobe-se. Os verbos mais usados da língua terminam em ה.",
+    city: "Jerusalém sitiada",
+    native: "יְרוּשָׁלַיִם",
+    scene: "walls",
+    book: 2,
+    ref: "2Rs 18.17–19.37",
+    boss: "O Rabsaqué de Senaqueribe",
+    bossRef: "2Rs 18.17-35",
+    bossKind: "ninrode",
+    creatures: ["golem", "raven", "skel"],
+    why: "“Fazei paz comigo” (עֲשׂוּ־אִתִּי בְרָכָה, 2Rs 18.31): o verbo fazer termina em ה. O discurso do Rabsaqué é longo e cheio de formas irregulares (guia).",
+    story: "Diante do muro de Jerusalém, um enviado da Assíria fala alto, na língua do povo, para que todos ouçam. O discurso é longo e cheio de formas irregulares. O Rabsaqué de Senaqueribe não para de falar.",
     scroll: {
       t: "Verbos fracos: Lamed He",
       p: ["O ה final é só uma letra-vogal: a raiz antiga terminava em י, que reaparece antes das desinências."],
@@ -373,8 +645,17 @@ const HEBREW = {
     },
   },
   licao_28: {
-    city: "Gibeão", native: "גִּבְעוֹן", scene: "tabernacle", boss: "Sábio de Gibeão",
-    story: "Em Gibeão pede-se sabedoria e ela é dada. Mas o נ do começo da raiz some sem aviso.",
+    city: "Megido",
+    native: "מְגִדּוֹ",
+    scene: "hills",
+    book: 2,
+    ref: "2Rs 23.29-35",
+    boss: "Faraó Neco",
+    bossRef: "2Rs 23.29",
+    bossKind: "abimeleque",
+    creatures: ["scorpion", "locust", "jackal"],
+    why: "“E impôs tributo à terra” (וַיִּתֶּן, 2Rs 23.33): o verbo dar é o Pe Nun mais comum.",
+    story: "Em Megido o Egito subiu para o norte, e o rei Josias saiu ao seu encontro. Depois o Egito impôs tributo à terra. Faraó Neco dá e tira reis.",
     scroll: {
       t: "Verbos fracos: Pe Nun",
       p: ["O נ inicial, quando fica sem vogal, é assimilado pela letra seguinte e vira um dagesh:"],
@@ -387,8 +668,17 @@ const HEBREW = {
     },
   },
   licao_29: {
-    city: "Carmelo", native: "כַּרְמֶל", scene: "mountain", boss: "Profeta do Fogo",
-    story: "No Carmelo o fogo consome tudo, até a letra do meio. Sobram raízes de duas consoantes.",
+    city: "Ribla",
+    native: "רִבְלָה",
+    scene: "dunes",
+    book: 2,
+    ref: "2Rs 25.1-7",
+    boss: "Nabucodonosor",
+    bossRef: "2Rs 25.1, 6-7",
+    bossKind: "golias",
+    creatures: ["jackal", "scorpion", "skel"],
+    why: "“E o levaram a Babilônia” (וַיְבִאֻהוּ, 2Rs 25.7): o verbo vir (בּוֹא) perdeu a letra do meio.",
+    story: "Jerusalém foi cercada, e o rei de Judá foi levado a Ribla para ser julgado. A letra do meio de muitas raízes daqui também some no caminho. Nabucodonosor espera em Ribla.",
     scroll: {
       t: "Verbos fracos: Ayin Vav e Ayin Yod",
       p: ["A letra do meio é ו ou י e desaparece em quase todas as formas. O dicionário cita o infinitivo: קוּם levantar, שִׂים pôr, בּוֹא vir."],
@@ -400,8 +690,17 @@ const HEBREW = {
     },
   },
   licao_30: {
-    city: "Samaria", native: "שֹׁמְרוֹן", scene: "walls", boss: "Rei de Samaria",
-    story: "Em Samaria os reis sentam, saem e descem. O י do começo da raiz não fica para ver.",
+    city: "Jerusalém em chamas",
+    native: "יְרוּשָׁלַיִם",
+    scene: "temple",
+    book: 2,
+    ref: "2Rs 25.4-10; Lm 3.22-23",
+    boss: "Nebuzaradã, chefe da guarda",
+    bossRef: "2Rs 25.8-9",
+    bossKind: "golias",
+    creatures: ["skel", "raven", "wraith"],
+    why: "“E saiu pelo caminho da planície” (וַיֵּלֶךְ, 2Rs 25.4): o verbo andar se comporta como os de primeira י.",
+    story: "O muro foi rompido, e o rei saiu de noite pelo caminho da planície. O escriba precisa salvar as palavras antes do fogo. Nebuzaradã, chefe da guarda, veio a Jerusalém e queimou a casa do SENHOR.",
     scroll: {
       t: "Verbos fracos: Pe Vav e Pe Yod",
       p: ["A raiz começa com י (antigo ו). No imperfeito, no imperativo e no infinitivo do Qal ele cai:"],
@@ -414,8 +713,18 @@ const HEBREW = {
     },
   },
   licao_31: {
-    city: "Jerusalém", native: "יְרוּשָׁלַיִם", scene: "temple", boss: "Leviatã do Rolo",
-    story: "Em Jerusalém o rolo quase se fecha. O último guardião tem raízes dobradas e todas as lições na memória.",
+    city: "Rios da Babilônia",
+    native: "נַהֲרוֹת בָּבֶל",
+    scene: "sea",
+    book: 2,
+    ref: "Sl 137; Dn 3.1",
+    boss: "A Estátua de Dura",
+    bossRef: "Dn 3.1",
+    bossKind: "demon",
+    creatures: ["idol", "wraith", "seraph"],
+    why: "“Ó filha de Babilônia, que serás destruída” (הַשְּׁדוּדָה, Sl 137.8): שׁדד é um verbo de letras dobradas. E “se eu me esquecer de ti” (Sl 137.5) fecha o tema do jogo (guia).",
+    story: "Junto aos rios da Babilônia os exilados se assentam e choram, e as harpas ficam penduradas nos salgueiros. É ali que o Devorador quer que o povo esqueça. Na planície de Dura ergue-se uma estátua de ouro que manda todos se prostrarem.",
+    liberty: "Daniel 3, onde aparece a estátua, está em aramaico (Dn 2.4b–7.28). As frases deste capítulo vêm das lições de hebraico, e a estátua fica como porta para um futuro capítulo de aramaico (ressalva do guia).",
     scroll: {
       t: "Verbos fracos: Ayin Duplo",
       p: ["A 2ª e a 3ª letras da raiz são iguais (סבב, rodear). As duas se fundem numa só, e o dagesh aparece quando há desinência:"],
@@ -428,11 +737,20 @@ const HEBREW = {
   },
 };
 
-/* ================= Grego: de Belém a Patmos ================= */
+/* ================= Grego: o Segundo Rolo (de Belém a Patmos) ================= */
 const GREEK = {
   bergmann_01: {
-    city: "Belém", native: "Βηθλέεμ", scene: "hills", boss: "Guardião das Letras",
-    story: "O códice do mestre Bergmann se desfez e as letras fugiram pelos campos de Belém. Tudo começa por elas.",
+    city: "Belém",
+    native: "Βηθλέεμ",
+    scene: "hills",
+    book: 1,
+    ref: "Mt 2.1-18",
+    boss: "Herodes",
+    bossRef: "Mt 2.3, 16",
+    bossKind: "abimeleque",
+    creatures: ["jackal", "raven", "goat"],
+    why: "Herodes reúne os escribas para ler a profecia (Mt 2.4-6): a leitura começa pelas letras.",
+    story: "O Devorador passou também pelo Segundo Rolo, e as letras gregas fugiram para Belém. Ali os escribas foram chamados para ler a profecia, letra por letra. Herodes ouve tudo e se perturba.",
     scroll: {
       t: "O alfabeto: 24 letras",
       p: [
@@ -445,8 +763,17 @@ const GREEK = {
     },
   },
   bergmann_02: {
-    city: "Nazaré", native: "Ναζαρέθ", scene: "tents", boss: "Vigia de Nazaré",
-    story: "Em Nazaré as palavras aprendem a agir. Cada verbo diz, na própria terminação, quem está falando.",
+    city: "Deserto da Judeia",
+    native: "ἔρημος",
+    scene: "dunes",
+    book: 1,
+    ref: "Mt 4.1-11",
+    boss: "O Tentador",
+    bossRef: "Mt 4.3",
+    bossKind: "demon2",
+    creatures: ["scorpion", "jackal", "snake"],
+    why: "O Tentador fala no presente: “Se és Filho de Deus” (εἶ, Mt 4.3) e “lhe diz” (λέγει, Mt 4.6).",
+    story: "No deserto da Judeia, depois de quarenta dias de jejum, as palavras gregas começam a agir no presente. A resposta a cada pergunta é a mesma: “Está escrito.” O Tentador chega falando no presente.",
     scroll: {
       t: "Presente do indicativo ativo",
       rows: [
@@ -458,8 +785,17 @@ const GREEK = {
     },
   },
   bergmann_03: {
-    city: "Jordão", native: "Ἰορδάνης", scene: "sea", boss: "Barqueiro do Jordão",
-    story: "À beira do Jordão fala-se do que pode vir a ser: para que, se, quando.",
+    city: "Cafarnaum",
+    native: "Καφαρναούμ",
+    scene: "tabernacle",
+    book: 1,
+    ref: "Mc 1.21-39",
+    boss: "O espírito imundo",
+    bossRef: "Mc 1.23-26",
+    bossKind: "demon2",
+    creatures: ["wraith", "imp", "frog"],
+    why: "“Para que eu pregue também ali” (ἵνα κηρύξω, Mc 1.38): ἵνα com subjuntivo.",
+    story: "Na sinagoga de Cafarnaum o ensino é interrompido por um grito. No dia seguinte a palavra segue adiante, “para que eu pregue também ali”. O espírito imundo ainda ronda a sinagoga.",
     scroll: {
       t: "Presente do subjuntivo",
       p: ["O subjuntivo expressa possibilidade. A marca é a vogal longa (ω ou η) na terminação:"],
@@ -469,8 +805,18 @@ const GREEK = {
     },
   },
   bergmann_04: {
-    city: "Deserto", native: "ἔρημος", scene: "dunes", boss: "Tentador do Deserto",
-    story: "No deserto pergunta-se pelo amanhã. As criaturas escondem um σ antes da terminação.",
+    city: "Mar da Galileia",
+    native: "θάλασσα τῆς Γαλιλαίας",
+    scene: "sea",
+    book: 1,
+    ref: "Mc 4.35-41",
+    boss: "A tempestade",
+    bossRef: "Mc 4.37",
+    bossKind: "leviata",
+    creatures: ["frog", "snake", "raven"],
+    why: "No barco o medo só fala do que vai acontecer: “pereceremos”. O futuro marca o que ainda virá.",
+    story: "“Passemos para a outra margem.” No meio do mar as ondas enchem o barco, e os discípulos só pensam no que vai acontecer. A tempestade se levanta contra o barco.",
+    liberty: "A tempestade é uma força da natureza, não um personagem. O texto a mostra contra os discípulos (Mc 4.37), e o jogo a usa como guardião.",
     scroll: {
       t: "Futuro do indicativo",
       p: ["Futuro = tema + σ + terminações do presente: λύσω, λύσεις, λύσει, λύσομεν, λύσετε, λύσουσι(ν)."],
@@ -481,8 +827,17 @@ const GREEK = {
     },
   },
   bergmann_05: {
-    city: "Caná", native: "Κανά", scene: "well", boss: "Mestre-sala de Caná",
-    story: "Na festa de Caná cada convidado tem o seu lugar. A terminação diz o papel de cada palavra na frase.",
+    city: "Gerasa",
+    native: "Γερασηνοί",
+    scene: "hills",
+    book: 1,
+    ref: "Mc 5.1-20",
+    boss: "Legião",
+    bossRef: "Mc 5.9",
+    bossKind: "nefilim",
+    creatures: ["skel", "goat", "wraith"],
+    why: "“Qual é o teu nome? Legião é o meu nome” (Mc 5.9): o nome, o artigo e o caso de cada palavra.",
+    story: "Na terra dos gerasenos um homem vive entre os sepulcros, preso a correntes que ele mesmo quebra. Perguntado pelo nome, responde com um só nome para muitos: Legião.",
     scroll: {
       t: "O artigo e a 2ª declinação",
       rows: [
@@ -494,8 +849,18 @@ const GREEK = {
     },
   },
   bergmann_06: {
-    city: "Cafarnaum", native: "Καφαρναούμ", scene: "sea", boss: "Centurião de Cafarnaum",
-    story: "Em Cafarnaum uma palavra basta. Mas as femininas trocam de vogal conforme a companhia.",
+    city: "Cesareia de Filipe",
+    native: "Καισάρεια ἡ Φιλίππου",
+    scene: "mountain",
+    book: 1,
+    ref: "Mc 8.27; 9.14-29",
+    boss: "O espírito mudo",
+    bossRef: "Mc 9.17-25",
+    bossKind: "demon2",
+    creatures: ["wraith", "raven", "skel"],
+    why: "“Ajuda a minha incredulidade” (τῇ ἀπιστίᾳ, Mc 9.24): substantivo feminino da primeira declinação.",
+    story: "Ao descer do monte, um pai traz o filho atormentado: “Eu creio; ajuda a minha incredulidade.” As palavras femininas trocam de vogal conforme a companhia. O espírito mudo não deixa o menino falar.",
+    liberty: "Marcos não nomeia o monte; Cesareia de Filipe é a região onde o capítulo anterior acontece (Mc 8.27).",
     scroll: {
       t: "A 1ª declinação",
       rows: [
@@ -510,8 +875,17 @@ const GREEK = {
     },
   },
   bergmann_07: {
-    city: "Galileia", native: "Γαλιλαία", scene: "hills", boss: "Pescador da Galileia",
-    story: "Às margens da Galileia tudo ganha qualidade: bom, mau, santo, fiel.",
+    city: "Betânia",
+    native: "Βηθανία",
+    scene: "garden",
+    book: 1,
+    ref: "Jo 11.1-44; 1Co 15.26",
+    boss: "A Morte",
+    bossRef: "1Co 15.26",
+    bossKind: "nefilim",
+    creatures: ["skel", "wraith", "raven"],
+    why: "“Lázaro, o nosso amigo, dorme” (Jo 11.11): adjetivos e o artigo que os acompanha.",
+    story: "Em Betânia, Lázaro está no sepulcro há quatro dias, e Marta diz que já cheira mal. As palavras daqui ganham qualidade: amigo, morto, quatro dias. Diante da pedra, a Morte parece ter a última palavra.",
     scroll: {
       t: "Adjetivos",
       p: [
@@ -523,8 +897,17 @@ const GREEK = {
     },
   },
   bergmann_08: {
-    city: "Samaria", native: "Σαμάρεια", scene: "well", boss: "Guardiã do Poço",
-    story: "Junto ao poço de Samaria as pequenas palavras decidem tudo: em, de, para, por meio de.",
+    city: "Casa de Caifás",
+    native: "Καϊάφας",
+    scene: "temple",
+    book: 1,
+    ref: "Jo 11.47-53; Mt 26.57-66",
+    boss: "Caifás, o sumo sacerdote",
+    bossRef: "Jo 11.49-50",
+    bossKind: "ninrode",
+    creatures: ["wraith", "jackal", "idol"],
+    why: "“Que um homem morra pelo povo” (ὑπὲρ τοῦ λαοῦ, Jo 11.50): uma preposição decide o sentido da frase.",
+    story: "Depois de Betânia, os principais dos sacerdotes se reúnem em conselho. Uma palavra pequena decide tudo: “pelo povo”. Caifás, sumo sacerdote naquele ano, diz que convém que um homem morra.",
     scroll: {
       t: "Preposições",
       p: ["Com um só caso: ἐν + dativo (em) · εἰς + acusativo (para dentro de) · ἐκ + genitivo (de dentro de) · ἀπό + genitivo (de) · πρός + acusativo (para) · σύν + dativo (com)."],
@@ -536,8 +919,17 @@ const GREEK = {
     },
   },
   bergmann_09: {
-    city: "Betânia", native: "Βηθανία", scene: "garden", boss: "Vigia do Sepulcro",
-    story: "Em Betânia chama-se cada um pelo nome: eu, tu, ele, este, aquele.",
+    city: "Getsêmani",
+    native: "Γεθσημανί",
+    scene: "garden",
+    book: 1,
+    ref: "Mt 26.36-50",
+    boss: "Judas, o traidor",
+    bossRef: "Mt 26.47-49",
+    bossKind: "ninrode",
+    creatures: ["jackal", "raven", "wraith"],
+    why: "“Aquele que eu beijar, esse é” (Ὃν ἂν φιλήσω αὐτός ἐστιν, Mt 26.48): pronome relativo e pessoal.",
+    story: "No jardim do Getsêmani, à noite, chega uma multidão com espadas e porretes. Quem é quem só se sabe por um sinal: “aquele que eu beijar, esse é”. Judas vem à frente.",
     scroll: {
       t: "Pronomes pessoais, demonstrativos e relativo",
       rows: [
@@ -549,8 +941,17 @@ const GREEK = {
     },
   },
   bergmann_10: {
-    city: "Jericó", native: "Ἰεριχώ", scene: "walls", boss: "Publicano de Jericó",
-    story: "Na estrada de Jericó conta-se o que ia acontecendo: andava, ensinava, seguia.",
+    city: "Samaria",
+    native: "Σαμάρεια",
+    scene: "well",
+    book: 1,
+    ref: "At 8.9-24",
+    boss: "Simão, o mago",
+    bossRef: "At 8.9-11",
+    bossKind: "ninrode",
+    creatures: ["idol", "wraith", "snake"],
+    why: "“A quem todos davam ouvidos” (προσεῖχον, At 8.10): o imperfeito conta o que vinha acontecendo.",
+    story: "Em Samaria um homem iludia o povo com magia havia muito tempo, e todos lhe davam ouvidos. Quando viu o que os apóstolos faziam, quis comprar o dom com dinheiro. Simão, o mago, espera com a bolsa aberta.",
     scroll: {
       t: "Imperfeito e verbos defectivos",
       p: ["Imperfeito = ação contínua no passado. Aumento ἐ + tema do presente + terminações secundárias:"],
@@ -563,8 +964,17 @@ const GREEK = {
     },
   },
   bergmann_11: {
-    city: "Jerusalém", native: "Ἰερουσαλήμ", scene: "temple", boss: "Escriba do Templo",
-    story: "No templo os verbos mais antigos trocam de rosto para contar o que aconteceu de uma vez.",
+    city: "Jerusalém",
+    native: "Ἱερουσαλήμ",
+    scene: "walls",
+    book: 1,
+    ref: "At 12.1-24",
+    boss: "Herodes Agripa",
+    bossRef: "At 12.1-4",
+    bossKind: "abimeleque",
+    creatures: ["skel", "raven", "golem"],
+    why: "“E caíram-lhe das mãos as correntes” (ἐξέπεσαν, At 12.7): uma ação vista de uma vez, no segundo aoristo.",
+    story: "Em Jerusalém um apóstolo foi morto e outro, preso com duas correntes. De noite as correntes caíram das mãos do preso. Herodes Agripa ainda está no trono.",
     scroll: {
       t: "2º aoristo",
       p: ["O aoristo vê a ação como um todo. No 2º aoristo o tema muda; o aumento e as terminações são os do imperfeito:"],
@@ -576,8 +986,17 @@ const GREEK = {
     },
   },
   bergmann_12: {
-    city: "Getsêmani", native: "Γεθσημανί", scene: "garden", boss: "Guarda do Horto",
-    story: "No horto, uma noite só. O aoristo regular marca o fato com as letras σα.",
+    city: "Pafos",
+    native: "Πάφος",
+    scene: "sea",
+    book: 1,
+    ref: "At 13.6-12",
+    boss: "Elimas, o mágico",
+    bossRef: "At 13.8",
+    bossKind: "ninrode",
+    creatures: ["snake", "wraith", "scorpion"],
+    why: "“Então o procônsul creu” (ἐπίστευσεν, At 13.12): o primeiro aoristo marca o fato com σα.",
+    story: "Na ilha de Chipre, em Pafos, o procônsul quer ouvir a palavra. Um mágico tenta desviá-lo da fé. Elimas se põe entre o procônsul e o texto.",
     scroll: {
       t: "1º aoristo",
       p: ["Aumento + tema + σα:"],
@@ -587,8 +1006,17 @@ const GREEK = {
     },
   },
   bergmann_13: {
-    city: "Gólgota", native: "Γολγοθᾶ", scene: "mountain", boss: "Centurião da Cruz",
-    story: "No Gólgota as palavras mostram o que são por dentro: o tema verdadeiro só aparece no genitivo.",
+    city: "Filipos",
+    native: "Φίλιπποι",
+    scene: "walls",
+    book: 1,
+    ref: "At 16.16-18",
+    boss: "O espírito de Píton",
+    bossRef: "At 16.16",
+    bossKind: "serpent",
+    creatures: ["snake", "wraith", "raven"],
+    why: "“Um espírito de Píton” (πνεῦμα πύθωνα, At 16.16): πνεῦμα, πνεύματος é da terceira declinação.",
+    story: "Em Filipos uma jovem escrava dava muito lucro aos seus senhores adivinhando. Por muitos dias ela seguiu Paulo gritando pelas ruas. O espírito de Píton fala pela boca dela.",
     scroll: {
       t: "A 3ª declinação",
       p: ["O tema se descobre tirando ‑ος do genitivo: σάρξ, σαρκός → tema σαρκ‑."],
@@ -603,8 +1031,17 @@ const GREEK = {
     },
   },
   bergmann_14: {
-    city: "Emaús", native: "Ἐμμαοῦς", scene: "hills", boss: "Peregrino de Emaús",
-    story: "No caminho de Emaús conversa-se andando. Duas ações ao mesmo tempo pedem um particípio.",
+    city: "Atenas",
+    native: "Ἀθῆναι",
+    scene: "temple",
+    book: 1,
+    ref: "At 17.16-34",
+    boss: "Os ídolos do Areópago",
+    bossRef: "At 17.16, 23",
+    bossKind: "demon",
+    creatures: ["idol", "golem", "wraith"],
+    why: "“Enquanto Paulo os esperava em Atenas, vendo a cidade cheia de ídolos” (ἐκδεχομένου... θεωροῦντος, At 17.16): particípios presentes.",
+    story: "Enquanto esperava em Atenas, Paulo viu a cidade cheia de ídolos. No Areópago todos passavam o tempo dizendo e ouvindo novidades. Os ídolos do Areópago enchem cada praça.",
     scroll: {
       t: "Particípio presente",
       rows: [
@@ -618,8 +1055,17 @@ const GREEK = {
     },
   },
   bergmann_15: {
-    city: "Damasco", native: "Δαμασκός", scene: "walls", boss: "Perseguidor de Damasco",
-    story: "Na estrada de Damasco, depois de cair, levantou-se. Uma ação veio antes da outra.",
+    city: "Éfeso",
+    native: "Ἔφεσος",
+    scene: "temple",
+    book: 1,
+    ref: "At 19.23-41",
+    boss: "Ártemis dos efésios",
+    bossRef: "At 19.27-28",
+    bossKind: "demon2",
+    creatures: ["idol", "scorpion", "snake"],
+    why: "“Tendo ouvido e ficado cheios de ira, clamavam” (ἀκούσαντες... γενόμενοι, At 19.28): particípios aoristos.",
+    story: "Em Éfeso um ourives reuniu os artífices, e a cidade inteira gritou por duas horas no teatro. Tendo ouvido e ficado cheios de ira, todos clamavam o mesmo nome: Ártemis dos efésios.",
     scroll: {
       t: "Particípio aoristo e genitivo absoluto",
       rows: [
@@ -634,8 +1080,17 @@ const GREEK = {
     },
   },
   bergmann_16: {
-    city: "Antioquia", native: "Ἀντιόχεια", scene: "ziggurat", boss: "Mestre de Antioquia",
-    story: "Em Antioquia todos perguntam: quem? o quê? alguém? uns aos outros?",
+    city: "A fortaleza de Jerusalém",
+    native: "παρεμβολή",
+    scene: "walls",
+    book: 1,
+    ref: "At 21.27–23.11",
+    boss: "Ananias, o sumo sacerdote",
+    bossRef: "At 23.2-3",
+    bossKind: "ninrode",
+    creatures: ["jackal", "skel", "raven"],
+    why: "“Quem era e o que tinha feito” (τίς εἴη καὶ τί ἐστιν πεποιηκώς, At 21.33): pronomes interrogativos.",
+    story: "No templo prenderam Paulo, e o tribuno perguntou quem ele era e o que tinha feito. Levado à fortaleza, ele fala ao conselho. Ananias, o sumo sacerdote, manda que lhe batam na boca.",
     scroll: {
       t: "Interrogativos, indefinidos, reflexivos e recíproco",
       rows: [
@@ -646,8 +1101,17 @@ const GREEK = {
     },
   },
   bergmann_17: {
-    city: "Filipos", native: "Φίλιπποι", scene: "tower", boss: "Carcereiro de Filipos",
-    story: "Na prisão de Filipos as portas se abriram e ficaram abertas. O que foi feito continua valendo.",
+    city: "Cesareia",
+    native: "Καισάρεια",
+    scene: "tabernacle",
+    book: 1,
+    ref: "At 24.1-9; 25.6-12",
+    boss: "Tértulo, o orador",
+    bossRef: "At 24.1-2",
+    bossKind: "ninrode",
+    creatures: ["wraith", "jackal", "idol"],
+    why: "“Se fiz algo digno de morte” (εἰ... πέπραχα, At 25.11): o perfeito, ação feita que continua valendo.",
+    story: "Em Cesareia o processo se arrasta por anos, e o que foi feito continua valendo. Paulo responde: “Se fiz algo digno de morte, não recuso morrer.” Tértulo, o orador, acusa diante do governador.",
     scroll: {
       t: "Perfeito e mais-que-perfeito",
       p: ["Perfeito = ação concluída cujo resultado permanece. Reduplicação + tema + κα:"],
@@ -661,8 +1125,18 @@ const GREEK = {
     },
   },
   bergmann_18: {
-    city: "Atenas", native: "Ἀθῆναι", scene: "temple", boss: "Filósofo do Areópago",
-    story: "No Areópago discute-se e ordena-se. As criaturas falam em ordens e desejos.",
+    city: "Mar Adriático",
+    native: "Ἀδρίας",
+    scene: "sea",
+    book: 1,
+    ref: "At 27.13-44",
+    boss: "O Euroaquilão",
+    bossRef: "At 27.14",
+    bossKind: "leviata",
+    creatures: ["frog", "snake", "raven"],
+    why: "“Tende bom ânimo” (εὐθυμεῖτε, At 27.25): imperativo; e o desejo de que amanhecesse (At 27.29).",
+    story: "O navio é arrastado por catorze noites sem sol nem estrelas. Paulo se põe de pé no meio deles: “Tende bom ânimo.” O Euroaquilão, um vento tempestuoso, não deixa o navio chegar.",
+    liberty: "O Euroaquilão é um vento, não um personagem; o texto o mostra contra o navio (At 27.14), e o jogo o usa como guardião.",
     scroll: {
       t: "Imperativo e optativo",
       rows: [
@@ -677,8 +1151,19 @@ const GREEK = {
     },
   },
   bergmann_19: {
-    city: "Corinto", native: "Κόρινθος", scene: "pillar", boss: "Sofista de Corinto",
-    story: "Em Corinto correm para ganhar o prêmio. O verbo vira nome: o correr, o crer, o viver.",
+    city: "Malta",
+    native: "Μελίτη",
+    scene: "spring",
+    book: 1,
+    ref: "At 28.1-10",
+    boss: "A víbora",
+    bossRef: "At 28.3",
+    bossKind: "serpent",
+    creatures: ["snake", "scorpion", "frog"],
+    why: "“Esperavam que ele viesse a inchar ou cair morto” (μέλλειν πίμπρασθαι ἢ καταπίπτειν, At 28.6): infinitivos.",
+    story: "Em Malta os náufragos acendem uma fogueira, e uma víbora sai do calor e se prende à mão de Paulo. Os moradores esperam que ele venha a inchar. A víbora não fez mal a Paulo (At 28.5): é um guardião leve, para revisar.",
+    light: true,
+    liberty: "Como a víbora não fez mal a Paulo (At 28.5), o guardião bate com metade da força: é um capítulo de revisão (sugestão do guia).",
     scroll: {
       t: "O infinitivo",
       rows: [
@@ -692,8 +1177,17 @@ const GREEK = {
     },
   },
   bergmann_20: {
-    city: "Éfeso", native: "Ἔφεσος", scene: "temple", boss: "Ourives de Éfeso",
-    story: "Nas oficinas de Éfeso os metais se fundem. As vogais também: duas viram uma.",
+    city: "O poço do abismo",
+    native: "ἄβυσσος",
+    scene: "sinai",
+    book: 1,
+    ref: "Ap 9.1-11",
+    boss: "Abadom, o anjo do abismo",
+    bossRef: "Ap 9.11",
+    bossKind: "demon",
+    creatures: ["locust", "scorpion", "skel"],
+    why: "“Foi-lhe dada a chave do poço do abismo” (ἐδόθη, Ap 9.1): o verbo dar, δίδωμι, é o verbo em ‑μι mais comum.",
+    story: "Na visão, uma estrela caída recebe a chave do poço do abismo, e dele sobe fumaça como de uma grande fornalha. Da fumaça saem gafanhotos com poder de escorpiões. Abadom é o rei deles.",
     scroll: {
       t: "Verbos contraídos e verbos em ‑μι",
       rows: [
@@ -708,8 +1202,17 @@ const GREEK = {
     },
   },
   bergmann_21: {
-    city: "Roma", native: "Ῥώμη", scene: "walls", boss: "Pretoriano de Roma",
-    story: "Em Roma tudo é contado e apontado: o primeiro, os doze, um só.",
+    city: "Armagedom",
+    native: "Ἁρμαγεδών",
+    scene: "hills",
+    book: 1,
+    ref: "Ap 16.13-16",
+    boss: "Os três espíritos imundos",
+    bossRef: "Ap 16.13-14",
+    bossKind: "nefilim",
+    creatures: ["frog", "locust", "wraith"],
+    why: "“Três espíritos imundos” (πνεύματα τρία, Ap 16.13): numerais e os usos do artigo.",
+    story: "Da boca do dragão, da besta e do falso profeta saem espíritos semelhantes a rãs. Eles ajuntam os reis no lugar que em hebraico se chama Armagedom. Os três espíritos imundos contam os exércitos.",
     scroll: {
       t: "Usos do artigo e numerais",
       p: [
@@ -724,8 +1227,18 @@ const GREEK = {
     },
   },
   bergmann_22: {
-    city: "Patmos", native: "Πάτμος", scene: "sea", boss: "Dragão do Apocalipse",
-    story: "Na ilha de Patmos o códice quase se fecha. O último guardião fala por condições: se… então.",
+    city: "Patmos",
+    native: "Πάτμος",
+    scene: "sea",
+    book: 1,
+    ref: "Ap 12–13; 17.14",
+    boss: "A Besta e o Dragão",
+    bossRef: "Ap 12.3, 9; 13.1",
+    bossKind: "dragao",
+    creatures: ["seraph", "dragon", "locust"],
+    why: "“Se alguém tem ouvidos, ouça” (εἴ τις ἔχει οὖς, Ap 13.9): oração condicional.",
+    story: "Na ilha de Patmos o Segundo Rolo quase se fecha. Do mar sobe uma besta, e o grande dragão, a antiga serpente, lhe dá o seu poder. A Besta e o Dragão guardam a última página, e falam por condições: “se alguém tem ouvidos, ouça”.",
+    liberty: "A vitória sobre o dragão é do Cordeiro (Ap 12.11; 17.14). No jogo o escriba vence as perguntas e lê o texto, e a história final diz quem venceu o dragão (cuidado do guia).",
     scroll: {
       t: "Orações condicionais e partículas",
       rows: [
@@ -756,7 +1269,13 @@ function getChapterMeta(language, chapter, index) {
     city: title.replace(/^Li[cç][aã]o\s+[IVXLCDM\d]+\s*[-–—:]\s*/i, "").slice(0, 28) || "Terra desconhecida",
     native: language === "greek" ? "γῆ" : "אֶרֶץ",
     scene: SCENES[index % SCENES.length],
-    boss: "Guardião sem nome",
+    book: 1,
+    ref: "",
+    boss: "Cria do Devorador",
+    bossRef: "",
+    bossKind: "golias",
+    creatures: ["imp", "wraith", "raven"],
+    why: "Página acrescentada ao material pelo aluno.",
     story: "Uma página acrescentada ao rolo. As palavras dela também fugiram e precisam voltar.",
     scroll: {
       t: title,
@@ -766,8 +1285,7 @@ function getChapterMeta(language, chapter, index) {
   };
 }
 
-const ScribeCampaign = { CLASSES, RELICS, RELIC_MILESTONES, HEBREW, GREEK, SCENES, getChapterMeta };
-
+const ScribeCampaign = { CLASSES, CLASS_NAMES, classInfo, RELICS, BOOKS, SPECIES, HEBREW, GREEK, SCENES, getChapterMeta };
 // Suporte universal (Browser Global / Node CommonJS)
 if (typeof window !== "undefined") {
   window.ScribeCampaign = ScribeCampaign;
