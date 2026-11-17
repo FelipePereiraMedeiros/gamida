@@ -312,7 +312,7 @@ suite.test('Fim da lista mostra o resumo em vez de recomeçar sem avisar', () =>
   const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
   assert.includes(html, 'id="round-summary"', 'Resumo da rodada ausente');
   assert.includes(html, 'id="round-tally"', 'Contagem da rodada ausente');
-  assert.includes(html, 'onclick="restartPracticeRound()"', 'Botão de praticar de novo ausente');
+  assert.includes(html, 'data-on-click="restartPracticeRound()"', 'Botão de praticar de novo ausente');
   assert.includes(html, 'id="btn-round-errors"', 'Botão de praticar os erros ausente');
   const start = appJs.indexOf('if (AppState.currentQuestionIndex >= practiceQueue.length)');
   assert.isTrue(start > 0 && appJs.slice(start, start + 200).includes('showRoundSummary();'), 'Fim da lista deve abrir o resumo');

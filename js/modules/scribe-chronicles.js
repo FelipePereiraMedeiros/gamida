@@ -476,8 +476,7 @@ function mergeProgress(language, incoming) {
 /* ============================ Interface ============================ */
 
 const $ = (selector) => (typeof document !== "undefined" ? document.querySelector(selector) : null);
-const esc = (text) => String(text === null || text === undefined ? "" : text)
-  .replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c]));
+const esc = (text) => ((typeof window !== "undefined" && window.GamidaHTML) || require("./html.js")).escapeHTML(text);
 const isHebrew = () => AppState.language === "hebrew";
 const termClass = () => (isHebrew() ? "hebrew-text" : "greek-text");
 const audio = () => (typeof window !== "undefined" ? window.GameAudio : null);

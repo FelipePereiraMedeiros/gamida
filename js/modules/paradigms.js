@@ -12,7 +12,7 @@ const shuffleArray = (typeof window !== "undefined" && window.shuffleArray) || _
 const escapeHTML =
   (typeof window !== "undefined" && window.escapeHTML) ||
   _stateModule.escapeHTML ||
-  ((s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;"));
+  ((s) => ((typeof window !== "undefined" && window.GamidaHTML) || require("./html.js")).escapeHTML(s));
 
 let activeParadigm = null;
 let draggedElement = null;
@@ -234,7 +234,7 @@ function renderTableView(paradigm, container) {
   }
   btnContainer.classList.remove("hidden");
   btnContainer.innerHTML = `
-    <button type="button" onclick="checkParadigmAnswers()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
+    <button type="button" data-on-click="checkParadigmAnswers()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
       Verificar Estrutura ➔
     </button>
     <div id="paradigm-feedback" class="hidden mt-4 text-sm font-bold"></div>
@@ -399,7 +399,7 @@ function renderDiagramView(paradigm, container) {
   }
   btnContainer.classList.remove("hidden");
   btnContainer.innerHTML = `
-    <button type="button" onclick="checkParadigmAnswers()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
+    <button type="button" data-on-click="checkParadigmAnswers()" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-brand-600/30">
       Verificar grafo ➔
     </button>
     <div id="paradigm-feedback" class="hidden mt-4 text-sm font-bold"></div>

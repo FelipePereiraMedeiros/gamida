@@ -388,7 +388,7 @@ suite.test('Caçada completa: todas as palavras do capítulo viram criaturas, as
 });
 
 suite.test('Crônicas do Escriba está ligada à tela de Avaliar e ao backup', () => {
-  assert.includes(html, 'onclick="openScribeChronicles()"', 'Cartão do modo ausente');
+  assert.includes(html, 'data-on-click="openScribeChronicles()"', 'Cartão do modo ausente');
   assert.includes(html, 'id="scribe-view"', 'Tela do jogo ausente');
   ['scribe-campaign.js', 'scribe-lore.js', 'scribe-graphics.js', 'scribe-heroes.js', 'scribe-bosses.js', 'scribe-map.js', 'scribe-fx.js', 'scribe-chronicles.js'].forEach((file) => {
     assert.includes(html, `js/modules/${file}`, `${file} não carregado`);
@@ -397,7 +397,7 @@ suite.test('Crônicas do Escriba está ligada à tela de Avaliar e ao backup', (
   assert.isTrue(html.indexOf('scribe-lore.js') < html.indexOf('scribe-chronicles.js'), 'A história carrega antes do motor');
   assert.includes(appJs, 'ScribeModule.loadProgress(AppState.language)', 'Backup não leva o progresso da aventura');
   assert.includes(appJs, 'mergeProgress(AppState.language, parsed.scribe)', 'Backup não restaura a aventura');
-  assert.includes(html, 'onclick="scribeToggleTyping()"', 'Opção de digitar a resposta ausente');
+  assert.includes(html, 'data-on-click="scribeToggleTyping()"', 'Opção de digitar a resposta ausente');
 });
 
 module.exports = suite;

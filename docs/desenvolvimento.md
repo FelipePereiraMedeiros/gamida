@@ -27,6 +27,7 @@ Para rodar só um arquivo, passe parte do nome: `npm run e2e -- cronicas`.
 - **Crônicas do Escriba:** um capítulo inteiro no hebraico e no grego (criaturas, guardião, frases, progresso), o mapa de cada livro, o ataque quando o tempo acaba e a caçada completa com a palavra errada voltando no fim.
 - **Perfis:** cada perfil com o próprio progresso. A sincronização com o Google desligada por padrão e, no modo de teste, com o Google simulado: subir o perfil, outro aparelho receber e perguntar qual versão manter.
 - **Chuva de Pedras:** jogar, pausar, terminar e mandar os erros para a revisão.
+- **Segurança:** todas as ações da página apontam para funções existentes e funcionam com a CSP ligada. Um capítulo importado com HTML malicioso em todo texto passa por todas as telas (prática, correção, análise da frase, dicionário, tabelas, simulado, trilha, morfologia, Chuva de Pedras, Crônicas, perfil) sem injetar nada. O perfil percebe mudanças sem interceptar o armazenamento, e uma segunda aba aberta é avisada.
 
 Qualquer pedido para fora do servidor local conta como falha: o Gamida não pode depender de servidores externos.
 
@@ -65,3 +66,11 @@ As fichas dos capítulos (`scribe-campaign.js`) e a história (`scribe-lore.js`)
 ## Avisos de direitos autorais
 
 `node scripts/license-headers.js` acrescenta o aviso onde faltar. Os arquivos das Crônicas em coautoria recebem o aviso com os dois coautores (lista em `scripts/license-headers.js`).
+
+## Segurança
+
+- **Política de segurança de conteúdo (CSP)** no `index.html`: só roda script do próprio site (`script-src 'self'`), sem `eval` e sem JavaScript dentro do HTML. O Google só entra em `connect-src`, para a sincronização do perfil (desligada até ser ativada). A página `oauth-callback.html` tem uma CSP ainda mais fechada.
+- **Ações sem JavaScript no HTML:** em vez de `onclick="f('x')"`, use `data-on-click="f('x')"` (também `data-on-change`, `data-on-input`, `data-on-submit`, `data-on-keydown` e `data-on-scroll`). Quem lê esses atributos é `js/modules/actions.js`. Ele não executa o texto como código: aceita só uma chamada de função, com textos, números, `true`/`false`/`null`, `this`, `this.value`, `this.checked` ou `event`. Um elemento com `role="button"` e `data-on-click` também responde a Enter e Espaço.
+- **Escape único:** todo texto vindo de dado entra no HTML por `escapeHTML` (`js/modules/html.js`). As outras cópias foram removidas, e o teste de segurança acusa se alguma voltar.
+- **Script inicial** (idioma antes da primeira pintura e `APP_VERSION`): `js/boot.js`.
+- **Perfis:** as mudanças são percebidas comparando as chaves do perfil a cada 1,5 s, sem mexer em `Storage.prototype`. Com o Gamida aberto em duas abas, aparece um aviso; se a outra aba gravar progresso, o aviso oferece recarregar.

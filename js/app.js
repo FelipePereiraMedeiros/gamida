@@ -9,7 +9,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.37.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.38.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -66,19 +66,7 @@ var DOM = (typeof window !== "undefined" && window.DOM) ? window.DOM : {};
 
 /* ================= CORE LOGIC & INITIALIZATION ================= */
 function escapeHTML(str) {
-  if (typeof window !== "undefined" && window.EvaluationModule && typeof window.EvaluationModule.escapeHTML === "function") {
-    return window.EvaluationModule.escapeHTML(str);
-  }
-  if (typeof window !== "undefined" && window.StateModule && typeof window.StateModule.escapeHTML === "function") {
-    return window.StateModule.escapeHTML(str);
-  }
-  if (str === null || str === undefined) return "";
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+  return ((typeof window !== "undefined" && window.GamidaHTML) || require("./modules/html.js")).escapeHTML(str);
 }
 
 function getTerm(item) {
@@ -960,7 +948,7 @@ function renderCurrentQuestion() {
           </span>
           <button
             type="button"
-            onclick="switchTab('vocab')"
+            data-on-click="switchTab('vocab')"
             class="answer-btn font-sans"
           >
             Ir para o Dicionário e favoritar itens

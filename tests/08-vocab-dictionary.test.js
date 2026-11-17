@@ -14,7 +14,7 @@ const { renderVocabTable, filterVocabTable } = require('../js/modules/ui.js');
 suite.test('Estrutura HTML da tabela de dicionário e campo de busca', () => {
   assert.includes(html, 'id="vocab-table-body"', 'Tbody #vocab-table-body ausente');
   assert.includes(html, 'id="vocab-search"', 'Input de busca #vocab-search ausente');
-  assert.includes(html, 'oninput="filterVocabTable()"', 'Evento oninput de filtro ausente');
+  assert.includes(html, 'data-on-input="filterVocabTable()"', 'Evento oninput de filtro ausente');
 });
 
 suite.test('Funções de renderização e filtro do dicionário exportadas no ui.js e app.js', () => {

@@ -165,9 +165,12 @@ suite.test('Perfil está na navegação, carrega antes dos outros módulos e tem
   const order = ['js/modules/profiles.js', 'js/data-loader.js', 'js/modules/state.js', 'js/modules/cloud-sync.js', 'js/app.js'].map((f) => html.indexOf(f));
   assert.isTrue(order.every((v, i) => v > -1 && (i === 0 || v > order[i - 1])), 'Ordem de carregamento dos scripts');
   const callback = fs.readFileSync(path.join(__dirname, '..', 'oauth-callback.html'), 'utf8');
-  assert.includes(callback, 'gamida_google_oauth_result');
+  const callbackJs = fs.readFileSync(path.join(__dirname, '..', 'js', 'oauth-callback.js'), 'utf8');
+  assert.includes(callbackJs, 'gamida_google_oauth_result');
   assert.includes(callback, 'Copyright');
-  assert.isTrue(!/<script[^>]+src=/.test(callback), 'Página de retorno sem scripts externos');
+  assert.includes(callback, '<script src="js/oauth-callback.js"></script>', 'Página de retorno usa o script do próprio Gamida');
+  assert.isTrue(!/<script>/.test(callback), 'Página de retorno sem script embutido (CSP)');
+  assert.includes(callback, 'Content-Security-Policy');
 });
 
 module.exports = suite;

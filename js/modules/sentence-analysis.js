@@ -263,13 +263,7 @@
   }
 
   function escapeHTML(str) {
-    if (str === null || str === undefined) return "";
-    return String(str)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+    return ((typeof window !== "undefined" && window.GamidaHTML) || require("./html.js")).escapeHTML(str);
   }
 
   function normalizeHebrewForSearch(str) {
@@ -777,7 +771,7 @@
         <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-slate-800/80">
           <button
             type="button"
-            onclick="SentenceAnalysisModule.setActiveMorphemeIndex(null, true)"
+            data-on-click="SentenceAnalysisModule.setActiveMorphemeIndex(null, true)"
             class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition cursor-pointer flex items-center gap-1.5"
             title="Voltar para a visão global de toda a oração"
           >
@@ -788,7 +782,7 @@
           <div class="flex items-center gap-2">
             <button
               type="button"
-              onclick="SentenceAnalysisModule.navigateMorphemes(-1)"
+              data-on-click="SentenceAnalysisModule.navigateMorphemes(-1)"
               class="px-3 py-1.5 rounded-lg text-xs font-mono text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition cursor-pointer flex items-center gap-1"
               title="Morfema Anterior (Seta Direita em RTL)"
             >
@@ -800,7 +794,7 @@
             </span>
             <button
               type="button"
-              onclick="SentenceAnalysisModule.navigateMorphemes(+1)"
+              data-on-click="SentenceAnalysisModule.navigateMorphemes(+1)"
               class="px-3 py-1.5 rounded-lg text-xs font-mono text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition cursor-pointer flex items-center gap-1"
               title="Próximo Morfema (Seta Esquerda em RTL)"
             >
@@ -1845,7 +1839,7 @@
               return `
                 <button
                   type="button"
-                  onclick="SentenceAnalysisModule.setActiveMorphemeIndex(${idx}, true)"
+                  data-on-click="SentenceAnalysisModule.setActiveMorphemeIndex(${idx}, true)"
                   class="interlinear-word text-left cursor-pointer group"
                   title="Dissecar ${escapeHTML(m.part ? m.part.segment : '')}"
                 >
@@ -2035,7 +2029,7 @@
         <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-slate-800/80">
           <button
             type="button"
-            onclick="SentenceAnalysisModule.setActiveMorphemeIndex(null, true)"
+            data-on-click="SentenceAnalysisModule.setActiveMorphemeIndex(null, true)"
             class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition cursor-pointer flex items-center gap-1.5"
             title="Voltar para a visão global de toda a oração"
           >
@@ -2046,7 +2040,7 @@
           <div class="flex items-center gap-2">
             <button
               type="button"
-              onclick="SentenceAnalysisModule.navigateMorphemes(-1)"
+              data-on-click="SentenceAnalysisModule.navigateMorphemes(-1)"
               class="px-3 py-1.5 rounded-lg text-xs font-mono text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition cursor-pointer flex items-center gap-1"
               title="Termo Anterior (Seta Esquerda em Grego LTR)"
             >
@@ -2058,7 +2052,7 @@
             </span>
             <button
               type="button"
-              onclick="SentenceAnalysisModule.navigateMorphemes(+1)"
+              data-on-click="SentenceAnalysisModule.navigateMorphemes(+1)"
               class="px-3 py-1.5 rounded-lg text-xs font-mono text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition cursor-pointer flex items-center gap-1"
               title="Próximo Termo (Seta Direita em Grego LTR)"
             >
@@ -2554,7 +2548,7 @@
               <p class="text-xs text-slate-400 font-medium">Dissecação granular de partículas, raízes e morfemas (Gramática de Page Kelley)</p>
             </div>
           </div>
-          <button type="button" id="btn-close-analysis-modal" onclick="SentenceAnalysisModule.closeSentenceAnalysisModal()" class="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition cursor-pointer" title="Fechar (Esc)">✕</button>
+          <button type="button" id="btn-close-analysis-modal" data-on-click="SentenceAnalysisModule.closeSentenceAnalysisModal()" class="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition cursor-pointer" title="Fechar (Esc)">✕</button>
         </div>
         <div class="p-4 sm:p-6 md:p-8 space-y-6 overflow-y-auto flex-1">
           <div class="bg-slate-950/90 border border-slate-800 rounded-2xl p-6 md:p-8 text-center relative overflow-hidden shadow-inner">

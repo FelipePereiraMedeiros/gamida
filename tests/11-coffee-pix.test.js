@@ -14,7 +14,7 @@ const { copyPixCoffee, resetCoffeeButton } = require('../js/modules/ui.js');
 suite.test('Botão #btn-coffee estruturado no index.html com ícone e estilo de destaque', () => {
   assert.includes(html, 'id="btn-coffee"', 'Botão #btn-coffee ausente');
   assert.includes(html, 'Pague-me um café!', 'Texto inicial ausente');
-  assert.includes(html, 'onclick="copyPixCoffee(this)"', 'Evento de clique ausente');
+  assert.includes(html, 'data-on-click="copyPixCoffee(this)"', 'Evento de clique ausente');
   assert.includes(html, 'bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600', 'Gradiente de destaque ausente');
 });
 

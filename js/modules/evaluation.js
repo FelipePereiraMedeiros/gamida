@@ -12,13 +12,7 @@
  * @returns {string}
  */
 function escapeHTML(str) {
-  if (str === null || str === undefined) return "";
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+  return ((typeof window !== "undefined" && window.GamidaHTML) || require("./html.js")).escapeHTML(str);
 }
 
 /**

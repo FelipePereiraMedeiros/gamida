@@ -13,7 +13,7 @@ const { AppState } = require('../js/modules/state.js');
 
 suite.test('Botão de logo no HTML permite alternar idioma no clique', () => {
   assert.includes(html, 'id="app-logo-btn"', 'Botão #app-logo-btn ausente');
-  assert.includes(html, 'onclick="toggleLanguage()"', 'Evento onclick="toggleLanguage()" ausente');
+  assert.includes(html, 'data-on-click="toggleLanguage()"', 'Ação toggleLanguage() ausente');
 });
 
 suite.test('toggleLanguage alterna entre "hebrew" e "greek" e atualiza estado', () => {

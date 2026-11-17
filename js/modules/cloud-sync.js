@@ -378,6 +378,7 @@ function sync({ interactive = false } = {}) {
 
 async function doSync(interactive) {
   const P = Profiles();
+  if (P.detectChanges) P.detectChanges();
   P.flushChangeMark();
   let profile = P.getActiveProfile();
   if (!profile.google || !currentToken()) return "none";
@@ -509,8 +510,7 @@ function setStatus(text, tone, busy = false) {
   }
 }
 
-const esc = (text) => String(text === null || text === undefined ? "" : text)
-  .replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c]));
+const esc = (text) => ((typeof window !== "undefined" && window.GamidaHTML) || require("./html.js")).escapeHTML(text);
 
 function renderCard(profile) {
   const connected = !!currentToken();

@@ -8,7 +8,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.37.0";
+  "2.38.0";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
@@ -16,13 +16,7 @@ const APP_VERSION =
  * @returns {string}
  */
 function escapeHTML(str) {
-  if (str === null || str === undefined) return "";
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+  return ((typeof window !== "undefined" && window.GamidaHTML) || require("./html.js")).escapeHTML(str);
 }
 
 const AppState = (typeof window !== "undefined" && window.AppState) || {

@@ -19,6 +19,7 @@ const current = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf
 const files = [
   "package.json",
   "index.html",
+  "js/boot.js",
   "js/modules/state.js",
   "js/app.js",
   "js/data-loader.js",

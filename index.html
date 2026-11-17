@@ -4,6 +4,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Política de segurança: só roda script vindo do próprio Gamida; nada de JavaScript dentro do HTML.
+         O Google só é chamado pela sincronização do perfil (desligada até ser ativada). -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://www.googleapis.com https://oauth2.googleapis.com; media-src 'self' blob: data:; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
+    />
     <meta name="author" content="Felipe Pereira Medeiros" />
     <meta name="copyright" content="© 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário." />
     <title>Gamida - Treinador de Idiomas Bíblicos</title>
@@ -12,22 +18,12 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>"
     />
-    <script>
-      // Aplica o idioma salvo antes da primeira pintura, evitando flash de cor
-      try {
-        if (localStorage.getItem("gamida_language") === "greek") {
-          document.documentElement.setAttribute("data-lang", "greek");
-        }
-      } catch (_) {}
-    </script>
+    <!-- Idioma salvo e versão, antes da primeira pintura (sem script embutido: ver a CSP acima) -->
+    <script src="js/boot.js"></script>
     <!-- Fontes da interface, servidas do próprio projeto (sem depender de internet) -->
     <link rel="stylesheet" href="css/fonts.css" />
     <!-- Pré-carregamento de fontes bíblicas locais -->
     <link rel="preload" href="fonts/SBL_Hbrw.ttf" as="font" type="font/ttf" crossorigin />
-
-    <script>
-      window.APP_VERSION = "2.37.0";
-    </script>
 
     <!-- Estilos personalizados e resiliência offline -->
     <link rel="stylesheet" href="css/offline-theme.css" />
@@ -85,7 +81,7 @@
         <button
           type="button"
           id="mobile-menu-toggle-btn"
-          onclick="toggleMobileMenu()"
+          data-on-click="toggleMobileMenu()"
           class="study-toggle inline-flex items-center leading-none"
           aria-expanded="false"
           aria-controls="study-context"
@@ -111,8 +107,7 @@
             title="Dias seguidos de estudo"
             role="button"
             tabindex="0"
-            onclick="openDailyGoalSettings()"
-            onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openDailyGoalSettings(); }"
+            data-on-click="openDailyGoalSettings()"
           >
             <dt><svg class="icon icon--sm app-stat__icon app-stat__icon--streak" aria-hidden="true"><use href="#i-flame"></use></svg><span class="app-stat__label">Dias seguidos</span></dt>
             <dd id="stat-days">0</dd>
@@ -137,7 +132,7 @@
         <button
           type="button"
           id="app-language-switch"
-          onclick="toggleLanguage()"
+          data-on-click="toggleLanguage()"
           class="lang-switch"
           aria-label="Idioma atual: Hebraico. Trocar para Grego"
           title="Trocar o idioma de estudo"
@@ -149,7 +144,7 @@
         <div id="custom-chapter-selector" class="chapter-select">
           <button
             type="button"
-            onclick="toggleDropdown()"
+            data-on-click="toggleDropdown()"
             aria-haspopup="true"
             aria-expanded="false"
             aria-controls="chapter-dropdown-list"
@@ -169,7 +164,7 @@
         <button
           type="button"
           id="btn-coffee"
-          onclick="copyPixCoffee(this)"
+          data-on-click="copyPixCoffee(this)"
           title="Apoie o desenvolvedor com um café via Pix! Clique para copiar a chave."
           class="w-full px-3 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:via-orange-400 hover:to-amber-500 text-slate-950 border border-amber-400/30 transition-all duration-300 flex items-center gap-2.5 cursor-pointer"
         >
@@ -197,7 +192,7 @@
         <button
           type="button"
           id="tabs-scroll-left-btn"
-          onclick="scrollTabs('left')"
+          data-on-click="scrollTabs('left')"
           class="app-nav__scroll app-nav__scroll--left hidden"
           aria-label="Rolar abas para a esquerda"
         >
@@ -207,24 +202,24 @@
         </button>
         <div id="tabs-fade-left" class="app-nav__fade app-nav__fade--left hidden"></div>
 
-        <div id="navbar-tabs-container" onscroll="updateTabsScrollIndicators()" class="app-nav__list scrollbar-none">
-          <button type="button" id="nav-btn-practice" onclick="switchTab('practice')" class="nav-item is-active" aria-current="page">
+        <div id="navbar-tabs-container" data-on-scroll="updateTabsScrollIndicators()" class="app-nav__list scrollbar-none">
+          <button type="button" id="nav-btn-practice" data-on-click="switchTab('practice')" class="nav-item is-active" aria-current="page">
             <svg class="icon" aria-hidden="true"><use href="#i-practice"></use></svg><span>Praticar</span>
           </button>
-          <button type="button" id="nav-btn-assessment" onclick="switchTab('assessment')" class="nav-item">
+          <button type="button" id="nav-btn-assessment" data-on-click="switchTab('assessment')" class="nav-item">
             <svg class="icon" aria-hidden="true"><use href="#i-assess"></use></svg><span>Avaliar</span>
             <span id="nav-review-badge" class="nav-item__badge hidden" title="Palavras erradas para revisar"></span>
           </button>
-          <button type="button" id="nav-btn-paradigms" onclick="switchTab('paradigms')" class="nav-item">
+          <button type="button" id="nav-btn-paradigms" data-on-click="switchTab('paradigms')" class="nav-item">
             <svg class="icon" aria-hidden="true"><use href="#i-table"></use></svg><span>Tabelas<span class="nav-item__extra"> e Grafos</span></span>
           </button>
-          <button type="button" id="nav-btn-vocab" onclick="switchTab('vocab')" class="nav-item">
+          <button type="button" id="nav-btn-vocab" data-on-click="switchTab('vocab')" class="nav-item">
             <svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg><span>Dicionário</span>
           </button>
-          <button type="button" id="nav-btn-manage" onclick="switchTab('manage')" class="nav-item">
+          <button type="button" id="nav-btn-manage" data-on-click="switchTab('manage')" class="nav-item">
             <svg class="icon" aria-hidden="true"><use href="#i-sliders"></use></svg><span>Gerenciar</span>
           </button>
-          <button type="button" id="nav-btn-profile" onclick="switchTab('profile')" class="nav-item" title="Perfil">
+          <button type="button" id="nav-btn-profile" data-on-click="switchTab('profile')" class="nav-item" title="Perfil">
             <span id="nav-profile-avatar" class="nav-profile-avatar" aria-hidden="true">?</span><span>Perfil</span>
           </button>
         </div>
@@ -233,7 +228,7 @@
         <button
           type="button"
           id="tabs-scroll-right-btn"
-          onclick="scrollTabs('right')"
+          data-on-click="scrollTabs('right')"
           class="app-nav__scroll app-nav__scroll--right hidden animate-subtle-bounce-x"
           aria-label="Rolar abas para a direita"
           title="Mais opções à direita"
@@ -246,7 +241,7 @@
     </header>
 
     <!-- Fundo que fecha o painel de contexto no mobile -->
-    <div id="study-backdrop" class="study-backdrop" onclick="toggleMobileMenu(false)"></div>
+    <div id="study-backdrop" class="study-backdrop" data-on-click="toggleMobileMenu(false)"></div>
 
     <main id="main-content" tabindex="-1" class="app-main flex-1 w-full flex flex-col">
       <!-- Aba 1: prática -->
@@ -257,19 +252,19 @@
           <div id="standard-mode-controls" class="session-bar__body">
             <div class="session-bar__row">
               <div class="seg seg--modes" role="group" aria-label="Modo de exercício">
-                <button type="button" id="mode-typing" onclick="setExerciseMode('typing')" class="seg-btn is-active" aria-pressed="true" title="Digite a tradução">
+                <button type="button" id="mode-typing" data-on-click="setExerciseMode('typing')" class="seg-btn is-active" aria-pressed="true" title="Digite a tradução">
                   <svg class="icon icon--sm" aria-hidden="true"><use href="#i-keyboard"></use></svg><span>Digitação</span>
                 </button>
-                <button type="button" id="mode-choice" onclick="setExerciseMode('choice')" class="seg-btn" aria-pressed="false" title="Múltipla escolha">
+                <button type="button" id="mode-choice" data-on-click="setExerciseMode('choice')" class="seg-btn" aria-pressed="false" title="Múltipla escolha">
                   <svg class="icon icon--sm" aria-hidden="true"><use href="#i-list"></use></svg><span>Escolha</span>
                 </button>
-                <button type="button" id="mode-sentences" onclick="setExerciseMode('sentences')" class="seg-btn" aria-pressed="false" title="Traduza frases completas">
+                <button type="button" id="mode-sentences" data-on-click="setExerciseMode('sentences')" class="seg-btn" aria-pressed="false" title="Traduza frases completas">
                   <svg class="icon icon--sm" aria-hidden="true"><use href="#i-lines"></use></svg><span>Frases</span>
                 </button>
-                <button type="button" id="mode-favorites" onclick="setExerciseMode('favorites')" class="seg-btn" aria-pressed="false" title="Praticar apenas frases e palavras marcadas como favoritas">
+                <button type="button" id="mode-favorites" data-on-click="setExerciseMode('favorites')" class="seg-btn" aria-pressed="false" title="Praticar apenas frases e palavras marcadas como favoritas">
                   <svg class="icon icon--sm" aria-hidden="true"><use href="#i-star"></use></svg><span>Favoritas</span>
                 </button>
-                <button type="button" id="mode-errors" onclick="setExerciseMode('errors')" class="seg-btn" aria-pressed="false" title="Praticar os termos que você errou">
+                <button type="button" id="mode-errors" data-on-click="setExerciseMode('errors')" class="seg-btn" aria-pressed="false" title="Praticar os termos que você errou">
                   <svg class="icon icon--sm" aria-hidden="true"><use href="#i-error"></use></svg><span>Erros</span>
                 </button>
               </div>
@@ -277,7 +272,7 @@
               <button
                 type="button"
                 id="btn-practice-options"
-                onclick="togglePracticeOptions()"
+                data-on-click="togglePracticeOptions()"
                 class="options-toggle"
                 aria-expanded="false"
                 aria-controls="practice-options-panel"
@@ -301,7 +296,7 @@
                     <button
                       type="button"
                       id="btn-practice-chapter-picker"
-                      onclick="togglePracticeChapterPicker(event)"
+                      data-on-click="togglePracticeChapterPicker(event)"
                       aria-haspopup="true"
                       aria-expanded="false"
                       aria-controls="practice-chapters-dropdown-menu"
@@ -329,9 +324,9 @@
                   </div>
 
                   <div class="seg" role="group" aria-label="Abrangência dos capítulos">
-                    <button type="button" id="scope-single" onclick="setPracticeCumulative(false)" class="seg-btn is-active" aria-pressed="true" title="Praticar apenas o capítulo atual">Só o atual</button>
-                    <button type="button" id="scope-cumulative" onclick="setPracticeCumulative(true)" class="seg-btn" aria-pressed="false" title="Praticar do início até o capítulo atual">Até o atual</button>
-                    <button type="button" id="scope-all" onclick="selectAllPracticeChapters()" class="seg-btn" aria-pressed="false" title="Praticar todos os capítulos de vocabulário">Todos</button>
+                    <button type="button" id="scope-single" data-on-click="setPracticeCumulative(false)" class="seg-btn is-active" aria-pressed="true" title="Praticar apenas o capítulo atual">Só o atual</button>
+                    <button type="button" id="scope-cumulative" data-on-click="setPracticeCumulative(true)" class="seg-btn" aria-pressed="false" title="Praticar do início até o capítulo atual">Até o atual</button>
+                    <button type="button" id="scope-all" data-on-click="selectAllPracticeChapters()" class="seg-btn" aria-pressed="false" title="Praticar todos os capítulos de vocabulário">Todos</button>
                   </div>
                 </div>
               </div>
@@ -340,8 +335,8 @@
               <div id="practice-order-container">
                 <span class="field-label">Ordem das lições</span>
                 <div class="seg" role="group" aria-label="Ordem dos capítulos">
-                  <button type="button" id="order-asc" onclick="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Começa pela primeira lição selecionada">Primeira ➔ Última</button>
-                  <button type="button" id="order-desc" onclick="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Começa pela última lição selecionada">Última ➔ Primeira</button>
+                  <button type="button" id="order-asc" data-on-click="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Começa pela primeira lição selecionada">Primeira ➔ Última</button>
+                  <button type="button" id="order-desc" data-on-click="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Começa pela última lição selecionada">Última ➔ Primeira</button>
                 </div>
               </div>
 
@@ -349,15 +344,15 @@
               <div id="practice-direction-container" class="hidden">
                 <span class="field-label">Direção da escolha</span>
                 <div class="seg" role="group" aria-label="Direção da múltipla escolha">
-                  <button type="button" id="direction-forward" onclick="setChoiceDirection('forward')" class="seg-btn is-active" aria-pressed="true" title="Veja o termo original e escolha a tradução">Original ➔ Português</button>
-                  <button type="button" id="direction-reverse" onclick="setChoiceDirection('reverse')" class="seg-btn" aria-pressed="false" title="Veja a tradução e escolha o termo original">Português ➔ Original</button>
+                  <button type="button" id="direction-forward" data-on-click="setChoiceDirection('forward')" class="seg-btn is-active" aria-pressed="true" title="Veja o termo original e escolha a tradução">Original ➔ Português</button>
+                  <button type="button" id="direction-reverse" data-on-click="setChoiceDirection('reverse')" class="seg-btn" aria-pressed="false" title="Veja a tradução e escolha o termo original">Português ➔ Original</button>
                 </div>
               </div>
 
               <!-- Filtro Dinâmico por Tipo de Palavra (Digitação) -->
               <div id="practice-category-container">
                 <label for="practice-category-select" class="field-label">Tipo de palavra</label>
-                <select id="practice-category-select" onchange="setPracticeCategory(this.value)" class="control-select">
+                <select id="practice-category-select" data-on-change="setPracticeCategory(this.value)" class="control-select">
                   <option value="all">Todas as palavras</option>
                 </select>
               </div>
@@ -367,10 +362,10 @@
           <!-- Controles Gamificados do Alfabeto (Capítulo 1) -->
           <div id="alphabet-mode-controls" class="hidden session-bar__body">
             <div class="seg seg--modes" role="group" aria-label="Jogo do alfabeto">
-              <button type="button" id="alpha-mode-order" onclick="setAlphabetSubmode('order')" class="seg-btn is-active" aria-pressed="true">Ordem</button>
-              <button type="button" id="alpha-mode-impostors" onclick="setAlphabetSubmode('impostors')" class="seg-btn" aria-pressed="false" title="Letras parecidas">Parecidas</button>
-              <button type="button" id="alpha-mode-shapes" onclick="setAlphabetSubmode('shapes')" class="seg-btn" aria-pressed="false" title="Formas e sofit">Formas</button>
-              <button type="button" id="alpha-mode-classic" onclick="setAlphabetSubmode('classic')" class="seg-btn" aria-pressed="false" title="Treino livre">Treino livre</button>
+              <button type="button" id="alpha-mode-order" data-on-click="setAlphabetSubmode('order')" class="seg-btn is-active" aria-pressed="true">Ordem</button>
+              <button type="button" id="alpha-mode-impostors" data-on-click="setAlphabetSubmode('impostors')" class="seg-btn" aria-pressed="false" title="Letras parecidas">Parecidas</button>
+              <button type="button" id="alpha-mode-shapes" data-on-click="setAlphabetSubmode('shapes')" class="seg-btn" aria-pressed="false" title="Formas e sofit">Formas</button>
+              <button type="button" id="alpha-mode-classic" data-on-click="setAlphabetSubmode('classic')" class="seg-btn" aria-pressed="false" title="Treino livre">Treino livre</button>
             </div>
           </div>
         </div>
@@ -456,7 +451,7 @@
             <button
               type="button"
               id="btn-alphabet-next"
-              onclick="nextAlphabetChallenge()"
+              data-on-click="nextAlphabetChallenge()"
               class="w-full md:w-auto px-6 py-2.5 bg-slate-100 text-slate-900 font-bold text-xs rounded-xl hover:bg-white transition shadow-md"
             >
               Próximo Desafio ➔
@@ -488,7 +483,7 @@
               <button
                 type="button"
                 id="btn-practice-remove-error"
-                onclick="removeCurrentPracticeError()"
+                data-on-click="removeCurrentPracticeError()"
                 class="remove-error-btn hidden"
                 title="Remover este termo da lista de erros"
                 aria-label="Remover este termo da lista de erros"
@@ -498,7 +493,7 @@
               <button
                 type="button"
                 id="btn-practice-fav"
-                onclick="toggleCurrentPracticeFavorite()"
+                data-on-click="toggleCurrentPracticeFavorite()"
                 class="fav-btn"
                 title="Marcar / desmarcar como favorito"
                 aria-label="Favoritar"
@@ -514,10 +509,10 @@
               Radical do 2º aoristo: <span id="question-stem-value" class="stem-value greek-text"></span>
             </p>
             <div id="hint-container" class="exercise-prompt__tools">
-              <button type="button" id="btn-show-hint" onclick="toggleHint()" class="link-btn">
+              <button type="button" id="btn-show-hint" data-on-click="toggleHint()" class="link-btn">
                 Mostrar transliteração
               </button>
-              <button type="button" id="btn-practice-analysis" onclick="openCurrentPracticeSentenceAnalysis()" class="hidden link-btn">
+              <button type="button" id="btn-practice-analysis" data-on-click="openCurrentPracticeSentenceAnalysis()" class="hidden link-btn">
                 Analisar morfemas
               </button>
               <p id="hint-text" class="w-full text-sm font-mono text-amber-400/90 hidden"></p>
@@ -525,7 +520,7 @@
           </div>
 
           <div class="exercise-answer">
-            <form id="interface-typing" onsubmit="submitAnswer(event)" class="hidden">
+            <form id="interface-typing" data-on-submit="submitAnswer(event)" class="hidden">
               <div class="answer-row">
                 <input
                   type="text"
@@ -543,7 +538,7 @@
 
             <div id="interface-choice" class="choice-grid hidden"></div>
 
-            <form id="interface-sentences" onsubmit="submitSentenceAnswer(event)" class="hidden">
+            <form id="interface-sentences" data-on-submit="submitSentenceAnswer(event)" class="hidden">
               <label for="input-sentence" class="field-label">Traduza o texto acima para o português</label>
               <textarea
                 id="input-sentence"
@@ -589,7 +584,7 @@
               <button
                 type="button"
                 id="btn-feedback-analysis"
-                onclick="openCurrentPracticeSentenceAnalysis()"
+                data-on-click="openCurrentPracticeSentenceAnalysis()"
                 class="hidden btn-secondary flex-1 md:flex-none"
               >
                 Análise morfossintática
@@ -597,13 +592,13 @@
               <button
                 type="button"
                 id="btn-feedback-override"
-                onclick="overrideCurrentPracticeMiss()"
+                data-on-click="overrideCurrentPracticeMiss()"
                 class="hidden btn-secondary flex-1 md:flex-none"
                 title="Use quando sua tradução diz o mesmo com outras palavras"
               >
                 Minha tradução está certa
               </button>
-              <button type="button" id="btn-next" onclick="nextQuestion()" class="hidden answer-btn flex-1 md:flex-none">
+              <button type="button" id="btn-next" data-on-click="nextQuestion()" class="hidden answer-btn flex-1 md:flex-none">
                 Próxima Questão ➔
               </button>
             </div>
@@ -618,8 +613,8 @@
               <ul id="round-summary-list" class="round-summary__list"></ul>
             </div>
             <div class="round-summary__actions">
-              <button type="button" id="btn-round-restart" onclick="restartPracticeRound()" class="answer-btn">Praticar de novo</button>
-              <button type="button" id="btn-round-errors" onclick="setExerciseMode('errors')" class="btn-secondary hidden">Praticar só os erros</button>
+              <button type="button" id="btn-round-restart" data-on-click="restartPracticeRound()" class="answer-btn">Praticar de novo</button>
+              <button type="button" id="btn-round-errors" data-on-click="setExerciseMode('errors')" class="btn-secondary hidden">Praticar só os erros</button>
             </div>
           </section>
         </div>
@@ -642,14 +637,14 @@
               <span id="review-due-card" class="mode-card__stat hidden"></span>
               <span class="mode-card__text">Flashcards com repetição espaçada. Normal usa os capítulos ativos; Vencidas traz o que está na hora de rever, de qualquer capítulo; Erros reúne o que você errou.</span>
               <span class="mode-card__actions">
-                <button type="button" onclick="startAnki('normal')" class="answer-btn">Normal</button>
-                <button type="button" id="btn-review-due" onclick="startAnki('due')" class="btn-secondary" disabled title="Revisões vencidas de todos os capítulos">Vencidas <span id="review-due-count"></span></button>
-                <button type="button" id="btn-review-errors" onclick="startAnki('errors')" class="btn-secondary" disabled>Erros <span id="review-errors-count"></span></button>
+                <button type="button" data-on-click="startAnki('normal')" class="answer-btn">Normal</button>
+                <button type="button" id="btn-review-due" data-on-click="startAnki('due')" class="btn-secondary" disabled title="Revisões vencidas de todos os capítulos">Vencidas <span id="review-due-count"></span></button>
+                <button type="button" id="btn-review-errors" data-on-click="startAnki('errors')" class="btn-secondary" disabled>Erros <span id="review-errors-count"></span></button>
               </span>
             </div>
 
             <!-- Modo: simulado personalizado -->
-            <button type="button" onclick="openSimuladoConfig()" class="mode-card mode-card--exam">
+            <button type="button" data-on-click="openSimuladoConfig()" class="mode-card mode-card--exam">
               <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-assess"></use></svg></span>
               <span class="mode-card__title">Simulado Personalizado</span>
               <span class="mode-card__text">Defina tamanho, tempo e foco da prova. Ao final, veja o diagnóstico por capítulo.</span>
@@ -657,7 +652,7 @@
             </button>
 
             <!-- Modo: morte súbita -->
-            <button type="button" onclick="startSurvival()" class="mode-card mode-card--survival">
+            <button type="button" data-on-click="startSurvival()" class="mode-card mode-card--survival">
               <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></span>
               <span class="mode-card__title">Morte Súbita</span>
               <span class="mode-card__stat">Recorde: <span id="surv-card-high">0</span></span>
@@ -666,7 +661,7 @@
             </button>
 
             <!-- Modo: caminho do domínio -->
-            <button type="button" onclick="openMasteryPath()" class="mode-card mode-card--path">
+            <button type="button" data-on-click="openMasteryPath()" class="mode-card mode-card--path">
               <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-target"></use></svg></span>
               <span class="mode-card__title">Caminho do domínio</span>
               <span id="path-card-stat" class="mode-card__stat"></span>
@@ -675,7 +670,7 @@
             </button>
 
             <!-- Modo: Mago da Morfologia, análise morfológica (só no grego) -->
-            <button type="button" id="morph-mode-card" onclick="openMorphDrill()" class="mode-card mode-card--morph hidden">
+            <button type="button" id="morph-mode-card" data-on-click="openMorphDrill()" class="mode-card mode-card--morph hidden">
               <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg></span>
               <span class="mode-card__title">Mago da Morfologia</span>
               <span class="mode-card__text">Marque nas caixas a classe, o caso, o gênero, o número, a pessoa, o tempo, o modo e a voz de cada palavra das frases das lições.</span>
@@ -683,7 +678,7 @@
             </button>
 
             <!-- Modo: Chuva de Pedras -->
-            <button type="button" onclick="openStoneRain()" class="mode-card mode-card--stones">
+            <button type="button" data-on-click="openStoneRain()" class="mode-card mode-card--stones">
               <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-stones"></use></svg></span>
               <span class="mode-card__title">Chuva de Pedras</span>
               <span class="mode-card__stat">Recorde: <span id="stones-card-best">0</span></span>
@@ -692,7 +687,7 @@
             </button>
 
             <!-- Modo: Crônicas do Escriba -->
-            <button type="button" onclick="openScribeChronicles()" class="mode-card mode-card--scribe">
+            <button type="button" data-on-click="openScribeChronicles()" class="mode-card mode-card--scribe">
               <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-scroll"></use></svg></span>
               <span class="mode-card__title">Crônicas do Escriba</span>
               <span id="scribe-card-stat" class="mode-card__stat"></span>
@@ -713,10 +708,10 @@
               <span class="sr-lives" id="sr-lives" role="img" aria-label="5 de 5 vidas">♥♥♥♥♥</span>
             </div>
             <div class="sr-tools">
-              <button type="button" class="sr-ghost sr-ghost--small" data-game-audio="music" onclick="gameAudioToggleMusic()">Música: ligada</button>
-              <button type="button" class="sr-ghost sr-ghost--small" data-game-audio="mute" onclick="gameAudioToggleMute()">Som: ligado</button>
-              <button type="button" class="sr-ghost sr-ghost--small" onclick="stoneRainPause()">Pausar</button>
-              <button type="button" class="sr-ghost sr-ghost--small" onclick="resetToDashboard()">Sair</button>
+              <button type="button" class="sr-ghost sr-ghost--small" data-game-audio="music" data-on-click="gameAudioToggleMusic()">Música: ligada</button>
+              <button type="button" class="sr-ghost sr-ghost--small" data-game-audio="mute" data-on-click="gameAudioToggleMute()">Som: ligado</button>
+              <button type="button" class="sr-ghost sr-ghost--small" data-on-click="stoneRainPause()">Pausar</button>
+              <button type="button" class="sr-ghost sr-ghost--small" data-on-click="resetToDashboard()">Sair</button>
             </div>
           </div>
 
@@ -731,23 +726,23 @@
               </p>
               <label class="sr-start">
                 <span>Começar na fase</span>
-                <select id="sr-start" class="sr-start__select" onchange="stoneRainStartAt(this.value)" aria-label="Lição em que a partida começa"></select>
+                <select id="sr-start" class="sr-start__select" data-on-change="stoneRainStartAt(this.value)" aria-label="Lição em que a partida começa"></select>
               </label>
               <div class="sr-chips" id="sr-chapter-chips" role="group" aria-label="Fases da partida (uma por lição)"></div>
               <div class="sr-chips">
-                <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('all')">Todas</button>
-                <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('upto')">Até a lição atual</button>
-                <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('from')">Da atual em diante</button>
-                <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('only')">Só a atual</button>
-                <button type="button" class="sr-chip sr-chip--action" onclick="stoneRainSelect('none')">Nenhuma</button>
+                <button type="button" class="sr-chip sr-chip--action" data-on-click="stoneRainSelect('all')">Todas</button>
+                <button type="button" class="sr-chip sr-chip--action" data-on-click="stoneRainSelect('upto')">Até a lição atual</button>
+                <button type="button" class="sr-chip sr-chip--action" data-on-click="stoneRainSelect('from')">Da atual em diante</button>
+                <button type="button" class="sr-chip sr-chip--action" data-on-click="stoneRainSelect('only')">Só a atual</button>
+                <button type="button" class="sr-chip sr-chip--action" data-on-click="stoneRainSelect('none')">Nenhuma</button>
               </div>
               <div class="sr-chips">
-                <button type="button" class="sr-chip" id="sr-only-errors" aria-pressed="false" onclick="stoneRainToggle('errors')">★ Só as que errei</button>
-                <button type="button" class="sr-chip" id="sr-reverse" aria-pressed="false" onclick="stoneRainToggle('reverse')">Pedras em português</button>
-                <button type="button" class="sr-chip" id="sr-typing" aria-pressed="false" onclick="stoneRainToggle('typing')" title="Digite a tradução em vez de tocar numa alternativa. As pedras caem mais devagar.">Digitar a resposta</button>
+                <button type="button" class="sr-chip" id="sr-only-errors" aria-pressed="false" data-on-click="stoneRainToggle('errors')">★ Só as que errei</button>
+                <button type="button" class="sr-chip" id="sr-reverse" aria-pressed="false" data-on-click="stoneRainToggle('reverse')">Pedras em português</button>
+                <button type="button" class="sr-chip" id="sr-typing" aria-pressed="false" data-on-click="stoneRainToggle('typing')" title="Digite a tradução em vez de tocar numa alternativa. As pedras caem mais devagar.">Digitar a resposta</button>
               </div>
               <p class="sr-overlay__text sr-overlay__text--small" id="sr-pool-info"></p>
-              <button type="button" class="sr-play" id="sr-play" onclick="stoneRainPlay()">Jogar</button>
+              <button type="button" class="sr-play" id="sr-play" data-on-click="stoneRainPlay()">Jogar</button>
               <p class="sr-overlay__text sr-overlay__text--small">
                 Recorde: <b id="sr-best">0</b> · <span id="sr-keys-help">Teclas 1–4 também respondem · Espaço pausa · M liga e desliga todo o som</span>
               </p>
@@ -755,8 +750,8 @@
             <div class="sr-overlay hidden" id="sr-pause">
               <h3 class="sr-overlay__title">Pausado</h3>
               <div class="sr-row">
-                <button type="button" class="sr-play" onclick="stoneRainResume()">Continuar</button>
-                <button type="button" class="sr-ghost" onclick="stoneRainMenu()">Voltar ao menu</button>
+                <button type="button" class="sr-play" data-on-click="stoneRainResume()">Continuar</button>
+                <button type="button" class="sr-ghost" data-on-click="stoneRainMenu()">Voltar ao menu</button>
               </div>
             </div>
             <div class="sr-overlay hidden" id="sr-over"></div>
@@ -771,11 +766,11 @@
           <div class="sc-top">
             <h3 class="sc-title">Crônicas do Escriba <span id="sc-title-orig" class="hebrew-text">סֹפֵר</span></h3>
             <div class="sc-tools">
-              <button type="button" class="sc-mini" onclick="scribeShowBook()">Grimório</button>
-              <button type="button" class="sc-mini" id="sc-input-mode" aria-pressed="false" onclick="scribeToggleTyping()" title="Digite as traduções em vez de tocar numa alternativa">Resposta: tocar</button>
-              <button type="button" class="sc-mini" data-game-audio="music" onclick="gameAudioToggleMusic()">Música: ligada</button>
-              <button type="button" class="sc-mini" data-game-audio="mute" onclick="gameAudioToggleMute()">Som: ligado</button>
-              <button type="button" class="sc-mini" onclick="resetToDashboard()">Sair</button>
+              <button type="button" class="sc-mini" data-on-click="scribeShowBook()">Grimório</button>
+              <button type="button" class="sc-mini" id="sc-input-mode" aria-pressed="false" data-on-click="scribeToggleTyping()" title="Digite as traduções em vez de tocar numa alternativa">Resposta: tocar</button>
+              <button type="button" class="sc-mini" data-game-audio="music" data-on-click="gameAudioToggleMusic()">Música: ligada</button>
+              <button type="button" class="sc-mini" data-game-audio="mute" data-on-click="gameAudioToggleMute()">Som: ligado</button>
+              <button type="button" class="sc-mini" data-on-click="resetToDashboard()">Sair</button>
             </div>
           </div>
           <section id="sc-screen" aria-live="polite"></section>
@@ -791,7 +786,7 @@
                 <span id="path-overview-summary" class="path-head__summary"></span>
               </p>
             </div>
-            <button type="button" onclick="resetToDashboard()" class="btn-secondary">Voltar</button>
+            <button type="button" data-on-click="resetToDashboard()" class="btn-secondary">Voltar</button>
           </div>
           <ol id="path-chapter-list" class="path-list"></ol>
         </div>
@@ -809,7 +804,7 @@
               </div>
               <div class="exercise-meta__side">
                 <span id="path-progress" class="meta-count"></span>
-                <button type="button" onclick="exitMasteryPathChapter()" class="link-btn">Sair</button>
+                <button type="button" data-on-click="exitMasteryPathChapter()" class="link-btn">Sair</button>
               </div>
             </div>
 
@@ -818,13 +813,13 @@
             <div class="exercise-prompt">
               <div id="path-prompt" class="exercise-prompt__text hebrew-text"></div>
               <div class="exercise-prompt__tools">
-                <button type="button" id="path-btn-hint" onclick="togglePathHint()" class="link-btn">Mostrar transliteração</button>
+                <button type="button" id="path-btn-hint" data-on-click="togglePathHint()" class="link-btn">Mostrar transliteração</button>
                 <p id="path-hint" class="w-full text-sm font-mono text-amber-400/90 hidden"></p>
               </div>
             </div>
 
             <div class="exercise-answer">
-              <form id="path-form" onsubmit="submitMasteryPathAnswer(event)">
+              <form id="path-form" data-on-submit="submitMasteryPathAnswer(event)">
                 <div class="answer-row">
                   <input
                     type="text"
@@ -849,7 +844,7 @@
                   <p id="path-feedback-detail" class="path-feedback__detail"></p>
                 </div>
               </div>
-              <button type="button" id="path-btn-next" onclick="continueMasteryPath()" class="answer-btn">Próximo termo ➔</button>
+              <button type="button" id="path-btn-next" data-on-click="continueMasteryPath()" class="answer-btn">Próximo termo ➔</button>
             </div>
           </div>
         </div>
@@ -862,7 +857,7 @@
             <p id="path-complete-note" class="round-summary__note"></p>
             <div class="round-summary__actions">
               <button type="button" id="path-btn-next-chapter" class="answer-btn hidden">Próximo capítulo ➔</button>
-              <button type="button" onclick="openMasteryPath()" class="btn-secondary">Ver o caminho</button>
+              <button type="button" data-on-click="openMasteryPath()" class="btn-secondary">Ver o caminho</button>
             </div>
           </section>
         </div>
@@ -881,7 +876,7 @@
             </div>
             <button
               type="button"
-              onclick="closeSimuladoConfig()"
+              data-on-click="closeSimuladoConfig()"
               class="text-slate-400 hover:text-white text-2xl font-light"
               aria-label="Fechar configuração do simulado"
             >
@@ -897,7 +892,7 @@
               <div class="grid grid-cols-4 gap-2 text-sm">
                 <button
                   type="button"
-                  onclick="setSimConfig('amount', 10)"
+                  data-on-click="setSimConfig('amount', 10)"
                   id="cfg-amount-10"
                   class="cfg-btn cfg-amount bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
                 >
@@ -905,7 +900,7 @@
                 </button>
                 <button
                   type="button"
-                  onclick="setSimConfig('amount', 25)"
+                  data-on-click="setSimConfig('amount', 25)"
                   id="cfg-amount-25"
                   class="cfg-btn cfg-amount bg-brand-600 text-white font-bold py-2 rounded-xl"
                 >
@@ -913,7 +908,7 @@
                 </button>
                 <button
                   type="button"
-                  onclick="setSimConfig('amount', 50)"
+                  data-on-click="setSimConfig('amount', 50)"
                   id="cfg-amount-50"
                   class="cfg-btn cfg-amount bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
                 >
@@ -921,7 +916,7 @@
                 </button>
                 <button
                   type="button"
-                  onclick="setSimConfig('amount', 'max')"
+                  data-on-click="setSimConfig('amount', 'max')"
                   id="cfg-amount-max"
                   class="cfg-btn cfg-amount bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
                 >
@@ -937,7 +932,7 @@
               <div class="grid grid-cols-4 gap-2 text-sm">
                 <button
                   type="button"
-                  onclick="setSimConfig('time', 0)"
+                  data-on-click="setSimConfig('time', 0)"
                   id="cfg-time-0"
                   class="cfg-btn cfg-time bg-brand-600 text-white font-bold py-2 rounded-xl"
                 >
@@ -945,7 +940,7 @@
                 </button>
                 <button
                   type="button"
-                  onclick="setSimConfig('time', 15)"
+                  data-on-click="setSimConfig('time', 15)"
                   id="cfg-time-15"
                   class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
                 >
@@ -953,7 +948,7 @@
                 </button>
                 <button
                   type="button"
-                  onclick="setSimConfig('time', 30)"
+                  data-on-click="setSimConfig('time', 30)"
                   id="cfg-time-30"
                   class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
                 >
@@ -961,7 +956,7 @@
                 </button>
                 <button
                   type="button"
-                  onclick="setSimConfig('time', 60)"
+                  data-on-click="setSimConfig('time', 60)"
                   id="cfg-time-60"
                   class="cfg-btn cfg-time bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
                 >
@@ -977,7 +972,7 @@
               <div class="grid grid-cols-3 gap-2 text-sm">
                 <button
                   type="button"
-                  onclick="setSimConfig('focus', 'mixed')"
+                  data-on-click="setSimConfig('focus', 'mixed')"
                   id="cfg-focus-mixed"
                   class="cfg-btn cfg-focus bg-brand-600 text-white font-bold py-2 rounded-xl"
                 >
@@ -985,7 +980,7 @@
                 </button>
                 <button
                   type="button"
-                  onclick="setSimConfig('focus', 'words')"
+                  data-on-click="setSimConfig('focus', 'words')"
                   id="cfg-focus-words"
                   class="cfg-btn cfg-focus bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
                 >
@@ -993,7 +988,7 @@
                 </button>
                 <button
                   type="button"
-                  onclick="setSimConfig('focus', 'sentences')"
+                  data-on-click="setSimConfig('focus', 'sentences')"
                   id="cfg-focus-sentences"
                   class="cfg-btn cfg-focus bg-slate-800 text-slate-300 font-bold py-2 rounded-xl hover:bg-slate-700"
                 >
@@ -1005,7 +1000,7 @@
           <div class="pt-8">
             <button
               type="button"
-              onclick="startSimulado()"
+              data-on-click="startSimulado()"
               class="w-full py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl transition shadow-lg"
             >
               Gerar Prova e Iniciar ➔
@@ -1058,7 +1053,7 @@
                   type="text"
                   id="assess-user-input"
                   aria-label="Tradução em português"
-                  oninput="saveCurrentInputDraft()"
+                  data-on-input="saveCurrentInputDraft()"
                   autocomplete="off"
                   class="w-full bg-slate-950 border-2 border-slate-800 focus:border-brand-500 rounded-2xl px-5 py-3.5 text-base text-slate-100 placeholder-slate-600 focus:outline-none transition text-center shadow-inner"
                 />
@@ -1080,7 +1075,7 @@
             >
               <button
                 type="button"
-                onclick="navigateAssessment(-1)"
+                data-on-click="navigateAssessment(-1)"
                 id="assess-btn-prev"
                 class="text-xs font-medium text-slate-400 hover:text-slate-100 px-4 py-2 transition"
               >
@@ -1148,7 +1143,7 @@
           <div class="text-center pt-4">
             <button
               type="button"
-              onclick="resetToDashboard()"
+              data-on-click="resetToDashboard()"
               class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md"
             >
               Voltar à Central
@@ -1175,7 +1170,7 @@
             </div>
             <button
               type="button"
-              onclick="resetToDashboard()"
+              data-on-click="resetToDashboard()"
               class="text-xs text-slate-500 hover:text-rose-400 font-medium transition"
             >
               ✖ Encerrar Sessão
@@ -1208,7 +1203,7 @@
                     <button
                       type="button"
                       id="btn-anki-analyze"
-                      onclick="openCurrentAnkiSentenceAnalysis()"
+                      data-on-click="openCurrentAnkiSentenceAnalysis()"
                       class="hidden px-3 py-1.5 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/60 border border-indigo-500/40 text-xs text-indigo-300 hover:text-white transition cursor-pointer font-mono inline-flex items-center gap-1.5 shadow-sm"
                       title="Abrir Análise Morfológica da Frase"
                     >
@@ -1225,7 +1220,7 @@
                   <div class="grid grid-cols-3 gap-3 max-w-lg mx-auto">
                     <button
                       type="button"
-                      onclick="answerAnki('hard')"
+                      data-on-click="answerAnki('hard')"
                       class="py-3 md:py-4 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/50 text-rose-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"
                     >
                       <span class="text-xl">🔴</span
@@ -1238,7 +1233,7 @@
                     </button>
                     <button
                       type="button"
-                      onclick="answerAnki('good')"
+                      data-on-click="answerAnki('good')"
                       class="py-3 md:py-4 bg-amber-950/40 hover:bg-amber-900/60 border border-amber-800/50 text-amber-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"
                     >
                       <span class="text-xl">🟡</span
@@ -1251,7 +1246,7 @@
                     </button>
                     <button
                       type="button"
-                      onclick="answerAnki('easy')"
+                      data-on-click="answerAnki('easy')"
                       class="py-3 md:py-4 bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-800/50 text-emerald-400 rounded-2xl font-bold transition flex flex-col items-center gap-1 shadow-inner"
                     >
                       <span class="text-xl">🟢</span
@@ -1272,7 +1267,7 @@
             >
               <button
                 type="button"
-                onclick="revealAnki()"
+                data-on-click="revealAnki()"
                 class="w-full py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm rounded-xl transition shadow-md flex items-center justify-center gap-2"
               >
                 Mostrar tradução
@@ -1342,7 +1337,7 @@
             </div>
             <button
               type="button"
-              onclick="resetToDashboard()"
+              data-on-click="resetToDashboard()"
               class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md"
             >
               Voltar à Central
@@ -1379,7 +1374,7 @@
             </div>
             <button
               type="button"
-              onclick="finishSurvival(true)"
+              data-on-click="finishSurvival(true)"
               class="text-xs text-slate-500 hover:text-rose-400 font-medium transition"
             >
               ✖ Desistir
@@ -1416,7 +1411,7 @@
             >
               <button
                 type="button"
-                onclick="submitSurvivalAnswer()"
+                data-on-click="submitSurvivalAnswer()"
                 class="px-10 py-4 bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-rose-600/30"
               >
                 Responder ➔
@@ -1496,7 +1491,7 @@
 
             <button
               type="button"
-              onclick="resetToDashboard()"
+              data-on-click="resetToDashboard()"
               class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition border border-slate-700 shadow-md"
             >
               Voltar à Central
@@ -1511,29 +1506,29 @@
               <h3 class="morph-panel__title">Mago da Morfologia</h3>
               <p id="morph-scope-info" class="morph-panel__text"></p>
             </div>
-            <button type="button" onclick="quitMorphDrill()" class="link-btn" aria-label="Fechar o Mago da Morfologia">Voltar</button>
+            <button type="button" data-on-click="quitMorphDrill()" class="link-btn" aria-label="Fechar o Mago da Morfologia">Voltar</button>
           </div>
           <p class="morph-panel__label">Lições</p>
           <div id="morph-chapter-list" class="morph-chapters"></div>
           <p class="morph-panel__label">Quantidade de palavras</p>
           <div class="morph-amounts">
-            <button type="button" class="morph-amount" data-morph-amount="10" onclick="setMorphAmount('10')">10</button>
-            <button type="button" class="morph-amount" data-morph-amount="15" onclick="setMorphAmount('15')">15</button>
-            <button type="button" class="morph-amount" data-morph-amount="30" onclick="setMorphAmount('30')">30</button>
-            <button type="button" class="morph-amount" data-morph-amount="max" onclick="setMorphAmount('max')">Todas</button>
+            <button type="button" class="morph-amount" data-morph-amount="10" data-on-click="setMorphAmount('10')">10</button>
+            <button type="button" class="morph-amount" data-morph-amount="15" data-on-click="setMorphAmount('15')">15</button>
+            <button type="button" class="morph-amount" data-morph-amount="30" data-on-click="setMorphAmount('30')">30</button>
+            <button type="button" class="morph-amount" data-morph-amount="max" data-on-click="setMorphAmount('max')">Todas</button>
           </div>
           <label class="morph-chap morph-chap--toggle">
-            <input type="checkbox" id="morph-include-invariable" class="chapter-option__box" onchange="toggleMorphInvariable(this.checked)" />
+            <input type="checkbox" id="morph-include-invariable" class="chapter-option__box" data-on-change="toggleMorphInvariable(this.checked)" />
             <span>Incluir palavras invariáveis <small>preposições, conjunções, advérbios e partículas</small></span>
           </label>
-          <button type="button" onclick="startMorphDrill()" class="answer-btn morph-start">Começar</button>
+          <button type="button" data-on-click="startMorphDrill()" class="answer-btn morph-start">Começar</button>
         </div>
 
         <!-- Mago da Morfologia: questão -->
         <div id="morph-active" class="hidden morph-panel">
           <div class="morph-panel__head">
             <span class="morph-progress"><span id="morph-progress"></span> · <span id="morph-score" class="morph-progress__ok"></span></span>
-            <button type="button" onclick="quitMorphDrill()" class="link-btn">Encerrar</button>
+            <button type="button" data-on-click="quitMorphDrill()" class="link-btn">Encerrar</button>
           </div>
           <div id="morph-question"></div>
           <div class="morph-actions">
@@ -1562,7 +1557,7 @@
             >
             <select
               id="paradigm-select"
-              onchange="renderParadigmSkeleton()"
+              data-on-change="renderParadigmSkeleton()"
               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
               <option value="">Selecione uma lição com tabelas ou grafos...</option>
@@ -1629,7 +1624,7 @@
           <input
             type="search"
             id="vocab-search"
-            oninput="filterVocabTable()"
+            data-on-input="filterVocabTable()"
             placeholder="Buscar termo ou tradução..."
             autocomplete="off"
             class="search-field__input"
@@ -1642,23 +1637,23 @@
           <div id="vocab-scope-container">
             <span class="field-label">Capítulos</span>
             <div class="seg" role="group" aria-label="Capítulos no dicionário">
-              <button type="button" id="vocab-scope-single" onclick="setVocabCumulative(false)" class="seg-btn is-active" aria-pressed="true" title="Exibir apenas o capítulo atual">Só o atual</button>
-              <button type="button" id="vocab-scope-cumulative" onclick="setVocabCumulative(true)" class="seg-btn" aria-pressed="false" title="Exibir do início até o capítulo atual">Até o atual</button>
-              <button type="button" id="vocab-scope-all" onclick="selectAllPracticeChapters()" class="seg-btn" aria-pressed="false" title="Exibir todos os capítulos de vocabulário">Todos</button>
+              <button type="button" id="vocab-scope-single" data-on-click="setVocabCumulative(false)" class="seg-btn is-active" aria-pressed="true" title="Exibir apenas o capítulo atual">Só o atual</button>
+              <button type="button" id="vocab-scope-cumulative" data-on-click="setVocabCumulative(true)" class="seg-btn" aria-pressed="false" title="Exibir do início até o capítulo atual">Até o atual</button>
+              <button type="button" id="vocab-scope-all" data-on-click="selectAllPracticeChapters()" class="seg-btn" aria-pressed="false" title="Exibir todos os capítulos de vocabulário">Todos</button>
             </div>
           </div>
 
           <div id="vocab-order-container">
             <span class="field-label">Ordem</span>
             <div class="seg" role="group" aria-label="Ordem dos capítulos">
-              <button type="button" id="vocab-order-asc" onclick="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Lista a partir da primeira lição">Primeira ➔ Última</button>
-              <button type="button" id="vocab-order-desc" onclick="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Lista a partir da última lição">Última ➔ Primeira</button>
+              <button type="button" id="vocab-order-asc" data-on-click="setPracticeChapterOrder('asc')" class="seg-btn is-active" aria-pressed="true" title="Lista a partir da primeira lição">Primeira ➔ Última</button>
+              <button type="button" id="vocab-order-desc" data-on-click="setPracticeChapterOrder('desc')" class="seg-btn" aria-pressed="false" title="Lista a partir da última lição">Última ➔ Primeira</button>
             </div>
           </div>
 
           <div id="vocab-category-container" class="filter-row__grow">
             <label for="vocab-category-select" class="field-label">Conteúdo</label>
-            <select id="vocab-category-select" onchange="setVocabCategory(this.value)" class="control-select w-full">
+            <select id="vocab-category-select" data-on-change="setVocabCategory(this.value)" class="control-select w-full">
               <option value="all">Todos os itens</option>
               <option value="favorites">⭐ Apenas Favoritos</option>
               <option value="words">Apenas Palavras</option>
@@ -1707,7 +1702,7 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-5">
-            <form class="space-y-2" onsubmit="saveDailyGoalFromInput(event)">
+            <form class="space-y-2" data-on-submit="saveDailyGoalFromInput(event)">
               <h3 class="font-semibold text-sm text-white">Meta de estudo</h3>
               <p class="text-sm text-slate-400 leading-relaxed">
                 Quantas respostas por dia você quer dar, somando todos os exercícios e os dois idiomas.
@@ -1750,7 +1745,7 @@
               <button
                 type="button"
                 id="btn-load-current-chapter"
-                onclick="loadCurrentChapterIntoEditor()"
+                data-on-click="loadCurrentChapterIntoEditor()"
                 class="btn-secondary w-full"
                 title="Carrega os dados JSON do capítulo atualmente selecionado no editor"
               >
@@ -1759,19 +1754,19 @@
             </div>
             <div class="space-y-2 pt-4 border-t border-slate-800">
               <h3 class="font-semibold text-sm text-white">Backup</h3>
-              <button type="button" onclick="exportChaptersJSON()" class="btn-secondary w-full">
+              <button type="button" data-on-click="exportChaptersJSON()" class="btn-secondary w-full">
                 Exportar backup
               </button>
             </div>
             <div class="space-y-2 pt-4 border-t border-slate-800">
               <h3 class="font-semibold text-sm text-rose-300">Ações irreversíveis</h3>
-              <button type="button" onclick="resetDefaultChapters()" class="btn-danger w-full">
+              <button type="button" data-on-click="resetDefaultChapters()" class="btn-danger w-full">
                 Restaurar padrões
               </button>
               <button
                 type="button"
                 id="btn-delete-custom-chapter"
-                onclick="deleteCurrentCustomChapter()"
+                data-on-click="deleteCurrentCustomChapter()"
                 class="btn-danger w-full"
                 title="Exclui o capítulo customizado atualmente selecionado"
               >
@@ -1795,12 +1790,12 @@
               id="json-input"
               aria-label="Editor de código JSON de capítulos"
               rows="14"
-              oninput="validateChapterJSONInput()"
+              data-on-input="validateChapterJSONInput()"
               class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 resize-y"
               placeholder="Cole o JSON do novo capítulo aqui ou clique em 'Carregar atual no editor'..."
             ></textarea>
             <div class="flex justify-end">
-              <button type="button" onclick="saveChapterFromJSON()" class="answer-btn">Salvar capítulo</button>
+              <button type="button" data-on-click="saveChapterFromJSON()" class="answer-btn">Salvar capítulo</button>
             </div>
           </div>
         </div>
@@ -1817,7 +1812,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.37.0</span>
+        <span id="footer-version-tag">v2.38.0</span>
       </p>
       <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
     </footer>
@@ -1850,7 +1845,7 @@
           <button
             type="button"
             id="btn-close-analysis-modal"
-            onclick="closeSentenceAnalysisModal()"
+            data-on-click="closeSentenceAnalysisModal()"
             class="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition cursor-pointer"
             title="Fechar Modal (Esc)"
           >
@@ -1942,6 +1937,8 @@
 
     <!-- Módulos e Scripts da Aplicação -->
     <script src="data/data-bundle.js"></script>
+    <script src="js/modules/html.js"></script>
+    <script src="js/modules/actions.js"></script>
     <script src="js/modules/profiles.js"></script>
     <script src="js/data-loader.js"></script>
     <script src="js/modules/evaluation.js"></script>

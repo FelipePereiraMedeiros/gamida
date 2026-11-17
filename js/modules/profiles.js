@@ -209,6 +209,7 @@ function applySnapshot(data) {
     });
   } finally {
     suppress--;
+    remember();
   }
 }
 
@@ -310,38 +311,107 @@ function applyProfileFile(file, { reload = true, keepName = false } = {}) {
 
 let installed = false;
 let pendingMark = 0;
+let seen = new Map();
+
+/** Fotografia atual das chaves do perfil, para comparar depois */
+function remember() {
+  seen = new Map(Object.entries(snapshot()));
+}
+
 /**
- * Toda gravação de uma chave do perfil marca o perfil como alterado
- * (é o que a sincronização usa para saber quem é o mais novo)
+ * Procura chaves do perfil que mudaram desde a última olhada. Não intercepta as
+ * gravações do navegador: só compara (o perfil tem poucas dezenas de chaves).
  */
+function detectChanges() {
+  if (!storage || suppress) return;
+  const now_ = snapshot();
+  const changed = [];
+  Object.keys(now_).forEach((k) => {
+    if (seen.get(k) !== now_[k]) changed.push(k);
+  });
+  seen.forEach((_, k) => {
+    if (!(k in now_)) changed.push(k);
+  });
+  seen = new Map(Object.entries(now_));
+  if (!changed.length) return;
+  pendingMark = now();
+  if (typeof window !== "undefined" && typeof window.dispatchEvent === "function" && typeof CustomEvent === "function") {
+    window.dispatchEvent(new CustomEvent("gamida:profile-changed", { detail: { keys: changed } }));
+  }
+}
+
+/** Liga a observação de mudanças (é o que a sincronização usa para saber quem é o mais novo) */
 function installChangeTracking() {
-  if (installed || typeof Storage === "undefined" || !storage) return;
+  if (installed || !storage) return;
   installed = true;
-  const proto = Storage.prototype;
-  const origSet = proto.setItem;
-  const origRemove = proto.removeItem;
-  rawSet = (k, v) => origSet.call(storage, k, v);
-  rawRemove = (k) => origRemove.call(storage, k);
-  const mark = (key) => {
-    if (suppress || !isProfileKey(key)) return;
-    pendingMark = now();
-    if (typeof window !== "undefined" && typeof window.dispatchEvent === "function" && typeof CustomEvent === "function") {
-      window.dispatchEvent(new CustomEvent("gamida:profile-changed", { detail: { key } }));
-    }
-  };
-  proto.setItem = function (key, value) {
-    const before = this === storage ? this.getItem(key) : null;
-    origSet.call(this, key, value);
-    if (this === storage && before !== String(value)) mark(key);
-  };
-  proto.removeItem = function (key) {
-    const had = this === storage && this.getItem(key) !== null;
-    origRemove.call(this, key);
-    if (had) mark(key);
-  };
-  // Grava a data da última mudança no registro sem disparar a cada tecla
-  setInterval(flushChangeMark, 2000);
-  if (typeof window !== "undefined") window.addEventListener("pagehide", flushChangeMark);
+  remember();
+  setInterval(() => {
+    detectChanges();
+    flushChangeMark();
+  }, 1500);
+  if (typeof window !== "undefined") {
+    const flush = () => {
+      detectChanges();
+      flushChangeMark();
+    };
+    window.addEventListener("pagehide", flush);
+    if (typeof document !== "undefined") document.addEventListener("visibilitychange", flush);
+  }
+  watchOtherTabs();
+}
+
+/* ---------------- duas abas abertas ---------------- */
+
+/**
+ * Com o Gamida aberto em duas abas, o progresso de uma pode apagar o da outra
+ * (cada aba grava o que tem na memória). Avisa quando outra aba aparece ou
+ * quando outra aba muda o perfil.
+ */
+function watchOtherTabs() {
+  if (typeof window === "undefined" || typeof document === "undefined") return;
+  const id = makeId();
+  if (typeof BroadcastChannel === "function") {
+    const channel = new BroadcastChannel("gamida-abas");
+    channel.onmessage = (event) => {
+      const msg = event.data || {};
+      if (msg.id === id) return;
+      if (msg.type === "ola") channel.postMessage({ type: "aqui", id });
+      if (msg.type === "ola" || msg.type === "aqui") warnOtherTab();
+    };
+    channel.postMessage({ type: "ola", id });
+  }
+  // Outra aba gravou progresso deste mesmo navegador
+  window.addEventListener("storage", (event) => {
+    if (event.key && isProfileKey(event.key)) warnOtherTab(true);
+  });
+}
+
+function warnOtherTab(changed) {
+  if (document.getElementById("gamida-other-tab")) return;
+  const bar = document.createElement("div");
+  bar.id = "gamida-other-tab";
+  bar.className = "other-tab-warning";
+  bar.setAttribute("role", "status");
+  const text = document.createElement("span");
+  text.textContent = changed
+    ? "Outra aba do Gamida mudou o seu progresso. Recarregue esta aba para não sobrescrever o que foi feito lá."
+    : "O Gamida está aberto em outra aba. Para não perder progresso, continue estudando em uma só.";
+  bar.appendChild(text);
+  if (changed) {
+    const reload = document.createElement("button");
+    reload.type = "button";
+    reload.className = "btn-secondary";
+    reload.textContent = "Recarregar";
+    reload.addEventListener("click", () => reloadPage());
+    bar.appendChild(reload);
+  }
+  const close = document.createElement("button");
+  close.type = "button";
+  close.className = "btn-secondary";
+  close.textContent = "Entendi";
+  close.addEventListener("click", () => bar.remove());
+  bar.appendChild(close);
+  document.body.appendChild(bar);
 }
 
 function flushChangeMark() {
@@ -422,8 +492,7 @@ function settingsSummary() {
 
 /* ---------------- tela do perfil ---------------- */
 
-const esc = (text) => String(text === null || text === undefined ? "" : text)
-  .replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c]));
+const esc = (text) => ((typeof window !== "undefined" && window.GamidaHTML) || require("./html.js")).escapeHTML(text);
 const initials = (name) => String(name || "?").trim().split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase() || "?";
 const fmtDate = (ms) => (ms ? new Date(ms).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" }) : "nunca");
 const HERO = { hebrew: { mago: "Profeta", cavaleiro: "Guerreiro de Israel", assassino: "Juiz benjamita" }, greek: { mago: "Pescador", cavaleiro: "Centurião", assassino: "Fazedor de tendas" } };
@@ -456,6 +525,7 @@ function renderProfileTab() {
   if (typeof document === "undefined") return;
   const root = document.getElementById("profile-root");
   if (!root) return;
+  detectChanges();
   flushChangeMark();
   const active = getActiveProfile();
   const others = listProfiles().filter((p) => !p.active);
@@ -636,6 +706,7 @@ const ProfilesModule = {
   activitySummary,
   settingsSummary,
   installChangeTracking,
+  detectChanges,
   flushChangeMark,
   renderProfileTab,
   updateProfileBadge,

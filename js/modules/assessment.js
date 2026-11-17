@@ -415,9 +415,9 @@ function renderAssessmentQuestion() {
   const actionContainer = document.getElementById("assess-action-container");
   if (actionContainer) {
     if (assessIndex === assessQuestions.length - 1) {
-      actionContainer.innerHTML = `<button type="button" onclick="confirmFinishAssessmentPrompt()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl transition shadow-lg shadow-emerald-600/30">🏁 Submeter Prova</button>`;
+      actionContainer.innerHTML = `<button type="button" data-on-click="confirmFinishAssessmentPrompt()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl transition shadow-lg shadow-emerald-600/30">🏁 Submeter Prova</button>`;
     } else {
-      actionContainer.innerHTML = `<button type="button" onclick="navigateAssessment(1)" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm rounded-xl transition shadow-lg shadow-brand-600/30">Próxima ➔</button>`;
+      actionContainer.innerHTML = `<button type="button" data-on-click="navigateAssessment(1)" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm rounded-xl transition shadow-lg shadow-brand-600/30">Próxima ➔</button>`;
     }
   }
 

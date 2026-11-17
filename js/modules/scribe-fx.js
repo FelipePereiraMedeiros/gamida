@@ -520,8 +520,7 @@ function drawLetters(c, A, W, H, gy, sc, t, font) {
 
 /* ---------------- letreiro em tela cheia e transição ---------------- */
 
-const escHtml = (text) => String(text === null || text === undefined ? "" : text)
-  .replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[ch]));
+const escHtml = (text) => ((typeof window !== "undefined" && window.GamidaHTML) || require("./html.js")).escapeHTML(text);
 
 /** Letreiro que atravessa a tela ("Você caiu", nome do guardião, "Fúria"...) */
 function banner(text, kind, sub) {

@@ -57,6 +57,32 @@ module.exports = [
     },
   },
   {
+    name: "Mudança no progresso é percebida sem interceptar o armazenamento do navegador",
+    async fn({ browser, base, assert }) {
+      const { context, page, errors } = await openApp({ browser, base });
+      const intact = await page.evaluate(() => Storage.prototype.setItem.toString().includes("[native code]"));
+      assert.ok(intact, "o perfil ainda substitui Storage.prototype.setItem");
+      const before = await page.evaluate(() => ProfilesModule.getActiveProfile().updatedAt || 0);
+      await page.evaluate(() => localStorage.setItem("gamida_daily_goal", "77"));
+      await page.waitForFunction((t) => (ProfilesModule.getActiveProfile().updatedAt || 0) > t, before, { timeout: 5000 });
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await context.close();
+    },
+  },
+  {
+    name: "Gamida aberto em duas abas: a segunda avisa",
+    async fn({ browser, base, assert }) {
+      const { context, page, errors } = await openApp({ browser, base });
+      const second = await context.newPage();
+      await second.goto(`${base}/index.html`, { waitUntil: "load" });
+      await second.waitForSelector("#gamida-other-tab", { timeout: 5000 });
+      await page.waitForSelector("#gamida-other-tab", { timeout: 5000 });
+      assert.match(await second.textContent("#gamida-other-tab"), /outra aba/);
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await context.close();
+    },
+  },
+  {
     name: "Sincronização com o Google desligada: sem cartão, sem botão e sem pedidos",
     async fn({ browser, base, assert }) {
       const { context, page, errors } = await openApp({ browser, base }, { storage: { gamida_google_client_id: "123-abc.apps.googleusercontent.com" } });

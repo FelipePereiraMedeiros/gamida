@@ -130,7 +130,7 @@ suite.test('Exportar e importar backup incluem o Caminho do domínio', () => {
 });
 
 suite.test('Avaliar tem o cartão e as telas do Caminho do domínio', () => {
-  ['onclick="openMasteryPath()"', 'id="path-overview"', 'id="path-chapter-list"', 'id="path-active"',
+  ['data-on-click="openMasteryPath()"', 'id="path-overview"', 'id="path-chapter-list"', 'id="path-active"',
     'id="path-input"', 'id="path-feedback"', 'id="path-complete"', 'js/modules/mastery-path.js']
     .forEach((needle) => assert.includes(html, needle, `Falta ${needle} no index.html`));
   assert.includes(appJs, 'MasteryPathModule');

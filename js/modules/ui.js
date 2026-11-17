@@ -1107,7 +1107,7 @@ function renderVocabTable() {
 
   const escapeFn = typeof escapeHTML === "function"
     ? escapeHTML
-    : (str) => String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    : (str) => ((typeof window !== "undefined" && window.GamidaHTML) || require("./html.js")).escapeHTML(str);
 
   const hasFragment = typeof document !== "undefined" && typeof document.createDocumentFragment === "function";
   const fragment = hasFragment ? document.createDocumentFragment() : tbody;

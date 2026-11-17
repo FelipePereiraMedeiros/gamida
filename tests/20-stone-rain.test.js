@@ -155,14 +155,14 @@ suite.test('Hebraico e grego dos jogos usam as fontes do restante do sistema', (
 });
 
 suite.test('Chuva de Pedras está ligada à tela de Avaliar', () => {
-  assert.includes(html, 'onclick="openStoneRain()"', 'Cartão do modo ausente');
+  assert.includes(html, 'data-on-click="openStoneRain()"', 'Cartão do modo ausente');
   assert.includes(html, 'id="stone-rain-view"', 'Tela do jogo ausente');
   assert.includes(html, 'id="sr-canvas"', 'Canvas ausente');
   assert.includes(html, 'js/modules/stone-rain.js', 'Módulo não carregado');
   assert.includes(html, 'js/modules/game-audio.js', 'Som dos jogos não carregado');
   assert.includes(html, "stoneRainToggle('typing')", 'Opção de digitar a resposta ausente');
   assert.includes(html, 'id="sr-start"', 'Escolha da fase inicial ausente');
-  assert.includes(html, 'onchange="stoneRainStartAt(this.value)"', 'Escolha da fase inicial não ligada');
+  assert.includes(html, 'data-on-change="stoneRainStartAt(this.value)"', 'Escolha da fase inicial não ligada');
 });
 
 module.exports = suite;

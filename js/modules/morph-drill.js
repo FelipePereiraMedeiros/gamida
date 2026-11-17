@@ -356,11 +356,7 @@
   }
 
   function esc(s) {
-    return String(s == null ? "" : s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
+    return ((typeof window !== "undefined" && window.GamidaHTML) || require("./html.js")).escapeHTML(s);
   }
 
   function byId(id) {
@@ -707,10 +703,10 @@
           </ul>
         </div>` : ""}
       <div class="round-summary__actions">
-        ${misses.length ? '<button type="button" class="answer-btn" onclick="retryMorphMisses()">Refazer as erradas</button>' : ""}
-        <button type="button" class="${misses.length ? "btn-secondary" : "answer-btn"}" onclick="startMorphDrill()">Nova rodada</button>
-        <button type="button" class="btn-secondary" onclick="openMorphDrill()">Trocar lições</button>
-        <button type="button" class="btn-secondary" onclick="resetToDashboard()">Voltar à Central</button>
+        ${misses.length ? '<button type="button" class="answer-btn" data-on-click="retryMorphMisses()">Refazer as erradas</button>' : ""}
+        <button type="button" class="${misses.length ? "btn-secondary" : "answer-btn"}" data-on-click="startMorphDrill()">Nova rodada</button>
+        <button type="button" class="btn-secondary" data-on-click="openMorphDrill()">Trocar lições</button>
+        <button type="button" class="btn-secondary" data-on-click="resetToDashboard()">Voltar à Central</button>
       </div>`;
   }
 
