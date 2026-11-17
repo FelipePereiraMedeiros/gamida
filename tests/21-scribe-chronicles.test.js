@@ -347,7 +347,13 @@ suite.test('Mapa desenhado: todo capítulo tem lugar no mapa do seu livro, longe
 
 suite.test('Animações da versão nova: golpe de cada classe, letras da palavra e cenas de cada livro', () => {
   const FX = require('../js/modules/scribe-fx.js');
-  Object.keys(Campaign.CLASSES).forEach((cls) => assert.isTrue(!!FX.ATTACK_TIME[FX.CLASS_ATTACK[cls]], `${cls} sem golpe`));
+  ['hebrew', 'greek'].forEach((language) => Object.keys(Campaign.CLASSES).forEach((cls) => {
+    const kind = FX.attackFor(language, cls);
+    assert.isTrue(!!FX.ATTACK_TIME[kind] && !!FX.ATTACK_COLOR[kind], `${language}/${cls} sem golpe`);
+  }));
+  // Os heróis do grego têm golpes próprios: rede, pilo e carta
+  assert.deepEqual(['mago', 'cavaleiro', 'assassino'].map((cls) => FX.attackFor('greek', cls)), ['rede', 'pilo', 'carta']);
+  assert.deepEqual(['mago', 'cavaleiro', 'assassino'].map((cls) => FX.attackFor('hebrew', cls)), ['fogo', 'luz', 'raio']);
   assert.deepEqual(FX.lettersOf('הַשָּׁמַיִם'), ['ה', 'ש', 'מ', 'י', 'ם'], 'Letras hebraicas sem sinais');
   assert.deepEqual(FX.lettersOf('λόγος, -ου, ὁ'), ['λ', 'ο', 'γ', 'ο', 'ς', 'ο', 'υ', 'ο'], 'Letras gregas sem acentos');
   const pose = FX.heroPose({ k: 'atk', t0: 0, d: 0.3 }, 0.15);

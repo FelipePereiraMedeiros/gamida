@@ -25,9 +25,32 @@ const gfx = () => (typeof window !== "undefined" ? window.ScribeGraphics : null)
 
 /* ---------------- golpe de cada classe ---------------- */
 
-/** Golpe de cada herói: fogo (profeta e pescador), luz (guerreiro e centurião), relâmpago (juiz e fazedor de tendas) */
-const CLASS_ATTACK = { mago: "fogo", cavaleiro: "luz", assassino: "raio" };
-const ATTACK_TIME = { fogo: { d: 0.42, hit: 380 }, raio: { d: 0.5, hit: 120 }, luz: { d: 0.36, hit: 260 } };
+/**
+ * Golpe de cada herói, coerente com o modelo bíblico da classe.
+ * Hebraico: fogo do céu do profeta (2Rs 1.10), golpe de luz do guerreiro,
+ * relâmpago do juiz. Grego: a rede do pescador (Mt 4.19), o pilo do centurião
+ * (o dardo da legião romana) e a carta do fazedor de tendas, que se desenrola
+ * sobre o inimigo (as cartas de Paulo).
+ */
+const CLASS_ATTACK = {
+  hebrew: { mago: "fogo", cavaleiro: "luz", assassino: "raio" },
+  greek: { mago: "rede", cavaleiro: "pilo", assassino: "carta" },
+};
+const ATTACK_TIME = {
+  fogo: { d: 0.42, hit: 380 },
+  raio: { d: 0.5, hit: 120 },
+  luz: { d: 0.36, hit: 260 },
+  rede: { d: 0.5, hit: 470 },
+  pilo: { d: 0.3, hit: 280 },
+  carta: { d: 0.46, hit: 430 },
+};
+/** Cor das faíscas quando o golpe acerta */
+const ATTACK_COLOR = { fogo: "#f77622", raio: "#9fd8ff", luz: "#fee761", rede: "#2ce8f5", pilo: "#e4a672", carta: "#feae34" };
+
+function attackFor(language, cls) {
+  const table = CLASS_ATTACK[language === "greek" ? "greek" : "hebrew"];
+  return table[cls] || table.mago;
+}
 
 /* ---------------- pose do herói ---------------- */
 
@@ -130,6 +153,12 @@ function drawProj(c, A, W, H, gy, sc, t) {
         c.stroke();
         c.globalAlpha = 1;
       }
+    } else if (p.k === "rede") {
+      drawNet(c, k, hx, hy, mx, my, t);
+    } else if (p.k === "pilo") {
+      drawPilum(c, k, hx, hy, mx, my, t, p.t0);
+    } else if (p.k === "carta") {
+      drawLetter(c, k, hx, hy, mx, my, t);
     } else if (k < 1.4) {
       const e = Math.min(1, k);
       c.globalAlpha = k > 1 ? Math.max(0, 1.4 - k) / 0.4 : 1;
@@ -161,6 +190,170 @@ function drawProj(c, A, W, H, gy, sc, t) {
     }
   }
   A.proj = A.proj.filter((p) => (t - p.t0) / p.d < 1.6);
+}
+
+/** Rede de pesca: sai girando, abre no ar e envolve o inimigo, espirrando água */
+function drawNet(c, k, hx, hy, mx, my, t) {
+  const grid = (cx, cy, r, rot, alpha) => {
+    c.save();
+    c.translate(cx, cy);
+    c.rotate(rot);
+    c.globalAlpha = alpha;
+    c.strokeStyle = "#c0cbdc";
+    c.lineWidth = 1.5;
+    c.beginPath();
+    for (let i = -3; i <= 3; i++) {
+      const o = (i / 3) * r;
+      const w = Math.sqrt(Math.max(0, r * r - o * o));
+      c.moveTo(o, -w);
+      c.lineTo(o, w);
+      c.moveTo(-w, o);
+      c.lineTo(w, o);
+    }
+    c.stroke();
+    c.strokeStyle = "#733e39";
+    c.lineWidth = 2;
+    c.beginPath();
+    c.arc(0, 0, r, 0, 7);
+    c.stroke();
+    // boias de cortiça na borda da rede
+    c.fillStyle = "#feae34";
+    for (let i = 0; i < 6; i++) {
+      const a = (i / 6) * 6.28;
+      c.fillRect(Math.cos(a) * r - 2, Math.sin(a) * r - 2, 4, 4);
+    }
+    c.restore();
+    c.globalAlpha = 1;
+  };
+  if (k <= 1) {
+    const x = hx + (mx - hx) * k;
+    const y = hy + (my - hy) * k - Math.sin(k * Math.PI) * 40;
+    // corda presa à mão do pescador
+    c.strokeStyle = "#b86f50";
+    c.lineWidth = 1.2;
+    c.beginPath();
+    c.moveTo(hx, hy);
+    c.quadraticCurveTo((hx + x) / 2, Math.min(hy, y) - 20, x, y);
+    c.stroke();
+    grid(x, y, 6 + 18 * k, k * 5, 1);
+  } else {
+    const e = (k - 1) / 0.6;
+    grid(mx, my, 26 - e * 6, 0, 1 - e * 0.6);
+    for (let i = 0; i < 12; i++) {
+      const a = (i / 12) * 6.28;
+      c.globalAlpha = 1 - e;
+      c.fillStyle = i % 2 ? "#2ce8f5" : "#0099db";
+      c.fillRect(mx + Math.cos(a) * (14 + e * 30), my + Math.sin(a) * (10 + e * 20) + e * e * 30, 3, 3);
+    }
+    c.globalAlpha = 1;
+  }
+}
+
+/** Pilo romano: o dardo voa reto, crava no inimigo e solta faíscas */
+function drawPilum(c, k, hx, hy, mx, my, t, t0) {
+  const ang = Math.atan2(my - hy, mx - hx) - 0.12 * (1 - Math.min(1, k) * 2);
+  const at = (x, y, a, shake) => {
+    c.save();
+    c.translate(x, y);
+    c.rotate(a + shake);
+    c.scale(1.5, 1.5);
+    c.fillStyle = "#0b0612";
+    c.fillRect(-35, -2.5, 46, 5);
+    c.fillStyle = "#d77643";
+    c.fillRect(-34, -1.5, 22, 3);
+    c.fillStyle = "#c0cbdc";
+    c.fillRect(-12, -1, 14, 2);
+    c.fillStyle = "#ffffff";
+    c.beginPath();
+    c.moveTo(2, -3);
+    c.lineTo(9, 0);
+    c.lineTo(2, 3);
+    c.fill();
+    c.fillStyle = "#3e2731";
+    c.fillRect(-14, -2.5, 3, 5);
+    c.restore();
+  };
+  if (k <= 1) {
+    const x = hx + (mx - 18 - hx) * k;
+    const y = hy + (my - hy) * k - Math.sin(k * Math.PI) * 14;
+    c.globalAlpha = 0.35;
+    c.strokeStyle = "#ead4aa";
+    c.lineWidth = 1;
+    for (let i = 0; i < 3; i++) {
+      c.beginPath();
+      c.moveTo(x - 40 - i * 8, y - 4 + i * 4);
+      c.lineTo(x - 70 - i * 8, y - 4 + i * 4);
+      c.stroke();
+    }
+    c.globalAlpha = 1;
+    at(x, y, ang, 0);
+  } else {
+    const e = (k - 1) / 0.6;
+    c.globalAlpha = e > 0.7 ? (1 - e) / 0.3 : 1;
+    at(mx - 24, my, ang, Math.sin((t - t0) * 60) * 0.08 * (1 - e));
+    c.globalAlpha = 1;
+    for (let i = 0; i < 10; i++) {
+      const a = -1.6 + (i / 9) * 3.2;
+      c.globalAlpha = 1 - e;
+      c.fillStyle = i % 2 ? "#feae34" : "#f77622";
+      c.fillRect(mx - 10 + Math.cos(a) * (6 + e * 34), my + Math.sin(a) * (6 + e * 26), 3, 3);
+    }
+    c.globalAlpha = 1;
+  }
+}
+
+/** Carta do apóstolo: o rolo voa girando, se abre sobre o inimigo e solta as letras em luz */
+function drawLetter(c, k, hx, hy, mx, my, t) {
+  if (k <= 1) {
+    const x = hx + (mx - hx) * k;
+    const y = hy + (my - hy) * k - Math.sin(k * Math.PI) * 34;
+    for (let i = 4; i >= 1; i--) {
+      const kk = Math.max(0, k - i * 0.05);
+      c.globalAlpha = 0.25 * (1 - i / 5);
+      c.fillStyle = "#fee761";
+      c.fillRect(hx + (mx - hx) * kk - 3, hy + (my - hy) * kk - Math.sin(kk * Math.PI) * 34 - 3, 6, 6);
+    }
+    c.globalAlpha = 1;
+    c.save();
+    c.translate(x, y);
+    c.rotate(k * 9);
+    c.fillStyle = "#ead4aa";
+    c.fillRect(-9, -4, 18, 8);
+    c.fillStyle = "#733e39";
+    c.fillRect(-11, -5, 3, 10);
+    c.fillRect(8, -5, 3, 10);
+    c.fillStyle = "#a22633";
+    c.fillRect(-2, -2, 4, 4);
+    c.restore();
+  } else {
+    const e = (k - 1) / 0.6;
+    const w = 18 + Math.min(1, e * 3) * 46;
+    c.globalAlpha = 1 - e * 0.8;
+    c.fillStyle = "#ead4aa";
+    c.fillRect(mx - w / 2, my - 14, w, 28);
+    c.fillStyle = "#733e39";
+    c.fillRect(mx - w / 2 - 3, my - 16, 4, 32);
+    c.fillRect(mx + w / 2 - 1, my - 16, 4, 32);
+    c.fillStyle = "#3e2731";
+    for (let i = 0; i < 4; i++) c.fillRect(mx - w / 2 + 6, my - 9 + i * 6, Math.max(0, w - 14) * (0.6 + 0.4 * rnd(i)), 1.5);
+    // as letras sobem da carta como luz
+    for (let i = 0; i < 12; i++) {
+      const a = -Math.PI / 2 + (rnd(i) - 0.5) * 2.4;
+      const r = e * (30 + rnd(i + 5) * 40);
+      c.globalAlpha = 1 - e;
+      c.fillStyle = i % 3 ? "#feae34" : "#ffffff";
+      const lx = mx + Math.cos(a) * r;
+      const ly = my + Math.sin(a) * r;
+      c.fillRect(lx - 1, ly - 3, 2, 6);
+      c.fillRect(lx - 3, ly - 1, 6, 2);
+    }
+    c.globalAlpha = 0.35 * (1 - e);
+    c.fillStyle = "#fee761";
+    c.beginPath();
+    c.arc(mx, my, 20 + e * 30, 0, 7);
+    c.fill();
+    c.globalAlpha = 1;
+  }
 }
 
 /* ---------------- chuva de bênçãos (óleo de cura) ---------------- */
@@ -646,6 +839,8 @@ function renderChapterBanner(canvas, opts) {
 const ScribeFX = {
   CLASS_ATTACK,
   ATTACK_TIME,
+  ATTACK_COLOR,
+  attackFor,
   SLIDES,
   heroPose,
   heroScale,

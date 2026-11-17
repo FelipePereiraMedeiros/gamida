@@ -2423,7 +2423,7 @@ function arenaSize() {
 function heroStrike(damage, crit) {
   const fx = fxApi();
   if (!fx || !A || reduceMotion() || !arenaSize()) return fxHitMonster(damage, crit);
-  const kind = fx.CLASS_ATTACK[S.cls] || "fogo";
+  const kind = fx.attackFor(AppState.language, S.cls);
   const time = fx.ATTACK_TIME[kind];
   const t = performance.now() / 1000;
   A.proj.push({ k: kind, t0: t, d: time.d });
@@ -2447,7 +2447,8 @@ function fxHitMonster(damage, crit) {
   A.monFlash = t + 0.15;
   A.floats.push({ txt: `${crit ? "CRÍTICO −" : "−"}${damage}`, x: size.W * 0.72, y: size.H * 0.3, c: crit ? "#e2b04a" : "#fff", t0: t });
   if (reduceMotion()) return;
-  const color = S.cls === "mago" ? "#9fd8ff" : S.cls === "assassino" ? "#e8e2d4" : "#e2b04a";
+  const fxMod = fxApi();
+  const color = fxMod ? fxMod.ATTACK_COLOR[fxMod.attackFor(AppState.language, S.cls)] : S.cls === "mago" ? "#9fd8ff" : S.cls === "assassino" ? "#e8e2d4" : "#e2b04a";
   for (let i = 0; i < 22; i++) {
     const angle = Math.random() * 6.28;
     A.parts.push({ x: size.W * 0.72, y: size.H * 0.55, vx: Math.cos(angle) * 80, vy: Math.sin(angle) * 80, c: crit ? "#ffcf3a" : color, t0: t, d: 0.65 });
