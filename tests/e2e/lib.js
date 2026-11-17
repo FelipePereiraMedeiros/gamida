@@ -92,8 +92,10 @@ async function openScribe(page) {
  * (lida do estado da batalha, exposto só nos testes)
  * @returns {Promise<"vitória"|"derrota"|"tempo">}
  */
-async function playBattle(page, { maxSteps = 600, onStep } = {}) {
-  for (let step = 0; step < maxSteps; step++) {
+async function playBattle(page, { maxSeconds = 300, onStep } = {}) {
+  // Limite por tempo, não por passos: máquinas lentas (CI) dão menos passos por segundo
+  const deadline = Date.now() + maxSeconds * 1000;
+  for (let step = 0; Date.now() < deadline; step++) {
     await page.waitForTimeout(90);
     const st = await page.evaluate(() => {
       const B = window.__scribeBattle && window.__scribeBattle();
