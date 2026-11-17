@@ -574,6 +574,7 @@ As regras de cada classe são as mesmas nos dois rolos; muda o nome e o modelo b
 
 - Heróis do Segundo Rolo com figura própria (`js/modules/scribe-heroes.js`): Pescador com rede e remo, Centurião com crista transversal, escudo e bastão de videira, Fazedor de tendas com sovela, bolsa e rolo de pano. As doze relíquias do grego aparecem no corpo: rede cheia de peixes, mastro com vela, peixe com a moeda, o livrinho; espada do Espírito, escudo da fé com os dardos apagados, capacete da salvação, couraça da justiça; lenços e aventais, cesto de Damasco, capa de Trôade, os pergaminhos.
 - Guardiões do Livro II e do grego com figura própria (`js/modules/scribe-bosses.js`): reis de Judá, Síria, Moabe, Assíria e Babilônia, faraó com nemes e cajado, Jezabel, sumo sacerdote com o peitoral das doze pedras, profetas de Baal, adivinho, mágicos, o traidor com as moedas, o orador, espíritos (Legião, os três espíritos como rãs), o muro de Jericó com o cordão de Raabe, o grande peixe, a tempestade, a Morte e Abadom, a estátua de Dura, a Ártemis dos efésios e Dagom quebrado. Sísera, Naás e Nebuzaradã continuam como guerreiros gigantes.
+- Mapa desenhado (`js/modules/scribe-map.js`), opção "Mapa" ao lado de "Lista" na tela dos capítulos: o mapa do Livro I vem da versão nova do jogo (com as Tendas de Hebrom do prólogo acrescentadas); os mapas do Livro II (do Jordão à Babilônia) e do Segundo Rolo (de Belém a Patmos) foram feitos para o Gamida no mesmo estilo. Canaã e a Terra Santa aparecem ampliadas, fora de escala, porque muitos capítulos ficam a poucos quilômetros uns dos outros; Ribla, Nínive e Babilônia (Livro II) e o Mediterrâneo de Paulo (grego) ficam do outro lado da moldura. O Abismo (Ap 9) é uma visão: aparece como um redemoinho no meio do mar.
 - Bestiário ilustrado: retrato de cada criatura já vista e de cada guardião vencido, com versículo.
 
 ## Pendências e escolhas
@@ -581,5 +582,5 @@ As regras de cada classe são as mesmas nos dois rolos; muda o nome e o modelo b
 - **Gêmeos** (pares de palavras parecidas): no artefato dependem de uma lista feita à mão para o vocabulário dele; não foram trazidos, porque os pares do Gamida precisariam ser escolhidos lição a lição.
 - **Prova do professor, Torre de Babel/Pentecostes e menu de título**: não foram trazidos; a prova e a revisão geral já existem nas outras avaliações do Gamida.
 - **Selo da cena (modo Assimilação)**: as cenas do artefato cobrem só o Livro I; os capítulos do Livro II e do Segundo Rolo ainda não têm cena própria.
-- **Mapa desenhado, ataques escolhíveis e trilha nova**: não trazidos; o mapa continua em lista (por livro) e a trilha sintetizada do Gamida segue a mesma.
+- **Ataques escolhíveis e trilha nova**: não trazidos; a trilha sintetizada do Gamida segue a mesma.
 - O capítulo do alfabeto (Lição I) é o prólogo nas Tendas de Hebrom; o caminho do Livro I continua com os onze lugares do guia.

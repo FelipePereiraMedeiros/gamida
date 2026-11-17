@@ -324,6 +324,27 @@ suite.test('Tempo esgotado: criaturas e guardiões atacam, em todas as perguntas
   ['askMob', 'bossTurn', 'bossBuild', 'rushTurn'].forEach((fn) => assert.includes(body(fn), 'startTimer(', `${fn} sem barra de tempo`));
 });
 
+suite.test('Mapa desenhado: todo capítulo tem lugar no mapa do seu livro, longe dos vizinhos', () => {
+  const Map_ = require('../js/modules/scribe-map.js');
+  LANGS.forEach(([language, , table]) => {
+    Campaign.BOOKS[language].forEach((book) => {
+      const def = Map_.mapFor(language, book.id);
+      assert.isTrue(!!def, `${language}: ${book.short} sem mapa`);
+      const ids = Object.keys(table).filter((id) => table[id].book === book.id);
+      ids.forEach((id) => assert.isTrue(!!def.places[id], `${id} fora do mapa do ${book.short}`));
+      assert.deepEqual(Object.keys(def.places).filter((id) => !ids.includes(id)), [], 'Lugar no mapa sem capítulo');
+      const pts = ids.map((id) => def.places[id]);
+      pts.forEach(([x, y]) => assert.isTrue(x > 0.03 && x < 0.97 && y > 0.05 && y < 0.95, `Lugar na borda do mapa (${x}, ${y})`));
+      // No celular (340 × 420) os botões de 22 px não se encostam
+      for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+        const d = Math.max(Math.abs(pts[i][0] - pts[j][0]) * 340, Math.abs(pts[i][1] - pts[j][1]) * 420);
+        assert.isTrue(d >= 23, `${ids[i]} e ${ids[j]} se sobrepõem no mapa`);
+      }
+    });
+  });
+  assert.includes(html, 'js/modules/scribe-map.js', 'Mapa não carregado');
+});
+
 suite.test('Crônicas do Escriba está ligada à tela de Avaliar e ao backup', () => {
   assert.includes(html, 'onclick="openScribeChronicles()"', 'Cartão do modo ausente');
   assert.includes(html, 'id="scribe-view"', 'Tela do jogo ausente');

@@ -665,7 +665,11 @@ function showMap() {
     <p class="sc-story">${started
       ? "Siga a história pelo capítulo destacado ou escolha qualquer outro para revisar: todos estão abertos. Cada um traz um pergaminho de ensino, ondas de criaturas-palavra e um guardião de várias frases."
       : `O ${isHebrew() ? "Rolo das Palavras" : "Segundo Rolo"} está em branco: ${esc(Lore.VILLAIN.name)} engoliu as palavras. Cada palavra virou uma criatura, e cada frase, um guardião. Percorra o caminho de ${esc(campaign[0].meta.city)} a ${esc(campaign[total - 1].meta.city)} e traga-as de volta. Os capítulos seguem as lições, e você pode começar por qualquer um.`}</p>
-    <div class="sc-chapters">${campaign.map(({ chapter, meta }, i) => {
+    <div class="sc-viewtoggle" role="group" aria-label="Ver capítulos">
+      <button type="button" class="sc-viewtoggle__btn${mapView() ? "" : " is-on"}" data-view="list" aria-pressed="${!mapView()}">Lista</button>
+      <button type="button" class="sc-viewtoggle__btn${mapView() ? " is-on" : ""}" data-view="map" aria-pressed="${mapView()}">Mapa</button>
+    </div>
+    ${mapView() ? mapHtml(current) : `<div class="sc-chapters">${campaign.map(({ chapter, meta }, i) => {
       const relic = relicFor(S.cls, chapter.id);
       const done = !!S.done[chapter.id];
       const lesson = lessonLabel(chapter);
@@ -681,7 +685,7 @@ function showMap() {
           <span>${lesson ? `${esc(lesson)} · ` : ""}${rich(meta.scroll.t)} · guardião: ${esc(meta.boss)}${relic ? ` · relíquia: ${esc(relic.name)}` : ""}</span></span>
         <em>${done ? "vencido" : i === current ? "próximo" : "aberto"}</em>
       </button>`;
-    }).join("")}</div>
+    }).join("")}</div>`}
     <div class="sc-row">
       <button type="button" class="sc-btn sc-btn--ghost" id="sc-dungeon" ${weak ? "" : "disabled"}>Masmorra (${weak} ${weak === 1 ? "palavra fraca" : "palavras fracas"})</button>
       <button type="button" class="sc-btn sc-btn--ghost" id="sc-bestiary">Bestiário</button>
@@ -692,7 +696,14 @@ function showMap() {
       <button type="button" class="sc-btn sc-btn--ghost" id="sc-reset">Recomeçar a aventura</button>
     </div>
   </div>`);
-  animateAvatars([["sc-avatar", S.cls]]);
+  document.querySelectorAll("#sc-screen [data-view]").forEach((btn) => {
+    btn.onclick = () => {
+      setMapView(btn.dataset.view === "map");
+      showMap();
+    };
+  });
+  if (mapView()) bindMap(current);
+  else animateAvatars([["sc-avatar", S.cls]]);
   document.querySelectorAll("#sc-screen [data-chapter]").forEach((btn) => {
     btn.onclick = () => {
       const a = audio();
@@ -726,7 +737,119 @@ function showMap() {
     on("#sc-cancel", showMap);
   });
   const currentBtn = $("#sc-screen .sc-chap.is-current");
-  if (currentBtn && started && typeof currentBtn.scrollIntoView === "function") currentBtn.scrollIntoView({ block: "center" });
+  if (!mapView() && currentBtn && started && typeof currentBtn.scrollIntoView === "function") currentBtn.scrollIntoView({ block: "center" });
+}
+
+/* ---------- Mapa desenhado dos capítulos ---------- */
+
+const MAPVIEW_KEY = "gamida_scribe_view";
+const mapApi = () => (typeof window !== "undefined" ? window.ScribeMap : null);
+/** Ver os capítulos no mapa? (só quando o mapa está disponível) */
+function mapView() {
+  if (!mapApi()) return false;
+  try {
+    return typeof localStorage !== "undefined" && localStorage.getItem(MAPVIEW_KEY) === "map";
+  } catch (_) {
+    return false;
+  }
+}
+function setMapView(on) {
+  try {
+    if (typeof localStorage !== "undefined") localStorage.setItem(MAPVIEW_KEY, on ? "map" : "list");
+  } catch (_) {}
+}
+
+// Livro e capítulo escolhidos no mapa (ficam enquanto a tela está aberta)
+let mapSel = { book: null, id: null };
+
+function booksWithMap() {
+  return booksOf(AppState.language).filter((b) => mapApi().mapFor(AppState.language, b.id));
+}
+
+function mapHtml(current) {
+  const books = booksWithMap();
+  const currentMeta = campaign[current >= 0 ? current : 0].meta;
+  if (!books.some((b) => b.id === mapSel.book)) mapSel.book = (books.find((b) => b.id === currentMeta.book) || books[0] || {}).id;
+  const def = mapApi().mapFor(AppState.language, mapSel.book);
+  if (!def) return "";
+  const inBook = campaign.filter((c) => c.meta.book === mapSel.book);
+  const placed = inBook.filter((c) => def.places[c.chapter.id]);
+  const extra = inBook.filter((c) => !def.places[c.chapter.id]);
+  if (!placed.some((c) => c.chapter.id === mapSel.id)) {
+    const next = placed.find((c) => c.index === current) || placed.find((c) => !S.done[c.chapter.id]) || placed[0];
+    mapSel.id = next ? next.chapter.id : null;
+  }
+  const book = books.find((b) => b.id === mapSel.book);
+  return `${books.length > 1 ? `<div class="sc-booktabs" role="tablist">${books.map((b) => `<button type="button" role="tab" class="sc-booktab${b.id === mapSel.book ? " is-on" : ""}" aria-selected="${b.id === mapSel.book}" data-book="${b.id}">${esc(b.title)}</button>`).join("")}</div>` : ""}
+    <div class="sc-worldmap"><canvas id="sc-world" aria-label="Mapa: ${esc(book ? book.title : "")}"></canvas>
+      ${(def.labels || []).map(([txt, x, y]) => `<span class="sc-maplbl" style="left:${x}%;top:${y}%">${esc(txt)}</span>`).join("")}
+      ${placed.map(({ chapter, meta, index }) => {
+        const [x, y] = def.places[chapter.id];
+        return `<button type="button" class="sc-node${S.done[chapter.id] ? " is-done" : ""}${index === current ? " is-current" : ""}${chapter.id === mapSel.id ? " is-sel" : ""}" data-node="${esc(chapter.id)}" style="left:${x * 100}%;top:${y * 100}%" aria-label="Capítulo ${index + 1}: ${esc(meta.city)}${S.done[chapter.id] ? ", vencido" : ""}">${index + 1}</button>`;
+      }).join("")}
+    </div>
+    ${mapSel.book > 1 || !isHebrew() ? `<p class="sc-muted sc-small sc-center">${isHebrew() ? "Canaã aparece ampliada, à esquerda da moldura" : "A Terra Santa aparece ampliada, à direita da moldura"}, fora de escala: muitos capítulos acontecem a poucos quilômetros uns dos outros.</p>` : ""}
+    <div class="sc-chapinfo" id="sc-chapinfo" aria-live="polite"></div>
+    ${extra.length ? `<div class="sc-chapters">${extra.map(({ chapter, meta, index }) => `<button type="button" class="sc-chap${S.done[chapter.id] ? " is-done" : ""}" data-chapter="${index}">
+      <span class="sc-chap__n ${termClass()}">${esc(meta.native.split(/[־\s]/)[0])}</span>
+      <span class="sc-chap__body"><b>Capítulo ${index + 1} · ${esc(meta.city)}</b><span>${rich(meta.scroll.t)}</span></span><em>${S.done[chapter.id] ? "vencido" : "aberto"}</em></button>`).join("")}</div>` : ""}`;
+}
+
+function mapInfo(current) {
+  const box = $("#sc-chapinfo");
+  const entry = campaign.find((c) => c.chapter.id === mapSel.id);
+  if (!box || !entry) return;
+  const { chapter, meta, index } = entry;
+  const relic = relicFor(S.cls, chapter.id);
+  const lesson = lessonLabel(chapter);
+  box.innerHTML = `<span class="sc-chapinfo__n ${termClass()}">${esc(meta.native)}</span>
+    <div class="sc-chapinfo__body"><b>Capítulo ${index + 1} · ${esc(meta.city)}${S.done[chapter.id] ? " · vencido" : index === current ? " · próximo" : ""}</b>
+      <span>${lesson ? `${esc(lesson)} · ` : ""}${rich(meta.scroll.t)}</span>
+      <span>Guardião: ${esc(meta.boss)}${meta.bossRef ? ` (${esc(meta.bossRef)})` : ""}${relic ? ` · relíquia: ${esc(relic.name)}` : ""}</span></div>
+    <button type="button" class="sc-btn" id="sc-map-enter">${S.done[chapter.id] ? "Refazer" : "Entrar"}</button>`;
+  document.querySelectorAll("#sc-screen .sc-node").forEach((n) => n.classList.toggle("is-sel", n.dataset.node === mapSel.id));
+  on("#sc-map-enter", () => {
+    const a = audio();
+    if (a) a.init();
+    showScroll(index);
+  });
+}
+
+function bindMap(current) {
+  mapInfo(current);
+  document.querySelectorAll("#sc-screen [data-book]").forEach((btn) => {
+    btn.onclick = () => {
+      mapSel = { book: Number(btn.dataset.book), id: null };
+      sfx("tick");
+      showMap();
+    };
+  });
+  document.querySelectorAll("#sc-screen .sc-node").forEach((btn) => {
+    btn.onclick = () => {
+      mapSel.id = btn.dataset.node;
+      sfx("tick");
+      mapInfo(current);
+    };
+  });
+  const g = gfx();
+  const ids = campaign.map((c) => c.chapter.id);
+  const done = new Set(ids.filter((id) => S.done[id]));
+  cancelAnimationFrame(frameId);
+  const step = () => {
+    const canvas = document.getElementById("sc-world");
+    if (!canvas || !isOpen()) return;
+    paintAvatar("sc-avatar", S.cls);
+    mapApi().renderMap(canvas, {
+      language: AppState.language,
+      book: mapSel.book,
+      chapterIds: ids,
+      done,
+      selId: mapSel.id,
+      hero: g ? (ctx, x, gy, scale, t) => drawHeroFor(g, ctx, x, gy, scale, t, false, S.cls, true) : null,
+    });
+    frameId = requestAnimationFrame(step);
+  };
+  step();
 }
 
 function scrollHtml(scroll) {
