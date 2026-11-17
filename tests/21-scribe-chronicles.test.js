@@ -69,7 +69,7 @@ suite.test('Relíquias: quatro por classe e por rolo, cada uma presa ao seu cap�
 });
 
 suite.test('Fichas do Guia do Mestre do Rolo: texto-base, guardião com versículo e desenho, criaturas', () => {
-  const kinds = new Set(require('../js/modules/scribe-graphics.js').BOSS_KINDS);
+  const kinds = new Set([...require('../js/modules/scribe-graphics.js').BOSS_KINDS, ...require('../js/modules/scribe-bosses.js').KINDS]);
   LANGS.forEach(([language, , table]) => {
     const species = Campaign.SPECIES[language];
     Object.entries(table).forEach(([id, meta]) => {
@@ -89,6 +89,11 @@ suite.test('Fichas do Guia do Mestre do Rolo: texto-base, guardião com versícu
   const bookOne = Object.values(Campaign.HEBREW).filter((m) => m.book === 1).map((m) => m.boss).join(' | ');
   ['Serpente', 'Nefilins', 'Ninrode', 'Golias', 'Leviatã', 'Beemote', 'Dragão'].forEach((boss) => assert.isTrue(bookOne.includes(boss), `Livro I sem ${boss}`));
   assert.equal(Campaign.classInfo('greek', 'mago').name, 'Pescador');
+  // Guardiões humanos do Livro II e do grego não repetem os gigantes do Livro I
+  const giants = new Set(['abimeleque', 'ninrode', 'golias', 'nefilim']);
+  const reused = [...Object.values(Campaign.HEBREW).filter((m) => m.book === 2), ...Object.values(Campaign.GREEK)]
+    .filter((m) => giants.has(m.bossKind)).map((m) => m.boss);
+  assert.isTrue(reused.every((b) => /Sísera|Naás|Nebuzaradã/.test(b)), `Guardiões sem figura própria: ${reused.join(', ')}`);
   assert.equal(Campaign.classInfo('hebrew', 'mago').hp[0], Campaign.CLASSES.mago.hp[0], 'O nome muda, as regras não');
 });
 
@@ -314,7 +319,7 @@ suite.test('Todos os capítulos ficam abertos para revisão, na ordem das liçõ
 suite.test('Crônicas do Escriba está ligada à tela de Avaliar e ao backup', () => {
   assert.includes(html, 'onclick="openScribeChronicles()"', 'Cartão do modo ausente');
   assert.includes(html, 'id="scribe-view"', 'Tela do jogo ausente');
-  ['scribe-campaign.js', 'scribe-lore.js', 'scribe-graphics.js', 'scribe-chronicles.js'].forEach((file) => {
+  ['scribe-campaign.js', 'scribe-lore.js', 'scribe-graphics.js', 'scribe-heroes.js', 'scribe-bosses.js', 'scribe-chronicles.js'].forEach((file) => {
     assert.includes(html, `js/modules/${file}`, `${file} não carregado`);
   });
   assert.isTrue(html.indexOf('scribe-campaign.js') < html.indexOf('scribe-chronicles.js'), 'A campanha carrega antes do motor');

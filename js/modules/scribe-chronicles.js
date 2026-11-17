@@ -572,6 +572,13 @@ function heroPanel() {
   </div>`;
 }
 
+/** Herói do rolo do idioma: no grego, Pescador, Centurião e Fazedor de tendas têm figura própria */
+function drawHeroFor(g, ctx, x, gy, scale, t, flash, cls, withRelics) {
+  const heroes = typeof window !== "undefined" ? window.ScribeHeroes : null;
+  if (!isHebrew() && heroes) return heroes.drawGreekHero(ctx, x, gy, scale, t, flash, cls, withRelics ? new Set(S.relics) : new Set());
+  return g.drawHero(ctx, x, gy, scale, t, flash, cls, withRelics);
+}
+
 function paintAvatar(id, cls) {
   const g = gfx();
   const canvas = typeof document !== "undefined" ? document.getElementById(id) : null;
@@ -589,7 +596,7 @@ function paintAvatar(id, cls) {
   lc.fillRect(0, 0, lw, lh);
   lc.setTransform(1 / px, 0, 0, 1 / px, 0, 0);
   g.setEnvironment({ relics: new Set(S.relics) });
-  g.drawHero(lc, w / 2, h * 0.92, h / 90, t, false, cls, cls === S.cls);
+  drawHeroFor(g, lc, w / 2, h * 0.92, h / 90, t, false, cls, cls === S.cls);
   lc.setTransform(1, 0, 0, 1, 0, 0);
   g.quantize(lc, lw, lh);
   const c = canvas.getContext("2d");
@@ -1859,13 +1866,61 @@ function showBestiary() {
     <div class="sc-beasts">${species.map((sp) => {
       const { name, ref } = speciesName(lang, sp);
       const known = !!S.seen[sp];
-      return `<div class="sc-beast${known ? "" : " is-unknown"}"><b>${known ? esc(name) : "???"}</b><span>${known ? esc(ref) : "ainda não vista"}</span><em>${S.kills[sp] || 0} vencidas</em></div>`;
+      return `<div class="sc-beast${known ? "" : " is-unknown"}">${known ? `<canvas class="sc-beast__cv" id="sc-beast-${sp}" width="96" height="96" aria-hidden="true"></canvas>` : `<span class="sc-beast__cv sc-beast__cv--blank" aria-hidden="true">?</span>`}
+        <b>${known ? esc(name) : "???"}</b><span>${known ? esc(ref) : "ainda não vista"}</span><em>${S.kills[sp] || 0} vencidas</em></div>`;
     }).join("")}</div>
-    <h4 class="sc-h">Guardiões vencidos (${bosses.length} de ${campaign.length})</h4>
-    <ul class="sc-relic-lore">${bosses.map(({ meta }) => `<li><b>${esc(meta.boss)}</b> <span class="sc-muted">${esc(meta.bossRef || "")} · ${esc(meta.city)}</span></li>`).join("") || `<li class="sc-muted">Nenhum ainda.</li>`}</ul>
+    <h4 class="sc-h">Guardiões (${bosses.length} de ${campaign.length} vencidos)</h4>
+    <div class="sc-beasts sc-beasts--bosses">${campaign.map(({ chapter, meta }, i) => {
+      const won = !!S.done[chapter.id];
+      return `<div class="sc-beast${won ? "" : " is-unknown"}">${won ? `<canvas class="sc-beast__cv" id="sc-boss-${i}" width="96" height="96" aria-hidden="true"></canvas>` : `<span class="sc-beast__cv sc-beast__cv--blank" aria-hidden="true">?</span>`}
+        <b>${won ? esc(meta.boss) : "???"}</b><span>${won ? esc(meta.bossRef || "") : `Capítulo ${i + 1}`}</span><em>${esc(meta.city)}</em></div>`;
+    }).join("")}</div>
     <div class="sc-row"><button type="button" class="sc-btn sc-btn--ghost" id="sc-back">Mapa</button></div>
   </div>`);
   on("#sc-back", showMap);
+  const g = gfx();
+  if (!g) return;
+  species.filter((sp) => S.seen[sp]).forEach((sp) => paintThumb(`sc-beast-${sp}`, (ctx, w, h, t) => g.drawMobSprite(ctx, sp, w * 0.5, h * 0.9, 24, t, false, false, 3, w)));
+  campaign.forEach(({ chapter, meta }, i) => {
+    if (S.done[chapter.id]) paintThumb(`sc-boss-${i}`, (ctx, w, h, t) => drawBoss(g, ctx, meta.bossKind, w * 0.5, h * 0.94, 0.5, t, false, false, w));
+  });
+}
+
+/** Guardião pelo tipo da ficha: os do Livro II e do grego têm figura própria (scribe-bosses.js) */
+function drawBoss(g, ctx, kind, x, gy, scale, t, flash, breath, W) {
+  const bosses = typeof window !== "undefined" ? window.ScribeBosses : null;
+  if (bosses && bosses.draw(ctx, kind, x, gy, scale, t, flash, breath, W)) return;
+  g.drawBossKind(ctx, kind || "golias", x, gy, scale, t, flash, breath, W);
+}
+
+/** Retrato parado de criatura ou guardião, com a mesma paleta e contorno da arena */
+function paintThumb(id, draw) {
+  const g = gfx();
+  const canvas = typeof document !== "undefined" ? document.getElementById(id) : null;
+  if (!g || !canvas) return;
+  const px = 2;
+  const w = canvas.width;
+  const h = canvas.height;
+  const lw = Math.ceil(w / px);
+  const lh = Math.ceil(h / px);
+  const low = g.buf("thumb", lw, lh);
+  const lc = low.getContext("2d");
+  const spr = g.buf("thumb-spr", lw, lh);
+  const sc = spr.getContext("2d");
+  lc.setTransform(1, 0, 0, 1, 0, 0);
+  lc.fillStyle = "#1b2338";
+  lc.fillRect(0, 0, lw, lh);
+  sc.setTransform(1, 0, 0, 1, 0, 0);
+  sc.clearRect(0, 0, lw, lh);
+  sc.setTransform(1 / px, 0, 0, 1 / px, 0, 0);
+  draw(sc, w, h, 1.2);
+  sc.setTransform(1, 0, 0, 1, 0, 0);
+  g.outlineOnto(lc, spr, "#0b0612");
+  g.quantize(lc, lw, lh);
+  const c = canvas.getContext("2d");
+  c.imageSmoothingEnabled = false;
+  c.clearRect(0, 0, w, h);
+  c.drawImage(low, 0, 0, lw, lh, 0, 0, w, h);
 }
 
 /** Desempenho: acertos, erros e as palavras que mais custam */
@@ -1939,7 +1994,7 @@ function drawArena(canvas) {
   const groundY = H * 0.86;
   const scale = Math.min(1.25, H / 210);
   const lunge = (who) => (A.lunge.who === who && A.lunge.t > t ? W * 0.13 * Math.sin(((A.lunge.t - t) / 0.28) * Math.PI) : 0);
-  g.drawHero(sc, W * 0.18 + lunge("hero"), groundY, scale * 1.3, t, A.heroFlash > t, S.cls, true);
+  drawHeroFor(g, sc, W * 0.18 + lunge("hero"), groundY, scale * 1.3, t, A.heroFlash > t, S.cls, true);
   let monsterX = 0;
   if (B.mon && (!B.mon.dead || A.deathT > t)) {
     const mon = B.mon;
@@ -1950,7 +2005,7 @@ function drawArena(canvas) {
     sc.globalAlpha = mon.dead ? Math.max(0, (A.deathT - t) / 0.6) : 1;
     if (B.boss) {
       if (B.rage) g.rageAura(sc, monsterX, groundY, scale, t);
-      g.drawBossKind(sc, B.meta.bossKind || "golias", monsterX, groundY, scale * (B.rage ? 1.08 : 1), B.rage ? t * 1.5 : t, flash, breath, W);
+      drawBoss(g, sc, B.meta.bossKind, monsterX, groundY, scale * (B.rage ? 1.08 : 1), B.rage ? t * 1.5 : t, flash, breath, W);
     } else {
       g.drawMob(sc, mon, monsterX, groundY, scale, t, flash, breath, W);
     }

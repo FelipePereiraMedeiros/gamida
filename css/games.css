@@ -453,6 +453,9 @@
 .sc-beast b { color: var(--sc-gold); }
 .sc-beast span, .sc-beast em { color: var(--sc-muted); font-style: normal; }
 .sc-beast.is-unknown { opacity: 0.5; }
+.sc-beast__cv { display: block; width: 96px; height: 96px; margin: 0 auto 0.35rem; border-radius: 0.4rem; background: #1b2338; image-rendering: pixelated; }
+.sc-beast__cv--blank { display: grid; place-items: center; color: var(--sc-muted); font-size: 1.6rem; font-weight: 800; }
+.sc-beasts--bosses { grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); }
 .sc-stats--big { font-size: 0.95rem; margin: 0.5rem 0 1rem; }
 
 /* Hebraico e grego com as mesmas fontes do restante do sistema.
