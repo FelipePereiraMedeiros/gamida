@@ -33,6 +33,7 @@ const modules = [
   { id: 19, name: 'Funcionamento sem Internet', file: './tests/19-offline-assets.test.js' },
   { id: 20, name: 'Chuva de Pedras', file: './tests/20-stone-rain.test.js' },
   { id: 21, name: 'Crônicas do Escriba', file: './tests/21-scribe-chronicles.test.js' },
+  { id: 22, name: 'Perfis e Nuvem', file: './tests/22-profiles.test.js' },
 ];
 
 async function run() {
