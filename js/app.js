@@ -15,7 +15,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.42.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.43.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -403,6 +403,8 @@ function selectAllPracticeChapters() {
 
 function setPracticeChapterOrder(order) {
   setChapterOrder(order, AppState);
+  // Escolher uma ordem desliga a mistura das lições
+  if (AppState.mixChapters) setMixChapters(false, AppState);
   if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.renderChapterSelectorLists === "function") {
     window.UIModule.renderChapterSelectorLists();
   }
@@ -416,6 +418,22 @@ function setPracticeChapterOrder(order) {
   lastRenderedVocabChapter = null;
   if (typeof renderVocabTable === "function") renderVocabTable();
   return AppState.chapterOrder;
+}
+
+/** Prática com as lições misturadas: os itens de todas as lições selecionadas num só embaralhamento */
+function setPracticeChapterMix(on) {
+  setMixChapters(on, AppState);
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.updatePracticeOrderUI === "function") {
+    window.UIModule.updatePracticeOrderUI();
+  }
+  if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.updatePracticeOptionsSummary === "function") {
+    window.UIModule.updatePracticeOptionsSummary();
+  }
+  AppState.currentQuestionIndex = 0;
+  resetStats();
+  buildPracticeQueue();
+  renderCurrentQuestion();
+  return AppState.mixChapters;
 }
 
 function updatePracticeOrderUI() {
@@ -724,6 +742,7 @@ if (typeof window !== "undefined") {
   window.togglePracticeChapter = togglePracticeChapter;
   window.selectAllPracticeChapters = selectAllPracticeChapters;
   window.setPracticeChapterOrder = setPracticeChapterOrder;
+  window.setPracticeChapterMix = setPracticeChapterMix;
   window.updatePracticeOrderUI = updatePracticeOrderUI;
   window.togglePracticeChapterPicker = togglePracticeChapterPicker;
   window.getSelectedChapters = getSelectedChapters;

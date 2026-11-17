@@ -275,7 +275,8 @@ function buildPracticeQueue() {
     });
   }
 
-  practiceQueue = orderedQueue;
+  // Lições misturadas: com mais de uma lição, um só embaralhamento para todas
+  practiceQueue = AppState.mixChapters && selectedChapters.length > 1 ? shuffleArray(orderedQueue) : orderedQueue;
 }
 
 /** Nova rodada em nova ordem, sem repetir de imediato o último item da rodada anterior */

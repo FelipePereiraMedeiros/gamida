@@ -8,7 +8,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.42.0";
+  "2.43.0";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
@@ -48,6 +48,7 @@ const AppState = (typeof window !== "undefined" && window.AppState) || {
   vocabCategory: "all",
   selectedChapterIds: [],
   chapterOrder: "asc", // 'asc' (Primeira ➔ Última) ou 'desc' (Última ➔ Primeira)
+  mixChapters: false, // na prática, embaralha os itens de todas as lições selecionadas juntos
 };
 
 const SimConfig = {
@@ -586,6 +587,26 @@ function toggleAllChapterSelection(state = AppState) {
  * @param {Object} [state]
  * @returns {'asc'|'desc'}
  */
+/**
+ * Liga ou desliga a mistura das lições na prática: com várias lições, as palavras
+ * (ou frases) de todas são embaralhadas juntas em vez de seguir lição por lição
+ * @param {boolean} on
+ * @param {Object} [state]
+ * @returns {boolean}
+ */
+function setMixChapters(on, state = AppState) {
+  if (!state) return false;
+  state.mixChapters = !!on;
+  if (typeof localStorage !== "undefined" && state.language) {
+    try {
+      localStorage.setItem(`gamida_mixChapters_${state.language}`, state.mixChapters ? "1" : "0");
+    } catch (err) {
+      console.warn("Aviso ao salvar a mistura das lições no localStorage:", err);
+    }
+  }
+  return state.mixChapters;
+}
+
 function setChapterOrder(order, state = AppState) {
   if (!state) return "asc";
   const normalized = order === "desc" ? "desc" : "asc";
@@ -679,6 +700,7 @@ if (typeof window !== "undefined") {
   window.toggleChapterSelection = toggleChapterSelection;
   window.toggleAllChapterSelection = toggleAllChapterSelection;
   window.setChapterOrder = setChapterOrder;
+  window.setMixChapters = setMixChapters;
   window.getAvailablePracticeCategories = getAvailablePracticeCategories;
   window.getAvailableVocabCategories = getAvailableVocabCategories;
   window.getTerm = getTerm;
@@ -708,6 +730,7 @@ if (typeof window !== "undefined") {
     toggleChapterSelection,
     toggleAllChapterSelection,
     setChapterOrder,
+    setMixChapters,
     getAvailablePracticeCategories,
     getAvailableVocabCategories,
     getTerm,
@@ -740,6 +763,7 @@ if (typeof module !== "undefined" && module.exports) {
     toggleChapterSelection,
     toggleAllChapterSelection,
     setChapterOrder,
+    setMixChapters,
     getAvailablePracticeCategories,
     getAvailableVocabCategories,
     getTerm,

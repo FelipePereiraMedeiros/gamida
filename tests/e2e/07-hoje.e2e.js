@@ -48,4 +48,36 @@ module.exports = [
       await context.close();
     },
   },
+  {
+    name: "Celular: o painel Hoje começa recolhido numa linha, abre com um toque e lembra a escolha",
+    async fn({ browser, base, assert }) {
+      const { context, page, errors } = await openApp({ browser, base }, { language: "greek", viewport: { width: 390, height: 844 } });
+      await page.waitForSelector("#today-toggle");
+      const closedHeight = await page.evaluate(() => document.getElementById("today-panel").getBoundingClientRect().height);
+      assert.ok(closedHeight < 70, `recolhido ainda ocupa ${closedHeight}px`);
+      assert.ok(!(await page.isVisible("#today-go")), "recolhido mostrou o botão do passo");
+      assert.match(await page.textContent(".today__peek"), /Caminho do domínio/);
+      await page.click(".today__title");
+      assert.ok(await page.isVisible("#today-go"), "o toque na barra não abriu o painel");
+      assert.equal(await page.getAttribute("#today-toggle", "aria-expanded"), "true");
+      await page.reload();
+      await page.waitForSelector("#today-toggle");
+      assert.ok(await page.isVisible("#today-go"), "o painel não lembrou que estava aberto");
+      await page.click("#today-toggle");
+      assert.ok(!(await page.isVisible("#today-go")), "não recolheu de novo");
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await context.close();
+    },
+  },
+  {
+    name: "Computador: o painel Hoje fica sempre aberto, sem botão de recolher",
+    async fn({ browser, base, assert }) {
+      const { context, page, errors } = await openApp({ browser, base }, { language: "greek" });
+      await page.waitForSelector("#today-go");
+      assert.ok(await page.isVisible("#today-go"));
+      assert.ok(!(await page.isVisible("#today-toggle")), "o botão de recolher apareceu no computador");
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await context.close();
+    },
+  },
 ];

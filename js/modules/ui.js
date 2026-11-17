@@ -544,7 +544,7 @@ function updatePracticeOptionsSummary() {
 
   const count = _resolveGetSelectedChapters(AppState, { order: "asc" }).length;
   const parts = [count > 1 ? `${count} capítulos` : "1 capítulo"];
-  if (count > 1) parts.push(AppState.chapterOrder === "desc" ? "Última ➔ Primeira" : "Primeira ➔ Última");
+  if (count > 1) parts.push(AppState.mixChapters ? "Lições misturadas" : AppState.chapterOrder === "desc" ? "Última ➔ Primeira" : "Primeira ➔ Última");
 
   const select = document.getElementById("practice-category-select");
   if (AppState.exerciseMode === "typing" && AppState.practiceCategory && AppState.practiceCategory !== "all" && select && select.selectedOptions && select.selectedOptions[0]) {
@@ -623,6 +623,8 @@ function setupGlobalChapterDropdown() {
     if (savedOrder === "asc" || savedOrder === "desc") {
       AppState.chapterOrder = savedOrder;
     }
+    // Mistura das lições: guardada por idioma
+    AppState.mixChapters = localStorage.getItem(`gamida_mixChapters_${AppState.language}`) === "1";
   }
 
   // Restaura capítulos selecionados salvos por idioma
@@ -827,10 +829,14 @@ function updatePracticeOrderUI() {
     const btnAsc = document.getElementById(ascId);
     const btnDesc = document.getElementById(descId);
     if (btnAsc && btnDesc) {
-      _setSegmentActive(btnDesc, isDesc);
-      _setSegmentActive(btnAsc, !isDesc);
+      // A mistura só existe na prática; o dicionário segue a ordem
+      const mixed = ascId === "order-asc" && !!AppState.mixChapters;
+      _setSegmentActive(btnDesc, isDesc && !mixed);
+      _setSegmentActive(btnAsc, !isDesc && !mixed);
     }
   });
+  const btnMix = document.getElementById("order-mix");
+  if (btnMix) _setSegmentActive(btnMix, !!AppState.mixChapters);
 }
 
 function setPracticeChapterOrder(order) {

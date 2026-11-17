@@ -9,10 +9,22 @@
  *   3. jogar o próximo capítulo das Crônicas do Escriba.
  * Os outros passos ficam logo abaixo, a um toque, com a meta do dia.
  * O painel pode ser ocultado até o dia seguinte.
+ * No celular ele começa recolhido numa barra de uma linha (o treino é o
+ * principal da tela); um toque abre. A escolha fica guardada.
  */
 
 (function () {
 const HIDE_KEY = "gamida_today_hidden";
+// No celular: "1" quando o aluno deixou o painel aberto
+const OPEN_KEY = "gamida_today_open";
+
+function isOpen() {
+  try {
+    return localStorage.getItem(OPEN_KEY) === "1";
+  } catch (_) {
+    return false;
+  }
+}
 
 const dayKey = () => {
   const d = new Date();
@@ -101,6 +113,8 @@ function render() {
   const state = readState();
   const steps = computeSteps(state);
   root.classList.remove("hidden");
+  const open = isOpen();
+  root.classList.toggle("today--closed", !open);
 
   const head = el("div", "today__head");
   head.appendChild(el("h2", "today__title", "Hoje"));
@@ -108,6 +122,24 @@ function render() {
   if (a) {
     head.appendChild(el("span", "today__goal", `${Math.min(a.today, a.goal)} de ${a.goal} respostas${a.streak ? ` · ${a.streak} ${a.streak === 1 ? "dia seguido" : "dias seguidos"}` : ""}`));
   }
+  // Versão curta da meta, para a barra recolhida do celular
+  if (a) head.appendChild(el("span", "today__goal-short", `${Math.min(a.today, a.goal)}/${a.goal}`));
+  // Celular, recolhido: o próximo passo numa linha e o botão de abrir (no computador o painel fica sempre aberto)
+  if (steps.length) head.appendChild(el("span", "today__peek", steps[0].title));
+  const toggle = el("button", "today__toggle");
+  toggle.type = "button";
+  toggle.id = "today-toggle";
+  toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  toggle.setAttribute("aria-label", open ? "Recolher o painel Hoje" : "Abrir o painel Hoje");
+  toggle.appendChild(el("span", "", open ? "▴" : "▾")).setAttribute("aria-hidden", "true");
+  toggle.addEventListener("click", () => {
+    try {
+      localStorage.setItem(OPEN_KEY, open ? "0" : "1");
+    } catch (_) {}
+    render();
+    const again = document.getElementById("today-toggle");
+    if (again) again.focus();
+  });
   const hide = el("button", "today__hide", "Ocultar hoje");
   hide.type = "button";
   hide.addEventListener("click", () => {
@@ -117,6 +149,11 @@ function render() {
     render();
   });
   head.appendChild(hide);
+  head.appendChild(toggle);
+  // Recolhido, a barra inteira abre o painel
+  head.addEventListener("click", (e) => {
+    if (root.classList.contains("today--closed") && e.target !== toggle && !toggle.contains(e.target) && getComputedStyle(toggle).display !== "none") toggle.click();
+  });
   root.appendChild(head);
 
   if (a) {

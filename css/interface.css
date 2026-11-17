@@ -562,6 +562,11 @@ ul#chapter-dropdown-list {
   cursor: pointer;
 }
 .seg--modes .seg-btn { flex: 1 1 0; min-width: 0; }
+/* Ordem das lições: três opções que precisam caber no celular estreito */
+@media (max-width: 400px) {
+  #practice-order-container .seg { display: flex; }
+  #practice-order-container .seg-btn { flex: 1 1 auto; min-width: 0; padding: 0.25rem 0.5rem; white-space: normal; line-height: 1.2; text-align: center; }
+}
 .seg-btn:hover { color: var(--text-strong); }
 .seg-btn.is-active { background: rgb(var(--brand-600)); color: #fff; font-weight: 600; }
 .seg-btn.hidden { display: none; }
@@ -1618,6 +1623,22 @@ body.is-alphabet-practice .app-stat--mastery { display: none; }
 .today__link { min-height: 2rem; padding: 0 0.25rem; border: 0; background: transparent; color: rgb(var(--brand-400)); font-size: 0.8125rem; font-weight: 600; text-align: left; cursor: pointer; }
 .today__link:hover { text-decoration: underline; }
 .today__done { margin: 0; color: var(--text-soft); font-size: 0.875rem; }
+/* Celular: o painel começa recolhido numa barra de uma linha; o treino fica em primeiro plano */
+.today__peek, .today__toggle, .today__goal-short { display: none; }
+@media (max-width: 640px) {
+  .today__toggle { display: inline-flex; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 2.75rem; margin: -0.5rem -0.5rem -0.5rem 0; border: 0; background: transparent; color: var(--text-soft); font-size: 1rem; cursor: pointer; }
+  .today__toggle:hover { color: var(--text-strong); }
+  .today--closed { gap: 0; padding: 0.375rem 0.875rem; }
+  .today--closed .today__head { flex-wrap: nowrap; align-items: center; }
+  .today--closed .today__title { font-size: 0.9375rem; }
+  .today--closed .today__head { cursor: pointer; }
+  .today--closed .today__goal { display: none; }
+  .today--closed .today__goal-short { display: inline; flex-shrink: 0; color: rgb(var(--brand-400)); font-size: 0.8125rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .today--closed .today__peek { display: block; flex: 1; min-width: 0; overflow: hidden; color: var(--text-soft); font-size: 0.8125rem; text-overflow: ellipsis; white-space: nowrap; }
+  .today--closed .today__hide { display: none; }
+  .today--closed .today__toggle { margin-left: auto; }
+  .today--closed > :not(.today__head) { display: none; }
+}
 
 /* ================= Grupos da aba Avaliar ================= */
 .mode-group { display: flex; flex-direction: column; gap: 0.75rem; }
