@@ -20,6 +20,16 @@
  */
 
 (function () {
+/**
+ * Chave geral da sincronização com o Google. DESLIGADA enquanto o login não é
+ * ativado de vez (ID do cliente, tela de consentimento publicada): com ela em
+ * false, nada deste módulo roda, o cartão da nuvem não aparece e nenhum pedido
+ * vai ao Google. Para testar num navegador só, sem afetar ninguém:
+ *   localStorage.setItem("gamida_google_preview", "1")
+ */
+const CLOUD_SYNC_ENABLED = false;
+const PREVIEW_KEY = "gamida_google_preview";
+
 /** ID do cliente OAuth do Gamida (público por natureza; não é segredo) */
 const GOOGLE_CLIENT_ID = "";
 
@@ -52,8 +62,19 @@ function clientId() {
   return local || GOOGLE_CLIENT_ID;
 }
 
+/** A sincronização está ligada (no código ou, para teste, neste navegador)? */
+function isEnabled() {
+  if (CLOUD_SYNC_ENABLED) return true;
+  try {
+    const st = store();
+    return !!st && st.getItem(PREVIEW_KEY) === "1";
+  } catch (_) {
+    return false;
+  }
+}
+
 function isConfigured() {
-  return /\.apps\.googleusercontent\.com$/.test(clientId());
+  return isEnabled() && /\.apps\.googleusercontent\.com$/.test(clientId());
 }
 
 function redirectUri() {
@@ -346,6 +367,7 @@ function decide(local, remote) {
 let syncing = null;
 /** Sincroniza o perfil ativo com o arquivo no Drive */
 function sync({ interactive = false } = {}) {
+  if (!isEnabled()) return Promise.resolve("none");
   if (syncing) return syncing;
   syncing = doSync(interactive).finally(() => {
     syncing = null;
@@ -462,7 +484,7 @@ function scheduleAutosave() {
 }
 
 function startAutoSync() {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined" || !isEnabled()) return;
   window.addEventListener("gamida:profile-changed", scheduleAutosave);
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden" && autosaveTimer) {
@@ -538,6 +560,8 @@ function refreshCard() {
 }
 
 const CloudSync = {
+  CLOUD_SYNC_ENABLED,
+  isEnabled,
   GOOGLE_CLIENT_ID,
   SCOPES,
   FILE_NAME,

@@ -119,6 +119,20 @@ suite.test('Resumo do perfil junta os modos dos dois idiomas', () => {
   assert.isTrue(Profiles.settingsSummary().length >= 5);
 });
 
+suite.test('Sincronização com o Google fica desligada até ser ativada', () => {
+  assert.equal(Cloud.CLOUD_SYNC_ENABLED, false, 'Chave geral desligada em produção');
+  const old = global.localStorage;
+  global.localStorage = memoryStorage({ gamida_google_client_id: '1-a.apps.googleusercontent.com' });
+  try {
+    assert.isTrue(!Cloud.isEnabled() && !Cloud.isConfigured(), 'Sem a chave, nem com ID do cliente liga');
+    global.localStorage.setItem('gamida_google_preview', '1');
+    assert.isTrue(Cloud.isEnabled() && Cloud.isConfigured(), 'Pré-visualização liga só neste navegador');
+  } finally {
+    if (old === undefined) delete global.localStorage; else global.localStorage = old;
+  }
+  assert.isTrue(Profiles.isProfileKey('gamida_google_preview') === false, 'A pré-visualização não viaja no perfil');
+});
+
 suite.test('Nuvem: decide subir, baixar ou perguntar pelo que mudou desde a última sincronização', () => {
   const d = Cloud.decide;
   assert.equal(d({ updatedAt: 5, syncedAt: 0, hasData: true }, null), 'upload', 'Sem arquivo na nuvem, sobe');

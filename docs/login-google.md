@@ -1,5 +1,7 @@
 # Perfis e login com Google
 
+> **Situação atual:** a sincronização com o Google está **desligada** (`CLOUD_SYNC_ENABLED = false` em `js/modules/cloud-sync.js`). O cartão da nuvem não aparece e nenhum pedido vai ao Google. Os perfis e o arquivo de perfil funcionam normalmente. Para testar num navegador só, rode `localStorage.setItem("gamida_google_preview", "1")` no console (e informe o ID do cliente, como explicado abaixo). Para ativar para todos, siga "Como ativar" e mude a chave para `true`.
+
 ## O que é o perfil
 
 Um perfil reúne tudo o que é do aluno:
@@ -55,15 +57,16 @@ O código está em `js/modules/cloud-sync.js` e `oauth-callback.html`.
    - **Origens JavaScript autorizadas:** o endereço do site, por exemplo `https://SEU-USUARIO.github.io`;
    - **URIs de redirecionamento autorizados:** o endereço completo da página de retorno, por exemplo `https://SEU-USUARIO.github.io/gamida/oauth-callback.html`. Para testar localmente, inclua também `http://localhost:8765/oauth-callback.html`.
 5. Copie o ID do cliente (termina em `.apps.googleusercontent.com`) e coloque em `GOOGLE_CLIENT_ID`, no início de `js/modules/cloud-sync.js`. O ID do cliente não é segredo: ele aparece no navegador de qualquer forma.
-6. Publique o site. O botão **Entrar com Google** aparece na aba Perfil.
+6. Mude `CLOUD_SYNC_ENABLED` para `true` no mesmo arquivo e publique o site. O botão **Entrar com Google** aparece na aba Perfil.
 
-Para testar antes de publicar, rode este comando no console do navegador:
+Para testar antes de publicar, rode estes comandos no console do navegador:
 
 ```js
+localStorage.setItem("gamida_google_preview", "1")
 localStorage.setItem("gamida_google_client_id", "SEU-ID.apps.googleusercontent.com")
 ```
 
-Ele ativa o login só naquele navegador.
+Eles ativam o login só naquele navegador.
 
 ## Privacidade
 

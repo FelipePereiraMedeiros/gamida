@@ -466,7 +466,7 @@ function renderProfileTab() {
       <div class="profile-avatar" style="background:${esc(active.color)}" aria-hidden="true">${esc(initials(active.name))}</div>
       <div class="profile-head__text">
         <h3 class="profile-head__name" id="profile-name">${esc(active.name)}</h3>
-        <p class="profile-head__meta">${active.google ? `Conta Google: ${esc(active.google.email)}` : "Perfil só deste aparelho"} · alterado em ${esc(fmtDate(active.updatedAt))}</p>
+        <p class="profile-head__meta">${active.google && cloud && cloud.isEnabled() ? `Conta Google: ${esc(active.google.email)}` : "Perfil deste aparelho"} · alterado em ${esc(fmtDate(active.updatedAt))}</p>
       </div>
       <div class="profile-head__actions">
         <button type="button" class="btn-secondary" id="profile-rename">Renomear</button>
@@ -494,7 +494,7 @@ function renderProfileTab() {
     </div>
 
     <div class="profile-grid">
-      <div class="profile-card" id="cloud-card">${cloud ? cloud.renderCard(active) : ""}</div>
+      ${cloud && cloud.isEnabled() ? `<div class="profile-card" id="cloud-card">${cloud.renderCard(active)}</div>` : ""}
       <div class="profile-card">
         <h3 class="profile-card__title">Perfis neste aparelho</h3>
         <ul class="profile-list">${others.map((p) => `<li class="profile-list__item">
@@ -524,7 +524,7 @@ function renderProfileTab() {
       </div>
     </div>`;
   bindProfileTab();
-  if (cloud) cloud.bindCard();
+  if (cloud && cloud.isEnabled()) cloud.bindCard();
 }
 
 function bindProfileTab() {
