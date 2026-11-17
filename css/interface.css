@@ -1598,3 +1598,33 @@ body.is-alphabet-practice .app-stat--mastery { display: none; }
 .other-tab-warning { position: fixed; left: 50%; bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); z-index: 150; display: flex; flex-wrap: wrap; align-items: center; gap: 0.625rem; width: min(36rem, calc(100% - 2rem)); padding: 0.75rem 1rem; transform: translateX(-50%); border: 1px solid #f59e0b; border-radius: 0.75rem; background: var(--surface-1); color: var(--text); font-size: 0.85rem; line-height: 1.45; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45); }
 .other-tab-warning span { flex: 1; min-width: 12rem; }
 .other-tab-warning ~ .other-tab-warning { bottom: calc(10.5rem + env(safe-area-inset-bottom, 0px)); }
+
+/* ================= Painel "Hoje" ================= */
+.today { display: flex; flex-direction: column; gap: 0.625rem; padding: 1rem 1.125rem; border: 1px solid var(--line); border-left: 4px solid rgb(var(--brand-500)); border-radius: 1rem; background: var(--surface-1); }
+.today__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; }
+.today__title { margin: 0; color: var(--text-strong); font-size: 1.0625rem; font-weight: 800; }
+.today__goal { color: var(--text-soft); font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+.today__hide { margin-left: auto; min-height: 2rem; padding: 0 0.5rem; border: 0; background: transparent; color: var(--text-soft); font-size: 0.75rem; cursor: pointer; }
+.today__hide:hover { color: var(--text-strong); }
+.today__bar { height: 6px; overflow: hidden; border-radius: 999px; background: var(--surface-2); }
+.today__bar i { display: block; height: 100%; border-radius: 999px; background: rgb(var(--brand-500)); transition: width 0.3s ease; }
+.today__main { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+.today__body { display: flex; flex: 1; flex-direction: column; gap: 0.125rem; min-width: 14rem; }
+.today__step { color: var(--text-strong); font-size: 0.9375rem; }
+.today__text { color: var(--text-soft); font-size: 0.8125rem; line-height: 1.45; }
+.today__go { flex-shrink: 0; }
+.today__more { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.5rem; font-size: 0.8125rem; }
+.today__more-label { color: var(--text-soft); }
+.today__link { min-height: 2rem; padding: 0 0.25rem; border: 0; background: transparent; color: rgb(var(--brand-500)); font-size: 0.8125rem; font-weight: 600; text-align: left; cursor: pointer; }
+.today__link:hover { text-decoration: underline; }
+.today__done { margin: 0; color: var(--text-soft); font-size: 0.875rem; }
+
+/* ================= Grupos da aba Avaliar ================= */
+.mode-group { display: flex; flex-direction: column; gap: 0.75rem; }
+.mode-group__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.125rem 0.75rem; }
+.mode-group__title { margin: 0; color: var(--text-strong); font-size: 1rem; font-weight: 800; }
+.mode-group__text { margin: 0; color: var(--text-soft); font-size: 0.8125rem; }
+/* Dentro de cada grupo, os cartões dividem a largura toda (grupos de 2 ou 3 cartões) */
+@media (min-width: 768px) {
+  .mode-group .mode-grid { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+}

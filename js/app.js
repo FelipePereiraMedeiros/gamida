@@ -9,7 +9,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.39.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.40.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -126,6 +126,7 @@ async function initApp() {
   updateChoiceDirectionUI();
   if (typeof window !== "undefined" && window.ActivityModule) window.ActivityModule.updateActivityUI();
   if (typeof window !== "undefined" && window.ProfilesModule) window.ProfilesModule.updateProfileBadge();
+  if (typeof window !== "undefined" && window.TodayModule) window.TodayModule.render();
   updateStatsUI();
   updateParadigmsVisibility();
   updateTabsScrollIndicators();
@@ -224,6 +225,7 @@ function switchTab(tabName) {
   });
   if (typeof window !== "undefined" && typeof window.scrollTo === "function") window.scrollTo(0, 0);
   if (tabName === "vocab" && typeof renderVocabTable === "function") renderVocabTable();
+  if (tabName === "practice" && typeof window !== "undefined" && window.TodayModule) window.TodayModule.render();
   if (tabName === "profile" && typeof window !== "undefined" && window.ProfilesModule) window.ProfilesModule.renderProfileTab();
   if (tabName === "assessment" && typeof window !== "undefined" && window.MasteryPathModule) {
     window.MasteryPathModule.updatePathDashboardStat();

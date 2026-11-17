@@ -35,6 +35,7 @@ const modules = [
   { id: 21, name: 'Crônicas do Escriba', file: './tests/21-scribe-chronicles.test.js' },
   { id: 22, name: 'Perfis e Nuvem', file: './tests/22-profiles.test.js' },
   { id: 23, name: 'Segurança', file: './tests/23-security.test.js' },
+  { id: 24, name: 'Hoje e Progresso Unificado', file: './tests/24-today.test.js' },
 ];
 
 async function run() {

@@ -11,7 +11,7 @@
  * - Pedidos para outros sites (Google, na sincronização) não passam por aqui.
  */
 // <gerado por scripts/build-sw.js: não edite à mão>
-const VERSION = "2.39.0";
+const VERSION = "2.40.0";
 const PRECACHE = [
   "css/fonts.css",
   "css/games.css",
@@ -81,6 +81,7 @@ const PRECACHE = [
   "js/modules/state.js",
   "js/modules/stone-rain.js",
   "js/modules/survival.js",
+  "js/modules/today.js",
   "js/modules/ui.js",
   "manifest.webmanifest"
 ];

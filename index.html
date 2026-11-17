@@ -250,6 +250,8 @@
     <main id="main-content" tabindex="-1" class="app-main flex-1 w-full flex flex-col">
       <!-- Aba 1: prática -->
       <section id="tab-practice" class="flex-1 flex flex-col gap-4">
+        <!-- Painel "Hoje": o próximo passo do aluno (js/modules/today.js) -->
+        <div id="today-panel" class="today hidden" aria-label="Seu próximo passo hoje"></div>
         <!-- Barra da sessão: modo sempre à vista; o restante fica em "Opções" -->
         <div id="practice-control-bar" class="session-bar">
           <!-- Controles Padrão (Capítulos 2+) -->
@@ -633,72 +635,92 @@
             <p class="page-head__text">Escolha o formato ideal para o seu momento de estudo.</p>
           </div>
 
-          <div class="mode-grid">
-            <!-- Modo: revisão espaçada -->
-            <div class="mode-card mode-card--review mode-card--static">
-              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg></span>
-              <span class="mode-card__title">Revisão Inteligente</span>
-              <span id="review-due-card" class="mode-card__stat hidden"></span>
-              <span class="mode-card__text">Flashcards com repetição espaçada. Normal usa os capítulos ativos; Vencidas traz o que está na hora de rever, de qualquer capítulo; Erros reúne o que você errou.</span>
-              <span class="mode-card__actions">
-                <button type="button" data-on-click="startAnki('normal')" class="answer-btn">Normal</button>
-                <button type="button" id="btn-review-due" data-on-click="startAnki('due')" class="btn-secondary" disabled title="Revisões vencidas de todos os capítulos">Vencidas <span id="review-due-count"></span></button>
-                <button type="button" id="btn-review-errors" data-on-click="startAnki('errors')" class="btn-secondary" disabled>Erros <span id="review-errors-count"></span></button>
-              </span>
+          <section class="mode-group" aria-labelledby="mode-group-review">
+            <div class="mode-group__head">
+              <h3 id="mode-group-review" class="mode-group__title">Revisar</h3>
+              <p class="mode-group__text">Fixe o que já estudou: revisão espaçada, erros e o caminho capítulo por capítulo.</p>
             </div>
+            <div class="mode-grid">
+              <!-- Modo: revisão espaçada -->
+              <div class="mode-card mode-card--review mode-card--static">
+                <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg></span>
+                <span class="mode-card__title">Revisão Inteligente</span>
+                <span id="review-due-card" class="mode-card__stat hidden"></span>
+                <span class="mode-card__text">Flashcards com repetição espaçada. Normal usa os capítulos ativos; Vencidas traz o que está na hora de rever, de qualquer capítulo; Erros reúne o que você errou.</span>
+                <span class="mode-card__actions">
+                  <button type="button" data-on-click="startAnki('normal')" class="answer-btn">Normal</button>
+                  <button type="button" id="btn-review-due" data-on-click="startAnki('due')" class="btn-secondary" disabled title="Revisões vencidas de todos os capítulos">Vencidas <span id="review-due-count"></span></button>
+                  <button type="button" id="btn-review-errors" data-on-click="startAnki('errors')" class="btn-secondary" disabled>Erros <span id="review-errors-count"></span></button>
+                </span>
+              </div>
 
-            <!-- Modo: simulado personalizado -->
-            <button type="button" data-on-click="openSimuladoConfig()" class="mode-card mode-card--exam">
-              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-assess"></use></svg></span>
-              <span class="mode-card__title">Simulado Personalizado</span>
-              <span class="mode-card__text">Defina tamanho, tempo e foco da prova. Ao final, veja o diagnóstico por capítulo.</span>
-              <span class="mode-card__cta">Configurar e iniciar ➔</span>
-            </button>
+              <!-- Modo: caminho do domínio -->
+              <button type="button" data-on-click="openMasteryPath()" class="mode-card mode-card--path">
+                <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-target"></use></svg></span>
+                <span class="mode-card__title">Caminho do domínio</span>
+                <span id="path-card-stat" class="mode-card__stat"></span>
+                <span class="mode-card__text">Capítulo por capítulo: acerte todos os termos para liberar o próximo. Errou, o capítulo recomeça embaralhado.</span>
+                <span class="mode-card__cta">Seguir o caminho ➔</span>
+              </button>
 
-            <!-- Modo: morte súbita -->
-            <button type="button" data-on-click="startSurvival()" class="mode-card mode-card--survival">
-              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></span>
-              <span class="mode-card__title">Morte Súbita</span>
-              <span class="mode-card__stat">Recorde: <span id="surv-card-high">0</span></span>
-              <span class="mode-card__text">Três vidas. Quantas palavras você traduz em sequência?</span>
-              <span class="mode-card__cta">Jogar agora ➔</span>
-            </button>
+              <!-- Modo: Mago da Morfologia, análise morfológica (só no grego) -->
+              <button type="button" id="morph-mode-card" data-on-click="openMorphDrill()" class="mode-card mode-card--morph hidden">
+                <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg></span>
+                <span class="mode-card__title">Mago da Morfologia</span>
+                <span class="mode-card__text">Marque nas caixas a classe, o caso, o gênero, o número, a pessoa, o tempo, o modo e a voz de cada palavra das frases das lições.</span>
+                <span class="mode-card__cta">Escolher lições ➔</span>
+              </button>
+            </div>
+          </section>
+          <section class="mode-group" aria-labelledby="mode-group-test">
+            <div class="mode-group__head">
+              <h3 id="mode-group-test" class="mode-group__title">Testar</h3>
+              <p class="mode-group__text">Meça o que já sabe, com tempo e sem ajuda.</p>
+            </div>
+            <div class="mode-grid">
+              <!-- Modo: simulado personalizado -->
+              <button type="button" data-on-click="openSimuladoConfig()" class="mode-card mode-card--exam">
+                <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-assess"></use></svg></span>
+                <span class="mode-card__title">Simulado Personalizado</span>
+                <span class="mode-card__text">Defina tamanho, tempo e foco da prova. Ao final, veja o diagnóstico por capítulo.</span>
+                <span class="mode-card__cta">Configurar e iniciar ➔</span>
+              </button>
 
-            <!-- Modo: caminho do domínio -->
-            <button type="button" data-on-click="openMasteryPath()" class="mode-card mode-card--path">
-              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-target"></use></svg></span>
-              <span class="mode-card__title">Caminho do domínio</span>
-              <span id="path-card-stat" class="mode-card__stat"></span>
-              <span class="mode-card__text">Capítulo por capítulo: acerte todos os termos para liberar o próximo. Errou, o capítulo recomeça embaralhado.</span>
-              <span class="mode-card__cta">Seguir o caminho ➔</span>
-            </button>
+              <!-- Modo: morte súbita -->
+              <button type="button" data-on-click="startSurvival()" class="mode-card mode-card--survival">
+                <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></span>
+                <span class="mode-card__title">Morte Súbita</span>
+                <span class="mode-card__stat">Recorde: <span id="surv-card-high">0</span></span>
+                <span class="mode-card__text">Três vidas. Quantas palavras você traduz em sequência?</span>
+                <span class="mode-card__cta">Jogar agora ➔</span>
+              </button>
+            </div>
+          </section>
+          <section class="mode-group" aria-labelledby="mode-group-play">
+            <div class="mode-group__head">
+              <h3 id="mode-group-play" class="mode-group__title">Jogar</h3>
+              <p class="mode-group__text">Revise jogando. As respostas digitadas certas também contam para o domínio das palavras.</p>
+            </div>
+            <div class="mode-grid">
+              <!-- Modo: Chuva de Pedras -->
+              <button type="button" data-on-click="openStoneRain()" class="mode-card mode-card--stones">
+                <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-stones"></use></svg></span>
+                <span class="mode-card__title">Chuva de Pedras</span>
+                <span class="mode-card__stat">Recorde: <span id="stones-card-best">0</span></span>
+                <span class="mode-card__text">Pedras com palavras caem sobre a muralha. Toque no significado antes que acertem o muro. Cada fase é uma lição, e você escolhe de onde começar.</span>
+                <span class="mode-card__cta">Defender a muralha ➔</span>
+              </button>
 
-            <!-- Modo: Mago da Morfologia, análise morfológica (só no grego) -->
-            <button type="button" id="morph-mode-card" data-on-click="openMorphDrill()" class="mode-card mode-card--morph hidden">
-              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg></span>
-              <span class="mode-card__title">Mago da Morfologia</span>
-              <span class="mode-card__text">Marque nas caixas a classe, o caso, o gênero, o número, a pessoa, o tempo, o modo e a voz de cada palavra das frases das lições.</span>
-              <span class="mode-card__cta">Escolher lições ➔</span>
-            </button>
-
-            <!-- Modo: Chuva de Pedras -->
-            <button type="button" data-on-click="openStoneRain()" class="mode-card mode-card--stones">
-              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-stones"></use></svg></span>
-              <span class="mode-card__title">Chuva de Pedras</span>
-              <span class="mode-card__stat">Recorde: <span id="stones-card-best">0</span></span>
-              <span class="mode-card__text">Pedras com palavras caem sobre a muralha. Toque no significado antes que acertem o muro. Cada fase é uma lição, e você escolhe de onde começar.</span>
-              <span class="mode-card__cta">Defender a muralha ➔</span>
-            </button>
-
-            <!-- Modo: Crônicas do Escriba -->
-            <button type="button" data-on-click="openScribeChronicles()" class="mode-card mode-card--scribe">
-              <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-scroll"></use></svg></span>
-              <span class="mode-card__title">Crônicas do Escriba</span>
-              <span id="scribe-card-stat" class="mode-card__stat"></span>
-              <span class="mode-card__text">Uma aventura por todas as lições: pergaminhos de gramática, criaturas-palavra e um guardião de frases em cada capítulo.</span>
-              <span class="mode-card__cta">Abrir o rolo ➔</span>
-            </button>
-          </div>
+              <!-- Modo: Crônicas do Escriba -->
+              <button type="button" data-on-click="openScribeChronicles()" class="mode-card mode-card--scribe">
+                <span class="mode-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-scroll"></use></svg></span>
+                <span class="mode-card__title">Crônicas do Escriba</span>
+                <span id="scribe-card-stat" class="mode-card__stat"></span>
+                <span class="mode-card__text">Uma aventura por todas as lições: pergaminhos de gramática, criaturas-palavra e um guardião de frases em cada capítulo.</span>
+                <span class="mode-card__cta">Abrir o rolo ➔</span>
+              </button>
+            </div>
+          </section>
         </div>
 
         <!-- Chuva de Pedras: arcade de vocabulário -->
@@ -1816,7 +1838,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.39.0</span>
+        <span id="footer-version-tag">v2.40.0</span>
       </p>
       <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
     </footer>
@@ -1968,6 +1990,7 @@
     <script src="js/modules/scribe-chronicles.js"></script>
     <script src="js/modules/cloud-sync.js"></script>
     <script src="js/modules/ui.js"></script>
+    <script src="js/modules/today.js"></script>
     <script src="js/app.js"></script>
     <script src="js/modules/pwa.js"></script>
   </body>

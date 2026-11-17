@@ -213,6 +213,17 @@ function openMasteryPath() {
   renderPathOverview();
 }
 
+/** Capítulos com o selo da caçada completa (Crônicas do Escriba), no idioma atual */
+function scribeSeals() {
+  const scribe = typeof window !== "undefined" ? window.ScribeModule : null;
+  if (!scribe || typeof scribe.loadProgress !== "function") return {};
+  try {
+    return scribe.loadProgress(AppState.language).full || {};
+  } catch (_) {
+    return {};
+  }
+}
+
 function renderPathOverview() {
   const list = el("path-chapter-list");
   if (!list) return;
@@ -246,7 +257,9 @@ function renderPathOverview() {
       </span>`;
     btn.querySelector(".path-step__marker").textContent = marker;
     btn.querySelector(".path-step__title").textContent = chapter.title;
-    btn.querySelector(".path-step__meta").textContent = `${termCount} termos · ${label}`;
+    // Selo da caçada completa nas Crônicas: o vocabulário inteiro já foi revisto lá
+    const sealed = !!(scribeSeals()[chapter.id]);
+    btn.querySelector(".path-step__meta").textContent = `${termCount} termos · ${label}${sealed ? " · ★ caçada completa nas Crônicas" : ""}`;
     btn.setAttribute("aria-label", `${chapter.title}: ${label}`);
     if (st !== "locked") btn.onclick = () => startMasteryPathChapter(chapter.id);
     li.appendChild(btn);

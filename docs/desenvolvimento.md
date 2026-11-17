@@ -28,6 +28,7 @@ Para rodar só um arquivo, passe parte do nome: `npm run e2e -- cronicas`.
 - **Perfis:** cada perfil com o próprio progresso. A sincronização com o Google desligada por padrão e, no modo de teste, com o Google simulado: subir o perfil, outro aparelho receber e perguntar qual versão manter.
 - **Chuva de Pedras:** jogar, pausar, terminar e mandar os erros para a revisão.
 - **Uso sem internet:** depois da primeira visita o app abre e funciona sem conexão nos dois idiomas (fontes incluídas); aberto direto do disco (file://), usa o pacote de dados; num servidor normal, o pacote de 1,5 MB não é baixado.
+- **Hoje e progresso unificado:** o painel leva ao Caminho do domínio e, com palavras vencidas, à revisão; pode ser ocultado no dia. Acerto digitado nas Crônicas soma ao domínio da palavra.
 - **Segurança:** todas as ações da página apontam para funções existentes e funcionam com a CSP ligada. Um capítulo importado com HTML malicioso em todo texto passa por todas as telas (prática, correção, análise da frase, dicionário, tabelas, simulado, trilha, morfologia, Chuva de Pedras, Crônicas, perfil) sem injetar nada. O perfil percebe mudanças sem interceptar o armazenamento, e uma segunda aba aberta é avisada.
 
 Qualquer pedido para fora do servidor local conta como falha: o Gamida não pode depender de servidores externos.
@@ -85,3 +86,10 @@ As fichas dos capítulos (`scribe-campaign.js`) e a história (`scribe-lore.js`)
 - **Pacote de dados:** `data/data-bundle.js` só é carregado quando o app é aberto direto do disco, onde a busca dos arquivos JSON falha.
 - **Quadros por segundo:** as telas animadas das Crônicas desenham no máximo 30 quadros por segundo (10 com "reduzir movimento"), para poupar a bateria do celular.
 - **Lembrete de cópia:** com progresso e mais de 14 dias sem cópia (arquivo baixado ou nuvem), o app lembra de baixar o arquivo de perfil. O aluno pode adiar por 7 dias.
+
+## Painel "Hoje" e progresso unificado
+
+- **`js/modules/today.js`:** no topo da aba Praticar, um único próximo passo. A ordem é: revisar as palavras vencidas (ou, sem vencidas, as erradas), o próximo capítulo liberado do Caminho do domínio e o próximo capítulo das Crônicas. Os outros passos ficam em "Depois", junto com a meta do dia e os dias seguidos. "Ocultar hoje" esconde o painel até o dia seguinte. Ele é redesenhado ao abrir o app, ao voltar à aba Praticar e ao voltar à janela.
+- **Domínio:** continua sendo 3 acertos seguidos escrevendo a resposta. Agora o acerto digitado nos jogos (Chuva de Pedras e Crônicas, com "Resposta: digitar") também conta. Acerto por alternativa não conta, como na prática. Erro em qualquer modo manda a palavra para a lista de erros.
+- **Selo da caçada completa:** aparece no Caminho do domínio ("★ caçada completa nas Crônicas").
+- **Aba Avaliar** em três grupos: Revisar (Revisão Inteligente, Caminho do domínio, Mago da Morfologia), Testar (Simulado, Morte Súbita) e Jogar (Chuva de Pedras, Crônicas).

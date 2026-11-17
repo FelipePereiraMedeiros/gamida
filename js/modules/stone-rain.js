@@ -596,7 +596,7 @@ function submitTyped() {
   const target = game.target;
   const result = evaluateAnswer(value, target.word.item.translations);
   typedFeedback(target.word, result.status !== "incorrect");
-  if (result.status !== "incorrect") registerHit(target);
+  if (result.status !== "incorrect") registerHit(target, true);
   else registerMiss(target);
   hud();
 }
@@ -607,9 +607,11 @@ function flash(btn, ok, long) {
   setTimeout(() => btn.classList.remove("is-ok", "is-bad"), long ? 600 : 220);
 }
 
-function recordAnswer(word, ok) {
+function recordAnswer(word, ok, typed = false) {
   if (typeof window === "undefined") return;
   if (typeof window.recordActivity === "function") window.recordActivity();
+  // Acerto digitado conta para o domínio do termo, como na Digitação da prática
+  if (ok && typed && typeof window.recordMasteryHit === "function") window.recordMasteryHit(word.term);
   // Errar aqui também manda o termo para a lista de erros do Gamida
   if (!ok && typeof window.recordSRSError === "function") window.recordSRSError(word.term);
 }
@@ -632,7 +634,7 @@ function choose(index, btn) {
 }
 
 /** Pedra destruída: pontos, multiplicador, fase e próximo alvo */
-function registerHit(target) {
+function registerHit(target, typed = false) {
   const a = audio();
   game.hits++;
   game.score += hitScore(game.combo, (height - WALL_HEIGHT - target.y) / height);
@@ -641,7 +643,7 @@ function registerHit(target) {
   game.combo = combo;
   burst(target.x + target.w / 2, target.y + target.h / 2, "#f2b134", 22);
   if (a) a.sfx.hit(game.combo);
-  recordAnswer(target.word, true);
+  recordAnswer(target.word, true, typed);
   game.stones = game.stones.filter((s) => s !== target);
   game.target = null;
   game.remaining.delete(target.word.id);

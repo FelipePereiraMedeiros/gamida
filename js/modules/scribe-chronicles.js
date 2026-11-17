@@ -586,6 +586,8 @@ function gainXP(amount) {
 function recordAnswer(term, ok) {
   if (typeof window === "undefined") return;
   if (typeof window.recordActivity === "function") window.recordActivity();
+  // Acerto digitado conta para o domínio do termo, como na Digitação da prática
+  if (ok && term && B && B.lastTyped && typeof window.recordMasteryHit === "function") window.recordMasteryHit(term);
   // Errar uma palavra aqui também a manda para a lista de erros do Gamida
   if (!ok && term && typeof window.recordSRSError === "function") window.recordSRSError(term);
 }
@@ -1599,6 +1601,7 @@ function fleeMob() {
 
 function answerMob(k) {
   if (!B || B.lock || !B.opts[k]) return;
+  B.lastTyped = false;
   const option = B.opts[k];
   const buttons = document.querySelectorAll("#sc-screen .sc-opt");
   if (option.isCorrect) {
@@ -1615,6 +1618,7 @@ function answerMob(k) {
 }
 
 function answerMobTyped(value, input) {
+  B.lastTyped = true;
   const { word, term } = B.mon;
   if (evaluateAnswer(value, word.item.translations).status !== "incorrect") {
     input.disabled = true;
@@ -1962,6 +1966,7 @@ function bossTurn() {
 
 function bossAnswer(k) {
   if (!B || B.lock || B.opts[k] === undefined) return;
+  B.lastTyped = false;
   const buttons = document.querySelectorAll("#sc-screen .sc-opt");
   if (B.opts[k] === B.ans) {
     buttons[k].classList.add("is-ok");
@@ -1974,6 +1979,7 @@ function bossAnswer(k) {
 }
 
 function bossAnswerTyped(value, input) {
+  B.lastTyped = true;
   const strike = B.s.strikes[B.wi];
   if (evaluateAnswer(value, strikeAccepted(strike)).status !== "incorrect") {
     input.disabled = true;
@@ -2161,6 +2167,7 @@ function rushTurn() {
   startTimer(bossWindow(false), { crit: false });
   bindOptions((k) => {
     if (!B || B.lock || !B.opts[k]) return;
+    B.lastTyped = false;
     const buttons = document.querySelectorAll("#sc-screen .sc-opt");
     const term = getTerm(item);
     if (B.opts[k].isCorrect) {
@@ -2704,7 +2711,7 @@ function updateScribeCardStat() {
   const total = buildCampaign(AppState.chapters, AppState.language).length;
   node.textContent = progress.cls
     ? `${doneCount(progress)} de ${total} capítulos · nível ${progress.lvl}`
-    : `${total} capítulos, de ${isHebrew() ? "Éden a Jerusalém" : "Belém a Patmos"}`;
+    : `${total} capítulos, ${isHebrew() ? "do Éden à Babilônia" : "de Belém a Patmos"}`;
 }
 
 const ScribeModule = {
