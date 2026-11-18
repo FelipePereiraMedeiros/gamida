@@ -9,7 +9,7 @@
 
 const DataLoader = {
   get VERSION() {
-    return (typeof window !== "undefined" && window.APP_VERSION) || "2.48.0";
+    return (typeof window !== "undefined" && window.APP_VERSION) || "2.49.0";
   },
   cache: {},
 
@@ -322,19 +322,34 @@ const DataLoader = {
   },
 
   /**
-   * Favoritar marca o capítulo como editado pelo usuário. Por isso a classificação
-   * gramatical dos itens padrão é atualizada mesmo em capítulos preservados, e
-   * as tabelas e frases novas do capítulo padrão são acrescentadas sem tocar nas existentes.
+   * Capítulo padrão editado pelo usuário (no editor ou, em versões antigas, só por
+   * ter uma palavra favorita): as edições ficam, e o que o padrão trouxe de novo entra.
+   * - palavras do vocabulário que faltam no capítulo guardado são acrescentadas
+   *   (sem isso, a prática e a caçada completa das Crônicas ficavam sem elas);
+   * - campos novos das palavras (referências bíblicas, transliteração...) são
+   *   preenchidos onde faltam, sem trocar o que o usuário escreveu;
+   * - a classificação gramatical segue a do padrão;
+   * - tabelas e frases novas são acrescentadas sem tocar nas existentes.
    */
   syncItemClassification(storedChap, defChap) {
     const keyOf = (item) => item && (item.hebrew || item.term);
+    const clone = (v) => (v && typeof v === "object" ? JSON.parse(JSON.stringify(v)) : v);
     const defaultsByTerm = new Map((defChap.items || []).map((item) => [keyOf(item), item]));
+    const storedTerms = new Set();
     (storedChap.items || []).forEach((item) => {
+      storedTerms.add(keyOf(item));
       const defItem = defaultsByTerm.get(keyOf(item));
       if (!defItem) return;
       item.type = defItem.type;
       if (defItem.notes) item.notes = defItem.notes;
+      Object.keys(defItem).forEach((key) => {
+        if (item[key] === undefined) item[key] = clone(defItem[key]);
+      });
     });
+    const newItems = (defChap.items || []).filter((item) => !storedTerms.has(keyOf(item)));
+    if (newItems.length > 0) {
+      storedChap.items = [...(storedChap.items || []), ...newItems.map(clone)];
+    }
     const titleOf = (p) => p && (p.title || p.name);
     const storedTitles = new Set((storedChap.paradigms || []).map(titleOf));
     const newParadigms = (defChap.paradigms || []).filter((p) => !storedTitles.has(titleOf(p)));
@@ -357,6 +372,24 @@ const DataLoader = {
    * @param {'hebrew'|'greek'} language 
    * @returns {Promise<Array>} Array de capítulos carregados
    */
+  /**
+   * Leva as favoritas do capítulo guardado para o capítulo padrão atualizado
+   * (palavras pelo termo, frases pelo id)
+   */
+  carryFavorites(defChap, storedChap) {
+    if (!storedChap) return defChap;
+    const keyOf = (item) => item && (item.hebrew || item.term);
+    const favTerms = new Set((storedChap.items || []).filter((i) => i && i.favorite).map(keyOf));
+    const favSentences = new Set((storedChap.sentences || []).filter((s) => s && s.favorite).map((s) => s.id));
+    (defChap.items || []).forEach((item) => {
+      if (favTerms.has(keyOf(item))) item.favorite = true;
+    });
+    (defChap.sentences || []).forEach((s) => {
+      if (favSentences.has(s.id)) s.favorite = true;
+    });
+    return defChap;
+  },
+
   async loadChapters(language) {
     const version = (typeof APP_VERSION !== "undefined" && APP_VERSION) ? APP_VERSION : this.VERSION;
     const stored = await this.storage.getItem(`gamida_${language}_chapters`);
@@ -414,7 +447,7 @@ const DataLoader = {
             console.info(`Migração de versão: preservada customização do usuário no capítulo padrão ${defChap.id}.`);
             return this.syncItemClassification(storedChap, defChap);
           }
-          return defChap;
+          return this.carryFavorites(defChap, storedChap);
         });
 
         // 2. Preserva capítulos novos adicionados pelo usuário

@@ -982,11 +982,8 @@ function updateVocabCategoryFilterUI() {
 function toggleItemFavorite(item) {
   if (!item || typeof AppState === "undefined") return;
   item.favorite = !item.favorite;
-
-  // Marca o capítulo atual como modificado pelo aluno
-  if (AppState.currentChapter) {
-    AppState.currentChapter._userModified = true;
-  }
+  // Favoritar não é editar o capítulo: as favoritas passam para o vocabulário atualizado
+  // a cada versão (DataLoader.carryFavorites), sem congelar o capítulo na versão antiga
 
   // Sincroniza em todos os capítulos caso o mesmo termo apareça
   if (Array.isArray(AppState.chapters)) {
@@ -996,12 +993,10 @@ function toggleItemFavorite(item) {
       const matchWord = (chap.items || []).find((i) => termFn(i) === targetTerm);
       if (matchWord) {
         matchWord.favorite = item.favorite;
-        chap._userModified = true;
       }
       const matchSent = (chap.sentences || []).find((s) => termFn(s) === targetTerm);
       if (matchSent) {
         matchSent.favorite = item.favorite;
-        chap._userModified = true;
       }
     });
   }

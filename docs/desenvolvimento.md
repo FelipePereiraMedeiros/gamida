@@ -101,6 +101,15 @@ As fichas dos capítulos (`scribe-campaign.js`) e a história (`scribe-lore.js`)
 - **Domínio:** continua sendo 3 acertos seguidos escrevendo a resposta. Agora o acerto digitado nos jogos (Chuva de Pedras e Crônicas, com "Resposta: digitar") também conta. Acerto por alternativa não conta, como na prática. Erro em qualquer modo manda a palavra para a lista de erros.
 - **Selo da caçada completa:** aparece no Caminho do domínio ("★ caçada completa nas Crônicas").
 
+## Atualização do vocabulário nos aparelhos
+
+Os capítulos ficam guardados no aparelho (IndexedDB, com cópia no localStorage). A cada versão nova, `DataLoader.loadChapters` troca a cópia guardada pelo vocabulário atualizado:
+
+- **Capítulo sem edição do aluno:** vem inteiro da versão nova; as favoritas passam junto (`carryFavorites`, palavras pelo termo e frases pelo id).
+- **Capítulo editado pelo aluno** (`_userModified`, no editor de capítulos) **ou criado por ele** (`_custom`): as edições ficam, e `syncItemClassification` acrescenta o que a versão nova trouxe. Entram palavras que faltam, campos novos das palavras (como `refs`) onde estiverem vazios, a classificação gramatical, e tabelas e frases novas.
+- **Favoritar não é editar:** até a v2.48, favoritar uma palavra marcava o capítulo como editado, e ele parava de receber palavras novas. Era isso que fazia faltar palavras na prática e na caçada completa das Crônicas em alguns capítulos. Capítulos já marcados assim recebem as palavras que faltam na próxima atualização.
+- Uma palavra que o aluno apagou de um capítulo padrão no editor volta na atualização seguinte.
+
 ## Navegação (onde fica cada coisa)
 
 | Item | Seção | O que tem |

@@ -197,6 +197,42 @@ suite.test('Capítulo preservado ganha as frases novas sem perder as próprias',
   assert.equal(sentences[1].id, 's2');
 });
 
+suite.test('Capítulo preservado ganha as palavras novas do vocabulário e os campos novos, sem perder as edições', () => {
+  const loader = require('../js/data-loader.js');
+  const stored = { items: [
+    { hebrew: 'אָב', translations: ['pai (editado)'], type: 'Substantivo', favorite: true },
+  ] };
+  const defaults = { items: [
+    { hebrew: 'אָב', transliteration: 'av', translations: ['pai'], type: 'Substantivo', refs: ['Gen.2.24'] },
+    { hebrew: 'אָח', transliteration: 'aḥ', translations: ['irmão'], type: 'Substantivo', refs: ['Gen.4.9'] },
+  ] };
+  const { items } = loader.syncItemClassification(stored, defaults);
+  assert.equal(items.length, 2, 'a palavra nova do vocabulário não entrou no capítulo preservado');
+  assert.equal(items[0].translations[0], 'pai (editado)', 'a edição do usuário foi trocada');
+  assert.isTrue(items[0].favorite);
+  assert.deepEqual(items[0].refs, ['Gen.2.24'], 'o campo novo não foi preenchido');
+  assert.equal(items[0].transliteration, 'av');
+  assert.equal(items[1].hebrew, 'אָח');
+  items[1].refs.push('x');
+  assert.deepEqual(defaults.items[1].refs, ['Gen.4.9'], 'o padrão foi alterado por referência');
+});
+
+suite.test('Favoritas passam para o capítulo padrão atualizado', () => {
+  const loader = require('../js/data-loader.js');
+  const stored = { items: [{ term: 'λόγος', favorite: true }, { term: 'ἄνθρωπος' }], sentences: [{ id: 's1', favorite: true }] };
+  const defaults = { items: [{ term: 'λόγος' }, { term: 'ἄνθρωπος' }, { term: 'θεός' }], sentences: [{ id: 's1' }, { id: 's2' }] };
+  const chap = loader.carryFavorites(defaults, stored);
+  assert.isTrue(chap.items[0].favorite === true);
+  assert.isTrue(!chap.items[1].favorite && !chap.items[2].favorite);
+  assert.isTrue(chap.sentences[0].favorite === true && !chap.sentences[1].favorite);
+});
+
+suite.test('Favoritar uma palavra não congela o capítulo na versão antiga', () => {
+  const src = require('fs').readFileSync(require('path').join(__dirname, '..', 'js', 'modules', 'ui.js'), 'utf8');
+  const fn = src.slice(src.indexOf('function toggleItemFavorite'), src.indexOf('// Persiste no storage unificado', src.indexOf('function toggleItemFavorite')));
+  assert.isFalse(fn.includes('_userModified = true'), 'toggleItemFavorite ainda marca o capítulo como editado');
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();
