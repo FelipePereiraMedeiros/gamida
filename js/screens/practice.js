@@ -315,6 +315,8 @@ function resetPracticeActionButtons() {
 }
 
 function updatePracticeActionButtonToNext() {
+  // Respondida a questão, a classificação já não é dica: aparece junto da correção
+  showQuestionMeta();
   ensureDOM();
   AppState.isPracticeAnswered = true;
 
@@ -593,6 +595,7 @@ function renderCurrentQuestion() {
       qChapterBadge.classList.add("hidden");
     }
   }
+  resetQuestionMeta();
   if (DOM.qProgress) {
     DOM.qProgress.textContent = `Item ${AppState.currentQuestionIndex + 1} de ${practiceQueue.length}`;
   }
@@ -692,6 +695,34 @@ function renderCurrentQuestion() {
       }
     }
   }
+}
+
+/* ---------- Dica: a classificação do termo (e a lição, em sessões com várias) ---------- */
+const metaNodes = () => (typeof document === "undefined" ? {} : {
+  info: document.getElementById("question-meta"),
+  btn: document.getElementById("btn-show-meta"),
+  badge: document.getElementById("question-chapter-badge"),
+});
+
+/** Nova questão: a dica volta a ficar escondida. Sem nada a dizer (só "Frase"), nem o botão aparece. */
+function resetQuestionMeta() {
+  const { info, btn, badge } = metaNodes();
+  if (!info || !btn) return;
+  const type = (AppState.currentQuestion && AppState.currentQuestion.type) || "";
+  const onlyObvious = /^(Frase|Expressão)$/.test(type) && (!badge || badge.classList.contains("hidden"));
+  info.classList.add("hidden");
+  btn.classList.toggle("hidden", onlyObvious || !type && (!badge || badge.classList.contains("hidden")));
+  btn.setAttribute("aria-expanded", "false");
+}
+
+/** Mostra a dica (pelo botão, ou sozinha depois da resposta) */
+function showQuestionMeta() {
+  const { info, btn } = metaNodes();
+  if (!info || !btn) return;
+  if (btn.classList.contains("hidden") && info.classList.contains("hidden")) return;
+  info.classList.remove("hidden");
+  btn.classList.add("hidden");
+  btn.setAttribute("aria-expanded", "true");
 }
 
 function toggleHint() {

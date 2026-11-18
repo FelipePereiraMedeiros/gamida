@@ -718,6 +718,7 @@ ul#chapter-dropdown-list {
 .exercise-meta { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
 .exercise-meta__tags { display: flex; flex-wrap: wrap; align-items: center; gap: 0.375rem; min-width: 0; }
 .exercise-meta__side { display: flex; align-items: center; gap: 0.25rem; flex: none; }
+.exercise-meta__info:not(.hidden) { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.375rem; min-width: 0; }
 
 .meta-pill {
   padding: 0.1875rem 0.625rem;

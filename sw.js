@@ -11,7 +11,7 @@
  * - Pedidos para outros sites (Google, na sincronização) não passam por aqui.
  */
 // <gerado por scripts/build-sw.js: não edite à mão>
-const VERSION = "2.49.0";
+const VERSION = "2.50.0";
 const PRECACHE = [
   "css/cronicas-pixel.css",
   "css/fonts.css",

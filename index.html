@@ -476,8 +476,14 @@
 
           <div class="exercise-meta">
             <div class="exercise-meta__tags">
-              <span id="question-category" class="meta-pill">Vocabulário</span>
-              <span id="question-chapter-badge" class="hidden meta-chapter"></span>
+              <!-- A classificação do termo é uma dica: fica escondida até o aluno pedir -->
+              <button type="button" id="btn-show-meta" data-on-click="showQuestionMeta()" class="link-btn" aria-expanded="false" aria-controls="question-meta">
+                Mostrar dica
+              </button>
+              <span id="question-meta" class="exercise-meta__info hidden">
+                <span id="question-category" class="meta-pill">Vocabulário</span>
+                <span id="question-chapter-badge" class="hidden meta-chapter"></span>
+              </span>
             </div>
             <div class="exercise-meta__side">
               <span id="question-progress" class="meta-count">Item 1 de 10</span>
@@ -1854,7 +1860,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.49.0</span>
+        <span id="footer-version-tag">v2.50.0</span>
       </p>
       <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
     </footer>
