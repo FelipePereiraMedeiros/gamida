@@ -8,7 +8,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.46.0";
+  "2.47.0";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
@@ -266,6 +266,7 @@ function buildChoiceOptions(question, chapters, opts = {}) {
     isCorrect,
     term: getTerm(item),
     translations: [...(item.translations || [])],
+    transliteration: item.transliteration || "",
   });
 
   const seenTexts = new Set([normalizeGloss(isReverse ? ownTerm : ownTranslations[0]) || ownTerm]);

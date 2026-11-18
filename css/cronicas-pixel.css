@@ -301,3 +301,17 @@ body.sc-focus.sc-chrome-open .sc-top {
 }
 .sc-pause__box .sc-h { font-size: 1.6rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .sc-pause .sc-btn { display: inline-flex; align-items: center; gap: 0.5rem; }
+
+/* Transliteração que aparece nas alternativas depois do primeiro erro */
+.sc-opt__label { display: inline-flex; flex-direction: column; align-items: center; gap: 0.125rem; min-width: 0; }
+.sc-opt__tr {
+  direction: ltr;
+  color: #fee761;
+  font-family: Rubik, system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+.sc-opt__tr[hidden] { display: none; }

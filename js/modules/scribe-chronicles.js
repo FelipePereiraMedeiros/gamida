@@ -1328,9 +1328,26 @@ function bindTyped(handler) {
   try { input.focus({ preventScroll: true }); } catch (_) { input.focus(); }
 }
 
-function optionButtons(options, { asTerm = false } = {}) {
-  return `<div class="sc-opts">${options.map((text, k) => `<button type="button" class="sc-opt${asTerm ? ` sc-opt--term ${termClass()}` : ""}" data-k="${k}">
-    <span class="sc-opt__k">${k + 1}</span><span>${esc(text)}</span></button>`).join("")}</div>`;
+/**
+ * Botões das alternativas
+ * @param {Array<string>} options textos
+ * @param {{asTerm?: boolean, translits?: Array<string>}} [opts] translits: transliteração de cada
+ *   alternativa, escondida até o primeiro erro (revealTranslits)
+ */
+function optionButtons(options, { asTerm = false, translits = null } = {}) {
+  return `<div class="sc-opts">${options.map((text, k) => {
+    const tr = translits && translits[k] ? `<small class="sc-opt__tr" hidden>${esc(translits[k])}</small>` : "";
+    const label = tr ? `<span class="sc-opt__label"><span>${esc(text)}</span>${tr}</span>` : `<span>${esc(text)}</span>`;
+    return `<button type="button" class="sc-opt${asTerm ? ` sc-opt--term ${termClass()}` : ""}" data-k="${k}">
+    <span class="sc-opt__k">${k + 1}</span>${label}</button>`;
+  }).join("")}</div>`;
+}
+
+/** Depois do primeiro erro, cada alternativa mostra a transliteração embaixo */
+function revealTranslits() {
+  document.querySelectorAll("#sc-screen .sc-opt__tr[hidden]").forEach((node) => {
+    node.hidden = false;
+  });
 }
 
 function bindOptions(handler) {
@@ -1357,7 +1374,7 @@ function askMob() {
     ? `<div class="sc-q">Ataque: o que significa?</div><div class="sc-prompt__term ${termClass()}">${esc(B.mon.term)}</div>`
     : `<div class="sc-q">Golpe final: qual é a palavra para</div><div class="sc-prompt__pt">${esc(word.item.translations.join(" / "))}</div>`}</div>
     <div class="sc-timer" id="sc-timer" title="Responda antes da barra acabar: golpe crítico. Se ela acabar, a criatura ataca"><i></i></div>
-    ${typed ? typedForm("Digite a tradução…") : optionButtons(B.opts.map((o) => o.text), { asTerm: !first })}`;
+    ${typed ? typedForm("Digite a tradução…") : optionButtons(B.opts.map((o) => o.text), { asTerm: !first, translits: B.opts.map((o) => o.transliteration) })}`;
   if (typed) bindTyped(answerMobTyped);
   else bindOptions(answerMob);
   startTimer(P().crit * (typed ? TYPING_CRIT_FACTOR : 1));
@@ -1418,6 +1435,7 @@ function answerMob(k) {
   } else {
     buttons[k].classList.add("is-bad");
     buttons[k].disabled = true;
+    revealTranslits();
     const wrongGloss = esc((option.translations || []).join(" / "));
     mobMiss(B.dir === "forward"
       ? `Errou! “${esc(option.text)}” é ${orig(option.term)}. A criatura contra-ataca.`
