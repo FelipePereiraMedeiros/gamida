@@ -359,7 +359,10 @@
           "pai",
           "ancestral"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.2.24"
+        ]
       },
       {
         "hebrew": "אָח",
@@ -368,7 +371,10 @@
           "irmao",
           "irmão"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.4.9"
+        ]
       },
       {
         "hebrew": "אָחוֹת",
@@ -377,7 +383,10 @@
           "irma",
           "irmã"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.12.13"
+        ]
       },
       {
         "hebrew": "אִישׁ",
@@ -385,7 +394,10 @@
         "translations": [
           "homem"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.2.24"
+        ]
       },
       {
         "hebrew": "אִשָּׁה",
@@ -393,7 +405,10 @@
         "translations": [
           "mulher"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.2.23"
+        ]
       },
       {
         "hebrew": "אֵם",
@@ -402,7 +417,10 @@
           "mae",
           "mãe"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Exod.20.12"
+        ]
       },
       {
         "hebrew": "אָדָם",
@@ -412,7 +430,10 @@
           "humanidade",
           "homem"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.26"
+        ]
       },
       {
         "hebrew": "אֱלֹהִים",
@@ -420,7 +441,10 @@
         "translations": [
           "deus"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.1"
+        ]
       },
       {
         "hebrew": "בֵּן",
@@ -428,7 +452,10 @@
         "translations": [
           "filho"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.22.2"
+        ]
       },
       {
         "hebrew": "בַּת",
@@ -436,7 +463,10 @@
         "translations": [
           "filha"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.34.1"
+        ]
       },
       {
         "hebrew": "יִשְׂרָאֵל",
@@ -444,7 +474,10 @@
         "translations": [
           "israel"
         ],
-        "type": "Nome Próprio"
+        "type": "Nome Próprio",
+        "refs": [
+          "Deut.6.4"
+        ]
       },
       {
         "hebrew": "לֵב",
@@ -453,7 +486,10 @@
           "coracao",
           "coração"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Prov.3.5"
+        ]
       },
       {
         "hebrew": "עִיר",
@@ -461,7 +497,10 @@
         "translations": [
           "cidade"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.11.4"
+        ]
       },
       {
         "hebrew": "עוֹף",
@@ -473,7 +512,10 @@
           "pássaros",
           "ave"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.20"
+        ]
       },
       {
         "hebrew": "עַם",
@@ -481,7 +523,10 @@
         "translations": [
           "povo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Ruth.1.16"
+        ]
       },
       {
         "hebrew": "קוֹל",
@@ -489,7 +534,10 @@
         "translations": [
           "voz"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.3.8"
+        ]
       },
       {
         "hebrew": "רֹאשׁ",
@@ -498,7 +546,10 @@
           "cabeca",
           "cabeça"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.3.15"
+        ]
       },
       {
         "hebrew": "שֵׁם",
@@ -506,7 +557,10 @@
         "translations": [
           "nome"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.20.7"
+        ]
       }
     ],
     "sentences": [
@@ -728,7 +782,10 @@
         "translations": [
           "luz"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.3"
+        ]
       },
       {
         "hebrew": "אֶרֶץ",
@@ -738,7 +795,10 @@
           "pais",
           "país"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.1.1"
+        ]
       },
       {
         "hebrew": "אֲשֶׁר",
@@ -748,7 +808,10 @@
           "qual",
           "que"
         ],
-        "type": "Partícula / Relativo"
+        "type": "Partícula / Relativo",
+        "refs": [
+          "Gen.1.31"
+        ]
       },
       {
         "hebrew": "בַּיִת",
@@ -756,7 +819,10 @@
         "translations": [
           "casa"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Josh.24.15"
+        ]
       },
       {
         "hebrew": "בְּרִית",
@@ -765,7 +831,10 @@
           "alianca",
           "aliança"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.9.13"
+        ]
       },
       {
         "hebrew": "גַּן",
@@ -773,7 +842,10 @@
         "translations": [
           "jardim"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.2.8"
+        ]
       },
       {
         "hebrew": "דָּבָר",
@@ -783,7 +855,10 @@
           "coisa",
           "assunto"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Ps.119.105"
+        ]
       },
       {
         "hebrew": "הַר",
@@ -792,7 +867,10 @@
           "montanha",
           "monte"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.22.14"
+        ]
       },
       {
         "hebrew": "חַג",
@@ -801,7 +879,10 @@
           "festa",
           "festival"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Deut.16.16"
+        ]
       },
       {
         "hebrew": "חֶרֶב",
@@ -809,7 +890,10 @@
         "translations": [
           "espada"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.3.24"
+        ]
       },
       {
         "hebrew": "חֹשֶׁךְ",
@@ -819,7 +903,10 @@
           "escuridão",
           "trevas"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.2"
+        ]
       },
       {
         "hebrew": "טוֹב",
@@ -828,7 +915,10 @@
           "bom",
           "agradavel"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Gen.1.4"
+        ]
       },
       {
         "hebrew": "יָם",
@@ -836,7 +926,10 @@
         "translations": [
           "mar"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.14.21"
+        ]
       },
       {
         "hebrew": "מַיִם",
@@ -847,7 +940,10 @@
           "aguas",
           "águas"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.2"
+        ]
       },
       {
         "hebrew": "מֶלֶךְ",
@@ -855,7 +951,10 @@
         "translations": [
           "rei"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Ps.24.7"
+        ]
       },
       {
         "hebrew": "רוּחַ",
@@ -865,7 +964,10 @@
           "espírito",
           "vento"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.1.2"
+        ]
       },
       {
         "hebrew": "שָׁלוֹם",
@@ -874,7 +976,10 @@
           "paz",
           "bem-estar"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Num.6.26"
+        ]
       },
       {
         "hebrew": "שָׁנָה",
@@ -882,7 +987,10 @@
         "translations": [
           "ano"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Lev.25.10"
+        ]
       }
     ],
     "sentences": [
@@ -1313,7 +1421,10 @@
           "atrás",
           "depois"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.9.9"
+        ]
       },
       {
         "hebrew": "אֶל",
@@ -1323,7 +1434,10 @@
           "em direcao a",
           "em direção a"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.3.9"
+        ]
       },
       {
         "hebrew": "בֵּין",
@@ -1331,7 +1445,10 @@
         "translations": [
           "entre"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.1.4"
+        ]
       },
       {
         "hebrew": "לִפְנֵי",
@@ -1341,7 +1458,10 @@
           "na presenca de",
           "na presença de"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.6.11"
+        ]
       },
       {
         "hebrew": "מִן",
@@ -1350,7 +1470,10 @@
           "de",
           "a partir de"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.2.7"
+        ]
       },
       {
         "hebrew": "עַד",
@@ -1359,7 +1482,10 @@
           "ate",
           "até"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.3.19"
+        ]
       },
       {
         "hebrew": "עִם",
@@ -1367,7 +1493,10 @@
         "translations": [
           "com"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.26.3"
+        ]
       },
       {
         "hebrew": "עַל",
@@ -1376,7 +1505,10 @@
           "sobre",
           "contra"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.1.2"
+        ]
       },
       {
         "hebrew": "תַּחַת",
@@ -1386,7 +1518,10 @@
           "embaixo de",
           "em vez de"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.22.13"
+        ]
       },
       {
         "hebrew": "אֵין",
@@ -1396,7 +1531,10 @@
           "não há",
           "não existe"
         ],
-        "type": "Partícula"
+        "type": "Partícula",
+        "refs": [
+          "1Sam.2.2"
+        ]
       },
       {
         "hebrew": "בֹּקֶר",
@@ -1405,7 +1543,10 @@
           "manha",
           "manhã"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.5"
+        ]
       },
       {
         "hebrew": "יָד",
@@ -1414,7 +1555,10 @@
           "mao",
           "mão"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.3.22"
+        ]
       },
       {
         "hebrew": "יוֹם",
@@ -1422,7 +1566,10 @@
         "translations": [
           "dia"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.5"
+        ]
       },
       {
         "hebrew": "יֵשׁ",
@@ -1432,7 +1579,10 @@
           "há",
           "existe"
         ],
-        "type": "Partícula"
+        "type": "Partícula",
+        "refs": [
+          "Gen.28.16"
+        ]
       },
       {
         "hebrew": "לֹא",
@@ -1441,7 +1591,10 @@
           "não"
         ],
         "type": "Partícula",
-        "notes": "Partícula de negação."
+        "notes": "Partícula de negação.",
+        "refs": [
+          "Exod.20.13"
+        ]
       },
       {
         "hebrew": "לַיְלָה",
@@ -1449,7 +1602,10 @@
         "translations": [
           "noite"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.5"
+        ]
       },
       {
         "hebrew": "מָקוֹם",
@@ -1457,7 +1613,10 @@
         "translations": [
           "lugar"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.28.16"
+        ]
       },
       {
         "hebrew": "עֵץ",
@@ -1466,7 +1625,10 @@
           "arvore",
           "árvore"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.2.9"
+        ]
       },
       {
         "hebrew": "עֶרֶב",
@@ -1475,7 +1637,10 @@
           "entardecer",
           "tarde"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.5"
+        ]
       },
       {
         "hebrew": "פְּרִי",
@@ -1484,7 +1649,10 @@
           "fruta",
           "fruto"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.11"
+        ]
       }
     ],
     "sentences": [
@@ -2183,7 +2351,10 @@
           "terra",
           "solo"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.2.7"
+        ]
       },
       {
         "hebrew": "אֲדֹנָי",
@@ -2191,7 +2362,10 @@
         "translations": [
           "senhor"
         ],
-        "type": "Nome Divino"
+        "type": "Nome Divino",
+        "refs": [
+          "Isa.6.1"
+        ]
       },
       {
         "hebrew": "יְהוָה",
@@ -2200,7 +2374,10 @@
           "senhor",
           "deus"
         ],
-        "type": "Nome Divino"
+        "type": "Nome Divino",
+        "refs": [
+          "Exod.3.15"
+        ]
       },
       {
         "hebrew": "בְּהֵמָה",
@@ -2209,7 +2386,10 @@
           "gado",
           "animal"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.1.24"
+        ]
       },
       {
         "hebrew": "בָּשָׂר",
@@ -2217,7 +2397,10 @@
         "translations": [
           "carne"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.2.24"
+        ]
       },
       {
         "hebrew": "בְּתוֹךְ",
@@ -2225,7 +2408,10 @@
         "translations": [
           "no meio de"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.2.9"
+        ]
       },
       {
         "hebrew": "גַּם",
@@ -2234,7 +2420,10 @@
           "tambem",
           "também"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Gen.3.6"
+        ]
       },
       {
         "hebrew": "דֶּרֶךְ",
@@ -2242,7 +2431,10 @@
         "translations": [
           "caminho"
         ],
-        "type": "Substantivo (m. e f.)"
+        "type": "Substantivo (m. e f.)",
+        "refs": [
+          "Ps.1.6"
+        ]
       },
       {
         "hebrew": "יַבָּשָׁה",
@@ -2250,7 +2442,10 @@
         "translations": [
           "terra seca"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.1.9"
+        ]
       },
       {
         "hebrew": "כִּי",
@@ -2260,7 +2455,10 @@
           "porque",
           "que"
         ],
-        "type": "Conjunção"
+        "type": "Conjunção",
+        "refs": [
+          "Gen.1.4"
+        ]
       },
       {
         "hebrew": "כֹּל",
@@ -2269,7 +2467,10 @@
           "todo",
           "cada"
         ],
-        "type": "Substantivo / Pronome"
+        "type": "Substantivo / Pronome",
+        "refs": [
+          "Gen.1.31"
+        ]
       },
       {
         "hebrew": "כֵּן",
@@ -2278,7 +2479,10 @@
           "assim",
           "da mesma forma"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Gen.1.7"
+        ]
       },
       {
         "hebrew": "מְאֹד",
@@ -2287,7 +2491,10 @@
           "muito",
           "extremamente"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Gen.1.31"
+        ]
       },
       {
         "hebrew": "מִצְוָה",
@@ -2296,7 +2503,10 @@
           "mandamento",
           "ordem"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Eccl.12.13"
+        ]
       },
       {
         "hebrew": "נֶפֶשׁ",
@@ -2306,7 +2516,10 @@
           "alma",
           "vida"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.2.7"
+        ]
       },
       {
         "hebrew": "עָפָר",
@@ -2316,7 +2529,10 @@
           "pó",
           "poeira"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.3.19"
+        ]
       },
       {
         "hebrew": "שָׂדֶה",
@@ -2324,7 +2540,10 @@
         "translations": [
           "campo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.2.5"
+        ]
       },
       {
         "hebrew": "שָׁמַיִם",
@@ -2334,7 +2553,10 @@
           "céu",
           "céus"
         ],
-        "type": "Substantivo (pl)"
+        "type": "Substantivo (pl)",
+        "refs": [
+          "Gen.1.1"
+        ]
       }
     ],
     "sentences": [
@@ -3129,7 +3351,10 @@
         "translations": [
           "grande"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Gen.1.16"
+        ]
       },
       {
         "hebrew": "זָקֵן",
@@ -3137,7 +3362,10 @@
         "translations": [
           "velho"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Gen.18.11"
+        ]
       },
       {
         "hebrew": "חָדָשׁ",
@@ -3145,7 +3373,10 @@
         "translations": [
           "novo"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Eccl.1.9"
+        ]
       },
       {
         "hebrew": "חָזָק",
@@ -3153,7 +3384,10 @@
         "translations": [
           "forte"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Exod.6.1"
+        ]
       },
       {
         "hebrew": "חַי",
@@ -3161,7 +3395,10 @@
         "translations": [
           "vivo"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "1Sam.17.26"
+        ]
       },
       {
         "hebrew": "חָכָם",
@@ -3170,7 +3407,10 @@
           "sabio",
           "sábio"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Prov.1.5"
+        ]
       },
       {
         "hebrew": "יָפֶה",
@@ -3180,7 +3420,10 @@
           "lindo",
           "belo"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Gen.12.11"
+        ]
       },
       {
         "hebrew": "יָשָׁר",
@@ -3189,7 +3432,10 @@
           "reto",
           "correto"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Deut.32.4"
+        ]
       },
       {
         "hebrew": "מַר",
@@ -3197,7 +3443,10 @@
         "translations": [
           "amargo"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Exod.15.23"
+        ]
       },
       {
         "hebrew": "קָדוֹשׁ",
@@ -3206,7 +3455,10 @@
           "sagrado",
           "santo"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Isa.6.3"
+        ]
       },
       {
         "hebrew": "קָטָן",
@@ -3214,7 +3466,10 @@
         "translations": [
           "pequeno"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Gen.1.16"
+        ]
       },
       {
         "hebrew": "קָרוֹב",
@@ -3224,7 +3479,10 @@
           "proximo",
           "próximo"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Deut.30.14"
+        ]
       },
       {
         "hebrew": "קָשֶׁה",
@@ -3234,7 +3492,10 @@
           "difícil",
           "duro"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Exod.32.9"
+        ]
       },
       {
         "hebrew": "רַב",
@@ -3244,7 +3505,10 @@
           "grande",
           "numeroso"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Gen.6.5"
+        ]
       },
       {
         "hebrew": "רָחוֹק",
@@ -3253,7 +3517,10 @@
           "distante",
           "longe"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Isa.57.19"
+        ]
       },
       {
         "hebrew": "רַע",
@@ -3263,7 +3530,10 @@
           "ruim",
           "feio"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Gen.2.9"
+        ]
       },
       {
         "hebrew": "רָעָה",
@@ -3272,7 +3542,10 @@
           "mal",
           "maldade"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.50.20"
+        ]
       },
       {
         "hebrew": "תָּמִים",
@@ -3282,7 +3555,10 @@
           "completo",
           "inteiro"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Gen.6.9"
+        ]
       }
     ],
     "sentences": [
@@ -4034,7 +4310,10 @@
         "translations": [
           "pedra"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.28.18"
+        ]
       },
       {
         "hebrew": "דּוֹר",
@@ -4043,7 +4322,10 @@
           "geracao",
           "geração"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Eccl.1.4"
+        ]
       },
       {
         "hebrew": "יְרוּשָׁלַיִם",
@@ -4052,7 +4334,10 @@
           "jerusalem",
           "jerusalém"
         ],
-        "type": "Nome Próprio"
+        "type": "Nome Próprio",
+        "refs": [
+          "Ps.122.6"
+        ]
       },
       {
         "hebrew": "כֹּה",
@@ -4060,7 +4345,10 @@
         "translations": [
           "assim"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Exod.4.22"
+        ]
       },
       {
         "hebrew": "לֶחֶם",
@@ -4069,7 +4357,10 @@
           "pao",
           "pão"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.3.19"
+        ]
       },
       {
         "hebrew": "מִדְבָּר",
@@ -4077,7 +4368,10 @@
         "translations": [
           "deserto"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Isa.40.3"
+        ]
       },
       {
         "hebrew": "מָה",
@@ -4086,7 +4380,10 @@
           "que",
           "o que"
         ],
-        "type": "Pronome Interrogativo"
+        "type": "Pronome Interrogativo",
+        "refs": [
+          "Gen.4.10"
+        ]
       },
       {
         "hebrew": "מִי",
@@ -4094,7 +4391,10 @@
         "translations": [
           "quem"
         ],
-        "type": "Pronome Interrogativo"
+        "type": "Pronome Interrogativo",
+        "refs": [
+          "Isa.6.8"
+        ]
       },
       {
         "hebrew": "מִשְׁפָּט",
@@ -4104,7 +4404,10 @@
           "juizo",
           "juízo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Amos.5.24"
+        ]
       },
       {
         "hebrew": "מֹשֶׁה",
@@ -4113,7 +4416,10 @@
           "moises",
           "moisés"
         ],
-        "type": "Nome Próprio"
+        "type": "Nome Próprio",
+        "refs": [
+          "Exod.3.4"
+        ]
       },
       {
         "hebrew": "נָבִיא",
@@ -4121,7 +4427,10 @@
         "translations": [
           "profeta"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Deut.18.15"
+        ]
       },
       {
         "hebrew": "נַעַר",
@@ -4130,7 +4439,10 @@
           "rapaz",
           "jovem"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Prov.22.6"
+        ]
       },
       {
         "hebrew": "נַעֲרָה",
@@ -4140,7 +4452,10 @@
           "moça",
           "jovem mulher"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Ruth.2.5"
+        ]
       },
       {
         "hebrew": "סֵפֶר",
@@ -4148,7 +4463,10 @@
         "translations": [
           "livro"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Josh.1.8"
+        ]
       },
       {
         "hebrew": "פֶּן",
@@ -4157,7 +4475,10 @@
           "para que nao",
           "para que não"
         ],
-        "type": "Conjunção"
+        "type": "Conjunção",
+        "refs": [
+          "Gen.3.3"
+        ]
       },
       {
         "hebrew": "רֶגֶל",
@@ -4166,7 +4487,10 @@
           "pe",
           "pé"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Ps.119.105"
+        ]
       },
       {
         "hebrew": "שֶׁמֶן",
@@ -4176,7 +4500,10 @@
           "óleo",
           "gordura"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Ps.23.5"
+        ]
       },
       {
         "hebrew": "תּוֹרָה",
@@ -4186,7 +4513,10 @@
           "instrucao",
           "instrução"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Ps.1.2"
+        ]
       },
       {
         "hebrew": "אָנֹכִי",
@@ -4194,7 +4524,10 @@
         "translations": [
           "eu"
         ],
-        "type": "Pronome Pessoal"
+        "type": "Pronome Pessoal",
+        "refs": [
+          "Exod.20.2"
+        ]
       },
       {
         "hebrew": "אֲנִי",
@@ -4211,7 +4544,10 @@
           "tu",
           "você"
         ],
-        "type": "Pronome Pessoal"
+        "type": "Pronome Pessoal",
+        "refs": [
+          "2Sam.12.7"
+        ]
       },
       {
         "hebrew": "אַתְּ",
@@ -4229,7 +4565,10 @@
           "ele",
           "aquele"
         ],
-        "type": "Pronome Pessoal / Demonstrativo"
+        "type": "Pronome Pessoal / Demonstrativo",
+        "refs": [
+          "Deut.32.39"
+        ]
       },
       {
         "hebrew": "הִיא",
@@ -4246,7 +4585,10 @@
         "translations": [
           "nós"
         ],
-        "type": "Pronome Pessoal"
+        "type": "Pronome Pessoal",
+        "refs": [
+          "Ps.100.3"
+        ]
       },
       {
         "hebrew": "אַתֶּם",
@@ -4255,7 +4597,10 @@
           "vós",
           "vocês"
         ],
-        "type": "Pronome Pessoal"
+        "type": "Pronome Pessoal",
+        "refs": [
+          "Deut.14.1"
+        ]
       },
       {
         "hebrew": "הֵם",
@@ -4264,7 +4609,10 @@
           "eles",
           "aqueles"
         ],
-        "type": "Pronome Pessoal / Demonstrativo"
+        "type": "Pronome Pessoal / Demonstrativo",
+        "refs": [
+          "Gen.6.4"
+        ]
       },
       {
         "hebrew": "הֵן",
@@ -4273,7 +4621,10 @@
           "elas",
           "aquelas"
         ],
-        "type": "Pronome Pessoal / Demonstrativo"
+        "type": "Pronome Pessoal / Demonstrativo",
+        "refs": [
+          "Gen.6.2"
+        ]
       },
       {
         "hebrew": "זֶה",
@@ -4289,7 +4640,10 @@
         "translations": [
           "esta"
         ],
-        "type": "Pronome Demonstrativo (f)"
+        "type": "Pronome Demonstrativo (f)",
+        "refs": [
+          "Gen.2.23"
+        ]
       },
       {
         "hebrew": "אֵלֶּה",
@@ -4298,7 +4652,10 @@
           "estes",
           "estas"
         ],
-        "type": "Pronome Demonstrativo (pl)"
+        "type": "Pronome Demonstrativo (pl)",
+        "refs": [
+          "Gen.2.4"
+        ]
       }
     ],
     "sentences": [
@@ -5244,7 +5601,10 @@
         "translations": [
           "tenda"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.18.1"
+        ]
       },
       {
         "hebrew": "אֱמֶת",
@@ -5252,7 +5612,10 @@
         "translations": [
           "verdade"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Exod.34.6"
+        ]
       },
       {
         "hebrew": "אֵשׁ",
@@ -5260,7 +5623,10 @@
         "translations": [
           "fogo"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Exod.3.2"
+        ]
       },
       {
         "hebrew": "דָּם",
@@ -5268,7 +5634,10 @@
         "translations": [
           "sangue"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.4.10"
+        ]
       },
       {
         "hebrew": "זָהָב",
@@ -5276,7 +5645,10 @@
         "translations": [
           "ouro"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.2.11"
+        ]
       },
       {
         "hebrew": "חַיָּה",
@@ -5285,7 +5657,10 @@
           "ser vivo",
           "animal"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.1.24"
+        ]
       },
       {
         "hebrew": "חָכְמָה",
@@ -5293,7 +5668,10 @@
         "translations": [
           "sabedoria"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Prov.9.10"
+        ]
       },
       {
         "hebrew": "חֶסֶד",
@@ -5303,7 +5681,10 @@
           "misericordia",
           "misericórdia"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Ps.136.1"
+        ]
       },
       {
         "hebrew": "יַיִן",
@@ -5311,7 +5692,10 @@
         "translations": [
           "vinho"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.9.21"
+        ]
       },
       {
         "hebrew": "כּוֹכָב",
@@ -5319,7 +5703,10 @@
         "translations": [
           "estrela"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.15.5"
+        ]
       },
       {
         "hebrew": "כֶּסֶף",
@@ -5327,7 +5714,10 @@
         "translations": [
           "prata"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.13.2"
+        ]
       },
       {
         "hebrew": "מַלְכָּה",
@@ -5335,7 +5725,10 @@
         "translations": [
           "rainha"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "1Kgs.10.1"
+        ]
       },
       {
         "hebrew": "מִצְרַיִם",
@@ -5343,7 +5736,10 @@
         "translations": [
           "egito"
         ],
-        "type": "Nome Próprio"
+        "type": "Nome Próprio",
+        "refs": [
+          "Exod.20.2"
+        ]
       },
       {
         "hebrew": "סוּס",
@@ -5351,7 +5747,10 @@
         "translations": [
           "cavalo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.15.1"
+        ]
       },
       {
         "hebrew": "עֵת",
@@ -5359,7 +5758,10 @@
         "translations": [
           "tempo"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Eccl.3.1"
+        ]
       },
       {
         "hebrew": "רֵעַ",
@@ -5367,7 +5769,10 @@
         "translations": [
           "amigo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Lev.19.18"
+        ]
       },
       {
         "hebrew": "פֶּה",
@@ -5375,7 +5780,10 @@
         "translations": [
           "boca"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Num.12.8"
+        ]
       },
       {
         "hebrew": "תְּהוֹם",
@@ -5384,7 +5792,10 @@
           "abismo",
           "profundidade"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.1.2"
+        ]
       }
     ],
     "sentences": [
@@ -6137,7 +6548,10 @@
           "ele amou",
           "amar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.6.5"
+        ]
       },
       {
         "hebrew": "אָמַר",
@@ -6146,7 +6560,10 @@
           "ele disse",
           "dizer"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.1.3"
+        ]
       },
       {
         "hebrew": "בָּרָא",
@@ -6155,7 +6572,10 @@
           "ele criou",
           "criar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.1.1"
+        ]
       },
       {
         "hebrew": "הָיָה",
@@ -6165,7 +6585,10 @@
           "tornou-se",
           "ser"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.1.3"
+        ]
       },
       {
         "hebrew": "הָלַךְ",
@@ -6175,7 +6598,10 @@
           "foi",
           "andar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.12.4"
+        ]
       },
       {
         "hebrew": "יָדַע",
@@ -6185,7 +6611,10 @@
           "conheceu",
           "saber"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.4.1"
+        ]
       },
       {
         "hebrew": "יַחְדָּו",
@@ -6193,7 +6622,10 @@
         "translations": [
           "juntos"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Gen.22.6"
+        ]
       },
       {
         "hebrew": "יֶלֶד",
@@ -6202,7 +6634,10 @@
           "crianca",
           "criança"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.21.8"
+        ]
       },
       {
         "hebrew": "כָּבוֹד",
@@ -6212,7 +6647,10 @@
           "glória",
           "honra"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Isa.6.3"
+        ]
       },
       {
         "hebrew": "תֵּבָה",
@@ -6220,7 +6658,10 @@
         "translations": [
           "arca"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.6.14"
+        ]
       },
       {
         "hebrew": "עוֹד",
@@ -6229,7 +6670,10 @@
           "de novo",
           "ainda"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Gen.8.22"
+        ]
       },
       {
         "hebrew": "עַל-פְּנֵי",
@@ -6238,7 +6682,10 @@
           "sobre",
           "em cima de"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.1.2"
+        ]
       },
       {
         "hebrew": "עַתָּה",
@@ -6246,7 +6693,10 @@
         "translations": [
           "agora"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Gen.3.22"
+        ]
       },
       {
         "hebrew": "פֹּה",
@@ -6254,7 +6704,10 @@
         "translations": [
           "aqui"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Gen.22.5"
+        ]
       },
       {
         "hebrew": "צְבָאוֹת",
@@ -6263,7 +6716,10 @@
           "exercitos",
           "exércitos"
         ],
-        "type": "Substantivo (pl)"
+        "type": "Substantivo (pl)",
+        "refs": [
+          "Isa.6.3"
+        ]
       },
       {
         "hebrew": "שַׁבָּת",
@@ -6272,7 +6728,10 @@
           "sabado",
           "sábado"
         ],
-        "type": "Substantivo (m. e f.)"
+        "type": "Substantivo (m. e f.)",
+        "refs": [
+          "Exod.20.8"
+        ]
       },
       {
         "hebrew": "שָׁם",
@@ -6282,7 +6741,10 @@
           "la",
           "lá"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Gen.2.8"
+        ]
       },
       {
         "hebrew": "שְׁנֵיהֶם",
@@ -6291,7 +6753,10 @@
           "os dois",
           "ambos"
         ],
-        "type": "Pronome"
+        "type": "Pronome",
+        "refs": [
+          "Gen.2.25"
+        ]
       }
     ],
     "sentences": [
@@ -8193,7 +8658,10 @@
         "translations": [
           "ou"
         ],
-        "type": "Conjunção"
+        "type": "Conjunção",
+        "refs": [
+          "Lev.5.1"
+        ]
       },
       {
         "hebrew": "אוֹת",
@@ -8201,7 +8669,10 @@
         "translations": [
           "sinal"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.9.13"
+        ]
       },
       {
         "hebrew": "אֵל",
@@ -8209,7 +8680,10 @@
         "translations": [
           "deus"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.14.18"
+        ]
       },
       {
         "hebrew": "הִנֵּה",
@@ -8218,7 +8692,10 @@
           "eis",
           "vede"
         ],
-        "type": "Partícula"
+        "type": "Partícula",
+        "refs": [
+          "Gen.1.31"
+        ]
       },
       {
         "hebrew": "זֶרַע",
@@ -8226,7 +8703,10 @@
         "translations": [
           "semente"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.3.15"
+        ]
       },
       {
         "hebrew": "חֲצִי",
@@ -8234,7 +8714,10 @@
         "translations": [
           "metade"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.24.6"
+        ]
       },
       {
         "hebrew": "לָקַח",
@@ -8244,7 +8727,10 @@
           "tomar",
           "pegou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.15"
+        ]
       },
       {
         "hebrew": "מָלַךְ",
@@ -8253,7 +8739,10 @@
           "ele reinou",
           "reinar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.15.18"
+        ]
       },
       {
         "hebrew": "מָצָא",
@@ -8262,7 +8751,10 @@
           "ele achou",
           "encontrar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.6.8"
+        ]
       },
       {
         "hebrew": "נָפַל",
@@ -8271,7 +8763,10 @@
           "ele caiu",
           "cair"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.4.5"
+        ]
       },
       {
         "hebrew": "עָבַד",
@@ -8280,7 +8775,10 @@
           "ele serviu",
           "trabalhar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.20.9"
+        ]
       },
       {
         "hebrew": "עָלָה",
@@ -8289,7 +8787,10 @@
           "ele subiu",
           "subir"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.6"
+        ]
       },
       {
         "hebrew": "פָּקַד",
@@ -8298,7 +8799,10 @@
           "ele visitou",
           "inspecionou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.21.1"
+        ]
       },
       {
         "hebrew": "קָרָא",
@@ -8307,7 +8811,10 @@
           "ele chamou",
           "chamar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.1.5"
+        ]
       },
       {
         "hebrew": "שָׁכַב",
@@ -8316,7 +8823,10 @@
           "ele se deitou",
           "deitar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.28.11"
+        ]
       },
       {
         "hebrew": "שָׁלַח",
@@ -8325,7 +8835,10 @@
           "ele enviou",
           "enviar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.6.8"
+        ]
       },
       {
         "hebrew": "שָׁמַע",
@@ -8334,7 +8847,10 @@
           "ele ouviu",
           "escutar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.6.4"
+        ]
       },
       {
         "hebrew": "שָׁמַר",
@@ -8343,7 +8859,10 @@
           "ele guardou",
           "guardar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.15"
+        ]
       }
     ],
     "sentences": [
@@ -9690,7 +10209,10 @@
           "comer",
           "ele comeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.16"
+        ]
       },
       {
         "hebrew": "גָּנַב",
@@ -9701,7 +10223,10 @@
           "ele roubou",
           "ele furtou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.20.15"
+        ]
       },
       {
         "hebrew": "דְּמוּת",
@@ -9710,7 +10235,10 @@
           "semelhança",
           "imagem"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.1.26"
+        ]
       },
       {
         "hebrew": "דַּעַת",
@@ -9718,7 +10246,10 @@
         "translations": [
           "conhecimento"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.2.9"
+        ]
       },
       {
         "hebrew": "הַיּוֹם",
@@ -9726,7 +10257,10 @@
         "translations": [
           "hoje"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Deut.6.6"
+        ]
       },
       {
         "hebrew": "הֵיכָל",
@@ -9735,7 +10269,10 @@
           "templo",
           "palácio"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Isa.6.1"
+        ]
       },
       {
         "hebrew": "חֹדֶשׁ",
@@ -9744,7 +10281,10 @@
           "mês",
           "lua nova"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.12.2"
+        ]
       },
       {
         "hebrew": "חוֹמָה",
@@ -9753,7 +10293,10 @@
           "muro",
           "muralha"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Josh.6.20"
+        ]
       },
       {
         "hebrew": "כָּתַב",
@@ -9762,7 +10305,10 @@
           "escrever",
           "ele escreveu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.34.28"
+        ]
       },
       {
         "hebrew": "לָכֵן",
@@ -9771,7 +10317,10 @@
           "por isso",
           "portanto"
         ],
-        "type": "Conjunção"
+        "type": "Conjunção",
+        "refs": [
+          "Isa.7.14"
+        ]
       },
       {
         "hebrew": "מַלְכוּת",
@@ -9780,7 +10329,10 @@
           "reino",
           "realeza"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Ps.145.13"
+        ]
       },
       {
         "hebrew": "נֶגֶב",
@@ -9790,7 +10342,10 @@
           "sul",
           "região seca"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.12.9"
+        ]
       },
       {
         "hebrew": "נָתַן",
@@ -9799,7 +10354,10 @@
           "dar",
           "ele deu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.1.29"
+        ]
       },
       {
         "hebrew": "עָמַד",
@@ -9809,7 +10367,10 @@
           "ficar de pé",
           "ele ficou de pé"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.3.5"
+        ]
       },
       {
         "hebrew": "עָשָׂה",
@@ -9818,7 +10379,10 @@
           "fazer",
           "ele fez"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.1.31"
+        ]
       },
       {
         "hebrew": "צֹאן",
@@ -9829,7 +10393,10 @@
           "gado pequeno",
           "rebanho"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Ps.100.3"
+        ]
       },
       {
         "hebrew": "צַדִּיק",
@@ -9837,7 +10404,10 @@
         "translations": [
           "justo"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Gen.6.9"
+        ]
       },
       {
         "hebrew": "צֶלֶם",
@@ -9846,7 +10416,10 @@
           "imagem",
           "figura"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.27"
+        ]
       },
       {
         "hebrew": "אֵי",
@@ -10911,7 +11484,10 @@
           "um",
           "uma"
         ],
-        "type": "Numeral"
+        "type": "Numeral",
+        "refs": [
+          "Deut.6.4"
+        ]
       },
       {
         "hebrew": "אֵת",
@@ -10919,7 +11495,10 @@
         "translations": [
           "com"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.5.22"
+        ]
       },
       {
         "hebrew": "הִבְדִּיל",
@@ -10929,7 +11508,10 @@
           "ele dividiu",
           "separar"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [בדל]"
+        "type": "Verbo (Hif'il) — Kelley: [בדל]",
+        "refs": [
+          "Gen.1.4"
+        ]
       },
       {
         "hebrew": "בָּנָה",
@@ -10939,7 +11521,10 @@
           "construir",
           "edificar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.127.1"
+        ]
       },
       {
         "hebrew": "בִּקֵּשׁ",
@@ -10949,7 +11534,10 @@
           "procurar",
           "buscar"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [בקש]"
+        "type": "Verbo (Pi'el) — Kelley: [בקש]",
+        "refs": [
+          "Ps.27.8"
+        ]
       },
       {
         "hebrew": "בַּרְזֶל",
@@ -10957,7 +11545,10 @@
         "translations": [
           "ferro"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.4.22"
+        ]
       },
       {
         "hebrew": "דִּבֶּר",
@@ -10966,7 +11557,10 @@
           "ele falou",
           "falar"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [דבר]"
+        "type": "Verbo (Pi'el) — Kelley: [דבר]",
+        "refs": [
+          "Gen.12.4"
+        ]
       },
       {
         "hebrew": "זָכָר",
@@ -10975,7 +11569,10 @@
           "homem",
           "macho"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.27"
+        ]
       },
       {
         "hebrew": "כֹּהֵן",
@@ -10983,7 +11580,10 @@
         "translations": [
           "sacerdote"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.14.18"
+        ]
       },
       {
         "hebrew": "כֶּרֶם",
@@ -10991,7 +11591,10 @@
         "translations": [
           "vinha"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Isa.5.1"
+        ]
       },
       {
         "hebrew": "כָּרַת",
@@ -11001,7 +11604,10 @@
           "ele destruiu",
           "cortar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.15.18"
+        ]
       },
       {
         "hebrew": "מִין",
@@ -11010,7 +11616,10 @@
           "espécie",
           "gênero"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.11"
+        ]
       },
       {
         "hebrew": "מִלְחָמָה",
@@ -11019,7 +11628,10 @@
           "guerra",
           "batalha"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Exod.15.3"
+        ]
       },
       {
         "hebrew": "נְחֹשֶׁת",
@@ -11028,7 +11640,10 @@
           "cobre",
           "bronze"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Num.21.9"
+        ]
       },
       {
         "hebrew": "נְקֵבָה",
@@ -11037,7 +11652,10 @@
           "mulher",
           "fêmea"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.1.27"
+        ]
       },
       {
         "hebrew": "עָנָן",
@@ -11045,7 +11663,10 @@
         "translations": [
           "nuvem"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.13.21"
+        ]
       },
       {
         "hebrew": "פַּר",
@@ -11054,7 +11675,10 @@
           "bezerro",
           "touro"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Lev.4.3"
+        ]
       },
       {
         "hebrew": "קֶרֶב",
@@ -11065,7 +11689,10 @@
           "o interior",
           "o meio"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.18.12"
+        ]
       }
     ],
     "sentences": [
@@ -11694,7 +12321,10 @@
         "translations": [
           "carneiro"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.22.13"
+        ]
       },
       {
         "hebrew": "בּוֹא",
@@ -11703,7 +12333,10 @@
           "vir",
           "entrar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.7.1"
+        ]
       },
       {
         "hebrew": "זָכַר",
@@ -11713,7 +12346,10 @@
           "lembrar-se",
           "ele se lembrou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.8.1"
+        ]
       },
       {
         "hebrew": "חָיָה",
@@ -11723,7 +12359,10 @@
           "reviver",
           "ele viveu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.5.3"
+        ]
       },
       {
         "hebrew": "מָשַׁל",
@@ -11732,7 +12371,10 @@
           "governar",
           "ele governou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.3.16"
+        ]
       },
       {
         "hebrew": "עֶבֶד",
@@ -11741,7 +12383,10 @@
           "servo",
           "escravo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.9.25"
+        ]
       },
       {
         "hebrew": "עָבַר",
@@ -11751,7 +12396,10 @@
           "passar",
           "ele atravessou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Josh.3.17"
+        ]
       },
       {
         "hebrew": "עוֹלָם",
@@ -11760,7 +12408,10 @@
           "eternidade",
           "para sempre"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.21.33"
+        ]
       },
       {
         "hebrew": "קוּם",
@@ -11769,7 +12420,10 @@
           "levantar-se",
           "erguer-se"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.13.17"
+        ]
       },
       {
         "hebrew": "שָׂפָה",
@@ -11779,7 +12433,10 @@
           "idioma",
           "beira"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.11.1"
+        ]
       },
       {
         "hebrew": "שָׁאַל",
@@ -11789,7 +12446,10 @@
           "pedir",
           "ele perguntou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "1Sam.8.10"
+        ]
       },
       {
         "hebrew": "שָׁבַר",
@@ -11798,7 +12458,10 @@
           "quebrar",
           "ele quebrou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.32.19"
+        ]
       },
       {
         "hebrew": "שׁוּב",
@@ -11807,7 +12470,10 @@
           "voltar",
           "retornar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.3.19"
+        ]
       },
       {
         "hebrew": "שׁוֹפָר",
@@ -11816,7 +12482,10 @@
           "trombeta",
           "chifre de carneiro"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Josh.6.20"
+        ]
       },
       {
         "hebrew": "שָׁכַח",
@@ -11825,7 +12494,10 @@
           "esquecer",
           "ele esqueceu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.103.2"
+        ]
       },
       {
         "hebrew": "שָׁפַט",
@@ -11834,7 +12506,10 @@
           "julgar",
           "ele julgou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.18.25"
+        ]
       },
       {
         "hebrew": "תָּמִיד",
@@ -11843,7 +12518,10 @@
           "continuamente",
           "sempre"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Exod.27.20"
+        ]
       },
       {
         "hebrew": "תְּפִלָּה",
@@ -11851,7 +12529,10 @@
         "translations": [
           "oração"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "1Kgs.8.28"
+        ]
       }
     ],
     "sentences": [
@@ -12543,7 +13224,10 @@
           "barriga",
           "ventre"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Ps.139.13"
+        ]
       },
       {
         "hebrew": "בֵּרַךְ",
@@ -12552,7 +13236,10 @@
           "ele abençoou",
           "abençoar"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [ברך]"
+        "type": "Verbo (Pi'el) — Kelley: [ברך]",
+        "refs": [
+          "Gen.1.22"
+        ]
       },
       {
         "hebrew": "גָּאַל",
@@ -12562,7 +13249,10 @@
           "resgatar",
           "ele redimiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.6.6"
+        ]
       },
       {
         "hebrew": "הָלַל",
@@ -12571,7 +13261,10 @@
           "louvar",
           "ele louvou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.150.1"
+        ]
       },
       {
         "hebrew": "חַטָּאת",
@@ -12579,7 +13272,10 @@
         "translations": [
           "pecado"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.4.7"
+        ]
       },
       {
         "hebrew": "נִלְחַם",
@@ -12589,7 +13285,10 @@
           "lutar",
           "guerrear"
         ],
-        "type": "Verbo (Nif'al) — Kelley: [לחם]"
+        "type": "Verbo (Nif'al) — Kelley: [לחם]",
+        "refs": [
+          "Exod.14.14"
+        ]
       },
       {
         "hebrew": "לָמַד",
@@ -12598,7 +13297,10 @@
           "aprender",
           "ele aprendeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.5.1"
+        ]
       },
       {
         "hebrew": "מָלֵא",
@@ -12607,7 +13309,10 @@
           "estar cheio",
           "ele estava cheio"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.6.11"
+        ]
       },
       {
         "hebrew": "מָלַט",
@@ -12616,7 +13321,10 @@
           "escapar",
           "ele escapou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.19.17"
+        ]
       },
       {
         "hebrew": "נָשָׂא",
@@ -12626,7 +13334,10 @@
           "erguer",
           "ele levantou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.121.1"
+        ]
       },
       {
         "hebrew": "הִסְתִּיר",
@@ -12635,7 +13346,10 @@
           "ele escondeu",
           "esconder"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [סתר]"
+        "type": "Verbo (Hif'il) — Kelley: [סתר]",
+        "refs": [
+          "Gen.4.14"
+        ]
       },
       {
         "hebrew": "עָוֹן",
@@ -12644,7 +13358,10 @@
           "culpa",
           "iniquidade"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.20.5"
+        ]
       },
       {
         "hebrew": "פֶּשַׁע",
@@ -12653,7 +13370,10 @@
           "rebelião",
           "transgressão"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Isa.53.5"
+        ]
       },
       {
         "hebrew": "קָבַר",
@@ -12662,7 +13382,10 @@
           "enterrar",
           "ele enterrou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.23.19"
+        ]
       },
       {
         "hebrew": "רָאָה",
@@ -12671,7 +13394,10 @@
           "ver",
           "ele viu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.1.4"
+        ]
       },
       {
         "hebrew": "רָקִיעַ",
@@ -12679,7 +13405,10 @@
         "translations": [
           "firmamento"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.6"
+        ]
       },
       {
         "hebrew": "שָׂרַף",
@@ -12688,7 +13417,10 @@
           "queimar",
           "ele queimou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.11.3"
+        ]
       },
       {
         "hebrew": "שָׁפַךְ",
@@ -12697,7 +13429,10 @@
           "derramar",
           "ele derramou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.9.6"
+        ]
       }
     ],
     "sentences": [
@@ -13225,7 +13960,10 @@
           "confiar",
           "ele confiou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.26.4"
+        ]
       },
       {
         "hebrew": "גָּדַל",
@@ -13235,7 +13973,10 @@
           "tornar-se grande",
           "ele foi grande"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.21.8"
+        ]
       },
       {
         "hebrew": "דָּרַשׁ",
@@ -13246,7 +13987,10 @@
           "buscar",
           "ele procurou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.4.29"
+        ]
       },
       {
         "hebrew": "דֶּשֶׁא",
@@ -13256,7 +14000,10 @@
           "grama",
           "erva"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.11"
+        ]
       },
       {
         "hebrew": "הָרַג",
@@ -13265,7 +14012,10 @@
           "matar",
           "ele matou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.4.8"
+        ]
       },
       {
         "hebrew": "זָבַח",
@@ -13274,7 +14024,10 @@
           "sacrificar",
           "ele sacrificou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.31.54"
+        ]
       },
       {
         "hebrew": "חָזַק",
@@ -13284,7 +14037,10 @@
           "tornar-se forte",
           "ele foi forte"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Josh.1.6"
+        ]
       },
       {
         "hebrew": "חָשַׁב",
@@ -13294,7 +14050,10 @@
           "considerar",
           "ele pensou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.15.6"
+        ]
       },
       {
         "hebrew": "כָּבֵד",
@@ -13306,7 +14065,10 @@
           "ele honrou (Pi'el)",
           "ele glorificou (Pi'el)"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.9.7"
+        ]
       },
       {
         "hebrew": "כָּנָף",
@@ -13316,7 +14078,10 @@
           "borda",
           "extremidade"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Ruth.2.12"
+        ]
       },
       {
         "hebrew": "כִּפֶּר",
@@ -13326,7 +14091,10 @@
           "ele expiou",
           "expiar"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [כפר]"
+        "type": "Verbo (Pi'el) — Kelley: [כפר]",
+        "refs": [
+          "Lev.16.30"
+        ]
       },
       {
         "hebrew": "לָבַשׁ",
@@ -13336,7 +14104,10 @@
           "vestir-se",
           "ele vestiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.3.21"
+        ]
       },
       {
         "hebrew": "נַחַל",
@@ -13346,7 +14117,10 @@
           "leito de rio",
           "riacho"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Amos.5.24"
+        ]
       },
       {
         "hebrew": "עָזַב",
@@ -13356,7 +14130,10 @@
           "deixar",
           "ele abandonou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.24"
+        ]
       },
       {
         "hebrew": "קָרַב",
@@ -13367,7 +14144,10 @@
           "ele se aproximou",
           "ele ofereceu (Hif'il)"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.3.5"
+        ]
       },
       {
         "hebrew": "רָדַף",
@@ -13376,7 +14156,10 @@
           "perseguir",
           "ele perseguiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.14.9"
+        ]
       },
       {
         "hebrew": "שֵׁבֶט",
@@ -13386,7 +14169,10 @@
           "cajado",
           "tribo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.49.10"
+        ]
       },
       {
         "hebrew": "שָׁכַן",
@@ -13396,7 +14182,10 @@
           "morar",
           "ele habitou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.25.8"
+        ]
       }
     ],
     "sentences": [
@@ -13991,7 +14780,10 @@
           "durante o dia",
           "de dia"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Exod.13.21"
+        ]
       },
       {
         "hebrew": "יָצָא",
@@ -14000,7 +14792,10 @@
           "sair",
           "ele saiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.8.16"
+        ]
       },
       {
         "hebrew": "יָרֵא",
@@ -14010,7 +14805,10 @@
           "ter medo",
           "ele temeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.3.10"
+        ]
       },
       {
         "hebrew": "יָשַׁב",
@@ -14021,7 +14819,10 @@
           "morar",
           "ele sentou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.1.1"
+        ]
       },
       {
         "hebrew": "הוֹשִׁיעַ",
@@ -14032,7 +14833,10 @@
           "salvar",
           "libertar"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [ישע]"
+        "type": "Verbo (Hif'il) — Kelley: [ישע]",
+        "refs": [
+          "Exod.14.30"
+        ]
       },
       {
         "hebrew": "מוּת",
@@ -14040,7 +14844,10 @@
         "translations": [
           "morrer"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.17"
+        ]
       },
       {
         "hebrew": "הִצִּיל",
@@ -14050,7 +14857,10 @@
           "ele salvou",
           "socorrer"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [נצל]"
+        "type": "Verbo (Hif'il) — Kelley: [נצל]",
+        "refs": [
+          "Exod.3.8"
+        ]
       },
       {
         "hebrew": "סָפַר",
@@ -14060,7 +14870,11 @@
           "relatar",
           "ele contou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.15.5",
+          "Gen.24.66"
+        ]
       },
       {
         "hebrew": "עָזַר",
@@ -14069,7 +14883,10 @@
           "ajudar",
           "ele ajudou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "1Sam.7.12"
+        ]
       },
       {
         "hebrew": "עָנָה",
@@ -14078,7 +14895,10 @@
           "responder",
           "ele respondeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "1Kgs.18.37"
+        ]
       },
       {
         "hebrew": "הִתְפַּלֵּל",
@@ -14088,7 +14908,10 @@
           "orar",
           "interceder"
         ],
-        "type": "Verbo (Hitpa'el) — Kelley: [פלל]"
+        "type": "Verbo (Hitpa'el) — Kelley: [פלל]",
+        "refs": [
+          "1Sam.1.10"
+        ]
       },
       {
         "hebrew": "פָּרָה",
@@ -14097,7 +14920,10 @@
           "ser frutífero",
           "ele foi frutífero"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.1.22"
+        ]
       },
       {
         "hebrew": "צִוָּה",
@@ -14107,7 +14933,10 @@
           "ordenar",
           "mandar"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [צוה]"
+        "type": "Verbo (Pi'el) — Kelley: [צוה]",
+        "refs": [
+          "Gen.2.16"
+        ]
       },
       {
         "hebrew": "רָבָה",
@@ -14117,7 +14946,10 @@
           "tornar-se numeroso",
           "ele se multiplicou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.1.22"
+        ]
       },
       {
         "hebrew": "שִׂים",
@@ -14126,7 +14958,10 @@
           "colocar",
           "pôr"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.8"
+        ]
       },
       {
         "hebrew": "שָׂמַח",
@@ -14135,7 +14970,10 @@
           "alegrar-se",
           "ele se alegrou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.118.24"
+        ]
       },
       {
         "hebrew": "נִשְׁבַּע",
@@ -14144,7 +14982,10 @@
           "ele jurou",
           "jurar"
         ],
-        "type": "Verbo (Nif'al) — Kelley: [שבע]"
+        "type": "Verbo (Nif'al) — Kelley: [שבע]",
+        "refs": [
+          "Gen.22.16"
+        ]
       },
       {
         "hebrew": "הִשְׁלִיךְ",
@@ -14154,7 +14995,10 @@
           "ele jogou",
           "lançar"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [שלך]"
+        "type": "Verbo (Hif'il) — Kelley: [שלך]",
+        "refs": [
+          "Gen.37.24"
+        ]
       }
     ],
     "sentences": [
@@ -14585,7 +15429,10 @@
           "sucumbir",
           "ele pereceu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.1.6"
+        ]
       },
       {
         "hebrew": "אָסַף",
@@ -14595,7 +15442,10 @@
           "reunir",
           "ele juntou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.29.22"
+        ]
       },
       {
         "hebrew": "בִּין",
@@ -14604,7 +15454,10 @@
           "entender",
           "discernir"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Prov.1.2"
+        ]
       },
       {
         "hebrew": "בָּרַח",
@@ -14613,7 +15466,10 @@
           "fugir",
           "ele fugiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.27.43"
+        ]
       },
       {
         "hebrew": "חָדַל",
@@ -14623,7 +15479,10 @@
           "cessar",
           "ele parou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.11.8"
+        ]
       },
       {
         "hebrew": "חָטָא",
@@ -14633,7 +15492,10 @@
           "errar o alvo",
           "ele pecou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.39.9"
+        ]
       },
       {
         "hebrew": "יָכֹל",
@@ -14643,7 +15505,10 @@
           "ser capaz",
           "ele pôde"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.13.16"
+        ]
       },
       {
         "hebrew": "יָלַד",
@@ -14653,7 +15518,10 @@
           "dar à luz",
           "ele gerou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.4.1"
+        ]
       },
       {
         "hebrew": "יָסַף",
@@ -14662,7 +15530,10 @@
           "acrescentar",
           "ele acrescentou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.30.24"
+        ]
       },
       {
         "hebrew": "יָרַד",
@@ -14671,7 +15542,10 @@
           "descer",
           "ele desceu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.11.5"
+        ]
       },
       {
         "hebrew": "יָרַשׁ",
@@ -14681,7 +15555,10 @@
           "herdar",
           "ele herdou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.15.7"
+        ]
       },
       {
         "hebrew": "כּוּן",
@@ -14690,7 +15567,10 @@
           "ficar firme",
           "estabelecer"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.93.1"
+        ]
       },
       {
         "hebrew": "כָּלָה",
@@ -14700,7 +15580,10 @@
           "concluir",
           "ele completou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.2"
+        ]
       },
       {
         "hebrew": "מֵאֵן",
@@ -14709,7 +15592,10 @@
           "ele recusou",
           "recusar"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [מאן]"
+        "type": "Verbo (Pi'el) — Kelley: [מאן]",
+        "refs": [
+          "Exod.7.14"
+        ]
       },
       {
         "hebrew": "מָאַס",
@@ -14719,7 +15605,10 @@
           "desprezar",
           "ele rejeitou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "1Sam.8.7"
+        ]
       },
       {
         "hebrew": "מָכַר",
@@ -14728,7 +15617,10 @@
           "vender",
           "ele vendeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.37.28"
+        ]
       },
       {
         "hebrew": "הִגִּיד",
@@ -14738,7 +15630,10 @@
           "ele declarou",
           "declarar"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [נגד]"
+        "type": "Verbo (Hif'il) — Kelley: [נגד]",
+        "refs": [
+          "Gen.3.11"
+        ]
       },
       {
         "hebrew": "נָטָה",
@@ -14748,7 +15643,10 @@
           "esticar",
           "ele estendeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.14.21"
+        ]
       },
       {
         "hebrew": "הִכָּה",
@@ -14758,7 +15656,10 @@
           "ele matou",
           "golpear"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [נכה]"
+        "type": "Verbo (Hif'il) — Kelley: [נכה]",
+        "refs": [
+          "Exod.2.12"
+        ]
       },
       {
         "hebrew": "רוּם",
@@ -14767,7 +15668,10 @@
           "estar no alto",
           "ser exaltado"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.6.1"
+        ]
       },
       {
         "hebrew": "רָפָא",
@@ -14776,7 +15680,10 @@
           "curar",
           "ele curou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.15.26"
+        ]
       },
       {
         "hebrew": "רָצָה",
@@ -14786,7 +15693,10 @@
           "ser gracioso",
           "ele teve prazer"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.147.11"
+        ]
       },
       {
         "hebrew": "שָׂנֵא",
@@ -14795,7 +15705,10 @@
           "odiar",
           "ele odiou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.37.4"
+        ]
       },
       {
         "hebrew": "שָׁתָה",
@@ -14804,7 +15717,10 @@
           "beber",
           "ele bebeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.9.21"
+        ]
       }
     ],
     "sentences": [
@@ -15338,7 +16254,10 @@
           "ele foi fiel (Nif'al נֶאֱמַן)"
         ],
         "type": "Verbo (Hif'il) — Kelley: [אמן]",
-        "notes": "Nif'al: “foi fiel”."
+        "notes": "Nif'al: “foi fiel”.",
+        "refs": [
+          "Gen.15.6"
+        ]
       },
       {
         "hebrew": "אָרַר",
@@ -15347,7 +16266,10 @@
           "amaldiçoar",
           "ele amaldiçoou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.3.14"
+        ]
       },
       {
         "hebrew": "גּוֹאֵל",
@@ -15355,7 +16277,10 @@
         "translations": [
           "redentor"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Job.19.25"
+        ]
       },
       {
         "hebrew": "גָּלָה",
@@ -15365,7 +16290,10 @@
           "descobrir",
           "ele descobriu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "2Kgs.17.6"
+        ]
       },
       {
         "hebrew": "גָּמָל",
@@ -15373,7 +16301,10 @@
         "translations": [
           "camelo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.24.10"
+        ]
       },
       {
         "hebrew": "יוֹשֵׁב",
@@ -15382,7 +16313,10 @@
           "habitante",
           "morador"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Isa.6.5"
+        ]
       },
       {
         "hebrew": "יוֹצֵר",
@@ -15390,7 +16324,10 @@
         "translations": [
           "oleiro"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Jer.18.4"
+        ]
       },
       {
         "hebrew": "יָצַר",
@@ -15399,7 +16336,10 @@
           "formar",
           "ele formou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.7"
+        ]
       },
       {
         "hebrew": "מוֹשִׁיעַ",
@@ -15408,7 +16348,10 @@
           "salvador",
           "libertador"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Isa.43.11"
+        ]
       },
       {
         "hebrew": "מַלְאָךְ",
@@ -15417,7 +16360,10 @@
           "anjo",
           "mensageiro"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.22.11"
+        ]
       },
       {
         "hebrew": "נָגַע",
@@ -15427,7 +16373,10 @@
           "ferir",
           "ele tocou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.3.3"
+        ]
       },
       {
         "hebrew": "נָגַשׁ",
@@ -15436,7 +16385,10 @@
           "aproximar-se",
           "ele se aproximou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.27.21"
+        ]
       },
       {
         "hebrew": "נָהָר",
@@ -15444,7 +16396,10 @@
         "translations": [
           "rio"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.2.10"
+        ]
       },
       {
         "hebrew": "סוֹפֵר",
@@ -15453,7 +16408,10 @@
           "escrivão",
           "escriba"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Ezra.7.6"
+        ]
       },
       {
         "hebrew": "פָּדָה",
@@ -15464,7 +16422,10 @@
           "remir",
           "resgatar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.7.8"
+        ]
       },
       {
         "hebrew": "פָּשַׁע",
@@ -15474,7 +16435,10 @@
           "transgredir",
           "ele se rebelou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.1.2"
+        ]
       },
       {
         "hebrew": "רוֹאֶה",
@@ -15483,7 +16447,10 @@
           "vidente",
           "profeta"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "1Sam.9.9"
+        ]
       },
       {
         "hebrew": "רוֹעֶה",
@@ -15500,7 +16467,10 @@
           "pastorear",
           "ele pastoreou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.23.1"
+        ]
       },
       {
         "hebrew": "שַׂר",
@@ -15509,7 +16479,10 @@
           "príncipe",
           "oficial"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.12.15"
+        ]
       },
       {
         "hebrew": "שָׁאַר",
@@ -15519,7 +16492,10 @@
           "restar",
           "ele sobrou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.7.23"
+        ]
       },
       {
         "hebrew": "שׁוֹפֵט",
@@ -15527,7 +16503,10 @@
         "translations": [
           "juiz"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Judg.2.16"
+        ]
       },
       {
         "hebrew": "שָׁקָה",
@@ -15537,7 +16516,10 @@
           "ele deu de beber (Hif'il)",
           "regar (Hif'il)"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.24.18"
+        ]
       },
       {
         "hebrew": "תּוֹעֵבָה",
@@ -15545,7 +16527,10 @@
         "translations": [
           "abominação"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Prov.6.16"
+        ]
       }
     ],
     "sentences": [
@@ -16134,7 +17119,10 @@
           "envergonhar-se",
           "ficar envergonhado"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.25"
+        ]
       },
       {
         "hebrew": "דָּבַק",
@@ -16143,7 +17131,10 @@
           "ele se apegou",
           "juntou-se"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.24"
+        ]
       },
       {
         "hebrew": "הָרָה",
@@ -16152,7 +17143,10 @@
           "ela concebeu",
           "engravidou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.4.1"
+        ]
       },
       {
         "hebrew": "סוּר",
@@ -16161,7 +17155,10 @@
           "desviar-se",
           "retirar-se"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.3.3"
+        ]
       },
       {
         "hebrew": "פָּנָה",
@@ -16170,7 +17167,10 @@
           "ele se virou",
           "voltou-se"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.45.22"
+        ]
       },
       {
         "hebrew": "רָחַץ",
@@ -16178,7 +17178,10 @@
         "translations": [
           "ele lavou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.18.4"
+        ]
       },
       {
         "hebrew": "אֹזֶן",
@@ -16187,7 +17190,10 @@
           "ouvido",
           "orelha"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Isa.6.10"
+        ]
       },
       {
         "hebrew": "אֱנוֹשׁ",
@@ -16196,7 +17202,10 @@
           "homem",
           "humanidade"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Job.7.17"
+        ]
       },
       {
         "hebrew": "בֶּגֶד",
@@ -16205,7 +17214,10 @@
           "veste",
           "roupa"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.39.12"
+        ]
       },
       {
         "hebrew": "בְּרָכָה",
@@ -16213,7 +17225,10 @@
         "translations": [
           "bênção"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.12.2"
+        ]
       },
       {
         "hebrew": "גּוֹרָל",
@@ -16222,7 +17237,10 @@
           "sorte",
           "quinhão"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Lev.16.8"
+        ]
       },
       {
         "hebrew": "גֶּפֶן",
@@ -16231,7 +17249,10 @@
           "videira",
           "vinha"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.40.9"
+        ]
       },
       {
         "hebrew": "גֶּשֶׁם",
@@ -16240,7 +17261,10 @@
           "chuva",
           "aguaceiro"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.7.12"
+        ]
       },
       {
         "hebrew": "זְרֹעַ",
@@ -16249,7 +17273,10 @@
           "braço",
           "força"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Deut.26.8"
+        ]
       },
       {
         "hebrew": "מוֹעֵד",
@@ -16260,7 +17287,10 @@
           "tempo determinado",
           "reunião"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.14"
+        ]
       },
       {
         "hebrew": "עֵד",
@@ -16268,7 +17298,10 @@
         "translations": [
           "testemunha"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.20.16"
+        ]
       },
       {
         "hebrew": "עַיִן",
@@ -16277,7 +17310,10 @@
           "olho",
           "fonte"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.3.5"
+        ]
       },
       {
         "hebrew": "שֶׁקֶר",
@@ -16286,7 +17322,10 @@
           "mentira",
           "falsidade"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.20.16"
+        ]
       }
     ],
     "sentences": [
@@ -16829,7 +17868,10 @@
           "ele agarrou",
           "pegou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.25.26"
+        ]
       },
       {
         "hebrew": "גָּנַב",
@@ -16838,7 +17880,10 @@
           "ele roubou",
           "furtou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.31.19"
+        ]
       },
       {
         "hebrew": "הָפַךְ",
@@ -16847,7 +17892,10 @@
           "ele virou",
           "transformou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.7.17"
+        ]
       },
       {
         "hebrew": "הָרַס",
@@ -16856,7 +17904,10 @@
           "ele demoliu",
           "destruiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.15.7"
+        ]
       },
       {
         "hebrew": "חָגַר",
@@ -16864,7 +17915,10 @@
         "translations": [
           "ele se cingiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Prov.31.17"
+        ]
       },
       {
         "hebrew": "חִדֵּשׁ",
@@ -16872,7 +17926,10 @@
         "translations": [
           "ele renovou"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [חדשׁ]"
+        "type": "Verbo (Pi'el) — Kelley: [חדשׁ]",
+        "refs": [
+          "Lam.5.21"
+        ]
       },
       {
         "hebrew": "חָפֵץ",
@@ -16881,7 +17938,10 @@
           "ele desejou",
           "agradou-se"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Hos.6.6"
+        ]
       },
       {
         "hebrew": "עָרַךְ",
@@ -16890,7 +17950,10 @@
           "ele pôs em ordem",
           "preparou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.22.9"
+        ]
       },
       {
         "hebrew": "אָז",
@@ -16899,7 +17962,10 @@
           "então",
           "naquela ocasião"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Exod.15.1"
+        ]
       },
       {
         "hebrew": "אַךְ",
@@ -16908,7 +17974,10 @@
           "certamente",
           "somente"
         ],
-        "type": "Advérbio"
+        "type": "Advérbio",
+        "refs": [
+          "Gen.9.4"
+        ]
       },
       {
         "hebrew": "בְּאֵר",
@@ -16916,7 +17985,10 @@
         "translations": [
           "poço"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.21.25"
+        ]
       },
       {
         "hebrew": "אֱמוּנָה",
@@ -16925,7 +17997,10 @@
           "fidelidade",
           "firmeza"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Hab.2.4"
+        ]
       },
       {
         "hebrew": "בְּכוֹר",
@@ -16933,7 +18008,10 @@
         "translations": [
           "primogênito"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.27.19"
+        ]
       },
       {
         "hebrew": "דְּבַשׁ",
@@ -16941,7 +18019,10 @@
         "translations": [
           "mel"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.3.8"
+        ]
       },
       {
         "hebrew": "חֹק",
@@ -16952,7 +18033,10 @@
           "lei",
           "decreto"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Ps.2.7"
+        ]
       },
       {
         "hebrew": "לָשׁוֹן",
@@ -16961,7 +18045,10 @@
           "língua",
           "idioma"
         ],
-        "type": "Substantivo (m/f)"
+        "type": "Substantivo (m/f)",
+        "refs": [
+          "Gen.10.5"
+        ]
       },
       {
         "hebrew": "מָוֶת",
@@ -16969,7 +18056,10 @@
         "translations": [
           "morte"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Deut.30.15"
+        ]
       },
       {
         "hebrew": "מִזְבֵּחַ",
@@ -16977,7 +18067,10 @@
         "translations": [
           "altar"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.8.20"
+        ]
       }
     ],
     "sentences": [
@@ -17587,7 +18680,10 @@
           "ele quis",
           "desejou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.1.19"
+        ]
       },
       {
         "hebrew": "אָבַל",
@@ -17596,7 +18692,10 @@
           "ele lamentou",
           "cobriu-se de luto"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.37.34"
+        ]
       },
       {
         "hebrew": "הֶאֱזִין",
@@ -17605,7 +18704,10 @@
           "ele escutou",
           "deu ouvidos"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [אזן]"
+        "type": "Verbo (Hif'il) — Kelley: [אזן]",
+        "refs": [
+          "Deut.32.1"
+        ]
       },
       {
         "hebrew": "אָמֵץ",
@@ -17614,7 +18716,10 @@
           "ele foi forte",
           "corajoso"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Josh.1.6"
+        ]
       },
       {
         "hebrew": "אָסַר",
@@ -17623,7 +18728,10 @@
           "ele amarrou",
           "prendeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.42.24"
+        ]
       },
       {
         "hebrew": "אָפָה",
@@ -17631,7 +18739,10 @@
         "translations": [
           "ele assou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.19.3"
+        ]
       },
       {
         "hebrew": "אָרַךְ",
@@ -17640,7 +18751,10 @@
           "ele se prolongou",
           "foi longo"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.20.12"
+        ]
       },
       {
         "hebrew": "אֶלֶף",
@@ -17649,7 +18763,10 @@
           "boi",
           "mil"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Ps.90.4"
+        ]
       },
       {
         "hebrew": "אָשֵׁם",
@@ -17658,7 +18775,10 @@
           "ele foi culpado",
           "errou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Lev.5.17"
+        ]
       },
       {
         "hebrew": "חוּץ",
@@ -17667,7 +18787,10 @@
           "lado de fora",
           "rua"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.15.5"
+        ]
       },
       {
         "hebrew": "מֵאָה",
@@ -17675,7 +18798,10 @@
         "translations": [
           "cem"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.17.17"
+        ]
       },
       {
         "hebrew": "פָּנִים",
@@ -17684,7 +18810,10 @@
           "rosto",
           "presença"
         ],
-        "type": "Substantivo (pl)"
+        "type": "Substantivo (pl)",
+        "refs": [
+          "Num.6.25"
+        ]
       },
       {
         "hebrew": "קֹדֶשׁ",
@@ -17693,7 +18822,10 @@
           "santidade",
           "santuário"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.3.5"
+        ]
       },
       {
         "hebrew": "שְׁנַיִם / שְׁתַּיִם",
@@ -17702,7 +18834,10 @@
           "dois",
           "duas"
         ],
-        "type": "Numeral"
+        "type": "Numeral",
+        "refs": [
+          "Gen.1.16"
+        ]
       },
       {
         "hebrew": "שָׁלֹשׁ / שְׁלֹשָׁה",
@@ -17710,7 +18845,10 @@
         "translations": [
           "três"
         ],
-        "type": "Numeral"
+        "type": "Numeral",
+        "refs": [
+          "Gen.6.10"
+        ]
       },
       {
         "hebrew": "אַרְבַּע / אַרְבָּעָה",
@@ -17718,7 +18856,10 @@
         "translations": [
           "quatro"
         ],
-        "type": "Numeral"
+        "type": "Numeral",
+        "refs": [
+          "Gen.2.10"
+        ]
       },
       {
         "hebrew": "חָמֵשׁ / חֲמִשָּׁה",
@@ -17726,7 +18867,10 @@
         "translations": [
           "cinco"
         ],
-        "type": "Numeral"
+        "type": "Numeral",
+        "refs": [
+          "Gen.5.6"
+        ]
       },
       {
         "hebrew": "גּוֹי",
@@ -17735,7 +18879,10 @@
           "nação",
           "povo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.12.2"
+        ]
       }
     ],
     "sentences": [
@@ -18509,7 +19656,10 @@
           "ele provou",
           "examinou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.139.23"
+        ]
       },
       {
         "hebrew": "בָּחַר",
@@ -18517,7 +19667,10 @@
         "translations": [
           "ele escolheu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.7.6"
+        ]
       },
       {
         "hebrew": "בָּעַר",
@@ -18526,7 +19679,10 @@
           "ele queimou",
           "ardeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.3.2"
+        ]
       },
       {
         "hebrew": "זָעַק",
@@ -18535,7 +19691,10 @@
           "ele clamou",
           "gritou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Judg.3.9"
+        ]
       },
       {
         "hebrew": "מִהֵר",
@@ -18543,7 +19702,10 @@
         "translations": [
           "ele se apressou"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [מהר]"
+        "type": "Verbo (Pi'el) — Kelley: [מהר]",
+        "refs": [
+          "Gen.18.6"
+        ]
       },
       {
         "hebrew": "נָחַל",
@@ -18552,7 +19714,10 @@
           "ele herdou",
           "tomou posse"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.23.30"
+        ]
       },
       {
         "hebrew": "נִחַם",
@@ -18562,7 +19727,10 @@
           "ele teve pena",
           "ele teve compaixão"
         ],
-        "type": "Verbo (Nif'al) — Kelley: [נחם]"
+        "type": "Verbo (Nif'al) — Kelley: [נחם]",
+        "refs": [
+          "Gen.6.6"
+        ]
       },
       {
         "hebrew": "צָחַק",
@@ -18570,7 +19738,10 @@
         "translations": [
           "ele riu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.18.12"
+        ]
       },
       {
         "hebrew": "צָעַק",
@@ -18579,7 +19750,10 @@
           "ele clamou",
           "gritou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.4.10"
+        ]
       },
       {
         "hebrew": "שָׂחַק",
@@ -18588,7 +19762,10 @@
           "ele riu",
           "brincou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.2.4"
+        ]
       },
       {
         "hebrew": "שָׁחַט",
@@ -18599,7 +19776,10 @@
           "ele carneou",
           "ele assassinou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.22.10"
+        ]
       },
       {
         "hebrew": "אַחֵר",
@@ -18607,7 +19787,10 @@
         "translations": [
           "outro"
         ],
-        "type": "Adjetivo"
+        "type": "Adjetivo",
+        "refs": [
+          "Exod.20.3"
+        ]
       },
       {
         "hebrew": "אַחַר",
@@ -18616,7 +19799,10 @@
           "atrás",
           "depois de"
         ],
-        "type": "Preposição"
+        "type": "Preposição",
+        "refs": [
+          "Gen.22.1"
+        ]
       },
       {
         "hebrew": "אוֹיֵב",
@@ -18624,7 +19810,10 @@
         "translations": [
           "inimigo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.15.6"
+        ]
       },
       {
         "hebrew": "בָּקָר",
@@ -18632,7 +19821,10 @@
         "translations": [
           "gado bovino"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.18.7"
+        ]
       },
       {
         "hebrew": "מִגְדָּל",
@@ -18641,7 +19833,10 @@
           "torre",
           "fortaleza"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.11.4"
+        ]
       },
       {
         "hebrew": "זֶבַח",
@@ -18649,7 +19844,10 @@
         "translations": [
           "sacrifício"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "1Sam.15.22"
+        ]
       },
       {
         "hebrew": "מִנְחָה",
@@ -18659,7 +19857,10 @@
           "presente",
           "tributo"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.4.3"
+        ]
       }
     ],
     "sentences": [
@@ -19240,7 +20441,10 @@
           "ele engoliu",
           "consumiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.15.12"
+        ]
       },
       {
         "hebrew": "בָּקַע",
@@ -19249,7 +20453,10 @@
           "ele partiu",
           "fendeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.14.21"
+        ]
       },
       {
         "hebrew": "גָּבַהּ",
@@ -19258,7 +20465,10 @@
           "ele foi alto",
           "orgulhoso"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.55.9"
+        ]
       },
       {
         "hebrew": "זָרַע",
@@ -19266,7 +20476,10 @@
         "translations": [
           "ele semeou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.26.12"
+        ]
       },
       {
         "hebrew": "כָּרַע",
@@ -19275,7 +20488,10 @@
           "ele se ajoelhou",
           "curvou-se"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.95.6"
+        ]
       },
       {
         "hebrew": "מָשַׁח",
@@ -19283,7 +20499,10 @@
         "translations": [
           "ele ungiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "1Sam.16.13"
+        ]
       },
       {
         "hebrew": "סָלַח",
@@ -19291,7 +20510,10 @@
         "translations": [
           "ele perdoou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.34.9"
+        ]
       },
       {
         "hebrew": "פָּגַע",
@@ -19300,7 +20522,10 @@
           "ele encontrou",
           "intercedeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.28.11"
+        ]
       },
       {
         "hebrew": "פָּתַח",
@@ -19308,7 +20533,10 @@
         "translations": [
           "ele abriu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.7.11"
+        ]
       },
       {
         "hebrew": "קָרַע",
@@ -19317,7 +20545,10 @@
           "ele rasgou",
           "rasgar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.37.29"
+        ]
       },
       {
         "hebrew": "רָצַח",
@@ -19326,7 +20557,10 @@
           "ele matou",
           "assassinou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.20.13"
+        ]
       },
       {
         "hebrew": "שָׂבַע",
@@ -19335,7 +20569,10 @@
           "ele estava satisfeito",
           "saciado"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.8.10"
+        ]
       },
       {
         "hebrew": "בָּמָה",
@@ -19343,7 +20580,10 @@
         "translations": [
           "lugar alto"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "1Kgs.3.2"
+        ]
       },
       {
         "hebrew": "צוּר",
@@ -19352,7 +20592,10 @@
           "rocha",
           "pedra"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Deut.32.4"
+        ]
       },
       {
         "hebrew": "קֵץ",
@@ -19360,7 +20603,10 @@
         "translations": [
           "fim"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.6.13"
+        ]
       },
       {
         "hebrew": "שֻׁלְחָן",
@@ -19368,7 +20614,10 @@
         "translations": [
           "mesa"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.25.23"
+        ]
       },
       {
         "hebrew": "שֶׁמֶשׁ",
@@ -19376,7 +20625,10 @@
         "translations": [
           "sol"
         ],
-        "type": "Substantivo (m/f)"
+        "type": "Substantivo (m/f)",
+        "refs": [
+          "Gen.15.12"
+        ]
       },
       {
         "hebrew": "תּוֹלְדוֹת",
@@ -19385,7 +20637,10 @@
           "gerações",
           "história"
         ],
-        "type": "Substantivo (f pl)"
+        "type": "Substantivo (f pl)",
+        "refs": [
+          "Gen.2.4"
+        ]
       }
     ],
     "sentences": [
@@ -20073,7 +21328,10 @@
           "ele foi",
           "tornou-se impuro"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Lev.11.24"
+        ]
       },
       {
         "hebrew": "נִבָּא",
@@ -20082,7 +21340,10 @@
           "ele profetizou",
           "profetizar"
         ],
-        "type": "Verbo (Nif'al) — Kelley: [נבא]"
+        "type": "Verbo (Nif'al) — Kelley: [נבא]",
+        "refs": [
+          "Ezek.37.4"
+        ]
       },
       {
         "hebrew": "צָמֵא",
@@ -20090,7 +21351,10 @@
         "translations": [
           "ele teve sede"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.17.3"
+        ]
       },
       {
         "hebrew": "קָבַץ",
@@ -20101,7 +21365,10 @@
           "ele reuniu",
           "ajuntou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.30.3"
+        ]
       },
       {
         "hebrew": "קָדַשׁ",
@@ -20110,7 +21377,10 @@
           "ele foi",
           "tornou-se santo"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Lev.11.44"
+        ]
       },
       {
         "hebrew": "שִׁחֵת",
@@ -20120,7 +21390,10 @@
           "ele corrompeu",
           "destruir"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [שחת]"
+        "type": "Verbo (Pi'el) — Kelley: [שחת]",
+        "refs": [
+          "Gen.6.12"
+        ]
       },
       {
         "hebrew": "שָׁלֵם",
@@ -20129,7 +21402,10 @@
           "ele foi íntegro",
           "completo"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "1Kgs.7.51"
+        ]
       },
       {
         "hebrew": "כְּלִי",
@@ -20139,7 +21415,10 @@
           "instrumento",
           "arma"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.24.53"
+        ]
       },
       {
         "hebrew": "נְאֻם",
@@ -20148,7 +21427,10 @@
           "dito",
           "oráculo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Isa.1.24"
+        ]
       },
       {
         "hebrew": "סָבִיב",
@@ -20157,7 +21439,10 @@
           "ao redor de",
           "em torno"
         ],
-        "type": "Advérbio / Preposição"
+        "type": "Advérbio / Preposição",
+        "refs": [
+          "Exod.40.33"
+        ]
       },
       {
         "hebrew": "עֶשֶׂר / עֲשָׂרָה",
@@ -20165,7 +21450,10 @@
         "translations": [
           "dez"
         ],
-        "type": "Numeral"
+        "type": "Numeral",
+        "refs": [
+          "Gen.18.32"
+        ]
       },
       {
         "hebrew": "צֶדֶק",
@@ -20174,7 +21462,10 @@
           "justiça",
           "retidão"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Ps.23.3"
+        ]
       },
       {
         "hebrew": "צְדָקָה",
@@ -20183,7 +21474,10 @@
           "justiça",
           "retidão"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.15.6"
+        ]
       },
       {
         "hebrew": "שֶׁבַע / שִׁבְעָה",
@@ -20191,7 +21485,10 @@
         "translations": [
           "sete"
         ],
-        "type": "Numeral"
+        "type": "Numeral",
+        "refs": [
+          "Gen.7.2"
+        ]
       },
       {
         "hebrew": "שַׁעַר",
@@ -20200,7 +21497,10 @@
           "portão",
           "porta"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.22.17"
+        ]
       }
     ],
     "sentences": [
@@ -20794,7 +22094,10 @@
         "translations": [
           "ele chorou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.137.1"
+        ]
       },
       {
         "hebrew": "זָנָה",
@@ -20803,7 +22106,10 @@
           "ele se prostituiu",
           "adulterou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Hos.1.2"
+        ]
       },
       {
         "hebrew": "חָזָה",
@@ -20812,7 +22118,10 @@
           "ele viu",
           "contemplou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.1.1"
+        ]
       },
       {
         "hebrew": "חָלָה",
@@ -20821,7 +22130,10 @@
           "ele esteve doente",
           "fraco"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "2Kgs.20.1"
+        ]
       },
       {
         "hebrew": "חָנָה",
@@ -20829,7 +22141,10 @@
         "translations": [
           "ele acampou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.13.20"
+        ]
       },
       {
         "hebrew": "חָרָה",
@@ -20838,7 +22153,10 @@
           "ele se acendeu em ira",
           "queimou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.4.5"
+        ]
       },
       {
         "hebrew": "יָרָה",
@@ -20847,7 +22165,10 @@
           "ele ensinou",
           "instruiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.4.12"
+        ]
       },
       {
         "hebrew": "כָּסָה",
@@ -20856,7 +22177,10 @@
           "ele cobriu",
           "escondeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.7.19"
+        ]
       },
       {
         "hebrew": "עָנָה",
@@ -20865,7 +22189,10 @@
           "ele respondeu",
           "esteve oprimido"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.53.7"
+        ]
       },
       {
         "hebrew": "צָפָה",
@@ -20873,7 +22200,10 @@
         "translations": [
           "ele vigiou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Hab.2.1"
+        ]
       },
       {
         "hebrew": "קָנָה",
@@ -20882,7 +22212,10 @@
           "ele adquiriu",
           "comprou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.4.1"
+        ]
       },
       {
         "hebrew": "הִשְׁתַּחֲוָה",
@@ -20892,7 +22225,10 @@
           "ele reverenciou",
           "ele adorou"
         ],
-        "type": "Verbo (Hitpa'el) — Kelley: [שחה]"
+        "type": "Verbo (Hitpa'el) — Kelley: [שחה]",
+        "refs": [
+          "Gen.22.5"
+        ]
       },
       {
         "hebrew": "אַמָּה",
@@ -20901,7 +22237,10 @@
           "côvado",
           "antebraço"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.6.15"
+        ]
       },
       {
         "hebrew": "מַחֲנֶה",
@@ -20909,7 +22248,10 @@
         "translations": [
           "acampamento"
         ],
-        "type": "Substantivo (m/f)"
+        "type": "Substantivo (m/f)",
+        "refs": [
+          "Exod.14.19"
+        ]
       },
       {
         "hebrew": "מַטֶּה",
@@ -20919,7 +22261,10 @@
           "cajado",
           "tribo"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Exod.7.10"
+        ]
       },
       {
         "hebrew": "מַעֲשֶׂה",
@@ -20928,7 +22273,10 @@
           "obra",
           "trabalho"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.5.29"
+        ]
       },
       {
         "hebrew": "מִשְׁפָּחָה",
@@ -20937,7 +22285,10 @@
           "família",
           "clã"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.12.3"
+        ]
       },
       {
         "hebrew": "עֹלָה",
@@ -20945,7 +22296,10 @@
         "translations": [
           "holocausto"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.22.2"
+        ]
       }
     ],
     "sentences": [
@@ -21619,7 +22973,10 @@
           "ele olhou",
           "ele fitou os olhos"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [נבט]"
+        "type": "Verbo (Hif'il) — Kelley: [נבט]",
+        "refs": [
+          "Gen.15.5"
+        ]
       },
       {
         "hebrew": "נָגַף",
@@ -21628,7 +22985,10 @@
           "ele golpeou",
           "feriu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.12.23"
+        ]
       },
       {
         "hebrew": "נָדַח",
@@ -21637,7 +22997,10 @@
           "ele expulsou",
           "baniu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.30.4"
+        ]
       },
       {
         "hebrew": "נָדַר",
@@ -21646,7 +23009,10 @@
           "ele fez um voto",
           "prometeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.28.20"
+        ]
       },
       {
         "hebrew": "נִהֵל",
@@ -21656,7 +23022,10 @@
           "ele conduziu",
           "ele refrescou"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [נהל]"
+        "type": "Verbo (Pi'el) — Kelley: [נהל]",
+        "refs": [
+          "Ps.23.2"
+        ]
       },
       {
         "hebrew": "נָזָה",
@@ -21665,7 +23034,10 @@
           "ele borrifou",
           "salpicou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Lev.16.14"
+        ]
       },
       {
         "hebrew": "נָטַע",
@@ -21673,7 +23045,10 @@
         "translations": [
           "ele plantou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.8"
+        ]
       },
       {
         "hebrew": "נָטַשׁ",
@@ -21682,7 +23057,10 @@
           "ele abandonou",
           "deixou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "1Sam.12.22"
+        ]
       },
       {
         "hebrew": "נִסָּה",
@@ -21692,7 +23070,10 @@
           "ele tentou",
           "ele provou"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [נסה]"
+        "type": "Verbo (Pi'el) — Kelley: [נסה]",
+        "refs": [
+          "Gen.22.1"
+        ]
       },
       {
         "hebrew": "נָסַע",
@@ -21701,7 +23082,10 @@
           "ele partiu",
           "pôs-se a caminho"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.12.9"
+        ]
       },
       {
         "hebrew": "נִצַּב",
@@ -21713,7 +23097,10 @@
           "ele estabeleceu (Hif'il)"
         ],
         "type": "Verbo (Nif'al) — Kelley: [נצב]",
-        "notes": "Hif'il: “colocou”."
+        "notes": "Hif'il: “colocou”.",
+        "refs": [
+          "Gen.28.13"
+        ]
       },
       {
         "hebrew": "נָצַר",
@@ -21722,7 +23109,10 @@
           "ele vigiou",
           "ele guardou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Prov.4.23"
+        ]
       },
       {
         "hebrew": "נִקָּה",
@@ -21731,7 +23121,10 @@
           "ele foi limpo",
           "ele foi inocente"
         ],
-        "type": "Verbo (Nif'al) — Kelley: [נקה]"
+        "type": "Verbo (Nif'al) — Kelley: [נקה]",
+        "refs": [
+          "Exod.20.7"
+        ]
       },
       {
         "hebrew": "נָקַם",
@@ -21739,7 +23132,10 @@
         "translations": [
           "ele vingou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.32.43"
+        ]
       },
       {
         "hebrew": "הִשִּׂיג",
@@ -21748,7 +23144,10 @@
           "ele alcançou",
           "ele conseguiu"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [נשג]"
+        "type": "Verbo (Hif'il) — Kelley: [נשג]",
+        "refs": [
+          "Gen.31.25"
+        ]
       },
       {
         "hebrew": "נָתַץ",
@@ -21757,7 +23156,10 @@
           "ele derrubou",
           "quebrou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Judg.6.28"
+        ]
       },
       {
         "hebrew": "חַיִל",
@@ -21767,7 +23169,10 @@
           "poder",
           "exército"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Prov.31.10"
+        ]
       },
       {
         "hebrew": "נַחֲלָה",
@@ -21776,7 +23181,10 @@
           "herança",
           "propriedade"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Num.26.53"
+        ]
       }
     ],
     "sentences": [
@@ -22331,7 +23739,10 @@
           "ser forasteiro",
           "morar como forasteiro"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.12.10"
+        ]
       },
       {
         "hebrew": "גִּיל",
@@ -22339,7 +23750,10 @@
         "translations": [
           "regozijar-se"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Hab.3.18"
+        ]
       },
       {
         "hebrew": "דִּין",
@@ -22347,7 +23761,10 @@
         "translations": [
           "julgar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.30.6"
+        ]
       },
       {
         "hebrew": "חוּל / חִיל",
@@ -22356,7 +23773,10 @@
           "contorcer-se",
           "dançar em roda"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.96.9"
+        ]
       },
       {
         "hebrew": "לוּן / לִין",
@@ -22365,7 +23785,10 @@
           "pernoitar",
           "habitar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ruth.1.16"
+        ]
       },
       {
         "hebrew": "מוּל",
@@ -22373,7 +23796,10 @@
         "translations": [
           "circuncidar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.17.10"
+        ]
       },
       {
         "hebrew": "נוּחַ",
@@ -22381,7 +23807,10 @@
         "translations": [
           "descansar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.20.11"
+        ]
       },
       {
         "hebrew": "נוּס",
@@ -22389,7 +23818,10 @@
         "translations": [
           "fugir"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.39.12"
+        ]
       },
       {
         "hebrew": "נוּעַ",
@@ -22399,7 +23831,10 @@
           "tremer",
           "cambalear"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.6.4"
+        ]
       },
       {
         "hebrew": "עוּר",
@@ -22408,7 +23843,10 @@
           "despertar",
           "mover-se"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.51.9"
+        ]
       },
       {
         "hebrew": "פּוּץ",
@@ -22417,7 +23855,10 @@
           "espalhar-se",
           "dispersar-se"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.11.8"
+        ]
       },
       {
         "hebrew": "רוּץ",
@@ -22425,7 +23866,10 @@
         "translations": [
           "correr"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.18.7"
+        ]
       },
       {
         "hebrew": "רִיב",
@@ -22434,7 +23878,10 @@
           "contender",
           "litigar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.26.20"
+        ]
       },
       {
         "hebrew": "שִׁיר",
@@ -22442,7 +23889,10 @@
         "translations": [
           "cantar"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.15.1"
+        ]
       },
       {
         "hebrew": "שִׁית",
@@ -22451,7 +23901,10 @@
           "colocar",
           "estabelecer"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.3.15"
+        ]
       },
       {
         "hebrew": "כָּשַׁל",
@@ -22459,7 +23912,10 @@
         "translations": [
           "ele tropeçou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.40.30"
+        ]
       },
       {
         "hebrew": "לָכַד",
@@ -22467,7 +23923,10 @@
         "translations": [
           "ele capturou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Josh.10.1"
+        ]
       },
       {
         "hebrew": "שָׁבַת",
@@ -22476,7 +23935,10 @@
           "ele cessou",
           "descansou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.2"
+        ]
       }
     ],
     "sentences": [
@@ -23301,7 +24763,10 @@
           "ele era seco",
           "secou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.40.8"
+        ]
       },
       {
         "hebrew": "יָגַע",
@@ -23310,7 +24775,10 @@
           "ele cansou",
           "enfadou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.40.31"
+        ]
       },
       {
         "hebrew": "הוֹדָה",
@@ -23320,7 +24788,10 @@
           "confessou",
           "agradeceu"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [ידה]"
+        "type": "Verbo (Hif'il) — Kelley: [ידה]",
+        "refs": [
+          "Gen.29.35"
+        ]
       },
       {
         "hebrew": "יָטַב",
@@ -23329,7 +24800,10 @@
           "ele fez bem",
           "foi bom"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.12.13"
+        ]
       },
       {
         "hebrew": "הוֹכִיחַ",
@@ -23338,7 +24812,10 @@
           "ele repreendeu",
           "corrigiu"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [יכח]"
+        "type": "Verbo (Hif'il) — Kelley: [יכח]",
+        "refs": [
+          "Prov.3.12"
+        ]
       },
       {
         "hebrew": "יָנַק",
@@ -23346,7 +24823,10 @@
         "translations": [
           "ele mamou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.21.7"
+        ]
       },
       {
         "hebrew": "יָסַד",
@@ -23355,7 +24835,10 @@
           "ele fundou",
           "estabeleceu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.28.16"
+        ]
       },
       {
         "hebrew": "יָסַר",
@@ -23364,7 +24847,10 @@
           "ele admoestou",
           "castigou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.8.5"
+        ]
       },
       {
         "hebrew": "יָעַץ",
@@ -23373,7 +24859,10 @@
           "ele aconselhou",
           "avisou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "1Kgs.12.6"
+        ]
       },
       {
         "hebrew": "הִתְיַצֵּב",
@@ -23391,7 +24880,10 @@
           "ele derramou",
           "serviu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.28.18"
+        ]
       },
       {
         "hebrew": "יָצַת",
@@ -23400,7 +24892,10 @@
           "ele pôs fogo",
           "acendeu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Josh.8.8"
+        ]
       },
       {
         "hebrew": "יָשַׁר",
@@ -23410,7 +24905,10 @@
           "correto",
           "justo"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Prov.3.6"
+        ]
       },
       {
         "hebrew": "נוֹתַר",
@@ -23419,7 +24917,10 @@
           "ele sobrou",
           "foi deixado como resto"
         ],
-        "type": "Verbo (Nif'al) — Kelley: [יתר]"
+        "type": "Verbo (Nif'al) — Kelley: [יתר]",
+        "refs": [
+          "Exod.10.15"
+        ]
       },
       {
         "hebrew": "קָטַר",
@@ -23428,7 +24929,10 @@
           "ele queimou incenso",
           "ele ofereceu incenso"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Exod.30.7"
+        ]
       },
       {
         "hebrew": "שֵׁרֵת",
@@ -23437,7 +24941,10 @@
           "ele ministrou",
           "serviu"
         ],
-        "type": "Verbo (Pi'el) — Kelley: [שרת]"
+        "type": "Verbo (Pi'el) — Kelley: [שרת]",
+        "refs": [
+          "Deut.10.8"
+        ]
       },
       {
         "hebrew": "סָגַר",
@@ -23445,7 +24952,10 @@
         "translations": [
           "ele fechou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.7.16"
+        ]
       },
       {
         "hebrew": "הִשְׁכִּים",
@@ -23454,7 +24964,10 @@
           "ele madrugou",
           "levantou cedo"
         ],
-        "type": "Verbo (Hif'il) — Kelley: [שכם]"
+        "type": "Verbo (Hif'il) — Kelley: [שכם]",
+        "refs": [
+          "Gen.22.3"
+        ]
       }
     ],
     "sentences": [
@@ -24273,7 +25786,10 @@
           "ele saqueou",
           "roubou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Num.31.9"
+        ]
       },
       {
         "hebrew": "בָּלַל",
@@ -24282,7 +25798,10 @@
           "ele misturou",
           "confundiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.11.9"
+        ]
       },
       {
         "hebrew": "דָּמַם",
@@ -24291,7 +25810,10 @@
           "ele ficou imóvel",
           "calado"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Lev.10.3"
+        ]
       },
       {
         "hebrew": "הִתְהַלֵּל",
@@ -24301,7 +25823,10 @@
           "ele louvou (Pi'el)"
         ],
         "type": "Verbo (Hitpa'el) — Kelley: [הלל]",
-        "notes": "Pi'el: הִלֵּל, “louvou”."
+        "notes": "Pi'el: הִלֵּל, “louvou”.",
+        "refs": [
+          "Ps.150.1"
+        ]
       },
       {
         "hebrew": "נִחַל",
@@ -24312,7 +25837,10 @@
           "ele começou (Hif'il)"
         ],
         "type": "Verbo (Nif'al) — Kelley: [חלל]",
-        "notes": "Hif'il: הֵחֵל."
+        "notes": "Hif'il: הֵחֵל.",
+        "refs": [
+          "Gen.4.26"
+        ]
       },
       {
         "hebrew": "חָנַן",
@@ -24321,7 +25849,10 @@
           "ele foi misericordioso",
           "favoreceu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Num.6.25"
+        ]
       },
       {
         "hebrew": "חָתַת",
@@ -24338,7 +25869,10 @@
         "translations": [
           "ele mediu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Isa.40.12"
+        ]
       },
       {
         "hebrew": "נָדַד",
@@ -24346,7 +25880,10 @@
         "translations": [
           "ele fugiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Gen.31.40"
+        ]
       },
       {
         "hebrew": "סָבַב",
@@ -24356,7 +25893,10 @@
           "voltou-se",
           "cercou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Josh.6.3"
+        ]
       },
       {
         "hebrew": "צָרַר",
@@ -24373,7 +25913,10 @@
           "ele gritou de alegria",
           "exultou"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Ps.95.1"
+        ]
       },
       {
         "hebrew": "שָׁדַד",
@@ -24382,7 +25925,10 @@
           "ele devastou",
           "destruiu"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Jer.4.20"
+        ]
       },
       {
         "hebrew": "שָׁמֵם",
@@ -24391,7 +25937,10 @@
           "ele estava desolado",
           "devastado"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Lev.26.32"
+        ]
       },
       {
         "hebrew": "תָּמַם",
@@ -24400,7 +25949,10 @@
           "ele estava completo",
           "terminado"
         ],
-        "type": "Verbo"
+        "type": "Verbo",
+        "refs": [
+          "Deut.31.24"
+        ]
       },
       {
         "hebrew": "גְּבוּל",
@@ -24409,7 +25961,10 @@
           "divisa",
           "fronteira"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.10.19"
+        ]
       },
       {
         "hebrew": "גִּבּוֹר",
@@ -24418,7 +25973,10 @@
           "herói",
           "valente"
         ],
-        "type": "Substantivo"
+        "type": "Substantivo",
+        "refs": [
+          "Gen.10.9"
+        ]
       },
       {
         "hebrew": "קֶשֶׁת",
@@ -24426,7 +25984,10 @@
         "translations": [
           "arco"
         ],
-        "type": "Substantivo (f)"
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.9.13"
+        ]
       }
     ],
     "sentences": [

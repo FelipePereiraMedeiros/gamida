@@ -138,3 +138,13 @@ O app não usa módulos ES: cada arquivo é um `<script>` comum, na ordem do `in
   - `scribe-common.js`: o que os módulos de desenho repetiam (reduzir movimento, `rnd`, `esc`).
 
 Os testes que conferem o código-fonte leem o `app.js` junto com `js/screens/` (`tests/test-utils.js`). Arquivo novo em `js/` entra sozinho na lista do service worker ao rodar `node scripts/build-sw.js`.
+
+## Referências bíblicas do vocabulário
+
+Cada palavra do hebraico pode trazer `refs`: versículos onde ela aparece, para a futura seção de leitura da Bíblia (Antigo Testamento em hebraico, Novo em grego).
+
+- **Formato:** códigos OSIS, `Livro.capítulo.versículo` (`"Gen.2.24"`, `"1Sam.17.26"`, `"Ps.119.105"`). É o formato das bases abertas do texto bíblico, o que facilita abrir o versículo direto.
+- **Versificação:** a das Bíblias em português. Em alguns livros a Bíblia hebraica numera diferente (por exemplo, os Salmos com título contam o título como versículo 1); a futura seção precisa converter.
+- **Origem:** 520 palavras das lições III a XXXI, a partir da lista de vocabulário do Kelley usada em sala. As 12 linhas da lista que não correspondem a uma palavra do Gamida ficaram de fora (artigo, conjunção, preposições e marca do objeto, que são gramática; e formas de outro tronco ou outra palavra).
+- **Conferência:** `tests/25-bible-refs.test.js` confere o formato, o livro, o capítulo e algumas referências conhecidas.
+- O grego ainda não tem referências.
