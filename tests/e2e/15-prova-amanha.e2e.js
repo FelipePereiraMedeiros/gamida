@@ -39,6 +39,37 @@ module.exports = [
     },
   },
   {
+    name: "Prova de amanhã: filtro de forma (tudo, raiz, plural, construto)",
+    async fn({ browser, base, assert }) {
+      const { context, page, errors } = await openApp({ browser, base }, { language: "hebrew" });
+      await page.evaluate(() => { openExamMode(); setExerciseMode("typing"); });
+      assert.ok(await page.evaluate(() => !document.getElementById("practice-form-container").classList.contains("hidden")), "o filtro de forma não apareceu na prova");
+      const pick = async (form) => {
+        await page.evaluate((f) => document.getElementById(`exam-form-${f}`).click(), form);
+        return page.evaluate(() => practiceQueue.map((i) => ({ h: i.hebrew, t: i.type, s: !!i.singular })));
+      };
+      const root = await pick("root");
+      assert.equal(root.length, 36);
+      assert.ok(root.every((i) => !i.s), "a raiz trouxe plural ou construto");
+      const plural = await pick("plural");
+      assert.ok(plural.length >= 18 && plural.every((i) => i.s && (!/construto/.test(i.t) || /iguais/.test(i.t))), "o plural trouxe outra forma");
+      const construct = await pick("construct");
+      assert.ok(construct.length >= 16 && construct.every((i) => /construto/.test(i.t)), "o construto trouxe outra forma");
+      assert.ok(construct.some((i) => i.h === "אַנְשֵׁי"));
+      assert.match(await page.textContent("#practice-options-summary"), /Só o construto/);
+      assert.equal((await pick("all")).length, 72);
+      // A escolha fica guardada e só vale na prova
+      await page.evaluate(() => document.getElementById("exam-form-plural").click());
+      await page.evaluate(() => changeGlobalChapter(AppState.chapters[1].id));
+      assert.ok(await page.evaluate(() => document.getElementById("practice-form-container").classList.contains("hidden")), "o filtro apareceu fora da prova");
+      assert.ok(await page.evaluate(() => practiceQueue.some((i) => i.hebrew === "אָב")), "o filtro da prova afetou outra lição");
+      await page.evaluate(() => openExamMode());
+      assert.ok(await page.evaluate(() => practiceQueue.every((i) => i.singular)), "a escolha do filtro não ficou guardada");
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await context.close();
+    },
+  },
+  {
     name: "Prova de amanhã não aparece no grego",
     async fn({ browser, base, assert }) {
       const { context, page, errors } = await openApp({ browser, base }, { language: "greek", examAlert: true });

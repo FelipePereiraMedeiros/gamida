@@ -15,7 +15,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.52.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.53.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -462,6 +462,7 @@ function setExerciseMode(mode) {
   resetStats();
   updatePracticeCategoryFilterUI();
   updateChoiceDirectionUI();
+  if (typeof window !== "undefined" && window.ExamMode) window.ExamMode.updateFormUI();
   buildPracticeQueue();
   renderCurrentQuestion();
   if (typeof window !== "undefined" && typeof window.updatePracticeOptionsSummary === "function") {

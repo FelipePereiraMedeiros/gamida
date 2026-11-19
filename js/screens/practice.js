@@ -232,6 +232,11 @@ function buildPracticeQueue() {
       chapItems = [...(chap.items || [])];
     }
 
+    // Prova de amanhã: só a raiz, só o plural, só o construto ou tudo
+    if (AppState.exerciseMode !== "sentences" && typeof window !== "undefined" && window.ExamMode) {
+      chapItems = window.ExamMode.filterItems(chap, chapItems);
+    }
+
     // Filtro por tipo de palavra (quando em Digitação e categoria diferente de 'all')
     if (AppState.exerciseMode === "typing" && AppState.practiceCategory && AppState.practiceCategory !== "all") {
       chapItems = chapItems.filter((item) => matchItemCategory(item, AppState.practiceCategory));

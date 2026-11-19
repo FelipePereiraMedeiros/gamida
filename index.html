@@ -358,6 +358,17 @@
                 </div>
               </div>
 
+              <!-- Prova de amanhã: estudar só a raiz, só o plural, só o construto ou tudo (js/modules/exam-mode.js) -->
+              <div id="practice-form-container" class="hidden">
+                <span class="field-label">Forma das palavras</span>
+                <div class="seg" role="group" aria-label="Forma das palavras">
+                  <button type="button" id="exam-form-all" data-on-click="setExamForm('all')" class="seg-btn is-active" aria-pressed="true" title="Raiz, plural e construto juntos">Tudo</button>
+                  <button type="button" id="exam-form-root" data-on-click="setExamForm('root')" class="seg-btn" aria-pressed="false" title="Só a raiz: a forma de dicionário (singular dos substantivos, verbos como na lista)">Raiz</button>
+                  <button type="button" id="exam-form-plural" data-on-click="setExamForm('plural')" class="seg-btn" aria-pressed="false" title="Só o plural absoluto">Plural</button>
+                  <button type="button" id="exam-form-construct" data-on-click="setExamForm('construct')" class="seg-btn" aria-pressed="false" title="Só o plural construto">Construto</button>
+                </div>
+              </div>
+
               <!-- Filtro Dinâmico por Tipo de Palavra (Digitação) -->
               <div id="practice-category-container">
                 <label for="practice-category-select" class="field-label">Tipo de palavra</label>
@@ -1864,7 +1875,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.52.0</span>
+        <span id="footer-version-tag">v2.53.0</span>
       </p>
       <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
     </footer>
