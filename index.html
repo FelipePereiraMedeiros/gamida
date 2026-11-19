@@ -263,7 +263,7 @@
           <div class="exam-bar__actions">
             <button type="button" class="answer-btn" data-on-click="startExamSimulado()">Simulado (10 frases)</button>
             <button type="button" class="btn-secondary" data-on-click="setExamPhrases('all')">Frases da prova</button>
-            <button type="button" class="btn-secondary" data-on-click="setExerciseMode('typing')">Palavras e formas</button>
+            <button type="button" class="btn-secondary" data-on-click="trainExamWords()">As 36 palavras</button>
             <button type="button" class="btn-secondary" data-on-click="openExamFullVocab()">Vocabulário I–XIV</button>
           </div>
           <details class="exam-cheat">
@@ -463,11 +463,13 @@
               <div id="practice-form-container" class="hidden">
                 <span class="field-label">O que treinar</span>
                 <div class="seg seg--wrap" role="group" aria-label="O que treinar">
-                  <button type="button" id="exam-form-all" data-on-click="setExamForm('all')" class="seg-btn is-active" aria-pressed="true" title="Palavras, formas e gramática juntas">Tudo</button>
-                  <button type="button" id="exam-form-root" data-on-click="setExamForm('root')" class="seg-btn" aria-pressed="false" title="Só a raiz: as 36 palavras da lista">Raiz</button>
-                  <button type="button" id="exam-form-plural" data-on-click="setExamForm('plural')" class="seg-btn" aria-pressed="false" title="Só o plural absoluto">Plural</button>
-                  <button type="button" id="exam-form-construct" data-on-click="setExamForm('construct')" class="seg-btn" aria-pressed="false" title="Só o plural construto">Construto</button>
+                  <button type="button" id="exam-form-words36" data-on-click="setExamForm('words36')" class="seg-btn" aria-pressed="false" title="Só as 36 palavras do slide, em todas as formas: raiz, plural, construto e troncos">As 36</button>
+                  <button type="button" id="exam-form-root" data-on-click="setExamForm('root')" class="seg-btn" aria-pressed="false" title="As 36 palavras como estão na lista">Raiz</button>
+                  <button type="button" id="exam-form-plural" data-on-click="setExamForm('plural')" class="seg-btn" aria-pressed="false" title="O plural absoluto dos substantivos e adjetivos da lista">Plural</button>
+                  <button type="button" id="exam-form-construct" data-on-click="setExamForm('construct')" class="seg-btn" aria-pressed="false" title="O plural construto dos substantivos da lista">Construto</button>
+                  <button type="button" id="exam-form-stems" data-on-click="setExamForm('stems')" class="seg-btn" aria-pressed="false" title="Os verbos da lista em cada tronco: Qal, Nifal, Piel, Hitpael, Hifil">Troncos</button>
                   <button type="button" id="exam-form-grammar" data-on-click="setExamForm('grammar')" class="seg-btn" aria-pressed="false" title="Formas dos slides: pronomes, demonstrativos, sufixos, perfeito Qal e troncos">Gramática</button>
+                  <button type="button" id="exam-form-all" data-on-click="setExamForm('all')" class="seg-btn is-active" aria-pressed="true" title="Tudo junto: as 36 e suas formas e a gramática dos slides">Tudo</button>
                 </div>
               </div>
 
@@ -1994,7 +1996,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.54.0</span>
+        <span id="footer-version-tag">v2.55.0</span>
       </p>
       <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
     </footer>

@@ -25,8 +25,11 @@ const CHAPTER_ID = "prova_amanha";
 const SEEN_KEY = "gamida_exam_alert_seen_prova2_completo";
 
 const FORM_KEY = "gamida_exam_form";
-const FORMS = ["all", "root", "plural", "construct", "grammar"];
-const FORM_LABEL = { root: "Só a raiz", plural: "Só o plural", construct: "Só o construto", grammar: "Gramática" };
+const FORMS = ["all", "words36", "root", "plural", "construct", "stems", "grammar"];
+const FORM_LABEL = {
+  words36: "As 36 palavras (todas as formas)", root: "Só a raiz", plural: "Só o plural",
+  construct: "Só o construto", stems: "Troncos verbais", grammar: "Gramática dos slides",
+};
 
 const PHRASE_KEY = "gamida_exam_phrases";
 const PHRASES = ["all", "nominal", "verbal", "kelley", "simulado"];
@@ -62,17 +65,23 @@ const isExamOpen = () => {
 const isSentence = (item) => !!item && (item.type === "Frase" || Array.isArray(item.tokens));
 
 /**
- * O item entra no filtro "O que treinar"? Raiz = palavras da lista; plural e
- * construto pelo tipo (קוֹל e תּוֹרָה têm os dois iguais e entram nos dois);
- * Gramática = formas dos slides. Frases só entram em "Tudo".
+ * O item entra no filtro "O que treinar"?
+ * - As 36: as palavras do slide e todas as formas delas (plural, construto, troncos);
+ * - Raiz: as 36 como estão na lista;
+ * - Plural / Construto: pelo tipo (קוֹל e תּוֹרָה têm os dois iguais e entram nos dois);
+ * - Troncos: os verbos da lista em cada tronco (Qal, Nifal, Piel, Hitpael, Hifil);
+ * - Gramática: as formas dos slides. Frases só entram em "Tudo".
  */
 function matchesForm(item, form = getForm()) {
   if (form === "all") return true;
   if (!item || isSentence(item)) return false;
+  const stem = !!(item.stem || item.stemOf);
   if (form === "grammar") return item.group === "gramatica";
+  if (form === "stems") return stem;
+  if (form === "words36") return item.group !== "gramatica" || !!item.stemOf;
   if (item.group === "gramatica") return false;
   if (form === "root") return !item.singular;
-  if (!item.singular) return false;
+  if (!item.singular || item.stem) return false;
   const type = String(item.type || "");
   const same = /iguais/.test(type);
   if (form === "construct") return same || /construto/.test(type);
@@ -152,6 +161,19 @@ function setExamPhrases(which) {
   const w = W();
   if (w.AppState && w.AppState.exerciseMode !== "sentences" && typeof w.setExerciseMode === "function") {
     w.setExerciseMode("sentences");
+    return;
+  }
+  restartRound();
+}
+
+/** As 36 palavras do slide, em todas as formas, na Digitação */
+function trainExamWords() {
+  if (!examChapter()) return;
+  if (!isExamOpen()) openExamMode();
+  write(FORM_KEY, "words36");
+  const w = W();
+  if (w.AppState && w.AppState.exerciseMode === "sentences" && typeof w.setExerciseMode === "function") {
+    w.setExerciseMode("typing");
     return;
   }
   restartRound();
@@ -294,7 +316,7 @@ function maybeAlert() {
 
 const ExamMode = {
   CHAPTER_ID, SIMULADO_EACH,
-  openExamMode, openFullVocab, startSimulado, refresh, maybeAlert,
+  openExamMode, openFullVocab, startSimulado, trainExamWords, refresh, maybeAlert,
   getForm, getPhrases, matchesForm, filterSentences, filterItems,
   setExamForm, setExamPhrases, formSummary, updateFormUI, showKey, hideKey,
 };
@@ -304,6 +326,7 @@ if (typeof window !== "undefined") {
   window.openExamMode = openExamMode;
   window.openExamFullVocab = openFullVocab;
   window.startExamSimulado = startSimulado;
+  window.trainExamWords = trainExamWords;
   window.setExamForm = setExamForm;
   window.setExamPhrases = setExamPhrases;
 }

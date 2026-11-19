@@ -23,7 +23,7 @@ module.exports = [
         scroll: document.documentElement.scrollWidth,
       }));
       assert.equal(info.tab, "practice");
-      assert.equal(info.queue, 137, `a prática trouxe ${info.queue} itens (72 palavras e formas + 65 da gramática)`);
+      assert.equal(info.queue, 151, `a prática trouxe ${info.queue} itens (palavras, formas, troncos e gramática)`);
       assert.ok(info.plural && info.construct, "faltou o plural ou o construto");
       assert.ok(!info.campaign, "a lição da prova entrou nas Crônicas");
       assert.ok(!info.path, "a lição da prova entrou no Caminho do domínio");
@@ -57,7 +57,14 @@ module.exports = [
       assert.ok(construct.length >= 16 && construct.every((i) => /construto/.test(i.t)), "o construto trouxe outra forma");
       assert.ok(construct.some((i) => i.h === "אַנְשֵׁי"));
       assert.match(await page.textContent("#practice-options-summary"), /Só o construto/);
-      assert.equal((await pick("all")).length, 137);
+      assert.equal((await pick("all")).length, 151);
+      const words = await pick("words36");
+      assert.equal(words.length, 89, "As 36 não trouxe as palavras com todas as formas");
+      assert.ok(words.every((i) => !/^Gramática/.test(i.t) || i.h === "נִשְׁמַר" || i.h === "נִכְתַּב" || i.h === "הִזְכִּיר"), "As 36 trouxe gramática dos slides");
+      const stems = await pick("stems");
+      assert.equal(stems.length, 30, "os troncos não vieram inteiros");
+      assert.ok(stems.some((i) => i.h === "נִשְׁמַע") && stems.some((i) => i.h === "הִמְלִיךְ") && stems.some((i) => i.h === "שָׁמַר"), "faltou tronco");
+      assert.ok(!plural.some((i) => /Nifal|Hifil/.test(i.t)), "o plural trouxe tronco verbal");
       const grammar = await pick("grammar");
       assert.equal(grammar.length, 65, "a gramática dos slides não veio inteira");
       // A escolha fica guardada e só vale na prova
@@ -104,6 +111,10 @@ module.exports = [
       // A colinha abre; fora da prova a barra some
       await page.click(".exam-cheat > summary");
       assert.ok(await page.isVisible("text=Cinco lembretes para a prova"));
+      await page.click("text=As 36 palavras");
+      assert.equal(await page.evaluate(() => ExamMode.getForm()), "words36");
+      assert.equal(await page.evaluate(() => AppState.exerciseMode), "typing");
+      assert.equal(await page.evaluate(() => practiceQueue.length), 89);
       await page.click("text=Vocabulário I–XIV");
       assert.ok(!(await page.isVisible("#exam-cheatsheet")), "a barra da prova ficou fora da prova");
       const ids = await page.evaluate(() => AppState.selectedChapterIds);

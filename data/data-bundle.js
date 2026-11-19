@@ -2,7 +2,7 @@
 /**
  * Gamida Data Bundle - Offline & Standalone Fallback
  * Gerado automaticamente via scripts/build-bundle.js
- * Data: 2026-11-19T01:22:26.862Z
+ * Data: 2026-11-19T11:36:26.527Z
  */
 window.GAMIDA_DEFAULT_DATA = {
   hebrew: [
@@ -27334,7 +27334,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo",
         "refs": [
           "Gen.12.4"
-        ]
+        ],
+        "stem": "Qal"
       },
       {
         "hebrew": "לָקַח",
@@ -27347,7 +27348,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo",
         "refs": [
           "Gen.2.15"
-        ]
+        ],
+        "stem": "Qal"
       },
       {
         "hebrew": "שָׁמַע",
@@ -27359,7 +27361,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo",
         "refs": [
           "Deut.6.4"
-        ]
+        ],
+        "stem": "Qal"
       },
       {
         "hebrew": "שָׁמַר",
@@ -27371,7 +27374,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo",
         "refs": [
           "Gen.2.15"
-        ]
+        ],
+        "stem": "Qal"
       },
       {
         "hebrew": "כָּתַב",
@@ -27383,7 +27387,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo",
         "refs": [
           "Exod.34.28"
-        ]
+        ],
+        "stem": "Qal"
       },
       {
         "hebrew": "זָכַר",
@@ -27396,7 +27401,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo",
         "refs": [
           "Gen.8.1"
-        ]
+        ],
+        "stem": "Qal"
       },
       {
         "hebrew": "מָלַךְ",
@@ -27408,7 +27414,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo",
         "refs": [
           "Exod.15.18"
-        ]
+        ],
+        "stem": "Qal"
       },
       {
         "hebrew": "נָתַן",
@@ -27420,7 +27427,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo",
         "refs": [
           "Gen.1.29"
-        ]
+        ],
+        "stem": "Qal"
       },
       {
         "hebrew": "עָשָׂה",
@@ -27432,7 +27440,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo",
         "refs": [
           "Gen.1.31"
-        ]
+        ],
+        "stem": "Qal"
       },
       {
         "hebrew": "בָּנָה",
@@ -27445,7 +27454,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo",
         "refs": [
           "Ps.127.1"
-        ]
+        ],
+        "stem": "Qal"
       },
       {
         "hebrew": "כָּרַת",
@@ -27458,7 +27468,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo",
         "refs": [
           "Gen.15.18"
-        ]
+        ],
+        "stem": "Qal"
       },
       {
         "hebrew": "דִּבֶּר",
@@ -27470,7 +27481,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo (Pi'el) — Kelley: [דבר]",
         "refs": [
           "Gen.12.4"
-        ]
+        ],
+        "stem": "Piel"
       },
       {
         "hebrew": "הִבְדִּיל",
@@ -27483,7 +27495,8 @@ window.GAMIDA_DEFAULT_DATA = {
         "type": "Verbo (Hif'il) — Kelley: [בדל]",
         "refs": [
           "Gen.1.4"
-        ]
+        ],
+        "stem": "Hifil"
       },
       {
         "hebrew": "אֲנִי",
@@ -28105,7 +28118,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "foi escrita"
         ],
         "type": "Gramática — tronco",
-        "group": "gramatica"
+        "group": "gramatica",
+        "stemOf": "כָּתַב"
       },
       {
         "hebrew": "בִּקֵּשׁ",
@@ -28127,7 +28141,8 @@ window.GAMIDA_DEFAULT_DATA = {
           "lembrou"
         ],
         "type": "Gramática — tronco",
-        "group": "gramatica"
+        "group": "gramatica",
+        "stemOf": "זָכַר"
       },
       {
         "hebrew": "נִשְׁמַר",
@@ -28137,7 +28152,178 @@ window.GAMIDA_DEFAULT_DATA = {
           "foi guardado"
         ],
         "type": "Gramática — tronco",
-        "group": "gramatica"
+        "group": "gramatica",
+        "stemOf": "שָׁמַר"
+      },
+      {
+        "hebrew": "הִלֵּךְ",
+        "transliteration": "hillech",
+        "translations": [
+          "andou (Piel)",
+          "andou",
+          "caminhou"
+        ],
+        "type": "Verbo — Piel (perfeito 3ms)",
+        "singular": "הָלַךְ",
+        "stem": "Piel"
+      },
+      {
+        "hebrew": "הִתְהַלֵּךְ",
+        "transliteration": "hithallech",
+        "translations": [
+          "andou (Hitpael)",
+          "andou",
+          "caminhou",
+          "andou de um lado para outro"
+        ],
+        "type": "Verbo — Hitpael (perfeito 3ms)",
+        "singular": "הָלַךְ",
+        "stem": "Hitpael"
+      },
+      {
+        "hebrew": "הוֹלִיךְ",
+        "transliteration": "holich",
+        "translations": [
+          "fez andar (Hifil)",
+          "fez andar",
+          "conduziu",
+          "levou"
+        ],
+        "type": "Verbo — Hifil (perfeito 3ms)",
+        "singular": "הָלַךְ",
+        "stem": "Hifil"
+      },
+      {
+        "hebrew": "נִלְקַח",
+        "transliteration": "nilkach",
+        "translations": [
+          "foi tomado (Nifal)",
+          "foi tomado",
+          "foi levado"
+        ],
+        "type": "Verbo — Nifal (perfeito 3ms)",
+        "singular": "לָקַח",
+        "stem": "Nifal"
+      },
+      {
+        "hebrew": "נִשְׁמַע",
+        "transliteration": "nishma",
+        "translations": [
+          "foi ouvido (Nifal)",
+          "foi ouvido"
+        ],
+        "type": "Verbo — Nifal (perfeito 3ms)",
+        "singular": "שָׁמַע",
+        "stem": "Nifal"
+      },
+      {
+        "hebrew": "הִשְׁמִיעַ",
+        "transliteration": "hishmia",
+        "translations": [
+          "fez ouvir (Hifil)",
+          "fez ouvir",
+          "anunciou",
+          "proclamou"
+        ],
+        "type": "Verbo — Hifil (perfeito 3ms)",
+        "singular": "שָׁמַע",
+        "stem": "Hifil"
+      },
+      {
+        "hebrew": "נִזְכַּר",
+        "transliteration": "nizkar",
+        "translations": [
+          "foi lembrado (Nifal)",
+          "foi lembrado"
+        ],
+        "type": "Verbo — Nifal (perfeito 3ms)",
+        "singular": "זָכַר",
+        "stem": "Nifal"
+      },
+      {
+        "hebrew": "הִמְלִיךְ",
+        "transliteration": "himlich",
+        "translations": [
+          "fez reinar (Hifil)",
+          "fez reinar",
+          "fez rei",
+          "constituiu rei"
+        ],
+        "type": "Verbo — Hifil (perfeito 3ms)",
+        "singular": "מָלַךְ",
+        "stem": "Hifil"
+      },
+      {
+        "hebrew": "נִתַּן",
+        "transliteration": "nittan",
+        "translations": [
+          "foi dado (Nifal)",
+          "foi dado",
+          "foi entregue"
+        ],
+        "type": "Verbo — Nifal (perfeito 3ms)",
+        "singular": "נָתַן",
+        "stem": "Nifal"
+      },
+      {
+        "hebrew": "נַעֲשָׂה",
+        "transliteration": "naasah",
+        "translations": [
+          "foi feito (Nifal)",
+          "foi feito",
+          "foi feita"
+        ],
+        "type": "Verbo — Nifal (perfeito 3ms)",
+        "singular": "עָשָׂה",
+        "stem": "Nifal"
+      },
+      {
+        "hebrew": "נִבְנָה",
+        "transliteration": "nivnah",
+        "translations": [
+          "foi construído (Nifal)",
+          "foi construído",
+          "foi edificado"
+        ],
+        "type": "Verbo — Nifal (perfeito 3ms)",
+        "singular": "בָּנָה",
+        "stem": "Nifal"
+      },
+      {
+        "hebrew": "נִכְרַת",
+        "transliteration": "nichrat",
+        "translations": [
+          "foi cortado (Nifal)",
+          "foi cortado",
+          "foi eliminado"
+        ],
+        "type": "Verbo — Nifal (perfeito 3ms)",
+        "singular": "כָּרַת",
+        "stem": "Nifal"
+      },
+      {
+        "hebrew": "הִכְרִית",
+        "transliteration": "hichrit",
+        "translations": [
+          "eliminou (Hifil)",
+          "eliminou",
+          "exterminou"
+        ],
+        "type": "Verbo — Hifil (perfeito 3ms)",
+        "singular": "כָּרַת",
+        "stem": "Hifil"
+      },
+      {
+        "hebrew": "נִבְדַּל",
+        "transliteration": "nivdal",
+        "translations": [
+          "separou-se (Nifal)",
+          "separou-se",
+          "foi separado"
+        ],
+        "type": "Verbo — Nifal (perfeito 3ms)",
+        "singular": "הִבְדִּיל",
+        "stem": "Nifal"
       }
     ],
     "sentences": [
