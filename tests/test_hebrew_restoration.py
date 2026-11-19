@@ -54,7 +54,9 @@ def main():
     with open('data/hebrew_chapters.json', 'r', encoding='utf-8') as f:
         h_data = json.load(f)
 
-    assert len(h_data) == 29, f"Expected 29 Hebrew chapters, got {len(h_data)}"
+    # Lições especiais (como "Prova de amanhã") ficam fora da contagem das lições do Kelley
+    lessons = [c for c in h_data if not c.get('special')]
+    assert len(lessons) == 29, f"Expected 29 Hebrew lessons, got {len(lessons)}"
     total_tokens = sum(sum(len(s.get('tokens', [])) for s in ch.get('sentences', [])) for ch in h_data)
     assert total_tokens >= 900, f"Expected at least 900 tokens in Hebrew, got {total_tokens}"
     print(f"[OK] Hebrew database verified: 29 chapters, {total_tokens} tokens.")

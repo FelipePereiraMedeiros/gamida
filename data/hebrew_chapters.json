@@ -26709,5 +26709,776 @@
         ]
       }
     ]
+  },
+  {
+    "id": "prova_amanha",
+    "title": "Prova de amanhã — Lições IX–XIV",
+    "special": "exam",
+    "notes": "Revisão para a Prova 2 (Hebraico 2): 36 palavras, com o plural e o plural construto dos substantivos.",
+    "items": [
+      {
+        "hebrew": "אִישׁ",
+        "transliteration": "ish",
+        "translations": [
+          "homem"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Gen.2.24"
+        ]
+      },
+      {
+        "hebrew": "אֲנָשִׁים",
+        "transliteration": "anashim",
+        "translations": [
+          "homens"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "אִישׁ"
+      },
+      {
+        "hebrew": "אַנְשֵׁי",
+        "transliteration": "anshei",
+        "translations": [
+          "homens de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "אִישׁ"
+      },
+      {
+        "hebrew": "אִשָּׁה",
+        "transliteration": "isha",
+        "translations": [
+          "mulher"
+        ],
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.2.23"
+        ]
+      },
+      {
+        "hebrew": "נָשִׁים",
+        "transliteration": "nashim",
+        "translations": [
+          "mulheres"
+        ],
+        "type": "Substantivo (f) — plural",
+        "singular": "אִשָּׁה"
+      },
+      {
+        "hebrew": "נְשֵׁי",
+        "transliteration": "neshei",
+        "translations": [
+          "mulheres de"
+        ],
+        "type": "Substantivo (f) — plural construto",
+        "singular": "אִשָּׁה"
+      },
+      {
+        "hebrew": "אָב",
+        "transliteration": "av",
+        "translations": [
+          "pai",
+          "ancestral"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Gen.2.24"
+        ]
+      },
+      {
+        "hebrew": "אָבוֹת",
+        "transliteration": "avot",
+        "translations": [
+          "pais",
+          "antepassados"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "אָב"
+      },
+      {
+        "hebrew": "אֲבוֹת",
+        "transliteration": "avot",
+        "translations": [
+          "pais de",
+          "antepassados de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "אָב"
+      },
+      {
+        "hebrew": "אָח",
+        "transliteration": "ach",
+        "translations": [
+          "irmao",
+          "irmão"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Gen.4.9"
+        ]
+      },
+      {
+        "hebrew": "אַחִים",
+        "transliteration": "achim",
+        "translations": [
+          "irmãos"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "אָח"
+      },
+      {
+        "hebrew": "אֲחֵי",
+        "transliteration": "achei",
+        "translations": [
+          "irmãos de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "אָח"
+      },
+      {
+        "hebrew": "בֵּן",
+        "transliteration": "ben",
+        "translations": [
+          "filho"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Gen.22.2"
+        ]
+      },
+      {
+        "hebrew": "בָּנִים",
+        "transliteration": "banim",
+        "translations": [
+          "filhos"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "בֵּן"
+      },
+      {
+        "hebrew": "בְּנֵי",
+        "transliteration": "benei",
+        "translations": [
+          "filhos de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "בֵּן"
+      },
+      {
+        "hebrew": "בַּת",
+        "transliteration": "bat",
+        "translations": [
+          "filha"
+        ],
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.34.1"
+        ]
+      },
+      {
+        "hebrew": "בָּנוֹת",
+        "transliteration": "banot",
+        "translations": [
+          "filhas"
+        ],
+        "type": "Substantivo (f) — plural",
+        "singular": "בַּת"
+      },
+      {
+        "hebrew": "בְּנוֹת",
+        "transliteration": "benot",
+        "translations": [
+          "filhas de"
+        ],
+        "type": "Substantivo (f) — plural construto",
+        "singular": "בַּת"
+      },
+      {
+        "hebrew": "מֶלֶךְ",
+        "transliteration": "melech",
+        "translations": [
+          "rei"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Ps.24.7"
+        ]
+      },
+      {
+        "hebrew": "מְלָכִים",
+        "transliteration": "melachim",
+        "translations": [
+          "reis"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "מֶלֶךְ"
+      },
+      {
+        "hebrew": "מַלְכֵי",
+        "transliteration": "malchei",
+        "translations": [
+          "reis de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "מֶלֶךְ"
+      },
+      {
+        "hebrew": "נָבִיא",
+        "transliteration": "navi",
+        "translations": [
+          "profeta"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Deut.18.15"
+        ]
+      },
+      {
+        "hebrew": "נְבִיאִים",
+        "transliteration": "neviim",
+        "translations": [
+          "profetas"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "נָבִיא"
+      },
+      {
+        "hebrew": "נְבִיאֵי",
+        "transliteration": "neviei",
+        "translations": [
+          "profetas de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "נָבִיא"
+      },
+      {
+        "hebrew": "עֶבֶד",
+        "transliteration": "eved",
+        "translations": [
+          "servo",
+          "escravo"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Gen.9.25"
+        ]
+      },
+      {
+        "hebrew": "עֲבָדִים",
+        "transliteration": "avadim",
+        "translations": [
+          "servos",
+          "escravos"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "עֶבֶד"
+      },
+      {
+        "hebrew": "עַבְדֵי",
+        "transliteration": "avdei",
+        "translations": [
+          "servos de",
+          "escravos de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "עֶבֶד"
+      },
+      {
+        "hebrew": "עַם",
+        "transliteration": "am",
+        "translations": [
+          "povo"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Ruth.1.16"
+        ]
+      },
+      {
+        "hebrew": "עַמִּים",
+        "transliteration": "ammim",
+        "translations": [
+          "povos"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "עַם"
+      },
+      {
+        "hebrew": "עַמֵּי",
+        "transliteration": "ammei",
+        "translations": [
+          "povos de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "עַם"
+      },
+      {
+        "hebrew": "עִיר",
+        "transliteration": "ir",
+        "translations": [
+          "cidade"
+        ],
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.11.4"
+        ]
+      },
+      {
+        "hebrew": "עָרִים",
+        "transliteration": "arim",
+        "translations": [
+          "cidades"
+        ],
+        "type": "Substantivo (f) — plural",
+        "singular": "עִיר"
+      },
+      {
+        "hebrew": "עָרֵי",
+        "transliteration": "arei",
+        "translations": [
+          "cidades de"
+        ],
+        "type": "Substantivo (f) — plural construto",
+        "singular": "עִיר"
+      },
+      {
+        "hebrew": "אֶרֶץ",
+        "transliteration": "eretz",
+        "translations": [
+          "terra",
+          "pais",
+          "país"
+        ],
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.1.1"
+        ]
+      },
+      {
+        "hebrew": "אֲרָצוֹת",
+        "transliteration": "aratzot",
+        "translations": [
+          "terras",
+          "países"
+        ],
+        "type": "Substantivo (f) — plural",
+        "singular": "אֶרֶץ"
+      },
+      {
+        "hebrew": "אַרְצוֹת",
+        "transliteration": "artzot",
+        "translations": [
+          "terras de",
+          "países de"
+        ],
+        "type": "Substantivo (f) — plural construto",
+        "singular": "אֶרֶץ"
+      },
+      {
+        "hebrew": "בַּיִת",
+        "transliteration": "bayit",
+        "translations": [
+          "casa"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Josh.24.15"
+        ]
+      },
+      {
+        "hebrew": "בָּתִּים",
+        "transliteration": "battim",
+        "translations": [
+          "casas"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "בַּיִת"
+      },
+      {
+        "hebrew": "בָּתֵּי",
+        "transliteration": "battei",
+        "translations": [
+          "casas de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "בַּיִת"
+      },
+      {
+        "hebrew": "יוֹם",
+        "transliteration": "yom",
+        "translations": [
+          "dia"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Gen.1.5"
+        ]
+      },
+      {
+        "hebrew": "יָמִים",
+        "transliteration": "yamim",
+        "translations": [
+          "dias"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "יוֹם"
+      },
+      {
+        "hebrew": "יְמֵי",
+        "transliteration": "yemei",
+        "translations": [
+          "dias de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "יוֹם"
+      },
+      {
+        "hebrew": "קוֹל",
+        "transliteration": "kol",
+        "translations": [
+          "voz"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Gen.3.8"
+        ]
+      },
+      {
+        "hebrew": "קֹלוֹת",
+        "transliteration": "kolot",
+        "translations": [
+          "vozes",
+          "vozes de",
+          "trovões"
+        ],
+        "type": "Substantivo — plural (absoluto e construto iguais)",
+        "singular": "קוֹל"
+      },
+      {
+        "hebrew": "דָּבָר",
+        "transliteration": "davar",
+        "translations": [
+          "palavra",
+          "coisa",
+          "assunto"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Ps.119.105"
+        ]
+      },
+      {
+        "hebrew": "דְּבָרִים",
+        "transliteration": "devarim",
+        "translations": [
+          "palavras",
+          "coisas"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "דָּבָר"
+      },
+      {
+        "hebrew": "דִּבְרֵי",
+        "transliteration": "divrei",
+        "translations": [
+          "palavras de",
+          "coisas de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "דָּבָר"
+      },
+      {
+        "hebrew": "סֵפֶר",
+        "transliteration": "sefer",
+        "translations": [
+          "livro"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Josh.1.8"
+        ]
+      },
+      {
+        "hebrew": "סְפָרִים",
+        "transliteration": "sefarim",
+        "translations": [
+          "livros"
+        ],
+        "type": "Substantivo — plural",
+        "singular": "סֵפֶר"
+      },
+      {
+        "hebrew": "סִפְרֵי",
+        "transliteration": "sifrei",
+        "translations": [
+          "livros de"
+        ],
+        "type": "Substantivo — plural construto",
+        "singular": "סֵפֶר"
+      },
+      {
+        "hebrew": "תּוֹרָה",
+        "transliteration": "tora",
+        "translations": [
+          "lei",
+          "instrucao",
+          "instrução"
+        ],
+        "type": "Substantivo (f)",
+        "refs": [
+          "Ps.1.2"
+        ]
+      },
+      {
+        "hebrew": "תּוֹרוֹת",
+        "transliteration": "torot",
+        "translations": [
+          "leis",
+          "leis de",
+          "instruções"
+        ],
+        "type": "Substantivo (f) — plural (absoluto e construto iguais)",
+        "singular": "תּוֹרָה"
+      },
+      {
+        "hebrew": "כֶּסֶף",
+        "transliteration": "kesef",
+        "translations": [
+          "prata"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Gen.13.2"
+        ]
+      },
+      {
+        "hebrew": "זָהָב",
+        "transliteration": "zahav",
+        "translations": [
+          "ouro"
+        ],
+        "type": "Substantivo",
+        "refs": [
+          "Gen.2.11"
+        ]
+      },
+      {
+        "hebrew": "גָּדוֹל",
+        "transliteration": "gadol",
+        "translations": [
+          "grande"
+        ],
+        "type": "Adjetivo",
+        "refs": [
+          "Gen.1.16"
+        ]
+      },
+      {
+        "hebrew": "גְּדוֹלִים",
+        "transliteration": "gedolim",
+        "translations": [
+          "grandes"
+        ],
+        "type": "Adjetivo — masculino plural",
+        "singular": "גָּדוֹל"
+      },
+      {
+        "hebrew": "טוֹב",
+        "transliteration": "tov",
+        "translations": [
+          "bom",
+          "agradavel"
+        ],
+        "type": "Adjetivo",
+        "refs": [
+          "Gen.1.4"
+        ]
+      },
+      {
+        "hebrew": "טוֹבִים",
+        "transliteration": "tovim",
+        "translations": [
+          "bons"
+        ],
+        "type": "Adjetivo — masculino plural",
+        "singular": "טוֹב"
+      },
+      {
+        "hebrew": "בְּרִית",
+        "transliteration": "brit",
+        "translations": [
+          "alianca",
+          "aliança"
+        ],
+        "type": "Substantivo (f)",
+        "refs": [
+          "Gen.9.13"
+        ]
+      },
+      {
+        "hebrew": "הָלַךְ",
+        "transliteration": "halach",
+        "translations": [
+          "ele caminhou",
+          "foi",
+          "andar"
+        ],
+        "type": "Verbo",
+        "refs": [
+          "Gen.12.4"
+        ]
+      },
+      {
+        "hebrew": "לָקַח",
+        "transliteration": "lakach",
+        "translations": [
+          "ele tomou",
+          "tomar",
+          "pegou"
+        ],
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.15"
+        ]
+      },
+      {
+        "hebrew": "שָׁמַע",
+        "transliteration": "shama",
+        "translations": [
+          "ele ouviu",
+          "escutar"
+        ],
+        "type": "Verbo",
+        "refs": [
+          "Deut.6.4"
+        ]
+      },
+      {
+        "hebrew": "שָׁמַר",
+        "transliteration": "shamar",
+        "translations": [
+          "ele guardou",
+          "guardar"
+        ],
+        "type": "Verbo",
+        "refs": [
+          "Gen.2.15"
+        ]
+      },
+      {
+        "hebrew": "כָּתַב",
+        "transliteration": "katav",
+        "translations": [
+          "escrever",
+          "ele escreveu"
+        ],
+        "type": "Verbo",
+        "refs": [
+          "Exod.34.28"
+        ]
+      },
+      {
+        "hebrew": "זָכַר",
+        "transliteration": "zachar",
+        "translations": [
+          "lembrar",
+          "lembrar-se",
+          "ele se lembrou"
+        ],
+        "type": "Verbo",
+        "refs": [
+          "Gen.8.1"
+        ]
+      },
+      {
+        "hebrew": "מָלַךְ",
+        "transliteration": "malach",
+        "translations": [
+          "ele reinou",
+          "reinar"
+        ],
+        "type": "Verbo",
+        "refs": [
+          "Exod.15.18"
+        ]
+      },
+      {
+        "hebrew": "נָתַן",
+        "transliteration": "natan",
+        "translations": [
+          "dar",
+          "ele deu"
+        ],
+        "type": "Verbo",
+        "refs": [
+          "Gen.1.29"
+        ]
+      },
+      {
+        "hebrew": "עָשָׂה",
+        "transliteration": "asah",
+        "translations": [
+          "fazer",
+          "ele fez"
+        ],
+        "type": "Verbo",
+        "refs": [
+          "Gen.1.31"
+        ]
+      },
+      {
+        "hebrew": "בָּנָה",
+        "transliteration": "banah",
+        "translations": [
+          "ele construiu",
+          "construir",
+          "edificar"
+        ],
+        "type": "Verbo",
+        "refs": [
+          "Ps.127.1"
+        ]
+      },
+      {
+        "hebrew": "כָּרַת",
+        "transliteration": "karat",
+        "translations": [
+          "ele cortou",
+          "ele destruiu",
+          "cortar"
+        ],
+        "type": "Verbo",
+        "refs": [
+          "Gen.15.18"
+        ]
+      },
+      {
+        "hebrew": "דִּבֶּר",
+        "transliteration": "dibber",
+        "translations": [
+          "ele falou",
+          "falar"
+        ],
+        "type": "Verbo (Pi'el) — Kelley: [דבר]",
+        "refs": [
+          "Gen.12.4"
+        ]
+      },
+      {
+        "hebrew": "הִבְדִּיל",
+        "transliteration": "hivdil",
+        "translations": [
+          "ele separou",
+          "ele dividiu",
+          "separar"
+        ],
+        "type": "Verbo (Hif'il) — Kelley: [בדל]",
+        "refs": [
+          "Gen.1.4"
+        ]
+      }
+    ],
+    "sentences": []
   }
 ]

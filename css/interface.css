@@ -1671,3 +1671,33 @@ body.is-alphabet-practice .app-stat--mastery { display: none; }
 .profile-fold:not([open]) { gap: 0; }
 .profile-fold[open] .profile-fold__hint { display: none; }
 .profile-goal-slot { display: contents; }
+
+/* "Prova de amanhã": botão do menu e aviso (js/modules/exam-mode.js) */
+.nav-item--exam { color: #fbbf24; }
+.nav-item--exam.is-exam-on { background: rgba(251, 191, 36, 0.14); color: #fde68a; }
+.exam-alert {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+}
+.exam-alert__box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 26rem;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-top: 4px solid #fbbf24;
+  border-radius: 1rem;
+  background: var(--surface-1);
+}
+.exam-alert__title { margin: 0; color: var(--text-strong); font-size: 1.25rem; font-weight: 800; }
+.exam-alert__text { margin: 0; color: var(--text); font-size: 0.9375rem; line-height: 1.5; }
+.exam-alert__text--soft { color: var(--text-soft); font-size: 0.8125rem; }
+.exam-alert__row { display: flex; flex-wrap: wrap; gap: 0.5rem; }

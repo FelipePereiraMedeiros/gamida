@@ -158,3 +158,12 @@ Cada palavra do hebraico pode trazer `refs`: versículos onde ela aparece, para 
 - **Origem:** 520 palavras das lições III a XXXI, a partir da lista de vocabulário do Kelley usada em sala. As 12 linhas da lista que não correspondem a uma palavra do Gamida ficaram de fora (artigo, conjunção, preposições e marca do objeto, que são gramática; e formas de outro tronco ou outra palavra).
 - **Conferência:** `tests/25-bible-refs.test.js` confere o formato, o livro, o capítulo e algumas referências conhecidas.
 - O grego ainda não tem referências.
+
+## "Prova de amanhã" (modo temporário)
+
+Revisão para a Prova 2 de Hebraico 2 (lições IX–XIV), só no hebraico.
+
+- **Dados:** uma lição especial no fim de `data/hebrew_chapters.json` (`"id": "prova_amanha"`, `"special": "exam"`). Ela traz as 36 palavras da revisão, copiadas das lições (mesmo termo, então o treino conta no progresso de cada palavra). Os 16 substantivos ganham o plural e o plural construto como palavras próprias ("homens" e "homens de"). קוֹל e תּוֹרָה ganham uma forma só, porque o plural absoluto e o construto são iguais; os adjetivos ganham o masculino plural. כֶּסֶף, זָהָב e בְּרִית não têm plural em uso no hebraico bíblico. Cada forma nova traz `singular` com a palavra de origem.
+- **Onde aparece:** botão no menu, abaixo de Perfil (`#nav-btn-exam`), e um aviso uma vez por aparelho com "Treinar agora" (`js/modules/exam-mode.js`). Os dois só existem no hebraico e enquanto a lição existir.
+- **Fora de:** Crônicas do Escriba e Caminho do domínio (filtro `!c.special`).
+- **Para retirar depois da prova:** apague a lição do JSON e rode `node scripts/build-bundle.js`; o botão e o aviso somem sozinhos. Os testes `tests/e2e/15-prova-amanha.e2e.js` saem junto.
