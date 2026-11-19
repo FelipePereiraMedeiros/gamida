@@ -109,6 +109,7 @@ Os capítulos ficam guardados no aparelho (IndexedDB, com cópia no localStorage
 - **Capítulo editado pelo aluno** (`_userModified`, no editor de capítulos) **ou criado por ele** (`_custom`): as edições ficam, e `syncItemClassification` acrescenta o que a versão nova trouxe. Entram palavras que faltam, campos novos das palavras (como `refs`) onde estiverem vazios, a classificação gramatical, e tabelas e frases novas.
 - **Favoritar não é editar:** até a v2.48, favoritar uma palavra marcava o capítulo como editado, e ele parava de receber palavras novas. Era isso que fazia faltar palavras na prática e na caçada completa das Crônicas em alguns capítulos. Capítulos já marcados assim recebem as palavras que faltam na próxima atualização.
 - Uma palavra que o aluno apagou de um capítulo padrão no editor volta na atualização seguinte.
+- **Lições de sistema temporárias** (marcadas com `"special"`, como foi a "Prova de amanhã" da Prova 2 de Hebraico 2): quando saem do padrão, saem também dos aparelhos na atualização seguinte. Capítulos criados pelo aluno continuam.
 
 ## Navegação (onde fica cada coisa)
 
@@ -158,26 +159,3 @@ Cada palavra do hebraico pode trazer `refs`: versículos onde ela aparece, para 
 - **Origem:** 520 palavras das lições III a XXXI, a partir da lista de vocabulário do Kelley usada em sala. As 12 linhas da lista que não correspondem a uma palavra do Gamida ficaram de fora (artigo, conjunção, preposições e marca do objeto, que são gramática; e formas de outro tronco ou outra palavra).
 - **Conferência:** `tests/25-bible-refs.test.js` confere o formato, o livro, o capítulo e algumas referências conhecidas.
 - O grego ainda não tem referências.
-
-## "Prova de amanhã" (MODO EMERGENCIAL, sai depois da prova)
-
-Revisão para a Prova 2 de Hebraico 2 (lições IX–XIV), só no hebraico. Tudo dele fica marcado com "Prova de amanhã" ou `ExamMode`.
-
-- **Dados** (lição `prova_amanha`, `"special": "exam"`, no fim de `data/hebrew_chapters.json`):
-  - as 36 palavras da revisão (copiadas das lições, então o treino conta no progresso de cada palavra), com o plural e o plural construto dos substantivos (`singular` aponta a palavra de origem). קוֹל e תּוֹרָה têm plural e construto iguais; os adjetivos têm o masculino plural; כֶּסֶף, זָהָב e בְּרִית não têm plural em uso;
-  - os verbos da lista nos troncos derivados de uso comum (perfeito 3ms; `stem` com o tronco e `singular` com o verbo; as formas dos slides que são troncos desses verbos têm `stemOf`);
-  - 65 formas gramaticais dos slides da revisão (`group: "gramatica"`): pronomes, demonstrativos, construto, sufixos (סוּס e outros), אֵת, perfeito Qal de שָׁמַר e troncos;
-  - as 217 frases da lista "Frases para a Prova 2" (`kind` "nominal" ou "verbal", `label` N1…V109, `ref`, `key` com a chave do gabarito, `noAnalysis`, tokens mínimos), tiradas do PDF do professor com o hebraico conferido pelas posições das letras;
-  - as frases dos exercícios do Kelley com essas palavras (`kind: "kelley"`).
-- **Interface** (`js/modules/exam-mode.js`): botão no menu abaixo de Perfil; aviso uma vez por aparelho (a chave do aviso muda quando o modo ganha conteúdo); barra no Estudar com Simulado (10 frases: 5 nominais e 5 verbais), Frases da prova, As 36 palavras e Vocabulário I–XIV (todas as lições até a XIV); colinha recolhível com o método, os quadros e os lembretes; filtros nas Opções: "O que treinar" (As 36 com todas as formas, Raiz, Plural, Construto, Troncos, Gramática dos slides ou Tudo, guardado em `gamida_exam_form`) e "Frases" (Todas, Nominais, Verbais, Kelley, Simulado, em `gamida_exam_phrases`); a chave do gabarito depois de cada resposta (`#feedback-key`).
-- **Fora de:** Crônicas do Escriba e Caminho do domínio (filtro `!c.special`).
-- **Para retirar depois da prova:**
-  1. `data/hebrew_chapters.json`: apagar a lição `prova_amanha` (a última) e rodar `node scripts/build-bundle.js`.
-  2. Apagar `js/modules/exam-mode.js` e `tests/e2e/15-prova-amanha.e2e.js`.
-  3. `index.html`: tirar o `<script>` do exam-mode, o botão `#nav-btn-exam`, a seção `#exam-cheatsheet`, os blocos `#practice-form-container` e `#practice-phrases-container` e o `#feedback-key`.
-  4. `js/app.js` (`initApp`, `switchTab`, `toggleLanguage`, `changeGlobalChapter`, `setExerciseMode`), `js/screens/practice.js` (`buildPracticeQueue`, `updatePracticeActionButtonToNext`, `resetQuestionMeta`) e `js/modules/ui.js` (`updatePracticeOptionsSummary`): tirar as chamadas a `window.ExamMode`.
-  5. `css/interface.css`: tirar os blocos "Prova de amanhã" (`.nav-item--exam`, `.exam-alert*`, `.exam-bar*`, `.exam-cheat*`, `.feedback-key`).
-  6. `tests/e2e/lib.js`: tirar a semente do aviso e a opção `examAlert`. `tests/24-today.test.js`: voltar a lista do menu às cinco áreas.
-  7. Pode ficar (genérico, sem efeito sem lição especial): `!c.special` em `mastery-path.js` e `scribe-rules.js`, `storyOnly` em `tests/21-scribe-chronicles.test.js`, a contagem em `tests/test_hebrew_restoration.py`, `noAnalysis` em `practice.js`, `.seg--wrap` e o botão de transliteração escondido quando o item não tem transliteração.
-  8. Nos aparelhos, a lição some sozinha na atualização seguinte.
-  9. Subir a versão e rodar `npm run test:all`.

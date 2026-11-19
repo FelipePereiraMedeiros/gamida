@@ -233,6 +233,32 @@ suite.test('Favoritar uma palavra não congela o capítulo na versão antiga', (
   assert.isFalse(fn.includes('_userModified = true'), 'toggleItemFavorite ainda marca o capítulo como editado');
 });
 
+suite.test('Lição de sistema temporária ("special") sai do aparelho quando deixa o padrão; capítulo do aluno fica', async () => {
+  const loader = require('../js/data-loader.js');
+  const defaults = [{ id: 'kelley_01', title: 'Lição I', items: [{ hebrew: 'א', translations: ['alef'], type: 'Consoante' }] }];
+  const stored = [
+    ...defaults,
+    { id: 'prova_amanha', title: 'Prova de amanhã', special: 'exam', items: [{ hebrew: 'אִישׁ', translations: ['homem'], type: 'Substantivo' }] },
+    { id: 'meu_capitulo', title: 'Meu capítulo', _custom: true, items: [{ hebrew: 'בַּיִת', translations: ['casa'], type: 'Substantivo' }] },
+  ];
+  const mem = {};
+  const orig = { getItem: loader.storage.getItem, setItem: loader.storage.setItem, fetch: loader.fetchDefaultChapters, alpha: loader.hasAlphabetChapter };
+  loader.storage.getItem = async (k) => (k === 'gamida_hebrew_chapters' ? JSON.stringify(stored) : k === 'gamida_data_version_hebrew' ? '0.0.1' : mem[k] || null);
+  loader.storage.setItem = async (k, v) => { mem[k] = v; };
+  loader.fetchDefaultChapters = async () => JSON.parse(JSON.stringify(defaults));
+  loader.hasAlphabetChapter = () => true;
+  try {
+    const ids = (await loader.loadChapters('hebrew')).map((c) => c.id);
+    assert.isFalse(ids.includes('prova_amanha'), 'a lição temporária ficou no aparelho');
+    assert.isTrue(ids.includes('meu_capitulo'), 'o capítulo do aluno sumiu');
+  } finally {
+    loader.storage.getItem = orig.getItem;
+    loader.storage.setItem = orig.setItem;
+    loader.fetchDefaultChapters = orig.fetch;
+    loader.hasAlphabetChapter = orig.alpha;
+  }
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

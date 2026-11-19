@@ -232,11 +232,6 @@ function buildPracticeQueue() {
       chapItems = [...(chap.items || [])];
     }
 
-    // Prova de amanhã (modo emergencial): filtros "O que treinar" e "Frases"
-    if (typeof window !== "undefined" && window.ExamMode) {
-      chapItems = window.ExamMode.filterItems(chap, chapItems, AppState.exerciseMode);
-    }
-
     // Filtro por tipo de palavra (quando em Digitação e categoria diferente de 'all')
     if (AppState.exerciseMode === "typing" && AppState.practiceCategory && AppState.practiceCategory !== "all") {
       chapItems = chapItems.filter((item) => matchItemCategory(item, AppState.practiceCategory));
@@ -322,8 +317,6 @@ function resetPracticeActionButtons() {
 function updatePracticeActionButtonToNext() {
   // Respondida a questão, a classificação já não é dica: aparece junto da correção
   showQuestionMeta();
-  // Prova de amanhã (modo emergencial): a chave do gabarito
-  if (typeof window !== "undefined" && window.ExamMode) window.ExamMode.showKey(AppState.currentQuestion);
   ensureDOM();
   AppState.isPracticeAnswered = true;
 
@@ -630,7 +623,7 @@ function renderCurrentQuestion() {
   if (DOM.btnHint) DOM.btnHint.classList.toggle("hidden", showsGloss || !AppState.currentQuestion.transliteration);
   if (DOM.banner) DOM.banner.classList.add("hidden");
 
-  const isSentenceWithAnalysis = AppState.currentQuestion && !AppState.currentQuestion.noAnalysis &&
+  const isSentenceWithAnalysis = AppState.currentQuestion &&
     (AppState.language === "hebrew" || AppState.language === "greek") &&
     ((AppState.currentQuestion.tokens && AppState.currentQuestion.tokens.length > 0) ||
       AppState.currentQuestion.type === "Frase" ||
@@ -715,7 +708,6 @@ const metaNodes = () => (typeof document === "undefined" ? {} : {
 /** Nova questão: a dica volta a ficar escondida. Sem nada a dizer (só "Frase"), nem o botão aparece. */
 function resetQuestionMeta() {
   const { info, btn, badge } = metaNodes();
-  if (typeof window !== "undefined" && window.ExamMode) window.ExamMode.hideKey();
   if (!info || !btn) return;
   const type = (AppState.currentQuestion && AppState.currentQuestion.type) || "";
   const onlyObvious = /^(Frase|Expressão)$/.test(type) && (!badge || badge.classList.contains("hidden"));
@@ -1063,7 +1055,7 @@ function checkPracticeAnswer(userAnswer, pickedOption) {
   // Transforma o botão "Verificar" em "Próxima Questão" e ajusta estado
   updatePracticeActionButtonToNext();
 
-  const isSentenceWithAnalysis = AppState.currentQuestion && !AppState.currentQuestion.noAnalysis &&
+  const isSentenceWithAnalysis = AppState.currentQuestion &&
     (AppState.language === "hebrew" || AppState.language === "greek") &&
     ((AppState.currentQuestion.tokens && AppState.currentQuestion.tokens.length > 0) ||
       AppState.currentQuestion.type === "Frase" ||

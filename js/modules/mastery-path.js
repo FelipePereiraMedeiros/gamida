@@ -25,8 +25,7 @@ const isAlphabetChapter = (typeof window !== "undefined" && window.isAlphabetCha
 /** Capítulos que entram no caminho: com termos e fora do alfabeto, na ordem do livro */
 function getPathChapters(chapters) {
   return (Array.isArray(chapters) ? chapters : []).filter(
-    // Lições especiais (como "Prova de amanhã") não entram na ordem do caminho
-    (c) => c && !c.special && !isAlphabetChapter(c) && Array.isArray(c.items) && c.items.length > 0,
+    (c) => c && !isAlphabetChapter(c) && Array.isArray(c.items) && c.items.length > 0,
   );
 }
 

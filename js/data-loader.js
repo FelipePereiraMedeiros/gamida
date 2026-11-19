@@ -9,7 +9,7 @@
 
 const DataLoader = {
   get VERSION() {
-    return (typeof window !== "undefined" && window.APP_VERSION) || "2.55.0";
+    return (typeof window !== "undefined" && window.APP_VERSION) || "2.56.0";
   },
   cache: {},
 
@@ -452,7 +452,8 @@ const DataLoader = {
 
         // 2. Preserva capítulos novos adicionados pelo usuário
         const defaultIds = new Set(defaults.map((c) => c && c.id));
-        const customChapters = parsedStored.filter((c) => c && !defaultIds.has(c.id));
+        // Lições de sistema temporárias ("special", como a antiga "Prova de amanhã") saem quando deixam o padrão
+        const customChapters = parsedStored.filter((c) => c && !defaultIds.has(c.id) && !c.special);
         if (customChapters.length > 0) {
           chapters = [...chapters, ...customChapters];
           console.info(`Migração de versão: ${customChapters.length} capítulo(s) customizado(s) preservado(s).`);

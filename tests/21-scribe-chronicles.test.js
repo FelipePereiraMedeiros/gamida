@@ -9,8 +9,6 @@ const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 
 const suite = new TestSuite('Módulo 21: Crônicas do Escriba');
 const { html, appJs, hebrewData, greekData } = loadSourceFiles();
-// Lições especiais (como "Prova de amanhã") não são capítulos da história
-const storyOnly = (chapters) => chapters.filter((c) => !c.special);
 const Scribe = require('../js/modules/scribe-chronicles.js');
 const Campaign = require('../js/modules/scribe-campaign.js');
 const Lore = require('../js/modules/scribe-lore.js');
@@ -22,7 +20,7 @@ const LANGS = [['hebrew', hebrewData, Campaign.HEBREW], ['greek', greekData, Cam
 suite.test('A campanha tem um capítulo próprio para cada lição, nos dois idiomas', () => {
   LANGS.forEach(([language, chapters, table]) => {
     const campaign = Scribe.buildCampaign(chapters, language);
-    assert.equal(campaign.length, storyOnly(chapters).length, `Toda lição de ${language} vira capítulo`);
+    assert.equal(campaign.length, chapters.length, `Toda lição de ${language} vira capítulo`);
     campaign.forEach(({ chapter, meta, index }) => {
       assert.equal(meta, table[chapter.id], `Lição sem capítulo próprio: ${chapter.title}`);
       ['city', 'native', 'boss', 'story'].forEach((field) => assert.isTrue(!!meta[field], `${chapter.id} sem ${field}`));
@@ -247,7 +245,7 @@ suite.test('Progresso corrompido é saneado e o backup só traz avanço', () => 
 
 suite.test('Toda lição tem a sua parte da história, nos dois idiomas', () => {
   [['hebrew', hebrewData, Lore.HEBREW], ['greek', greekData, Lore.GREEK]].forEach(([language, chapters, table]) => {
-    storyOnly(chapters).forEach((chapter) => {
+    chapters.forEach((chapter) => {
       const lore = Lore.forChapter(language, chapter.id);
       assert.equal(lore, table[chapter.id], `Lição sem história própria: ${chapter.title}`);
       ['taunt', 'epilogue'].forEach((field) => {
@@ -310,7 +308,7 @@ suite.test('Todos os capítulos ficam abertos para revisão, na ordem das liçõ
   assert.isTrue(start > 0 && source.slice(start, start + 320).includes('return true;'), 'Nenhum capítulo pode ficar bloqueado');
   [['hebrew', hebrewData], ['greek', greekData]].forEach(([language, chapters]) => {
     const campaign = Scribe.buildCampaign(chapters, language);
-    assert.deepEqual(campaign.map((c) => c.chapter.id), storyOnly(chapters).map((c) => c.id), 'Capítulos na ordem das lições');
+    assert.deepEqual(campaign.map((c) => c.chapter.id), chapters.map((c) => c.id), 'Capítulos na ordem das lições');
     campaign.forEach(({ chapter }, index) => {
       const waves = Scribe.buildWaves(chapter, campaign.slice(0, index).map((c) => c.chapter), {});
       waves.flat().filter((w) => !w.old).forEach((w) => assert.isTrue(chapter.items.includes(w.item), 'Criaturas novas são da própria lição'));

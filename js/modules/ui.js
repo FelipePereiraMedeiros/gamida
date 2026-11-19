@@ -546,10 +546,6 @@ function updatePracticeOptionsSummary() {
   const parts = [count > 1 ? `${count} capítulos` : "1 capítulo"];
   if (count > 1) parts.push(AppState.mixChapters ? "Lições misturadas" : AppState.chapterOrder === "desc" ? "Última ➔ Primeira" : "Primeira ➔ Última");
 
-  if (typeof window !== "undefined" && window.ExamMode) {
-    const form = window.ExamMode.formSummary();
-    if (form) parts.push(form);
-  }
   const select = document.getElementById("practice-category-select");
   if (AppState.exerciseMode === "typing" && AppState.practiceCategory && AppState.practiceCategory !== "all" && select && select.selectedOptions && select.selectedOptions[0]) {
     parts.push(select.selectedOptions[0].textContent.replace(/\s*\(\d+\)\s*$/, ""));
