@@ -1701,3 +1701,39 @@ body.is-alphabet-practice .app-stat--mastery { display: none; }
 .exam-alert__text { margin: 0; color: var(--text); font-size: 0.9375rem; line-height: 1.5; }
 .exam-alert__text--soft { color: var(--text-soft); font-size: 0.8125rem; }
 .exam-alert__row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.exam-alert__list { display: flex; flex-direction: column; gap: 0.375rem; margin: 0; padding-left: 1.1rem; list-style: disc; color: var(--text); font-size: 0.9375rem; line-height: 1.45; }
+
+/* Prova de amanhã (MODO EMERGENCIAL): barra de atalhos, colinha e chave do gabarito */
+.seg--wrap { display: flex; flex-wrap: wrap; }
+.exam-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid #fbbf24;
+  border-radius: 1rem;
+  background: var(--surface-1);
+}
+.exam-bar.hidden { display: none; }
+.exam-bar__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; }
+.exam-bar__head b { color: var(--text-strong); font-size: 1rem; }
+.exam-bar__head span { color: var(--text-soft); font-size: 0.8125rem; }
+.exam-bar__actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.exam-bar__actions .answer-btn, .exam-bar__actions .btn-secondary { min-height: 2.5rem; font-size: 0.875rem; }
+.exam-cheat > summary { min-height: 2.5rem; display: flex; align-items: center; color: #fbbf24; font-size: 0.9375rem; font-weight: 700; cursor: pointer; }
+.exam-cheat__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0.625rem; padding-top: 0.5rem; }
+.exam-cheat__card { padding: 0.625rem 0.75rem; border: 1px solid var(--line); border-radius: 0.75rem; background: var(--surface-0); color: var(--text); font-size: 0.875rem; line-height: 1.5; }
+.exam-cheat__card h4 { margin: 0 0 0.375rem; color: var(--text-strong); font-size: 0.9375rem; font-weight: 800; }
+.exam-cheat__card p { margin: 0.25rem 0 0; }
+.exam-cheat__card ol { margin: 0; padding-left: 1.1rem; list-style: decimal; }
+.exam-cheat__card table { width: 100%; border-collapse: collapse; }
+.exam-cheat__card td, .exam-cheat__card th { padding: 0.125rem 0.25rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.exam-cheat__card th { color: var(--text-soft); font-size: 0.75rem; font-weight: 600; }
+.exam-cheat__card .hebrew-text { font-size: 1.15rem; direction: rtl; unicode-bidi: isolate; }
+.exam-cheat__card--tips { border-color: rgba(251, 191, 36, 0.5); }
+.feedback-key .feedback-tip__label { color: #fbbf24; }
+@media (max-width: 420px) {
+  .exam-cheat__grid { grid-template-columns: 1fr; }
+  .exam-bar__actions > button { flex: 1 1 calc(50% - 0.5rem); }
+}

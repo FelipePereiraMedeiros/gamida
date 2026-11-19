@@ -254,6 +254,107 @@
       <section id="tab-practice" class="flex-1 flex flex-col gap-4">
         <!-- Painel "Hoje": o próximo passo do aluno (js/modules/today.js) -->
         <div id="today-panel" class="today hidden" aria-label="Seu próximo passo hoje"></div>
+        <!-- Prova de amanhã (MODO EMERGENCIAL, js/modules/exam-mode.js): atalhos e colinha da revisão -->
+        <section id="exam-cheatsheet" class="exam-bar hidden" aria-label="Prova 2: atalhos e colinha">
+          <div class="exam-bar__head">
+            <b>Prova 2 · Lições IX–XIV</b>
+            <span>10 frases na prova: 5 nominais e 5 verbais</span>
+          </div>
+          <div class="exam-bar__actions">
+            <button type="button" class="answer-btn" data-on-click="startExamSimulado()">Simulado (10 frases)</button>
+            <button type="button" class="btn-secondary" data-on-click="setExamPhrases('all')">Frases da prova</button>
+            <button type="button" class="btn-secondary" data-on-click="setExerciseMode('typing')">Palavras e formas</button>
+            <button type="button" class="btn-secondary" data-on-click="openExamFullVocab()">Vocabulário I–XIV</button>
+          </div>
+          <details class="exam-cheat">
+            <summary>Colinha da revisão</summary>
+            <div class="exam-cheat__grid">
+              <div class="exam-cheat__card">
+                <h4>Método: 4 passos</h4>
+                <ol>
+                  <li><b>Tem verbo?</b> Se não, é frase nominal: supra “ser/estar”.</li>
+                  <li><b>Quem é o sujeito?</b> Pronome, substantivo ou a terminação do verbo.</li>
+                  <li><b>Tem <span class="hebrew-text">אֶת</span>?</b> Marca o objeto direto definido (pode vir antes do verbo).</li>
+                  <li><b>Construtos e sufixos:</b> “de…”, “meu, teu…”: pessoa, gênero e número.</li>
+                </ol>
+              </div>
+              <div class="exam-cheat__card">
+                <h4>Atributivo × predicativo</h4>
+                <p><span class="hebrew-text">הַדָּבָר הַטּוֹב</span> “a boa palavra”: depois do substantivo, concorda até no artigo.</p>
+                <p><span class="hebrew-text">טוֹב הַדָּבָר</span> “a palavra é boa”: adjetivo sem artigo = frase nominal.</p>
+              </div>
+              <div class="exam-cheat__card">
+                <h4>Pronomes</h4>
+                <table><tr><td>eu</td><td><span class="hebrew-text">אֲנִי · אָנֹכִי</span></td><td>nós</td><td><span class="hebrew-text">אֲנַחְנוּ</span></td></tr>
+                <tr><td>tu (m)</td><td><span class="hebrew-text">אַתָּה</span></td><td>vós (m)</td><td><span class="hebrew-text">אַתֶּם</span></td></tr>
+                <tr><td>tu (f)</td><td><span class="hebrew-text">אַתְּ</span></td><td>vós (f)</td><td><span class="hebrew-text">אַתֵּן</span></td></tr>
+                <tr><td>ele</td><td><span class="hebrew-text">הוּא</span></td><td>eles</td><td><span class="hebrew-text">הֵם · הֵמָּה</span></td></tr>
+                <tr><td>ela</td><td><span class="hebrew-text">הִיא</span></td><td>elas</td><td><span class="hebrew-text">הֵן · הֵנָּה</span></td></tr></table>
+                <p>No fim da frase, “nós” pode vir como <span class="hebrew-text">אֲנָחְנוּ</span> (pausa).</p>
+              </div>
+              <div class="exam-cheat__card">
+                <h4>Demonstrativos</h4>
+                <p>Perto: <span class="hebrew-text">הַזֶּה</span> este · <span class="hebrew-text">הַזֹּאת</span> esta · <span class="hebrew-text">הָאֵלֶּה</span> estes, estas</p>
+                <p>Longe: <span class="hebrew-text">הַהוּא</span> aquele · <span class="hebrew-text">הַהִיא</span> aquela · <span class="hebrew-text">הָהֵם · הָהֵן</span> aqueles, aquelas</p>
+                <p>Sem artigo e antes do substantivo forma frase: <span class="hebrew-text">זֶה הַסֵּפֶר</span> “este é o livro”.</p>
+              </div>
+              <div class="exam-cheat__card">
+                <h4>Construto</h4>
+                <p><span class="hebrew-text">בֵּית הַמֶּלֶךְ</span> “a casa do rei”: o construto nunca leva artigo; o último termo define a cadeia.</p>
+                <table><tr><td><span class="hebrew-text">דָּבָר</span> → <span class="hebrew-text">דְּבַר</span></td><td>qamets pretônico cai</td></tr>
+                <tr><td><span class="hebrew-text">בַּיִת</span> → <span class="hebrew-text">בֵּית</span></td><td>ditongo vira ê</td></tr>
+                <tr><td><span class="hebrew-text">תּוֹרָה</span> → <span class="hebrew-text">תּוֹרַת</span></td><td>feminino: -āh vira -at</td></tr>
+                <tr><td><span class="hebrew-text">סוּסִים</span> → <span class="hebrew-text">סוּסֵי</span></td><td>plural: -îm vira -ê</td></tr>
+                <tr><td><span class="hebrew-text">אֲנָשִׁים</span> → <span class="hebrew-text">אַנְשֵׁי</span></td><td>plural irregular de <span class="hebrew-text">אִישׁ</span></td></tr></table>
+              </div>
+              <div class="exam-cheat__card">
+                <h4>Sufixos: olhe o yod</h4>
+                <table><tr><th></th><th>um cavalo</th><th>cavalos</th></tr>
+                <tr><td>meu</td><td><span class="hebrew-text">סוּסִי</span></td><td><span class="hebrew-text">סוּסַי</span></td></tr>
+                <tr><td>teu (m)</td><td><span class="hebrew-text">סוּסְךָ</span></td><td><span class="hebrew-text">סוּסֶיךָ</span></td></tr>
+                <tr><td>teu (f)</td><td><span class="hebrew-text">סוּסֵךְ</span></td><td><span class="hebrew-text">סוּסַיִךְ</span></td></tr>
+                <tr><td>dele</td><td><span class="hebrew-text">סוּסוֹ</span></td><td><span class="hebrew-text">סוּסָיו</span></td></tr>
+                <tr><td>dela</td><td><span class="hebrew-text">סוּסָהּ</span></td><td><span class="hebrew-text">סוּסֶיהָ</span></td></tr>
+                <tr><td>nosso</td><td><span class="hebrew-text">סוּסֵנוּ</span></td><td><span class="hebrew-text">סוּסֵינוּ</span></td></tr>
+                <tr><td>vosso</td><td><span class="hebrew-text">סוּסְכֶם</span></td><td><span class="hebrew-text">סוּסֵיכֶם</span></td></tr>
+                <tr><td>deles</td><td><span class="hebrew-text">סוּסָם</span></td><td><span class="hebrew-text">סוּסֵיהֶם</span></td></tr></table>
+                <p>Yod antes do sufixo = plural. Com sufixo, o substantivo é definido.</p>
+              </div>
+              <div class="exam-cheat__card">
+                <h4>Perfeito Qal</h4>
+                <table><tr><td>ele</td><td><span class="hebrew-text">שָׁמַר</span></td><td>eles, elas</td><td><span class="hebrew-text">שָׁמְרוּ</span></td></tr>
+                <tr><td>ela</td><td><span class="hebrew-text">שָׁמְרָה</span></td><td>vós (m)</td><td><span class="hebrew-text">שְׁמַרְתֶּם</span></td></tr>
+                <tr><td>tu (m)</td><td><span class="hebrew-text">שָׁמַרְתָּ</span></td><td>vós (f)</td><td><span class="hebrew-text">שְׁמַרְתֶּן</span></td></tr>
+                <tr><td>tu (f)</td><td><span class="hebrew-text">שָׁמַרְתְּ</span></td><td>nós</td><td><span class="hebrew-text">שָׁמַרְנוּ</span></td></tr>
+                <tr><td>eu</td><td><span class="hebrew-text">שָׁמַרְתִּי</span></td><td></td><td></td></tr></table>
+                <p>tu: <span class="hebrew-text">ךָ</span> e <span class="hebrew-text">תָּ</span> · nós: <span class="hebrew-text">נוּ</span> e <span class="hebrew-text">נוּ</span> · vós: <span class="hebrew-text">כֶם</span> e <span class="hebrew-text">תֶּם</span></p>
+              </div>
+              <div class="exam-cheat__card">
+                <h4>Radar dos troncos</h4>
+                <table><tr><td>Qal</td><td><span class="hebrew-text">קָטַל</span></td><td>simples: “matou”</td></tr>
+                <tr><td>Nifal</td><td><span class="hebrew-text">נִקְטַל</span></td><td>prefixo <span class="hebrew-text">נִ</span>: passivo, “foi morto”</td></tr>
+                <tr><td>Piel</td><td><span class="hebrew-text">קִטֵּל</span></td><td>dagesh na 2ª radical: intensivo</td></tr>
+                <tr><td>Hifil</td><td><span class="hebrew-text">הִקְטִיל</span></td><td>prefixo <span class="hebrew-text">הִ</span>: causativo, “fez matar”</td></tr></table>
+              </div>
+              <div class="exam-cheat__card">
+                <h4><span class="hebrew-text">אֵת</span> tem dois usos</h4>
+                <p>Marca de objeto (não se traduz): <span class="hebrew-text">שָׁמַר אֶת־הַתּוֹרָה</span> “guardou a lei”.</p>
+                <p>Preposição “com”: <span class="hebrew-text">אִתּוֹ</span> “com ele” · <span class="hebrew-text">אִתָּנוּ</span> “conosco”.</p>
+                <p><span class="hebrew-text">אֶתְכֶם</span> “vos” (objeto) × <span class="hebrew-text">אִתְּכֶם</span> “convosco”.</p>
+              </div>
+              <div class="exam-cheat__card exam-cheat__card--tips">
+                <h4>Cinco lembretes para a prova</h4>
+                <ol>
+                  <li>Leia a frase inteira antes de traduzir.</li>
+                  <li>Procure o verbo. Sem verbo, supra “ser” ou “estar”.</li>
+                  <li>Confira pessoa, gênero e número na terminação e no sufixo.</li>
+                  <li>Yod antes do sufixo: substantivo no plural.</li>
+                  <li><span class="hebrew-text">נִ</span>: Nifal (passivo) · dagesh na 2ª radical: Piel · <span class="hebrew-text">הִ</span>: Hifil (causativo).</li>
+                </ol>
+              </div>
+            </div>
+          </details>
+        </section>
         <!-- Barra da sessão: modo sempre à vista; o restante fica em "Opções" -->
         <div id="practice-control-bar" class="session-bar">
           <!-- Controles Padrão (Capítulos 2+) -->
@@ -358,14 +459,27 @@
                 </div>
               </div>
 
-              <!-- Prova de amanhã: estudar só a raiz, só o plural, só o construto ou tudo (js/modules/exam-mode.js) -->
+              <!-- Prova de amanhã (MODO EMERGENCIAL, js/modules/exam-mode.js): o que treinar -->
               <div id="practice-form-container" class="hidden">
-                <span class="field-label">Forma das palavras</span>
-                <div class="seg" role="group" aria-label="Forma das palavras">
-                  <button type="button" id="exam-form-all" data-on-click="setExamForm('all')" class="seg-btn is-active" aria-pressed="true" title="Raiz, plural e construto juntos">Tudo</button>
-                  <button type="button" id="exam-form-root" data-on-click="setExamForm('root')" class="seg-btn" aria-pressed="false" title="Só a raiz: a forma de dicionário (singular dos substantivos, verbos como na lista)">Raiz</button>
+                <span class="field-label">O que treinar</span>
+                <div class="seg seg--wrap" role="group" aria-label="O que treinar">
+                  <button type="button" id="exam-form-all" data-on-click="setExamForm('all')" class="seg-btn is-active" aria-pressed="true" title="Palavras, formas e gramática juntas">Tudo</button>
+                  <button type="button" id="exam-form-root" data-on-click="setExamForm('root')" class="seg-btn" aria-pressed="false" title="Só a raiz: as 36 palavras da lista">Raiz</button>
                   <button type="button" id="exam-form-plural" data-on-click="setExamForm('plural')" class="seg-btn" aria-pressed="false" title="Só o plural absoluto">Plural</button>
                   <button type="button" id="exam-form-construct" data-on-click="setExamForm('construct')" class="seg-btn" aria-pressed="false" title="Só o plural construto">Construto</button>
+                  <button type="button" id="exam-form-grammar" data-on-click="setExamForm('grammar')" class="seg-btn" aria-pressed="false" title="Formas dos slides: pronomes, demonstrativos, sufixos, perfeito Qal e troncos">Gramática</button>
+                </div>
+              </div>
+
+              <!-- Prova de amanhã (MODO EMERGENCIAL): quais frases -->
+              <div id="practice-phrases-container" class="hidden">
+                <span class="field-label">Frases</span>
+                <div class="seg seg--wrap" role="group" aria-label="Quais frases">
+                  <button type="button" id="exam-phrases-all" data-on-click="setExamPhrases('all')" class="seg-btn is-active" aria-pressed="true" title="As 217 frases da lista e as do Kelley">Todas</button>
+                  <button type="button" id="exam-phrases-nominal" data-on-click="setExamPhrases('nominal')" class="seg-btn" aria-pressed="false" title="As 108 frases nominais da lista">Nominais</button>
+                  <button type="button" id="exam-phrases-verbal" data-on-click="setExamPhrases('verbal')" class="seg-btn" aria-pressed="false" title="As 109 frases verbais da lista">Verbais</button>
+                  <button type="button" id="exam-phrases-kelley" data-on-click="setExamPhrases('kelley')" class="seg-btn" aria-pressed="false" title="Frases dos exercícios do Kelley com as palavras da prova">Kelley</button>
+                  <button type="button" id="exam-phrases-simulado" data-on-click="setExamPhrases('simulado')" class="seg-btn" aria-pressed="false" title="10 frases sorteadas: 5 nominais e 5 verbais, como na prova">Simulado</button>
                 </div>
               </div>
 
@@ -603,6 +717,11 @@
                 <p id="feedback-tip" class="feedback-tip hidden">
                   <span class="feedback-tip__label">Para fixar</span>
                   <span id="feedback-tip-text"></span>
+                </p>
+                <!-- Prova de amanhã (MODO EMERGENCIAL): chave do gabarito -->
+                <p id="feedback-key" class="feedback-tip feedback-key hidden">
+                  <span class="feedback-tip__label">Chave</span>
+                  <span id="feedback-key-text"></span>
                 </p>
               </div>
             </div>
@@ -1875,7 +1994,7 @@
       </p>
       <p class="app-footer__meta">
         Gamida Biblical Language Trainer ·
-        <span id="footer-version-tag">v2.53.1</span>
+        <span id="footer-version-tag">v2.54.0</span>
       </p>
       <p class="app-footer__meta">© 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
     </footer>

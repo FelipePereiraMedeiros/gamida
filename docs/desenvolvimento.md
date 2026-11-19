@@ -159,21 +159,24 @@ Cada palavra do hebraico pode trazer `refs`: versículos onde ela aparece, para 
 - **Conferência:** `tests/25-bible-refs.test.js` confere o formato, o livro, o capítulo e algumas referências conhecidas.
 - O grego ainda não tem referências.
 
-## "Prova de amanhã" (modo temporário)
+## "Prova de amanhã" (MODO EMERGENCIAL, sai depois da prova)
 
-Revisão para a Prova 2 de Hebraico 2 (lições IX–XIV), só no hebraico.
+Revisão para a Prova 2 de Hebraico 2 (lições IX–XIV), só no hebraico. Tudo dele fica marcado com "Prova de amanhã" ou `ExamMode`.
 
-- **Dados:** uma lição especial no fim de `data/hebrew_chapters.json` (`"id": "prova_amanha"`, `"special": "exam"`). Ela traz as 36 palavras da revisão, copiadas das lições (mesmo termo, então o treino conta no progresso de cada palavra). Os 16 substantivos ganham o plural e o plural construto como palavras próprias ("homens" e "homens de"). קוֹל e תּוֹרָה ganham uma forma só, porque o plural absoluto e o construto são iguais; os adjetivos ganham o masculino plural. כֶּסֶף, זָהָב e בְּרִית não têm plural em uso no hebraico bíblico. Cada forma nova traz `singular` com a palavra de origem.
-- **Onde aparece:** botão no menu, abaixo de Perfil (`#nav-btn-exam`), e um aviso uma vez por aparelho com "Treinar agora" (`js/modules/exam-mode.js`). Os dois só existem no hebraico e enquanto a lição existir.
+- **Dados** (lição `prova_amanha`, `"special": "exam"`, no fim de `data/hebrew_chapters.json`):
+  - as 36 palavras da revisão (copiadas das lições, então o treino conta no progresso de cada palavra), com o plural e o plural construto dos substantivos (`singular` aponta a palavra de origem). קוֹל e תּוֹרָה têm plural e construto iguais; os adjetivos têm o masculino plural; כֶּסֶף, זָהָב e בְּרִית não têm plural em uso;
+  - 65 formas gramaticais dos slides da revisão (`group: "gramatica"`): pronomes, demonstrativos, construto, sufixos (סוּס e outros), אֵת, perfeito Qal de שָׁמַר e troncos;
+  - as 217 frases da lista "Frases para a Prova 2" (`kind` "nominal" ou "verbal", `label` N1…V109, `ref`, `key` com a chave do gabarito, `noAnalysis`, tokens mínimos), tiradas do PDF do professor com o hebraico conferido pelas posições das letras;
+  - as frases dos exercícios do Kelley com essas palavras (`kind: "kelley"`).
+- **Interface** (`js/modules/exam-mode.js`): botão no menu abaixo de Perfil; aviso uma vez por aparelho (a chave do aviso muda quando o modo ganha conteúdo); barra no Estudar com Simulado (10 frases: 5 nominais e 5 verbais), Frases da prova, Palavras e formas e Vocabulário I–XIV (todas as lições até a XIV); colinha recolhível com o método, os quadros e os lembretes; filtros nas Opções: "O que treinar" (Tudo, Raiz, Plural, Construto, Gramática, guardado em `gamida_exam_form`) e "Frases" (Todas, Nominais, Verbais, Kelley, Simulado, em `gamida_exam_phrases`); a chave do gabarito depois de cada resposta (`#feedback-key`).
 - **Fora de:** Crônicas do Escriba e Caminho do domínio (filtro `!c.special`).
-- **Filtro de forma** (Opções do Estudar, só na lição da prova): Tudo, Raiz (as palavras da lista), Plural ou Construto. As formas iguais de קוֹל e תּוֹרָה entram no plural e no construto. A escolha fica guardada em `gamida_exam_form`. Frases só entram em "Tudo".
-- **Modo emergencial: sai depois da prova.** Mudanças nele ficam isoladas e marcadas com "Prova de amanhã" ou `ExamMode`, para a remoção ser completa. Para retirar:
+- **Para retirar depois da prova:**
   1. `data/hebrew_chapters.json`: apagar a lição `prova_amanha` (a última) e rodar `node scripts/build-bundle.js`.
   2. Apagar `js/modules/exam-mode.js` e `tests/e2e/15-prova-amanha.e2e.js`.
-  3. `index.html`: tirar o `<script>` do exam-mode, o botão `#nav-btn-exam` e o bloco `#practice-form-container`.
-  4. `js/app.js` (`initApp`, `switchTab`, `toggleLanguage`, `changeGlobalChapter`, `setExerciseMode`), `js/screens/practice.js` (`buildPracticeQueue`) e `js/modules/ui.js` (`updatePracticeOptionsSummary`): tirar as chamadas a `window.ExamMode`.
-  5. `css/interface.css`: tirar o bloco "Prova de amanhã" (`.nav-item--exam`, `.exam-alert*`).
-  6. `tests/e2e/lib.js`: tirar a semente `gamida_exam_alert_seen_prova2_frases` e a opção `examAlert`. `tests/24-today.test.js`: voltar a lista do menu às cinco áreas.
-  7. Pode ficar: o filtro genérico de lições especiais (`!c.special` em `mastery-path.js` e `scribe-rules.js`, `storyOnly` em `tests/21-scribe-chronicles.test.js` e a contagem em `tests/test_hebrew_restoration.py`). Ele não faz nada sem lição especial e serve para um modo parecido no futuro.
-  8. Nos aparelhos, a lição some sozinha na atualização seguinte (ela é padrão e não fica marcada como editada).
+  3. `index.html`: tirar o `<script>` do exam-mode, o botão `#nav-btn-exam`, a seção `#exam-cheatsheet`, os blocos `#practice-form-container` e `#practice-phrases-container` e o `#feedback-key`.
+  4. `js/app.js` (`initApp`, `switchTab`, `toggleLanguage`, `changeGlobalChapter`, `setExerciseMode`), `js/screens/practice.js` (`buildPracticeQueue`, `updatePracticeActionButtonToNext`, `resetQuestionMeta`) e `js/modules/ui.js` (`updatePracticeOptionsSummary`): tirar as chamadas a `window.ExamMode`.
+  5. `css/interface.css`: tirar os blocos "Prova de amanhã" (`.nav-item--exam`, `.exam-alert*`, `.exam-bar*`, `.exam-cheat*`, `.feedback-key`).
+  6. `tests/e2e/lib.js`: tirar a semente do aviso e a opção `examAlert`. `tests/24-today.test.js`: voltar a lista do menu às cinco áreas.
+  7. Pode ficar (genérico, sem efeito sem lição especial): `!c.special` em `mastery-path.js` e `scribe-rules.js`, `storyOnly` em `tests/21-scribe-chronicles.test.js`, a contagem em `tests/test_hebrew_restoration.py`, `noAnalysis` em `practice.js`, `.seg--wrap` e o botão de transliteração escondido quando o item não tem transliteração.
+  8. Nos aparelhos, a lição some sozinha na atualização seguinte.
   9. Subir a versão e rodar `npm run test:all`.

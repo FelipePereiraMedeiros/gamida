@@ -58,7 +58,7 @@ async function openApp(env, opts = {}) {
     return route.abort();
   });
   // O aviso da "Prova de amanhã" cobre a tela: só o teste dele (examAlert: true) o vê
-  const seed = { gamida_language: opts.language || "hebrew", ...(opts.examAlert ? {} : { gamida_exam_alert_seen_prova2_frases: "teste" }), ...(opts.storage || {}) };
+  const seed = { gamida_language: opts.language || "hebrew", ...(opts.examAlert ? {} : { gamida_exam_alert_seen_prova2_completo: "teste" }), ...(opts.storage || {}) };
   await context.addInitScript((data) => {
     window.__GAMIDA_TEST__ = true;
     try {
