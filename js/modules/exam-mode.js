@@ -16,7 +16,8 @@
 
 (function () {
 const CHAPTER_ID = "prova_amanha";
-const SEEN_KEY = "gamida_exam_alert_seen_prova2";
+// Muda quando o modo ganha conteúdo novo, para o aviso aparecer de novo uma vez
+const SEEN_KEY = "gamida_exam_alert_seen_prova2_frases";
 
 const W = () => (typeof window !== "undefined" ? window : {});
 const examChapter = () => {
@@ -70,7 +71,7 @@ function maybeAlert() {
   box.setAttribute("aria-labelledby", "exam-alert-title");
   box.innerHTML = `<div class="exam-alert__box">
     <h2 id="exam-alert-title" class="exam-alert__title">Novo: Prova de amanhã</h2>
-    <p class="exam-alert__text">As 36 palavras da revisão das lições IX–XIV, com o <b>plural</b> e o <b>plural construto</b> dos substantivos, para treinar a reconhecer singular, plural e construto.</p>
+    <p class="exam-alert__text">As 36 palavras da revisão das lições IX–XIV, com o <b>plural</b> e o <b>plural construto</b> dos substantivos, e 89 frases dos exercícios do Kelley com essas palavras (modo Frases).</p>
     <p class="exam-alert__text exam-alert__text--soft">Fica no menu, abaixo de Perfil.</p>
     <div class="exam-alert__row">
       <button type="button" class="answer-btn" id="exam-alert-go">Treinar agora</button>

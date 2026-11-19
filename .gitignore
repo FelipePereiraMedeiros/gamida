@@ -29,3 +29,6 @@ apresentacao/gamida-2.9.2-novidades.mp4
 
 # Configuração local de outras ferramentas de IA
 .gemini/
+
+# Gramáticas (livros com direitos autorais): só no aparelho, nunca no repositório. Ver docs/referencias.md
+referencias/
