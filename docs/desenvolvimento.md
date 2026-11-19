@@ -167,4 +167,13 @@ Revisão para a Prova 2 de Hebraico 2 (lições IX–XIV), só no hebraico.
 - **Onde aparece:** botão no menu, abaixo de Perfil (`#nav-btn-exam`), e um aviso uma vez por aparelho com "Treinar agora" (`js/modules/exam-mode.js`). Os dois só existem no hebraico e enquanto a lição existir.
 - **Fora de:** Crônicas do Escriba e Caminho do domínio (filtro `!c.special`).
 - **Filtro de forma** (Opções do Estudar, só na lição da prova): Tudo, Raiz (as palavras da lista), Plural ou Construto. As formas iguais de קוֹל e תּוֹרָה entram no plural e no construto. A escolha fica guardada em `gamida_exam_form`. Frases só entram em "Tudo".
-- **Para retirar depois da prova:** apague a lição do JSON e rode `node scripts/build-bundle.js`; o botão e o aviso somem sozinhos. Os testes `tests/e2e/15-prova-amanha.e2e.js` saem junto.
+- **Modo emergencial: sai depois da prova.** Mudanças nele ficam isoladas e marcadas com "Prova de amanhã" ou `ExamMode`, para a remoção ser completa. Para retirar:
+  1. `data/hebrew_chapters.json`: apagar a lição `prova_amanha` (a última) e rodar `node scripts/build-bundle.js`.
+  2. Apagar `js/modules/exam-mode.js` e `tests/e2e/15-prova-amanha.e2e.js`.
+  3. `index.html`: tirar o `<script>` do exam-mode, o botão `#nav-btn-exam` e o bloco `#practice-form-container`.
+  4. `js/app.js` (`initApp`, `switchTab`, `toggleLanguage`, `changeGlobalChapter`, `setExerciseMode`), `js/screens/practice.js` (`buildPracticeQueue`) e `js/modules/ui.js` (`updatePracticeOptionsSummary`): tirar as chamadas a `window.ExamMode`.
+  5. `css/interface.css`: tirar o bloco "Prova de amanhã" (`.nav-item--exam`, `.exam-alert*`).
+  6. `tests/e2e/lib.js`: tirar a semente `gamida_exam_alert_seen_prova2_frases` e a opção `examAlert`. `tests/24-today.test.js`: voltar a lista do menu às cinco áreas.
+  7. Pode ficar: o filtro genérico de lições especiais (`!c.special` em `mastery-path.js` e `scribe-rules.js`, `storyOnly` em `tests/21-scribe-chronicles.test.js` e a contagem em `tests/test_hebrew_restoration.py`). Ele não faz nada sem lição especial e serve para um modo parecido no futuro.
+  8. Nos aparelhos, a lição some sozinha na atualização seguinte (ela é padrão e não fica marcada como editada).
+  9. Subir a versão e rodar `npm run test:all`.
