@@ -402,6 +402,12 @@ function chooseClass() {
   });
 }
 
+/** Botão de um modo à parte no menu inicial (hoje, o "Estudo para exame" de scribe-exam.js) */
+function extraMenuHtml() {
+  const extraMenu = typeof window !== "undefined" && window.ScribeExam;
+  return extraMenu && typeof extraMenu.menuHtml === "function" ? extraMenu.menuHtml() : "";
+}
+
 function showMap() {
   transition();
   if (!S.seenIntro) return showPrologue(false, 1);
@@ -420,6 +426,7 @@ function showMap() {
     <p class="sc-story">${started
       ? "Siga a história pelo capítulo destacado ou escolha qualquer outro para revisar: todos estão abertos. Cada um traz um pergaminho de ensino, ondas de criaturas-palavra e um guardião de várias frases."
       : `O ${isHebrew() ? "Rolo das Palavras" : "Segundo Rolo"} está em branco: ${esc(Lore.VILLAIN.name)} engoliu as palavras. Cada palavra virou uma criatura, e cada frase, um guardião. Percorra o caminho de ${esc(campaign[0].meta.city)} a ${esc(campaign[total - 1].meta.city)} e traga-as de volta. Os capítulos seguem as lições, e você pode começar por qualquer um.`}</p>
+    ${extraMenuHtml()}
     <div class="sc-viewtoggle" role="group" aria-label="Ver capítulos">
       <button type="button" class="sc-viewtoggle__btn${mapView() ? "" : " is-on"}" data-view="list" aria-pressed="${!mapView()}">Lista</button>
       <button type="button" class="sc-viewtoggle__btn${mapView() ? " is-on" : ""}" data-view="map" aria-pressed="${mapView()}">Mapa</button>
@@ -460,6 +467,8 @@ function showMap() {
   });
   if (mapView()) bindMap(current);
   else animateAvatars([["sc-avatar", S.cls]]);
+  const extraMenu = typeof window !== "undefined" && window.ScribeExam;
+  if (extraMenu && typeof extraMenu.bindMenu === "function") extraMenu.bindMenu();
   document.querySelectorAll("#sc-screen [data-chapter]").forEach((btn) => {
     btn.onclick = () => {
       const a = audio();
@@ -859,7 +868,7 @@ function showCredits() {
         "Guardiões com figura própria do Livro II e do grego",
         "Mapas do Livro II e do Segundo Rolo",
         "Golpes do grego: a rede, o pilo e a carta",
-        "Caçada completa, bestiário ilustrado, mapa dos capítulos, batalha em tela cheia, interface em pixel, música e efeitos sonoros",
+        "Caçada completa, bestiário ilustrado, mapa dos capítulos, batalha em tela cheia, interface em pixel, estudo para exame, música e efeitos sonoros",
       ])}</section>
     </div>
     <p class="sc-muted sc-small">Referências de estudo: Page H. Kelley, Gramática do Hebraico Bíblico; Johannes Bergmann, Gramática do Grego do Novo Testamento. A citação não indica vínculo nem endosso.</p>
@@ -973,7 +982,12 @@ function nextMonster() {
       B.rematch = true;
       B.waves.push(B.escaped.splice(0));
     }
-    if (B.wave >= B.waves.length) return B.dungeon ? dungeonDone() : bossIntro();
+    if (B.wave >= B.waves.length) {
+      if (B.dungeon) return dungeonDone();
+      // Batalha extra sem frases: termina nas ondas
+      if (B.extra && !B.extra.sentences.length) return extraDone();
+      return bossIntro();
+    }
     sfx("combo");
     if (B.full) camp();
   }
@@ -1596,7 +1610,21 @@ function defeat() {
   const index = B.index;
   const dungeon = !!B.dungeon;
   const full = !!B.full;
+  const extra = B.extra;
   B = null;
+  if (extra) {
+    setScreen(`<div class="sc-card sc-card--center">
+      <h3 class="sc-h">Você caiu</h3>
+      <p class="sc-story">${esc(extra.title)}: tente de novo. Nível, XP e relíquias continuam.</p>
+      <div class="sc-row"><button type="button" class="sc-btn" id="sc-retry">Tentar de novo</button>
+        <button type="button" class="sc-btn sc-btn--ghost" id="sc-extra-back">Voltar</button>
+        <button type="button" class="sc-btn sc-btn--ghost" id="sc-map">Mapa</button></div>
+    </div>`);
+    on("#sc-retry", () => startExtraBattle(extra));
+    on("#sc-extra-back", () => (extra.onBack ? extra.onBack() : showMap()));
+    on("#sc-map", showMap);
+    return;
+  }
   if (dungeon) {
     setScreen(`<div class="sc-card sc-card--center">
       <h3 class="sc-h">Você caiu na masmorra</h3>
@@ -1701,10 +1729,10 @@ function bossIntro() {
   B.boss = true;
   B.lock = false;
   B.free = stats.hints;
-  B.sentPool = campaign.slice(0, B.index + 1).flatMap((c) => c.chapter.sentences || []);
+  B.sentPool = [...(B.extra ? B.extra.sentences : []), ...campaign.slice(0, B.index + 1).flatMap((c) => c.chapter.sentences || [])];
   // Significados das palavras nas frases do capítulo: daí saem as alternativas erradas
   B.glossPool = (B.chapter.sentences || []).flatMap((s) => (s.tokens || []).map((t) => t.context_meaning).filter(Boolean));
-  const sentences = bossSentences(B.index, campaign);
+  const sentences = B.extra ? B.extra.sentences : bossSentences(B.index, campaign);
   let total;
   if (sentences.length) {
     B.rush = null;
@@ -1730,7 +1758,7 @@ function bossIntro() {
     ? `${esc(B.meta.boss)} desperta e lança <b>${B.rush.length} palavras</b> de uma vez. Aponte o termo certo para cada significado.`
     : `${esc(B.meta.boss)} desperta e guarda <b>${B.sents.length} ${B.sents.length === 1 ? "frase" : "frases"}</b>. Decifre as palavras, responda o golpe de gramática e monte cada tradução.`;
   B.rage = false;
-  renderBattle(`<p class="sc-taunt"><b>${esc(B.meta.boss)}${B.meta.bossRef ? ` <small>(${esc(B.meta.bossRef)})</small>` : ""}:</b> ${rich(loreOf(B.index).taunt)}</p>
+  renderBattle(`<p class="sc-taunt"><b>${esc(B.meta.boss)}${B.meta.bossRef ? ` <small>(${esc(B.meta.bossRef)})</small>` : ""}:</b> ${rich(B.extra ? B.extra.taunt || "" : loreOf(B.index).taunt)}</p>
     <div class="sc-prompt"><div class="sc-q sc-q--strong">${intro}</div></div>
     <div class="sc-scroll sc-scroll--tip"><b>Dica do mestre:</b> ${rich(B.meta.scroll.tip)}</div>
     <div class="sc-row"><button type="button" class="sc-btn" id="sc-fight">Lutar</button></div>`);
@@ -2031,6 +2059,13 @@ function bossDown() {
   music(null);
   sting("victory");
   announce("Guardião vencido", "win", B.meta.boss);
+  // Batalha extra: nada de capítulo vencido, relíquia ou selo
+  if (B.extra) {
+    setTimeout(() => {
+      if (isOpen() && B) extraDone();
+    }, 1100);
+    return;
+  }
   const index = B.index;
   const total = B.total;
   const sentences = B.sents.map((s) => s.sentence);
@@ -2084,6 +2119,61 @@ function bossDown() {
     on("#sc-again", () => startChapter(index, { full: !!full }));
     on("#sc-map", showMap);
   }, 1100);
+}
+
+/* ============================ Batalha extra ============================ */
+/**
+ * Batalha fora da campanha, montada por outro módulo (hoje, o "Estudo para
+ * exame" em scribe-exam.js): ondas com as palavras recebidas e, se vierem
+ * frases, um guardião com elas. Usa o herói, a vida, o XP e as estatísticas,
+ * mas nunca marca capítulo vencido nem dá relíquia ou selo.
+ * @param {{id: string, title: string, words: Array<Object>, sentences?: Array<Object>,
+ *   boss?: string, bossRef?: string, taunt?: string, tip?: string,
+ *   onEnd?: function({count: number, sentences: number, xp: number}), onBack?: function}} cfg
+ */
+function startExtraBattle(cfg) {
+  if (!cfg || !campaign.length) return;
+  const words = (cfg.words || []).map((item) => ({ item, old: false }));
+  const sentences = Array.isArray(cfg.sentences) ? cfg.sentences : [];
+  if (!words.length && !sentences.length) return;
+  transition();
+  const stats = P();
+  const waves = [];
+  for (let i = 0; i < words.length; i += 6) waves.push(words.slice(i, i + 6));
+  // Cenário, criaturas e guardião de um capítulo do meio da campanha; o dano também é o do meio
+  const index = Math.floor((campaign.length - 1) / 2);
+  const base = campaign[index].meta;
+  const meta = {
+    ...base, city: cfg.title, boss: cfg.boss || base.boss, bossRef: cfg.bossRef || "",
+    scroll: { ...base.scroll, t: cfg.title, tip: cfg.tip || base.scroll.tip },
+  };
+  B = {
+    index, chapter: { id: cfg.id, title: cfg.title, items: cfg.words || [], sentences }, meta, total: campaign.length,
+    extra: { ...cfg, sentences }, count: words.length,
+    waves: waves.length ? waves : [[]], wave: 0, mi: 0, hp: stats.hp, boss: false, mon: null, lock: false, q: null,
+    free: stats.hints, ward: stats.ward, revive: stats.revive,
+  };
+  A = freshArena();
+  const g = gfx();
+  if (g) g.resetEmbers();
+  music(battleTheme());
+  sting("chapter");
+  if (!words.length) return bossIntro();
+  nextMonster();
+}
+
+/** Fim da batalha extra: XP pelo que foi enfrentado e a tela de quem a montou */
+function extraDone() {
+  const extra = B.extra;
+  const count = B.count;
+  const sentences = B.sents ? B.sents.length : 0;
+  const xp = gainXP(10 + count * 3 + sentences * 6);
+  cancelAnimationFrame(frameId);
+  B = null;
+  music("map");
+  sting("victory");
+  if (extra.onEnd) extra.onEnd({ count, sentences, xp });
+  else showMap();
 }
 
 /* ============================ Masmorra, bestiário e desempenho ============================ */
@@ -2605,6 +2695,8 @@ if (typeof window !== "undefined") {
   if (window.__GAMIDA_TEST__) window.__scribeBattle = () => B;
   window.openScribeChronicles = openScribeChronicles;
   window.scribeShowBook = showBook;
+  // Para modos à parte (scribe-exam.js): tela, escape de texto, mapa e a batalha extra
+  window.ScribeExtra = { setScreen, esc, rich, orig, termClass, showMap, transition, music, startExtraBattle, isOpen };
   window.scribeToggleTyping = toggleTyping;
 }
 if (typeof module !== "undefined" && module.exports) {

@@ -23,7 +23,7 @@
 (function () {
 const CHAPTER_ID = "estudo_exame";
 // Muda quando o modo ganha conteúdo novo, para o aviso aparecer de novo uma vez
-const SEEN_KEY = "gamida_exam_alert_seen_estudo_exame_1";
+const SEEN_KEY = "gamida_exam_alert_seen_estudo_exame_2";
 
 const WORDS_KEY = "gamida_exam_words";
 const WORDS = ["all", "prova1", "prova2", "sorteio", "tabela"];
@@ -290,6 +290,7 @@ function maybeAlert() {
       <li><b>Vocabulário</b> (no grego, as 40 palavras e o <b>sorteio de 20</b> como no exame).</li>
       <li>No grego, a <b>tabela de análise</b> e o Mago da Morfologia com as frases das provas.</li>
       <li>A <b>colinha</b> com as regras e os lembretes de cada língua.</li>
+      <li>Nas <b>Crônicas do Escriba</b>: batalhas com as provas, à parte da aventura (menu inicial do jogo).</li>
     </ul>
     <p class="exam-alert__text exam-alert__text--soft">Fica no menu, abaixo de Perfil, nas duas línguas. Bons estudos!</p>
     <div class="exam-alert__row">
