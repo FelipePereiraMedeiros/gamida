@@ -37,6 +37,7 @@ const modules = [
   { id: 23, name: 'Segurança', file: './tests/23-security.test.js' },
   { id: 24, name: 'Hoje e Progresso Unificado', file: './tests/24-today.test.js' },
   { id: 25, name: 'Referências Bíblicas', file: './tests/25-bible-refs.test.js' },
+  { id: 26, name: 'Estudo para Exame', file: './tests/26-estudo-exame.test.js' },
 ];
 
 async function run() {

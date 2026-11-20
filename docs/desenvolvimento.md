@@ -159,3 +159,43 @@ Cada palavra do hebraico pode trazer `refs`: versículos onde ela aparece, para 
 - **Origem:** 520 palavras das lições III a XXXI, a partir da lista de vocabulário do Kelley usada em sala. As 12 linhas da lista que não correspondem a uma palavra do Gamida ficaram de fora (artigo, conjunção, preposições e marca do objeto, que são gramática; e formas de outro tronco ou outra palavra).
 - **Conferência:** `tests/25-bible-refs.test.js` confere o formato, o livro, o capítulo e algumas referências conhecidas.
 - O grego ainda não tem referências.
+
+## "Estudo para exame" (MODO TEMPORÁRIO, sai depois dos exames)
+
+Revisão das Provas 1 e 2 de Hebraico 2 e de Grego 2 (2026), com o gabarito. Tudo dele fica marcado com "Estudo para exame" ou `ExamMode`.
+
+- **Dados:** uma lição especial no fim de cada idioma (`"id": "estudo_exame"`, `"special": "exam"`). Itens e frases têm `group` ("prova1", "prova2" ou "ambas"); frases e formas da tabela têm `key` (chave do gabarito), `label` e `ref`.
+  - **Hebraico:** as 18 frases das provas (8 + 10), com o hebraico conferido letra por letra com o PDF. Cada uma tem tradução, chave e análise palavra por palavra: 5 reaproveitadas das lições e 13 analisadas para o modo. O vocabulário são os lemas das frases, copiados das lições.
+  - **Grego:** as 40 palavras do vocabulário das provas, com as respostas do gabarito primeiro (`kind: "vocab"`). As 31 formas da tabela de análise (`kind: "tabela"`) trazem a classificação no `type`, que aparece em "Mostrar dica", e a chave depois da resposta. As frases das provas foram copiadas das lições do Bergmann com a análise, e Jo 6.26 foi analisada para o modo.
+  - **Como foram montados:** os dados vieram de dois scripts guardados fora do repositório, `montar_exame.py` com `exame_hebraico.py` e `exame_grego.py`.
+- **Interface** (`js/modules/exam-mode.js`):
+  - **Menu:** botão "Estudo para exame" abaixo de Perfil, nas duas línguas.
+  - **Aviso:** aparece uma vez por aparelho (`SEEN_KEY`).
+  - **Barra no Estudar:** no hebraico, Simulado de 10 frases; no grego, Sorteio de 20 palavras, Tabela de análise e Mago da Morfologia; nas duas, Frases das provas e Vocabulário. Abaixo, a colinha de cada língua (`data-exam-lang`).
+  - **Filtros nas Opções:** "O que treinar" (Todas, Prova 1, Prova 2, Sorteio de 20 e, no grego, Tabela) e "Frases" (Todas, Prova 1, Prova 2, Simulado), guardados por idioma.
+  - **Chave do gabarito:** aparece depois de cada resposta (`#feedback-key`).
+- **Os outros modos com a lição do exame:**
+  - o Simulado da aba Revisar usa só a lição especial (`assessment.js`);
+  - o Mago da Morfologia abre com ela marcada (`openExamMorphDrill`);
+  - a Chuva de Pedras, aberta nela, usa só ela, e não a mistura com as lições quando todas estão marcadas;
+  - a Revisão Inteligente a encontra como qualquer lição;
+  - as Crônicas e o Caminho do domínio a deixam de fora (`!c.special`).
+- **Testes:** `tests/26-estudo-exame.test.js` confere os dados e `tests/e2e/15-estudo-exame.e2e.js` confere cada função nos dois idiomas.
+- **Para retirar depois dos exames:**
+  1. `data/hebrew_chapters.json` e `data/greek_chapters.json`: apagar a lição `estudo_exame` (a última) e rodar `node scripts/build-bundle.js`. Nos aparelhos ela sai sozinha na atualização seguinte (lição `special` fora do padrão).
+  2. Apagar `js/modules/exam-mode.js`, `tests/e2e/15-estudo-exame.e2e.js` e `tests/26-estudo-exame.test.js`, e tirar o módulo 26 do `test-runner.js`.
+  3. `index.html`: tirar o `<script>` do exam-mode, o botão `#nav-btn-exam`, a seção `#exam-cheatsheet`, os blocos `#practice-form-container` e `#practice-phrases-container` e o `#feedback-key`.
+  4. `js/app.js` (`initApp`, `switchTab`, `toggleLanguage`, `changeGlobalChapter`, `setExerciseMode`), `js/screens/practice.js` (`buildPracticeQueue`, `updatePracticeActionButtonToNext`, `resetQuestionMeta`) e `js/modules/ui.js` (`updatePracticeOptionsSummary`): tirar as chamadas a `window.ExamMode`.
+  5. `css/interface.css`: tirar os blocos "Estudo para exame".
+  6. `tests/e2e/lib.js`: tirar a semente do aviso e a opção `examAlert`. `tests/24-today.test.js`: voltar a lista do menu às cinco áreas.
+  7. Sem lição especial, perdem o sentido e podem sair:
+     - `!c.special` em `mastery-path.js` e `scribe-rules.js`;
+     - em `stone-rain.js`, os desvios de lição especial em `buildDeck`, `buildPhases` e `selectedChapterIds`, com os ajustes em `tests/20-stone-rain.test.js` e `tests/test_greek_analysis.py`;
+     - o bloco de lição especial em `assessment.js`;
+     - `storyOnly` em `tests/21-scribe-chronicles.test.js`;
+     - os filtros de lição especial em `tests/15-assimilation.test.js` e `tests/test_hebrew_restoration.py`;
+     - `noAnalysis` em `practice.js` e `.seg--wrap`.
+
+     Fica o `!c.special` do `data-loader.js`, que tira a lição dos aparelhos.
+  8. Subir a versão e rodar `npm run test:all`.
+

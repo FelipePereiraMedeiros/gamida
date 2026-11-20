@@ -15,7 +15,7 @@
 /* ================= APP STATE & CONFIG ================= */
 var APP_VERSION = (typeof window !== "undefined" && window.APP_VERSION)
   ? window.APP_VERSION
-  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.56.0";
+  : (typeof DataLoader !== "undefined" && DataLoader.VERSION) ? DataLoader.VERSION : "2.55.0";
 
 var AppState = (typeof window !== "undefined" && window.AppState) ? window.AppState : {
   language: (typeof localStorage !== "undefined" && localStorage.getItem("gamida_language")) || "hebrew",
@@ -133,6 +133,10 @@ async function initApp() {
   if (typeof window !== "undefined" && window.ActivityModule) window.ActivityModule.updateActivityUI();
   if (typeof window !== "undefined" && window.ProfilesModule) window.ProfilesModule.updateProfileBadge();
   if (typeof window !== "undefined" && window.TodayModule) window.TodayModule.render();
+  if (typeof window !== "undefined" && window.ExamMode) {
+    window.ExamMode.refresh();
+    window.ExamMode.maybeAlert();
+  }
   updateStatsUI();
   updateParadigmsVisibility();
   updateTabsScrollIndicators();
@@ -280,6 +284,7 @@ function switchTab(tabName) {
   if (typeof window !== "undefined" && typeof window.scrollTo === "function") window.scrollTo(0, 0);
   if (section === "vocab" && typeof renderVocabTable === "function") renderVocabTable();
   if (section === "practice" && typeof window !== "undefined" && window.TodayModule) window.TodayModule.render();
+  if (typeof window !== "undefined" && window.ExamMode) window.ExamMode.refresh();
   if (section === "profile" && typeof window !== "undefined" && window.ProfilesModule) window.ProfilesModule.renderProfileTab();
   if (section === "assessment" && typeof window !== "undefined" && window.MasteryPathModule) {
     window.MasteryPathModule.updatePathDashboardStat();
@@ -376,7 +381,9 @@ function togglePracticeChapterPicker(eventOrForceClose = false) {
 
 function changeGlobalChapter(chapterId) {
   if (typeof window !== "undefined" && window.UIModule && typeof window.UIModule.changeGlobalChapter === "function") {
-    return window.UIModule.changeGlobalChapter(chapterId);
+    const result = window.UIModule.changeGlobalChapter(chapterId);
+    if (window.ExamMode) window.ExamMode.refresh();
+    return result;
   }
 }
 
@@ -455,6 +462,7 @@ function setExerciseMode(mode) {
   resetStats();
   updatePracticeCategoryFilterUI();
   updateChoiceDirectionUI();
+  if (typeof window !== "undefined" && window.ExamMode) window.ExamMode.updateFormUI();
   buildPracticeQueue();
   renderCurrentQuestion();
   if (typeof window !== "undefined" && typeof window.updatePracticeOptionsSummary === "function") {
@@ -596,6 +604,7 @@ async function toggleLanguage(targetLang = null) {
   updateChoiceDirectionUI();
   updateParadigmsVisibility();
   switchTab("practice");
+  if (typeof window !== "undefined" && window.ExamMode) window.ExamMode.maybeAlert();
 }
 
 /** Tabelas e grafos ficam apagados (com o motivo) quando o capítulo não tem tabelas */

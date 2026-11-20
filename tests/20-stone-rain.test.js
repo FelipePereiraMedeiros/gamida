@@ -18,13 +18,14 @@ const { getTerm } = require('../js/modules/state.js');
 suite.test('Baralho cobre o vocabulário de todas as lições, nos dois idiomas', () => {
   [hebrewData, greekData].forEach((chapters) => {
     const deck = buildDeck(chapters);
-    const terms = new Set(chapters.flatMap((c) => (c.items || []).map(getTerm)));
+    const terms = new Set(chapters.filter((c) => !c.special).flatMap((c) => (c.items || []).map(getTerm)));
     assert.equal(deck.length, terms.size, 'Cada termo do material entra uma vez');
     assert.equal(new Set(deck.map((w) => w.term)).size, deck.length, 'Sem termos repetidos');
     assert.deepEqual(deck.map((w) => w.id), deck.map((_, i) => i), 'Identificadores em sequência');
     deck.forEach((w) => assert.isTrue(!!w.head && !!w.pt && !!w.chapterLabel, `Pedra incompleta: ${w.term}`));
     const lessons = new Set(deck.map((w) => w.chapterId));
-    chapters.forEach((c) => assert.isTrue(lessons.has(c.id), `Lição fora do jogo: ${c.title}`));
+    // Lições especiais (como o "Estudo para exame") só entram quando escolhidas
+    chapters.filter((c) => !c.special).forEach((c) => assert.isTrue(lessons.has(c.id), `Lição fora do jogo: ${c.title}`));
   });
 });
 
@@ -71,7 +72,8 @@ suite.test('Pontuação: multiplicador, bônus por rapidez e fases', () => {
 });
 
 suite.test('Cada fase é uma lição, na ordem do material, com o vocabulário inteiro dela', () => {
-  [hebrewData, greekData].forEach((chapters) => {
+  // Lições especiais (como o "Estudo para exame") só entram quando escolhidas
+  [hebrewData, greekData].map((data) => data.filter((c) => !c.special)).forEach((chapters) => {
     const phases = buildPhases(chapters);
     assert.deepEqual(phases.map((p) => p.chapterId), chapters.map((c) => c.id), 'Uma fase por lição, na ordem do livro');
     phases.forEach((phase, index) => {
@@ -163,6 +165,16 @@ suite.test('Chuva de Pedras está ligada à tela de Avaliar', () => {
   assert.includes(html, "stoneRainToggle('typing')", 'Opção de digitar a resposta ausente');
   assert.includes(html, 'id="sr-start"', 'Escolha da fase inicial ausente');
   assert.includes(html, 'data-on-change="stoneRainStartAt(this.value)"', 'Escolha da fase inicial não ligada');
+});
+
+suite.test('Lição especial só entra na Chuva quando escolhida, e então sozinha', () => {
+  [hebrewData, greekData].forEach((chapters) => {
+    const exam = chapters.find((c) => c.special);
+    if (!exam) return;
+    assert.isFalse(buildPhases(chapters).some((p) => p.chapterId === exam.id), 'a lição especial entrou sem ser escolhida');
+    const only = buildPhases(chapters, { chapterIds: [exam.id] });
+    assert.isTrue(only.length === 1 && only[0].chapterId === exam.id && only[0].words.length > 0, 'escolhida, a lição especial não virou fase');
+  });
 });
 
 module.exports = suite;

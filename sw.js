@@ -11,7 +11,7 @@
  * - Pedidos para outros sites (Google, na sincronização) não passam por aqui.
  */
 // <gerado por scripts/build-sw.js: não edite à mão>
-const VERSION = "2.56.0";
+const VERSION = "2.57.0";
 const PRECACHE = [
   "css/cronicas-pixel.css",
   "css/fonts.css",
@@ -64,6 +64,7 @@ const PRECACHE = [
   "js/modules/assimilation.js",
   "js/modules/cloud-sync.js",
   "js/modules/evaluation.js",
+  "js/modules/exam-mode.js",
   "js/modules/game-audio.js",
   "js/modules/html.js",
   "js/modules/mastery-path.js",

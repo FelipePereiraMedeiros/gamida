@@ -54,6 +54,8 @@ function buildDeck(chapters, opts = {}, isError) {
   const deck = [];
   (Array.isArray(chapters) ? chapters : []).forEach((chapter) => {
     if (!chapter || (wanted && !wanted.has(chapter.id))) return;
+    // Lição especial (como o "Estudo para exame") repete palavras das lições: só entra escolhida
+    if (chapter.special && !wanted) return;
     (chapter.items || []).forEach((item) => {
       const term = getTerm(item);
       const pt = Array.isArray(item.translations) ? item.translations[0] : "";
@@ -88,6 +90,7 @@ function buildPhases(chapters, opts = {}, isError) {
   let nextId = 0;
   (Array.isArray(chapters) ? chapters : []).forEach((chapter) => {
     if (!chapter || (wanted && !wanted.has(chapter.id))) return;
+    if (chapter.special && !wanted) return;
     // A fase traz o vocabulário inteiro da lição, inclusive o que já apareceu em lições anteriores
     const seen = new Set();
     const words = [];
@@ -215,6 +218,8 @@ function playableChapters() {
 function selectedChapterIds() {
   const playable = playableChapters();
   const valid = new Set(playable.map((c) => c.id));
+  // Aberta numa lição especial (como o "Estudo para exame"), a chuva usa só ela
+  if (AppState.currentChapter && AppState.currentChapter.special && valid.has(AppState.currentChapter.id)) return [AppState.currentChapter.id];
   if (Array.isArray(prefs.chapterIds)) return prefs.chapterIds.filter((id) => valid.has(id));
   // Primeira vez: do começo até a lição que o aluno está estudando
   const current = AppState.currentChapter && valid.has(AppState.currentChapter.id) ? AppState.currentChapter.id : null;
@@ -1056,6 +1061,7 @@ function closeStoneRain() {
 }
 
 const StoneRainModule = {
+  selectedChapterIds,
   LIVES,
   MIN_DECK,
   chapterShortLabel,

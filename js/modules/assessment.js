@@ -91,6 +91,10 @@ function resolveAssessmentChapters() {
     const sel = getSelFn(AppState);
     if (sel.length > 0) return { chapters: sel, isCustomSelection: true };
   }
+  // Lição especial (como o "Estudo para exame"): o simulado usa só ela
+  if (AppState.currentChapter && AppState.currentChapter.special) {
+    return { chapters: [AppState.currentChapter], isCustomSelection: true };
+  }
   const activeChapterId = AppState.currentChapter?.id || AppState.activeChapterId;
   const activeIdx = (AppState.chapters || []).findIndex((c) => c.id === activeChapterId);
   let cumulativeChapters = (AppState.chapters || []).slice(
