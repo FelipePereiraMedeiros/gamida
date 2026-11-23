@@ -236,6 +236,8 @@
 .sc-bw.is-now { border-image-source: var(--scf-focus); box-shadow: none; }
 .sc-bw.is-done { border-image-source: var(--scf-ok); }
 .sc-bw small { font-family: var(--sc-font); }
+.sc-bw.is-plain { border: 0; border-image: none; padding: 0.25rem 0.125rem; }
+.sc-step { font-family: var(--sc-font); }
 .sc-build { border-image-source: var(--scf-slot); padding: 0.25rem; }
 .sc-build.is-bad { border-image-source: var(--scf-bad); }
 .sc-chip { border-image-source: var(--scf-raised); padding: 0.125rem 0.375rem; color: var(--sc-ink); font-weight: 700 !important; }

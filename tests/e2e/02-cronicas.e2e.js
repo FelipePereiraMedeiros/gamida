@@ -96,4 +96,37 @@ module.exports = [
       await context.close();
     },
   },
+  {
+    name: "Guardião no celular: frase longa compacta, com passo, pergunta e alternativas à vista",
+    async fn({ browser, base, assert }) {
+      const { context, page, errors } = await openApp({ browser, base }, { language: "greek", viewport: { width: 390, height: 844 }, storage: scribeSeed("greek") });
+      await openScribe(page);
+      // A frase mais longa do grego (Jo 1.51, 26 palavras)
+      await page.evaluate(() => {
+        const sentence = AppState.chapters.find((c) => c.id === "bergmann_05").sentences.find((s) => s.id === "sent_05_05");
+        ScribeExtra.startExtraBattle({ id: "teste", title: "Teste", words: [], sentences: [sentence], onEnd: () => {}, onBack: () => {} });
+      });
+      await page.click("#sc-fight");
+      await page.waitForSelector("#sc-cmd .sc-step");
+      await page.waitForTimeout(900);
+      const view = await page.evaluate(() => {
+        const box = (sel) => document.querySelector(sel).getBoundingClientRect();
+        const opts = [...document.querySelectorAll("#sc-cmd .sc-opt")].map((b) => b.getBoundingClientRect());
+        return {
+          step: document.querySelector("#sc-cmd .sc-step").textContent,
+          question: box("#sc-cmd .sc-q"),
+          lastOption: opts[opts.length - 1],
+          framed: document.querySelectorAll("#sc-cmd .sc-bw:not(.is-plain)").length,
+          long: !!document.querySelector(".sc-bossline--long"),
+          height: window.innerHeight,
+        };
+      });
+      assert.match(view.step, /^Frase 1 de 1 · passo 1 de \d: significado/);
+      assert.ok(view.long, "a frase longa não ficou compacta");
+      assert.ok(view.framed >= 1 && view.framed <= 3, `${view.framed} palavras em destaque`);
+      assert.ok(view.question.top >= 0 && view.lastOption.bottom <= view.height, "a pergunta ou as alternativas ficaram fora da tela");
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await context.close();
+    },
+  },
 ];

@@ -233,6 +233,50 @@ suite.test('Frases longas são montadas em grupos de palavras', () => {
   assert.isTrue(Scribe.isBuildCorrect(['Ele É', 'justo'], ['ele é', 'justo.']), 'Caixa e pontuação não contam');
 });
 
+suite.test('Toda frase do guardião monta perguntas válidas, nos dois idiomas (lições e exame)', () => {
+  const Rules = require('../js/modules/scribe-rules.js');
+  const { normalizeText } = require('../js/modules/evaluation.js');
+  const keyOf = (t) => normalizeText(t).replace(/[?¿!¡"“”'‘’]/g, '').trim();
+  const problems = [];
+  LANGS.forEach(([language, chapters]) => {
+    AppState.language = language;
+    AppState.chapters = chapters;
+    const vocab = Rules.buildVocabIndex(chapters);
+    const lessons = [...Rules.buildCampaign(chapters, language).map((c) => c.chapter), ...chapters.filter((c) => c.special)];
+    lessons.forEach((chapter) => {
+      const glossPool = (chapter.sentences || []).flatMap((s) => (s.tokens || []).map((t) => t.context_meaning).filter(Boolean));
+      (chapter.sentences || []).filter((s) => getTerm(s) && (s.translations || []).length && (s.tokens || []).length).forEach((sentence) => {
+        const id = `${language} ${chapter.id}/${sentence.id}`;
+        for (let run = 0; run < 3; run++) {
+          const strikes = Rules.sentenceStrikes(sentence, vocab, chapter);
+          if (!strikes.length) problems.push(`${id}: nenhuma palavra para perguntar`);
+          strikes.forEach((strike) => {
+            const options = Rules.strikeOptions(strike, glossPool, chapters);
+            const keys = options.map(keyOf);
+            const accepted = new Set(Rules.strikeAccepted(strike).map(keyOf));
+            if (options.length !== 4) problems.push(`${id} ${strike.text}: ${options.length} alternativas`);
+            if (!options.includes(strike.answer)) problems.push(`${id} ${strike.text}: sem a resposta`);
+            if (new Set(keys).size !== keys.length) problems.push(`${id} ${strike.text}: alternativa repetida (${options.join(' | ')})`);
+            options.filter((o) => o !== strike.answer && accepted.has(keyOf(o))).forEach((o) => problems.push(`${id} ${strike.text}: "${o}" é errada mas também é certa`));
+            const grammar = Rules.grammarQuestion(strike.token, language);
+            if (grammar && (grammar.options.length < 2 || !grammar.options.includes(grammar.answer))) problems.push(`${id} ${strike.text}: gramática sem a resposta`);
+          });
+        }
+        const bank = Rules.buildSentenceBank(sentence, chapter.sentences);
+        if (!bank.chunks.length || bank.chunks.length > Rules.MAX_CHUNKS) problems.push(`${id}: ${bank.chunks.length} pedaços`);
+        if (bank.chunks.join(' ') !== bank.target.trim().split(/\s+/).join(' ')) problems.push(`${id}: pedaços não refazem a tradução`);
+      });
+    });
+  });
+  assert.deepEqual(problems.slice(0, 15), [], `${problems.length} problemas`);
+});
+
+suite.test('Pedaços da montagem preferem fechar nas pausas da frase', () => {
+  const chunks = Scribe.chunkTranslation('E lhe diz: Em verdade, em verdade digo a vocês: de agora em diante verão o céu aberto, e os anjos de Deus subindo e descendo sobre o Filho do Homem.');
+  assert.isTrue(chunks.length <= 7);
+  assert.equal(chunks[0], 'E lhe diz:', 'O primeiro pedaço termina na pausa');
+});
+
 suite.test('Progresso corrompido é saneado e o backup só traz avanço', () => {
   const clean = Scribe.sanitizeProgress({ cls: 'dragão', done: { kelley_03: true, kelley_05: 0 }, lvl: -3, xp: 'x', potions: 2.9, relics: ['urim', 'falsa'], stats: null });
   assert.equal(clean.cls, null);

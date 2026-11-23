@@ -1756,7 +1756,7 @@ function bossIntro() {
   music(bossTheme());
   const intro = B.rush
     ? `${esc(B.meta.boss)} desperta e lança <b>${B.rush.length} palavras</b> de uma vez. Aponte o termo certo para cada significado.`
-    : `${esc(B.meta.boss)} desperta e guarda <b>${B.sents.length} ${B.sents.length === 1 ? "frase" : "frases"}</b>. Decifre as palavras, responda o golpe de gramática e monte cada tradução.`;
+    : `${esc(B.meta.boss)} desperta e guarda <b>${B.sents.length} ${B.sents.length === 1 ? "frase" : "frases"}</b>. Em cada frase: diga o que significa cada palavra em destaque (às vezes vem uma pergunta de gramática sobre ela) e, no último passo, monte a tradução da frase inteira.`;
   B.rage = false;
   renderBattle(`<p class="sc-taunt"><b>${esc(B.meta.boss)}${B.meta.bossRef ? ` <small>(${esc(B.meta.bossRef)})</small>` : ""}:</b> ${rich(B.extra ? B.extra.taunt || "" : loreOf(B.index).taunt)}</p>
     <div class="sc-prompt"><div class="sc-q sc-q--strong">${intro}</div></div>
@@ -1772,18 +1772,43 @@ function bossIntro() {
   });
 }
 
+/** Frases a partir deste tamanho ficam compactas, para a pergunta e as alternativas caberem na tela */
+const LONG_SENTENCE_TOKENS = 9;
+
 function bossLine() {
   const { sentence, strikes } = B.s;
   const struck = new Map(strikes.map((s, i) => [s.tokenIndex, i]));
   const allDone = B.phase === "build";
-  return `<div class="sc-bossline" dir="${isHebrew() ? "rtl" : "ltr"}">${(sentence.tokens || []).map((token, tokenIndex) => {
+  const tokens = sentence.tokens || [];
+  const long = tokens.length >= LONG_SENTENCE_TOKENS ? " sc-bossline--long" : "";
+  // Só as palavras dos golpes ganham moldura; as demais ficam como texto corrido
+  return `<div class="sc-bossline${long}" dir="${isHebrew() ? "rtl" : "ltr"}">${tokens.map((token, tokenIndex) => {
     const strikeIndex = struck.has(tokenIndex) ? struck.get(tokenIndex) : -1;
-    const done = strikeIndex !== -1 && (allDone || strikeIndex < B.wi);
+    const text = `<span class="${termClass()}">${esc(cleanTokenText(token))}</span>`;
+    if (strikeIndex === -1) return `<div class="sc-bw is-plain">${text}</div>`;
+    const done = allDone || strikeIndex < B.wi;
     const now = !allDone && strikeIndex === B.wi;
     return `<div class="sc-bw${done ? " is-done" : ""}${now ? " is-now" : ""}">
-      <span class="${termClass()}">${esc(cleanTokenText(token))}</span>
-      <small>${done ? esc(strikes[strikeIndex].answer) : "&nbsp;"}</small></div>`;
+      ${text}<small>${done ? esc(strikes[strikeIndex].answer) : now ? "?" : "&nbsp;"}</small></div>`;
   }).join("")}</div>`;
+}
+
+/** Onde o aluno está no guardião: frase, passo e o que fazer agora */
+function bossStep() {
+  const steps = B.s.strikes.length + 1;
+  const step = B.phase === "build" ? steps : B.wi + 1;
+  const what = B.phase === "build"
+    ? "monte a tradução da frase inteira"
+    : B.q ? "gramática da palavra em destaque" : "significado da palavra em destaque";
+  return `<div class="sc-step">Frase ${B.si + 1} de ${B.sents.length} · passo ${step} de ${steps}: ${what}</div>`;
+}
+
+/** Em telas baixas, leva a pergunta para o alto: a frase longa não pode escondê-la */
+function revealPrompt() {
+  const prompt = $("#sc-cmd .sc-prompt");
+  if (!prompt || typeof window === "undefined" || window.innerHeight > 900 || !prompt.scrollIntoView) return;
+  const box = prompt.getBoundingClientRect();
+  if (box.top < 0 || box.bottom > window.innerHeight * 0.45) prompt.scrollIntoView({ block: "start", behavior: "smooth" });
 }
 
 function bossTurn() {
@@ -1803,7 +1828,9 @@ function bossTurn() {
   } else {
     B.opts = strikeOptions(strike, B.glossPool, AppState.chapters);
     B.ans = strike.answer;
-    const showLemma = strike.item && !strike.token.context_meaning && strike.lemma !== headTerm(strike.text);
+    // "Καὶ vem de καί" não ensina nada: o verbete só aparece quando a forma muda de verdade
+    const bare = (t) => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[,.;:·!?]+$/, "").toLowerCase();
+    const showLemma = strike.item && !strike.token.context_meaning && bare(strike.lemma) !== bare(headTerm(strike.text));
     label = strike.token.context_meaning
       ? `O que significa ${word} nesta frase?`
       : showLemma
@@ -1812,9 +1839,10 @@ function bossTurn() {
   }
   // O golpe de gramática é sempre por alternativas; o de palavra pode ser digitado
   const typed = !B.q && typedNow();
-  cmd.innerHTML = `${bossLine()}<div class="sc-prompt"><div class="sc-q sc-q--strong">${label}</div></div>${TIMER_BAR}${typed ? typedForm("Digite o significado…") : optionButtons(B.opts)}`;
+  cmd.innerHTML = `<div class="sc-prompt">${bossStep()}<div class="sc-q sc-q--strong">${label}</div></div>${bossLine()}${TIMER_BAR}${typed ? typedForm("Digite o significado…") : optionButtons(B.opts)}`;
   if (typed) bindTyped(bossAnswerTyped);
   else bindOptions(bossAnswer);
+  revealPrompt();
   startTimer(bossWindow(typed), { crit: false });
 }
 
@@ -1889,16 +1917,19 @@ function bossBuild() {
   if (fresh) B.buildClock = B.si;
   if (typedNow()) {
     bossBuildTyped(cmd);
-    if (fresh) startTimer(buildWindow(true), { crit: false });
+    if (fresh) {
+      startTimer(buildWindow(true), { crit: false });
+      revealPrompt();
+    }
     return;
   }
   const { bank, chunks } = B.s;
-  cmd.innerHTML = `${bossLine()}
-    <div class="sc-prompt"><div class="sc-q sc-q--strong">Golpe da frase: monte a tradução</div></div>
+  cmd.innerHTML = `<div class="sc-prompt">${bossStep()}<div class="sc-q sc-q--strong">Golpe da frase: monte a tradução</div></div>
+    ${bossLine()}
     ${TIMER_BAR}
     <div class="sc-build" id="sc-build">${B.built.length
       ? B.built.map((b, i) => `<button type="button" class="sc-chip is-placed" data-i="${i}">${esc(b.text)}</button>`).join("")
-      : `<span class="sc-build__hint">Toque nos pedaços na ordem do português</span>`}</div>
+      : `<span class="sc-build__hint">Toque nos pedaços abaixo, na ordem da tradução em português. Sobram pedaços de outra frase.</span>`}</div>
     <div class="sc-chips" id="sc-bank">${bank.map((b) => `<button type="button" class="sc-chip" data-id="${b.id}" ${b.used ? "disabled" : ""}>${esc(b.text)}</button>`).join("")}</div>
     <div class="sc-row"><button type="button" class="sc-btn sc-btn--ghost" id="sc-clear">Limpar</button><button type="button" class="sc-btn" id="sc-strike">Desferir golpe</button></div>`;
   document.querySelectorAll("#sc-bank .sc-chip").forEach((chip) => {
@@ -1943,7 +1974,10 @@ function bossBuild() {
       ? "Falta pedaço: toda palavra da frase precisa aparecer."
       : "A ordem ou um pedaço não bate. O destacado é o primeiro problema.");
   });
-  if (fresh) startTimer(buildWindow(false), { crit: false });
+  if (fresh) {
+    startTimer(buildWindow(false), { crit: false });
+    revealPrompt();
+  }
 }
 
 /** Tempo para montar a frase: cresce com o número de pedaços */
@@ -1955,8 +1989,8 @@ function buildWindow(typed) {
 /** Golpe da frase digitado: o aluno escreve a tradução inteira */
 function bossBuildTyped(cmd) {
   const { sentence } = B.s;
-  cmd.innerHTML = `${bossLine()}
-    <div class="sc-prompt"><div class="sc-q sc-q--strong">Golpe da frase: digite a tradução</div></div>
+  cmd.innerHTML = `<div class="sc-prompt">${bossStep()}<div class="sc-q sc-q--strong">Golpe da frase: digite a tradução</div></div>
+    ${bossLine()}
     ${TIMER_BAR}
     ${typedForm("Tradução da frase…", { area: true })}
     <div class="sc-row"><button type="button" class="sc-btn sc-btn--ghost" id="sc-use-chips">Montar com pedaços</button></div>`;

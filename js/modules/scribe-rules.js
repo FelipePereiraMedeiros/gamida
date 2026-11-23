@@ -308,12 +308,13 @@ function sentenceStrikes(sentence, vocabIndex, chapter) {
  * @returns {Array<string>}
  */
 function strikeOptions(strike, glossPool, chapters) {
-  const answerKey = normalizeText(strike.answer);
-  const own = new Set([answerKey, ...((strike.item && strike.item.translations) || []).map(normalizeText)]);
+  // "qual?" e "Qual" são a mesma resposta: interrogação e aspas não distinguem alternativas
+  const keyOf = (text) => normalizeText(text).replace(/[?¿!¡"“”'‘’]/g, "").trim();
+  const own = new Set([keyOf(strike.answer), ...((strike.item && strike.item.translations) || []).map(keyOf)]);
   const seen = new Set(own);
   const wrong = [];
   const consider = (gloss) => {
-    const key = normalizeText(gloss);
+    const key = keyOf(gloss);
     if (!key || seen.has(key) || wrong.length >= 3) return;
     seen.add(key);
     wrong.push(gloss);
@@ -343,7 +344,20 @@ function chunkTranslation(text) {
   const words = String(text || "").trim().split(/\s+/).filter(Boolean);
   const size = Math.max(1, Math.ceil(words.length / MAX_CHUNKS));
   const chunks = [];
-  for (let i = 0; i < words.length; i += size) chunks.push(words.slice(i, i + size).join(" "));
+  let piece = [];
+  words.forEach((word, i) => {
+    piece.push(word);
+    // Fecha o pedaço no tamanho máximo ou, antes, numa pausa da frase (vírgula, ponto),
+    // desde que o resto ainda caiba nos pedaços que sobram
+    const rest = words.length - i - 1;
+    const slots = MAX_CHUNKS - chunks.length - 1;
+    const pause = size > 1 && piece.length >= 2 && /[,;:.!?]$/.test(word) && rest <= slots * size;
+    if (piece.length >= size || pause) {
+      chunks.push(piece.join(" "));
+      piece = [];
+    }
+  });
+  if (piece.length) chunks.push(piece.join(" "));
   return chunks;
 }
 
