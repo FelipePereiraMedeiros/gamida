@@ -267,6 +267,7 @@
             <button type="button" class="btn-secondary" data-on-click="trainExamPhrases()">Frases das provas</button>
             <button type="button" class="btn-secondary" data-on-click="trainExamWords()">Vocabulário</button>
             <button type="button" class="btn-secondary hidden" data-exam-lang="greek" data-on-click="trainExamTable()">Tabela de análise</button>
+            <button type="button" class="btn-secondary hidden" data-exam-lang="greek" data-on-click="trainExamLexico()">Forma do léxico</button>
             <button type="button" class="btn-secondary hidden" data-exam-lang="greek" data-on-click="openExamMorphDrill()">Mago da Morfologia</button>
           </div>
           <details class="exam-cheat">
@@ -512,11 +513,13 @@
               <div id="practice-form-container" class="hidden">
                 <span class="field-label">O que treinar</span>
                 <div class="seg seg--wrap" role="group" aria-label="O que treinar">
-                  <button type="button" id="exam-words-all" data-on-click="setExamWords('all')" class="seg-btn is-active" aria-pressed="true" title="Todo o vocabulário do exame">Todas</button>
+                  <button type="button" id="exam-words-all" data-on-click="setExamWords('all')" class="seg-btn is-active" aria-pressed="true" title="Tudo: as palavras do vocabulário e, no grego, também as formas da tabela">Todas</button>
+                  <button type="button" id="exam-words-raizes" data-on-click="setExamWords('raizes')" class="seg-btn hidden" aria-pressed="false" title="Só as 40 palavras do vocabulário das provas, na forma do dicionário, sem as formas da tabela">Raízes (40)</button>
                   <button type="button" id="exam-words-prova1" data-on-click="setExamWords('prova1')" class="seg-btn" aria-pressed="false" title="Palavras da Prova 1">Prova 1</button>
                   <button type="button" id="exam-words-prova2" data-on-click="setExamWords('prova2')" class="seg-btn" aria-pressed="false" title="Palavras da Prova 2">Prova 2</button>
                   <button type="button" id="exam-words-sorteio" data-on-click="setExamWords('sorteio')" class="seg-btn" aria-pressed="false" title="20 palavras sorteadas, como no exame de grego">Sorteio de 20</button>
                   <button type="button" id="exam-words-tabela" data-on-click="setExamWords('tabela')" class="seg-btn hidden" aria-pressed="false" title="As formas da tabela de análise das provas, com a classificação na dica">Tabela</button>
+                  <button type="button" id="exam-words-lexico" data-on-click="setExamWords('lexico')" class="seg-btn hidden" aria-pressed="false" title="Veja a forma que caiu na tabela e dê a forma do léxico (dicionário) dela">Forma do léxico</button>
                 </div>
               </div>
 

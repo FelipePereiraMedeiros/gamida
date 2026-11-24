@@ -795,15 +795,19 @@ function renderChoiceInterface() {
   DOM.interfaces.choice.innerHTML = "";
   const isReverse = isReverseChoice();
   const build = typeof window !== "undefined" && window.StateModule && window.StateModule.buildChoiceOptions;
-  const options = typeof build === "function"
+  // Estudo para exame (modo temporário): a forma do léxico tem alternativas em grego
+  const examOptions = typeof window !== "undefined" && window.ExamMode && typeof window.ExamMode.choiceOptions === "function"
+    ? window.ExamMode.choiceOptions(AppState.currentQuestion)
+    : null;
+  const options = examOptions || (typeof build === "function"
     ? build(AppState.currentQuestion, AppState.chapters, { direction: getChoiceDirection() })
-    : [];
+    : []);
   const termClass = AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
 
   options.forEach((opt, idx) => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = `choice-btn hover:border-brand-500 active:scale-[0.99]${isReverse ? ` choice-btn--term ${termClass}` : ""}`;
+    btn.className = `choice-btn hover:border-brand-500 active:scale-[0.99]${isReverse || opt.original ? ` choice-btn--term ${termClass}` : ""}`;
     btn.setAttribute("data-key", String(idx + 1));
     if (opt.isCorrect) btn.dataset.correct = "1";
     btn.textContent = opt.text;

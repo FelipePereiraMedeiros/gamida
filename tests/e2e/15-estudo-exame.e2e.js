@@ -194,4 +194,38 @@ module.exports = [
       }
     },
   },
+  {
+    name: "Grego: Raízes (só as 40 palavras) e Forma do léxico (digitada sem acento e na Escolha, em grego); hebraico sem essas opções",
+    async fn({ browser, base, assert }) {
+      const { context, page, errors } = await openApp({ browser, base }, { language: "greek", viewport: { width: 390, height: 844 } });
+      await page.evaluate(() => { openExamMode(); setExerciseMode("typing"); });
+      await page.evaluate(() => setExamWords("raizes")); // botão dentro do painel "Opções"
+      let q = await queue(page);
+      assert.equal(q.length, 40);
+      assert.ok(q.every((w) => w.kind === "vocab"), "entrou forma da tabela nas raízes");
+      await page.evaluate(() => trainExamWords());
+      assert.equal((await queue(page)).length, 40, "o atalho Vocabulário não ficou só com as 40");
+      await page.click(".exam-bar__actions >> text=Forma do léxico");
+      q = await queue(page);
+      assert.ok(q.length === 31 && q.every((w) => w.kind === "lexico"), `forma do léxico: ${q.length}`);
+      const answer = await page.evaluate(() => AppState.currentQuestion.translations.slice(-1)[0].normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+      await page.fill("#input-answer", answer);
+      await page.keyboard.press("Enter");
+      assert.ok(await page.evaluate(() => AppState.correctCount === 1), "a forma do léxico sem acento não contou");
+      await page.waitForSelector("#feedback-key:not(.hidden)");
+      assert.match(await page.textContent("#feedback-key-text"), /forma do léxico/);
+      await page.evaluate(() => setExerciseMode("choice"));
+      const options = await page.evaluate(() => [...document.querySelectorAll(".choice-btn")].map((b) => ({ text: b.textContent, right: b.dataset.correct === "1", greek: b.classList.contains("greek-text") })));
+      assert.equal(options.length, 4);
+      assert.equal(options.filter((o) => o.right).length, 1);
+      assert.ok(options.every((o) => o.greek && /[\u0370-\u03FF\u1F00-\u1FFF]/.test(o.text)), "alternativa da forma do léxico fora do grego");
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await context.close();
+      const h = await openApp({ browser, base }, { language: "hebrew" });
+      await h.page.evaluate(() => openExamMode());
+      for (const id of ["raizes", "tabela", "lexico"]) assert.ok(!(await h.page.isVisible(`#exam-words-${id}`)), `hebraico mostrou ${id}`);
+      assert.deepEqual(h.errors, [], h.errors.join(" | "));
+      await h.context.close();
+    },
+  },
 ];

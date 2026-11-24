@@ -115,6 +115,30 @@ suite.test('Grego: a tabela de análise traz classificação e chave; as frases 
   assert.isTrue(chap.sentences.some((x) => x.ref === 'Jo 6.26'), 'faltou Jo 6.26');
 });
 
+suite.test('Grego: "Raízes" traz só as 40 palavras e "Forma do léxico" pede o dicionário de cada forma da tabela', () => {
+  const ExamMode = require('../js/modules/exam-mode.js');
+  const chap = exam('greek');
+  const raizes = ExamMode.filterWords(chap.items, 'raizes');
+  assert.equal(raizes.length, 40, 'Raízes: as 40 palavras do vocabulário das provas');
+  assert.isTrue(raizes.every((i) => i.kind === 'vocab'), 'Raízes sem formas da tabela');
+  const tabela = chap.items.filter((i) => i.kind === 'tabela');
+  tabela.forEach((i) => assert.isTrue(/^[\u0370-\u03FF\u1F00-\u1FFF]/.test(nfc(i.lexico || '')), `Forma da tabela sem léxico: ${i.term}`));
+  // Quando a chave do gabarito diz o léxico, o campo concorda com ela
+  tabela.forEach((i) => {
+    const m = /Léxico ([^\s.,(]+)/.exec(i.key || '');
+    if (m) assert.equal(nfc(i.lexico.split(',')[0].trim()), nfc(m[1]), `Léxico diferente da chave em ${i.term}`);
+  });
+  const lexico = ExamMode.filterWords(chap.items, 'lexico');
+  assert.equal(lexico.length, tabela.length);
+  lexico.forEach((q, n) => {
+    assert.equal(q.kind, 'lexico');
+    assert.equal(q.term, tabela[n].term);
+    assert.equal(q.translations[0], tabela[n].lexico, 'A resposta é a forma do léxico');
+    assert.isTrue(q.translations.includes(tabela[n].lexico.split(',')[0].trim()), 'Aceita só a palavra, sem genitivo e artigo');
+  });
+  assert.equal(tabela[0].kind, 'tabela', 'A forma do léxico não muda o item da tabela');
+});
+
 module.exports = suite;
 
 if (require.main === module) {

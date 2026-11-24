@@ -26,7 +26,9 @@ const CHAPTER_ID = "estudo_exame";
 const SEEN_KEY = "gamida_exam_alert_seen_estudo_exame_2";
 
 const WORDS_KEY = "gamida_exam_words";
-const WORDS = ["all", "prova1", "prova2", "sorteio", "tabela"];
+const WORDS = ["all", "raizes", "prova1", "prova2", "sorteio", "tabela", "lexico"];
+// Opções que só existem no grego
+const GREEK_ONLY = ["raizes", "tabela", "lexico"];
 const PHRASE_KEY = "gamida_exam_phrases";
 const PHRASES = ["all", "prova1", "prova2", "simulado"];
 // Sorteios no formato dos exames
@@ -52,7 +54,7 @@ const write = (key, v) => {
 
 const getWords = () => {
   const v = read(WORDS_KEY, WORDS);
-  return v === "tabela" && lang() !== "greek" ? "all" : v;
+  return GREEK_ONLY.includes(v) && lang() !== "greek" ? "all" : v;
 };
 const getPhrases = () => read(PHRASE_KEY, PHRASES);
 
@@ -72,15 +74,44 @@ function shuffle(list) {
   return typeof fn === "function" ? fn([...list]) : [...list].sort(() => Math.random() - 0.5);
 }
 
-const WORD_LABEL = { prova1: "Palavras da Prova 1", prova2: "Palavras da Prova 2", sorteio: `Sorteio de ${SORTEIO_WORDS} palavras`, tabela: "Tabela de análise" };
+const WORD_LABEL = { raizes: "Raízes: as 40 palavras", prova1: "Palavras da Prova 1", prova2: "Palavras da Prova 2", sorteio: `Sorteio de ${SORTEIO_WORDS} palavras`, tabela: "Tabela de análise", lexico: "Forma do léxico da tabela" };
 const PHRASE_LABEL = { prova1: "Frases da Prova 1", prova2: "Frases da Prova 2", simulado: "Simulado de frases" };
 
-/** Palavras: as das provas, um sorteio de 20 (como no exame de grego) ou a tabela de análise */
+/**
+ * Forma da tabela → forma do léxico (coluna "Forma no léxico" das provas). Item feito na
+ * hora a partir da tabela: a pergunta é a forma flexionada e a resposta, a do dicionário
+ * (aceita também só a palavra, sem genitivo e artigo). A classificação fica na dica.
+ */
+const lexicoCache = new WeakMap();
+function lexicoItem(item) {
+  if (lexicoCache.has(item)) return lexicoCache.get(item);
+  const head = item.lexico.split(",")[0].trim();
+  const out = {
+    term: item.term,
+    transliteration: item.transliteration,
+    translations: head === item.lexico ? [item.lexico] : [item.lexico, head],
+    type: item.type,
+    group: item.group,
+    kind: "lexico",
+    key: item.key,
+    ref: item.ref,
+    label: String(item.label || "").replace("tabela", "forma do léxico"),
+  };
+  lexicoCache.set(item, out);
+  return out;
+}
+
+/**
+ * Palavras: as das provas (as 40 raízes do grego, por prova ou em sorteio de 20, como no
+ * exame) ou a tabela de análise; "Todas" junta as palavras e as formas da tabela
+ */
 function filterWords(items, which = getWords()) {
   const words = items.filter((i) => !isSentence(i));
   if (which === "all") return items;
   if (which === "tabela") return words.filter((i) => i.kind === "tabela");
+  if (which === "lexico") return words.filter((i) => i.kind === "tabela" && i.lexico).map(lexicoItem);
   const vocab = words.filter((i) => i.kind !== "tabela");
+  if (which === "raizes") return vocab;
   if (which === "sorteio") return shuffle(vocab).slice(0, SORTEIO_WORDS);
   return vocab.filter((i) => inProva(i, which));
 }
@@ -124,9 +155,12 @@ function updateFormUI() {
   const phrases = document.getElementById("practice-phrases-container");
   if (words) words.classList.toggle("hidden", !open || sentences);
   if (phrases) phrases.classList.toggle("hidden", !open || !sentences);
-  const tabela = document.getElementById("exam-words-tabela");
-  if (tabela) tabela.classList.toggle("hidden", !greek);
   paintSeg("exam-words", WORDS, getWords());
+  // Depois de pintar (a pintura troca a classe inteira): opções só do grego somem no hebraico
+  GREEK_ONLY.forEach((v) => {
+    const btn = document.getElementById(`exam-words-${v}`);
+    if (btn) btn.classList.toggle("hidden", !greek);
+  });
   paintSeg("exam-phrases", PHRASES, getPhrases());
   const bar = document.getElementById("exam-cheatsheet");
   if (bar) bar.classList.toggle("hidden", !open || AppState.currentTab !== "practice");
@@ -188,12 +222,17 @@ function startExamSimulado() {
   }
 }
 function trainExamWords() {
-  write(WORDS_KEY, "all");
+  // "Vocabulário" da barra: no grego, só as 40 palavras (sem as formas da tabela)
+  write(WORDS_KEY, lang() === "greek" ? "raizes" : "all");
   if (!ensureMode("typing")) restartRound();
 }
 function trainExamPhrases() {
   write(PHRASE_KEY, "all");
   if (!ensureMode("sentences")) restartRound();
+}
+function trainExamLexico() {
+  write(WORDS_KEY, "lexico");
+  if (!ensureMode("typing")) restartRound();
 }
 function trainExamTable() {
   write(WORDS_KEY, "tabela");
@@ -211,6 +250,27 @@ function openExamMorphDrill() {
   } catch (_) {}
   if (typeof w.switchTab === "function") w.switchTab("review");
   if (typeof w.openMorphDrill === "function") w.openMorphDrill();
+}
+
+/**
+ * Alternativas da Escolha para a forma do léxico: a certa e outras formas de dicionário
+ * (das outras formas da tabela e das 40 palavras), todas em grego. null para os demais itens.
+ */
+function choiceOptions(question, count = 3) {
+  if (!question || question.kind !== "lexico") return null;
+  const chapter = examChapter();
+  const right = question.translations[0];
+  const bare = (t) => String(t || "").split(",")[0].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+  const seen = new Set([bare(right)]);
+  const pool = [];
+  ((chapter && chapter.items) || []).forEach((i) => {
+    const text = i.kind === "tabela" ? i.lexico : i.kind === "vocab" ? i.term : "";
+    if (!text || seen.has(bare(text))) return;
+    seen.add(bare(text));
+    pool.push(text);
+  });
+  const wrong = shuffle(pool).slice(0, count);
+  return shuffle([right, ...wrong]).map((text) => ({ text, isCorrect: text === right, term: question.term, translations: [...question.translations], transliteration: "", original: true }));
 }
 
 /** Texto curto para o resumo das opções, ou "" */
@@ -316,7 +376,7 @@ const ExamMode = {
   CHAPTER_ID, SORTEIO_WORDS, SIMULADO,
   openExamMode, refresh, maybeAlert, updateFormUI,
   getWords, getPhrases, filterWords, filterSentences, filterItems, formSummary,
-  setExamWords, setExamPhrases, startExamSimulado, trainExamWords, trainExamPhrases, trainExamTable, openExamMorphDrill,
+  choiceOptions, setExamWords, setExamPhrases, startExamSimulado, trainExamWords, trainExamPhrases, trainExamTable, trainExamLexico, openExamMorphDrill,
   showKey, hideKey,
 };
 
@@ -327,6 +387,7 @@ if (typeof window !== "undefined") {
   window.setExamPhrases = setExamPhrases;
   window.startExamSimulado = startExamSimulado;
   window.trainExamWords = trainExamWords;
+  window.trainExamLexico = trainExamLexico;
   window.trainExamPhrases = trainExamPhrases;
   window.trainExamTable = trainExamTable;
   window.openExamMorphDrill = openExamMorphDrill;

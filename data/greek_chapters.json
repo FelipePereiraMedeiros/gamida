@@ -36492,7 +36492,8 @@
         "kind": "tabela",
         "key": "Léxico ἀγαθός, -ή, -όν. Concorda com τι (“algo bom”), sujeito de δύναται → nominativo neutro. Adjetivo: deixe em branco característica, tempo, modo, voz e pessoa.",
         "ref": "Jo 1.46",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "ἀγαθός, -ή, -όν"
       },
       {
         "term": "υἱόν",
@@ -36505,7 +36506,8 @@
         "kind": "tabela",
         "key": "Léxico υἱός. Aposto de Ἰησοῦν, objeto de εὑρήκαμεν → acusativo; o artigo τόν confirma.",
         "ref": "Jo 1.45",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "υἱός, -οῦ, ὁ"
       },
       {
         "term": "ᾧ",
@@ -36519,7 +36521,8 @@
         "kind": "tabela",
         "key": "Léxico ὅς, ἥ, ὅ. Vem depois de ἐν → dativo; refere-se a Ἰσραηλίτης → masculino. Não é artigo: aspiração forte e sem τ.",
         "ref": "Jo 1.47",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "ὅς, ἥ, ὅ"
       },
       {
         "term": "λέγει",
@@ -36532,7 +36535,8 @@
         "kind": "tabela",
         "key": "Léxico λέγω. Verbo não tem gênero nem caso. Característica: nenhuma (—).",
         "ref": "Jo 1.47",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "λέγω"
       },
       {
         "term": "εἶπεν",
@@ -36545,7 +36549,8 @@
         "kind": "tabela",
         "key": "Léxico λέγω. Escreva só “aoristo” (sem 1º ou 2º).",
         "ref": "Jo 1.46",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "λέγω"
       },
       {
         "term": "εἶδεν",
@@ -36558,7 +36563,8 @@
         "kind": "tabela",
         "key": "Léxico ὁράω.",
         "ref": "Jo 1.47",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "ὁράω"
       },
       {
         "term": "ἔστιν",
@@ -36572,7 +36578,8 @@
         "kind": "tabela",
         "key": "Léxico εἰμί. Voz pode ser “ativa” (regra do professor para εἰμί).",
         "ref": "Jo 1.47",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "εἰμί"
       },
       {
         "term": "δύναται",
@@ -36585,7 +36592,8 @@
         "kind": "tabela",
         "key": "Léxico δύναμαι. Voz ativa por ser depoente.",
         "ref": "Jo 1.46",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "δύναμαι"
       },
       {
         "term": "ὁ ἀμνός",
@@ -36598,7 +36606,8 @@
         "kind": "tabela",
         "key": "Artigo ὁ ligado a ἀμνός (Jo 1.29).",
         "ref": "Jo 1.29",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "ἀμνός, -οῦ, ὁ"
       },
       {
         "term": "τὴν ἁμαρτίαν",
@@ -36611,7 +36620,8 @@
         "kind": "tabela",
         "key": "Objeto de αἴρων.",
         "ref": "Jo 1.29",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "ἁμαρτία, -ας, ἡ"
       },
       {
         "term": "τοῦ κόσμου",
@@ -36624,7 +36634,8 @@
         "kind": "tabela",
         "key": "Genitivo: “do mundo”.",
         "ref": "Jo 1.29",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "κόσμος, -ου, ὁ"
       },
       {
         "term": "τῷ Ἰσραήλ",
@@ -36638,7 +36649,8 @@
         "kind": "tabela",
         "key": "Dativo depois de φανερωθῇ: “a Israel”.",
         "ref": "Jo 1.31",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "Ἰσραήλ, ὁ"
       },
       {
         "term": "τὸ Πνεῦμα",
@@ -36651,7 +36663,8 @@
         "kind": "tabela",
         "key": "Objeto de τεθέαμαι (“tenho visto o Espírito”).",
         "ref": "Jo 1.32",
-        "label": "Prova 1 · tabela"
+        "label": "Prova 1 · tabela",
+        "lexico": "πνεῦμα, -ατος, τό"
       },
       {
         "term": "ἐγένετο",
@@ -36665,7 +36678,8 @@
         "kind": "tabela",
         "key": "Léxico γίνομαι. Característica: ε (aumento, opcional).",
         "ref": "Jo 1.6",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "γίνομαι"
       },
       {
         "term": "μαρτυρήσῃ",
@@ -36678,7 +36692,8 @@
         "kind": "tabela",
         "key": "Léxico μαρτυρέω. Característica: σ. Verbo logo depois de ἵνα vai para o subjuntivo; o aoristo subjuntivo tem σ sem o aumento ε.",
         "ref": "Jo 1.7",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "μαρτυρέω"
       },
       {
         "term": "ἦν",
@@ -36691,7 +36706,8 @@
         "kind": "tabela",
         "key": "Léxico εἰμί. Não é artigo (não tem τ) nem pronome relativo (aspiração branda). Imperfeito é sempre indicativo.",
         "ref": "Jo 1.8",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "εἰμί"
       },
       {
         "term": "ἄνθρωπος",
@@ -36704,7 +36720,8 @@
         "kind": "tabela",
         "key": "Léxico ἄνθρωπος.",
         "ref": "Jo 1.6",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "ἄνθρωπος, -ου, ὁ"
       },
       {
         "term": "ἦλθεν",
@@ -36717,7 +36734,8 @@
         "kind": "tabela",
         "key": "Léxico ἔρχομαι (raiz ἐλθ-).",
         "ref": "Jo 1.7",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "ἔρχομαι"
       },
       {
         "term": "ἔλαβον",
@@ -36730,7 +36748,8 @@
         "kind": "tabela",
         "key": "Léxico λαμβάνω (raiz λαβ-).",
         "ref": "Jo 1.12",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "λαμβάνω"
       },
       {
         "term": "πιστεύσωσιν",
@@ -36744,7 +36763,8 @@
         "kind": "tabela",
         "key": "Léxico πιστεύω. Igual a μαρτυρήσῃ, mas 3ª do plural; vem depois de ἵνα.",
         "ref": "Jo 1.7",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "πιστεύω"
       },
       {
         "term": "θεοῦ",
@@ -36757,7 +36777,8 @@
         "kind": "tabela",
         "key": "Léxico θεός. Terminação -ου.",
         "ref": "Jo 1.6",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "θεός, -οῦ, ὁ"
       },
       {
         "term": "μαρτυρίαν",
@@ -36770,7 +36791,8 @@
         "kind": "tabela",
         "key": "Léxico μαρτυρία. Depois de εἰς.",
         "ref": "Jo 1.7",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "μαρτυρία, -ας, ἡ"
       },
       {
         "term": "φωτός",
@@ -36783,7 +36805,8 @@
         "kind": "tabela",
         "key": "Léxico φῶς. Depois de τοῦ.",
         "ref": "Jo 1.7",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "φῶς, φωτός, τό"
       },
       {
         "term": "φῶς",
@@ -36797,7 +36820,8 @@
         "kind": "tabela",
         "key": "Léxico φῶς. τό só é neutro.",
         "ref": "Jo 1.8",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "φῶς, φωτός, τό"
       },
       {
         "term": "ἐξουσίαν",
@@ -36811,7 +36835,8 @@
         "kind": "tabela",
         "key": "Léxico ἐξουσία. Terminação -ν; objeto de ἔδωκεν.",
         "ref": "Jo 1.12",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "ἐξουσία, -ας, ἡ"
       },
       {
         "term": "τέκνα",
@@ -36824,7 +36849,8 @@
         "kind": "tabela",
         "key": "Léxico τέκνον. Objeto de γενέσθαι.",
         "ref": "Jo 1.12",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "τέκνον, -ου, τό"
       },
       {
         "term": "ὄνομα",
@@ -36837,7 +36863,8 @@
         "kind": "tabela",
         "key": "Léxico ὄνομα. Depois de εἰς τό (Jo 1.12).",
         "ref": "Jo 1.12",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "ὄνομα, -ατος, τό"
       },
       {
         "term": "αἱμάτων",
@@ -36851,7 +36878,8 @@
         "kind": "tabela",
         "key": "Léxico αἷμα. Depois de ἐκ.",
         "ref": "Jo 1.13",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "αἷμα, -ατος, τό"
       },
       {
         "term": "θελήματος",
@@ -36865,7 +36893,8 @@
         "kind": "tabela",
         "key": "Léxico θέλημα. Depois de ἐκ; todo -ματ- é neutro.",
         "ref": "Jo 1.13",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "θέλημα, -ατος, τό"
       },
       {
         "term": "σαρκός",
@@ -36879,7 +36908,8 @@
         "kind": "tabela",
         "key": "Léxico σάρξ. Qualifica θελήματος (“da carne”).",
         "ref": "Jo 1.13",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "σάρξ, σαρκός, ἡ"
       },
       {
         "term": "ἀνδρός",
@@ -36894,7 +36924,8 @@
         "kind": "tabela",
         "key": "Léxico ἀνήρ, ἀνδρός.",
         "ref": "Jo 1.13",
-        "label": "Prova 2 · tabela"
+        "label": "Prova 2 · tabela",
+        "lexico": "ἀνήρ, ἀνδρός, ὁ"
       }
     ],
     "sentences": [
