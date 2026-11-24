@@ -167,4 +167,31 @@ module.exports = [
       await context.close();
     },
   },
+  {
+    name: "Recorte das provas: no exame só a lição do exame (mesmo com Acumulativo ou Todas); fora dele, o exame não se mistura",
+    async fn({ browser, base, assert }) {
+      for (const language of ["greek", "hebrew"]) {
+        const { context, page, errors } = await openApp({ browser, base }, { language });
+        const chapters = () => page.evaluate(() => [...new Set(practiceQueue.map((i) => i._chapterId))]);
+        await page.evaluate(() => openExamMode());
+        for (const mode of ["typing", "choice", "sentences"]) {
+          await page.evaluate((m) => setExerciseMode(m), mode);
+          assert.deepEqual(await chapters(), ["estudo_exame"], `${language} ${mode}: entrou lição de fora`);
+        }
+        // "Até o atual" e "Todos" dentro do exame: nunca misturam o exame com outras lições
+        const neverMixed = (list, what) => assert.ok(!(list.includes("estudo_exame") && list.length > 1), `${language} ${what}: misturou o exame (${list.join(",")})`);
+        await page.evaluate(() => { setExerciseMode("typing"); setPracticeCumulative(true); });
+        neverMixed(await chapters(), "Até o atual");
+        await page.evaluate(() => { openExamMode(); selectAllPracticeChapters(); });
+        neverMixed(await chapters(), "Todos");
+        // Fora do exame: uma lição comum com todas marcadas não traz o exame
+        const first = await page.evaluate(() => AppState.chapters.find((c) => !c.special && (c.items || []).length > 5).id);
+        await page.evaluate((id) => { changeGlobalChapter(id); selectAllPracticeChapters(); }, first);
+        const outside = await chapters();
+        assert.ok(outside.length > 1 && !outside.includes("estudo_exame"), `${language}: o exame entrou no treino comum (${outside.join(",")})`);
+        assert.deepEqual(errors, [], errors.join(" | "));
+        await context.close();
+      }
+    },
+  },
 ];

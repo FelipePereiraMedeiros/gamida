@@ -40,6 +40,58 @@ suite.test('Hebraico: as 18 frases das provas (8 + 10), com tradução, chave, r
   assert.isTrue(exam('hebrew').items.length >= 30, 'o vocabulário das frases ficou pequeno');
 });
 
+/* Textos das Provas 1 e 2 de Grego 2, como saíram nas provas (transcrição) */
+const PROVAS_GREGO = {
+  prova1: {
+    vocab: ['ἵνα', 'λόγος', 'ἀπό', 'νόμος', 'δόξα', 'μήτηρ', 'σύν', 'ὑπό', 'ἕτερος', 'πιστός', 'μᾶλλον', 'ὑπέρ', 'ὅστις', 'αἴρω', 'μαρτυρέω', 'φανερόω', 'δύναμις', 'ὀπίσω', 'αὐτοί', 'υἱός'],
+    text: `εὑρήκαμεν Ἰησοῦν τὸν υἱὸν τοῦ Ἰωσὴφ τὸν ἀπὸ Ναζαρέτ. εἶπεν Ναθαναήλ, Ἐκ Ναζαρὲτ δύναταί τι ἀγαθὸν εἶναι;
+      Εἶδεν ὁ Ἰησοῦς τὸν Ναθαναὴλ ἐρχόμενον πρὸς αὐτὸν καὶ λέγει περὶ αὐτοῦ, Ἴδε ἀληθῶς Ἰσραηλίτης, ἐν ᾧ δόλος οὐκ ἔστιν.
+      [Ἰωάννης] βλέπει τὸν Ἰησοῦν ἐρχόμενον πρὸς αὐτὸν καὶ λέγει, Ἴδε ὁ ἀμνὸς τοῦ Θεοῦ, ὁ αἴρων τὴν ἁμαρτίαν τοῦ
+      κόσμου. Οὗτός ἐστιν περὶ οὗ ἐγὼ εἶπον, Ὀπίσω μου ἔρχεται ἀνὴρ ὃς ἔμπροσθέν μου γέγονεν, ὅτι πρῶτός μου ἦν.
+      Κἀγὼ οὐκ ᾔδειν αὐτόν, ἀλλ’ ἵνα φανερωθῇ τῷ Ἰσραήλ, διὰ τοῦτο ἦλθον ἐγὼ ἐν ὕδατι βαπτίζων. Καὶ ἐμαρτύρησεν
+      Ἰωάννης λέγων ὅτι Τεθέαμαι τὸ Πνεῦμα καταβαῖνον ὡσεὶ περιστερὰν ἐξ οὐρανοῦ, καὶ ἔμεινεν ἐπ’ αὐτόν. Κἀγὼ
+      οὐκ ᾔδειν αὐτόν, ἀλλ’ ὁ πέμψας με βαπτίζειν ἐν ὕδατι, ἐκεῖνός μοι εἶπεν, Ἐφ’ ὃν ἂν ἴδῃς τὸ Πνεῦμα καταβαῖνον
+      καὶ μένον ἐπ’ αὐτόν, οὗτός ἐστιν ὁ βαπτίζων ἐν Πνεύματι Ἁγίῳ. Κἀγὼ ἑώρακα ὅτι οὗτός ἐστιν ὁ υἱὸς τοῦ Θεοῦ.
+      μείζων ἐστὶν ὁ ἐν ὑμῖν ἢ ὁ ἐν τῷ κόσμῳ.`,
+  },
+  prova2: {
+    vocab: ['τις', 'Χριστός', 'ἔχω', 'ποιέω', 'ἄνθρωπος', 'ἡμέρα', 'νεκρός', 'δύναμαι', 'ὄνομα', 'πρῶτος', 'πολύς', 'ἑαυτοῦ', 'λαμβάνω', 'εἷς', 'καλέω', 'ὑπάγω', 'εὐθέως', 'σάρξ', 'βασιλεύς', 'πόλις'],
+    text: `Ἐγένετο ἄνθρωπος ἀπεσταλμένος παρὰ θεοῦ, ὄνομα αὐτῷ Ἰωάννης. Οὗτος ἦλθεν εἰς μαρτυρίαν, ἵνα
+      μαρτυρήσῃ περὶ τοῦ φωτός, ἵνα πάντες πιστεύσωσιν δι’ αὐτοῦ. Οὐκ ἦν ἐκεῖνος τὸ φῶς, ἀλλ’ ἵνα μαρτυρήσῃ
+      περὶ τοῦ φωτός. Εἰς τὰ ἴδια ἦλθεν, καὶ οἱ ἴδιοι αὐτὸν οὐ παρέλαβον. Ὅσοι δὲ ἔλαβον αὐτόν, ἔδωκεν
+      αὐτοῖς ἐξουσίαν τέκνα Θεοῦ γενέσθαι, τοῖς πιστεύουσιν εἰς τὸ ὄνομα αὐτοῦ οἳ οὐκ ἐξ αἱμάτων, οὐδὲ ἐκ
+      θελήματος σαρκός, οὐδὲ ἐκ θελήματος ἀνδρός, ἀλλ’ ἐκ Θεοῦ ἐγεννήθησαν.
+      Καὶ ἐδίδασκεν αὐτοὺς ἐν παραβολαῖς πολλά, καὶ ἔλεγεν αὐτοῖς ἐν τῇ διδαχῇ αὐτοῦ...
+      Καὶ ἰδὼν (vendo) συκῆν (figueira) μίαν ἐπὶ τῆς ὁδοῦ, ἦλθεν ἐπ’ αὐτήν, καὶ οὐδὲν εὗρεν ἐν αὐτῇ...
+      Ἐγὼ ἐβάπτισα ὑμᾶς ἐν ὕδατι, αὐτὸς δὲ βαπτίσει ὑμᾶς ἐν Πνεύματι Ἁγίῳ. Καὶ ἐγένετο ἐν ἐκείναις ταῖς
+      ἡμέραις, ἦλθεν Ἰησοῦς καὶ ἐβαπτίσθη ὑπὸ Ἰωάννου εἰς τὸν Ἰορδάνην.
+      Λέγω δέ, Πνεύματι περιπατεῖτε, καὶ ἐπιθυμίαν σαρκὸς οὐ μὴ (com certeza não) τελέσητε (satisfarão).
+      Ἀπεκρίθη αὐτοῖς ὁ Ἰησοῦς καὶ εἶπεν, Ἀμὴν ἀμὴν λέγω ὑμῖν, ζητεῖτέ με οὐχ ὅτι εἴδετε σημεῖα, ἀλλ’ ὅτι ἐφάγετε
+      ἐκ τῶν ἄρτων καὶ ἐχορτάσθητε. Εἶπεν οὖν αὐτοῖς ὁ Ἰησοῦς, Ἐγώ εἰμι ὁ ἄρτος τῆς ζωῆς.`,
+  },
+};
+/** Compara grego sem acento, caixa, pontuação nem as glosas entre parênteses da prova */
+const plainGreek = (s) => ` ${String(s || '').replace(/\([^)]*\)/g, ' ').normalize('NFD').replace(/[̀-ͯͅ]/g, '')
+  .toLowerCase().replace(/[^\p{L}\s]/gu, ' ').replace(/\s+/g, ' ').trim()} `;
+
+suite.test('Grego: só entra o que está nas Provas 1 e 2 (palavras, frases e tabela)', () => {
+  const chap = exam('greek');
+  ['prova1', 'prova2'].forEach((prova) => {
+    const { vocab, text } = PROVAS_GREGO[prova];
+    const words = chap.items.filter((i) => i.kind === 'vocab' && i.group === prova).map((i) => plainGreek(i.term.split(/[,(/]/)[0]));
+    assert.deepEqual(words.sort(), vocab.map(plainGreek).sort(), `${prova}: vocabulário diferente do da prova`);
+    const plainText = plainGreek(text);
+    chap.sentences.filter((s) => s.group === prova).forEach((s) => {
+      assert.isTrue(plainText.includes(plainGreek(s.term)), `${s.id} não está no texto da ${prova}: ${s.term}`);
+    });
+    chap.items.filter((i) => i.kind === 'tabela' && i.group === prova).forEach((i) => {
+      assert.isTrue(plainText.includes(plainGreek(i.term)), `Tabela da ${prova} com forma de fora da prova: ${i.term}`);
+    });
+  });
+  const groups = [...chap.items, ...chap.sentences].map((x) => x.group);
+  assert.isTrue(groups.every((g) => g === 'prova1' || g === 'prova2'), 'Item do grego sem prova de origem');
+});
+
 suite.test('Grego: 40 palavras (20 + 20) com a resposta do gabarito primeiro', () => {
   const items = exam('greek').items.filter((i) => i.kind === 'vocab');
   assert.equal(items.length, 40);

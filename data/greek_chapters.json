@@ -40713,9 +40713,11 @@
       },
       {
         "id": "exame_grc_26",
-        "term": "Εἶπεν δὲ αὐτοῖς ὁ Ἰησοῦς, Ἐγώ εἰμι ὁ ἄρτος τῆς ζωῆς.",
-        "transliteration": "Eipen de autois ho Iēsous, Egō eimi ho artos tēs zōēs.",
+        "term": "Εἶπεν οὖν αὐτοῖς ὁ Ἰησοῦς, Ἐγώ εἰμι ὁ ἄρτος τῆς ζωῆς.",
+        "transliteration": "Eipen oun autois ho Iēsous, Egō eimi ho artos tēs zōēs.",
         "translations": [
+          "Disse-lhes, pois, Jesus: Eu sou o pão da vida.",
+          "Disse-lhes então Jesus: Eu sou o pão da vida.",
           "Disse-lhes Jesus: Eu sou o pão da vida."
         ],
         "type": "Frase",
@@ -40737,14 +40739,14 @@
           },
           {
             "index": 2,
-            "text": "δὲ",
-            "transliteration": "de",
-            "lemma": "δέ",
+            "text": "οὖν",
+            "transliteration": "oun",
+            "lemma": "οὖν",
             "composite": false,
-            "word_class": "Conjunção coordenativa adversativa pospositiva",
-            "syntax_role": "Conectivo de transição discursiva ('e / porém')",
+            "word_class": "Conjunção coordenativa conclusiva pospositiva",
+            "syntax_role": "Conectivo de sequência ou conclusão ('pois / então'), na segunda posição da oração",
             "inflection": "Conjunção invariável",
-            "context_meaning": "e"
+            "context_meaning": "pois"
           },
           {
             "index": 3,

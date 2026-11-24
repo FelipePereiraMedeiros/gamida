@@ -259,6 +259,26 @@ suite.test('Lição de sistema temporária ("special") sai do aparelho quando de
   }
 });
 
+suite.test('Lição especial (exame) fica sozinha: nunca entra numa seleção de várias lições', () => {
+  const { getSelectedChapters, setSelectedChapters, toggleAllChapterSelection } = require('../js/modules/state.js');
+  const chap = (id, extra = {}) => ({ id, title: id, items: [{ term: id, translations: ['x'] }], ...extra });
+  const chapters = [chap('l1'), chap('l2'), chap('l3'), chap('estudo_exame', { special: 'exam' })];
+  const state = { chapters, currentChapter: chapters[0], isPracticeCumulative: true, isVocabCumulative: true };
+  // "Todos": as lições comuns, e a atual não vira o exame
+  setSelectedChapters(chapters.map((c) => c.id), state);
+  assert.deepEqual(state.selectedChapterIds, ['l1', 'l2', 'l3']);
+  assert.equal(state.currentChapter.id, 'l3');
+  // Marcar todas e desmarcar continua alternando (o exame não conta como "faltando")
+  toggleAllChapterSelection(state);
+  assert.deepEqual(state.selectedChapterIds, ['l1']);
+  // Exame aberto com "acumulativo": só o exame
+  const open = { chapters, currentChapter: chapters[3], isPracticeCumulative: true };
+  assert.deepEqual(getSelectedChapters(open).map((c) => c.id), ['estudo_exame']);
+  // Exame sozinho continua selecionável
+  setSelectedChapters(['estudo_exame'], state);
+  assert.deepEqual(state.selectedChapterIds, ['estudo_exame']);
+});
+
 module.exports = suite;
 if (require.main === module) {
   suite.run();

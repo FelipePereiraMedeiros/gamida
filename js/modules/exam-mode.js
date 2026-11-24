@@ -94,7 +94,12 @@ function filterSentences(items, which = getPhrases()) {
 
 /** Filtros do exame; fora da lição do exame não mexe em nada */
 function filterItems(chapter, items, mode) {
-  if (!chapter || chapter.id !== CHAPTER_ID) return items;
+  if (!chapter) return items;
+  const open = isExamOpen();
+  // Recorte das provas: no exame só entra a lição do exame, mesmo com "Acumulativo" ou
+  // "Todas as lições" ligados; fora dele, a lição do exame não se mistura às demais
+  if (chapter.id !== CHAPTER_ID) return open ? [] : items;
+  if (!open) return [];
   return mode === "sentences" ? filterSentences(items) : filterWords(items);
 }
 

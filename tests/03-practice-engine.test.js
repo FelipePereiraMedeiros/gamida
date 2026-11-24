@@ -247,7 +247,7 @@ suite.test('Selecionar todos marca os capítulos de vocabulário e desmarcar man
   const { getSelectedChapters, setSelectedChapters, toggleAllChapterSelection } = require('../js/modules/state.js');
   AppState.language = 'hebrew';
   AppState.chapters = hebrewData;
-  const vocabIds = hebrewData.filter((c) => c.id !== 'kelley_01').map((c) => c.id);
+  const vocabIds = hebrewData.filter((c) => c.id !== 'kelley_01' && !c.special).map((c) => c.id); // lições especiais (exame) ficam de fora do "todos"
 
   setSelectedChapters(['kelley_03', 'kelley_05'], AppState);
   toggleAllChapterSelection(AppState);

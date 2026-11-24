@@ -8,7 +8,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.58.1";
+  "2.59.0";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
@@ -446,11 +446,27 @@ function getSelectedChapters(state = AppState, options = {}) {
     }
   }
 
+  result = standaloneSpecial(result, state.currentChapter);
+
   if (order === "desc" && result.length > 1) {
     result = [...result].reverse();
   }
 
   return result;
+}
+
+/**
+ * Lições especiais (como o "Estudo para exame") ficam sozinhas: aberta, só ela;
+ * numa seleção de várias lições, ficam de fora
+ * @param {Array<Object>} list
+ * @param {Object} [current]
+ * @returns {Array<Object>}
+ */
+function standaloneSpecial(list, current) {
+  if (!Array.isArray(list) || list.length < 2 || !list.some((c) => c && c.special)) return list;
+  if (current && current.special && list.includes(current)) return [current];
+  const regular = list.filter((c) => c && !c.special);
+  return regular.length ? regular : list;
 }
 
 /**
@@ -467,6 +483,11 @@ function setSelectedChapters(chapterIds, state = AppState) {
     : [];
 
   let finalIds = [...new Set(validIds)];
+  // Várias lições marcadas: as especiais (exame) não entram, para a lição atual não virar o exame
+  if (finalIds.length > 1) {
+    const regular = finalIds.filter((id) => !(chapters.find((c) => c && c.id === id) || {}).special);
+    if (regular.length) finalIds = regular;
+  }
   if (finalIds.length > 1) {
     const nonAlpha = finalIds.filter((id) => {
       const ch = chapters.find((c) => c && c.id === id);
@@ -570,7 +591,7 @@ function toggleChapterSelection(chapterId, state = AppState) {
 function toggleAllChapterSelection(state = AppState) {
   if (!state) return [];
   const chapters = Array.isArray(state.chapters) ? state.chapters : [];
-  const vocabIds = chapters.filter((c) => c && !isAlphabetChapter(c)).map((c) => c.id);
+  const vocabIds = chapters.filter((c) => c && !isAlphabetChapter(c) && !c.special).map((c) => c.id);
   if (vocabIds.length === 0) return getSelectedChapters(state);
 
   const selectedIds = new Set(getSelectedChapters(state).map((c) => c.id));
