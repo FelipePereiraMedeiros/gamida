@@ -12,7 +12,7 @@
     // para o endereço sem ".html": o service worker não pode guardar respostas redirecionadas,
     // e o retorno do login precisa ser exatamente o endereço registrado no Google.
     "html_handling": "none",
-    // A raiz "/" (e só navegações a páginas que não existem) recebe o index.html
-    "not_found_handling": "single-page-application"
+    // O que não existe responde 404; a raiz "/" abre o index.html pela regra do _redirects
+    "not_found_handling": "none"
   }
 }

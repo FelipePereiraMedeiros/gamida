@@ -6,8 +6,8 @@
  * Entram só os arquivos de que o aplicativo precisa: os que o service worker
  * guarda (página, estilos, scripts, fontes, ícones, manifesto e dados), o
  * próprio sw.js, a página de retorno do login com o script dela, a política
- * de privacidade, o _headers (cabeçalhos de segurança do Cloudflare) e o
- * robots.txt. Ficam de fora testes, documentação, scripts, a página de testes
+ * de privacidade, o _headers (cabeçalhos de segurança do Cloudflare), o
+ * _redirects (a raiz abre o index.html) e o robots.txt. Ficam de fora testes, documentação, scripts, a página de testes
  * no navegador, o pacote data/data-bundle.js (só serve para abrir do disco)
  * e tudo o mais do repositório.
  *
@@ -21,7 +21,7 @@ const root = path.join(__dirname, "..");
 const OUT = path.join(root, "dist");
 
 /** Arquivos que vão ao ar, além dos que o service worker guarda */
-const EXTRA = ["sw.js", "oauth-callback.html", "js/oauth-callback.js", "privacidade.html", "_headers", "robots.txt"];
+const EXTRA = ["sw.js", "oauth-callback.html", "js/oauth-callback.js", "privacidade.html", "_headers", "_redirects", "robots.txt"];
 
 function files() {
   return [...new Set([...precacheList(), ...EXTRA])].sort();

@@ -1,6 +1,6 @@
-# Produção: Cloudflare Pages, login com Google e repositório privado
+# Produção: Cloudflare, login com Google e repositório privado
 
-Roteiro para tirar o Gamida do GitHub Pages, publicar no Cloudflare Pages, ligar o perfil no Google Drive do aluno e fechar o repositório. A ordem importa: o site novo e o login entram no ar **antes** de o repositório ficar privado, e os alunos levam o progresso do endereço antigo para o novo.
+Roteiro para tirar o Gamida do GitHub Pages, publicar no Cloudflare, ligar o perfil no Google Drive do aluno e fechar o repositório. A ordem importa: o site novo e o login entram no ar **antes** de o repositório ficar privado, e os alunos levam o progresso do endereço antigo para o novo.
 
 ## O que o repositório já traz
 
@@ -15,22 +15,32 @@ Roteiro para tirar o Gamida do GitHub Pages, publicar no Cloudflare Pages, ligar
 
 O teste `tests/27-producao.test.js` confere essas peças a cada envio.
 
-## Fase 1: site no Cloudflare Pages
+## Fase 1: site no Cloudflare (feito em 27/11/2026)
 
-1. Crie uma conta gratuita em dash.cloudflare.com.
-2. Vá em **Workers & Pages → Create → Pages → Connect to Git**. Autorize o aplicativo do Cloudflare no GitHub **só para o repositório `gamida`**.
-3. Configure a montagem:
-   - **Production branch:** `dev` (a mesma de hoje);
-   - **Framework preset:** None;
-   - **Build command:** `npm run build`;
-   - **Build output directory:** `dist`;
-   - **Environment variable:** `NODE_VERSION` = `22`.
-4. Dê o nome `gamida` ao projeto. O endereço fica `https://gamida.pages.dev`, ou outro, se esse nome já existir.
-5. Abra o endereço e confira três coisas: o app abre, funciona sem internet depois da primeira visita e aparece a opção de instalar.
+O projeto foi criado como **Worker com arquivos estáticos** (o painel atual do Cloudflare cria Workers no lugar de Pages). Endereço: `https://gamida.gasperfpm.workers.dev`.
 
-Cada envio para a `dev` publica sozinho. Envios para outras branches viram prévias com endereço próprio.
+Configuração do Worker:
 
-**Domínio próprio (recomendado):** um domínio seu, como `gamida.com.br`, facilita a verificação do Google e não depende do nome no `pages.dev`. Ligue-o em **Custom domains** no projeto do Cloudflare.
+- **Settings → Build:**
+  - Production branch: `dev`;
+  - Build command: `npm run build`;
+  - Deploy command: `npx wrangler deploy`;
+  - Root directory: `/`;
+  - API token: o criado pelo próprio painel ("Create new token").
+- **Variável de montagem:** `NODE_VERSION` = `22`.
+
+O que vai ao ar e como é servido fica no repositório:
+
+- `wrangler.jsonc`:
+  - publica `dist/`;
+  - `html_handling: "none"` serve `index.html` e `oauth-callback.html` pelo nome exato, sem o redirecionamento 307 para o endereço sem `.html`. O service worker recusa resposta redirecionada, e o retorno do login precisa ser o endereço registrado no Google;
+  - `not_found_handling: "none"` responde 404 ao que não existe.
+- `_redirects`: `/ /index.html 200` faz a raiz abrir o aplicativo sem redirecionar.
+- `_headers`: cabeçalhos de segurança e de cache.
+
+Cada envio para a `dev` publica sozinho em um ou dois minutos.
+
+**Domínio próprio (recomendado):** um domínio seu, como `gamida.com.br`, facilita a verificação do Google e não muda nunca. Ligue-o em **Domains** no Worker.
 
 ## Fase 2: login com Google
 
@@ -41,17 +51,17 @@ Cada envio para a `dev` publica sozinho. Envios para outras branches viram prév
      - nome "Gamida";
      - e-mail de suporte;
      - logotipo `icons/icon-512.png`;
-     - página inicial `https://SEU-ENDERECO/`;
-     - política de privacidade `https://SEU-ENDERECO/privacidade.html`;
+     - página inicial `https://gamida.gasperfpm.workers.dev/`;
+     - política de privacidade `https://gamida.gasperfpm.workers.dev/privacidade.html`;
      - domínio autorizado: o seu domínio, ou `gamida.pages.dev`.
    - **Audience:** External. Enquanto estiver em *Testing*, só entram as contas de **Test users**.
    - **Data access:** os escopos `openid`, `email`, `profile` e `.../auth/drive.appdata`.
    - **Clients → Create client → Web application**, com:
      - **Authorized JavaScript origins:**
-       - `https://SEU-ENDERECO`;
+       - `https://gamida.gasperfpm.workers.dev`;
        - `https://felipepereiramedeiros.github.io`, enquanto o endereço antigo existir.
      - **Authorized redirect URIs:**
-       - `https://SEU-ENDERECO/oauth-callback.html`;
+       - `https://gamida.gasperfpm.workers.dev/oauth-callback.html`;
        - `https://felipepereiramedeiros.github.io/gamida/oauth-callback.html`.
 4. Copie o **ID do cliente**, que termina em `.apps.googleusercontent.com`. Ele vai em `GOOGLE_CLIENT_ID`, no início de `js/modules/cloud-sync.js`, e não é segredo. O **client secret** não é usado: não o coloque no repositório nem o envie a ninguém.
 5. Preencha o e-mail de contato em `privacidade.html` (marcador `{{CONTATO}}`).

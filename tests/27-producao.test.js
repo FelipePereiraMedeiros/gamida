@@ -17,7 +17,7 @@ const Dist = require('../scripts/build-dist.js');
 
 suite.test('Vai ao ar só o que o aplicativo usa (sem testes, documentação, scripts nem a página de testes)', () => {
   const files = Dist.files();
-  const required = ['index.html', 'sw.js', 'manifest.webmanifest', 'oauth-callback.html', 'js/oauth-callback.js', 'privacidade.html', '_headers', 'robots.txt',
+  const required = ['index.html', 'sw.js', 'manifest.webmanifest', 'oauth-callback.html', 'js/oauth-callback.js', 'privacidade.html', '_headers', '_redirects', 'robots.txt',
     'data/hebrew_chapters.json', 'data/greek_chapters.json', 'js/app.js', 'js/modules/cloud-sync.js', 'js/modules/new-home.js'];
   required.forEach((f) => assert.isTrue(files.includes(f), `Falta no ar: ${f}`));
   const banned = files.filter((f) => /^(tests|docs|scripts|referencias|node_modules|\.github)\/|test-environment|data-bundle|package|LICENSE|\.md$|\.ps1$/.test(f));
@@ -37,6 +37,14 @@ suite.test('Cabeçalhos do Cloudflare: a mesma CSP da página, mais proteção c
   assert.isTrue(/^\/sw\.js\n\s+Cache-Control: no-cache/m.test(headers), 'O service worker precisa ser conferido a cada visita');
   assert.isTrue(/^\/oauth-callback\.html\n\s+Cache-Control: no-store/m.test(headers), 'A página de retorno do login não pode ficar em cache');
   assert.isTrue(!/interest-cohort/.test(headers), 'Permissão obsoleta gera aviso no console');
+});
+
+suite.test('Cloudflare: cada página pelo nome exato, raiz no index.html e 404 para o que não existe', () => {
+  const wrangler = read('wrangler.jsonc');
+  assert.isTrue(/"directory": "\.\/dist"/.test(wrangler), 'O Worker publica a pasta dist/');
+  assert.isTrue(/"html_handling": "none"/.test(wrangler), 'Sem redirecionar index.html e oauth-callback.html (o service worker recusa resposta redirecionada)');
+  assert.isTrue(/"not_found_handling": "none"/.test(wrangler), 'Arquivo que não existe precisa responder 404');
+  assert.isTrue(/^\/ \/index\.html 200$/m.test(read('_redirects')), 'A raiz precisa abrir o index.html sem redirecionar');
 });
 
 suite.test('Política de privacidade: existe, explica o Drive e está ligada no rodapé e no cartão da nuvem', () => {

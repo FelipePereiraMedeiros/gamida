@@ -1,0 +1,3 @@
+# Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados.
+# A raiz abre o aplicativo (sem redirecionar: o service worker não aceita resposta redirecionada)
+/ /index.html 200
