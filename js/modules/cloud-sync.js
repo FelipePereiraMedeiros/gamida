@@ -91,8 +91,9 @@ function buildAuthUrl(state, { prompt = "select_account", loginHint = "" } = {})
     scope: SCOPES,
     include_granted_scopes: "true",
     state,
-    prompt,
   });
+  // Sem prompt, quem já autorizou volta direto (reconectar fica rápido); no primeiro login, escolhe a conta
+  if (prompt) params.set("prompt", prompt);
   if (loginHint) params.set("login_hint", loginHint);
   return `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
 }
@@ -152,8 +153,22 @@ function takeStoredResult() {
 }
 
 /**
- * Abre a janela do Google. Se o navegador bloquear a janela, vai para a página
- * do Google na própria aba e volta depois. O final do "state" diz qual dos dois
+ * Aberto como aplicativo instalado (celular ou computador)? Ali uma janela à parte
+ * pode abrir fora do aplicativo, sem caminho de volta: o login vai na própria tela.
+ */
+function isStandalone() {
+  if (typeof window === "undefined") return false;
+  try {
+    if (window.navigator && window.navigator.standalone === true) return true;
+    return !!(window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+  } catch (_) {
+    return false;
+  }
+}
+
+/**
+ * Abre a janela do Google. Se o navegador bloquear a janela, ou se o Gamida estiver
+ * instalado como aplicativo, vai para a página do Google na própria tela e volta depois. O final do "state" diz qual dos dois
  * caminhos foi usado (.p janela, .r página inteira) para oauth-callback.html.
  */
 function signIn() {
@@ -164,6 +179,13 @@ function signIn() {
   const base = randomState();
   const profile = Profiles().getActiveProfile();
   const hint = profile.google ? profile.google.email : "";
+  const prompt = profile.google ? "" : "select_account";
+  if (isStandalone()) {
+    const state = `${base}.r`;
+    sessionStorage.setItem(STATE_KEY, state);
+    window.location.assign(buildAuthUrl(state, { prompt, loginHint: hint }));
+    return Promise.resolve(false);
+  }
   const w = 480;
   const h = 640;
   const left = Math.max(0, (window.screenX || 0) + ((window.outerWidth || w) - w) / 2);
@@ -172,12 +194,12 @@ function signIn() {
   if (!popup) {
     const state = `${base}.r`;
     sessionStorage.setItem(STATE_KEY, state);
-    window.location.assign(buildAuthUrl(state, { loginHint: hint }));
+    window.location.assign(buildAuthUrl(state, { prompt, loginHint: hint }));
     return Promise.resolve(false);
   }
   const state = `${base}.p`;
   sessionStorage.setItem(STATE_KEY, state);
-  popup.location.href = buildAuthUrl(state, { loginHint: hint });
+  popup.location.href = buildAuthUrl(state, { prompt, loginHint: hint });
   setStatus("Continue na janela do Google…", "");
   return new Promise((resolve) => {
     let done = false;
@@ -533,7 +555,7 @@ function renderCard(profile) {
   }
   return `<h3 class="profile-card__title">Nuvem · Google Drive</h3>${body}
     <p class="${status.tone === "ok" ? "profile-note is-ok" : status.tone === "bad" ? "profile-note is-bad" : "profile-note"}" id="cloud-status" role="status">${esc(status.text)}</p>
-    <p class="profile-note profile-note--small">Só o arquivo de perfil (${FILE_NAME}) vai para a pasta privada de dados de aplicativo do seu Drive. O Gamida não vê os outros arquivos do Drive, e o material de estudo não é enviado.</p>`;
+    <p class="profile-note profile-note--small">Só o arquivo de perfil (${FILE_NAME}) vai para a pasta privada de dados de aplicativo do seu Drive. O Gamida não vê os outros arquivos do Drive, e o material de estudo não é enviado. <a href="privacidade.html" target="_blank" rel="noopener">Política de privacidade</a>.</p>`;
 }
 
 function bindCard() {
@@ -569,6 +591,7 @@ const CloudSync = {
   clientId,
   redirectUri,
   buildAuthUrl,
+  isStandalone,
   parseAuthResponse,
   decide,
   signIn,

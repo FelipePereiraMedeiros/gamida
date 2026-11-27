@@ -1,6 +1,6 @@
 {
   "name": "gamida",
-  "version": "2.61.0",
+  "version": "2.62.0",
   "description": "Treinador Autônomo de Idiomas Bíblicos (Hebraico & Grego Koiné)",
   "main": "js/app.js",
   "scripts": {
@@ -9,6 +9,7 @@
     "test": "node test-runner.js",
     "test:unit": "node test-runner.js all",
     "test:browser": "echo Abra test-environment.html em seu navegador",
+    "build": "node scripts/build-dist.js",
     "build:bundle": "node scripts/build-bundle.js",
     "build:css": "node scripts/build-css.js",
     "test:py": "node scripts/run-py-tests.js",

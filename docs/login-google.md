@@ -1,5 +1,7 @@
 # Perfis e login com Google
 
+> O roteiro completo de produção (Cloudflare, login, mudança de endereço e repositório privado) está em `docs/producao.md`.
+
 > **Situação atual:** a sincronização com o Google está **desligada** (`CLOUD_SYNC_ENABLED = false` em `js/modules/cloud-sync.js`). O cartão da nuvem não aparece e nenhum pedido vai ao Google. Os perfis e o arquivo de perfil funcionam normalmente. Para testar num navegador só, rode `localStorage.setItem("gamida_google_preview", "1")` no console (e informe o ID do cliente, como explicado abaixo). Para ativar para todos, siga "Como ativar" e mude a chave para `true`.
 
 ## O que é o perfil
@@ -54,8 +56,8 @@ O código está em `js/modules/cloud-sync.js` e `oauth-callback.html`.
    - enquanto estiver em **Teste**, só entram as contas listadas em "Usuários de teste". Para liberar a todos, clique em **Publicar app**. Com escopos não confidenciais o Google costuma pedir apenas a verificação da marca (nome, logotipo, página inicial e política de privacidade).
 4. Em **Credenciais → Criar credenciais → ID do cliente OAuth**:
    - tipo **Aplicativo da Web**;
-   - **Origens JavaScript autorizadas:** o endereço do site, por exemplo `https://SEU-USUARIO.github.io`;
-   - **URIs de redirecionamento autorizados:** o endereço completo da página de retorno, por exemplo `https://SEU-USUARIO.github.io/gamida/oauth-callback.html`. Para testar localmente, inclua também `http://localhost:8765/oauth-callback.html`.
+   - **Origens JavaScript autorizadas:** o endereço do site, por exemplo `https://gamida.pages.dev` (e, durante a mudança de endereço, também `https://felipepereiramedeiros.github.io`);
+   - **URIs de redirecionamento autorizados:** o endereço completo da página de retorno, por exemplo `https://gamida.pages.dev/oauth-callback.html` (e `https://felipepereiramedeiros.github.io/gamida/oauth-callback.html` durante a mudança). Para testar localmente, inclua também `http://localhost:8765/oauth-callback.html`.
 5. Copie o ID do cliente (termina em `.apps.googleusercontent.com`) e coloque em `GOOGLE_CLIENT_ID`, no início de `js/modules/cloud-sync.js`. O ID do cliente não é segredo: ele aparece no navegador de qualquer forma.
 6. Mude `CLOUD_SYNC_ENABLED` para `true` no mesmo arquivo e publique o site. O botão **Entrar com Google** aparece na aba Perfil.
 
@@ -70,7 +72,7 @@ Eles ativam o login só naquele navegador.
 
 ## Privacidade
 
-A tela de consentimento pede um link de política de privacidade. Em resumo:
+A tela de consentimento pede um link de política de privacidade: é a página `privacidade.html` (preencha o e-mail de contato no marcador `{{CONTATO}}`). Em resumo:
 
 - o Gamida guarda o progresso do aluno no navegador e, se ele entrar com Google, numa pasta privada do Google Drive do próprio aluno;
 - nenhum dado vai para servidores do Gamida;

@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário: uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE. -->
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'" />
+    <title>Gamida · Política de privacidade</title>
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <style>
+      :root { color-scheme: dark; }
+      body { margin: 0; background: #1c1b19; color: #e9e5dc; font: 16px/1.65 "Inter", system-ui, sans-serif; }
+      main { max-width: 44rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+      h1 { margin: 0 0 0.25rem; color: #f8f6f1; font-size: 1.75rem; line-height: 1.25; }
+      h2 { margin: 2rem 0 0.5rem; color: #f8f6f1; font-size: 1.15rem; }
+      p, li { margin: 0.5rem 0; }
+      ul { padding-left: 1.25rem; }
+      a { color: #f0a070; }
+      code { font-size: 0.9em; }
+      .meta { color: #a8a29e; font-size: 0.9rem; }
+      .back { display: inline-block; margin-top: 2rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Política de privacidade do Gamida</h1>
+      <p class="meta">Última atualização: 27 de novembro de 2026</p>
+
+      <p>O Gamida é um aplicativo para estudar hebraico bíblico e grego koiné. Ele funciona no seu navegador e não tem servidor próprio que receba os seus dados. Esta página explica o que fica guardado e onde.</p>
+
+      <h2>O que fica no seu aparelho</h2>
+      <p>O seu progresso (palavras revisadas, acertos e erros, dias de estudo, jogos) e as suas configurações ficam guardados no próprio navegador, neste aparelho. Eles não são enviados ao autor do Gamida nem a terceiros. Você pode baixar ou apagar esse perfil a qualquer momento na aba <b>Perfil</b>; limpar os dados do site no navegador também o apaga.</p>
+
+      <h2>Se você entrar com a sua conta Google</h2>
+      <p>Entrar com Google é opcional e serve só para guardar uma cópia do seu perfil e continuar de onde parou em outro aparelho. Ao entrar, o Gamida pede ao Google estas permissões:</p>
+      <ul>
+        <li><b>Seu nome, e-mail e identificador da conta</b> (<code>openid</code>, <code>email</code>, <code>profile</code>): para mostrar com qual conta o perfil está ligado e não misturar perfis de contas diferentes no mesmo aparelho.</li>
+        <li><b>Pasta de dados de aplicativo do Google Drive</b> (<code>drive.appdata</code>): para gravar e ler um único arquivo, <code>gamida-perfil.json</code>, com o seu progresso e as suas configurações. Essa pasta fica oculta no seu Drive e só o Gamida a enxerga. O Gamida <b>não</b> vê, lê nem altera nenhum outro arquivo do seu Google Drive.</li>
+      </ul>
+      <p>O navegador fala direto com o Google: os dados não passam por nenhum servidor do Gamida. O acesso concedido pelo Google fica só no seu navegador e vale por cerca de uma hora; depois disso, o Gamida pede que você entre de novo.</p>
+      <p>O uso de informações recebidas das APIs do Google segue a <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Política de dados do usuário dos serviços de API do Google</a>, incluindo os requisitos de uso limitado. Essas informações não são vendidas, não são usadas para publicidade e não são compartilhadas com ninguém.</p>
+
+      <h2>Como apagar os seus dados</h2>
+      <ul>
+        <li><b>No aparelho:</b> exclua o perfil na aba Perfil ou limpe os dados do site no navegador.</li>
+        <li><b>No Google Drive:</b> em <a href="https://myaccount.google.com/connections" rel="noopener">myaccount.google.com → Seus apps e serviços conectados</a>, remova o acesso do Gamida; você também pode apagar os dados ocultos do app em Google Drive → Configurações → Gerenciar apps → Gamida → Excluir dados ocultos do app.</li>
+      </ul>
+
+      <h2>Cookies, anúncios e estatísticas</h2>
+      <p>O Gamida não usa cookies próprios, não mostra anúncios e não usa ferramentas de estatística ou rastreamento.</p>
+
+      <h2>Contato</h2>
+      <p>Dúvidas sobre esta política: <!-- CONTATO: troque pelo e-mail de suporte do Gamida --><span>{{CONTATO}}</span>.</p>
+
+      <p>Gamida © 2026 Felipe Pereira Medeiros. Todos os direitos reservados.</p>
+      <a class="back" href="./">Voltar ao Gamida</a>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+# Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados.
+User-agent: *
+Disallow: /oauth-callback.html

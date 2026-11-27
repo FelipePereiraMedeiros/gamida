@@ -35,6 +35,8 @@ jobs:
         run: node test-runner.js all
       - name: Testes Python
         run: npm run test:py
+      - name: Montagem de produção (o que o Cloudflare publica)
+        run: npm run build
       - name: Tailwind compilado está em dia
         run: |
           npm run build:css

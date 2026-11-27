@@ -11,7 +11,7 @@
  * - Pedidos para outros sites (Google, na sincronização) não passam por aqui.
  */
 // <gerado por scripts/build-sw.js: não edite à mão>
-const VERSION = "2.61.0";
+const VERSION = "2.62.0";
 const PRECACHE = [
   "css/cronicas-pixel.css",
   "css/fonts.css",
@@ -68,6 +68,7 @@ const PRECACHE = [
   "js/modules/html.js",
   "js/modules/mastery-path.js",
   "js/modules/morph-drill.js",
+  "js/modules/new-home.js",
   "js/modules/paradigms.js",
   "js/modules/profiles.js",
   "js/modules/pwa.js",

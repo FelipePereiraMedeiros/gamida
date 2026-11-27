@@ -143,4 +143,65 @@ module.exports = [
       await Promise.all([one.context.close(), two.context.close(), three.context.close()]);
     },
   },
+  {
+    name: "Login com Google no aplicativo instalado: vai na própria tela, volta, liga o perfil e cria um único arquivo no Drive (Google simulado)",
+    async fn({ browser, base, assert }) {
+      let authUrl = null;
+      let uploads = 0;
+      let lastUpload = "";
+      const routes = async (route, url) => {
+        if (url.hostname === "accounts.google.com") {
+          authUrl = url.href;
+          await route.fulfill({ status: 200, contentType: "text/html", body: "<p>Google</p>" });
+          return true;
+        }
+        if (url.hostname !== "www.googleapis.com") return false;
+        if (url.pathname === "/oauth2/v3/userinfo") await route.fulfill({ json: { sub: "42", email: "aluno@exemplo.com", name: "Aluno" } });
+        else if (url.pathname.startsWith("/upload/drive/v3/files")) {
+          uploads++;
+          lastUpload = route.request().postData() || "";
+          await route.fulfill({ json: { id: "arquivo-1" } });
+        } else if (url.pathname === "/drive/v3/files") await route.fulfill({ json: { files: [] } });
+        else await route.fulfill({ status: 404, body: "" });
+        return true;
+      };
+      const storage = { gamida_google_preview: "1", gamida_google_client_id: "123-teste.apps.googleusercontent.com" };
+      const { context, page, errors } = await openApp({ browser, base }, { viewport: { width: 390, height: 844 }, storage, routes });
+      // Aberto como aplicativo instalado
+      await page.evaluate(() => {
+        const orig = window.matchMedia.bind(window);
+        window.matchMedia = (q) => (/display-mode: standalone/.test(q) ? { matches: true, media: q, addEventListener() {}, removeEventListener() {} } : orig(q));
+        switchTab("profile");
+      });
+      await page.click("#cloud-signin");
+      await page.waitForURL(/accounts\.google\.com/);
+      const auth = new URL(authUrl);
+      assert.equal(auth.searchParams.get("prompt"), "select_account", "o primeiro login escolhe a conta");
+      assert.match(auth.searchParams.get("redirect_uri"), /\/oauth-callback\.html$/);
+      assert.equal(auth.searchParams.get("scope"), "openid email profile https://www.googleapis.com/auth/drive.appdata");
+      // O Google devolve para a página de retorno, que volta ao app
+      await page.goto(`${base}/oauth-callback.html#access_token=tok&expires_in=3599&token_type=Bearer&state=${encodeURIComponent(auth.searchParams.get("state"))}`);
+      await page.waitForURL(`${base}/index.html`);
+      await page.waitForFunction(() => { const p = ProfilesModule.getActiveProfile(); return p.google && p.driveFileId === "arquivo-1"; }, null, { timeout: 15000 });
+      assert.ok(!(await page.evaluate(() => location.hash)), "o token ficou no endereço");
+      assert.equal(uploads, 1, "o arquivo do Drive foi criado mais de uma vez");
+      assert.match(lastUpload, /"parents":\["appDataFolder"\]/, "o arquivo não foi para a pasta oculta do app");
+      // Reconectar: direto, sem escolher a conta de novo
+      await page.evaluate(() => {
+        // A página recarregou na volta: continua como aplicativo instalado
+        const orig = window.matchMedia.bind(window);
+        window.matchMedia = (q) => (/display-mode: standalone/.test(q) ? { matches: true, media: q, addEventListener() {}, removeEventListener() {} } : orig(q));
+        localStorage.removeItem("gamida_google_token");
+        switchTab("profile");
+        CloudSync.refreshCard();
+      });
+      await page.click("#cloud-signin");
+      await page.waitForURL(/accounts\.google\.com/);
+      const again = new URL(authUrl);
+      assert.equal(again.searchParams.get("prompt"), null);
+      assert.equal(again.searchParams.get("login_hint"), "aluno@exemplo.com");
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await context.close();
+    },
+  },
 ];

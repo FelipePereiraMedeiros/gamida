@@ -38,6 +38,11 @@ files.forEach((file) => {
   console.log(`${file}: ${current} -> ${next}`);
 });
 
+// A versão do rodapé do index.html, pelo padrão (não depende de estar igual à anterior)
+const indexPath = path.join(root, "index.html");
+const indexHtml = fs.readFileSync(indexPath, "utf8");
+fs.writeFileSync(indexPath, indexHtml.replace(/(<span id="footer-version-tag">)v[\d.]+(<\/span>)/, `$1v${next}$2`));
+
 // O package-lock.json repete a versão do projeto em dois campos próprios
 const lockPath = path.join(root, "package-lock.json");
 if (fs.existsSync(lockPath)) {
