@@ -2,6 +2,50 @@
 
 Roteiro para tirar o Gamida do GitHub Pages, publicar no Cloudflare, ligar o perfil no Google Drive do aluno e fechar o repositório. A ordem importa: o site novo e o login entram no ar **antes** de o repositório ficar privado, e os alunos levam o progresso do endereço antigo para o novo.
 
+## Situação em 27/11/2026 (pausado)
+
+### Pronto e no ar
+
+- **Site novo:** `https://gamida.gasperfpm.workers.dev`, um Worker do Cloudflare que publica sozinho a cada envio para a `dev`.
+  - Conferido no ar: cabeçalhos de segurança, 404 para arquivos internos e funcionamento sem internet.
+- **Site antigo:** o GitHub Pages (`felipepereiramedeiros.github.io/gamida/`) continua no ar e recebe as mesmas versões. Nada mudou para os alunos.
+- **Páginas legais:** política de privacidade e termos de uso, com o contato `gamida.app@gmail.com`. LICENSE e README usam o mesmo e-mail.
+- **Google Cloud:**
+  - projeto criado;
+  - tela de login em **teste**;
+  - ID do cliente no código (`GOOGLE_CLIENT_ID`);
+  - endereços dos dois sites cadastrados.
+- **Login com Google e cópia no Drive:** prontos e testados, mas **desligados para todos** (`CLOUD_SYNC_ENABLED = false`). Só aparecem num navegador com `gamida_google_preview = "1"` e numa conta em "Usuários de teste".
+- **Aviso de endereço novo** no site antigo: pronto, mas **desligado** (`NEW_HOME_URL` vazio).
+
+### Pendências (na ordem)
+
+1. **Endereço definitivo** (decisão do dono):
+   - manter `gamida.gasperfpm.workers.dev`;
+   - trocar o subdomínio da conta no Cloudflare (Workers & Pages → Subdomain → Change);
+   - ou usar um domínio próprio.
+
+   Se mudar, atualize as origens e os URIs de retorno no Google, `docs/producao.md` e `docs/login-google.md`. Faça isso antes dos passos 3 e 4.
+2. **Google Cloud:**
+   - trocar o e-mail de suporte da tela de login para `gamida.app@gmail.com` (a conta precisa ser proprietária ou editora do projeto: IAM → Conceder acesso);
+   - ativar a verificação em duas etapas;
+   - testar o login com `gamida_google_preview`.
+3. **Publicar o app no Google** (Público-alvo → Publicar app):
+   - sem logotipo;
+   - conferir em "Acesso a dados" que nenhuma permissão é confidencial;
+   - se o Google pedir verificação, parar e avaliar.
+
+   Depois: `CLOUD_SYNC_ENABLED = true`.
+4. **Ligar o aviso no site antigo:** `NEW_HOME_URL` com o endereço definitivo.
+5. **Piloto** com 2 ou 3 alunos por alguns dias. Depois, anunciar.
+6. **Alguns meses depois:**
+   - desligar o GitHub Pages;
+   - deixar o repositório privado;
+   - tirar o `github.io` das origens no Google.
+7. **Opcionais:**
+   - "não indexar", para o site ficar fora das buscas;
+   - atualizar a branch `main`, parada na 2.22.4; a publicação usa a `dev`.
+
 ## O que o repositório já traz
 
 | Peça | Onde |
