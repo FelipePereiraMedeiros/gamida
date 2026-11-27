@@ -17,6 +17,6 @@ O jogo **Crônicas do Escriba** é obra em coautoria de **José Henrique Rosseto
 | | Usar em produto, curso, site ou instituição, com ou sem fins comerciais |
 | | Extrair o conteúdo didático ou usá-lo para treinar inteligência artificial |
 
-Os termos completos estão no arquivo [LICENSE](LICENSE). Pedidos de autorização ou de licenciamento: abra uma issue neste repositório.
+Os termos completos estão no arquivo [LICENSE](LICENSE). Pedidos de autorização ou de licenciamento: gasperfpm@gmail.com.
 
 *Gamida is proprietary software, all rights reserved. It is not open source; see [LICENSE](LICENSE).*
