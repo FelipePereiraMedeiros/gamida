@@ -39,7 +39,9 @@ Não há servidor do Gamida. Quando o aluno entra com a conta Google, o navegado
 | Só um dos lados mudou desde a última sincronização | O lado novo vale. |
 | Os dois lados mudaram | O aluno escolhe: usar a versão do Drive, manter a deste aparelho ou decidir depois. Se escolher a versão do Drive, uma cópia do aparelho fica guardada. |
 
-Com a sessão ativa, as mudanças são salvas sozinhas cerca de 20 segundos depois e também ao sair da página. A sessão do Google dura cerca de uma hora. Depois disso, o progresso continua sendo gravado no aparelho e o cartão da nuvem mostra o botão **Reconectar**.
+Com a sessão ativa, as mudanças são salvas sozinhas cerca de 20 segundos depois e também ao sair da página. A sessão do Google dura cerca de uma hora. Depois disso, o progresso continua sendo gravado no aparelho e, se houver mudanças sem cópia no Drive, aparece no alto da tela o aviso **"Seu progresso não está sendo salvo no Google Drive"**, com o botão **Reconectar** ("Agora não" esconde o aviso até fechar a aba; "Sair" também). O cartão da nuvem mostra o mesmo botão.
+
+Quando o aluno escolhe **manter a versão deste aparelho** num conflito, a versão que estava no Drive fica guardada no aparelho antes de ser substituída: "Voltar à cópia anterior", na aba Perfil, desfaz a escolha. Na escolha contrária, a cópia guardada é a deste aparelho.
 
 Cada conta Google fica ligada a um perfil. Se o aluno entrar com uma conta que já pertence a outro perfil do aparelho, o Gamida troca para esse perfil.
 

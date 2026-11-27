@@ -170,11 +170,15 @@ function hasProgress(data = snapshot()) {
 
 const BACKUP_KEY = "gamida_profile_backup";
 
-/** Cópia do perfil antes de ele ser substituído por um arquivo ou pela nuvem */
-function saveBackup(reason) {
+/**
+ * Cópia do perfil antes de ele ser substituído por um arquivo ou pela nuvem.
+ * Com data, guarda outra versão no lugar da deste aparelho: a do Google Drive, quando o
+ * aluno escolhe manter a deste aparelho e a do Drive vai ser substituída ("drive").
+ */
+function saveBackup(reason, data = null, updatedAt = null) {
   const profile = getActiveProfile();
   try {
-    rawSet(BACKUP_KEY, JSON.stringify({ profileId: profile.id, at: now(), reason, data: snapshot(), updatedAt: profile.updatedAt }));
+    rawSet(BACKUP_KEY, JSON.stringify({ profileId: profile.id, at: now(), reason, data: data || snapshot(), updatedAt: updatedAt == null ? profile.updatedAt : updatedAt }));
   } catch (err) {
     console.warn("Aviso ao guardar a cópia do perfil:", err);
   }
@@ -600,7 +604,9 @@ function renderProfileTab() {
           <button type="button" class="btn-secondary" id="profile-export">Baixar arquivo</button>
           <label class="btn-secondary cursor-pointer">Carregar arquivo<input type="file" id="profile-import" accept="application/json,.json" class="hidden" /></label>
         </div>
-        ${readBackup() ? `<p class="profile-note">Há uma cópia de como este perfil estava antes da última substituição (${esc(fmtDate(readBackup().at))}).</p>
+        ${readBackup() ? `<p class="profile-note">${readBackup().reason === "drive"
+          ? `Há uma cópia da versão que estava no Google Drive antes de você manter a deste aparelho (${esc(fmtDate(readBackup().at))}).`
+          : `Há uma cópia de como este perfil estava antes da última substituição (${esc(fmtDate(readBackup().at))}).`}</p>
         <button type="button" class="btn-secondary" id="profile-undo">Voltar à cópia anterior</button>` : ""}
         <p class="profile-note" id="profile-file-status" role="status"></p>
       </div>
@@ -767,6 +773,7 @@ const ProfilesModule = {
   snapshot,
   applySnapshot,
   hasProgress,
+  saveBackup,
   readBackup,
   restoreBackup,
   switchProfile,

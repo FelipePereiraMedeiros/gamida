@@ -173,6 +173,16 @@ suite.test('Nuvem: login só pede a pasta de dados do app no Drive e lê a respo
   assert.equal(Cloud.FILE_NAME, 'gamida-perfil.json');
 });
 
+suite.test('Nuvem: avisa quando a sessão do Google acabou e há progresso sem cópia no Drive', () => {
+  const warn = (profile, opts) => Cloud.shouldWarnReconnect(profile, { enabled: true, hasToken: false, ...opts });
+  const linked = { google: { sub: '1' }, updatedAt: 20, syncedAt: 10 };
+  assert.isTrue(warn(linked), 'Mudanças depois da última cópia e sem sessão: avisa');
+  assert.isFalse(warn({ ...linked, syncedAt: 20 }), 'Tudo já na nuvem: não avisa');
+  assert.isFalse(warn(linked, { hasToken: true }), 'Com sessão, a gravação automática cuida');
+  assert.isFalse(warn({ ...linked, google: null }), 'Perfil sem conta Google: não avisa');
+  assert.isFalse(warn(linked, { enabled: false }), 'Login desligado: nada aparece');
+});
+
 suite.test('Perfil está na navegação, carrega antes dos outros módulos e tem a página de retorno do login', () => {
   assert.includes(html, 'id="nav-btn-profile"');
   assert.includes(html, 'id="tab-profile"');

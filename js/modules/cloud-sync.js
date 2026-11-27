@@ -299,6 +299,10 @@ async function linkProfile(google) {
 function signOut({ unlink = false } = {}) {
   const token = currentToken();
   forgetToken();
+  // Saiu de propósito: sem aviso de "não está sendo salvo" nesta sessão
+  try {
+    sessionStorage.setItem(RECONNECT_DISMISS_KEY, "1");
+  } catch (_) {}
   if (token) fetchImpl(`https://oauth2.googleapis.com/revoke?token=${encodeURIComponent(token)}`, { method: "POST" }).catch(() => {});
   if (unlink) {
     const P = Profiles();
@@ -418,7 +422,8 @@ async function doSync(interactive) {
     if (remote && P.validateProfileFile(remote)) remote = null;
     const hasData = P.hasProgress();
     let action = decide({ updatedAt: profile.updatedAt, syncedAt: profile.syncedAt, hasData }, remote ? { updatedAt: remote.updatedAt || 0 } : null);
-    if (action === "conflict") {
+    const conflict = action === "conflict";
+    if (conflict) {
       action = interactive ? await askConflict(profile, remote) : "none";
       if (action === "none") {
         setStatus("Há mudanças aqui e na nuvem. Abra o Perfil para escolher qual manter.", "bad");
@@ -433,6 +438,9 @@ async function doSync(interactive) {
       return "download";
     }
     if (action === "upload") {
+      // Manter a deste aparelho substitui a do Drive: antes, a do Drive fica guardada aqui
+      // ("Voltar à cópia anterior" na aba Perfil), para uma escolha errada não perder nada
+      if (conflict && remote && P.hasProgress(remote.data)) P.saveBackup("drive", remote.data, remote.updatedAt || 0);
       const file = P.buildProfileFile(P.getActiveProfile());
       const id = await uploadRemote(file, meta ? meta.id : null);
       profile = P.updateProfile(profile.id, { driveFileId: id, syncedAt: file.updatedAt, updatedAt: file.updatedAt });
@@ -470,7 +478,7 @@ function askConflict(profile, remote) {
         <li><b>Neste aparelho:</b> alterado em ${esc(when(profile.updatedAt))}${P.hasProgress() ? "" : " (sem progresso)"}</li>
         <li><b>No Google Drive:</b> alterado em ${esc(when(remote.updatedAt))}${P.hasProgress(remote.data) ? "" : " (sem progresso)"}</li>
       </ul>
-      <p class="cloud-dialog__hint">A versão que não for escolhida é substituída. Se escolher a da nuvem, uma cópia deste aparelho fica guardada na tela do Perfil.</p>
+      <p class="cloud-dialog__hint">A versão que não for escolhida é substituída, mas fica uma cópia dela neste aparelho: na aba Perfil, "Voltar à cópia anterior" desfaz a escolha.</p>
       <div class="cloud-dialog__actions">
         <button type="button" class="btn-secondary" data-choice="download">Usar a do Google Drive</button>
         <button type="button" class="btn-secondary" data-choice="upload">Manter a deste aparelho</button>
@@ -497,12 +505,64 @@ function askConflict(profile, remote) {
   });
 }
 
+/* ---------------- aviso de sessão expirada ---------------- */
+
+const RECONNECT_DISMISS_KEY = "gamida_google_reconnect_later";
+
+/**
+ * Há progresso deste aparelho que não chegou ao Drive e a sessão do Google acabou?
+ * (a sessão dura cerca de uma hora; sem aviso, o aluno acharia que está tudo salvo)
+ */
+function shouldWarnReconnect(profile, { enabled = isConfigured(), hasToken = !!currentToken() } = {}) {
+  if (!enabled || hasToken || !profile || !profile.google) return false;
+  return (profile.updatedAt || 0) > (profile.syncedAt || 0);
+}
+
+function updateReconnectBanner() {
+  if (typeof document === "undefined" || !document.body) return;
+  const P = Profiles();
+  if (!P) return;
+  if (P.flushChangeMark) P.flushChangeMark();
+  let dismissed = false;
+  try {
+    dismissed = sessionStorage.getItem(RECONNECT_DISMISS_KEY) === "1";
+  } catch (_) {}
+  const show = !dismissed && shouldWarnReconnect(P.getActiveProfile());
+  let box = document.getElementById("cloud-reconnect");
+  if (!show) {
+    if (box) box.remove();
+    return;
+  }
+  if (box) return;
+  box = document.createElement("section");
+  box.id = "cloud-reconnect";
+  box.className = "cloud-reconnect";
+  box.setAttribute("role", "status");
+  box.innerHTML = `<p class="cloud-reconnect__text"><b>Seu progresso não está sendo salvo no Google Drive.</b> A sessão do Google terminou; o que você estudou continua neste aparelho e sobe quando você reconectar.</p>
+    <div class="cloud-reconnect__row">
+      <button type="button" class="answer-btn" id="cloud-reconnect-go">Reconectar</button>
+      <button type="button" class="link-btn" id="cloud-reconnect-later">Agora não</button>
+    </div>`;
+  document.body.insertBefore(box, document.body.firstChild);
+  box.querySelector("#cloud-reconnect-go").addEventListener("click", () => signIn().then(() => refreshCard()));
+  box.querySelector("#cloud-reconnect-later").addEventListener("click", () => {
+    try {
+      sessionStorage.setItem(RECONNECT_DISMISS_KEY, "1");
+    } catch (_) {}
+    box.remove();
+  });
+}
+
 /* ---------------- gravação automática ---------------- */
 
 function scheduleAutosave() {
   clearTimeout(autosaveTimer);
   const P = Profiles();
-  if (!P || !currentToken() || !P.getActiveProfile().google) return;
+  if (!P || !P.getActiveProfile().google) return;
+  if (!currentToken()) {
+    updateReconnectBanner();
+    return;
+  }
   autosaveTimer = setTimeout(() => sync(), AUTOSAVE_MS);
 }
 
@@ -517,8 +577,10 @@ function startAutoSync() {
     }
   });
   resumeRedirectSignIn();
-  // Ao abrir o app com a sessão ainda válida, confere se há algo novo na nuvem
+  // Ao abrir o app com a sessão ainda válida, confere se há algo novo na nuvem;
+  // com a sessão vencida e progresso sem cópia, avisa
   if (currentToken()) setTimeout(() => sync(), 1500);
+  else setTimeout(updateReconnectBanner, 1500);
 }
 
 /* ---------------- cartão na tela do perfil ---------------- */
@@ -579,6 +641,7 @@ function refreshCard() {
   if (!card || !P) return;
   card.innerHTML = renderCard(P.getActiveProfile());
   bindCard();
+  updateReconnectBanner();
 }
 
 const CloudSync = {
@@ -605,6 +668,8 @@ const CloudSync = {
   bindCard,
   refreshCard,
   startAutoSync,
+  shouldWarnReconnect,
+  updateReconnectBanner,
   _setFetch,
 };
 

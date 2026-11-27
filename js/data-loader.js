@@ -9,7 +9,7 @@
 
 const DataLoader = {
   get VERSION() {
-    return (typeof window !== "undefined" && window.APP_VERSION) || "2.63.3";
+    return (typeof window !== "undefined" && window.APP_VERSION) || "2.64.0";
   },
   cache: {},
 

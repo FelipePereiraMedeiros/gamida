@@ -204,4 +204,67 @@ module.exports = [
       await context.close();
     },
   },
+  {
+    name: "Nuvem: manter a deste aparelho guarda a versão do Drive (dá para desfazer) e sessão expirada avisa",
+    async fn({ browser, base, assert }) {
+      const drive = { file: null, uploads: 0 };
+      // Aparelho 1 sobe a meta 42
+      const one = await openApp({ browser, base }, { routes: fakeGoogle(drive, "A"), storage: { ...PREVIEW, gamida_daily_goal: "42", gamida_greek_stone_rain: JSON.stringify({ best: 321 }) } });
+      await one.page.evaluate(() => switchTab("profile"));
+      await Promise.all([one.context.waitForEvent("page"), one.page.click("#cloud-signin")]);
+      await one.page.waitForFunction(() => /Salvo no seu Google Drive/.test((document.getElementById("cloud-status") || {}).textContent || ""), null, { timeout: 15000 });
+      // Aparelho 2, com progresso próprio, escolhe manter o dele
+      const two = await openApp({ browser, base }, { routes: fakeGoogle(drive, "B"), storage: { ...PREVIEW, gamida_daily_goal: "7", gamida_hebrew_scribe: JSON.stringify({ cls: "mago", lvl: 3 }) } });
+      const { page } = two;
+      await page.evaluate(() => switchTab("profile"));
+      await Promise.all([two.context.waitForEvent("page"), page.click("#cloud-signin")]);
+      await page.waitForSelector(".cloud-dialog", { timeout: 15000 });
+      await page.click('[data-choice="upload"]');
+      await page.waitForFunction(() => /Salvo no seu Google Drive/.test((document.getElementById("cloud-status") || {}).textContent || ""), null, { timeout: 15000 });
+      assert.equal(JSON.parse(drive.file).data.gamida_daily_goal, "7", "a versão deste aparelho não subiu");
+      const backup = await page.evaluate(() => ProfilesModule.readBackup());
+      assert.ok(backup && backup.reason === "drive", "a versão do Drive não ficou guardada antes de ser substituída");
+      assert.equal(backup.data.gamida_daily_goal, "42");
+      await page.evaluate(() => { switchTab("manage"); switchTab("profile"); });
+      assert.match(await page.textContent("#tab-profile"), /versão que estava no Google Drive/);
+      // Desfazer: volta à versão do Drive
+      await Promise.all([page.waitForNavigation(), page.click("#profile-undo")]);
+      await page.waitForFunction(() => window.ProfilesModule);
+      assert.equal(await page.evaluate(() => localStorage.getItem("gamida_daily_goal")), "42", "desfazer não trouxe a versão do Drive");
+      // Sessão do Google expirada com progresso sem cópia: aviso ao abrir
+      await page.evaluate(() => {
+        localStorage.removeItem("gamida_google_token");
+        const p = ProfilesModule.getActiveProfile();
+        ProfilesModule.updateProfile(p.id, { updatedAt: (p.syncedAt || 0) + 5000 });
+      });
+      await page.reload();
+      await page.waitForSelector("#cloud-reconnect", { timeout: 10000 });
+      assert.match(await page.textContent("#cloud-reconnect"), /não está sendo salvo no Google Drive/);
+      assert.ok(await page.isVisible("#cloud-reconnect-go"));
+      // "Agora não" some nesta sessão, mesmo recarregando
+      await page.click("#cloud-reconnect-later");
+      assert.ok(!(await page.isVisible("#cloud-reconnect")));
+      await page.reload();
+      await page.waitForTimeout(2000);
+      assert.ok(!(await page.isVisible("#cloud-reconnect")), "o aviso voltou depois de \"Agora não\"");
+      const errors = [...one.errors, ...two.errors];
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await Promise.all([one.context.close(), two.context.close()]);
+    },
+  },
+  {
+    name: "Login com Google desligado: nenhum aviso de reconectar, mesmo com perfil ligado e sem sessão",
+    async fn({ browser, base, assert }) {
+      const { context, page, errors } = await openApp({ browser, base });
+      await page.evaluate(() => {
+        const p = ProfilesModule.getActiveProfile();
+        ProfilesModule.updateProfile(p.id, { google: { sub: "1", email: "a@b.c", name: "A" }, updatedAt: Date.now(), syncedAt: 1 });
+      });
+      await page.reload();
+      await page.waitForTimeout(2000);
+      assert.ok(!(await page.$("#cloud-reconnect")), "aviso apareceu com o login desligado");
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await context.close();
+    },
+  },
 ];
