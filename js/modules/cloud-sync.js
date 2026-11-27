@@ -31,7 +31,7 @@ const CLOUD_SYNC_ENABLED = false;
 const PREVIEW_KEY = "gamida_google_preview";
 
 /** ID do cliente OAuth do Gamida (público por natureza; não é segredo) */
-const GOOGLE_CLIENT_ID = "";
+const GOOGLE_CLIENT_ID = "362926334325-4fgus1ms01t13kt0i6s2pd7sq6elld4r.apps.googleusercontent.com";
 
 const SCOPES = "openid email profile https://www.googleapis.com/auth/drive.appdata";
 const FILE_NAME = "gamida-perfil.json";

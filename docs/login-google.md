@@ -2,7 +2,7 @@
 
 > O roteiro completo de produção (Cloudflare, login, mudança de endereço e repositório privado) está em `docs/producao.md`.
 
-> **Situação atual:** a sincronização com o Google está **desligada** (`CLOUD_SYNC_ENABLED = false` em `js/modules/cloud-sync.js`). O cartão da nuvem não aparece e nenhum pedido vai ao Google. Os perfis e o arquivo de perfil funcionam normalmente. Para testar num navegador só, rode `localStorage.setItem("gamida_google_preview", "1")` no console (e informe o ID do cliente, como explicado abaixo). Para ativar para todos, siga "Como ativar" e mude a chave para `true`.
+> **Situação atual (27/11/2026):** o ID do cliente do Gamida já está no código (`GOOGLE_CLIENT_ID` em `js/modules/cloud-sync.js`), mas a sincronização segue **desligada para todos** (`CLOUD_SYNC_ENABLED = false`) até o app ser publicado no Google. Para testar num navegador só (com uma conta listada em "Usuários de teste"), rode `localStorage.setItem("gamida_google_preview", "1")` no console e recarregue. Para ativar para todos, siga "Como ativar" e mude a chave para `true`.
 
 ## O que é o perfil
 

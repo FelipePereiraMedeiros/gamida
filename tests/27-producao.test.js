@@ -63,6 +63,17 @@ suite.test('Termos de uso: existem, seguem a licença e estão ligados no rodap�
   assert.includes(read('privacidade.html'), 'href="termos.html"');
 });
 
+suite.test('Login com Google: ID do cliente do Gamida no código, contato nas páginas legais', () => {
+  const Cloud = require('../js/modules/cloud-sync.js');
+  assert.isTrue(/^\d+-[a-z0-9]+\.apps\.googleusercontent\.com$/.test(Cloud.GOOGLE_CLIENT_ID), 'ID do cliente OAuth ausente ou malformado');
+  assert.isTrue(!/client_secret|GOCSPX-/.test(read('js/modules/cloud-sync.js')), 'Segredo do cliente não pode ir para o código');
+  ['privacidade.html', 'termos.html'].forEach((page) => {
+    const html = read(page);
+    assert.isTrue(!html.includes('{{CONTATO}}'), `${page} sem o e-mail de contato`);
+    assert.isTrue(/href="mailto:[^"@]+@[^"]+"/.test(html), `${page} sem link de e-mail`);
+  });
+});
+
 suite.test('Instalável: manifesto com id, ícones existentes e rodapé com a versão atual', () => {
   const manifest = JSON.parse(read('manifest.webmanifest'));
   assert.equal(manifest.id, './index.html', 'O id precisa ser o start_url de antes, para não duplicar instalações');
