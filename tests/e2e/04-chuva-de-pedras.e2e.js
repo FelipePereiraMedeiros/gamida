@@ -33,4 +33,15 @@ module.exports = [
       }
     },
   },
+  {
+    name: "Chuva com lição salva que saiu do material (o antigo exame): volta ao padrão em vez de abrir vazia",
+    async fn({ browser, base, assert }) {
+      const storage = { gamida_greek_stone_rain: JSON.stringify({ best: 0, chapterIds: ["estudo_exame"], onlyErrors: false }) };
+      const { context, page, errors } = await openApp({ browser, base }, { language: "greek", storage });
+      const ids = await page.evaluate(() => StoneRainModule.selectedChapterIds());
+      assert.ok(ids.length > 0 && !ids.includes("estudo_exame"), `lições: ${ids.join(",")}`);
+      assert.deepEqual(errors, [], errors.join(" | "));
+      await context.close();
+    },
+  },
 ];

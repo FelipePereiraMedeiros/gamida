@@ -54,7 +54,7 @@ function buildDeck(chapters, opts = {}, isError) {
   const deck = [];
   (Array.isArray(chapters) ? chapters : []).forEach((chapter) => {
     if (!chapter || (wanted && !wanted.has(chapter.id))) return;
-    // Lição especial (como o "Estudo para exame") repete palavras das lições: só entra escolhida
+    // Lição especial (um modo à parte, como foi o "Estudo para exame") repete palavras das lições: só entra escolhida
     if (chapter.special && !wanted) return;
     (chapter.items || []).forEach((item) => {
       const term = getTerm(item);
@@ -218,9 +218,13 @@ function playableChapters() {
 function selectedChapterIds() {
   const playable = playableChapters();
   const valid = new Set(playable.map((c) => c.id));
-  // Aberta numa lição especial (como o "Estudo para exame"), a chuva usa só ela
+  // Aberta numa lição especial (um modo à parte, como foi o "Estudo para exame"), a chuva usa só ela
   if (AppState.currentChapter && AppState.currentChapter.special && valid.has(AppState.currentChapter.id)) return [AppState.currentChapter.id];
-  if (Array.isArray(prefs.chapterIds)) return prefs.chapterIds.filter((id) => valid.has(id));
+  if (Array.isArray(prefs.chapterIds)) {
+    const kept = prefs.chapterIds.filter((id) => valid.has(id));
+    // Lista vazia é escolha do aluno; lista cujas lições todas saíram (como o exame) volta ao padrão
+    if (kept.length || prefs.chapterIds.length === 0) return kept;
+  }
   // Primeira vez: do começo até a lição que o aluno está estudando
   const current = AppState.currentChapter && valid.has(AppState.currentChapter.id) ? AppState.currentChapter.id : null;
   return current ? chaptersUpTo(playable, current) : playable.map((c) => c.id);

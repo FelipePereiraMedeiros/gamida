@@ -402,12 +402,6 @@ function chooseClass() {
   });
 }
 
-/** Botão de um modo à parte no menu inicial (hoje, o "Estudo para exame" de scribe-exam.js) */
-function extraMenuHtml() {
-  const extraMenu = typeof window !== "undefined" && window.ScribeExam;
-  return extraMenu && typeof extraMenu.menuHtml === "function" ? extraMenu.menuHtml() : "";
-}
-
 function showMap() {
   transition();
   if (!S.seenIntro) return showPrologue(false, 1);
@@ -426,7 +420,6 @@ function showMap() {
     <p class="sc-story">${started
       ? "Siga a história pelo capítulo destacado ou escolha qualquer outro para revisar: todos estão abertos. Cada um traz um pergaminho de ensino, ondas de criaturas-palavra e um guardião de várias frases."
       : `O ${isHebrew() ? "Rolo das Palavras" : "Segundo Rolo"} está em branco: ${esc(Lore.VILLAIN.name)} engoliu as palavras. Cada palavra virou uma criatura, e cada frase, um guardião. Percorra o caminho de ${esc(campaign[0].meta.city)} a ${esc(campaign[total - 1].meta.city)} e traga-as de volta. Os capítulos seguem as lições, e você pode começar por qualquer um.`}</p>
-    ${extraMenuHtml()}
     <div class="sc-viewtoggle" role="group" aria-label="Ver capítulos">
       <button type="button" class="sc-viewtoggle__btn${mapView() ? "" : " is-on"}" data-view="list" aria-pressed="${!mapView()}">Lista</button>
       <button type="button" class="sc-viewtoggle__btn${mapView() ? " is-on" : ""}" data-view="map" aria-pressed="${mapView()}">Mapa</button>
@@ -467,8 +460,6 @@ function showMap() {
   });
   if (mapView()) bindMap(current);
   else animateAvatars([["sc-avatar", S.cls]]);
-  const extraMenu = typeof window !== "undefined" && window.ScribeExam;
-  if (extraMenu && typeof extraMenu.bindMenu === "function") extraMenu.bindMenu();
   document.querySelectorAll("#sc-screen [data-chapter]").forEach((btn) => {
     btn.onclick = () => {
       const a = audio();
@@ -868,7 +859,7 @@ function showCredits() {
         "Guardiões com figura própria do Livro II e do grego",
         "Mapas do Livro II e do Segundo Rolo",
         "Golpes do grego: a rede, o pilo e a carta",
-        "Caçada completa, bestiário ilustrado, mapa dos capítulos, batalha em tela cheia, interface em pixel, estudo para exame, música e efeitos sonoros",
+        "Caçada completa, bestiário ilustrado, mapa dos capítulos, batalha em tela cheia, interface em pixel, música e efeitos sonoros",
       ])}</section>
     </div>
     <p class="sc-muted sc-small">Referências de estudo: Page H. Kelley, Gramática do Hebraico Bíblico; Johannes Bergmann, Gramática do Grego do Novo Testamento. A citação não indica vínculo nem endosso.</p>
@@ -2157,9 +2148,9 @@ function bossDown() {
 
 /* ============================ Batalha extra ============================ */
 /**
- * Batalha fora da campanha, montada por outro módulo (hoje, o "Estudo para
- * exame" em scribe-exam.js): ondas com as palavras recebidas e, se vierem
- * frases, um guardião com elas. Usa o herói, a vida, o XP e as estatísticas,
+ * Batalha fora da campanha, montada por outro módulo (um modo à parte da
+ * aventura): ondas com as palavras recebidas e, se vierem frases, um
+ * guardião com elas. Usa o herói, a vida, o XP e as estatísticas,
  * mas nunca marca capítulo vencido nem dá relíquia ou selo.
  * @param {{id: string, title: string, words: Array<Object>, sentences?: Array<Object>,
  *   boss?: string, bossRef?: string, taunt?: string, tip?: string,
@@ -2729,7 +2720,7 @@ if (typeof window !== "undefined") {
   if (window.__GAMIDA_TEST__) window.__scribeBattle = () => B;
   window.openScribeChronicles = openScribeChronicles;
   window.scribeShowBook = showBook;
-  // Para modos à parte (scribe-exam.js): tela, escape de texto, mapa e a batalha extra
+  // Para modos à parte da aventura: tela, escape de texto, mapa e a batalha extra
   window.ScribeExtra = { setScreen, esc, rich, orig, termClass, showMap, transition, music, startExtraBattle, isOpen };
   window.scribeToggleTyping = toggleTyping;
 }

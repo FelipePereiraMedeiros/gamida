@@ -5,7 +5,7 @@
  * Fica em arquivo próprio porque a política de segurança (CSP) do index.html
  * não permite script escrito dentro do HTML.
  */
-window.APP_VERSION = "2.60.0";
+window.APP_VERSION = "2.61.0";
 try {
   if (localStorage.getItem("gamida_language") === "greek") {
     document.documentElement.setAttribute("data-lang", "greek");

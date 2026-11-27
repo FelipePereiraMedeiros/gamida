@@ -317,20 +317,3 @@ body.sc-focus.sc-chrome-open .sc-top {
   letter-spacing: 0.02em;
 }
 .sc-opt__tr[hidden] { display: none; }
-
-/* Estudo para exame (MODO TEMPORÁRIO, js/modules/scribe-exam.js): entrada no menu e tela do modo */
-.sc-exam-entry {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 0.75rem;
-  padding: 0.375rem 0.5rem;
-  border: 8px solid transparent;
-  border-image: var(--scf-focus) 4 fill / 8px stretch;
-}
-.sc-exam-entry__text { display: flex; flex: 1 1 14rem; flex-direction: column; gap: 0.125rem; min-width: 0; }
-.sc-exam-entry__text b { color: var(--sc-gold); font-size: 1.05rem; text-shadow: 2px 2px 0 #181425; }
-.sc-exam-entry__text span { color: var(--sc-muted); font-size: 0.85rem; line-height: 1.4; }
-.sc-exam .sc-exam-seg { display: flex; flex-wrap: wrap; align-self: stretch; margin: 0; }
-.sc-exam-label { color: var(--sc-gold); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
-

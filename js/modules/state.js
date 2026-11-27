@@ -8,7 +8,7 @@
 (function () {
 const APP_VERSION =
   (typeof window !== "undefined" && (window.APP_VERSION || (window.DataLoader && window.DataLoader.VERSION))) ||
-  "2.60.0";
+  "2.61.0";
 
 /**
  * Sanitiza texto contra XSS (injeção de tags e entidades HTML)
@@ -456,7 +456,7 @@ function getSelectedChapters(state = AppState, options = {}) {
 }
 
 /**
- * Lições especiais (como o "Estudo para exame") ficam sozinhas: aberta, só ela;
+ * Lições especiais (um modo à parte, como foi o "Estudo para exame") ficam sozinhas: aberta, só ela;
  * numa seleção de várias lições, ficam de fora
  * @param {Array<Object>} list
  * @param {Object} [current]

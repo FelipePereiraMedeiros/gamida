@@ -20,7 +20,7 @@ const tipFor = (term, language, extra = {}) => {
 
 suite.test('Todo item e toda frase dos dois idiomas recebem uma dica', () => {
   [[hebrewData, 'hebrew'], [greekData, 'greek']].forEach(([data, language]) => {
-    // Lições especiais (como o "Estudo para exame") trazem formas gramaticais sem dica própria
+    // Lições especiais (modos à parte) trazem formas gramaticais sem dica própria
     const lessons = data.filter((chapter) => !chapter.special);
     [...allItems(lessons), ...allSentences(lessons)].forEach((item) => {
       const tip = getAssimilationTip(item, language);

@@ -51,7 +51,6 @@ Arquivos com essa base: `js/modules/scribe-graphics.js` (extraído da versão or
   - a opção de ver os capítulos no mapa;
   - a batalha em destaque, com os menus recolhidos e a arena maior;
   - a transliteração nas alternativas depois do primeiro erro;
-  - o modo temporário "Estudo para exame" (`scribe-exam.js`): batalhas com as Provas 1 e 2, fora da aventura;
   - a interface em pixel: letras pixeladas, molduras, botões, barras de vida e ícones desenhados na paleta do jogo (`css/cronicas-pixel.css`, `scripts/molduras-cronicas.js`).
 - **Música e efeitos sonoros sintetizados** (`game-audio.js`).
 

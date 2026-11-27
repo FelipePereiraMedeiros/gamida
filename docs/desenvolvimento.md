@@ -160,46 +160,11 @@ Cada palavra do hebraico pode trazer `refs`: versículos onde ela aparece, para 
 - **Conferência:** `tests/25-bible-refs.test.js` confere o formato, o livro, o capítulo e algumas referências conhecidas.
 - O grego ainda não tem referências.
 
-## "Estudo para exame" (MODO TEMPORÁRIO, sai depois dos exames)
+## Lições especiais e modos à parte
 
-Revisão das Provas 1 e 2 de Hebraico 2 e de Grego 2 (2026), com o gabarito. Tudo dele fica marcado com "Estudo para exame" ou `ExamMode`.
+Os modos temporários de prova ("Prova de amanhã", v2.51–v2.55, e "Estudo para exame", v2.57–v2.60) já saíram. Ficou deles só a estrutura geral, sem conteúdo, para um próximo modo à parte:
 
-- **Dados:** uma lição especial no fim de cada idioma (`"id": "estudo_exame"`, `"special": "exam"`). Itens e frases têm `group` ("prova1", "prova2" ou "ambas"); frases e formas da tabela têm `key` (chave do gabarito), `label` e `ref`.
-  - **Hebraico:** as 18 frases das provas (8 + 10), com o hebraico conferido letra por letra com o PDF. Cada uma tem tradução, chave e análise palavra por palavra: 5 reaproveitadas das lições e 13 analisadas para o modo. O vocabulário são os lemas das frases, copiados das lições.
-  - **Grego:** as 40 palavras do vocabulário das provas, com as respostas do gabarito primeiro (`kind: "vocab"`). As 31 formas da tabela de análise (`kind: "tabela"`) trazem a classificação no `type`, que aparece em "Mostrar dica", e a chave depois da resposta. As frases das provas foram copiadas das lições do Bergmann com a análise, e Jo 6.26 foi analisada para o modo.
-  - **Como foram montados:** os dados vieram de dois scripts guardados fora do repositório, `montar_exame.py` com `exame_hebraico.py` e `exame_grego.py`.
-- **Interface** (`js/modules/exam-mode.js`):
-  - **Menu:** botão "Estudo para exame" abaixo de Perfil, nas duas línguas.
-  - **Aviso:** aparece uma vez por aparelho (`SEEN_KEY`).
-  - **Barra no Estudar:** no hebraico, Simulado de 10 frases; no grego, Sorteio de 20 palavras, Tabela de análise e Mago da Morfologia; nas duas, Frases das provas e Vocabulário. Abaixo, a colinha de cada língua (`data-exam-lang`).
-  - **Filtros nas Opções:** "O que treinar" (Todas, Prova 1, Prova 2, Sorteio de 20 e, no grego, Tabela) e "Frases" (Todas, Prova 1, Prova 2, Simulado), guardados por idioma.
-  - **Chave do gabarito:** aparece depois de cada resposta (`#feedback-key`).
-- **Os outros modos com a lição do exame:**
-  - o Simulado da aba Revisar usa só a lição especial (`assessment.js`);
-  - o Mago da Morfologia abre com ela marcada (`openExamMorphDrill`);
-  - a Chuva de Pedras, aberta nela, usa só ela, e não a mistura com as lições quando todas estão marcadas;
-  - a Revisão Inteligente a encontra como qualquer lição;
-  - as Crônicas e o Caminho do domínio a deixam de fora (`!c.special`).
-- **Recorte das provas:** o exame só treina o que está nas Provas 1 e 2. No grego, as 40 palavras são as 20 + 20 do vocabulário das provas; as frases e a tabela de análise saem dos textos das provas (o teste `tests/26-estudo-exame.test.js` guarda esses textos e confere cada item). Com o exame aberto, `ExamMode.filterItems` deixa de fora qualquer outra lição, mesmo com "Até o atual" ou "Todos". Fora do exame, a regra geral de `state.js` (`standaloneSpecial` e o filtro em `setSelectedChapters`) mantém lições `special` fora das seleções de várias lições; essa regra é do sistema e fica depois que o exame sair.
-- **Grego, "O que treinar":** "Raízes (40)" traz só as 40 palavras do vocabulário das provas (sem as formas da tabela, que "Todas" inclui; o atalho "Vocabulário" da barra usa esta opção). "Forma do léxico" pega cada forma da tabela (campo `lexico` dos itens `kind: "tabela"`) e pede a forma de dicionário: o item é montado na hora (`kind: "lexico"`), aceita também só a palavra sem genitivo e artigo, e a Escolha usa `ExamMode.choiceOptions` (alternativas em grego), chamada por `renderChoiceInterface` em `js/screens/practice.js`. Ao remover o modo, tirar também esse desvio de três linhas.
-- **Nas Crônicas do Escriba** (`js/modules/scribe-exam.js`, modo à parte da aventura): entrada "Estudo para exame" no menu inicial (lista e mapa). Na tela do modo, o aluno escolhe as criaturas (todas, Prova 1, Prova 2, sorteio de 20 e, no grego, a tabela de análise) e o guardião (5 frases sorteadas das duas provas, de uma só ou nenhum). A batalha usa a "batalha extra" do motor (`window.ScribeExtra.startExtraBattle`): vale o herói, o nível, o XP e as estatísticas, mas não marca capítulo vencido nem dá relíquia, selo ou trecho da história. Cair mostra "Tentar de novo" e "Voltar" ao exame.
-- **Testes:** `tests/26-estudo-exame.test.js` confere os dados e `tests/e2e/15-estudo-exame.e2e.js` confere cada função nos dois idiomas; `tests/e2e/16-cronicas-exame.e2e.js` confere o modo nas Crônicas (batalha até o fim, aventura intacta, derrota, ausência da lição).
-- **Para retirar depois dos exames:**
-  1. `data/hebrew_chapters.json` e `data/greek_chapters.json`: apagar a lição `estudo_exame` (a última) e rodar `node scripts/build-bundle.js`. Nos aparelhos ela sai sozinha na atualização seguinte (lição `special` fora do padrão).
-  2. Apagar `js/modules/exam-mode.js`, `tests/e2e/15-estudo-exame.e2e.js` e `tests/26-estudo-exame.test.js`, e tirar o módulo 26 do `test-runner.js`.
-  2b. Crônicas: apagar `js/modules/scribe-exam.js` e `tests/e2e/16-cronicas-exame.e2e.js`, tirar o `<script>` dele do `index.html` e o bloco "Estudo para exame" do `css/cronicas-pixel.css`. Sem o módulo, a entrada some do menu das Crônicas. Tirar também "estudo para exame" da lista da tela de créditos (`scribe-chronicles.js`) e a linha do `CREDITOS.md`. A "batalha extra" do motor (`startExtraBattle`, `extraDone`, os desvios `B.extra` em `nextMonster`, `bossIntro`, `bossDown` e `defeat`, `extraMenuHtml` e `window.ScribeExtra`) fica sem uso e pode sair; ou ficar para um próximo modo à parte.
-  3. `index.html`: tirar o `<script>` do exam-mode, o botão `#nav-btn-exam`, a seção `#exam-cheatsheet`, os blocos `#practice-form-container` e `#practice-phrases-container` e o `#feedback-key`.
-  4. `js/app.js` (`initApp`, `switchTab`, `toggleLanguage`, `changeGlobalChapter`, `setExerciseMode`), `js/screens/practice.js` (`buildPracticeQueue`, `updatePracticeActionButtonToNext`, `resetQuestionMeta`) e `js/modules/ui.js` (`updatePracticeOptionsSummary`): tirar as chamadas a `window.ExamMode`.
-  5. `css/interface.css`: tirar os blocos "Estudo para exame".
-  6. `tests/e2e/lib.js`: tirar a semente do aviso e a opção `examAlert`. `tests/24-today.test.js`: voltar a lista do menu às cinco áreas.
-  7. Sem lição especial, perdem o sentido e podem sair:
-     - `!c.special` em `mastery-path.js` e `scribe-rules.js`;
-     - em `stone-rain.js`, os desvios de lição especial em `buildDeck`, `buildPhases` e `selectedChapterIds`, com os ajustes em `tests/20-stone-rain.test.js` e `tests/test_greek_analysis.py`;
-     - o bloco de lição especial em `assessment.js`;
-     - `storyOnly` em `tests/21-scribe-chronicles.test.js`;
-     - os filtros de lição especial em `tests/15-assimilation.test.js` e `tests/test_hebrew_restoration.py`;
-     - `noAnalysis` em `practice.js` e `.seg--wrap`.
+- **Lição especial** (`"special": "..."` no capítulo): fica fora das Crônicas e do Caminho do domínio (`!c.special`), não entra na Chuva de Pedras nem no Simulado a não ser que esteja aberta, e nunca se mistura numa seleção de várias lições (`standaloneSpecial` e o filtro em `setSelectedChapters`, em `state.js`). Quando sai dos dados, o `data-loader.js` também a tira dos aparelhos. Os testes usam uma lição especial de mentira (`licao_especial`), sem depender dos dados.
+- **Batalha extra das Crônicas** (`window.ScribeExtra.startExtraBattle` em `scribe-chronicles.js`): batalha fora da campanha, com as palavras e as frases que outro módulo mandar. Vale o herói, o nível e o XP, mas não marca capítulo nem dá relíquia. O teste do guardião no celular (`tests/e2e/02-cronicas.e2e.js`) a usa.
 
-     Fica o `!c.special` do `data-loader.js`, que tira a lição dos aparelhos.
-  8. Subir a versão e rodar `npm run test:all`.
-
+Ao criar um modo temporário novo, deixe tudo dele marcado com o nome do modo e escreva aqui o roteiro de remoção.

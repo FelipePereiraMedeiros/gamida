@@ -37,8 +37,7 @@ suite.test('O painel fica no topo da tela inicial e é atualizado ao voltar a el
 suite.test('Navegação: Estudar, Revisar, Jogar, Consultar e Perfil; jogos fora da revisão', () => {
   const nav = html.slice(html.indexOf('id="navbar-tabs-container"'), html.indexOf('</nav>'));
   const labels = [...nav.matchAll(/<span>([^<]+)<\/span>\s*(?:<span id="nav-review-badge"[^>]*><\/span>\s*)?<\/button>/g)].map((m) => m[1]);
-  // "Estudo para exame" é um modo temporário (js/modules/exam-mode.js)
-  assert.deepEqual(labels.filter((l) => l !== 'Estudo para exame'), ['Estudar', 'Revisar', 'Jogar', 'Consultar', 'Perfil']);
+  assert.deepEqual(labels, ['Estudar', 'Revisar', 'Jogar', 'Consultar', 'Perfil']);
   const dash = html.slice(html.indexOf('id="assess-dashboard"'), html.indexOf('<!-- Chuva de Pedras: arcade'));
   const hubOf = (action) => {
     const at = dash.indexOf(action);

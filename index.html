@@ -224,10 +224,6 @@
           <button type="button" id="nav-btn-profile" data-on-click="switchTab('profile')" class="nav-item" title="Perfil">
             <span id="nav-profile-avatar" class="nav-profile-avatar" aria-hidden="true">?</span><span>Perfil</span>
           </button>
-          <!-- Estudo para exame (MODO TEMPORÁRIO, hebraico e grego): js/modules/exam-mode.js -->
-          <button type="button" id="nav-btn-exam" data-on-click="openExamMode()" class="nav-item nav-item--exam hidden" title="Estudo para exame: Provas 1 e 2 com gabarito">
-            <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Estudo para exame</span>
-          </button>
         </div>
 
         <div id="tabs-fade-right" class="app-nav__fade app-nav__fade--right hidden"></div>
@@ -254,157 +250,6 @@
       <section id="tab-practice" class="flex-1 flex flex-col gap-4">
         <!-- Painel "Hoje": o próximo passo do aluno (js/modules/today.js) -->
         <div id="today-panel" class="today hidden" aria-label="Seu próximo passo hoje"></div>
-        <!-- Estudo para exame (MODO TEMPORÁRIO, js/modules/exam-mode.js): atalhos e colinha -->
-        <section id="exam-cheatsheet" class="exam-bar hidden" aria-label="Estudo para exame: atalhos e colinha">
-          <div class="exam-bar__head">
-            <b>Estudo para exame · Provas 1 e 2</b>
-            <span data-exam-lang="hebrew">As 18 frases das provas, com gabarito e análise</span>
-            <span data-exam-lang="greek" class="hidden">Exame: 20 das 40 palavras, uma tabela e questões das provas</span>
-          </div>
-          <div class="exam-bar__actions">
-            <button type="button" class="answer-btn" data-exam-lang="hebrew" data-on-click="startExamSimulado()">Simulado (10 frases)</button>
-            <button type="button" class="answer-btn hidden" data-exam-lang="greek" data-on-click="startExamSimulado()">Sorteio de 20 palavras</button>
-            <button type="button" class="btn-secondary" data-on-click="trainExamPhrases()">Frases das provas</button>
-            <button type="button" class="btn-secondary" data-on-click="trainExamWords()">Vocabulário</button>
-            <button type="button" class="btn-secondary hidden" data-exam-lang="greek" data-on-click="trainExamTable()">Tabela de análise</button>
-            <button type="button" class="btn-secondary hidden" data-exam-lang="greek" data-on-click="trainExamLexico()">Forma do léxico</button>
-            <button type="button" class="btn-secondary hidden" data-exam-lang="greek" data-on-click="openExamMorphDrill()">Mago da Morfologia</button>
-          </div>
-          <details class="exam-cheat">
-            <summary>Colinha</summary>
-            <div class="exam-cheat__grid" data-exam-lang="hebrew">
-              <div class="exam-cheat__card">
-                <h4>Método: 4 passos</h4>
-                <ol>
-                  <li><b>Tem verbo?</b> Se não, é frase nominal: supra “ser/estar”.</li>
-                  <li><b>Quem é o sujeito?</b> Pronome, substantivo ou a terminação do verbo.</li>
-                  <li><b>Tem <span class="hebrew-text">אֶת</span>?</b> Marca o objeto direto definido (pode vir antes do verbo).</li>
-                  <li><b>Construtos e sufixos:</b> “de…”, “meu, teu…”: pessoa, gênero e número.</li>
-                </ol>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Atributivo × predicativo</h4>
-                <p><span class="hebrew-text">הַדָּבָר הַטּוֹב</span> “a boa palavra”: depois do substantivo, concorda até no artigo.</p>
-                <p><span class="hebrew-text">טוֹב הַדָּבָר</span> “a palavra é boa”: adjetivo sem artigo = frase nominal.</p>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Pronomes</h4>
-                <table><tr><td>eu</td><td><span class="hebrew-text">אֲנִי · אָנֹכִי</span></td><td>nós</td><td><span class="hebrew-text">אֲנַחְנוּ</span></td></tr>
-                <tr><td>tu (m)</td><td><span class="hebrew-text">אַתָּה</span></td><td>vós (m)</td><td><span class="hebrew-text">אַתֶּם</span></td></tr>
-                <tr><td>tu (f)</td><td><span class="hebrew-text">אַתְּ</span></td><td>vós (f)</td><td><span class="hebrew-text">אַתֵּן</span></td></tr>
-                <tr><td>ele</td><td><span class="hebrew-text">הוּא</span></td><td>eles</td><td><span class="hebrew-text">הֵם · הֵמָּה</span></td></tr>
-                <tr><td>ela</td><td><span class="hebrew-text">הִיא</span></td><td>elas</td><td><span class="hebrew-text">הֵן · הֵנָּה</span></td></tr></table>
-                <p>No fim da frase, “nós” pode vir como <span class="hebrew-text">אֲנָחְנוּ</span> (pausa).</p>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Demonstrativos</h4>
-                <p>Perto: <span class="hebrew-text">הַזֶּה</span> este · <span class="hebrew-text">הַזֹּאת</span> esta · <span class="hebrew-text">הָאֵלֶּה</span> estes, estas</p>
-                <p>Longe: <span class="hebrew-text">הַהוּא</span> aquele · <span class="hebrew-text">הַהִיא</span> aquela · <span class="hebrew-text">הָהֵם · הָהֵן</span> aqueles, aquelas</p>
-                <p>Sem artigo e antes do substantivo forma frase: <span class="hebrew-text">זֶה הַסֵּפֶר</span> “este é o livro”.</p>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Construto</h4>
-                <p><span class="hebrew-text">בֵּית הַמֶּלֶךְ</span> “a casa do rei”: o construto nunca leva artigo; o último termo define a cadeia.</p>
-                <table><tr><td><span class="hebrew-text">דָּבָר</span> → <span class="hebrew-text">דְּבַר</span></td><td>qamets pretônico cai</td></tr>
-                <tr><td><span class="hebrew-text">בַּיִת</span> → <span class="hebrew-text">בֵּית</span></td><td>ditongo vira ê</td></tr>
-                <tr><td><span class="hebrew-text">תּוֹרָה</span> → <span class="hebrew-text">תּוֹרַת</span></td><td>feminino: -āh vira -at</td></tr>
-                <tr><td><span class="hebrew-text">סוּסִים</span> → <span class="hebrew-text">סוּסֵי</span></td><td>plural: -îm vira -ê</td></tr>
-                <tr><td><span class="hebrew-text">אֲנָשִׁים</span> → <span class="hebrew-text">אַנְשֵׁי</span></td><td>plural irregular de <span class="hebrew-text">אִישׁ</span></td></tr></table>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Sufixos: olhe o yod</h4>
-                <table><tr><th></th><th>um cavalo</th><th>cavalos</th></tr>
-                <tr><td>meu</td><td><span class="hebrew-text">סוּסִי</span></td><td><span class="hebrew-text">סוּסַי</span></td></tr>
-                <tr><td>teu (m)</td><td><span class="hebrew-text">סוּסְךָ</span></td><td><span class="hebrew-text">סוּסֶיךָ</span></td></tr>
-                <tr><td>teu (f)</td><td><span class="hebrew-text">סוּסֵךְ</span></td><td><span class="hebrew-text">סוּסַיִךְ</span></td></tr>
-                <tr><td>dele</td><td><span class="hebrew-text">סוּסוֹ</span></td><td><span class="hebrew-text">סוּסָיו</span></td></tr>
-                <tr><td>dela</td><td><span class="hebrew-text">סוּסָהּ</span></td><td><span class="hebrew-text">סוּסֶיהָ</span></td></tr>
-                <tr><td>nosso</td><td><span class="hebrew-text">סוּסֵנוּ</span></td><td><span class="hebrew-text">סוּסֵינוּ</span></td></tr>
-                <tr><td>vosso</td><td><span class="hebrew-text">סוּסְכֶם</span></td><td><span class="hebrew-text">סוּסֵיכֶם</span></td></tr>
-                <tr><td>deles</td><td><span class="hebrew-text">סוּסָם</span></td><td><span class="hebrew-text">סוּסֵיהֶם</span></td></tr></table>
-                <p>Yod antes do sufixo = plural. Com sufixo, o substantivo é definido.</p>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Perfeito Qal</h4>
-                <table><tr><td>ele</td><td><span class="hebrew-text">שָׁמַר</span></td><td>eles, elas</td><td><span class="hebrew-text">שָׁמְרוּ</span></td></tr>
-                <tr><td>ela</td><td><span class="hebrew-text">שָׁמְרָה</span></td><td>vós (m)</td><td><span class="hebrew-text">שְׁמַרְתֶּם</span></td></tr>
-                <tr><td>tu (m)</td><td><span class="hebrew-text">שָׁמַרְתָּ</span></td><td>vós (f)</td><td><span class="hebrew-text">שְׁמַרְתֶּן</span></td></tr>
-                <tr><td>tu (f)</td><td><span class="hebrew-text">שָׁמַרְתְּ</span></td><td>nós</td><td><span class="hebrew-text">שָׁמַרְנוּ</span></td></tr>
-                <tr><td>eu</td><td><span class="hebrew-text">שָׁמַרְתִּי</span></td><td></td><td></td></tr></table>
-                <p>tu: <span class="hebrew-text">ךָ</span> e <span class="hebrew-text">תָּ</span> · nós: <span class="hebrew-text">נוּ</span> e <span class="hebrew-text">נוּ</span> · vós: <span class="hebrew-text">כֶם</span> e <span class="hebrew-text">תֶּם</span></p>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Radar dos troncos</h4>
-                <table><tr><td>Qal</td><td><span class="hebrew-text">קָטַל</span></td><td>simples: “matou”</td></tr>
-                <tr><td>Nifal</td><td><span class="hebrew-text">נִקְטַל</span></td><td>prefixo <span class="hebrew-text">נִ</span>: passivo, “foi morto”</td></tr>
-                <tr><td>Piel</td><td><span class="hebrew-text">קִטֵּל</span></td><td>dagesh na 2ª radical: intensivo</td></tr>
-                <tr><td>Hifil</td><td><span class="hebrew-text">הִקְטִיל</span></td><td>prefixo <span class="hebrew-text">הִ</span>: causativo, “fez matar”</td></tr></table>
-              </div>
-              <div class="exam-cheat__card">
-                <h4><span class="hebrew-text">אֵת</span> tem dois usos</h4>
-                <p>Marca de objeto (não se traduz): <span class="hebrew-text">שָׁמַר אֶת־הַתּוֹרָה</span> “guardou a lei”.</p>
-                <p>Preposição “com”: <span class="hebrew-text">אִתּוֹ</span> “com ele” · <span class="hebrew-text">אִתָּנוּ</span> “conosco”.</p>
-                <p><span class="hebrew-text">אֶתְכֶם</span> “vos” (objeto) × <span class="hebrew-text">אִתְּכֶם</span> “convosco”.</p>
-              </div>
-              <div class="exam-cheat__card exam-cheat__card--tips">
-                <h4>Cinco lembretes para a prova</h4>
-                <ol>
-                  <li>Leia a frase inteira antes de traduzir.</li>
-                  <li>Procure o verbo. Sem verbo, supra “ser” ou “estar”.</li>
-                  <li>Confira pessoa, gênero e número na terminação e no sufixo.</li>
-                  <li>Yod antes do sufixo: substantivo no plural.</li>
-                  <li><span class="hebrew-text">נִ</span>: Nifal (passivo) · dagesh na 2ª radical: Piel · <span class="hebrew-text">הִ</span>: Hifil (causativo).</li>
-                </ol>
-              </div>
-            </div>
-            <div class="exam-cheat__grid hidden" data-exam-lang="greek">
-              <div class="exam-cheat__card exam-cheat__card--tips">
-                <h4>Como é o exame (27/11)</h4>
-                <p>20 palavras sorteadas das 40 do vocabulário, uma tabela de análise e questões das Provas 1 e 2.</p>
-                <p>Cubra a resposta, refaça cada parte e só depois confira.</p>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Regras de correção do professor</h4>
-                <ol>
-                  <li>Substantivo e adjetivo: deixe em branco característica, tempo, modo, voz e pessoa.</li>
-                  <li>Verbo nunca tem gênero nem caso (só o particípio, em Grego 3).</li>
-                  <li>Escreva só “aoristo”, sem “1º” ou “2º”.</li>
-                  <li>Verbo depoente e <span class="greek-text">εἰμί</span>: a voz pode ser “ativa”.</li>
-                  <li>Na tabela, escolha palavras estudadas: nada de nomes próprios, particípios, infinitivos e verbos não estudados.</li>
-                </ol>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Mais regras</h4>
-                <ol start="6">
-                  <li>Não existe imperfeito do subjuntivo: imperfeito é sempre indicativo.</li>
-                  <li>Copie as palavras traduzidas entre parênteses na prova: valem ponto.</li>
-                  <li>O uso do caso precisa bater com a tradução: instrumental = “com água”; locativo = “em água”.</li>
-                  <li>Coerência no português (vos/vos, andai/satisfareis); não acrescente palavra.</li>
-                  <li>Preposição decide o caso: <span class="greek-text">εἰς</span> + acusativo, <span class="greek-text">ἐν</span> + dativo, <span class="greek-text">ἐκ</span> + genitivo.</li>
-                </ol>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Pistas de análise</h4>
-                <p>Verbo logo depois de <span class="greek-text">ἵνα</span> vai para o <b>subjuntivo</b>; o aoristo subjuntivo tem σ e não tem o aumento ε.</p>
-                <p><b>θη</b> = aoristo passivo (<span class="greek-text">ἐβαπτίσθη</span> “foi batizado”).</p>
-                <p>Forma em <b>-ων</b> + <span class="greek-text">ἤ</span> (“do que”) = comparativo (<span class="greek-text">μείζων</span>).</p>
-                <p>Todo <b>-ματ-</b> é neutro (<span class="greek-text">θελήματος, Πνεύματι</span>).</p>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Artigo ou não?</h4>
-                <p><span class="greek-text">ᾧ</span> não é artigo: é pronome relativo (aspiração forte, sem τ).</p>
-                <p><span class="greek-text">ἦν</span> não é artigo (sem τ) nem relativo (aspiração branda): é imperfeito de <span class="greek-text">εἰμί</span>, “era”.</p>
-                <p>Artigo ligado a particípio (<span class="greek-text">ὁ αἴρων, ὁ πέμψας</span>) não serve na tabela de artigos.</p>
-              </div>
-              <div class="exam-cheat__card">
-                <h4>Pegadinhas</h4>
-                <p>Particípios não são presente do indicativo: <span class="greek-text">ἐρχόμενον, καταβαῖνον, βαπτίζων, ὁ αἴρων</span>.</p>
-                <p><span class="greek-text">με</span> é pronome; <span class="greek-text">ἐκ</span> é preposição: não são conjunções.</p>
-                <p><span class="greek-text">ὀπίσω</span> e <span class="greek-text">ἔμπροσθεν</span> são preposições impróprias (também advérbios).</p>
-              </div>
-            </div>
-          </details>
-        </section>
         <!-- Barra da sessão: modo sempre à vista; o restante fica em "Opções" -->
         <div id="practice-control-bar" class="session-bar">
           <!-- Controles Padrão (Capítulos 2+) -->
@@ -506,31 +351,6 @@
                 <div class="seg" role="group" aria-label="Direção da múltipla escolha">
                   <button type="button" id="direction-forward" data-on-click="setChoiceDirection('forward')" class="seg-btn is-active" aria-pressed="true" title="Veja o termo original e escolha a tradução">Original ➔ Português</button>
                   <button type="button" id="direction-reverse" data-on-click="setChoiceDirection('reverse')" class="seg-btn" aria-pressed="false" title="Veja a tradução e escolha o termo original">Português ➔ Original</button>
-                </div>
-              </div>
-
-              <!-- Estudo para exame (MODO TEMPORÁRIO, js/modules/exam-mode.js): o que treinar -->
-              <div id="practice-form-container" class="hidden">
-                <span class="field-label">O que treinar</span>
-                <div class="seg seg--wrap" role="group" aria-label="O que treinar">
-                  <button type="button" id="exam-words-all" data-on-click="setExamWords('all')" class="seg-btn is-active" aria-pressed="true" title="Tudo: as palavras do vocabulário e, no grego, também as formas da tabela">Todas</button>
-                  <button type="button" id="exam-words-raizes" data-on-click="setExamWords('raizes')" class="seg-btn hidden" aria-pressed="false" title="Só as 40 palavras do vocabulário das provas, na forma do dicionário, sem as formas da tabela">Raízes (40)</button>
-                  <button type="button" id="exam-words-prova1" data-on-click="setExamWords('prova1')" class="seg-btn" aria-pressed="false" title="Palavras da Prova 1">Prova 1</button>
-                  <button type="button" id="exam-words-prova2" data-on-click="setExamWords('prova2')" class="seg-btn" aria-pressed="false" title="Palavras da Prova 2">Prova 2</button>
-                  <button type="button" id="exam-words-sorteio" data-on-click="setExamWords('sorteio')" class="seg-btn" aria-pressed="false" title="20 palavras sorteadas, como no exame de grego">Sorteio de 20</button>
-                  <button type="button" id="exam-words-tabela" data-on-click="setExamWords('tabela')" class="seg-btn hidden" aria-pressed="false" title="As formas da tabela de análise das provas, com a classificação na dica">Tabela</button>
-                  <button type="button" id="exam-words-lexico" data-on-click="setExamWords('lexico')" class="seg-btn hidden" aria-pressed="false" title="Veja a forma que caiu na tabela e dê a forma do léxico (dicionário) dela">Forma do léxico</button>
-                </div>
-              </div>
-
-              <!-- Estudo para exame (MODO TEMPORÁRIO): quais frases -->
-              <div id="practice-phrases-container" class="hidden">
-                <span class="field-label">Frases</span>
-                <div class="seg seg--wrap" role="group" aria-label="Quais frases">
-                  <button type="button" id="exam-phrases-all" data-on-click="setExamPhrases('all')" class="seg-btn is-active" aria-pressed="true" title="Todas as frases das duas provas">Todas</button>
-                  <button type="button" id="exam-phrases-prova1" data-on-click="setExamPhrases('prova1')" class="seg-btn" aria-pressed="false" title="Frases da Prova 1">Prova 1</button>
-                  <button type="button" id="exam-phrases-prova2" data-on-click="setExamPhrases('prova2')" class="seg-btn" aria-pressed="false" title="Frases da Prova 2">Prova 2</button>
-                  <button type="button" id="exam-phrases-simulado" data-on-click="setExamPhrases('simulado')" class="seg-btn" aria-pressed="false" title="Frases sorteadas das duas provas">Simulado</button>
                 </div>
               </div>
 
@@ -768,11 +588,6 @@
                 <p id="feedback-tip" class="feedback-tip hidden">
                   <span class="feedback-tip__label">Para fixar</span>
                   <span id="feedback-tip-text"></span>
-                </p>
-                <!-- Estudo para exame (MODO TEMPORÁRIO): chave do gabarito -->
-                <p id="feedback-key" class="feedback-tip feedback-key hidden">
-                  <span class="feedback-tip__label">Chave</span>
-                  <span id="feedback-key-text"></span>
                 </p>
               </div>
             </div>
@@ -2197,12 +2012,9 @@
     <script src="js/modules/scribe-map.js"></script>
     <script src="js/modules/scribe-fx.js"></script>
     <script src="js/modules/scribe-chronicles.js"></script>
-    <!-- Estudo para exame nas Crônicas (MODO TEMPORÁRIO): modo à parte da aventura -->
-    <script src="js/modules/scribe-exam.js"></script>
     <script src="js/modules/cloud-sync.js"></script>
     <script src="js/modules/ui.js"></script>
     <script src="js/modules/today.js"></script>
-    <script src="js/modules/exam-mode.js"></script>
     <script src="js/screens/practice.js"></script>
     <script src="js/screens/review.js"></script>
     <script src="js/screens/consult.js"></script>

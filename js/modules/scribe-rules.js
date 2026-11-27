@@ -74,7 +74,7 @@ function lessonLabel(chapter) {
  */
 function buildCampaign(chapters, language) {
   return (Array.isArray(chapters) ? chapters : [])
-    // Lições especiais (como o "Estudo para exame") não são capítulos da história
+    // Lições especiais (um modo à parte, como foi o "Estudo para exame") não são capítulos da história
     .filter((c) => c && !c.special && (c.items || []).filter((i) => getTerm(i) && (i.translations || []).length).length >= MIN_CHAPTER_WORDS)
     .map((chapter, index) => ({ index, chapter, meta: getChapterMeta(language, chapter, index) }));
 }

@@ -24,7 +24,7 @@ suite.test('Baralho cobre o vocabulário de todas as lições, nos dois idiomas'
     assert.deepEqual(deck.map((w) => w.id), deck.map((_, i) => i), 'Identificadores em sequência');
     deck.forEach((w) => assert.isTrue(!!w.head && !!w.pt && !!w.chapterLabel, `Pedra incompleta: ${w.term}`));
     const lessons = new Set(deck.map((w) => w.chapterId));
-    // Lições especiais (como o "Estudo para exame") só entram quando escolhidas
+    // Lições especiais (modos à parte) só entram quando escolhidas
     chapters.filter((c) => !c.special).forEach((c) => assert.isTrue(lessons.has(c.id), `Lição fora do jogo: ${c.title}`));
   });
 });
@@ -72,7 +72,7 @@ suite.test('Pontuação: multiplicador, bônus por rapidez e fases', () => {
 });
 
 suite.test('Cada fase é uma lição, na ordem do material, com o vocabulário inteiro dela', () => {
-  // Lições especiais (como o "Estudo para exame") só entram quando escolhidas
+  // Lições especiais (modos à parte) só entram quando escolhidas
   [hebrewData, greekData].map((data) => data.filter((c) => !c.special)).forEach((chapters) => {
     const phases = buildPhases(chapters);
     assert.deepEqual(phases.map((p) => p.chapterId), chapters.map((c) => c.id), 'Uma fase por lição, na ordem do livro');
@@ -168,9 +168,11 @@ suite.test('Chuva de Pedras está ligada à tela de Avaliar', () => {
 });
 
 suite.test('Lição especial só entra na Chuva quando escolhida, e então sozinha', () => {
-  [hebrewData, greekData].forEach((chapters) => {
-    const exam = chapters.find((c) => c.special);
-    if (!exam) return;
+  [hebrewData, greekData].forEach((data) => {
+    // Lição especial de teste: as palavras de uma lição comum, repetidas num modo à parte
+    const base = data.find((c) => (c.items || []).length >= 8 && c.id !== data[0].id);
+    const exam = { id: 'licao_especial', title: 'Lição especial', special: 'exam', items: base.items.map((i) => ({ ...i })) };
+    const chapters = [...data, exam];
     assert.isFalse(buildPhases(chapters).some((p) => p.chapterId === exam.id), 'a lição especial entrou sem ser escolhida');
     const only = buildPhases(chapters, { chapterIds: [exam.id] });
     assert.isTrue(only.length === 1 && only[0].chapterId === exam.id && only[0].words.length > 0, 'escolhida, a lição especial não virou fase');

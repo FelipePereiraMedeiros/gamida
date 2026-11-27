@@ -9,7 +9,7 @@ const { TestSuite, assert, loadSourceFiles } = require('./test-utils');
 
 const suite = new TestSuite('Módulo 21: Crônicas do Escriba');
 const { html, appJs, hebrewData, greekData } = loadSourceFiles();
-// Lições especiais (como o "Estudo para exame") não são capítulos da história
+// Lições especiais (modos à parte) não são capítulos da história
 const storyOnly = (chapters) => chapters.filter((c) => !c.special);
 const Scribe = require('../js/modules/scribe-chronicles.js');
 const Campaign = require('../js/modules/scribe-campaign.js');
@@ -233,7 +233,7 @@ suite.test('Frases longas são montadas em grupos de palavras', () => {
   assert.isTrue(Scribe.isBuildCorrect(['Ele É', 'justo'], ['ele é', 'justo.']), 'Caixa e pontuação não contam');
 });
 
-suite.test('Toda frase do guardião monta perguntas válidas, nos dois idiomas (lições e exame)', () => {
+suite.test('Toda frase do guardião monta perguntas válidas, nos dois idiomas', () => {
   const Rules = require('../js/modules/scribe-rules.js');
   const { normalizeText } = require('../js/modules/evaluation.js');
   const keyOf = (t) => normalizeText(t).replace(/[?¿!¡"“”'‘’]/g, '').trim();

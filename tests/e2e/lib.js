@@ -57,8 +57,7 @@ async function openApp(env, opts = {}) {
     errors.push(`pedido externo: ${url.href}`);
     return route.abort();
   });
-  // O aviso do "Estudo para exame" cobre a tela: só o teste dele (examAlert: true) o vê
-  const seed = { gamida_language: opts.language || "hebrew", ...(opts.examAlert ? {} : { gamida_exam_alert_seen_estudo_exame_2: "teste" }), ...(opts.storage || {}) };
+  const seed = { gamida_language: opts.language || "hebrew", ...(opts.storage || {}) };
   await context.addInitScript((data) => {
     window.__GAMIDA_TEST__ = true;
     try {

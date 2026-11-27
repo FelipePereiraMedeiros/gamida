@@ -54,7 +54,7 @@ def main():
     with open('data/hebrew_chapters.json', 'r', encoding='utf-8') as f:
         h_data = json.load(f)
 
-    # Lições especiais (como o "Estudo para exame") ficam fora da contagem das lições do Kelley
+    # Lições especiais (modos à parte) ficam fora da contagem das lições do Kelley
     lessons = [c for c in h_data if not c.get('special')]
     assert len(lessons) == 29, f"Expected 29 Hebrew lessons, got {len(lessons)}"
     total_tokens = sum(sum(len(s.get('tokens', [])) for s in ch.get('sentences', [])) for ch in h_data)

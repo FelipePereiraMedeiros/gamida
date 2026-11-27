@@ -22,7 +22,7 @@ def test_greek_database():
     with open(GREEK_JSON_PATH, "r", encoding="utf-8") as f:
         chapters = json.load(f)
 
-    # Lições especiais (como o "Estudo para exame") ficam fora da contagem das lições do Bergmann
+    # Lições especiais (modos à parte) ficam fora da contagem das lições do Bergmann
     chapters = [c for c in chapters if not c.get('special')]
     assert len(chapters) == 22, f"Expected 22 chapters, found {len(chapters)}"
     

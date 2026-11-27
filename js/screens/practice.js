@@ -232,11 +232,6 @@ function buildPracticeQueue() {
       chapItems = [...(chap.items || [])];
     }
 
-    // Estudo para exame (modo temporário): filtros "O que treinar" e "Frases"
-    if (typeof window !== "undefined" && window.ExamMode) {
-      chapItems = window.ExamMode.filterItems(chap, chapItems, AppState.exerciseMode);
-    }
-
     // Filtro por tipo de palavra (quando em Digitação e categoria diferente de 'all')
     if (AppState.exerciseMode === "typing" && AppState.practiceCategory && AppState.practiceCategory !== "all") {
       chapItems = chapItems.filter((item) => matchItemCategory(item, AppState.practiceCategory));
@@ -322,8 +317,6 @@ function resetPracticeActionButtons() {
 function updatePracticeActionButtonToNext() {
   // Respondida a questão, a classificação já não é dica: aparece junto da correção
   showQuestionMeta();
-  // Estudo para exame (modo temporário): a chave do gabarito
-  if (typeof window !== "undefined" && window.ExamMode) window.ExamMode.showKey(AppState.currentQuestion);
   ensureDOM();
   AppState.isPracticeAnswered = true;
 
@@ -630,7 +623,7 @@ function renderCurrentQuestion() {
   if (DOM.btnHint) DOM.btnHint.classList.toggle("hidden", showsGloss || !AppState.currentQuestion.transliteration);
   if (DOM.banner) DOM.banner.classList.add("hidden");
 
-  const isSentenceWithAnalysis = AppState.currentQuestion && !AppState.currentQuestion.noAnalysis &&
+  const isSentenceWithAnalysis = AppState.currentQuestion &&
     (AppState.language === "hebrew" || AppState.language === "greek") &&
     ((AppState.currentQuestion.tokens && AppState.currentQuestion.tokens.length > 0) ||
       AppState.currentQuestion.type === "Frase" ||
@@ -715,7 +708,6 @@ const metaNodes = () => (typeof document === "undefined" ? {} : {
 /** Nova questão: a dica volta a ficar escondida. Sem nada a dizer (só "Frase"), nem o botão aparece. */
 function resetQuestionMeta() {
   const { info, btn, badge } = metaNodes();
-  if (typeof window !== "undefined" && window.ExamMode) window.ExamMode.hideKey();
   if (!info || !btn) return;
   const type = (AppState.currentQuestion && AppState.currentQuestion.type) || "";
   const onlyObvious = /^(Frase|Expressão)$/.test(type) && (!badge || badge.classList.contains("hidden"));
@@ -795,19 +787,15 @@ function renderChoiceInterface() {
   DOM.interfaces.choice.innerHTML = "";
   const isReverse = isReverseChoice();
   const build = typeof window !== "undefined" && window.StateModule && window.StateModule.buildChoiceOptions;
-  // Estudo para exame (modo temporário): a forma do léxico tem alternativas em grego
-  const examOptions = typeof window !== "undefined" && window.ExamMode && typeof window.ExamMode.choiceOptions === "function"
-    ? window.ExamMode.choiceOptions(AppState.currentQuestion)
-    : null;
-  const options = examOptions || (typeof build === "function"
+  const options = typeof build === "function"
     ? build(AppState.currentQuestion, AppState.chapters, { direction: getChoiceDirection() })
-    : []);
+    : [];
   const termClass = AppState.language === "hebrew" ? "hebrew-text" : "greek-text";
 
   options.forEach((opt, idx) => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = `choice-btn hover:border-brand-500 active:scale-[0.99]${isReverse || opt.original ? ` choice-btn--term ${termClass}` : ""}`;
+    btn.className = `choice-btn hover:border-brand-500 active:scale-[0.99]${isReverse ? ` choice-btn--term ${termClass}` : ""}`;
     btn.setAttribute("data-key", String(idx + 1));
     if (opt.isCorrect) btn.dataset.correct = "1";
     btn.textContent = opt.text;
@@ -1067,7 +1055,7 @@ function checkPracticeAnswer(userAnswer, pickedOption) {
   // Transforma o botão "Verificar" em "Próxima Questão" e ajusta estado
   updatePracticeActionButtonToNext();
 
-  const isSentenceWithAnalysis = AppState.currentQuestion && !AppState.currentQuestion.noAnalysis &&
+  const isSentenceWithAnalysis = AppState.currentQuestion &&
     (AppState.language === "hebrew" || AppState.language === "greek") &&
     ((AppState.currentQuestion.tokens && AppState.currentQuestion.tokens.length > 0) ||
       AppState.currentQuestion.type === "Frase" ||
