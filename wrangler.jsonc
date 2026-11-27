@@ -1,0 +1,13 @@
+// Gamida — Copyright (c) 2026 Felipe Pereira Medeiros. Todos os direitos reservados. Software proprietário: uso, cópia, modificação e distribuição sujeitos ao arquivo LICENSE.
+// Publicação no Cloudflare como Worker com arquivos estáticos (sem código de servidor).
+// O Cloudflare roda "npm run build" (monta dist/) e depois "npx wrangler deploy", que publica dist/.
+// O _headers dentro de dist/ traz os cabeçalhos de segurança e de cache.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gamida",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "none"
+  }
+}
