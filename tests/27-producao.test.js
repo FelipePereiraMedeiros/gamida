@@ -70,7 +70,14 @@ suite.test('Login com Google: ID do cliente do Gamida no código, contato nas p�
   ['privacidade.html', 'termos.html'].forEach((page) => {
     const html = read(page);
     assert.isTrue(!html.includes('{{CONTATO}}'), `${page} sem o e-mail de contato`);
-    assert.isTrue(/href="mailto:[^"@]+@[^"]+"/.test(html), `${page} sem link de e-mail`);
+    assert.includes(html, 'href="mailto:gamida.app@gmail.com"', `${page} sem o e-mail de suporte do Gamida`);
+  });
+});
+
+suite.test('Contato público é só o e-mail do Gamida (LICENSE, README, privacidade e termos)', () => {
+  ['LICENSE', 'README.md', 'privacidade.html', 'termos.html'].forEach((f) => {
+    assert.includes(read(f), 'gamida.app@gmail.com', `${f} sem o e-mail do Gamida`);
+    assert.isTrue(!/gasperfpm@/i.test(read(f)), `${f} ainda com o e-mail pessoal`);
   });
 });
 
