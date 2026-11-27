@@ -53,6 +53,7 @@ Cada envio para a `dev` publica sozinho em um ou dois minutos.
      - logotipo `icons/icon-512.png`;
      - página inicial `https://gamida.gasperfpm.workers.dev/`;
      - política de privacidade `https://gamida.gasperfpm.workers.dev/privacidade.html`;
+     - termos de uso `https://gamida.gasperfpm.workers.dev/termos.html`;
      - domínio autorizado: o seu domínio, ou `gamida.pages.dev`.
    - **Audience:** External. Enquanto estiver em *Testing*, só entram as contas de **Test users**.
    - **Data access:** os escopos `openid`, `email`, `profile` e `.../auth/drive.appdata`.
@@ -64,7 +65,7 @@ Cada envio para a `dev` publica sozinho em um ou dois minutos.
        - `https://gamida.gasperfpm.workers.dev/oauth-callback.html`;
        - `https://felipepereiramedeiros.github.io/gamida/oauth-callback.html`.
 4. Copie o **ID do cliente**, que termina em `.apps.googleusercontent.com`. Ele vai em `GOOGLE_CLIENT_ID`, no início de `js/modules/cloud-sync.js`, e não é segredo. O **client secret** não é usado: não o coloque no repositório nem o envie a ninguém.
-5. Preencha o e-mail de contato em `privacidade.html` (marcador `{{CONTATO}}`).
+5. Preencha o e-mail de contato em `privacidade.html` e `termos.html` (marcador `{{CONTATO}}`).
 6. Teste num navegador de computador, com o console aberto:
 
    ```js

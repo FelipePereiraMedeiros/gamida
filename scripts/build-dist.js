@@ -21,7 +21,7 @@ const root = path.join(__dirname, "..");
 const OUT = path.join(root, "dist");
 
 /** Arquivos que vão ao ar, além dos que o service worker guarda */
-const EXTRA = ["sw.js", "oauth-callback.html", "js/oauth-callback.js", "privacidade.html", "_headers", "_redirects", "robots.txt"];
+const EXTRA = ["sw.js", "oauth-callback.html", "js/oauth-callback.js", "privacidade.html", "termos.html", "_headers", "_redirects", "robots.txt"];
 
 function files() {
   return [...new Set([...precacheList(), ...EXTRA])].sort();
@@ -38,9 +38,11 @@ function build() {
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.copyFileSync(path.join(root, f), dest);
   });
-  if (fs.readFileSync(path.join(root, "privacidade.html"), "utf8").includes("{{CONTATO}}")) {
-    console.warn("Aviso: privacidade.html ainda sem o e-mail de contato ({{CONTATO}}). O Google pede esse contato para publicar o login.");
-  }
+  ["privacidade.html", "termos.html"].forEach((page) => {
+    if (fs.readFileSync(path.join(root, page), "utf8").includes("{{CONTATO}}")) {
+      console.warn(`Aviso: ${page} ainda sem o e-mail de contato ({{CONTATO}}). O Google pede esse contato para publicar o login.`);
+    }
+  });
   const bytes = list.reduce((sum, f) => sum + fs.statSync(path.join(root, f)).size, 0);
   console.log(`dist/: ${list.length} arquivos, ${(bytes / 1024 / 1024).toFixed(1)} MB`);
   return list;

@@ -17,7 +17,7 @@ const Dist = require('../scripts/build-dist.js');
 
 suite.test('Vai ao ar só o que o aplicativo usa (sem testes, documentação, scripts nem a página de testes)', () => {
   const files = Dist.files();
-  const required = ['index.html', 'sw.js', 'manifest.webmanifest', 'oauth-callback.html', 'js/oauth-callback.js', 'privacidade.html', '_headers', '_redirects', 'robots.txt',
+  const required = ['index.html', 'sw.js', 'manifest.webmanifest', 'oauth-callback.html', 'js/oauth-callback.js', 'privacidade.html', 'termos.html', '_headers', '_redirects', 'robots.txt',
     'data/hebrew_chapters.json', 'data/greek_chapters.json', 'js/app.js', 'js/modules/cloud-sync.js', 'js/modules/new-home.js'];
   required.forEach((f) => assert.isTrue(files.includes(f), `Falta no ar: ${f}`));
   const banned = files.filter((f) => /^(tests|docs|scripts|referencias|node_modules|\.github)\/|test-environment|data-bundle|package|LICENSE|\.md$|\.ps1$/.test(f));
@@ -53,6 +53,14 @@ suite.test('Política de privacidade: existe, explica o Drive e está ligada no 
   assert.isTrue(!/<script/i.test(page), 'A página de privacidade não precisa de script');
   assert.includes(read('index.html'), 'href="privacidade.html"');
   assert.includes(read('js/modules/cloud-sync.js'), 'href="privacidade.html"');
+});
+
+suite.test('Termos de uso: existem, seguem a licença e estão ligados no rodapé e na política', () => {
+  const page = read('termos.html');
+  ['estudo pessoal e não comercial', 'inteligência artificial', 'Lei nº 9.609/1998', 'no estado em que se encontra', 'José Henrique Rosseto', 'href="privacidade.html"'].forEach((t) => assert.includes(page, t));
+  assert.isTrue(!/<script/i.test(page), 'A página de termos não precisa de script');
+  assert.includes(read('index.html'), 'href="termos.html"');
+  assert.includes(read('privacidade.html'), 'href="termos.html"');
 });
 
 suite.test('Instalável: manifesto com id, ícones existentes e rodapé com a versão atual', () => {
